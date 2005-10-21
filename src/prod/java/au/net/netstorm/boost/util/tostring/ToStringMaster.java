@@ -20,7 +20,6 @@ package au.net.netstorm.boost.util.tostring;
 // FIXME: SC501 Remove all SC501 references.
 // FIXME: SC501 Primordial extenders need to be final.  Put this check into primordial.
 // FIXME: SC501 Throw exception from clone().
-// FIXME: SC501 Incorporate test filtering code (wiring, module, atomic etc).
 // FIXME: SC501 Minimal braces everywhere.
 public interface ToStringMaster {
     String getString(Object ref);
