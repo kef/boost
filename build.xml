@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- FIXME: SC502
-   - Rename "build" target to "compile"
    - Compile all packages
    - Incorporate FileSet
    - Run tests
@@ -25,7 +24,7 @@
    - Package up jars or whatever (using non instrumented classes)
   -->
 
-<project name="boost" default="build" basedir=".">
+<project name="boost" default="compile" basedir=".">
 	<property name="build.dir" location="build"/>
 	<property name="build.classes.dir" location="${build.dir}/classes"/>
 
@@ -33,7 +32,7 @@
 		<delete dir="${build.dir}"/>
 	</target>
 
-	<target name="build">
+	<target name="compile">
 		<mkdir dir="${build.classes.dir}"/>
 		<javac srcdir="src/edge/java" destdir="${build.classes.dir}"/>
 	</target>
