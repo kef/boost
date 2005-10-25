@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- FIXME: SC502
-   - Move junit.classpath out of compileTest target
-   - ? "compileAll" target.
-   - ? Different prefixes for dependency targets
+<!-- FIXME: SC502 Goals
    - Run tests
    - Create JAR
-   - Include profile (properties).  One property should specify a
-       properties file somewhere, usually under <project>/conf/profile
-   - Check environment properties (fail if not correctly set)
    - Checkstyle run.
    - Checkstyle report (into artifacts area)
    - Checkstyle fail on error
    - Simian run
    - Simian report (into artifacts area)
    - Simian fail on error
-   - Compile to raw classes
    - Instrument classes (cobertura.sourceforge.net)
    - Run AtomicTests against instrumented classes
    - Atomic test coverage report (into artifacts area)
@@ -23,6 +16,15 @@
    - Run "other" tests against raw classes
    - Generate javadoc (if you're doing this)
    - Package up jars or whatever (using non instrumented classes)
+  -->
+
+<!-- FIXME: SC502 Refactor
+   - Move junit.classpath out of compileTest target
+   - Check environment properties (fail if not correctly set)
+   - ? "compileAll" target.
+   - ? Different prefixes for dependency targets
+   - Include profile (properties).  One property should specify a
+       properties file somewhere, usually under <project>/conf/profile
   -->
 
 <project name="boost" default="all" basedir=".">
@@ -36,7 +38,7 @@
 		<delete dir="${build.dir}" />
 	</target>
 
-<!-- FIXME: SC502 Consider naming of "prod" and "edge" -->
+<!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
 	
 	<target name="compile">
 		<mkdir dir="${build.classes.dir}" />

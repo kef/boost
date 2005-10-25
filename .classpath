@@ -24,5 +24,5 @@
 		<attributes>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="build"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>
