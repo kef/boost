@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost" default="build" basedir=".">
-	<property name="build" location="build"/>
-	<property name="build.classes" location="${build}/classes"/>
+	<property name="build.dir" location="build"/>
+	<property name="build.classes.dir" location="${build.dir}/classes"/>
 
-	<!-- FIXME: SC502 Add ".dir" to all directory property names -->
-	
 	<target name="clean">
-		<delete dir="${build}"/>
+		<delete dir="${build.dir}"/>
 	</target>
 
 	<target name="build">
-		<mkdir dir="${build.classes}"/>
-		<javac srcdir="src/edge/java" destdir="${build.classes}"/>
+		<mkdir dir="${build.classes.dir}"/>
+		<javac srcdir="src/edge/java" destdir="${build.classes.dir}"/>
 	</target>
 </project>
