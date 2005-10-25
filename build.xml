@@ -2,8 +2,11 @@
 <project name="boost" default="build" basedir=".">
 	<property name="build.classes" value="build/classes"/>
 
-
-	<!-- FIXME: SC502 Create clean target -->
+	<!-- FIXME: SC502 Remove complete build/ directory -->
+	
+	<target name="clean">
+		<deltree dir="${build.classes}"/>
+	</target>
 
 	<target name="build">
 		<mkdir dir="${build.classes}"/>
