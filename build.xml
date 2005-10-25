@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="boost" default="build" basedir=".">
+	<fileset id="prod.classpath" dir="${basedir}"/>
+
+	<!-- FIXME: SC502 Create clean target -->
+
+	<target name="build">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src/edge/java" destdir="build/classes"/>
+	</target>
+</project>
