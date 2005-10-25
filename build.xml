@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- FIXME: SC502
+   - Move junit.classpath out of compileTest target
    - Do dependencies
    - Incorporate FileSet
    - Run tests
@@ -33,6 +34,8 @@
 		<delete dir="${build.dir}" />
 	</target>
 
+<!-- FIXME: SC502 Compile all target -->
+	
 	<target name="compile">
 		<mkdir dir="${build.classes.dir}" />
 		<javac srcdir="src/edge/java" destdir="${build.classes.dir}" />
