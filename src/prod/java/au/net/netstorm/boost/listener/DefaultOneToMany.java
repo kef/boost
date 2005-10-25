@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.listener;
 
+import au.net.netstorm.boost.util.type.Interface;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
-
-import au.net.netstorm.boost.util.type.Interface;
 
 
 public final class DefaultOneToMany implements OneToMany, InvocationHandler

@@ -2,6 +2,7 @@
 
 <!-- FIXME: SC502
    - Compile all packages
+   - do dependencies
    - Incorporate FileSet
    - Run tests
    - Create JAR
