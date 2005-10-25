@@ -25,26 +25,28 @@
   -->
 
 <project name="boost" default="compile" basedir=".">
-	<property name="build.dir" location="build"/>
-	<property name="build.classes.dir" location="${build.dir}/classes"/>
-	<property name="lib.dir" location="lib"/>
+	<property name="build.dir" location="build" />
+	<property name="build.classes.dir" location="${build.dir}/classes" />
+	<property name="lib.dir" location="lib" />
 
 	<target name="clean">
-		<delete dir="${build.dir}"/>
+		<delete dir="${build.dir}" />
 	</target>
 
 	<target name="compile">
-		<mkdir dir="${build.classes.dir}"/>
-		<javac srcdir="src/edge/java" destdir="${build.classes.dir}"/>
-		<javac srcdir="src/prod/java" destdir="${build.classes.dir}"/>
-<!-- FIXME: SC502 Move test package to it's own compile target -->
+		<mkdir dir="${build.classes.dir}" />
+		<javac srcdir="src/edge/java" destdir="${build.classes.dir}" />
+		<javac srcdir="src/prod/java" destdir="${build.classes.dir}" />
+	</target>
+
+	<target name="compileTest">
 		<path id="junit.classpath">
 			<fileset dir="${lib.dir}">
-			    <include name="junit/junit-3.8.1.jar"/>
+				<include name="junit/junit-3.8.1.jar" />
 			</fileset>
 		</path>
 		<javac srcdir="src/test/java" destdir="${build.classes.dir}">
-			<classpath refid="junit.classpath"/>
+			<classpath refid="junit.classpath" />
 		</javac>
 	</target>
 </project>
