@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- FIXME: SC502
+   - Create "all" target which performs a complete clean build
    - Move junit.classpath out of compileTest target
    - Do dependencies
    - Incorporate FileSet
@@ -25,7 +26,7 @@
    - Package up jars or whatever (using non instrumented classes)
   -->
 
-<project name="boost" default="compile" basedir=".">
+<project name="boost" default="compileAll" basedir=".">
 	<property name="build.dir" location="build" />
 	<property name="build.classes.dir" location="${build.dir}/classes" />
 	<property name="lib.dir" location="lib" />
@@ -34,7 +35,7 @@
 		<delete dir="${build.dir}" />
 	</target>
 
-<!-- FIXME: SC502 Compile all target -->
+	<target name="compileAll" depends="compile,compileTest"/>
 	
 	<target name="compile">
 		<mkdir dir="${build.classes.dir}" />
