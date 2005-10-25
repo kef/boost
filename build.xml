@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- FIXME: SC502
-   - Compile test package with JUnit JAR
    - Do dependencies
    - Incorporate FileSet
    - Run tests
