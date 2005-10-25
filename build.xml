@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost" default="build" basedir=".">
-	<property name="build.classes" value="build/classes"/>
+	<property name="build" location="build"/>
+	<property name="build.classes" location="${build}/classes"/>
 
-	<!-- FIXME: SC502 Remove complete build/ directory -->
+	<!-- FIXME: SC502 Add ".dir" to all directory property names -->
 	
 	<target name="clean">
-		<deltree dir="${build.classes}"/>
+		<delete dir="${build}"/>
 	</target>
 
 	<target name="build">
