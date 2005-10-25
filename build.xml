@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- FIXME: SC502
+   - Rename "build" target to "compile"
+   - Compile all packages
+   - Incorporate FileSet
+   - Run tests
+   - Create JAR
+   - Include profile (properties).  One property should specify a
+       properties file somewhere, usually under <project>/conf/profile
+   - Check environment properties (fail if not correctly set)
+   - Checkstyle run.
+   - Checkstyle report (into artifacts area)
+   - Checkstyle fail on error
+   - Simian run
+   - Simian report (into artifacts area)
+   - Simian fail on error
+   - Compile to raw classes
+   - Instrument classes (cobertura.sourceforge.net)
+   - Run AtomicTests against instrumented classes
+   - Atomic test coverage report (into artifacts area)
+   - Fail on < 100% atomic test coverage
+   - Run "other" tests against raw classes
+   - Generate javadoc (if you're doing this)
+   - Package up jars or whatever (using non instrumented classes)
+  -->
+
 <project name="boost" default="build" basedir=".">
 	<property name="build.dir" location="build"/>
 	<property name="build.classes.dir" location="${build.dir}/classes"/>
