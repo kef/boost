@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- FIXME: SC502
-   - Compile all packages
-   - do dependencies
+   - Compile test package with JUnit JAR
+   - Do dependencies
    - Incorporate FileSet
    - Run tests
    - Create JAR
@@ -36,5 +36,6 @@
 	<target name="compile">
 		<mkdir dir="${build.classes.dir}"/>
 		<javac srcdir="src/edge/java" destdir="${build.classes.dir}"/>
+		<javac srcdir="src/prod/java" destdir="${build.classes.dir}"/>
 	</target>
 </project>
