@@ -3,8 +3,7 @@
 <!-- FIXME: SC502
    - Move junit.classpath out of compileTest target
    - ? "compileAll" target.
-   - Do dependencies
-   - Incorporate FileSet
+   - ? Different prefixes for dependency targets
    - Run tests
    - Create JAR
    - Include profile (properties).  One property should specify a
