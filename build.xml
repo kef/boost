@@ -2,7 +2,6 @@
 
 <!-- FIXME: SC502 Goals
    - Run tests
-   - Create JAR
    - Checkstyle run
    - Checkstyle report (into artifacts area)
    - Checkstyle fail on error
@@ -30,23 +29,24 @@
 <project name="boost" default="all" basedir=".">
 	<property name="build.dir" location="build" />
 	<property name="build.classes.dir" location="${build.dir}/classes" />
+	<property name="build.jar.dir" location="${build.dir}/jars" />
 	<property name="lib.dir" location="lib" />
 	
-	<target name="all" depends="clean,compile,compileTest"/>
+	<target name="all" depends="clean,compile,compileTest,createJar"/>
 
-	<target name="clean">
+	<target name="clean" description="Clean all build files">
 		<delete dir="${build.dir}" />
 	</target>
 
 <!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
 	
-	<target name="compile">
+	<target name="compile" description="Build edge and prod code">
 		<mkdir dir="${build.classes.dir}" />
 		<javac srcdir="src/edge/java" destdir="${build.classes.dir}" />
 		<javac srcdir="src/prod/java" destdir="${build.classes.dir}" />
 	</target>
 
-	<target name="compileTest">
+	<target name="compileTest" description="Build test code">
 		<path id="junit.classpath">
 			<fileset dir="${lib.dir}">
 				<include name="junit/junit-3.8.1.jar" />
@@ -55,5 +55,17 @@
 		<javac srcdir="src/test/java" destdir="${build.classes.dir}">
 			<classpath refid="junit.classpath" />
 		</javac>
+	</target>
+
+	<target
+		name="createJar"
+		depends="compile,compileTest"
+		description="Create jar" >
+		
+		<mkdir dir="${build.jar.dir}" />
+		<jar
+			jarfile="${build.jar.dir}/boost.jar"
+			basedir="${build.classes.dir}">
+		</jar>
 	</target>
 </project>
