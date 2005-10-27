@@ -3,7 +3,7 @@
 <!-- FIXME: SC502 Goals
    - Run tests
    - Create JAR
-   - Checkstyle run.
+   - Checkstyle run
    - Checkstyle report (into artifacts area)
    - Checkstyle fail on error
    - Simian run
