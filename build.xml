@@ -21,7 +21,7 @@
 <!-- FIXME: SC502 Refactor
    - Move junit.classpath out of compileTest target
    - Check environment properties (fail if not correctly set)
-   - ? "compileAll" target.
+   - ? "compileAll" target
    - ? Different prefixes for dependency targets
    - Include profile (properties).  One property should specify a
        properties file somewhere, usually under <project>/conf/profile
