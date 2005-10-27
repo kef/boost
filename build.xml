@@ -19,6 +19,7 @@
 
 <!-- FIXME: SC502 Refactor
    - Move junit.classpath out of compileTest target
+   - Allow CruiseControl to set the parent directory for ${junit.dir}
    - Check environment properties (fail if not correctly set)
    - ? "compileAll" target
    - ? Different prefixes for dependency targets
@@ -29,17 +30,24 @@
 <project name="boost" default="all" basedir=".">
 	<property name="build.dir" location="build" />
 	<property name="build.classes.dir" location="${build.dir}/classes" />
-	<property name="build.jar.dir" location="${build.dir}/jars" />
+	<property name="build.jars.dir" location="${build.dir}/jars" />
 	<property name="lib.dir" location="lib" />
-	
-	<target name="all" depends="clean,compile,compileTest,createJar"/>
+
+	<!-- CruiseControl uses ${junit.dir}.  Change with care ! -->
+	<property name="junit.dir" value="${build.dir}/junit-results" />
+	<property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite" />
+
+	<target
+		name="all" depends="clean,compile,compileTest,runTest,createJar">
+	</target>
 
 	<target name="clean" description="Clean all build files">
+		<!-- Assume that *all* things are created under ${build.dir} -->
 		<delete dir="${build.dir}" />
 	</target>
 
-<!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
-	
+	<!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
+
 	<target name="compile" description="Build edge and prod code">
 		<mkdir dir="${build.classes.dir}" />
 		<javac srcdir="src/edge/java" destdir="${build.classes.dir}" />
@@ -56,15 +64,28 @@
 			<classpath refid="junit.classpath" />
 		</javac>
 	</target>
+	
+	<target name="runTest" description="Run JUnit tests">
+		<mkdir dir="${junit.dir}" />
+		<path id="test.classpath">
+			<pathelement location="${build.classes.dir}" />
+			<fileset dir="${lib.dir}">
+				<include name="junit/junit-3.8.1.jar" />
+			</fileset>
+		</path>
+		<junit fork="yes" errorProperty="test.failed" failureProperty="test.failed">
+			<test name="${test.class}" todir="${junit.dir}" />
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<jvmarg value="-Dtest.classpath=${build.classes.dir}"/>
+			<classpath refid="test.classpath" />
+		</junit>
+	</target>
 
-	<target
-		name="createJar"
-		depends="compile,compileTest"
-		description="Create jar" >
-		
-		<mkdir dir="${build.jar.dir}" />
+	<target name="createJar" description="Create jar" >
+		<mkdir dir="${build.jars.dir}" />
 		<jar
-			jarfile="${build.jar.dir}/boost.jar"
+			jarfile="${build.jars.dir}/boost.jar"
 			basedir="${build.classes.dir}">
 		</jar>
 	</target>
