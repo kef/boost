@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- FIXME: SC502 Goals
-   - Run tests
    - Checkstyle run
    - Checkstyle report (into artifacts area)
    - Checkstyle fail on error
@@ -18,7 +17,7 @@
   -->
 
 <!-- FIXME: SC502 Refactor
-   - Move junit.classpath out of compileTest target
+   * Move junit.classpath out of compileTest target [priority] *
    - Allow CruiseControl to set the parent directory for ${junit.dir}
    - Check environment properties (fail if not correctly set)
    - ? "compileAll" target
@@ -32,7 +31,6 @@
 	<property name="build.classes.dir" location="${build.dir}/classes" />
 	<property name="build.jars.dir" location="${build.dir}/jars" />
 	<property name="lib.dir" location="lib" />
-
 	<!-- CruiseControl uses ${junit.dir}.  Change with care ! -->
 	<property name="junit.dir" value="${build.dir}/junit-results" />
 	<property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite" />
@@ -42,7 +40,6 @@
 	</target>
 
 	<target name="clean" description="Clean all build files">
-		<!-- Assume that *all* things are created under ${build.dir} -->
 		<delete dir="${build.dir}" />
 	</target>
 
@@ -54,7 +51,7 @@
 		<javac srcdir="src/prod/java" destdir="${build.classes.dir}" />
 	</target>
 
-	<target name="compileTest" description="Build test code">
+	<target name="compileTest" description="Build JUnit tests">
 		<path id="junit.classpath">
 			<fileset dir="${lib.dir}">
 				<include name="junit/junit-3.8.1.jar" />
@@ -65,6 +62,7 @@
 		</javac>
 	</target>
 	
+<!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->	
 	<target name="runTest" description="Run JUnit tests">
 		<mkdir dir="${junit.dir}" />
 		<path id="test.classpath">
@@ -73,16 +71,15 @@
 				<include name="junit/junit-3.8.1.jar" />
 			</fileset>
 		</path>
-		<junit fork="yes" errorProperty="test.failed" failureProperty="test.failed">
+		<junit>
 			<test name="${test.class}" todir="${junit.dir}" />
-			<formatter type="brief" usefile="false" />
 			<formatter type="xml" />
-			<jvmarg value="-Dtest.classpath=${build.classes.dir}"/>
+			<sysproperty key="test.classpath" value="${build.classes.dir}"/>
 			<classpath refid="test.classpath" />
 		</junit>
 	</target>
 
-	<target name="createJar" description="Create jar" >
+	<target name="createJar" description="Create Jar" >
 		<mkdir dir="${build.jars.dir}" />
 		<jar
 			jarfile="${build.jars.dir}/boost.jar"
