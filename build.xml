@@ -45,7 +45,7 @@
 
 	<!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
 
-	<target name="compile" description="Build edge and prod code">
+	<target name="compile">
 		<mkdir dir="${build.classes.dir}" />
 		<javac srcdir="src/edge/java" destdir="${build.classes.dir}" />
 		<javac srcdir="src/prod/java" destdir="${build.classes.dir}" />
@@ -63,7 +63,7 @@
 	</target>
 	
 <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->	
-	<target name="runTest" description="Run JUnit tests">
+	<target name="runTest">
 		<mkdir dir="${junit.dir}" />
 		<path id="test.classpath">
 			<pathelement location="${build.classes.dir}" />
@@ -79,7 +79,7 @@
 		</junit>
 	</target>
 
-	<target name="createJar" description="Create Jar" >
+	<target name="createJar">
 		<mkdir dir="${build.jars.dir}" />
 		<jar
 			jarfile="${build.jars.dir}/boost.jar"
