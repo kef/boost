@@ -32,11 +32,18 @@
     <property name="junit.dir" value="${build.dir}/junit-results"/>
     <property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite"/>
 
+    <path id="test.classpath">
+        <pathelement location="${build.classes.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="junit/junit-3.8.1.jar"/>
+        </fileset>
+    </path>
+
     <target
             name="all" depends="clean,compile,compileTest,runTest,createJar">
     </target>
 
-    <target name="clean" description="Clean all build files">
+    <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
@@ -48,26 +55,15 @@
         <javac srcdir="src/prod/java" destdir="${build.classes.dir}"/>
     </target>
 
-    <target name="compileTest" description="Build JUnit tests">
-        <path id="junit.classpath">
-            <fileset dir="${lib.dir}">
-                <include name="junit/junit-3.8.1.jar"/>
-            </fileset>
-        </path>
+    <target name="compileTest">
         <javac srcdir="src/test/java" destdir="${build.classes.dir}">
-            <classpath refid="junit.classpath"/>
+            <classpath refid="test.classpath"/>
         </javac>
     </target>
 
     <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
     <target name="runTest">
         <mkdir dir="${junit.dir}"/>
-        <path id="test.classpath">
-            <pathelement location="${build.classes.dir}"/>
-            <fileset dir="${lib.dir}">
-                <include name="junit/junit-3.8.1.jar"/>
-            </fileset>
-        </path>
         <junit>
             <test name="${test.class}" todir="${junit.dir}"/>
             <formatter type="xml"/>
