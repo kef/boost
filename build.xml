@@ -27,12 +27,24 @@
     <property name="lib.dir" location="lib"/>
     <property name="src.dir" value="src"/>
     <property name="class.dir" location="${build.dir}/classes"/>
+    <property name="coverage.dir" location="${build.dir}/coverage"/>
+    <property name="instrumented.dir" location="${coverage.dir}"/>
     <property name="artifacts.dir" location="${build.dir}/artifacts"/>
     <property name="reports.dir" location="${artifacts.dir}/reports"/>
     <property name="jars.dir" location="${artifacts.dir}/jars"/>
     <property name="test.report.dir" location="${reports.dir}/test"/>
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
     <property name="test.class" value="au.net.netstorm.boost.testing.suite.AtomicTestSuite"/>
+
+    <property name="edge.src.dir" location="${src.dir}/edge/java"/>
+    <property name="core.src.dir" location="${src.dir}/core/java"/>
+    <property name="test.src.dir" location="${src.dir}/test/java"/>
+    <property name="edge.class.dir" location="${class.dir}/edge"/>
+    <property name="core.class.dir" location="${class.dir}/core"/>
+    <property name="test.class.dir" location="${class.dir}/test"/>
+    <property name="edge.instrumented.dir" location="${instrumented.dir}/edge"/>
+    <property name="core.instrumented.dir" location="${instrumented.dir}/core"/>
+    <property name="test.instrumented.dir" location="${instrumented.dir}/test"/>
 
     <path id="test.lib.classpath">
         <pathelement location="${class.dir}"/>
@@ -41,20 +53,16 @@
         </fileset>
     </path>
 
-    <property name="edge.src.dir" location="${src.dir}/edge/java"/>
-    <property name="core.src.dir" location="${src.dir}/core/java"/>
-    <property name="test.src.dir" location="${src.dir}/test/java"/>
-    <property name="edge.class.dir" location="${class.dir}/edge"/>
-    <property name="core.class.dir" location="${class.dir}/core"/>
-    <property name="test.class.dir" location="${class.dir}/test"/>
-
     <fileset id="atomic.tests" dir="${test.src.dir}">
         <include name="**/*AtomicTest.java"/>
     </fileset>
+
     <path id="atomic.tests.classpath">
-        <path location="${test.class.dir}"/>
-        <path location="${core.class.dir}"/>
         <path location="${edge.class.dir}"/>
+        <!--<path location="${core.instrumented.dir}"/>-->
+        <path location="${core.class.dir}"/>
+        <path location="${test.class.dir}"/>
+        <!--<path refid="cobertura.classpath"/>-->
     </path>
 
     <path id="edge.classpath"/>
@@ -65,8 +73,13 @@
         <path refid="core.classpath"/>
         <path location="${core.class.dir}"/>
     </path>
+    <path id="cobertura.classpath">
+        <fileset dir="${lib.dir}/cobertura">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
 
-    <target name="_all" depends="clean,_compile,_run_tests,report_tests,_check_tests"/>
+    <target name="_all" depends="clean,_compile,_instrument,_run_tests,report_tests,_check_tests"/>
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
@@ -79,6 +92,7 @@
     </target>
 
     <!-- FIXME: SC502 Put jar target back in with modified classpaths -->
+    <!-- FIXME: SC502 ? API jar which contains just primordial. -->
     <target name="build_jar">
         <mkdir dir="${jars.dir}"/>
         <jar jarfile="${jars.dir}/boost.jar" basedir="${class.dir}"/>
@@ -118,7 +132,7 @@
             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
                 <!-- FIXME: SC502 Reinstate for cobertura. -->
-                <!--<sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.file}"/>-->
+                <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.file}"/>
                 <classpath refid="@{classpath.refid}"/>
                 <formatter type="xml"/>
                 <formatter type="plain"/>
@@ -145,6 +159,28 @@
                 </fileset>
                 <report format="frames" todir="${test.report.dir}"/>
             </junitreport>
+        </sequential>
+    </macrodef>
+
+    <target name="_instrument">
+        <macro_cobertura_instrument code.type="edge"/>
+        <macro_cobertura_instrument code.type="core"/>
+        <macro_cobertura_instrument code.type="test"/>
+    </target>
+
+    <property name="coverage.file" location="${coverage.dir}/coverage.ser"/>
+    <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
+    <macrodef name="macro_cobertura_instrument">
+        <attribute name="code.type"/>
+        <sequential>
+            <property name="@{code.type}.instrumented.dir" location="${coverage.dir}/instrumented/@{code.type}"/>
+            <mkdir dir="${@{code.type}.instrumented.dir}"/>
+            <cobertura-instrument todir="${@{code.type}.instrumented.dir}" datafile="${coverage.file}">
+                <fileset dir="${class.dir}/@{code.type}">
+                    <include name="**/*.class"/>
+                    <exclude name="**/Xxx*.class"/>
+                </fileset>
+            </cobertura-instrument>
         </sequential>
     </macrodef>
 
