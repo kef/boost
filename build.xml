@@ -27,24 +27,25 @@
 <!-- FIXME: SC502 ? Different prefixes for dependency targets -->
 <!-- FIXME: SC502 Include profile (properties).  One property should specify a properties file somewhere, usually under <project>/conf/profile -->
 
-<project name="boost" default="all" basedir=".">
+<project name="boost" default="_all" basedir=".">
     <property name="build.dir" location="build"/>
     <property name="lib.dir" location="lib"/>
     <property name="build.classes.dir" location="${build.dir}/classes"/>
     <property name="artifacts.dir" location="${build.dir}/artifacts"/>
     <property name="reports.dir" location="${artifacts.dir}/reports"/>
     <property name="jars.dir" location="${artifacts.dir}/jars"/>
-    <property name="test.report.dir" location="${reports.dir}/test/atomic"/>
-    <property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite"/>
+    <property name="test.report.dir" location="${reports.dir}/test"/>
+    <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
+    <property name="test.class" value="au.net.netstorm.boost.testing.suite.AtomicTestSuite"/>
 
-    <path id="test.classpath">
+    <path id="test.lib.classpath">
         <pathelement location="${build.classes.dir}"/>
         <fileset dir="${lib.dir}">
             <include name="junit/junit-3.8.1.jar"/>
         </fileset>
     </path>
 
-    <target name="all" depends="clean,compile,compileTest,runTest,createJar"/>
+    <target name="_all" depends="clean,compile,compile_tests,run_tests,check_tests,create_jar"/>
 
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -58,24 +59,37 @@
         <javac srcdir="src/prod/java" destdir="${build.classes.dir}"/>
     </target>
 
-    <target name="compileTest">
-        <javac srcdir="src/test/java" destdir="${build.classes.dir}" classpathref="test.classpath"/>
+    <target name="compile_tests">
+        <javac srcdir="src/test/java" destdir="${build.classes.dir}" classpathref="test.lib.classpath"/>
     </target>
 
     <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
-    <target name="runTest">
-        <mkdir dir="${test.report.dir}"/>
-        <junit>
-            <test name="${test.class}" todir="${test.report.dir}"/>
+    <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
+    <target name="run_tests">
+        <mkdir dir="${test.xml.report.dir}"/>
+        <junit failureproperty="tests.failed">
+            <test name="${test.class}" todir="${test.xml.report.dir}"/>
             <formatter type="xml"/>
             <sysproperty key="test.classpath" value="${build.classes.dir}"/>
-            <classpath refid="test.classpath"/>
+            <classpath>
+                <path refid="test.lib.classpath"/>
+            </classpath>
         </junit>
     </target>
 
-    <target name="createJar">
+    <target name="create_jar">
         <mkdir dir="${jars.dir}"/>
-        <jar jarfile="${jars.dir}/boost.jar" basedir="${build.classes.dir}">
-        </jar>
+        <jar jarfile="${jars.dir}/boost.jar" basedir="${build.classes.dir}"/>
     </target>
+
+    <target name="check_tests">
+        <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
+            <fileset dir="${test.xml.report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${test.report.dir}"/>
+        </junitreport>
+        <fail if="tests.failed" message="ONE OR MORE TESTS FAILED."/>
+    </target>
+
 </project>
