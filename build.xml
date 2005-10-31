@@ -62,15 +62,13 @@
         <javac srcdir="src/test/java" destdir="${build.classes.dir}" classpathref="test.lib.classpath"/>
     </target>
 
-    <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
-    <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
-
-
     <target name="build_jar">
         <mkdir dir="${jars.dir}"/>
         <jar jarfile="${jars.dir}/boost.jar" basedir="${build.classes.dir}"/>
     </target>
 
+    <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
+    <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
     <target name="run_tests">
         <mkdir dir="${test.xml.report.dir}"/>
         <junit failureproperty="tests.failed">
