@@ -4,14 +4,14 @@ import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import junit.framework.TestCase;
 
-// FIXME: SC501 Fix failXxx().
+// FIXME: SC506 Fix failXxx().
 
 public class VmEntryAtomicTest extends TestCase {
     private static final String[] TOO_MANY_ARGUMENTS = new String[2];
     private static final String[] TOO_FEW_ARGUMENTS = new String[0];
     private static final String[] NULL = null;
 
-    // FIXME: SC501 Reinstate all this stuff.
+    // FIXME: SC506 Reinstate all this stuff.
     public void testFixme() {
     }
 

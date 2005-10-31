@@ -5,9 +5,9 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-// FIXME: SC501 Most of this is plain utility code.  All except this class.  Move to utility area.
-// FIXME: SC501 Instancise.
-// FIXME: SC501 Check out any other classes which can use Edges as well.
+// FIXME: SC506 Most of this is plain utility code.  All except this class.  Move to utility area.
+// FIXME: SC506 Instancise.
+// FIXME: SC506 Check out any other classes which can use Edges as well.
 public class TestSuiteAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
 
@@ -26,7 +26,7 @@ public class TestSuiteAggregator {
         return new File(property);
     }
 
-    // FIXME: ? SC501 Can this use the ClassEdge.
+    // FIXME: ? SC511 Can this use the ClassEdge.
     private static Class forName(ClassName[] classes, int i) {
         try {
             return Class.forName(classes[i].getFullyQualified());

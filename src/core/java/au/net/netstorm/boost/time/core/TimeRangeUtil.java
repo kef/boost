@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.core;
 
-// FIXME: SC501 Make instance.
+// FIXME: SC507 Make instance.
 public final class TimeRangeUtil {
 
     public static final TimeRange shorten(TimeRange range, Duration amount) {

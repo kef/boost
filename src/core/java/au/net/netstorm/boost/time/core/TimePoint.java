@@ -2,8 +2,7 @@ package au.net.netstorm.boost.time.core;
 
 import java.io.Serializable;
 
-// FIXME: SC501 Move to "time.core".
-// FIXME: SC501 Introduce type stuff.
+// FIXME: SC507 Introduce type stuff.
 public final class TimePoint implements Serializable {
 
     private static final long EPOCH_MILLIS = 0L;

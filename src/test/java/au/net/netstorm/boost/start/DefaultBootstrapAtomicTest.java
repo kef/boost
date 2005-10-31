@@ -3,7 +3,7 @@ package au.net.netstorm.boost.start;
 import junit.framework.TestCase;
 
 public class DefaultBootstrapAtomicTest extends TestCase {
-// FIXME: SC501 Reinstate tests.
+// FIXME: SC509 Reinstate tests.
     public void testFixme() { }
 //    private static final VmStyle EASYDOC_VM_STYLE = VmStyle.TASK_PROCESSOR;
 //    private final TestMultiCallCoordinator coordinator = new DefaultTestMultiCallCoordinator();

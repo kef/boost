@@ -14,7 +14,7 @@ public class VmStyleAtomicTest extends PrimordialTestCase {
             new DefaultFieldSpec("style", String.class)});
     }
 
-    // FIXME: SC501 Change these.  Provide a couple of basic defaults.
+    // FIXME: SC506 Change these.  Provide a couple of basic defaults.
     public void testVmConstants() {
         assertEquals(EXPECTED_WEB_SERVICE, VmStyle.WEB_SERVICE);
         assertEquals(EXPECTED_TASK_PROCESSOR, VmStyle.TASK_PROCESSOR);

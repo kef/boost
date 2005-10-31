@@ -5,7 +5,7 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
 
 public final class VmStyle extends Primordial implements Data {
-    // FIXME: SC501 Remove these guys.
+    // FIXME: SC506 Remove these guys.
     public static final VmStyle WEB_SERVICE = new VmStyle("WebService");
     public static final VmStyle TASK_PROCESSOR = new VmStyle("TaskProcessor");
     public static final VmStyle RENDERER = new VmStyle("Renderer");

@@ -9,7 +9,8 @@ public class Primordial {
     private EqualsMaster equalsMaster = new FieldBasedEqualsMaster();
     private ToStringMaster toStringMaster = new IndentingToStringMaster();
 
-    // FIXME: SC501 Make final and provide PartialPrimordial.
+    // FIXME: SC509 Make final
+    // FIXME: SC509 ? Provide PartialPrimordial.
     public int hashCode() {
         return 42;
     }

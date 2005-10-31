@@ -3,13 +3,13 @@ package au.net.netstorm.boost.start;
 // NOTE: IllegalArgumentExceptions here have untested comment strings as this is a special case - JVM entry point.
 // The exception stacktrace is not seen by many tools calling us.
 
-// FIXME: SC501 ? Experiment with the SPECIAL-CASE flag.
+// FIXME: SC509 ? Experiment with the SPECIAL-CASE flag.
 public final class VmEntry {
     private VmEntry() {
     }
 
     private static VmEntry instance = new VmEntry();
-    private Bootstrapper bootstrapper = new DefaultBootstrapper(); // FIXME: SC501 Test this with a wiring test.
+    private Bootstrapper bootstrapper = new DefaultBootstrapper(); // FIXME: SC509 Test this with a wiring test.
 
     public static void main(String[] args) {
         validateArgList(args);

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.core;
 
-// FIXME: SC501 Make instance.
+// FIXME: SC507 Make instance.
 public final class TimePointUtil {
 
     public static final TimePoint next(TimePoint time) {
