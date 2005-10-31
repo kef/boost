@@ -33,7 +33,7 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String[] formatFields(Object ref) {
-        // FIXME: SC501 Field.
+        // FIXME: SC506 Field.
         DefaultReflectMaster reflect = new DefaultReflectMaster();
         FieldValueSpec[] fields = reflect.getInstanceFields(ref);
         String[] result = new String[fields.length];

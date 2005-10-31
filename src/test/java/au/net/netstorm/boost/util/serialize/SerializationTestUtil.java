@@ -7,8 +7,8 @@ import java.io.ObjectOutputStream;
 
 import junit.framework.Assert;
 
-// FIXME: SC501 Make instance instead of static.
-// FIXME: SC501 ? Surely there is a full serialise production class.
+// FIXME: SC506 Make instance instead of static.
+// FIXME: SC506 ? Surely there is a full serialise production class.
 public class SerializationTestUtil extends Assert {
     public static void checkSerializable(Object instance) {
         try {
