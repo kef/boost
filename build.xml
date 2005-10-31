@@ -47,6 +47,16 @@
     <property name="edge.class.dir" location="${class.dir}/edge"/>
     <property name="prod.class.dir" location="${class.dir}/prod"/>
     <property name="test.class.dir" location="${class.dir}/test"/>
+
+    <fileset id="atomic.tests" dir="${test.src.dir}">
+        <include name="**/*AtomicTest.java"/>
+    </fileset>
+    <path id="atomic.tests.classpath">
+        <path location="${test.class.dir}"/>
+        <path location="${prod.class.dir}"/>
+        <path location="${edge.class.dir}"/>
+    </path>
+
     <path id="edge.classpath"/>
     <path id="prod.classpath">
         <path location="${edge.class.dir}"/>
@@ -58,7 +68,7 @@
 
     <!-- FIXME: SC502 Put "check_tests" target back in ... when it no longer breaks the build ! -->
     <!-- FIXME: SC502 Put jar target back in with modified classpaths -->
-    <target name="_all" depends="clean,_compile,run_tests"/>
+    <target name="_all" depends="clean,_compile,run_tests,check_tests"/>
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
@@ -81,16 +91,20 @@
     <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
     <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
     <target name="run_tests">
-        <mkdir dir="${test.xml.report.dir}"/>
-        <junit failureproperty="tests.failed">
-            <test name="${test.class}" todir="${test.xml.report.dir}"/>
-            <formatter type="xml"/>
-            <sysproperty key="test.classpath" value="${class.dir}"/>
-            <classpath refid="test.lib.classpath"/>
-        </junit>
+        <!--<mkdir dir="${test.xml.report.dir}"/>-->
+        <!--<junit failureproperty="tests.failed">-->
+            <!--<test name="${test.class}" todir="${test.xml.report.dir}"/>-->
+            <!--<formatter type="xml"/>-->
+            <!--<sysproperty key="test.classpath" value="${class.dir}"/>-->
+            <!--<classpath refid="test.lib.classpath"/>-->
+        <!--</junit>-->
+        <macro_junit tests.refid="atomic.tests" classpath.refid="atomic.tests.classpath" failure.property="atomic.tests.failed"/>
     </target>
 
     <!-- FIXME: SC502 This is report and check together.  Sort out. -->
+    <!-- FIXME: SC502 Move fileset out.  -->
+    <!-- FIXME: SC502 Macroise. -->
+    <!-- FIXME: SC502 Change failure property to be accurate. -->
     <target name="check_tests">
         <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
             <fileset dir="${test.xml.report.dir}">
@@ -110,4 +124,25 @@
             <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
         </sequential>
     </macrodef>
+
+    <macrodef name="macro_junit">
+        <attribute name="tests.refid"/>
+        <attribute name="classpath.refid"/>
+        <attribute name="failure.property"/>
+        <sequential>
+            <mkdir dir="${test.xml.report.dir}"/>
+            <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
+                   failureproperty="@{failure.property}">
+                <!-- FIXME: SC502 Reinstate for cobertura. -->
+                <!--<sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.file}"/>-->
+                <classpath refid="@{classpath.refid}"/>
+                <formatter type="xml"/>
+                <formatter type="plain"/>
+                <batchtest todir="${test.xml.report.dir}">
+                    <fileset refid="@{tests.refid}"/>
+                </batchtest>
+            </junit>
+        </sequential>
+    </macrodef>
+
 </project>
