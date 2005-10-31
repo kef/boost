@@ -109,7 +109,6 @@
         </sequential>
     </macrodef>
 
-    <!-- FIXME: SC502 Rename to junit_macro_run? -->
     <macrodef name="macro_junit_run">
         <attribute name="tests.refid"/>
         <attribute name="classpath.refid"/>
