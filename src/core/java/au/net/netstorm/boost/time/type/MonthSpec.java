@@ -3,7 +3,7 @@ package au.net.netstorm.boost.time.type;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-// FIXME: SC501  Now that MonthOfYear exists, introduce it here.
+// FIXME: SC507 Now that MonthOfYear exists, introduce it here.
 public final class MonthSpec implements Comparable {
 
     public final int year;
@@ -16,9 +16,9 @@ public final class MonthSpec implements Comparable {
         MonthSpec target = (MonthSpec) o;
         int us = year * 12 + month;
         int them = target.year * 12 + target.month;
-        if      (us == them) return 0;
-        else if (us <  them) return -1;
-        else                 return 1;
+        if (us == them) return 0;
+        if (us <  them) return -1;
+        return 1;
     }
 
     public boolean equals(Object o) {

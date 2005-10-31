@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-// FIXME: SC501 Test drive exceptions.
+// FIXME: SC510 Test drive exceptions.
 public final class DaySpecOutOfBoundsException extends RuntimeException {
 
     public DaySpecOutOfBoundsException(DaySpec spec, Throwable t) {
