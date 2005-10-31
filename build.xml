@@ -39,9 +39,7 @@
         </fileset>
     </path>
 
-    <target
-            name="all" depends="clean,compile,compileTest,runTest,createJar">
-    </target>
+    <target name="all" depends="clean,compile,compileTest,runTest,createJar"/>
 
     <target name="clean">
         <delete dir="${build.dir}"/>
