@@ -1,18 +1,23 @@
 package au.net.netstorm.boost.start;
 
+import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import junit.framework.TestCase;
 
 // FIXME: SC501 Fix failXxx().
+
 public class VmEntryAtomicTest extends TestCase {
     private static final VmStyle VM_STYLE_BANANA = new VmStyle("banana");
     private static final VmStyle VM_STYLE_REAL = new VmStyle("real");
     private static final VmStyle VM_STYLE_PRINT = new VmStyle("print");
 
     // FIXME: SC501 Reinstate all this stuff.
-    public void testFixme() { }
-//    public void testInstance() {
-//        ClassPropertiesTestUtil.checkInstance(VmEntry.class, getVmEntry());
-//    }
+    public void testFixme() {
+    }
+
+    public void testInstance() {
+        ClassPropertiesTestUtil.checkInstance(VmEntry.class, getVmEntry());
+    }
 //
 //    public void testProductionBootstrap() {
 //        Object bootstrap = ReflectTestUtil.getInstanceFieldValue(getVmEntry(), "bootstrapper");
@@ -25,9 +30,13 @@ public class VmEntryAtomicTest extends TestCase {
 //        checkEntryPoint(VM_STYLE_BANANA);
 //    }
 //
-//    public void failWithNullArguments() throws IllegalArgumentException {
-//        VmEntry.main(null);
-//    }
+
+    public void testWithNullArguments() throws IllegalArgumentException {
+        try {
+            VmEntry.main(null);
+        }
+        catch (Exception expected) { }
+    }
 //
 //    public void failWithNotEnoughArguments() throws IllegalArgumentException {
 //        VmEntry.main(new String[0]);
@@ -62,7 +71,8 @@ public class VmEntryAtomicTest extends TestCase {
 //        VmEntry.main(new String[]{styleString});
 //    }
 //
-//    private VmEntry getVmEntry() {
-//        return (VmEntry) ReflectTestUtil.getStaticFieldValue(VmEntry.class, "instance");
-//    }
+
+    private VmEntry getVmEntry() {
+        return (VmEntry) ReflectTestUtil.getStaticFieldValue(VmEntry.class, "instance");
+    }
 }

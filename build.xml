@@ -80,7 +80,9 @@
         </fileset>
     </path>
 
-    <target name="_all" depends="clean,_compile,_instrument,_run_tests,report_tests,report_coverage,_check_tests"/>
+    <!-- FIXME: SC502 Coverage checks for edge and tests. -->
+    <target name="_all"
+            depends="clean,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage"/>
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
@@ -132,7 +134,7 @@
             <mkdir dir="${test.xml.report.dir}"/>
             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
-                <!-- FIXME: SC502 Reinstate for cobertura. -->
+                <!-- FIXME: SC502 Parameterise the coverage file for different test styles. -->
                 <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.file}"/>
                 <classpath refid="@{classpath.refid}"/>
                 <formatter type="xml"/>
@@ -167,8 +169,13 @@
         <macro_cobertura_instrument code.type="core"/>
     </target>
 
-    <target name="report_coverage">
+    <target name="_report_coverage">
         <macro_cobertura_report report.dir="${coverage.reports.dir}/atomic"/>
+    </target>
+
+    <target name="_check_coverage">
+        <!-- FIXME: SC502 These MUST BE 100. -->
+        <macro_cobertura_check branch.limit="97" line.limit="88"/>
     </target>
 
     <property name="coverage.file" location="${coverage.dir}/coverage.ser"/>
@@ -192,8 +199,19 @@
         <sequential>
             <mkdir dir="@{report.dir}"/>
             <cobertura-report destdir="@{report.dir}" datafile="${coverage.file}">
+                <!-- FIXME: SC502 Parameterise. -->
                 <fileset dir="${core.src.dir}" includes="**/*.java"/>
             </cobertura-report>
         </sequential>
     </macrodef>
+
+    <macrodef name="macro_cobertura_check">
+        <attribute name="branch.limit"/>
+        <attribute name="line.limit"/>
+        <sequential>
+            <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
+                             failureproperty="coverage.failed" haltonfailure="true" datafile="${coverage.file}"/>
+        </sequential>
+    </macrodef>
+
 </project>
