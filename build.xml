@@ -59,10 +59,10 @@
 
     <path id="atomic.tests.classpath">
         <path location="${edge.class.dir}"/>
-        <!--<path location="${core.instrumented.dir}"/>-->
+        <path location="${core.instrumented.dir}"/>
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
-        <!--<path refid="cobertura.classpath"/>-->
+        <path refid="cobertura.classpath"/>
     </path>
 
     <path id="edge.classpath"/>
