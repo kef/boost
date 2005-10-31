@@ -90,6 +90,7 @@
         </junit>
     </target>
 
+    <!-- FIXME: SC502 This is report and check together.  Sort out. -->
     <target name="check_tests">
         <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
             <fileset dir="${test.xml.report.dir}">
