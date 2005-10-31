@@ -94,7 +94,6 @@
         <macro_junit_check failure.property="atomic.tests.failed"/>
     </target>
 
-    <!-- FIXME: SC502 This is report and check together.  Sort out. -->
     <!-- FIXME: SC502 Move fileset out.  -->
     <!-- FIXME: SC502 Macroise. -->
     <!-- FIXME: SC502 Change failure property to be accurate. -->
