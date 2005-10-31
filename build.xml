@@ -52,8 +52,7 @@
         <path location="${edge.class.dir}"/>
     </path>
     <path id="test.classpath">
-        <!-- FIXME: SC502 Remove duplication with above. -->
-        <path location="${edge.class.dir}"/>
+        <path refid="prod.classpath"/>
         <path location="${prod.class.dir}"/>
     </path>
 
