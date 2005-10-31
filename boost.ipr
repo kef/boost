@@ -16,10 +16,6 @@
     <option name="PER_PROJECT_SETTINGS">
       <value>
         <option name="KEEP_LINE_BREAKS" value="false" />
-        <option name="ELSE_ON_NEW_LINE" value="true" />
-        <option name="WHILE_ON_NEW_LINE" value="true" />
-        <option name="CATCH_ON_NEW_LINE" value="true" />
-        <option name="FINALLY_ON_NEW_LINE" value="true" />
         <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="0" />
         <option name="KEEP_BLANK_LINES_IN_CODE" value="0" />
         <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />

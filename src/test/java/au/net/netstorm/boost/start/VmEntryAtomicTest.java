@@ -34,8 +34,7 @@ public class VmEntryAtomicTest extends TestCase {
     public void testWithNullArguments() throws IllegalArgumentException {
         try {
             VmEntry.main(null);
-        }
-        catch (Exception expected) { }
+        } catch (Exception expected) { }
     }
 //
 //    public void failWithNotEnoughArguments() throws IllegalArgumentException {
