@@ -12,11 +12,11 @@
 		<attributes>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src/prod/java">
+	<classpathentry kind="src" path="src/test/java">
 		<attributes>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src/test/java">
+	<classpathentry kind="src" path="src/core/java">
 		<attributes>
 		</attributes>
 	</classpathentry>
@@ -24,5 +24,5 @@
 		<attributes>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="output" path="build/eclipse/classes"/>
 </classpath>

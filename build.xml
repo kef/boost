@@ -19,6 +19,8 @@
 <!-- FIXME: SC502 Package up jars or whatever (using non instrumented classes) -->
 
 <!-- FIXME: SC502 Refactors: -->
+<!-- FIXME: SC502 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
+<!-- FIXME: SC502 Use target name underscore prefix consistently ... or lose it. -->
 <!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
 <!-- FIXME: SC502 Include profile (properties).  One property should specify a properties file somewhere, usually under <project>/conf/profile -->
 
@@ -35,6 +37,7 @@
     <property name="jars.dir" location="${artifacts.dir}/jars"/>
     <property name="test.report.dir" location="${reports.dir}/test"/>
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
+<!-- FIXME: SC502 "test.class" property isn't used ... use it or lose it -->
     <property name="test.class" value="au.net.netstorm.boost.testing.suite.AtomicTestSuite"/>
 
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
@@ -67,14 +70,17 @@
     </path>
 
     <path id="edge.classpath"/>
+	
     <path id="core.classpath">
         <path location="${edge.class.dir}"/>
     </path>
-    <path id="test.classpath">
+
+	<path id="test.classpath">
         <path refid="core.classpath"/>
         <path location="${core.class.dir}"/>
     </path>
-    <path id="cobertura.classpath">
+
+	<path id="cobertura.classpath">
         <fileset dir="${lib.dir}/cobertura">
             <include name="**/*.jar"/>
         </fileset>
@@ -179,7 +185,9 @@
     </target>
 
     <property name="coverage.file" location="${coverage.dir}/coverage.ser"/>
-    <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
+
+	<taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
+
     <macrodef name="macro_cobertura_instrument">
         <attribute name="code.type"/>
         <sequential>
@@ -213,5 +221,4 @@
                              failureproperty="coverage.failed" haltonfailure="true" datafile="${coverage.file}"/>
         </sequential>
     </macrodef>
-
 </project>
