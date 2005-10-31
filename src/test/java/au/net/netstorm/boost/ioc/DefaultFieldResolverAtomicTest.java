@@ -44,7 +44,7 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
         checkException(NAME_STARTS_WITH_SPACE);
     }
 
-// FIXME: SC501 COMPONENT FACTORY:
+// FIXME: SC506
 //    public void failIfFieldAlreadyInitialized() throws FieldAlreadyInitializedException {
 //        Object ref = reflect.create(TestSubjects.FieldAlreadyInitialized.class);
 //        FieldSpec fieldSpec = new DefaultFieldSpec("integer", new Integer(8));
@@ -78,7 +78,7 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
         try {
             FieldValueSpec spec = new DefaultFieldValueSpec(name, VALUE_1);
             resolver.resolve(createMultiField(), spec);
-            // FIXME: SC501 Drop simian back down to 2 - chokes on the next 2 lines right now.
+            // FIXME: SC506 Drop simian back down to 2 - chokes on the next 2 lines right now.
             fail();
         } catch (IocException expected) {
         }

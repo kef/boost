@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.DefaultClassMaster;
 
-// FIXME: SC501 Tidy this up.
+// FIXME: SC509 Tidy this up.
 public class DefaultFieldResolver implements FieldResolver {
     public void resolve(Object ref, FieldValueSpec fieldValueSpec) {
         validate(ref);
@@ -20,7 +20,7 @@ public class DefaultFieldResolver implements FieldResolver {
         setValue(ref, field, value);
     }
 
-// FIXME: SC501 Old TODO COMPONENT FACTORY: Refactor ... remove duplication.
+// FIXME: SC509  remove duplication.
 //    private void ensureNull(Object ref, Field field) {
 //        field.setAccessible(true);
 //        Object value = doGet(field, ref);
@@ -35,7 +35,7 @@ public class DefaultFieldResolver implements FieldResolver {
 //        }
 //    }
 
-    // FIXME: SC501 Test drive the message for bad type.
+    // FIXME: SC509 Test drive the message for bad type.
     private void setValue(Object ref, Field field, Object value) {
         try {
             doSetValue(ref, field, value);
@@ -46,7 +46,7 @@ public class DefaultFieldResolver implements FieldResolver {
         }
     }
 
-    // FIXME: SC501 Is this message actually tested.  If not bollocks it.
+    // FIXME: SC509 Is this message actually tested.  If not bollocks it.
     private String makeBadTypeMessage(Field field, Object value) {
         return "Field '" + field.getName() + "' of type " +
                 getClassName(field.getType()) + " cannot be set with type " +
@@ -54,7 +54,7 @@ public class DefaultFieldResolver implements FieldResolver {
     }
 
     private String getClassName(Class type) {
-        // FIXME: SC501 Field for DCM.
+        // FIXME: SC509 Field for DCM.
         return new DefaultClassMaster().getShortName(type);
     }
 
@@ -63,7 +63,7 @@ public class DefaultFieldResolver implements FieldResolver {
         field.set(ref, value);
     }
 
-    // FIXME: SC501 How about just a RuntimeNoSuchFieldException.  Bet the message isn't test driven either.
+    // FIXME: SC511 How about just a RuntimeNoSuchFieldException.  Bet the message isn't test driven either.
     private Field getField(Object ref, String name) {
         try {
             return ref.getClass().getDeclaredField(name);
