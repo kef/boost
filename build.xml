@@ -42,10 +42,10 @@
     </path>
 
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
-    <property name="core.src.dir" location="${src.dir}/prod/java"/>
+    <property name="core.src.dir" location="${src.dir}/core/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
     <property name="edge.class.dir" location="${class.dir}/edge"/>
-    <property name="core.class.dir" location="${class.dir}/prod"/>
+    <property name="core.class.dir" location="${class.dir}/core"/>
     <property name="test.class.dir" location="${class.dir}/test"/>
 
     <fileset id="atomic.tests" dir="${test.src.dir}">
@@ -79,9 +79,6 @@
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
-
-    <!-- FIXME: SC502 Consider the naming of "prod" and "edge".  Actually call "prod" "core". -->
-
 
     <target name="build_jar">
         <mkdir dir="${jars.dir}"/>
