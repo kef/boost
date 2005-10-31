@@ -29,11 +29,12 @@
 
 <project name="boost" default="all" basedir=".">
     <property name="build.dir" location="build"/>
-    <property name="build.classes.dir" location="${build.dir}/classes"/>
-    <property name="build.jars.dir" location="${build.dir}/jars"/>
     <property name="lib.dir" location="lib"/>
-    <!-- CruiseControl uses ${junit.dir}.  Change with care ! -->
-    <property name="junit.dir" value="${build.dir}/junit-results"/>
+    <property name="build.classes.dir" location="${build.dir}/classes"/>
+    <property name="artifacts.dir" location="${build.dir}/artifacts"/>
+    <property name="reports.dir" location="${artifacts.dir}/reports"/>
+    <property name="jars.dir" location="${artifacts.dir}/jars"/>
+    <property name="test.report.dir" location="${reports.dir}/test/atomic"/>
     <property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite"/>
 
     <path id="test.classpath">
@@ -65,9 +66,9 @@
 
     <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
     <target name="runTest">
-        <mkdir dir="${junit.dir}"/>
+        <mkdir dir="${test.report.dir}"/>
         <junit>
-            <test name="${test.class}" todir="${junit.dir}"/>
+            <test name="${test.class}" todir="${test.report.dir}"/>
             <formatter type="xml"/>
             <sysproperty key="test.classpath" value="${build.classes.dir}"/>
             <classpath refid="test.classpath"/>
@@ -75,8 +76,8 @@
     </target>
 
     <target name="createJar">
-        <mkdir dir="${build.jars.dir}"/>
-        <jar jarfile="${build.jars.dir}/boost.jar" basedir="${build.classes.dir}">
+        <mkdir dir="${jars.dir}"/>
+        <jar jarfile="${jars.dir}/boost.jar" basedir="${build.classes.dir}">
         </jar>
     </target>
 </project>
