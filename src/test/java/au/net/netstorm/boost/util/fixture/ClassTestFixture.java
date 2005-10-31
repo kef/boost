@@ -5,7 +5,7 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.Assert;
 
-// FIXME: SC501 Does it make sense to have this fixtures area?
+// FIXME: SC506 Does it make sense to have this fixtures area?
 class ClassTestFixture {
     private final Class cls;
     private final FieldSpec[] newArgTypes;
@@ -15,7 +15,7 @@ class ClassTestFixture {
         this.newArgTypes = newArgTypes;
     }
 
-    // FIXME: SC501 ? Allow the intefaces to check to be changes Data vs Immutable.
+    // FIXME: SC506 ? Allow the intefaces to check to be changes Data vs Immutable.
     static void checkClass(Class cls, FieldSpec[] newArgTypes, Class targetInterface) {
         ClassPropertiesTestUtil.checkSubclassOf(Primordial.class, cls);
         ClassPropertiesTestUtil.checkImplementationOfInterfaceAndFinal(targetInterface, cls);

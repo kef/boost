@@ -4,7 +4,6 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
-// FIXME: SC501 Rename all these to AtomicTest.
 public final class TimePointAtomicTest extends TestCase {
     private static final Object NULL = null;
 

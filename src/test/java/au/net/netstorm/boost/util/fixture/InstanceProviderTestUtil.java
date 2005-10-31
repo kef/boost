@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.ReflectMaster;
 
-// FIXME: SC501 Move instances to their respective unit tests (as per POK theory).
+// FIXME: SC506 Move instances to their respective unit tests (as per POK theory).
 public class InstanceProviderTestUtil {
     private static final ReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;

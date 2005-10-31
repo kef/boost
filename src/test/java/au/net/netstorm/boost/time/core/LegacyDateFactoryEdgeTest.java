@@ -4,7 +4,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
-// FIXME: SC501 This belongs in "edge".
+// FIXME: SC511 This belongs in "edge".
 public final class LegacyDateFactoryEdgeTest extends TestCase {
 
     public void testCreateRangeFromMillis() {
