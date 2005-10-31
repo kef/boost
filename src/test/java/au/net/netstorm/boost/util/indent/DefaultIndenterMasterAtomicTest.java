@@ -14,7 +14,7 @@ public class DefaultIndenterMasterAtomicTest extends TestCase {
         assertEquals(EXPECTED_TWO_LINE, indenter.indent("line0" + LF + "line1"));
     }
 
-    // FIXME: SC501 Move this to IndentMasterAtomicTest.
+    // FIXME: SC506 Move this to IndentMasterAtomicTest.
     public void testConstant() {
         assertEquals("    ", IndenterMaster.INDENT);
     }

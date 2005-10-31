@@ -4,8 +4,7 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Immutable;
 import au.net.netstorm.boost.util.nullo.NullChecker;
 
-// FIXME: SC501 Can just be an immutable.
-// FIXME: SC501 Rename the kruft in here.
+// FIXME: SC506 Can just be an immutable.
 public final class DefaultFieldSpec extends Primordial implements FieldSpec, Immutable {
     private final String fieldName;
     private final Class type;

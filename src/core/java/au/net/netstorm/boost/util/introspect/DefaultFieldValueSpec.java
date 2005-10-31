@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 import au.net.netstorm.boost.util.type.Immutable;
 
-// FIXME: SC501 Can just be an immutable.
+// FIXME: SC506 Can just be an immutable.
 public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private final String name;
     private final Object value;
@@ -23,7 +23,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return value;
     }
 
-    // FIXME: SC501 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // FIXME: SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public boolean equals(Object o) {
         if (!(o instanceof DefaultFieldValueSpec)) return false;
         return checkDefaultFieldSpec((DefaultFieldValueSpec) o);
@@ -50,13 +50,13 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return !o1.equals(o2);
     }
 
-    // FIXME: SC501 Can we extend primordial.
-    // FIXME: SC501 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // FIXME: SC509 Can we extend primordial.
+    // FIXME: SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public int hashCode() {
         return 42;
     }
 
-    // FIXME: SC501 Can we extend primordial?
+    // FIXME: SC509 Can we extend primordial?
     public String toString() {
         return "DefaultFieldSpec[name=" + name + ",value=" + value.getClass() + "]";
     }
@@ -66,7 +66,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         validate("value", value);
     }
 
-    // FIXME: SC501 ? Null checker.
+    // FIXME: SC509 ? Null checker.
     private void validate(String name, Object value) {
         if (value == null) throw new IllegalArgumentException(name + " parameter cannot be null");
     }
