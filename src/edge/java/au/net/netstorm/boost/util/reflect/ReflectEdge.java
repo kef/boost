@@ -15,7 +15,7 @@ public interface ReflectEdge {
 
     Method getMethod(Class cls, String methodName, Class[] parameterTypes);
 
-    // FIXME: SC501 Fix methods which throw an exception.  This is not part of the "edge" contract.
+    // FIXME: SC511 Fix methods which throw an exception.  This is not part of the "edge" contract.
     Object invoke(Method method, Object instance) throws Exception;
 
     Object tryInvoke(Method method, Object instance);

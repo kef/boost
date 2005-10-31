@@ -40,7 +40,7 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
 
     private boolean hasPrivateConstructor(Constructor constructor, Class cls) {
         return Modifier.isPrivate(constructor.getModifiers());
-        // FIXME: SC501 Exclusion list might go here.
+        // FIXME: SC509 Exclusion list might go here.
     }
 
     private String getName(Class cls) {

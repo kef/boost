@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-// FIXME: SC501 Map exception exactly how an "edge" should.
+// FIXME: SC511 Map exception exactly how an "edge" should.
 class DefaultReflectEdge implements ReflectEdge {
     public Object get(Field field, Object ref) {
         try {

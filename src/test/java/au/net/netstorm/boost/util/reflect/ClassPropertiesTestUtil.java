@@ -7,7 +7,7 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-// FIXME: SC501 Instance rather than static.
+// FIXME: SC506 Instance rather than static.
 
 public class ClassPropertiesTestUtil {
     public static boolean isPublicInstance(Method method) {
@@ -32,8 +32,8 @@ public class ClassPropertiesTestUtil {
         return Modifier.isInterface(cls.getModifiers());
     }
 
-    // FIXME: SC501 Reformat all code (especially wrap train wrecks).
-// FIXME: SC501 This did not appear to work for targetInterface == java.io.Serializable ?
+    // FIXME: SC506 Reformat all code (especially wrap train wrecks).
+// FIXME: SC506 This did not appear to work for targetInterface == java.io.Serializable ?
 
     public static boolean isImplementationOf(Interface targetInterface, Class cls) {
         Class type = targetInterface.getType();
