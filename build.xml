@@ -19,11 +19,7 @@
 <!-- FIXME: SC502 Package up jars or whatever (using non instrumented classes) -->
 
 <!-- FIXME: SC502 Refactors: -->
-<!-- FIXME: SC502 Move junit.classpath out of compileTest target [priority] -->
-<!-- FIXME: SC502 Allow CruiseControl to set the parent directory for ${junit.dir} -->
 <!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
-<!-- FIXME: SC502 ? "compileAll" target -->
-<!-- FIXME: SC502 ? Different prefixes for dependency targets -->
 <!-- FIXME: SC502 Include profile (properties).  One property should specify a properties file somewhere, usually under <project>/conf/profile -->
 
 <project name="boost" default="_all" basedir=".">
