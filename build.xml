@@ -17,6 +17,7 @@
 <!-- FIXME: SC502 Run "other" tests against raw classes -->
 <!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
 <!-- FIXME: SC502 Package up jars or whatever (using non instrumented classes) -->
+<!-- FIXME: SC502 Move from JDK 1.5 back to JDK 1.4 compliance target -->
 
 <!-- FIXME: SC502 Refactors: -->
 <!-- FIXME: SC502 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
