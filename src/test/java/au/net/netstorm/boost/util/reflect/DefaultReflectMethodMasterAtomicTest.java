@@ -8,9 +8,9 @@ import java.util.WeakHashMap;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
-// FIXME: SC501 Old TODO COMPONENT FACTORY: Make sure all fields are EMPTY on create ;) !!!!
-// FIXME: SC501 ? Do we really want to force IOC on these boost components.
-// FIXME: SC501 This looks like it is testing too deep.  Should not it be testing DRMM ONLY!!!
+// FIXME: SC509 Make sure all fields are EMPTY on create ;) !!!!
+// FIXME: SC509 ? Do we really want to force IOC on these boost components.
+// FIXME: SC509 This looks like it is testing too deep.  Should not it be testing DRMM ONLY!!!
 
 public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final String CHURCH_METHOD_NAME = "getSmeetOthEchuRchontIme";
@@ -25,7 +25,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_CHURCH = new MethodSpec(CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
     private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
-    private final ReflectMaster master = new DefaultReflectMaster(); // FIXME: SC501 ? .INSTANCE.
+    private final ReflectMaster master = new DefaultReflectMaster(); // FIXME: SC506 ? .INSTANCE.
     private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
     public void testGetMethodBasic() {

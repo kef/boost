@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.util.Map;
 
-// FIXME: SC501 Sort out the constant crap.  Inline.
+// FIXME: SC506 Sort out the constant crap.  Inline.
 class TestSubjects {
     public static final Class TEST_INTERFACE_ONE = TestSubjects.TestInterfaceOne.class;
     public static final Class TEST_TWO_CONSTRUCTORS = TestSubjects.TestTwoConstructors.class;

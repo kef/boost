@@ -10,7 +10,7 @@ public class DefaultReflectMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_SPEC = new MethodSpec("booleanValue", new Class[]{});
     private static final FieldValueSpec[] FIELD_SPEC_ARRAY = new FieldValueSpec[]{new DefaultFieldValueSpec("name", "value")};
 
-    // FIXME: SC501 Reinstate these tests.
+    // FIXME: SC509 Reinstate these tests.
     public void testFixThis() {
         
     }

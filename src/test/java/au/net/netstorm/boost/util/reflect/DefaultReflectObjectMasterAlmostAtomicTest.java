@@ -3,12 +3,12 @@ package au.net.netstorm.boost.util.reflect;
 import au.net.netstorm.boost.util.introspect.CallSpec;
 import au.net.netstorm.boost.primordial.PrimordialTestCase;
 
-// FIXME: SC501 This NEEDS to be a UnitTest!!!
-// FIXME: SC501 Rename this to DROMAlmostAtomicTest.
+// FIXME: SC506 This NEEDS to be a UnitTest!!!
+// FIXME: SC506 Rename to Atomic test when done
 public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 
-    // FIXME: SC501 Uncomment lines below.
+    // FIXME: SC509 Uncomment lines below.
 //    public void testPrivateConstructorRequired() {
 //        checkPrivateConstructorRequired(TestSubjects.TestNoPrivateConstructor.class);
 //        checkPrivateConstructorRequired(DefaultUuid.class);
@@ -16,7 +16,7 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
 //        master.create(AxisEasyDocPort.class);
 //    }
 //
-    // FIXME: SC501 Reinstate.
+    // FIXME: SC509 Reinstate.
 //    public void testPrivateConstructorRelaxed() {
 //        master.create(Primordial.class);
 //    }
@@ -37,13 +37,13 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
 
     private void checkPrivateConstructorRequired(Class impl) {
         CallSpec spec = new CallSpec("create", new Class[]{Class.class}, new Object[]{impl});
-// FIXME: SC501 Replace with standard exception test block.
+// FIXME: SC506 Replace with standard exception test block.
 //        ThrowAssert.assertThrows(ConstructorNotPrivateException.class, master, spec);
     }
 
     private void checkCreateFailsWithMultipleConstructors(Class cls) {
         CallSpec spec = new CallSpec("create", new Class[]{Class.class}, new Object[]{cls});
-// FIXME: SC501 Replace with standard exception test block.
+// FIXME: SC506 Replace with standard exception test block.
 //        ThrowAssert.assertThrows(MultipleConstructorsNotSupportedException.class, master, spec);
     }
 }

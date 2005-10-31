@@ -16,7 +16,7 @@ public class DefaultReflectFieldMasterAtomicTest extends PrimordialTestCase {
     private static final Object ONE_PRIMITIVE_INSTANCE_FIELD_OBJECT = new TestSubjects.TestOnePrimitiveInstanceFieldObject(1);
     private final ReflectFieldMaster master = new DefaultReflectFieldMaster();
 
-    // FIXME: SC501 Constants for train wreck.
+    // FIXME: SC506 Constants for train wreck.
     public void testFields() {
         checkFields(NO_FIELDS, ZERO_INSTANCE_FIELDS_OBJECT);
         checkFields(NO_FIELDS, ZERO_INSTANCE_ONE_STATIC_FIELDS_OBJECT);

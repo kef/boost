@@ -5,8 +5,8 @@ import java.lang.reflect.Modifier;
 
 import junit.framework.Assert;
 
-// FIXME: SC501 Merge with ReflectTestUtil.
-// FIXME: SC501 Instancise.
+// FIXME: SC509 Merge with ReflectTestUtil.
+// FIXME: SC506 Instancise.
 public final class ReflectionTestUtil extends Assert
 {
     public static final ReflectionTestUtil INSTANCE = new ReflectionTestUtil();
