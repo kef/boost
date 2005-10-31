@@ -40,9 +40,8 @@
         </fileset>
     </path>
 
-<!-- FIXME: SC502 Put "check_tests" target back in ...
-  -         when it no longer breaks the build !
-  -->
+<!-- FIXME: SC502 Put "check_tests" target back in ... when it no longer breaks the build ! -->
+    <path id="edge.classpath"/>
 
     <target name="_all" depends="clean,compile,compile_tests,run_tests,build_jar"/>
 
@@ -89,4 +88,13 @@
         <fail if="tests.failed" message="ONE OR MORE TESTS FAILED."/>
     </target>
 
+     <macrodef name="macro_javac">
+         <attribute name="srcdir"/>
+         <attribute name="destdir"/>
+         <attribute name="classpathref"/>
+         <sequential>
+             <mkdir dir="@{srcdir}"/>
+             <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
+         </sequential>
+     </macrodef>
 </project>
