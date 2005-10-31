@@ -81,7 +81,7 @@
 
     <!-- FIXME: SC502 Coverage checks for edge and tests. -->
     <target name="_all"
-            depends="clean,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage"/>
+            depends="clean,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage,build_jar"/>
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
@@ -93,7 +93,6 @@
         <delete dir="${build.dir}"/>
     </target>
 
-    <!-- FIXME: SC502 Put jar target back in with modified classpaths -->
     <!-- FIXME: SC502 ? API jar which contains just primordial. -->
     <target name="build_jar">
         <mkdir dir="${jars.dir}"/>
