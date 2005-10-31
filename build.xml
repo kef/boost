@@ -1,89 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- FIXME: SC502 Goals
-   - Checkstyle run
-   - Checkstyle report (into artifacts area)
-   - Checkstyle fail on error
-   - Simian run
-   - Simian report (into artifacts area)
-   - Simian fail on error
-   - Instrument classes (cobertura.sourceforge.net)
-   - Run AtomicTests against instrumented classes
-   - Atomic test coverage report (into artifacts area)
-   - Fail on < 100% atomic test coverage
-   - Run "other" tests against raw classes
-   - Generate javadoc (if you're doing this)
-   - Package up jars or whatever (using non instrumented classes)
-  -->
+<!-- FIXME: SC502 Goals -->
+<!-- FIXME: SC502 Checkstyle run -->
+<!-- FIXME: SC502 Checkstyle report (into artifacts area) -->
+<!-- FIXME: SC502 Checkstyle fail on error -->
+<!-- FIXME: SC502 Simian run -->
+<!-- FIXME: SC502 Simian report (into artifacts area) -->
+<!-- FIXME: SC502 Simian fail on error -->
+<!-- FIXME: SC502 Instrument classes (cobertura.sourceforge.net) -->
+<!-- FIXME: SC502 Run AtomicTests against instrumented classes -->
+<!-- FIXME: SC502 Atomic test coverage report (into artifacts area) -->
+<!-- FIXME: SC502 Fail on < 100% atomic test coverage -->
+<!-- FIXME: SC502 Run "other" tests against raw classes -->
+<!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
+<!-- FIXME: SC502 Package up jars or whatever (using non instrumented classes) -->
 
-<!-- FIXME: SC502 Refactor
-   * Move junit.classpath out of compileTest target [priority] *
-   - Allow CruiseControl to set the parent directory for ${junit.dir}
-   - Check environment properties (fail if not correctly set)
-   - ? "compileAll" target
-   - ? Different prefixes for dependency targets
-   - Include profile (properties).  One property should specify a
-       properties file somewhere, usually under <project>/conf/profile
-  -->
+<!-- FIXME: SC502 Refactors -->
+<!-- FIXME: SC502 Move junit.classpath out of compileTest target [priority] -->
+<!-- FIXME: SC502 Allow CruiseControl to set the parent directory for ${junit.dir} -->
+<!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
+<!-- FIXME: SC502 ? "compileAll" target -->
+<!-- FIXME: SC502 ? Different prefixes for dependency targets -->
+<!-- FIXME: SC502 Include profile (properties).  One property should specify a properties file somewhere, usually under <project>/conf/profile -->
 
 <project name="boost" default="all" basedir=".">
-	<property name="build.dir" location="build" />
-	<property name="build.classes.dir" location="${build.dir}/classes" />
-	<property name="build.jars.dir" location="${build.dir}/jars" />
-	<property name="lib.dir" location="lib" />
-	<!-- CruiseControl uses ${junit.dir}.  Change with care ! -->
-	<property name="junit.dir" value="${build.dir}/junit-results" />
-	<property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite" />
+    <property name="build.dir" location="build"/>
+    <property name="build.classes.dir" location="${build.dir}/classes"/>
+    <property name="build.jars.dir" location="${build.dir}/jars"/>
+    <property name="lib.dir" location="lib"/>
+    <!-- CruiseControl uses ${junit.dir}.  Change with care ! -->
+    <property name="junit.dir" value="${build.dir}/junit-results"/>
+    <property name="test.class" value="au.net.netstorm.boost.testing.suite.AllTestSuite"/>
 
-	<target
-		name="all" depends="clean,compile,compileTest,runTest,createJar">
-	</target>
+    <target
+            name="all" depends="clean,compile,compileTest,runTest,createJar">
+    </target>
 
-	<target name="clean" description="Clean all build files">
-		<delete dir="${build.dir}" />
-	</target>
+    <target name="clean" description="Clean all build files">
+        <delete dir="${build.dir}"/>
+    </target>
 
-	<!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
+    <!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
 
-	<target name="compile">
-		<mkdir dir="${build.classes.dir}" />
-		<javac srcdir="src/edge/java" destdir="${build.classes.dir}" />
-		<javac srcdir="src/prod/java" destdir="${build.classes.dir}" />
-	</target>
+    <target name="compile">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac srcdir="src/edge/java" destdir="${build.classes.dir}"/>
+        <javac srcdir="src/prod/java" destdir="${build.classes.dir}"/>
+    </target>
 
-	<target name="compileTest" description="Build JUnit tests">
-		<path id="junit.classpath">
-			<fileset dir="${lib.dir}">
-				<include name="junit/junit-3.8.1.jar" />
-			</fileset>
-		</path>
-		<javac srcdir="src/test/java" destdir="${build.classes.dir}">
-			<classpath refid="junit.classpath" />
-		</javac>
-	</target>
-	
-<!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->	
-	<target name="runTest">
-		<mkdir dir="${junit.dir}" />
-		<path id="test.classpath">
-			<pathelement location="${build.classes.dir}" />
-			<fileset dir="${lib.dir}">
-				<include name="junit/junit-3.8.1.jar" />
-			</fileset>
-		</path>
-		<junit>
-			<test name="${test.class}" todir="${junit.dir}" />
-			<formatter type="xml" />
-			<sysproperty key="test.classpath" value="${build.classes.dir}"/>
-			<classpath refid="test.classpath" />
-		</junit>
-	</target>
+    <target name="compileTest" description="Build JUnit tests">
+        <path id="junit.classpath">
+            <fileset dir="${lib.dir}">
+                <include name="junit/junit-3.8.1.jar"/>
+            </fileset>
+        </path>
+        <javac srcdir="src/test/java" destdir="${build.classes.dir}">
+            <classpath refid="junit.classpath"/>
+        </javac>
+    </target>
 
-	<target name="createJar">
-		<mkdir dir="${build.jars.dir}" />
-		<jar
-			jarfile="${build.jars.dir}/boost.jar"
-			basedir="${build.classes.dir}">
-		</jar>
-	</target>
+    <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
+    <target name="runTest">
+        <mkdir dir="${junit.dir}"/>
+        <path id="test.classpath">
+            <pathelement location="${build.classes.dir}"/>
+            <fileset dir="${lib.dir}">
+                <include name="junit/junit-3.8.1.jar"/>
+            </fileset>
+        </path>
+        <junit>
+            <test name="${test.class}" todir="${junit.dir}"/>
+            <formatter type="xml"/>
+            <sysproperty key="test.classpath" value="${build.classes.dir}"/>
+            <classpath refid="test.classpath"/>
+        </junit>
+    </target>
+
+    <target name="createJar">
+        <mkdir dir="${build.jars.dir}"/>
+        <jar
+                jarfile="${build.jars.dir}/boost.jar"
+                basedir="${build.classes.dir}">
+        </jar>
+    </target>
 </project>
