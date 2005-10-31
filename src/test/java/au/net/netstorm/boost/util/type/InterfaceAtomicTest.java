@@ -8,12 +8,12 @@ public class InterfaceAtomicTest extends TestCase {
     private static final Class NOT_AN_INTERFACE = Object.class;
 
     public void testIsDataObject() {
-        // FIXME: SC501 Tidy this up.
+        // FIXME: SC506 Tidy this up.
         DataTestUtil.checkIsDataObject(Interface.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("type", Class.class)});
     }
 
-    // FIXME: SC501 This is not called as we are no longer wired into Primordial.
+    // FIXME: SC506 This is not called as we are no longer wired into Primordial.
     public void failIfTypeIsNotInterface() throws IllegalArgumentException {
         new Interface(NOT_AN_INTERFACE);
     }

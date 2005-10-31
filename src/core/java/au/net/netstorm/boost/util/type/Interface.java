@@ -2,8 +2,7 @@ package au.net.netstorm.boost.util.type;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-// FIXME: SC501 Find the associated test for this.
-// FIXME: SC501 Data object expose fields directly via final.
+// FIXME: SC506 ? Data object expose fields directly via final.
 
 // This is just an interface.  It is the strong type for interface.
 public final class Interface extends Primordial implements Data {

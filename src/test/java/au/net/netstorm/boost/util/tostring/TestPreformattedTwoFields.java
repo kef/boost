@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.tostring;
 
 import au.net.netstorm.boost.util.separator.Separator;
 
-// FIXME: SC501 Rename to TestPre....
+// FIXME: SC506 Rename to TestPre....
 class TestPreformattedTwoFields extends TestTwoFields {
     private static final String LINE = Separator.LINE;
 
