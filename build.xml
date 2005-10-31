@@ -175,7 +175,7 @@
 
     <target name="_check_coverage">
         <!-- FIXME: SC502 These MUST BE 100. -->
-        <macro_cobertura_check branch.limit="97" line.limit="88"/>
+        <macro_cobertura_check branch.limit="99" line.limit="90"/>
     </target>
 
     <property name="coverage.file" location="${coverage.dir}/coverage.ser"/>

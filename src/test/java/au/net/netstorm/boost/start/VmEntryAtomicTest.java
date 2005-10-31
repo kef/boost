@@ -7,9 +7,9 @@ import junit.framework.TestCase;
 // FIXME: SC501 Fix failXxx().
 
 public class VmEntryAtomicTest extends TestCase {
-    private static final VmStyle VM_STYLE_BANANA = new VmStyle("banana");
-    private static final VmStyle VM_STYLE_REAL = new VmStyle("real");
-    private static final VmStyle VM_STYLE_PRINT = new VmStyle("print");
+    private static final String[] TOO_MANY_ARGUMENTS = new String[2];
+    private static final String[] TOO_FEW_ARGUMENTS = new String[0];
+    private static final String[] NULL = null;
 
     // FIXME: SC501 Reinstate all this stuff.
     public void testFixme() {
@@ -31,19 +31,11 @@ public class VmEntryAtomicTest extends TestCase {
 //    }
 //
 
-    public void testWithNullArguments() throws IllegalArgumentException {
-        try {
-            VmEntry.main(null);
-        } catch (Exception expected) { }
+    public void testWithIllegalArguments() {
+        checkEntryFails(NULL);
+        checkEntryFails(TOO_FEW_ARGUMENTS);
+        checkEntryFails(TOO_MANY_ARGUMENTS);
     }
-//
-//    public void failWithNotEnoughArguments() throws IllegalArgumentException {
-//        VmEntry.main(new String[0]);
-//    }
-//
-//    public void failWithTooManyArguments() throws IllegalArgumentException {
-//        VmEntry.main(new String[2]);
-//    }
 //
 //    public void failWithNullStyle() throws IllegalArgumentException {
 //        callMain(null);
@@ -73,5 +65,12 @@ public class VmEntryAtomicTest extends TestCase {
 
     private VmEntry getVmEntry() {
         return (VmEntry) ReflectTestUtil.getStaticFieldValue(VmEntry.class, "instance");
+    }
+
+    private void checkEntryFails(String[] args) {
+        try {
+            VmEntry.main(args);
+            fail();
+        } catch (Exception expected) { }
     }
 }
