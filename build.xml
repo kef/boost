@@ -78,6 +78,9 @@
 	<path id="test.classpath">
         <path refid="core.classpath"/>
         <path location="${core.class.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="junit/junit-3.8.1.jar"/>
+        </fileset>
     </path>
 
 	<path id="cobertura.classpath">
