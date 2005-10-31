@@ -58,12 +58,6 @@
         <include name="**/*AtomicTest.java"/>
     </fileset>
 
-    <fileset id="source.path" dir="${src.dir}">
-        <!-- FIXME: SC502 Duplication in cobertura instrument. -->
-        <include name="**/*.java"/>
-        <exclude name="**/Xxx*.java"/>
-    </fileset>
-
     <path id="atomic.tests.classpath">
         <path location="${edge.class.dir}"/>
         <path location="${core.instrumented.dir}"/>
@@ -170,9 +164,7 @@
     </macrodef>
 
     <target name="_instrument">
-        <macro_cobertura_instrument code.type="edge"/>
         <macro_cobertura_instrument code.type="core"/>
-        <macro_cobertura_instrument code.type="test"/>
     </target>
 
     <target name="report_coverage">
@@ -200,7 +192,7 @@
         <sequential>
             <mkdir dir="@{report.dir}"/>
             <cobertura-report destdir="@{report.dir}" datafile="${coverage.file}">
-                <fileset refid="source.path"/>
+                <fileset dir="${core.src.dir}" includes="**/*.java"/>
             </cobertura-report>
         </sequential>
     </macrodef>
