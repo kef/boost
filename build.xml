@@ -60,18 +60,18 @@
     <!-- FIXME: SC502 Put jar target back in with modified classpaths -->
     <target name="_all" depends="clean,_compile,run_tests"/>
 
+    <target name="_compile">
+        <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
+        <macro_javac srcdir="${prod.src.dir}" destdir="${prod.class.dir}" classpathref="prod.classpath"/>
+        <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
+    </target>
+
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
     <!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
 
-    <!-- FIXME: SC502 This is just a dependency.  -->
-    <target name="_compile">
-        <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
-        <macro_javac srcdir="${prod.src.dir}" destdir="${prod.class.dir}" classpathref="prod.classpath"/>
-        <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
-    </target>
 
     <target name="build_jar">
         <mkdir dir="${jars.dir}"/>
