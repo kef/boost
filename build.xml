@@ -59,9 +59,7 @@
     </target>
 
     <target name="compileTest">
-        <javac srcdir="src/test/java" destdir="${build.classes.dir}">
-            <classpath refid="test.classpath"/>
-        </javac>
+        <javac srcdir="src/test/java" destdir="${build.classes.dir}" classpathref="test.classpath"/>
     </target>
 
     <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
