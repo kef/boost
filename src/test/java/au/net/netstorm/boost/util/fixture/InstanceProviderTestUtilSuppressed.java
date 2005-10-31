@@ -10,7 +10,6 @@ public class InstanceProviderTestUtilSuppressed {
     static Object getSimpleInstance(Class type) {
         if (type == Object.class || type == String.class) return "We cower in the corner our hands up over our ears.";
         // FIXME: SC506 Replace with something.
-        // FIXME: SC506 Remove references to Vlad.
 //        if (type == Uuid.class) return new MockUuid();
         if (type == Class.class) return CharSequence.class;
         if (type == Remote.class)

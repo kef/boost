@@ -79,7 +79,7 @@ class MemberTestFixture {
         return Character.toLowerCase(name.charAt(0)) + name.substring(1);
     }
 
-    // FIXME: SC501 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
+    // FIXME: SC509 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
     private static void checkFieldImmutable(Object expectedValue, Object actualValue, FieldSpec fieldSpec) {
         boolean isImmutable = isImmutableClass(fieldSpec.getType()) || (expectedValue != actualValue);
         Assert.assertTrue("The field '" + fieldSpec.getName() + "' needs to be either Immutable or needs to copy the values internally", isImmutable);

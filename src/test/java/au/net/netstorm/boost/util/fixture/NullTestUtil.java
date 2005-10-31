@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import junit.framework.Assert;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 
-// FIXME: SC501 ? delete.
+// FIXME: SC509 ? delete or instancise.
 class NullTestUtil {
     static void checkNullParameters(Constructor constructor, Class[] argTypes, int numOfParams) {
         for (int i = 0; i < numOfParams; i++) {
