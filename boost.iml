@@ -7,7 +7,6 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/core/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/edge/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/prod/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -88,22 +88,16 @@
     <!-- FIXME: SC502 "runTest" crashes when executed in Andy's Eclipse :( -->
     <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
     <target name="_run_tests">
-        <macro_junit_run tests.refid="atomic.tests" classpath.refid="atomic.tests.classpath" failure.property="atomic.tests.failed"/>
+        <macro_junit_run tests.refid="atomic.tests" classpath.refid="atomic.tests.classpath"
+                         failure.property="atomic.tests.failed"/>
     </target>
+
     <target name="_check_tests">
         <macro_junit_check failure.property="atomic.tests.failed"/>
     </target>
 
-    <!-- FIXME: SC502 Move fileset out.  -->
-    <!-- FIXME: SC502 Macroise. -->
-    <!-- FIXME: SC502 Change failure property to be accurate. -->
     <target name="report_tests">
-        <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
-            <fileset dir="${test.xml.report.dir}">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report format="frames" todir="${test.report.dir}"/>
-        </junitreport>
+        <macro_junit_report/>
     </target>
 
     <macrodef name="macro_javac">
@@ -141,6 +135,18 @@
         <attribute name="failure.property"/>
         <sequential>
             <fail if="@{failure.property}" message="ONE OR MORE TESTS FAILED."/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="macro_junit_report">
+        <sequential>
+            <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
+                <!-- FIXME: SC502 Move fileset out.  -->
+                <fileset dir="${test.xml.report.dir}">
+                    <include name="TEST-*.xml"/>
+                </fileset>
+                <report format="frames" todir="${test.report.dir}"/>
+            </junitreport>
         </sequential>
     </macrodef>
 
