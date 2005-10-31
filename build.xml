@@ -31,6 +31,7 @@
     <property name="instrumented.dir" location="${coverage.dir}"/>
     <property name="artifacts.dir" location="${build.dir}/artifacts"/>
     <property name="reports.dir" location="${artifacts.dir}/reports"/>
+    <property name="coverage.reports.dir" location="${reports.dir}/coverage"/>
     <property name="jars.dir" location="${artifacts.dir}/jars"/>
     <property name="test.report.dir" location="${reports.dir}/test"/>
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
@@ -57,6 +58,12 @@
         <include name="**/*AtomicTest.java"/>
     </fileset>
 
+    <fileset id="source.path" dir="${src.dir}">
+        <!-- FIXME: SC502 Duplication in cobertura instrument. -->
+        <include name="**/*.java"/>
+        <exclude name="**/Xxx*.java"/>
+    </fileset>
+
     <path id="atomic.tests.classpath">
         <path location="${edge.class.dir}"/>
         <path location="${core.instrumented.dir}"/>
@@ -79,7 +86,7 @@
         </fileset>
     </path>
 
-    <target name="_all" depends="clean,_compile,_instrument,_run_tests,report_tests,_check_tests"/>
+    <target name="_all" depends="clean,_compile,_instrument,_run_tests,report_tests,report_coverage,_check_tests"/>
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
@@ -168,6 +175,10 @@
         <macro_cobertura_instrument code.type="test"/>
     </target>
 
+    <target name="report_coverage">
+        <macro_cobertura_report report.dir="${coverage.reports.dir}/atomic"/>
+    </target>
+
     <property name="coverage.file" location="${coverage.dir}/coverage.ser"/>
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
     <macrodef name="macro_cobertura_instrument">
@@ -184,5 +195,13 @@
         </sequential>
     </macrodef>
 
-
+    <macrodef name="macro_cobertura_report">
+        <attribute name="report.dir"/>
+        <sequential>
+            <mkdir dir="@{report.dir}"/>
+            <cobertura-report destdir="@{report.dir}" datafile="${coverage.file}">
+                <fileset refid="source.path"/>
+            </cobertura-report>
+        </sequential>
+    </macrodef>
 </project>
