@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- FIXME: SC502 Goals -->
+<!-- FIXME: SC502 Goals: -->
 <!-- FIXME: SC502 Checkstyle run -->
 <!-- FIXME: SC502 Checkstyle report (into artifacts area) -->
 <!-- FIXME: SC502 Checkstyle fail on error -->
@@ -15,7 +15,7 @@
 <!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
 <!-- FIXME: SC502 Package up jars or whatever (using non instrumented classes) -->
 
-<!-- FIXME: SC502 Refactors -->
+<!-- FIXME: SC502 Refactors: -->
 <!-- FIXME: SC502 Move junit.classpath out of compileTest target [priority] -->
 <!-- FIXME: SC502 Allow CruiseControl to set the parent directory for ${junit.dir} -->
 <!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
@@ -74,9 +74,7 @@
 
     <target name="createJar">
         <mkdir dir="${build.jars.dir}"/>
-        <jar
-                jarfile="${build.jars.dir}/boost.jar"
-                basedir="${build.classes.dir}">
+        <jar jarfile="${build.jars.dir}/boost.jar" basedir="${build.classes.dir}">
         </jar>
     </target>
 </project>
