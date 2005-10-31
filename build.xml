@@ -42,10 +42,10 @@
     </path>
 
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
-    <property name="prod.src.dir" location="${src.dir}/prod/java"/>
+    <property name="core.src.dir" location="${src.dir}/prod/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
     <property name="edge.class.dir" location="${class.dir}/edge"/>
-    <property name="prod.class.dir" location="${class.dir}/prod"/>
+    <property name="core.class.dir" location="${class.dir}/prod"/>
     <property name="test.class.dir" location="${class.dir}/test"/>
 
     <fileset id="atomic.tests" dir="${test.src.dir}">
@@ -53,17 +53,17 @@
     </fileset>
     <path id="atomic.tests.classpath">
         <path location="${test.class.dir}"/>
-        <path location="${prod.class.dir}"/>
+        <path location="${core.class.dir}"/>
         <path location="${edge.class.dir}"/>
     </path>
 
     <path id="edge.classpath"/>
-    <path id="prod.classpath">
+    <path id="core.classpath">
         <path location="${edge.class.dir}"/>
     </path>
     <path id="test.classpath">
-        <path refid="prod.classpath"/>
-        <path location="${prod.class.dir}"/>
+        <path refid="core.classpath"/>
+        <path location="${core.class.dir}"/>
     </path>
 
     <!-- FIXME: SC502 Put "check_tests" target back in ... when it no longer breaks the build ! -->
@@ -72,7 +72,7 @@
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
-        <macro_javac srcdir="${prod.src.dir}" destdir="${prod.class.dir}" classpathref="prod.classpath"/>
+        <macro_javac srcdir="${core.src.dir}" destdir="${core.class.dir}" classpathref="core.classpath"/>
         <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
     </target>
 
