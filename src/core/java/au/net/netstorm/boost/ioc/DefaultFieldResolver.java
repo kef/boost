@@ -63,7 +63,7 @@ public class DefaultFieldResolver implements FieldResolver {
         field.set(ref, value);
     }
 
-    // FIXME: SC511 How about just a RuntimeNoSuchFieldException.  Bet the message isn't test driven either.
+    // FIXME: SC510 How about just a RuntimeNoSuchFieldException.  Bet the message isn't test driven either.
     private Field getField(Object ref, String name) {
         try {
             return ref.getClass().getDeclaredField(name);

@@ -21,7 +21,7 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
         return constructors[0];
     }
 
-    // FIXME: SC501 Pretty sure the message is not tested.  Test it.
+    // FIXME: SC510 Pretty sure the message is not tested.  Test it.
     private void checkIsNotInterface(Class cls) {
         if (cls.isInterface())
             throw new UnsupportedOperationException(getName(cls) + " is an interface and cannot be instantiated");
