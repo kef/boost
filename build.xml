@@ -66,8 +66,6 @@
         <path location="${core.class.dir}"/>
     </path>
 
-    <!-- FIXME: SC502 Put "check_tests" target back in ... when it no longer breaks the build ! -->
-    <!-- FIXME: SC502 Put jar target back in with modified classpaths -->
     <target name="_all" depends="clean,_compile,_run_tests,report_tests,_check_tests"/>
 
     <target name="_compile">
@@ -80,6 +78,7 @@
         <delete dir="${build.dir}"/>
     </target>
 
+    <!-- FIXME: SC502 Put jar target back in with modified classpaths -->
     <target name="build_jar">
         <mkdir dir="${jars.dir}"/>
         <jar jarfile="${jars.dir}/boost.jar" basedir="${class.dir}"/>
