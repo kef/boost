@@ -70,7 +70,7 @@
         <delete dir="${build.dir}"/>
     </target>
 
-    <!-- FIXME: SC502 Consider the naming of "prod" and "edge" -->
+    <!-- FIXME: SC502 Consider the naming of "prod" and "edge".  Actually call "prod" "core". -->
 
 
     <target name="build_jar">
