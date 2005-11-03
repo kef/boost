@@ -199,7 +199,7 @@
         <sequential>
             <mkdir dir="@{report.dir}"/>
             <cobertura-report destdir="@{report.dir}" datafile="${coverage.file}">
-                <!-- FIXME: SC502 Parameterise. -->
+                <!-- FIXME: SC502 Parameterise -->
                 <fileset dir="${core.src.dir}" includes="**/*.java"/>
             </cobertura-report>
         </sequential>
