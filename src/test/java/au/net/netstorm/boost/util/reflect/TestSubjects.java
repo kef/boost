@@ -4,6 +4,7 @@ import java.util.Map;
 
 // FIXME: SC506 Sort out the constant crap.  Inline.
 // FIXME: SC502 Remove any unused classes from here.
+
 class TestSubjects {
     public static final Class TEST_INTERFACE_ONE = TestSubjects.TestInterfaceOne.class;
     public static final Class TEST_TWO_CONSTRUCTORS = TestSubjects.TestTwoConstructors.class;
@@ -19,7 +20,8 @@ class TestSubjects {
     }
 
     static final class TestNoPrivateConstructor {
-        TestNoPrivateConstructor() { }
+        TestNoPrivateConstructor() {
+        }
     }
 
     static final class TestOneInstanceFieldObject {
@@ -38,18 +40,33 @@ class TestSubjects {
         }
     }
 
-    static final class TestTwoConstructors {
-        private TestTwoConstructors() { }
+    static final class TestOneConstructor {
+        public TestOneConstructor() {
+        }
+    }
 
-        private TestTwoConstructors(String aString) { }
+    static final class TestOnePrivateConstructor {
+        private TestOnePrivateConstructor() {
+        }
+    }
+
+    static final class TestTwoConstructors {
+        private TestTwoConstructors() {
+        }
+
+        private TestTwoConstructors(String aString) {
+        }
     }
 
     static final class TestThreeConstructors {
-        private TestThreeConstructors() { }
+        private TestThreeConstructors() {
+        }
 
-        private TestThreeConstructors(String aString) { }
+        private TestThreeConstructors(String aString) {
+        }
 
-        private TestThreeConstructors(int anInt) { }
+        private TestThreeConstructors(int anInt) {
+        }
     }
 
     static final class TestZeroInstanceFieldsObject {
@@ -60,6 +77,7 @@ class TestSubjects {
     }
 
     static final class TestSinglePrivateConstructor {
-        private TestSinglePrivateConstructor() { }
+        private TestSinglePrivateConstructor() {
+        }
     }
 }
