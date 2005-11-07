@@ -64,7 +64,7 @@
     </path>
 
     <path id="edge.classpath"/>
-	
+
     <path id="core.classpath">
         <path location="${edge.class.dir}"/>
     </path>

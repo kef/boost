@@ -50,13 +50,12 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return !o1.equals(o2);
     }
 
-    // FIXME: SC509 Can we extend primordial.
     // FIXME: SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public int hashCode() {
         return 42;
     }
 
-    // FIXME: SC509 Can we extend primordial?
+    // FIXME: SC509 Delegate to IndentingStringMaster.
     public String toString() {
         return "DefaultFieldSpec[name=" + name + ",value=" + value.getClass() + "]";
     }

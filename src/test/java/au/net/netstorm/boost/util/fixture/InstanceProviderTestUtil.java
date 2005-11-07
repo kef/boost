@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.util.fixture;
 
-
-
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 
