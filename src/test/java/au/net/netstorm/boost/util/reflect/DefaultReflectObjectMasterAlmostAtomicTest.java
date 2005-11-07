@@ -20,18 +20,8 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
 
     public void testSingleConstructor() {
         Class cls = TestSubjects.TestOneConstructor.class;
-        Constructor constructor = master.getConstructor(cls);
-        Constructor[] constructors = cls.getDeclaredConstructors();
-        assertEquals(1, constructors.length);
-        assertEquals(constructors[0], constructor);
+        checkSingleConstructor(cls);
         // FIXME: SC502 Check private constructor.
-    }
-
-    private void checkFailsWithMultipleConstructors(Class cls) {
-        try {
-            master.getConstructor(cls);
-            fail();
-        } catch (MultipleConstructorsNotSupportedException expected) { }
     }
 
     public void testCreateFailsWithMultipleConstructors() {
@@ -42,6 +32,20 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
     public void failToCreateWithInterfaces() throws UnsupportedOperationException {
         // FIXME: SC502 Reinstate if required.
 //        master.create(TestSubjects.TEST_INTERFACE_ONE);
+    }
+
+    private void checkSingleConstructor(Class cls) {
+        Constructor constructor = master.getConstructor(cls);
+        Constructor[] constructors = cls.getDeclaredConstructors();
+        assertEquals(1, constructors.length);
+        assertEquals(constructors[0], constructor);
+    }
+
+    private void checkFailsWithMultipleConstructors(Class cls) {
+        try {
+            master.getConstructor(cls);
+            fail();
+        } catch (MultipleConstructorsNotSupportedException expected) { }
     }
 
     private void checkCreateFailsWithMultipleConstructors(Class cls) {
