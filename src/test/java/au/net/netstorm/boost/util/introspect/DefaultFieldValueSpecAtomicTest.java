@@ -10,7 +10,7 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     private static final String NAME_2 = "y";
     private static final Object VALUE_1 = new Object();
     private static final Object VALUE_2 = new Object();
-    private static final FieldValueSpec FIELD_VALUE_SPEC = new DefaultFieldValueSpec("fieldName", new Integer(77));
+    private static final FieldValueSpec FIELD_VALUE_SPEC_1 = new DefaultFieldValueSpec("field1", new Integer(77));
 
     public void testMarker() {
         assertTrue(Immutable.class.isAssignableFrom(DefaultFieldValueSpec.class));
@@ -27,7 +27,11 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     }
 
     public void testHashcode() {
-        assertEquals(42, FIELD_VALUE_SPEC.hashCode());
+        assertEquals(42, FIELD_VALUE_SPEC_1.hashCode());
+    }
+
+    public void testToString() {
+        assertEquals("DefaultFieldValueSpec[name=field1,value=77]", FIELD_VALUE_SPEC_1.toString());
     }
 
     private void checkCreate(String name, Object value) {

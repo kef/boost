@@ -56,7 +56,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
 
     // FIXME: SC509 Delegate to IndentingStringMaster.
     public String toString() {
-        return "DefaultFieldSpec[name=" + name + ",value=" + value.getClass() + "]";
+        return "DefaultFieldValueSpec[name=" + name + ",value=" + value + "]";
     }
 
     private void validate() {
