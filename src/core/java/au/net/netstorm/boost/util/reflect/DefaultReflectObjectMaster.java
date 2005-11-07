@@ -5,7 +5,6 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
 
 class DefaultReflectObjectMaster implements ReflectObjectMaster {
-
     public Constructor getConstructor(Class cls) {
         checkIsNotInterface(cls);
         Constructor[] constructors = cls.getDeclaredConstructors();
@@ -13,20 +12,11 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
         return constructors[0];
     }
 
-    // FIXME: SC510 Pretty sure the message is not tested.  Test it.
     private void checkIsNotInterface(Class cls) {
-        if (cls.isInterface())
-        // FIXME: SC502 Change to InterfaceNotClassException.
-            throw new UnsupportedOperationException(getName(cls) + " is an interface and cannot be instantiated");
+        if (cls.isInterface()) throw new InterfaceNotClassException(cls);
     }
 
     private void checkSingleConstructor(Constructor[] constructors, Class cls) {
-        if (constructors.length != 1) {
-            throw new MultipleConstructorsNotSupportedException(cls);
-        }
-    }
-
-    private String getName(Class cls) {
-        return new DefaultClassMaster().getShortName(cls);
+        if (constructors.length != 1) throw new MultipleConstructorsNotSupportedException(cls);
     }
 }

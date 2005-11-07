@@ -21,17 +21,13 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
     public void testSingleConstructor() {
         checkSingleConstructor(TestSubjects.TestOneConstructor.class);
         checkSingleConstructor(TestSubjects.TestOnePrivateConstructor.class);
-        // FIXME: SC502 Check private constructor.
     }
 
-    public void testCreateFailsWithMultipleConstructors() {
-        checkCreateFailsWithMultipleConstructors(TestSubjects.TestTwoConstructors.class);
-        checkCreateFailsWithMultipleConstructors(TestSubjects.TestThreeConstructors.class);
-    }
-
-    public void failToCreateWithInterfaces() throws UnsupportedOperationException {
-        // FIXME: SC502 Reinstate if required.
-//        master.create(TestSubjects.TEST_INTERFACE_ONE);
+    public void testFailsWithInterfaces() {
+        try {
+            master.getConstructor(TestSubjects.TestInterfaceOne.class);
+        } catch (InterfaceNotClassException expected) {
+        }
     }
 
     private void checkSingleConstructor(Class cls) {
