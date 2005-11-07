@@ -9,7 +9,7 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
     public Constructor getConstructor(Class cls) {
         checkIsNotInterface(cls);
         Constructor[] constructors = cls.getDeclaredConstructors();
-        checkSingleConstructor(constructors);
+        checkSingleConstructor(constructors, cls);
         return constructors[0];
     }
 
@@ -19,10 +19,9 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
             throw new UnsupportedOperationException(getName(cls) + " is an interface and cannot be instantiated");
     }
 
-    private void checkSingleConstructor(Constructor[] constructors) {
-        Constructor constructor = constructors[0];
+    private void checkSingleConstructor(Constructor[] constructors, Class cls) {
         if (constructors.length != 1) {
-            throw new MultipleConstructorsNotSupportedException(constructor.getDeclaringClass());
+            throw new MultipleConstructorsNotSupportedException(cls);
         }
     }
 
