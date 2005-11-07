@@ -1,17 +1,10 @@
 package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Modifier;
 
 import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
 
 class DefaultReflectObjectMaster implements ReflectObjectMaster {
-    // FIXME: SC502 Remove.
-    public Object create(Class cls) {
-        Constructor constructor = getConstructor(cls);
-        constructor.setAccessible(true);
-        return ReflectEdge.INSTANCE.newInstance(constructor, new Object[]{});
-    }
 
     public Constructor getConstructor(Class cls) {
         checkIsNotInterface(cls);
@@ -31,11 +24,6 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
         if (constructors.length != 1) {
             throw new MultipleConstructorsNotSupportedException(constructor.getDeclaringClass());
         }
-    }
-
-    private boolean hasPrivateConstructor(Constructor constructor, Class cls) {
-        return Modifier.isPrivate(constructor.getModifiers());
-        // FIXME: SC509 Exclusion list might go here.
     }
 
     private String getName(Class cls) {
