@@ -3,6 +3,7 @@ package au.net.netstorm.boost.util.introspect;
 import java.lang.reflect.Array;
 
 import au.net.netstorm.boost.util.type.Immutable;
+import au.net.netstorm.boost.util.nullo.NullMaster;
 
 // FIXME: SC506 Can just be an immutable.
 public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
@@ -32,8 +33,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private boolean checkDefaultFieldSpec(DefaultFieldValueSpec spec) {
         if (!spec.name.equals(name)) return false;
         if (spec.value.getClass().isArray()) return arraysEquals(spec);
-        if (!spec.value.equals(value)) return false;
-        return true;
+        return spec.value.equals(value);
     }
 
     private boolean arraysEquals(DefaultFieldValueSpec spec) {
@@ -50,7 +50,6 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return !o1.equals(o2);
     }
 
-    // FIXME: SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public int hashCode() {
         return 42;
     }
@@ -61,12 +60,13 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     }
 
     private void validate() {
-        validate("name", name);
-        validate("value", value);
+        validate(name);
+        validate(value);
     }
 
     // FIXME: SC509 ? Null checker.
-    private void validate(String name, Object value) {
-        if (value == null) throw new IllegalArgumentException(name + " parameter cannot be null");
+    private void validate(Object value) {
+        NullMaster master = new NullMaster();
+        master.check(value);
     }
 }
