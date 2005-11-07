@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.util.nullo;
 
-// FIXME: SC104 Make instance.
 
 public class NullMaster {
+    // FIXME: SC502 Make instance.
+
     public static void check(Object parameter) {
         if (parameter == null) throw new IllegalArgumentException();
     }
