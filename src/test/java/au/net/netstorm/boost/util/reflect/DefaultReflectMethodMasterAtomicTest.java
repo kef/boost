@@ -15,7 +15,7 @@ import junit.framework.TestCase;
 public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final String CHURCH_METHOD_NAME = "getSmeetOthEchuRchontIme";
     private static final String FRIDAY_METHOD_NAME = "fridayIsHere";
-    private static final String CRAPOLA_METHOD_NAME = "crapola";
+    private static final String CRAPOLA_METHOD_NAME = "justSomeOldMethod";
     private static final Class[] CHURCH_PARAMETER_TYPES = new Class[]{String.class, Map.class};
     private static final Class[] MORE_PARAMETER_TYPES = new Class[]{String.class, Map.class, List.class};
     private static final Class[] LESS_PARAMETER_TYPES = new Class[]{String.class};

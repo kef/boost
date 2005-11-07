@@ -30,6 +30,6 @@ public class DefaultReflectFieldMasterAtomicTest extends PrimordialTestCase {
     }
 
     private FieldValueSpec[] createFieldSpec(Object value) {
-        return new FieldValueSpec[]{new DefaultFieldValueSpec("field1", value)};
+        return new FieldValueSpec[]{new DefaultFieldValueSpec("value", value)};
     }
 }

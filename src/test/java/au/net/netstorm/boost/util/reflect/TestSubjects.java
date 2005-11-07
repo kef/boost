@@ -3,6 +3,7 @@ package au.net.netstorm.boost.util.reflect;
 import java.util.Map;
 
 // FIXME: SC506 Sort out the constant crap.  Inline.
+// FIXME: SC502 Remove any unused classes from here.
 class TestSubjects {
     public static final Class TEST_INTERFACE_ONE = TestSubjects.TestInterfaceOne.class;
     public static final Class TEST_TWO_CONSTRUCTORS = TestSubjects.TestTwoConstructors.class;
@@ -14,7 +15,7 @@ class TestSubjects {
     }
 
     interface TestInterfaceTwo {
-        void crapola();
+        void justSomeOldMethod();
     }
 
     static final class TestNoPrivateConstructor {
@@ -22,26 +23,18 @@ class TestSubjects {
     }
 
     static final class TestOneInstanceFieldObject {
-        private String field1 = "PAIR OR DIE";
+        private String value = "PAIR OR QUAD";
 
         TestOneInstanceFieldObject(String value) {
-            this.field1 = value;
-        }
-
-        public String toString() {
-            return "I love checkstyle " + field1;
+            this.value = value;
         }
     }
 
     static final class TestOnePrimitiveInstanceFieldObject {
-        private final int field1;
+        private final int value;
 
         public TestOnePrimitiveInstanceFieldObject(int i) {
-            this.field1 = i;
-        }
-
-        public String toString() {
-            return "Lovely, lovely checkstyle " + field1;
+            this.value = i;
         }
     }
 
@@ -64,10 +57,6 @@ class TestSubjects {
 
     static final class TestZeroInstanceOneStaticFieldsObject {
         private static final String STATIC_FIELD_1 = "YO MAMA";
-
-        public String toString() {
-            return "I love checkstyle " + STATIC_FIELD_1;
-        }
     }
 
     static final class TestSinglePrivateConstructor {
