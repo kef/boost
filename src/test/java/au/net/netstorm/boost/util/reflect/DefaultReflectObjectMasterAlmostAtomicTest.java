@@ -19,8 +19,8 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
     }
 
     public void testSingleConstructor() {
-        Class cls = TestSubjects.TestOneConstructor.class;
-        checkSingleConstructor(cls);
+        checkSingleConstructor(TestSubjects.TestOneConstructor.class);
+        checkSingleConstructor(TestSubjects.TestOnePrivateConstructor.class);
         // FIXME: SC502 Check private constructor.
     }
 
