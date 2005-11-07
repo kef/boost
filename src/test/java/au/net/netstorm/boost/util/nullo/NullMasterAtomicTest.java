@@ -2,14 +2,14 @@ package au.net.netstorm.boost.util.nullo;
 
 import junit.framework.TestCase;
 
-public class NullCheckerAtomicTest extends TestCase {
+public class NullMasterAtomicTest extends TestCase {
     public void testNoException() {
-        NullChecker.check(this);
+        NullMaster.check(this);
     }
 
     public void failNull() {
         try {
-            NullChecker.check(null);
+            NullMaster.check(null);
             fail();
         } catch (IllegalArgumentException expected) { }
     }

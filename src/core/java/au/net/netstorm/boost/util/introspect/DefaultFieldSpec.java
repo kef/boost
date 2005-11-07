@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Immutable;
-import au.net.netstorm.boost.util.nullo.NullChecker;
+import au.net.netstorm.boost.util.nullo.NullMaster;
 
 // FIXME: SC506 Can just be an immutable.
 public final class DefaultFieldSpec extends Primordial implements FieldSpec, Immutable {
@@ -24,7 +24,7 @@ public final class DefaultFieldSpec extends Primordial implements FieldSpec, Imm
     }
 
     private void noNulls() {
-        NullChecker.check(fieldName);
-        NullChecker.check(type);
+        NullMaster.check(fieldName);
+        NullMaster.check(type);
     }
 }

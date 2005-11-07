@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.util.nullo.NullChecker;
+import au.net.netstorm.boost.util.nullo.NullMaster;
 
 public final class CallSpec extends Primordial implements Data {
     private final String methodName;
@@ -10,9 +10,9 @@ public final class CallSpec extends Primordial implements Data {
     private final Object[] args;
 
     public CallSpec(String methodName, Class[] argTypes, Object[] args) {
-        NullChecker.check(methodName);
-        NullChecker.check(argTypes);
-        NullChecker.check(args);
+        NullMaster.check(methodName);
+        NullMaster.check(argTypes);
+        NullMaster.check(args);
         this.methodName = methodName;
         this.argTypes = (Class[]) argTypes.clone();
         this.args = (Object[]) args.clone();
