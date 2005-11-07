@@ -9,8 +9,10 @@ public final class MethodSpec extends Primordial implements Data {
     private final Class[] params;
 
     public MethodSpec(String name, Class[] params) {
-        NullMaster.check(name);
-        NullMaster.check(params);
+        // FIXME: SC502 Move into validate(...) method.
+        NullMaster master = new NullMaster();
+        master.check(name);
+        master.check(params);
         this.name = name;
         this.params = (Class[]) params.clone();
     }

@@ -1,7 +1,10 @@
 package au.net.netstorm.boost.util.nullo;
 
+import java.io.Serializable;
 
-public class NullMaster {
+// FIXME: SC502 Test serializable in NullAT.
+public class NullMaster implements Serializable {
+    // FIXME: SC502 INSTANCE pattern.
     // FIXME: SC502 Make instance.
 
     public static void check(Object parameter) {

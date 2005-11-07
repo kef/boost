@@ -24,7 +24,8 @@ public final class DefaultFieldSpec extends Primordial implements FieldSpec, Imm
     }
 
     private void noNulls() {
-        NullMaster.check(fieldName);
-        NullMaster.check(type);
+        NullMaster master = new NullMaster();
+        master.check(fieldName);
+        master.check(type);
     }
 }

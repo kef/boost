@@ -10,9 +10,11 @@ public final class CallSpec extends Primordial implements Data {
     private final Object[] args;
 
     public CallSpec(String methodName, Class[] argTypes, Object[] args) {
-        NullMaster.check(methodName);
-        NullMaster.check(argTypes);
-        NullMaster.check(args);
+        // FIXME: SC502 Move into separate method validate(...).
+        NullMaster master = new NullMaster();
+        master.check(methodName);
+        master.check(argTypes);
+        master.check(args);
         this.methodName = methodName;
         this.argTypes = (Class[]) argTypes.clone();
         this.args = (Object[]) args.clone();
