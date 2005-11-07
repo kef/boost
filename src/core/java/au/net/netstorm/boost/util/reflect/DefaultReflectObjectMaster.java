@@ -3,13 +3,11 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
-import au.net.netstorm.boost.ioc.ConstructorNotPrivateException;
 import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
 
 class DefaultReflectObjectMaster implements ReflectObjectMaster {
     public Object create(Class cls) {
         Constructor constructor = getConstructor(cls);
-        checkPrivateConstructor(constructor, cls);
         constructor.setAccessible(true);
         return ReflectEdge.INSTANCE.newInstance(constructor, new Object[]{});
     }
@@ -25,10 +23,6 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
     private void checkIsNotInterface(Class cls) {
         if (cls.isInterface())
             throw new UnsupportedOperationException(getName(cls) + " is an interface and cannot be instantiated");
-    }
-
-    private void checkPrivateConstructor(Constructor constructor, Class cls) {
-        if (!hasPrivateConstructor(constructor, cls)) throw new ConstructorNotPrivateException(cls);
     }
 
     private void checkSingleConstructor(Constructor[] constructors) {
