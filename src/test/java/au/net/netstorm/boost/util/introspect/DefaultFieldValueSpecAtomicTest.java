@@ -33,8 +33,12 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     }
 
     public void testToString() {
-        assertEquals("DefaultFieldValueSpec[name=field1,value=77]", FIELD_VALUE_SPEC_1.toString());
-        assertEquals("DefaultFieldValueSpec[name=field7,value=Is absolute zero cold enough?]", FIELD_VALUE_SPEC_2.toString());
+        checkToString("DefaultFieldValueSpec[name=field1,value=77]", FIELD_VALUE_SPEC_1);
+        checkToString("DefaultFieldValueSpec[name=field7,value=Is absolute zero cold enough?]", FIELD_VALUE_SPEC_2);
+    }
+
+    private void checkToString(String expected, FieldValueSpec spec) {
+        assertEquals(expected, spec.toString());
     }
 
     private void checkCreate(String name, Object value) {
