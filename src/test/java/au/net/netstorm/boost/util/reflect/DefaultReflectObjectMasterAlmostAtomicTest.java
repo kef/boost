@@ -25,7 +25,7 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
     }
 
     public void testCreateFailsWithMultipleConstructors() {
-        checkCreateFailsWithMultipleConstructors(TestSubjects.TEST_TWO_CONSTRUCTORS);
+        checkCreateFailsWithMultipleConstructors(TestSubjects.TestTwoConstructors.class);
         checkCreateFailsWithMultipleConstructors(TestSubjects.TestThreeConstructors.class);
     }
 

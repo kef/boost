@@ -6,8 +6,6 @@ import java.util.Map;
 // FIXME: SC502 Remove any unused classes from here.
 
 class TestSubjects {
-    public static final Class TEST_INTERFACE_ONE = TestSubjects.TestInterfaceOne.class;
-    public static final Class TEST_TWO_CONSTRUCTORS = TestSubjects.TestTwoConstructors.class;
 
     interface TestInterfaceOne {
         void fridayIsHere();
