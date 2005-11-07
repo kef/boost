@@ -27,14 +27,18 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
         checkCreate(NAME_2, VALUE_2);
     }
 
-    public void testHashcode() {
-        assertEquals(42, FIELD_VALUE_SPEC_1.hashCode());
-        // FIXME: SC502 Triangulate.
+    public void testHashCode() {
+        checkHashCode(FIELD_VALUE_SPEC_1);
+        checkHashCode(FIELD_VALUE_SPEC_2);
     }
 
     public void testToString() {
         checkToString("DefaultFieldValueSpec[name=field1,value=77]", FIELD_VALUE_SPEC_1);
         checkToString("DefaultFieldValueSpec[name=field7,value=Is absolute zero cold enough?]", FIELD_VALUE_SPEC_2);
+    }
+
+    private void checkHashCode(FieldValueSpec spec) {
+        assertEquals(42, spec.hashCode());
     }
 
     private void checkToString(String expected, FieldValueSpec spec) {
