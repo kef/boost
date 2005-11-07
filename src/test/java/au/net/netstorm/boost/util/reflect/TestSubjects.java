@@ -38,18 +38,18 @@ class TestSubjects {
         }
     }
 
+    static final class TestTwoConstructors {
+        private TestTwoConstructors() { }
+
+        private TestTwoConstructors(String aString) { }
+    }
+
     static final class TestThreeConstructors {
         private TestThreeConstructors() { }
 
         private TestThreeConstructors(String aString) { }
 
         private TestThreeConstructors(int anInt) { }
-    }
-
-    static final class TestTwoConstructors {
-        private TestTwoConstructors() { }
-
-        private TestTwoConstructors(String aString) { }
     }
 
     static final class TestZeroInstanceFieldsObject {

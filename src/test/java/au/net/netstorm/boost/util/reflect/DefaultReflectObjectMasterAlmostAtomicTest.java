@@ -2,6 +2,7 @@ package au.net.netstorm.boost.util.reflect;
 
 import au.net.netstorm.boost.util.introspect.CallSpec;
 import au.net.netstorm.boost.primordial.PrimordialTestCase;
+import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
 
 // FIXME: SC506 This NEEDS to be a UnitTest!!!
 // FIXME: SC506 Rename to Atomic test when done
@@ -9,10 +10,17 @@ import au.net.netstorm.boost.primordial.PrimordialTestCase;
 public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 
+    public void testFailsWithMultipleConstructors() {
+        try {
+            master.getConstructor(TestSubjects.TestTwoConstructors.class);
+            fail();
+        } catch (MultipleConstructorsNotSupportedException expected) { }
+    }
+
     public void testCreateFailsWithMultipleConstructors() {
         checkCreateFailsWithMultipleConstructors(TestSubjects.TEST_TWO_CONSTRUCTORS);
         checkCreateFailsWithMultipleConstructors(TestSubjects.TestThreeConstructors.class);
-    }
+        }
 
     public void failToCreateWithInterfaces() throws UnsupportedOperationException {
         // FIXME: SC502 Reinstate if required.
