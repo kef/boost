@@ -11,6 +11,7 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     private static final Object VALUE_1 = new Object();
     private static final Object VALUE_2 = new Object();
     private static final FieldValueSpec FIELD_VALUE_SPEC_1 = new DefaultFieldValueSpec("field1", new Integer(77));
+    private static final FieldValueSpec FIELD_VALUE_SPEC_2 = new DefaultFieldValueSpec("field7", "Is absolute zero cold enough?");
 
     public void testMarker() {
         assertTrue(Immutable.class.isAssignableFrom(DefaultFieldValueSpec.class));
@@ -28,10 +29,12 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
 
     public void testHashcode() {
         assertEquals(42, FIELD_VALUE_SPEC_1.hashCode());
+        // FIXME: SC502 Triangulate.
     }
 
     public void testToString() {
         assertEquals("DefaultFieldValueSpec[name=field1,value=77]", FIELD_VALUE_SPEC_1.toString());
+        assertEquals("DefaultFieldValueSpec[name=field7,value=Is absolute zero cold enough?]", FIELD_VALUE_SPEC_2.toString());
     }
 
     private void checkCreate(String name, Object value) {
