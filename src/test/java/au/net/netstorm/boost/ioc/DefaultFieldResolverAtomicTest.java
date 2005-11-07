@@ -32,10 +32,6 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
         checkResolve(createMultiField(), FIELD_NAME_TAIL, "TAIL");
     }
 
-    private Object createMultiField() {
-        return reflect.create(TestSubjects.MultiField.class);
-    }
-
     public void testIllegalFieldNames() {
         checkException(NAME_HAS_SPACES);
         checkException(NAME_HAS_ILLEGAL_CHARACTERS);
@@ -51,6 +47,7 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
 //        resolver.resolve(ref, fieldSpec);
 //    }
 
+    // FIXME: SC502 Convert to good old try / catch.
     public void failNullInResolve() throws IllegalArgumentException {
         resolver.resolve(null, FIELD_VALUE_SPEC);
     }
@@ -61,6 +58,10 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
 
     public void failNoSuchField() throws IocException {
         resolve(FIELD_VALUE_NO_SUCH_FIELD_VALUE);
+    }
+
+    private TestSubjects.MultiField createMultiField() {
+        return new TestSubjects.MultiField();
     }
 
     private void resolve(FieldValueSpec fieldValueSpec) {
@@ -80,7 +81,6 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
             resolver.resolve(createMultiField(), spec);
             // FIXME: SC506 Drop simian back down to 2 - chokes on the next 2 lines right now.
             fail();
-        } catch (IocException expected) {
-        }
+        } catch (IocException expected) { }
     }
 }
