@@ -7,7 +7,7 @@ public class NullMaster implements Serializable {
     // FIXME: SC502 INSTANCE pattern.
     // FIXME: SC502 Make instance.
 
-    public static void check(Object parameter) {
+    public void check(Object parameter) {
         if (parameter == null) throw new IllegalArgumentException();
     }
 }
