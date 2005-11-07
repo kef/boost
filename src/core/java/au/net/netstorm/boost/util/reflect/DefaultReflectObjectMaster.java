@@ -6,6 +6,7 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
 
 class DefaultReflectObjectMaster implements ReflectObjectMaster {
+    // FIXME: SC502 Remove.
     public Object create(Class cls) {
         Constructor constructor = getConstructor(cls);
         constructor.setAccessible(true);

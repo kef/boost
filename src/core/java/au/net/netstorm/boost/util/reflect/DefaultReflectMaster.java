@@ -12,10 +12,6 @@ public final class DefaultReflectMaster implements ReflectMaster {
     private final ReflectMethodMaster methodMaster = new DefaultReflectMethodMaster();
     private final ReflectFieldMaster fieldMaster = new DefaultReflectFieldMaster();
 
-    public Object create(Class cls) {
-        return objectMaster.create(cls);
-    }
-
     public Constructor getConstructor(Class cls) {
         return objectMaster.getConstructor(cls);
     }
