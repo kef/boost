@@ -11,8 +11,13 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 
     public void testFailsWithMultipleConstructors() {
+        checkFailsWithMultipleConstructors(TestSubjects.TestTwoConstructors.class);
+        checkFailsWithMultipleConstructors(TestSubjects.TestThreeConstructors.class);
+    }
+
+    private void checkFailsWithMultipleConstructors(Class cls) {
         try {
-            master.getConstructor(TestSubjects.TestTwoConstructors.class);
+            master.getConstructor(cls);
             fail();
         } catch (MultipleConstructorsNotSupportedException expected) { }
     }
