@@ -6,7 +6,13 @@ import junit.framework.TestCase;
 
 public final class MonthSpecAtomicTest extends TestCase {
     // FIXME: SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
-    // FIXME: SC507 Internal static per class is probably fine. 
+    // FIXME: SC507 Internal static per class is probably fine.
+    public static final MonthSpec JANUARY_2000 = new MonthSpec(2000, 0);
+    public static final MonthSpec DECEMBER_1999 = new MonthSpec(1999, 11);
+
+    private static final int EQUAL_TO = 0;
+    private static final int LESS_THAN = -1;
+    private static final int GREATER_THAN = 1;
     private static final Object NULL = null;
 
     public void testConstruction() {
@@ -126,8 +132,4 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertFalse(m1.equals(m2));
         assertFalse(m2.equals(m1));
     }
-
-    private static final int EQUAL_TO = 0;
-    private static final int LESS_THAN = -1;
-    private static final int GREATER_THAN = 1;
 }
