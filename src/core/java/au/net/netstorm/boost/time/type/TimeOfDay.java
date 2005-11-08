@@ -23,11 +23,4 @@ public final class TimeOfDay extends Primordial {
         if (minute == null) throw new IllegalArgumentException("The minute of the hour cannot be null.");
         if (second == null) throw new IllegalArgumentException("The second of the minute cannot be null.");
     }
-
-    private boolean equals(TimeOfDay time) {
-        if (! time.hour.equals(hour)) return false;
-        if (! time.minute.equals(minute)) return false;
-        if (! time.second.equals(second)) return false;
-        return true;
-    }
 }

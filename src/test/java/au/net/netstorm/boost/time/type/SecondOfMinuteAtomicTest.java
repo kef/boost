@@ -19,34 +19,15 @@ public final class SecondOfMinuteAtomicTest extends TestCase {
         }
     }
 
-
     public void testConstants() {
         assertEquals(new SecondOfMinute(0) , SecondOfMinute.FIRST);
     }
 
-    public void testEquality() {
-        SecondOfMinute second = new SecondOfMinute(49);
-        assertFalse(second.equals(null));
-        assertFalse(second.equals(void.class));
-        assertNotEquals(second, new SecondOfMinute(12));
-        assertEquals(second, new SecondOfMinute(49));
-    }
-
-    public void testHashCode() {
-        assertEquals(100, new SecondOfMinute(5).hashCode());
-    }
-
-    // ---------- PRIVATE:
-
-    private void assertNotEquals(SecondOfMinute s1, SecondOfMinute s2) {
-        assertFalse(s1.equals(s2));
-        assertFalse(s2.equals(s1));
-    }
-
+    // FIXME: SC502 assert/check; decide which pattern to use and be consistent.
     private void assertInvalidSecond(int second) {
         try {
             new SecondOfMinute(second);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException expected) { }
     }
 }
