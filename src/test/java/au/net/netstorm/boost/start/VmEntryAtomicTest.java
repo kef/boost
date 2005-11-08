@@ -18,12 +18,12 @@ public class VmEntryAtomicTest extends TestCase {
     public void testInstance() {
         ClassPropertiesTestUtil.checkInstance(VmEntry.class, getVmEntry());
     }
-//
-//    public void testProductionBootstrap() {
-//        Object bootstrap = ReflectTestUtil.getInstanceFieldValue(getVmEntry(), "bootstrapper");
-//        ClassPropertiesTestUtil.checkInstance(DefaultBootstrapper.class, bootstrap);
-//    }
-//
+
+    public void testProductionBootstrap() {
+        Object bootstrap = ReflectTestUtil.getInstanceFieldValue(getVmEntry(), "bootstrapper");
+        ClassPropertiesTestUtil.checkInstance(DefaultBootstrapper.class, bootstrap);
+    }
+
 //    public void testEntryPoint() {
 //        checkEntryPoint(VM_STYLE_REAL);
 //        checkEntryPoint(VM_STYLE_PRINT);
