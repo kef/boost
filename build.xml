@@ -133,7 +133,7 @@
             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
                 <!-- FIXME: SC502 Parameterise the coverage file for different test styles. -->
-                <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.file}"/>
+                <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.dir}/atomic_coverage.ser"/>
                 <classpath refid="@{classpath.refid}"/>
                 <formatter type="xml"/>
                 <formatter type="plain"/>
@@ -164,7 +164,7 @@
     </macrodef>
 
     <target name="_instrument">
-        <macro_cobertura_instrument code.type="core"/>
+        <macro_cobertura_instrument code.type="core" test.type="atomic"/>
     </target>
 
     <target name="_report_coverage">
@@ -176,16 +176,15 @@
         <macro_cobertura_check branch.limit="100" line.limit="100"/>
     </target>
 
-    <property name="coverage.file" location="${coverage.dir}/coverage.ser"/>
-
 	<taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
 
     <macrodef name="macro_cobertura_instrument">
         <attribute name="code.type"/>
+        <attribute name="test.type"/>
         <sequential>
             <property name="@{code.type}.instrumented.dir" location="${coverage.dir}/instrumented/@{code.type}"/>
             <mkdir dir="${@{code.type}.instrumented.dir}"/>
-            <cobertura-instrument todir="${@{code.type}.instrumented.dir}" datafile="${coverage.file}">
+            <cobertura-instrument todir="${@{code.type}.instrumented.dir}" datafile="${coverage.dir}/@{test.type}_coverage.ser">
                 <fileset dir="${class.dir}/@{code.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
@@ -198,7 +197,7 @@
         <attribute name="report.dir"/>
         <sequential>
             <mkdir dir="@{report.dir}"/>
-            <cobertura-report destdir="@{report.dir}" datafile="${coverage.file}">
+            <cobertura-report destdir="@{report.dir}" datafile="${coverage.dir}/atomic_coverage.ser">
                 <!-- FIXME: SC502 Parameterise -->
                 <fileset dir="${core.src.dir}" includes="**/*.java"/>
             </cobertura-report>
@@ -210,7 +209,7 @@
         <attribute name="line.limit"/>
         <sequential>
             <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
-                             failureproperty="coverage.failed" haltonfailure="true" datafile="${coverage.file}"/>
+                             failureproperty="coverage.failed" haltonfailure="true" datafile="${coverage.dir}/atomic_coverage.ser"/>
         </sequential>
     </macrodef>
 </project>
