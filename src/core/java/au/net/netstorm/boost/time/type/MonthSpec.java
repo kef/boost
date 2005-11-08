@@ -3,8 +3,10 @@ package au.net.netstorm.boost.time.type;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import au.net.netstorm.boost.primordial.Primordial;
+
 // FIXME: SC507 Now that MonthOfYear exists, introduce it here.
-public final class MonthSpec implements Comparable {
+public final class MonthSpec extends Primordial implements Comparable {
 
     public final int year;
     public final int month;
@@ -28,21 +30,15 @@ public final class MonthSpec implements Comparable {
     public int compareTo(Object o) {
         if (! getClass().isAssignableFrom(o.getClass())) throw new IllegalArgumentException("We can only perform a comparison on a "+getClass().getName()+".  You provided a "+o.getClass().getName()+".");
         MonthSpec target = (MonthSpec) o;
+        return compareTo(target);
+    }
+
+    private int compareTo(MonthSpec target) {
         int us = year * 12 + month;
         int them = target.year * 12 + target.month;
         if (us == them) return 0;
         if (us <  them) return -1;
         return 1;
-    }
-
-    public boolean equals(Object o) {
-        if (o == null) return false;
-        if (!(o instanceof MonthSpec)) return false;
-        return compareTo(o) == 0;
-    }
-
-    public String toString() {
-        return "MonthSpec[year="+year+",month="+month+",totalDays="+totalDays+",startDay="+startDay+"]";
     }
 
     private static final int[] DAYS_IN_MONTH = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };

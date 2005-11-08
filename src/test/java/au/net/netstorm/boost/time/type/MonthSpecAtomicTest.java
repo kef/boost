@@ -13,7 +13,6 @@ public final class MonthSpecAtomicTest extends TestCase {
     private static final int EQUAL_TO = 0;
     private static final int LESS_THAN = -1;
     private static final int GREATER_THAN = 1;
-    private static final Object NULL = null;
 
     public void testConstruction() {
         assertConstruction(2004, Calendar.JANUARY);
@@ -40,15 +39,6 @@ public final class MonthSpecAtomicTest extends TestCase {
             m1.compareTo("THIS AIN'T GONNA WORK");
             fail();
         } catch (IllegalArgumentException ex) { }
-    }
-
-    public void testEquality() {
-        MonthSpec month = new MonthSpec(2000, Calendar.JANUARY);
-        assertFalse(month.equals(NULL));
-        assertFalse(month.equals(void.class));
-        assertNotEquals(month, new MonthSpec(2000, Calendar.FEBRUARY));
-        assertNotEquals(month, new MonthSpec(2001, Calendar.JANUARY));
-        assertEquals(month, new MonthSpec(2000, Calendar.JANUARY));
     }
 
     public void testDaysInMonth() {
@@ -103,8 +93,6 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertStartDay(Calendar.SUNDAY,   2007, Calendar.APRIL);
     }
 
-    // PRIVATE:
-
     private void assertDaysInMonth(int expected, int year, int month) {
         MonthSpec spec = new MonthSpec(year, month);
         assertEquals(month, spec.month);
@@ -126,10 +114,5 @@ public final class MonthSpecAtomicTest extends TestCase {
         MonthSpec spec = new MonthSpec(year, month);
         MonthSpec toSpec = new MonthSpec(toYear, toMonth);
         assertEquals(status, spec.compareTo(toSpec));
-    }
-
-    private void assertNotEquals(MonthSpec m1, MonthSpec m2) {
-        assertFalse(m1.equals(m2));
-        assertFalse(m2.equals(m1));
     }
 }
