@@ -97,12 +97,13 @@ public final class PrimordialAtomicTest extends TestCase {
         return primordial;
     }
 
-    private void resolveField(Primordial primordial, FieldValueSpec fieldValue) {
-        Class cls = primordial.getClass();
+    // FIXME: SC502 Move out into shared class.
+    public static void resolveField(Object ref, FieldValueSpec fieldValue) {
+        Class cls = ref.getClass();
         try {
             Field field = cls.getDeclaredField(fieldValue.getName());
             field.setAccessible(true);
-            field.set(primordial, fieldValue.getValue());
+            field.set(ref, fieldValue.getValue());
         } catch (NoSuchFieldException e) {
             throw new RuntimeException(e); // FIXME: SC502 Push out to "edge".
         } catch (IllegalAccessException e) {
