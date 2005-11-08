@@ -40,21 +40,6 @@ public final class DayInMonthAtomicTest extends TestCase {
         assertFields(30 , MonthOfYear.DECEMBER);
     }
 
-    public void testEquality() {
-        final DayInMonth JAN_12 = new DayInMonth(12, MonthOfYear.JANUARY);
-        assertFalse(JAN_12.equals(null));
-        assertFalse(JAN_12.equals(void.class));
-        assertNotEquals(JAN_12, new DayInMonth(11, JAN_12.month));
-        assertNotEquals(JAN_12, new DayInMonth(JAN_12.day, MonthOfYear.FEBRUARY));
-        assertEquals(JAN_12, new DayInMonth(12, MonthOfYear.JANUARY));
-    }
-
-    public void testHashCode() {
-        assertEquals(100, new DayInMonth(1, MonthOfYear.JANUARY).hashCode());
-    }
-
-    // ---------- PRIVATE:
-
     private void assertFields(int day, MonthOfYear month) {
         DayInMonth dom = new DayInMonth(day, month);
         assertEquals(day, dom.day);
@@ -70,11 +55,6 @@ public final class DayInMonthAtomicTest extends TestCase {
             new DayInMonth(-1, month);
             fail();
         } catch (IllegalArgumentException ex) { }
-    }
-
-    private void assertNotEquals(DayInMonth d1, DayInMonth d2) {
-        assertFalse(d1.equals(d2));
-        assertFalse(d2.equals(d1));
     }
 }
 
