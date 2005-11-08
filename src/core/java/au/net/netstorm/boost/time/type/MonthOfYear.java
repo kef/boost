@@ -25,7 +25,6 @@ public final class MonthOfYear {
     }
 
     public boolean equals(Object o) {
-        if (o == null) return false;
         if (!(o instanceof MonthOfYear)) return false;
         return ((MonthOfYear)o).value == value;
     }
