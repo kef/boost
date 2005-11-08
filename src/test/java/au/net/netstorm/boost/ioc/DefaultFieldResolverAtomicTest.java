@@ -2,8 +2,6 @@ package au.net.netstorm.boost.ioc;
 
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.util.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import junit.framework.TestCase;
 
@@ -24,14 +22,14 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
     private static final FieldValueSpec FIELD_VALUE_SPEC_INCOMPATIBLE_TYPE = new DefaultFieldValueSpec(FIELD_NAME_HEAD, INTEGER_5);
     private static final FieldValueSpec FIELD_VALUE_NO_SUCH_FIELD_VALUE = new DefaultFieldValueSpec(NAME_DOES_NOT_EXIST, VALUE_1);
     private final FieldResolver resolver = new DefaultFieldResolver();
-    private final ReflectMaster reflect = new DefaultReflectMaster();
 
     public void testResolve() throws Exception {
-        checkResolve(createMultiField(), FIELD_NAME_SIZE, INTEGER_5);
-        checkResolve(createMultiField(), FIELD_NAME_HEAD, "HEAD");
-        checkResolve(createMultiField(), FIELD_NAME_TAIL, "TAIL");
+        checkResolve(FIELD_NAME_SIZE, INTEGER_5);
+        checkResolve(FIELD_NAME_HEAD, "HEAD");
+        checkResolve(FIELD_NAME_TAIL, "TAIL");
     }
 
+    // FIXME: SC502 Push this check into FieldValue object.
     public void testIllegalFieldNames() {
         checkException(NAME_HAS_SPACES);
         checkException(NAME_HAS_ILLEGAL_CHARACTERS);
@@ -60,27 +58,27 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
         resolve(FIELD_VALUE_NO_SUCH_FIELD_VALUE);
     }
 
-    private TestSubjects.MultiField createMultiField() {
-        return new TestSubjects.MultiField();
-    }
-
     private void resolve(FieldValueSpec fieldValueSpec) {
-        resolver.resolve(createMultiField(), fieldValueSpec);
+        resolver.resolve(new TestSubjects.MultiField(), fieldValueSpec);
     }
 
-    private void checkResolve(Object ref, String fieldName, Object value) throws Exception {
-        assertEquals(null, ReflectTestUtil.getInstanceFieldValue(ref, fieldName));
+    private void checkResolve(String fieldName, Object value) throws Exception {
+        Object ref = new TestSubjects.MultiField();
+        assertEquals(null, getInstanceFieldValue(ref, fieldName));
         FieldValueSpec fieldValueSpec = new DefaultFieldValueSpec(fieldName, value);
         resolver.resolve(ref, fieldValueSpec);
-        assertEquals(value, ReflectTestUtil.getInstanceFieldValue(ref, fieldName));
+        assertEquals(value, getInstanceFieldValue(ref, fieldName));
     }
 
     private void checkException(String name) {
         try {
             FieldValueSpec spec = new DefaultFieldValueSpec(name, VALUE_1);
-            resolver.resolve(createMultiField(), spec);
-            // FIXME: SC506 Drop simian back down to 2 - chokes on the next 2 lines right now.
+            resolver.resolve(new TestSubjects.MultiField(), spec);
             fail();
         } catch (IocException expected) { }
+    }
+
+    private Object getInstanceFieldValue(Object ref, String fieldName) {
+        return ReflectTestUtil.getInstanceFieldValue(ref, fieldName);
     }
 }

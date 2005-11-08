@@ -16,6 +16,7 @@ public class DefaultFieldResolver implements FieldResolver {
         String name = fieldValueSpec.getName();
         Object value = fieldValueSpec.getValue();
         Field field = getField(ref, name);
+        // FIXME: SC502 Reinstate this check.
 //        ensureNull(ref, field);
         setValue(ref, field, value);
     }
