@@ -4,6 +4,12 @@ public final class DayInMonth {
 
     public static final DayInMonth FIRST_DAY_OF_YEAR = new DayInMonth(0, MonthOfYear.JANUARY);
     public final int day;
+
+    public DayInMonth(int day, MonthOfYear month) {
+        this.day = day;
+        this.month = month;
+        validate();
+    }
     public final MonthOfYear month;
 
     public int hashCode() { return 100; }
@@ -18,12 +24,6 @@ public final class DayInMonth {
         return "" + month + " " + day;
     }
 
-    public DayInMonth(int day, MonthOfYear month) {
-        this.day = day;
-        this.month = month;
-        validate();
-    }
-
     // ---- PRIVATE:
 
     private void validate() {
@@ -33,7 +33,6 @@ public final class DayInMonth {
 
     private boolean equals(DayInMonth dom) {
         if (dom.day != day) return false;
-        if (!dom.month.equals(month)) return false;
-        return true;
+        return dom.month.equals(month);
     }
 }
