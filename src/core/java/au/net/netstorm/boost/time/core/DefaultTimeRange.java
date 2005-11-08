@@ -31,7 +31,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     public String toString() {
-        return "DefaultDateRange[start=" + start.point.millis + ",duration=" + duration.millis + "]";
+        return "DefaultTimeRange[start=" + start.point.millis + ",duration=" + duration.millis + "]";
     }
 
     public DefaultTimeRange(StartTime start, Duration duration) {
@@ -46,11 +46,8 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     private boolean equals(TimeRange range) {
-        if (! range.start()
-                .equals(start)) return false;
-        if (! range.duration()
-                .equals(duration)) return false;
-        return true;
+        if (! range.start().equals(start)) return false;
+        return range.duration().equals(duration);
     }
 
     private final StartTime start;

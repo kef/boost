@@ -6,9 +6,6 @@ import junit.framework.TestCase;
 
 public final class DefaultTimeRangeAtomicTest extends TestCase {
 
-    public void setUp() {
-        range = new DefaultTimeRange(START_TIME_100, DURATION_200);
-    }
 
     public void testNullsInvalidInDualConstructor() {
         assertNullsInvalidInDualConstructor(null, Duration.QUANTUM);
@@ -53,7 +50,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     }
 
     public void testEquality() {
-        assertFalse(range.equals(null));
+        assertFalse(range.equals(NULL));
         assertFalse(range.equals(void.class));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_100, DURATION_201));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_100, DURATION_199));
@@ -62,7 +59,6 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertEquals(range, new DefaultTimeRange(new StartTime(new TimePoint(100)), new Duration(200)));
     }
 
-
     public void testHashCode() {
         assertHashCode(500, new DefaultTimeRange(START_TIME_500, DURATION_001));
         assertHashCode(500, new DefaultTimeRange(START_TIME_500, DURATION_200));
@@ -70,6 +66,15 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertHashCode(499, new DefaultTimeRange(START_TIME_499, DURATION_200));
         assertHashCode(1, new DefaultTimeRange(START_TIME_0x7FFFFFFF00000001, DURATION_001));
         assertHashCode(1, new DefaultTimeRange(START_TIME_0x7FFFFFFF00000001, DURATION_200));
+    }
+
+    public void testToString() {
+        checkToString("DefaultTimeRange[start=100,duration=1]", START_TIME_100, DURATION_001);
+        checkToString("DefaultTimeRange[start=99,duration=199]", START_TIME_099, DURATION_199);
+    }
+
+    private void checkToString(String expected, StartTime start, Duration duration) {
+        assertEquals(expected, new DefaultTimeRange(start, duration).toString());
     }
 
     private void assertNullsInvalidInDualConstructor(StartTime start, Duration duration) {
@@ -94,7 +99,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertEquals(hash, range.hashCode());
     }
 
-    private TimeRange range;
+    private TimeRange range = new DefaultTimeRange(START_TIME_100, DURATION_200);
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
 
@@ -140,5 +145,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private static final Duration DURATION_201 = new Duration(201);
     private static final Duration DURATION_199 = new Duration(199);
     private static final Duration DURATION_999 = new Duration(999);
+
+    private static final Object NULL = null;
 }
 
