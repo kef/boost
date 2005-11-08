@@ -39,11 +39,16 @@ public class DefaultFieldResolverAtomicTest extends TestCase {
     }
 
 // FIXME: SC506
-//    public void failIfFieldAlreadyInitialized() throws FieldAlreadyInitializedException {
-//        Object ref = reflect.create(TestSubjects.FieldAlreadyInitialized.class);
-//        FieldSpec fieldSpec = new DefaultFieldSpec("integer", new Integer(8));
-//        resolver.resolve(ref, fieldSpec);
-//    }
+    public void testFailIfFieldAlreadyInitialized() {
+        // FIXME: SC502 Triangulate.
+        Object ref = new TestSubjects.FieldAlreadyInitialized();
+        FieldValueSpec fieldValue = new DefaultFieldValueSpec("integer", new Integer(8));
+        try {
+            resolver.resolve(ref, fieldValue);
+            fail();
+        } catch (FieldAlreadyInitializedException expected) {
+        }
+    }
 
     // FIXME: SC502 Convert to good old try / catch.
     public void failNullInResolve() throws IllegalArgumentException {

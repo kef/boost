@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.primordial;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
 
@@ -11,13 +12,10 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
-import au.net.netstorm.boost.ioc.DefaultFieldResolver;
-import au.net.netstorm.boost.ioc.FieldResolver;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 
 public final class PrimordialAtomicTest extends TestCase {
-    private final FieldResolver resolver = new DefaultFieldResolver();
 
     public void testNotAbstract() {
         assertFalse(ClassPropertiesTestUtil.isClassAbstract(Primordial.class));
@@ -95,8 +93,21 @@ public final class PrimordialAtomicTest extends TestCase {
     private Primordial createPrimordialWithField(Object master, String fieldName) {
         Primordial primordial = new Primordial();
         FieldValueSpec fieldValue = new DefaultFieldValueSpec(fieldName, master);
-        resolver.resolve(primordial, fieldValue);
+        resolveField(primordial, fieldValue);
         return primordial;
+    }
+
+    private void resolveField(Primordial primordial, FieldValueSpec fieldValue) {
+        Class cls = primordial.getClass();
+        try {
+            Field field = cls.getDeclaredField(fieldValue.getName());
+            field.setAccessible(true);
+            field.set(primordial, fieldValue.getValue());
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e); // FIXME: SC502 Push out to "edge".
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {

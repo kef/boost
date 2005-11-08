@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import au.net.netstorm.boost.util.type.Immutable;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 
+// FIXME: SC502 Who uses this.  Do we need it?
 // FIXME: SC506 Can just be an immutable.
 public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private final String name;

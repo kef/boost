@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.DefaultClassMaster;
 
+// FIXME: SC502 Maybe we can clobber the entire IOC area :)
 // FIXME: SC509 Tidy this up.
 public class DefaultFieldResolver implements FieldResolver {
     public void resolve(Object ref, FieldValueSpec fieldValueSpec) {
@@ -17,24 +18,24 @@ public class DefaultFieldResolver implements FieldResolver {
         Object value = fieldValueSpec.getValue();
         Field field = getField(ref, name);
         // FIXME: SC502 Reinstate this check.
-//        ensureNull(ref, field);
+        ensureNull(ref, field);
         setValue(ref, field, value);
     }
 
 // FIXME: SC509  remove duplication.
-//    private void ensureNull(Object ref, Field field) {
-//        field.setAccessible(true);
-//        Object value = doGet(field, ref);
-//        if (value != null) throw new FieldAlreadyInitializedException();
-//    }
+    private void ensureNull(Object ref, Field field) {
+        field.setAccessible(true);
+        Object value = doGet(field, ref);
+        if (value != null) throw new FieldAlreadyInitializedException();
+    }
 
-//    private Object doGet(Field field, Object ref) {
-//        try {
-//            return field.get(ref);
-//        } catch (IllegalAccessException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private Object doGet(Field field, Object ref) {
+        try {
+            return field.get(ref);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // FIXME: SC509 Test drive the message for bad type.
     private void setValue(Object ref, Field field, Object value) {
