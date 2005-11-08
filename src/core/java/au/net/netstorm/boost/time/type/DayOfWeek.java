@@ -2,6 +2,7 @@ package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
 
+// FIXME: SC502 Candidate for Primordial with specialised toString().
 public final class DayOfWeek {
 
     public static final int DAYS_IN_A_WEEK = 7;
@@ -22,17 +23,14 @@ public final class DayOfWeek {
     public int hashCode() { return 100; }
 
     public String toString() {
-        if (value == Calendar.SUNDAY)    return "SUNDAY";
-        if (value == Calendar.MONDAY)    return "MONDAY";
-        if (value == Calendar.TUESDAY)   return "TUESDAY";
+        if (value == Calendar.SUNDAY) return "SUNDAY";
+        if (value == Calendar.MONDAY) return "MONDAY";
+        if (value == Calendar.TUESDAY) return "TUESDAY";
         if (value == Calendar.WEDNESDAY) return "WEDNESDAY";
-        if (value == Calendar.THURSDAY)  return "THURSDAY";
-        if (value == Calendar.FRIDAY)    return "FRIDAY";
-        if (value == Calendar.SATURDAY)  return "SATURDAY";
-        throw new IllegalStateException("Weird, we have an invalid day value (day="+value+").");
+        if (value == Calendar.THURSDAY) return "THURSDAY";
+        if (value == Calendar.FRIDAY) return "FRIDAY";
+        return "SATURDAY";
     }
-
-    // ---- PRIVATE:
 
     private void validate() {
         if (value < Calendar.SUNDAY || value > Calendar.SATURDAY) throw new IllegalArgumentException("Invalid day (day="+value+").");
