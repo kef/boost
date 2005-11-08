@@ -3,6 +3,10 @@ package au.net.netstorm.boost.time.core;
 import java.io.Serializable;
 
 public final class DefaultTimeRange implements TimeRange, Serializable {
+    private static final TimePointMaster TIME = new DefaultTimePointMaster();
+    private final StartTime start;
+    private final Duration duration;
+
     public StartTime start() {
         return start;
     }
@@ -17,7 +21,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     public boolean intersects(TimeRange range) {
-        return range.contains(start().point) || range.contains(DefaultTimePointMaster.previous(TimeRangeUtil.end(this).point)) || this.contains(range.start().point) || this.contains(DefaultTimePointMaster.previous(TimeRangeUtil.end(range).point));
+        return range.contains(start().point) || range.contains(TIME.previous(TimeRangeUtil.end(this).point)) || this.contains(range.start().point) || this.contains(TIME.previous(TimeRangeUtil.end(range).point));
     }
 
     public boolean equals(Object o) {
@@ -49,7 +53,4 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
         if (! range.start().equals(start)) return false;
         return range.duration().equals(duration);
     }
-
-    private final StartTime start;
-    private final Duration duration;
 }

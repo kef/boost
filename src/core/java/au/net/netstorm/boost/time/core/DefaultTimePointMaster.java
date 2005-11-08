@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.time.core;
 
 // FIXME: SC507 Make instance.
-public final class DefaultTimePointMaster {
+public final class DefaultTimePointMaster implements TimePointMaster {
 
-    public static final TimePoint next(TimePoint time) {
+    public final TimePoint next(TimePoint time) {
         return relative(time, +Duration.QUANTUM.millis);
     }
 
-    public static final TimePoint previous(TimePoint time) {
+    public final TimePoint previous(TimePoint time) {
         return relative(time, -Duration.QUANTUM.millis);
     }
 
-    private static final TimePoint relative(TimePoint time, long amount) {
+    private final TimePoint relative(TimePoint time, long amount) {
         return new TimePoint(time.millis + amount);
     }
 }
