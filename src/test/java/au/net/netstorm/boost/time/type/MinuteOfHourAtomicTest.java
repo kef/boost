@@ -24,25 +24,6 @@ public final class MinuteOfHourAtomicTest extends TestCase {
         }
     }
 
-    public void testEquality() {
-        MinuteOfHour minute = new MinuteOfHour(57);
-        assertFalse(minute.equals(null));
-        assertFalse(minute.equals(void.class));
-        assertNotEquals(minute, new MinuteOfHour(9));
-        assertEquals(minute, new MinuteOfHour(57));
-    }
-
-    public void testHashCode() {
-        assertEquals(100, new MinuteOfHour(12) .hashCode());
-    }
-
-    // ---------- PRIVATE:
-
-    private void assertNotEquals(MinuteOfHour m1, MinuteOfHour m2) {
-        assertFalse(m1.equals(m2));
-        assertFalse(m2.equals(m1));
-    }
-
     private void assertInvalidMinute(int minute) {
         try {
             new MinuteOfHour(minute);
