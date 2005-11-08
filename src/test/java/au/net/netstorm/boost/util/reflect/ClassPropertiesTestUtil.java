@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 // FIXME: SC506 Instance rather than static.
 
-public class ClassPropertiesTestUtil {
+public class ClassPropertiesTestUtil extends Assert {
     public static boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();
         if (!Modifier.isPublic(modifiers)) return false;
@@ -52,7 +52,7 @@ public class ClassPropertiesTestUtil {
         try {
             Field field = ReflectTestUtil.getDeclaredField(ref.getClass(), fieldName);
             field.setAccessible(true);
-            Assert.assertEquals(expectedClass, field.get(ref).getClass());
+            assertEquals(expectedClass, field.get(ref).getClass());
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -60,8 +60,8 @@ public class ClassPropertiesTestUtil {
 
     public static void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass) {
         Interface inyerface = new Interface(targetInterface);
-        Assert.assertTrue(getName(implementationClass) + " is not an implementation of " + getName(targetInterface), isImplementationOf(inyerface, implementationClass));
-        Assert.assertTrue(getName(implementationClass) + " must be final", isClassFinal(implementationClass));
+        assertTrue(getName(implementationClass) + " is not an implementation of " + getName(targetInterface), isImplementationOf(inyerface, implementationClass));
+        assertTrue(getName(implementationClass) + " must be final", isClassFinal(implementationClass));
     }
 
     private static String getName(Class implementationClass) {
