@@ -2,8 +2,6 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
-
 class DefaultReflectObjectMaster implements ReflectObjectMaster {
     public Constructor getConstructor(Class cls) {
         checkIsNotInterface(cls);

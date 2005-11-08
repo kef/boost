@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.ioc.MultipleConstructorsNotSupportedException;
+import au.net.netstorm.boost.util.reflect.MultipleConstructorsNotSupportedException;
 import au.net.netstorm.boost.primordial.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.CallSpec;
 
