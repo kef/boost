@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
+// FIXME: SC502 Candidate for Primordial with ability to override toString().
 public final class MonthOfYear {
 
     public static final int MONTHS_IN_YEAR = 12;
@@ -36,8 +37,6 @@ public final class MonthOfYear {
     public String toString() {
         return "" + toString(value);
     }
-
-    // ---- PRIVATE:
 
     private void validate() {
         if (value < 0 || value >= MONTHS_IN_YEAR) throw new IllegalArgumentException("Invalid month (month="+value+").  Month must be between 0 and "+(MONTHS_IN_YEAR-1)+".");

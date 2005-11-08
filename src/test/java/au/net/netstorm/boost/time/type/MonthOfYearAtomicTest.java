@@ -3,6 +3,19 @@ package au.net.netstorm.boost.time.type;
 import junit.framework.TestCase;
 
 public final class MonthOfYearAtomicTest extends TestCase {
+    private static final MonthOfYear JANUARY = MonthOfYear.JANUARY;
+    private static final MonthOfYear FEBRUARY = MonthOfYear.FEBRUARY;
+    private static final MonthOfYear MARCH = MonthOfYear.MARCH;
+    private static final MonthOfYear APRIL = MonthOfYear.APRIL;
+    private static final MonthOfYear MAY = MonthOfYear.MAY;
+    private static final MonthOfYear JUNE = MonthOfYear.JUNE;
+    private static final MonthOfYear JULY = MonthOfYear.JULY;
+    private static final MonthOfYear AUGUST = MonthOfYear.AUGUST;
+    private static final MonthOfYear SEPTEMBER = MonthOfYear.SEPTEMBER;
+    private static final MonthOfYear OCTOBER = MonthOfYear.OCTOBER;
+    private static final MonthOfYear NOVEMBER = MonthOfYear.NOVEMBER;
+    private static final MonthOfYear DECEMBER = MonthOfYear.DECEMBER;
+    private static final Object NULL = null;
 
     public void testMonthOfYear() {
         assertEquals(12, MonthOfYear.MONTHS_IN_YEAR);
@@ -20,38 +33,38 @@ public final class MonthOfYearAtomicTest extends TestCase {
     }
 
     public void testMaximumDays() {
-        assertEquals(31, MonthOfYear.JANUARY.maxDays);
-        assertEquals(29, MonthOfYear.FEBRUARY.maxDays);
-        assertEquals(31, MonthOfYear.MARCH.maxDays);
-        assertEquals(30, MonthOfYear.APRIL.maxDays);
-        assertEquals(31, MonthOfYear.MAY.maxDays);
-        assertEquals(30, MonthOfYear.JUNE.maxDays);
-        assertEquals(31, MonthOfYear.JULY.maxDays);
-        assertEquals(31, MonthOfYear.AUGUST.maxDays);
-        assertEquals(30, MonthOfYear.SEPTEMBER.maxDays);
-        assertEquals(31, MonthOfYear.OCTOBER.maxDays);
-        assertEquals(30, MonthOfYear.NOVEMBER.maxDays);
-        assertEquals(31, MonthOfYear.DECEMBER.maxDays);
+        assertEquals(31, JANUARY.maxDays);
+        assertEquals(29, FEBRUARY.maxDays);
+        assertEquals(31, MARCH.maxDays);
+        assertEquals(30, APRIL.maxDays);
+        assertEquals(31, MAY.maxDays);
+        assertEquals(30, JUNE.maxDays);
+        assertEquals(31, JULY.maxDays);
+        assertEquals(31, AUGUST.maxDays);
+        assertEquals(30, SEPTEMBER.maxDays);
+        assertEquals(31, OCTOBER.maxDays);
+        assertEquals(30, NOVEMBER.maxDays);
+        assertEquals(31, DECEMBER.maxDays);
     }
 
     public void testConstants() {
-        assertEquals(new MonthOfYear(0) , MonthOfYear.JANUARY);
-        assertEquals(new MonthOfYear(1) , MonthOfYear.FEBRUARY);
-        assertEquals(new MonthOfYear(2) , MonthOfYear.MARCH);
-        assertEquals(new MonthOfYear(3) , MonthOfYear.APRIL);
-        assertEquals(new MonthOfYear(4) , MonthOfYear.MAY);
-        assertEquals(new MonthOfYear(5) , MonthOfYear.JUNE);
-        assertEquals(new MonthOfYear(6) , MonthOfYear.JULY);
-        assertEquals(new MonthOfYear(7) , MonthOfYear.AUGUST);
-        assertEquals(new MonthOfYear(8) , MonthOfYear.SEPTEMBER);
-        assertEquals(new MonthOfYear(9) , MonthOfYear.OCTOBER);
-        assertEquals(new MonthOfYear(10) , MonthOfYear.NOVEMBER);
-        assertEquals(new MonthOfYear(11) , MonthOfYear.DECEMBER);
+        assertEquals(new MonthOfYear(0) , JANUARY);
+        assertEquals(new MonthOfYear(1) , FEBRUARY);
+        assertEquals(new MonthOfYear(2) , MARCH);
+        assertEquals(new MonthOfYear(3) , APRIL);
+        assertEquals(new MonthOfYear(4) , MAY);
+        assertEquals(new MonthOfYear(5) , JUNE);
+        assertEquals(new MonthOfYear(6) , JULY);
+        assertEquals(new MonthOfYear(7) , AUGUST);
+        assertEquals(new MonthOfYear(8) , SEPTEMBER);
+        assertEquals(new MonthOfYear(9) , OCTOBER);
+        assertEquals(new MonthOfYear(10) , NOVEMBER);
+        assertEquals(new MonthOfYear(11) , DECEMBER);
     }
 
     public void testEquality() {
         MonthOfYear month = new MonthOfYear(4);
-        assertFalse(month.equals(null));
+        assertFalse(month.equals(NULL));
         assertFalse(month.equals(void.class));
         assertNotEquals(month, new MonthOfYear(7));
         assertEquals(month, new MonthOfYear(4));
@@ -61,7 +74,24 @@ public final class MonthOfYearAtomicTest extends TestCase {
         assertEquals(100, new MonthOfYear(2).hashCode());
     }
 
-    // ---------- PRIVATE:
+    public void testToString() {
+        assertToString("Jan", JANUARY);
+        assertToString("Feb", FEBRUARY);
+        assertToString("Mar", MARCH);
+        assertToString("Apr", APRIL);
+        assertToString("May", MAY);
+        assertToString("Jun", JUNE);
+        assertToString("Jul", JULY);
+        assertToString("Aug", AUGUST);
+        assertToString("Sep", SEPTEMBER);
+        assertToString("Oct", OCTOBER);
+        assertToString("Nov", NOVEMBER);
+        assertToString("Dec", DECEMBER);
+    }
+
+    private void assertToString(String expected, MonthOfYear month) {
+        assertEquals(expected, month.toString());
+    }
 
     private void assertNotEquals(MonthOfYear m1, MonthOfYear m2) {
         assertFalse(m1.equals(m2));
