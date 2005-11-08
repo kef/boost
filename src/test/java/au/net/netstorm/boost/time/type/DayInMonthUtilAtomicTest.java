@@ -3,6 +3,7 @@ package au.net.netstorm.boost.time.type;
 import junit.framework.TestCase;
 
 public final class DayInMonthUtilAtomicTest extends TestCase {
+    private final DayInMonthMaster master = new DefaultDayInMonthMaster();
 
     public void testIncDecMonth() {
         assertIncDecMonth(JAN_00, FEB_00);
@@ -14,19 +15,19 @@ public final class DayInMonthUtilAtomicTest extends TestCase {
     }
 
     public void testBoundaryDays() {
-        assertEquals(FEB_28, DayInMonthUtil.incMonth(JAN_29));
-        assertEquals(FEB_28, DayInMonthUtil.incMonth(JAN_30));
-        assertEquals(APR_29, DayInMonthUtil.incMonth(MAR_30));
-        assertEquals(JUN_29, DayInMonthUtil.incMonth(MAY_30));
-        assertEquals(SEP_29, DayInMonthUtil.incMonth(AUG_30));
-        assertEquals(NOV_29, DayInMonthUtil.incMonth(OCT_30));
+        assertEquals(FEB_28, master.incMonth(JAN_29));
+        assertEquals(FEB_28, master.incMonth(JAN_30));
+        assertEquals(APR_29, master.incMonth(MAR_30));
+        assertEquals(JUN_29, master.incMonth(MAY_30));
+        assertEquals(SEP_29, master.incMonth(AUG_30));
+        assertEquals(NOV_29, master.incMonth(OCT_30));
 
-        assertEquals(FEB_28, DayInMonthUtil.decMonth(MAR_29));
-        assertEquals(FEB_28, DayInMonthUtil.decMonth(MAR_30));
-        assertEquals(APR_29, DayInMonthUtil.decMonth(MAY_30));
-        assertEquals(JUN_29, DayInMonthUtil.decMonth(JUL_30));
-        assertEquals(SEP_29, DayInMonthUtil.decMonth(OCT_30));
-        assertEquals(NOV_29, DayInMonthUtil.decMonth(DEC_30));
+        assertEquals(FEB_28, master.decMonth(MAR_29));
+        assertEquals(FEB_28, master.decMonth(MAR_30));
+        assertEquals(APR_29, master.decMonth(MAY_30));
+        assertEquals(JUN_29, master.decMonth(JUL_30));
+        assertEquals(SEP_29, master.decMonth(OCT_30));
+        assertEquals(NOV_29, master.decMonth(DEC_30));
     }
 
 
@@ -42,16 +43,14 @@ public final class DayInMonthUtilAtomicTest extends TestCase {
         assertIncDecDay(APR_29, APR_00);
     }
 
-    // ---- PRIVATE:
-
     private void assertIncDecDay(DayInMonth pre, DayInMonth post) {
-        assertEquals(post, DayInMonthUtil.incDay(pre));
-        assertEquals(pre, DayInMonthUtil.decDay(post));
+        assertEquals(post, master.incDay(pre));
+        assertEquals(pre, master.decDay(post));
     }
 
     private void assertIncDecMonth(DayInMonth pre, DayInMonth post) {
-        assertEquals(post, DayInMonthUtil.incMonth(pre));
-        assertEquals(pre, DayInMonthUtil.decMonth(post));
+        assertEquals(post, master.incMonth(pre));
+        assertEquals(pre, master.decMonth(post));
     }
 
     private static final DayInMonth JAN_00 = new DayInMonth(0, MonthOfYear.JANUARY);

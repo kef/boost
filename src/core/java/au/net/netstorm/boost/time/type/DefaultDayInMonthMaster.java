@@ -2,35 +2,36 @@ package au.net.netstorm.boost.time.type;
 
 // FIXME: SC507 Remove all -- PRIVATE comments.
 // FIXME: SC507 Instancise all static utilities.  Call masters?
-public final class DayInMonthUtil {
+// FIXME: SC502 Interface?
+public final class DefaultDayInMonthMaster implements DayInMonthMaster {
 
-    public static final DayInMonth incMonth(DayInMonth dim) {
+    public final DayInMonth incMonth(DayInMonth dim) {
         return bumpMonth(dim, +1);
     }
 
-    public static final DayInMonth decMonth(DayInMonth dim) {
+    public final DayInMonth decMonth(DayInMonth dim) {
         return bumpMonth(dim, -1);
     }
 
-    public static final DayInMonth incDay(DayInMonth dim) {
+    public final DayInMonth incDay(DayInMonth dim) {
         return bumpDay(dim, +1);
     }
 
-    public static final DayInMonth decDay(DayInMonth dim) {
+    public final DayInMonth decDay(DayInMonth dim) {
         return bumpDay(dim, -1);
     }
 
-    private static final DayInMonth bumpDay(DayInMonth dim, int amount) {
+    public final DayInMonth bumpDay(DayInMonth dim, int amount) {
         return new DayInMonth(modulo(dim.day + amount, dim.month.maxDays), dim.month);
     }
 
-    private static final DayInMonth bumpMonth(DayInMonth dim, int amount) {
+    public final DayInMonth bumpMonth(DayInMonth dim, int amount) {
         MonthOfYear month = new MonthOfYear(modulo(dim.month.value + amount, MonthOfYear.MONTHS_IN_YEAR));
         int day = Math.min(dim.day, (month.maxDays - 1));
         return new DayInMonth(day, month);
     }
 
-    private static final int modulo(int value, int mod) {
+    public final int modulo(int value, int mod) {
         return (value + mod) % mod;
     }
 }
