@@ -6,7 +6,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     // FIXME: SC502 Having two masters here indicates an aggregation might be appropriate.
     private static final TimePointMaster TIME_POINT_MASTER = new DefaultTimePointMaster();
     // FIXME: SC502 Ensure interface reference.
-    private static final DefaultTimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
+    private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
     private final StartTime start;
     private final Duration duration;
 

@@ -6,7 +6,7 @@ import java.util.Date;
 public final class DefaultTimeFactory implements TimeFactory {
 
     // FIXME: SC502 Ensure interface reference.
-    private final DefaultTimeRangeMaster master = new DefaultTimeRangeMaster();
+    private final TimeRangeMaster master = new DefaultTimeRangeMaster();
 
     public final TimeRange createRange(Date startDate, Date endDate) {
         return createRange(createTime(startDate), createTime(endDate));

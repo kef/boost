@@ -102,7 +102,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private TimeRange range = new DefaultTimeRange(START_TIME_100, DURATION_200);
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
-    private static final DefaultTimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
+    private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
 
     private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));
     private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));

@@ -5,7 +5,7 @@ import java.util.Date;
 import junit.framework.TestCase;
 
 public final class TimePointAtomicTest extends TestCase {
-    private static final DefaultTimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
+    private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
     private static final Object NULL = null;
 
     public void testEpoch() {

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
-public final class TimeRangeUtilAtomicTest extends TestCase {
+public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
 
     public void testDuration() {
         assertEquals(DURATION_200, master.duration(START_TIME_200, END_TIME_400));
@@ -56,7 +56,7 @@ public final class TimeRangeUtilAtomicTest extends TestCase {
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
     // FIXME: SC502 Make sure this is an interface reference.
-    private static DefaultTimeRangeMaster master = new DefaultTimeRangeMaster();
+    private static TimeRangeMaster master = new DefaultTimeRangeMaster();
 
     private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));
     private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));
