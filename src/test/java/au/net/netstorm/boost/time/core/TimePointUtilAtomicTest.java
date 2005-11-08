@@ -34,11 +34,12 @@ public final class TimePointUtilAtomicTest extends TestCase {
         } catch (IllegalArgumentException ex) { }
     }
 
+    private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
 
-    private static final TimePoint TIME_099 = LegacyDateFactory.createTime(new Date(99));
-    private static final TimePoint TIME_100 = LegacyDateFactory.createTime(new Date(100));
-    private static final TimePoint TIME_101 = LegacyDateFactory.createTime(new Date(101));
-    private static final TimePoint TIME_199 = LegacyDateFactory.createTime(new Date(199));
-    private static final TimePoint TIME_200 = LegacyDateFactory.createTime(new Date(200));
-    private static final TimePoint TIME_201 = LegacyDateFactory.createTime(new Date(201));
+    private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));
+    private static final TimePoint TIME_100 = TIME_FACTORY.createTime(new Date(100));
+    private static final TimePoint TIME_101 = TIME_FACTORY.createTime(new Date(101));
+    private static final TimePoint TIME_199 = TIME_FACTORY.createTime(new Date(199));
+    private static final TimePoint TIME_200 = TIME_FACTORY.createTime(new Date(200));
+    private static final TimePoint TIME_201 = TIME_FACTORY.createTime(new Date(201));
 }

@@ -54,11 +54,13 @@ public final class TimeRangeUtilAtomicTest extends TestCase {
         } catch (IllegalArgumentException ex) { }
     }
 
-    private static final TimePoint TIME_050 = LegacyDateFactory.createTime(new Date(50));
-    private static final TimePoint TIME_099 = LegacyDateFactory.createTime(new Date(99));
-    private static final TimePoint TIME_100 = LegacyDateFactory.createTime(new Date(100));
-    private static final TimePoint TIME_200 = LegacyDateFactory.createTime(new Date(200));
-    private static final TimePoint TIME_400 = LegacyDateFactory.createTime(new Date(400));
+    private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
+
+    private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));
+    private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));
+    private static final TimePoint TIME_100 = TIME_FACTORY.createTime(new Date(100));
+    private static final TimePoint TIME_200 = TIME_FACTORY.createTime(new Date(200));
+    private static final TimePoint TIME_400 = TIME_FACTORY.createTime(new Date(400));
 
     private static final StartTime START_TIME_050 = new StartTime(TIME_050);
     private static final StartTime START_TIME_099 = new StartTime(TIME_099);

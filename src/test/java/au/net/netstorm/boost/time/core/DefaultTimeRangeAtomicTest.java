@@ -96,18 +96,20 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
 
     private TimeRange range;
 
-    private static final TimePoint TIME_050 = LegacyDateFactory.createTime(new Date(50));
-    private static final TimePoint TIME_099 = LegacyDateFactory.createTime(new Date(99));
-    private static final TimePoint TIME_100 = LegacyDateFactory.createTime(new Date(100));
-    private static final TimePoint TIME_101 = LegacyDateFactory.createTime(new Date(101));
-    private static final TimePoint TIME_102 = LegacyDateFactory.createTime(new Date(102));
-    private static final TimePoint TIME_200 = LegacyDateFactory.createTime(new Date(200));
-    private static final TimePoint TIME_201 = LegacyDateFactory.createTime(new Date(201));
-    private static final TimePoint TIME_202 = LegacyDateFactory.createTime(new Date(202));
-    private static final TimePoint TIME_299 = LegacyDateFactory.createTime(new Date(299));
-    private static final TimePoint TIME_300 = LegacyDateFactory.createTime(new Date(300));
-    private static final TimePoint TIME_301 = LegacyDateFactory.createTime(new Date(301));
-    private static final TimePoint TIME_400 = LegacyDateFactory.createTime(new Date(400));
+    private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
+
+    private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));
+    private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));
+    private static final TimePoint TIME_100 = TIME_FACTORY.createTime(new Date(100));
+    private static final TimePoint TIME_101 = TIME_FACTORY.createTime(new Date(101));
+    private static final TimePoint TIME_102 = TIME_FACTORY.createTime(new Date(102));
+    private static final TimePoint TIME_200 = TIME_FACTORY.createTime(new Date(200));
+    private static final TimePoint TIME_201 = TIME_FACTORY.createTime(new Date(201));
+    private static final TimePoint TIME_202 = TIME_FACTORY.createTime(new Date(202));
+    private static final TimePoint TIME_299 = TIME_FACTORY.createTime(new Date(299));
+    private static final TimePoint TIME_300 = TIME_FACTORY.createTime(new Date(300));
+    private static final TimePoint TIME_301 = TIME_FACTORY.createTime(new Date(301));
+    private static final TimePoint TIME_400 = TIME_FACTORY.createTime(new Date(400));
     private static final TimePoint TIME_500 = new TimePoint(500);
     private static final TimePoint TIME_499 = new TimePoint(499);
     private static final TimePoint TIME_0x7FFFFFFF00000001 = new TimePoint(0x7FFFFFFF00000001L);
