@@ -5,6 +5,7 @@ import java.util.Date;
 import junit.framework.TestCase;
 
 public final class TimePointAtomicTest extends TestCase {
+    private static final DefaultTimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
     private static final Object NULL = null;
 
     public void testEpoch() {
@@ -48,7 +49,7 @@ public final class TimePointAtomicTest extends TestCase {
         TimePoint now = TimePoint.now();
         StartTime start = new StartTime(bottom);
         EndTime end = new EndTime(top);
-        TimeRange range = new DefaultTimeRange(start, TimeRangeUtil.duration(start, end));
+        TimeRange range = new DefaultTimeRange(start, TIME_RANGE_MASTER.duration(start, end));
         assertTrue(range.contains(now));
     }
 

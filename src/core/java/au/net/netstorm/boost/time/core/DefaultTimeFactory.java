@@ -5,6 +5,9 @@ import java.util.Date;
 // FIXME: SC502 Instancise.
 public final class DefaultTimeFactory implements TimeFactory {
 
+    // FIXME: SC502 Ensure interface reference.
+    private final DefaultTimeRangeMaster master = new DefaultTimeRangeMaster();
+
     public final TimeRange createRange(Date startDate, Date endDate) {
         return createRange(createTime(startDate), createTime(endDate));
     }
@@ -21,7 +24,7 @@ public final class DefaultTimeFactory implements TimeFactory {
     private final TimeRange createRange(TimePoint start, TimePoint end) {
         StartTime startTime = new StartTime(start);
         EndTime endTime = new EndTime(end);
-        Duration duration = TimeRangeUtil.duration(startTime, endTime);
+        Duration duration = master.duration(startTime, endTime);
         return new DefaultTimeRange(startTime, duration);
     }
 }

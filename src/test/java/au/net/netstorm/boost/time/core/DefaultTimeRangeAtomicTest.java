@@ -85,7 +85,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     }
 
     private void assertIntersects(boolean expected, StartTime start, EndTime end) {
-        Duration duration = TimeRangeUtil.duration(start, end);
+        Duration duration = TIME_RANGE_MASTER.duration(start, end);
         TimeRange testRange = new DefaultTimeRange(start, duration);
         assertEquals(expected, range.intersects(testRange));
     }
@@ -102,6 +102,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private TimeRange range = new DefaultTimeRange(START_TIME_100, DURATION_200);
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
+    private static final DefaultTimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
 
     private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));
     private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));

@@ -7,8 +7,8 @@ import junit.framework.TestCase;
 public final class TimeRangeUtilAtomicTest extends TestCase {
 
     public void testDuration() {
-        assertEquals(DURATION_200, TimeRangeUtil.duration(START_TIME_200, END_TIME_400));
-        assertEquals(DURATION_001, TimeRangeUtil.duration(START_TIME_099, END_TIME_100));
+        assertEquals(DURATION_200, master.duration(START_TIME_200, END_TIME_400));
+        assertEquals(DURATION_001, master.duration(START_TIME_099, END_TIME_100));
     }
 
     public void testInvalidDuration() {
@@ -17,8 +17,8 @@ public final class TimeRangeUtilAtomicTest extends TestCase {
     }
 
     public void testShorten() {
-        assertEquals(DATE_RANGE_050__099, TimeRangeUtil.shorten(DATE_RANGE_050__100, DURATION_001));
-        assertEquals(DATE_RANGE_100__101, TimeRangeUtil.shorten(DATE_RANGE_100__200, DURATION_099));
+        assertEquals(DATE_RANGE_050__099, master.shorten(DATE_RANGE_050__100, DURATION_001));
+        assertEquals(DATE_RANGE_100__101, master.shorten(DATE_RANGE_100__200, DURATION_099));
     }
 
     public void testInvalidShorten() {
@@ -29,32 +29,34 @@ public final class TimeRangeUtilAtomicTest extends TestCase {
     }
 
     public void testLengthen() {
-        assertEquals(DATE_RANGE_050__100, TimeRangeUtil.lengthen(DATE_RANGE_050__099, DURATION_001));
-        assertEquals(DATE_RANGE_100__200, TimeRangeUtil.lengthen(DATE_RANGE_100__101, DURATION_099));
+        assertEquals(DATE_RANGE_050__100, master.lengthen(DATE_RANGE_050__099, DURATION_001));
+        assertEquals(DATE_RANGE_100__200, master.lengthen(DATE_RANGE_100__101, DURATION_099));
     }
 
 
     public void testEnd() {
-        assertEquals(END_TIME_100, TimeRangeUtil.end(DATE_RANGE_050__100));
-        assertEquals(END_TIME_100, TimeRangeUtil.end(DATE_RANGE_099__100));
-        assertEquals(END_TIME_400, TimeRangeUtil.end(DATE_RANGE_100__400));
+        assertEquals(END_TIME_100, master.end(DATE_RANGE_050__100));
+        assertEquals(END_TIME_100, master.end(DATE_RANGE_099__100));
+        assertEquals(END_TIME_400, master.end(DATE_RANGE_100__400));
     }
 
     private void assertInvalidDuration(StartTime start, EndTime end) {
         try {
-            TimeRangeUtil.duration(start, end);
+            master.duration(start, end);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException expected) { }
     }
 
     private void assertInvalidShorten(TimeRange range, Duration duration) {
         try {
-            TimeRangeUtil.shorten(range, duration);
+            master.shorten(range, duration);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException expected) { }
     }
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
+    // FIXME: SC502 Make sure this is an interface reference.
+    private static DefaultTimeRangeMaster master = new DefaultTimeRangeMaster();
 
     private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));
     private static final TimePoint TIME_099 = TIME_FACTORY.createTime(new Date(99));
