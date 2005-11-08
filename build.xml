@@ -172,7 +172,6 @@
     </target>
 
     <target name="_check_coverage">
-        <!-- FIXME: SC502 These MUST BE 100. -->
         <macro_cobertura_check branch.limit="100" line.limit="100"/>
     </target>
 
