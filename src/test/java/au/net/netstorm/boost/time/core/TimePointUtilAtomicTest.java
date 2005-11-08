@@ -7,29 +7,29 @@ import junit.framework.TestCase;
 public final class TimePointUtilAtomicTest extends TestCase {
 
     public void testNext() {
-        assertEquals(TIME_100, TimePointUtil.next(TIME_099));
-        assertEquals(TIME_101, TimePointUtil.next(TIME_100));
-        assertEquals(TIME_200, TimePointUtil.next(TIME_199));
-        assertEquals(TIME_201, TimePointUtil.next(TIME_200));
+        assertEquals(TIME_100, DefaultTimePointMaster.next(TIME_099));
+        assertEquals(TIME_101, DefaultTimePointMaster.next(TIME_100));
+        assertEquals(TIME_200, DefaultTimePointMaster.next(TIME_199));
+        assertEquals(TIME_201, DefaultTimePointMaster.next(TIME_200));
     }
 
     public void testPrevious() {
-        assertEquals(TIME_099, TimePointUtil.previous(TIME_100));
-        assertEquals(TIME_100, TimePointUtil.previous(TIME_101));
-        assertEquals(TIME_199, TimePointUtil.previous(TIME_200));
-        assertEquals(TIME_200, TimePointUtil.previous(TIME_201));
+        assertEquals(TIME_099, DefaultTimePointMaster.previous(TIME_100));
+        assertEquals(TIME_100, DefaultTimePointMaster.previous(TIME_101));
+        assertEquals(TIME_199, DefaultTimePointMaster.previous(TIME_200));
+        assertEquals(TIME_200, DefaultTimePointMaster.previous(TIME_201));
     }
 
     public void testPreviousInvalid() {
         try {
-            TimePointUtil.previous(TimePoint.EPOCH);
+            DefaultTimePointMaster.previous(TimePoint.EPOCH);
             fail();
         } catch (IllegalArgumentException ex) { }
     }
 
     public void testNextInvalid() {
         try {
-            TimePointUtil.next(TimePoint.ARMAGGEDON);
+            DefaultTimePointMaster.next(TimePoint.ARMAGGEDON);
             fail();
         } catch (IllegalArgumentException ex) { }
     }
