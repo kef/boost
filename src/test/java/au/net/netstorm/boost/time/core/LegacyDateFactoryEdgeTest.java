@@ -5,6 +5,7 @@ import java.util.Date;
 import junit.framework.TestCase;
 
 // FIXME: SC511 This belongs in "edge".
+// FIXME: SC502 Wire into edge tests.
 public final class LegacyDateFactoryEdgeTest extends TestCase {
 
     public void testCreateRangeFromMillis() {
@@ -35,14 +36,14 @@ public final class LegacyDateFactoryEdgeTest extends TestCase {
         try {
             LegacyDateFactory.createTime(date);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException expected) { }
     }
 
     private void assertNullArgumentsInvalid(Date start, Date end) {
         try {
             LegacyDateFactory.createRange(start, end);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException expected) { }
     }
 
     private static final Date DATE_050 = new Date(50);
