@@ -15,12 +15,14 @@ import junit.framework.TestCase;
 // FIXME: SC506 Fix failXxx().
 
 public class VmEntryAtomicTest extends TestCase {
-    private static final VmStyle VM_STYLE_PINK_FLOYD = new VmStyle("Pink Floyd");
-    private static final VmStyle VM_STYLE_ELO = new VmStyle("Electric Light Orchestra");
-    private static final VmStyle VM_STYLE_YES = new VmStyle("YES");
+    private static final VmStyle VM_STYLE_PINK_FLOYD = VmStyleAtomicTest.VM_STYLE_PINK_FLOYD;
+    private static final VmStyle VM_STYLE_ELO = VmStyleAtomicTest.VM_STYLE_ELO;
+    private static final VmStyle VM_STYLE_YES = VmStyleAtomicTest.VM_STYLE_YES;
     private static final String[] TOO_MANY_ARGUMENTS = new String[2];
     private static final String[] TOO_FEW_ARGUMENTS = new String[0];
     private static final String[] NULL = null;
+
+    // FIXME: SC502 Ensure test for private constructor.
 
 
     private final ReflectMaster reflector = new DefaultReflectMaster();
