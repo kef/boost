@@ -191,7 +191,8 @@
     </target>
 
     <target name="_check_coverage">
-        <macro_cobertura_check branch.limit="100" line.limit="100"/>
+        <macro_cobertura_check code.type="core" branch.limit="100" line.limit="100"/>
+        <macro_cobertura_check code.type="edge" branch.limit="100" line.limit="25"/>
     </target>
 
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
@@ -215,7 +216,8 @@
         <attribute name="report.type"/>
         <sequential>
             <mkdir dir="${coverage.reports.dir}/@{code.type}/@{report.type}"/>
-            <cobertura-report destdir="${coverage.reports.dir}/@{code.type}/@{report.type}" datafile="${coverage.dir}/@{code.type}_coverage.ser">
+            <cobertura-report destdir="${coverage.reports.dir}/@{code.type}/@{report.type}"
+                              datafile="${coverage.dir}/@{code.type}_coverage.ser">
                 <!-- FIXME: SC502 Parameterise -->
                 <fileset dir="${core.src.dir}" includes="**/*.java"/>
                 <fileset dir="${edge.src.dir}" includes="**/*.java"/>
@@ -226,9 +228,10 @@
     <macrodef name="macro_cobertura_check">
         <attribute name="branch.limit"/>
         <attribute name="line.limit"/>
+        <attribute name="code.type"/>
         <sequential>
             <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
-                             failureproperty="coverage.failed" haltonfailure="true" datafile="${coverage.dir}/core_coverage.ser"/>
+                             failureproperty="coverage.failed" haltonfailure="true" datafile="${coverage.dir}/@{code.type}_coverage.ser"/>
         </sequential>
     </macrodef>
 </project>

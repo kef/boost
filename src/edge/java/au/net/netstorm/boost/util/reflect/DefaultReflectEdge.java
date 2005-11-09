@@ -32,7 +32,7 @@ class DefaultReflectEdge implements ReflectEdge {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeClassNotFoundException(e);
         }
     }
 

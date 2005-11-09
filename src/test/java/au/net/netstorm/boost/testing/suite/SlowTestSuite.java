@@ -8,7 +8,7 @@ import junit.framework.TestSuite;
 public class SlowTestSuite extends PrimordialTestCase {
     public static Test suite() {
         TestSuite suite = new TestSuite("Slow");
-        suite.addTest(TestSuiteAggregator.aggregate("Almost Atomic", ".*AlmostAtomicTest"));
+        suite.addTest(TestSuiteAggregator.aggregate("Edge", ".*EdgeTest"));
 //        suite.addTest(IntegrationTestSuite.suite());
 //        suite.addTest(AcceptanceTestSuite.suite());
         return suite;
