@@ -38,15 +38,6 @@ class DefaultReflectEdge implements ReflectEdge {
         }
     }
 
-    public Object invoke(Method method, Object instance) throws Exception {
-        return invoke(method, instance, null);
-    }
-
-    public Object invoke(Method method, Object instance, Object[] args) throws Exception {
-        method.setAccessible(true);
-        return method.invoke(instance, args);
-    }
-
     public Object tryInvoke(Method method, Object instance) {
         try {
             return invoke(method, instance);
@@ -61,5 +52,14 @@ class DefaultReflectEdge implements ReflectEdge {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private Object invoke(Method method, Object instance) throws Exception {
+        return invoke(method, instance, null);
+    }
+
+    private Object invoke(Method method, Object instance, Object[] args) throws Exception {
+        method.setAccessible(true);
+        return method.invoke(instance, args);
     }
 }
