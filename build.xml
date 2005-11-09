@@ -38,7 +38,7 @@
     <property name="jars.dir" location="${artifacts.dir}/jars"/>
     <property name="test.report.dir" location="${reports.dir}/test"/>
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
-<!-- FIXME: SC502 "test.class" property isn't used ... use it or lose it -->
+    <!-- FIXME: SC502 "test.class" property isn't used ... use it or lose it -->
     <property name="test.class" value="au.net.netstorm.boost.testing.suite.AtomicTestSuite"/>
 
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
@@ -53,12 +53,25 @@
 
     <fileset id="atomic.tests" dir="${test.src.dir}">
         <include name="**/*AtomicTest.java"/>
+        <exclude name="**/*AlmostAtomicTest.java"/>
+        <exclude name="**/*NotAtomicTest.java"/>
     </fileset>
 
-    <path id="atomic.tests.classpath">
+    <fileset id="edge.tests" dir="${test.src.dir}">
+        <include name="**/*EdgeTest.java"/>
+    </fileset>
+
+    <path id="core.coverage.classpath">
         <path location="${edge.class.dir}"/>
         <path location="${core.instrumented.dir}"/>
         <path location="${core.class.dir}"/>
+        <path location="${test.class.dir}"/>
+        <path refid="cobertura.classpath"/>
+    </path>
+
+    <path id="edge.coverage.classpath">
+        <path location="${edge.instrumented.dir}"/>
+        <path location="${edge.class.dir}"/>
         <path location="${test.class.dir}"/>
         <path refid="cobertura.classpath"/>
     </path>
@@ -69,12 +82,12 @@
         <path location="${edge.class.dir}"/>
     </path>
 
-	<path id="test.classpath">
+    <path id="test.classpath">
         <path refid="core.classpath"/>
         <path location="${core.class.dir}"/>
     </path>
 
-	<path id="cobertura.classpath">
+    <path id="cobertura.classpath">
         <fileset dir="${lib.dir}/cobertura">
             <include name="**/*.jar"/>
         </fileset>
@@ -102,8 +115,10 @@
 
     <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
     <target name="_run_tests">
-        <macro_junit_run tests.refid="atomic.tests" classpath.refid="atomic.tests.classpath"
-                         failure.property="atomic.tests.failed" coverage.type="core"/>
+        <macro_junit_run tests.refid="atomic.tests" classpath.refid="core.coverage.classpath" coverage.type="core"
+                         failure.property="atomic.tests.failed"/>
+        <macro_junit_run tests.refid="edge.tests" classpath.refid="edge.coverage.classpath" coverage.type="edge"
+                         failure.property="edge.tests.failed"/>
     </target>
 
     <target name="_check_tests">
@@ -134,7 +149,8 @@
             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
                 <!-- FIXME: SC502 Parameterise the coverage file for different test styles. -->
-                <sysproperty key="net.sourceforge.cobertura.datafile" file="${coverage.dir}/@{coverage.type}_coverage.ser"/>
+                <sysproperty key="net.sourceforge.cobertura.datafile"
+                             file="${coverage.dir}/@{coverage.type}_coverage.ser"/>
                 <classpath refid="@{classpath.refid}"/>
                 <formatter type="xml"/>
                 <formatter type="plain"/>
@@ -177,13 +193,14 @@
         <macro_cobertura_check branch.limit="100" line.limit="100"/>
     </target>
 
-	<taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
+    <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
 
     <macrodef name="macro_cobertura_instrument">
         <attribute name="coverage.type"/>
         <sequential>
             <mkdir dir="${instrumented.dir}/@{coverage.type}"/>
-            <cobertura-instrument todir="${instrumented.dir}/@{coverage.type}" datafile="${coverage.dir}/@{coverage.type}_coverage.ser">
+            <cobertura-instrument todir="${instrumented.dir}/@{coverage.type}"
+                                  datafile="${coverage.dir}/@{coverage.type}_coverage.ser">
                 <fileset dir="${class.dir}/@{coverage.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>

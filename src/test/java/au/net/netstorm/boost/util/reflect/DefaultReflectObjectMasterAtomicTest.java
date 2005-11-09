@@ -2,15 +2,13 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.util.reflect.MultipleConstructorsNotSupportedException;
 import au.net.netstorm.boost.primordial.PrimordialTestCase;
-import au.net.netstorm.boost.util.introspect.CallSpec;
 
 // FIXME: SC506 This NEEDS to be a UnitTest!!!
 // FIXME: SC506 Rename to Atomic test when done
 // FIXME: SC502 Rename to Atomic test when done.
 
-public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCase {
+public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 
     public void testFailsWithMultipleConstructors() {
@@ -42,11 +40,5 @@ public class DefaultReflectObjectMasterAlmostAtomicTest extends PrimordialTestCa
             master.getConstructor(cls);
             fail();
         } catch (MultipleConstructorsNotSupportedException expected) { }
-    }
-
-    private void checkCreateFailsWithMultipleConstructors(Class cls) {
-        CallSpec spec = new CallSpec("create", new Class[]{Class.class}, new Object[]{cls});
-// FIXME: SC506 Replace with standard exception test block.
-//        ThrowAssert.assertThrows(MultipleConstructorsNotSupportedException.class, master, spec);
     }
 }
