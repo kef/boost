@@ -181,12 +181,12 @@
     </macrodef>
 
     <target name="_instrument">
-        <macro_cobertura_instrument coverage.type="core"/>
-        <macro_cobertura_instrument coverage.type="edge"/>
+        <macro_cobertura_instrument code.type="core"/>
+        <macro_cobertura_instrument code.type="edge"/>
     </target>
 
     <target name="_report_coverage">
-        <macro_cobertura_report report.dir="${coverage.reports.dir}/atomic"/>
+        <macro_cobertura_report code.type="core" report.dir="${coverage.reports.dir}/atomic"/>
     </target>
 
     <target name="_check_coverage">
@@ -196,12 +196,12 @@
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
 
     <macrodef name="macro_cobertura_instrument">
-        <attribute name="coverage.type"/>
+        <attribute name="code.type"/>
         <sequential>
-            <mkdir dir="${instrumented.dir}/@{coverage.type}"/>
-            <cobertura-instrument todir="${instrumented.dir}/@{coverage.type}"
-                                  datafile="${coverage.dir}/@{coverage.type}_coverage.ser">
-                <fileset dir="${class.dir}/@{coverage.type}">
+            <mkdir dir="${instrumented.dir}/@{code.type}"/>
+            <cobertura-instrument todir="${instrumented.dir}/@{code.type}"
+                                  datafile="${coverage.dir}/@{code.type}_coverage.ser">
+                <fileset dir="${class.dir}/@{code.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
                 </fileset>
@@ -210,10 +210,11 @@
     </macrodef>
 
     <macrodef name="macro_cobertura_report">
+        <attribute name="code.type"/>
         <attribute name="report.dir"/>
         <sequential>
             <mkdir dir="@{report.dir}"/>
-            <cobertura-report destdir="@{report.dir}" datafile="${coverage.dir}/core_coverage.ser">
+            <cobertura-report destdir="@{report.dir}" datafile="${coverage.dir}/@{code.type}_coverage.ser">
                 <!-- FIXME: SC502 Parameterise -->
                 <fileset dir="${core.src.dir}" includes="**/*.java"/>
             </cobertura-report>
