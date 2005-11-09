@@ -15,7 +15,7 @@ public interface ReflectEdge {
 
     Method getMethod(Class cls, String methodName, Class[] parameterTypes);
 
-    Object tryInvoke(Method method, Object instance);
+    Object invoke(Method method, Object instance);
 
-    Object tryInvoke(Method method, Object instance, Object[] args);
+    Object invoke(Method method, Object instance, Object[] args);
 }

@@ -58,7 +58,7 @@ class MemberTestFixture {
 
     private void checkDataProperty(Method method, Object expectedValue) {
         FieldValueSpec expectedFS = new DefaultFieldValueSpec(method.getName(), expectedValue);
-        Object actualValue = REFLECT_EDGE.tryInvoke(method, instance);
+        Object actualValue = REFLECT_EDGE.invoke(method, instance);
         FieldValueSpec actualFS = new DefaultFieldValueSpec(method.getName(), actualValue);
         Assert.assertEquals("Method '" + method.getName() + "' does not return an equal value from one of the constructor parameters", expectedFS, actualFS);
         ReflectTestUtil.checkPrivateFinalField(instance.getClass(), getFieldName(method));

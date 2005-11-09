@@ -38,27 +38,27 @@ class DefaultReflectEdge implements ReflectEdge {
         }
     }
 
-    public Object tryInvoke(Method method, Object instance) {
+    public Object invoke(Method method, Object instance) {
         try {
-            return invoke(method, instance);
+            return tryInvoke(method, instance);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Object tryInvoke(Method method, Object instance, Object[] args) {
+    public Object invoke(Method method, Object instance, Object[] args) {
         try {
-            return invoke(method, instance, args);
+            return tryInvoke(method, instance, args);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private Object invoke(Method method, Object instance) throws Exception {
-        return invoke(method, instance, null);
+    private Object tryInvoke(Method method, Object instance) throws Exception {
+        return tryInvoke(method, instance, null);
     }
 
-    private Object invoke(Method method, Object instance, Object[] args) throws Exception {
+    private Object tryInvoke(Method method, Object instance, Object[] args) throws Exception {
         method.setAccessible(true);
         return method.invoke(instance, args);
     }
