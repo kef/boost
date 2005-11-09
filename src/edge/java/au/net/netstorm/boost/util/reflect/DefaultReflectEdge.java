@@ -3,8 +3,10 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 // FIXME: SC511 Map exception exactly how an "edge" should.
+
 class DefaultReflectEdge implements ReflectEdge {
     public Object get(Field field, Object ref) {
         try {
@@ -17,7 +19,11 @@ class DefaultReflectEdge implements ReflectEdge {
     public Object newInstance(Constructor constructor, Object[] parameters) {
         try {
             return constructor.newInstance(parameters);
-        } catch (Exception e) {
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
@@ -39,27 +45,15 @@ class DefaultReflectEdge implements ReflectEdge {
     }
 
     public Object invoke(Method method, Object instance) {
-        try {
-            return tryInvoke(method, instance);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return invoke(method, instance, null);
     }
 
     public Object invoke(Method method, Object instance, Object[] args) {
         try {
-            return tryInvoke(method, instance, args);
+            method.setAccessible(true);  // FIXME: SC502 This should not be here.  It violates edge rules.
+            return method.invoke(instance, args);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private Object tryInvoke(Method method, Object instance) throws Exception {
-        return tryInvoke(method, instance, null);
-    }
-
-    private Object tryInvoke(Method method, Object instance, Object[] args) throws Exception {
-        method.setAccessible(true);
-        return method.invoke(instance, args);
     }
 }
