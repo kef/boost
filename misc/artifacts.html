@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>BOOST Artifacts</title>
+</head>
+
+<body>
+<h1>Boost Artifacts [@BUILD_LABEL@]</h1>
+
+<h3>Reports</h3>
+<ul>
+    <li><a href="reports/coverage/core/atomic/index.html">Atomic coverage on <em>core</em></a></li>
+    <li><a href="reports/coverage/edge/edge.html">Edge coverage</a></li>
+    <li><a href="reports/test/index.html">JUnit tests</a></li>
+</ul>
+
+<h3>Cruise</h3>
+<ul>
+    <li>Most Recent Build</li>
+    <li>Main cruise</li>
+    <li>Cruise management</li>
+    <li>
+
+        <form action="geekscape control port:18001/invoke">
+            <input value="build" type="hidden" name="operation">
+            <input value="CruiseControl Project:name=whitepages"
+                   name="objectname" type="hidden">
+            <input value="Rebuild" type="submit">
+        </form>
+    </li>
+</ul>
+
+<h3>Software</h3>
+<ul>
+    <li>Jar files</li>
+</ul>
+
+<h3>Miscellaneous</h3>
+<ul>
+    <li>Wiki</li>
+    <li>Source Code</li>
+</ul>
+</body>
+</html>
