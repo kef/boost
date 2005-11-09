@@ -50,7 +50,6 @@ class DefaultReflectEdge implements ReflectEdge {
 
     public Object invoke(Method method, Object instance, Object[] args) {
         try {
-            method.setAccessible(true);  // FIXME: SC502 This should not be here.  It violates edge rules.
             return method.invoke(instance, args);
         } catch (Exception e) {
             throw new RuntimeException(e);
