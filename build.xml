@@ -206,6 +206,8 @@
 
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
 
+    
+
     <macrodef name="macro_cobertura_instrument">
         <attribute name="code.type"/>
         <sequential>
