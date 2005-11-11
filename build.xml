@@ -189,11 +189,6 @@
         </sequential>
     </macrodef>
 
-
-
-
-
-    
     <target name="_instrument">
         <macro_cobertura_instrument code.type="core"/>
         <macro_cobertura_instrument code.type="edge"/>
