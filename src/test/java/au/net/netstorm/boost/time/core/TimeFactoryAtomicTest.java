@@ -10,6 +10,7 @@ public final class TimeFactoryAtomicTest extends TestCase {
 
     public void testCreateRangeFromMillis() {
         // FIXME: SC777 Duplication.
+        // FIXME: SC777 ? More than just triangulation values - is this an integration test.
         assertEquals(DATE_RANGE_050__100, TIME_FACTORY.createRange(DATE_050.getTime(), DATE_100.getTime()));
         assertEquals(DATE_RANGE_100__200, TIME_FACTORY.createRange(DATE_100.getTime(), DATE_200.getTime()));
         assertEquals(DATE_RANGE_100__400, TIME_FACTORY.createRange(DATE_100.getTime(), DATE_400.getTime()));
@@ -63,6 +64,8 @@ public final class TimeFactoryAtomicTest extends TestCase {
     private static final StartTime START_TIME_050 = new StartTime(TIME_050);
     private static final StartTime START_TIME_100 = new StartTime(TIME_100);
 
+    // FIXME: SC777 Use test values from DurationAtomicTest instead.
+    // FIXME: SC777 Look for other places like this that use Durations for tests.
     private static final Duration DURATION_050 = new Duration(50);
     private static final Duration DURATION_100 = new Duration(100);
     private static final Duration DURATION_300 = new Duration(300);
@@ -71,5 +74,3 @@ public final class TimeFactoryAtomicTest extends TestCase {
     private static final TimeRange DATE_RANGE_100__200 = new DefaultTimeRange(START_TIME_100, DURATION_100);
     private static final TimeRange DATE_RANGE_100__400 = new DefaultTimeRange(START_TIME_100, DURATION_300);
 }
-
-

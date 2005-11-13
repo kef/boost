@@ -58,7 +58,12 @@ public final class TimePointAtomicTest extends TestCase {
         try {
             new TimePoint(length);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) { succeed(); } // FIXME: SC777 Fix others to call succeed().
+    }
+
+    // FIXME: SC777 Push up into a PrimordialTestCase.
+    private void succeed() {
+        assertTrue(true);
     }
 
     private void assertNotEquals(TimePoint t1, TimePoint t2) {
