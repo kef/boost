@@ -9,12 +9,15 @@ import junit.framework.TestCase;
 public final class TimeFactoryAtomicTest extends TestCase {
 
     public void testCreateRangeFromMillis() {
+        // FIXME: SC777 Duplication.
         assertEquals(DATE_RANGE_050__100, TIME_FACTORY.createRange(DATE_050.getTime(), DATE_100.getTime()));
         assertEquals(DATE_RANGE_100__200, TIME_FACTORY.createRange(DATE_100.getTime(), DATE_200.getTime()));
         assertEquals(DATE_RANGE_100__400, TIME_FACTORY.createRange(DATE_100.getTime(), DATE_400.getTime()));
     }
 
     public void testCreateRangeFromDates() {
+        // FIXME: SC777 Looks a lot like the last method...
+        // FIXME: SC777 ? Use FIX instead of FIXME:
         assertEquals(DATE_RANGE_050__100, TIME_FACTORY.createRange(DATE_050, DATE_100));
         assertEquals(DATE_RANGE_100__200, TIME_FACTORY.createRange(DATE_100, DATE_200));
         assertEquals(DATE_RANGE_100__400, TIME_FACTORY.createRange(DATE_100, DATE_400));
