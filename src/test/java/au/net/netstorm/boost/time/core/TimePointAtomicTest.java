@@ -49,6 +49,7 @@ public final class TimePointAtomicTest extends TestCase {
         TimePoint now = TimePoint.now();
         StartTime start = new StartTime(bottom);
         EndTime end = new EndTime(top);
+        // FIXME: SC777 Tests TimeRange rather than TimePoint - move or delete.
         TimeRange range = new DefaultTimeRange(start, TIME_RANGE_MASTER.duration(start, end));
         assertTrue(range.contains(now));
     }
