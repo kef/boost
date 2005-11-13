@@ -114,7 +114,7 @@
     </target>
 
     <target name="artifacts">
-        <copy file="misc/artifacts.html" tofile="${artifacts.dir}/index.html">
+        <copy file="etc/artifacts.html" tofile="${artifacts.dir}/index.html">
             <filterset>
                 <filter token="BUILD_LABEL" value="${label}"/>
             </filterset>
