@@ -38,6 +38,7 @@ public final class TimeFactoryAtomicTest extends TestCase {
     private void checkCreateRangeFromMillis(TimeRange expectedRange, Date startDate, Date endDate) {
         long startTime = startDate.getTime();
         long endTime = endDate.getTime();
+        checkCreateRangeFromDates(expectedRange, startDate, endDate);
         TimeRange actualRange = TIME_FACTORY.createRange(startTime, endTime);
         assertEquals(expectedRange, actualRange);
     }
