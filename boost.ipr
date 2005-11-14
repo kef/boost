@@ -214,7 +214,7 @@
       <module fileurl="file://$PROJECT_DIR$/boost.iml" filepath="$PROJECT_DIR$/boost.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="false" project-jdk-name="java version &quot;1.4.2&quot;" />
+  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="false" project-jdk-name="1.4" />
   <component name="RmicSettings">
     <option name="IS_EANABLED" value="false" />
     <option name="DEBUGGING_INFO" value="true" />

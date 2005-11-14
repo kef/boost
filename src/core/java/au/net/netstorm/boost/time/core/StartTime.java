@@ -11,6 +11,7 @@ public final class StartTime implements Serializable {
         this.point = time;
         validate();
     }
+    
 
     public boolean equals(Object o) {
         if (o == null) return false;
