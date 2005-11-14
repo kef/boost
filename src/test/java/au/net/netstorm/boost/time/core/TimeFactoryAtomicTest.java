@@ -11,9 +11,16 @@ public final class TimeFactoryAtomicTest extends TestCase {
     public void testCreateRangeFromMillis() {
         // FIXME: SC777 Duplication.
         // FIXME: SC777 ? More than just triangulation values - is this an integration test.
-        assertEquals(DATE_RANGE_050__100, TIME_FACTORY.createRange(DATE_050.getTime(), DATE_100.getTime()));
-        assertEquals(DATE_RANGE_100__200, TIME_FACTORY.createRange(DATE_100.getTime(), DATE_200.getTime()));
-        assertEquals(DATE_RANGE_100__400, TIME_FACTORY.createRange(DATE_100.getTime(), DATE_400.getTime()));
+        checkCreateRangeFromMillis(DATE_RANGE_050__100, DATE_050, DATE_100);
+        checkCreateRangeFromMillis(DATE_RANGE_100__200, DATE_100, DATE_200);
+        checkCreateRangeFromMillis(DATE_RANGE_100__400, DATE_100, DATE_400);
+    }
+
+    private void checkCreateRangeFromMillis(TimeRange expectedRange, Date startDate, Date endDate) {
+        long startTime = startDate.getTime();
+        long endTime = endDate.getTime();
+        TimeRange actualRange = TIME_FACTORY.createRange(startTime, endTime);
+        assertEquals(expectedRange, actualRange);
     }
 
     public void testCreateRangeFromDates() {
