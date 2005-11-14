@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 public final class TimeFactoryAtomicTest extends TestCase {
 
     public void testCreateRangeFromMillis() {
-        // FIXME: SC777 Duplication.
         // FIXME: SC777 ? More than just triangulation values - is this an integration test.
         checkCreateRangeFromMillis(DATE_RANGE_050__100, DATE_050, DATE_100);
         checkCreateRangeFromMillis(DATE_RANGE_100__200, DATE_100, DATE_200);
