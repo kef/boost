@@ -14,7 +14,6 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     private static final FieldValueSpec FIELD_VALUE_SPEC_2 = new DefaultFieldValueSpec("field7", "Is absolute zero cold enough?");
 
     public void testMarker() {
-        oi
         assertTrue(Immutable.class.isAssignableFrom(DefaultFieldValueSpec.class));
     }
 
