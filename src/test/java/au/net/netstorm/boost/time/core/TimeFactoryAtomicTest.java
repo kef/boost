@@ -9,11 +9,11 @@ import junit.framework.TestCase;
 public final class TimeFactoryAtomicTest extends TestCase {
     // FIXME: SC777 ? Use FIX instead of FIXME:
 
-    public void testCreateRangeFromMillis() {
+    public void testCreateRange() {
         // FIXME: SC777 ? More than just triangulation values - is this an integration test.
-        checkCreateRangeFromMillis(DATE_RANGE_050__100, DATE_050, DATE_100);
-        checkCreateRangeFromMillis(DATE_RANGE_100__200, DATE_100, DATE_200);
-        checkCreateRangeFromMillis(DATE_RANGE_100__400, DATE_100, DATE_400);
+        checkCreateRange(DATE_RANGE_050__100, DATE_050, DATE_100);
+        checkCreateRange(DATE_RANGE_100__200, DATE_100, DATE_200);
+        checkCreateRange(DATE_RANGE_100__400, DATE_100, DATE_400);
     }
 
     public void testCreateTimePoint() {
@@ -28,10 +28,15 @@ public final class TimeFactoryAtomicTest extends TestCase {
         assertNullArgumentsInvalid(DATE_200, null);
     }
 
-    private void checkCreateRangeFromMillis(TimeRange expectedRange, Date startDate, Date endDate) {
+    private void checkCreateRange(TimeRange expectedRange, Date startDate, Date endDate) {
         long startTime = startDate.getTime();
         long endTime = endDate.getTime();
+        // FIXME: SC777 ? createRange is overloaded.  Sort this out.
         checkCreateRangeFromDates(expectedRange, startDate, endDate);
+        checkCreateRangeFromMillis(expectedRange, startTime, endTime);
+    }
+
+    private void checkCreateRangeFromMillis(TimeRange expectedRange, long startTime, long endTime) {
         TimeRange actualRange = TIME_FACTORY.createRange(startTime, endTime);
         assertEquals(expectedRange, actualRange);
     }
