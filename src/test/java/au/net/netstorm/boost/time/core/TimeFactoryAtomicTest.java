@@ -7,20 +7,13 @@ import junit.framework.TestCase;
 // FIXME: SC511 This belongs in "edge".
 // FIXME: SC502 Wire into edge tests.
 public final class TimeFactoryAtomicTest extends TestCase {
+    // FIXME: SC777 ? Use FIX instead of FIXME:
 
     public void testCreateRangeFromMillis() {
         // FIXME: SC777 ? More than just triangulation values - is this an integration test.
         checkCreateRangeFromMillis(DATE_RANGE_050__100, DATE_050, DATE_100);
         checkCreateRangeFromMillis(DATE_RANGE_100__200, DATE_100, DATE_200);
         checkCreateRangeFromMillis(DATE_RANGE_100__400, DATE_100, DATE_400);
-    }
-
-    public void testCreateRangeFromDates() {
-        // FIXME: SC777 Looks a lot like the last method...
-        // FIXME: SC777 ? Use FIX instead of FIXME:
-        checkCreateRangeFromDates(DATE_RANGE_050__100, DATE_050, DATE_100);
-        checkCreateRangeFromDates(DATE_RANGE_100__200, DATE_100, DATE_200);
-        checkCreateRangeFromDates(DATE_RANGE_100__400, DATE_100, DATE_400);
     }
 
     public void testCreateTimePoint() {
