@@ -15,19 +15,12 @@ public final class TimeFactoryAtomicTest extends TestCase {
         checkCreateRangeFromMillis(DATE_RANGE_100__400, DATE_100, DATE_400);
     }
 
-    private void checkCreateRangeFromMillis(TimeRange expectedRange, Date startDate, Date endDate) {
-        long startTime = startDate.getTime();
-        long endTime = endDate.getTime();
-        TimeRange actualRange = TIME_FACTORY.createRange(startTime, endTime);
-        assertEquals(expectedRange, actualRange);
-    }
-
     public void testCreateRangeFromDates() {
         // FIXME: SC777 Looks a lot like the last method...
         // FIXME: SC777 ? Use FIX instead of FIXME:
-        assertEquals(DATE_RANGE_050__100, TIME_FACTORY.createRange(DATE_050, DATE_100));
-        assertEquals(DATE_RANGE_100__200, TIME_FACTORY.createRange(DATE_100, DATE_200));
-        assertEquals(DATE_RANGE_100__400, TIME_FACTORY.createRange(DATE_100, DATE_400));
+        checkCreateRangeFromDates(DATE_RANGE_050__100, DATE_050, DATE_100);
+        checkCreateRangeFromDates(DATE_RANGE_100__200, DATE_100, DATE_200);
+        checkCreateRangeFromDates(DATE_RANGE_100__400, DATE_100, DATE_400);
     }
 
     public void testCreateTimePoint() {
@@ -40,6 +33,18 @@ public final class TimeFactoryAtomicTest extends TestCase {
         assertNullArgumentsInvalid(null);
         assertNullArgumentsInvalid(null, DATE_400);
         assertNullArgumentsInvalid(DATE_200, null);
+    }
+
+    private void checkCreateRangeFromMillis(TimeRange expectedRange, Date startDate, Date endDate) {
+        long startTime = startDate.getTime();
+        long endTime = endDate.getTime();
+        TimeRange actualRange = TIME_FACTORY.createRange(startTime, endTime);
+        assertEquals(expectedRange, actualRange);
+    }
+
+    private void checkCreateRangeFromDates(TimeRange expectedRange, Date startDate, Date endDate) {
+        TimeRange actualRange = TIME_FACTORY.createRange(startDate, endDate);
+        assertEquals(expectedRange, actualRange);
     }
 
     private void assertNullArgumentsInvalid(Date date) {
