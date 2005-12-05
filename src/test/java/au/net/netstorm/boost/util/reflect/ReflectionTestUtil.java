@@ -12,9 +12,9 @@ public final class ReflectionTestUtil extends Assert
     public static final ReflectionTestUtil INSTANCE = new ReflectionTestUtil();
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
 
-    public Method getMethod(Object invokee, String methodName)
+    public Method getMethod(Object instance, String methodName)
     {
-        Class type = invokee.getClass();
+        Class type = instance.getClass();
         return getMethod(type, methodName);
 
     }
