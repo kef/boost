@@ -109,8 +109,13 @@
 
     <!-- FIXME: SC502 ? API jar which contains just primordial. -->
     <target name="build_jar">
+        <!-- FIXME: SC502 boost-run.jar which contains ONLY edge/core. -->
         <mkdir dir="${jars.dir}"/>
-        <jar jarfile="${jars.dir}/boost.jar" basedir="${class.dir}"/>
+        <jar jarfile="${jars.dir}/boost.jar">
+            <fileset dir="${core.class.dir}" includes="**"/>
+            <fileset dir="${edge.class.dir}" includes="**"/>
+            <fileset dir="${test.class.dir}" includes="**"/>
+        </jar>
     </target>
 
     <target name="artifacts">
