@@ -1,0 +1,28 @@
+package au.net.netstorm.boost.util.io;
+
+import java.io.IOException;
+import java.io.OutputStream;
+
+public final class DefaultEdgeOutputStream implements EdgeOutputStream {
+    private final OutputStream stream;
+
+    public DefaultEdgeOutputStream(OutputStream stream) {
+        this.stream = stream;
+    }
+
+    public void flush() {
+        try {
+            stream.flush();
+        } catch (IOException e) {
+            throw new EdgeIoException(e);
+        }
+    }
+
+    public void write(byte[] bytes) {
+        try {
+            stream.write(bytes);
+        } catch (IOException e) {
+            throw new EdgeIoException(e);
+        }
+    }
+}
