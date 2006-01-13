@@ -206,7 +206,7 @@
 
     <target name="_check_coverage">
         <macro_cobertura_check code.type="core" branch.limit="100" line.limit="100"/>
-        <macro_cobertura_check code.type="edge" branch.limit="100" line.limit="25"/>
+        <macro_cobertura_check code.type="edge" branch.limit="100" line.limit="13"/>
     </target>
 
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
