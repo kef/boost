@@ -36,7 +36,7 @@ public final class TimeOfDayAtomicTest extends TestCase {
         } catch (IllegalArgumentException expected) { }
     }
 
-    public void assertFields(int hour, int minute, int second) {
+    private void assertFields(int hour, int minute, int second) {
         HourOfDay hod = new HourOfDay(hour);
         MinuteOfHour moh = new MinuteOfHour(minute);
         SecondOfMinute som = new SecondOfMinute(second);
