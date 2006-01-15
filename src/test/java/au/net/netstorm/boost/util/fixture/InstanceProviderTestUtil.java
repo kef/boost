@@ -15,15 +15,13 @@ public class InstanceProviderTestUtil {
     private static final InstanceProvider KNOWN_TYPES_PROVIDER = new InstanceProviderTestUtilSuppressed();
 
     public static Object getInstance(Class type) {
-        if (type.isArray()) return getArrayInstance(type);
-        if (Data.class.isAssignableFrom(type)) return getDataInstance(type);
-        if (type.isPrimitive()) return getPrimitiveInstance(type);
-        return KNOWN_TYPES_PROVIDER.getInstance(type);
+        return doGetInstance(type);
     }
 
     // FIXME: SC502 Implement this.
-//    public static Object getInstance(Class type, InstanceProvider instanceProvider) {
-//    }
+    public static Object getInstance(Class type, InstanceProvider instanceProvider) {
+        return doGetInstance(type);
+    }
 
     public static Object getInstance(Constructor constructor, Object[] parameters) {
         try {
@@ -38,6 +36,13 @@ public class InstanceProviderTestUtil {
         Object[] params = new Object[args.length];
         for (int i = 0; i < args.length; i++) params[i] = getInstance(args[i]);
         return params;
+    }
+
+    private static Object doGetInstance(Class type) {
+        if (type.isArray()) return getArrayInstance(type);
+        if (Data.class.isAssignableFrom(type)) return getDataInstance(type);
+        if (type.isPrimitive()) return getPrimitiveInstance(type);
+        return KNOWN_TYPES_PROVIDER.getInstance(type);
     }
 
     private static Object getArrayInstance(Class type) {
