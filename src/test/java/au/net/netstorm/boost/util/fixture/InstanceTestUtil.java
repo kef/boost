@@ -9,9 +9,10 @@ import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 // FIXME: SC502 Make instance.
 class InstanceTestUtil {
     private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
+    private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 
     static Object getInstance(Class cls, Object[] parameters) {
-        return InstanceProviderTestUtil.getInstance(getConstructor(cls), parameters);
+        return INSTANCE_PROVIDER_TEST_UTIL.getInstance(getConstructor(cls), parameters);
     }
 
     static Constructor getConstructor(Class cls) {
@@ -19,7 +20,7 @@ class InstanceTestUtil {
     }
 
     static Object[] getParameters(FieldSpec[] newArgTypes) {
-        return InstanceProviderTestUtil.getInstances(getClasses(newArgTypes));
+        return INSTANCE_PROVIDER_TEST_UTIL.getInstances(getClasses(newArgTypes));
     }
 
     static Class[] getClasses(FieldSpec[] newArgTypes) {

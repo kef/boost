@@ -5,6 +5,7 @@ import java.rmi.Remote;
 
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC502 Rename.
 public class InstanceProviderTestUtilSuppressed implements InstanceProvider {
     public Object getInstance(Class type) {
         Object instance = doGetInstance(type);
