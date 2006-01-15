@@ -8,6 +8,8 @@ import junit.framework.Assert;
 
 // FIXME: SC506 Make instance.
 public class DataTestUtil extends Assert {
+
+    private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     public static void checkIsDataObject(Class cls, FieldSpec[] newArgTypes) {
         ClassTestFixture.checkClass(cls, newArgTypes, Data.class);
         Object[] parameters = InstanceTestUtil.getParameters(newArgTypes);
