@@ -8,12 +8,14 @@ import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 
 // FIXME: SC502 Make instance.
 class InstanceTestUtil {
+    private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
+
     static Object getInstance(Class cls, Object[] parameters) {
         return InstanceProviderTestUtil.getInstance(getConstructor(cls), parameters);
     }
 
     static Constructor getConstructor(Class cls) {
-        return new DefaultReflectMaster().getConstructor(cls);
+        return REFLECT_MASTER.getConstructor(cls);
     }
 
     static Object[] getParameters(FieldSpec[] newArgTypes) {
