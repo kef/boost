@@ -16,12 +16,12 @@ public class InstanceProviderTestUtil {
     private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
     private final InstanceProvider knownTypes = new InstanceProviderTestUtilSuppressed();
 
-    public Object getInstance(Class type) {
+    private Object getInstance(Class type) {
         return doGetInstance(type);
     }
 
-    // FIXME: SC502 Implement this.
-    public Object getInstance(Class type, InstanceProvider instanceProvider) {
+    // FIXME: SC550 Implement this.
+    private Object getInstance(Class type, InstanceProvider instanceProvider) {
         return doGetInstance(type);
     }
 
@@ -40,6 +40,7 @@ public class InstanceProviderTestUtil {
         return params;
     }
 
+    // FIXME: SC550 Is this needed (as separate doGetXXX() ... inline? ).
     private Object doGetInstance(Class type) {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type);

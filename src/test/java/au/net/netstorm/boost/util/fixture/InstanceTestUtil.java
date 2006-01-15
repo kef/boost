@@ -21,7 +21,8 @@ class InstanceTestUtil {
     }
 
     static Object[] getParameters(FieldSpec[] newArgTypes) {
-        return INSTANCE_PROVIDER_TEST_UTIL.getInstances(getClasses(newArgTypes));
+        Class[] classes = getClasses(newArgTypes);
+        return INSTANCE_PROVIDER_TEST_UTIL.getInstances(classes);
     }
 
     static Class[] getClasses(FieldSpec[] newArgTypes) {
