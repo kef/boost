@@ -12,13 +12,18 @@ import au.net.netstorm.boost.util.reflect.ReflectMaster;
 public class InstanceProviderTestUtil {
     private static final ReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
+    private static final InstanceProvider KNOWN_TYPES_PROVIDER = new InstanceProviderTestUtilSuppressed();
 
     public static Object getInstance(Class type) {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
-        return InstanceProviderTestUtilSuppressed.getSimpleInstance(type);
+        return KNOWN_TYPES_PROVIDER.getInstance(type);
     }
+
+    // FIXME: SC502 Implement this.
+//    public static Object getInstance(Class type, InstanceProvider instanceProvider) {
+//    }
 
     public static Object getInstance(Constructor constructor, Object[] parameters) {
         try {
