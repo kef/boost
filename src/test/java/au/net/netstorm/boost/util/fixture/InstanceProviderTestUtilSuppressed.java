@@ -15,7 +15,7 @@ public class InstanceProviderTestUtilSuppressed implements InstanceProvider {
     }
 
     // FIXME: SC502.  Modify in calls to use this.  And method above.  This should throw the exception.
-    public boolean canProvider(Class type) {
+    public boolean canProvide(Class type) {
         // FIXME: SC502.  Replace with NIY exception.
         throw new RuntimeException("NOT IMPLEMENTED YET");
     }
