@@ -12,7 +12,8 @@ class InstanceTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 
     static Object getInstance(Class cls, Object[] parameters) {
-        return INSTANCE_PROVIDER_TEST_UTIL.getInstance(getConstructor(cls), parameters);
+        Constructor constructor = getConstructor(cls);
+        return INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
     }
 
     static Constructor getConstructor(Class cls) {
