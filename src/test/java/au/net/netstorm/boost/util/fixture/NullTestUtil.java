@@ -12,7 +12,7 @@ class NullTestUtil {
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
     static void checkNullParameters(Constructor constructor, Class[] parameters) {
         for (int i = 0; i < parameters.length; i++) {
-            // FIXME: SC050 Can the following be tidied up easily. 
+            // FIXME: SC050 Can the following be tidied up easily.
             checkNullParameter(parameters, i, constructor);
         }
     }
@@ -23,8 +23,12 @@ class NullTestUtil {
             INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
             Assert.fail("NULLs are evil!!! This object allows null for argument number " + (i + 1) + " of type " + argTypes[i]);
         } catch (RuntimeException e) {
-            if (!isExpectedException(e)) throw e;
+            checkExpectedException(e);
         }
+    }
+
+    private static void checkExpectedException(RuntimeException e) {
+        if (!isExpectedException(e)) throw e;
     }
 
     private static Object[] getParamsWithNull(Class[] argTypes, int i) {
@@ -34,8 +38,16 @@ class NullTestUtil {
     }
 
     private static boolean isExpectedException(RuntimeException e) {
-        Class realExceptionClass = ReflectTestUtil.getRealExceptionClass(e);
-        return ((realExceptionClass == IllegalArgumentException.class) ||
-                (realExceptionClass == NullPointerException.class));
+        Class cls = ReflectTestUtil.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
+        return (isIllegalArgumentException(cls)) || isNullPointerException(cls);
+    }
+
+    // FIXME: SC050 We want an IAE ... NOT A NPE
+    private static boolean isNullPointerException(Class cls) {
+        return (cls == NullPointerException.class);
+    }
+
+    private static boolean isIllegalArgumentException(Class cls) {
+        return cls == IllegalArgumentException.class;
     }
 }
