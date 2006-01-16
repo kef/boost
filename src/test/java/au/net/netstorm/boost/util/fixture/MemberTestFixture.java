@@ -14,7 +14,7 @@ import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 
-// FIXME: SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+// FIXME: SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
     private final Object instance;
@@ -32,15 +32,17 @@ class MemberTestFixture {
         for (int i = 0; i < methods.length; i++) {
             MemberTestFixture memberFixture = new MemberTestFixture(instance);
             memberFixture.checkMember(newArgTypes[i], parameters[i]);
-            memberFixture.checkDataProperty(methods[i], memberFixture.getParameter(getFieldName(methods[i])));
+            String name = getFieldName(methods[i]);
+            memberFixture.checkDataProperty(methods[i], memberFixture.getParameter(name));
         }
     }
 
     private void checkMember(FieldSpec arg, Object expectedValue) {
         try {
-            instance.getClass()
-                    .getDeclaredField(arg.getName());
-            Object actualValue = getParameter(arg.getName());
+            Class cls = instance.getClass();
+            cls.getDeclaredField(arg.getName());
+            String name = arg.getName();
+            Object actualValue = getParameter(name);
             checkFieldImmutable(expectedValue, actualValue, arg);
         } catch (NoSuchFieldException e) {
             Assert.fail("Field " + arg.getName() + " is not found with the correct type " + arg.getType());
@@ -67,17 +69,23 @@ class MemberTestFixture {
     }
 
     private Map createFieldMap() {
-        Field[] fields = instance.getClass()
-                .getDeclaredFields();
+        Class cls = instance.getClass();
+        Field[] fields = cls.getDeclaredFields();
         Map fieldMap = new HashMap();
         for (int i = 0; i < fields.length; i++) fieldMap.put(fields[i].getName(), fields[i]);
         return fieldMap;
     }
 
     private static String getFieldName(Method method) {
-        String name = method.getName()
-                .substring(GET_LENGTH);
-        return Character.toLowerCase(name.charAt(0)) + name.substring(1);
+        String methodName = method.getName();
+        String propertyName = methodName.substring(GET_LENGTH);
+        char startChar = propertyName.charAt(0);
+        String remainder = propertyName.substring(1);
+        return lowerCase(startChar) + remainder;
+    }
+
+    private static char lowerCase(char startChar) {
+        return Character.toLowerCase(startChar);
     }
 
     // FIXME: SC509 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
