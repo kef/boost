@@ -12,10 +12,10 @@ public class DefaultFieldSpecAtomicTest extends TestCase {
 
     // FIXME: SC509 This should be failing because the names of the fields no longer match the actual fields.
     public void testIsImmutable() {
-        ImmutableTestUtil.checkIsImmutableObject(DefaultFieldSpec.class, new DefaultFieldSpec[]{
-            new DefaultFieldSpec("s", String.class),
-            new DefaultFieldSpec("aClass", Class.class)
-        });
+        DefaultFieldSpec f1 = new DefaultFieldSpec("s", String.class);
+        DefaultFieldSpec f2 = new DefaultFieldSpec("aClass", Class.class);
+        DefaultFieldSpec[] fields = {f1, f2};
+        ImmutableTestUtil.checkIsImmutableObject(DefaultFieldSpec.class, fields);
     }
 
     public void testFieldTypeSpec() {
