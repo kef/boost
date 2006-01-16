@@ -35,6 +35,7 @@ public class InstanceProviderTestUtil {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
+        // FIXME: SC050 ? How about trying to load a mock via no-arg class lookup. 
         return knownTypes.getInstance(type);
     }
 
