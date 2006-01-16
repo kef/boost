@@ -19,13 +19,13 @@ class ClassTestFixture extends Assert {
     }
 
     // FIXME: SC506 ? Allow the intefaces to check to be changes Data vs Immutable.
-    public void checkClass(Class targetInterface) {
+    public void checkClass(Class targetInterface, InstanceProvider additional) {
         ClassPropertiesTestUtil.checkSubclassOf(Primordial.class, cls);
         ClassPropertiesTestUtil.checkImplementationOfInterfaceAndFinal(targetInterface, cls);
-        checkConstructor();
+        checkConstructor(additional);
     }
 
-    private void checkConstructor() {
+    private void checkConstructor(InstanceProvider additional) {
         // FIXME: SC050 Revisit this clusterfuck.  Is "types" actually the same as "classes".  If so, remove a bunch of rot.
         Constructor constructor = InstanceTestUtil.getConstructor(cls);
         Class[] types = constructor.getParameterTypes();

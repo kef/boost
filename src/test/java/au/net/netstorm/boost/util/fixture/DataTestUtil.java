@@ -22,7 +22,7 @@ public class DataTestUtil extends Assert {
     private static void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProvider additional) {
         // FIXME: SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
-        fixture.checkClass(Data.class);
+        fixture.checkClass(Data.class, additional);
         Object[] parameters = InstanceTestUtil.getInstances(fields);
         Object instance = InstanceTestUtil.getInstance(cls, parameters);
         SerializationTestUtil.checkSerializable(instance);
