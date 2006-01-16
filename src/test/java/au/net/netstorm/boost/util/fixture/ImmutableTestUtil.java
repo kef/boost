@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // and members (see MemberTestFixture.checkFieldImmutable).  With immutable objects there may not be a correlation
 // between constructor, member name and method names such as getters.  DefaultFieldValueSpec is a problem too.
 
-// FIXME: SC050 INSTANCE.
+// FIXME: SC050 INSTANCEISE.
 public class ImmutableTestUtil {
 
     // FIXME: SC050 Who should know about InstanceProvision (InstanceProvider), the upper levels, or lower?
