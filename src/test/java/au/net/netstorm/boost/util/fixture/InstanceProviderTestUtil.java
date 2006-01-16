@@ -16,9 +16,11 @@ public class InstanceProviderTestUtil {
     private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
     private final InstanceProvider knownTypes = new InstanceProviderTestUtilSuppressed();
 
-    public Object[] getInstances(Class[] args) {
-        Object[] params = new Object[args.length];
-        for (int i = 0; i < args.length; i++) params[i] = getInstance(args[i]);
+    // FIXME: SC050 ? Rename occurrences of "additional" to "extra".
+    // FIXME: SC050 BREADCRUMB - Incorporate "additional"
+    public Object[] getInstances(Class[] types, InstanceProvider additional) {
+        Object[] params = new Object[types.length];
+        for (int i = 0; i < types.length; i++) params[i] = getInstance(types[i], additional);
         return params;
     }
 
@@ -32,9 +34,9 @@ public class InstanceProviderTestUtil {
         }
     }
 
-    private Object getInstance(Class type) {
+    private Object getInstance(Class type, InstanceProvider additional) {
         if (type.isArray()) return getArrayInstance(type);
-        if (Data.class.isAssignableFrom(type)) return getDataInstance(type);
+        if (Data.class.isAssignableFrom(type)) return getDataInstance(type, additional);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
         // FIXME: SC050 ? How about trying to load a mock via no-arg class lookup.
         return knownTypes.getInstance(type);
@@ -50,10 +52,10 @@ public class InstanceProviderTestUtil {
         throw new UnsupportedOperationException("Please honey pie write the code for primitive type " + type);
     }
 
-    private Object getDataInstance(Class type) {
+    private Object getDataInstance(Class type, InstanceProvider additional) {
         Constructor constructor = reflectMaster.getConstructor(type);
         Class[] parameterTypes = constructor.getParameterTypes();
-        Object[] params = getInstances(parameterTypes);
+        Object[] params = getInstances(parameterTypes, additional);
         return reflectEdge.newInstance(constructor, params);
     }
 }

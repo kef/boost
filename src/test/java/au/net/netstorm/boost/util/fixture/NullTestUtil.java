@@ -31,7 +31,7 @@ class NullTestUtil {
     }
 
     private static Object[] getParamsWithNull(int i, Class[] paramTypes, InstanceProvider additional) {
-        Object[] parameters = INSTANCE_PROVIDER_TEST_UTIL.getInstances(paramTypes);
+        Object[] parameters = INSTANCE_PROVIDER_TEST_UTIL.getInstances(paramTypes, additional);
         parameters[i] = null;
         return parameters;
     }

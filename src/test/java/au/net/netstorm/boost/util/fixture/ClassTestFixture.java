@@ -26,6 +26,8 @@ class ClassTestFixture extends Assert {
     }
 
     private void checkConstructor(InstanceProvider additional) {
+        // FIXME: SC050 ... So the BUG smell here is that we do not need to pass the constructor all the way through to IPTU via NTU.
+        // FIXME: SC050 ... Tidying this up will remove a large amount of code.
         Constructor constructor = InstanceTestUtil.getConstructor(cls);
         Class[] expected = constructor.getParameterTypes();
         Class[] params = InstanceTestUtil.getClasses(parameters);
