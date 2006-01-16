@@ -30,6 +30,6 @@ class ClassTestFixture extends Assert {
         Class[] expected = constructor.getParameterTypes();
         Class[] params = InstanceTestUtil.getClasses(parameters);
         NullTestUtil.checkNullParameters(constructor, params, additional);
-        assertEquals("Class constructor does not have expected number arguments", expected.length, parameters.length);
+        assertEquals("Class constructor does not have expected number arguments", expected.length, params.length);
     }
 }
