@@ -10,6 +10,7 @@ class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 
     static void checkNullParameters(Constructor constructor, Class[] argTypes, int numOfParams) {
+        Assert.assertEquals(argTypes.length, numOfParams); // FIXME: SC050 ... Just a small check to ensure we can remove the numOfParams bollocks!!!!!!!!
         for (int i = 0; i < numOfParams; i++) {
             checkNullParameter(argTypes, i, constructor);
         }
