@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?
+// FIXME: SC502 Interface it.
 class ClassTestFixture {
     private final Class cls;
     private final FieldSpec[] newArgTypes;
