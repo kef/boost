@@ -13,15 +13,15 @@ class NullTestUtil {
     static void checkNullParameters(Constructor constructor, Class[] parameters) {
         for (int i = 0; i < parameters.length; i++) {
             // FIXME: SC050 Can the following be tidied up easily.
-            checkNullParameter(parameters, i, constructor);
+            checkNullParameter(constructor, parameters, i);
         }
     }
 
-    private static void checkNullParameter(Class[] argTypes, int i, Constructor constructor) {
-        Object[] parameters = getParamsWithNull(argTypes, i);
+    private static void checkNullParameter(Constructor constructor, Class[] types, int i) {
+        Object[] parameters = getParamsWithNull(types, i);
         try {
             INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
-            Assert.fail("NULLs are evil!!! This object allows null for argument number " + (i + 1) + " of type " + argTypes[i]);
+            Assert.fail("NULLs are evil!!! This object allows null for argument number " + (i + 1) + " of type " + types[i]);
         } catch (RuntimeException e) {
             checkExpectedException(e);
         }
@@ -44,10 +44,11 @@ class NullTestUtil {
 
     // FIXME: SC050 We want an IAE ... NOT A NPE
     private static boolean isNullPointerException(Class cls) {
-        return (cls == NullPointerException.class);
+//        return (cls == NullPointerException.class);
+        return false;
     }
 
     private static boolean isIllegalArgumentException(Class cls) {
-        return cls == IllegalArgumentException.class;
+        return cls.equals(IllegalArgumentException.class);
     }
 }
