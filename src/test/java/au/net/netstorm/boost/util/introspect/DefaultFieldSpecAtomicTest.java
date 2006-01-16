@@ -12,6 +12,8 @@ public class DefaultFieldSpecAtomicTest extends TestCase {
 
     // FIXME: SC509 This should be failing because the names of the fields no longer match the actual fields.
     public void testIsImmutable() {
+        // FIXME: SC050 The string values inside the fieldSpecs are not used.  This indicates the field specs are too much.  Sort this out.
+        // FIXME: SC050 And while we're here, change "s" and "aClass" to something slightly more RELEVANT!
         DefaultFieldSpec f1 = new DefaultFieldSpec("s", String.class);
         DefaultFieldSpec f2 = new DefaultFieldSpec("aClass", Class.class);
         DefaultFieldSpec[] fields = {f1, f2};
