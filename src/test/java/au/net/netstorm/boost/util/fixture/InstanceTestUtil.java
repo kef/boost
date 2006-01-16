@@ -20,15 +20,15 @@ class InstanceTestUtil {
         return REFLECT_MASTER.getConstructor(cls);
     }
 
-    static Object[] getParameters(FieldSpec[] newArgTypes) {
-        Class[] classes = getClasses(newArgTypes);
+    static Object[] getParameters(FieldSpec[] fields) {
+        Class[] classes = getClasses(fields);
         return INSTANCE_PROVIDER_TEST_UTIL.getInstances(classes);
     }
 
-    static Class[] getClasses(FieldSpec[] newArgTypes) {
-        Class[] classes = new Class[newArgTypes.length];
+    static Class[] getClasses(FieldSpec[] fields) {
+        Class[] classes = new Class[fields.length];
         for (int i = 0; i < classes.length; i++) {
-            classes[i] = newArgTypes[i].getType();
+            classes[i] = fields[i].getType();
         }
         return classes;
     }

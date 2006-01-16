@@ -8,16 +8,20 @@ import junit.framework.Assert;
 // FIXME: SC506 Make instance.
 
 public class DataTestUtil extends Assert {
-    public static void checkIsDataObject(Class cls, FieldSpec[] newArgTypes) {
-        ClassTestFixture.checkClass(cls, newArgTypes, Data.class);
-        Object[] parameters = InstanceTestUtil.getParameters(newArgTypes);
-        Object instance = InstanceTestUtil.getInstance(cls, parameters);
-        SerializationTestUtil.checkSerializable(instance);
-        MethodTestFixture.checkMethods(instance, newArgTypes);
-        MemberTestFixture.checkMembers(instance, newArgTypes, parameters);
+    public static void checkIsDataObject(Class cls, FieldSpec[] fields) {
+        doCheckIsData(cls, fields);
     }
 
-    public static void checkIsDataObject(Class cls, FieldSpec[] fields, InstanceProvider customInstanceProvider) {
+    public static void checkIsDataObject(Class cls, FieldSpec[] fields, InstanceProvider additionalInstanceProvider) {
         checkIsDataObject(cls, fields);
+    }
+
+    private static void doCheckIsData(Class cls, FieldSpec[] fields) {
+        ClassTestFixture.checkClass(cls, fields, Data.class);
+        Object[] parameters = InstanceTestUtil.getParameters(fields);
+        Object instance = InstanceTestUtil.getInstance(cls, parameters);
+        SerializationTestUtil.checkSerializable(instance);
+        MethodTestFixture.checkMethods(instance, fields);
+        MemberTestFixture.checkMembers(instance, fields, parameters);
     }
 }
