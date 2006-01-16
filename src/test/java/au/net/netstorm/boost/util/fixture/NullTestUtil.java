@@ -39,13 +39,7 @@ class NullTestUtil {
 
     private static boolean isExpectedException(RuntimeException e) {
         Class cls = ReflectTestUtil.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
-        return (isIllegalArgumentException(cls)) || isNullPointerException(cls);
-    }
-
-    // FIXME: SC050 We want an IAE ... NOT A NPE
-    private static boolean isNullPointerException(Class cls) {
-//        return (cls == NullPointerException.class);
-        return false;
+        return isIllegalArgumentException(cls);
     }
 
     private static boolean isIllegalArgumentException(Class cls) {
