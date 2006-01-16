@@ -16,4 +16,8 @@ public class DataTestUtil extends Assert {
         MethodTestFixture.checkMethods(instance, newArgTypes);
         MemberTestFixture.checkMembers(instance, newArgTypes, parameters);
     }
+
+    public static void checkIsDataObject(Class cls, FieldSpec[] fields, InstanceProvider customInstanceProvider) {
+        checkIsDataObject(cls, fields);
+    }
 }
