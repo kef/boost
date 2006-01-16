@@ -31,7 +31,8 @@ public class InstanceProviderTestUtil {
             return constructor.newInstance(parameters);
         } catch (Exception e) {
             throw new RuntimeException("Constructor does not match expected.", e);
-            // FIXME: SC050 This is NOT always the case.  If the object throws ANY exception in the constructor, this will be reported.  FIX!!! 
+            // FIXME: SC050 This is NOT always the case.  If the object throws ANY exception in the constructor, this will be reported.  FIX!!!
+            // FIXME: SC050 Ensure ALL Mock* are serializable.  Required if they are to be used in testing DATA objects which in turn may need to be serializable.
         }
     }
 
