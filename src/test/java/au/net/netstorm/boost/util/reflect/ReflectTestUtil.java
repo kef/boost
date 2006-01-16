@@ -73,7 +73,7 @@ public class ReflectTestUtil {
     }
 
     public static Class getRealExceptionClass(RuntimeException e) {
-        // FIXME: SC050 This certainly does not really work.  Sort this out!!! 
+        // FIXME: SC050 This certainly does not really work.  Sort this out!!!
         Throwable realException = e;
         if (realException.getClass() == RuntimeException.class) realException = (Throwable) realException.getCause();
         if (realException.getClass() == InvocationTargetException.class) realException = (Throwable) realException.getCause();
