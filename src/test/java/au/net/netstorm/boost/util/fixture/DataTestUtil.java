@@ -8,11 +8,11 @@ import junit.framework.Assert;
 // FIXME: SC506 Make instance.
 
 public class DataTestUtil extends Assert {
-    private static InstanceProvider emptyProvider = new TestEmptyInstanceProvider();
+    private static final InstanceProvider EMPTY_PROVIDER = new TestEmptyInstanceProvider();
 
     // FIXME: SC050 ? Rename to checkIsData.
     public static void checkIsDataObject(Class cls, FieldSpec[] fields) {
-        doCheckIsData(cls, fields, emptyProvider);
+        doCheckIsData(cls, fields, EMPTY_PROVIDER);
     }
 
     public static void checkIsDataObject(Class cls, FieldSpec[] fields, InstanceProvider additional) {
@@ -20,7 +20,8 @@ public class DataTestUtil extends Assert {
     }
 
     private static void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProvider additional) {
-        ClassTestFixture.checkClass(cls, fields, Data.class);
+        ClassTestFixture fixture = new ClassTestFixture(cls, fields);
+        fixture.checkClass(Data.class);
         Object[] parameters = InstanceTestUtil.getInstances(fields);
         Object instance = InstanceTestUtil.getInstance(cls, parameters);
         SerializationTestUtil.checkSerializable(instance);

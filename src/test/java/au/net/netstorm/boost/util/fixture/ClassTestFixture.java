@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.util.fixture;
 
+import java.lang.reflect.Constructor;
+
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
@@ -7,26 +9,29 @@ import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?
 // FIXME: SC502 Interface it.
-class ClassTestFixture {
+class ClassTestFixture extends Assert {
     private final Class cls;
-    private final FieldSpec[] newArgTypes;
+    private final FieldSpec[] parameters;
 
-    ClassTestFixture(Class cls, FieldSpec[] newArgTypes) {
+    public ClassTestFixture(Class cls, FieldSpec[] parameters) {
         this.cls = cls;
-        this.newArgTypes = newArgTypes;
+        this.parameters = parameters;
     }
 
     // FIXME: SC506 ? Allow the intefaces to check to be changes Data vs Immutable.
-    static void checkClass(Class cls, FieldSpec[] newArgTypes, Class targetInterface) {
+    public void checkClass(Class targetInterface) {
         ClassPropertiesTestUtil.checkSubclassOf(Primordial.class, cls);
         ClassPropertiesTestUtil.checkImplementationOfInterfaceAndFinal(targetInterface, cls);
-        new ClassTestFixture(cls, newArgTypes).checkConstructor();
+        checkConstructor();
     }
 
     private void checkConstructor() {
-        int length = InstanceTestUtil.getConstructor(cls).getParameterTypes().length;
-        NullTestUtil.checkNullParameters(InstanceTestUtil.getConstructor(cls), InstanceTestUtil.getClasses(newArgTypes), length);
-        Assert.assertEquals("Class constructor does not have expected number arguments", newArgTypes.length,
-                length);
+        // FIXME: SC050 Revisit this clusterfuck.  Is "types" actually the same as "classes".  If so, remove a bunch of rot.
+        Constructor constructor = InstanceTestUtil.getConstructor(cls);
+        Class[] types = constructor.getParameterTypes();
+        int length = types.length;
+        Class[] classes = InstanceTestUtil.getClasses(parameters);
+        NullTestUtil.checkNullParameters(constructor, classes, length);
+        assertEquals("Class constructor does not have expected number arguments", parameters.length, length);
     }
 }

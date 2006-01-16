@@ -9,7 +9,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // between constructor, member name and method names such as getters.  DefaultFieldValueSpec is a problem too.
 
 public class ImmutableTestUtil {
-    public static void checkIsImmutableObject(Class cls, FieldSpec[] newArgTypes) {
-        ClassTestFixture.checkClass(cls, newArgTypes, Immutable.class);
+    public static void checkIsImmutableObject(Class cls, FieldSpec[] fields) {
+        ClassTestFixture fixture = new ClassTestFixture(cls, fields);
+        fixture.checkClass(Immutable.class);
     }
 }
