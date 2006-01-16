@@ -10,7 +10,7 @@ import junit.framework.Assert;
 public class DataTestUtil extends Assert {
     private static InstanceProvider emptyProvider = new TestEmptyInstanceProvider();
 
-    // FIXME: RDSC050 ? Rename to checkIsData.
+    // FIXME: SC050 ? Rename to checkIsData.
     public static void checkIsDataObject(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields, emptyProvider);
     }
