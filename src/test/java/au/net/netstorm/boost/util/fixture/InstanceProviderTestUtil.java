@@ -24,7 +24,7 @@ public class InstanceProviderTestUtil {
 
     public Object getInstance(Constructor constructor, Object[] parameters) {
         try {
-            // FIXME: SC050 ? Should this be using an edge class.
+            // FIXME: SC050 ? use an edge class.
             constructor.setAccessible(true);
             return constructor.newInstance(parameters);
         } catch (Exception e) {
