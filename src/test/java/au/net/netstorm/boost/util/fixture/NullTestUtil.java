@@ -10,9 +10,9 @@ class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
-    static void checkNullParameters(Constructor constructor, Class[] parameters, int numOfParams) {
-        Assert.assertEquals(parameters.length, numOfParams); // FIXME: SC050 ... Just a small check to ensure we can remove the numOfParams bollocks!!!!!!!!
-        for (int i = 0; i < numOfParams; i++) {
+    static void checkNullParameters(Constructor constructor, Class[] parameters) {
+        for (int i = 0; i < parameters.length; i++) {
+            // FIXME: SC050 Can the following be tidied up easily. 
             checkNullParameter(parameters, i, constructor);
         }
     }
