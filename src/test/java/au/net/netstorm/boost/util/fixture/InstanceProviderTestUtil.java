@@ -24,6 +24,7 @@ public class InstanceProviderTestUtil {
 
     public Object getInstance(Constructor constructor, Object[] parameters) {
         try {
+            // FIXME: SC050 ? Should this be using an edge class.
             constructor.setAccessible(true);
             return constructor.newInstance(parameters);
         } catch (Exception e) {
@@ -35,7 +36,7 @@ public class InstanceProviderTestUtil {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
-        // FIXME: SC050 ? How about trying to load a mock via no-arg class lookup. 
+        // FIXME: SC050 ? How about trying to load a mock via no-arg class lookup.
         return knownTypes.getInstance(type);
     }
 
