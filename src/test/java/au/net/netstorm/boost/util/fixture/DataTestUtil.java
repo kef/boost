@@ -20,6 +20,7 @@ public class DataTestUtil extends Assert {
     }
 
     private static void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProvider additional) {
+        // FIXME: SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
         fixture.checkClass(Data.class);
         Object[] parameters = InstanceTestUtil.getInstances(fields);
