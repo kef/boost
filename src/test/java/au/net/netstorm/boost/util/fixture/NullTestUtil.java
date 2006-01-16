@@ -16,11 +16,11 @@ class NullTestUtil {
         }
     }
 
-    private static void checkNullParameter(int i, Constructor constructor, Class[] types, InstanceProvider additional) {
-        Object[] parameters = getParamsWithNull(types, i);
+    private static void checkNullParameter(int i, Constructor constructor, Class[] paramTypes, InstanceProvider additional) {
+        Object[] params = getParamsWithNull(i, paramTypes, additional);
         try {
-            INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
-            Assert.fail("NULLs are evil!!! This object allows null for argument number " + (i + 1) + " of type " + types[i]);
+            INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, params);
+            Assert.fail("NULLs are evil!!! This object allows null for argument number " + (i + 1) + " of type " + paramTypes[i]);
         } catch (RuntimeException e) {
             checkExpected(e);
         }
@@ -30,8 +30,8 @@ class NullTestUtil {
         if (!isExpected(e)) throw e;
     }
 
-    private static Object[] getParamsWithNull(Class[] argTypes, int i) {
-        Object[] parameters = INSTANCE_PROVIDER_TEST_UTIL.getInstances(argTypes);
+    private static Object[] getParamsWithNull(int i, Class[] paramTypes, InstanceProvider additional) {
+        Object[] parameters = INSTANCE_PROVIDER_TEST_UTIL.getInstances(paramTypes);
         parameters[i] = null;
         return parameters;
     }
