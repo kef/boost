@@ -14,6 +14,7 @@ import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 
+// FIXME: SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
     private final Object instance;
