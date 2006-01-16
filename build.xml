@@ -95,7 +95,7 @@
 
     <!-- FIXME: SC502 Coverage checks for edge and tests. -->
     <target name="_all"
-            depends="clean,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage,build_jar,artifacts"/>
+            depends="clean,artifacts,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage,build_jar"/>
 
     <target name="_compile">
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
