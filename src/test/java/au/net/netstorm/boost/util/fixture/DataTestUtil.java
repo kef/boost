@@ -18,7 +18,7 @@ public class DataTestUtil extends Assert {
 
     private static void doCheckIsData(Class cls, FieldSpec[] fields) {
         ClassTestFixture.checkClass(cls, fields, Data.class);
-        Object[] parameters = InstanceTestUtil.getParameters(fields);
+        Object[] parameters = InstanceTestUtil.getInstances(fields);
         Object instance = InstanceTestUtil.getInstance(cls, parameters);
         SerializationTestUtil.checkSerializable(instance);
         MethodTestFixture.checkMethods(instance, fields);

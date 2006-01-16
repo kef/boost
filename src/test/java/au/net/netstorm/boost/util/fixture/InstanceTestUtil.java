@@ -20,7 +20,7 @@ class InstanceTestUtil {
         return REFLECT_MASTER.getConstructor(cls);
     }
 
-    static Object[] getParameters(FieldSpec[] fields) {
+    static Object[] getInstances(FieldSpec[] fields) {
         Class[] classes = getClasses(fields);
         return INSTANCE_PROVIDER_TEST_UTIL.getInstances(classes);
     }
