@@ -40,7 +40,7 @@ class NullTestUtil {
     private static boolean isExpectedException(RuntimeException e) {
         Class cls = ReflectTestUtil.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
         return isIllegalArgumentException(cls);
-        // FIXME: SC050 Breadcrumb. 
+        // FIXME: SC050 Breadcrumb.
 //        return isIllegalArgumentException(e.getClass());
     }
 
