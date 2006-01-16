@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.io;
 
 import junit.framework.Assert;
 
-final class MockEdgeOutputStream extends Assert implements EdgeOutputStream {
+public final class MockEdgeOutputStream extends Assert implements EdgeOutputStream {
     private final TestAsserter asserter = new TestAsserter();
     private byte[] actual;
     private boolean flushed = false;
