@@ -26,12 +26,10 @@ class ClassTestFixture extends Assert {
     }
 
     private void checkConstructor(InstanceProvider additional) {
-        // FIXME: SC050 Revisit this clusterfuck.  Is "types" actually the same as "classes".  If so, remove a bunch of rot.
         Constructor constructor = InstanceTestUtil.getConstructor(cls);
-        Class[] types = constructor.getParameterTypes();
-        int length = types.length;
-        Class[] classes = InstanceTestUtil.getClasses(parameters);
-        NullTestUtil.checkNullParameters(constructor, classes);
-        assertEquals("Class constructor does not have expected number arguments", length, parameters.length);
+        Class[] expected = constructor.getParameterTypes();
+        Class[] params = InstanceTestUtil.getClasses(parameters);
+        NullTestUtil.checkNullParameters(constructor, params);
+        assertEquals("Class constructor does not have expected number arguments", expected.length, parameters.length);
     }
 }
