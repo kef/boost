@@ -7,20 +7,23 @@ import java.io.ObjectOutputStream;
 
 import junit.framework.Assert;
 
+// FIXME: SC050 Define API class which only links to public APIs.
+
 // FIXME: SC506 Make instance instead of static.
 // FIXME: SC506 ? Surely there is a full serialise production class.
 public class SerializationTestUtil extends Assert {
     public static void checkSerializable(Object instance) {
         try {
-            doCheckSerializable(instance);
+            tryCheckSerializable(instance);
         } catch (Exception e) {
             throw new RuntimeException("Object instance could not be serialized. " + instance.getClass(), e);
         }
     }
 
-    private static void doCheckSerializable(Object instance) throws Exception {
+    private static void tryCheckSerializable(Object instance) throws Exception {
         byte[] serialized = serialize(instance);
         Object rehydrated = deserialize(serialized);
+        // FIXME: SC050 !!!!!!!!!!!!!!!!!!!!!!!!!! REALLY NEED TO REINSTATE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
         // FIXME: SC050 Work out what we are really aiming for here.  The following line used to be in the
         // FIXME: SC050 codebase.  It has been removed because a Data type which references a Mock (during testing).
         // FIXME: SC050 This Mock references a test utility.  The test utility is not serialisable.  Made the field
