@@ -16,6 +16,12 @@ public class InstanceProviderTestUtil {
     private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
     private final InstanceProvider knownTypes = new InstanceProviderTestUtilSuppressed();
 
+    public Object[] getInstances(Class[] args) {
+        Object[] params = new Object[args.length];
+        for (int i = 0; i < args.length; i++) params[i] = getInstance(args[i]);
+        return params;
+    }
+
     public Object getInstance(Constructor constructor, Object[] parameters) {
         try {
             constructor.setAccessible(true);
@@ -23,12 +29,6 @@ public class InstanceProviderTestUtil {
         } catch (Exception e) {
             throw new RuntimeException("Constructor does not match expected.", e);
         }
-    }
-
-    public Object[] getInstances(Class[] args) {
-        Object[] params = new Object[args.length];
-        for (int i = 0; i < args.length; i++) params[i] = getInstance(args[i]);
-        return params;
     }
 
     private Object getInstance(Class type) {
