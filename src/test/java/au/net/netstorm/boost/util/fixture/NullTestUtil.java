@@ -9,10 +9,11 @@ import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 
-    static void checkNullParameters(Constructor constructor, Class[] argTypes, int numOfParams) {
-        Assert.assertEquals(argTypes.length, numOfParams); // FIXME: SC050 ... Just a small check to ensure we can remove the numOfParams bollocks!!!!!!!!
+    // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
+    static void checkNullParameters(Constructor constructor, Class[] parameters, int numOfParams) {
+        Assert.assertEquals(parameters.length, numOfParams); // FIXME: SC050 ... Just a small check to ensure we can remove the numOfParams bollocks!!!!!!!!
         for (int i = 0; i < numOfParams; i++) {
-            checkNullParameter(argTypes, i, constructor);
+            checkNullParameter(parameters, i, constructor);
         }
     }
 
