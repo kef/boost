@@ -78,3 +78,4 @@ public class IndentingToStringMaster implements ToStringMaster {
         return new DefaultIndenterMaster().indent(result);
     }
 }
+// FIXME: SC050 It would be nice if byte[]s (int, long?) printed out in ASCII as well (hexdump style).  
