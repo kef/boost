@@ -39,6 +39,7 @@ public final class ReflectionTestUtil extends Assert
         return invoke(invokee, method, parameters);
     }
 
+    // FIXME: SC050 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
     public void checkSynchronized(Class type)
     {
         Method[] methods = type.getMethods();
