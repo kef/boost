@@ -1,15 +1,16 @@
 package au.net.netstorm.boost.testing.aggregator;
 
-import java.io.File;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
+import java.io.File;
 
 // FIXME: SC506 Most of this is plain utility code.  All except this class.  Move to utility area.
 // FIXME: SC506 Instancise.
 // FIXME: SC506 Check out any other classes which can use Edges as well.
 public class TestSuiteAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
+    private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
 
     public static Test aggregate(String name, String regex) {
         TestSuite result = new TestSuite(name);
@@ -22,7 +23,7 @@ public class TestSuiteAggregator {
     private static File getRoot() {
         String property = System.getProperty(KEY_TEST_CLASSPATH);
         if (property == null)
-            throw new RuntimeException("Ensure you have set the " + KEY_TEST_CLASSPATH + " property to point to your compiled test class hierarchy.", null);
+            throw new RuntimeException(ENCOURAGEMENT_NOTICE + "Ensure you have set the " + KEY_TEST_CLASSPATH + " property to point to your compiled test class hierarchy.", null);
         return new File(property);
     }
 
