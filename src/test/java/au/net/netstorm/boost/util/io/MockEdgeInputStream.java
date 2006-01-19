@@ -28,4 +28,9 @@ final class MockEdgeInputStream extends Assert implements EdgeInputStream {
     private int split(int remaining) {
         return (remaining == 1) ? 1 : remaining / 2;
     }
+
+    public void close() {
+        // FIXME: RD050 Replace with NIE. 
+        throw new RuntimeException("NOT IMPLEMENTED YET");
+    }
 }
