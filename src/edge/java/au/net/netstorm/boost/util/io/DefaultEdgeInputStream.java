@@ -19,7 +19,10 @@ public final class DefaultEdgeInputStream implements EdgeInputStream {
     }
 
     public void close() {
-        // FIXME: SC050 Replace with NIE.
-        throw new RuntimeException("NOT IMPLEMENTED YET");
+        try {
+            stream.close();
+        } catch (IOException e) {
+            throw new EdgeIoException(e);
+        }
     }
 }
