@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 public final class NotImplementedExceptionAtomicTest extends TestCase {
 
+    // FIXME: SC050 Tighten this up. 
     public void testType() {
         NotImplementedException exception = new NotImplementedException();
         assertTrue(exception instanceof RuntimeException);
