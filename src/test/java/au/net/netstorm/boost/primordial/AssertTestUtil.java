@@ -10,4 +10,9 @@ public class AssertTestUtil  {
         Assert.assertEquals(expected.length, actual.length);
         for (int i = 0; i < actual.length; i++) Assert.assertEquals(""+i, expected[i], actual[i]);
     }
+
+    public static final void checkEquals(byte[] expected, byte[] actual) {
+        Assert.assertEquals(expected.length, actual.length);
+        for (int i = 0; i < actual.length; i++) Assert.assertEquals(""+i, expected[i], actual[i]);
+    }
 }
