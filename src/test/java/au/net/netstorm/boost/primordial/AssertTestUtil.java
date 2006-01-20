@@ -6,6 +6,6 @@ import junit.framework.Assert;
 public class AssertTestUtil extends Assert {
     public static final void assertEquals(Object[] expected, Object[] actual) {
         assertEquals(expected.length, actual.length);
-        for (int i = 0; i < actual.length; i++) assertEquals(expected[i], actual[i]);
+        for (int i = 0; i < actual.length; i++) assertEquals(""+i, expected[i], actual[i]);
     }
 }
