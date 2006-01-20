@@ -4,8 +4,8 @@ import junit.framework.Assert;
 
 // FIXME: ? SC506 Instancise.
 class AssertTestUtil extends Assert {
-    public static final void assertEquals(Object[] expected, Object[] fields) {
-        assertEquals(expected.length, fields.length);
-        for (int i = 0; i < fields.length; i++) assertEquals(expected[i], fields[i]);
+    public static final void assertEquals(Object[] expected, Object[] actual) {
+        assertEquals(expected.length, actual.length);
+        for (int i = 0; i < actual.length; i++) assertEquals(expected[i], actual[i]);
     }
 }
