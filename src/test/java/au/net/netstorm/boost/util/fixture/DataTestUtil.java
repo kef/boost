@@ -29,4 +29,56 @@ public class DataTestUtil extends Assert {
         MethodTestFixture.checkMethods(instance, fields);
         MemberTestFixture.checkMembers(instance, fields, parameters);
     }
+
+
+
+
+    // FIXME: THE FOLLOWING CODE SAYS IT ALL (see FIXME)...
+    
+//    import au.net.netstorm.boost.util.fixture.DataTestUtil;
+//    import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
+//    import au.net.netstorm.boost.util.introspect.FieldSpec;
+//    import junit.framework.TestCase;
+//
+//    public final class RoadsideResponseAtomicTest extends TestCase {
+//        public static final RoadsideResponse INSTANCE_1 = buildResponse(1);
+//        public static final RoadsideResponse INSTANCE_2 = buildResponse(2);
+//
+//        public void testData() {
+//            FieldSpec f1 = new DefaultFieldSpec("httpStatus", int.class);
+//            FieldSpec f2 = new DefaultFieldSpec("resultBytes", byte[].class);
+//            FieldSpec[] fields = {f1, f2};
+//            DataTestUtil.checkIsDataObject(RoadsideResponse.class, fields);
+//        }
+//
+//        private static RoadsideResponse buildResponse(int i) {
+//            String result = "result " + i;
+//            byte[] bytes = result.getBytes();
+//            return new RoadsideResponse(i, bytes);
+//        }
+//    }
+
+//    import au.net.netstorm.boost.primordial.Primordial;
+//    import au.net.netstorm.boost.util.type.Data;
+//
+//    public final class RoadsideResponse extends Primordial implements Data {
+//        private final int httpStatus;
+//        private final byte[] resultBytes;
+//
+//        public RoadsideResponse(int httpStatus, byte[] resultBytes) {
+//            if (resultBytes == null) throw new IllegalArgumentException();
+//            this.httpStatus = httpStatus;
+//            this.resultBytes = resultBytes.clone();
+//            // FIXME: RDSC095 This passes (and should not!!!!!!!!!!!!!!!!!!!!!!!!!!).
+////        this.httpStatus = 2;
+//        }
+//
+//        public int getHttpStatus() {
+//            return httpStatus;
+//        }
+//
+//        public byte[] getResultBytes() {
+//            return resultBytes.clone();
+//        }
+//    }
 }
