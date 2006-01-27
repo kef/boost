@@ -10,12 +10,15 @@
 <!-- FIXME: SC502 Run "other" tests against raw classes (integration, acceptance) -->
 <!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
 <!-- FIXME: SC502 Move from JDK 1.5 back to JDK 1.4 compliance target -->
+<!-- FIXME: SC502 Add script(s) to run build from the command line? JUnit needs to be in Ant classpath. -->
+<!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
+<!-- FIXME: SC502 Include profile (properties). One property should specify a properties file somewhere, usually under <project>/conf/profile -->
 
 <!-- FIXME: SC502 Refactors: -->
 <!-- FIXME: SC502 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
 <!-- FIXME: SC502 Use target name underscore prefix consistently ... or lose it. -->
-<!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
-<!-- FIXME: SC502 Include profile (properties). One property should specify a properties file somewhere, usually under <project>/conf/profile -->
+<!-- FIXME: SC502 Break build up into separate files and use import to piece it back together. -->
+<!-- FIXME: SC502 Get consistent about singular vs plural directory and property names. -->
 
 <project name="boost" default="_all" basedir=".">
     <property name="build.dir" location="build"/>
@@ -34,6 +37,8 @@
     <property name="checkstyle.config.dir" location="${config.dir}/checkstyle"/>
     <property name="checkstyle.report.dir" location="${reports.dir}/checkstyle"/>
     <property name="checkstyle.build.dir" location="${build.dir}/checkstyle"/>
+    <property name="simian.config.dir" location="${config.dir}/simian"/>
+    <property name="simian.report.dir" value="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
 
     <!-- FIXME: SC502 "test.class" property isn't used ... use it or lose it -->
@@ -60,6 +65,7 @@
         <include name="**/*EdgeTest.java"/>
     </fileset>
 
+    <!-- FIXME: SC502 Simplify these pattern and file sets. -->
     <patternset id="code.pattern">
         <include name="**/*.java"/>
     </patternset>
@@ -77,6 +83,14 @@
     </fileset>
     <fileset id="checkstyle.test.code" dir="${test.src.dir}">
         <patternset refid="checkstyle.test.code.pattern"/>
+    </fileset>
+
+    <patternset id="simian.code.pattern">
+        <patternset refid="code.pattern"/>
+    </patternset>
+
+    <fileset id="simian.code" dir="${src.dir}">
+        <patternset refid="simian.code.pattern"/>
     </fileset>
 
     <path id="core.coverage.classpath">
@@ -121,6 +135,7 @@
 
     <!-- FIXME: SC502 Coverage checks for edge and tests. -->
     <!-- FIXME: SC502 Hook in checkstyle when all code passes. -->
+    <!-- FIXME: SC502 Hook in simian when we have an eval or open source licence and all dup removed. -->
     <target name="_all"
             depends="clean,artifacts,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage,build_jar"/>
 
@@ -313,8 +328,25 @@
     </macrodef>
 
     <target name="checkstyle">
-        <!--<macro_checkstyle type="production"/>-->
+        <macro_checkstyle type="production"/>
         <macro_checkstyle type="test"/>
+    </target>
+
+    <!-- FIXME: SC502 Get eval version of Simian (or open source licence) and put jar file in lib. -->
+    <target name="simian">
+        <mkdir dir="${simian.report.dir}"/>
+        <!-- FIXME: SC502 Make this consistent with checkstyle taskdef. Use ref for classpath. -->
+        <taskdef resource="simiantask.properties">
+            <classpath location="${lib.dir}/simian/simian.jar"/>
+        </taskdef>
+        <simian threshold="4" language="java" balanceParentheses="true"
+            balanceSquareBrackets="true" failureProperty="simian.detected.duplication">
+            <fileset refid="simian.code"/>
+            <formatter type="xml" tofile="${simian.report.dir}/simian.xml"/>
+            <formatter type="plain"/>
+        </simian>
+        <style in="${simian.report.dir}/simian.xml" out="${simian.report.dir}/simian.html" style="${simian.config.dir}/simian.xsl"/>
+        <fail if="simian.detected.duplication" message="Duplication detected. Build failed."/>
     </target>
 
 </project>
