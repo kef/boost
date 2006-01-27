@@ -2,8 +2,8 @@ package au.net.netstorm.boost.time.core;
 
 public interface TimeRange {
 
-    public StartTime start();
-    public Duration duration();
-    public boolean contains(TimePoint time);
-    public boolean intersects(TimeRange range);
+    StartTime start();
+    Duration duration();
+    boolean contains(TimePoint time);
+    boolean intersects(TimeRange range);
 }

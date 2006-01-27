@@ -8,20 +8,20 @@ public final class DefaultTimeFactory implements TimeFactory {
     // FIXME: SC502 Ensure interface reference.
     private final TimeRangeMaster master = new DefaultTimeRangeMaster();
 
-    public final TimeRange createRange(Date startDate, Date endDate) {
+    public TimeRange createRange(Date startDate, Date endDate) {
         return createRange(createTime(startDate), createTime(endDate));
     }
 
-    public final TimeRange createRange(long start, long endExclusive) {
+    public TimeRange createRange(long start, long endExclusive) {
         return createRange(new TimePoint(start), new TimePoint(endExclusive));
     }
 
-    public final TimePoint createTime(Date timeDate) {
+    public TimePoint createTime(Date timeDate) {
         if (timeDate == null) throw new IllegalArgumentException("Cannot create a time from a NULL date.");
         return new TimePoint(timeDate.getTime());
     }
 
-    private final TimeRange createRange(TimePoint start, TimePoint end) {
+    private TimeRange createRange(TimePoint start, TimePoint end) {
         StartTime startTime = new StartTime(start);
         EndTime endTime = new EndTime(end);
         Duration duration = master.duration(startTime, endTime);

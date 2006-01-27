@@ -19,7 +19,8 @@ public class Primordial {
         return equalsMaster.equals(this, obj);
     }
 
-    // FIXME: SC502 Should this really be final?  There are a number of cases in the codebase where overriding this makes sense.
+    // FIXME: SC502 Should this really be final?  There are a number of cases in the codebase where overriding this
+    // makes sense.
     public final String toString() {
         return toStringMaster.getString(this);
     }
