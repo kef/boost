@@ -1,5 +1,4 @@
 <property name="fileExtensions" value="java"/>
-<property name="fileExtensions" value="java"/>
 <property name="tabWidth" value="4"/>
 <!--
 <module name="RegexpHeader">
@@ -83,7 +82,7 @@
 <module name="UpperEll"/>
 <module name="ArrayTypeStyle"/>
         <!-- <module name="FinalParameters"/> Does the IDE support this? -->
-        <!-- FIX BUILD These usage checks are far too slow and reported unreliable as well.
+        <!-- FIX BUILD These usage checks are far too slow and reportedly unreliable as well.
  Investigate reinstating them in a separate build. -->
         <!--<module name="usage.UnusedPrivateField"/>-->
         <!--<module name="usage.UnusedPrivateMethod">-->

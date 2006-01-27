@@ -302,6 +302,9 @@
     <!-- FIXME: SC502 Fix to run over core/egde/test rather than production/test. Update artifacts page. -->
     <!-- FIXME: SC502 Consider whether we need separate rules for core/edge/test. -->
     <!-- FIXME: SC502 Check whether we need DTDs hanging around. -->
+    <!-- FIXME: SC502 Review and revise checkstyle rules. -->
+    <!-- FIXME: SC502 Reintroduce checkstyle caching? -->
+    <!-- FIXME: SC502 Allow suppressions? -->
     <macrodef name="macro_checkstyle_impl">
         <attribute name="code.type"/>
         <attribute name="prefix"/>
