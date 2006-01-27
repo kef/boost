@@ -53,6 +53,7 @@
 
     <fileset id="atomic.tests" dir="${test.src.dir}">
         <include name="**/*AtomicTest.java"/>
+        <!-- FIXME: SC502 There are no Almost or Not Atomic tests - remove these? -->
         <exclude name="**/*AlmostAtomicTest.java"/>
         <exclude name="**/*NotAtomicTest.java"/>
     </fileset>
