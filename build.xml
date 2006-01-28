@@ -34,9 +34,6 @@
     <property name="simian.report.dir" value="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
 
-    <!-- FIXME: SC502 "test.class" property isn't used ... use it or lose it -->
-    <property name="test.class" value="au.net.netstorm.boost.testing.suite.AtomicTestSuite"/>
-
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
     <property name="core.src.dir" location="${src.dir}/core/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
