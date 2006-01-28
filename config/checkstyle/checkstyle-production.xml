@@ -14,7 +14,7 @@
             <property name="methodMaximum" value="10"/>
         </module>
 <!--
-        <property name="cacheFile" value="checkstyle-production.cache"/>
+        <property name="cacheFile" value="@build.checkstyle.dir@/checkstyle-production.cache"/>
 -->
         &common-rules;
         <module name="EmptyBlock">

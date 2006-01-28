@@ -286,12 +286,10 @@
         </sequential>
     </macrodef>
 
-    <!-- FIXME: SC502 Upgrade all config/checkstyle files to latest versions. -->
     <!-- FIXME: SC502 Fix all code to adhere to checkstyle rules. -->
     <!-- FIXME: SC502 Split up like junit and cobertura so that all HTML reports are generated before any failure. -->
     <!-- FIXME: SC502 Fix to run over core/egde/test rather than production/test. Update artifacts page. -->
     <!-- FIXME: SC502 Consider whether we need separate rules for core/edge/test. -->
-    <!-- FIXME: SC502 Check whether we need DTDs hanging around. -->
     <!-- FIXME: SC502 Review and revise checkstyle rules. -->
     <!-- FIXME: SC502 Reintroduce checkstyle caching? -->
     <!-- FIXME: SC502 Allow suppressions? -->
@@ -307,7 +305,7 @@
                 <formatter type="xml" tofile="@{result.prefix}.xml"/>
                 <fileset refid="@{code.type}.code"/>
             </checkstyle>
-            <style in="@{result.prefix}.xml" out="@{result.prefix}.html" style="${checkstyle.config.dir}/checkstyle.xsl"/>
+            <style in="@{result.prefix}.xml" out="@{result.prefix}.html" style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
             <fail if="checkstyle.failed" message="Checkstyle failure [@{code.type}]."/>
         </sequential>
     </macrodef>

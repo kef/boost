@@ -14,7 +14,7 @@
             <property name="methodMaximum" value="10"/>
         </module>
 <!--
-        <property name="cacheFile" value="checkstyle-test.cache"/>
+        <property name="cacheFile" value="@build.checkstyle.dir@/checkstyle-test.cache"/>
 -->
         &common-rules;
         <!-- FIX BUILD Add a check which ensures that test classes end in UnitTest, IntegrationTest or AcceptanceTest,
