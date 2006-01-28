@@ -300,7 +300,7 @@
         <sequential>
             <mkdir dir="${checkstyle.report.dir}"/>
             <taskdef resource="checkstyletask.properties" classpathref="checkstyle.class.path"/>
-            <checkstyle config="${checkstyle.config.dir}/@{prefix}.xml" failOnViolation="false" failureProperty="checkstyle.failed">
+             <checkstyle config="${checkstyle.config.dir}/@{prefix}.xml" failOnViolation="false" failureProperty="checkstyle.failed">
                 <formatter/>
                 <formatter type="xml" tofile="@{result.prefix}.xml"/>
                 <fileset refid="@{code.type}.code"/>

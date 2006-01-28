@@ -22,7 +22,7 @@ public final class TimePoint implements Serializable {
     }
 
     public boolean equals(Object o) {
-        if (o == null) return false;
+//        if (o == null) return false;
         if (! (o instanceof TimePoint)) return false;
         return equals((TimePoint) o);
     }

@@ -19,8 +19,7 @@ class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
     private final Object instance;
     private final Map fieldMap;
-    static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
-            .length();
+    static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX.length();
 
     MemberTestFixture(Object instance) {
         this.instance = instance;

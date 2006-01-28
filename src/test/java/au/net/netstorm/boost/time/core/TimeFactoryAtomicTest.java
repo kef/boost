@@ -17,6 +17,9 @@ public final class TimeFactoryAtomicTest extends TestCase {
     }
 
     public void testCreateTimePoint() {
+        // FIXME: SC600 Move this out
+        // FIXME: SC600 Combine this with method in other class.
+        // FIXME: SC600 Strip out gumf in XML.
         assertEquals(TIME_050, TIME_FACTORY.createTime(DATE_050));
         assertEquals(TIME_100, TIME_FACTORY.createTime(DATE_100));
         assertEquals(TIME_400, TIME_FACTORY.createTime(DATE_400));

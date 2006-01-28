@@ -79,8 +79,10 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     private void checkVmEntry(MockBootstrapper mockBootstrap, VmStyle style) {
-        VmEntry.main(new String[]{style.getStyle()});
-        assertEquals(style, mockBootstrap.getStyle());
+        String[] args = {style.getStyle()};
+        VmEntry.main(args);
+        VmStyle mockStyle = mockBootstrap.getStyle();
+        assertEquals(style, mockStyle);
     }
 
     private void callMain(String styleString) {
