@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>BOOST Artifacts</title>
+    <title>Boost Artifacts</title>
 </head>
 
 <body>
@@ -16,16 +16,15 @@
     <li><a href="reports/simian/simian.html">Simian code duplication</a></li>
 </ul>
 
-<h3>Cruise</h3>
+<h3>CruiseControl</h3>
 <ul>
-    <li>Most Recent Build</li>
-    <li>Main cruise</li>
-    <li>Cruise management</li>
+    <li><a href="https://geekscape.org/cruisecontrol/buildresults/boost">Build results</a></li>
+    <li><a href="https://geekscape.org:18001/mbean?objectname=CruiseControl+Project%3Aname%3Dboost">Management</a></li>
     <li>
-
-        <form action="geekscape control fix this ... port:18001/invoke">
+        <!-- FIXME: SC502 geekscape control fix this ... port. -->
+        <form action="https://geekscape.org:18001/invoke">
             <input value="build" type="hidden" name="operation">
-            <input value="CruiseControl Project:name=whitepages"
+            <input value="CruiseControl Project:name=boost"
                    name="objectname" type="hidden">
             <input value="Rebuild" type="submit">
         </form>
@@ -34,13 +33,17 @@
 
 <h3>Software</h3>
 <ul>
-    <li><a href="jars/boost.jar">Jar files</a></li>
+    <li><a href="jars/boost.jar">Jar file</a></li>
 </ul>
 
 <h3>Miscellaneous</h3>
 <ul>
-    <li>Wiki</li>
     <li><a href="https://geekscape.org/svn/boost/trunk/">Source Code (SVN repository view)</a></li>
+    <li><a href="https://geekscape.org/xplanner">XPlanner</a></li>
+
+    <!-- FIXME: SC502 Should we reveal this link? -->
+    <li>Wiki</li>
+
     <li><a href="http://xp-ssd.com">Sustainable Software Development</a></li>
 </ul>
 </body>
