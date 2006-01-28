@@ -54,8 +54,7 @@
 
     <!-- FIXME: SC502 Simplify these pattern and file sets. -->
     <patternset id="code.pattern">
-        <include name="**/*.java"/>
-    </patternset>
+        <include name="**/*.java"/>    </patternset>
 
     <patternset id="checkstyle.production.code.pattern">
         <patternset refid="code.pattern"/>
@@ -83,7 +82,6 @@
     <path id="core.coverage.classpath">
         <path location="${edge.class.dir}"/>
         <path location="${core.instrumented.dir}"/>
-        <!-- FIXME: SC502 If we have core.instrumented, why do we need core? -->
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
         <path refid="cobertura.classpath"/>
@@ -91,7 +89,6 @@
 
     <path id="edge.coverage.classpath">
         <path location="${edge.instrumented.dir}"/>
-        <!-- FIXME: SC502 If we have edge.instrumented, why do we need edge? -->
         <path location="${edge.class.dir}"/>
         <path location="${test.class.dir}"/>
         <path refid="cobertura.classpath"/>
