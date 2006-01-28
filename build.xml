@@ -4,9 +4,6 @@
 <!--Dependency targets begin with "_". -->
 
 <!-- FIXME: SC502 Goals: -->
-<!-- FIXME: SC502 Simian run -->
-<!-- FIXME: SC502 Simian report (into artifacts area) -->
-<!-- FIXME: SC502 Simian fail on error -->
 <!-- FIXME: SC502 Run "other" tests against raw classes (integration, acceptance) -->
 <!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
 <!-- FIXME: SC502 Move from JDK 1.5 back to JDK 1.4 compliance target -->
@@ -56,9 +53,6 @@
 
     <fileset id="atomic.tests" dir="${test.src.dir}">
         <include name="**/*AtomicTest.java"/>
-        <!-- FIXME: SC502 There are no Almost or Not Atomic tests - remove these? -->
-        <exclude name="**/*AlmostAtomicTest.java"/>
-        <exclude name="**/*NotAtomicTest.java"/>
     </fileset>
 
     <fileset id="edge.tests" dir="${test.src.dir}">
