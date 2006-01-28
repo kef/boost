@@ -12,7 +12,6 @@ public final class StartTime implements Serializable {
         validate();
     }
     
-
     public boolean equals(Object o) {
         if (o == null) return false;
         if (! (o instanceof StartTime)) return false;

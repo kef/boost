@@ -127,9 +127,15 @@
         </fileset>
     </path>
 
+    <path id="simian.class.path">
+        <fileset dir="${lib.dir}/simian">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
     <!-- FIXME: SC502 Coverage checks for edge and tests. -->
     <!-- FIXME: SC502 Hook in checkstyle when all code passes. -->
-    <!-- FIXME: SC502 Hook in simian when we have an eval or open source licence and all dup removed. -->
+    <!-- FIXME: SC502 Hook in simian when we have removed all duplication. -->
     <target name="_all"
             depends="clean,artifacts,_compile,_instrument,_run_tests,report_tests,_report_coverage,_check_tests,_check_coverage,build_jar"/>
 
@@ -329,13 +335,10 @@
         <macro_checkstyle type="test"/>
     </target>
 
-    <!-- FIXME: SC502 Get eval version of Simian (or open source licence) and put jar file in lib. -->
     <target name="simian">
         <mkdir dir="${simian.report.dir}"/>
-        <!-- FIXME: SC502 Make this consistent with checkstyle taskdef. Use ref for classpath. -->
-        <taskdef resource="simiantask.properties">
-            <classpath location="${lib.dir}/simian/simian.jar"/>
-        </taskdef>
+        <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
+        <!-- FIXME: SC502 Experiment with ignore options to strengthen check. -->
         <simian threshold="4" language="java" balanceParentheses="true"
             balanceSquareBrackets="true" failureProperty="simian.detected.duplication">
             <fileset refid="simian.code"/>

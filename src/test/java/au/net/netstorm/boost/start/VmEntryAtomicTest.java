@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.start;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
-import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.util.reflect.ReflectMaster;
+import au.net.netstorm.boost.primordial.PrimordialAtomicTest;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.primordial.PrimordialAtomicTest;
+import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.util.reflect.ReflectEdge;
+import au.net.netstorm.boost.util.reflect.ReflectMaster;
+import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import junit.framework.TestCase;
 
 // FIXME: SC506 Fix failXxx().
@@ -23,7 +23,6 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] NULL = null;
 
     // FIXME: SC502 Ensure test for private constructor.
-
 
     private final ReflectMaster reflector = new DefaultReflectMaster();
 
@@ -75,17 +74,8 @@ public class VmEntryAtomicTest extends TestCase {
     private VmEntry newVmEntry() {
         Constructor constructor = reflector.getConstructor(VmEntry.class);
         Object[] args = {};
-        try {
-            constructor.setAccessible(true);
-            return (VmEntry) constructor.newInstance(args);
-            // FIXME: SC502 Move to "edge"
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
+        constructor.setAccessible(true);
+        return (VmEntry) ReflectEdge.INSTANCE.newInstance(constructor, args);
     }
 
     private void checkVmEntry(MockBootstrapper mockBootstrap, VmStyle style) {
