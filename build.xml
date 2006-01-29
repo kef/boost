@@ -33,7 +33,6 @@
     <property name="simian.config.dir" location="${config.dir}/simian"/>
     <property name="simian.report.dir" value="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
-
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
     <property name="core.src.dir" location="${src.dir}/core/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
@@ -52,23 +51,16 @@
         <include name="**/*EdgeTest.java"/>
     </fileset>
 
-    <!-- FIXME: SC502 Simplify these pattern and file sets. -->
     <patternset id="code.pattern">
-        <include name="**/*.java"/>    </patternset>
-
-    <patternset id="checkstyle.production.code.pattern">
-        <patternset refid="code.pattern"/>
-    </patternset>
-
-    <patternset id="checkstyle.test.code.pattern">
-        <patternset refid="code.pattern"/>
+        <include name="**/*.java"/>
     </patternset>
 
     <fileset id="checkstyle.production.code" dir="${core.src.dir}">
-        <patternset refid="checkstyle.production.code.pattern"/>
+        <patternset refid="code.pattern"/>
     </fileset>
+
     <fileset id="checkstyle.test.code" dir="${test.src.dir}">
-        <patternset refid="checkstyle.test.code.pattern"/>
+        <patternset refid="code.pattern"/>
     </fileset>
 
     <patternset id="simian.code.pattern">
@@ -106,6 +98,7 @@
         <path refid="junit.classpath"/>
     </path>
 
+    <!-- FIXME: SC502 Create a jar patternset to remove duplication of includes here. -->
     <path id="cobertura.classpath">
         <fileset dir="${lib.dir}/cobertura">
             <include name="**/*.jar"/>
@@ -130,7 +123,6 @@
         </fileset>
     </path>
 
-    <!-- FIXME: SC502 Coverage checks for tests? -->
     <!-- FIXME: SC502 Hook in checkstyle when all code passes. -->
     <!-- FIXME: SC502 Hook in simian when we have removed all duplication. -->
     <target name="all"
@@ -146,7 +138,7 @@
         <delete dir="${build.dir}"/>
     </target>
 
-    <!-- FIXME: SC502 ? API jar which contains just primordial. -->
+    <!-- FIXME: SC502 API jar which contains just primordial? -->
     <target name="build_jar">
         <!-- FIXME: SC502 boost-run.jar which contains ONLY edge/core. -->
         <mkdir dir="${jars.dir}"/>
@@ -168,7 +160,6 @@
         </copy>
     </target>
 
-    <!-- FIXME: SC502 Rename to run_atomic_tests when atomic tests are run. -->
     <target name="run_tests">
         <macro_junit_run tests.refid="atomic.tests" classpath.refid="core.coverage.classpath" coverage.type="core"
                          failure.property="atomic.tests.failed"/>
@@ -178,6 +169,7 @@
 
     <target name="check_tests">
         <macro_junit_check failure.property="atomic.tests.failed"/>
+        <macro_junit_check failure.property="edge.tests.failed"/>
     </target>
 
     <target name="report_tests">
