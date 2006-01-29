@@ -16,11 +16,13 @@
 <!-- FIXME: SC502 Get consistent about singular vs plural directory and property names. -->
 
 <project name="boost" default="all" basedir=".">
+    <property name="label" value="build-dev"/>
+
     <property name="build.dir" location="build"/>
-    <property name="config.dir" value="config"/>
+    <property name="config.dir" location="config"/>
     <property name="lib.dir" location="lib"/>
-    <property name="src.dir" value="src"/>
-    <property name="class.dir" location="${build.dir}/classes"/>
+    <property name="src.dir" location="src"/>
+    <property name="classes.dir" location="${build.dir}/classes"/>
     <property name="coverage.dir" location="${build.dir}/coverage"/>
     <property name="instrumented.dir" location="${coverage.dir}/instrumented"/>
     <property name="artifacts.dir" location="${build.dir}/artifacts"/>
@@ -31,16 +33,16 @@
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
     <property name="checkstyle.config.dir" location="${config.dir}/checkstyle"/>
     <property name="checkstyle.report.dir" location="${reports.dir}/checkstyle"/>
-    <property name="checkstyle.build.dir" location="${build.dir}/checkstyle"/>
+    <property name="checkstyle.dir" location="${build.dir}/checkstyle"/>
     <property name="simian.config.dir" location="${config.dir}/simian"/>
-    <property name="simian.report.dir" value="${reports.dir}/simian"/>
+    <property name="simian.report.dir" location="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
     <property name="core.src.dir" location="${src.dir}/core/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
-    <property name="edge.class.dir" location="${class.dir}/edge"/>
-    <property name="core.class.dir" location="${class.dir}/core"/>
-    <property name="test.class.dir" location="${class.dir}/test"/>
+    <property name="edge.class.dir" location="${classes.dir}/edge"/>
+    <property name="core.class.dir" location="${classes.dir}/core"/>
+    <property name="test.class.dir" location="${classes.dir}/test"/>
     <property name="edge.instrumented.dir" location="${instrumented.dir}/edge"/>
     <property name="core.instrumented.dir" location="${instrumented.dir}/core"/>
     <property name="test.instrumented.dir" location="${instrumented.dir}/test"/>
@@ -153,11 +155,21 @@
         <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
     </target>
 
+    <macrodef name="macro_javac">
+        <attribute name="srcdir"/>
+        <attribute name="destdir"/>
+        <attribute name="classpathref"/>
+        <sequential>
+            <mkdir dir="@{destdir}"/>
+            <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
+        </sequential>
+    </macrodef>
+
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
 
-    <!-- FIXME: SC502 API jar which contains just primordial? -->
+    <!-- FIXME: SC502 API jar which contains just Primordial? -->
     <target name="build_jar">
         <!-- FIXME: SC502 boost-run.jar which contains ONLY edge/core. -->
         <mkdir dir="${jars.dir}"/>
@@ -191,19 +203,10 @@
     </target>
 
     <target name="check_tests">
+        <!-- FIXME: SC502 junit.@{code.type}.failed. -->
         <macro_junit_check failure.property="atomic.tests.failed"/>
         <macro_junit_check failure.property="edge.tests.failed"/>
     </target>
-
-    <macrodef name="macro_javac">
-        <attribute name="srcdir"/>
-        <attribute name="destdir"/>
-        <attribute name="classpathref"/>
-        <sequential>
-            <mkdir dir="@{destdir}"/>
-            <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
-        </sequential>
-    </macrodef>
 
     <macrodef name="macro_junit_run">
         <attribute name="tests.refid"/>
@@ -242,7 +245,8 @@
     <macrodef name="macro_junit_check">
         <attribute name="failure.property"/>
         <sequential>
-            <fail if="@{failure.property}" message="ONE OR MORE TESTS FAILED."/>
+            <!-- FIXME: SC502 Use code.type instead? Does this match the model? -->
+            <fail if="@{failure.property}" message="One or more tests failed [@{failure.property}]."/>
         </sequential>
     </macrodef>
 
@@ -271,7 +275,7 @@
             <mkdir dir="${instrumented.dir}/@{code.type}"/>
             <cobertura-instrument todir="${instrumented.dir}/@{code.type}"
                                   datafile="${coverage.dir}/@{code.type}_coverage.ser">
-                <fileset dir="${class.dir}/@{code.type}">
+                <fileset dir="${classes.dir}/@{code.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
                 </fileset>
@@ -298,57 +302,50 @@
         <attribute name="line.limit"/>
         <attribute name="code.type"/>
         <sequential>
+            <!-- FIXME: SC502 Don't halt on failure. Follow with a <fail> task with a message consistent with other failures. -->
             <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
-                             failureproperty="coverage.failed" haltonfailure="true"
+                             failureproperty="coverage.@{code.type}.failed" haltonfailure="true"
                              datafile="${coverage.dir}/@{code.type}_coverage.ser"/>
         </sequential>
     </macrodef>
 
+    <target name="checkstyle" depends="run_checkstyle,check_checkstyle"/>
+
     <target name="run_checkstyle">
-        <macro_run_checkstyle type="core"/>
-        <macro_run_checkstyle type="edge"/>
-        <macro_run_checkstyle type="test"/>
+        <macro_run_checkstyle code.type="core"/>
+        <macro_run_checkstyle code.type="edge"/>
+        <macro_run_checkstyle code.type="test"/>
     </target>
 
     <target name="check_checkstyle">
-        <macro_check_checkstyle type="core"/>
-        <macro_check_checkstyle type="edge"/>
-        <macro_check_checkstyle type="test"/>
+        <macro_check_checkstyle code.type="core"/>
+        <macro_check_checkstyle code.type="edge"/>
+        <macro_check_checkstyle code.type="test"/>
     </target>
 
-    <!-- FIXME: SC502 Split up like junit and cobertura so that all HTML reports are generated before any failure. -->
-    <!-- FIXME: SC502 Reintroduce checkstyle caching. -->
-    <!-- FIXME: SC502 Allow suppressions. -->
     <!-- FIXME: SC502 Consider whether we need to keep separate rules for core/edge/test. -->
     <!-- FIXME: SC502 Review and revise checkstyle rules. -->
     <!-- FIXME: SC502 Fix all code to adhere to checkstyle rules. -->
-    <macrodef name="macro_checkstyle_impl">
+    <macrodef name="macro_run_checkstyle">
         <attribute name="code.type"/>
-        <attribute name="prefix"/>
-        <attribute name="result.prefix"/>
         <sequential>
+            <mkdir dir="${checkstyle.dir}"/>
             <mkdir dir="${checkstyle.report.dir}"/>
             <taskdef resource="checkstyletask.properties" classpathref="checkstyle.class.path"/>
-             <checkstyle config="${checkstyle.config.dir}/@{prefix}.xml" failOnViolation="false" failureProperty="checkstyle.failed">
+             <checkstyle config="${checkstyle.config.dir}/checkstyle-@{code.type}.xml"
+                         failOnViolation="false" failureProperty="checkstyle.@{code.type}.failed">
                 <formatter/>
-                <formatter type="xml" tofile="@{result.prefix}.xml"/>
-                <fileset refid="@{code.type}.code"/>
+                <formatter type="xml" tofile="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"/>
+                <fileset refid="checkstyle.@{code.type}.code"/>
             </checkstyle>
-            <style in="@{result.prefix}.xml" out="@{result.prefix}.html" style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
-        </sequential>
-    </macrodef>
-
-    <!-- FIXME: SC502 Try to simplify by removing this intermediate level. -->
-    <macrodef name="macro_run_checkstyle">
-        <attribute name="type"/>
-        <sequential>
-            <macro_checkstyle_impl result.prefix="${checkstyle.report.dir}/checkstyle-@{type}"
-                code.type="checkstyle.@{type}" prefix="checkstyle-@{type}"/>
+            <style in="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"
+                   out="${checkstyle.report.dir}/checkstyle-@{code.type}.html"
+                   style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
         </sequential>
     </macrodef>
 
     <macrodef name="macro_check_checkstyle">
-        <attribute name="type"/>
+        <attribute name="code.type"/>
         <sequential>
             <fail if="checkstyle.@{code.type}.failed" message="Checkstyle failure [@{code.type}]."/>
         </sequential>
@@ -373,16 +370,14 @@
     </target>
 
     <!-- FIXME: SC502 Remove remaining duplication reports by Simian. -->
-    <!-- FIXME: SC502 Split up like junit and cobertura so that all HTML reports are generated before any failure. -->
     <macrodef name="macro_run_simian">
         <attribute name="code.type"/>
         <sequential>
             <mkdir dir="${simian.report.dir}"/>
             <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
             <!-- FIXME: SC502 Experiment with ignore options to strengthen check. -->
-            <!-- FIXME: SC502 Make failure property names consistent. -->
-            <simian threshold="4" language="java" balanceParentheses="true"
-                balanceSquareBrackets="true" failureProperty="simian.detected.duplication">
+            <simian threshold="4" language="java" balanceParentheses="true" balanceSquareBrackets="true"
+                    failureProperty="simian.@{code.type}.failed">
                 <fileset refid="simian.@{code.type}.code"/>
                 <formatter type="xml" tofile="${simian.report.dir}/simian-@{code.type}.xml"/>
                 <formatter type="plain"/>
@@ -392,11 +387,10 @@
         </sequential>
     </macrodef>
 
-    <!-- FIXME: SC502 Make all failure messages consistent and include code type in message. -->
     <macrodef name="macro_check_simian">
         <attribute name="code.type"/>
         <sequential>
-            <fail if="simian.detected.duplication" message="Duplication detected. Build failed."/>
+            <fail if="simian.@{code.type}.failed" message="Simian detected duplication [@{code.type}]."/>
         </sequential>
     </macrodef>
 

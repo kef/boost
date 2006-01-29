@@ -76,6 +76,9 @@
 <module name="ThrowsCount">
     <property name="max" value="2"/>
 </module>
+<module name="JavaNCSS">
+    <property name="methodMaximum" value="10"/>
+</module>
 <module name="CyclomaticComplexity">
     <property name="max" value="4"/>
 </module>

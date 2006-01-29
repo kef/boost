@@ -4,18 +4,11 @@
 [ <!ENTITY common-rules SYSTEM "file:config/checkstyle/checkstyle-common.xml"> ]
 >
 <module name="Checker">
-<!--
     <module name="SuppressionFilter">
-        <property name="file" value="@checkstyle.suppressions.dir@/suppressions-test.xml"/>
+        <property name="file" value="config/checkstyle/suppressions-test.xml"/>
     </module>
--->
     <module name="TreeWalker">
-        <module name="JavaNCSS">
-            <property name="methodMaximum" value="10"/>
-        </module>
-<!--
-        <property name="cacheFile" value="@build.checkstyle.dir@/checkstyle-test.cache"/>
--->
+        <property name="cacheFile" value="build/checkstyle/checkstyle-test.cache"/>
         &common-rules;
         <!-- FIX BUILD Add a check which ensures that test classes end in UnitTest, IntegrationTest or AcceptanceTest,
                        whilst permitting other valid test class names (Mock, etc) -->
