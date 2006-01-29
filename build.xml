@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- FIXME: SC502 Create Kickstart IntelliJ project and module files for each pair. -->
+
 <!-- FIXME: SC502 Goals: -->
 <!-- FIXME: SC502 Run "other" tests against raw classes (integration, acceptance) -->
 <!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
@@ -55,7 +57,11 @@
         <include name="**/*.java"/>
     </patternset>
 
-    <fileset id="checkstyle.production.code" dir="${core.src.dir}">
+    <fileset id="checkstyle.core.code" dir="${core.src.dir}">
+        <patternset refid="code.pattern"/>
+    </fileset>
+
+    <fileset id="checkstyle.edge.code" dir="${edge.src.dir}">
         <patternset refid="code.pattern"/>
     </fileset>
 
@@ -63,12 +69,25 @@
         <patternset refid="code.pattern"/>
     </fileset>
 
-    <patternset id="simian.code.pattern">
+    <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
-    </patternset>
+        <exclude name="**/pair/*.java"/>
+    </fileset>
 
-    <fileset id="simian.code" dir="${src.dir}">
-        <patternset refid="simian.code.pattern"/>
+    <fileset id="simian.boo.code" dir="${src.dir}">
+        <include name="**/pair/boo/**/*.java"/>
+    </fileset>
+
+    <fileset id="simian.monster.code" dir="${src.dir}">
+        <include name="**/pair/monster/**/*.java"/>
+    </fileset>
+
+    <fileset id="simian.rah.code" dir="${src.dir}">
+        <include name="**/pair/rah/**/*.java"/>
+    </fileset>
+
+    <fileset id="simian.scream.code" dir="${src.dir}">
+        <include name="**/pair/scream/**/*.java"/>
     </fileset>
 
     <path id="core.coverage.classpath">
@@ -123,8 +142,8 @@
         </fileset>
     </path>
 
-    <!-- FIXME: SC502 Hook in checkstyle when all code passes. -->
-    <!-- FIXME: SC502 Hook in simian when we have removed all duplication. -->
+    <!-- FIXME: SC502 Hook in run and check checkstyle when all code passes. -->
+    <!-- FIXME: SC502 Hook in run and check simian when we have removed all duplication. -->
     <target name="all"
             depends="clean,artifacts,compile,instrument,run_tests,report_tests,report_coverage,check_tests,check_coverage,build_jar"/>
 
@@ -167,13 +186,13 @@
                          failure.property="edge.tests.failed"/>
     </target>
 
+    <target name="report_tests">
+        <macro_junit_report/>
+    </target>
+
     <target name="check_tests">
         <macro_junit_check failure.property="atomic.tests.failed"/>
         <macro_junit_check failure.property="edge.tests.failed"/>
-    </target>
-
-    <target name="report_tests">
-        <macro_junit_report/>
     </target>
 
     <macrodef name="macro_javac">
@@ -208,13 +227,6 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="macro_junit_check">
-        <attribute name="failure.property"/>
-        <sequential>
-            <fail if="@{failure.property}" message="ONE OR MORE TESTS FAILED."/>
-        </sequential>
-    </macrodef>
-
     <macrodef name="macro_junit_report">
         <sequential>
             <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
@@ -224,6 +236,13 @@
                 </fileset>
                 <report format="frames" todir="${test.report.dir}"/>
             </junitreport>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="macro_junit_check">
+        <attribute name="failure.property"/>
+        <sequential>
+            <fail if="@{failure.property}" message="ONE OR MORE TESTS FAILED."/>
         </sequential>
     </macrodef>
 
@@ -285,13 +304,24 @@
         </sequential>
     </macrodef>
 
-    <!-- FIXME: SC502 Fix all code to adhere to checkstyle rules. -->
+    <target name="run_checkstyle">
+        <macro_run_checkstyle type="core"/>
+        <macro_run_checkstyle type="edge"/>
+        <macro_run_checkstyle type="test"/>
+    </target>
+
+    <target name="check_checkstyle">
+        <macro_check_checkstyle type="core"/>
+        <macro_check_checkstyle type="edge"/>
+        <macro_check_checkstyle type="test"/>
+    </target>
+
     <!-- FIXME: SC502 Split up like junit and cobertura so that all HTML reports are generated before any failure. -->
-    <!-- FIXME: SC502 Fix to run over core/egde/test rather than production/test. Update artifacts page. -->
-    <!-- FIXME: SC502 Consider whether we need separate rules for core/edge/test. -->
+    <!-- FIXME: SC502 Reintroduce checkstyle caching. -->
+    <!-- FIXME: SC502 Allow suppressions. -->
+    <!-- FIXME: SC502 Consider whether we need to keep separate rules for core/edge/test. -->
     <!-- FIXME: SC502 Review and revise checkstyle rules. -->
-    <!-- FIXME: SC502 Reintroduce checkstyle caching? -->
-    <!-- FIXME: SC502 Allow suppressions? -->
+    <!-- FIXME: SC502 Fix all code to adhere to checkstyle rules. -->
     <macrodef name="macro_checkstyle_impl">
         <attribute name="code.type"/>
         <attribute name="prefix"/>
@@ -305,11 +335,11 @@
                 <fileset refid="@{code.type}.code"/>
             </checkstyle>
             <style in="@{result.prefix}.xml" out="@{result.prefix}.html" style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
-            <fail if="checkstyle.failed" message="Checkstyle failure [@{code.type}]."/>
         </sequential>
     </macrodef>
 
-    <macrodef name="macro_checkstyle">
+    <!-- FIXME: SC502 Try to simplify by removing this intermediate level. -->
+    <macrodef name="macro_run_checkstyle">
         <attribute name="type"/>
         <sequential>
             <macro_checkstyle_impl result.prefix="${checkstyle.report.dir}/checkstyle-@{type}"
@@ -317,24 +347,57 @@
         </sequential>
     </macrodef>
 
-    <target name="checkstyle">
-        <macro_checkstyle type="production"/>
-        <macro_checkstyle type="test"/>
+    <macrodef name="macro_check_checkstyle">
+        <attribute name="type"/>
+        <sequential>
+            <fail if="checkstyle.@{code.type}.failed" message="Checkstyle failure [@{code.type}]."/>
+        </sequential>
+    </macrodef>
+
+    <target name="simian" depends="run_simian,check_simian"/>
+
+    <target name="run_simian">
+        <macro_run_simian code.type="boost"/>
+        <macro_run_simian code.type="boo"/>
+        <macro_run_simian code.type="monster"/>
+        <macro_run_simian code.type="rah"/>
+        <macro_run_simian code.type="scream"/>
     </target>
 
-    <!-- FIXME: SC502 Remove remaining duplication. -->
-    <target name="simian">
-        <mkdir dir="${simian.report.dir}"/>
-        <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
-        <!-- FIXME: SC502 Experiment with ignore options to strengthen check. -->
-        <simian threshold="4" language="java" balanceParentheses="true"
-            balanceSquareBrackets="true" failureProperty="simian.detected.duplication">
-            <fileset refid="simian.code"/>
-            <formatter type="xml" tofile="${simian.report.dir}/simian.xml"/>
-            <formatter type="plain"/>
-        </simian>
-        <style in="${simian.report.dir}/simian.xml" out="${simian.report.dir}/simian.html" style="${simian.config.dir}/simian.xsl"/>
-        <fail if="simian.detected.duplication" message="Duplication detected. Build failed."/>
+    <target name="check_simian">
+        <macro_check_simian code.type="boost"/>
+        <macro_check_simian code.type="boo"/>
+        <macro_check_simian code.type="monster"/>
+        <macro_check_simian code.type="rah"/>
+        <macro_check_simian code.type="scream"/>
     </target>
+
+    <!-- FIXME: SC502 Remove remaining duplication reports by Simian. -->
+    <!-- FIXME: SC502 Split up like junit and cobertura so that all HTML reports are generated before any failure. -->
+    <macrodef name="macro_run_simian">
+        <attribute name="code.type"/>
+        <sequential>
+            <mkdir dir="${simian.report.dir}"/>
+            <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
+            <!-- FIXME: SC502 Experiment with ignore options to strengthen check. -->
+            <!-- FIXME: SC502 Make failure property names consistent. -->
+            <simian threshold="4" language="java" balanceParentheses="true"
+                balanceSquareBrackets="true" failureProperty="simian.detected.duplication">
+                <fileset refid="simian.@{code.type}.code"/>
+                <formatter type="xml" tofile="${simian.report.dir}/simian-@{code.type}.xml"/>
+                <formatter type="plain"/>
+            </simian>
+            <style in="${simian.report.dir}/simian-@{code.type}.xml" out="${simian.report.dir}/simian-@{code.type}.html"
+                   style="${simian.config.dir}/simian.xsl"/>
+        </sequential>
+    </macrodef>
+
+    <!-- FIXME: SC502 Make all failure messages consistent and include code type in message. -->
+    <macrodef name="macro_check_simian">
+        <attribute name="code.type"/>
+        <sequential>
+            <fail if="simian.detected.duplication" message="Duplication detected. Build failed."/>
+        </sequential>
+    </macrodef>
 
 </project>

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.kickstart;
+package au.net.netstorm.boost.kickstart.practice;
 
 import junit.framework.TestCase;
 
