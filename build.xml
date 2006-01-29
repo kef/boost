@@ -103,6 +103,7 @@
     <path id="test.classpath">
         <path refid="core.classpath"/>
         <path location="${core.class.dir}"/>
+        <path refid="junit.classpath"/>
     </path>
 
     <path id="cobertura.classpath">
@@ -113,6 +114,12 @@
 
     <path id="checkstyle.class.path">
         <fileset dir="${lib.dir}/checkstyle">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="junit.classpath">
+        <fileset dir="${lib.dir}/junit">
             <include name="**/*.jar"/>
         </fileset>
     </path>
