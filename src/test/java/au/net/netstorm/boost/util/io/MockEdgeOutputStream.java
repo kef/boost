@@ -5,11 +5,10 @@ import junit.framework.Assert;
 import java.io.Serializable;
 
 public final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
-    private transient final TestAsserter asserter = new TestAsserter();
+    private final transient TestAsserter asserter = new TestAsserter();
     private byte[] actual;
     private boolean flushed = false;
     private boolean writeCalled = false;
-
 
     public void write(byte[] bytes) {
         if (writeCalled) fail("Expecting a single call only to write.");

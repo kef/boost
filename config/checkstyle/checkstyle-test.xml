@@ -10,8 +10,6 @@
     <module name="TreeWalker">
         <property name="cacheFile" value="build/checkstyle/checkstyle-test.cache"/>
         &common-rules;
-        <!-- FIX BUILD Add a check which ensures that test classes end in UnitTest, IntegrationTest or AcceptanceTest,
-                       whilst permitting other valid test class names (Mock, etc) -->
         <module name="LineLength">
             <property name="max" value="150"/>
         </module>
