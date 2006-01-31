@@ -11,5 +11,4 @@
     <suppress checks="ReturnCount" files=".*.java"/>
     <suppress checks="IllegalType" files=".*.java"/>
     <suppress checks="InterfaceIsType" files=".*.java"/>
-    <suppress checks="VisibilityModifier" files=".*.java"/>
 </suppressions>

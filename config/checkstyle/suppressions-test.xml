@@ -13,5 +13,4 @@
     <suppress checks="ParameterNumber" files=".*.java"/>
     <suppress checks="CyclomaticComplexity" files=".*.java"/>
     <suppress checks="ReturnCount" files=".*.java"/>
-    <suppress checks="VisibilityModifier" files=".*.java"/>
 </suppressions>

@@ -68,7 +68,9 @@ wants you to do the opposite.
 -->
 <!--<module name="DeclarationOrder"/>-->
 <module name="ParameterAssignment"/>
+<!--
 <module name="VisibilityModifier"/>
+-->
 <module name="FinalClass"/>
 <module name="MutableException"/>
 <module name="ThrowsCount">
