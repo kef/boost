@@ -2,8 +2,10 @@ package au.net.netstorm.boost.time.core;
 
 import java.io.Serializable;
 
+import au.net.netstorm.boost.util.type.Data;
+
 // FIXME: SC507 Introduce type stuff.
-public final class TimePoint implements Serializable {
+public final class TimePoint implements Data, Serializable {
 
     private static final long EPOCH_MILLIS = 0L;
     private static final long EPOCH_ARGMAGEDDON = Long.MAX_VALUE;
