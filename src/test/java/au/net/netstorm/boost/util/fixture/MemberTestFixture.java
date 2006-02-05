@@ -23,6 +23,7 @@ class MemberTestFixture {
 
     MemberTestFixture(Object instance) {
         this.instance = instance;
+        // FIXME: SC050 This can go.  People guessing what might be needed.  Over engineering.  Just get the field we want when we want!!!!
         fieldMap = createFieldMap();
     }
 
