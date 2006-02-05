@@ -40,6 +40,7 @@ public class InstanceProviderTestUtil {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type, additional);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
+        // FIXME: SC050 We have to be careful object are primitive, data, immutable.  Where is this check?
         // FIXME: SC050 ? How about trying to load a mock via no-arg class lookup.
         return knownTypes.getInstance(type);
     }
