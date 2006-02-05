@@ -49,8 +49,9 @@ public class InstanceProviderTestUtil {
     }
 
     private Object getPrimitiveInstance(Class type) {
-        if (type == int.class) return new Integer(56);
-        if (type == long.class) return new Long(42L);
+        if (type == int.class) return new Integer(34177239);
+        if (type == long.class) return new Long(44762654617L);
+        if (type == float.class) return new Float(31.123475);
         throw new UnsupportedOperationException("Please honey pie write the code for primitive type " + type);
     }
 
