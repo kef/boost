@@ -7,11 +7,13 @@ import junit.framework.Assert;
 public class AssertTestUtil  {
 
     public static final void checkEquals(Object[] expected, Object[] actual) {
+        Assert.assertNotNull(actual);
         Assert.assertEquals(expected.length, actual.length);
         for (int i = 0; i < actual.length; i++) Assert.assertEquals(""+i, expected[i], actual[i]);
     }
 
     public static final void checkEquals(byte[] expected, byte[] actual) {
+        Assert.assertNotNull(actual);
         Assert.assertEquals(expected.length, actual.length);
         for (int i = 0; i < actual.length; i++) Assert.assertEquals(""+i, expected[i], actual[i]);
     }
