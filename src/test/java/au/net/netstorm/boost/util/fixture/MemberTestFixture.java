@@ -52,6 +52,7 @@ class MemberTestFixture {
     private Object getParameter(String fieldName) {
         try {
             Field field = (Field) fieldMap.get(fieldName);
+            // FIXME: SC050 We see NPE here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             field.setAccessible(true);
             return field.get(instance);
         } catch (IllegalAccessException e) {
