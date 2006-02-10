@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+        <!-- FIXME: SC999 NEW FEATURES: Thread conversion to string (target exceptions, proxies...) -->
+        <!-- FIXME: SC999 NEW FEATURES: A top level thread executor. -->
+
+
 <!-- FIXME: SC502 Create Kickstart IntelliJ project and module files for each pair. -->
 
 <!-- FIXME: SC502 Goals: -->
