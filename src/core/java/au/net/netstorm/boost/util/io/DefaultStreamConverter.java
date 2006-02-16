@@ -8,19 +8,24 @@ public final class DefaultStreamConverter implements StreamConverter {
         destination.flush();
     }
 
+    // Do not use an algorithm which does byte[] -> String -> byte[] as localisation nails ya.
     public byte[] read(EdgeInputStream stream) {
+        byte[] result = {};
         byte[] buf = new byte[BUFFER_SIZE];
-        String result = spin(stream, buf);
-        return result.getBytes();
-    }
-
-    private String spin(EdgeInputStream stream, byte[] buf) {
-        String result = "";
         while (true) {
             int count = stream.read(buf);
             if (count == -1) break;
-            result += new String(buf, 0, count);
+            result = append(result, count, buf);
         }
+        return result;
+    }
+
+    private byte[] append(byte[] original, int count, byte[] buf) {
+        int origSize = original.length;
+        int newSize = origSize + count;
+        byte[] result = new byte[newSize];
+        System.arraycopy(original, 0, result, 0, origSize);
+        System.arraycopy(buf, 0, result, origSize, count);
         return result;
     }
 }
