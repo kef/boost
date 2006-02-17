@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- FIXME: Where is Andy's refactoring chocolate ? -->
+
         <!-- FIXME: SC999 NEW FEATURES: Thread conversion to string (target exceptions, proxies...) -->
         <!-- FIXME: SC999 NEW FEATURES: A top level thread executor. -->
 
