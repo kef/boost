@@ -15,16 +15,31 @@ final class MockListener extends Assert implements InvocationHandler
     private final Map calls = new HashMap();
     private String methodName;
     private Object[] parameters;
+    private Throwable throwable;
 
     public MockListener(Interface type)
     {
         this.type = type;
     }
 
+    public Object invoke(Object object, Method method, Object[] parameters)
+            throws Throwable
+    {
+        if (throwable != null) throw throwable;
+        String name = method.getName();
+        checkCall(method, getParameters(parameters));
+        incrementCallCount(name);
+        return null;
+    }
+
     public void setExpectation(String methodName, Object[] parameters)
     {
         this.methodName = methodName;
         this.parameters = parameters;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 
     public void checkCallCount(String methodName, int expectedCount)
@@ -39,15 +54,6 @@ final class MockListener extends Assert implements InvocationHandler
         ClassLoader loader = type.getClass().getClassLoader();
         Class[] types = {type.getType()};
         return Proxy.newProxyInstance(loader, types, this);
-    }
-
-    public Object invoke(Object object, Method method, Object[] parameters)
-            throws Throwable
-    {
-        String name = method.getName();
-        checkCall(method, getParameters(parameters));
-        incrementCallCount(name);
-        return null;
     }
 
     private void checkCall(Method method, Object[] parameters)

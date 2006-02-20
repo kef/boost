@@ -1,14 +1,13 @@
 package au.net.netstorm.boost.listener;
 
-import au.net.netstorm.boost.util.type.Interface;
-
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultOneToMany implements OneToMany, InvocationHandler
 {
@@ -42,12 +41,18 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler
         return null;
     }
 
-    private void invoke(Object[] listeners, Method method, Object[] parameters)
-            throws IllegalAccessException, InvocationTargetException
-    {
+    private void invoke(Object[] listeners, Method method, Object[] parameters) throws Throwable {
         for (int i = 0; i < listeners.length; i++)
         {
+            invoke(method, listeners, i, parameters);
+        }
+    }
+
+    private void invoke(Method method, Object[] listeners, int i, Object[] parameters) throws Throwable {
+        try {
             method.invoke(listeners[i], parameters);
+        } catch (InvocationTargetException e) {
+            throw e.getTargetException();
         }
     }
 

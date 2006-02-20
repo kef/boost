@@ -12,6 +12,7 @@ import junit.framework.TestCase;
 // FIXME: SC509 Check fails with nulls to add/remove.
 // FIXME: SC509 Methods on interface must all be void return.
 // FIXME: SC509 Create ListenerInterface which ensures all methods are void.
+// FIXME: SC509 Too complicated.  Simplify.
 
 public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final int ZERO_LISTENERS = 0;
@@ -19,11 +20,13 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final int TWENTY_LISTENERS = 20;
     private static final Interface INTERFACE_ONE = new Interface(TestInterfaceOne.class);
     private static final Interface INTERFACE_TWO = new Interface(TestInterfaceTwo.class);
+    private static final Interface INTERFACE_THREE = new Interface(TestInterfaceThree.class);
     private static final String STRING = "Hello";
     private static final Integer INTEGER = new Integer(7);
     private static final Object[] NO_PARAMETERS = {};
     private static final Object[] METHOD_ONE_PARAMETERS = {STRING};
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
+    private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
     private final ReflectionTestUtil reflector = ReflectionTestUtil.INSTANCE;
     private final List mockListeners = new ArrayList();
     private OneToMany oneToMany;
@@ -53,6 +56,15 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         } catch (IllegalArgumentException expected) { }
     }
 
+    public void testExceptionsAreExtractedFromInvocationTargetException() {
+        oneToMany = new DefaultOneToMany(INTERFACE_THREE);
+        MockTestInterfaceThree mockMany = new MockTestInterfaceThree();
+        mockMany.init(AN_EXCEPTION);
+        oneToMany.add(mockMany);
+        TestInterfaceThree one = (TestInterfaceThree) oneToMany.getOne();
+        checkException(AN_EXCEPTION, one);
+    }
+
     private void checkInvoke(int listenerCount) {
         checkInvoke(listenerCount, INTERFACE_ONE, "method", NO_PARAMETERS);
         checkInvoke(listenerCount, INTERFACE_TWO, "methodOne", METHOD_ONE_PARAMETERS);
@@ -62,7 +74,16 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private void checkInvoke(int listenerCount, Interface type, String methodName, Object[] parameters) {
         oneToMany = new DefaultOneToMany(type);
         createMany(listenerCount, type, methodName, parameters);
-        checkCalls(type, methodName, parameters);
+        performAndCheckCalls(type, methodName, parameters);
+    }
+
+    private void checkException(CloneNotSupportedException expected, TestInterfaceThree one) {
+        try {
+            one.barf();
+            fail();
+        } catch (CloneNotSupportedException e) {
+            assertSame(expected, e);
+        }
     }
 
     private void createMany(int listenerCount, Interface type, String methodName, Object[] parameters) {
@@ -72,7 +93,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         }
     }
 
-    private void checkCalls(Interface type, String methodName, Object[] parameters) {
+    private void performAndCheckCalls(Interface type, String methodName, Object[] parameters) {
         Object one = getOne(type);
         reflector.invoke(one, methodName, parameters);
         checkListenerCall(SINGLE_LISTENER, methodName);
