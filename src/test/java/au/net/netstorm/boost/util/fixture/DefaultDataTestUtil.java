@@ -4,8 +4,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.serialize.SerializationTestUtil;
 import au.net.netstorm.boost.util.type.Data;
 
-// FIXME: SC042 Make instance.
-
 public final class DefaultDataTestUtil implements DataTestUtil {
     private static final InstanceProvider EMPTY_PROVIDER = new TestEmptyInstanceProvider();
 
@@ -28,6 +26,7 @@ public final class DefaultDataTestUtil implements DataTestUtil {
         MethodTestFixture.checkMethods(instance, fields);
         MemberTestFixture.checkMembers(instance, fields, parameters);
     }
+
 
 
 
