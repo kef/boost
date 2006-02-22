@@ -7,6 +7,7 @@ import java.lang.reflect.Modifier;
 
 import junit.framework.Assert;
 
+// FIXME: SC042 Should be using edge classes.
 // FIXME: SC509 Merge with reflection test util.
 // FIXME: SC042 Make instance.  Surely most of this is implemented in production code.
 // FIXME: SC506 Extend Assert to get Assert.fails out the way.
@@ -22,7 +23,8 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
     }
 
     public Object getInstanceFieldValue(Object ref, String fieldName) {
-        return getFieldValue(ref.getClass(), ref, fieldName);
+        Class cls = ref.getClass();
+        return getFieldValue(cls, ref, fieldName);
     }
 
     public Field getDeclaredField(Class cls, String fieldName) {
@@ -34,11 +36,15 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
     }
 
     public void setInstanceFieldValue(Object ref, String fieldName, Object fieldValue) {
-        setField(ref, getDeclaredField(ref.getClass(), fieldName), fieldValue);
+        Class cls = ref.getClass();
+        Field field = getDeclaredField(cls, fieldName); // FIXME: SC042 Dupe.
+        setField(ref, field, fieldValue);
     }
 
     public void setStaticFieldValue(Class cls, String fieldName, Object fieldValue) {
-        setField(null, getDeclaredField(cls, fieldName), fieldValue);
+        Object ref = null;
+        Field field = getDeclaredField(cls, fieldName);
+        setField(ref, field, fieldValue);
     }
 
     public void checkPrivateFinalField(Class type, String fieldName) {
@@ -50,13 +56,14 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
     }
 
     public boolean methodIsPublic(Method method) {
-        return Modifier.isPublic(method.getModifiers());
+        int modifiers = method.getModifiers();
+        return Modifier.isPublic(modifiers);
     }
 
-    private void setField(Object ref, Field field, Object fieldValue) {
+    private void setField(Object ref, Field field, Object value) {
         try {
             field.setAccessible(true);
-            field.set(ref, fieldValue);
+            field.set(ref, value);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
