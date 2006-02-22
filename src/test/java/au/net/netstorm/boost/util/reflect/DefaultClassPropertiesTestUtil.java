@@ -7,6 +7,8 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
+// FIXME: SC042 Remove train wrecks.
+// FIXME: SC042 Use edge below for exception.
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     private final DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
@@ -57,6 +59,7 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
             Field field = reflector.getDeclaredField(ref.getClass(), fieldName);
             field.setAccessible(true);
             Assert.assertEquals(expectedClass, field.get(ref).getClass());
+
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
