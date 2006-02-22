@@ -7,12 +7,13 @@ import java.lang.reflect.Modifier;
 
 import junit.framework.Assert;
 
-// FIXME: SC042 Should be using edge classes.
 // FIXME: SC509 Merge with reflection test util.
 // FIXME: SC042 Make instance.  Surely most of this is implemented in production code.
 // FIXME: SC506 Extend Assert to get Assert.fails out the way.
+
 public class DefaultReflectTestUtil implements ReflectTestUtil {
-    private static final Object STATIC_FIELD = null;
+    private static final Object MARKER_STATIC_FIELD = null;
+    private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
     public Class getException(Method method) {
         Class[] exceptions = method.getExceptionTypes();
@@ -21,11 +22,12 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
         return exceptions[0];
     }
 
-    public Object getStaticFieldValue(Class cls, String fieldName) {
-        return getFieldValue(cls, STATIC_FIELD, fieldName);
+    public Object getStaticField(Class cls, String fieldName) {
+        return getFieldValue(cls, MARKER_STATIC_FIELD, fieldName);
     }
 
-    public Object getInstanceFieldValue(Object ref, String fieldName) {
+    // FIXME: SC042 Return a FieldValue might be a goodie.  Could even use it on the way in for the set.
+    public Object getInstanceField(Object ref, String fieldName) {
         Class cls = ref.getClass();
         return getFieldValue(cls, ref, fieldName);
     }
@@ -38,13 +40,13 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
         }
     }
 
-    public void setInstanceFieldValue(Object ref, String fieldName, Object fieldValue) {
+    public void setInstanceField(Object ref, String fieldName, Object fieldValue) {
         Class cls = ref.getClass();
         setField(cls, ref, fieldName, fieldValue);
     }
 
-    public void setStaticFieldValue(Class cls, String fieldName, Object fieldValue) {
-        Object ref = STATIC_FIELD;
+    public void setStaticField(Class cls, String fieldName, Object fieldValue) {
+        Object ref = MARKER_STATIC_FIELD;
         setField(cls, ref, fieldName, fieldValue);
     }
 
@@ -71,6 +73,7 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
             field.setAccessible(true);
             field.set(ref, value);
         } catch (IllegalAccessException e) {
+            // FIXME: SC042 No exception catching if we move into reflect edge.
             throw new RuntimeException(e);
         }
     }
@@ -82,7 +85,7 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
 
     private Object value(Object ref, Field field) {
         field.setAccessible(true);
-        return ReflectEdge.INSTANCE.get(field, ref);
+        return reflectEdge.get(field, ref);
     }
 
     public Class getRealExceptionClass(RuntimeException e) {

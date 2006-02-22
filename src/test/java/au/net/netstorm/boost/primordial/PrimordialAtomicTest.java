@@ -53,7 +53,7 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     private void checkField(final Class type, final String fieldName) {
-        Object fieldValue = reflector.getInstanceFieldValue(new Primordial(), fieldName);
+        Object fieldValue = reflector.getInstanceField(new Primordial(), fieldName);
         assertNotNull(fieldValue);
         assertEquals(type, fieldValue.getClass());
     }
