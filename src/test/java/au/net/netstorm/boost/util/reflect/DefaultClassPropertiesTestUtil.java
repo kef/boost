@@ -66,17 +66,23 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     }
 
     public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class implClass) {
-        String implName = getShortName(implClass);
         String targetName = getShortName(expectedInterface);
+        String implName = getShortName(implClass);
         checkInterface(implClass, implName, expectedInterface, targetName);
         checkFinal(implClass, implName);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
-        String subClassName = getShortName(subClass);
         String superClassName = getShortName(superClass);
+        String subClassName = getShortName(subClass);
         boolean isSubclass = isSubclassOf(superClass, subClass);
         Assert.assertTrue(subClassName + " is not a subclass of " + superClassName, isSubclass);
+    }
+
+    public void checkSubclassOf(Class superClass, Object ref) {
+        Assert.assertNotNull(ref);
+        Class cls = ref.getClass();
+        checkSubclassOf(superClass, cls);
     }
 
     public void checkClassFinal(Class cls) {
@@ -85,12 +91,6 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     public void checkClassPublic(Class cls) {
         Assert.assertTrue(isPublic(cls));
-    }
-
-    public void checkInstance(Class expectedImpl, Object ref) {
-        Assert.assertNotNull(ref);
-        Class cls = ref.getClass();
-        Assert.assertTrue(isSubclassOf(expectedImpl, cls));
     }
 
     private boolean isAbstract(int modifiers) {

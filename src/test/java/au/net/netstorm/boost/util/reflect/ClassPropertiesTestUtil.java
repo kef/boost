@@ -35,5 +35,5 @@ public interface ClassPropertiesTestUtil {
 
     void checkClassPublic(Class cls);
 
-    void checkInstance(Class expectedImpl, Object ref);
+    void checkSubclassOf(Class expectedImpl, Object ref);
 }
