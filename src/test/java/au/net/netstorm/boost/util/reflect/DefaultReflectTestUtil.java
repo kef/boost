@@ -12,14 +12,17 @@ import junit.framework.Assert;
 // FIXME: SC042 Make instance.  Surely most of this is implemented in production code.
 // FIXME: SC506 Extend Assert to get Assert.fails out the way.
 public class DefaultReflectTestUtil implements ReflectTestUtil {
+    private static final Object STATIC_FIELD = null;
+
     public Class getException(Method method) {
         Class[] exceptions = method.getExceptionTypes();
-        Assert.assertTrue(method.getName() + "() must throw a single exception.", exceptions.length == 1);
+        String name = method.getName();
+        Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
         return exceptions[0];
     }
 
     public Object getStaticFieldValue(Class cls, String fieldName) {
-        return getFieldValue(cls, null, fieldName);
+        return getFieldValue(cls, STATIC_FIELD, fieldName);
     }
 
     public Object getInstanceFieldValue(Object ref, String fieldName) {
@@ -37,14 +40,12 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
 
     public void setInstanceFieldValue(Object ref, String fieldName, Object fieldValue) {
         Class cls = ref.getClass();
-        Field field = getDeclaredField(cls, fieldName); // FIXME: SC042 Dupe.
-        setField(ref, field, fieldValue);
+        setField(cls, ref, fieldName, fieldValue);
     }
 
     public void setStaticFieldValue(Class cls, String fieldName, Object fieldValue) {
-        Object ref = null;
-        Field field = getDeclaredField(cls, fieldName);
-        setField(ref, field, fieldValue);
+        Object ref = STATIC_FIELD;
+        setField(cls, ref, fieldName, fieldValue);
     }
 
     public void checkPrivateFinalField(Class type, String fieldName) {
@@ -58,6 +59,11 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
     public boolean methodIsPublic(Method method) {
         int modifiers = method.getModifiers();
         return Modifier.isPublic(modifiers);
+    }
+
+    private void setField(Class cls, Object f, String fieldName, Object fieldValue) {
+        Field field = getDeclaredField(cls, fieldName);
+        setField(f, field, fieldValue);
     }
 
     private void setField(Object ref, Field field, Object value) {
