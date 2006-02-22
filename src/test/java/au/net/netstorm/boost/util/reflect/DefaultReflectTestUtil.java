@@ -8,7 +8,7 @@ import java.lang.reflect.Modifier;
 import junit.framework.Assert;
 
 // FIXME: SC509 Merge with reflection test util.
-// FIXME: SC506 Make instance.  Surely most of this is implemented in production code.
+// FIXME: SC042 Make instance.  Surely most of this is implemented in production code.
 // FIXME: SC506 Extend Assert to get Assert.fails out the way.
 public class DefaultReflectTestUtil implements ReflectTestUtil {
     public Class getException(Method method) {
