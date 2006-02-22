@@ -33,6 +33,7 @@ public class DefaultFieldSpecAtomicTest extends TestCase {
 //        checkFailOnNull(METHOD_TYPE_1, null);
 //    }
 
+    // FIXME: SC042 Why is this here?  Doesn't the immutable test check this.  If not whay aren't we using a Data object?
     public void checkFieldTypeSpec(String methodName, Class methodType) {
         FieldSpec spec = new DefaultFieldSpec(methodName, methodType);
         assertEquals(methodName, spec.getName());
