@@ -4,10 +4,13 @@ import java.lang.reflect.Constructor;
 
 import junit.framework.Assert;
 import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 
 // FIXME: SC509 ? delete or instancise.
+// FIXME: SC042 ? Make public or private.
 class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
+    private static final ReflectTestUtil REFLECTOR = new DefaultReflectTestUtil();
 
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
     public static void checkNullParameters(Constructor constructor, Class[] parameters, InstanceProvider additional) {
@@ -37,7 +40,7 @@ class NullTestUtil {
     }
 
     private static boolean isExpected(RuntimeException e) {
-        Class cls = new DefaultReflectTestUtil().getRealExceptionClass(e); // FIXME: SC050 Is this needed?
+        Class cls = REFLECTOR.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
         return isIllegalArgumentException(cls);
     }
 

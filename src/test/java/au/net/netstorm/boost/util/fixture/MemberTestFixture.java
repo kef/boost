@@ -11,6 +11,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 
@@ -22,9 +23,10 @@ import junit.framework.Assert;
 // FIXME: SC050 IN FACT THIS IS SUCH A RUBBISH WE JUST GO A TOTAL REWRITE!!!!!!!!!!!!!!!!!!!!!
 class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
+    static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX.length(); // FIXME: SC042 Make this public or private.
+    private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final Object instance;
     private final Map fieldMap;
-    static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX.length();
 
     MemberTestFixture(Object instance) {
         this.instance = instance;
@@ -74,7 +76,7 @@ class MemberTestFixture {
         Object actualValue = REFLECT_EDGE.invoke(method, instance);
         FieldValueSpec actualFs = new DefaultFieldValueSpec(methodName, actualValue);
         Assert.assertEquals("Method '" + methodName + "' does not return an equal value from one of the constructor parameters", expectedFs, actualFs);
-        new DefaultReflectTestUtil().checkPrivateFinalField(instance.getClass(), getFieldName(method));
+        reflector.checkPrivateFinalField(instance.getClass(), getFieldName(method));
         checkFieldImmutable(expectedValue, actualValue, new DefaultFieldSpec(getFieldName(method), method.getReturnType()));
     }
 

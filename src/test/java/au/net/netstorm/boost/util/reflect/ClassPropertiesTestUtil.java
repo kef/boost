@@ -10,6 +10,8 @@ import junit.framework.Assert;
 // FIXME: SC506 Instance rather than static.
 
 public class ClassPropertiesTestUtil extends Assert {
+    private static DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
+
     public static boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();
         if (!Modifier.isPublic(modifiers)) return false;
@@ -51,7 +53,7 @@ public class ClassPropertiesTestUtil extends Assert {
     // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
     public static void checkFieldType(Object ref, String fieldName, Class expectedClass) {
         try {
-            Field field = new DefaultReflectTestUtil().getDeclaredField(ref.getClass(), fieldName);
+            Field field = reflector.getDeclaredField(ref.getClass(), fieldName);
             field.setAccessible(true);
             assertEquals(expectedClass, field.get(ref).getClass());
         } catch (IllegalAccessException e) {
