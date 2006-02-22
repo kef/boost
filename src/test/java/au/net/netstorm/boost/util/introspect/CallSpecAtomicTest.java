@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.util.fixture.DefaulltDataTestUtil;
+import au.net.netstorm.boost.util.fixture.DefaultDataTestUtil;
 import junit.framework.TestCase;
 
 public class CallSpecAtomicTest extends TestCase {
@@ -11,6 +11,6 @@ public class CallSpecAtomicTest extends TestCase {
 
     public void testCallSpec() {
         // FIXME: SC042 To field ... all of these.
-        new DefaulltDataTestUtil().checkIsData(CallSpec.class, TYPES);
+        new DefaultDataTestUtil().checkIsData(CallSpec.class, TYPES);
     }
 }

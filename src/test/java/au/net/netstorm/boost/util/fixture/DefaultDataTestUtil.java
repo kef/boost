@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 // FIXME: SC042 Make instance.
 
-public final class DefaulltDataTestUtil implements DataTestUtil {
+public final class DefaultDataTestUtil implements DataTestUtil {
     private static final InstanceProvider EMPTY_PROVIDER = new TestEmptyInstanceProvider();
 
     // FIXME: SC050 ? Rename to checkIsData.
