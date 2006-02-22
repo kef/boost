@@ -6,6 +6,8 @@ import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.TestCase;
 
 public class DataAtomicTest extends TestCase {
+    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
+
     // FIXME: SC506 Refactor this.
     public void testInterfaceProperties() {
         assertTrue(isImplementationOf(Serializable.class));
@@ -13,6 +15,6 @@ public class DataAtomicTest extends TestCase {
     }
 
     private boolean isImplementationOf(Class type) {
-        return ClassPropertiesTestUtil.isImplementationOf(new Interface(type), Data.class);
+        return clsProperties.isImplementationOf(new Interface(type), Data.class);
     }
 }

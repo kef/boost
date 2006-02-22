@@ -18,9 +18,10 @@ import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 
 public final class PrimordialAtomicTest extends TestCase {
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
 
     public void testNotAbstract() {
-        assertFalse(ClassPropertiesTestUtil.isClassAbstract(Primordial.class));
+        assertFalse(clsProperties.isClassAbstract(Primordial.class));
     }
 
     public void testMethodsFinal() {
@@ -115,6 +116,6 @@ public final class PrimordialAtomicTest extends TestCase {
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
         Method method = ReflectEdge.INSTANCE.getMethod(Primordial.class, methodName, parameterTypes);
-        assertTrue(ClassPropertiesTestUtil.isMethodFinal(method));
+        assertTrue(clsProperties.isMethodFinal(method));
     }
 }

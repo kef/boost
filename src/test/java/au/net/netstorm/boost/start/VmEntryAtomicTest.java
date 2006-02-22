@@ -24,7 +24,7 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] NULL = null;
 
     // FIXME: SC502 Ensure test for private constructor.
-
+    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final ReflectTestUtil testReflector = new DefaultReflectTestUtil();
 
@@ -33,12 +33,12 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     public void testInstance() {
-        ClassPropertiesTestUtil.checkInstance(VmEntry.class, getVmEntry());
+        clsProperties.checkInstance(VmEntry.class, getVmEntry());
     }
 
     public void testProductionBootstrap() {
         Object bootstrap = testReflector.getInstanceField(getVmEntry(), "bootstrapper");
-        ClassPropertiesTestUtil.checkInstance(DefaultBootstrapper.class, bootstrap);
+        clsProperties.checkInstance(DefaultBootstrapper.class, bootstrap);
     }
 
     public void testEntryPoint() {

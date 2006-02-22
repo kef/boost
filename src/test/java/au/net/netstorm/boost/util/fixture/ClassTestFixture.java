@@ -11,6 +11,7 @@ import junit.framework.Assert;
 // FIXME: SC042 Interface it.
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
+    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
     private final NullTestUtil nuller = new NullTestUtil();
     private final Class cls;
     private final FieldSpec[] parameters;
@@ -22,8 +23,8 @@ final class ClassTestFixture {
 
     // FIXME: SC506 ? Allow the intefaces to check to be changes Data vs Immutable.
     public void checkClass(Class targetInterface, InstanceProvider additional) {
-        ClassPropertiesTestUtil.checkSubclassOf(Primordial.class, cls);
-        ClassPropertiesTestUtil.checkImplementationOfInterfaceAndFinal(targetInterface, cls);
+        clsProperties.checkSubclassOf(Primordial.class, cls);
+        clsProperties.checkImplementationOfInterfaceAndFinal(targetInterface, cls);
         checkConstructor(additional);
     }
 
