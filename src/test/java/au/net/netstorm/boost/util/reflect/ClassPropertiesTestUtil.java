@@ -7,9 +7,9 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-// FIXME: SC506 Instance rather than static.
+// FIXME: SC042 BREADCRUMB Instance rather than static.
 // FIXME: SC042 No train wrecks.
-public class ClassPropertiesTestUtil extends Assert {
+public class ClassPropertiesTestUtil {
     private static DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
 
     public static boolean isPublicInstance(Method method) {
@@ -18,6 +18,7 @@ public class ClassPropertiesTestUtil extends Assert {
         return !Modifier.isStatic(modifiers);
     }
 
+    // FIXME: SC042 Rename to isAbstract.  Same for below.
     public static boolean isClassAbstract(Class cls) {
         return Modifier.isAbstract(cls.getModifiers());
     }
@@ -55,7 +56,7 @@ public class ClassPropertiesTestUtil extends Assert {
         try {
             Field field = reflector.getDeclaredField(ref.getClass(), fieldName);
             field.setAccessible(true);
-            assertEquals(expectedClass, field.get(ref).getClass());
+            Assert.assertEquals(expectedClass, field.get(ref).getClass());
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -63,8 +64,8 @@ public class ClassPropertiesTestUtil extends Assert {
 
     public static void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass) {
         Interface inyerface = new Interface(targetInterface);
-        assertTrue(getName(implementationClass) + " is not an implementation of " + getName(targetInterface), isImplementationOf(inyerface, implementationClass));
-        assertTrue(getName(implementationClass) + " must be final", isClassFinal(implementationClass));
+        Assert.assertTrue(getName(implementationClass) + " is not an implementation of " + getName(targetInterface), isImplementationOf(inyerface, implementationClass));
+        Assert.assertTrue(getName(implementationClass) + " must be final", isClassFinal(implementationClass));
     }
 
     private static String getName(Class implementationClass) {
