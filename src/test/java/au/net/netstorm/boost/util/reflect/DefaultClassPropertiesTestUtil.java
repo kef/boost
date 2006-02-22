@@ -10,7 +10,7 @@ import junit.framework.Assert;
 // FIXME: SC042 Remove train wrecks.
 // FIXME: SC042 Use edge below for exception.
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
-    private final DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
 
     public boolean isPublicInstance(Method method) {
@@ -54,11 +54,11 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return isFinal(modifiers);
     }
 
-    public void checkFieldType(Class expectedClass, Object ref, String fieldName) {
+    public void checkFieldType(Class expectedType, Object ref, String fieldName) {
         try {
-            Field field = reflector.getDeclaredField(ref.getClass(), fieldName);
-            field.setAccessible(true);
-            Assert.assertEquals(expectedClass, field.get(ref).getClass());
+            Object fieldValue = getFieldValue(ref, fieldName);
+            Class type = fieldValue.getClass();
+            Assert.assertEquals(expectedType, type);
 
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -126,5 +126,12 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         Interface inyerface = new Interface(targetInterface);
         boolean implementsIt = isImplementationOf(inyerface, implementationClass);
         Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
+    }
+
+    private Object getFieldValue(Object ref, String fieldName) throws IllegalAccessException {
+        Class cls = ref.getClass();
+        Field field = reflector.getDeclaredField(cls, fieldName);
+        field.setAccessible(true);
+        return field.get(ref);
     }
 }
