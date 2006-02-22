@@ -1,14 +1,11 @@
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-// FIXME: SC042 Remove train wrecks.
-// FIXME: SC042 Use edge below for exception.
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
@@ -55,13 +52,9 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     }
 
     public void checkFieldType(Class expectedType, Object ref, String fieldName) {
-        try {
-            Object fieldValue = getFieldValue(ref, fieldName);
-            Class type = fieldValue.getClass();
-            Assert.assertEquals(expectedType, type);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        Object value = reflector.getInstanceField(ref, fieldName);
+        Class type = value.getClass();
+        Assert.assertEquals(expectedType, type);
     }
 
     public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class implClass) {
@@ -125,12 +118,5 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         boolean implementsIt = isImplementationOf(inyerface, implementationClass);
         String targetName = getShortName(expectedInterface);
         Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
-    }
-
-    private Object getFieldValue(Object ref, String fieldName) throws IllegalAccessException {
-        Class cls = ref.getClass();
-        Field field = reflector.getDeclaredField(cls, fieldName);
-        field.setAccessible(true);
-        return field.get(ref);
     }
 }
