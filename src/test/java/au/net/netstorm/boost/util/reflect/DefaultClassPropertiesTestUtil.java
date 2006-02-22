@@ -68,21 +68,18 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         }
     }
 
-    public void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass) {
-        Interface inyerface = new Interface(targetInterface);
-        String implName = getShortName(implementationClass);
-        String targetName = getShortName(targetInterface);
-        boolean implementsIt = isImplementationOf(inyerface, implementationClass);
-        Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
-        Assert.assertTrue(implName + " must be final", isFinal(implementationClass));
-    }
-
-    private String getShortName(Class cls) {
-        return clsMaster.getShortName(cls);
+    public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class implClass) {
+        String implName = getShortName(implClass);
+        String targetName = getShortName(expectedInterface);
+        checkInterface(implClass, implName, expectedInterface, targetName);
+        checkFinal(implClass, implName);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
-        Assert.assertTrue(getShortName(subClass) + " is not a subclass of " + getShortName(superClass), isSubclassOf(superClass, subClass));
+        String subClassName = getShortName(subClass);
+        String superClassName = getShortName(superClass);
+        boolean isSubclass = isSubclassOf(superClass, subClass);
+        Assert.assertTrue(subClassName + " is not a subclass of " + superClassName, isSubclass);
     }
 
     public void checkClassFinal(Class cls) {
@@ -95,7 +92,8 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     public void checkInstance(Class expectedImpl, Object ref) {
         Assert.assertNotNull(ref);
-        Assert.assertTrue(isSubclassOf(expectedImpl, ref.getClass()));
+        Class cls = ref.getClass();
+        Assert.assertTrue(isSubclassOf(expectedImpl, cls));
     }
 
     private boolean isAbstract(int modifiers) {
@@ -116,5 +114,20 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     private boolean isStatic(int modifiers) {
         return Modifier.isStatic(modifiers);
+    }
+
+    private String getShortName(Class cls) {
+        return clsMaster.getShortName(cls);
+    }
+
+    private void checkFinal(Class implementationClass, String implName) {
+        boolean isFinal = isFinal(implementationClass);
+        Assert.assertTrue(implName + " must be final", isFinal);
+    }
+
+    private void checkInterface(Class implementationClass, String implName, Class targetInterface, String targetName) {
+        Interface inyerface = new Interface(targetInterface);
+        boolean implementsIt = isImplementationOf(inyerface, implementationClass);
+        Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
     }
 }
