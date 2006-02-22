@@ -13,7 +13,7 @@ final class NullTestUtil {
     private static final ReflectTestUtil REFLECTOR = new DefaultReflectTestUtil();
 
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
-    public static void checkNullParameters(Constructor constructor, Class[] parameters, InstanceProvider additional) {
+    public void checkNullParameters(Constructor constructor, Class[] parameters, InstanceProvider additional) {
         for (int i = 0; i < parameters.length; i++) {
             checkNullParameter(i, constructor, parameters, additional);
         }

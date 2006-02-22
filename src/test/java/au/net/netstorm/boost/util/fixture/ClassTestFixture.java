@@ -10,6 +10,8 @@ import junit.framework.Assert;
 // FIXME: SC506 Does it make sense to have this fixtures area?
 // FIXME: SC042 Interface it.
 final class ClassTestFixture {
+    private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
+    private final NullTestUtil nuller = new NullTestUtil();
     private final Class cls;
     private final FieldSpec[] parameters;
 
@@ -28,10 +30,10 @@ final class ClassTestFixture {
     private void checkConstructor(InstanceProvider additional) {
         // FIXME: SC050 ... So the BUG smell here is that we do not need to pass the constructor all the way through to IPTU via NTU.
         // FIXME: SC050 ... Tidying this up will remove a large amount of code.
-        Constructor constructor = InstanceTestUtil.getConstructor(cls);
+        Constructor constructor = instancer.getConstructor(cls);
         Class[] expected = constructor.getParameterTypes();
-        Class[] params = InstanceTestUtil.getClasses(parameters);
-        NullTestUtil.checkNullParameters(constructor, params, additional);
+        Class[] params = instancer.getClasses(parameters);
+        nuller.checkNullParameters(constructor, params, additional);
         Assert.assertEquals("Class constructor does not have expected number arguments", expected.length, params.length); // FIXME: SC050 This seems to be back to front
     }
 }

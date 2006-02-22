@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 // FIXME: SC506 Instance rather than static.
-
+// FIXME: SC042 No train wrecks.
 public class ClassPropertiesTestUtil extends Assert {
     private static DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
 

@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 public final class DefaultDataTestUtil implements DataTestUtil {
     private static final InstanceProvider EMPTY_PROVIDER = new TestEmptyInstanceProvider();
+    private InstanceTestUtil instancer = new DefaultInstanceTestUtil();
 
     // FIXME: SC050 ? Rename to checkIsData.
     public void checkIsData(Class cls, FieldSpec[] fields) {
@@ -19,9 +20,15 @@ public final class DefaultDataTestUtil implements DataTestUtil {
     private void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProvider additional) {
         // FIXME: SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
+        //
+        // Checks is Data.class
+        // Check extends Primordial.class
+        // Checks constructor matches provided field specs.
+        // Checks IAE is thrown if arguments are null.
+        //
         fixture.checkClass(Data.class, additional);
-        Object[] parameters = InstanceTestUtil.getInstances(fields);
-        Object instance = InstanceTestUtil.getInstance(cls, parameters);
+        Object[] parameters = instancer.getInstances(fields);
+        Object instance = instancer.getInstance(cls, parameters);
         SerializationTestUtil.checkSerializable(instance);
         MethodTestFixture.checkMethods(instance, fields);
         MemberTestFixture.checkMembers(instance, fields, parameters);
