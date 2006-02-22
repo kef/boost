@@ -11,7 +11,8 @@ import junit.framework.Assert;
 // FIXME: SC042 BREADCRUMB Instance rather than static.
 // FIXME: SC042 No train wrecks.
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
-    private static DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final ClassMaster clsMaster = new DefaultClassMaster();
 
     public boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();
@@ -24,15 +25,15 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return Modifier.isAbstract(cls.getModifiers());
     }
 
-    public boolean isClassFinal(Class cls) {
+    public boolean isFinal(Class cls) {
         return Modifier.isFinal(cls.getModifiers());
     }
 
-    public boolean isClassPublic(Class cls) {
+    public boolean isPublic(Class cls) {
         return Modifier.isPublic(cls.getModifiers());
     }
 
-    public boolean isClassAnInterface(Class cls) {
+    public boolean isInterface(Class cls) {
         return Modifier.isInterface(cls.getModifiers());
     }
 
@@ -48,12 +49,12 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return superClass.isAssignableFrom(subclass);
     }
 
-    public boolean isMethodFinal(Method method) {
+    public boolean isFinal(Method method) {
         return Modifier.isFinal(method.getModifiers());
     }
 
     // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
-    public void checkFieldType(Object ref, String fieldName, Class expectedClass) {
+    public void checkFieldType(Class expectedClass, Object ref, String fieldName) {
         try {
             Field field = reflector.getDeclaredField(ref.getClass(), fieldName);
             field.setAccessible(true);
@@ -65,24 +66,27 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     public void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass) {
         Interface inyerface = new Interface(targetInterface);
-        Assert.assertTrue(getName(implementationClass) + " is not an implementation of " + getName(targetInterface), isImplementationOf(inyerface, implementationClass));
-        Assert.assertTrue(getName(implementationClass) + " must be final", isClassFinal(implementationClass));
+        String implName = getShortName(implementationClass);
+        String targetName = getShortName(targetInterface);
+        boolean implementsIt = isImplementationOf(inyerface, implementationClass);
+        Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
+        Assert.assertTrue(implName + " must be final", isFinal(implementationClass));
     }
 
-    private String getName(Class implementationClass) {
-        return new DefaultClassMaster().getShortName(implementationClass);
+    private String getShortName(Class cls) {
+        return clsMaster.getShortName(cls);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
-        Assert.assertTrue(getName(subClass) + " is not a subclass of " + getName(superClass), isSubclassOf(superClass, subClass));
+        Assert.assertTrue(getShortName(subClass) + " is not a subclass of " + getShortName(superClass), isSubclassOf(superClass, subClass));
     }
 
     public void checkClassFinal(Class cls) {
-        Assert.assertTrue(isClassFinal(cls));
+        Assert.assertTrue(isFinal(cls));
     }
 
     public void checkClassPublic(Class cls) {
-        Assert.assertTrue(isClassPublic(cls));
+        Assert.assertTrue(isPublic(cls));
     }
 
     public void checkInstance(Class expectedImpl, Object ref) {

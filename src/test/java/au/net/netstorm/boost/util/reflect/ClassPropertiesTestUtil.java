@@ -13,20 +13,20 @@ public interface ClassPropertiesTestUtil {
     // FIXME: SC042 Rename to isAbstract.  Same for below.
     boolean isAbstract(Class cls);
 
-    boolean isClassFinal(Class cls);
+    boolean isFinal(Class cls);
 
-    boolean isClassPublic(Class cls);
+    boolean isPublic(Class cls);
 
-    boolean isClassAnInterface(Class cls);
+    boolean isInterface(Class cls);
 
     boolean isImplementationOf(Interface targetInterface, Class cls);
 
     boolean isSubclassOf(Class superClass, Class subclass);
 
-    boolean isMethodFinal(Method method);
+    boolean isFinal(Method method);
 
     // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
-    void checkFieldType(Object ref, String fieldName, Class expectedClass);
+    void checkFieldType(Class expectedClass, Object ref, String fieldName);
 
     void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass);
 

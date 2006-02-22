@@ -117,6 +117,6 @@ public final class PrimordialAtomicTest extends TestCase {
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
         Method method = ReflectEdge.INSTANCE.getMethod(Primordial.class, methodName, parameterTypes);
-        assertTrue(clsProperties.isMethodFinal(method));
+        assertTrue(clsProperties.isFinal(method));
     }
 }
