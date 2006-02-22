@@ -59,16 +59,14 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
             Object fieldValue = getFieldValue(ref, fieldName);
             Class type = fieldValue.getClass();
             Assert.assertEquals(expectedType, type);
-
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class implClass) {
-        String targetName = getShortName(expectedInterface);
         String implName = getShortName(implClass);
-        checkInterface(implClass, implName, expectedInterface, targetName);
+        checkInterface(implClass, implName, expectedInterface);
         checkFinal(implClass, implName);
     }
 
@@ -122,9 +120,10 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         Assert.assertTrue(implName + " must be final", isFinal);
     }
 
-    private void checkInterface(Class implementationClass, String implName, Class targetInterface, String targetName) {
-        Interface inyerface = new Interface(targetInterface);
+    private void checkInterface(Class implementationClass, String implName, Class expectedInterface) {
+        Interface inyerface = new Interface(expectedInterface);
         boolean implementsIt = isImplementationOf(inyerface, implementationClass);
+        String targetName = getShortName(expectedInterface);
         Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
     }
 
