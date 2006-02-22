@@ -22,7 +22,7 @@ public final class PrimordialAtomicTest extends TestCase {
     private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
 
     public void testNotAbstract() {
-        assertFalse(clsProperties.isClassAbstract(Primordial.class));
+        assertFalse(clsProperties.isAbstract(Primordial.class));
     }
 
     public void testMethodsFinal() {

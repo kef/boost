@@ -11,7 +11,7 @@ public interface ClassPropertiesTestUtil {
     boolean isPublicInstance(Method method);
 
     // FIXME: SC042 Rename to isAbstract.  Same for below.
-    boolean isClassAbstract(Class cls);
+    boolean isAbstract(Class cls);
 
     boolean isClassFinal(Class cls);
 

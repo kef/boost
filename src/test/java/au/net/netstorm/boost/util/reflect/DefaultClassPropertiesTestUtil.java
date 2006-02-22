@@ -20,7 +20,7 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     }
 
     // FIXME: SC042 Rename to isAbstract.  Same for below.
-    public boolean isClassAbstract(Class cls) {
+    public boolean isAbstract(Class cls) {
         return Modifier.isAbstract(cls.getModifiers());
     }
 
