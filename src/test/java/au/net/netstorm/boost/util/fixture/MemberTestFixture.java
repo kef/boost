@@ -22,6 +22,15 @@ import junit.framework.Assert;
 // FIXME: SC050 Extract interface next.
 // FIXME: SC050 IN FACT THIS IS SUCH A RUBBISH WE JUST GO A TOTAL REWRITE!!!!!!!!!!!!!!!!!!!!!
 // FIXME: SC042 Make test fixture thingies final.
+//
+//
+//
+//
+// ---------------------------------------- FIXME: SC042  FROZEN -----------------------------------
+//
+//
+//
+//
 final class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX.length(); // FIXME: SC042 Make this public or private.
