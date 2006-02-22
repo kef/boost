@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.io.MockEdgeOutputStream;
 import au.net.netstorm.boost.time.core.TimePoint;
 
 // FIXME: SC502 Rename.
-// FIXME: RDSC118 Instance provide needs to provide getA() / getB() as per triangulation requirements.  For both primitive (wrapped) and other.
+// FIXME: SC042 Instance provide needs to provide getA() / getB() as per triangulation requirements.  For both primitive (wrapped) and other.
 public class InstanceProviderTestUtilSuppressed implements InstanceProvider {
     public Object getInstance(Class type) {
         Object instance = doGetInstance(type);
@@ -26,7 +26,7 @@ public class InstanceProviderTestUtilSuppressed implements InstanceProvider {
     private Object doGetInstance(Class type) {
         if (type == Object.class || type == String.class) return "We cower in the corner our hands up over our ears.";
         if (type == Class.class) return CharSequence.class;
-        // FIXME: RDSC118 Use j.l.r.Proxy for interfaces.
+        // FIXME: SC042 Use j.l.r.Proxy for interfaces.
         // Interfaces... (remove comment when code complete).
         if (type == Remote.class) return new Remote() { };
         if (type == EdgeOutputStream.class) return new MockEdgeOutputStream(); // FIXME: SC050 This forms the basis for a "Mock"+classname instantiator.  Use proxies for interfaces.

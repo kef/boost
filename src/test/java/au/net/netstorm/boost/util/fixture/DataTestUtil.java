@@ -69,7 +69,7 @@ public class DataTestUtil extends Assert {
 //            if (resultBytes == null) throw new IllegalArgumentException();
 //            this.httpStatus = httpStatus;
 //            this.resultBytes = resultBytes.clone();
-//            // FIXME: RDSC095 This passes (and should not!!!!!!!!!!!!!!!!!!!!!!!!!!).
+//            // FIXME: SC050 This passes (and should not!!!!!!!!!!!!!!!!!!!!!!!!!!).
 ////        this.httpStatus = 2;
 //        }
 //
