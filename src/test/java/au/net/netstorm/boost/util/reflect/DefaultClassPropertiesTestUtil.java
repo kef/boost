@@ -7,9 +7,6 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-// FIXME: SC042 Interface.
-// FIXME: SC042 BREADCRUMB Instance rather than static.
-// FIXME: SC042 No train wrecks.
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     private final DefaultReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
@@ -20,7 +17,6 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return !isStatic(modifiers);
     }
 
-    // FIXME: SC042 Rename to isAbstract.  Same for below.
     public boolean isAbstract(Class cls) {
         int modifiers = cls.getModifiers();
         return isAbstract(modifiers);
@@ -41,8 +37,7 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return isInterface(modifiers);
     }
 
-    // FIXME: SC506 Reformat all code (especially wrap train wrecks).
-    // FIXME: SC506 This did not appear to work for targetInterface == java.io.Serializable ?
+    // FIXME: SC042 Investigate ... This did not appear to work for targetInterface == java.io.Serializable ?
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
         Class type = targetInterface.getType();
         return type.isAssignableFrom(cls);
@@ -57,7 +52,6 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return isFinal(modifiers);
     }
 
-    // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
     public void checkFieldType(Class expectedClass, Object ref, String fieldName) {
         try {
             Field field = reflector.getDeclaredField(ref.getClass(), fieldName);
