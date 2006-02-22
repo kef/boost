@@ -7,10 +7,10 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC042 There seems to be a distinct split into check* and is* methods.  Split.
 public interface ClassPropertiesTestUtil {
     boolean isPublicInstance(Method method);
 
-    // FIXME: SC042 Rename to isAbstract.  Same for below.
     boolean isAbstract(Class cls);
 
     boolean isFinal(Class cls);
@@ -25,7 +25,6 @@ public interface ClassPropertiesTestUtil {
 
     boolean isFinal(Method method);
 
-    // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
     void checkFieldType(Class expectedClass, Object ref, String fieldName);
 
     void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass);

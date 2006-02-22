@@ -16,30 +16,33 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     public boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();
-        if (!Modifier.isPublic(modifiers)) return false;
-        return !Modifier.isStatic(modifiers);
+        if (!isPublic(modifiers)) return false;
+        return !isStatic(modifiers);
     }
 
     // FIXME: SC042 Rename to isAbstract.  Same for below.
     public boolean isAbstract(Class cls) {
-        return Modifier.isAbstract(cls.getModifiers());
+        int modifiers = cls.getModifiers();
+        return isAbstract(modifiers);
     }
 
     public boolean isFinal(Class cls) {
-        return Modifier.isFinal(cls.getModifiers());
+        int modifiers = cls.getModifiers();
+        return isFinal(modifiers);
     }
 
     public boolean isPublic(Class cls) {
-        return Modifier.isPublic(cls.getModifiers());
+        int modifiers = cls.getModifiers();
+        return isPublic(modifiers);
     }
 
     public boolean isInterface(Class cls) {
-        return Modifier.isInterface(cls.getModifiers());
+        int modifiers = cls.getModifiers();
+        return isInterface(modifiers);
     }
 
     // FIXME: SC506 Reformat all code (especially wrap train wrecks).
-// FIXME: SC506 This did not appear to work for targetInterface == java.io.Serializable ?
-
+    // FIXME: SC506 This did not appear to work for targetInterface == java.io.Serializable ?
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
         Class type = targetInterface.getType();
         return type.isAssignableFrom(cls);
@@ -50,7 +53,8 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     }
 
     public boolean isFinal(Method method) {
-        return Modifier.isFinal(method.getModifiers());
+        int modifiers = method.getModifiers();
+        return isFinal(modifiers);
     }
 
     // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
@@ -92,5 +96,25 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     public void checkInstance(Class expectedImpl, Object ref) {
         Assert.assertNotNull(ref);
         Assert.assertTrue(isSubclassOf(expectedImpl, ref.getClass()));
+    }
+
+    private boolean isAbstract(int modifiers) {
+        return Modifier.isAbstract(modifiers);
+    }
+
+    private boolean isInterface(int modifiers) {
+        return Modifier.isInterface(modifiers);
+    }
+
+    private boolean isPublic(int modifiers) {
+        return Modifier.isPublic(modifiers);
+    }
+
+    private boolean isFinal(int modifiers) {
+        return Modifier.isFinal(modifiers);
+    }
+
+    private boolean isStatic(int modifiers) {
+        return Modifier.isStatic(modifiers);
     }
 }
