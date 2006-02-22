@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.introspect;
 
+import au.net.netstorm.boost.util.fixture.DefaultImmutableTestUtil;
 import au.net.netstorm.boost.util.fixture.ImmutableTestUtil;
 import junit.framework.TestCase;
 
@@ -9,15 +10,16 @@ public class DefaultFieldSpecAtomicTest extends TestCase {
     private static final Class METHOD_TYPE_1 = Object.class;
     private static final String METHOD_NAME_2 = "methodTwo";
     private static final Class METHOD_TYPE_2 = String.class;
+    private ImmutableTestUtil immutable = new DefaultImmutableTestUtil();
 
     // FIXME: SC509 This should be failing because the names of the fields no longer match the actual fields.
     public void testIsImmutable() {
         // FIXME: SC050 The string values inside the fieldSpecs are not used.  This indicates the field specs are too much.  Sort this out.
         // FIXME: SC050 And while we're here, change "s" and "aClass" to something slightly more RELEVANT!
-        DefaultFieldSpec f1 = new DefaultFieldSpec("s", String.class);
-        DefaultFieldSpec f2 = new DefaultFieldSpec("aClass", Class.class);
-        DefaultFieldSpec[] fields = {f1, f2};
-        ImmutableTestUtil.checkIsImmutableObject(DefaultFieldSpec.class, fields);
+        FieldSpec f1 = new DefaultFieldSpec("s", String.class);
+        FieldSpec f2 = new DefaultFieldSpec("aClass", Class.class);
+        FieldSpec[] fields = {f1, f2};
+        immutable.checkIsImmutable(DefaultFieldSpec.class, fields);
     }
 
     public void testFieldTypeSpec() {
