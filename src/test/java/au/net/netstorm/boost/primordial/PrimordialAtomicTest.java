@@ -11,7 +11,7 @@ import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 
@@ -51,7 +51,7 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     private void checkField(final Class type, final String fieldName) {
-        Object fieldValue = ReflectTestUtil.getInstanceFieldValue(new Primordial(), fieldName);
+        Object fieldValue = new DefaultReflectTestUtil().getInstanceFieldValue(new Primordial(), fieldName);
         assertNotNull(fieldValue);
         assertEquals(type, fieldValue.getClass());
     }

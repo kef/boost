@@ -9,6 +9,7 @@ import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.ReflectMaster;
+import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import junit.framework.TestCase;
 
@@ -25,6 +26,7 @@ public class VmEntryAtomicTest extends TestCase {
     // FIXME: SC502 Ensure test for private constructor.
 
     private final ReflectMaster reflector = new DefaultReflectMaster();
+    private final ReflectTestUtil testReflector = new DefaultReflectTestUtil();
 
     // FIXME: SC506 Reinstate all this stuff.
     public void testFixme() {
@@ -35,7 +37,7 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     public void testProductionBootstrap() {
-        Object bootstrap = ReflectTestUtil.getInstanceFieldValue(getVmEntry(), "bootstrapper");
+        Object bootstrap = testReflector.getInstanceFieldValue(getVmEntry(), "bootstrapper");
         ClassPropertiesTestUtil.checkInstance(DefaultBootstrapper.class, bootstrap);
     }
 
@@ -67,7 +69,7 @@ public class VmEntryAtomicTest extends TestCase {
         // FIXME: SC502 There is duplicate code in PrimordialAtomicTest.
         FieldValueSpec fieldValue = new DefaultFieldValueSpec("bootstrapper", mockBootstrap);
         PrimordialAtomicTest.resolveField(vmEntry, fieldValue);
-        ReflectTestUtil.setStaticFieldValue(VmEntry.class, "instance", vmEntry);
+        testReflector.setStaticFieldValue(VmEntry.class, "instance", vmEntry);
     }
 
     // FIXME: SC502 Move this out into "edge" or some ioc util.
@@ -90,7 +92,7 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     private VmEntry getVmEntry() {
-        return (VmEntry) ReflectTestUtil.getStaticFieldValue(VmEntry.class, "instance");
+        return (VmEntry) testReflector.getStaticFieldValue(VmEntry.class, "instance");
     }
 
     private void checkEntryFails(String[] args) {

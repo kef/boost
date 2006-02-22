@@ -10,11 +10,16 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 
 // FIXME: SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// FIXME: SC050 Again and again we just keep getting nailed by this HEAP OF !!!!!!!!!
+// FIXME: SC050 Slowly, Slowly.
+// FIXME: SC050 Instancise first.
+// FIXME: SC050 Extract interface next.
+// FIXME: SC050 IN FACT THIS IS SUCH A RUBBISH WE JUST GO A TOTAL REWRITE!!!!!!!!!!!!!!!!!!!!!
 class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
     private final Object instance;
@@ -27,13 +32,16 @@ class MemberTestFixture {
         fieldMap = createFieldMap();
     }
 
-    static void checkMembers(Object instance, FieldSpec[] newArgTypes, Object[] parameters) {
+    public static void checkMembers(Object instance, FieldSpec[] fields, Object[] parameters) {
         Method[] methods = MethodTestFixture.getDeclaredMethods(instance);
         for (int i = 0; i < methods.length; i++) {
+            Object parameter = parameters[i];
+            Method method = methods[i];
+            FieldSpec newArgType = fields[i];
             MemberTestFixture memberFixture = new MemberTestFixture(instance);
-            memberFixture.checkMember(newArgTypes[i], parameters[i]);
-            String name = getFieldName(methods[i]);
-            memberFixture.checkDataProperty(methods[i], memberFixture.getParameter(name));
+            memberFixture.checkMember(newArgType, parameter);
+            String name = getFieldName(method);
+            memberFixture.checkDataProperty(method, memberFixture.getParameter(name));
         }
     }
 
@@ -61,11 +69,12 @@ class MemberTestFixture {
     }
 
     private void checkDataProperty(Method method, Object expectedValue) {
-        FieldValueSpec expectedFS = new DefaultFieldValueSpec(method.getName(), expectedValue);
+        String methodName = method.getName();
+        FieldValueSpec expectedFs = new DefaultFieldValueSpec(methodName, expectedValue);
         Object actualValue = REFLECT_EDGE.invoke(method, instance);
-        FieldValueSpec actualFS = new DefaultFieldValueSpec(method.getName(), actualValue);
-        Assert.assertEquals("Method '" + method.getName() + "' does not return an equal value from one of the constructor parameters", expectedFS, actualFS);
-        ReflectTestUtil.checkPrivateFinalField(instance.getClass(), getFieldName(method));
+        FieldValueSpec actualFs = new DefaultFieldValueSpec(methodName, actualValue);
+        Assert.assertEquals("Method '" + methodName + "' does not return an equal value from one of the constructor parameters", expectedFs, actualFs);
+        new DefaultReflectTestUtil().checkPrivateFinalField(instance.getClass(), getFieldName(method));
         checkFieldImmutable(expectedValue, actualValue, new DefaultFieldSpec(getFieldName(method), method.getReturnType()));
     }
 
@@ -91,11 +100,13 @@ class MemberTestFixture {
 
     // FIXME: SC509 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
     private static void checkFieldImmutable(Object expectedValue, Object actualValue, FieldSpec fieldSpec) {
-        boolean isImmutable = isImmutableClass(fieldSpec.getType()) || (expectedValue != actualValue);
+        Class type = fieldSpec.getType();
+        boolean isImmutable = isImmutable(type) || (expectedValue != actualValue);
         Assert.assertTrue("The field '" + fieldSpec.getName() + "' needs to be either Immutable or needs to copy the values internally", isImmutable);
     }
 
-    private static boolean isImmutableClass(Class returnType) {
-        return (Class.class.isAssignableFrom(returnType)) || (String.class.isAssignableFrom(returnType)) || (Immutable.class.isAssignableFrom(returnType));
+    // FIXME: SC509 This is a "member test fixture" for crying out loud.  What is it doing checking return types PK?
+    private static boolean isImmutable(Class type) {
+        return (Class.class.isAssignableFrom(type)) || (String.class.isAssignableFrom(type)) || (Immutable.class.isAssignableFrom(type));
     }
 }

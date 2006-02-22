@@ -3,7 +3,7 @@ package au.net.netstorm.boost.util.fixture;
 import java.lang.reflect.Constructor;
 
 import junit.framework.Assert;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 
 // FIXME: SC509 ? delete or instancise.
 class NullTestUtil {
@@ -37,7 +37,7 @@ class NullTestUtil {
     }
 
     private static boolean isExpected(RuntimeException e) {
-        Class cls = ReflectTestUtil.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
+        Class cls = new DefaultReflectTestUtil().getRealExceptionClass(e); // FIXME: SC050 Is this needed?
         return isIllegalArgumentException(cls);
     }
 

@@ -48,9 +48,10 @@ public class ClassPropertiesTestUtil extends Assert {
         return Modifier.isFinal(method.getModifiers());
     }
 
+    // FIXME: SC042 - Complete tidy up of ReflectTestUtil.  Look for all new ReflectTestUtil instances.
     public static void checkFieldType(Object ref, String fieldName, Class expectedClass) {
         try {
-            Field field = ReflectTestUtil.getDeclaredField(ref.getClass(), fieldName);
+            Field field = new DefaultReflectTestUtil().getDeclaredField(ref.getClass(), fieldName);
             field.setAccessible(true);
             assertEquals(expectedClass, field.get(ref).getClass());
         } catch (IllegalAccessException e) {

@@ -3,7 +3,7 @@ package au.net.netstorm.boost.util.fixture;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import junit.framework.Assert;
 
 class MethodTestFixture {
@@ -27,7 +27,7 @@ class MethodTestFixture {
     }
 
     private void checkMethod() {
-        if (!ReflectTestUtil.methodIsPublic(method)) Assert.fail("Method must be public: " + method.getName());
+        if (!new DefaultReflectTestUtil().methodIsPublic(method)) Assert.fail("Method must be public: " + method.getName());
         if (!methodNameIsGetter()) Assert.fail("Method must be getXxxx" + method.getName());
     }
 
