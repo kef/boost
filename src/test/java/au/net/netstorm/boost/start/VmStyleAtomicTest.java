@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.start;
 
 import au.net.netstorm.boost.primordial.PrimordialTestCase;
-import au.net.netstorm.boost.util.fixture.DataTestUtil;
+import au.net.netstorm.boost.util.fixture.DefaulltDataTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 
 public class VmStyleAtomicTest extends PrimordialTestCase {
@@ -10,7 +10,7 @@ public class VmStyleAtomicTest extends PrimordialTestCase {
     public static final VmStyle VM_STYLE_YES = new VmStyle("YES");
 
     public void testIsDataObject() {
-        new DataTestUtil().checkIsDataObject(VmStyle.class, new DefaultFieldSpec[]{
+        new DefaulltDataTestUtil().checkIsData(VmStyle.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("style", String.class)});
     }
 }
