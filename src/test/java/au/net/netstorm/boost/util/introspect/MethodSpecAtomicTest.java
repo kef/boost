@@ -7,7 +7,7 @@ public class MethodSpecAtomicTest extends TestCase {
 
     // FIXME: SC509 Constants.
     public void testIsDataObject() {
-        DataTestUtil.checkIsDataObject(MethodSpec.class, new DefaultFieldSpec[]{
+        new DataTestUtil().checkIsDataObject(MethodSpec.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("name", String.class),
             new DefaultFieldSpec("params", Class[].class)});
     }

@@ -3,23 +3,22 @@ package au.net.netstorm.boost.util.fixture;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.serialize.SerializationTestUtil;
 import au.net.netstorm.boost.util.type.Data;
-import junit.framework.Assert;
 
-// FIXME: SC506 Make instance.
+// FIXME: SC042 Make instance.
 
-public class DataTestUtil extends Assert {
+public class DataTestUtil {
     private static final InstanceProvider EMPTY_PROVIDER = new TestEmptyInstanceProvider();
 
     // FIXME: SC050 ? Rename to checkIsData.
-    public static void checkIsDataObject(Class cls, FieldSpec[] fields) {
+    public void checkIsDataObject(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields, EMPTY_PROVIDER);
     }
 
-    public static void checkIsDataObject(Class cls, FieldSpec[] fields, InstanceProvider additional) {
+    public void checkIsDataObject(Class cls, FieldSpec[] fields, InstanceProvider additional) {
         doCheckIsData(cls, fields, additional);
     }
 
-    private static void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProvider additional) {
+    private void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProvider additional) {
         // FIXME: SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
         fixture.checkClass(Data.class, additional);

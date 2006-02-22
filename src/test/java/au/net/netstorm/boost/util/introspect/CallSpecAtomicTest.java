@@ -10,6 +10,7 @@ public class CallSpecAtomicTest extends TestCase {
     private static final DefaultFieldSpec[] TYPES = {FIELD_SPEC_METHOD_NAME, FIELD_SPEC_ARG_TYPES, FIELD_SPEC_ARGS};
 
     public void testCallSpec() {
-        DataTestUtil.checkIsDataObject(CallSpec.class, TYPES);
+        // FIXME: SC042 To field ... all of these.
+        new DataTestUtil().checkIsDataObject(CallSpec.class, TYPES);
     }
 }

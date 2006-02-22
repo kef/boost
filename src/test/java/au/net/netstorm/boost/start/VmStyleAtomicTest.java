@@ -10,7 +10,7 @@ public class VmStyleAtomicTest extends PrimordialTestCase {
     public static final VmStyle VM_STYLE_YES = new VmStyle("YES");
 
     public void testIsDataObject() {
-        DataTestUtil.checkIsDataObject(VmStyle.class, new DefaultFieldSpec[]{
+        new DataTestUtil().checkIsDataObject(VmStyle.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("style", String.class)});
     }
 }

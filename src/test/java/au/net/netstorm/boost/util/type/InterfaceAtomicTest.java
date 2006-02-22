@@ -9,7 +9,7 @@ public class InterfaceAtomicTest extends TestCase {
 
     public void testIsDataObject() {
         // FIXME: SC506 Tidy this up.
-        DataTestUtil.checkIsDataObject(Interface.class, new DefaultFieldSpec[]{
+        new DataTestUtil().checkIsDataObject(Interface.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("type", Class.class)});
     }
 
