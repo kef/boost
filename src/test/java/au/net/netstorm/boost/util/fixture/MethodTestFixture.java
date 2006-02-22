@@ -7,6 +7,8 @@ import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import junit.framework.Assert;
 
+// FIXME: SC042 ? public.
+// FIXME: SC042 interface.
 class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIXME: SC042 Make public or private
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
@@ -16,21 +18,26 @@ class MethodTestFixture {
         this.method = method;
     }
 
-    static Method[] getDeclaredMethods(Object instance) {
-        return instance.getClass().getDeclaredMethods();
+    public static Method[] getDeclaredMethods(Object instance) {
+        Class cls = instance.getClass();
+        return cls.getDeclaredMethods();
     }
 
-    static void checkMethods(Object instance, FieldSpec[] newArgTypes) {
+    public static void checkMethods(Object instance, FieldSpec[] newArgTypes) {
         Method[] methods = MethodTestFixture.getDeclaredMethods(instance);
         checkNumberOfMethods(newArgTypes, methods);
         for (int i = 0; i < methods.length; i++) {
-            new MethodTestFixture(methods[i]).checkMethod();
+            Method method = methods[i];
+            MethodTestFixture fixture = new MethodTestFixture(method);
+            fixture.checkMethod();
         }
     }
 
     private void checkMethod() {
-        if (!reflector.methodIsPublic(method)) Assert.fail("Method must be public: " + method.getName());
-        if (!methodNameIsGetter()) Assert.fail("Method must be getXxxx" + method.getName());
+        boolean pubLic = reflector.methodIsPublic(method);
+        String name = method.getName();
+        if (!pubLic) Assert.fail("Method must be public: " + name);
+        if (!methodNameIsGetter()) Assert.fail("Method must be getXxxx" + name);
     }
 
     private static void checkNumberOfMethods(FieldSpec[] newArgTypes, Method[] methods) {

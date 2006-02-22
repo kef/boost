@@ -8,8 +8,8 @@ import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?
-// FIXME: SC502 Interface it.
-class ClassTestFixture extends Assert {
+// FIXME: SC042 Interface it.
+class ClassTestFixture {
     private final Class cls;
     private final FieldSpec[] parameters;
 
@@ -32,6 +32,6 @@ class ClassTestFixture extends Assert {
         Class[] expected = constructor.getParameterTypes();
         Class[] params = InstanceTestUtil.getClasses(parameters);
         NullTestUtil.checkNullParameters(constructor, params, additional);
-        assertEquals("Class constructor does not have expected number arguments", expected.length, params.length); // FIXME: SC050 This seems to be back to front
+        Assert.assertEquals("Class constructor does not have expected number arguments", expected.length, params.length); // FIXME: SC050 This seems to be back to front
     }
 }
