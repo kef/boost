@@ -5,12 +5,13 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.primordial.PrimordialAtomicTest;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.TestCase;
 
 // FIXME: SC506 Fix failXxx().
@@ -24,7 +25,7 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] NULL = null;
 
     // FIXME: SC502 Ensure test for private constructor.
-    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
+    private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final ReflectTestUtil testReflector = new DefaultReflectTestUtil();
 

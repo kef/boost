@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 
 import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
-import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
@@ -15,10 +15,11 @@ import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 
 public final class PrimordialAtomicTest extends TestCase {
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
-    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
+    private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
 
     public void testNotAbstract() {
         assertFalse(clsProperties.isClassAbstract(Primordial.class));

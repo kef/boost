@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.Assert;
 
@@ -11,7 +12,7 @@ import junit.framework.Assert;
 // FIXME: SC042 Interface it.
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
-    private final ClassPropertiesTestUtil clsProperties = new ClassPropertiesTestUtil();
+    private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
     private final NullTestUtil nuller = new NullTestUtil();
     private final Class cls;
     private final FieldSpec[] parameters;
