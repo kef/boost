@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 
 // FIXME: SC509 ? delete or instancise.
 // FIXME: SC042 ? Make public or private.
-class NullTestUtil {
+final class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     private static final ReflectTestUtil REFLECTOR = new DefaultReflectTestUtil();
 

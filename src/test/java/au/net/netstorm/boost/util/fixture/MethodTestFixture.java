@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 // FIXME: SC042 ? public.
 // FIXME: SC042 interface.
-class MethodTestFixture {
+final class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIXME: SC042 Make public or private
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final Method method;

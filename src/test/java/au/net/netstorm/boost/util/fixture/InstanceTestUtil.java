@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 
 // FIXME: SC502 Make instance.
-class InstanceTestUtil {
+final class InstanceTestUtil {
     private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     // FIXME: SC050 This is a smell.  Work out whether is can be removed.

@@ -9,7 +9,7 @@ import au.net.netstorm.boost.time.core.TimePoint;
 
 // FIXME: SC502 Rename.
 // FIXME: SC042 Instance provide needs to provide getA() / getB() as per triangulation requirements.  For both primitive (wrapped) and other.
-public class InstanceProviderTestUtilSuppressed implements InstanceProvider {
+public final class InstanceProviderTestUtilSuppressed implements InstanceProvider {
     public Object getInstance(Class type) {
         Object instance = doGetInstance(type);
         if (instance == null) throw new UnsupportedOperationException("Lovely fella, please write the code for type " + type);

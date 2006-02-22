@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?
 // FIXME: SC042 Interface it.
-class ClassTestFixture {
+final class ClassTestFixture {
     private final Class cls;
     private final FieldSpec[] parameters;
 
