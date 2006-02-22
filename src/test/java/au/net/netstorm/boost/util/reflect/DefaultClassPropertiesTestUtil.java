@@ -66,7 +66,7 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class implClass) {
         String implName = getShortName(implClass);
-        checkInterface(implClass, implName, expectedInterface);
+        checkInterface(expectedInterface, implClass, implName);
         checkFinal(implClass, implName);
     }
 
@@ -120,7 +120,7 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         Assert.assertTrue(implName + " must be final", isFinal);
     }
 
-    private void checkInterface(Class implementationClass, String implName, Class expectedInterface) {
+    private void checkInterface(Class expectedInterface, Class implementationClass, String implName) {
         Interface inyerface = new Interface(expectedInterface);
         boolean implementsIt = isImplementationOf(inyerface, implementationClass);
         String targetName = getShortName(expectedInterface);
