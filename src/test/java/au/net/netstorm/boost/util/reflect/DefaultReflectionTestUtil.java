@@ -10,6 +10,8 @@ import java.lang.reflect.Method;
 // FIXME: SC042 Perform a quick check to see who _really_ uses this.
 
 public final class DefaultReflectionTestUtil implements ReflectionTestUtil {
+    private final ReflectEdge edge = ReflectEdge.INSTANCE;
+
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         Method method = getMethod(invokee, methodName);
         return invoke(invokee, method, parameters);
@@ -30,11 +32,7 @@ public final class DefaultReflectionTestUtil implements ReflectionTestUtil {
     }
 
     private Object invoke(Object invokee, Method method, Object[] parameters) {
-        try {
-            return method.invoke(invokee, parameters);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return edge.invoke(method, invokee, parameters);
     }
 
     private boolean matches(Method method, String methodName) {

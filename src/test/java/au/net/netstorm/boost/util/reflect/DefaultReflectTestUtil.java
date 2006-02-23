@@ -14,7 +14,7 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
-    public Class getException(Method method) {
+    public Class getExceptionType(Method method) {
         Class[] exceptions = method.getExceptionTypes();
         String name = method.getName();
         Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
@@ -57,7 +57,7 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
         if (Modifier.isStatic(modifiers)) Assert.fail("Field '" + fieldName + "' cannot be static.");
     }
 
-    public boolean methodIsPublic(Method method) {
+    public boolean isPublic(Method method) {
         int modifiers = method.getModifiers();
         return Modifier.isPublic(modifiers);
     }

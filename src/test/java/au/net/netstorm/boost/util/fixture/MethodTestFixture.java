@@ -9,6 +9,7 @@ import junit.framework.Assert;
 
 // FIXME: SC042 ? public.
 // FIXME: SC042 interface.
+
 final class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIXME: SC042 Make public or private
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
@@ -34,7 +35,7 @@ final class MethodTestFixture {
     }
 
     private void checkMethod() {
-        boolean pubLic = reflector.methodIsPublic(method);
+        boolean pubLic = reflector.isPublic(method);
         String name = method.getName();
         if (!pubLic) Assert.fail("Method must be public: " + name);
         if (!methodNameIsGetter()) Assert.fail("Method must be getXxxx" + name);

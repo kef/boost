@@ -3,11 +3,12 @@
  */
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public interface ReflectTestUtil {
-    Class getException(Method method);
+    // FIXME: SC042 Rename.
+    Class getExceptionType(Method method);
 
     Object getStaticField(Class cls, String fieldName);
 
@@ -21,7 +22,7 @@ public interface ReflectTestUtil {
 
     void checkPrivateFinalField(Class type, String fieldName);
 
-    boolean methodIsPublic(Method method);
+    boolean isPublic(Method method);
 
     Class getRealExceptionClass(RuntimeException e);
 }
