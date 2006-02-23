@@ -3,6 +3,7 @@ package au.net.netstorm.boost.listener;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.net.netstorm.boost.util.reflect.DefaultReflectionTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectionTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
@@ -27,7 +28,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final Object[] METHOD_ONE_PARAMETERS = {STRING};
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
     private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
-    private final ReflectionTestUtil reflector = ReflectionTestUtil.INSTANCE;
+    private final ReflectionTestUtil reflector = DefaultReflectionTestUtil.INSTANCE;
     private final List mockListeners = new ArrayList();
     private OneToMany oneToMany;
 
