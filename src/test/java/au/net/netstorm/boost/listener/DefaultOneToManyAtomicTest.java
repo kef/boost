@@ -30,7 +30,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final Object[] METHOD_ONE_PARAMETERS = {STRING};
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
     private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
-    private final ReflectionTestUtil reflector = DefaultReflectionTestUtil.INSTANCE;
+    private final ReflectionTestUtil reflector = new DefaultReflectionTestUtil();
     private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
     private final List mockListeners = new ArrayList();
     private OneToMany oneToMany;
