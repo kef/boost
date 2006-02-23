@@ -18,15 +18,11 @@ public interface ModifiersTestUtil {
 
     boolean isPublic(Class cls);
 
-    // FIXME: SC042 These loook out of place.  Do they really belong here?
-    // FIXME: SC042 If they do, make things symmetric.
+    // FIXME: SC042 These loook out of place.  Do they really belong here? If they do, make things symmetric.
 
-    // FIXME: SC042 Drop the Class from the method name.
     void checkFinal(Class cls);
 
-    // FIXME: SC042 Drop the Class from the method name.
     void checkPublic(Class cls);
 
-    // FIXME: SC042 This is a modifier too (right?).
     void checkSynchronized(Class cls);
 }
