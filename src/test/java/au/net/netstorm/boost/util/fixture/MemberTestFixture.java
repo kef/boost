@@ -9,9 +9,9 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
-import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 
@@ -31,10 +31,12 @@ import junit.framework.Assert;
 //
 //
 //
+
 final class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
-    static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX.length(); // FIXME: SC042 Make this public or private.
-    private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
+    static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
+            .length(); // FIXME: SC042 Make this public or private.
+    private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final Object instance;
     private final Map fieldMap;
 

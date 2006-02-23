@@ -3,8 +3,8 @@ package au.net.netstorm.boost.util.fixture;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC042 ? public.
@@ -12,7 +12,7 @@ import junit.framework.Assert;
 
 final class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIXME: SC042 Make public or private
-    private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final Method method;
 
     MethodTestFixture(Method method) {

@@ -2,15 +2,15 @@ package au.net.netstorm.boost.util.fixture;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC042 ? Make public or private.
 
 final class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
-    private static final ReflectTestUtil REFLECTOR = new DefaultReflectTestUtil();
+    private static final FieldTestUtil REFLECTOR = new DefaultFieldTestUtil();
 
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
     public void checkNullParameters(Constructor constructor, Class[] parameters, InstanceProvider additional) {

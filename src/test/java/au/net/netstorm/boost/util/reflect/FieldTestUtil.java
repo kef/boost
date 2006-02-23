@@ -8,8 +8,7 @@ import java.lang.reflect.Method;
 
 // FIXME: SC042 In fact this mostly smells like a FieldTestUtil.
 
-public interface ReflectTestUtil {
-    // FIXME: SC042 Rename.
+public interface FieldTestUtil {
     Class getExceptionType(Method method);
 
     Object getStaticField(Class cls, String fieldName);

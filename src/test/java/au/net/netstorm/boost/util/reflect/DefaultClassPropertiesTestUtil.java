@@ -8,7 +8,7 @@ import junit.framework.Assert;
 
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
-    private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
 
     // FIXME: SC042 Tidy the section below up.

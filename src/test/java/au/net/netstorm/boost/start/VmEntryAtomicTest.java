@@ -5,13 +5,13 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.primordial.PrimordialAtomicTest;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
-import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import junit.framework.TestCase;
 
 // FIXME: SC506 Fix failXxx().
@@ -23,11 +23,10 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] TOO_MANY_ARGUMENTS = new String[2];
     private static final String[] TOO_FEW_ARGUMENTS = new String[0];
     private static final String[] NULL = null;
-
     // FIXME: SC502 Ensure test for private constructor.
     private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
-    private final ReflectTestUtil testReflector = new DefaultReflectTestUtil();
+    private final FieldTestUtil testReflector = new DefaultFieldTestUtil();
 
     // FIXME: SC506 Reinstate all this stuff.
     public void testFixme() {
@@ -47,7 +46,6 @@ public class VmEntryAtomicTest extends TestCase {
         checkEntryPoint(VM_STYLE_ELO);
         checkEntryPoint(VM_STYLE_YES);
     }
-
 
     public void testWithIllegalArguments() {
         checkEntryFails(NULL);
@@ -78,7 +76,8 @@ public class VmEntryAtomicTest extends TestCase {
         Constructor constructor = reflector.getConstructor(VmEntry.class);
         Object[] args = {};
         constructor.setAccessible(true);
-        return (VmEntry) ReflectEdge.INSTANCE.newInstance(constructor, args);
+        return (VmEntry) ReflectEdge.INSTANCE
+                .newInstance(constructor, args);
     }
 
     private void checkVmEntry(MockBootstrapper mockBootstrap, VmStyle style) {

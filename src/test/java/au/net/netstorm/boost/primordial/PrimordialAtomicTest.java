@@ -1,24 +1,23 @@
 package au.net.netstorm.boost.primordial;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-import junit.framework.TestCase;
-
-import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
-import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
-import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
-import au.net.netstorm.boost.util.tostring.ToStringMaster;
-import au.net.netstorm.boost.util.reflect.ReflectEdge;
-import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
 import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.util.reflect.FieldTestUtil;
+import au.net.netstorm.boost.util.reflect.ReflectEdge;
+import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
+import au.net.netstorm.boost.util.tostring.ToStringMaster;
+import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
-    private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
+    private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
 
     public void testNotAbstract() {
@@ -116,7 +115,8 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
-        Method method = ReflectEdge.INSTANCE.getMethod(Primordial.class, methodName, parameterTypes);
+        Method method = ReflectEdge.INSTANCE
+                .getMethod(Primordial.class, methodName, parameterTypes);
         assertTrue(clsProperties.isFinal(method));
     }
 }

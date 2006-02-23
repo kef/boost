@@ -10,7 +10,7 @@ import junit.framework.Assert;
 // FIXME: SC509 Merge with reflection test util.
 // FIXME: SC506 Extend Assert to get Assert.fails out the way.
 
-public class DefaultReflectTestUtil implements ReflectTestUtil {
+public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
