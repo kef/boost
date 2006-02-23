@@ -7,24 +7,21 @@ import au.net.netstorm.boost.util.equals.EqualsMaster;
 import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultMethodTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultModifiersTestUtil;
 import au.net.netstorm.boost.util.reflect.FieldTestUtil;
-import au.net.netstorm.boost.util.reflect.MethodTestUtil;
+import au.net.netstorm.boost.util.reflect.ModifiersTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
-    private final MethodTestUtil methoder = new DefaultMethodTestUtil();
+    private final ModifiersTestUtil modifier = new DefaultModifiersTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final ClassTestUtil classer = new DefaultClassPropertiesTestUtil();
 
     public void testNotAbstract() {
-        assertFalse(classer.isAbstract(Primordial.class));
+        assertFalse(modifier.isAbstract(Primordial.class));
     }
 
     public void testMethodsFinal() {
@@ -121,6 +118,6 @@ public final class PrimordialAtomicTest extends TestCase {
         // FIXME: SC042 Tidy this up
         Method method = ReflectEdge.INSTANCE
                 .getMethod(Primordial.class, methodName, parameterTypes);
-        assertTrue(methoder.isFinal(method));
+        assertTrue(modifier.isFinal(method));
     }
 }

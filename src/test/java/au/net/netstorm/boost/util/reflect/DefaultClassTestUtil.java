@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import au.net.netstorm.boost.util.type.Interface;
@@ -8,54 +7,10 @@ import junit.framework.Assert;
 
 // FIXME: SC042 Rename.
 
-public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
-    private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
+public class DefaultClassTestUtil implements ClassTestUtil {
+    private final ModifiersTestUtil modifiers = new DefaultModifiersTestUtil();
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
-
-    // FIXME: SC042 Tidy the section below up.
-
-    // FIXME: SC042 Expose via interface.
-    // FIXME: SC042 Merge with existing functionality.
-    // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
-    public void checkSynchronized(Class type) {
-        Method[] methods = type.getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            checkSynchronized(methods[i]);
-        }
-    }
-
-    private void checkSynchronized(Method method) {
-        String name = method.getName();
-        if (isExclusion(name)) {
-            return;
-        }
-        int modifiers = method.getModifiers();
-        Assert.assertTrue("" + method, Modifier.isSynchronized(modifiers));
-    }
-
-    private boolean isExclusion(String methodName) {
-        for (int i = 0; i < EXCLUSIONS.length; i++) {
-            if (methodName.equals(EXCLUSIONS[i])) return true;
-        }
-        return false;
-    }
-
-    public boolean isAbstract(Class cls) {
-        // FIXME: SC042 Make use of a ModifiersTestUtil.  Into which you can pass Class, Field, Method...
-        int modifiers = cls.getModifiers();
-        return isAbstract(modifiers);
-    }
-
-    public boolean isFinal(Class cls) {
-        int modifiers = cls.getModifiers();
-        return isFinal(modifiers);
-    }
-
-    public boolean isPublic(Class cls) {
-        int modifiers = cls.getModifiers();
-        return isPublic(modifiers);
-    }
 
     public boolean isInterface(Class cls) {
         int modifiers = cls.getModifiers();
@@ -97,28 +52,8 @@ public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
         checkSubclassOf(superClass, cls);
     }
 
-    public void checkClassFinal(Class cls) {
-        Assert.assertTrue(isFinal(cls));
-    }
-
-    public void checkClassPublic(Class cls) {
-        Assert.assertTrue(isPublic(cls));
-    }
-
-    private boolean isAbstract(int modifiers) {
-        return Modifier.isAbstract(modifiers);
-    }
-
     private boolean isInterface(int modifiers) {
         return Modifier.isInterface(modifiers);
-    }
-
-    private boolean isPublic(int modifiers) {
-        return Modifier.isPublic(modifiers);
-    }
-
-    private boolean isFinal(int modifiers) {
-        return Modifier.isFinal(modifiers);
     }
 
     private String getShortName(Class cls) {
@@ -126,7 +61,7 @@ public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
     }
 
     private void checkFinal(Class implementationClass, String implName) {
-        boolean isFinal = isFinal(implementationClass);
+        boolean isFinal = modifiers.isFinal(implementationClass);
         Assert.assertTrue(implName + " must be final", isFinal);
     }
 

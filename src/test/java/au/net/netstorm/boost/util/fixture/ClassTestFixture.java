@@ -5,14 +5,14 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultClassTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?
 
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
-    private final ClassTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
+    private final ClassTestUtil clsProperties = new DefaultClassTestUtil();
     private final NullTestUtil nuller = new NullTestUtil();
     private final Class cls;
     private final FieldSpec[] parameters;

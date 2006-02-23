@@ -3,10 +3,10 @@ package au.net.netstorm.boost.listener;
 import java.util.ArrayList;
 import java.util.List;
 
-import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultMethodTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultModifiersTestUtil;
 import au.net.netstorm.boost.util.reflect.MethodTestUtil;
+import au.net.netstorm.boost.util.reflect.ModifiersTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -31,7 +31,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
     private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
     private final MethodTestUtil methods = new DefaultMethodTestUtil();
-    private final ClassTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
+    private final ModifiersTestUtil modifier = new DefaultModifiersTestUtil();
     private final List mockListeners = new ArrayList();
     private OneToMany oneToMany;
 
@@ -42,7 +42,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     }
 
     public void testSynchronized() {
-        clsProperties.checkSynchronized(DefaultOneToMany.class);
+        modifier.checkSynchronized(DefaultOneToMany.class);
     }
 
     public void testNullsIllegalInConstructor() {

@@ -3,11 +3,11 @@ package au.net.netstorm.boost.util.type;
 import java.io.Serializable;
 
 import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultClassTestUtil;
 import junit.framework.TestCase;
 
 public class DataAtomicTest extends TestCase {
-    private final ClassTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
+    private final ClassTestUtil clsProperties = new DefaultClassTestUtil();
 
     // FIXME: SC506 Refactor this.
     public void testInterfaceProperties() {
