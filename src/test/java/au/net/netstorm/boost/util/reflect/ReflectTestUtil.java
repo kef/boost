@@ -20,7 +20,7 @@ public interface ReflectTestUtil {
 
     void setStaticField(Class cls, String fieldName, Object fieldValue);
 
-    void checkPrivateFinalField(Class type, String fieldName);
+    void checkPrivateFinalField(Class type, String fieldName); // FIXME: SC042 This "check*" does not seem to fit here.
 
     boolean isPublic(Method method);
 
