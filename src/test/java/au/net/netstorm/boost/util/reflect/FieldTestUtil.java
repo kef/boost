@@ -9,8 +9,7 @@ import java.lang.reflect.Method;
 // FIXME: SC042 In fact this mostly smells like a FieldTestUtil.
 
 public interface FieldTestUtil {
-    Class getExceptionType(Method method);
-
+    // FIXME: SC042 Remove field from all methods names.
     Object getStaticField(Class cls, String fieldName);
 
     Object getInstanceField(Object ref, String fieldName);
@@ -23,7 +22,11 @@ public interface FieldTestUtil {
 
     void checkPrivateFinalField(Class type, String fieldName); // FIXME: SC042 This "check*" does not seem to fit here.
 
+    // FIXME: SC042 FROZEN BELOW...
+    // FIXME: SC042 Move these out into a separate class.
     boolean isPublic(Method method);
 
     Class getRealExceptionClass(RuntimeException e);
+
+    Class getExceptionType(Method method);
 }
