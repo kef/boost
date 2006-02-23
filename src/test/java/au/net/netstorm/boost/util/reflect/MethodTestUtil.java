@@ -6,10 +6,9 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Method;
 
 public interface MethodTestUtil {
-    // FIXME: SC042 Move these out into a separate class.
     boolean isPublic(Method method);
 
-    Class getRealExceptionClass(RuntimeException e);
+    Class getThrowsType(Method method);
 
-    Class getExceptionType(Method method);
+    Class getRealExceptionClass(Throwable t); // FIXME: SC042 This belongs elsewhere.
 }

@@ -10,7 +10,7 @@ import java.lang.reflect.Modifier;
 import junit.framework.Assert;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {
-    public Class getExceptionType(Method method) {
+    public Class getThrowsType(Method method) {
         Class[] exceptions = method.getExceptionTypes();
         String name = method.getName();
         Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
@@ -22,9 +22,10 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
         return Modifier.isPublic(modifiers);
     }
 
-    public Class getRealExceptionClass(RuntimeException e) {
+    public Class getRealExceptionClass(Throwable t) {
         // FIXME: SC050 This certainly does not really work.  Sort this out!!!
-        Throwable realException = e;
+        // FIXME: SC042 Early returns fellas.
+        Throwable realException = t;
         if (realException.getClass() == RuntimeException.class) realException = (Throwable) realException.getCause();
         if (realException.getClass() == InvocationTargetException.class)
             realException = (Throwable) realException.getCause();

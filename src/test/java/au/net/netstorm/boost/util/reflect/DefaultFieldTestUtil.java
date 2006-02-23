@@ -5,8 +5,6 @@ import java.lang.reflect.Modifier;
 
 import junit.framework.Assert;
 
-// FIXME: SC042 Remove methods not in the interface.
-
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
