@@ -6,11 +6,11 @@ import java.lang.reflect.Modifier;
 import junit.framework.Assert;
 
 // FIXME: SC509 Merge with ReflectTestUtil.
-// FIXME: SC042 Instancise.
+// FIXME: SC042 Interfacise.
 
 public final class ReflectionTestUtil {
-    public static final ReflectionTestUtil INSTANCE = new ReflectionTestUtil();
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
+    public static final ReflectionTestUtil INSTANCE = new ReflectionTestUtil(); // FIXME: SC042 Roll into instance.
 
     public Method getMethod(Object instance, String methodName) {
         Class type = instance.getClass();
@@ -34,7 +34,7 @@ public final class ReflectionTestUtil {
         return invoke(invokee, method, parameters);
     }
 
-    // FIXME: SC050 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
+    // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
     public void checkSynchronized(Class type) {
         Method[] methods = type.getMethods();
         for (int i = 0; i < methods.length; i++) {
