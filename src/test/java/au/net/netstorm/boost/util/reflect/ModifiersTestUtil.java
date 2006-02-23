@@ -22,11 +22,11 @@ public interface ModifiersTestUtil {
     // FIXME: SC042 If they do, make things symmetric.
 
     // FIXME: SC042 Drop the Class from the method name.
-    void checkClassFinal(Class cls);
+    void checkFinal(Class cls);
 
     // FIXME: SC042 Drop the Class from the method name.
-    void checkClassPublic(Class cls);
+    void checkPublic(Class cls);
 
     // FIXME: SC042 This is a modifier too (right?).
-    void checkSynchronized(Class type);
+    void checkSynchronized(Class cls);
 }

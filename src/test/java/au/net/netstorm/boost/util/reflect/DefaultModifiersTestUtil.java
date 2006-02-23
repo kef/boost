@@ -51,11 +51,11 @@ public final class DefaultModifiersTestUtil implements ModifiersTestUtil {
         return isPublic(modifiers);
     }
 
-    public void checkClassFinal(Class cls) {
+    public void checkFinal(Class cls) {
         Assert.assertTrue(isFinal(cls));
     }
 
-    public void checkClassPublic(Class cls) {
+    public void checkPublic(Class cls) {
         Assert.assertTrue(isPublic(cls));
     }
 
