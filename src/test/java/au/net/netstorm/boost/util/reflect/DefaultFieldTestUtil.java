@@ -21,6 +21,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         return getFieldValue(cls, ref, fieldName);
     }
 
+    // FIXME: SC042 Use edger.
     public Field getDeclaredField(Class cls, String fieldName) {
         try {
             return cls.getDeclaredField(fieldName);
