@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.primordial.PrimordialAtomicTest;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
+import au.net.netstorm.boost.util.reflect.ClassTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
@@ -24,7 +24,7 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] TOO_FEW_ARGUMENTS = new String[0];
     private static final String[] NULL = null;
     // FIXME: SC502 Ensure test for private constructor.
-    private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
+    private final ClassTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final FieldTestUtil testReflector = new DefaultFieldTestUtil();
 

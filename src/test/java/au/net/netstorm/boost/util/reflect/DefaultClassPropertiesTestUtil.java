@@ -6,7 +6,7 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
+public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
@@ -34,14 +34,13 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
 
     private boolean isExclusion(String methodName) {
         for (int i = 0; i < EXCLUSIONS.length; i++) {
-            if (methodName.equals(EXCLUSIONS[i])) {
-                return true;
-            }
+            if (methodName.equals(EXCLUSIONS[i])) return true;
         }
         return false;
     }
 
     // FIXME: SC042 Tidy the above section up.
+    // FIXME: SC042 Belongs in MTU.
 
     public boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();
@@ -79,6 +78,7 @@ public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
         return superClass.isAssignableFrom(subclass);
     }
 
+    // FIXME: SC042 Belongs in MTU.
     public boolean isFinal(Method method) {
         int modifiers = method.getModifiers();
         return isFinal(modifiers);

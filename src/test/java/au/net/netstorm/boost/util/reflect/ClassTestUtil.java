@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC042 There seems to be a distinct split into check* and is* methods.  Split.
 
-public interface ClassPropertiesTestUtil {
+public interface ClassTestUtil {
     boolean isPublicInstance(Method method);
 
     boolean isAbstract(Class cls);
