@@ -11,7 +11,4 @@ public interface ReflectionTestUtil {
     Method getMethod(Class type, String methodName);
 
     Object invoke(Object invokee, String methodName, Object[] parameters);
-
-    // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
-    void checkSynchronized(Class type);
 }

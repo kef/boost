@@ -7,8 +7,41 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 public class DefaultClassPropertiesTestUtil implements ClassPropertiesTestUtil {
+    private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ReflectTestUtil reflector = new DefaultReflectTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
+
+    // FIXME: SC042 Tidy the section below up.
+
+    // FIXME: SC042 Expose via interface.
+    // FIXME: SC042 Merge with existing functionality.
+    // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
+    public void checkSynchronized(Class type) {
+        Method[] methods = type.getMethods();
+        for (int i = 0; i < methods.length; i++) {
+            checkSynchronized(methods[i]);
+        }
+    }
+
+    private void checkSynchronized(Method method) {
+        String name = method.getName();
+        if (isExclusion(name)) {
+            return;
+        }
+        int modifiers = method.getModifiers();
+        Assert.assertTrue("" + method, Modifier.isSynchronized(modifiers));
+    }
+
+    private boolean isExclusion(String methodName) {
+        for (int i = 0; i < EXCLUSIONS.length; i++) {
+            if (methodName.equals(EXCLUSIONS[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // FIXME: SC042 Tidy the above section up.
 
     public boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();
