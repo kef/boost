@@ -5,8 +5,8 @@ import java.util.List;
 
 import au.net.netstorm.boost.util.reflect.ClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultReflectionTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectionTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultMethodTestUtil;
+import au.net.netstorm.boost.util.reflect.MethodTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -30,7 +30,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final Object[] METHOD_ONE_PARAMETERS = {STRING};
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
     private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
-    private final ReflectionTestUtil reflector = new DefaultReflectionTestUtil();
+    private final MethodTestUtil methods = new DefaultMethodTestUtil();
     private final ClassPropertiesTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
     private final List mockListeners = new ArrayList();
     private OneToMany oneToMany;
@@ -99,10 +99,10 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
 
     private void performAndCheckCalls(Interface type, String methodName, Object[] parameters) {
         Object one = getOne(type);
-        reflector.invoke(one, methodName, parameters);
+        methods.invoke(one, methodName, parameters);
         checkListenerCall(SINGLE_LISTENER, methodName);
-        reflector.invoke(one, methodName, parameters);
-        reflector.invoke(one, methodName, parameters);
+        methods.invoke(one, methodName, parameters);
+        methods.invoke(one, methodName, parameters);
         checkListenerCall(3, methodName);
     }
 

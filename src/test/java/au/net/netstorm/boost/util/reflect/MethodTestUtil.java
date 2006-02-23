@@ -6,6 +6,8 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Method;
 
 public interface MethodTestUtil {
+    Object invoke(Object invokee, String methodName, Object[] parameters);
+
     boolean isPublic(Method method);
 
     Class getThrowsType(Method method);
