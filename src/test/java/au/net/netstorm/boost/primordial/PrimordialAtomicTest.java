@@ -10,18 +10,21 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.ClassTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultClassPropertiesTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultMethodTestUtil;
 import au.net.netstorm.boost.util.reflect.FieldTestUtil;
+import au.net.netstorm.boost.util.reflect.MethodTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
-    private final FieldTestUtil reflector = new DefaultFieldTestUtil();
-    private final ClassTestUtil clsProperties = new DefaultClassPropertiesTestUtil();
+    private final MethodTestUtil methoder = new DefaultMethodTestUtil();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private final ClassTestUtil classer = new DefaultClassPropertiesTestUtil();
 
     public void testNotAbstract() {
-        assertFalse(clsProperties.isAbstract(Primordial.class));
+        assertFalse(classer.isAbstract(Primordial.class));
     }
 
     public void testMethodsFinal() {
@@ -54,7 +57,7 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     private void checkField(final Class type, final String fieldName) {
-        Object fieldValue = reflector.getInstanceField(new Primordial(), fieldName);
+        Object fieldValue = fielder.getInstanceField(new Primordial(), fieldName);
         assertNotNull(fieldValue);
         assertEquals(type, fieldValue.getClass());
     }
@@ -115,8 +118,9 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
+        // FIXME: SC042 Tidy this up
         Method method = ReflectEdge.INSTANCE
                 .getMethod(Primordial.class, methodName, parameterTypes);
-        assertTrue(clsProperties.isFinal(method));
+        assertTrue(methoder.isFinal(method));
     }
 }

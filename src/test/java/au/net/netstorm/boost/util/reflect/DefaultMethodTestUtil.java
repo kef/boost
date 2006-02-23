@@ -53,6 +53,31 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
         return Modifier.isPublic(modifiers);
     }
 
+    // FIXME: SC042 Tidy the above section up.
+    // FIXME: SC042 Belongs in MTU.
+
+    public boolean isPublicInstance(Method method) {
+        int modifiers = method.getModifiers();
+        if (!isPublic(modifiers)) return false;
+        return !isStatic(modifiers);
+    }
+
+    // FIXME: SC042 Reorganise and roll up into interface.
+    // FIXME: SC042 Belongs in MTU.
+    public boolean isFinal(Method method) {
+        int modifiers = method.getModifiers();
+        return isFinal(modifiers);
+    }
+
+    // FIXME: SC042 Remove dupe here.  See DefaultClassTestUtil.
+    private boolean isFinal(int modifiers) {
+        return Modifier.isFinal(modifiers);
+    }
+
+    private boolean isPublic(int modifiers) {
+        return Modifier.isPublic(modifiers);
+    }
+
     public Class getRealExceptionClass(Throwable t) {
         // FIXME: SC050 This certainly does not really work.  Sort this out!!!
         // FIXME: SC042 Early returns fellas.
@@ -61,5 +86,9 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
         if (realException.getClass() == InvocationTargetException.class)
             realException = (Throwable) realException.getCause();
         return realException.getClass();
+    }
+
+    private boolean isStatic(int modifiers) {
+        return Modifier.isStatic(modifiers);
     }
 }

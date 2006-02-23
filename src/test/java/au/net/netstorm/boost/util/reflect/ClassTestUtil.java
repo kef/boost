@@ -3,15 +3,11 @@
  */
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC042 There seems to be a distinct split into check* and is* methods.  Split.
 
 public interface ClassTestUtil {
-    boolean isPublicInstance(Method method);
-
     boolean isAbstract(Class cls);
 
     boolean isFinal(Class cls);
@@ -23,8 +19,6 @@ public interface ClassTestUtil {
     boolean isImplementationOf(Interface targetInterface, Class cls);
 
     boolean isSubclassOf(Class superClass, Class subclass);
-
-    boolean isFinal(Method method);
 
     void checkSynchronized(Class type);
 

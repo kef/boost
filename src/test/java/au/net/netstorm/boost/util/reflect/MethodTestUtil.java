@@ -10,7 +10,11 @@ public interface MethodTestUtil {
 
     boolean isPublic(Method method);
 
+    boolean isFinal(Method method);
+
     Class getThrowsType(Method method);
 
     Class getRealExceptionClass(Throwable t); // FIXME: SC042 This belongs elsewhere (ExceptionTestUtil?).
+
+    boolean isPublicInstance(Method method);
 }

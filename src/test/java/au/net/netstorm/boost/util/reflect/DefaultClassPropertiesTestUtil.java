@@ -6,6 +6,8 @@ import java.lang.reflect.Modifier;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
+// FIXME: SC042 Rename.
+
 public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
@@ -39,16 +41,8 @@ public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
         return false;
     }
 
-    // FIXME: SC042 Tidy the above section up.
-    // FIXME: SC042 Belongs in MTU.
-
-    public boolean isPublicInstance(Method method) {
-        int modifiers = method.getModifiers();
-        if (!isPublic(modifiers)) return false;
-        return !isStatic(modifiers);
-    }
-
     public boolean isAbstract(Class cls) {
+        // FIXME: SC042 Make use of a ModifiersTestUtil.  Into which you can pass Class, Field, Method...
         int modifiers = cls.getModifiers();
         return isAbstract(modifiers);
     }
@@ -76,12 +70,6 @@ public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
 
     public boolean isSubclassOf(Class superClass, Class subclass) {
         return superClass.isAssignableFrom(subclass);
-    }
-
-    // FIXME: SC042 Belongs in MTU.
-    public boolean isFinal(Method method) {
-        int modifiers = method.getModifiers();
-        return isFinal(modifiers);
     }
 
     public void checkFieldType(Class expectedType, Object ref, String fieldName) {
@@ -131,10 +119,6 @@ public class DefaultClassPropertiesTestUtil implements ClassTestUtil {
 
     private boolean isFinal(int modifiers) {
         return Modifier.isFinal(modifiers);
-    }
-
-    private boolean isStatic(int modifiers) {
-        return Modifier.isStatic(modifiers);
     }
 
     private String getShortName(Class cls) {
