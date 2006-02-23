@@ -10,5 +10,5 @@ public interface MethodTestUtil {
 
     Class getThrowsType(Method method);
 
-    Class getRealExceptionClass(Throwable t); // FIXME: SC042 This belongs elsewhere.
+    Class getRealExceptionClass(Throwable t); // FIXME: SC042 This belongs elsewhere (ExceptionTestUtil?).
 }
