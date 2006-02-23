@@ -2,12 +2,12 @@ package au.net.netstorm.boost.util.fixture;
 
 import java.lang.reflect.Constructor;
 
-import junit.framework.Assert;
 import au.net.netstorm.boost.util.reflect.DefaultReflectTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectTestUtil;
+import junit.framework.Assert;
 
-// FIXME: SC509 ? delete or instancise.
 // FIXME: SC042 ? Make public or private.
+
 final class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     private static final ReflectTestUtil REFLECTOR = new DefaultReflectTestUtil();
@@ -19,7 +19,7 @@ final class NullTestUtil {
         }
     }
 
-    private static void checkNullParameter(int i, Constructor constructor, Class[] paramTypes, InstanceProvider additional) {
+    private void checkNullParameter(int i, Constructor constructor, Class[] paramTypes, InstanceProvider additional) {
         Object[] params = getParamsWithNull(i, paramTypes, additional);
         try {
             INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, params);
@@ -29,22 +29,22 @@ final class NullTestUtil {
         }
     }
 
-    private static void checkExpected(RuntimeException e) {
+    private void checkExpected(RuntimeException e) {
         if (!isExpected(e)) throw e;
     }
 
-    private static Object[] getParamsWithNull(int i, Class[] paramTypes, InstanceProvider additional) {
+    private Object[] getParamsWithNull(int i, Class[] paramTypes, InstanceProvider additional) {
         Object[] parameters = INSTANCE_PROVIDER_TEST_UTIL.getInstances(paramTypes, additional);
         parameters[i] = null;
         return parameters;
     }
 
-    private static boolean isExpected(RuntimeException e) {
+    private boolean isExpected(RuntimeException e) {
         Class cls = REFLECTOR.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
         return isIllegalArgumentException(cls);
     }
 
-    private static boolean isIllegalArgumentException(Class cls) {
+    private boolean isIllegalArgumentException(Class cls) {
         return cls.equals(IllegalArgumentException.class);
     }
 }

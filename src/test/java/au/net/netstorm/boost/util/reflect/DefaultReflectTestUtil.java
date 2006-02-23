@@ -8,7 +8,6 @@ import java.lang.reflect.Modifier;
 import junit.framework.Assert;
 
 // FIXME: SC509 Merge with reflection test util.
-// FIXME: SC042 Make instance.  Surely most of this is implemented in production code.
 // FIXME: SC506 Extend Assert to get Assert.fails out the way.
 
 public class DefaultReflectTestUtil implements ReflectTestUtil {
@@ -92,7 +91,8 @@ public class DefaultReflectTestUtil implements ReflectTestUtil {
         // FIXME: SC050 This certainly does not really work.  Sort this out!!!
         Throwable realException = e;
         if (realException.getClass() == RuntimeException.class) realException = (Throwable) realException.getCause();
-        if (realException.getClass() == InvocationTargetException.class) realException = (Throwable) realException.getCause();
+        if (realException.getClass() == InvocationTargetException.class)
+            realException = (Throwable) realException.getCause();
         return realException.getClass();
     }
 }
