@@ -5,9 +5,6 @@ import java.lang.reflect.Modifier;
 
 import junit.framework.Assert;
 
-// FIXME: SC509 Merge with reflection test util.
-// FIXME: SC506 Extend Assert to get Assert.fails out the way.
-
 // FIXME: SC042 Remove methods not in the interface.
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
