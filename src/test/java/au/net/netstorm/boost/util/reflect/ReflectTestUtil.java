@@ -6,6 +6,8 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+// FIXME: SC042 In fact this mostly smells like a FieldTestUtil.
+
 public interface ReflectTestUtil {
     // FIXME: SC042 Rename.
     Class getExceptionType(Method method);
