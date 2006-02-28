@@ -15,7 +15,7 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
 
     public boolean isPublic(Method method) {
-        int modifiers = method.getModifiers();
+        int modifiers = getModifiers(method);
         return Modifier.isPublic(modifiers);
     }
 
@@ -26,13 +26,18 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     }
 
     public boolean isFinal(Method method) {
-        int modifiers = method.getModifiers();
+        int modifiers = getModifiers(method);
         return isFinal(modifiers);
     }
 
     public boolean isStatic(Method method) {
-        int modifiers = method.getModifiers();
+        int modifiers = getModifiers(method);
         return isStatic(modifiers);
+    }
+
+    public boolean isSynchronized(Method method) {
+        int modifiers = getModifiers(method);
+        return isSynchronized(modifiers);
     }
 
     public boolean isPublic(Class cls) {
@@ -50,6 +55,14 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isAbstract(modifiers);
     }
 
+    public boolean isSynchronized(Class cls) {
+        Method[] methods = cls.getMethods();
+        for (int i = 0; i < methods.length; i++) {
+            if (!isSynchronized(methods[i])) return false;
+        }
+        return true;
+    }
+
     public void checkFinal(Class cls) {
         Assert.assertTrue(isFinal(cls));
     }
@@ -63,8 +76,8 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     // FIXME: SC042 Expose via interface.
     // FIXME: SC042 Merge with existing functionality.
     // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
-    public void checkSynchronized(Class type) {
-        Method[] methods = type.getMethods();
+    public void checkSynchronized(Class cls) {
+        Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
             checkSynchronized(methods[i]);
         }
@@ -73,8 +86,29 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     private void checkSynchronized(Method method) {
         String name = method.getName();
         if (isExclusion(name)) return;
-        int modifiers = method.getModifiers();
-        Assert.assertTrue("" + method, Modifier.isSynchronized(modifiers));
+        int modifiers = getModifiers(method);
+        Assert.assertTrue("" + method, isSynchronized(modifiers));
+    }
+
+    private boolean isPublic(int modifiers) {
+        return Modifier.isPublic(modifiers);
+    }
+
+    // FIXME: SC042 Remove dupe here.  See DefaultClassTestUtil.
+    private boolean isFinal(int modifiers) {
+        return Modifier.isFinal(modifiers);
+    }
+
+    private boolean isStatic(int modifiers) {
+        return Modifier.isStatic(modifiers);
+    }
+
+    private boolean isSynchronized(int modifiers) {
+        return Modifier.isSynchronized(modifiers);
+    }
+
+    private boolean isAbstract(int modifiers) {
+        return Modifier.isAbstract(modifiers);
     }
 
     private boolean isExclusion(String methodName) {
@@ -84,20 +118,8 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return false;
     }
 
-    // FIXME: SC042 Remove dupe here.  See DefaultClassTestUtil.
-    private boolean isFinal(int modifiers) {
-        return Modifier.isFinal(modifiers);
-    }
-
-    private boolean isPublic(int modifiers) {
-        return Modifier.isPublic(modifiers);
-    }
-
-    private boolean isStatic(int modifiers) {
-        return Modifier.isStatic(modifiers);
-    }
-
-    private boolean isAbstract(int modifiers) {
-        return Modifier.isAbstract(modifiers);
+    // FIXME: SC042 Bottom
+    private int getModifiers(Method method) {
+        return method.getModifiers();
     }
 }

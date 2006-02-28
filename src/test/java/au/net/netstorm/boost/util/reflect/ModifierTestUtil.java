@@ -16,6 +16,8 @@ public interface ModifierTestUtil {
 
     boolean isStatic(Method method);
 
+    boolean isSynchronized(Method method);
+
     // FIXME: SC042 Add isSynchronized.
 
     boolean isPublic(Class cls);
@@ -24,6 +26,9 @@ public interface ModifierTestUtil {
 
     boolean isAbstract(Class cls);
 
+    boolean isSynchronized(Class cls);
+
+    // FIXME: SC042 Move the check* folks out into ModifierTestChecker.
     // FIXME: SC042 These loook out of place.  Do they really belong here? If they do, make things symmetric.
 
     void checkPublic(Class cls);
