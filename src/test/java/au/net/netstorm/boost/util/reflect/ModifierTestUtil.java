@@ -5,24 +5,30 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Method;
 
+// FIXME: SC042 Tidy up ordering here.
+
 public interface ModifierTestUtil {
     boolean isPublic(Method method);
 
-    boolean isFinal(Method method);
-
     boolean isPublicInstance(Method method);
 
-    boolean isAbstract(Class cls);
+    boolean isFinal(Method method);
 
-    boolean isFinal(Class cls);
+    boolean isStatic(Method method);
+
+    // FIXME: SC042 Add isSynchronized.
 
     boolean isPublic(Class cls);
 
+    boolean isFinal(Class cls);
+
+    boolean isAbstract(Class cls);
+
     // FIXME: SC042 These loook out of place.  Do they really belong here? If they do, make things symmetric.
 
-    void checkFinal(Class cls);
-
     void checkPublic(Class cls);
+
+    void checkFinal(Class cls);
 
     void checkSynchronized(Class cls);
 }

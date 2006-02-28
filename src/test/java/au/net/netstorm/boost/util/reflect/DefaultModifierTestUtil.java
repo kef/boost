@@ -20,22 +20,24 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     }
 
     public boolean isPublicInstance(Method method) {
-        int modifiers = method.getModifiers();
-        if (!isPublic(modifiers)) return false;
-        return !isStatic(modifiers);
+        boolean isStatic = isStatic(method);
+        if (isStatic) return false;
+        return isPublic(method);
     }
 
-    // FIXME: SC042 Reorganise and roll up into interface.
-    // FIXME: SC042 Belongs in MTU.
     public boolean isFinal(Method method) {
         int modifiers = method.getModifiers();
         return isFinal(modifiers);
     }
 
-    public boolean isAbstract(Class cls) {
-        // FIXME: SC042 BREADCRUMB.  Make use of a ModifiersTestUtil.  Into which you can pass Class, Field, Method...
+    public boolean isStatic(Method method) {
+        int modifiers = method.getModifiers();
+        return isStatic(modifiers);
+    }
+
+    public boolean isPublic(Class cls) {
         int modifiers = cls.getModifiers();
-        return isAbstract(modifiers);
+        return isPublic(modifiers);
     }
 
     public boolean isFinal(Class cls) {
@@ -43,9 +45,9 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isFinal(modifiers);
     }
 
-    public boolean isPublic(Class cls) {
+    public boolean isAbstract(Class cls) {
         int modifiers = cls.getModifiers();
-        return isPublic(modifiers);
+        return isAbstract(modifiers);
     }
 
     public void checkFinal(Class cls) {
@@ -70,9 +72,7 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
 
     private void checkSynchronized(Method method) {
         String name = method.getName();
-        if (isExclusion(name)) {
-            return;
-        }
+        if (isExclusion(name)) return;
         int modifiers = method.getModifiers();
         Assert.assertTrue("" + method, Modifier.isSynchronized(modifiers));
     }
