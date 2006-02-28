@@ -26,11 +26,6 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         check(cls, isFinal);
     }
 
-    // FIXME: SC042 Tidy the section below up.
-
-    // FIXME: SC042 Expose via interface.
-    // FIXME: SC042 Merge with existing functionality.
-    // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
     public void checkSynchronized(Class cls) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
