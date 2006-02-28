@@ -8,7 +8,10 @@ import junit.framework.Assert;
 // FIXME: SC042 Tidy this.
 // FIXME: SC042 Rename to Modifier to match the jdk.
 
+// FIXME: SC042 Remove check* methods.
+
 public final class DefaultModifierTestUtil implements ModifierTestUtil {
+    // FIXME: SC042 FROZEN
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
 
     public boolean isPublic(Method method) {
@@ -60,9 +63,12 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return true;
     }
 
+    // FIXME: SC042 FROZEN
     public void checkFinal(Class cls) {
         Assert.assertTrue(isFinal(cls));
     }
+
+    // FIXME: SC042 FROZEN
 
     public void checkPublic(Class cls) {
         Assert.assertTrue(isPublic(cls));
@@ -73,12 +79,14 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     // FIXME: SC042 Expose via interface.
     // FIXME: SC042 Merge with existing functionality.
     // FIXME: SC042 Given the current state of affairs, this looks like it belongs in ClassPropertiesTestUtil.
+    // FIXME: SC042 FROZEN
     public void checkSynchronized(Class cls) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
             checkSynchronized(methods[i]);
         }
     }
+    // FIXME: SC042 FROZEN
 
     private void checkSynchronized(Method method) {
         String name = method.getName();
@@ -108,6 +116,7 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isAbstract(modifiers);
     }
 
+    // FIXME: SC042 FROZEN
     private boolean isExclusion(String methodName) {
         for (int i = 0; i < EXCLUSIONS.length; i++) {
             if (methodName.equals(EXCLUSIONS[i])) return true;

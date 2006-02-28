@@ -27,6 +27,7 @@ public interface ModifierTestUtil {
 
     // FIXME: SC042 Move the check* folks out into ModifierTestChecker.
     // FIXME: SC042 These loook out of place.  Do they really belong here? If they do, make things symmetric.
+    // FIXME: SC042 Remove these when code has been moved.
 
     void checkPublic(Class cls);
 
