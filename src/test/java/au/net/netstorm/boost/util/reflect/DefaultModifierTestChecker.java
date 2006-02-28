@@ -6,6 +6,7 @@ import junit.framework.Assert;
 
 public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
+    private final ClassMaster classMaster = new DefaultClassMaster();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
 
     public void checkSynchronized(Method method) {
@@ -52,6 +53,6 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
 
     private String getName(Class cls) {
         // FIXME: SC042 Fieldize.
-        return new DefaultClassMaster().getShortName(cls);
+        return classMaster.getShortName(cls);
     }
 }
