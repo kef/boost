@@ -13,18 +13,17 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         boolean isExclusion = isExclusion(method);
         if (isExclusion) return;
         boolean isSynchronized = modifier.isSynchronized(method);
-        Assert.assertTrue("" + method, isSynchronized);
+        Assert.assertTrue(getName(method), isSynchronized);
     }
 
     public void checkPublic(Class cls) {
         boolean isPublic = modifier.isPublic(cls);
-        Assert.assertTrue(getName(cls), isPublic);
+        check(cls, isPublic);
     }
 
     public void checkFinal(Class cls) {
         boolean isFinal = modifier.isFinal(cls);
-        // FIXME: SC042 assertTrue into helper method.
-        Assert.assertTrue(getName(cls), isFinal);
+        check(cls, isFinal);
     }
 
     // FIXME: SC042 Tidy the section below up.
@@ -39,6 +38,7 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         }
     }
 
+    // FIXME: SC042 Sort out 2 exclusion methods.
     private boolean isExclusion(String methodName) {
         for (int i = 0; i < EXCLUSIONS.length; i++) {
             if (methodName.equals(EXCLUSIONS[i])) return true;
@@ -51,8 +51,15 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         return isExclusion(name);
     }
 
+    private String getName(Method method) {
+        return "" + method;
+    }
+
     private String getName(Class cls) {
-        // FIXME: SC042 Fieldize.
         return classMaster.getShortName(cls);
+    }
+
+    private void check(Class cls, boolean ok) {
+        Assert.assertTrue(getName(cls), ok);
     }
 }
