@@ -8,7 +8,7 @@ import junit.framework.Assert;
 // FIXME: SC042 Rename.
 
 public class DefaultClassTestUtil implements ClassTestUtil {
-    private final ModifiersTestUtil modifiers = new DefaultModifiersTestUtil();
+    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
 
@@ -61,7 +61,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
     }
 
     private void checkFinal(Class implementationClass, String implName) {
-        boolean isFinal = modifiers.isFinal(implementationClass);
+        boolean isFinal = modifier.isFinal(implementationClass);
         Assert.assertTrue(implName + " must be final", isFinal);
     }
 

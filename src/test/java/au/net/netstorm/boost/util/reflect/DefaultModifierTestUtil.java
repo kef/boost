@@ -11,16 +11,13 @@ import junit.framework.Assert;
 // FIXME: SC042 Tidy this.
 // FIXME: SC042 Rename to Modifier to match the jdk.
 
-public final class DefaultModifiersTestUtil implements ModifiersTestUtil {
+public final class DefaultModifierTestUtil implements ModifierTestUtil {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
 
     public boolean isPublic(Method method) {
         int modifiers = method.getModifiers();
         return Modifier.isPublic(modifiers);
     }
-
-    // FIXME: SC042 Tidy the above section up.
-    // FIXME: SC042 Belongs in MTU.
 
     public boolean isPublicInstance(Method method) {
         int modifiers = method.getModifiers();

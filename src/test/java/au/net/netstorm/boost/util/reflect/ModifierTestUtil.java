@@ -5,7 +5,7 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Method;
 
-public interface ModifiersTestUtil {
+public interface ModifierTestUtil {
     boolean isPublic(Method method);
 
     boolean isFinal(Method method);

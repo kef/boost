@@ -8,16 +8,16 @@ import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultModifiersTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.FieldTestUtil;
-import au.net.netstorm.boost.util.reflect.ModifiersTestUtil;
+import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
-    private final ModifiersTestUtil modifier = new DefaultModifiersTestUtil();
+    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void testNotAbstract() {

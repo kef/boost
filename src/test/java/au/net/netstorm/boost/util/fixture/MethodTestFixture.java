@@ -3,8 +3,8 @@ package au.net.netstorm.boost.util.fixture;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.DefaultModifiersTestUtil;
-import au.net.netstorm.boost.util.reflect.ModifiersTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
+import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC042 ? public.
@@ -12,7 +12,7 @@ import junit.framework.Assert;
 
 final class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIXME: SC042 Make public or private
-    private final ModifiersTestUtil modifiers = new DefaultModifiersTestUtil();
+    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final Method method;
 
     MethodTestFixture(Method method) {
@@ -35,7 +35,7 @@ final class MethodTestFixture {
     }
 
     private void checkMethod() {
-        boolean pubLic = modifiers.isPublic(method);
+        boolean pubLic = modifier.isPublic(method);
         String name = method.getName();
         if (!pubLic) Assert.fail("Method must be public: " + name);
         if (!methodNameIsGetter()) Assert.fail("Method must be getXxxx" + name);
