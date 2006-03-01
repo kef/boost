@@ -65,17 +65,17 @@ public class VmEntryAtomicTest extends TestCase {
         fielder.setStatic(VmEntry.class, "instance", vmEntry);
     }
 
-    // FIXME: SC042 Is fixme below part of this card.
+    // FIXME: SC042 Is fixme below part of this card.  Yes it is.  But it is a bit twisted.
     // FIXME: SC502 Move this out into "edge" or some ioc util.
     private VmEntry newVmEntry() {
         Constructor constructor = reflector.getConstructor(VmEntry.class);
         Object[] args = {};
         constructor.setAccessible(true);
-        return (VmEntry) newVmEntry(constructor, args);
+        return newVmEntry(constructor, args);
     }
 
-    private Object newVmEntry(Constructor constructor, Object[] args) {
-        return reflectEdge.newInstance(constructor, args);
+    private VmEntry newVmEntry(Constructor constructor, Object[] args) {
+        return (VmEntry) reflectEdge.newInstance(constructor, args);
     }
 
     private void checkVmEntry(MockBootstrapper mockBootstrap, VmStyle style) {
