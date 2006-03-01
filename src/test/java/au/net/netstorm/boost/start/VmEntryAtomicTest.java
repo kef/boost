@@ -2,7 +2,6 @@ package au.net.netstorm.boost.start;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.primordial.PrimordialAtomicTest;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.ClassTestChecker;
@@ -14,7 +13,7 @@ import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.reflect.ReflectMaster;
 import junit.framework.TestCase;
 
-// FIXME: SC506 Fix failXxx().
+// FIXME: SC502 Ensure test for private constructor.
 
 public class VmEntryAtomicTest extends TestCase {
     private static final VmStyle VM_STYLE_PINK_FLOYD = VmStyleAtomicTest.VM_STYLE_PINK_FLOYD;
@@ -23,7 +22,6 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] TOO_MANY_ARGUMENTS = new String[2];
     private static final String[] TOO_FEW_ARGUMENTS = new String[0];
     private static final String[] NULL = null;
-    // FIXME: SC502 Ensure test for private constructor.
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
@@ -62,12 +60,12 @@ public class VmEntryAtomicTest extends TestCase {
 
     private void createVmEntry(MockBootstrapper mockBootstrap) {
         VmEntry vmEntry = newVmEntry();
-        // FIXME: SC502 There is duplicate code in PrimordialAtomicTest.
         FieldValueSpec fieldValue = new DefaultFieldValueSpec("bootstrapper", mockBootstrap);
-        PrimordialAtomicTest.resolveField(vmEntry, fieldValue);
+        fielder.setInstance(vmEntry, fieldValue);
         fielder.setStatic(VmEntry.class, "instance", vmEntry);
     }
 
+    // FIXME: SC042 Is fixme below part of this card.
     // FIXME: SC502 Move this out into "edge" or some ioc util.
     private VmEntry newVmEntry() {
         Constructor constructor = reflector.getConstructor(VmEntry.class);

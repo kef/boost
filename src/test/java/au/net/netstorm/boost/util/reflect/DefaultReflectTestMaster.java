@@ -47,16 +47,16 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         field.setInstance(ref, fieldName, value);
     }
 
-    public void setInstance(Object ref, FieldValueSpec fieldValueSpec) {
-        field.setInstance(ref, fieldValueSpec);
+    public void setInstance(Object ref, FieldValueSpec fieldValue) {
+        field.setInstance(ref, fieldValue);
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
         field.setStatic(cls, fieldName, value);
     }
 
-    public void setStatic(Class cls, FieldValueSpec fieldValueSpec) {
-        field.setStatic(cls, fieldValueSpec);
+    public void setStatic(Class cls, FieldValueSpec fieldValue) {
+        field.setStatic(cls, fieldValue);
     }
 
     public Class getRealExceptionClass(Throwable t) {

@@ -31,9 +31,9 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         setField(cls, ref, fieldName, fieldValue);
     }
 
-    public void setInstance(Object ref, FieldValueSpec fieldValueSpec) {
-        String name = fieldValueSpec.getName();
-        Object value = fieldValueSpec.getValue();
+    public void setInstance(Object ref, FieldValueSpec fieldValue) {
+        String name = fieldValue.getName();
+        Object value = fieldValue.getValue();
         setInstance(ref, name, value);
     }
 
@@ -42,9 +42,9 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         setField(cls, ref, fieldName, fieldValue);
     }
 
-    public void setStatic(Class cls, FieldValueSpec fieldValueSpec) {
-        String name = fieldValueSpec.getName();
-        Object value = fieldValueSpec.getValue();
+    public void setStatic(Class cls, FieldValueSpec fieldValue) {
+        String name = fieldValue.getName();
+        Object value = fieldValue.getValue();
         setStatic(cls, name, value);
     }
 

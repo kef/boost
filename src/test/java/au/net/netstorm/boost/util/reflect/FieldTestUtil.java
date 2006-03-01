@@ -13,9 +13,9 @@ public interface FieldTestUtil {
 
     void setInstance(Object ref, String fieldName, Object value);
 
-    void setInstance(Object ref, FieldValueSpec fieldValueSpec);
+    void setInstance(Object ref, FieldValueSpec fieldValue);
 
     void setStatic(Class cls, String fieldName, Object value);
 
-    void setStatic(Class cls, FieldValueSpec fieldValueSpec);
+    void setStatic(Class cls, FieldValueSpec fieldValue);
 }

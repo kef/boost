@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.primordial;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.equals.EqualsMaster;
@@ -48,7 +47,7 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     public void testToString() {
-        String expected = "An honest finally reaped what he had sown, and a farmer in Ohio has just repaid his loan.";
+        String expected = "An honest man finally reaped what he had sown, and a farmer in Ohio has just repaid his loan.";
         MockToStringMaster mockToString = createMockToString(expected);
         Primordial primordial = createPrimordialWithToString(mockToString);
         assertEquals(expected, primordial.toString());
@@ -97,23 +96,8 @@ public final class PrimordialAtomicTest extends TestCase {
     private Primordial createPrimordialWithField(Object master, String fieldName) {
         Primordial primordial = new Primordial();
         FieldValueSpec fieldValue = new DefaultFieldValueSpec(fieldName, master);
-        resolveField(primordial, fieldValue);
+        fielder.setInstance(primordial, fieldValue);
         return primordial;
-    }
-
-    // FIXME: SC502 Move out into shared class.
-    // FIXME: SC042 This should be able to use FieldTU.
-    public void resolveField(Object ref, FieldValueSpec fieldValue) {
-        Class cls = ref.getClass();
-        try {
-            Field field = cls.getDeclaredField(fieldValue.getName());
-            field.setAccessible(true);
-            field.set(ref, fieldValue.getValue());
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e); // FIXME: SC502 Push out to "edge".
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
