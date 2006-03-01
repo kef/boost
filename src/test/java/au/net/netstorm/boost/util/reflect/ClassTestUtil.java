@@ -15,4 +15,6 @@ public interface ClassTestUtil {
     void checkSubclassOf(Class superClass, Class subClass);
 
     void checkSubclassOf(Class expectedImpl, Object ref);
+
+    void checkImplementsAndFinal(Interface expectedInterface, Class cls);
 }
