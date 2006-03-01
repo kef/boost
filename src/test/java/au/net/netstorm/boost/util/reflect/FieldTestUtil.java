@@ -7,12 +7,11 @@ import java.lang.reflect.Field;
 // FIXME: SC042 Make sure ordering in implementation matches.
 
 public interface FieldTestUtil {
-    // FIXME: SC042 Remove field from all methods names.
+    Field getDeclared(Class cls, String fieldName);
+
     Object getStatic(Class cls, String fieldName);
 
     Object getInstance(Object ref, String fieldName);
-
-    Field getDeclared(Class cls, String fieldName);
 
     void setInstance(Object ref, String fieldName, Object value);
 
