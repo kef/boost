@@ -25,14 +25,10 @@ public interface ModifierTestUtil {
 
     boolean isSynchronized(Class cls);
 
-    // FIXME: SC042 BREADCRUMB 
+    // FIXME: SC042 BREADCRUMB
     // FIXME: SC042 Move the check* folks out into ModifierTestChecker.
     // FIXME: SC042 These loook out of place.  Do they really belong here? If they do, make things symmetric.
     // FIXME: SC042 Remove these when code has been moved.
 
-    void checkPublic(Class cls);
-
-    void checkFinal(Class cls);
-
-    void checkSynchronized(Class cls);
+    // FIXME: SC042 Ensire all check* methods are removed from implementation.
 }

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import au.net.netstorm.boost.util.reflect.DefaultMethodTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultModifierTestChecker;
 import au.net.netstorm.boost.util.reflect.MethodTestUtil;
-import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
+import au.net.netstorm.boost.util.reflect.ModifierTestChecker;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -31,7 +31,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
     private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
     private final MethodTestUtil methods = new DefaultMethodTestUtil();
-    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
+    private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final List mockListeners = new ArrayList();
     private OneToMany oneToMany;
 
