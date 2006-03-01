@@ -20,6 +20,7 @@ import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
+    // FIXME: SC042 BREADCRUMB
     private final ModifierTestUtil xxx = new DefaultModifierTestUtil(); // FIXME: SC042 Remove xxx.
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private ReflectEdge reflector = ReflectEdge.INSTANCE;
