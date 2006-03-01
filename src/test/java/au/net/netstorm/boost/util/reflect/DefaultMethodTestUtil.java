@@ -5,12 +5,18 @@ import java.lang.reflect.Method;
 import junit.framework.Assert;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {
-    private final ReflectEdge edge = ReflectEdge.INSTANCE;
+    private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
-    // FIXME: SC042 Tidy ordering et al up.
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         Method method = getMethod(invokee, methodName);
         return invoke(invokee, method, parameters);
+    }
+
+    public Class getThrowsType(Method method) {
+        Class[] exceptions = method.getExceptionTypes();
+        String name = method.getName();
+        Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
+        return exceptions[0];
     }
 
     private Method getMethod(Object instance, String methodName) {
@@ -28,18 +34,11 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     }
 
     private Object invoke(Object invokee, Method method, Object[] parameters) {
-        return edge.invoke(method, invokee, parameters);
+        return reflectEdge.invoke(method, invokee, parameters);
     }
 
     private boolean matches(Method method, String methodName) {
         String name = method.getName();
         return name.equals(methodName);
-    }
-
-    public Class getThrowsType(Method method) {
-        Class[] exceptions = method.getExceptionTypes();
-        String name = method.getName();
-        Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
-        return exceptions[0];
     }
 }
