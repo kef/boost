@@ -28,6 +28,7 @@ public class DefaultFieldSpecAtomicTest extends TestCase {
         checkFieldTypeSpec(METHOD_NAME_2, METHOD_TYPE_2);
     }
 
+    // FIXME: SC042 Cruise poke.
     // FIXME: SC509 Remove this.
 //    public void testNullsAreEvil() {
 //        checkFailOnNull(null, METHOD_TYPE_1);
