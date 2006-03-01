@@ -9,7 +9,7 @@ public class QuickTestSuite extends PrimordialTestCase {
         TestSuite suite = new TestSuite("Quick");
         suite.addTest(AtomicTestSuite.suite());
 //        suite.addTest(WiringTestSuite.suite());
-        suite.addTest(EnvironmentTestSuite.suite());
+//        suite.addTest(EnvironmentTestSuite.suite());
         return suite;
     }
 }

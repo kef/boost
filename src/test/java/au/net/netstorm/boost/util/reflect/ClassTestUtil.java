@@ -9,12 +9,4 @@ public interface ClassTestUtil {
     boolean isImplementationOf(Interface targetInterface, Class cls);
 
     boolean isSubclassOf(Class superClass, Class subclass);
-
-    void checkImplementsAndFinal(Class targetInterface, Class implementationClass);
-
-    void checkSubclassOf(Class superClass, Class subClass);
-
-    void checkSubclassOf(Class expectedImpl, Object ref);
-
-    void checkImplementsAndFinal(Interface expectedInterface, Class cls);
 }

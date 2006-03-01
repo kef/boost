@@ -4,15 +4,15 @@ import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassTestUtil;
+import au.net.netstorm.boost.util.reflect.ClassTestChecker;
+import au.net.netstorm.boost.util.reflect.DefaultClassTestChecker;
 import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?
 
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
-    private final ClassTestUtil clsProperties = new DefaultClassTestUtil();
+    private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final NullTestUtil nuller = new NullTestUtil();
     private final Class cls;
     private final FieldSpec[] parameters;
@@ -24,8 +24,8 @@ final class ClassTestFixture {
 
     // FIXME: SC506 ? Allow the intefaces to check to be changes Data vs Immutable.
     public void checkClass(Class targetInterface, InstanceProvider additional) {
-        clsProperties.checkSubclassOf(Primordial.class, cls);
-        clsProperties.checkImplementsAndFinal(targetInterface, cls);
+        clsChecker.checkSubclassOf(Primordial.class, cls);
+        clsChecker.checkImplementsAndFinal(targetInterface, cls);
         checkConstructor(additional);
     }
 
