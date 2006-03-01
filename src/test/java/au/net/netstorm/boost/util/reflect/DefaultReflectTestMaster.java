@@ -6,11 +6,7 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIXME: SC042 BREADCRUMB This is a pure delegation class.  Complete.
-// FIXME: SC042 Make sure there are not NIE.
-
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
-    // FIXME: SC042 Consistent names.
     private final ClassTestUtil cls = new DefaultClassTestUtil();
     private final MethodTestUtil method = new DefaultMethodTestUtil();
     private final FieldTestUtil field = new DefaultFieldTestUtil();
