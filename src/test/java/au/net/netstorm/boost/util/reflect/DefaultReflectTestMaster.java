@@ -12,72 +12,75 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
     // FIXME: SC042 Consistent names.
-    private final ClassTestUtil classer = new DefaultClassTestUtil();
-    private final MethodTestUtil methods = new DefaultMethodTestUtil();
-    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private final ClassTestUtil cls = new DefaultClassTestUtil();
+    private final MethodTestUtil method = new DefaultMethodTestUtil();
+    private final FieldTestUtil field = new DefaultFieldTestUtil();
+    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
 
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
-        return classer.isImplementationOf(targetInterface, cls);
+        return this.cls
+                .isImplementationOf(targetInterface, cls);
     }
 
     public boolean isSubclassOf(Class superClass, Class subClass) {
-        return classer.isSubclassOf(superClass, subClass);
+        return cls.isSubclassOf(superClass, subClass);
     }
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
-        return methods.invoke(invokee, methodName, parameters);
+        return method.invoke(invokee, methodName, parameters);
     }
 
     public Class getThrowsType(Method method) {
-        return methods.getThrowsType(method);
+        return this.method
+                .getThrowsType(method);
     }
 
     public Field getDeclared(Class cls, String fieldName) {
-        return fielder.getDeclared(cls, fieldName);
+        return field.getDeclared(cls, fieldName);
     }
 
     public Object getStatic(Class cls, String fieldName) {
-        return fielder.getStatic(cls, fieldName);
+        return field.getStatic(cls, fieldName);
     }
 
     public Object getInstance(Object ref, String fieldName) {
-        return fielder.getInstance(ref, fieldName);
+        return field.getInstance(ref, fieldName);
     }
 
     public void setInstance(Object ref, String fieldName, Object value) {
-        fielder.setInstance(ref, fieldName, value);
+        field.setInstance(ref, fieldName, value);
     }
 
     public void setInstance(Object ref, FieldValueSpec fieldValueSpec) {
-        fielder.setInstance(ref, fieldValueSpec);
+        field.setInstance(ref, fieldValueSpec);
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
-        fielder.setStatic(cls, fieldName, value);
+        field.setStatic(cls, fieldName, value);
     }
 
     public void setStatic(Class cls, FieldValueSpec fieldValueSpec) {
-        fielder.setStatic(cls, fieldValueSpec);
+        field.setStatic(cls, fieldValueSpec);
     }
 
     public boolean isPublic(Method method) {
-        throw new NotImplementedException();
+        return modifier.isPublic(method);
     }
 
     public boolean isPublicInstance(Method method) {
-        throw new NotImplementedException();
+        return modifier.isPublicInstance(method);
     }
 
     public boolean isFinal(Method method) {
-        throw new NotImplementedException();
+        return modifier.isFinal(method);
     }
 
     public boolean isStatic(Method method) {
-        throw new NotImplementedException();
+        return modifier.isStatic(method);
     }
 
     public boolean isSynchronized(Method method) {
-        throw new NotImplementedException();
+        return modifier.isSynchronized(method);
     }
 
     public boolean isPublic(Class cls) {
