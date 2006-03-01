@@ -45,7 +45,6 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isAbstract(modifiers);
     }
 
-    // FIXME: SC042 Push up and rearrange.
     public boolean isInterface(Class cls) {
         int modifiers = cls.getModifiers();
         return isInterface(modifiers);
