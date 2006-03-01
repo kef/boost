@@ -9,10 +9,8 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultModifierTestChecker;
-import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.reflect.ModifierTestChecker;
-import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
@@ -20,13 +18,11 @@ import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
-    // FIXME: SC042 BREADCRUMB
-    private final ModifierTestUtil xxx = new DefaultModifierTestUtil(); // FIXME: SC042 Remove xxx.
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private ReflectEdge reflector = ReflectEdge.INSTANCE;
+    private final ReflectEdge reflector = ReflectEdge.INSTANCE;
 
     public void testNotAbstract() {
-        assertFalse(xxx.isAbstract(Primordial.class)); // FIXME: SC042 Add isConcrete to remove this check.
+        modifier.checkConcrete(Primordial.class);
     }
 
     public void testMethodsFinal() {
