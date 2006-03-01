@@ -37,7 +37,7 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     public void testProductionBootstrap() {
-        Object bootstrap = testReflector.getInstanceField(getVmEntry(), "bootstrapper");
+        Object bootstrap = testReflector.getInstance(getVmEntry(), "bootstrapper");
         clsChecker.checkSubclassOf(DefaultBootstrapper.class, bootstrap);
     }
 
@@ -68,7 +68,7 @@ public class VmEntryAtomicTest extends TestCase {
         // FIXME: SC502 There is duplicate code in PrimordialAtomicTest.
         FieldValueSpec fieldValue = new DefaultFieldValueSpec("bootstrapper", mockBootstrap);
         PrimordialAtomicTest.resolveField(vmEntry, fieldValue);
-        testReflector.setStaticField(VmEntry.class, "instance", vmEntry);
+        testReflector.setStatic(VmEntry.class, "instance", vmEntry);
     }
 
     // FIXME: SC502 Move this out into "edge" or some ioc util.
@@ -92,7 +92,7 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     private VmEntry getVmEntry() {
-        return (VmEntry) testReflector.getStaticField(VmEntry.class, "instance");
+        return (VmEntry) testReflector.getStatic(VmEntry.class, "instance");
     }
 
     private void checkEntryFails(String[] args) {

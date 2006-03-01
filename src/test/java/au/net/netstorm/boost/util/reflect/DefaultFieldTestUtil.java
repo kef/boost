@@ -6,19 +6,19 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
-    public Object getStaticField(Class cls, String fieldName) {
+    public Object getStatic(Class cls, String fieldName) {
         return getFieldValue(cls, MARKER_STATIC_FIELD, fieldName);
     }
 
     // FIXME: SC042 Return a FieldValue might be a goodie.  Could even use it on the way in for the set.
     // FIXME: SC042 Actually, providing both is the way to go.
-    public Object getInstanceField(Object ref, String fieldName) {
+    public Object getInstance(Object ref, String fieldName) {
         Class cls = ref.getClass();
         return getFieldValue(cls, ref, fieldName);
     }
 
     // FIXME: SC042 Use edger.
-    public Field getDeclaredField(Class cls, String fieldName) {
+    public Field getDeclared(Class cls, String fieldName) {
         try {
             return cls.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
@@ -26,18 +26,18 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         }
     }
 
-    public void setInstanceField(Object ref, String fieldName, Object fieldValue) {
+    public void setInstance(Object ref, String fieldName, Object fieldValue) {
         Class cls = ref.getClass();
         setField(cls, ref, fieldName, fieldValue);
     }
 
-    public void setStaticField(Class cls, String fieldName, Object fieldValue) {
+    public void setStatic(Class cls, String fieldName, Object fieldValue) {
         Object ref = MARKER_STATIC_FIELD;
         setField(cls, ref, fieldName, fieldValue);
     }
 
     private void setField(Class cls, Object f, String fieldName, Object fieldValue) {
-        Field field = getDeclaredField(cls, fieldName);
+        Field field = getDeclared(cls, fieldName);
         setField(f, field, fieldValue);
     }
 
@@ -52,7 +52,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {
-        Field field = getDeclaredField(cls, fieldName);
+        Field field = getDeclared(cls, fieldName);
         return value(ref, field);
     }
 
