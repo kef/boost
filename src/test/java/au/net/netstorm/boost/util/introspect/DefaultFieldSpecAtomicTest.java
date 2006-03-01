@@ -5,6 +5,7 @@ import au.net.netstorm.boost.util.fixture.ImmutableTestUtil;
 import junit.framework.TestCase;
 
 // FIXME: SC509 DefaultFieldTypeSpec is just a data object!!!
+
 public class DefaultFieldSpecAtomicTest extends TestCase {
     private static final String METHOD_NAME_1 = "testMethod";
     private static final Class METHOD_TYPE_1 = Object.class;
@@ -33,6 +34,7 @@ public class DefaultFieldSpecAtomicTest extends TestCase {
 //        checkFailOnNull(METHOD_TYPE_1, null);
 //    }
 
+    // FIXME: SC042 BREADCRUMB ... This is probably outside the scope of this card.
     // FIXME: SC042 Why is this here?  Doesn't the immutable test check this.  If not whay aren't we using a Data object?
     public void checkFieldTypeSpec(String methodName, Class methodType) {
         FieldSpec spec = new DefaultFieldSpec(methodName, methodType);
