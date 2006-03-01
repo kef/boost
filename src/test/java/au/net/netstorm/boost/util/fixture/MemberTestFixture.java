@@ -21,13 +21,13 @@ import junit.framework.Assert;
 // FIXME: SC050 Instancise first.
 // FIXME: SC050 Extract interface next.
 // FIXME: SC050 IN FACT THIS IS SUCH A RUBBISH WE JUST GO A TOTAL REWRITE!!!!!!!!!!!!!!!!!!!!!
-// FIXME: SC042 Make test fixture thingies final.
-// FIXME: SC042 This will have to flick out into another card.
+// FIXME: SC517 Make test fixture thingies final.
+// FIXME: SC517 This will have to flick out into another card.
 //
 //
 //
 //
-// ---------------------------------------- FIXME: SC042  FROZEN -----------------------------------
+// ---------------------------------------- FIXME: SC517  FROZEN -----------------------------------
 //
 //
 //
@@ -36,7 +36,7 @@ import junit.framework.Assert;
 final class MemberTestFixture {
     private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
-            .length(); // FIXME: SC042 Make this public or private.
+            .length(); // FIXME: SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();
     private final Object instance;
     private final Map fieldMap;

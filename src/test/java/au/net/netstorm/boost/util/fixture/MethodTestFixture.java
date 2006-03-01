@@ -7,11 +7,11 @@ import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
 import junit.framework.Assert;
 
-// FIXME: SC042 ? public.
-// FIXME: SC042 interface.
+// FIXME: SC517 ? public.
+// FIXME: SC517 interface.
 
 final class MethodTestFixture {
-    static final String GETTER_PREFIX = "get"; // FIXME: SC042 Make public or private
+    static final String GETTER_PREFIX = "get"; // FIXME: SC517 Make public or private
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final Method method;
 
