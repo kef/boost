@@ -28,6 +28,7 @@ class DefaultReflectEdge implements ReflectEdge {
         try {
             return cls.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
+            // FIXME: SC519 EdgeNoSuchFieldException should contain cls & field information.
             throw new RuntimeException(e);
         }
     }

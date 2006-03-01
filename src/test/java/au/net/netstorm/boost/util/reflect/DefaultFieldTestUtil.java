@@ -8,13 +8,8 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
-    // FIXME: SC042 Use edger.
     public Field getDeclared(Class cls, String fieldName) {
-        try {
-            return cls.getDeclaredField(fieldName);
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(cls + " does not contain field " + fieldName, e);
-        }
+        return reflectEdge.getDeclaredField(cls, fieldName);
     }
 
     public Object getStatic(Class cls, String fieldName) {
