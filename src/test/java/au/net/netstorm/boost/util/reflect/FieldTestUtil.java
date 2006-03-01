@@ -18,9 +18,11 @@ public interface FieldTestUtil {
 
     Field getDeclaredField(Class cls, String fieldName);
 
-    void setInstanceField(Object ref, String fieldName, Object fieldValue);
+    void setInstanceField(Object ref, String fieldName, Object value);
 
-    void setStaticField(Class cls, String fieldName, Object fieldValue);
+    // FIXME: SC042 Add ... setStaticField(Object ref, String fieldName).
+
+    void setStaticField(Class cls, String fieldName, Object value);
 
     void checkPrivateFinalField(Class type, String fieldName);
 }
