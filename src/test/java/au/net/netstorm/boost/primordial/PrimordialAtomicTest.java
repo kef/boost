@@ -116,7 +116,6 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
-        // FIXME: SC042 Tidy this up
         Method method = reflector.getMethod(Primordial.class, methodName, parameterTypes);
         modifier.checkFinal(method);
     }
