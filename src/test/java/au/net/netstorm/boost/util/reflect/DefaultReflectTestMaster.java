@@ -8,9 +8,13 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC042 BREADCRUMB This is a pure delegation class.  Complete.
+// FIXME: SC042 Make sure there are not NIE.
 
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
+    // FIXME: SC042 Consistent names.
     private final ClassTestUtil classer = new DefaultClassTestUtil();
+    private final MethodTestUtil methods = new DefaultMethodTestUtil();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
         return classer.isImplementationOf(targetInterface, cls);
@@ -21,31 +25,31 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
-        throw new NotImplementedException();
+        return methods.invoke(invokee, methodName, parameters);
     }
 
     public Class getThrowsType(Method method) {
-        throw new NotImplementedException();
+        return methods.getThrowsType(method);
     }
 
     public Field getDeclared(Class cls, String fieldName) {
-        throw new NotImplementedException();
+        return fielder.getDeclared(cls, fieldName);
     }
 
     public Object getStatic(Class cls, String fieldName) {
-        throw new NotImplementedException();
+        return fielder.getStatic(cls, fieldName);
     }
 
     public Object getInstance(Object ref, String fieldName) {
-        throw new NotImplementedException();
+        return fielder.getInstance(ref, fieldName);
     }
 
     public void setInstance(Object ref, String fieldName, Object value) {
-        throw new NotImplementedException();
+        fielder.setInstance(ref, fieldName, value);
     }
 
     public void setInstance(Object ref, FieldValueSpec fieldValueSpec) {
-        throw new NotImplementedException();
+        fielder.setInstance(ref, fieldValueSpec);
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
