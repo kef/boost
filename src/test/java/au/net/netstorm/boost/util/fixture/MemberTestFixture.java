@@ -75,7 +75,9 @@ final class MemberTestFixture {
     private Object getParameter(String fieldName) {
         try {
             Field field = (Field) fieldMap.get(fieldName);
+            // FIXME: SC042 Replace with FTU call.
             // FIXME: SC050 We see NPE here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // FIXME: SC050 So the deal is if I have a test which expects a field "public final Class type..." and I do this, but declare a method getName() instead of getType() this code wobbles.
             field.setAccessible(true);
             return field.get(instance);
         } catch (IllegalAccessException e) {

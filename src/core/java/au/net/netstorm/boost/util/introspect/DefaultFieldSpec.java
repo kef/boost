@@ -1,33 +1,24 @@
 package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.nullo.NullMaster;
-import au.net.netstorm.boost.util.type.Immutable;
+import au.net.netstorm.boost.util.type.Data;
 
-// FIXME: SC506 Can just be an immutable.
-// FIXME: SC506 Can just be a Data.
-
-public final class DefaultFieldSpec extends Primordial implements FieldSpec, Immutable {
-    private final String fieldName;
+public final class DefaultFieldSpec extends Primordial implements FieldSpec, Data {
+    private final String name;
     private final Class type;
 
-    public DefaultFieldSpec(String fieldName, Class type) {
-        this.fieldName = fieldName;
+    public DefaultFieldSpec(String name, Class type) {
+        if (name == null) throw new IllegalArgumentException();
+        if (type == null) throw new IllegalArgumentException();
+        this.name = name;
         this.type = type;
-        noNulls();
     }
 
     public String getName() {
-        return fieldName;
+        return name;
     }
 
     public Class getType() {
         return type;
-    }
-
-    private void noNulls() {
-        NullMaster master = new NullMaster();
-        master.check(fieldName);
-        master.check(type);
     }
 }
