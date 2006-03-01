@@ -10,7 +10,9 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestChecker;
+import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
 import au.net.netstorm.boost.util.reflect.FieldTestChecker;
+import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
@@ -38,6 +40,7 @@ final class MemberTestFixture {
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
             .length(); // FIXME: SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();
+    private final FieldTestUtil fields = new DefaultFieldTestUtil();
     private final Object instance;
     private final Map fieldMap;
 
@@ -72,17 +75,9 @@ final class MemberTestFixture {
         }
     }
 
+    // FIXME: SC042 Inline?
     private Object getParameter(String fieldName) {
-        try {
-            Field field = (Field) fieldMap.get(fieldName);
-            // FIXME: SC042 Replace with FTU call.
-            // FIXME: SC050 We see NPE here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // FIXME: SC050 So the deal is if I have a test which expects a field "public final Class type..." and I do this, but declare a method getName() instead of getType() this code wobbles.
-            field.setAccessible(true);
-            return field.get(instance);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        return fields.getInstance(instance, fieldName);
     }
 
     private void checkDataProperty(Method method, Object expectedValue) {
