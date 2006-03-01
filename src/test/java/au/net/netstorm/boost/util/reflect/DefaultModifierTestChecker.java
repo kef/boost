@@ -7,30 +7,50 @@ import junit.framework.Assert;
 public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
+    private static final String NOT_PUBLIC = "is not public";
+    private static final String NOT_FINAL = "is not final";
+    private static final String NOT_SYNCHRONIZED = "is not synchronized";
+    private static final String NOT_CONCRETE = "is not concrete";
 
     public void checkFinal(Method method) {
         boolean isFinal = modifier.isFinal(method);
-        check(method, isFinal);
+        check(method, NOT_FINAL, isFinal); // FIXME: SC042 Remove duplicate strings.
     }
 
     public void checkSynchronized(Method method) {
         boolean isSynchronized = modifier.isSynchronized(method);
-        check(method, isSynchronized);
+        check(method, NOT_SYNCHRONIZED, isSynchronized);
     }
 
     public void checkPublic(Class cls) {
         boolean isPublic = modifier.isPublic(cls);
-        check(cls, "is not public", isPublic);
+        check(cls, NOT_PUBLIC, isPublic);
     }
 
     public void checkFinal(Class cls) {
         boolean isFinal = modifier.isFinal(cls);
-        check(cls, "is not final", isFinal);
+        check(cls, NOT_FINAL, isFinal);
     }
 
     public void checkConcrete(Class cls) {
         boolean isConcrete = modifier.isConcrete(cls);
-        check(cls, "is not concrete", isConcrete);
+        check(cls, NOT_CONCRETE, isConcrete);
+    }
+
+    // FIXME: SC042 Add message to this method.
+    private void check(Method method, String comment, boolean ok) {
+        String name = getName(method);
+        check(name, comment, ok);
+    }
+
+    private void check(Class cls, String comment, boolean ok) {
+        String name = getName(cls);
+        check(name, comment, ok);
+    }
+
+    private void check(String name, String comment, boolean ok) {
+        String message = name + " " + comment;
+        Assert.assertTrue(message, ok);
     }
 
     private String getName(Method method) {
@@ -39,16 +59,5 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
 
     private String getName(Class cls) {
         return classMaster.getShortName(cls);
-    }
-
-    // FIXME: SC042 Add message to this method.
-    private void check(Method method, boolean ok) {
-        Assert.assertTrue(getName(method), ok);
-    }
-
-    private void check(Class cls, String comment, boolean ok) {
-        String clsName = getName(cls);
-        String message = clsName + " " + comment;
-        Assert.assertTrue(message, ok);
     }
 }
