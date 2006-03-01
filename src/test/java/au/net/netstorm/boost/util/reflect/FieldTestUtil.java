@@ -4,8 +4,6 @@ import java.lang.reflect.Field;
 
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
-// FIXME: SC042 Include methods which take FieldValue.
-
 public interface FieldTestUtil {
     Field getDeclared(Class cls, String fieldName);
 
