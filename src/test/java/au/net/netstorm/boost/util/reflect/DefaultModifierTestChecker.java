@@ -16,12 +16,12 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
 
     public void checkPublic(Class cls) {
         boolean isPublic = modifier.isPublic(cls);
-        check(cls, isPublic);
+        check(cls, "is not public", isPublic);
     }
 
     public void checkFinal(Class cls) {
         boolean isFinal = modifier.isFinal(cls);
-        check(cls, isFinal);
+        check(cls, "is not final", isFinal);
     }
 
     // FIXME: SC042 This possibly belongs in DClassTU.  It definitely does.
@@ -62,7 +62,9 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         Assert.assertTrue(getName(method), ok);
     }
 
-    private void check(Class cls, boolean ok) {
-        Assert.assertTrue(getName(cls), ok);
+    private void check(Class cls, String comment, boolean ok) {
+        String clsName = getName(cls);
+        String message = clsName + " " + comment;
+        Assert.assertTrue(message, ok);
     }
 }

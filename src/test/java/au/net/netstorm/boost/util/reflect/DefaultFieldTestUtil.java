@@ -11,6 +11,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     // FIXME: SC042 Return a FieldValue might be a goodie.  Could even use it on the way in for the set.
+    // FIXME: SC042 Actually, providing both is the way to go.
     public Object getInstanceField(Object ref, String fieldName) {
         Class cls = ref.getClass();
         return getFieldValue(cls, ref, fieldName);

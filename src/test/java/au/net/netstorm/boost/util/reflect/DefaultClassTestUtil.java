@@ -50,6 +50,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return clsMaster.getShortName(cls);
     }
 
+    // FIXME: SC042 Fix message in DMTC then remove this.
     private void checkFinal(Class implementationClass, String implName) {
         boolean isFinal = modifier.isFinal(implementationClass);
         Assert.assertTrue(implName + " must be final", isFinal);
