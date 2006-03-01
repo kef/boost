@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+// FUTURE: This stuff will probably follow the same sort of pattern as the MemberTestUtil, ClassTestUtil...
+
 public interface ReflectEdge {
     ReflectEdge INSTANCE = new DefaultReflectEdge();
 
