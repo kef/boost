@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 public interface ReflectEdge {
     ReflectEdge INSTANCE = new DefaultReflectEdge();
 
-    Object get(Field field, Object ref);
+    Object getFieldValue(Field field, Object ref);
 
     Object newInstance(Constructor constructor, Object[] parameters);
 

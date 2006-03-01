@@ -70,6 +70,6 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
 
     private Object value(Object ref, Field field) {
         field.setAccessible(true);
-        return reflectEdge.get(field, ref);
+        return reflectEdge.getFieldValue(field, ref);
     }
 }

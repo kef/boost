@@ -2,15 +2,26 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 // FIXME: SC511 Map exception exactly how an "edge" should.
 
 class DefaultReflectEdge implements ReflectEdge {
-    public Object get(Field field, Object ref) {
+    public Object getFieldValue(Field field, Object ref) {
         try {
             return field.get(ref);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // FIXME: SC042 Push up.
+    public Object newInstance(Class cls) {
+        try {
+            return cls.newInstance();
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
