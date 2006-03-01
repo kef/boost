@@ -3,11 +3,6 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-// FIXME: SC042 Tidy this.
-// FIXME: SC042 Rename to Modifier to match the jdk.
-
-// FIXME: SC042 Remove check* methods.
-
 public final class DefaultModifierTestUtil implements ModifierTestUtil {
     public boolean isPublic(Method method) {
         int modifiers = getModifiers(method);
@@ -78,7 +73,6 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isAbstract(modifiers);
     }
 
-    // FIXME: SC042 Bottom
     private int getModifiers(Method method) {
         return method.getModifiers();
     }
