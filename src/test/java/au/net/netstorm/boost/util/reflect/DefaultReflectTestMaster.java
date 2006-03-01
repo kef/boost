@@ -84,27 +84,27 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public boolean isPublic(Class cls) {
-        throw new NotImplementedException();
+        return modifier.isPublic(cls);
     }
 
     public boolean isFinal(Class cls) {
-        throw new NotImplementedException();
+        return modifier.isFinal(cls);
     }
 
     public boolean isAbstract(Class cls) {
-        throw new NotImplementedException();
+        return modifier.isAbstract(cls);
     }
 
     public boolean isConcrete(Class cls) {
-        throw new NotImplementedException();
+        return modifier.isConcrete(cls);
     }
 
     public boolean isInterface(Class cls) {
-        throw new NotImplementedException();
+        return modifier.isInterface(cls);
     }
 
     public boolean isSynchronized(Class cls) {
-        throw new NotImplementedException();
+        return modifier.isSynchronized(cls);
     }
 
     public Class getRealExceptionClass(Throwable t) {
