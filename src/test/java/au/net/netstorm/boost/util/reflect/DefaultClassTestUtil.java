@@ -6,7 +6,7 @@ import junit.framework.Assert;
 // FIXME: SC042 Rename.
 
 public class DefaultClassTestUtil implements ClassTestUtil {
-    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
+    private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
 
@@ -27,10 +27,9 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         Assert.assertEquals(expectedType, type);
     }
 
-    public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class implClass) {
-        String implName = getShortName(implClass);
-        checkInterface(expectedInterface, implClass, implName);
-        checkFinal(implClass, implName);
+    public void checkImplementationOfInterfaceAndFinal(Class expectedInterface, Class cls) {
+        modifier.checkFinal(cls);
+        checkImplementsInterface(expectedInterface, cls);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
@@ -50,13 +49,8 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return clsMaster.getShortName(cls);
     }
 
-    // FIXME: SC042 Fix message in DMTC then remove this.
-    private void checkFinal(Class implementationClass, String implName) {
-        boolean isFinal = modifier.isFinal(implementationClass);
-        Assert.assertTrue(implName + " must be final", isFinal);
-    }
-
-    private void checkInterface(Class expectedInterface, Class implementationClass, String implName) {
+    private void checkImplementsInterface(Class expectedInterface, Class implementationClass) {
+        String implName = getShortName(implementationClass);
         Interface inyerface = new Interface(expectedInterface);
         boolean implementsIt = isImplementationOf(inyerface, implementationClass);
         String targetName = getShortName(expectedInterface);
