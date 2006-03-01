@@ -3,7 +3,6 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.util.exception.NotImplementedException;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -15,6 +14,7 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     private final ClassTestUtil cls = new DefaultClassTestUtil();
     private final MethodTestUtil method = new DefaultMethodTestUtil();
     private final FieldTestUtil field = new DefaultFieldTestUtil();
+    private final ExceptionTestUtil exception = new DefaultExceptionTestUtil();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
 
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
@@ -63,6 +63,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         field.setStatic(cls, fieldValueSpec);
     }
 
+    public Class getRealExceptionClass(Throwable t) {
+        return exception.getRealExceptionClass(t);
+    }
+
     public boolean isPublic(Method method) {
         return modifier.isPublic(method);
     }
@@ -105,9 +109,5 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
 
     public boolean isSynchronized(Class cls) {
         return modifier.isSynchronized(cls);
-    }
-
-    public Class getRealExceptionClass(Throwable t) {
-        throw new NotImplementedException();
     }
 }
