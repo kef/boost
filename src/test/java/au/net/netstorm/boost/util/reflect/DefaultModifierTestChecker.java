@@ -14,7 +14,7 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
 
     public void checkFinal(Method method) {
         boolean isFinal = modifier.isFinal(method);
-        check(method, NOT_FINAL, isFinal); // FIXME: SC042 Remove duplicate strings.
+        check(method, NOT_FINAL, isFinal);
     }
 
     public void checkSynchronized(Method method) {
@@ -37,7 +37,6 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         check(cls, NOT_CONCRETE, isConcrete);
     }
 
-    // FIXME: SC042 Add message to this method.
     private void check(Method method, String comment, boolean ok) {
         String name = getName(method);
         check(name, comment, ok);
