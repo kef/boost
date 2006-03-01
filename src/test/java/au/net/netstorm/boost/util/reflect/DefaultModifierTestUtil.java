@@ -45,6 +45,10 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isAbstract(modifiers);
     }
 
+    public boolean isConcrete(Class cls) {
+        return !isAbstract(cls);
+    }
+
     public boolean isInterface(Class cls) {
         int modifiers = cls.getModifiers();
         return isInterface(modifiers);

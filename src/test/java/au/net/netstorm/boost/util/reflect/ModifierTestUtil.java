@@ -19,6 +19,8 @@ public interface ModifierTestUtil {
 
     boolean isAbstract(Class cls);
 
+    boolean isConcrete(Class cls);
+
     boolean isInterface(Class cls);
 
     boolean isSynchronized(Class cls);
