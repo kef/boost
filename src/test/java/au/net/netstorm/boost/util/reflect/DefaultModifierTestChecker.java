@@ -24,6 +24,7 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         check(cls, isFinal);
     }
 
+    // FIXME: SC042 This possibly belongs in DClassTU.
     public void checkSynchronized(Class cls) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
