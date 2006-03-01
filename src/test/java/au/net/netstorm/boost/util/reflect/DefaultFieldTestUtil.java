@@ -54,13 +54,8 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     private void setField(Object ref, Field field, Object value) {
-        try {
-            field.setAccessible(true);
-            field.set(ref, value);
-        } catch (IllegalAccessException e) {
-            // FIXME: SC042 No exception catching if we move into reflect edge.
-            throw new RuntimeException(e);
-        }
+        field.setAccessible(true);
+        reflectEdge.setFieldValue(field, ref, value);
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {

@@ -16,6 +16,14 @@ class DefaultReflectEdge implements ReflectEdge {
         }
     }
 
+    public void setFieldValue(Field field, Object ref, Object value) {
+        try {
+            field.set(ref, value);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Object newInstance(Class cls) {
         try {
             return cls.newInstance();

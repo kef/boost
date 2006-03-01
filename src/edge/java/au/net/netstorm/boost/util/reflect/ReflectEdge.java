@@ -9,7 +9,10 @@ import java.lang.reflect.Method;
 public interface ReflectEdge {
     ReflectEdge INSTANCE = new DefaultReflectEdge();
 
+    // FIXME: SC042 Reverse field ordering.  Same below.
     Object getFieldValue(Field field, Object ref);
+
+    void setFieldValue(Field field, Object ref, Object value);
 
     Object newInstance(Class cls);
 
