@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 
 public class DefaultFieldSpecAtomicTest extends TestCase {
     private final FieldSpec f1 = new DefaultFieldSpec("name", String.class);
-    private final FieldSpec f2 = new DefaultFieldSpec("type", Class.class); // FIXME: SC042 Rename.
+    private final FieldSpec f2 = new DefaultFieldSpec("type", Class.class);
     private final FieldSpec[] fields = {f1, f2};
     private DataTestUtil data = new DefaultDataTestUtil();
 

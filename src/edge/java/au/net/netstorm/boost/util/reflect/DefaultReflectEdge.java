@@ -24,7 +24,6 @@ class DefaultReflectEdge implements ReflectEdge {
         }
     }
 
-    // FIXME: SC042 Test build break :)
     public Field getDeclaredField(Class cls, String fieldName) {
         try {
             return cls.getDeclaredField(fieldName);
