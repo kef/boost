@@ -12,6 +12,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
 
+    // FIXME: SC042 This belongs is ModifierTestUtil.
     public boolean isInterface(Class cls) {
         int modifiers = cls.getModifiers();
         return isInterface(modifiers);
@@ -27,6 +28,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return superClass.isAssignableFrom(subclass);
     }
 
+    // FIXME: SC042 Move to FTU?
     public void checkFieldType(Class expectedType, Object ref, String fieldName) {
         Object value = reflector.getInstanceField(ref, fieldName);
         Class type = value.getClass();

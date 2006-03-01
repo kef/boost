@@ -62,7 +62,6 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isPublic(modifiers);
     }
 
-    // FIXME: SC042 Remove dupe here.  See DefaultClassTestUtil.
     private boolean isFinal(int modifiers) {
         return Modifier.isFinal(modifiers);
     }
