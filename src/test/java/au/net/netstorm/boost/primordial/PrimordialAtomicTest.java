@@ -102,7 +102,8 @@ public final class PrimordialAtomicTest extends TestCase {
     }
 
     // FIXME: SC502 Move out into shared class.
-    public static void resolveField(Object ref, FieldValueSpec fieldValue) {
+    // FIXME: SC042 This should be able to use FieldTU.
+    public void resolveField(Object ref, FieldValueSpec fieldValue) {
         Class cls = ref.getClass();
         try {
             Field field = cls.getDeclaredField(fieldValue.getName());
