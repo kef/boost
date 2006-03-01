@@ -1,9 +1,6 @@
 package au.net.netstorm.boost.util.fixture;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
@@ -42,12 +39,9 @@ final class MemberTestFixture {
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();
     private final FieldTestUtil fields = new DefaultFieldTestUtil();
     private final Object instance;
-    private final Map fieldMap;
 
     MemberTestFixture(Object instance) {
         this.instance = instance;
-        // FIXME: SC050 This can go.  People guessing what might be needed.  Over engineering.  Just get the field we want when we want!!!!
-        fieldMap = createFieldMap();
     }
 
     public static void checkMembers(Object instance, FieldSpec[] fields, Object[] parameters) {
@@ -59,7 +53,7 @@ final class MemberTestFixture {
             MemberTestFixture memberFixture = new MemberTestFixture(instance);
             memberFixture.checkMember(newArgType, parameter);
             String name = getFieldName(method);
-            memberFixture.checkDataProperty(method, memberFixture.getParameter(name));
+            memberFixture.checkDataProperty(method, memberFixture.getFieldValue(name));
         }
     }
 
@@ -68,7 +62,7 @@ final class MemberTestFixture {
             Class cls = instance.getClass();
             cls.getDeclaredField(arg.getName());
             String name = arg.getName();
-            Object actualValue = getParameter(name);
+            Object actualValue = getFieldValue(name);
             checkFieldImmutable(expectedValue, actualValue, arg);
         } catch (NoSuchFieldException e) {
             Assert.fail("Field " + arg.getName() + " is not found with the correct type " + arg.getType());
@@ -76,7 +70,7 @@ final class MemberTestFixture {
     }
 
     // FIXME: SC042 Inline?
-    private Object getParameter(String fieldName) {
+    private Object getFieldValue(String fieldName) {
         return fields.getInstance(instance, fieldName);
     }
 
@@ -88,14 +82,6 @@ final class MemberTestFixture {
         Assert.assertEquals("Method '" + methodName + "' does not return an equal value from one of the constructor parameters", expectedFs, actualFs);
         fielder.checkPrivateFinalField(instance.getClass(), getFieldName(method));
         checkFieldImmutable(expectedValue, actualValue, new DefaultFieldSpec(getFieldName(method), method.getReturnType()));
-    }
-
-    private Map createFieldMap() {
-        Class cls = instance.getClass();
-        Field[] fields = cls.getDeclaredFields();
-        Map fieldMap = new HashMap();
-        for (int i = 0; i < fields.length; i++) fieldMap.put(fields[i].getName(), fields[i]);
-        return fieldMap;
     }
 
     private static String getFieldName(Method method) {
