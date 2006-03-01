@@ -16,7 +16,7 @@ public final class DefaultFieldTestChecker implements FieldTestChecker {
         if (Modifier.isStatic(modifiers)) Assert.fail("Field '" + fieldName + "' cannot be static.");
     }
 
-    public void checkFieldType(Class expectedType, Object ref, String fieldName) {
+    public void checkType(Class expectedType, Object ref, String fieldName) {
         Object value = fielder.getInstance(ref, fieldName);
         Class type = value.getClass();
         Assert.assertEquals(expectedType, type);
