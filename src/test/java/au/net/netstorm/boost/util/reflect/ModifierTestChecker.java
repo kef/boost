@@ -12,4 +12,6 @@ public interface ModifierTestChecker {
     void checkFinal(Class cls);
 
     void checkSynchronized(Class cls);
+
+    void checkConcrete(Class cls);
 }

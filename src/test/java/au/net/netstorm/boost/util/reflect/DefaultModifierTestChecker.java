@@ -37,6 +37,11 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         }
     }
 
+    public void checkConcrete(Class cls) {
+        boolean isConcrete = modifier.isConcrete(cls);
+        check(cls, "is not concrete", isConcrete);
+    }
+
     private void checkSynchronizedIgnoringExclusions(Method method) {
         boolean isExclusion = isExclusion(method);
         if (isExclusion) return;
