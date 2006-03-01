@@ -1,16 +1,17 @@
 package au.net.netstorm.boost.util.introspect;
 
+import au.net.netstorm.boost.util.fixture.DataTestUtil;
 import au.net.netstorm.boost.util.fixture.DefaultDataTestUtil;
 import junit.framework.TestCase;
 
 public class CallSpecAtomicTest extends TestCase {
-    private static final FieldSpec FIELD_SPEC_METHOD_NAME = new DefaultFieldSpec("methodName", String.class);
-    private static final FieldSpec FIELD_SPEC_ARG_TYPES = new DefaultFieldSpec("argTypes", Class[].class);
-    private static final FieldSpec FIELD_SPEC_ARGS = new DefaultFieldSpec("args", Object[].class);
-    private static final FieldSpec[] TYPES = {FIELD_SPEC_METHOD_NAME, FIELD_SPEC_ARG_TYPES, FIELD_SPEC_ARGS};
+    private final FieldSpec f1 = new DefaultFieldSpec("methodName", String.class);
+    private final FieldSpec f2 = new DefaultFieldSpec("argTypes", Class[].class);
+    private final FieldSpec f3 = new DefaultFieldSpec("args", Object[].class);
+    private final FieldSpec[] fields = {f1, f2, f3};
+    private DataTestUtil dataUtil = new DefaultDataTestUtil();
 
-    public void testCallSpec() {
-        // FIXME: SC042 To field ... all of these.
-        new DefaultDataTestUtil().checkIsData(CallSpec.class, TYPES);
+    public void testData() {
+        dataUtil.checkIsData(CallSpec.class, fields);
     }
 }
