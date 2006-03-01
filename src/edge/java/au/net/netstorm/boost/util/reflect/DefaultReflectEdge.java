@@ -16,7 +16,6 @@ class DefaultReflectEdge implements ReflectEdge {
         }
     }
 
-    // FIXME: SC042 Push up.
     public Object newInstance(Class cls) {
         try {
             return cls.newInstance();
