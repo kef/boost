@@ -13,6 +13,8 @@ public interface ReflectEdge {
 
     void setFieldValue(Field field, Object ref, Object value);
 
+    Field getDeclaredField(Class cls, String fieldName);
+
     Object newInstance(Class cls);
 
     Object newInstance(Constructor constructor, Object[] parameters);

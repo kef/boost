@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-// FIXME: SC511 Map exception exactly how an "edge" should.
+// FIXME: SC519 Map exceptions exactly how an "edge" should.
 
 class DefaultReflectEdge implements ReflectEdge {
     public Object getFieldValue(Field field, Object ref) {
@@ -20,6 +20,14 @@ class DefaultReflectEdge implements ReflectEdge {
         try {
             field.set(ref, value);
         } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field getDeclaredField(Class cls, String fieldName) {
+        try {
+            return cls.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
     }
