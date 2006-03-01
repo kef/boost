@@ -2,6 +2,8 @@ package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Field;
 
+import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
@@ -19,8 +21,6 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         return getFieldValue(cls, MARKER_STATIC_FIELD, fieldName);
     }
 
-    // FIXME: SC042 Return a FieldValue might be a goodie.  Could even use it on the way in for the set.
-    // FIXME: SC042 Actually, providing both is the way to go.
     public Object getInstance(Object ref, String fieldName) {
         Class cls = ref.getClass();
         return getFieldValue(cls, ref, fieldName);
@@ -31,9 +31,21 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         setField(cls, ref, fieldName, fieldValue);
     }
 
+    public void setInstance(Object ref, FieldValueSpec fieldValueSpec) {
+        String name = fieldValueSpec.getName();
+        Object value = fieldValueSpec.getValue();
+        setInstance(ref, name, value);
+    }
+
     public void setStatic(Class cls, String fieldName, Object fieldValue) {
         Object ref = MARKER_STATIC_FIELD;
         setField(cls, ref, fieldName, fieldValue);
+    }
+
+    public void setStatic(Class cls, FieldValueSpec fieldValueSpec) {
+        String name = fieldValueSpec.getName();
+        Object value = fieldValueSpec.getValue();
+        setStatic(cls, name, value);
     }
 
     private void setField(Class cls, Object f, String fieldName, Object fieldValue) {
