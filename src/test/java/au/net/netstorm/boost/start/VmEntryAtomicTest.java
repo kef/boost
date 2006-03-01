@@ -26,18 +26,15 @@ public class VmEntryAtomicTest extends TestCase {
     // FIXME: SC502 Ensure test for private constructor.
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final ReflectMaster reflector = new DefaultReflectMaster();
-    private final FieldTestUtil testReflector = new DefaultFieldTestUtil();
-
-    // FIXME: SC506 Reinstate all this stuff.
-    public void testFixme() {
-    }
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
     public void testInstance() {
         clsChecker.checkSubclassOf(VmEntry.class, getVmEntry());
     }
 
     public void testProductionBootstrap() {
-        Object bootstrap = testReflector.getInstance(getVmEntry(), "bootstrapper");
+        Object bootstrap = fielder.getInstance(getVmEntry(), "bootstrapper");
         clsChecker.checkSubclassOf(DefaultBootstrapper.class, bootstrap);
     }
 
@@ -68,7 +65,7 @@ public class VmEntryAtomicTest extends TestCase {
         // FIXME: SC502 There is duplicate code in PrimordialAtomicTest.
         FieldValueSpec fieldValue = new DefaultFieldValueSpec("bootstrapper", mockBootstrap);
         PrimordialAtomicTest.resolveField(vmEntry, fieldValue);
-        testReflector.setStatic(VmEntry.class, "instance", vmEntry);
+        fielder.setStatic(VmEntry.class, "instance", vmEntry);
     }
 
     // FIXME: SC502 Move this out into "edge" or some ioc util.
@@ -76,8 +73,11 @@ public class VmEntryAtomicTest extends TestCase {
         Constructor constructor = reflector.getConstructor(VmEntry.class);
         Object[] args = {};
         constructor.setAccessible(true);
-        return (VmEntry) ReflectEdge.INSTANCE
-                .newInstance(constructor, args);
+        return (VmEntry) newVmEntry(constructor, args);
+    }
+
+    private Object newVmEntry(Constructor constructor, Object[] args) {
+        return reflectEdge.newInstance(constructor, args);
     }
 
     private void checkVmEntry(MockBootstrapper mockBootstrap, VmStyle style) {
@@ -92,7 +92,7 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     private VmEntry getVmEntry() {
-        return (VmEntry) testReflector.getStatic(VmEntry.class, "instance");
+        return (VmEntry) fielder.getStatic(VmEntry.class, "instance");
     }
 
     private void checkEntryFails(String[] args) {
