@@ -11,6 +11,8 @@ public interface ReflectEdge {
 
     Object getFieldValue(Field field, Object ref);
 
+    Object newInstance(Class cls);
+
     Object newInstance(Constructor constructor, Object[] parameters);
 
     Class forName(String className);
