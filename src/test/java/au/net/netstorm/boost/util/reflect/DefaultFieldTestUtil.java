@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
-    private ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
+    private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
 
     public Object getStatic(Class cls, String fieldName) {
         return getFieldValue(cls, MARKER_STATIC_FIELD, fieldName);
