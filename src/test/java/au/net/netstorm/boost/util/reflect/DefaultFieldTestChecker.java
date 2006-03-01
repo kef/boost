@@ -15,4 +15,10 @@ public final class DefaultFieldTestChecker implements FieldTestChecker {
         if (Modifier.isPublic(modifiers)) Assert.fail("Field '" + fieldName + "' should be declared private.");
         if (Modifier.isStatic(modifiers)) Assert.fail("Field '" + fieldName + "' cannot be static.");
     }
+
+    public void checkFieldType(Class expectedType, Object ref, String fieldName) {
+        Object value = fields.getInstanceField(ref, fieldName);
+        Class type = value.getClass();
+        Assert.assertEquals(expectedType, type);
+    }
 }

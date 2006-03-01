@@ -10,9 +10,7 @@ public interface ClassTestUtil {
 
     boolean isSubclassOf(Class superClass, Class subclass);
 
-    void checkFieldType(Class expectedClass, Object ref, String fieldName);
-
-    void checkImplementationOfInterfaceAndFinal(Class targetInterface, Class implementationClass);
+    void checkImplementsAndFinal(Class targetInterface, Class implementationClass);
 
     void checkSubclassOf(Class superClass, Class subClass);
 
