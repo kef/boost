@@ -10,8 +10,6 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
 
     public void checkSynchronized(Method method) {
-        boolean isExclusion = isExclusion(method);
-        if (isExclusion) return;
         boolean isSynchronized = modifier.isSynchronized(method);
         check(method, isSynchronized);
     }
@@ -29,8 +27,14 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     public void checkSynchronized(Class cls) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
-            checkSynchronized(methods[i]);
+            checkSynchronizedIgnoringExclusions(methods[i]);
         }
+    }
+
+    private void checkSynchronizedIgnoringExclusions(Method method) {
+        boolean isExclusion = isExclusion(method);
+        if (isExclusion) return;
+        checkSynchronized(method);
     }
 
     private boolean isExclusion(Method method) {
