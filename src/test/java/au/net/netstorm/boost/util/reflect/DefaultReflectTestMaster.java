@@ -53,11 +53,11 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
-        throw new NotImplementedException();
+        fielder.setStatic(cls, fieldName, value);
     }
 
     public void setStatic(Class cls, FieldValueSpec fieldValueSpec) {
-        throw new NotImplementedException();
+        fielder.setStatic(cls, fieldValueSpec);
     }
 
     public boolean isPublic(Method method) {
