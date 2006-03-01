@@ -1,9 +1,6 @@
 package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-
-import junit.framework.Assert;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
@@ -36,14 +33,6 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     public void setStaticField(Class cls, String fieldName, Object fieldValue) {
         Object ref = MARKER_STATIC_FIELD;
         setField(cls, ref, fieldName, fieldValue);
-    }
-
-    public void checkPrivateFinalField(Class type, String fieldName) {
-        Field field = getDeclaredField(type, fieldName);
-        int modifiers = field.getModifiers();
-        if (!Modifier.isFinal(modifiers)) Assert.fail("Field '" + fieldName + "' should be declared final.");
-        if (Modifier.isPublic(modifiers)) Assert.fail("Field '" + fieldName + "' should be declared private.");
-        if (Modifier.isStatic(modifiers)) Assert.fail("Field '" + fieldName + "' cannot be static.");
     }
 
     private void setField(Class cls, Object f, String fieldName, Object fieldValue) {

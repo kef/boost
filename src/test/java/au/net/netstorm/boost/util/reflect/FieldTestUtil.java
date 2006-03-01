@@ -23,6 +23,4 @@ public interface FieldTestUtil {
     // FIXME: SC042 Add ... setStaticField(Object ref, String fieldName).
 
     void setStaticField(Class cls, String fieldName, Object value);
-
-    void checkPrivateFinalField(Class type, String fieldName);
 }
