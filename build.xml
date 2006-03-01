@@ -81,8 +81,10 @@
         <patternset refid="code.pattern"/>
         <exclude name="**/pair/*.java"/>
         <!-- FIXME: SC502 Remove duplication and then remove these exclusions. -->
+        <!-- NO MORE WAIVERS/EXCLUSIONS HERE.  FIX FIRST!!!!  EVEN THOUGH SOME ARE SIMIAN FALSE POSITIVES -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
+        <exclude name="**/DefaultReflectEdge.java"/>
         <exclude name="**/DefaultEdgeInputStream.java"/>
         <exclude name="**/DefaultEdgeOutputStream.java"/>
     </fileset>
@@ -405,8 +407,7 @@
     <macrodef name="macro_check_simian">
         <attribute name="code.type"/>
         <sequential>
-            <!-- FIXME: RDSC124 BREADCRUMB ...................... Reinstate this NOW!!!! -->
-            <!--<fail if="simian.@{code.type}.failed" message="Simian detected duplication [@{code.type}]."/>-->
+            <fail if="simian.@{code.type}.failed" message="Simian detected duplication [@{code.type}]."/>
         </sequential>
     </macrodef>
 
