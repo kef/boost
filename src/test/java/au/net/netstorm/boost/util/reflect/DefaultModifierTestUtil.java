@@ -45,6 +45,12 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isAbstract(modifiers);
     }
 
+    // FIXME: SC042 Push up and rearrange.
+    public boolean isInterface(Class cls) {
+        int modifiers = cls.getModifiers();
+        return isInterface(modifiers);
+    }
+
     public boolean isSynchronized(Class cls) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
@@ -65,12 +71,16 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isStatic(modifiers);
     }
 
-    private boolean isSynchronized(int modifiers) {
-        return Modifier.isSynchronized(modifiers);
-    }
-
     private boolean isAbstract(int modifiers) {
         return Modifier.isAbstract(modifiers);
+    }
+
+    private boolean isInterface(int modifiers) {
+        return Modifier.isInterface(modifiers);
+    }
+
+    private boolean isSynchronized(int modifiers) {
+        return Modifier.isSynchronized(modifiers);
     }
 
     private int getModifiers(Method method) {

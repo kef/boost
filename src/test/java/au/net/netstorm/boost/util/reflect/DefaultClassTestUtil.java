@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Modifier;
-
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
@@ -11,12 +9,6 @@ public class DefaultClassTestUtil implements ClassTestUtil {
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final FieldTestUtil reflector = new DefaultFieldTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
-
-    // FIXME: SC042 This belongs is ModifierTestUtil.
-    public boolean isInterface(Class cls) {
-        int modifiers = cls.getModifiers();
-        return isInterface(modifiers);
-    }
 
     // FIXME: SC042 Investigate ... This did not appear to work for targetInterface == java.io.Serializable ?
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
@@ -52,10 +44,6 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         Assert.assertNotNull(ref);
         Class cls = ref.getClass();
         checkSubclassOf(superClass, cls);
-    }
-
-    private boolean isInterface(int modifiers) {
-        return Modifier.isInterface(modifiers);
     }
 
     private String getShortName(Class cls) {
