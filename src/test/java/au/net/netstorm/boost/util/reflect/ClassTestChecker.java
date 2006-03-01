@@ -10,4 +10,6 @@ public interface ClassTestChecker {
     void checkSubclassOf(Class expectedImpl, Object ref);
 
     void checkImplementsAndFinal(Interface expectedInterface, Class cls);
+
+    void checkSynchronized(Class cls);
 }

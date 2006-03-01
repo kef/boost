@@ -1,9 +1,12 @@
 package au.net.netstorm.boost.util.reflect;
 
+import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 public final class DefaultClassTestChecker implements ClassTestChecker {
+    private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final ClassTestUtil classes = new DefaultClassTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
@@ -44,6 +47,31 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         String implName = getShortName(cls);
         String targetName = getShortName(iface);
         Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
+    }
+
+    public void checkSynchronized(Class cls) {
+        Method[] methods = cls.getMethods();
+        for (int i = 0; i < methods.length; i++) {
+            checkSynchronizedIgnoringExclusions(methods[i]);
+        }
+    }
+
+    private void checkSynchronizedIgnoringExclusions(Method method) {
+        boolean isExclusion = isExclusion(method);
+        if (isExclusion) return;
+        modifier.checkSynchronized(method);
+    }
+
+    private boolean isExclusion(Method method) {
+        String name = method.getName();
+        return isExclusion(name);
+    }
+
+    private boolean isExclusion(String methodName) {
+        for (int i = 0; i < EXCLUSIONS.length; i++) {
+            if (methodName.equals(EXCLUSIONS[i])) return true;
+        }
+        return false;
     }
 
     // FIXME: SC042 Moving getShortName into Class... will help here.  Requires TDing ClassMaster.

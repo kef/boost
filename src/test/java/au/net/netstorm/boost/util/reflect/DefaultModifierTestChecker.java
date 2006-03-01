@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import junit.framework.Assert;
 
 public final class DefaultModifierTestChecker implements ModifierTestChecker {
-    private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
 
@@ -29,35 +28,9 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         check(cls, "is not final", isFinal);
     }
 
-    // FIXME: SC042 This possibly belongs in DClassTU.  It definitely does.
-    public void checkSynchronized(Class cls) {
-        Method[] methods = cls.getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            checkSynchronizedIgnoringExclusions(methods[i]);
-        }
-    }
-
     public void checkConcrete(Class cls) {
         boolean isConcrete = modifier.isConcrete(cls);
         check(cls, "is not concrete", isConcrete);
-    }
-
-    private void checkSynchronizedIgnoringExclusions(Method method) {
-        boolean isExclusion = isExclusion(method);
-        if (isExclusion) return;
-        checkSynchronized(method);
-    }
-
-    private boolean isExclusion(Method method) {
-        String name = method.getName();
-        return isExclusion(name);
-    }
-
-    private boolean isExclusion(String methodName) {
-        for (int i = 0; i < EXCLUSIONS.length; i++) {
-            if (methodName.equals(EXCLUSIONS[i])) return true;
-        }
-        return false;
     }
 
     private String getName(Method method) {
