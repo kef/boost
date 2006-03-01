@@ -19,16 +19,14 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return superClass.isAssignableFrom(subclass);
     }
 
-    // FIXME: SC042 Hide?
     public void checkImplementsAndFinal(Class expectedInterface, Class cls) {
-        modifier.checkFinal(cls);
         Interface iface = new Interface(expectedInterface);
-        checkImplementsInterface(iface, cls);
+        checkImplementsAndFinal(iface, cls);
     }
 
-    // FIXME: SC042 Push up.
     public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
-        // FIXME: SC042 Complete this.
+        modifier.checkFinal(cls);
+        checkImplementsInterface(expectedInterface, cls);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
@@ -53,8 +51,8 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
     }
 
+    // FIXME: SC042 Moving getShortName into Class... will help here.  Requires TDing ClassMaster.
     private String getShortName(Interface iface) {
-        // FIXME: SC042 Moving getShortName into Class... will help here.
         Class cls = iface.getType();
         return getShortName(cls);
     }
