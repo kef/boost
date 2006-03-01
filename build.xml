@@ -405,7 +405,7 @@
     <macrodef name="macro_check_simian">
         <attribute name="code.type"/>
         <sequential>
-            <!-- FIXME: RDSC124 BREADCRUMB ...................... ûReinstate this NOW!!!! -->
+            <!-- FIXME: RDSC124 BREADCRUMB ...................... Reinstate this NOW!!!! -->
             <!--<fail if="simian.@{code.type}.failed" message="Simian detected duplication [@{code.type}]."/>-->
         </sequential>
     </macrodef>
