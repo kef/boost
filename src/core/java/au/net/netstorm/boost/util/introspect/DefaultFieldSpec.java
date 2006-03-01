@@ -1,10 +1,12 @@
 package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Immutable;
 import au.net.netstorm.boost.util.nullo.NullMaster;
+import au.net.netstorm.boost.util.type.Immutable;
 
 // FIXME: SC506 Can just be an immutable.
+// FIXME: SC506 Can just be a Data.
+
 public final class DefaultFieldSpec extends Primordial implements FieldSpec, Immutable {
     private final String fieldName;
     private final Class type;
