@@ -9,7 +9,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return type.isAssignableFrom(cls);
     }
 
-    public boolean isSubclassOf(Class superClass, Class subclass) {
-        return superClass.isAssignableFrom(subclass);
+    public boolean isSubclassOf(Class superClass, Class subClass) {
+        return superClass.isAssignableFrom(subClass);
     }
 }
