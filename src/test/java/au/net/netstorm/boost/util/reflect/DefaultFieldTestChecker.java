@@ -8,7 +8,6 @@ import junit.framework.Assert;
 public final class DefaultFieldTestChecker implements FieldTestChecker {
     private final FieldTestUtil fields = new DefaultFieldTestUtil();
 
-    // FIXME: SC042 Move to DFTC.
     public void checkPrivateFinalField(Class type, String fieldName) {
         Field field = fields.getDeclaredField(type, fieldName);
         int modifiers = field.getModifiers();
