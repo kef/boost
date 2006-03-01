@@ -9,6 +9,11 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
 
+    public void checkFinal(Method method) {
+        boolean isFinal = modifier.isFinal(method);
+        check(method, isFinal);
+    }
+
     public void checkSynchronized(Method method) {
         boolean isSynchronized = modifier.isSynchronized(method);
         check(method, isSynchronized);
@@ -58,6 +63,7 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         return classMaster.getShortName(cls);
     }
 
+    // FIXME: SC042 Add message to this method.
     private void check(Method method, boolean ok) {
         Assert.assertTrue(getName(method), ok);
     }

@@ -8,8 +8,10 @@ import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.util.reflect.DefaultModifierTestChecker;
 import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.FieldTestUtil;
+import au.net.netstorm.boost.util.reflect.ModifierTestChecker;
 import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
 import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
@@ -17,11 +19,13 @@ import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 public final class PrimordialAtomicTest extends TestCase {
-    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
+    private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
+    private final ModifierTestUtil xxx = new DefaultModifierTestUtil(); // FIXME: SC042 Remove xxx.
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private ReflectEdge reflector = ReflectEdge.INSTANCE;
 
     public void testNotAbstract() {
-        assertFalse(modifier.isAbstract(Primordial.class));
+        assertFalse(xxx.isAbstract(Primordial.class)); // FIXME: SC042 Add isConcrete to remove this check.
     }
 
     public void testMethodsFinal() {
@@ -116,8 +120,7 @@ public final class PrimordialAtomicTest extends TestCase {
 
     private void checkMethodFinal(String methodName, Class[] parameterTypes) {
         // FIXME: SC042 Tidy this up
-        Method method = ReflectEdge.INSTANCE
-                .getMethod(Primordial.class, methodName, parameterTypes);
-        assertTrue(modifier.isFinal(method));
+        Method method = reflector.getMethod(Primordial.class, methodName, parameterTypes);
+        modifier.checkFinal(method);
     }
 }
