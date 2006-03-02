@@ -46,6 +46,12 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         check(member, NOT_INSTANCE, isInstance);
     }
 
+    public void checkPrivateFinalInstance(Member member) {
+        checkPrivate(member);
+        checkFinal(member);
+        checkInstance(member);
+    }
+
     public void checkPublic(Class cls) {
         boolean isPublic = modifier.isPublic(cls);
         check(cls, NOT_PUBLIC, isPublic);
