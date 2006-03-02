@@ -33,8 +33,8 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
         fieldChecker.checkPrivateFinalInstanceField(type, fieldName);
     }
 
-    public void checkType(Class expectedClass, Object ref, String fieldName) {
-        fieldChecker.checkType(expectedClass, ref, fieldName);
+    public void checkInstanceType(Class expectedClass, Object ref, String fieldName) {
+        fieldChecker.checkInstanceType(expectedClass, ref, fieldName);
     }
 
     public void checkPublic(Member member) {

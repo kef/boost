@@ -139,8 +139,8 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         checker.checkPrivateFinalInstanceField(type, fieldName);
     }
 
-    public void checkType(Class expectedClass, Object ref, String fieldName) {
-        checker.checkType(expectedClass, ref, fieldName);
+    public void checkInstanceType(Class expectedClass, Object ref, String fieldName) {
+        checker.checkInstanceType(expectedClass, ref, fieldName);
     }
 
     public void checkPublic(Member member) {
