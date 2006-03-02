@@ -9,7 +9,9 @@ public interface ModifierTestUtil {
 
     boolean isPublicInstance(Member member);
 
-    boolean isStatic(Member method);
+    boolean isStatic(Member member);
+
+//    boolean isInstance(Member member);
 
     boolean isFinal(Member member);
 
