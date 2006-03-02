@@ -15,6 +15,8 @@ public interface ModifierTestChecker {
 
     void checkStatic(Member member);
 
+    void checkInstance(Member member);
+
     void checkPublic(Class cls);
 
     void checkFinal(Class cls);

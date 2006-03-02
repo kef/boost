@@ -57,6 +57,10 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
         modifierChecker.checkStatic(member);
     }
 
+    public void checkInstance(Member member) {
+        modifierChecker.checkInstance(member);
+    }
+
     public void checkPublic(Class cls) {
         modifierChecker.checkPublic(cls);
     }

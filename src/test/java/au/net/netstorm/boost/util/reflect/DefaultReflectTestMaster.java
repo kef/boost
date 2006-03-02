@@ -163,6 +163,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         checker.checkStatic(member);
     }
 
+    public void checkInstance(Member member) {
+        checker.checkInstance(member);
+    }
+
     public void checkPublic(Class cls) {
         checker.checkPublic(cls);
     }

@@ -9,11 +9,12 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     // FIXME: SC042  Might consider removing "is not"
     private static final String NOT_PUBLIC = "is not public";
+    private static final String NOT_PRIVATE = "is not private";
     private static final String NOT_FINAL = "is not final";
     private static final String NOT_SYNCHRONIZED = "is not synchronized";
     private static final String NOT_CONCRETE = "is not concrete";
     private static final String NOT_STATIC = "is not static";
-    private static final String NOT_PRIVATE = "is not private";
+    private static final String NOT_INSTANCE = "is not instance";
 
     public void checkPublic(Member member) {
         boolean isPublic = modifier.isPublic(member);
@@ -38,6 +39,11 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     public void checkStatic(Member member) {
         boolean isStatic = modifier.isStatic(member);
         check(member, NOT_STATIC, isStatic);
+    }
+
+    public void checkInstance(Member member) {
+        boolean isInstance = modifier.isInstance(member);
+        check(member, NOT_INSTANCE, isInstance);
     }
 
     public void checkPublic(Class cls) {
