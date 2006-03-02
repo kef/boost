@@ -5,14 +5,13 @@ import java.lang.reflect.Member;
 // FIXME: SC042 Type up a story card for building a delegator (composer).
 
 public interface ModifierTestChecker {
+    void checkPublic(Member member);
+
     void checkFinal(Member member);
 
     void checkSynchronized(Member member);
 
     void checkStatic(Member member);
-
-    // FIXME: SC042 Add checkStatic(member)
-    // FIXME: SC042 Add checkPublic(member)
 
     void checkPublic(Class cls);
 

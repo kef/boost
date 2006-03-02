@@ -37,6 +37,10 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
         fieldChecker.checkType(expectedClass, ref, fieldName);
     }
 
+    public void checkPublic(Member member) {
+        modifierChecker.checkPublic(member);
+    }
+
     public void checkFinal(Member member) {
         modifierChecker.checkFinal(member);
     }

@@ -13,6 +13,11 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private static final String NOT_CONCRETE = "is not concrete";
     private static final String NOT_STATIC = "is not static";
 
+    public void checkPublic(Member member) {
+        boolean isPublic = modifier.isPublic(member);
+        check(member, NOT_PUBLIC, isPublic);
+    }
+
     public void checkFinal(Member member) {
         boolean isFinal = modifier.isFinal(member);
         check(member, NOT_FINAL, isFinal);
