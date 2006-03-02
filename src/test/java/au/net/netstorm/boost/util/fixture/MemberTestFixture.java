@@ -95,7 +95,6 @@ final class MemberTestFixture {
         return Character.toLowerCase(startChar);
     }
 
-    // FIXME: SC042 Aren't these checks done in *TestUtil*?
     // FIXME: SC509 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
     private static void checkFieldImmutable(Object expectedValue, Object actualValue, FieldSpec fieldSpec) {
         Class type = fieldSpec.getType();
