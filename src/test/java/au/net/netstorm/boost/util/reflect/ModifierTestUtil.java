@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Member;
-import java.lang.reflect.Method;
 
 // Why the hell doesn't j.l.Class implement Member?!
 
@@ -14,6 +13,8 @@ public interface ModifierTestUtil {
 
     boolean isFinal(Member member);
 
+    boolean isSynchronized(Member member);
+
     // FIXME: SC042 PublicInstance.
     // FIXME: SC042 Final
     // FIXME: SC042 Static
@@ -24,8 +25,6 @@ public interface ModifierTestUtil {
     // FIXME: SC042 Synchronized
 
     // FIXME: SC042 Coalesce these into Members.
-
-    boolean isSynchronized(Method method);
 
     boolean isPublic(Class cls);
 

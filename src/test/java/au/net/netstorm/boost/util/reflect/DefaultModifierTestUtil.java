@@ -28,8 +28,8 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isStatic(modifiers);
     }
 
-    public boolean isSynchronized(Method method) {
-        int modifiers = getModifiers(method);
+    public boolean isSynchronized(Member member) {
+        int modifiers = getModifiers(member);
         return isSynchronized(modifiers);
     }
 

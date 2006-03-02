@@ -84,8 +84,8 @@ public final class DefaultReflectTestUtil implements ReflectTestUtil {
         return modifierUtil.isStatic(member);
     }
 
-    public boolean isSynchronized(Method method) {
-        return modifierUtil.isSynchronized(method);
+    public boolean isSynchronized(Member member) {
+        return modifierUtil.isSynchronized(member);
     }
 
     public boolean isPublic(Class cls) {
