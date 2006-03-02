@@ -3,6 +3,8 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+// FIXME: SC042 Remove all methods not in the interface.
+
 public final class DefaultModifierTestUtil implements ModifierTestUtil {
     public boolean isPublic(Method method) {
         int modifiers = getModifiers(method);

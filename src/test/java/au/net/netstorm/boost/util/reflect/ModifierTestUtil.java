@@ -3,6 +3,7 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Method;
 
 public interface ModifierTestUtil {
+    // FIXME: SC042 Coalesce these into Members.
     boolean isPublic(Method method);
 
     boolean isPublicInstance(Method method);

@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC042 Remove all methods not in the interface.
+
 public final class DefaultReflectTestChecker implements ReflectTestChecker {
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final FieldTestChecker fieldChecker = new DefaultFieldTestChecker();
