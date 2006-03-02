@@ -1,9 +1,14 @@
 package au.net.netstorm.boost.util.reflect;
 
-import au.net.netstorm.boost.util.exception.NotImplementedException;
+import java.lang.reflect.Constructor;
+
 import au.net.netstorm.boost.util.type.Interface;
 
 public class DefaultClassTestUtil implements ClassTestUtil {
+    private final ReflectMaster reflector = new DefaultReflectMaster();
+    private final ReflectEdge reflectEdge = new DefaultReflectEdge();
+    private static final Object[] NO_PARAMETERS = {};
+
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
         Class type = targetInterface.getType();
         return type.isAssignableFrom(cls);
@@ -14,7 +19,8 @@ public class DefaultClassTestUtil implements ClassTestUtil {
     }
 
     public Object newInstance(Class type) {
-        throw new NotImplementedException();
-        // FIXME: SC042 Complete this.
+        Constructor constructor = reflector.getConstructor(type);
+        constructor.setAccessible(true);
+        return reflectEdge.newInstance(constructor, NO_PARAMETERS);
     }
 }

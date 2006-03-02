@@ -1,16 +1,13 @@
 package au.net.netstorm.boost.start;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.reflect.ClassTestChecker;
+import au.net.netstorm.boost.util.reflect.ClassTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultClassTestChecker;
+import au.net.netstorm.boost.util.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.reflect.FieldTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectEdge;
-import au.net.netstorm.boost.util.reflect.ReflectMaster;
 import junit.framework.TestCase;
 
 // FIXME: SC502 Ensure test for private constructor.
@@ -23,12 +20,12 @@ public class VmEntryAtomicTest extends TestCase {
     private static final String[] TOO_FEW_ARGUMENTS = new String[0];
     private static final String[] NULL = null;
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
-    private final ReflectMaster reflector = new DefaultReflectMaster();
+    private final ClassTestUtil classer = new DefaultClassTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
+    private static final Class VM_ENTRY_CLASS = VmEntry.class;
 
     public void testInstance() {
-        clsChecker.checkSubclassOf(VmEntry.class, getVmEntry());
+        clsChecker.checkSubclassOf(VM_ENTRY_CLASS, getVmEntry());
     }
 
     public void testProductionBootstrap() {
@@ -62,20 +59,7 @@ public class VmEntryAtomicTest extends TestCase {
         VmEntry vmEntry = newVmEntry();
         FieldValueSpec fieldValue = new DefaultFieldValueSpec("bootstrapper", mockBootstrap);
         fielder.setInstance(vmEntry, fieldValue);
-        fielder.setStatic(VmEntry.class, "instance", vmEntry);
-    }
-
-    // FIXME: SC042 Is fixme below part of this card.  Yes it is.  But it is a bit twisted.
-    // FIXME: SC502 Move this out into "edge" or some ioc util.
-    private VmEntry newVmEntry() {
-        Constructor constructor = reflector.getConstructor(VmEntry.class);
-        Object[] args = {};
-        constructor.setAccessible(true);
-        return newVmEntry(constructor, args);
-    }
-
-    private VmEntry newVmEntry(Constructor constructor, Object[] args) {
-        return (VmEntry) reflectEdge.newInstance(constructor, args);
+        fielder.setStatic(VM_ENTRY_CLASS, "instance", vmEntry);
     }
 
     private void checkVmEntry(MockBootstrapper mockBootstrap, VmStyle style) {
@@ -90,7 +74,7 @@ public class VmEntryAtomicTest extends TestCase {
     }
 
     private VmEntry getVmEntry() {
-        return (VmEntry) fielder.getStatic(VmEntry.class, "instance");
+        return (VmEntry) fielder.getStatic(VM_ENTRY_CLASS, "instance");
     }
 
     private void checkEntryFails(String[] args) {
@@ -98,5 +82,9 @@ public class VmEntryAtomicTest extends TestCase {
             VmEntry.main(args);
             fail();
         } catch (Exception expected) { }
+    }
+
+    private VmEntry newVmEntry() {
+        return (VmEntry) classer.newInstance(VM_ENTRY_CLASS);
     }
 }
