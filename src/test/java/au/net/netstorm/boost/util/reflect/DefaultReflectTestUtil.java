@@ -70,6 +70,10 @@ public final class DefaultReflectTestUtil implements ReflectTestUtil {
         return modifierUtil.isPublic(member);
     }
 
+    public boolean isPrivate(Member member) {
+        return modifierUtil.isPrivate(member);
+    }
+
     public boolean isPublicInstance(Member member) {
         return modifierUtil.isPublicInstance(member);
     }

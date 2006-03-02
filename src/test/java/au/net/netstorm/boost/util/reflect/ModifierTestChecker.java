@@ -7,6 +7,9 @@ import java.lang.reflect.Member;
 public interface ModifierTestChecker {
     void checkPublic(Member member);
 
+    // FIXME: SC042 Add this.
+//    void checkPrivate(Member member);
+
     void checkFinal(Member member);
 
     void checkSynchronized(Member member);

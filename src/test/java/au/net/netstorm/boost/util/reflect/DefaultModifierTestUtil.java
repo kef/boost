@@ -10,6 +10,11 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isPublic(modifiers);
     }
 
+    public boolean isPrivate(Member member) {
+        int modifiers = getModifiers(member);
+        return Modifier.isPrivate(modifiers);
+    }
+
     public boolean isPublicInstance(Member member) {
         boolean isStatic = isStatic(member);
         if (isStatic) return false;

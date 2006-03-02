@@ -67,6 +67,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         return util.isPublic(member);
     }
 
+    public boolean isPrivate(Member member) {
+        return util.isPrivate(member);
+    }
+
     public boolean isPublicInstance(Member member) {
         return util.isPublicInstance(member);
     }
