@@ -6,108 +6,108 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC042 Rename to ReflectTestUtil.  Master should have checkers as well.
+
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
-    private final ClassTestUtil cls = new DefaultClassTestUtil();
-    private final MethodTestUtil method = new DefaultMethodTestUtil();
-    private final FieldTestUtil field = new DefaultFieldTestUtil();
-    private final ExceptionTestUtil exception = new DefaultExceptionTestUtil();
-    private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
+    private final ClassTestUtil clsUtil = new DefaultClassTestUtil();
+    private final MethodTestUtil methodUtil = new DefaultMethodTestUtil();
+    private final FieldTestUtil fieldUtil = new DefaultFieldTestUtil();
+    private final ExceptionTestUtil exceptionUtil = new DefaultExceptionTestUtil();
+    private final ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
 
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
-        return this.cls
-                .isImplementationOf(targetInterface, cls);
+        return clsUtil.isImplementationOf(targetInterface, cls);
     }
 
     public boolean isSubclassOf(Class superClass, Class subClass) {
-        return cls.isSubclassOf(superClass, subClass);
+        return clsUtil.isSubclassOf(superClass, subClass);
     }
 
     public Object newInstance(Class type) {
-        return cls.newInstance(type);
+        return clsUtil.newInstance(type);
     }
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
-        return method.invoke(invokee, methodName, parameters);
+        return methodUtil.invoke(invokee, methodName, parameters);
     }
 
     public Class getThrowsType(Method method) {
-        return this.method
-                .getThrowsType(method);
+        return methodUtil.getThrowsType(method);
     }
 
     public Field getDeclared(Class cls, String fieldName) {
-        return field.getDeclared(cls, fieldName);
+        return fieldUtil.getDeclared(cls, fieldName);
     }
 
     public Object getStatic(Class cls, String fieldName) {
-        return field.getStatic(cls, fieldName);
+        return fieldUtil.getStatic(cls, fieldName);
     }
 
     public Object getInstance(Object ref, String fieldName) {
-        return field.getInstance(ref, fieldName);
+        return fieldUtil.getInstance(ref, fieldName);
     }
 
     public void setInstance(Object ref, String fieldName, Object value) {
-        field.setInstance(ref, fieldName, value);
+        fieldUtil.setInstance(ref, fieldName, value);
     }
 
     public void setInstance(Object ref, FieldValueSpec fieldValue) {
-        field.setInstance(ref, fieldValue);
+        fieldUtil.setInstance(ref, fieldValue);
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
-        field.setStatic(cls, fieldName, value);
+        fieldUtil.setStatic(cls, fieldName, value);
     }
 
     public void setStatic(Class cls, FieldValueSpec fieldValue) {
-        field.setStatic(cls, fieldValue);
+        fieldUtil.setStatic(cls, fieldValue);
     }
 
     public Class getRealExceptionClass(Throwable t) {
-        return exception.getRealExceptionClass(t);
+        return exceptionUtil.getRealExceptionClass(t);
     }
 
     public boolean isPublic(Method method) {
-        return modifier.isPublic(method);
+        return modifierUtil.isPublic(method);
     }
 
     public boolean isPublicInstance(Method method) {
-        return modifier.isPublicInstance(method);
+        return modifierUtil.isPublicInstance(method);
     }
 
     public boolean isFinal(Method method) {
-        return modifier.isFinal(method);
+        return modifierUtil.isFinal(method);
     }
 
     public boolean isStatic(Method method) {
-        return modifier.isStatic(method);
+        return modifierUtil.isStatic(method);
     }
 
     public boolean isSynchronized(Method method) {
-        return modifier.isSynchronized(method);
+        return modifierUtil.isSynchronized(method);
     }
 
     public boolean isPublic(Class cls) {
-        return modifier.isPublic(cls);
+        return modifierUtil.isPublic(cls);
     }
 
     public boolean isFinal(Class cls) {
-        return modifier.isFinal(cls);
+        return modifierUtil.isFinal(cls);
     }
 
     public boolean isAbstract(Class cls) {
-        return modifier.isAbstract(cls);
+        return modifierUtil.isAbstract(cls);
     }
 
     public boolean isConcrete(Class cls) {
-        return modifier.isConcrete(cls);
+        return modifierUtil.isConcrete(cls);
     }
 
     public boolean isInterface(Class cls) {
-        return modifier.isInterface(cls);
+        return modifierUtil.isInterface(cls);
     }
 
     public boolean isSynchronized(Class cls) {
-        return modifier.isSynchronized(cls);
+        return modifierUtil.isSynchronized(cls);
     }
 }
