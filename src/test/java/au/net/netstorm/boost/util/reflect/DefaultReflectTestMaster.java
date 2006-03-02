@@ -73,8 +73,8 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         return util.isPublicInstance(member);
     }
 
-    public boolean isFinal(Method method) {
-        return util.isFinal(method);
+    public boolean isFinal(Member member) {
+        return util.isFinal(member);
     }
 
     public boolean isStatic(Member member) {

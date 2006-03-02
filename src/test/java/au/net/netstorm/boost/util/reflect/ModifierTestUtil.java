@@ -12,6 +12,8 @@ public interface ModifierTestUtil {
 
     boolean isStatic(Member method);
 
+    boolean isFinal(Member member);
+
     // FIXME: SC042 PublicInstance.
     // FIXME: SC042 Final
     // FIXME: SC042 Static
@@ -22,8 +24,6 @@ public interface ModifierTestUtil {
     // FIXME: SC042 Synchronized
 
     // FIXME: SC042 Coalesce these into Members.
-
-    boolean isFinal(Method method);
 
     boolean isSynchronized(Method method);
 

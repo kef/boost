@@ -18,8 +18,8 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isPublic(member);
     }
 
-    public boolean isFinal(Method method) {
-        int modifiers = getModifiers(method);
+    public boolean isFinal(Member member) {
+        int modifiers = getModifiers(member);
         return isFinal(modifiers);
     }
 
