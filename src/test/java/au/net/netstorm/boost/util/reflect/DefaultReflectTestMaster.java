@@ -137,12 +137,12 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         checker.checkType(expectedClass, ref, fieldName);
     }
 
-    public void checkFinal(Method method) {
-        checker.checkFinal(method);
+    public void checkFinal(Member member) {
+        checker.checkFinal(member);
     }
 
-    public void checkSynchronized(Method method) {
-        checker.checkSynchronized(method);
+    public void checkSynchronized(Member member) {
+        checker.checkSynchronized(member);
     }
 
     public void checkPublic(Class cls) {

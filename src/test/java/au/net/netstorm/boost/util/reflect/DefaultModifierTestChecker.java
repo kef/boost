@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Member;
 
 import junit.framework.Assert;
 
@@ -14,14 +14,14 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private static final String NOT_SYNCHRONIZED = "is not synchronized";
     private static final String NOT_CONCRETE = "is not concrete";
 
-    public void checkFinal(Method method) {
-        boolean isFinal = modifier.isFinal(method);
-        check(method, NOT_FINAL, isFinal);
+    public void checkFinal(Member member) {
+        boolean isFinal = modifier.isFinal(member);
+        check(member, NOT_FINAL, isFinal);
     }
 
-    public void checkSynchronized(Method method) {
-        boolean isSynchronized = modifier.isSynchronized(method);
-        check(method, NOT_SYNCHRONIZED, isSynchronized);
+    public void checkSynchronized(Member member) {
+        boolean isSynchronized = modifier.isSynchronized(member);
+        check(member, NOT_SYNCHRONIZED, isSynchronized);
     }
 
     public void checkPublic(Class cls) {
@@ -39,8 +39,8 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         check(cls, NOT_CONCRETE, isConcrete);
     }
 
-    private void check(Method method, String comment, boolean ok) {
-        String name = getName(method);
+    private void check(Member member, String comment, boolean ok) {
+        String name = getName(member);
         check(name, comment, ok);
     }
 
@@ -54,8 +54,8 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
         Assert.assertTrue(message, ok);
     }
 
-    private String getName(Method method) {
-        return "" + method;
+    private String getName(Member member) {
+        return "" + member;
     }
 
     private String getName(Class cls) {

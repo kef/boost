@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Member;
 
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -39,12 +39,12 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
         fieldChecker.checkType(expectedClass, ref, fieldName);
     }
 
-    public void checkFinal(Method method) {
-        modifierChecker.checkFinal(method);
+    public void checkFinal(Member member) {
+        modifierChecker.checkFinal(member);
     }
 
-    public void checkSynchronized(Method method) {
-        modifierChecker.checkSynchronized(method);
+    public void checkSynchronized(Member member) {
+        modifierChecker.checkSynchronized(member);
     }
 
     public void checkPublic(Class cls) {

@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.util.reflect;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Member;
 
 public interface ModifierTestChecker {
     // FIXME: SC042 Coalesce into Member.
-    void checkFinal(Method method);
+    void checkFinal(Member member);
 
-    void checkSynchronized(Method method);
+    void checkSynchronized(Member member);
 
     void checkPublic(Class cls);
 
