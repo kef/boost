@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.util.reflect;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
@@ -62,6 +63,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
 
     public Class getRealExceptionClass(Throwable t) {
         return util.getRealExceptionClass(t);
+    }
+
+    public boolean isPublic(Member member) {
+        return util.isPublic(member);
     }
 
     public boolean isPublic(Method method) {
