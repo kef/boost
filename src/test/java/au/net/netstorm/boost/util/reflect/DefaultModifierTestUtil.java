@@ -4,8 +4,6 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-// FIXME: SC042 Remove all methods not in the interface.
-
 public final class DefaultModifierTestUtil implements ModifierTestUtil {
     public boolean isPublic(Member member) {
         int modifiers = getModifiers(member);
