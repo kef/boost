@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC042 Rename to ReflectTestUtil.  Master should have checkers as well.
 
-public final class DefaultReflectTestMaster implements ReflectTestMaster {
+public final class DefaultReflectTestUtil implements ReflectTestUtil {
     private final ClassTestUtil clsUtil = new DefaultClassTestUtil();
     private final MethodTestUtil methodUtil = new DefaultMethodTestUtil();
     private final FieldTestUtil fieldUtil = new DefaultFieldTestUtil();
