@@ -135,8 +135,8 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         checker.checkSynchronized(cls);
     }
 
-    public void checkPrivateFinalField(Class type, String fieldName) {
-        checker.checkPrivateFinalField(type, fieldName);
+    public void checkPrivateFinalInstanceField(Class type, String fieldName) {
+        checker.checkPrivateFinalInstanceField(type, fieldName);
     }
 
     public void checkType(Class expectedClass, Object ref, String fieldName) {

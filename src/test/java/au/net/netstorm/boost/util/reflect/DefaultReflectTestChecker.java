@@ -29,8 +29,8 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
         clsChecker.checkSynchronized(cls);
     }
 
-    public void checkPrivateFinalField(Class type, String fieldName) {
-        fieldChecker.checkPrivateFinalField(type, fieldName);
+    public void checkPrivateFinalInstanceField(Class type, String fieldName) {
+        fieldChecker.checkPrivateFinalInstanceField(type, fieldName);
     }
 
     public void checkType(Class expectedClass, Object ref, String fieldName) {

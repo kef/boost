@@ -12,7 +12,7 @@ public final class DefaultFieldTestChecker implements FieldTestChecker {
     // FIXME: SC042 Remove duplication and tidy.
     // FIXME: SC042 Add the modifier checks to FieldTestUtil.
     // FIXME: SC042 Rename.
-    public void checkPrivateFinalField(Class type, String fieldName) {
+    public void checkPrivateFinalInstanceField(Class type, String fieldName) {
         Field field = fielderUtil.getDeclared(type, fieldName);
         int modifiers = field.getModifiers();
         if (!Modifier.isFinal(modifiers)) Assert.fail("Field '" + fieldName + "' should be declared final.");

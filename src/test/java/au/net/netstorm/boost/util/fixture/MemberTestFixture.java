@@ -79,7 +79,7 @@ final class MemberTestFixture {
         Object actualValue = REFLECT_EDGE.invoke(method, instance);
         FieldValueSpec actualFs = new DefaultFieldValueSpec(methodName, actualValue);
         Assert.assertEquals("Method '" + methodName + "' does not return an equal value from one of the constructor parameters", expectedFs, actualFs);
-        fielder.checkPrivateFinalField(instance.getClass(), getFieldName(method));
+        fielder.checkPrivateFinalInstanceField(instance.getClass(), getFieldName(method));
         checkFieldImmutable(expectedValue, actualValue, new DefaultFieldSpec(getFieldName(method), method.getReturnType()));
     }
 
