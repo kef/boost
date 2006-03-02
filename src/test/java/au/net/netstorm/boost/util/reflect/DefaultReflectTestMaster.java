@@ -147,6 +147,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         checker.checkPublic(member);
     }
 
+    public void checkPrivate(Member member) {
+        checker.checkPrivate(member);
+    }
+
     public void checkFinal(Member member) {
         checker.checkFinal(member);
     }
