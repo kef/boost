@@ -4,12 +4,16 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIXME: SC042 Complete this.
+// FIXME: SC042 Complete DefaultReflectTestMaster.
 
 public final class DefaultReflectTestChecker implements ReflectTestChecker {
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final FieldTestChecker fieldChecker = new DefaultFieldTestChecker();
     private final ModifierTestChecker modifierChecker = new DefaultModifierTestChecker();
+
+    public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
+        clsChecker.checkImplementsAndFinal(expectedInterface, cls);
+    }
 
     public void checkImplementsAndFinal(Class targetInterface, Class implementationClass) {
         clsChecker.checkImplementsAndFinal(targetInterface, implementationClass);
@@ -21,11 +25,6 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
 
     public void checkSubclassOf(Class expectedImpl, Object ref) {
         clsChecker.checkSubclassOf(expectedImpl, ref);
-    }
-
-    // FIXME: SC042 Move this up in order.
-    public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
-        clsChecker.checkImplementsAndFinal(expectedInterface, cls);
     }
 
     public void checkSynchronized(Class cls) {
