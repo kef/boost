@@ -22,6 +22,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         return cls.isSubclassOf(superClass, subClass);
     }
 
+    public Object newInstance(Class type) {
+        return cls.newInstance(type);
+    }
+
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         return method.invoke(invokee, methodName, parameters);
     }

@@ -6,4 +6,6 @@ public interface ClassTestUtil {
     boolean isImplementationOf(Interface targetInterface, Class cls);
 
     boolean isSubclassOf(Class superClass, Class subClass);
+
+    Object newInstance(Class type);
 }
