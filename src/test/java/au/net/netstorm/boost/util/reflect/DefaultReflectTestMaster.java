@@ -114,7 +114,7 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public void checkImplementsAndFinal(Class targetInterface, Class implementationClass) {
-        throw new NotImplementedException();
+        checker.checkImplementsAndFinal(targetInterface, implementationClass);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
