@@ -16,11 +16,7 @@ public class DefaultClassMasterAtomicTest extends TestCase {
     }
 
     public void testInterface() {
-        Class type = Remote.class;
-        String expected = "Remote";
-        checkInterface(type, expected);
-//        checkEquals("Remote", Remote.class);
-//        checkEquals("Remote", Remote.class);
+        checkInterface(Remote.class, "Remote");
     }
 
     // FIXME: SC042 Dupe.
