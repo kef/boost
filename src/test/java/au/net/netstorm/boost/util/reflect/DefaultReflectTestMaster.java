@@ -118,23 +118,23 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
-        throw new NotImplementedException();
+        checker.checkSubclassOf(superClass, subClass);
     }
 
     public void checkSubclassOf(Class expectedImpl, Object ref) {
-        throw new NotImplementedException();
+        checker.checkSubclassOf(expectedImpl, ref);
     }
 
     public void checkSynchronized(Class cls) {
-        throw new NotImplementedException();
+        checker.checkSynchronized(cls);
     }
 
     public void checkPrivateFinalField(Class type, String fieldName) {
-        throw new NotImplementedException();
+        checker.checkPrivateFinalField(type, fieldName);
     }
 
     public void checkType(Class expectedClass, Object ref, String fieldName) {
-        throw new NotImplementedException();
+        checker.checkType(expectedClass, ref, fieldName);
     }
 
     public void checkFinal(Method method) {
