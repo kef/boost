@@ -86,6 +86,10 @@ public final class DefaultReflectTestUtil implements ReflectTestUtil {
         return modifierUtil.isStatic(member);
     }
 
+    public boolean isInstance(Member member) {
+        return modifierUtil.isInstance(member);
+    }
+
     public boolean isSynchronized(Member member) {
         return modifierUtil.isSynchronized(member);
     }

@@ -11,7 +11,7 @@ public interface ModifierTestUtil {
 
     boolean isStatic(Member member);
 
-//    boolean isInstance(Member member);
+    boolean isInstance(Member member);
 
     boolean isFinal(Member member);
 

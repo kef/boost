@@ -83,6 +83,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         return util.isStatic(member);
     }
 
+    public boolean isInstance(Member member) {
+        return util.isInstance(member);
+    }
+
     public boolean isSynchronized(Member member) {
         return util.isSynchronized(member);
     }
