@@ -16,16 +16,16 @@ public class DefaultClassMasterAtomicTest extends TestCase {
     }
 
     public void testInterface() {
-        checkInterface(Remote.class, "Remote");
+        checkInterface("Remote", Remote.class);
+        checkInterface("CharSequence", CharSequence.class);
     }
 
-    // FIXME: SC042 Dupe.
     private void checkClass(String expected, Class cls) {
         String shortName = master.getShortName(cls);
         assertEquals(expected, shortName);
     }
 
-    private void checkInterface(Class type, String expected) {
+    private void checkInterface(String expected, Class type) {
         Interface iface = new Interface(type);
         String shortName = master.getShortName(iface);
         assertEquals(expected, shortName);

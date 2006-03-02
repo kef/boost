@@ -9,8 +9,8 @@ public class DefaultClassMaster implements ClassMaster {
         return clsName.substring(lastPeriod + 1);
     }
 
-    // FIXME: SC042 Triangulate.
     public String getShortName(Interface iface) {
-        return "Remote";
+        Class type = iface.getType();
+        return getShortName(type);
     }
 }
