@@ -9,6 +9,8 @@ public interface ModifierTestChecker {
 
     void checkSynchronized(Member member);
 
+    void checkStatic(Member member);
+
     // FIXME: SC042 Add checkStatic(member)
     // FIXME: SC042 Add checkPublic(member)
 

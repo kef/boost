@@ -11,6 +11,7 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private static final String NOT_FINAL = "is not final";
     private static final String NOT_SYNCHRONIZED = "is not synchronized";
     private static final String NOT_CONCRETE = "is not concrete";
+    private static final String NOT_STATIC = "is not static";
 
     public void checkFinal(Member member) {
         boolean isFinal = modifier.isFinal(member);
@@ -20,6 +21,11 @@ public final class DefaultModifierTestChecker implements ModifierTestChecker {
     public void checkSynchronized(Member member) {
         boolean isSynchronized = modifier.isSynchronized(member);
         check(member, NOT_SYNCHRONIZED, isSynchronized);
+    }
+
+    public void checkStatic(Member member) {
+        boolean isStatic = modifier.isStatic(member);
+        check(member, NOT_STATIC, isStatic);
     }
 
     public void checkPublic(Class cls) {
