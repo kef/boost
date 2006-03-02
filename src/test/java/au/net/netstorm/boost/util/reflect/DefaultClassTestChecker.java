@@ -74,7 +74,6 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         return false;
     }
 
-    // FIXME: SC042 Moving getShortName into Class... will help here.  Requires TDing ClassMaster.
     private String getShortName(Interface iface) {
         return clsMaster.getShortName(iface);
     }
