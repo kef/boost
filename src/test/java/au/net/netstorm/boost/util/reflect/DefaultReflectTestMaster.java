@@ -23,7 +23,7 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
-        return invoke(invokee, methodName, parameters);
+        return util.invoke(invokee, methodName, parameters);
     }
 
     public Class getThrowsType(Method method) {
@@ -51,11 +51,11 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
-        setStatic(cls, fieldName, value);
+        util.setStatic(cls, fieldName, value);
     }
 
     public void setStatic(Class cls, FieldValueSpec fieldValue) {
-        setStatic(cls, fieldValue);
+        util.setStatic(cls, fieldValue);
     }
 
     public Class getRealExceptionClass(Throwable t) {
@@ -99,7 +99,7 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public boolean isInterface(Class cls) {
-        return isInterface(cls);
+        return util.isInterface(cls);
     }
 
     public boolean isSynchronized(Class cls) {
