@@ -3,11 +3,8 @@ package au.net.netstorm.boost.util.reflect;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.util.exception.NotImplementedException;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
-
-// FIXME: SC042 Remove all NIE.  Delegate.
 
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
     private final ReflectTestUtil util = new DefaultReflectTestUtil();
@@ -138,22 +135,22 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public void checkFinal(Method method) {
-        throw new NotImplementedException();
+        checker.checkFinal(method);
     }
 
     public void checkSynchronized(Method method) {
-        throw new NotImplementedException();
+        checker.checkSynchronized(method);
     }
 
     public void checkPublic(Class cls) {
-        throw new NotImplementedException();
+        checker.checkPublic(cls);
     }
 
     public void checkFinal(Class cls) {
-        throw new NotImplementedException();
+        checker.checkFinal(cls);
     }
 
     public void checkConcrete(Class cls) {
-        throw new NotImplementedException();
+        checker.checkConcrete(cls);
     }
 }
