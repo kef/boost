@@ -8,6 +8,8 @@ import junit.framework.Assert;
 public final class DefaultFieldTestChecker implements FieldTestChecker {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
+    // FIXME: SC042 Remove duplication and tidy.
+    // FIXME: SC042 Add the modifier checks to FieldTestUtil.
     public void checkPrivateFinalField(Class type, String fieldName) {
         Field field = fielder.getDeclared(type, fieldName);
         int modifiers = field.getModifiers();
