@@ -4,8 +4,6 @@ import java.lang.reflect.Member;
 
 import junit.framework.Assert;
 
-// FIXME: SC042 Remove all methods not in the interface.
-
 public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
