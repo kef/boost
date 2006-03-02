@@ -7,7 +7,6 @@ import junit.framework.Assert;
 public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
-    // FIXME: SC042  Might consider removing "is not"
     private static final String NOT_PUBLIC = "is not public";
     private static final String NOT_PRIVATE = "is not private";
     private static final String NOT_FINAL = "is not final";

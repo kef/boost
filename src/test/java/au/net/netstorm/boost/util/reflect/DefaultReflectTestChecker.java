@@ -4,6 +4,8 @@ import java.lang.reflect.Member;
 
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC521 This should totally go.  Replaced by a single line (maybe 5).
+
 public final class DefaultReflectTestChecker implements ReflectTestChecker {
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final FieldTestChecker fieldChecker = new DefaultFieldTestChecker();

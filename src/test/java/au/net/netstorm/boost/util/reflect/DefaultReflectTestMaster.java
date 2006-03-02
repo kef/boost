@@ -7,6 +7,8 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC521 This should totally go.  Replaced by a single line (maybe 5).
+
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
     private final ReflectTestUtil util = new DefaultReflectTestUtil();
     private final ReflectTestChecker checker = new DefaultReflectTestChecker();
