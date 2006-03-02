@@ -12,15 +12,10 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isPublic(modifiers);
     }
 
-    public boolean isPublic(Method method) {
-        int modifiers = getModifiers(method);
-        return Modifier.isPublic(modifiers);
-    }
-
-    public boolean isPublicInstance(Method method) {
-        boolean isStatic = isStatic(method);
+    public boolean isPublicInstance(Member member) {
+        boolean isStatic = isStatic(member);
         if (isStatic) return false;
-        return isPublic(method);
+        return isPublic(member);
     }
 
     public boolean isFinal(Method method) {
@@ -28,8 +23,8 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return isFinal(modifiers);
     }
 
-    public boolean isStatic(Method method) {
-        int modifiers = getModifiers(method);
+    public boolean isStatic(Member member) {
+        int modifiers = getModifiers(member);
         return isStatic(modifiers);
     }
 

@@ -69,20 +69,16 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         return util.isPublic(member);
     }
 
-    public boolean isPublic(Method method) {
-        return util.isPublic(method);
-    }
-
-    public boolean isPublicInstance(Method method) {
-        return util.isPublicInstance(method);
+    public boolean isPublicInstance(Member member) {
+        return util.isPublicInstance(member);
     }
 
     public boolean isFinal(Method method) {
         return util.isFinal(method);
     }
 
-    public boolean isStatic(Method method) {
-        return util.isStatic(method);
+    public boolean isStatic(Member member) {
+        return util.isStatic(member);
     }
 
     public boolean isSynchronized(Method method) {

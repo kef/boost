@@ -72,20 +72,16 @@ public final class DefaultReflectTestUtil implements ReflectTestUtil {
         return modifierUtil.isPublic(member);
     }
 
-    public boolean isPublic(Method method) {
-        return modifierUtil.isPublic(method);
-    }
-
-    public boolean isPublicInstance(Method method) {
-        return modifierUtil.isPublicInstance(method);
+    public boolean isPublicInstance(Member member) {
+        return modifierUtil.isPublicInstance(member);
     }
 
     public boolean isFinal(Method method) {
         return modifierUtil.isFinal(method);
     }
 
-    public boolean isStatic(Method method) {
-        return modifierUtil.isStatic(method);
+    public boolean isStatic(Member member) {
+        return modifierUtil.isStatic(member);
     }
 
     public boolean isSynchronized(Method method) {
