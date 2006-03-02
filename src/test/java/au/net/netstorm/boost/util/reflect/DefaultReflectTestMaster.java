@@ -10,36 +10,39 @@ import au.net.netstorm.boost.util.type.Interface;
 // FIXME: SC042 Remove all NIE.  Delegate.
 
 public final class DefaultReflectTestMaster implements ReflectTestMaster {
+    private final ReflectTestUtil util = new DefaultReflectTestUtil();
+    private final ReflectTestChecker checker = new DefaultReflectTestChecker();
+
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
-        throw new NotImplementedException();
+        return util.isImplementationOf(targetInterface, cls);
     }
 
     public boolean isSubclassOf(Class superClass, Class subClass) {
-        throw new NotImplementedException();
+        return util.isSubclassOf(superClass, subClass);
     }
 
     public Object newInstance(Class type) {
-        throw new NotImplementedException();
+        return util.newInstance(type);
     }
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
-        throw new NotImplementedException();
+        return invoke(invokee, methodName, parameters);
     }
 
     public Class getThrowsType(Method method) {
-        throw new NotImplementedException();
+        return util.getThrowsType(method);
     }
 
     public Field getDeclared(Class cls, String fieldName) {
-        throw new NotImplementedException();
+        return util.getDeclared(cls, fieldName);
     }
 
     public Object getStatic(Class cls, String fieldName) {
-        throw new NotImplementedException();
+        return util.getStatic(cls, fieldName);
     }
 
     public Object getInstance(Object ref, String fieldName) {
-        throw new NotImplementedException();
+        return getInstance(ref, fieldName);
     }
 
     public void setInstance(Object ref, String fieldName, Object value) {
