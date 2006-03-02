@@ -11,9 +11,7 @@ public final class DefaultFieldTestChecker implements FieldTestChecker {
     public void checkPrivateFinalInstanceField(Class type, String fieldName) {
         // FIXME: SC042 Move to ModifierTestChecker.
         Field declared = fielderUtil.getDeclared(type, fieldName);
-        modifiers.checkPrivate(declared);
-        modifiers.checkFinal(declared);
-        modifiers.checkInstance(declared);
+        modifiers.checkPrivateFinalInstance(declared);
     }
 
     // FIXME: SC042 Is this ok?
