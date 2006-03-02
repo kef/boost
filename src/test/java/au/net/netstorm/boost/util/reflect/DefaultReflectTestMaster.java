@@ -66,7 +66,7 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public boolean isPublic(Method method) {
-        util.isPublic(method);
+        return util.isPublic(method);
     }
 
     public boolean isPublicInstance(Method method) {
