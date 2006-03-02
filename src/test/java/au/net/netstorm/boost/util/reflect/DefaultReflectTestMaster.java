@@ -42,75 +42,75 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
     }
 
     public Object getInstance(Object ref, String fieldName) {
-        return getInstance(ref, fieldName);
+        return util.getInstance(ref, fieldName);
     }
 
     public void setInstance(Object ref, String fieldName, Object value) {
-        throw new NotImplementedException();
+        util.setInstance(ref, fieldName, value);
     }
 
     public void setInstance(Object ref, FieldValueSpec fieldValue) {
-        throw new NotImplementedException();
+        util.setInstance(ref, fieldValue);
     }
 
     public void setStatic(Class cls, String fieldName, Object value) {
-        throw new NotImplementedException();
+        setStatic(cls, fieldName, value);
     }
 
     public void setStatic(Class cls, FieldValueSpec fieldValue) {
-        throw new NotImplementedException();
+        setStatic(cls, fieldValue);
     }
 
     public Class getRealExceptionClass(Throwable t) {
-        throw new NotImplementedException();
+        return util.getRealExceptionClass(t);
     }
 
     public boolean isPublic(Method method) {
-        throw new NotImplementedException();
+        util.isPublic(method);
     }
 
     public boolean isPublicInstance(Method method) {
-        throw new NotImplementedException();
+        return util.isPublicInstance(method);
     }
 
     public boolean isFinal(Method method) {
-        throw new NotImplementedException();
+        return util.isFinal(method);
     }
 
     public boolean isStatic(Method method) {
-        throw new NotImplementedException();
+        return util.isStatic(method);
     }
 
     public boolean isSynchronized(Method method) {
-        throw new NotImplementedException();
+        return util.isSynchronized(method);
     }
 
     public boolean isPublic(Class cls) {
-        throw new NotImplementedException();
+        return util.isPublic(cls);
     }
 
     public boolean isFinal(Class cls) {
-        throw new NotImplementedException();
+        return util.isFinal(cls);
     }
 
     public boolean isAbstract(Class cls) {
-        throw new NotImplementedException();
+        return util.isAbstract(cls);
     }
 
     public boolean isConcrete(Class cls) {
-        throw new NotImplementedException();
+        return util.isConcrete(cls);
     }
 
     public boolean isInterface(Class cls) {
-        throw new NotImplementedException();
+        return isInterface(cls);
     }
 
     public boolean isSynchronized(Class cls) {
-        throw new NotImplementedException();
+        return util.isSynchronized(cls);
     }
 
     public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
-        throw new NotImplementedException();
+        checker.checkImplementsAndFinal(expectedInterface, cls);
     }
 
     public void checkImplementsAndFinal(Class targetInterface, Class implementationClass) {
