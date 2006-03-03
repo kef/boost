@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 public final class DefaultComposerAtomicTest extends TestCase {
     private final MockTestInterfaceOne mock1 = new MockTestInterfaceOne();
+    private final Composer composer = new DefaultComposer();
     // FIXME: SC521 Complete.
 
     // FIXME: SC521 Rename
