@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.compose;
 
+import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 public final class DefaultComposerAtomicTest extends TestCase {
@@ -7,9 +8,13 @@ public final class DefaultComposerAtomicTest extends TestCase {
     private final Composer composer = new DefaultComposer();
     // FIXME: SC521 Complete.
 
-    // FIXME: SC521 Rename
+    // FIXME: SC521 Rename.
+    // FIXME: SC521 Check implementations cannot change under our feet.  Maybe.  Yes we will need to.
     public void testSingle() {
         mock1.init();
+        Interface iface = new Interface(TestInterfaceOne.class);
+        Class[] implementations = {};
+        composer.compose(iface, implementations);
     }
 
     // FIXME: SC521 Complete.
