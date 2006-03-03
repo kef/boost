@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.splitter;
+package au.net.netstorm.boost.split;
 
 interface TestInterfaceTwo {
     void methodOne(String msg);

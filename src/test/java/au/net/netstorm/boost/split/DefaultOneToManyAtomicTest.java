@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.splitter;
+package au.net.netstorm.boost.split;
 
 import java.util.ArrayList;
 import java.util.List;

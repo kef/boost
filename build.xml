@@ -87,6 +87,8 @@
         <exclude name="**/DefaultReflectEdge.java"/>
         <exclude name="**/DefaultEdgeInputStream.java"/>
         <exclude name="**/DefaultEdgeOutputStream.java"/>
+        <exclude name="**/MockListener.java"/>
+        <!-- FIXME: SC502 This was put in here due to duplication detected between test code and production code ... which is allowed? -->
     </fileset>
 
     <fileset id="simian.boo.code" dir="${src.dir}">
