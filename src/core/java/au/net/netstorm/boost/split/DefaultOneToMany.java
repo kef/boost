@@ -29,6 +29,7 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
         Class cls = type.getClass();
         ClassLoader loader = cls.getClassLoader();
         Class[] types = {type.getType()};
+        // FIXME: SC521 BREADCRUMB.
         return Proxy.newProxyInstance(loader, types, this); // FIXME: SC521 This should really be accessed via a ProxyFactory edge.  This entire method.
     }
 

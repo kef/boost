@@ -13,9 +13,12 @@ public final class DefaultComposerAtomicTest extends TestCase {
     public void testSingle() {
         mock1.init();
         Interface iface = new Interface(TestInterfaceOne.class);
-        Class[] implementations = {};
+        Object[] implementations = {mock1};
         Object ref = composer.compose(iface, implementations);
         TestInterfaceOne composite = (TestInterfaceOne) ref;
+        // FIXME: SC521 BREADCRUMB reinstate.
+//        assertNotNull(composite);
+//        composite.call();
     }
 
     // FIXME: SC521 Complete.
