@@ -29,7 +29,9 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
         Class cls = type.getClass();
         ClassLoader loader = cls.getClassLoader();
         Class[] types = {type.getType()};
-        // FIXME: SC521 BREADCRUMB.
+        // FIXME: SC521 This should delegate to the EdgeProxyFactory.
+        // FIXME: SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
+        // FIXME: SC521 BREADCRUMB Spin this out into a proxy factory.
         return Proxy.newProxyInstance(loader, types, this); // FIXME: SC521 This should really be accessed via a ProxyFactory edge.  This entire method.
     }
 

@@ -3,9 +3,9 @@ package au.net.netstorm.boost.util.fixture;
 import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.reflect.ClassTestChecker;
+import au.net.netstorm.boost.reflect.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.ClassTestChecker;
-import au.net.netstorm.boost.util.reflect.DefaultClassTestChecker;
 import junit.framework.Assert;
 
 // FIXME: SC506 Does it make sense to have this fixtures area?

@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.util.fixture;
 
-
 import java.lang.reflect.Constructor;
 
+import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
 
 // FIXME: SC502 Make instance.
+
 final class DefaultInstanceTestUtil implements InstanceTestUtil {
     private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();

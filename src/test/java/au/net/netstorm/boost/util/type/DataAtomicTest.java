@@ -2,8 +2,8 @@ package au.net.netstorm.boost.util.type;
 
 import java.io.Serializable;
 
-import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassTestUtil;
+import au.net.netstorm.boost.reflect.ClassTestUtil;
+import au.net.netstorm.boost.reflect.DefaultClassTestUtil;
 import junit.framework.TestCase;
 
 public class DataAtomicTest extends TestCase {

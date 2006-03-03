@@ -2,15 +2,15 @@ package au.net.netstorm.boost.primordial;
 
 import java.lang.reflect.Method;
 
+import au.net.netstorm.boost.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.reflect.DefaultModifierTestChecker;
+import au.net.netstorm.boost.reflect.FieldTestUtil;
+import au.net.netstorm.boost.reflect.ModifierTestChecker;
+import au.net.netstorm.boost.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
 import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultModifierTestChecker;
-import au.net.netstorm.boost.util.reflect.FieldTestUtil;
-import au.net.netstorm.boost.util.reflect.ModifierTestChecker;
-import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;

@@ -2,12 +2,12 @@ package au.net.netstorm.boost.util.tostring;
 
 import java.lang.reflect.Array;
 
+import au.net.netstorm.boost.reflect.ClassMaster;
+import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.indent.DefaultIndenterMaster;
-import au.net.netstorm.boost.util.separator.Separator;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.ClassMaster;
-import au.net.netstorm.boost.util.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.util.separator.Separator;
 
 public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
@@ -57,7 +57,8 @@ public class IndentingToStringMaster implements ToStringMaster {
     private String arrayToString(Object array) {
         String result = "";
         for (int i = 0; i < Array.getLength(array); i++) {
-            result += Array.get(array, i).toString() + COMMA;
+            result += Array.get(array, i)
+                    .toString() + COMMA;
         }
         return removeLastChar(result);
     }
@@ -67,7 +68,8 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private boolean isArray(Object value) {
-        return value.getClass().isArray();
+        return value.getClass()
+                .isArray();
     }
 
     private String removeLastChar(String s) {

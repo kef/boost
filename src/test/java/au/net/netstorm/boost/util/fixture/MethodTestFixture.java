@@ -2,9 +2,9 @@ package au.net.netstorm.boost.util.fixture;
 
 import java.lang.reflect.Method;
 
+import au.net.netstorm.boost.reflect.DefaultModifierTestUtil;
+import au.net.netstorm.boost.reflect.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.reflect.DefaultModifierTestUtil;
-import au.net.netstorm.boost.util.reflect.ModifierTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC517 ? public.

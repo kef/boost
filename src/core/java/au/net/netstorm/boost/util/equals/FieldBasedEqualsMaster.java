@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.util.equals;
 
-import au.net.netstorm.boost.util.reflect.DefaultReflectMaster;
-
+import au.net.netstorm.boost.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.ReflectMaster;
 
 public final class FieldBasedEqualsMaster implements EqualsMaster {
     private final ReflectMaster master = new DefaultReflectMaster();

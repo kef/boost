@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.start;
 
+import au.net.netstorm.boost.reflect.ClassTestChecker;
+import au.net.netstorm.boost.reflect.ClassTestUtil;
+import au.net.netstorm.boost.reflect.DefaultClassTestChecker;
+import au.net.netstorm.boost.reflect.DefaultClassTestUtil;
+import au.net.netstorm.boost.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.ClassTestChecker;
-import au.net.netstorm.boost.util.reflect.ClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultClassTestChecker;
-import au.net.netstorm.boost.util.reflect.DefaultClassTestUtil;
-import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.util.reflect.FieldTestUtil;
 import junit.framework.TestCase;
 
 // FIXME: SC502 Ensure test for private constructor.

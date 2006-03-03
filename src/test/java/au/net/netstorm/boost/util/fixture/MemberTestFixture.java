@@ -2,15 +2,15 @@ package au.net.netstorm.boost.util.fixture;
 
 import java.lang.reflect.Method;
 
+import au.net.netstorm.boost.reflect.DefaultFieldTestChecker;
+import au.net.netstorm.boost.reflect.DefaultFieldTestUtil;
+import au.net.netstorm.boost.reflect.FieldTestChecker;
+import au.net.netstorm.boost.reflect.FieldTestUtil;
+import au.net.netstorm.boost.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.reflect.DefaultFieldTestChecker;
-import au.net.netstorm.boost.util.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.util.reflect.FieldTestChecker;
-import au.net.netstorm.boost.util.reflect.FieldTestUtil;
-import au.net.netstorm.boost.util.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 

@@ -2,8 +2,8 @@ package au.net.netstorm.boost.util.fixture;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.util.reflect.DefaultExceptionTestUtil;
-import au.net.netstorm.boost.util.reflect.ExceptionTestUtil;
+import au.net.netstorm.boost.reflect.DefaultExceptionTestUtil;
+import au.net.netstorm.boost.reflect.ExceptionTestUtil;
 import junit.framework.Assert;
 
 // FIXME: SC517 ? Make public or private.
