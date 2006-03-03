@@ -15,7 +15,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
         Interface iface = new Interface(TestInterfaceOne.class);
         Class[] implementations = {};
         Object ref = composer.compose(iface, implementations);
-        Object composite = ref;
+        TestInterfaceOne composite = (TestInterfaceOne) ref;
     }
 
     // FIXME: SC521 Complete.
