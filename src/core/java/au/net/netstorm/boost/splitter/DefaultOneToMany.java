@@ -1,49 +1,43 @@
-package au.net.netstorm.boost.listener;
+package au.net.netstorm.boost.splitter;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultOneToMany implements OneToMany, InvocationHandler
-{
+public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();
 
-    public DefaultOneToMany(Interface type)
-    {
+    public DefaultOneToMany(Interface type) {
         noNulls(type);
         this.type = type;
     }
 
-    public synchronized void add(Object oneOfMany)
-    {
+    public synchronized void add(Object oneOfMany) {
         noNulls(oneOfMany);
         many.add(oneOfMany);
     }
 
-    public synchronized Object getOne()
-    {
-        ClassLoader loader = type.getClass().getClassLoader();
+    public synchronized Object getOne() {
+        ClassLoader loader = type.getClass()
+                .getClassLoader();
         Class[] types = {type.getType()};
         return Proxy.newProxyInstance(loader, types, this);
     }
 
-    public synchronized Object invoke(Object proxyRef, Method method, Object[] parameters)
-            throws Throwable
-    {
+    public synchronized Object invoke(Object proxyRef, Method method, Object[] parameters) throws Throwable {
         Object[] listeners = many.toArray(new Object[]{});
         invoke(listeners, method, parameters);
         return null;
     }
 
     private void invoke(Object[] listeners, Method method, Object[] parameters) throws Throwable {
-        for (int i = 0; i < listeners.length; i++)
-        {
+        for (int i = 0; i < listeners.length; i++) {
             invoke(method, listeners, i, parameters);
         }
     }

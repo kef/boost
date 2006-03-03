@@ -1,7 +1,6 @@
-package au.net.netstorm.boost.listener;
+package au.net.netstorm.boost.splitter;
 
-interface TestInterfaceTwo
-{
+interface TestInterfaceTwo {
     void methodOne(String msg);
 
     void methodTwo(Integer integer, int primitive);

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.listener;
+package au.net.netstorm.boost.splitter;
 
 public final class MockTestInterfaceThree implements TestInterfaceThree {
     private CloneNotSupportedException ex;
