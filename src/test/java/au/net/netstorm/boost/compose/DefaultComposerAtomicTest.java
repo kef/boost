@@ -6,6 +6,9 @@ public final class DefaultComposerAtomicTest extends TestCase {
     // FIXME: SC521 Complete.
 
     // FIXME: SC521 Rename
-    public void testXxx() {
+    public void testSingle() {
     }
+
+    // FIXME: SC521 Complete.
+//    public void testDouble();
 }
