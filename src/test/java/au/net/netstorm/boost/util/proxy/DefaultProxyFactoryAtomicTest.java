@@ -11,10 +11,17 @@ import junit.framework.TestCase;
 public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private MockEdgeProxyFactory mockEdgeProxyFactory = new MockEdgeProxyFactory();
     private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
+    private static final Interface TYPE_1 = new Interface(CharSequence.class);
 
     public void testFactory() {
-        Interface type = new Interface(CharSequence.class);
+        mockEdgeProxyFactory.init();
+        Interface type = TYPE_1;
         InvocationHandler handler = new MockInvocationHandler();
         Object proxy = factory.newProxy(type, handler);
+        ClassLoader expectedClassLoader = type.getClass()
+                .getClassLoader();
+        Interface[] expectedTypes = {TYPE_1};
+        InvocationHandler expectedHandler = handler;
+        mockEdgeProxyFactory.verify(expectedClassLoader, expectedTypes, expectedHandler);
     }
 }

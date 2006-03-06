@@ -4,10 +4,41 @@ import java.lang.reflect.InvocationHandler;
 
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
+import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 final class MockEdgeProxyFactory extends Assert implements EdgeProxyFactory {
-    public Object getProxy(ClassLoader loader, Class[] types, InvocationHandler invocationHandler) {
+    private ClassLoader loader;
+    private Class[] types;
+    private InvocationHandler handler;
+
+    public Object getProxy(ClassLoader loader, Class[] types, InvocationHandler handler) {
+        this.loader = loader;
+        this.types = types;
+        this.handler = handler;
         throw new NotImplementedException();
+    }
+
+    public void init() {
+        loader = null;
+        types = null;
+        handler = null;
+    }
+
+    public void verify(ClassLoader loader, Interface[] ifaces, InvocationHandler handler) {
+        Class[] types = toClasses(ifaces);
+        // FIXME: SC521 Reinstate.
+//        assertSame(loader, this.loader);
+//        assertEquals(types, this.types);
+//        assertSame(handler, this.handler);
+    }
+
+    private Class[] toClasses(Interface[] types) {
+        int length = types.length;
+        Class[] result = new Class[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = types[i].getType();
+        }
+        return result;
     }
 }
