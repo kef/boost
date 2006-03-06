@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.compose;
 
-import java.lang.reflect.InvocationHandler;
-
 import au.net.netstorm.boost.reflect.ClassTestUtil;
 import au.net.netstorm.boost.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.reflect.DefaultEdgeProxyFactory;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -19,8 +19,9 @@ import junit.framework.TestCase;
  */
 public final class DefaultComposerAtomicTest extends TestCase {
     private static final Interface INTERFACE_A_B = new Interface(TestInterfaceAB.class);
+    private static final Interface INTERFACE_A = new Interface(TestInterfaceA.class);
     private final ClassTestUtil classer = new DefaultClassTestUtil();
-    private final EdgeProxyFactory proxyFactory = new DefaultEdgeProxyFactory();
+    private final ProxyFactory proxyFactory = buildFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
     private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
     private final Composer composer = new DefaultComposer();
@@ -29,24 +30,23 @@ public final class DefaultComposerAtomicTest extends TestCase {
     // FIXME: SC521 Rename.
     // FIXME: SC521 Check implementations cannot change under our feet.  Maybe.  Yes we will need to.
     public void testDouble() {
-        Object delegateA = createMockHandler(mockHandlerA);
-        Object delegateB = createMockHandler(mockHandlerB);
+        Object delegateA = createMockProxy(mockHandlerA);
+        Object delegateB = createMockProxy(mockHandlerB);
         Object composed = composer.compose(INTERFACE_A_B, delegateA, delegateB);
-        // FIXME: SC521 check proxy.
+        // FIXME: SC521 check delegated to proxy factory.
         // FIXME: SC521 check can be assigned.
         // FIXME: SC521 BREADCRUMB.
     }
 
-    private Object createMockHandler(MockInvocationHandler mockHandler) {
+    private Object createMockProxy(MockInvocationHandler mockHandler) {
         mockHandler.init();
-        return getProxy(TestInterfaceA.class, mockHandler);
+        return proxyFactory.newProxy(INTERFACE_A, mockHandler);
     }
 
-    private Object getProxy(Class iface, InvocationHandler handler) {
-        Class cls = getClass();
-        ClassLoader loader = cls.getClassLoader();
-        Class[] types = {iface};
-        return proxyFactory.getProxy(loader, types, handler);
+    // FIXME: SC521 Dupe.  See DefaultOneToMany.
+    private ProxyFactory buildFactory() {
+        EdgeProxyFactory edge = new DefaultEdgeProxyFactory();
+        return new DefaultProxyFactory(edge);
     }
 
     // FIXME: SC521 Complete.
