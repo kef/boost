@@ -21,7 +21,8 @@ public final class DefaultComposerAtomicTest extends TestCase {
     private final ProxyFactory proxyFactory = buildFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
     private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
-    private final Composer composer = new DefaultComposer();
+    private final MockProxyFactory mockProxyFactory = new MockProxyFactory();
+    private final Composer composer = new DefaultComposer(mockProxyFactory);
 
     // FIXME: SC521 Check interface implements 2 subinterfaces only.
     // FIXME: SC521 Rename.
