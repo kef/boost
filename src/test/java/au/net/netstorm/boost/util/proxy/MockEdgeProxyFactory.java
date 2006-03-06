@@ -2,11 +2,13 @@ package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
 
+import au.net.netstorm.boost.primordial.AssertTestUtil;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 final class MockEdgeProxyFactory extends Assert implements EdgeProxyFactory {
+    private final AssertTestUtil asserter = new AssertTestUtil();
     private ClassLoader loader;
     private Class[] types;
     private InvocationHandler handler;
@@ -28,8 +30,8 @@ final class MockEdgeProxyFactory extends Assert implements EdgeProxyFactory {
 
     public void verify(ClassLoader loader, Interface[] ifaces, InvocationHandler handler) {
         Class[] types = toClasses(ifaces);
-        // FIXME: SC521 Reinstate.
         assertSame(loader, this.loader);
+        // FIXME: SC521 Reinstate.
 //        assertEquals(types, this.types);
 //        assertSame(handler, this.handler);
     }

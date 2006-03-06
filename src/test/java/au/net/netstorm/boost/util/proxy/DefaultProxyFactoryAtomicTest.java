@@ -13,6 +13,7 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
     private static final Interface TYPE_1 = new Interface(CharSequence.class);
 
+    // FIXME: SC521 Triangulate on interface.
     public void testFactory() {
         Object result = new Object();
         mockEdgeProxyFactory.init(result);
@@ -20,7 +21,6 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
         InvocationHandler handler = new MockInvocationHandler();
         Object proxy = factory.newProxy(type, handler);
         // FIXME: SC521 Check return value.
-        // FIXME: SC521 Tidy.
         Class cls = factory.getClass();
         ClassLoader classLoader = cls.getClassLoader();
         Interface[] types = {TYPE_1};
