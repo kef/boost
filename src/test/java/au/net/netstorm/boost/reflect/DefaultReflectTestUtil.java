@@ -7,8 +7,6 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIXME: SC521 This package should probably go up to top level.
-
 public final class DefaultReflectTestUtil implements ReflectTestUtil {
     private final ClassTestUtil clsUtil = new DefaultClassTestUtil();
     private final MethodTestUtil methodUtil = new DefaultMethodTestUtil();
