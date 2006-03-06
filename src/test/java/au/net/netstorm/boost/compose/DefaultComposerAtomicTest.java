@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.reflect.ProxyFactory;
+import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 // FIXME: SC521 What to do for equals, hashCode, toString...
@@ -26,6 +27,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
     public void testDouble() {
         Object delegateA = createMockHandler(mockHandlerA);
         Object delegateB = createMockHandler(mockHandlerB);
+        composer.compose(new Interface(TestInterfaceAB.class), delegateA, delegateB);
     }
 
     private Object createMockHandler(MockInvocationHandler mockHandler) {

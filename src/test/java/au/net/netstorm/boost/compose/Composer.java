@@ -3,5 +3,5 @@ package au.net.netstorm.boost.compose;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface Composer {
-    Object compose(Interface iface, Object[] implementations);
+    Object compose(Interface iface, Object delegateA, Object delegateB);
 }
