@@ -6,8 +6,6 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 
-// FIXME: SC506 ? INSTANCE as way to access this sucker.
-
 public final class DefaultReflectMaster implements ReflectMaster {
     private final ReflectObjectMaster objectMaster = new DefaultReflectObjectMaster();
     private final ReflectMethodMaster methodMaster = new DefaultReflectMethodMaster();
