@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.compose;
 
-import au.net.netstorm.boost.reflect.ClassTestUtil;
-import au.net.netstorm.boost.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.reflect.DefaultEdgeProxyFactory;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
@@ -20,7 +18,6 @@ import junit.framework.TestCase;
 public final class DefaultComposerAtomicTest extends TestCase {
     private static final Interface INTERFACE_A_B = new Interface(TestInterfaceAB.class);
     private static final Interface INTERFACE_A = new Interface(TestInterfaceA.class);
-    private final ClassTestUtil classer = new DefaultClassTestUtil();
     private final ProxyFactory proxyFactory = buildFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
     private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
@@ -48,7 +45,4 @@ public final class DefaultComposerAtomicTest extends TestCase {
         EdgeProxyFactory edge = new DefaultEdgeProxyFactory();
         return new DefaultProxyFactory(edge);
     }
-
-    // FIXME: SC521 Complete.
-//    public void testDouble();
 }
