@@ -14,9 +14,6 @@ import junit.framework.TestCase;
 public final class DefaultComposerAtomicTest extends TestCase {
     private final ProxyFactory proxyFactory = new EdgeProxyFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
-    private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
-    private final MockTestInterfaceA mockA = new MockTestInterfaceA();
-    private final TestInterfaceB mockB = null;
     private final Composer composer = new DefaultComposer();
 
     public void testUnsupported() {
@@ -28,15 +25,6 @@ public final class DefaultComposerAtomicTest extends TestCase {
     public void testDouble() {
         mockHandlerA.init();
         Object ref = getProxy(TestInterfaceA.class, mockHandlerA);
-
-//        mockA.init();
-//        Interface iface = new Interface(TestInterfaceA.class);
-//        Object[] implementations = {mockA, mockB};
-//        Object ref = composer.compose(iface, implementations);
-//        TestInterfaceA composite = (TestInterfaceA) ref;
-//        // FIXME: SC521 BREADCRUMB reinstate.
-////        assertNotNull(composite);
-////        composite.call();
     }
 
     private Object getProxy(Class iface, InvocationHandler handler) {
