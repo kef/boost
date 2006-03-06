@@ -9,7 +9,8 @@ import junit.framework.TestCase;
 // FIXME: SC521 Complete.
 
 public final class DefaultProxyFactoryAtomicTest extends TestCase {
-    private final ProxyFactory factory = new DefaultProxyFactory();
+    private MockEdgeProxyFactory mockEdgeProxyFactory = new MockEdgeProxyFactory();
+    private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
 
     public void testFactory() {
         Interface type = new Interface(CharSequence.class);
