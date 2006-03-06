@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 // Would prefer not to declare this "abstract", but contract with JUnit/TestCase precludes this.
 
 public abstract class PrimordialTestCase extends TestCase {
-    private final AssertTestUtil asserter = new DefaultAssertTestUtil();
+    private final AssertTestChecker asserter = new DefaultAssertTestChecker();
 
     public final void assertEquals(Object[] expected, Object[] fields) {
         asserter.checkEquals(expected, fields);

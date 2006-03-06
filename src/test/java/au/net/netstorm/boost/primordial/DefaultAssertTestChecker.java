@@ -7,7 +7,7 @@ import junit.framework.Assert;
 // Do not extend Assert.  Users of this class may inadvertently pick up Assert's methods.  We don't want this :)
 // FIXME: SC521 This is an AssertTestChecker.
 
-public final class DefaultAssertTestUtil implements AssertTestUtil {
+public final class DefaultAssertTestChecker implements AssertTestChecker {
     public void checkEquals(Object[] expected, Object[] actual) {
         Assert.assertNotNull(actual);
         Assert.assertEquals(expected.length, actual.length);
