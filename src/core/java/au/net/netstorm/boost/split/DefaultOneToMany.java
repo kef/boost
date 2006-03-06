@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.net.netstorm.boost.reflect.DefaultEdgeProxyFactory;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
-import au.net.netstorm.boost.reflect.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC521 BREADCRUMB ... create ProxyFactory based on provided class reference and requested type.
@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();
-    private final ProxyFactory proxyFactory = new EdgeProxyFactory();
+    private final EdgeProxyFactory proxyFactory = new DefaultEdgeProxyFactory();
 
     public DefaultOneToMany(Interface type) {
         noNulls(type);
