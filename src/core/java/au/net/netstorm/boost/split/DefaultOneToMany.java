@@ -3,17 +3,20 @@ package au.net.netstorm.boost.split;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.net.netstorm.boost.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.reflect.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC521 BREADCRUMB ... create ProxyFactory based on provided class reference and requested type.
 // FIXME: SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
 
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();
+    private final ProxyFactory proxyFactory = new EdgeProxyFactory();
 
     public DefaultOneToMany(Interface type) {
         noNulls(type);
@@ -32,7 +35,7 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
         // FIXME: SC521 This should delegate to the EdgeProxyFactory.
         // FIXME: SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
         // FIXME: SC521 BREADCRUMB Spin this out into a proxy factory.
-        return Proxy.newProxyInstance(loader, types, this); // FIXME: SC521 This should really be accessed via a ProxyFactory edge.  This entire method.
+        return proxyFactory.getProxy(loader, types, this); // FIXME: SC521 This should really be accessed via a ProxyFactory edge.  This entire method.
     }
 
     public synchronized Object invoke(Object proxyRef, Method method, Object[] parameters) throws Throwable {

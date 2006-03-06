@@ -7,6 +7,4 @@ public final class EdgeProxyFactory implements ProxyFactory {
     public Object getProxy(ClassLoader loader, Class[] types, InvocationHandler invocationHandler) {
         return Proxy.newProxyInstance(loader, types, invocationHandler);
     }
-
-    ;
 }
