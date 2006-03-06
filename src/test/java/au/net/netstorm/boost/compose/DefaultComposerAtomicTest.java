@@ -3,7 +3,12 @@ package au.net.netstorm.boost.compose;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
+// FIXME: SC521 What to do for equals, hashCode, toString...
+// FIXME: SC521 Move to using MockInvocationHandler.
+
 public final class DefaultComposerAtomicTest extends TestCase {
+    private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
+    private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
     private final MockTestInterfaceA mockA = new MockTestInterfaceA();
     private final TestInterfaceB mockB = null;
     private final Composer composer = new DefaultComposer();
