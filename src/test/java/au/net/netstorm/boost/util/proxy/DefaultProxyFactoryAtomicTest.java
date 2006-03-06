@@ -19,11 +19,11 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
         Interface type = TYPE_1;
         InvocationHandler handler = new MockInvocationHandler();
         Object proxy = factory.newProxy(type, handler);
+        // FIXME: SC521 Check return value.
         // FIXME: SC521 Tidy.
-        ClassLoader expectedClassLoader = type.getClass()
-                .getClassLoader();
-        Interface[] expectedTypes = {TYPE_1};
-        InvocationHandler expectedHandler = handler;
-        mockEdgeProxyFactory.verify(expectedClassLoader, expectedTypes, expectedHandler);
+        Class cls = factory.getClass();
+        ClassLoader classLoader = cls.getClassLoader();
+        Interface[] types = {TYPE_1};
+        mockEdgeProxyFactory.verify(classLoader, types, handler);
     }
 }
