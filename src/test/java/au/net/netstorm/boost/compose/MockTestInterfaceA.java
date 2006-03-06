@@ -2,7 +2,7 @@ package au.net.netstorm.boost.compose;
 
 import junit.framework.Assert;
 
-final class MockTestInterfaceOne extends Assert implements TestInterfaceOne {
+final class MockTestInterfaceA extends Assert implements TestInterfaceA {
     private boolean called;
 
     public void call() {

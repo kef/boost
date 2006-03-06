@@ -4,20 +4,23 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 public final class DefaultComposerAtomicTest extends TestCase {
-    private final MockTestInterfaceOne mock1 = new MockTestInterfaceOne();
+    private final MockTestInterfaceA mockA = new MockTestInterfaceA();
+    private final TestInterfaceB mockB = null;
     private final Composer composer = new DefaultComposer();
-
     // FIXME: SC521 Test failure modes for 0,1, 3 or more composed.
+
+    public void testUnsupported() {
+    }
 
     // FIXME: SC521 Check exceptions are thrown across the boundary.
     // FIXME: SC521 Rename.
     // FIXME: SC521 Check implementations cannot change under our feet.  Maybe.  Yes we will need to.
     public void testDouble() {
-        mock1.init();
-        Interface iface = new Interface(TestInterfaceOne.class);
-        Object[] implementations = {mock1};
+        mockA.init();
+        Interface iface = new Interface(TestInterfaceA.class);
+        Object[] implementations = {mockA, mockB};
         Object ref = composer.compose(iface, implementations);
-        TestInterfaceOne composite = (TestInterfaceOne) ref;
+        TestInterfaceA composite = (TestInterfaceA) ref;
         // FIXME: SC521 BREADCRUMB reinstate.
 //        assertNotNull(composite);
 //        composite.call();

@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.compose;
 
-public interface TestInterfaceOne {
+public interface TestInterfaceA {
     void call();
 }
