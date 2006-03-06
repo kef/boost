@@ -2,6 +2,8 @@ package au.net.netstorm.boost.compose;
 
 import java.lang.reflect.InvocationHandler;
 
+import au.net.netstorm.boost.reflect.ClassTestUtil;
+import au.net.netstorm.boost.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.reflect.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
@@ -16,6 +18,8 @@ import junit.framework.TestCase;
  * The composer currently only supports composition of two classes.
  */
 public final class DefaultComposerAtomicTest extends TestCase {
+    private static final Interface INTERFACE_A_B = new Interface(TestInterfaceAB.class);
+    private final ClassTestUtil classer = new DefaultClassTestUtil();
     private final ProxyFactory proxyFactory = new EdgeProxyFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
     private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
@@ -27,7 +31,9 @@ public final class DefaultComposerAtomicTest extends TestCase {
     public void testDouble() {
         Object delegateA = createMockHandler(mockHandlerA);
         Object delegateB = createMockHandler(mockHandlerB);
-        composer.compose(new Interface(TestInterfaceAB.class), delegateA, delegateB);
+        Object composed = composer.compose(INTERFACE_A_B, delegateA, delegateB);
+        // FIXME: SC521 check proxy.
+        // FIXME: SC521 check can be assigned.
     }
 
     private Object createMockHandler(MockInvocationHandler mockHandler) {
