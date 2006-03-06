@@ -8,6 +8,8 @@ import java.util.List;
 
 import au.net.netstorm.boost.reflect.DefaultEdgeProxyFactory;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC521 BREADCRUMB ... create ProxyFactory based on provided class reference and requested type.
@@ -16,7 +18,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();
-    private final EdgeProxyFactory proxyFactory = new DefaultEdgeProxyFactory();
+    private final ProxyFactory proxyFactory = buildFactory();
 
     public DefaultOneToMany(Interface type) {
         noNulls(type);
@@ -29,13 +31,7 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     }
 
     public synchronized Object getOne() {
-        Class cls = type.getClass();
-        ClassLoader loader = cls.getClassLoader();
-        Class[] types = {type.getType()};
-        // FIXME: SC521 This should delegate to the EdgeProxyFactory.
-        // FIXME: SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
-        // FIXME: SC521 BREADCRUMB Spin this out into a proxy factory.
-        return proxyFactory.getProxy(loader, types, this); // FIXME: SC521 This should really be accessed via a ProxyFactory edge.  This entire method.
+        return proxyFactory.newProxy(type, this);
     }
 
     public synchronized Object invoke(Object proxyRef, Method method, Object[] parameters) throws Throwable {
@@ -60,5 +56,12 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
 
     private void noNulls(Object ref) {
         if (ref == null) throw new IllegalArgumentException();
+    }
+
+    // FIXME: SC521 This is not tested.  It never really was.  It has been flushed out in SC521.
+    private ProxyFactory buildFactory() {
+        // FIXME: SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
+        EdgeProxyFactory edge = new DefaultEdgeProxyFactory();
+        return new DefaultProxyFactory(edge);
     }
 }
