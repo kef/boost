@@ -12,7 +12,6 @@ import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIXME: SC521 BREADCRUMB ... create ProxyFactory based on provided class reference and requested type.
 // FIXME: SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
 
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
