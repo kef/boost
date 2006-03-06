@@ -12,9 +12,9 @@ public final class DefaultComposerAtomicTest extends TestCase {
     private final MockTestInterfaceA mockA = new MockTestInterfaceA();
     private final TestInterfaceB mockB = null;
     private final Composer composer = new DefaultComposer();
-    // FIXME: SC521 Test failure modes for 0,1, 3 or more composed.
 
     public void testUnsupported() {
+        // FIXME: SC521 Test failure modes for 0,1, 3 or more composed.
     }
 
     // FIXME: SC521 Check exceptions are thrown across the boundary.
