@@ -32,7 +32,6 @@ final class MockEdgeProxyFactory extends Assert implements EdgeProxyFactory {
     public void verify(ClassLoader loader, Interface[] ifaces, InvocationHandler handler) {
         Class[] types = toClasses(ifaces);
         assertSame(loader, this.loader);
-        // FIXME: SC521 Reinstate.
         asserter.checkEquals(types, this.types);
         assertSame(handler, this.handler);
     }
