@@ -7,7 +7,13 @@ import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;
 
 final class MockInvocationHandler extends Assert implements InvocationHandler {
+    private boolean called;
+
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
         throw new NotImplementedException();
+    }
+
+    public void init() {
+        called = false;
     }
 }
