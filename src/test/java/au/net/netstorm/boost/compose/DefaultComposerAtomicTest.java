@@ -17,6 +17,7 @@ import junit.framework.TestCase;
 public final class DefaultComposerAtomicTest extends TestCase {
     private final ProxyFactory proxyFactory = new EdgeProxyFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
+    private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();
     private final Composer composer = new DefaultComposer();
 
     // FIXME: SC521 Check interface implements 2 subinterfaces only.
@@ -24,6 +25,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
     // FIXME: SC521 Check implementations cannot change under our feet.  Maybe.  Yes we will need to.
     public void testDouble() {
         Object delegateA = createMockHandler(mockHandlerA);
+        Object delegateB = createMockHandler(mockHandlerB);
     }
 
     private Object createMockHandler(MockInvocationHandler mockHandler) {
