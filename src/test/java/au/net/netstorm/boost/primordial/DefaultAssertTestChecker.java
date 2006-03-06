@@ -2,10 +2,7 @@ package au.net.netstorm.boost.primordial;
 
 import junit.framework.Assert;
 
-// FIXME: ? SC506 Instancise.
-// FIXME: SC521 Interface.
 // Do not extend Assert.  Users of this class may inadvertently pick up Assert's methods.  We don't want this :)
-// FIXME: SC521 This is an AssertTestChecker.
 
 public final class DefaultAssertTestChecker implements AssertTestChecker {
     public void checkEquals(Object[] expected, Object[] actual) {
