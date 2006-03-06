@@ -16,7 +16,7 @@ public final class DefaultProxyFactory implements ProxyFactory {
         Class cls = getClass();
         ClassLoader classloader = cls.getClassLoader();
         Class[] types = {CharSequence.class}; // FIXME: SC521 Triangulate.
-        delegate.getProxy(classloader, types, null);
+        delegate.getProxy(classloader, types, handler);
         return null; // FIXME: RDSC124
     }
 }
