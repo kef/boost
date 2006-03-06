@@ -14,10 +14,12 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private static final Interface TYPE_1 = new Interface(CharSequence.class);
 
     public void testFactory() {
-        mockEdgeProxyFactory.init();
+        Object result = new Object();
+        mockEdgeProxyFactory.init(result);
         Interface type = TYPE_1;
         InvocationHandler handler = new MockInvocationHandler();
         Object proxy = factory.newProxy(type, handler);
+        // FIXME: SC521 Tidy.
         ClassLoader expectedClassLoader = type.getClass()
                 .getClassLoader();
         Interface[] expectedTypes = {TYPE_1};
