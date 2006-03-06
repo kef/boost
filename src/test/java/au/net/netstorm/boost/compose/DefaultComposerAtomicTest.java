@@ -34,6 +34,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
         Object composed = composer.compose(INTERFACE_A_B, delegateA, delegateB);
         // FIXME: SC521 check proxy.
         // FIXME: SC521 check can be assigned.
+        // FIXME: SC521 BREADCRUMB.
     }
 
     private Object createMockHandler(MockInvocationHandler mockHandler) {
