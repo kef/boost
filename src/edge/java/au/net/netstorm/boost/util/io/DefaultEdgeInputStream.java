@@ -22,7 +22,7 @@ public final class DefaultEdgeInputStream implements EdgeInputStream {
         try {
             stream.close();
         } catch (IOException e) {
-            throw new EdgeIoException(e);
+            throw new DELIBERATELY_BREAK_BUILD(e);
         }
     }
 }
