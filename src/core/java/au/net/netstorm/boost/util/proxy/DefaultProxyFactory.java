@@ -5,6 +5,8 @@ import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC521 test build email messages from cruise.
+
 public final class DefaultProxyFactory implements ProxyFactory {
     private final EdgeProxyFactory delegate;
 
