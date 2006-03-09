@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
+// FIXME: SC521 reorder these.
+
 public final class DefaultClassTestChecker implements ClassTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
@@ -17,9 +19,8 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
     }
 
     public void checkSubInterfaceOf(Interface superInterface, Interface subInterface) {
-        Class superClass = superInterface.getType();
-        Class subClass = subInterface.getType();
-        superClass.isAssignableFrom(subClass);
+        boolean isSubInterface = classes.isSubInterfaceOf(superInterface, subInterface);
+        Assert.assertTrue(subInterface + " is not subinterface of  " + superInterface, isSubInterface);
     }
 
     public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
