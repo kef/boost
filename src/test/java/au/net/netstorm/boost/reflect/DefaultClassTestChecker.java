@@ -6,12 +6,18 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 // FIXME: SC521 reorder these.
+// FIXME: SC521 remove dupe.
 
 public final class DefaultClassTestChecker implements ClassTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final ClassTestUtil classes = new DefaultClassTestUtil();
     private final ClassMaster clsMaster = new DefaultClassMaster();
+
+    public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
+        modifier.checkFinal(cls);
+        checkImplementsInterface(expectedInterface, cls);
+    }
 
     public void checkImplementsAndFinal(Class expectedInterface, Class cls) {
         Interface iface = new Interface(expectedInterface);
@@ -21,11 +27,6 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
     public void checkSubInterfaceOf(Interface superInterface, Interface subInterface) {
         boolean isSubInterface = classes.isSubInterfaceOf(superInterface, subInterface);
         Assert.assertTrue(subInterface + " is not subinterface of  " + superInterface, isSubInterface);
-    }
-
-    public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
-        modifier.checkFinal(cls);
-        checkImplementsInterface(expectedInterface, cls);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {
@@ -39,9 +40,11 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         checkSubclassOf(superClass, cls);
     }
 
-    private void checkImplementsInterface(Interface iface, Class cls) {
-        boolean implementsIt = classes.isImplementationOf(iface, cls);
-        checkImplementsInterface(implementsIt, iface, cls);
+    public void checkSynchronized(Class cls) {
+        Method[] methods = cls.getMethods();
+        for (int i = 0; i < methods.length; i++) {
+            checkSynchronizedIgnoringExclusions(methods[i]);
+        }
     }
 
     private void checkSubclassOf(boolean isSubclass, Class superClass, Class subClass) {
@@ -50,17 +53,15 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         Assert.assertTrue(subClassName + " is not a subclass of " + superClassName, isSubclass);
     }
 
+    private void checkImplementsInterface(Interface iface, Class cls) {
+        boolean implementsIt = classes.isImplementationOf(iface, cls);
+        checkImplementsInterface(implementsIt, iface, cls);
+    }
+
     private void checkImplementsInterface(boolean implementsIt, Interface iface, Class cls) {
         String implName = getShortName(cls);
         String targetName = getShortName(iface);
         Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
-    }
-
-    public void checkSynchronized(Class cls) {
-        Method[] methods = cls.getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            checkSynchronizedIgnoringExclusions(methods[i]);
-        }
     }
 
     private void checkSynchronizedIgnoringExclusions(Method method) {
