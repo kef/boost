@@ -11,11 +11,21 @@ public class DefaultClassTestUtil implements ClassTestUtil {
 
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
         Class type = targetInterface.getType();
-        return type.isAssignableFrom(cls);
+        return isAssignable(type, cls);
     }
 
     public boolean isSubclassOf(Class superClass, Class subClass) {
-        return superClass.isAssignableFrom(subClass);
+        return isAssignable(superClass, subClass);
+    }
+
+    public boolean isSubInterfaceOf(Interface superInterface, Interface subInterface) {
+        Class superType = superInterface.getType();
+        Class subType = subInterface.getType();
+        return isAssignable(superType, subType);
+    }
+
+    private boolean isAssignable(Class superType, Class subType) {
+        return superType.isAssignableFrom(subType);
     }
 
     public Object newInstance(Class type) {

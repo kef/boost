@@ -26,6 +26,10 @@ public final class DefaultReflectTestUtil implements ReflectTestUtil {
         return clsUtil.newInstance(type);
     }
 
+    public boolean isSubInterfaceOf(Interface superInterface, Interface subInterface) {
+        return clsUtil.isSubInterfaceOf(superInterface, subInterface);
+    }
+
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         return methodUtil.invoke(invokee, methodName, parameters);
     }

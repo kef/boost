@@ -25,6 +25,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
         return util.newInstance(type);
     }
 
+    public boolean isSubInterfaceOf(Interface superInterface, Interface subInterface) {
+        return util.isSubInterfaceOf(superInterface, subInterface);
+    }
+
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         return util.invoke(invokee, methodName, parameters);
     }
@@ -123,6 +127,10 @@ public final class DefaultReflectTestMaster implements ReflectTestMaster {
 
     public void checkImplementsAndFinal(Class targetInterface, Class implementationClass) {
         checker.checkImplementsAndFinal(targetInterface, implementationClass);
+    }
+
+    public void checkSubInterfaceOf(Interface superInterface, Interface subInterface) {
+        checker.checkSubInterfaceOf(superInterface, subInterface);
     }
 
     public void checkSubclassOf(Class superClass, Class subClass) {

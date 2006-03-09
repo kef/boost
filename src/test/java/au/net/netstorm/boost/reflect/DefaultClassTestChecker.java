@@ -16,6 +16,12 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         checkImplementsAndFinal(iface, cls);
     }
 
+    public void checkSubInterfaceOf(Interface superInterface, Interface subInterface) {
+        Class superClass = superInterface.getType();
+        Class subClass = subInterface.getType();
+        superClass.isAssignableFrom(subClass);
+    }
+
     public void checkImplementsAndFinal(Interface expectedInterface, Class cls) {
         modifier.checkFinal(cls);
         checkImplementsInterface(expectedInterface, cls);

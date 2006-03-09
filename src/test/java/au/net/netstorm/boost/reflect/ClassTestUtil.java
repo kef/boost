@@ -8,4 +8,6 @@ public interface ClassTestUtil {
     boolean isSubclassOf(Class superClass, Class subClass);
 
     Object newInstance(Class type);
+
+    boolean isSubInterfaceOf(Interface superInterface, Interface subInterface);
 }
