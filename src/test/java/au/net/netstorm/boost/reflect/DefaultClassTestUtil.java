@@ -24,13 +24,13 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return isAssignable(superType, subType);
     }
 
-    private boolean isAssignable(Class superType, Class subType) {
-        return superType.isAssignableFrom(subType);
-    }
-
     public Object newInstance(Class type) {
         Constructor constructor = reflector.getConstructor(type);
         constructor.setAccessible(true);
         return reflectEdge.newInstance(constructor, NO_PARAMETERS);
+    }
+
+    private boolean isAssignable(Class superType, Class subType) {
+        return superType.isAssignableFrom(subType);
     }
 }

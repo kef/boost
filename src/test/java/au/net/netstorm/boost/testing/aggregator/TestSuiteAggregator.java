@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.testing.aggregator;
 
+import java.io.File;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
-import java.io.File;
 
 // FIXME: SC506 Most of this is plain utility code.  All except this class.  Move to utility area.
 // FIXME: SC506 Instancise.

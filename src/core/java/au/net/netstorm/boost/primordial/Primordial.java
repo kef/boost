@@ -9,7 +9,7 @@ public class Primordial {
     private EqualsMaster equalsMaster = new FieldBasedEqualsMaster();
     private ToStringMaster toStringMaster = new IndentingToStringMaster();
 
-    // FIXME: SC509 Make final
+    // FIXME: SC509 Make final, implying that classes wanting a more performant hashCode don't extend Primordial.
     // FIXME: SC509 ? Provide PartialPrimordial.
     public int hashCode() {
         return 42;

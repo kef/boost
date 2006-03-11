@@ -22,7 +22,7 @@ final class ClassTestFixture {
         this.parameters = parameters;
     }
 
-    // FIXME: SC506 ? Allow the intefaces to check to be changes Data vs Immutable.
+    // FIXME: SC506 ? Allow the interfaces to check to be changes Data vs Immutable.
     public void checkClass(Class targetInterface, InstanceProvider additional) {
         clsChecker.checkSubclassOf(Primordial.class, cls);
         clsChecker.checkImplementsAndFinal(targetInterface, cls);
