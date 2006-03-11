@@ -9,13 +9,15 @@ import junit.framework.TestCase;
 public class DataAtomicTest extends TestCase {
     private final ClassTestUtil clsProperties = new DefaultClassTestUtil();
 
-    // FIXME: SC506 Refactor this.
     public void testInterfaceProperties() {
-        assertTrue(isImplementationOf(Serializable.class));
-        assertTrue(isImplementationOf(Immutable.class));
+        isData(Serializable.class);
+        isData(Immutable.class);
     }
 
-    private boolean isImplementationOf(Class type) {
-        return clsProperties.isImplementationOf(new Interface(type), Data.class);
+    private void isData(Class type) {
+        Interface iface = new Interface(type);
+        boolean isImplemention = clsProperties.isImplementationOf(iface, Data.class);
+        assertTrue(isImplemention);
     }
+
 }

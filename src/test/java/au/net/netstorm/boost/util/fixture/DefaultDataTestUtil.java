@@ -8,7 +8,6 @@ public final class DefaultDataTestUtil implements DataTestUtil {
     private static final InstanceProvider EMPTY_PROVIDER = new TestEmptyInstanceProvider();
     private InstanceTestUtil instancer = new DefaultInstanceTestUtil();
 
-    // FIXME: SC050 ? Rename to checkIsData.
     public void checkIsData(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields, EMPTY_PROVIDER);
     }

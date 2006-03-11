@@ -5,7 +5,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // FIXME: SC050 ? Rename to DataTestChecker.
 
 public interface DataTestUtil {
-    // FIXME: SC050 ? Rename to checkIsData.
     void checkIsData(Class cls, FieldSpec[] fields);
 
     void checkIsData(Class cls, FieldSpec[] fields, InstanceProvider additional);
