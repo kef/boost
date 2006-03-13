@@ -1,14 +1,14 @@
-package au.net.netstorm.boost.util.fixture;
+package au.net.netstorm.boost.testing.checker;
 
 import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.reflect.DefaultExceptionTestUtil;
 import au.net.netstorm.boost.reflect.ExceptionTestUtil;
+import au.net.netstorm.boost.util.fixture.InstanceProvider;
+import au.net.netstorm.boost.util.fixture.InstanceProviderTestUtil;
 import junit.framework.Assert;
 
-// FIXME: SC517 Is this really a NullTestUtil?
-
-public final class NullTestUtil {
+public final class NullParameterTestChecker {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     private static final ExceptionTestUtil exceptions = new DefaultExceptionTestUtil();
 

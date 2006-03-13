@@ -5,6 +5,7 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.ClassTestChecker;
 import au.net.netstorm.boost.reflect.DefaultClassTestChecker;
+import au.net.netstorm.boost.testing.checker.NullParameterTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
@@ -13,7 +14,7 @@ import junit.framework.Assert;
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
-    private final NullTestUtil nuller = new NullTestUtil();
+    private final NullParameterTestChecker nuller = new NullParameterTestChecker();
     private final Class cls;
     private final FieldSpec[] parameters;
 
