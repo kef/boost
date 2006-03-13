@@ -10,10 +10,10 @@ import junit.framework.Assert;
 
 public final class NullParameterTestChecker {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
-    private static final ExceptionTestUtil exceptions = new DefaultExceptionTestUtil();
+    private static final ExceptionTestUtil EXCEPTION_TEST_UTIL = new DefaultExceptionTestUtil();
 
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
-    public void checkNullParameters(Constructor constructor, Class[] parameters, InstanceProvider additional) {
+    public void checkNullConstructorParameters(Constructor constructor, Class[] parameters, InstanceProvider additional) {
         for (int i = 0; i < parameters.length; i++) {
             checkNullParameter(i, constructor, parameters, additional);
         }
@@ -40,7 +40,7 @@ public final class NullParameterTestChecker {
     }
 
     private boolean isExpected(RuntimeException e) {
-        Class cls = exceptions.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
+        Class cls = EXCEPTION_TEST_UTIL.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
         return isIllegalArgumentException(cls);
     }
 
