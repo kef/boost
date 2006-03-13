@@ -45,6 +45,7 @@ public class VmEntryAtomicTest extends TestCase {
         checkEntryFails(TOO_MANY_ARGUMENTS);
     }
 
+    // FIXME: SC523 Replace with normal test method.
     public void failWithNullStyle() throws IllegalArgumentException {
         callMain(null);
     }

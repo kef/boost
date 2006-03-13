@@ -14,6 +14,7 @@ public class InterfaceAtomicTest extends TestCase {
     }
 
     // FIXME: SC506 This is not called as we are no longer wired into Primordial.
+    // FIXME: SC523 Replace with normal test method.
     public void failIfTypeIsNotInterface() throws IllegalArgumentException {
         new Interface(NOT_AN_INTERFACE);
     }

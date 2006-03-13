@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.testing.aggregator;
+package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
 import java.util.Comparator;

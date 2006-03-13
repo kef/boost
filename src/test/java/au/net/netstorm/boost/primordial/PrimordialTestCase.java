@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 
 // Would prefer not to declare this "abstract", but contract with JUnit/TestCase precludes this.
 
-// FIXME: SC523 Move to testing.primordial.
+// FIXME: SC523 Move to test.primordial.
 public abstract class PrimordialTestCase extends TestCase {
     private final AssertTestChecker asserter = new DefaultAssertTestChecker();
 

@@ -9,6 +9,7 @@ public class NullMasterAtomicTest extends TestCase {
         master.check(this);
     }
 
+    // FIXME: SC523 Replace with normal test method.
     public void failNull() {
         try {
             master.check(null);

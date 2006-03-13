@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.testing.aggregator;
+package au.net.netstorm.boost.test.aggregator;
 
 class RegexPattern {
     private final String pattern;

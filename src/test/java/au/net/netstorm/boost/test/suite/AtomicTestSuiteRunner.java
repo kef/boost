@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.testing.suite;
+package au.net.netstorm.boost.test.suite;
 
 class AtomicTestSuiteRunner {
     public static void main(String[] args) {
