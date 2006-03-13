@@ -6,10 +6,9 @@ import au.net.netstorm.boost.reflect.DefaultExceptionTestUtil;
 import au.net.netstorm.boost.reflect.ExceptionTestUtil;
 import junit.framework.Assert;
 
-// FIXME: SC517 ? Make public or private.
 // FIXME: SC517 Is this really a NullTestUtil?
 
-final class NullTestUtil {
+public final class NullTestUtil {
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     private static final ExceptionTestUtil exceptions = new DefaultExceptionTestUtil();
 
