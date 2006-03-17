@@ -26,7 +26,6 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
 //        ComponentTestUtil.checkComponent(DefaultInstanceProvider.class, InstanceProvider.class, new FieldSpec[]{f1});
 //    }
 
-    // FIXME: SC524 Refactor.
     public void testGetInstanceFromClass() {
         mockReflectEdge.prepare(OBJECT);
         Object actualResult = instanceProvider.newInstance(OBJECT_CLASS);
