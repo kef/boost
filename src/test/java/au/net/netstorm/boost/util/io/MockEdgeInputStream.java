@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.io;
 
+import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;
 
 final class MockEdgeInputStream extends Assert implements EdgeInputStream {
@@ -30,7 +31,6 @@ final class MockEdgeInputStream extends Assert implements EdgeInputStream {
     }
 
     public void close() {
-        // FIXME: RD050 Replace with NIE. 
-        throw new RuntimeException("NOT IMPLEMENTED YET");
+        throw new NotImplementedException();
     }
 }
