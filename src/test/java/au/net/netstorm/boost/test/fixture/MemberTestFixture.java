@@ -3,9 +3,9 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.reflect.ReflectEdge;
-import au.net.netstorm.boost.test.reflect.DefaultFieldTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultFieldTestChecker;
+import au.net.netstorm.boost.test.checker.FieldTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.FieldTestChecker;
 import au.net.netstorm.boost.test.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;

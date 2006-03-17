@@ -3,8 +3,8 @@ package au.net.netstorm.boost.split;
 import java.util.ArrayList;
 import java.util.List;
 
-import au.net.netstorm.boost.test.reflect.ClassTestChecker;
-import au.net.netstorm.boost.test.reflect.DefaultClassTestChecker;
+import au.net.netstorm.boost.test.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.MethodTestUtil;
 import au.net.netstorm.boost.util.type.Interface;

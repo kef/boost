@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.start;
 
-import au.net.netstorm.boost.test.reflect.ClassTestChecker;
+import au.net.netstorm.boost.test.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.ClassTestUtil;
-import au.net.netstorm.boost.test.reflect.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.FieldTestUtil;

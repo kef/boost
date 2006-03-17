@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect;
+package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Member;
 

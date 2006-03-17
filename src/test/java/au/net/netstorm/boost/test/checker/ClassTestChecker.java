@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect;
+package au.net.netstorm.boost.test.checker;
 
 import au.net.netstorm.boost.util.type.Interface;
 

@@ -3,9 +3,9 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.test.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.checker.NullParameterTestChecker;
-import au.net.netstorm.boost.test.reflect.ClassTestChecker;
-import au.net.netstorm.boost.test.reflect.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
