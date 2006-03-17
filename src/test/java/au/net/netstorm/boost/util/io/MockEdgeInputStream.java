@@ -2,7 +2,6 @@ package au.net.netstorm.boost.util.io;
 
 import junit.framework.Assert;
 
-// FIXME: SC524 Move these to edge?
 final class MockEdgeInputStream extends Assert implements EdgeInputStream {
     private static final int EOF = -1;
     private byte[] result;
