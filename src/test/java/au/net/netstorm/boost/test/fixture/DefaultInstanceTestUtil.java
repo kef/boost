@@ -11,7 +11,7 @@ final class DefaultInstanceTestUtil implements InstanceTestUtil {
     private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
     private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
     // FIXME: SC050 This is a smell.  Work out whether is can be removed.
-    private static final InstanceProvider EMPTY = new TestEmptyInstanceProvider();
+    private static final InstanceProviderForTest EMPTY = new TestEmptyInstanceProvider();
 
     public Object getInstance(Class cls, Object[] parameters) {
         Constructor constructor = getConstructor(cls);

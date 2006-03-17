@@ -15,11 +15,11 @@ import au.net.netstorm.boost.util.type.Data;
 public final class InstanceProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
     private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
-    private final InstanceProvider knownTypes = new InstanceProviderTestUtilSuppressed();
+    private final InstanceProviderForTest knownTypes = new InstanceProviderTestUtilSuppressed();
 
     // FIXME: SC050 ? Rename occurrences of "additional" to "extra".
     // FIXME: SC050 BREADCRUMB - Incorporate "additional"
-    public Object[] getInstances(Class[] types, InstanceProvider additional) {
+    public Object[] getInstances(Class[] types, InstanceProviderForTest additional) {
         Object[] params = new Object[types.length];
         for (int i = 0; i < types.length; i++) params[i] = getInstance(types[i], additional);
         return params;
@@ -37,7 +37,7 @@ public final class InstanceProviderTestUtil {
         }
     }
 
-    private Object getInstance(Class type, InstanceProvider additional) {
+    private Object getInstance(Class type, InstanceProviderForTest additional) {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type, additional);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
@@ -57,7 +57,7 @@ public final class InstanceProviderTestUtil {
         throw new UnsupportedOperationException("Please honey pie write the code for primitive type " + type);
     }
 
-    private Object getDataInstance(Class type, InstanceProvider additional) {
+    private Object getDataInstance(Class type, InstanceProviderForTest additional) {
         Constructor constructor = reflectMaster.getConstructor(type);
         Class[] parameterTypes = constructor.getParameterTypes();
         Object[] params = getInstances(parameterTypes, additional);

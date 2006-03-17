@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.test.fixture.InstanceProvider;
+import au.net.netstorm.boost.test.fixture.InstanceProviderForTest;
 
 // FIXME: SC524 Build up Boost version of this.
 // FIXME: SC523 Pull in latest external changes.
@@ -13,7 +13,7 @@ public final class NullParameterTestChecker {
 
     // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
     // FIXME: SC523 Rename additional.
-    public void checkNullConstructorParameters(Constructor constructor, Class[] parameterTypes, InstanceProvider additional) {
+    public void checkNullConstructorParameters(Constructor constructor, Class[] parameterTypes, InstanceProviderForTest additional) {
 //        for (int i = 0; i < parameterTypes.length; i++) {
 //            if (!parameterTypes[i].isPrimitive()) {
 //                checkNullParameter(constructor, parameterTypes, i, additional);

@@ -11,7 +11,7 @@ import au.net.netstorm.boost.util.type.Immutable;
 // FIXME: SC050 INSTANCISE.
 public final class DefaultImmutableTestUtil implements ImmutableTestUtil {
 
-    // FIXME: SC050 Who should know about InstanceProvision (InstanceProvider), the upper levels, or lower?
+    // FIXME: SC050 Who should know about InstanceProvision (InstanceProviderForTest), the upper levels, or lower?
     public void checkIsImmutable(Class cls, FieldSpec[] fields) {
         TestEmptyInstanceProvider empty = new TestEmptyInstanceProvider(); // FIXME: SC050 The fact that this is here is a BIG indicator of the smelliness of this code.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
