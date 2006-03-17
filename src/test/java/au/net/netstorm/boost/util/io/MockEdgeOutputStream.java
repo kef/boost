@@ -2,11 +2,12 @@ package au.net.netstorm.boost.util.io;
 
 import java.io.Serializable;
 
-import au.net.netstorm.boost.test.asserter.TestAsserter;
+import au.net.netstorm.boost.test.checker.AssertTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;
 import junit.framework.Assert;
 
 public final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
-    private final transient TestAsserter asserter = new TestAsserter();
+    private final transient AssertTestChecker asserter = new DefaultAssertTestChecker();
     private byte[] actual;
     private boolean flushed = false;
     private boolean writeCalled = false;
@@ -27,7 +28,7 @@ public final class MockEdgeOutputStream extends Assert implements EdgeOutputStre
     }
 
     public void verify(byte[] expected) {
-        asserter.assertEquals(expected, actual);
+        asserter.checkEquals(expected, actual);
         assertTrue(flushed);
     }
 }

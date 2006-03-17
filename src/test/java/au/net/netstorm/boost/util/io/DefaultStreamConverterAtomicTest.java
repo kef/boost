@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.util.io;
 
-import au.net.netstorm.boost.test.asserter.TestAsserter;
+import au.net.netstorm.boost.test.checker.AssertTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;
 import junit.framework.TestCase;
 
 public final class DefaultStreamConverterAtomicTest extends TestCase {
@@ -8,7 +9,7 @@ public final class DefaultStreamConverterAtomicTest extends TestCase {
     private static final byte[] BYTE_ARRAY_1 = bytes("The bravery of being out of range.");
     private static final byte[] BYTE_ARRAY_2 = bytes("You deafen the canyon.");
 
-    private final TestAsserter asserter = new TestAsserter();
+    private final AssertTestChecker asserter = new DefaultAssertTestChecker();
     private final StreamConverter converter = new DefaultStreamConverter();
 
     public void testWrites() {
@@ -27,7 +28,7 @@ public final class DefaultStreamConverterAtomicTest extends TestCase {
         MockEdgeInputStream stream = new MockEdgeInputStream();
         stream.init(bytes);
         byte[] result = converter.read(stream);
-        asserter.assertEquals(bytes, result);
+        asserter.checkEquals(bytes, result);
     }
 
     private void checkToStream(byte[] bytes) {
