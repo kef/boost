@@ -1,8 +1,5 @@
-package au.net.netstorm.boost.test.reflect;
+package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.reflect.DefaultReflectEdge;
-import au.net.netstorm.boost.reflect.ReflectEdge;
-import au.net.netstorm.boost.reflect.RuntimeClassNotFoundException;
 import junit.framework.TestCase;
 
 public final class DefaultReflectEdgeTest extends TestCase {
