@@ -3,7 +3,7 @@ package au.net.netstorm.boost.util.instance;
 import au.net.netstorm.boost.reflect.MockReflectEdge;
 import junit.framework.TestCase;
 
-public class DefaultInstanceProviderAtomicTest extends TestCase {
+public final class DefaultInstanceProviderAtomicTest extends TestCase {
 //    private static final Integer INTEGER_23 = new Integer(23);
 //    private static final Integer INTEGER_32 = new Integer(32);
 //    private static final Object POINT_23_32 = new Point(23, 32);
@@ -12,8 +12,8 @@ public class DefaultInstanceProviderAtomicTest extends TestCase {
     private static final Class OBJECT_CLASS = Object.class;
     private static final Object OBJECT = new Object();
 
-    InstanceProvider instanceProvider;
-    MockReflectEdge mockReflectEdge;
+    private InstanceProvider instanceProvider;
+    private MockReflectEdge mockReflectEdge;
 
     protected void setUp() throws Exception {
         mockReflectEdge = new MockReflectEdge();
@@ -21,10 +21,10 @@ public class DefaultInstanceProviderAtomicTest extends TestCase {
     }
 
     // FIXME: SC524 Test drive relevant class properties.
-    public void testClassProperties() {
+//    public void testClassProperties() {
 //        FieldSpec f1 = new DefaultFieldSpec("classBoundary", ClassBoundary.class);
 //        ComponentTestUtil.checkComponent(DefaultInstanceProvider.class, InstanceProvider.class, new FieldSpec[]{f1});
-    }
+//    }
 
     // FIXME: SC524 Refactor.
     public void testGetInstanceFromClass() {

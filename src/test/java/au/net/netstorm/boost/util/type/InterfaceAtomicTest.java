@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.type;
 
-import au.net.netstorm.boost.util.fixture.DefaultDataTestUtil;
+import au.net.netstorm.boost.test.fixture.DefaultDataTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import junit.framework.TestCase;
 
@@ -9,7 +9,7 @@ public class InterfaceAtomicTest extends TestCase {
 
     public void testIsDataObject() {
         // FIXME: SC506 Tidy this up.
-        new DefaultDataTestUtil().checkIsData(Interface.class, new DefaultFieldSpec[]{
+        new DefaultDataTestChecker().checkIsData(Interface.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("type", Class.class)});
     }
 

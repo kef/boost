@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.tostring;
 
-import junit.framework.TestCase;
 import au.net.netstorm.boost.util.indent.IndenterMaster;
 import au.net.netstorm.boost.util.separator.Separator;
+import junit.framework.TestCase;
 
 // NOTE: Currently doesn't handle graphs, so recursive loops will kill it.
 

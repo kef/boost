@@ -2,7 +2,7 @@ package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.primordial.PrimordialTestCase;
+import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
 // FIXME: SC506 This NEEDS to be a UnitTest!!!
 // FIXME: SC506 Rename to Atomic test when done

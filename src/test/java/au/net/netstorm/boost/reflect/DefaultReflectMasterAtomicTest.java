@@ -1,15 +1,12 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
 // FIXME: SC010 Don't use JMock.
 
 public class DefaultReflectMasterAtomicTest extends TestCase {
-    private static final MethodSpec METHOD_SPEC = new MethodSpec("booleanValue", new Class[]{});
-    private static final FieldValueSpec[] FIELD_SPEC_ARRAY = new FieldValueSpec[]{new DefaultFieldValueSpec("name", "value")};
+//    private static final MethodSpec METHOD_SPEC = new MethodSpec("booleanValue", new Class[]{});
+//    private static final FieldValueSpec[] FIELD_SPEC_ARRAY = new FieldValueSpec[]{new DefaultFieldValueSpec("name", "value")};
 
     // FIXME: SC509 Reinstate these tests.
     public void testFixThis() {

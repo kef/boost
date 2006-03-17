@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.suite;
 
-import au.net.netstorm.boost.primordial.PrimordialTestCase;
 import au.net.netstorm.boost.test.aggregator.TestSuiteAggregator;
+import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import junit.framework.Test;
 
 // FIXME: SC502 Move all test.suite to "suite".

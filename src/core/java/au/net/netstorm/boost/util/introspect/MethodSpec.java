@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.util.type.Data;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.nullo.NullMaster;
+import au.net.netstorm.boost.util.type.Data;
 
 public final class MethodSpec extends Primordial implements Data {
     private final String name;

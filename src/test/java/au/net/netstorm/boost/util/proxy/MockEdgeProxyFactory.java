@@ -2,9 +2,9 @@ package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
 
-import au.net.netstorm.boost.primordial.AssertTestChecker;
-import au.net.netstorm.boost.primordial.DefaultAssertTestChecker;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.test.checker.AssertTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 

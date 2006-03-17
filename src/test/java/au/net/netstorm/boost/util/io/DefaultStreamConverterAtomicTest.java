@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.io;
 
+import au.net.netstorm.boost.test.asserter.TestAsserter;
 import junit.framework.TestCase;
 
 public final class DefaultStreamConverterAtomicTest extends TestCase {

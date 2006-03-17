@@ -2,10 +2,11 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.util.fixture.InstanceProvider;
+import au.net.netstorm.boost.test.fixture.InstanceProvider;
 
 // FIXME: SC524 Build up Boost version of this.
 // FIXME: SC523 Pull in latest external changes.
+// FIXME: SC524 Make an interface for this.
 public final class NullParameterTestChecker {
 //    private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 //    private static final ExceptionTestUtil EXCEPTION_TEST_UTIL = new DefaultExceptionTestUtil();
