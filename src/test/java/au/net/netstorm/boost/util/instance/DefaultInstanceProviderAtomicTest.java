@@ -12,6 +12,14 @@ public class DefaultInstanceProviderAtomicTest extends TestCase {
     private static final Class OBJECT_CLASS = Object.class;
     private static final Object OBJECT = new Object();
 
+    InstanceProvider instanceProvider;
+    MockReflectEdge mockReflectEdge;
+
+    protected void setUp() throws Exception {
+        mockReflectEdge = new MockReflectEdge();
+        instanceProvider = new DefaultInstanceProvider(mockReflectEdge);
+    }
+
     // FIXME: SC524 Test drive relevant class properties.
     public void testClassProperties() {
 //        FieldSpec f1 = new DefaultFieldSpec("classBoundary", ClassBoundary.class);
@@ -20,9 +28,7 @@ public class DefaultInstanceProviderAtomicTest extends TestCase {
 
     // FIXME: SC524 Refactor.
     public void testGetInstanceFromClass() {
-        MockReflectEdge mockReflectEdge = new MockReflectEdge();
         mockReflectEdge.prepare(OBJECT);
-        InstanceProvider instanceProvider = new DefaultInstanceProvider(mockReflectEdge);
         Object actualResult = instanceProvider.newInstance(OBJECT_CLASS);
         assertSame(OBJECT, actualResult);
         assertSame(OBJECT_CLASS, mockReflectEdge.getCls());
