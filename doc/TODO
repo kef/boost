@@ -16,4 +16,5 @@ Just some rough ideas we might use in Boost -- Mr O'Keeffe.
  * Split boundaries for testability (final, static) from checked exception wrappers.
  * Dynamic checked exception wrapper proxy.
  * Boundaries themselves may be able to be generated, possibly dynamically.
+ * Compare and contrast with testing utilities in JUnit Addons, particularly for testing Primordial stuff.
  
