@@ -1,0 +1,19 @@
+Just some rough ideas we might use in Boost -- Mr O'Keeffe.
+
+ * InstanceProvider - construction vs resolution implementations, see IOC resolve() in easydoc.
+ * How do we boostrap instance of InstanceProvider itself? Construct just that one in Primordial or provide a global way of accessing it.
+ * FactoryTestUtil depends on InstanceProvider.
+ * NullArgsTestChecker.
+ * OO support.
+ * Rename DataTestUtil --> Checker.
+ * Rename ImmutableTestUtil --> Checker.
+ * Compare against what we have done on other projects - particularly usability improvements of test utilities.
+ * Remove duplication detected by IntelliJ.
+ * Refocus scope - Primordial plus utilities for test driving.
+ * Decide on mocking style - handcrafted vs JMock vs EasyMock vs RMock.
+   * Update dev mail list and ask for opinions on this.
+ * Open up to other committers.
+ * Split boundaries for testability (final, static) from checked exception wrappers.
+ * Dynamic checked exception wrapper proxy.
+ * Boundaries themselves may be able to be generated, possibly dynamically.
+ 
