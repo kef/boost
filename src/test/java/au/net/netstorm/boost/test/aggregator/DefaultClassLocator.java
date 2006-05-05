@@ -11,7 +11,7 @@ import java.util.List;
 // FIXME: SC043 Interface.
 
 final class DefaultClassLocator implements ClassLocator {
-    public ClassName[] locate(File root, RegexPattern pattern) {
+    public DefaultClassName[] locate(File root, RegexPattern pattern) {
         List result = new ArrayList();
         locate(root, pattern, result);
         Collections.sort(result, new FileComparator());
@@ -26,16 +26,16 @@ final class DefaultClassLocator implements ClassLocator {
         getMatchingClasses(dir, pattern, result);
     }
 
-    private ClassName[] toClassNames(File root, File[] files) {
-        ClassName[] result = new ClassName[files.length];
+    private DefaultClassName[] toClassNames(File root, File[] files) {
+        DefaultClassName[] result = new DefaultClassName[files.length];
         for (int i = 0; i < result.length; i++) result[i] = getClassName(files[i], root);
         return result;
     }
 
-    private ClassName getClassName(File file, File root) {
+    private DefaultClassName getClassName(File file, File root) {
         String path = file.getAbsolutePath()
                 .substring(root.getAbsolutePath().length());
-        return new ClassName(path);
+        return new DefaultClassName(path);
     }
 
     private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
