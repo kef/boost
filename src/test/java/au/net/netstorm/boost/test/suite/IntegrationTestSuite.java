@@ -6,6 +6,6 @@ import junit.framework.Test;
 
 public class IntegrationTestSuite extends PrimordialTestCase {
     public static Test suite() {
-        return TestAggregator.aggregate("Integration", ".*IntegrationTest");
+        return new TestAggregator().aggregate("Integration", ".*IntegrationTest");
     }
 }

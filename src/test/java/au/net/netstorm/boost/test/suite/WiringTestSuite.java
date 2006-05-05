@@ -14,7 +14,7 @@ public class WiringTestSuite extends PrimordialTestCase {
     }
 
     private static void add(TestSuite suite, String name, String pattern) {
-        Test test = TestAggregator.aggregate(name, pattern);
+        Test test = new TestAggregator().aggregate(name, pattern);
         suite.addTest(test);
     }
 }

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 // FIXME: SC043 De train wreck.
 
-class RegexFilter implements FileFilter {
+final class RegexFilter implements FileFilter {
     private final Pattern pattern;
 
     public RegexFilter(RegexPattern pattern) {

@@ -5,7 +5,8 @@ import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import junit.framework.Test;
 
 public class AcceptanceTestSuite extends PrimordialTestCase {
+    // FIXME: SC043 Fieldise all new TestAggregator instances.
     public static Test suite() {
-        return TestAggregator.aggregate("Acceptance", ".*AcceptanceTest");
+        return new TestAggregator().aggregate("Acceptance", ".*AcceptanceTest");
     }
 }

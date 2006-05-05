@@ -6,6 +6,6 @@ import junit.framework.Test;
 
 public class EnvironmentTestSuite extends PrimordialTestCase {
     public static Test suite() {
-        return TestAggregator.aggregate("Environment", ".*EnvironmentTest");
+        return new TestAggregator().aggregate("Environment", ".*EnvironmentTest");
     }
 }

@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.aggregator;
 
 // FIXME: SC043 Extend Primordial.
 
-class RegexPattern {
+final class RegexPattern {
     private final String pattern;
 
     public RegexPattern(String pattern) {

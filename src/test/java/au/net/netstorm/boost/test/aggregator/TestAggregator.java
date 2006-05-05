@@ -18,12 +18,12 @@ public class TestAggregator {
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
     private static final ReflectEdge reflect = new DefaultReflectEdge();
 
-    public static Test aggregate(String suiteName, String regex) {
+    public Test aggregate(String suiteName, String regex) {
         ClassName[] matches = findMatches(regex);
         return buildSuite(suiteName, matches);
     }
 
-    private static ClassName[] findMatches(String regex) {
+    private ClassName[] findMatches(String regex) {
         // FIXME: SC043 Instance.
         ClassLocator locator = new ClassLocator();
         File root = getRoot();
@@ -31,35 +31,35 @@ public class TestAggregator {
         return locator.locate(root, expression);
     }
 
-    private static Test buildSuite(String suiteName, ClassName[] classes) {
+    private Test buildSuite(String suiteName, ClassName[] classes) {
         TestSuite result = new TestSuite(suiteName);
         for (int i = 0; i < classes.length; i++) addClass(classes[i], result);
         return result;
     }
 
-    private static void addClass(ClassName clsName, TestSuite result) {
+    private void addClass(ClassName clsName, TestSuite result) {
         String qualified = clsName.getFullyQualified();
         Class cls = reflect.forName(qualified);
         result.addTestSuite(cls);
     }
 
-    private static File getRoot() {
+    private File getRoot() {
         String property = getRootProperty();
         return new File(property);
     }
 
-    private static String getRootProperty() {
+    private String getRootProperty() {
         String property = System.getProperty(KEY_TEST_CLASSPATH);
         if (property != null) return property;
         return fail();
     }
 
-    private static String fail() {
+    private String fail() {
         String message = buildUserMessage();
         throw new RuntimeException(message, null);
     }
 
-    private static String buildUserMessage() {
+    private String buildUserMessage() {
         return ENCOURAGEMENT_NOTICE + "Ensure you have set the " + KEY_TEST_CLASSPATH + " property to point to your compiled test class hierarchy.";
     }
 }

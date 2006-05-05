@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 // FIXME: SC043 Detrain wreck.
 
-class FileComparator implements Comparator {
+final class FileComparator implements Comparator {
     public int compare(Object o1, Object o2) {
         return ((File) o1).getName()
                 .compareTo(((File) o2).getName());
