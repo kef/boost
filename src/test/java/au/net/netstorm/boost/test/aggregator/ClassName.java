@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.test.aggregator;
 
+// FIXME: SC506 Interface.
+// FIXME: SC506 De train wreck.
+// FIXME: SC506 Primordial.
 class ClassName {
     private final String fullyQualifiedClassPath;
 

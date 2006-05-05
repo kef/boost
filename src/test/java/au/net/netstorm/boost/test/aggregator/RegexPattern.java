@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.aggregator;
 
+// FIXME: SC506 Extend Primordial.
 class RegexPattern {
     private final String pattern;
 
