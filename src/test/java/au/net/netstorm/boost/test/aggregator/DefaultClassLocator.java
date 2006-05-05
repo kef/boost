@@ -8,14 +8,16 @@ import java.util.List;
 
 // FIXME: SC043 Rename classes in this package to reflect current naming conventions for test code.
 // FIXME: SC043 De train wreck.
-// FIXME: SC043 Interface.
 
 final class DefaultClassLocator implements ClassLocator {
     public ClassName[] locate(File root, RegexPattern pattern) {
         List result = new ArrayList();
         locate(root, pattern, result);
-        Collections.sort(result, new FileComparator());
-        File[] file = (File[]) result.toArray(new File[result.size()]);
+        FileComparator comparator = new FileComparator();
+        Collections.sort(result, comparator);
+        int count = result.size();
+        File[] files = new File[count];
+        File[] file = (File[]) result.toArray(files);
         return toClassNames(root, file);
     }
 
@@ -28,20 +30,28 @@ final class DefaultClassLocator implements ClassLocator {
 
     private ClassName[] toClassNames(File root, File[] files) {
         ClassName[] result = new ClassName[files.length];
-        for (int i = 0; i < result.length; i++) result[i] = getClassName(files[i], root);
+        for (int i = 0; i < result.length; i++) {
+            File file = files[i];
+            result[i] = getClassName(file, root);
+        }
         return result;
     }
 
     private ClassName getClassName(File file, File root) {
-        String path = file.getAbsolutePath()
-                .substring(root.getAbsolutePath().length());
+        String absolute = file.getAbsolutePath();
+        String rootAbsolute = root.getAbsolutePath();
+        int length = rootAbsolute.length();
+        String path = absolute.substring(length);
         return new DefaultClassName(path);
     }
 
     private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
-        RegexPattern clsPattern = new RegexPattern(pattern.getPattern() + ".class");
-        File[] files = dir.listFiles(new RegexFilter(clsPattern));
-        result.addAll(Arrays.asList(files));
+        String thePattern = pattern.getPattern();
+        RegexPattern clsPattern = new RegexPattern(thePattern + ".class");
+        RegexFilter filter = new RegexFilter(clsPattern);
+        File[] files = dir.listFiles(filter);
+        List list = Arrays.asList(files);
+        result.addAll(list);
     }
 
     private void ensureDir(File dir) {
@@ -50,6 +60,7 @@ final class DefaultClassLocator implements ClassLocator {
     }
 
     private File[] getSubdirectories(File dir) {
-        return dir.listFiles(new DirectoryFilter());
+        DirectoryFilter filter = new DirectoryFilter();
+        return dir.listFiles(filter);
     }
 }
