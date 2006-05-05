@@ -12,7 +12,6 @@ import junit.framework.TestSuite;
 // FIXME: SC043 Check out any other classes which can use Edges as well.
 // FIXME: SC043 Does it make sense to use the java.classpath system property?
 // FIXME: SC043 Remove any train wrecks and nesting.
-// FIXME: SC043 Rename to TestAggregator.
 
 public class TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
