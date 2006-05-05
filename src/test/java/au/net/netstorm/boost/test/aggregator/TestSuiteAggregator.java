@@ -12,7 +12,7 @@ import au.net.netstorm.boost.reflect.DefaultReflectEdge;
 // FIXME: SC506 Check out any other classes which can use Edges as well.
 // FIXME: SC506 Does it make sense to use the java.classpath system property?
 // FIXME: SC506 Remove any train wrecks and nesting.
-
+// FIXME: SC506 Rename to TestAggregator.
 public class TestSuiteAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
@@ -24,7 +24,7 @@ public class TestSuiteAggregator {
     }
 
     private static ClassName[] findMatches(String regex) {
-        // FIXME: SC506 Instance. 
+        // FIXME: SC506 Instance.
         ClassLocator locator = new ClassLocator();
         File root = getRoot();
         RegexPattern expression = new RegexPattern(regex);
