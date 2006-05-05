@@ -18,17 +18,17 @@ public class TestAggregator {
     private final ClassLocator locator = new DefaultClassLocator();
 
     public Test aggregate(String suiteName, String regex) {
-        DefaultClassName[] matches = findMatches(regex);
+        ClassName[] matches = findMatches(regex);
         return buildSuite(suiteName, matches);
     }
 
-    private DefaultClassName[] findMatches(String regex) {
+    private ClassName[] findMatches(String regex) {
         File root = getRoot();
         RegexPattern expression = new RegexPattern(regex);
         return locator.locate(root, expression);
     }
 
-    private Test buildSuite(String suiteName, DefaultClassName[] classes) {
+    private Test buildSuite(String suiteName, ClassName[] classes) {
         TestSuite result = new TestSuite(suiteName);
         for (int i = 0; i < classes.length; i++) addClass(classes[i], result);
         return result;
