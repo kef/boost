@@ -13,7 +13,7 @@ import au.net.netstorm.boost.reflect.DefaultReflectEdge;
 // FIXME: SC506 Does it make sense to use the java.classpath system property?
 // FIXME: SC506 Remove any train wrecks and nesting.
 // FIXME: SC506 Rename to TestAggregator.
-public class TestSuiteAggregator {
+public class TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
     private static final ReflectEdge reflect = new DefaultReflectEdge();

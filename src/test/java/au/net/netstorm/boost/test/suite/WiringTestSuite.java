@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.suite;
 
-import au.net.netstorm.boost.test.aggregator.TestSuiteAggregator;
+import au.net.netstorm.boost.test.aggregator.TestAggregator;
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -14,7 +14,7 @@ public class WiringTestSuite extends PrimordialTestCase {
     }
 
     private static void add(TestSuite suite, String name, String pattern) {
-        Test test = TestSuiteAggregator.aggregate(name, pattern);
+        Test test = TestAggregator.aggregate(name, pattern);
         suite.addTest(test);
     }
 }
