@@ -17,6 +17,7 @@ public class TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
     private static final ReflectEdge reflect = new DefaultReflectEdge();
+    private static final ClassLocator locator = new ClassLocator();
 
     public Test aggregate(String suiteName, String regex) {
         ClassName[] matches = findMatches(regex);
@@ -24,8 +25,6 @@ public class TestAggregator {
     }
 
     private ClassName[] findMatches(String regex) {
-        // FIXME: SC043 Instance.
-        ClassLocator locator = new ClassLocator();
         File root = getRoot();
         RegexPattern expression = new RegexPattern(regex);
         return locator.locate(root, expression);
