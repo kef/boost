@@ -4,7 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
-// FIXME: SC506 Does this make sense any more?  Vlad/James?
+// FIXME: SC043 Does this make sense any more?  Vlad/James?
+
 class TestSuiteRunnerUtil {
     public static void runSuite(Test suiteTests) {
         TestSuite suite = new TestSuite();

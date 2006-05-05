@@ -6,9 +6,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-// FIXME: SC506 Rename classes in this package to reflect current naming conventions for test code.
-// FIXME: SC506 De train wreck.
-// FIXME: SC506 Interface.
+// FIXME: SC043 Rename classes in this package to reflect current naming conventions for test code.
+// FIXME: SC043 De train wreck.
+// FIXME: SC043 Interface.
+
 class ClassLocator {
     ClassName[] locate(File root, RegexPattern pattern) {
         List result = new ArrayList();
@@ -32,7 +33,8 @@ class ClassLocator {
     }
 
     private ClassName getClassName(File file, File root) {
-        String path = file.getAbsolutePath().substring(root.getAbsolutePath().length());
+        String path = file.getAbsolutePath()
+                .substring(root.getAbsolutePath().length());
         return new ClassName(path);
     }
 

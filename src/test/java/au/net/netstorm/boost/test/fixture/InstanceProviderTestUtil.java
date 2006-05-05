@@ -8,7 +8,7 @@ import au.net.netstorm.boost.reflect.ReflectEdge;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
 
-// FIXME: SC506 Move instances to their respective unit tests (as per POK theory).
+// FIXME: SC043 Move instances to their respective unit tests (as per POK theory).
 // FIXME: SC502 Interface it.
 // FIXME: SC502 Rename.
 

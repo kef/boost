@@ -2,17 +2,18 @@ package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
 
+import au.net.netstorm.boost.reflect.DefaultReflectEdge;
+import au.net.netstorm.boost.reflect.ReflectEdge;
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import au.net.netstorm.boost.reflect.ReflectEdge;
-import au.net.netstorm.boost.reflect.DefaultReflectEdge;
 
-// FIXME: SC506 Most of this is plain utility code.  All except this class.  Move to utility area.
-// FIXME: SC506 Instancise.
-// FIXME: SC506 Check out any other classes which can use Edges as well.
-// FIXME: SC506 Does it make sense to use the java.classpath system property?
-// FIXME: SC506 Remove any train wrecks and nesting.
-// FIXME: SC506 Rename to TestAggregator.
+// FIXME: SC043 Most of this is plain utility code.  All except this class.  Move to utility area.
+// FIXME: SC043 Instancise.
+// FIXME: SC043 Check out any other classes which can use Edges as well.
+// FIXME: SC043 Does it make sense to use the java.classpath system property?
+// FIXME: SC043 Remove any train wrecks and nesting.
+// FIXME: SC043 Rename to TestAggregator.
+
 public class TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
@@ -24,7 +25,7 @@ public class TestAggregator {
     }
 
     private static ClassName[] findMatches(String regex) {
-        // FIXME: SC506 Instance.
+        // FIXME: SC043 Instance.
         ClassLocator locator = new ClassLocator();
         File root = getRoot();
         RegexPattern expression = new RegexPattern(regex);
