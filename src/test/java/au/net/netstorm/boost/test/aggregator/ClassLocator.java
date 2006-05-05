@@ -10,7 +10,7 @@ import java.util.List;
 // FIXME: SC043 De train wreck.
 // FIXME: SC043 Interface.
 
-class ClassLocator {
+final class ClassLocator {
     ClassName[] locate(File root, RegexPattern pattern) {
         List result = new ArrayList();
         locate(root, pattern, result);

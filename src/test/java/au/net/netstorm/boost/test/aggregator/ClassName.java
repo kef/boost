@@ -4,7 +4,7 @@ package au.net.netstorm.boost.test.aggregator;
 // FIXME: SC043 De train wreck.
 // FIXME: SC043 Primordial.
 
-class ClassName {
+final class ClassName {
     private final String fullyQualifiedClassPath;
 
     public ClassName(String path) {
