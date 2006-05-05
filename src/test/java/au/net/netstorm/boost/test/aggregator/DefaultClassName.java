@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.aggregator;
 
-// FIXME: SC043 Interface.
-// FIXME: SC043 De train wreck.
 // FIXME: SC043 Primordial.
 
 final class DefaultClassName implements ClassName {
