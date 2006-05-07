@@ -24,8 +24,8 @@ final class TestFileBasedJavaClass extends Primordial implements JavaClass {
     }
 
     private String slashesToDots(String path) {
-        String deslashed = path.replaceAll("[/\\\\]", ".");
-        String noleadingslash = deslashed.substring(1);
-        return noleadingslash.replaceAll(".class", "");
+        String deBillGates = path.replaceAll("[/\\\\]", ".");
+        String noLeadingSlash = deBillGates.substring(1);
+        return noLeadingSlash.replaceAll(".class", "");
     }
 }
