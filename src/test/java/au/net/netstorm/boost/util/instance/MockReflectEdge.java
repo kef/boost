@@ -1,12 +1,13 @@
-package au.net.netstorm.boost.java.lang.reflect;
+package au.net.netstorm.boost.util.instance;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 
-public class MockReflectEdge implements ReflectEdge {
+class MockReflectEdge implements ReflectEdge {
     private Object result;
     private Class cls;
 

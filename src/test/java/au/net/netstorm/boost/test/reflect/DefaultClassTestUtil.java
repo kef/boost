@@ -3,9 +3,9 @@ package au.net.netstorm.boost.test.reflect;
 import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.java.lang.reflect.DefaultReflectEdge;
-import au.net.netstorm.boost.java.lang.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
-import au.net.netstorm.boost.java.lang.reflect.ReflectMaster;
+import au.net.netstorm.boost.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Interface;
 
 public class DefaultClassTestUtil implements ClassTestUtil {

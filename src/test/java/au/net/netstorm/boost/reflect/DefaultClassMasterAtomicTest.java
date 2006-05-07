@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.java.lang.reflect;
+package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Proxy;
 import java.rmi.Remote;

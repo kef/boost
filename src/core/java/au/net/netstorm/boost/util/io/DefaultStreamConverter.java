@@ -1,4 +1,7 @@
-package au.net.netstorm.boost.java.io;
+package au.net.netstorm.boost.util.io;
+
+import au.net.netstorm.boost.java.io.EdgeInputStream;
+import au.net.netstorm.boost.java.io.EdgeOutputStream;
 
 public final class DefaultStreamConverter implements StreamConverter {
     private static final int BUFFER_SIZE = 4096;

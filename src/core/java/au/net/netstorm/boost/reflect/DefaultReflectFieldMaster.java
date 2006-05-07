@@ -1,10 +1,11 @@
-package au.net.netstorm.boost.java.lang.reflect;
+package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 

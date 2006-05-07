@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.util.instance;
 
-import au.net.netstorm.boost.java.lang.reflect.MockReflectEdge;
 import junit.framework.TestCase;
 
 public final class DefaultInstanceProviderAtomicTest extends TestCase {

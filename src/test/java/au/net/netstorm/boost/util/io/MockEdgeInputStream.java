@@ -1,9 +1,10 @@
-package au.net.netstorm.boost.java.io;
+package au.net.netstorm.boost.util.io;
 
+import au.net.netstorm.boost.java.io.EdgeInputStream;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;
 
-final class MockEdgeInputStream extends Assert implements EdgeInputStream {
+public final class MockEdgeInputStream extends Assert implements EdgeInputStream {
     private static final int EOF = -1;
     private byte[] result;
     private int pos = 0;

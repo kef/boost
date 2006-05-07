@@ -1,10 +1,11 @@
-package au.net.netstorm.boost.java.lang.reflect;
+package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 

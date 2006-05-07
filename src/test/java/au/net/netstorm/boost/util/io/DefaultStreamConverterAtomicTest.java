@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.java.io;
+package au.net.netstorm.boost.util.io;
 
 import au.net.netstorm.boost.test.checker.AssertTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;

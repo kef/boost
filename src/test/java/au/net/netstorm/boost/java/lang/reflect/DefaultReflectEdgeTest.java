@@ -2,6 +2,8 @@ package au.net.netstorm.boost.java.lang.reflect;
 
 import junit.framework.TestCase;
 
+// FIXME: SC043 Are we testing edge (or not).
+
 public final class DefaultReflectEdgeTest extends TestCase {
     private final ReflectEdge reflector = DefaultReflectEdge.INSTANCE;
     private static final Class REFLECT_EDGE_CLASS = ReflectEdge.class;
