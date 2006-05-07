@@ -48,7 +48,7 @@ final class DefaultClassLocator implements ClassLocator {
 
     private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
         String thePattern = pattern.getPattern();
-        RegexPattern clsPattern = new RegexPattern(thePattern + ".class");
+        RegexPattern clsPattern = new TestRegexPattern(thePattern + ".class");
         RegexFilter filter = new RegexFilter(clsPattern);
         File[] files = dir.listFiles(filter);
         List list = Arrays.asList(files);

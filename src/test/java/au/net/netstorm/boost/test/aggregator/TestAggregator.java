@@ -25,7 +25,7 @@ public class TestAggregator {
 
     private ClassName[] findMatches(String regex) {
         File root = getRoot();
-        RegexPattern expression = new RegexPattern(regex);
+        RegexPattern expression = new TestRegexPattern(regex);
         return locator.locate(root, expression);
     }
 
