@@ -10,11 +10,11 @@ import java.util.List;
 // FIXME: SC043 Ie. TestClassLocator.
 // FIXME: SC043 Refactor de-train wrecked code.
 
-final class DefaultClassLocator implements ClassLocator {
+final class TestClassLocator implements ClassLocator {
     public ClassName[] locate(File root, RegexPattern pattern) {
         List result = new ArrayList();
         locate(root, pattern, result);
-        FileComparator comparator = new FileComparator();
+        TestFileComparator comparator = new TestFileComparator();
         Collections.sort(result, comparator);
         int count = result.size();
         File[] files = new File[count];
@@ -43,13 +43,13 @@ final class DefaultClassLocator implements ClassLocator {
         String rootAbsolute = root.getAbsolutePath();
         int length = rootAbsolute.length();
         String path = absolute.substring(length);
-        return new DefaultClassName(path);
+        return new TestClassName(path);
     }
 
     private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
         String thePattern = pattern.getPattern();
         RegexPattern clsPattern = new TestRegexPattern(thePattern + ".class");
-        RegexFilter filter = new RegexFilter(clsPattern);
+        TestRegexFilter filter = new TestRegexFilter(clsPattern);
         File[] files = dir.listFiles(filter);
         List list = Arrays.asList(files);
         result.addAll(list);

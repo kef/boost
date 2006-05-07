@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 
 // FIXME: SC043 De train wreck.
 
-final class RegexFilter implements FileFilter {
+final class TestRegexFilter implements FileFilter {
     private final Pattern pattern;
 
-    public RegexFilter(RegexPattern pattern) {
+    public TestRegexFilter(RegexPattern pattern) {
         this.pattern = Pattern.compile(pattern.getPattern());
     }
 

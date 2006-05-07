@@ -2,14 +2,14 @@ package au.net.netstorm.boost.test.aggregator;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-final class DefaultClassName extends Primordial implements ClassName {
+final class TestClassName extends Primordial implements ClassName {
     private final String fullyQualifiedClassPath;
 
     public String getFullyQualified() {
         return fullyQualifiedClassPath;
     }
 
-    public DefaultClassName(String path) {
+    public TestClassName(String path) {
         fullyQualifiedClassPath = convertSlashes(path);
     }
 

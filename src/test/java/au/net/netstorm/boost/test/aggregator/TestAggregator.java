@@ -16,7 +16,7 @@ public class TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
     private final ReflectEdge reflect = new DefaultReflectEdge();
-    private final ClassLocator locator = new DefaultClassLocator();
+    private final ClassLocator locator = new TestClassLocator();
 
     public Test aggregate(String suiteName, String regex) {
         ClassName[] matches = findMatches(regex);
