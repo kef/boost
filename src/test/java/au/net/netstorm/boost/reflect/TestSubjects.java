@@ -5,8 +5,6 @@ import java.util.Map;
 // FIXME: SC506 Sort out the constant crap.  Inline.
 // FIXME: SC502 Remove any unused classes from here.
 
-// FIXME: SC043 Move all classes in this package back out where they belong.
-
 class TestSubjects {
     interface TestInterfaceOne {
         void fridayIsHere();
