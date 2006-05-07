@@ -278,8 +278,7 @@
 
     <target name="check_coverage">
         <macro_cobertura_check code.type="core" branch.limit="100" line.limit="100"/>
-        <macro_cobertura_check code.type="edge" branch.limit="100" line.limit="8"/>
-        <!-- FIXME: SC502 THIS IS UNACCEPTABLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+        <!-- Approach "du jour" is to not run coverage on "edge".  -->
     </target>
 
     <!-- FIXME: SC502 Move from top level into a target depended on by others. -->

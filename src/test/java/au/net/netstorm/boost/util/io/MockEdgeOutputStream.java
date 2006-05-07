@@ -7,9 +7,7 @@ import au.net.netstorm.boost.test.checker.AssertTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;
 import junit.framework.Assert;
 
-// FIXME: SC043 Make package private.  Use another mock in the InstanceProvider area.
-
-public final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
+final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
     private final transient AssertTestChecker asserter = new DefaultAssertTestChecker();
     private byte[] actual;
     private boolean flushed = false;
