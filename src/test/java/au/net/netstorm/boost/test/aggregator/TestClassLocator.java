@@ -13,32 +13,40 @@ final class TestClassLocator implements ClassLocator {
     private final Comparator comparator = new TestFileComparator();
 
     public ClassName[] locate(File root, RegexPattern pattern) {
-        List result = new ArrayList();
-        locate(root, pattern, result);
-        Collections.sort(result, comparator);
-        int count = result.size();
-        File[] files = new File[count];
-        File[] file = (File[]) result.toArray(files);
-        return toClassNames(root, file);
+        File[] files = sortedDeepLocate(root, pattern);
+        return toClassNames(root, files);
     }
 
-    // FIXME: SC043 Should return an array files?
-    private void locate(File dir, RegexPattern pattern, List result) {
-        ensureDir(dir);
-        File[] subdirs = getSubdirectories(dir);
-        for (int i = 0; i < subdirs.length; i++) locate(subdirs[i], pattern, result);
-        getMatchingClasses(dir, pattern, result);
+    private File[] sortedDeepLocate(File root, RegexPattern pattern) {
+        List result = new ArrayList();
+        recursiveLocate(root, pattern, result);
+        Collections.sort(result, comparator);
+        return (File[]) result.toArray(new File[]{});
     }
 
     private ClassName[] toClassNames(File root, File[] files) {
         ClassName[] result = new ClassName[files.length];
         for (int i = 0; i < result.length; i++) {
-            File file = files[i];
-            result[i] = getClassName(file, root);
+            result[i] = getClassName(files[i], root);
         }
         return result;
     }
 
+    private void recursiveLocate(File dir, RegexPattern pattern, List result) {
+        ensureDir(dir);
+        File[] subdirs = getSubdirectories(dir);
+        for (int i = 0; i < subdirs.length; i++) {
+            recursiveLocate(subdirs[i], pattern, result);
+        }
+        getMatchingClasses(dir, pattern, result);
+    }
+
+    private File[] getSubdirectories(File dir) {
+        DirectoryFilter filter = new DirectoryFilter();
+        return dir.listFiles(filter);
+    }
+
+    // FIXME: SC043 Should we move this into TestClassName.
     private ClassName getClassName(File file, File root) {
         String absolute = file.getAbsolutePath();
         String rootAbsolute = root.getAbsolutePath();
@@ -59,11 +67,6 @@ final class TestClassLocator implements ClassLocator {
     private void ensureDir(File dir) {
         if (!dir.exists()) barf(dir, " does not exist");
         if (!dir.isDirectory()) barf(dir, " must be a directory.");
-    }
-
-    private File[] getSubdirectories(File dir) {
-        DirectoryFilter filter = new DirectoryFilter();
-        return dir.listFiles(filter);
     }
 
     private void barf(File dir, String content) {
