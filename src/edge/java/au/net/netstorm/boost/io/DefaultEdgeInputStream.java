@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.io;
+package au.net.netstorm.boost.io;
 
 import java.io.IOException;
 import java.io.InputStream;

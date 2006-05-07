@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.io;
+package au.net.netstorm.boost.io;
 
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;

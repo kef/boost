@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.io;
+package au.net.netstorm.boost.io;
 
 public final class DefaultStreamConverter implements StreamConverter {
     private static final int BUFFER_SIZE = 4096;

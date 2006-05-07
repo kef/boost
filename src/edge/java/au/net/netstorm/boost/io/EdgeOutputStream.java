@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.io;
+package au.net.netstorm.boost.io;
 
 public interface EdgeOutputStream extends EdgeStream {
     void write(byte[] bytes);

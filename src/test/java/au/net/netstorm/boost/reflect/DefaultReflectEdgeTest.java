@@ -16,6 +16,6 @@ public final class DefaultReflectEdgeTest extends TestCase {
     public void testForNameException() {
         try {
             reflector.forName(NON_EXISTENT_CLASS_NAME);
-        } catch (RuntimeClassNotFoundException expected) { }
+        } catch (EdgeClassNotFoundException expected) { }
     }
 }

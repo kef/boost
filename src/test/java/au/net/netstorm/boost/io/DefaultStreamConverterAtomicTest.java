@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.io;
+package au.net.netstorm.boost.io;
 
 import au.net.netstorm.boost.test.checker.AssertTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;
@@ -8,7 +8,6 @@ public final class DefaultStreamConverterAtomicTest extends TestCase {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
     private static final byte[] BYTE_ARRAY_1 = bytes("The bravery of being out of range.");
     private static final byte[] BYTE_ARRAY_2 = bytes("You deafen the canyon.");
-
     private final AssertTestChecker asserter = new DefaultAssertTestChecker();
     private final StreamConverter converter = new DefaultStreamConverter();
 
