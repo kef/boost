@@ -20,7 +20,7 @@ final class TestClassLocator implements ClassLocator {
     private File[] sortedDeepLocate(File root, RegexPattern pattern) {
         List result = new ArrayList();
         recursiveLocate(root, pattern, result);
-        Collections.sort(result, comparator);
+        sort(result);
         return (File[]) result.toArray(new File[]{});
     }
 
@@ -50,6 +50,7 @@ final class TestClassLocator implements ClassLocator {
         return new TestFileBasedJavaClass(root, file);
     }
 
+    // FIXME: SC043 Refactor this method.
     private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
         String thePattern = pattern.getPattern();
         RegexPattern clsPattern = new TestRegexPattern(thePattern + ".class");
@@ -57,6 +58,10 @@ final class TestClassLocator implements ClassLocator {
         File[] files = dir.listFiles(filter);
         List list = Arrays.asList(files);
         result.addAll(list);
+    }
+
+    private void sort(List result) {
+        Collections.sort(result, comparator);
     }
 
     private void ensureDir(File dir) {
