@@ -13,7 +13,6 @@ import junit.framework.TestSuite;
 // FIXME: SC043 Does it make sense to use the java.classpath system property?
 // FIXME: SC043 We should split this so the core functionality does not rely on a system property.
 // FIXME: SC043 In other words, grab the property then delegate.
-// FIXME: SC043 System.getProperty should be in edge.
 
 public class DefaultTestAggregator implements TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
@@ -23,12 +22,12 @@ public class DefaultTestAggregator implements TestAggregator {
     private final ClassLocator locator = new TestClassLocator();
 
     public Test aggregate(String suiteName, String regex) {
-        JavaClass[] matches = findMatches(regex);
+        File root = getRoot();
+        JavaClass[] matches = findMatches(regex, root);
         return buildSuite(suiteName, matches);
     }
 
-    private JavaClass[] findMatches(String regex) {
-        File root = getRoot();
+    private JavaClass[] findMatches(String regex, File root) {
         RegexPattern expression = new TestRegexPattern(regex);
         return locator.locate(root, expression);
     }
