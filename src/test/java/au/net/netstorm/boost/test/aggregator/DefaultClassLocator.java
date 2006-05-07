@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 // FIXME: SC043 Rename classes in this package to reflect current naming conventions for test code.
+// FIXME: SC043 Ie. TestClassLocator.
 // FIXME: SC043 Refactor de-train wrecked code.
 
 final class DefaultClassLocator implements ClassLocator {
