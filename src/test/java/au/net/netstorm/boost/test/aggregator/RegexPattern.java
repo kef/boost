@@ -1,8 +1,10 @@
 package au.net.netstorm.boost.test.aggregator;
 
-// FIXME: SC043 Extend Primordial.
+import au.net.netstorm.boost.primordial.Primordial;
 
-final class RegexPattern {
+// FIXME: SC043 Instancise.
+
+final class RegexPattern extends Primordial {
     private final String pattern;
 
     public RegexPattern(String pattern) {
@@ -11,9 +13,5 @@ final class RegexPattern {
 
     public String getPattern() {
         return pattern;
-    }
-
-    public String toString() {
-        return "RegexPattern[" + pattern + "]";
     }
 }
