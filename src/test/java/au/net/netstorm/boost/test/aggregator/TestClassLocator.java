@@ -7,8 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-// FIXME: SC043 Refactor de-train wrecked code.
-
 final class TestClassLocator implements ClassLocator {
     private final Comparator comparator = new TestFileComparator();
 
