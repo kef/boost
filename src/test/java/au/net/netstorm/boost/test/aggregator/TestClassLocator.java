@@ -46,18 +46,25 @@ final class TestClassLocator implements ClassLocator {
         return dir.listFiles(filter);
     }
 
-    private JavaClass getClass(File root, File file) {
-        return new TestFileBasedJavaClass(root, file);
+    private void getMatchingClasses(File dir, RegexPattern regexPattern, List result) {
+        String pattern = regexPattern.getPattern();
+        TestRegexFilter filter = buildFilter(pattern);
+        List list = getMatchingFiles(dir, filter);
+        result.addAll(list);
     }
 
-    // FIXME: SC043 Refactor this method.
-    private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
-        String thePattern = pattern.getPattern();
-        RegexPattern clsPattern = new TestRegexPattern(thePattern + ".class");
-        TestRegexFilter filter = new TestRegexFilter(clsPattern);
+    private List getMatchingFiles(File dir, TestRegexFilter filter) {
         File[] files = dir.listFiles(filter);
-        List list = Arrays.asList(files);
-        result.addAll(list);
+        return Arrays.asList(files);
+    }
+
+    private TestRegexFilter buildFilter(String pattern) {
+        RegexPattern clsPattern = new TestRegexPattern(pattern + ".class");
+        return new TestRegexFilter(clsPattern);
+    }
+
+    private JavaClass getClass(File root, File file) {
+        return new TestFileBasedJavaClass(root, file);
     }
 
     private void sort(List result) {
