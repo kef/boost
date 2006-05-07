@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
@@ -35,7 +35,7 @@ class DefaultReflectFieldMaster implements ReflectFieldMaster {
 
     private Object getFieldValue(Field field, Object ref) {
         field.setAccessible(true);
-        return ReflectEdge.INSTANCE
+        return EdgeReflect.INSTANCE
                 .getFieldValue(field, ref);
     }
 

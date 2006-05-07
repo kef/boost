@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
@@ -14,7 +14,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 public final class InstanceProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
-    private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
+    private final EdgeReflect reflectEdge = EdgeReflect.INSTANCE;
     private final InstanceProviderForTest knownTypes = new InstanceProviderTestUtilSuppressed();
 
     // FIXME: SC050 ? Rename occurrences of "additional" to "extra".

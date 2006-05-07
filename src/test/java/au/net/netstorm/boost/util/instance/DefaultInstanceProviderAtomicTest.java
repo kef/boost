@@ -11,10 +11,10 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
     private static final Class OBJECT_CLASS = Object.class;
     private static final Object OBJECT = new Object();
     private InstanceProvider instanceProvider;
-    private MockReflectEdge mockReflectEdge;
+    private MockEdgeReflect mockReflectEdge;
 
     protected void setUp() throws Exception {
-        mockReflectEdge = new MockReflectEdge();
+        mockReflectEdge = new MockEdgeReflect();
         instanceProvider = new DefaultInstanceProvider(mockReflectEdge);
     }
 

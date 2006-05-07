@@ -2,12 +2,12 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.Field;
 
-import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
-    private final ReflectEdge reflectEdge = ReflectEdge.INSTANCE;
+    private final EdgeReflect reflectEdge = EdgeReflect.INSTANCE;
 
     public Field getDeclared(Class cls, String fieldName) {
         return reflectEdge.getDeclaredField(cls, fieldName);

@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.test.checker.DefaultFieldTestChecker;
 import au.net.netstorm.boost.test.checker.FieldTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
@@ -33,7 +33,7 @@ import junit.framework.Assert;
 //
 
 final class MemberTestFixture {
-    private static final ReflectEdge REFLECT_EDGE = ReflectEdge.INSTANCE;
+    private static final EdgeReflect REFLECT_EDGE = EdgeReflect.INSTANCE;
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
             .length(); // FIXME: SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();

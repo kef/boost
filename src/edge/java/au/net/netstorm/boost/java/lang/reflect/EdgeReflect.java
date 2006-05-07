@@ -7,8 +7,8 @@ import java.lang.reflect.Method;
 // SUGGEST: This stuff will probably follow the same sort of pattern as the MemberTestUtil, ClassTestUtil...
 // SUGGEST: Maybe follow the java.lang. package structure.
 
-public interface ReflectEdge {
-    ReflectEdge INSTANCE = new DefaultReflectEdge();
+public interface EdgeReflect {
+    EdgeReflect INSTANCE = new DefaultEdgeReflect();
 
     Object getFieldValue(Field field, Object ref);
 

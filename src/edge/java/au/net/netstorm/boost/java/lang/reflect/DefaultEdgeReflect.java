@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 // FIXME: SC519 Map exceptions exactly how an "edge" should.
 
-public class DefaultReflectEdge implements ReflectEdge {
+public class DefaultEdgeReflect implements EdgeReflect {
     public Object getFieldValue(Field field, Object ref) {
         try {
             return field.get(ref);

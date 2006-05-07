@@ -4,10 +4,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 
-class MockReflectEdge implements ReflectEdge {
+class MockEdgeReflect implements EdgeReflect {
     private Object result;
     private Class cls;
 

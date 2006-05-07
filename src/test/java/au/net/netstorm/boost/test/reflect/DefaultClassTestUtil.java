@@ -2,15 +2,15 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.java.lang.reflect.DefaultReflectEdge;
-import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.DefaultEdgeReflect;
+import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Interface;
 
 public class DefaultClassTestUtil implements ClassTestUtil {
     private final ReflectMaster reflector = new DefaultReflectMaster();
-    private final ReflectEdge reflectEdge = new DefaultReflectEdge();
+    private final EdgeReflect reflectEdge = new DefaultEdgeReflect();
     private static final Object[] NO_PARAMETERS = {};
 
     // FIXME: SC509 Reorder parameters?
