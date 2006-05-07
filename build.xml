@@ -20,6 +20,7 @@
 <!-- FIXME: SC502 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
 <!-- FIXME: SC502 Break build up into separate files and use import to piece it back together. -->
 <!-- FIXME: SC502 Get consistent about singular vs plural directory and property names. -->
+<!-- FIXME: SC043 Remove running of "edge" tests. -->
 
 <project name="boost" default="all" basedir=".">
     <property name="label" value="build-dev"/>

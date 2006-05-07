@@ -3,10 +3,8 @@
  */
 package au.net.netstorm.boost.java.lang;
 
-public final class EdgeSystem implements System {
-    public String getProperty(String key) {
-        return java.lang
-                .System
-                .getProperty(key);
-    }
+public interface EdgeSystem {
+    EdgeSystem INSTANCE = new DefaultEdgeSystem();
+
+    String getProperty(String key);
 }

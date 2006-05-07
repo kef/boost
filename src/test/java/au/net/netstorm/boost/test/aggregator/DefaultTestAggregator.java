@@ -2,6 +2,8 @@ package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
 
+import au.net.netstorm.boost.java.lang.DefaultEdgeSystem;
+import au.net.netstorm.boost.java.lang.EdgeSystem;
 import au.net.netstorm.boost.java.lang.reflect.DefaultReflectEdge;
 import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
 import junit.framework.Test;
@@ -16,7 +18,9 @@ import junit.framework.TestSuite;
 public class DefaultTestAggregator implements TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
+    // FIXME: SC043 Sort out "edge" name schism.
     private final ReflectEdge reflect = new DefaultReflectEdge();
+    private final EdgeSystem system = new DefaultEdgeSystem();
     private final ClassLocator locator = new TestClassLocator();
 
     public Test aggregate(String suiteName, String regex) {
@@ -48,7 +52,7 @@ public class DefaultTestAggregator implements TestAggregator {
     }
 
     private String getRootProperty() {
-        String property = System.getProperty(KEY_TEST_CLASSPATH);
+        String property = system.getProperty(KEY_TEST_CLASSPATH);
         if (property != null) return property;
         return fail();
     }
