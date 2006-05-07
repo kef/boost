@@ -18,7 +18,6 @@ import junit.framework.TestSuite;
 public class DefaultTestAggregator implements TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
-    // FIXME: SC043 Sort out "edge" name schism.
     private final EdgeReflect reflect = new DefaultEdgeReflect();
     private final EdgeSystem system = new DefaultEdgeSystem();
     private final ClassLocator locator = new TestClassLocator();
