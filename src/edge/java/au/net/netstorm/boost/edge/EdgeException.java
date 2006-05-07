@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2005 Transtoll Pty Limited.
  */
-package au.net.netstorm.boost.misc;
+package au.net.netstorm.boost.edge;
 
 public class EdgeException extends RuntimeException {
     public EdgeException(Throwable throwable) {
