@@ -5,6 +5,7 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
 // FIXME: SC043 Does this make sense any more?  Vlad/James?
+// FIXME: SC043 Move these into suite.util.
 
 class TestSuiteRunnerUtil {
     public static void runSuite(Test suiteTests) {
