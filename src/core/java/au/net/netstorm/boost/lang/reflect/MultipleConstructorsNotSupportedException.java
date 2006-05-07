@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.reflect;
+package au.net.netstorm.boost.lang.reflect;
 
 // FIXME: SC502 Test drive this.
 

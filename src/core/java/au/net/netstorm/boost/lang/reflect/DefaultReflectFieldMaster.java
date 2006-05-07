@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.reflect;
+package au.net.netstorm.boost.lang.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -9,6 +9,7 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 // FIXME: SC524 Classes should almost always be declared final - test drive this via a utility.
+
 class DefaultReflectFieldMaster implements ReflectFieldMaster {
     public FieldValueSpec[] getInstanceFields(Object ref) {
         Class cls = ref.getClass();

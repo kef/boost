@@ -2,9 +2,9 @@ package au.net.netstorm.boost.util.tostring;
 
 import java.lang.reflect.Array;
 
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.lang.reflect.ClassMaster;
+import au.net.netstorm.boost.lang.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.lang.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.indent.DefaultIndenterMaster;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.separator.Separator;

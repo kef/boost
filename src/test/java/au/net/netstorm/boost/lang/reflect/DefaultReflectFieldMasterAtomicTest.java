@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.reflect;
+package au.net.netstorm.boost.lang.reflect;
 
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;

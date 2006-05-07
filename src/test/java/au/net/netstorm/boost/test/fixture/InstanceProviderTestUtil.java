@@ -3,9 +3,9 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectEdge;
-import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.lang.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.lang.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
 
 // FIXME: SC502 Move instances to their respective unit tests (as per POK theory).

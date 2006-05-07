@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.instance;
 
-import au.net.netstorm.boost.reflect.MockReflectEdge;
+import au.net.netstorm.boost.lang.reflect.MockReflectEdge;
 import junit.framework.TestCase;
 
 public final class DefaultInstanceProviderAtomicTest extends TestCase {
@@ -11,7 +11,6 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
 //    private static final Class POINT_CLASS = Point.class;
     private static final Class OBJECT_CLASS = Object.class;
     private static final Object OBJECT = new Object();
-
     private InstanceProvider instanceProvider;
     private MockReflectEdge mockReflectEdge;
 

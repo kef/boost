@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.reflect.ReflectEdge;
+import au.net.netstorm.boost.lang.reflect.ReflectEdge;
 import au.net.netstorm.boost.test.checker.DefaultFieldTestChecker;
 import au.net.netstorm.boost.test.checker.FieldTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;

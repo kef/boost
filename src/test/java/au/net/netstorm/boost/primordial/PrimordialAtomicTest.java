@@ -2,7 +2,7 @@ package au.net.netstorm.boost.primordial;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.reflect.ReflectEdge;
+import au.net.netstorm.boost.lang.reflect.ReflectEdge;
 import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;

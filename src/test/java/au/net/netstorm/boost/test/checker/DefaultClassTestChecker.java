@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.lang.reflect.ClassMaster;
+import au.net.netstorm.boost.lang.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.ClassTestUtil;
 import au.net.netstorm.boost.test.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.util.type.Interface;

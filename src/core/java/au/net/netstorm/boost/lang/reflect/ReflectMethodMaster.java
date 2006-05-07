@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.reflect;
+package au.net.netstorm.boost.lang.reflect;
 
 import java.lang.reflect.Method;
 
