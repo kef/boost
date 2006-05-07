@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.lang.reflect.ReflectEdge;
+import au.net.netstorm.boost.java.lang.reflect.ReflectEdge;
 import junit.framework.Assert;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {

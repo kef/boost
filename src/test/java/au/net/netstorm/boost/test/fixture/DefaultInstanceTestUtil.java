@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.lang.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.java.lang.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // FIXME: SC502 Make instance.

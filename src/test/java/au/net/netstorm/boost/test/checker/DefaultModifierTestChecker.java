@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Member;
 
-import au.net.netstorm.boost.lang.reflect.ClassMaster;
-import au.net.netstorm.boost.lang.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.java.lang.reflect.ClassMaster;
+import au.net.netstorm.boost.java.lang.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.ModifierTestUtil;
 import junit.framework.Assert;
