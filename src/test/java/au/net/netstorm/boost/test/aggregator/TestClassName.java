@@ -2,6 +2,8 @@ package au.net.netstorm.boost.test.aggregator;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
+// FIXME: SC043 Rename to FileClassName interface.
+
 final class TestClassName extends Primordial implements ClassName {
     private final String fullyQualifiedClassPath;
 
