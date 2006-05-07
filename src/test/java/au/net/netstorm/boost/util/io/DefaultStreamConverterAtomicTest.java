@@ -4,8 +4,6 @@ import au.net.netstorm.boost.test.checker.AssertTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultAssertTestChecker;
 import junit.framework.TestCase;
 
-// FIXME: SC043 Move this back out where it belongs.
-
 public final class DefaultStreamConverterAtomicTest extends TestCase {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
     private static final byte[] BYTE_ARRAY_1 = bytes("The bravery of being out of range.");
