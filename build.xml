@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- FIXME: SC502 SPLIT INTO SEPARATE FILES BASED ON FUNCTIONALITY !!!!!!!!!!!!!!! -->
 <!-- FIXME: Where is Andy's refactoring chocolate ? -->
 
 <!-- FIXME: SC999 NEW FEATURES: Thread conversion to string (target exceptions, proxies...) -->
