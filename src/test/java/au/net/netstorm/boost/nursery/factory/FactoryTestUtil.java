@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.factory;
+package au.net.netstorm.boost.nursery.factory;
 
 public final class FactoryTestUtil {
     private FactoryTestUtil() {
