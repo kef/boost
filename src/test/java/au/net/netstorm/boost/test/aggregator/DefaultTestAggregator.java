@@ -6,10 +6,6 @@ import au.net.netstorm.boost.java.lang.DefaultEdgeSystem;
 import au.net.netstorm.boost.java.lang.EdgeSystem;
 import junit.framework.Test;
 
-// FIXME: SC043 Does it make sense to use the java.classpath system property?
-// FIXME: SC043 We should split this so the core functionality does not rely on a system property.
-// FIXME: SC043 In other words, grab the property then delegate.
-
 /**
  * The requirement to define test.classpath is predicated on the inability to
  * load (or search) all classes in the java.classpath.  If there is a way of
