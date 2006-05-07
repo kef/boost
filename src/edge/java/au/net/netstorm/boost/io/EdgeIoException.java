@@ -2,7 +2,9 @@ package au.net.netstorm.boost.io;
 
 import java.io.IOException;
 
-public final class EdgeIoException extends RuntimeException {
+import au.net.netstorm.boost.misc.EdgeException;
+
+public final class EdgeIoException extends EdgeException {
     public EdgeIoException(IOException cause) {
         super(cause);
     }
