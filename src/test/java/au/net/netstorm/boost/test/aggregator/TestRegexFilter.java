@@ -5,18 +5,20 @@ import java.io.FileFilter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// FIXME: SC043 De train wreck.
+import au.net.netstorm.boost.primordial.Primordial;
 
-final class TestRegexFilter implements FileFilter {
+final class TestRegexFilter extends Primordial implements FileFilter {
     private final Pattern pattern;
 
-    public TestRegexFilter(RegexPattern pattern) {
-        this.pattern = Pattern.compile(pattern.getPattern());
+    public TestRegexFilter(RegexPattern regexPattern) {
+        String pattern = regexPattern.getPattern();
+        this.pattern = Pattern.compile(pattern);
     }
 
     public boolean accept(File file) {
         if (file.isDirectory()) return false;
-        Matcher m = pattern.matcher(file.getAbsolutePath());
+        String absolutePath = file.getAbsolutePath();
+        Matcher m = pattern.matcher(absolutePath);
         return m.matches();
     }
 }
