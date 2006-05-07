@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.compose;
+package au.net.netstorm.boost.nursery.compose;
 
 // FIXME: SC521 Add some real stuff to this.
 

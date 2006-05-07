@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.compose;
+package au.net.netstorm.boost.nursery.compose;
 
 import au.net.netstorm.boost.reflect.DefaultEdgeProxyFactory;
 import au.net.netstorm.boost.reflect.EdgeProxyFactory;
