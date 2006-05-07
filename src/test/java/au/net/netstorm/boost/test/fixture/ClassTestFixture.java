@@ -9,7 +9,7 @@ import au.net.netstorm.boost.test.checker.NullParameterTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
-// FIXME: SC043 Does it make sense to have this fixtures area?
+// FIXME: SC502 Does it make sense to have this fixtures area?
 
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
@@ -23,7 +23,7 @@ final class ClassTestFixture {
         this.parameters = parameters;
     }
 
-    // FIXME: SC043 ? Allow the interfaces to check to be changes Data vs Immutable.
+    // FIXME: S502 ? Allow the interfaces to check to be changes Data vs Immutable.
     public void checkClass(Class targetInterface, InstanceProviderForTest additional) {
         clsChecker.checkSubclassOf(Primordial.class, cls);
         clsChecker.checkImplementsAndFinal(targetInterface, cls);
