@@ -86,7 +86,7 @@
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE.  FIX FIRST!!!!  EVEN THOUGH SOME ARE SIMIAN FALSE POSITIVES -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
-        <exclude name="**/DefaultReflectEdge.java"/>
+        <exclude name="**/DefaultEdgeReflect.java"/>
         <exclude name="**/DefaultEdgeInputStream.java"/>
         <exclude name="**/DefaultEdgeOutputStream.java"/>
         <exclude name="**/MockListener.java"/>
