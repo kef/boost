@@ -10,6 +10,11 @@ import junit.framework.Test;
 // FIXME: SC043 We should split this so the core functionality does not rely on a system property.
 // FIXME: SC043 In other words, grab the property then delegate.
 
+/**
+ * The requirement to define test.classpath is predicated on the inability to
+ * load (or search) all classes in the java.classpath.  If there is a way of
+ * achieving this then we can drop the requirement for a directory specification via property.
+ */
 public class DefaultTestAggregator implements TestAggregator {
     private static final String KEY_TEST_CLASSPATH = "test.classpath";
     private static final String ENCOURAGEMENT_NOTICE = "---------> THIS IS SIMPLE TO FIX <---------   ";
