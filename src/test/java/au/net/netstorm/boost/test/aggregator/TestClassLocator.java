@@ -27,7 +27,7 @@ final class TestClassLocator implements ClassLocator {
     private JavaClass[] toClassNames(File root, File[] files) {
         JavaClass[] result = new JavaClass[files.length];
         for (int i = 0; i < result.length; i++) {
-            result[i] = getClassName(root, files[i]);
+            result[i] = getClass(root, files[i]);
         }
         return result;
     }
@@ -46,7 +46,7 @@ final class TestClassLocator implements ClassLocator {
         return dir.listFiles(filter);
     }
 
-    private JavaClass getClassName(File root, File file) {
+    private JavaClass getClass(File root, File file) {
         return new TestFileBasedJavaClass(root, file);
     }
 
