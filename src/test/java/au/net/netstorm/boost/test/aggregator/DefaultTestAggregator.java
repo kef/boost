@@ -20,23 +20,23 @@ public class DefaultTestAggregator implements TestAggregator {
     private final ClassLocator locator = new TestClassLocator();
 
     public Test aggregate(String suiteName, String regex) {
-        ClassName[] matches = findMatches(regex);
+        JavaClass[] matches = findMatches(regex);
         return buildSuite(suiteName, matches);
     }
 
-    private ClassName[] findMatches(String regex) {
+    private JavaClass[] findMatches(String regex) {
         File root = getRoot();
         RegexPattern expression = new TestRegexPattern(regex);
         return locator.locate(root, expression);
     }
 
-    private Test buildSuite(String suiteName, ClassName[] classes) {
+    private Test buildSuite(String suiteName, JavaClass[] classes) {
         TestSuite result = new TestSuite(suiteName);
         for (int i = 0; i < classes.length; i++) addClass(classes[i], result);
         return result;
     }
 
-    private void addClass(ClassName clsName, TestSuite result) {
+    private void addClass(JavaClass clsName, TestSuite result) {
         String qualified = clsName.getFullyQualified();
         Class cls = reflect.forName(qualified);
         result.addTestSuite(cls);

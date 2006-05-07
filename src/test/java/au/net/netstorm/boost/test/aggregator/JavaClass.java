@@ -3,6 +3,6 @@
  */
 package au.net.netstorm.boost.test.aggregator;
 
-interface ClassName {
+interface JavaClass {
     String getFullyQualified();
 }

@@ -12,7 +12,7 @@ import java.util.List;
 final class TestClassLocator implements ClassLocator {
     private final Comparator comparator = new TestFileComparator();
 
-    public ClassName[] locate(File root, RegexPattern pattern) {
+    public JavaClass[] locate(File root, RegexPattern pattern) {
         File[] files = sortedDeepLocate(root, pattern);
         return toClassNames(root, files);
     }
@@ -24,10 +24,10 @@ final class TestClassLocator implements ClassLocator {
         return (File[]) result.toArray(new File[]{});
     }
 
-    private ClassName[] toClassNames(File root, File[] files) {
-        ClassName[] result = new ClassName[files.length];
+    private JavaClass[] toClassNames(File root, File[] files) {
+        JavaClass[] result = new JavaClass[files.length];
         for (int i = 0; i < result.length; i++) {
-            result[i] = getClassName(files[i], root);
+            result[i] = getClassName(root, files[i]);
         }
         return result;
     }
@@ -46,13 +46,8 @@ final class TestClassLocator implements ClassLocator {
         return dir.listFiles(filter);
     }
 
-    // FIXME: SC043 Should we move this into TestClassName.
-    private ClassName getClassName(File file, File root) {
-        String absolute = file.getAbsolutePath();
-        String rootAbsolute = root.getAbsolutePath();
-        int length = rootAbsolute.length();
-        String path = absolute.substring(length);
-        return new TestClassName(path);
+    private JavaClass getClassName(File root, File file) {
+        return new TestFileBasedJavaClass(root, file);
     }
 
     private void getMatchingClasses(File dir, RegexPattern pattern, List result) {
