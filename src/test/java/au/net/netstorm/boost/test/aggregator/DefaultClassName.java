@@ -2,8 +2,6 @@ package au.net.netstorm.boost.test.aggregator;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-// FIXME: SC043 Primordial.
-
 final class DefaultClassName extends Primordial implements ClassName {
     private final String fullyQualifiedClassPath;
 
