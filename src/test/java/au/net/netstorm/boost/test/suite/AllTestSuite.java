@@ -10,8 +10,7 @@ import junit.framework.TestSuite;
 public class AllTestSuite extends PrimordialTestCase {
     public static Test suite() {
         TestSuite suite = new TestSuite("The Whole Box and Dice");
-        suite.addTest(QuickTestSuite.suite());
-        suite.addTest(SlowTestSuite.suite());
+        suite.addTest(AtomicTestSuite.suite());
         return suite;
     }
 }
