@@ -70,8 +70,6 @@ final class TestClassLocator implements ClassLocator {
     }
 
     private void ensureDir(File dir) {
-        // FIXME: SC043 This is a smell which drives the need for a strongly typed Directory object.
-        // FIXME: SC043 Roll this into a new story card ... EdgeFile.  TDD out Directory, File ...
         if (!dir.exists()) barf(dir, " does not exist");
         if (!dir.isDirectory()) barf(dir, " must be a directory.");
     }
