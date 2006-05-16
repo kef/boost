@@ -27,7 +27,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
     private final ReflectMaster master = new DefaultReflectMaster(); // FIXME: SC506 ? .INSTANCE.
-    private EdgeReflect reflectEdge = EdgeReflect.INSTANCE;
+    private EdgeReflect reflectEdge = EdgeReflect.EDGE_REFLECT;
 
     public void testGetMethodBasic() {
         checkGetMethod(INTERFACE_ONE, METHOD_CHURCH);

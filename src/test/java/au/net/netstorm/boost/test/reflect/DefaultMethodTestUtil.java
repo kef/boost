@@ -6,7 +6,7 @@ import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
 import junit.framework.Assert;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {
-    private final EdgeReflect reflectEdge = EdgeReflect.INSTANCE;
+    private final EdgeReflect reflectEdge = EdgeReflect.EDGE_REFLECT;
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         Method method = getMethod(invokee, methodName);

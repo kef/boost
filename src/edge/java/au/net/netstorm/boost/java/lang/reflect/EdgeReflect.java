@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 // SUGGEST: Maybe follow the java.lang. package structure.
 
 public interface EdgeReflect {
-    EdgeReflect INSTANCE = new DefaultEdgeReflect();
+    EdgeReflect EDGE_REFLECT = new DefaultEdgeReflect();
 
     Object getFieldValue(Field field, Object ref);
 

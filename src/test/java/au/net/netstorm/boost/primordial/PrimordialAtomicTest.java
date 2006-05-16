@@ -18,7 +18,7 @@ import junit.framework.TestCase;
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final EdgeReflect reflector = EdgeReflect.INSTANCE;
+    private final EdgeReflect reflector = EdgeReflect.EDGE_REFLECT;
 
     public void testNotAbstract() {
         modifier.checkConcrete(Primordial.class);

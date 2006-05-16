@@ -33,7 +33,7 @@ import junit.framework.Assert;
 //
 
 final class MemberTestFixture {
-    private static final EdgeReflect REFLECT_EDGE = EdgeReflect.INSTANCE;
+    private static final EdgeReflect REFLECT_EDGE = EdgeReflect.EDGE_REFLECT;
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
             .length(); // FIXME: SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();

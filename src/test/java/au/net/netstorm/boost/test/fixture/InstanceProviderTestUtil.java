@@ -14,7 +14,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 public final class InstanceProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
-    private final EdgeReflect reflectEdge = EdgeReflect.INSTANCE;
+    private final EdgeReflect reflectEdge = EdgeReflect.EDGE_REFLECT;
     private final InstanceProviderForTest knownTypes = new InstanceProviderTestUtilSuppressed();
 
     // FIXME: SC050 ? Rename occurrences of "additional" to "extra".

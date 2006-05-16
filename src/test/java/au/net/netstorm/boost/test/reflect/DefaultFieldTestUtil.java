@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
-    private final EdgeReflect reflectEdge = EdgeReflect.INSTANCE;
+    private final EdgeReflect reflectEdge = EdgeReflect.EDGE_REFLECT;
 
     public Field getDeclared(Class cls, String fieldName) {
         return reflectEdge.getDeclaredField(cls, fieldName);
