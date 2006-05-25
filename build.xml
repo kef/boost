@@ -59,9 +59,6 @@
         <include name="**/*AtomicTest.java"/>
     </fileset>
 
-    <!-- FIXME: SC043 Remove. -->
-    <!-- FIXME: SC043 Do we need to remove anything from the artifacts page. -->
-
     <patternset id="code.pattern">
         <include name="**/*.java"/>
     </patternset>
