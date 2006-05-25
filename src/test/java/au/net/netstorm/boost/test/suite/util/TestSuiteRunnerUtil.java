@@ -4,6 +4,9 @@ import junit.framework.Test;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
+// FIXME: SC043 Rename to DebugTestSuiteRunner.
+// FIXME: SC043 Rename package to debug.
+
 class TestSuiteRunnerUtil {
     public static void runSuite(Test suiteTests) {
         TestSuite suite = new TestSuite();
