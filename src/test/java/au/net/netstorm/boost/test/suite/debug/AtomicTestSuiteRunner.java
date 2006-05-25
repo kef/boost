@@ -1,6 +1,6 @@
-package au.net.netstorm.boost.test.suite.util;
+package au.net.netstorm.boost.test.suite.debug;
 
-import au.net.netstorm.boost.test.suite.AtomicTestSuite;
+import au.net.netstorm.boost.test.suite.collector.AtomicTestSuite;
 
 // FIXME: SC043 Rename to "debugger" ?
 class AtomicTestSuiteRunner {

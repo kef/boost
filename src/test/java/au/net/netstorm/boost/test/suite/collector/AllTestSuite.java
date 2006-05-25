@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.suite;
+package au.net.netstorm.boost.test.suite.collector;
 
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import junit.framework.Test;

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.suite.util;
+package au.net.netstorm.boost.test.suite.debug;
 
 import junit.framework.Test;
 import junit.framework.TestResult;
