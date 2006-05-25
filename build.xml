@@ -319,6 +319,7 @@
 
     <target name="checkstyle" depends="run_checkstyle,check_checkstyle"/>
 
+    <!-- FIXME: SC502 merge run/check checkstyle targets into parameterised macro. -->
     <target name="run_checkstyle">
         <macro_run_checkstyle code.type="core"/>
         <macro_run_checkstyle code.type="edge"/>
