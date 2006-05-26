@@ -43,8 +43,7 @@
     <property name="checkstyle.dir" location="${build.dir}/checkstyle"/>
     <property name="simian.config.dir" location="${config.dir}/simian"/>
 
-
-     <property name="simian.report.dir" location="${reports.dir}/simian"/>
+    <property name="simian.report.dir" location="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
     <property name="core.src.dir" location="${src.dir}/core/java"/>
