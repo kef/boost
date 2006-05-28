@@ -3,6 +3,8 @@ package au.net.netstorm.boost.test.primordial;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 
+// FIXME: SC525 Move all these into same package as Primordial?
+
 public abstract class PrimordialMockTestCase extends MockObjectTestCase implements MockTestCase, MockTestSetUp, MockProvider {
     private final ImplicitMocker implicitMocker = new DefaultImplicitMocker(this, this);
 
