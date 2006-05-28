@@ -109,7 +109,9 @@
         <path location="${core.instrumented.dir}"/>
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
+        <!-- FIXME: SC525 Should there be a test.classpath thingy -->
         <path refid="cobertura.classpath"/>
+        <path refid="jmock.classpath"/>
     </path>
 
     <path id="edge.classpath"/>
@@ -122,6 +124,7 @@
         <path refid="core.classpath"/>
         <path location="${core.class.dir}"/>
         <path refid="junit.classpath"/>
+        <path refid="jmock.classpath"/>
     </path>
 
     <!-- FIXME: SC502 Create a jar patternset to remove duplication of includes here. -->
@@ -139,6 +142,12 @@
 
     <path id="junit.classpath">
         <fileset dir="${lib.dir}/junit">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="jmock.classpath">
+        <fileset dir="${lib.dir}/jmock">
             <include name="**/*.jar"/>
         </fileset>
     </path>
@@ -209,7 +218,6 @@
     <target name="check_tests">
         <!-- FIXME: SC502 junit.@{code.type}.failed. -->
         <macro_junit_check failure.property="atomic.tests.failed"/>
-        <macro_junit_check failure.property="edge.tests.failed"/>
     </target>
 
     <macrodef name="macro_junit_run">

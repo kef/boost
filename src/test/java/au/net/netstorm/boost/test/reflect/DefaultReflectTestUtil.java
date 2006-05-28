@@ -46,6 +46,10 @@ public final class DefaultReflectTestUtil implements ReflectTestUtil {
         return fieldUtil.getStatic(cls, fieldName);
     }
 
+    public Object getInstance(Object ref, Field field) {
+        return fieldUtil.getInstance(ref, field);
+    }
+
     public Object getInstance(Object ref, String fieldName) {
         return fieldUtil.getInstance(ref, fieldName);
     }

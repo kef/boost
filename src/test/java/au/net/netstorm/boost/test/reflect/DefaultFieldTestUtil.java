@@ -17,6 +17,10 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         return getFieldValue(cls, MARKER_STATIC_FIELD, fieldName);
     }
 
+    public Object getInstance(Object ref, Field field) {
+        return value(ref, field);
+    }
+
     public Object getInstance(Object ref, String fieldName) {
         Class cls = ref.getClass();
         return getFieldValue(cls, ref, fieldName);

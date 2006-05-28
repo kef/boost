@@ -9,6 +9,8 @@ public interface FieldTestUtil {
 
     Object getStatic(Class cls, String fieldName);
 
+    Object getInstance(Object ref, Field field);
+
     Object getInstance(Object ref, String fieldName);
 
     void setInstance(Object ref, String fieldName, Object value);
