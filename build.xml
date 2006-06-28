@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- FIXME: SC518 SPLIT INTO SEPARATE FILES BASED ON FUNCTIONALITY !!!!!!!!!!!!!!! -->
-
-<!-- FIXME: SC502 Create Kickstart IntelliJ project and module files for each pair. -->
-
-<!-- FIXME: SC502 Goals: -->
-<!-- FIXME: SC502 Run "other" tests against raw classes (integration, acceptance) -->
-<!-- FIXME: SC502 Generate javadoc (if you're doing this) -->
-<!-- FIXME: SC502 Move from JDK 1.5 back to JDK 1.4 compliance target -->
-<!-- FIXME: SC502 Add script(s) to run build from the command line? JUnit needs to be in Ant classpath. -->
-<!-- FIXME: SC502 Check environment properties (fail if not correctly set) -->
-<!-- FIXME: SC502 Include profile (properties). One property should specify a properties file somewhere, usually under <project>/conf/profile -->
-
-<!-- FIXME: SC502 Refactors: -->
-<!-- FIXME: SC518 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
-
 <project name="boost" default="all" basedir=".">
     <import file="build-init.xml"/>
     <import file="build-checkstyle.xml"/>
