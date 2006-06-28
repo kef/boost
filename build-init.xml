@@ -2,6 +2,7 @@
 <project name="boost" default="ignore" basedir=".">
     <!-- FIXME: SC518 Split into more files? -->
     <!-- FIXME: SC518 Convert all targets to fit in with prefix/naming convention. -->
+    <!-- FIXME: SC518 Go through the SC512 dudes and see which are relevant to SC518. -->
     <property name="label" value="build-dev"/>
 
     <property name="build.dir" location="build"/>
