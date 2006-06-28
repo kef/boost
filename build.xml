@@ -20,6 +20,7 @@
     <import file="build-checkstyle.xml"/>
     <import file="build-cobertura.xml"/>
     <import file="build-junit.xml"/>
+    <import file="build-misc.xml"/>
     <import file="build-simian.xml"/>
 
     <!-- FIXME: SC518 Determine how to flag externally usable targets. -->
@@ -46,30 +47,5 @@
         </sequential>
     </macrodef>
 
-    <target name="clean">
-        <delete dir="${build.dir}"/>
-    </target>
-
-    <!-- FIXME: SC502 API jar which contains just Primordial? -->
-    <target name="build_jar">
-        <!-- FIXME: SC502 boost-run.jar which contains ONLY edge/core. -->
-        <mkdir dir="${jars.dir}"/>
-        <jar jarfile="${jars.dir}/boost.jar">
-            <fileset dir="${core.class.dir}" includes="**"/>
-            <fileset dir="${edge.class.dir}" includes="**"/>
-            <fileset dir="${test.class.dir}" includes="**"/>
-            <fileset dir="${core.src.dir}" includes="**"/>
-            <fileset dir="${edge.src.dir}" includes="**"/>
-            <fileset dir="${test.src.dir}" includes="**"/>
-        </jar>
-    </target>
-
-    <target name="artifacts">
-        <copy file="${build.config.dir}/artifacts.html" tofile="${artifacts.dir}/index.html">
-            <filterset>
-                <filter token="BUILD_LABEL" value="${label}"/>
-            </filterset>
-        </copy>
-    </target>
 
 </project>
