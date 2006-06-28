@@ -43,6 +43,4 @@
             <fail if="checkstyle.@{code.type}.failed" message="Checkstyle failure [@{code.type}]."/>
         </sequential>
     </macrodef>
-
-    <target name="ignore"/>
 </project>

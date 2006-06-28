@@ -44,6 +44,4 @@
             <fail if="simian.@{code.type}.failed" message="Simian detected duplication [@{code.type}]."/>
         </sequential>
     </macrodef>
-
-    <target name="ignore"/>
 </project>
