@@ -1,4 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost" default="ignore" basedir=".">
     <import file="build-init.xml"/>
+
+    <target name="run_tests">
+        <macro_junit_run tests.refid="atomic.tests" classpath.refid="core.coverage.classpath" coverage.type="core"
+                         failure.property="atomic.tests.failed"/>
+    </target>
+
+    <target name="report_tests">
+        <macro_junit_report/>
+    </target>
+
+    <target name="check_tests">
+        <!-- FIXME: SC502 junit.@{code.type}.failed. -->
+        <macro_junit_check failure.property="atomic.tests.failed"/>
+    </target>
+
+    <macrodef name="macro_junit_run">
+        <attribute name="tests.refid"/>
+        <attribute name="classpath.refid"/>
+        <attribute name="coverage.type"/>
+        <attribute name="failure.property"/>
+        <sequential>
+            <mkdir dir="${test.xml.report.dir}"/>
+            <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
+                   failureproperty="@{failure.property}">
+                <!-- FIXME: SC502 Parameterise the coverage file for different test styles. -->
+                <sysproperty key="net.sourceforge.cobertura.datafile"
+                             file="${coverage.dir}/@{coverage.type}_coverage.ser"/>
+                <classpath refid="@{classpath.refid}"/>
+                <formatter type="xml"/>
+                <formatter type="plain"/>
+                <batchtest todir="${test.xml.report.dir}">
+                    <fileset refid="@{tests.refid}"/>
+                </batchtest>
+            </junit>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="macro_junit_report">
+        <sequential>
+            <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
+                <!-- FIXME: SC502 Move fileset out.  -->
+                <fileset dir="${test.xml.report.dir}">
+                    <include name="TEST-*.xml"/>
+                </fileset>
+                <report format="frames" todir="${test.report.dir}"/>
+            </junitreport>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="macro_junit_check">
+        <attribute name="failure.property"/>
+        <sequential>
+            <!-- FIXME: SC502 Use code.type instead? Does this match the model? -->
+            <fail if="@{failure.property}" message="One or more tests failed [@{failure.property}]."/>
+        </sequential>
+    </macrodef>
+
 </project>
