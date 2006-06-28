@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="boost" default="ignore" basedir=".">
+    <import file="build-init.xml"/>
+
+    <target name="compile">
+        <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
+        <macro_javac srcdir="${core.src.dir}" destdir="${core.class.dir}" classpathref="core.classpath"/>
+        <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
+    </target>
+
+    <macrodef name="macro_javac">
+        <attribute name="srcdir"/>
+        <attribute name="destdir"/>
+        <attribute name="classpathref"/>
+        <sequential>
+            <mkdir dir="@{destdir}"/>
+            <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
+        </sequential>
+    </macrodef>
+</project>

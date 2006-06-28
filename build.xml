@@ -19,6 +19,7 @@
     <import file="build-init.xml"/>
     <import file="build-checkstyle.xml"/>
     <import file="build-cobertura.xml"/>
+    <import file="build-compile.xml"/>
     <import file="build-junit.xml"/>
     <import file="build-misc.xml"/>
     <import file="build-simian.xml"/>
@@ -30,22 +31,5 @@
     <target name="run" depends="run_tests,run_checkstyle,run_simian"/>
     <target name="report" depends="report_tests,report_coverage"/>
     <target name="check" depends="check_tests,check_coverage,check_checkstyle,check_simian"/>
-
-    <target name="compile">
-        <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
-        <macro_javac srcdir="${core.src.dir}" destdir="${core.class.dir}" classpathref="core.classpath"/>
-        <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
-    </target>
-
-    <macrodef name="macro_javac">
-        <attribute name="srcdir"/>
-        <attribute name="destdir"/>
-        <attribute name="classpathref"/>
-        <sequential>
-            <mkdir dir="@{destdir}"/>
-            <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
-        </sequential>
-    </macrodef>
-
 
 </project>
