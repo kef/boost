@@ -18,6 +18,7 @@
 <project name="boost" default="all" basedir=".">
     <import file="build-init.xml"/>
     <import file="build-checkstyle.xml"/>
+    <import file="build-cobertura.xml"/>
     <import file="build-simian.xml"/>
 
     <target name="all" depends="clean,artifacts,compile,instrument,run,report,check,build_jar"/>
