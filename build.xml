@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- FIXME: SC502 SPLIT INTO SEPARATE FILES BASED ON FUNCTIONALITY !!!!!!!!!!!!!!! -->
-<!-- FIXME: Where is Andy's refactoring chocolate ? -->
-
-<!-- FIXME: SC999 NEW FEATURES: Thread conversion to string (target exceptions, proxies...) -->
-<!-- FIXME: SC999 NEW FEATURES: A top level thread executor. -->
-
+<!-- FIXME: SC518 SPLIT INTO SEPARATE FILES BASED ON FUNCTIONALITY !!!!!!!!!!!!!!! -->
 
 <!-- FIXME: SC502 Create Kickstart IntelliJ project and module files for each pair. -->
 
@@ -18,9 +13,7 @@
 <!-- FIXME: SC502 Include profile (properties). One property should specify a properties file somewhere, usually under <project>/conf/profile -->
 
 <!-- FIXME: SC502 Refactors: -->
-<!-- FIXME: SC502 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
-<!-- FIXME: SC502 Break build up into separate files and use import to piece it back together. -->
-<!-- FIXME: SC502 Get consistent about singular vs plural directory and property names. -->
+<!-- FIXME: SC518 Order targets in file alphabetically or functionally or chronologically ... not randomly -->
 
 <project name="boost" default="all" basedir=".">
     <import file="build-init.xml"/>
