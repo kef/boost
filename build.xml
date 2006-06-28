@@ -10,6 +10,7 @@
     <import file="build-simian.xml"/>
 
     <!-- FIXME: SC518 Determine how to flag externally usable targets. -->
+    <!-- FIXME: SC518 Are all of these used? -->
     <target name="all" depends="clean,artifacts,compile,instrument,run,report,check,build_jar"/>
     <target name="quality" depends="run_checkstyle,run_simian,check_checkstyle,check_simian"/>
 
