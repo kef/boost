@@ -24,6 +24,7 @@
 
 <project name="boost" default="all" basedir=".">
     <import file="build-init.xml"/>
+    <import file="build-checkstyle.xml"/>
 
     <target name="all" depends="clean,artifacts,compile,instrument,run,report,check,build_jar"/>
 
@@ -188,47 +189,6 @@
 
     <target name="checkstyle" depends="run_checkstyle,check_checkstyle"/>
 
-    <!-- FIXME: SC502 merge run/check checkstyle targets into parameterised macro. -->
-    <target name="run_checkstyle">
-        <macro_run_checkstyle code.type="core"/>
-        <macro_run_checkstyle code.type="edge"/>
-        <macro_run_checkstyle code.type="test"/>
-    </target>
-
-    <target name="check_checkstyle">
-        <macro_check_checkstyle code.type="core"/>
-        <macro_check_checkstyle code.type="edge"/>
-        <macro_check_checkstyle code.type="test"/>
-    </target>
-
-    <!-- FIXME: SC502 Consider whether we need to keep separate rules for core/edge/test. -->
-    <!-- FIXME: SC502 Review and revise checkstyle rules. -->
-    <!-- FIXME: SC502 Fix all code to adhere to checkstyle rules - see suppressions. -->
-    <!-- FIXME: SC502 Tighten suppressions so that checks are still done for kickstart pair code. -->
-    <macrodef name="macro_run_checkstyle">
-        <attribute name="code.type"/>
-        <sequential>
-            <mkdir dir="${checkstyle.dir}"/>
-            <mkdir dir="${checkstyle.report.dir}"/>
-            <taskdef resource="checkstyletask.properties" classpathref="checkstyle.class.path"/>
-            <checkstyle config="${checkstyle.config.dir}/checkstyle-@{code.type}.xml"
-                        failOnViolation="false" failureProperty="checkstyle.@{code.type}.failed">
-                <formatter/>
-                <formatter type="xml" tofile="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"/>
-                <fileset refid="checkstyle.@{code.type}.code"/>
-            </checkstyle>
-            <style in="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"
-                   out="${checkstyle.report.dir}/checkstyle-@{code.type}.html"
-                   style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="macro_check_checkstyle">
-        <attribute name="code.type"/>
-        <sequential>
-            <fail if="checkstyle.@{code.type}.failed" message="Checkstyle failure [@{code.type}]."/>
-        </sequential>
-    </macrodef>
 
     <target name="simian" depends="run_simian,check_simian"/>
 
