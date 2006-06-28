@@ -22,8 +22,7 @@
     <macrodef name="macro_run_checkstyle">
         <attribute name="code.type"/>
         <sequential>
-            <mkdir dir="${checkstyle.dir}"/>
-            <!-- Required for the checkstyle cache. -->
+            <mkdir dir="${checkstyle.cache.dir}"/>
             <mkdir dir="${checkstyle.report.dir}"/>
             <taskdef resource="checkstyletask.properties" classpathref="checkstyle.class.path"/>
             <checkstyle config="${checkstyle.config.dir}/checkstyle-@{code.type}.xml"

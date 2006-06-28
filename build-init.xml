@@ -20,7 +20,7 @@
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
     <property name="checkstyle.config.dir" location="${config.dir}/checkstyle"/>
     <property name="checkstyle.report.dir" location="${reports.dir}/checkstyle"/>
-    <property name="checkstyle.dir" location="${build.dir}/checkstyle"/>
+    <property name="checkstyle.cache.dir" location="${build.dir}/checkstyle-cache"/>
     <property name="simian.config.dir" location="${config.dir}/simian"/>
 
     <property name="simian.report.dir" location="${reports.dir}/simian"/>
