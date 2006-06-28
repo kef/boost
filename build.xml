@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="boost" default="all" basedir=".">
-    <import file="build-init.xml"/>
-    <import file="build-checkstyle.xml"/>
-    <import file="build-cobertura.xml"/>
-    <import file="build-compile.xml"/>
-    <import file="build-junit.xml"/>
-    <import file="build-misc.xml"/>
-    <import file="build-simian.xml"/>
+    <import file="build-includes.xml"/>
 
     <!-- FIXME: SC518 Determine how to flag externally usable targets. The following two are intended as external targets. -->
     <target name="all" depends="clean,artifacts,compile,instrument,run,report,check,build_jar"/>
@@ -16,5 +10,4 @@
     <target name="run" depends="run_tests,run_checkstyle,run_simian"/>
     <target name="report" depends="report_tests,report_coverage"/>
     <target name="check" depends="check_tests,check_coverage,check_checkstyle,check_simian"/>
-
 </project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="boost" default="ignore" basedir=".">
+    <import file="build-init.xml"/>
+    <import file="build-checkstyle.xml"/>
+    <import file="build-cobertura.xml"/>
+    <import file="build-compile.xml"/>
+    <import file="build-junit.xml"/>
+    <import file="build-misc.xml"/>
+    <import file="build-simian.xml"/>
+</project>
