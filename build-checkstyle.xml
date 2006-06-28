@@ -2,6 +2,8 @@
 <project name="boost" default="ignore" basedir=".">
     <import file="build-init.xml"/>
 
+    <target name="checkstyle" depends="run_checkstyle,check_checkstyle"/>
+
     <target name="run_checkstyle">
         <macro_run_checkstyle code.type="core"/>
         <macro_run_checkstyle code.type="edge"/>

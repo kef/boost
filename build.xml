@@ -18,6 +18,7 @@
 <project name="boost" default="all" basedir=".">
     <import file="build-init.xml"/>
     <import file="build-checkstyle.xml"/>
+    <import file="build-simian.xml"/>
 
     <target name="all" depends="clean,artifacts,compile,instrument,run,report,check,build_jar"/>
 
@@ -180,50 +181,7 @@
 
     <target name="quality" depends="run_checkstyle,run_simian,check_checkstyle,check_simian"/>
 
-    <target name="checkstyle" depends="run_checkstyle,check_checkstyle"/>
 
 
-    <target name="simian" depends="run_simian,check_simian"/>
-
-    <target name="run_simian">
-        <macro_run_simian code.type="boost"/>
-        <macro_run_simian code.type="boo"/>
-        <macro_run_simian code.type="monster"/>
-        <macro_run_simian code.type="rah"/>
-        <macro_run_simian code.type="scream"/>
-    </target>
-
-    <target name="check_simian">
-        <macro_check_simian code.type="boost"/>
-        <macro_check_simian code.type="boo"/>
-        <macro_check_simian code.type="monster"/>
-        <macro_check_simian code.type="rah"/>
-        <macro_check_simian code.type="scream"/>
-    </target>
-
-    <!-- FIXME: SC502 Remove remaining duplication reports by Simian - see exclusions in fileset. -->
-    <macrodef name="macro_run_simian">
-        <attribute name="code.type"/>
-        <sequential>
-            <mkdir dir="${simian.report.dir}"/>
-            <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
-            <!-- FIXME: SC502 Experiment with ignore options to strengthen check. -->
-            <simian threshold="4" language="java" balanceParentheses="true" balanceSquareBrackets="true"
-                    failureProperty="simian.@{code.type}.failed">
-                <fileset refid="simian.@{code.type}.code"/>
-                <formatter type="xml" tofile="${simian.report.dir}/simian-@{code.type}.xml"/>
-                <formatter type="plain"/>
-            </simian>
-            <style in="${simian.report.dir}/simian-@{code.type}.xml" out="${simian.report.dir}/simian-@{code.type}.html"
-                   style="${simian.config.dir}/simian.xsl"/>
-        </sequential>
-    </macrodef>
-
-    <macrodef name="macro_check_simian">
-        <attribute name="code.type"/>
-        <sequential>
-            <fail if="simian.@{code.type}.failed" message="Simian detected duplication [@{code.type}]."/>
-        </sequential>
-    </macrodef>
 
 </project>
