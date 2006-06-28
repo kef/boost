@@ -19,6 +19,7 @@
     <import file="build-init.xml"/>
     <import file="build-checkstyle.xml"/>
     <import file="build-cobertura.xml"/>
+    <import file="build-junit.xml"/>
     <import file="build-simian.xml"/>
 
     <target name="all" depends="clean,artifacts,compile,instrument,run,report,check,build_jar"/>
@@ -125,10 +126,5 @@
         </sequential>
     </macrodef>
 
-
     <target name="quality" depends="run_checkstyle,run_simian,check_checkstyle,check_simian"/>
-
-
-
-
 </project>
