@@ -3,6 +3,7 @@
     <import file="build-init.xml"/>
 
     <target name="compile">
+        <!-- FIXME: SC518 This can all be nicely parameterised by the type "edge","core","test". -->
         <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
         <macro_javac srcdir="${core.src.dir}" destdir="${core.class.dir}" classpathref="core.classpath"/>
         <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
