@@ -6,7 +6,8 @@ import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import junit.framework.Test;
 
 public class AtomicTestSuite extends PrimordialTestCase {
-    private static final TestAggregator AGGREGATOR = new DefaultTestAggregator();
+    private static final Class CLASS_IN_TEST_TREE = AtomicTestSuite.class;
+    private static final TestAggregator AGGREGATOR = new DefaultTestAggregator(CLASS_IN_TEST_TREE);
 
     public static Test suite() {
         return AGGREGATOR.aggregate("Atomic", ".*AtomicTest");
