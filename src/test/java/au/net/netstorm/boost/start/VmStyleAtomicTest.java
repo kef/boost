@@ -13,4 +13,12 @@ public class VmStyleAtomicTest extends PrimordialTestCase {
         new DefaultDataTestChecker().checkIsData(VmStyle.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("style", String.class)});
     }
+
+    public void testNull() {
+        try {
+            new VmStyle(null);
+        } catch (IllegalArgumentException e) {
+            assertEquals("style parameter should not be null", e.getMessage());
+        }
+    }
 }

@@ -11,4 +11,17 @@ public class MethodSpecAtomicTest extends TestCase {
             new DefaultFieldSpec("name", String.class),
             new DefaultFieldSpec("params", Class[].class)});
     }
+
+    public void testNull() {
+        try {
+            new MethodSpec(null, new Class[] {String.class});
+        } catch (IllegalArgumentException e) {
+            assertEquals("name parameter should not be null", e.getMessage());
+        }
+        try {
+            new MethodSpec("params", null);
+        } catch (IllegalArgumentException e) {
+            assertEquals("params parameter should not be null", e.getMessage());
+        }
+    }
 }

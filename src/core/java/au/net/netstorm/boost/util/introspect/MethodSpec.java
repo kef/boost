@@ -12,8 +12,8 @@ public final class MethodSpec extends Primordial implements Data {
     public MethodSpec(String name, Class[] params) {
         // FIXME: SC502 Move into validate(...) method.
         NullMaster master = new NullMaster();
-        master.check(name);
-        master.check(params);
+        master.check(name, "name");
+        master.check(params, "params");
         this.name = name;
         this.params = (Class[]) params.clone();
     }

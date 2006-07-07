@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class NullMaster implements Serializable {
     // FIXME: SC502 INSTANCE pattern.
 
-    public void check(Object parameter) {
-        if (parameter == null) throw new IllegalArgumentException();
+    public void check(Object parameter, String message) {
+        if (parameter == null) throw new IllegalArgumentException(message + " parameter should not be null");
     }
 }

@@ -212,7 +212,7 @@
       <module fileurl="file://$PROJECT_DIR$/boost.iml" filepath="$PROJECT_DIR$/boost.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="false" project-jdk-name="1.4" />
+  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="false" project-jdk-name="1.5" />
   <component name="RmicSettings">
     <option name="IS_EANABLED" value="false" />
     <option name="DEBUGGING_INFO" value="true" />
@@ -223,12 +223,19 @@
   <component name="libraryTable">
     <library name="junit">
       <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/" />
-      </SOURCES>
+      <SOURCES />
+    </library>
+    <library name="jmock">
+      <CLASSES>
+        <root url="file://$PROJECT_DIR$/lib/jmock" />
+        <root url="jar://$PROJECT_DIR$/lib/jmock/jmock-1.1.0RC1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
     </library>
   </component>
   <component name="uidesigner-configuration">

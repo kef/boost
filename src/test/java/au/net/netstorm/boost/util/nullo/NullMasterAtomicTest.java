@@ -6,14 +6,21 @@ public class NullMasterAtomicTest extends TestCase {
     NullMaster master = new NullMaster();
 
     public void testNoException() {
-        master.check(this);
+        master.check(this, null);
     }
 
     // FIXME: SC523 Replace with normal test method.
-    public void failNull() {
+    public void testNull() {
+        checkFailNull("foo");
+        checkFailNull("bar");
+    }
+
+    private void checkFailNull(final String parameter) {
         try {
-            master.check(null);
+            master.check(null, parameter);
             fail();
-        } catch (IllegalArgumentException expected) { }
+        } catch (IllegalArgumentException expected) {
+            assertEquals(parameter + " parameter should not be null", expected.getMessage());
+        }
     }
 }

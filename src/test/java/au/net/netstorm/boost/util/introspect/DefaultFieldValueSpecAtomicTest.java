@@ -55,6 +55,8 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
         try {
             new DefaultFieldValueSpec(name, value);
             fail();
-        } catch (IllegalArgumentException expected) { }
+        } catch (IllegalArgumentException expected) {
+            assertEquals(name + " parameter should not be null", expected.getMessage());
+        }
     }
 }

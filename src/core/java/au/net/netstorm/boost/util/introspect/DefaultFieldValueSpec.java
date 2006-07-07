@@ -68,6 +68,6 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     // FIXME: SC509 ? Null checker.
     private void validate(Object value) {
         NullMaster master = new NullMaster();
-        master.check(value);
+        master.check(value, name);
     }
 }
