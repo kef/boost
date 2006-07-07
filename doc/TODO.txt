@@ -5,7 +5,6 @@ Just some rough ideas we might use in Boost -- Mr O'Keeffe.
  * FactoryTestUtil depends on InstanceProvider.
  * NullArgsTestChecker.
  * OO support.
- * Rename DataTestUtil --> Checker.
  * Rename ImmutableTestUtil --> Checker.
  * Compare against what we have done on other projects - particularly usability improvements of test utilities.
  * Remove duplication detected by IntelliJ.
