@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
+import java.net.URL;
 
 import junit.framework.Test;
 
@@ -19,7 +20,8 @@ public class DefaultTestAggregator implements TestAggregator {
     }
 
     private File getRoot() {
-        String testRoot = classInTestTree.getResource(PATH_ROOT).getFile();
+        URL resource = classInTestTree.getResource(PATH_ROOT);
+        String testRoot = resource.getFile();
         return new File(testRoot);
     }
 }
