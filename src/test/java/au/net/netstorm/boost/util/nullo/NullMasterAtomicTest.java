@@ -1,12 +1,16 @@
 package au.net.netstorm.boost.util.nullo;
 
+import au.net.netstorm.boost.test.checker.AssertThrows;
+import au.net.netstorm.boost.test.checker.Block;
+import au.net.netstorm.boost.test.checker.DefaultAssertThrows;
 import junit.framework.TestCase;
 
 public class NullMasterAtomicTest extends TestCase {
-    NullMaster master = new NullMaster();
+    private NullMaster nullMaster = new NullMaster();
+    private AssertThrows throwsMaster = new DefaultAssertThrows();
 
     public void testNoException() {
-        master.check(this, null);
+        nullMaster.check(this, null);
     }
 
     // FIXME: SC523 Replace with normal test method.
@@ -16,11 +20,11 @@ public class NullMasterAtomicTest extends TestCase {
     }
 
     private void checkFailNull(final String parameter) {
-        try {
-            master.check(null, parameter);
-            fail();
-        } catch (IllegalArgumentException expected) {
-            assertEquals(parameter + " parameter should not be null", expected.getMessage());
-        }
+        final String expectedMessage = " parameter should not be null";
+        throwsMaster.assertThrows(IllegalArgumentException.class, parameter + expectedMessage, new Block() {
+            public void execute() throws Throwable {
+                nullMaster.check(null, parameter);
+            }
+        });
     }
 }

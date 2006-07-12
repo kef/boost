@@ -31,7 +31,4 @@ public final class DefaultAssertThrows implements AssertThrows {
                 .indexOf(fragment) > -1);
     }
 
-    public interface Block {
-        void execute() throws Throwable;
-    }
 }
