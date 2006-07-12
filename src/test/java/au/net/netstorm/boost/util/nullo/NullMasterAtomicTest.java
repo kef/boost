@@ -1,26 +1,24 @@
 package au.net.netstorm.boost.util.nullo;
 
-import au.net.netstorm.boost.test.checker.AssertThrows;
-import au.net.netstorm.boost.test.checker.Block;
-import au.net.netstorm.boost.test.checker.DefaultAssertThrows;
+import au.net.netstorm.boost.test.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
+import au.net.netstorm.boost.test.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
 public class NullMasterAtomicTest extends PrimordialTestCase {
     // TODO: Move these into PrimordialTestCase?
-    private static final DefaultClassTestChecker CLASS_CHECKER = new DefaultClassTestChecker();
-    private static final DefaultModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
-    private static final AssertThrows THROWS = new DefaultAssertThrows();
+    private final ClassTestChecker classChecker = new DefaultClassTestChecker();
+    private final ModifierTestChecker modifierChecker = new DefaultModifierTestChecker();
     private NullMaster nullMaster = new DefaultNullMaster();
 
     public void testClassProperties() {
-        CLASS_CHECKER.checkImplementsAndFinal(NullMaster.class,  DefaultNullMaster.class);
-        MODIFIER_CHECKER.checkPublic(DefaultNullMaster.class);
-        MODIFIER_CHECKER.checkPublic(NullMaster.class);
+        classChecker.checkImplementsAndFinal(NullMaster.class,  DefaultNullMaster.class);
+        modifierChecker.checkPublic(DefaultNullMaster.class);
+        modifierChecker.checkPublic(NullMaster.class);
     }
 
-    public void testNoExceptionWhenNullMessageIsPassed() {
+    public void testNullMessageOk() {
         nullMaster.check(this, null);
     }
 
@@ -30,12 +28,13 @@ public class NullMasterAtomicTest extends PrimordialTestCase {
         checkFailNull("someOtherParam");
     }
 
-    private void checkFailNull(final String parameter) {
-        final String expectedMessage = " parameter should not be null";
-        THROWS.assertThrows(IllegalArgumentException.class, parameter + expectedMessage, new Block() {
-            public void execute() throws Throwable {
-                nullMaster.check(null, parameter);
-            }
-        });
+    private void checkFailNull(String parameter) {
+        try {
+            nullMaster.check(null, parameter);
+            fail();
+        } catch (IllegalArgumentException e) {
+            String message = e.getMessage();
+            assertEquals(parameter + " parameter should not be null", message);
+        }
     }
 }
