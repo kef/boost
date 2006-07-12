@@ -2,6 +2,7 @@ package au.net.netstorm.boost.util.introspect;
 
 import java.lang.reflect.Array;
 
+import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Immutable;
 
@@ -67,7 +68,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
 
     // FIXME: SC509 ? Null checker.
     private void validate(Object value) {
-        NullMaster master = new NullMaster();
+        NullMaster master = new DefaultNullMaster();
         master.check(value, name);
     }
 }

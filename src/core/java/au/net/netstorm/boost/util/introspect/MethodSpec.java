@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Data;
 
@@ -11,7 +12,7 @@ public final class MethodSpec extends Primordial implements Data {
 
     public MethodSpec(String name, Class[] params) {
         // FIXME: SC502 Move into validate(...) method.
-        NullMaster master = new NullMaster();
+        NullMaster master = new DefaultNullMaster();
         master.check(name, "name");
         master.check(params, "params");
         this.name = name;
