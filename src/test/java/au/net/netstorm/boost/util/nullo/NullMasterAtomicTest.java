@@ -12,6 +12,7 @@ public class NullMasterAtomicTest extends PrimordialTestCase {
     private final ModifierTestChecker modifierChecker = new DefaultModifierTestChecker();
     private NullMaster nullMaster = new DefaultNullMaster();
 
+    // FIXME: SC523 Do we need to do this.  Or is it maybe just part of test driving up (ie. remove when done).
     public void testClassProperties() {
         classChecker.checkImplementsAndFinal(NullMaster.class,  DefaultNullMaster.class);
         modifierChecker.checkPublic(DefaultNullMaster.class);
