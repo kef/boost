@@ -104,6 +104,12 @@ final class MemberTestFixture {
 
     // FIXME: SC509 This is a "member test fixture" for crying out loud.  What is it doing checking return types PK?
     private static boolean isImmutable(Class type) {
-        return (Class.class.isAssignableFrom(type)) || (String.class.isAssignableFrom(type)) || (Immutable.class.isAssignableFrom(type));
+        return Class.class.isAssignableFrom(type) || String.class.isAssignableFrom(type) || Immutable.class.isAssignableFrom(type) || isPrimitiveWrapperImmutable(type);
+    }
+
+    private static boolean isPrimitiveWrapperImmutable(Class type) {
+        return  Boolean.class.isAssignableFrom(type) || Character.class.isAssignableFrom(type) || Byte.class.isAssignableFrom(type)
+                || Short.class.isAssignableFrom(type) || Integer.class.isAssignableFrom(type) || Long.class.isAssignableFrom(type)
+                || Float.class.isAssignableFrom(type) || Double.class.isAssignableFrom(type);
     }
 }
