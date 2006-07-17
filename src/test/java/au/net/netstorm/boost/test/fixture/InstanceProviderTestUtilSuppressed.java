@@ -28,6 +28,7 @@ public final class InstanceProviderTestUtilSuppressed implements InstanceProvide
     private Object doGetInstance(Class type) {
         if (type == Object.class || type == String.class) return "We cower in the corner our hands up over our ears.";
         if (type == Class.class) return CharSequence.class;
+        if (type == Long.class) return new Long(10);
         // FIXME: SC517 Use j.l.r.Proxy for interfaces.
         // Interfaces... (remove comment when code complete).
         if (type == Remote.class) return new Remote() {
