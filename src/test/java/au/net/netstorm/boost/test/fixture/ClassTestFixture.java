@@ -34,9 +34,9 @@ final class ClassTestFixture {
         // FIXME: SC050 ... So the BUG smell here is that we do not need to pass the constructor all the way through to IPTU via NTU.
         // FIXME: SC050 ... Tidying this up will remove a large amount of code.
         Constructor constructor = instancer.getConstructor(cls);
-        Class[] expected = constructor.getParameterTypes();
-        Class[] params = instancer.getClasses(parameters);
-        nuller.checkNullConstructorParameters(constructor, params, additional);
-        Assert.assertEquals("Class constructor does not have expected number arguments", expected.length, params.length); // FIXME: SC050 This seems to be back to front
+        Class[] expected = instancer.getClasses(parameters);
+        Class[] actual = constructor.getParameterTypes();
+        nuller.checkNullConstructorParameters(constructor, expected, additional);
+        Assert.assertEquals("Class constructor does not have expected number arguments", expected.length, actual.length);
     }
 }
