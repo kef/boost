@@ -27,6 +27,7 @@ public final class InstanceProviderTestUtil {
 
     public Object getInstance(Constructor constructor, Object[] parameters) {
         try {
+            // FIXME TJA: Edge class exists now, use it. Is the exception message below meaningful?
             // FIXME: SC050 ? use an edge class.
             constructor.setAccessible(true);
             return constructor.newInstance(parameters);

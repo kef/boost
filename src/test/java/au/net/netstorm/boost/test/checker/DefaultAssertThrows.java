@@ -27,8 +27,7 @@ public final class DefaultAssertThrows implements AssertThrows {
     }
 
     public void assertMessageContains(Throwable t, String fragment) {
-        Assert.assertTrue("Fragment '" + fragment + "' not found in message '" + t.getMessage() + "' ", t.getMessage()
-                .indexOf(fragment) > -1);
+        String message = "Fragment '" + fragment + "' not found in message '" + t.getMessage() + "' ";
+        Assert.assertTrue(message, t.getMessage().indexOf(fragment) > -1);
     }
-
 }

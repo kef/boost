@@ -6,8 +6,8 @@ import java.io.Serializable;
 // FIXME: SC502 Test serializable in NullAT.
 
 public final class DefaultNullMaster implements NullMaster, Serializable {
-    public void check(Object parameter, String message) {
-        if (parameter == null) throw new IllegalArgumentException(message + " parameter should not be null");
+    public void check(Object parameter, String parameterName) {
+        if (parameter == null) throw new IllegalArgumentException(parameterName + " parameter should not be null");
     }
 
     // Note. In for JDK 1.5 support, will be exposed as varargs, i.e. check(foo, bar, baz)

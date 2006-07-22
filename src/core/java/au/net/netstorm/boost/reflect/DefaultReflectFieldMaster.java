@@ -35,8 +35,7 @@ class DefaultReflectFieldMaster implements ReflectFieldMaster {
 
     private Object getFieldValue(Field field, Object ref) {
         field.setAccessible(true);
-        return EdgeReflect.EDGE_REFLECT
-                .getFieldValue(field, ref);
+        return EdgeReflect.EDGE_REFLECT.getFieldValue(field, ref);
     }
 
     private boolean isInstance(Field field) {
