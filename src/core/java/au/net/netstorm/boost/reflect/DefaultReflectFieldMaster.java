@@ -12,6 +12,8 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 // FIXME: SC524 Classes should almost always be declared final - test drive this via a utility.
 
 class DefaultReflectFieldMaster implements ReflectFieldMaster {
+    private EdgeReflect reflect = EdgeReflect.EDGE_REFLECT;
+
     public FieldValueSpec[] getInstanceFields(Object ref) {
         Class cls = ref.getClass();
         return instanceFields(cls.getDeclaredFields(), ref);
@@ -35,7 +37,7 @@ class DefaultReflectFieldMaster implements ReflectFieldMaster {
 
     private Object getFieldValue(Field field, Object ref) {
         field.setAccessible(true);
-        return EdgeReflect.EDGE_REFLECT.getFieldValue(field, ref);
+        return reflect.getFieldValue(field, ref);
     }
 
     private boolean isInstance(Field field) {
