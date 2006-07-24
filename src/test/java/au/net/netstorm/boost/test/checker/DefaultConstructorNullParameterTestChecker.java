@@ -47,7 +47,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
 
     private void invoke(final Constructor constructor, final Object[] paramValues) {
         constructor.setAccessible(true);
-        Block invokeBlock = new Block() {
+        Call invokeBlock = new Call() {
             public void execute() {
                 EdgeConstructor.EDGE_CONSTRUCTOR.newInstance(constructor, paramValues);
             }

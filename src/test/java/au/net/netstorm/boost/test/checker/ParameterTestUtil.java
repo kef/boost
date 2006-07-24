@@ -21,7 +21,7 @@ final class ParameterTestUtil {
     }
 
     // FIXME: SC523 Rename...
-    static void invokeBlock(Block invokeBlock) {
+    static void invokeBlock(Call invokeBlock) {
         try {
             invokeBlock.execute();
         } catch (EdgeException e) {

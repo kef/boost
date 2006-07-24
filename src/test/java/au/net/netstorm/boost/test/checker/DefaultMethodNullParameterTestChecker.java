@@ -53,7 +53,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     private void invoke(final Method method, final Object[] paramValues) {
         final Object instance = instanceProvider.newInstance(method.getDeclaringClass());
         method.setAccessible(true);
-        Block invokeBlock = new Block() {
+        Call invokeBlock = new Call() {
             public void execute() {
                 EdgeMethod.EDGE_METHOD.invoke(method, instance, paramValues);
             }
