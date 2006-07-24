@@ -13,7 +13,7 @@ public final class DefaultSerializationClaimChecker implements SerializationClai
 //        checkSerializability(serializableClasses);
 //    }
 //
-//    // FIXME TJA: Remove excluded classes once all classes serialize
+//    // FIXME: SC523 Remove excluded classes once all classes serialize
 //    private void checkSerializability(Collection<Class<? extends Serializable>> serializables) {
 //        for (Class<? extends Serializable> cls : serializables) {
 //            if (!excuseFromSerializationCheck(cls)) {
@@ -28,7 +28,7 @@ public final class DefaultSerializationClaimChecker implements SerializationClai
 //        return excludedClasses.contains(cls) || ClassPropertiesTestUtil.isClassAnInterface(cls);
 //    }
 //
-//    // FIXME TJA: Remove excluded classes once all classes serialize properly
+//    // FIXME: SC523 Remove excluded classes once all classes serialize properly
 //    private Collection<Class<?>> getExcludedClasses() {
 //        Collection<Class<?>> excludedClasses = new ArrayList<Class<?>>();
 //        excludedClasses.add(GraphImpl.class);
@@ -41,7 +41,7 @@ public final class DefaultSerializationClaimChecker implements SerializationClai
 //        return excludedClasses;
 //    }
 //
-//    // FIXME TJA: Try to remove unchecked cast below.
+//    // FIXME: SC523 Try to remove unchecked cast below.
 //    @SuppressWarnings("unchecked")
 //    private Collection<Class<? extends Serializable>> getSerializableClasses(File packageRoot, Collection<File> classes) {
 //        Collection<Class<? extends Serializable>> serializables = new ArrayList<Class<? extends Serializable>>();

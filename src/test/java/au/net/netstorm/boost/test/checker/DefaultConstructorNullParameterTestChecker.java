@@ -1,9 +1,7 @@
 package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
-import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.instance.InstanceProvider;
@@ -12,9 +10,8 @@ import junit.framework.Assert;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
     private static final DefaultNullMaster NULL_MASTER = new DefaultNullMaster();
-    private static final DefaultAssertException ASSERT_EXCEPTION = new DefaultAssertException();
-    private final InstanceProvider instanceProvider;
     private static final DefaultClassMaster CLASS_MASTER = new DefaultClassMaster();
+    private final InstanceProvider instanceProvider;
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
         NULL_MASTER.check(instanceProvider, "instanceProvider");
@@ -37,42 +34,31 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         }
     }
 
-    private void nullCheckConstructor(Constructor constructor, int currentParameter, Class[] paramTypes) {
-        Object[] paramValues = createParametersWithNull(currentParameter, paramTypes);
+    // FIXME: SC523 This needs a refactor.
+    private void nullCheckConstructor(final Constructor constructor, int currentParameter, Class[] paramTypes) {
+        final Object[] paramValues = ParameterTestUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
-            invokeConstructor(constructor, paramValues);
-            String className = CLASS_MASTER.getShortName(paramTypes[currentParameter]);
-            String message = "Argument number " + (currentParameter + 1) + " (of type " + className + ") must be null checked";
-            Assert.fail(message);
+            invoke(constructor, paramValues);
+            fail(paramTypes, currentParameter, constructor);
         } catch (Exception e) {
-            checkExceptionIsIllegalArgumentException(e);
+            ParameterTestUtil.checkExceptionIsIllegalArgumentException(e);
         }
     }
 
-    // FIXME TJA: Also check message here once null checks are consistent.
-    private void checkExceptionIsIllegalArgumentException(Exception e) {
-        ASSERT_EXCEPTION.checkExceptionClass(IllegalArgumentException.class, e);
-    }
-
-    private Object[] createParametersWithNull(int paramToMakeNull, Class[] paramTypes) {
-        Object[] paramValues = new Object[paramTypes.length];
-        for (int i = 0; i < paramTypes.length; i++) {
-            paramValues[i] = instanceProvider.newInstance(paramTypes[i]);
-        }
-        paramValues[paramToMakeNull] = null;
-        return paramValues;
-    }
-
-    private void invokeConstructor(Constructor constructor, Object[] paramValues) {
-        try {
-            constructor.setAccessible(true);
-            EdgeConstructor.EDGE_CONSTRUCTOR
-                    .newInstance(constructor, paramValues);
-        } catch (EdgeException e) {
-            Throwable cause = e.getCause();
-            if (cause instanceof InvocationTargetException) {
-                throw (IllegalArgumentException) cause.getCause();
+    private void invoke(final Constructor constructor, final Object[] paramValues) {
+        constructor.setAccessible(true);
+        Block invokeBlock = new Block() {
+            public void execute() {
+                EdgeConstructor.EDGE_CONSTRUCTOR.newInstance(constructor, paramValues);
             }
-        }
+        };
+        ParameterTestUtil.invokeBlock(invokeBlock);
+    }
+
+    private void fail(Class[] paramTypes, int currentParameter, Constructor constructor) {
+        String paramTypeClassName = CLASS_MASTER.getShortName(paramTypes[currentParameter]);
+        String methodName = CLASS_MASTER.getShortName(constructor.getDeclaringClass());
+        String message = "Argument " + (currentParameter + 1) + " of " + methodName + "(..." + paramTypeClassName + "...) must be null checked";
+        Assert.fail(message);
     }
 }

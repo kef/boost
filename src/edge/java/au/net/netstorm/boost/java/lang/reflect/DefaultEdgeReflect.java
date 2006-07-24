@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 // FIXME: SC519 Map exceptions exactly how an "edge" should.
 
 public class DefaultEdgeReflect implements EdgeReflect {
+    // FIXME: SC523 Throw edge exceptions.
     public Object getFieldValue(Field field, Object ref) {
         try {
             return field.get(ref);
@@ -16,6 +17,7 @@ public class DefaultEdgeReflect implements EdgeReflect {
         }
     }
 
+    // FIXME: SC523 Throw edge exceptions.
     public void setFieldValue(Field field, Object ref, Object value) {
         try {
             field.set(ref, value);
@@ -24,6 +26,7 @@ public class DefaultEdgeReflect implements EdgeReflect {
         }
     }
 
+    // FIXME: SC523 Throw edge exceptions.
     public Field getDeclaredField(Class cls, String fieldName) {
         try {
             return cls.getDeclaredField(fieldName);
@@ -33,6 +36,7 @@ public class DefaultEdgeReflect implements EdgeReflect {
         }
     }
 
+    // FIXME: SC523 Throw edge exceptions.
     public Object newInstance(Class cls) {
         try {
             return cls.newInstance();

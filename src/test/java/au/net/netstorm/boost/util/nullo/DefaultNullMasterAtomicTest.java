@@ -43,7 +43,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         checkNoNulls(new Object[]{this, this, this});
     }
 
-    // FIXME TJA: Gee I wish I had a way to remove this duplication... ;)
+    // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;)
     private void checkRejectsNulls(Object[] parameters, String badParamNumber) {
         try {
             checkNoNulls(parameters);
