@@ -7,6 +7,7 @@ import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
+// FIXME: SC523 How does this handle types other than Object[]? Does it recurse?
 public final class DefaultArrayFlattenerAtomicTest extends PrimordialTestCase {
     private static final ClassTestChecker CLASS_CHECKER = new DefaultClassTestChecker();
     private static final ModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
