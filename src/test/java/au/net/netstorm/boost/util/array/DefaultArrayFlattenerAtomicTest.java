@@ -7,7 +7,6 @@ import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
-// FIXME: SC523 How does this handle types other than Object[]? Does it recurse?
 public final class DefaultArrayFlattenerAtomicTest extends PrimordialTestCase {
     private static final ClassTestChecker CLASS_CHECKER = new DefaultClassTestChecker();
     private static final ModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
@@ -31,26 +30,31 @@ public final class DefaultArrayFlattenerAtomicTest extends PrimordialTestCase {
     }
 
     public void testFlattenNoOp() {
-        Object[] unflattened = new Object[]{"1", "2"};
-        Object[] expected = new Object[]{"1", "2"};
-        checkFlattening(expected, unflattened);
+        checkFlattening(new Object[]{"1", "2"}, new Object[]{"1", "2"});
+        checkFlattening(new String[]{"1", "2"}, new String[]{"1", "2"});
     }
 
     public void testNestedOneLevelFlatten() {
-        Object[] unflattened = new Object[]{"1", "2", new Object[]{"3", "4"}};
-        Object[] expected = new Object[]{"1", "2", "3", "4"};
+        Object[] unflattened = {"1", "2", new Object[]{"3", "4"}};
+        Object[] expected = {"1", "2", "3", "4"};
         checkFlattening(expected, unflattened);
     }
 
     public void testNestedTwoLevelFlatten() {
-        Object[] unflattened = new Object[]{"1", "2", new Object[]{"3", "4", new Object[]{"5", "6"}}};
-        Object[] expected = new Object[]{"1", "2", "3", "4", "5", "6"};
+        Object[] unflattened = {"1", "2", new Object[]{"3", "4", new Object[]{"5", "6"}}};
+        Object[] expected = {"1", "2", "3", "4", "5", "6"};
         checkFlattening(expected, unflattened);
     }
 
     public void testNestedThreeLevelFlatten() {
-        Object[] unflattened = new Object[]{"1", "2", new Object[]{"3", "4", new Object[]{"5", "6", new Object[]{"7", "8"}}}};
-        Object[] expected = new Object[]{"1", "2", "3", "4", "5", "6", "7", "8"};
+        Object[] unflattened = {"1", "2", new Object[]{"3", "4", new Object[]{"5", "6", new Object[]{"7", "8"}}}};
+        Object[] expected = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        checkFlattening(expected, unflattened);
+    }
+
+    public void testMixedTypeFlatten() {
+        Object[] unflattened = {getClass(), this, new Number[]{new Long(1), new Integer(3)}, new Class[]{Object.class}};
+        Object[] expected = {getClass(), this, new Long(1), new Integer(3), Object.class};
         checkFlattening(expected, unflattened);
     }
 

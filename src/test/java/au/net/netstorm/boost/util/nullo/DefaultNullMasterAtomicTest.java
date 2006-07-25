@@ -23,8 +23,16 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         nullMaster.check(this, null);
     }
 
-    // FIXME: SC523 Replace with normal test method. (From TJA: Why? Not sure what this means...)
+    public void testNoNulls() {
+        nullMaster.check(this);
+    }
+
     public void testNullParamThrowsException() {
+        checkNullParamThrowsException();
+        checkNullParamThrowsException();
+    }
+
+    public void testNullParamThrowsExceptionWithMessage() {
         checkNullParamThrowsException("someParamName");
         checkNullParamThrowsException("someOtherParamName");
     }
@@ -55,6 +63,15 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
             fail();
         } catch (IllegalArgumentException expected) {
             assertEquals("Parameter " + badParamNumber + " should not be null", expected.getMessage());
+        }
+    }
+
+    // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;)
+    private void checkNullParamThrowsException() {
+        try {
+            nullMaster.check((Object) null);
+            fail();
+        } catch (IllegalArgumentException ignored) {
         }
     }
 
