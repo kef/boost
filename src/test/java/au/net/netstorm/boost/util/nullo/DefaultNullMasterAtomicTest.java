@@ -23,7 +23,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         nullMaster.check(this, null);
     }
 
-    // FIXME: SC523 Replace with normal test method. (TJA: Why? Not sure what this means...)
+    // FIXME: SC523 Replace with normal test method. (From TJA: Why? Not sure what this means...)
     public void testNullParamThrowsException() {
         checkNullParamThrowsException("someParamName");
         checkNullParamThrowsException("someOtherParamName");
@@ -43,6 +43,11 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         checkNoNulls(new Object[]{this, this, this});
     }
 
+    public void testRejectsNestedObjectArrays() {
+        Object[] parameters = new Object[]{this, new Object[]{null}};
+        checkRejectsNulls(parameters, "2");
+    }
+
     // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;)
     private void checkRejectsNulls(Object[] parameters, String badParamNumber) {
         try {
@@ -53,6 +58,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         }
     }
 
+    // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;)
     private void checkNullParamThrowsException(String parameter) {
         try {
             nullMaster.check(null, parameter);
