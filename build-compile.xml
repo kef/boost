@@ -15,7 +15,7 @@
         <attribute name="classpathref"/>
         <sequential>
             <mkdir dir="@{destdir}"/>
-            <javac srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
+            <javac source="1.4" target="1.4" srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
         </sequential>
     </macrodef>
 </project>

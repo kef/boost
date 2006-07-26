@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.test.checker;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import junit.framework.Assert;
 
 public final class DefaultAssertException implements AssertException {
@@ -23,7 +26,10 @@ public final class DefaultAssertException implements AssertException {
     }
 
     public void checkExceptionClass(Class expectedExceptionClass, Throwable throwable) {
-        Assert.assertEquals(expectedExceptionClass, throwable.getClass());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        throwable.printStackTrace(new PrintStream(out));
+        String message = "Expected " + expectedExceptionClass +  " but was " + throwable.getClass() + ", stack trace:\n";
+        Assert.assertTrue(message + out, expectedExceptionClass.equals(throwable.getClass()));
     }
 
     public void checkExceptionMessage(String expectedMessage, Throwable throwable) {

@@ -9,8 +9,6 @@ import au.net.netstorm.boost.util.instance.InstanceProvider;
 // FIXME: SC523 Instance-ise.
 
 final class ParameterTestUtil {
-    private static final DefaultAssertException ASSERT_EXCEPTION = new DefaultAssertException();
-
     static Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull) {
         Object[] paramValues = new Object[paramTypes.length];
         for (int i = 0; i < paramTypes.length; i++) {
@@ -25,15 +23,23 @@ final class ParameterTestUtil {
         try {
             invokeBlock.execute();
         } catch (EdgeException e) {
-            Throwable cause = e.getCause();
-            if (cause instanceof InvocationTargetException) {
-                throw (IllegalArgumentException) cause.getCause();
-            }
+            handleException(e);
         }
     }
 
-    // FIXME SC523: Also check message here once null checks are consistent.
-    static void checkExceptionIsIllegalArgumentException(Exception e) {
-        ASSERT_EXCEPTION.checkExceptionClass(IllegalArgumentException.class, e);
+    private static void handleException(EdgeException e) {
+        Throwable cause = e.getCause();
+        if (cause instanceof InvocationTargetException) {
+            Throwable realCause = cause.getCause();
+            rethrowException(realCause);
+        }
+    }
+
+    private static void rethrowException(Throwable realCause) {
+        if (realCause instanceof IllegalArgumentException) {
+            throw (IllegalArgumentException) realCause;
+        } else {
+            throw new RuntimeException(realCause);
+        }
     }
 }

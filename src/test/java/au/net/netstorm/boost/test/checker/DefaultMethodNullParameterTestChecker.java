@@ -6,16 +6,17 @@ import java.util.Iterator;
 import java.util.List;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
+import au.net.netstorm.boost.test.reflect.ModifierTestUtil;
 import au.net.netstorm.boost.util.instance.InstanceProvider;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
+import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
 
 public final class DefaultMethodNullParameterTestChecker implements MethodNullParameterTestChecker {
-    private static final DefaultNullMaster NULL_MASTER = new DefaultNullMaster();
-    private static final DefaultClassMaster CLASS_MASTER = new DefaultClassMaster();
-    private static final DefaultModifierTestUtil MODIFIER_UTIL = new DefaultModifierTestUtil();
+    private static final NullMaster NULL_MASTER = new DefaultNullMaster();
+    private static final ModifierTestUtil MODIFIER_UTIL = new DefaultModifierTestUtil();
+    private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
     private final InstanceProvider instanceProvider;
 
     public DefaultMethodNullParameterTestChecker(InstanceProvider instanceProvider) {
@@ -23,35 +24,34 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         this.instanceProvider = instanceProvider;
     }
 
-    public void checkPublicMethodsRejectNull(Class classToCheck) {
-        NULL_MASTER.check(classToCheck, "classToCheck");
-        List methods = getPublicMethods(classToCheck);
+    public void checkPublicMethodsRejectNull(Object instance) {
+        NULL_MASTER.check(instance);
+        List methods = getPublicMethods(instance.getClass());
         for (Iterator iterator = methods.iterator(); iterator.hasNext();) {
-            checkMethodRejectsNull((Method) iterator.next());
+            checkMethodRejectsNull(instance, (Method) iterator.next());
         }
     }
 
-    public void checkMethodRejectsNull(Method method) {
-        NULL_MASTER.check(method, "method");
+    private void checkMethodRejectsNull(Object instance, Method method) {
+        NULL_MASTER.check(method);
         Class[] paramTypes = method.getParameterTypes();
         for (int i = 0; i < paramTypes.length; i++) {
-            nullCheckMethod(method, i, paramTypes);
+            nullCheckMethod(instance, method, i, paramTypes);
         }
     }
 
     // FIXME: SC523 Pass block, reduce duplication with constructor form.
-    private void nullCheckMethod(final Method method, int currentParameter, Class[] paramTypes) {
+    private void nullCheckMethod(Object instance, final Method method, int currentParameter, Class[] paramTypes) {
         final Object[] paramValues = ParameterTestUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
-            invoke(method, paramValues);
+            invoke(instance, method, paramValues);
             fail(paramTypes, currentParameter, method);
         } catch (Exception e) {
-            ParameterTestUtil.checkExceptionIsIllegalArgumentException(e);
+            ASSERT_EXCEPTION.checkExceptionClass(IllegalArgumentException.class, e);
         }
     }
 
-    private void invoke(final Method method, final Object[] paramValues) {
-        final Object instance = instanceProvider.newInstance(method.getDeclaringClass());
+    private void invoke(final Object instance, final Method method, final Object[] paramValues) {
         method.setAccessible(true);
         Call invokeBlock = new Call() {
             public void execute() {
@@ -62,8 +62,8 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {
-        String paramTypeClassName = CLASS_MASTER.getShortName(paramTypes[currentParameter]);
-        String instanceClassName = CLASS_MASTER.getShortName(method.getDeclaringClass());
+        String paramTypeClassName = paramTypes[currentParameter].getSimpleName();
+        String instanceClassName = method.getDeclaringClass().getSimpleName();
         String methodName = instanceClassName + "." + method.getName();
         String message = "Argument " + (currentParameter + 1) + " of " + methodName + "(..." + paramTypeClassName + "...) must be null checked";
         Assert.fail(message);

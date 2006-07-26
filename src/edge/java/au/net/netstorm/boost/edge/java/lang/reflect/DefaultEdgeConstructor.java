@@ -5,9 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 
 public final class DefaultEdgeConstructor implements EdgeConstructor {
     // FIXME: SC523 Null checks.
-    public void newInstance(Constructor constructor, Object[] initArgs) {
+    public Object newInstance(Constructor constructor, Object[] initArgs) {
         try {
-            constructor.newInstance(initArgs);
+            return constructor.newInstance(initArgs);
         } catch (InstantiationException e) {
             throw new EdgeInstantiationException(e);
         } catch (IllegalAccessException e) {

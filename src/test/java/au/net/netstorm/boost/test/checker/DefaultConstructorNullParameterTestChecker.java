@@ -3,14 +3,17 @@ package au.net.netstorm.boost.test.checker;
 import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.instance.InstanceProvider;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
+import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
-    private static final DefaultNullMaster NULL_MASTER = new DefaultNullMaster();
-    private static final DefaultClassMaster CLASS_MASTER = new DefaultClassMaster();
+    private static final NullMaster NULL_MASTER = new DefaultNullMaster();
+    private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
+    private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
     private final InstanceProvider instanceProvider;
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
@@ -26,7 +29,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         }
     }
 
-    public void checkConstructorRejectsNull(Constructor constructor) {
+    private void checkConstructorRejectsNull(Constructor constructor) {
         NULL_MASTER.check(constructor, "constructor");
         Class[] paramTypes = constructor.getParameterTypes();
         for (int i = 0; i < paramTypes.length; i++) {
@@ -41,7 +44,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
             invoke(constructor, paramValues);
             fail(paramTypes, currentParameter, constructor);
         } catch (Exception e) {
-            ParameterTestUtil.checkExceptionIsIllegalArgumentException(e);
+            ASSERT_EXCEPTION.checkExceptionClass(IllegalArgumentException.class, e);
         }
     }
 
