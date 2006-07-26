@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import au.net.netstorm.boost.java.lang.reflect.EdgeMethod;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.util.instance.InstanceProvider;

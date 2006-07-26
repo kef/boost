@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import au.net.netstorm.boost.java.lang.reflect.DefaultEdgeProxyFactory;
-import au.net.netstorm.boost.java.lang.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxyFactory;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;

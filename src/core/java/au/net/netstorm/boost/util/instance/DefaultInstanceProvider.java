@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.instance;
 
-import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 
 public class DefaultInstanceProvider implements InstanceProvider {
     private final EdgeReflect edge;

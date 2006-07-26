@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
 
-import au.net.netstorm.boost.java.lang.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC521 test build email messages from cruise.

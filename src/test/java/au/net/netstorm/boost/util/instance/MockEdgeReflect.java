@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 
 class MockEdgeReflect implements EdgeReflect {

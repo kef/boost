@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
 
-import au.net.netstorm.boost.java.lang.reflect.DefaultEdgeReflect;
-import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 

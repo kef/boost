@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 

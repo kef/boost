@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.fixture;
 
-import au.net.netstorm.boost.java.io.EdgeOutputStream;
+import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 
 public final class MockEdgeOutputStream implements EdgeOutputStream {

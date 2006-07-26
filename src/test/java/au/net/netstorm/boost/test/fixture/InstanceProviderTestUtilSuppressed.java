@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.rmi.Remote;
 
-import au.net.netstorm.boost.java.io.EdgeOutputStream;
+import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
 import au.net.netstorm.boost.time.core.TimePoint;
 import au.net.netstorm.boost.util.type.Interface;
 

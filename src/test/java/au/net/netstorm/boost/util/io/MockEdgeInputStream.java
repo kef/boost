@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.io;
 
-import au.net.netstorm.boost.java.io.EdgeInputStream;
+import au.net.netstorm.boost.edge.java.io.EdgeInputStream;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;
 

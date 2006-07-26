@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
