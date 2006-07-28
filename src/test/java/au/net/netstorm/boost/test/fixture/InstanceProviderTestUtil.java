@@ -55,7 +55,14 @@ public final class InstanceProviderTestUtil {
         if (type == int.class) return new Integer(34177239);
         if (type == long.class) return new Long(44762654617L);
         if (type == float.class) return new Float(31.123475);
+        if (type == boolean.class) return randomBoolean();
         throw new UnsupportedOperationException("Please honey pie write the code for primitive type " + type);
+    }
+
+    private Boolean randomBoolean() {
+        // FIXME: SC050 This ties in with the target approach to triangulation.  Talk to group.
+        boolean result = (System.currentTimeMillis() % 2) == 0;
+        return Boolean.valueOf(result);
     }
 
     private Object getDataInstance(Class type, InstanceProviderForTest additional) {
