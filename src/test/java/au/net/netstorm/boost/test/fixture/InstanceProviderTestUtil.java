@@ -69,6 +69,7 @@ public final class InstanceProviderTestUtil {
         Constructor constructor = reflectMaster.getConstructor(type);
         Class[] parameterTypes = constructor.getParameterTypes();
         Object[] params = getInstances(parameterTypes, additional);
+        // FIXME: SC050 This barfs if the constructor is not "public".  Should be able to lower scope.
         return reflectEdge.newInstance(constructor, params);
     }
 }
