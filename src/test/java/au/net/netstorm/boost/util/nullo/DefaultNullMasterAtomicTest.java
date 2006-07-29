@@ -66,6 +66,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         }
     }
 
+    // FIXME: SC043 R Use a block then.
     // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
     private void checkNullParamThrowsException() {
         try {
