@@ -61,6 +61,7 @@ public final class InstanceProviderTestUtil {
 
     private Boolean randomBoolean() {
         // FIXME: SC050 This ties in with the target approach to triangulation.  Talk to group.
+        // FIXME: SC043 R Use random.  Not TIME.
         boolean result = (System.currentTimeMillis() % 2) == 0;
         return Boolean.valueOf(result);
     }
