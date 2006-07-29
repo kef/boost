@@ -10,7 +10,7 @@ import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 public final class DefaultArrayFlattenerAtomicTest extends PrimordialTestCase {
     private static final ClassTestChecker CLASS_CHECKER = new DefaultClassTestChecker();
     private static final ModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
-    private ArrayFlattener flattener;
+    private ArrayFlattener flattener = new DefaultArrayFlattener();
 
     public void testProperties() {
         CLASS_CHECKER.checkImplementsAndFinal(ArrayFlattener.class, DefaultArrayFlattener.class);
@@ -60,9 +60,5 @@ public final class DefaultArrayFlattenerAtomicTest extends PrimordialTestCase {
 
     private void checkFlattening(Object[] expectedFlattening, Object[] unflattened) {
         assertEquals(expectedFlattening, flattener.flatten(unflattened));
-    }
-
-    protected void setUp() throws Exception {
-        flattener = new DefaultArrayFlattener();
     }
 }
