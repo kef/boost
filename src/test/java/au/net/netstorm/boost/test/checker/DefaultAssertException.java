@@ -28,8 +28,9 @@ public final class DefaultAssertException implements AssertException {
     public void checkExceptionClass(Class expectedExceptionClass, Throwable throwable) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         throwable.printStackTrace(new PrintStream(out));
-        String message = "Expected " + expectedExceptionClass +  " but was " + throwable.getClass() + ", stack trace:\n";
-        Assert.assertTrue(message + out, expectedExceptionClass.equals(throwable.getClass()));
+        Class cls = throwable.getClass();
+        String message = "Expected " + expectedExceptionClass + " but was " + cls + ", stack trace:\n";
+        Assert.assertEquals(message + out, expectedExceptionClass, cls);
     }
 
     public void checkExceptionMessage(String expectedMessage, Throwable throwable) {
@@ -43,6 +44,7 @@ public final class DefaultAssertException implements AssertException {
         return cause;
     }
 
+    // FIXME: SC043 Too big.
     private Throwable getCauseAtDepth(Throwable wrapperException, int depth) {
         Throwable cause = wrapperException.getCause();
         boolean maxedOut = cause == wrapperException;
