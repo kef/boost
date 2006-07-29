@@ -51,11 +51,14 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         }
     }
 
+    // FIXME: SC043 R Why do we need the Call block?
+    // FIXME: SC043 This method is DUP with ConstructorNullParameter.
     private void invoke(final Object instance, final Method method, final Object[] paramValues) {
         method.setAccessible(true);
         Call invokeBlock = new Call() {
             public void execute() {
-                EdgeMethod.EDGE_METHOD.invoke(method, instance, paramValues);
+                EdgeMethod.EDGE_METHOD
+                        .invoke(method, instance, paramValues);
             }
         };
         ParameterTestUtil.invokeBlock(invokeBlock);
@@ -63,7 +66,8 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {
         String paramTypeClassName = paramTypes[currentParameter].getSimpleName();
-        String instanceClassName = method.getDeclaringClass().getSimpleName();
+        String instanceClassName = method.getDeclaringClass()
+                .getSimpleName();
         String methodName = instanceClassName + "." + method.getName();
         String message = "Argument " + (currentParameter + 1) + " of " + methodName + "(..." + paramTypeClassName + "...) must be null checked";
         Assert.fail(message);

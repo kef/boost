@@ -15,6 +15,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
     private final InstanceProvider instanceProvider;
+    private final EdgeConstructor edgeConstructor = EdgeConstructor.EDGE_CONSTRUCTOR;
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
         NULL_MASTER.check(instanceProvider, "instanceProvider");
@@ -48,11 +49,12 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         }
     }
 
+    // FIXME: SC043 We need ability to turn accessibility on/off in just one place.
     private void invoke(final Constructor constructor, final Object[] paramValues) {
         constructor.setAccessible(true);
         Call invokeBlock = new Call() {
             public void execute() {
-                EdgeConstructor.EDGE_CONSTRUCTOR.newInstance(constructor, paramValues);
+                edgeConstructor.newInstance(constructor, paramValues);
             }
         };
         ParameterTestUtil.invokeBlock(invokeBlock);
