@@ -5,18 +5,18 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 
 public final class DefaultDataTestChecker implements DataTestChecker {
-    private static final InstanceProviderForTest EMPTY_PROVIDER = new TestEmptyInstanceProvider();
+    private static final TriangulationProvider EMPTY_PROVIDER = new TestEmptyTriangulationProvider();
     private InstanceTestUtil instancer = new DefaultInstanceTestUtil();
 
     public void checkIsData(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields, EMPTY_PROVIDER);
     }
 
-    public void checkIsData(Class cls, FieldSpec[] fields, InstanceProviderForTest additional) {
+    public void checkIsData(Class cls, FieldSpec[] fields, TriangulationProvider additional) {
         doCheckIsData(cls, fields, additional);
     }
 
-    private void doCheckIsData(Class cls, FieldSpec[] fields, InstanceProviderForTest additional) {
+    private void doCheckIsData(Class cls, FieldSpec[] fields, TriangulationProvider additional) {
         // FIXME: SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
         //

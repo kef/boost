@@ -9,13 +9,13 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class DefaultInstanceTestUtil implements InstanceTestUtil {
     private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
-    private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
+    private static final TriangulationProviderTestUtil TRIANGULATION_PROVIDER_TEST_UTIL = new TriangulationProviderTestUtil();
     // FIXME: SC050 This is a smell.  Work out whether is can be removed.
-    private static final InstanceProviderForTest EMPTY = new TestEmptyInstanceProvider();
+    private static final TriangulationProvider EMPTY = new TestEmptyTriangulationProvider();
 
     public Object getInstance(Class cls, Object[] parameters) {
         Constructor constructor = getConstructor(cls);
-        return INSTANCE_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
+        return TRIANGULATION_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
     }
 
     public Constructor getConstructor(Class cls) {
@@ -24,7 +24,7 @@ final class DefaultInstanceTestUtil implements InstanceTestUtil {
 
     public Object[] getInstances(FieldSpec[] fields) {
         Class[] classes = getClasses(fields);
-        return INSTANCE_PROVIDER_TEST_UTIL.getInstances(classes, EMPTY); // FIXME: SC050 Smell ... EMPTY being here. 
+        return TRIANGULATION_PROVIDER_TEST_UTIL.getInstances(classes, EMPTY); // FIXME: SC050 Smell ... EMPTY being here.
     }
 
     public Class[] getClasses(FieldSpec[] fields) {

@@ -12,14 +12,14 @@ import au.net.netstorm.boost.util.type.Data;
 // FIXME: SC502 Interface it.
 // FIXME: SC502 Rename.
 
-public final class InstanceProviderTestUtil {
+public final class TriangulationProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
     private final EdgeReflect reflectEdge = EdgeReflect.EDGE_REFLECT;
-    private final InstanceProviderForTest knownTypes = new InstanceProviderTestUtilSuppressed();
+    private final TriangulationProvider knownTypes = new TriangulationProviderTestUtilSuppressed();
 
     // FIXME: SC050 ? Rename occurrences of "additional" to "extra".
     // FIXME: SC050 BREADCRUMB - Incorporate "additional"
-    public Object[] getInstances(Class[] types, InstanceProviderForTest additional) {
+    public Object[] getInstances(Class[] types, TriangulationProvider additional) {
         Object[] params = new Object[types.length];
         for (int i = 0; i < types.length; i++) params[i] = getInstance(types[i], additional);
         return params;
@@ -38,7 +38,7 @@ public final class InstanceProviderTestUtil {
         }
     }
 
-    private Object getInstance(Class type, InstanceProviderForTest additional) {
+    private Object getInstance(Class type, TriangulationProvider additional) {
         if (type.isArray()) return getArrayInstance(type);
         if (Data.class.isAssignableFrom(type)) return getDataInstance(type, additional);
         if (type.isPrimitive()) return getPrimitiveInstance(type);
@@ -67,7 +67,7 @@ public final class InstanceProviderTestUtil {
 //        return Boolean.valueOf(result);
 //    }
 
-    private Object getDataInstance(Class type, InstanceProviderForTest additional) {
+    private Object getDataInstance(Class type, TriangulationProvider additional) {
         Constructor constructor = reflectMaster.getConstructor(type);
         Class[] parameterTypes = constructor.getParameterTypes();
         Object[] params = getInstances(parameterTypes, additional);

@@ -24,13 +24,13 @@ final class ClassTestFixture {
     }
 
     // FIXME: S502 ? Allow the interfaces to check to be changes Data vs Immutable.
-    public void checkClass(Class targetInterface, InstanceProviderForTest additional) {
+    public void checkClass(Class targetInterface, TriangulationProvider additional) {
         clsChecker.checkSubclassOf(Primordial.class, cls);
         clsChecker.checkImplementsAndFinal(targetInterface, cls);
         checkConstructor(additional);
     }
 
-    private void checkConstructor(InstanceProviderForTest additional) {
+    private void checkConstructor(TriangulationProvider additional) {
         // FIXME: SC050 ... So the BUG smell here is that we do not need to pass the constructor all the way through to IPTU via NTU.
         // FIXME: SC050 ... Tidying this up will remove a large amount of code.
         Constructor constructor = instancer.getConstructor(cls);
