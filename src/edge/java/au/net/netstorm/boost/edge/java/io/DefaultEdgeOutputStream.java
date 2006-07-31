@@ -3,6 +3,8 @@ package au.net.netstorm.boost.edge.java.io;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import au.net.netstorm.boost.edge.EdgeException;
+
 public final class DefaultEdgeOutputStream implements EdgeOutputStream {
     private final OutputStream stream;
 
@@ -14,7 +16,7 @@ public final class DefaultEdgeOutputStream implements EdgeOutputStream {
         try {
             stream.write(bytes);
         } catch (IOException e) {
-            throw new EdgeIoException(e);
+            throw new EdgeException(e);
         }
     }
 
@@ -22,7 +24,7 @@ public final class DefaultEdgeOutputStream implements EdgeOutputStream {
         try {
             stream.flush();
         } catch (IOException e) {
-            throw new EdgeIoException(e);
+            throw new EdgeException(e);
         }
     }
 
@@ -30,7 +32,7 @@ public final class DefaultEdgeOutputStream implements EdgeOutputStream {
         try {
             stream.close();
         } catch (IOException e) {
-            throw new EdgeIoException(e);
+            throw new EdgeException(e);
         }
     }
 }
