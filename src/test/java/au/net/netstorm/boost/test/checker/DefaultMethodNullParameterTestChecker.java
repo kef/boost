@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.ModifierTestUtil;
@@ -17,6 +18,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
     private static final ModifierTestUtil MODIFIER_UTIL = new DefaultModifierTestUtil();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
+    private final EdgeMethod edgeMethod = new DefaultEdgeMethod();
     private final InstanceProvider instanceProvider;
 
     public DefaultMethodNullParameterTestChecker(InstanceProvider instanceProvider) {
@@ -57,8 +59,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         method.setAccessible(true);
         Call invokeBlock = new Call() {
             public void execute() {
-                EdgeMethod.EDGE_METHOD
-                        .invoke(method, instance, paramValues);
+                edgeMethod.invoke(method, instance, paramValues);
             }
         };
         ParameterTestUtil.invokeBlock(invokeBlock);
@@ -66,6 +67,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {
         String paramTypeClassName = paramTypes[currentParameter].getSimpleName();
+        // FIXME: SC043 Trainwreck.
         String instanceClassName = method.getDeclaringClass()
                 .getSimpleName();
         String methodName = instanceClassName + "." + method.getName();

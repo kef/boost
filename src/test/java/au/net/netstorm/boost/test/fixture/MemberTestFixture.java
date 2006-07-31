@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Method;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeReflect;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.test.checker.DefaultFieldTestChecker;
 import au.net.netstorm.boost.test.checker.FieldTestChecker;
@@ -33,7 +34,7 @@ import junit.framework.Assert;
 //
 
 final class MemberTestFixture {
-    private static final EdgeReflect REFLECT_EDGE = EdgeReflect.EDGE_REFLECT;
+    private static final EdgeReflect REFLECT_EDGE = new DefaultEdgeReflect();
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
             .length(); // FIXME: SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();
@@ -108,8 +109,6 @@ final class MemberTestFixture {
     }
 
     private static boolean isPrimitiveWrapperImmutable(Class type) {
-        return  Boolean.class.isAssignableFrom(type) || Character.class.isAssignableFrom(type) || Byte.class.isAssignableFrom(type)
-                || Short.class.isAssignableFrom(type) || Integer.class.isAssignableFrom(type) || Long.class.isAssignableFrom(type)
-                || Float.class.isAssignableFrom(type) || Double.class.isAssignableFrom(type);
+        return Boolean.class.isAssignableFrom(type) || Character.class.isAssignableFrom(type) || Byte.class.isAssignableFrom(type) || Short.class.isAssignableFrom(type) || Integer.class.isAssignableFrom(type) || Long.class.isAssignableFrom(type) || Float.class.isAssignableFrom(type) || Double.class.isAssignableFrom(type);
     }
 }

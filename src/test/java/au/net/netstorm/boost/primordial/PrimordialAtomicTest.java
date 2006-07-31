@@ -2,6 +2,7 @@ package au.net.netstorm.boost.primordial;
 
 import java.lang.reflect.Method;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeReflect;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.checker.ModifierTestChecker;
@@ -20,7 +21,7 @@ import junit.framework.TestCase;
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final EdgeReflect reflector = EdgeReflect.EDGE_REFLECT;
+    private final EdgeReflect reflector = new DefaultEdgeReflect();
 
     public void testNotAbstract() {
         modifier.checkConcrete(Primordial.class);
