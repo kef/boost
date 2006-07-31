@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
 
+// FIXME: SC600 Remove.
 // FIXME: SC600 How about EdgeField and EdgeClass.
 // FIXME: SC600 EdgeClassFactory for obtaining classes.
 // FIXME: SC600 Remove duplication shared with EdgeMethod.
