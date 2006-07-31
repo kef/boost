@@ -17,7 +17,7 @@
             <property name="classMaximum" value="80"/>
         </module>
         <module name="GenericIllegalRegexp">
-            <property name="format" value="new RuntimeException|public class"/>
+            <property name="format" value="new RuntimeException|public class|static"/>
         </module>
     </module>
 </module>

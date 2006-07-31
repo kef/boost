@@ -4,6 +4,7 @@ Current:
     something (ie. DefaultEater becomes OldEater).
   * If you come across and Old* class which is not yours, work with the person/pair
     who modified it.  Integration is more important than your card.
+  * Do not loosen checks without consulting the group.
 
 Proposed:
 
