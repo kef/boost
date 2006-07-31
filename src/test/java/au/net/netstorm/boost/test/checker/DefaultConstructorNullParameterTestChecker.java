@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Constructor;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
@@ -11,11 +12,12 @@ import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
+    // FIXME: SC600 Use instances whereever possible.
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
     private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
     private final InstanceProvider instanceProvider;
-    private final EdgeConstructor edgeConstructor = EdgeConstructor.EDGE_CONSTRUCTOR;
+    private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
         NULL_MASTER.check(instanceProvider, "instanceProvider");
