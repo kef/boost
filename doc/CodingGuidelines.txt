@@ -5,6 +5,8 @@ Current:
   * If you come across and Old* class which is not yours, work with the person/pair
     who modified it.  Integration is more important than your card.
   * Do not loosen checks without consulting the group.
+  * No copy and paste, cut and paste and paste or inlining to achieve equivalent.
+  * Copy and paste is ok for single token.  If in doubt as to single token do not copy and paste.
 
 Proposed:
 
