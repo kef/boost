@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2005 Transtoll Pty Limited.
- */
 package au.net.netstorm.boost.test.checker;
 
 import au.net.netstorm.boost.util.instance.InstanceProvider;
