@@ -1,0 +1,11 @@
+<p>
+
+    Edge classes are very thin. There are written to achieve the following:
+    <ul>
+        <li>Wrap the JDK APIs in interfaces.</li>
+        <li>Map any checked exceptions to unchecked exceptions.</li>
+    </ul>
+    Any logic inside edge classes is frowned upon. We experimented with mapping every checked
+    exception to an equivalent unchecked exception but analysis of handling has indicated wrapping
+    every checked exception in a single runtime edge exception.
+</p>
