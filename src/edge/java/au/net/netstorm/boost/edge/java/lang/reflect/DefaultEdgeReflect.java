@@ -10,7 +10,7 @@ import au.net.netstorm.boost.edge.EdgeException;
 // FIXME: SC600 How about EdgeField and EdgeClass.
 // FIXME: SC600 EdgeClassFactory for obtaining classes.
 
-public class DefaultEdgeReflect implements EdgeReflect {
+public final class DefaultEdgeReflect implements EdgeReflect {
     public Object getFieldValue(Field field, Object ref) {
         try {
             return field.get(ref);
