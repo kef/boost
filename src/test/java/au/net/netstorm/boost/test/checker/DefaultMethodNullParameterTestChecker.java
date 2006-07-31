@@ -2,7 +2,6 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
@@ -29,9 +28,9 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     public void checkPublicMethodsRejectNull(Object instance) {
         NULL_MASTER.check(instance);
-        List methods = getPublicMethods(instance.getClass());
-        for (Iterator iterator = methods.iterator(); iterator.hasNext();) {
-            checkMethodRejectsNull(instance, (Method) iterator.next());
+        Method[] methods = getPublicMethods(instance.getClass());
+        for (int i = 0; i < methods.length; i++) {
+            checkMethodRejectsNull(instance, methods[i]);
         }
     }
 
@@ -77,7 +76,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     }
 
     // FIXME: SC523 Better way to do this, maybe boost class?
-    private List getPublicMethods(Class cls) {
+    private Method[] getPublicMethods(Class cls) {
         List publicMethods = new ArrayList();
         Method[] methods = cls.getDeclaredMethods();
         for (int i = 0; i < methods.length; i++) {
@@ -85,6 +84,6 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
                 publicMethods.add(methods[i]);
             }
         }
-        return publicMethods;
+        return (Method[]) publicMethods.toArray(new Method[]{});
     }
 }

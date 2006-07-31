@@ -16,8 +16,9 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
     private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
-    private final InstanceProvider instanceProvider;
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
+    private final ParameterTestUtil parameterUtil = new ParameterTestUtil();
+    private final InstanceProvider instanceProvider;
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
         NULL_MASTER.check(instanceProvider, "instanceProvider");
@@ -42,7 +43,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
 
     // FIXME: SC523 This needs a refactor.
     private void nullCheckConstructor(final Constructor constructor, int currentParameter, Class[] paramTypes) {
-        final Object[] paramValues = ParameterTestUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
+        final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
             invoke(constructor, paramValues);
             fail(paramTypes, currentParameter, constructor);
@@ -59,7 +60,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
                 edgeConstructor.newInstance(constructor, paramValues);
             }
         };
-        ParameterTestUtil.invokeBlock(invokeBlock);
+        parameterUtil.invokeBlock(invokeBlock);
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Constructor constructor) {
