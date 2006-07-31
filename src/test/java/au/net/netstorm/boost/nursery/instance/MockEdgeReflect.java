@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.instance;
+package au.net.netstorm.boost.nursery.instance;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClassFactory;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClassFactory;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
@@ -28,7 +29,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
     private final ReflectMaster master = new DefaultReflectMaster(); // FIXME: SC506 ? .INSTANCE.
-    private EdgeReflect reflectEdge = new OldEdgeReflect();
+    private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
 
     public void testGetMethodBasic() {
         checkGetMethod(INTERFACE_ONE, METHOD_CHURCH);
@@ -44,7 +45,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     public void testGetMethodWithSubtypeParam() {
         Class[] params = new Class[]{String.class, WeakHashMap.class};
         Method result = master.getMethod(INTERFACE_ONE, new MethodSpec(CHURCH_METHOD_NAME, params));
-        Method expected = reflectEdge.getMethod(INTERFACE_ONE, CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
+        Method expected = getMethod(INTERFACE_ONE, CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
         assertEquals(expected, result);
     }
 
@@ -56,7 +57,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private void checkGetMethod(Class cls, MethodSpec method) {
         String name = method.getName();
         Class[] params = method.getParams();
-        Method expected = reflectEdge.getMethod(cls, name, params);
+        Method expected = getMethod(cls, name, params);
         assertEquals(expected, master.getMethod(cls, method));
     }
 
@@ -74,5 +75,10 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
             master.getMethod(cls, methodSpec);
             fail();
         } catch (NoSuchMethodError expected) { }
+    }
+
+    private Method getMethod(Class cls, String name, Class[] params) {
+        EdgeClass edgeClass = classFactory.get(cls);
+        return edgeClass.getMethod(name, params);
     }
 }

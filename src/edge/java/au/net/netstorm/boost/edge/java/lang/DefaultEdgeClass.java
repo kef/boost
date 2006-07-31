@@ -23,12 +23,23 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    // FIX SC600 Added these to fix build. Whoever knows about these should implement or remove them.
     public Method getMethod(String methodName, Class[] parameterTypes) {
-        throw new UnsupportedOperationException();
+        try {
+            return cls.getMethod(methodName, parameterTypes);
+        } catch (NoSuchMethodException e) {
+            throw new EdgeException(e);
+        }
     }
 
     public Field getDeclaredField(String fieldName) {
-        throw new UnsupportedOperationException();
+        try {
+            return cls.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            throw new EdgeException(e);
+        }
+    }
+
+    public Class getNonEdge() {
+        return cls;
     }
 }

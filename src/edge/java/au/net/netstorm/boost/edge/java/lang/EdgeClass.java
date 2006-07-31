@@ -9,6 +9,8 @@ public interface EdgeClass {
     Method getMethod(String methodName, Class[] parameterTypes);
 
     Field getDeclaredField(String fieldName);
+
+    Class getNonEdge();
 }
 // FIXME: SC600 Evaluate SUGGEST.  The more I see the more I think we do this.
 // SUGGEST: Return EdgeMethod, EdgeField...  Requires across the board change to utilities.

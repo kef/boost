@@ -13,15 +13,7 @@ public interface EdgeReflect {
 
     void setFieldValue(Field field, Object ref, Object value);
 
-    Field getDeclaredField(Class cls, String fieldName);
-
-    Object newInstance(Class cls);
-
     Object newInstance(Constructor constructor, Object[] parameters);
-
-    Class forName(String className);
-
-    Method getMethod(Class cls, String methodName, Class[] parameterTypes);
 
     Object invoke(Method method, Object instance);
 

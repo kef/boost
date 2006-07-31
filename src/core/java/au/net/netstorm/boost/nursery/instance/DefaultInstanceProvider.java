@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.util.instance;
+package au.net.netstorm.boost.nursery.instance;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 
@@ -10,9 +10,9 @@ public class DefaultInstanceProvider implements InstanceProvider {
     }
 
     // FIXME: SC524 Test drive null check for cls.
-    public Object newInstance(Class cls) {
-        return edge.newInstance(cls);
-    }
+//    public Object newInstance(Class cls) {
+//        return edge.newInstance(cls);
+//    }
 
     // FIXME: SC524 Test drive these.
 //    public Object newInstance(Class cls, Object argument, Class argumentType) {

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.checker;
 
-import au.net.netstorm.boost.util.instance.InstanceProvider;
+import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 
 public interface ParameterTestUtil {
     Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull);

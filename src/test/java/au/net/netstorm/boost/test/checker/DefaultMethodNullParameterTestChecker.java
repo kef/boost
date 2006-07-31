@@ -6,9 +6,9 @@ import java.util.List;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
+import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.ModifierTestUtil;
-import au.net.netstorm.boost.util.instance.InstanceProvider;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;

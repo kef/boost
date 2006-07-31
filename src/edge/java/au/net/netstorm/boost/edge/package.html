@@ -12,6 +12,7 @@
 <p>
     Current design decisions:
     <ul>
+        <li>Add methods and classes on demand only.</li>
         <li>We do not perform any null checking.</li>
         <li>All classes are final.</li>
         <li>No static keyword anywhere.</li>
@@ -19,6 +20,7 @@
         <li>Edge interface is "Edge"classname.</li>
         <li>Edge implementation is "DefaultEdge"classname.</li>
         <li>Edge factories follow a similar naming pattern.</li>
+        <li>The method getNonEdge() can be used to return underlying implementation for dealing with other APIs.</li>
     </ul>
 </p>
 <p>

@@ -29,24 +29,7 @@ public final class OldEdgeReflect implements EdgeReflect {
         }
     }
 
-    public Field getDeclaredField(Class cls, String fieldName) {
-        try {
-            return cls.getDeclaredField(fieldName);
-        } catch (NoSuchFieldException e) {
-            throw new EdgeException(e);
-        }
-    }
-
-    public Object newInstance(Class cls) {
-        try {
-            return cls.newInstance();
-        } catch (InstantiationException e) {
-            throw new EdgeException(e);
-        } catch (IllegalAccessException e) {
-            throw new EdgeException(e);
-        }
-    }
-
+    // FIXME: SC600 This goes to EdgeConstructor.
     public Object newInstance(Constructor constructor, Object[] parameters) {
         try {
             return constructor.newInstance(parameters);
@@ -55,22 +38,6 @@ public final class OldEdgeReflect implements EdgeReflect {
         } catch (IllegalAccessException e) {
             throw new EdgeException(e);
         } catch (InvocationTargetException e) {
-            throw new EdgeException(e);
-        }
-    }
-
-    public Class forName(String className) {
-        try {
-            return Class.forName(className);
-        } catch (ClassNotFoundException e) {
-            throw new EdgeException(e);
-        }
-    }
-
-    public Method getMethod(Class cls, String methodName, Class[] parameterTypes) {
-        try {
-            return cls.getMethod(methodName, parameterTypes);
-        } catch (NoSuchMethodException e) {
             throw new EdgeException(e);
         }
     }
