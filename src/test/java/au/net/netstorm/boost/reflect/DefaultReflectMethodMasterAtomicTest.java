@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeReflect;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
@@ -28,7 +28,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
     private final ReflectMaster master = new DefaultReflectMaster(); // FIXME: SC506 ? .INSTANCE.
-    private EdgeReflect reflectEdge = new DefaultEdgeReflect();
+    private EdgeReflect reflectEdge = new OldEdgeReflect();
 
     public void testGetMethodBasic() {
         checkGetMethod(INTERFACE_ONE, METHOD_CHURCH);

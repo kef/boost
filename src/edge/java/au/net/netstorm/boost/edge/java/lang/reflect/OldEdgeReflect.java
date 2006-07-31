@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2005 Transtoll Pty Limited.
- */
 package au.net.netstorm.boost.edge.java.lang.reflect;
 
 import java.lang.reflect.Constructor;
@@ -9,6 +6,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
+
+// FIXME: SC600 How about EdgeField and EdgeClass.
+// FIXME: SC600 EdgeClassFactory for obtaining classes.
+// FIXME: SC600 Remove duplication shared with EdgeMethod.
 
 public final class OldEdgeReflect implements EdgeReflect {
     public Object getFieldValue(Field field, Object ref) {

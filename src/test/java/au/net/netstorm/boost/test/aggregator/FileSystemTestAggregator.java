@@ -2,14 +2,14 @@ package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeReflect;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 public final class FileSystemTestAggregator implements TestAggregator {
     private final ClassLocator locator = new TestClassLocator();
-    private final EdgeReflect reflect = new DefaultEdgeReflect();
+    private final EdgeReflect reflect = new OldEdgeReflect();
     private final File root;
 
     public FileSystemTestAggregator(File root) {

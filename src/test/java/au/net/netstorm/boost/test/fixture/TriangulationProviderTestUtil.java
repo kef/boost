@@ -3,8 +3,8 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeReflect;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
@@ -15,7 +15,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 public final class TriangulationProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
-    private final EdgeReflect reflectEdge = new DefaultEdgeReflect();
+    private final EdgeReflect reflectEdge = new OldEdgeReflect();
     private final TriangulationProvider knownTypes = new TriangulationProviderTestUtilSuppressed();
 
     // FIXME: SC050 ? Rename occurrences of "additional" to "extra".
