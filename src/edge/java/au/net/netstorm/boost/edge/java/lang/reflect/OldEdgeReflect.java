@@ -7,11 +7,11 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
 
-// FIXME: SC600 BREADCRUMB MrDavis Get back in here!!!!
-// FIXME: SC600 Remove.
-// FIXME: SC600 How about EdgeField and EdgeClass.
-// FIXME: SC600 EdgeClassFactory for obtaining classes.
-// FIXME: SC600 Remove duplication shared with EdgeMethod.
+// FIX SC600 BREADCRUMB MrDavis Get back in here!!!!
+// FIX SC600 Remove.
+// FIX SC600 How about EdgeField and EdgeClass.
+// FIX SC600 EdgeClassFactory for obtaining classes.
+// FIX SC600 Remove duplication shared with EdgeMethod.
 
 public final class OldEdgeReflect implements EdgeReflect {
     public Object getFieldValue(Field field, Object ref) {
@@ -30,7 +30,7 @@ public final class OldEdgeReflect implements EdgeReflect {
         }
     }
 
-    // FIXME: SC600 This goes to EdgeConstructor.
+    // FIX SC600 This goes to EdgeConstructor.
     public Object newInstance(Constructor constructor, Object[] parameters) {
         try {
             return constructor.newInstance(parameters);

@@ -17,7 +17,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void doCheckIsData(Class cls, FieldSpec[] fields, TriangulationProvider additional) {
-        // FIXME: SC050 Tidy this up.
+        // FIX SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
         //
         // Checks is Data.class
@@ -37,7 +37,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 
 
 
-    // FIXME: THE FOLLOWING CODE SAYS IT ALL (see FIXME)...
+    // FIX THE FOLLOWING CODE SAYS IT ALL (see FIXME)...
 
 //    import au.net.netstorm.boost.test.fixture.DataTestChecker;
 //    import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
@@ -73,7 +73,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 //            if (resultBytes == null) throw new IllegalArgumentException();
 //            this.httpStatus = httpStatus;
 //            this.resultBytes = resultBytes.clone();
-//            // FIXME: SC050 This passes (and should not!!!!!!!!!!!!!!!!!!!!!!!!!!).
+//            // FIX SC050 This passes (and should not!!!!!!!!!!!!!!!!!!!!!!!!!!).
 ////        this.httpStatus = 2;
 //        }
 //

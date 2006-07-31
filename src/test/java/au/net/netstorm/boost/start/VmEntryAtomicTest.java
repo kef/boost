@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import junit.framework.TestCase;
 
-// FIXME: SC502 Ensure test for private constructor.
+// FIX SC502 Ensure test for private constructor.
 
 public class VmEntryAtomicTest extends TestCase {
     private static final VmStyle VM_STYLE_PINK_FLOYD = VmStyleAtomicTest.VM_STYLE_PINK_FLOYD;
@@ -45,7 +45,7 @@ public class VmEntryAtomicTest extends TestCase {
         checkEntryFails(TOO_MANY_ARGUMENTS);
     }
 
-    // FIXME: SC523 Replace with normal test method.
+    // FIX SC523 Replace with normal test method.
     public void failWithNullStyle() throws IllegalArgumentException {
         callMain(null);
     }

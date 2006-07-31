@@ -10,12 +10,12 @@ import au.net.netstorm.boost.test.reflect.MethodTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
-// FIXME: SC509 List/Map needs to be weak reference.
-// FIXME: SC509 Implement remove(Object o).
-// FIXME: SC509 Check fails with nulls to add/remove.
-// FIXME: SC509 Methods on interface must all be void return.
-// FIXME: SC509 Create ListenerInterface which ensures all methods are void.
-// FIXME: SC509 Too complicated.  Simplify.
+// FIX SC509 List/Map needs to be weak reference.
+// FIX SC509 Implement remove(Object o).
+// FIX SC509 Check fails with nulls to add/remove.
+// FIX SC509 Methods on interface must all be void return.
+// FIX SC509 Create ListenerInterface which ensures all methods are void.
+// FIX SC509 Too complicated.  Simplify.
 
 public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final int ZERO_LISTENERS = 0;

@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.checker;
 
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
-// FIXME: SC523 Is this too much for an interface? Maybe just a test that it's an interface & public.
+// FIX SC523 Is this too much for an interface? Maybe just a test that it's an interface & public.
 public final class BlockAtomicTest extends PrimordialTestCase {
     private static final ModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();

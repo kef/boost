@@ -17,8 +17,8 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     public Class getThrowsType(Method method) {
         Class[] exceptions = method.getExceptionTypes();
         String name = method.getName();
-        // FIXME: SC043 R Should this be a checker?
-        // FIXME: SC043 R WHy isn't tbis Assert.assertEquals.       
+        // FIX SC043 R Should this be a checker?
+        // FIX SC043 R WHy isn't tbis Assert.assertEquals.
         Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
         return exceptions[0];
     }

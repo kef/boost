@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 // SUGGEST: This stuff will probably follow the same sort of pattern as the MemberTestUtil, ClassTestUtil...
 // SUGGEST: Maybe follow the java.lang. package structure.
-// FIXME: SC600 Move all these methods out.
+// FIX SC600 Move all these methods out.
 
 public interface EdgeReflect {
     Object getFieldValue(Field field, Object ref);

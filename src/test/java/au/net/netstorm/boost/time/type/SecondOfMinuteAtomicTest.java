@@ -23,7 +23,7 @@ public final class SecondOfMinuteAtomicTest extends TestCase {
         assertEquals(new SecondOfMinute(0) , SecondOfMinute.FIRST);
     }
 
-    // FIXME: SC502 assert/check; decide which pattern to use and be consistent.
+    // FIX SC502 assert/check; decide which pattern to use and be consistent.
     private void assertInvalidSecond(int second) {
         try {
             new SecondOfMinute(second);

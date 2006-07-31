@@ -2,19 +2,19 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.InvocationTargetException;
 
-// FIXME: SC050 What a pile of smelly rot.
+// FIX SC050 What a pile of smelly rot.
 
 public final class DefaultExceptionTestUtil implements ExceptionTestUtil {
     public Class getRealExceptionClass(Throwable t) {
-        // FIXME: SC050 This certainly does not really work.  Sort this out!!!
+        // FIX SC050 This certainly does not really work.  Sort this out!!!
         Throwable realException = t;
         if (realException.getClass() == RuntimeException.class) realException = realException.getCause();
         if (realException.getClass() == InvocationTargetException.class)
-            realException = realException.getCause(); // FIXME: SC050 Bloody amateurs.  This should be getTargetInvocation ...
+            realException = realException.getCause(); // FIX SC050 Bloody amateurs.  This should be getTargetInvocation ...
         return realException.getClass();
     }
 
-    // FIXME: SC524 Build up Boost version of this.
+    // FIX SC524 Build up Boost version of this.
 //    private static final String MESSAGE_1 = "message 1";
 //    private static final String MESSAGE_2 = "message 2";
 //

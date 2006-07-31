@@ -55,7 +55,7 @@ public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
     }
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
-    // FIXME: SC502 Make sure this is an interface reference.
+    // FIX SC502 Make sure this is an interface reference.
     private static TimeRangeMaster master = new DefaultTimeRangeMaster();
 
     private static final TimePoint TIME_050 = TIME_FACTORY.createTime(new Date(50));

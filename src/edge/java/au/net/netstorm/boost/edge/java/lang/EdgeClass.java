@@ -12,5 +12,5 @@ public interface EdgeClass {
 
     Class getNonEdge();
 }
-// FIXME: SC600 Evaluate SUGGEST.  The more I see the more I think we do this.
+// FIX SC600 Evaluate SUGGEST.  The more I see the more I think we do this.
 // SUGGEST: Return EdgeMethod, EdgeField...  Requires across the board change to utilities.

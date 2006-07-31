@@ -4,15 +4,15 @@ import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.test.fixture.TriangulationProvider;
 
-// FIXME: SC524 Build up Boost version of this.
-// FIXME: SC523 Pull in latest external changes.
-// FIXME: SC524 Make an interface for this.
+// FIX SC524 Build up Boost version of this.
+// FIX SC523 Pull in latest external changes.
+// FIX SC524 Make an interface for this.
 public final class NullParameterTestChecker {
 //    private static final InstanceProviderTestUtil INSTANCE_PROVIDER_TEST_UTIL = new InstanceProviderTestUtil();
 //    private static final ExceptionTestUtil EXCEPTION_TEST_UTIL = new DefaultExceptionTestUtil();
 
-    // FIXME: SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
-    // FIXME: SC523 Rename additional.
+    // FIX SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
+    // FIX SC523 Rename additional.
     public void checkNullConstructorParameters(Constructor constructor, Class[] parameterTypes, TriangulationProvider additional) {
 //        for (int i = 0; i < parameterTypes.length; i++) {
 //            if (!parameterTypes[i].isPrimitive()) {
@@ -46,7 +46,7 @@ public final class NullParameterTestChecker {
 //    }
 //
 //    private boolean isExpected(RuntimeException e) {
-//        Class cls = EXCEPTION_TEST_UTIL.getRealExceptionClass(e); // FIXME: SC050 Is this needed?
+//        Class cls = EXCEPTION_TEST_UTIL.getRealExceptionClass(e); // FIX SC050 Is this needed?
 //        return isIllegalArgumentException(cls);
 //    }
 //

@@ -2,8 +2,8 @@ package au.net.netstorm.boost.reflect;
 
 import java.util.Map;
 
-// FIXME: SC506 Sort out the constant crap.  Inline.
-// FIXME: SC502 Remove any unused classes from here.
+// FIX SC506 Sort out the constant crap.  Inline.
+// FIX SC502 Remove any unused classes from here.
 
 class TestSubjects {
     interface TestInterfaceOne {

@@ -37,14 +37,14 @@ public final class DefaultAssertException implements AssertException {
         Assert.assertEquals("Exception message doesn't match", expectedMessage, throwable.getMessage());
     }
 
-    // FIXME: SC523 Refactor this.
+    // FIX SC523 Refactor this.
     private Throwable checkWraps(Throwable wrapperException, Class expectedExceptionClass, int depth) {
         Throwable cause = getCauseAtDepth(wrapperException, depth);
         checkExceptionClass(expectedExceptionClass, cause);
         return cause;
     }
 
-    // FIXME: SC043 Too big.
+    // FIX SC043 Too big.
     private Throwable getCauseAtDepth(Throwable wrapperException, int depth) {
         Throwable cause = wrapperException.getCause();
         boolean maxedOut = cause == wrapperException;

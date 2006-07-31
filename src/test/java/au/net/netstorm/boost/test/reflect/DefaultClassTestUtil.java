@@ -13,7 +13,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
     private final EdgeReflect reflectEdge = new OldEdgeReflect();
     private static final Object[] NO_PARAMETERS = {};
 
-    // FIXME: SC509 Reorder parameters?
+    // FIX SC509 Reorder parameters?
     public boolean isImplementationOf(Interface targetInterface, Class cls) {
         Class type = targetInterface.getType();
         return isAssignable(type, cls);

@@ -15,7 +15,7 @@ class MockEdgeReflect implements EdgeReflect {
         this.result = result;
     }
 
-    // FIXME: SC524 Fill out these unimplemented methods as required.
+    // FIX SC524 Fill out these unimplemented methods as required.
     public Object getFieldValue(Field field, Object ref) {
         throw new NotImplementedException();
     }

@@ -12,7 +12,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
     private final ModifierTestChecker modifierChecker = new DefaultModifierTestChecker();
     private NullMaster nullMaster = new DefaultNullMaster();
 
-    // FIXME: SC523 Do we need to do this. Or is it maybe just part of test driving up (ie. remove when done).
+    // FIX SC523 Do we need to do this. Or is it maybe just part of test driving up (ie. remove when done).
     public void testClassProperties() {
         classChecker.checkImplementsAndFinal(NullMaster.class, DefaultNullMaster.class);
         modifierChecker.checkPublic(DefaultNullMaster.class);
@@ -56,7 +56,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         checkRejectsNulls(parameters, "2");
     }
 
-    // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
+    // FIX SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
     private void checkRejectsNulls(Object[] parameters, String badParamNumber) {
         try {
             checkNoNulls(parameters);
@@ -66,8 +66,8 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         }
     }
 
-    // FIXME: SC043 R Use a block then.
-    // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
+    // FIX SC043 R Use a block then.
+    // FIX SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
     private void checkNullParamThrowsException() {
         try {
             nullMaster.check((Object) null);
@@ -76,7 +76,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         }
     }
 
-    // FIXME: SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
+    // FIX SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
     private void checkNullParamThrowsException(String parameter) {
         try {
             nullMaster.check(null, parameter);

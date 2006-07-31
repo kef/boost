@@ -4,17 +4,21 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
+// FIX SC511 This belongs in "edge".
+// FIX SC502 Wire into edge tests.
+
 public final class TimeFactoryAtomicTest extends TestCase {
+
     public void testCreateRange() {
-        // FIXME: SC777 ? More than just triangulation values - is this an integration test.
+        // FIX SC777 ? More than just triangulation values - is this an integration test.
         checkCreateRange(DATE_RANGE_050__100, DATE_050, DATE_100);
         checkCreateRange(DATE_RANGE_100__200, DATE_100, DATE_200);
         checkCreateRange(DATE_RANGE_100__400, DATE_100, DATE_400);
     }
 
     public void testCreateTimePoint() {
-        // FIXME: SC600 Move this out
-        // FIXME: SC600 Combine this with method in other class.
+        // FIX SC600 Move this out
+        // FIX SC600 Combine this with method in other class.
         assertEquals(TIME_050, TIME_FACTORY.createTime(DATE_050));
         assertEquals(TIME_100, TIME_FACTORY.createTime(DATE_100));
         assertEquals(TIME_400, TIME_FACTORY.createTime(DATE_400));
@@ -29,7 +33,7 @@ public final class TimeFactoryAtomicTest extends TestCase {
     private void checkCreateRange(TimeRange expectedRange, Date startDate, Date endDate) {
         long startTime = startDate.getTime();
         long endTime = endDate.getTime();
-        // FIXME: SC777 ? createRange is overloaded.  Sort this out.
+        // FIX SC777 ? createRange is overloaded.  Sort this out.
         checkCreateRangeFromDates(expectedRange, startDate, endDate);
         checkCreateRangeFromMillis(expectedRange, startTime, endTime);
     }
@@ -68,8 +72,8 @@ public final class TimeFactoryAtomicTest extends TestCase {
     private static final TimePoint TIME_400 = TIME_FACTORY.createTime(DATE_400);
     private static final StartTime START_TIME_050 = new StartTime(TIME_050);
     private static final StartTime START_TIME_100 = new StartTime(TIME_100);
-    // FIXME: SC777 Use test values from DurationAtomicTest instead.
-    // FIXME: SC777 Look for other places like this that use Durations for tests.
+    // FIX SC777 Use test values from DurationAtomicTest instead.
+    // FIX SC777 Look for other places like this that use Durations for tests.
     private static final Duration DURATION_050 = new Duration(50);
     private static final Duration DURATION_100 = new Duration(100);
     private static final Duration DURATION_300 = new Duration(300);

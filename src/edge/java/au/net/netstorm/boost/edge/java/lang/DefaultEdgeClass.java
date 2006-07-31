@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
-// FIXME: SC600 Complete this.
-// FIXME: SC600 Move into java.lang (Similar to Class).
+// FIX SC600 Complete this.
+// FIX SC600 Move into java.lang (Similar to Class).
 
 public final class DefaultEdgeClass implements EdgeClass {
     private final Class cls;

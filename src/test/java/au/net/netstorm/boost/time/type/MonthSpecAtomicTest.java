@@ -5,8 +5,8 @@ import java.util.Calendar;
 import junit.framework.TestCase;
 
 public final class MonthSpecAtomicTest extends TestCase {
-    // FIXME: SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
-    // FIXME: SC507 Internal static per class is probably fine.
+    // FIX SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
+    // FIX SC507 Internal static per class is probably fine.
     public static final MonthSpec JANUARY_2000 = new MonthSpec(2000, 0);
     public static final MonthSpec DECEMBER_1999 = new MonthSpec(1999, 11);
 

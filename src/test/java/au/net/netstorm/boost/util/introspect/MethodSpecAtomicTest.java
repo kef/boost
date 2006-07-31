@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 
 public class MethodSpecAtomicTest extends TestCase {
 
-    // FIXME: SC509 Constants.
+    // FIX SC509 Constants.
     public void testIsDataObject() {
         new DefaultDataTestChecker().checkIsData(MethodSpec.class, new DefaultFieldSpec[]{
             new DefaultFieldSpec("name", String.class),

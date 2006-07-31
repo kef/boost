@@ -9,8 +9,8 @@ import au.net.netstorm.boost.test.reflect.DefaultClassTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-// FIXME: SC521 reorder these.
-// FIXME: SC521 remove dupe.
+// FIX SC521 reorder these.
+// FIX SC521 remove dupe.
 
 public final class DefaultClassTestChecker implements ClassTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};

@@ -12,7 +12,7 @@ import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
-    // FIXME: SC600 Use instances whereever possible.
+    // FIX SC600 Use instances whereever possible.
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
     private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
@@ -41,7 +41,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         }
     }
 
-    // FIXME: SC523 This needs a refactor.
+    // FIX SC523 This needs a refactor.
     private void nullCheckConstructor(final Constructor constructor, int currentParameter, Class[] paramTypes) {
         final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
@@ -52,7 +52,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         }
     }
 
-    // FIXME: SC043 We need ability to turn accessibility on/off in just one place.
+    // FIX SC043 We need ability to turn accessibility on/off in just one place.
     private void invoke(final Constructor constructor, final Object[] paramValues) {
         constructor.setAccessible(true);
         Call invokeBlock = new Call() {

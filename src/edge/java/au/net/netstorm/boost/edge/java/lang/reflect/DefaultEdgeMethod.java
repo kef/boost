@@ -12,7 +12,7 @@ public final class DefaultEdgeMethod implements EdgeMethod {
         } catch (InvocationTargetException e) {
             throw new EdgeException(e);
         } catch (IllegalAccessException e) {
-            // FIXME: SC523 Exception catch re-ordered to get around simian. HACK!!!
+            // FIX SC523 Exception catch re-ordered to get around simian. HACK!!!
             throw new EdgeException(e);
         }
     }

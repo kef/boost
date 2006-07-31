@@ -2,8 +2,8 @@ package au.net.netstorm.boost.time.core;
 
 import junit.framework.TestCase;
 
-// FIXME: SC507 Remove duplication between this class and StartTimeTest.
-// FIXME: SC507 Primordialize.
+// FIX SC507 Remove duplication between this class and StartTimeTest.
+// FIX SC507 Primordialize.
 public final class EndTimeAtomicTest extends TestCase {
 
     public void testNullInvalidInConstructor() {

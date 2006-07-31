@@ -4,9 +4,9 @@ import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
-// FIXME: SC506 This NEEDS to be a UnitTest!!!
-// FIXME: SC506 Rename to Atomic test when done
-// FIXME: SC502 Rename to Atomic test when done.
+// FIX SC506 This NEEDS to be a UnitTest!!!
+// FIX SC506 Rename to Atomic test when done
+// FIX SC502 Rename to Atomic test when done.
 
 public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();

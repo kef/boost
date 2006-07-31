@@ -42,7 +42,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         }
     }
 
-    // FIXME: SC523 Pass block, reduce duplication with constructor form.
+    // FIX SC523 Pass block, reduce duplication with constructor form.
     private void nullCheckMethod(Object instance, final Method method, int currentParameter, Class[] paramTypes) {
         final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
@@ -53,8 +53,8 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         }
     }
 
-    // FIXME: SC043 R Why do we need the Call block?
-    // FIXME: SC043 This method is DUP with ConstructorNullParameter.
+    // FIX SC043 R Why do we need the Call block?
+    // FIX SC043 This method is DUP with ConstructorNullParameter.
     private void invoke(final Object instance, final Method method, final Object[] paramValues) {
         method.setAccessible(true);
         Call invokeBlock = new Call() {
@@ -67,7 +67,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {
         String paramTypeClassName = paramTypes[currentParameter].getSimpleName();
-        // FIXME: SC043 Trainwreck.
+        // FIX SC043 Trainwreck.
         String instanceClassName = method.getDeclaringClass()
                 .getSimpleName();
         String methodName = instanceClassName + "." + method.getName();
@@ -75,7 +75,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         Assert.fail(message);
     }
 
-    // FIXME: SC523 Better way to do this, maybe boost class?
+    // FIX SC523 Better way to do this, maybe boost class?
     private Method[] getPublicMethods(Class cls) {
         List publicMethods = new ArrayList();
         Method[] methods = cls.getDeclaredMethods();

@@ -49,7 +49,7 @@ public final class TimePointAtomicTest extends TestCase {
         TimePoint now = TimePoint.now();
         StartTime start = new StartTime(bottom);
         EndTime end = new EndTime(top);
-        // FIXME: SC777 Tests TimeRange rather than TimePoint - move or delete.
+        // FIX SC777 Tests TimeRange rather than TimePoint - move or delete.
         TimeRange range = new DefaultTimeRange(start, TIME_RANGE_MASTER.duration(start, end));
         assertTrue(range.contains(now));
     }
@@ -58,10 +58,10 @@ public final class TimePointAtomicTest extends TestCase {
         try {
             new TimePoint(length);
             fail();
-        } catch (IllegalArgumentException ex) { succeed(); } // FIXME: SC777 Fix others to call succeed().
+        } catch (IllegalArgumentException ex) { succeed(); } // FIX SC777 Fix others to call succeed().
     }
 
-    // FIXME: SC777 Push up into a PrimordialTestCase.
+    // FIX SC777 Push up into a PrimordialTestCase.
     private void succeed() {
         assertTrue(true);
     }

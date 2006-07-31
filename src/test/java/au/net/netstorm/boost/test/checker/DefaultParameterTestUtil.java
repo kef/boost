@@ -8,7 +8,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClassFactory;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 
-// FIXME: SC523 What to do with this class?
+// FIX SC523 What to do with this class?
 
 final class DefaultParameterTestUtil implements ParameterTestUtil {
     private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
@@ -23,8 +23,8 @@ final class DefaultParameterTestUtil implements ParameterTestUtil {
         return paramValues;
     }
 
-    // FIXME: SC523 Rename...
-    // FIXME: SC043 R This belongs somewhere else.
+    // FIX SC523 Rename...
+    // FIX SC043 R This belongs somewhere else.
     public void invokeBlock(Call invokeBlock) {
         try {
             invokeBlock.execute();

@@ -15,19 +15,19 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
 
-// FIXME: SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// FIXME: SC050 Again and again we just keep getting nailed by this HEAP OF !!!!!!!!!
-// FIXME: SC050 Slowly, Slowly.
-// FIXME: SC050 Instancise first.
-// FIXME: SC050 Extract interface next.
-// FIXME: SC050 IN FACT THIS IS SUCH A RUBBISH WE JUST GO A TOTAL REWRITE!!!!!!!!!!!!!!!!!!!!!
-// FIXME: SC517 Make test fixture thingies final.
-// FIXME: SC517 This will have to flick out into another card.
+// FIX SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// FIX SC050 Again and again we just keep getting nailed by this HEAP OF !!!!!!!!!
+// FIX SC050 Slowly, Slowly.
+// FIX SC050 Instancise first.
+// FIX SC050 Extract interface next.
+// FIX SC050 IN FACT THIS IS SUCH A RUBBISH WE JUST GO A TOTAL REWRITE!!!!!!!!!!!!!!!!!!!!!
+// FIX SC517 Make test fixture thingies final.
+// FIX SC517 This will have to flick out into another card.
 //
 //
 //
 //
-// ---------------------------------------- FIXME: SC517  FROZEN -----------------------------------
+// ---------------------------------------- FIX SC517  FROZEN -----------------------------------
 //
 //
 //
@@ -36,7 +36,7 @@ import junit.framework.Assert;
 final class MemberTestFixture {
     private static final EdgeReflect REFLECT_EDGE = new OldEdgeReflect();
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
-            .length(); // FIXME: SC517 Make this public or private.
+            .length(); // FIX SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();
     private final FieldTestUtil fields = new DefaultFieldTestUtil();
     private final Object instance;
@@ -96,14 +96,14 @@ final class MemberTestFixture {
         return Character.toLowerCase(startChar);
     }
 
-    // FIXME: SC509 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
+    // FIX SC509 What about complex objects that have references to other objects. Make sure that they use deep copy and not just shallow.
     private static void checkFieldImmutable(Object expectedValue, Object actualValue, FieldSpec fieldSpec) {
         Class type = fieldSpec.getType();
         boolean isImmutable = isImmutable(type) || (expectedValue != actualValue);
         Assert.assertTrue("The field '" + fieldSpec.getName() + "' needs to be either Immutable or needs to copy the values internally", isImmutable);
     }
 
-    // FIXME: SC509 This is a "member test fixture" for crying out loud.  What is it doing checking return types PK?
+    // FIX SC509 This is a "member test fixture" for crying out loud.  What is it doing checking return types PK?
     private static boolean isImmutable(Class type) {
         return Class.class.isAssignableFrom(type) || String.class.isAssignableFrom(type) || Immutable.class.isAssignableFrom(type) || isPrimitiveWrapperImmutable(type);
     }

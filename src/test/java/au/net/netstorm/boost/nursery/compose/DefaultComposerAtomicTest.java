@@ -7,10 +7,10 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
-// FIXME: SC521 What to do for equals, hashCode, toString...
-// FIXME: SC521 Move to using MockInvocationHandler.
-// FIXME: SC521 Check exceptions are thrown across the boundary.
-// FIXME: SC521 getProxy can be replaced with ProxyFactory.
+// FIX SC521 What to do for equals, hashCode, toString...
+// FIX SC521 Move to using MockInvocationHandler.
+// FIX SC521 Check exceptions are thrown across the boundary.
+// FIX SC521 getProxy can be replaced with ProxyFactory.
 
 /**
  * The composer currently only supports composition of two classes.
@@ -24,16 +24,16 @@ public final class DefaultComposerAtomicTest extends TestCase {
     private final MockProxyFactory mockProxyFactory = new MockProxyFactory();
     private final Composer composer = new DefaultComposer(mockProxyFactory);
 
-    // FIXME: SC521 Check interface implements 2 subinterfaces only.
-    // FIXME: SC521 Rename.
-    // FIXME: SC521 Check implementations cannot change under our feet.  Maybe.  Yes we will need to.
+    // FIX SC521 Check interface implements 2 subinterfaces only.
+    // FIX SC521 Rename.
+    // FIX SC521 Check implementations cannot change under our feet.  Maybe.  Yes we will need to.
     public void testDouble() {
         Object delegateA = createMockProxy(mockHandlerA);
         Object delegateB = createMockProxy(mockHandlerB);
         Object composed = composer.compose(INTERFACE_A_B, delegateA, delegateB);
-        // FIXME: SC521 check delegated to proxy factory.
-        // FIXME: SC521 check can be assigned.
-        // FIXME: SC521 BREADCRUMB.
+        // FIX SC521 check delegated to proxy factory.
+        // FIX SC521 check can be assigned.
+        // FIX SC521 BREADCRUMB.
     }
 
     private Object createMockProxy(MockInvocationHandler mockHandler) {
@@ -41,7 +41,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
         return proxyFactory.newProxy(INTERFACE_A, mockHandler);
     }
 
-    // FIXME: SC521 Dupe.  See DefaultOneToMany.
+    // FIX SC521 Dupe.  See DefaultOneToMany.
     private ProxyFactory buildFactory() {
         EdgeProxyFactory edge = new DefaultEdgeProxyFactory();
         return new DefaultProxyFactory(edge);

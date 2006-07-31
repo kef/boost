@@ -2,13 +2,13 @@ package au.net.netstorm.boost.reflect;
 
 import junit.framework.TestCase;
 
-// FIXME: SC010 Don't use JMock.
+// FIX SC010 Don't use JMock.
 
 public class DefaultReflectMasterAtomicTest extends TestCase {
 //    private static final MethodSpec METHOD_SPEC = new MethodSpec("booleanValue", new Class[]{});
 //    private static final FieldValueSpec[] FIELD_SPEC_ARRAY = new FieldValueSpec[]{new DefaultFieldValueSpec("name", "value")};
 
-    // FIXME: SC509 Reinstate these tests.
+    // FIX SC509 Reinstate these tests.
     public void testFixThis() {
     }
 //    public void testCreate() {
