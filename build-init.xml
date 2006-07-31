@@ -57,14 +57,12 @@
 
     <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
+        <exclude name="**/au/net/netstorm/boost/edge/**"/>
         <exclude name="**/pair/*.java"/>
         <!-- FIXME: SC502 Remove duplication and then remove these exclusions. -->
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE.  FIX FIRST!!!!  EVEN THOUGH SOME ARE SIMIAN FALSE POSITIVES -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
-        <exclude name="**/DefaultEdgeReflect.java"/>
-        <exclude name="**/DefaultEdgeInputStream.java"/>
-        <exclude name="**/DefaultEdgeOutputStream.java"/>
         <exclude name="**/MockListener.java"/>
         <!-- FIXME: SC502 This was put in here due to duplication detected between test code and production code ... which is allowed? -->
     </fileset>
