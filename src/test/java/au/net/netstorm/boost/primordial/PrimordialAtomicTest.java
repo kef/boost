@@ -15,6 +15,7 @@ import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 // FIXME: SC043 Looks like an integration test. Mock bits Primordial depends on.
+
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
@@ -47,7 +48,7 @@ public final class PrimordialAtomicTest extends TestCase {
         assertEquals(expected, primordial.toString());
     }
 
-    private void checkField(final Class type, final String fieldName) {
+    private void checkField(Class type, String fieldName) {
         Object fieldValue = fielder.getInstance(new Primordial(), fieldName);
         assertNotNull(fieldValue);
         assertEquals(type, fieldValue.getClass());
