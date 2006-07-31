@@ -12,21 +12,20 @@ import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
-    // FIX SC600 Use instances whereever possible.
-    private static final NullMaster NULL_MASTER = new DefaultNullMaster();
-    private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
-    private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
+    private final NullMaster nullMaster = new DefaultNullMaster();
+    private final ClassMaster classMaster = new DefaultClassMaster();
+    private final AssertException assertException = new DefaultAssertException();
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private final ParameterTestUtil parameterUtil = new DefaultParameterTestUtil();
     private final InstanceProvider instanceProvider;
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
-        NULL_MASTER.check(instanceProvider, "instanceProvider");
+        nullMaster.check(instanceProvider, "instanceProvider");
         this.instanceProvider = instanceProvider;
     }
 
     public void checkPublicConstructorsRejectNull(Class classToCheck) {
-        NULL_MASTER.check(classToCheck, "classToCheck");
+        nullMaster.check(classToCheck, "classToCheck");
         Constructor[] constructors = classToCheck.getConstructors();
         for (int i = 0; i < constructors.length; i++) {
             checkConstructorRejectsNull(constructors[i]);
@@ -34,7 +33,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     }
 
     private void checkConstructorRejectsNull(Constructor constructor) {
-        NULL_MASTER.check(constructor, "constructor");
+        nullMaster.check(constructor, "constructor");
         Class[] paramTypes = constructor.getParameterTypes();
         for (int i = 0; i < paramTypes.length; i++) {
             nullCheckConstructor(constructor, i, paramTypes);
@@ -48,7 +47,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
             invoke(constructor, paramValues);
             fail(paramTypes, currentParameter, constructor);
         } catch (Exception e) {
-            ASSERT_EXCEPTION.checkExceptionClass(IllegalArgumentException.class, e);
+            assertException.checkExceptionClass(IllegalArgumentException.class, e);
         }
     }
 
@@ -64,8 +63,8 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Constructor constructor) {
-        String paramTypeClassName = CLASS_MASTER.getShortName(paramTypes[currentParameter]);
-        String methodName = CLASS_MASTER.getShortName(constructor.getDeclaringClass());
+        String paramTypeClassName = classMaster.getShortName(paramTypes[currentParameter]);
+        String methodName = classMaster.getShortName(constructor.getDeclaringClass());
         String message = "Argument " + (currentParameter + 1) + " of " + methodName + "(..." + paramTypeClassName + "...) must be null checked";
         Assert.fail(message);
     }

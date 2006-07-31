@@ -45,9 +45,10 @@ public class VmEntryAtomicTest extends TestCase {
         checkEntryFails(TOO_MANY_ARGUMENTS);
     }
 
-    // FIX SC523 Replace with normal test method.
-    public void failWithNullStyle() throws IllegalArgumentException {
-        callMain(null);
+    public void testWithNullStyle() {
+        try {
+            callMain(null);
+        } catch (IllegalArgumentException expected) { }
     }
 
     private void checkEntryPoint(VmStyle style) {

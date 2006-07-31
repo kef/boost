@@ -12,8 +12,4 @@ public abstract class PrimordialTestCase extends TestCase {
     public final void assertEquals(Object[] expected, Object[] fields) {
         asserter.checkEquals(expected, fields);
     }
-
-    // FIX SC600 Remove.
-    public final void testSoThePoxyScabJUnitDoesNotWhinge() {
-    }
 }

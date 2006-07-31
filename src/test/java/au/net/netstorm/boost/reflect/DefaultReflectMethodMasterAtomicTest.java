@@ -28,7 +28,8 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_CHURCH = new MethodSpec(CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
     private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
-    private final ReflectMaster master = new DefaultReflectMaster(); // FIX SC506 ? .INSTANCE.
+
+    private final ReflectMaster master = new DefaultReflectMaster();
     private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
 
     public void testGetMethodBasic() {

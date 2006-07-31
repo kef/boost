@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.primordial;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 
-// FIX SC525 Move all these into same package as Primordial?
 // FIX SC525 So we don't need test subclasses.  We just have the one and it implements Marker interface to key the type of test.
 
 public abstract class PrimordialMockTestCase extends MockObjectTestCase implements MockTestCase, MockTestSetUp, MockProvider {

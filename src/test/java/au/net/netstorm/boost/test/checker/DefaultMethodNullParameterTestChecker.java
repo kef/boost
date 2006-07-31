@@ -67,9 +67,8 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {
         String paramTypeClassName = paramTypes[currentParameter].getSimpleName();
-        // FIX SC043 Trainwreck.
-        String instanceClassName = method.getDeclaringClass()
-                .getSimpleName();
+        Class declaringClass = method.getDeclaringClass();
+        String instanceClassName = declaringClass.getSimpleName();
         String methodName = instanceClassName + "." + method.getName();
         String message = "Argument " + (currentParameter + 1) + " of " + methodName + "(..." + paramTypeClassName + "...) must be null checked";
         Assert.fail(message);

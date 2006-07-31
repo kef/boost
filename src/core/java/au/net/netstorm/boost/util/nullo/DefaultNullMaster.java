@@ -5,7 +5,7 @@ import java.io.Serializable;
 import au.net.netstorm.boost.util.array.ArrayFlattener;
 import au.net.netstorm.boost.util.array.DefaultArrayFlattener;
 
-// FIX SC502 Where is this used?  Instancise.
+// FIX SC502 Where is this used?
 // FIX SC502 Test serializable in NullAT.
 
 public final class DefaultNullMaster implements NullMaster, Serializable {

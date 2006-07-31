@@ -8,14 +8,14 @@ public class InterfaceAtomicTest extends TestCase {
     private static final Class NOT_AN_INTERFACE = Object.class;
 
     public void testIsDataObject() {
-        // FIX SC506 Tidy this up.
-        new DefaultDataTestChecker().checkIsData(Interface.class, new DefaultFieldSpec[]{
-            new DefaultFieldSpec("type", Class.class)});
+        DefaultFieldSpec[] fields = {new DefaultFieldSpec("type", Class.class)};
+        new DefaultDataTestChecker().checkIsData(Interface.class, fields);
     }
 
-    // FIX SC506 This is not called as we are no longer wired into Primordial.
-    // FIX SC523 Replace with normal test method.
-    public void failIfTypeIsNotInterface() throws IllegalArgumentException {
-        new Interface(NOT_AN_INTERFACE);
+    public void testTypeIsNotInterface() {
+        try {
+            new Interface(NOT_AN_INTERFACE);
+            fail();
+        } catch (IllegalArgumentException expected) { }
     }
 }

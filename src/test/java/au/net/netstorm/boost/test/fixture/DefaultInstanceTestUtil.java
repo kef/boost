@@ -5,26 +5,24 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-// FIX SC502 Make instance.
-
 final class DefaultInstanceTestUtil implements InstanceTestUtil {
-    private static final DefaultReflectMaster REFLECT_MASTER = new DefaultReflectMaster();
-    private static final TriangulationProviderTestUtil TRIANGULATION_PROVIDER_TEST_UTIL = new TriangulationProviderTestUtil();
-    // FIX SC050 This is a smell.  Work out whether is can be removed.
+    private final DefaultReflectMaster reflectMaster = new DefaultReflectMaster();
+    private final TriangulationProviderTestUtil triangulationProviderTestUtil = new TriangulationProviderTestUtil();
+    // FIX SC050 This is a smell.  Work out whether it can be removed.
     private static final TriangulationProvider EMPTY = new TestEmptyTriangulationProvider();
 
     public Object getInstance(Class cls, Object[] parameters) {
         Constructor constructor = getConstructor(cls);
-        return TRIANGULATION_PROVIDER_TEST_UTIL.getInstance(constructor, parameters);
+        return triangulationProviderTestUtil.getInstance(constructor, parameters);
     }
 
     public Constructor getConstructor(Class cls) {
-        return REFLECT_MASTER.getConstructor(cls);
+        return reflectMaster.getConstructor(cls);
     }
 
     public Object[] getInstances(FieldSpec[] fields) {
         Class[] classes = getClasses(fields);
-        return TRIANGULATION_PROVIDER_TEST_UTIL.getInstances(classes, EMPTY); // FIX SC050 Smell ... EMPTY being here.
+        return triangulationProviderTestUtil.getInstances(classes, EMPTY); // FIX SC050 Smell ... EMPTY being here.
     }
 
     public Class[] getClasses(FieldSpec[] fields) {
