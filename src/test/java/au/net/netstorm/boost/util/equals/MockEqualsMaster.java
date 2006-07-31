@@ -1,9 +1,6 @@
-package au.net.netstorm.boost.primordial;
+package au.net.netstorm.boost.util.equals;
 
-import au.net.netstorm.boost.util.equals.EqualsMaster;
-
-// FIXME: SC524 Move all mocks to the same package as the real implementation.
-final class MockEqualsMaster implements EqualsMaster {
+public final class MockEqualsMaster implements EqualsMaster {
     private Object o1;
     private Object o2;
     private boolean equals;

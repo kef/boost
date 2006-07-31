@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;
 
+// FIX SC600 Nearly the same as MockInvocationHandler in util.proxy package.
 final class MockInvocationHandler extends Assert implements InvocationHandler {
     private boolean called;
 

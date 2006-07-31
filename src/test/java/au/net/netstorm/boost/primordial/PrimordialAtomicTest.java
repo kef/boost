@@ -6,9 +6,11 @@ import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.FieldTestUtil;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
 import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
+import au.net.netstorm.boost.util.equals.MockEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
+import au.net.netstorm.boost.util.tostring.MockToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 

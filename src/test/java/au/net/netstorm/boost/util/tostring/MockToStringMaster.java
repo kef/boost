@@ -1,8 +1,6 @@
-package au.net.netstorm.boost.primordial;
+package au.net.netstorm.boost.util.tostring;
 
-import au.net.netstorm.boost.util.tostring.ToStringMaster;
-
-final class MockToStringMaster implements ToStringMaster {
+public final class MockToStringMaster implements ToStringMaster {
     private String result;
     private Object ref;
 
