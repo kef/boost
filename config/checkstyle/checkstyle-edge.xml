@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
-    "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd"
-[ <!ENTITY common-rules SYSTEM "file:config/checkstyle/checkstyle-common.xml"> ]
->
+        "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd"
+        [ <!ENTITY common-rules SYSTEM "file:config/checkstyle/checkstyle-common.xml"> ]
+        >
 <module name="Checker">
     <module name="SuppressionFilter">
         <property name="file" value="config/checkstyle/suppressions-edge.xml"/>
@@ -15,6 +15,9 @@
         </module>
         <module name="JavaNCSS">
             <property name="classMaximum" value="80"/>
+        </module>
+        <module name="GenericIllegalRegexp">
+            <property name="format" value="new RuntimeException"/>
         </module>
     </module>
 </module>

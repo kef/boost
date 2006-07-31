@@ -7,42 +7,41 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
 
+// FIXME: SC600 How about EdgeField and EdgeClass.
+// FIXME: SC600 EdgeClassFactory for obtaining classes.
+
 public class DefaultEdgeReflect implements EdgeReflect {
-    // FIXME: SC523 Throw edge exceptions.
     public Object getFieldValue(Field field, Object ref) {
         try {
             return field.get(ref);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 
-    // FIXME: SC523 Throw edge exceptions.
     public void setFieldValue(Field field, Object ref, Object value) {
         try {
             field.set(ref, value);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 
-    // FIXME: SC523 Throw edge exceptions.
     public Field getDeclaredField(Class cls, String fieldName) {
         try {
             return cls.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 
-    // FIXME: SC523 Throw edge exceptions.
     public Object newInstance(Class cls) {
         try {
             return cls.newInstance();
         } catch (InstantiationException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 
@@ -50,11 +49,11 @@ public class DefaultEdgeReflect implements EdgeReflect {
         try {
             return constructor.newInstance(parameters);
         } catch (InstantiationException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 
@@ -70,7 +69,7 @@ public class DefaultEdgeReflect implements EdgeReflect {
         try {
             return cls.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 
@@ -82,7 +81,7 @@ public class DefaultEdgeReflect implements EdgeReflect {
         try {
             return method.invoke(instance, args);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new EdgeException(e);
         }
     }
 }
