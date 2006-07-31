@@ -1,0 +1,6 @@
+Current:
+  * Prefer arrays over Lists whereever possible.  Restrict List usage to inside methods.
+
+Proposed:
+
+Old:

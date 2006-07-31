@@ -19,6 +19,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     private static final ModifierTestUtil MODIFIER_UTIL = new DefaultModifierTestUtil();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
     private final EdgeMethod edgeMethod = new DefaultEdgeMethod();
+    private final ParameterTestUtil parameterUtil = new ParameterTestUtil();
     private final InstanceProvider instanceProvider;
 
     public DefaultMethodNullParameterTestChecker(InstanceProvider instanceProvider) {
@@ -44,7 +45,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     // FIXME: SC523 Pass block, reduce duplication with constructor form.
     private void nullCheckMethod(Object instance, final Method method, int currentParameter, Class[] paramTypes) {
-        final Object[] paramValues = ParameterTestUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
+        final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
             invoke(instance, method, paramValues);
             fail(paramTypes, currentParameter, method);
@@ -62,7 +63,7 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
                 edgeMethod.invoke(method, instance, paramValues);
             }
         };
-        ParameterTestUtil.invokeBlock(invokeBlock);
+        parameterUtil.invokeBlock(invokeBlock);
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {

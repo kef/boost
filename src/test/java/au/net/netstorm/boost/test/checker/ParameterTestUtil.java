@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.instance.InstanceProvider;
 // FIXME: SC600 BREADCRUMB ... Instancise.
 
 final class ParameterTestUtil {
-    static Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull) {
+    public Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull) {
         Object[] paramValues = new Object[paramTypes.length];
         for (int i = 0; i < paramTypes.length; i++) {
             paramValues[i] = instanceProvider.newInstance(paramTypes[i]);
@@ -21,7 +21,7 @@ final class ParameterTestUtil {
 
     // FIXME: SC523 Rename...
     // FIXME: SC043 R This belongs somewhere else.
-    static void invokeBlock(Call invokeBlock) {
+    public void invokeBlock(Call invokeBlock) {
         try {
             invokeBlock.execute();
         } catch (EdgeException e) {
@@ -29,7 +29,7 @@ final class ParameterTestUtil {
         }
     }
 
-    private static void handleException(EdgeException e) {
+    private void handleException(EdgeException e) {
         Throwable cause = e.getCause();
         if (cause instanceof InvocationTargetException) {
             Throwable realCause = cause.getCause();
@@ -37,7 +37,7 @@ final class ParameterTestUtil {
         }
     }
 
-    private static void rethrowException(Throwable realCause) {
+    private void rethrowException(Throwable realCause) {
         if (realCause instanceof IllegalArgumentException) {
             throw (IllegalArgumentException) realCause;
         } else {
