@@ -17,7 +17,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     private static final ClassMaster CLASS_MASTER = new DefaultClassMaster();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
-    private final ParameterTestUtil parameterUtil = new ParameterTestUtil();
+    private final ParameterTestUtil parameterUtil = new DefaultParameterTestUtil();
     private final InstanceProvider instanceProvider;
 
     public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
