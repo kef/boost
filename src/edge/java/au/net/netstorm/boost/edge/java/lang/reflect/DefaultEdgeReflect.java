@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-// FIXME: SC519 Map exceptions exactly how an "edge" should.
+import au.net.netstorm.boost.edge.EdgeException;
 
 public class DefaultEdgeReflect implements EdgeReflect {
     // FIXME: SC523 Throw edge exceptions.
@@ -31,7 +31,6 @@ public class DefaultEdgeReflect implements EdgeReflect {
         try {
             return cls.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
-            // FIXME: SC519 EdgeNoSuchFieldException should contain cls & field information.
             throw new RuntimeException(e);
         }
     }
@@ -63,7 +62,7 @@ public class DefaultEdgeReflect implements EdgeReflect {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
-            throw new EdgeClassNotFoundException(e);
+            throw new EdgeException(e);
         }
     }
 
