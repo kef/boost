@@ -1,9 +1,5 @@
 package au.net.netstorm.boost.primordial;
 
-import java.lang.reflect.Method;
-
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
 import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
@@ -17,19 +13,12 @@ import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 // FIXME: SC043 Looks like an integration test. Mock bits Primordial depends on.
-
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final EdgeReflect reflector = new OldEdgeReflect();
 
     public void testNotAbstract() {
         modifier.checkConcrete(Primordial.class);
-    }
-
-    public void testMethodsFinal() {
-        checkMethodFinal("toString", new Class[]{});
-        checkMethodFinal("equals", new Class[]{Object.class});
     }
 
     public void testHashCode() {
@@ -101,10 +90,5 @@ public final class PrimordialAtomicTest extends TestCase {
         FieldValueSpec fieldValue = new DefaultFieldValueSpec(fieldName, master);
         fielder.setInstance(primordial, fieldValue);
         return primordial;
-    }
-
-    private void checkMethodFinal(String methodName, Class[] parameterTypes) {
-        Method method = reflector.getMethod(Primordial.class, methodName, parameterTypes);
-        modifier.checkFinal(method);
     }
 }

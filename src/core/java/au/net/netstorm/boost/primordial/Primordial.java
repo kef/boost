@@ -9,19 +9,15 @@ public class Primordial {
     private EqualsMaster equalsMaster = new FieldBasedEqualsMaster();
     private ToStringMaster toStringMaster = new IndentingToStringMaster();
 
-    // FIXME: SC509 Make final, implying that classes wanting a more performant hashCode don't extend Primordial.
-    // FIXME: SC509 ? Provide PartialPrimordial.
     public int hashCode() {
         return 42;
     }
 
-    public final boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         return equalsMaster.equals(this, obj);
     }
 
-    // FIXME: SC502 Should this really be final?  There are a number of cases in the codebase where overriding this
-    // makes sense.
-    public final String toString() {
+    public String toString() {
         return toStringMaster.getString(this);
     }
 }
