@@ -9,8 +9,6 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClassFactory;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 
 // FIXME: SC523 What to do with this class?
-// FIXME: SC523 Instance-ise.
-// FIXME: SC600 BREADCRUMB ... Instancise.
 
 final class DefaultParameterTestUtil implements ParameterTestUtil {
     private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
