@@ -2,7 +2,7 @@ package au.net.netstorm.boost.reflect;
 
 import junit.framework.TestCase;
 
-// FIX SC010 Don't use JMock.
+// FIX SC010 Don't use JMock. Actually do use it now via new implicit mocking facilities.
 
 public class DefaultReflectMasterAtomicTest extends TestCase {
 //    private static final MethodSpec METHOD_SPEC = new MethodSpec("booleanValue", new Class[]{});
