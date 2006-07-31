@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
-// FIXME: SC507 AtomicTest for this sucker.
-// FIXME: SC507 Consider incorporating TimeUtil (this drags in all the daylight savings stuff).
+// FIX SC507 AtomicTest for this sucker.
+// FIX SC507 Consider incorporating TimeUtil (this drags in all the daylight savings stuff).
 
 public interface TimeConstants {
     public long ONE_MILLISECOND = 1;

@@ -12,7 +12,7 @@
     </target>
 
     <target name="check_tests">
-        <!-- FIXME: SC502 junit.@{code.type}.failed. -->
+        <!-- FIX SC502 junit.@{code.type}.failed. -->
         <macro_junit_check failure.property="atomic.tests.failed"/>
     </target>
 
@@ -25,7 +25,7 @@
             <mkdir dir="${test.xml.report.dir}"/>
             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
-                <!-- FIXME: SC502 Parameterise the coverage file for different test styles. -->
+                <!-- FIX SC502 Parameterise the coverage file for different test styles. -->
                 <sysproperty key="net.sourceforge.cobertura.datafile"
                              file="${coverage.dir}/@{coverage.type}_coverage.ser"/>
                 <classpath refid="@{classpath.refid}"/>
@@ -41,7 +41,7 @@
     <macrodef name="macro_junit_report">
         <sequential>
             <junitreport todir="${test.report.dir}" tofile="TestReport.xml">
-                <!-- FIXME: SC502 Move fileset out.  -->
+                <!-- FIX SC502 Move fileset out.  -->
                 <fileset dir="${test.xml.report.dir}">
                     <include name="TEST-*.xml"/>
                 </fileset>
@@ -53,7 +53,7 @@
     <macrodef name="macro_junit_check">
         <attribute name="failure.property"/>
         <sequential>
-            <!-- FIXME: SC502 Use code.type instead? Does this match the model? -->
+            <!-- FIX SC502 Use code.type instead? Does this match the model? -->
             <fail if="@{failure.property}" message="One or more tests failed [@{failure.property}]."/>
         </sequential>
     </macrodef>

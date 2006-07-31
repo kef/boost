@@ -2,7 +2,7 @@ package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
 
-// FIXME: SC502 Candidate for Primordial with specialised toString().
+// FIX SC502 Candidate for Primordial with specialised toString().
 public final class DayOfWeek {
 
     public static final int DAYS_IN_A_WEEK = 7;
@@ -36,7 +36,7 @@ public final class DayOfWeek {
         if (value < Calendar.SUNDAY || value > Calendar.SATURDAY) throw new IllegalArgumentException("Invalid day (day="+value+").");
     }
 
-    // FIXME: SC507 Move this into "edge" and reference.
+    // FIX SC507 Move this into "edge" and reference.
     static final void jdkCalendarCheck() {
         // Sanity check.  The logic of this class is based on assumption of the following.
         if (Calendar.SUNDAY    != 1) throw new IllegalStateException("Expected Calendar.SUNDAY to be 1, instead it was "+Calendar.SUNDAY);

@@ -5,7 +5,7 @@ import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Data;
 
-// FIXME: SC524 Make an interface for this.
+// FIX SC524 Make an interface for this.
 
 public final class MethodSpec extends Primordial implements Data {
     private NullMaster master = new DefaultNullMaster();
@@ -13,7 +13,7 @@ public final class MethodSpec extends Primordial implements Data {
     private final Class[] params;
 
     public MethodSpec(String name, Class[] params) {
-        // FIXME: SC502 Move into validate(...) method.
+        // FIX SC502 Move into validate(...) method.
         master.check(name, "name");
         master.check(params, "params");
         this.name = name;

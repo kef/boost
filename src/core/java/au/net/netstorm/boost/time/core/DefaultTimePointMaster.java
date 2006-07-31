@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.core;
 
-// FIXME: SC507 Make instance.
+// FIX SC507 Make instance.
 public final class DefaultTimePointMaster implements TimePointMaster {
 
     public TimePoint next(TimePoint time) {

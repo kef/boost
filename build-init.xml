@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost" default="ignore" basedir=".">
-    <!-- FIXME: SC518 Split into more files? -->
-    <!-- FIXME: SC518 Convert all targets to fit in with prefix/naming convention. -->
-    <!-- FIXME: SC518 Go through the SC512 dudes and see which are relevant to SC518. -->
-    <!-- FIXME: SC518 Move checkstyle cache into checkstyle sub area under target. -->
+    <!-- FIX SC518 Split into more files? -->
+    <!-- FIX SC518 Convert all targets to fit in with prefix/naming convention. -->
+    <!-- FIX SC518 Go through the SC512 dudes and see which are relevant to SC518. -->
+    <!-- FIX SC518 Move checkstyle cache into checkstyle sub area under target. -->
     <property name="label" value="build-dev"/>
 
     <property name="build.dir" location="build"/>
@@ -59,12 +59,12 @@
         <patternset refid="code.pattern"/>
         <exclude name="**/au/net/netstorm/boost/edge/**"/>
         <exclude name="**/pair/*.java"/>
-        <!-- FIXME: SC502 Remove duplication and then remove these exclusions. -->
+        <!-- FIX SC502 Remove duplication and then remove these exclusions. -->
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE.  FIX FIRST!!!!  EVEN THOUGH SOME ARE SIMIAN FALSE POSITIVES -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
         <exclude name="**/MockListener.java"/>
-        <!-- FIXME: SC502 This was put in here due to duplication detected between test code and production code ... which is allowed? -->
+        <!-- FIX SC502 This was put in here due to duplication detected between test code and production code ... which is allowed? -->
     </fileset>
 
     <fileset id="simian.boo.code" dir="${src.dir}">
@@ -88,7 +88,7 @@
         <path location="${core.instrumented.dir}"/>
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
-        <!-- FIXME: SC525 Should there be a test.classpath thingy -->
+        <!-- FIX SC525 Should there be a test.classpath thingy -->
         <path refid="cobertura.classpath"/>
         <path refid="jmock.classpath"/>
     </path>
@@ -106,7 +106,7 @@
         <path refid="jmock.classpath"/>
     </path>
 
-    <!-- FIXME: SC502 Create a jar patternset to remove duplication of includes here. -->
+    <!-- FIX SC502 Create a jar patternset to remove duplication of includes here. -->
     <path id="cobertura.classpath">
         <fileset dir="${lib.dir}/cobertura">
             <include name="**/*.jar"/>

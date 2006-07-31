@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-// FIXME: SC502 Candidate for Primordial with ability to override toString().
+// FIX SC502 Candidate for Primordial with ability to override toString().
 public final class MonthOfYear {
 
     public static final int MONTHS_IN_YEAR = 12;

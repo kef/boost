@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 
-// FIXME: SC521 Use "composer".  Create Factory for this guy.
+// FIX SC521 Use "composer".  Create Factory for this guy.
 
 public final class DefaultReflectMaster implements ReflectMaster {
     private final ReflectObjectMaster objectMaster = new DefaultReflectObjectMaster();

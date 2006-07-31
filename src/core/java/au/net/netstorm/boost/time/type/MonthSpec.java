@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-// FIXME: SC507 Now that MonthOfYear exists, introduce it here.
+// FIX SC507 Now that MonthOfYear exists, introduce it here.
 public final class MonthSpec extends Primordial implements Comparable {
 
     public final int year;

@@ -8,6 +8,6 @@ public final class DefaultComposer implements Composer {
     }
 
     public Object compose(Interface iface, Object delegateA, Object delegateB) {
-        return null; // FIXME: SC521
+        return null; // FIX SC521
     }
 }

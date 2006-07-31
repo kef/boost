@@ -2,8 +2,8 @@ package au.net.netstorm.boost.time.core;
 
 import java.io.Serializable;
 
-// FIXME: SC507 They will be serializable once they become immutable.
-// FIXME: SC507 Make these guys immutable.
+// FIX SC507 They will be serializable once they become immutable.
+// FIX SC507 Make these guys immutable.
 public final class EndTime implements Serializable {
     public final TimePoint point;
 

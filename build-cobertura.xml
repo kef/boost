@@ -37,7 +37,7 @@
             <mkdir dir="${coverage.reports.dir}/@{code.type}/@{report.type}"/>
             <cobertura-report destdir="${coverage.reports.dir}/@{code.type}/@{report.type}"
                               datafile="${coverage.dir}/@{code.type}_coverage.ser">
-                <!-- FIXME: SC502 Parameterise -->
+                <!-- FIX SC502 Parameterise -->
                 <fileset dir="${core.src.dir}" includes="**/*.java"/>
             </cobertura-report>
         </sequential>
@@ -48,7 +48,7 @@
         <attribute name="line.limit"/>
         <attribute name="code.type"/>
         <sequential>
-            <!-- FIXME: SC502 Don't halt on failure. Follow with a <fail> task with a message consistent with other failures. -->
+            <!-- FIX SC502 Don't halt on failure. Follow with a <fail> task with a message consistent with other failures. -->
             <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
                              failureproperty="coverage.@{code.type}.failed" haltonfailure="true"
                              datafile="${coverage.dir}/@{code.type}_coverage.ser"/>

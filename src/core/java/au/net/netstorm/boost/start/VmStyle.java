@@ -9,7 +9,7 @@ public final class VmStyle extends Primordial implements Data {
     private final String style;
 
     public VmStyle(String style) {
-        // FIXME: SC502 Move to validate(...).
+        // FIX SC502 Move to validate(...).
         NullMaster master = new DefaultNullMaster();
         master.check(style, "style");
         this.style = style;

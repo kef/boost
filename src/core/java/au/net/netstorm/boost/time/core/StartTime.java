@@ -2,7 +2,7 @@ package au.net.netstorm.boost.time.core;
 
 import java.io.Serializable;
 
-// FIXME: SC502 Probably makes sense for this to have its own hashCode but the rest primordial.
+// FIX SC502 Probably makes sense for this to have its own hashCode but the rest primordial.
 public final class StartTime implements Serializable {
 
     public final TimePoint point;

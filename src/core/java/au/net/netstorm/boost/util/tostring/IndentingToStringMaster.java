@@ -33,7 +33,7 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String[] formatFields(Object ref) {
-        // FIXME: SC506 Field.
+        // FIX SC506 Field.
         DefaultReflectMaster reflect = new DefaultReflectMaster();
         FieldValueSpec[] fields = reflect.getInstanceFields(ref);
         String[] result = new String[fields.length];
@@ -80,4 +80,4 @@ public class IndentingToStringMaster implements ToStringMaster {
         return new DefaultIndenterMaster().indent(result);
     }
 }
-// FIXME: SC050 It would be nice if byte[]s (int, long?) printed out in ASCII as well (hexdump style).  
+// FIX SC050 It would be nice if byte[]s (int, long?) printed out in ASCII as well (hexdump style).

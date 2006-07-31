@@ -12,7 +12,7 @@ import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIXME: SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
+// FIX SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
 
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
@@ -57,9 +57,9 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
         if (ref == null) throw new IllegalArgumentException();
     }
 
-    // FIXME: SC521 This is not tested.  It never really was.  It has been flushed out in SC521.
+    // FIX SC521 This is not tested.  It never really was.  It has been flushed out in SC521.
     private ProxyFactory buildFactory() {
-        // FIXME: SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
+        // FIX SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
         EdgeProxyFactory edge = new DefaultEdgeProxyFactory();
         return new DefaultProxyFactory(edge);
     }

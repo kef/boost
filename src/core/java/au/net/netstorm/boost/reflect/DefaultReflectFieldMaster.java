@@ -10,7 +10,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
-// FIXME: SC524 Classes should almost always be declared final - test drive this via a utility.
+// FIX SC524 Classes should almost always be declared final - test drive this via a utility.
 
 class DefaultReflectFieldMaster implements ReflectFieldMaster {
     private final EdgeReflect reflect = new OldEdgeReflect();

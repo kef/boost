@@ -20,13 +20,13 @@
         <macro_check_simian code.type="scream"/>
     </target>
 
-    <!-- FIXME: SC502 Remove remaining duplication reports by Simian - see exclusions in fileset. -->
+    <!-- FIX SC502 Remove remaining duplication reports by Simian - see exclusions in fileset. -->
     <macrodef name="macro_run_simian">
         <attribute name="code.type"/>
         <sequential>
             <mkdir dir="${simian.report.dir}"/>
             <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
-            <!-- FIXME: SC502 Experiment with ignore options to strengthen check. -->
+            <!-- FIX SC502 Experiment with ignore options to strengthen check. -->
             <simian threshold="4" language="java" balanceParentheses="true" balanceSquareBrackets="true"
                     failureProperty="simian.@{code.type}.failed">
                 <fileset refid="simian.@{code.type}.code"/>

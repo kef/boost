@@ -2,7 +2,7 @@
 <project name="boost" default="ignore" basedir=".">
     <import file="build-init.xml"/>
 
-    <!-- FIXME: SC518 Are these really miscellaneous or is this just a smell. -->
+    <!-- FIX SC518 Are these really miscellaneous or is this just a smell. -->
     <target name="clean">
         <delete dir="${build.dir}"/>
     </target>
@@ -14,9 +14,9 @@
             </filterset>
         </copy>
     </target>
-    <!-- FIXME: SC502 API jar which contains just Primordial? -->
+    <!-- FIX SC502 API jar which contains just Primordial? -->
     <target name="build_jar">
-        <!-- FIXME: SC502 boost-run.jar which contains ONLY edge/core. -->
+        <!-- FIX SC502 boost-run.jar which contains ONLY edge/core. -->
         <mkdir dir="${jars.dir}"/>
         <jar jarfile="${jars.dir}/boost.jar">
             <fileset dir="${core.class.dir}" includes="**"/>

@@ -2,10 +2,10 @@ package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
 
-// FIXME: SC502 Instancise.
+// FIX SC502 Instancise.
 public final class DefaultTimeFactory implements TimeFactory {
 
-    // FIXME: SC502 Ensure interface reference.
+    // FIX SC502 Ensure interface reference.
     private final TimeRangeMaster master = new DefaultTimeRangeMaster();
 
     public TimeRange createRange(Date startDate, Date endDate) {

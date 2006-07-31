@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-// FIXME: SC507 Remove all -- PRIVATE comments.
-// FIXME: SC507 Instancise all static utilities.  Call masters?
-// FIXME: SC502 Interface?
+// FIX SC507 Remove all -- PRIVATE comments.
+// FIX SC507 Instancise all static utilities.  Call masters?
+// FIX SC502 Interface?
 public final class DefaultDayInMonthMaster implements DayInMonthMaster {
 
     public final DayInMonth incMonth(DayInMonth dim) {

@@ -6,8 +6,8 @@ import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Immutable;
 
-// FIXME: SC502 Who uses this.  Do we need it?
-// FIXME: SC506 Can just be an immutable.
+// FIX SC502 Who uses this.  Do we need it?
+// FIX SC506 Can just be an immutable.
 public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private final String name;
     private final Object value;
@@ -26,7 +26,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return value;
     }
 
-    // FIXME: SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public boolean equals(Object o) {
         if (!(o instanceof DefaultFieldValueSpec)) return false;
         return checkDefaultFieldSpec((DefaultFieldValueSpec) o);
@@ -56,7 +56,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return 42;
     }
 
-    // FIXME: SC509 Delegate to IndentingStringMaster.
+    // FIX SC509 Delegate to IndentingStringMaster.
     public String toString() {
         return "DefaultFieldValueSpec[name=" + name + ",value=" + value + "]";
     }
@@ -66,7 +66,7 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         validate(value);
     }
 
-    // FIXME: SC509 ? Null checker.
+    // FIX SC509 ? Null checker.
     private void validate(Object value) {
         NullMaster master = new DefaultNullMaster();
         master.check(value, name);
