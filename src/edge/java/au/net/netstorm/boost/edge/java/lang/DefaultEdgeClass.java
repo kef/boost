@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
-// FIX SC600 Complete this.
 
 public final class DefaultEdgeClass implements EdgeClass {
     public Class forName(String className) {

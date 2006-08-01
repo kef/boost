@@ -59,7 +59,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
 
     private void setField(Object ref, Field field, Object value) {
         field.setAccessible(true);
-        edgeField.setFieldValue(field, ref, value);
+        edgeField.set(field, ref, value);
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {
@@ -69,7 +69,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
 
     private Object value(Object ref, Field field) {
         field.setAccessible(true);
-        return edgeField.getFieldValue(field, ref);
+        return edgeField.get(field, ref);
     }
 }
 // SUGGEST: Imagine if all these utilities took Edge*

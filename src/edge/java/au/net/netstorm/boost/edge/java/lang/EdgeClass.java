@@ -12,5 +12,3 @@ public interface EdgeClass {
 
     Field getDeclaredField(Class cls, String fieldName);
 }
-// FIX SC600 Evaluate SUGGEST.  The more I see the more I think we do this.
-// SUGGEST: Return EdgeMethod, EdgeField...  Requires across the board change to utilities.
