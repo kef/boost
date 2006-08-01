@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.test.checker.DefaultFieldTestChecker;
 import au.net.netstorm.boost.test.checker.FieldTestChecker;
 import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
@@ -34,7 +34,7 @@ import junit.framework.Assert;
 //
 
 final class MemberTestFixture {
-    private static final EdgeReflect REFLECT_EDGE = new OldEdgeReflect();
+    private static final EdgeMethod EDGE_METHOD = new DefaultEdgeMethod();
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX
             .length(); // FIX SC517 Make this public or private.
     private final FieldTestChecker fielder = new DefaultFieldTestChecker();
@@ -77,7 +77,7 @@ final class MemberTestFixture {
     private void checkDataProperty(Method method, Object expectedValue) {
         String methodName = method.getName();
         FieldValueSpec expectedFs = new DefaultFieldValueSpec(methodName, expectedValue);
-        Object actualValue = REFLECT_EDGE.invoke(method, instance);
+        Object actualValue = EDGE_METHOD.invoke(method, instance, null);
         FieldValueSpec actualFs = new DefaultFieldValueSpec(methodName, actualValue);
         Assert.assertEquals("Method '" + methodName + "' does not return an equal value from one of the constructor parameters", expectedFs, actualFs);
         fielder.checkPrivateFinalInstanceField(instance.getClass(), getFieldName(method));
