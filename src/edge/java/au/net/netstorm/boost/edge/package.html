@@ -13,14 +13,15 @@
     Current design decisions:
     <ul>
         <li>Add methods and classes on demand only.</li>
-        <li>We do not perform any null checking.</li>
+        <li>Do not perform any null checking.</li>
         <li>All classes are final.</li>
-        <li>No static keyword anywhere.</li>
+        <li>Edge classes are not object oriented.</li>
+        <li>The edge method matches the original method with the addition of a first parameter - the object to
+            operate on.</li>
+        <li>No static keywords anywhere.</li>
         <li>All checked exceptions are mapped to an EdgeException.</li>
         <li>Edge interface is "Edge"classname.</li>
         <li>Edge implementation is "DefaultEdge"classname.</li>
-        <li>Edge factories follow a similar naming pattern.</li>
-        <li>The method getNonEdge() can be used to return underlying implementation for dealing with other APIs.</li>
         <li>We allow duplication where implied by the APIs being edged.</li>
     </ul>
 </p>
@@ -30,4 +31,12 @@
         <li>What sort of Primordial object should edge implementations extend?</li>
     </ul>
 </p>
-        
+<p>
+    Tried:
+    <ul>
+        <li>Attempted to make the edge classes object oriented. This overly compicated the edge classes. It
+            also forced clients to pass Edge* classes around everywhere. We also had to implement methods which
+            do not throw exceptions, although this is a good thing for mocking.</li>
+    </ul>
+</p>
+
