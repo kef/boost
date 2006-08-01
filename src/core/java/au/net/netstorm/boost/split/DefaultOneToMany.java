@@ -6,8 +6,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxyFactory;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxyFactory;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
@@ -60,7 +60,7 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     // FIX SC521 This is not tested.  It never really was.  It has been flushed out in SC521.
     private ProxyFactory buildFactory() {
         // FIX SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
-        EdgeProxyFactory edge = new DefaultEdgeProxyFactory();
+        EdgeProxy edge = new DefaultEdgeProxy();
         return new DefaultProxyFactory(edge);
     }
 }

@@ -4,13 +4,13 @@ import java.lang.reflect.Field;
 
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
-    private final EdgeReflect reflectEdge = new OldEdgeReflect();
+    private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 
     public Field getDeclared(Class cls, String fieldName) {
@@ -59,7 +59,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
 
     private void setField(Object ref, Field field, Object value) {
         field.setAccessible(true);
-        reflectEdge.setFieldValue(field, ref, value);
+        edgeField.setFieldValue(field, ref, value);
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {
@@ -69,7 +69,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
 
     private Object value(Object ref, Field field) {
         field.setAccessible(true);
-        return reflectEdge.getFieldValue(field, ref);
+        return edgeField.getFieldValue(field, ref);
     }
 }
 // SUGGEST: Imagine if all these utilities took Edge*

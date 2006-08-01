@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private static final Interface TYPE_1 = new Interface(CharSequence.class);
     private static final Interface TYPE_2 = new Interface(Map.class);
-    private final MockEdgeProxyFactory mockEdgeProxyFactory = new MockEdgeProxyFactory();
+    private final MockEdgeProxy mockEdgeProxyFactory = new MockEdgeProxy();
     private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
     private final InvocationHandler handler = new MockInvocationHandler();
 

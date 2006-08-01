@@ -5,15 +5,15 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 // FIX SC524 Classes should almost always be declared final - test drive this via a utility.
 
 class DefaultReflectFieldMaster implements ReflectFieldMaster {
-    private final EdgeReflect reflect = new OldEdgeReflect();
+    private final EdgeField edgeField = new DefaultEdgeField();
 
     public FieldValueSpec[] getInstanceFields(Object ref) {
         Class cls = ref.getClass();
@@ -38,7 +38,7 @@ class DefaultReflectFieldMaster implements ReflectFieldMaster {
 
     private Object getFieldValue(Field field, Object ref) {
         field.setAccessible(true);
-        return reflect.getFieldValue(field, ref);
+        return edgeField.getFieldValue(field, ref);
     }
 
     private boolean isInstance(Field field) {
