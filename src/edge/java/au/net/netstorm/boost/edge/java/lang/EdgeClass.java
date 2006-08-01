@@ -4,13 +4,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public interface EdgeClass {
-    Object newInstance();
+    Class forName(String className);
 
-    Method getMethod(String methodName, Class[] parameterTypes);
+    Object newInstance(Class cls);
 
-    Field getDeclaredField(String fieldName);
+    Method getMethod(Class cls, String methodName, Class[] parameterTypes);
 
-    Class getNonEdge();
+    Field getDeclaredField(Class cls, String fieldName);
 }
 // FIX SC600 Evaluate SUGGEST.  The more I see the more I think we do this.
 // SUGGEST: Return EdgeMethod, EdgeField...  Requires across the board change to utilities.

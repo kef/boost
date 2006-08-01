@@ -2,15 +2,14 @@ package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClassFactory;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClassFactory;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 public final class FileSystemTestAggregator implements TestAggregator {
     private final ClassLocator locator = new TestClassLocator();
-    private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
+    private final EdgeClass edgeClass = new DefaultEdgeClass();
     private final File root;
 
     public FileSystemTestAggregator(File root) {
@@ -35,8 +34,7 @@ public final class FileSystemTestAggregator implements TestAggregator {
 
     private void addClass(JavaClass clsName, TestSuite result) {
         String qualified = clsName.getFullyQualified();
-        EdgeClass cls = classFactory.get(qualified);
-        Class nonEdge = cls.getNonEdge();
-        result.addTestSuite(nonEdge);
+        Class cls = edgeClass.forName(qualified);
+        result.addTestSuite(cls);
     }
 }

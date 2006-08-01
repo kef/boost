@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClassFactory;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClassFactory;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
@@ -28,9 +27,8 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final MethodSpec METHOD_CHURCH = new MethodSpec(CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
     private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
-
     private final ReflectMaster master = new DefaultReflectMaster();
-    private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
+    private final EdgeClass edgeClass = new DefaultEdgeClass();
 
     public void testGetMethodBasic() {
         checkGetMethod(INTERFACE_ONE, METHOD_CHURCH);
@@ -79,7 +77,6 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     }
 
     private Method getMethod(Class cls, String name, Class[] params) {
-        EdgeClass edgeClass = classFactory.get(cls);
-        return edgeClass.getMethod(name, params);
+        return edgeClass.getMethod(cls, name, params);
     }
 }

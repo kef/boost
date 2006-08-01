@@ -18,20 +18,20 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
         instanceProvider = new DefaultInstanceProvider(mockReflectEdge);
     }
 
-    // FIX SC524 Test drive relevant class properties.
+    // FIXME: SC524 Test drive relevant class properties.
 //    public void testClassProperties() {
 //        FieldSpec f1 = new DefaultFieldSpec("classBoundary", ClassBoundary.class);
 //        ComponentTestUtil.checkComponent(DefaultInstanceProvider.class, InstanceProvider.class, new FieldSpec[]{f1});
 //    }
 
     public void testGetInstanceFromClass() {
-//        mockReflectEdge.prepare(OBJECT);
-//        Object actualResult = instanceProvider.newInstance(OBJECT_CLASS);
-//        assertSame(OBJECT, actualResult);
-//        assertSame(OBJECT_CLASS, mockReflectEdge.getCls());
+        mockReflectEdge.prepare(OBJECT);
+        Object actualResult = instanceProvider.newInstance(OBJECT_CLASS);
+        assertSame(OBJECT, actualResult);
+        assertSame(OBJECT_CLASS, mockReflectEdge.getCls());
     }
 
-    // FIX SC524 Implement Boost version of all these bits.
+    // FIXME: SC524 Implement Boost version of all these bits.
 //    public void testGetInstanceSingleArgument() {
 //        Object[] arguments = new Object[]{INTEGER_23};
 //        Class[] argumentTypes = new Class[]{INTEGER_CLASS};

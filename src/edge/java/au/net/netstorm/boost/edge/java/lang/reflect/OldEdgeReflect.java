@@ -30,6 +30,17 @@ public final class OldEdgeReflect implements EdgeReflect {
         }
     }
 
+    // FIX SC600 Move to EdgeClass.
+    public Object newInstance(Class cls) {
+        try {
+            return cls.newInstance();
+        } catch (InstantiationException e) {
+            throw new EdgeException(e);
+        } catch (IllegalAccessException e) {
+            throw new EdgeException(e);
+        }
+    }
+
     // FIX SC600 This goes to EdgeConstructor.
     public Object newInstance(Constructor constructor, Object[] parameters) {
         try {

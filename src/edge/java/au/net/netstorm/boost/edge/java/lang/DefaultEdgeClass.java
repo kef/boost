@@ -5,16 +5,17 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.EdgeException;
 // FIX SC600 Complete this.
-// FIX SC600 Move into java.lang (Similar to Class).
 
 public final class DefaultEdgeClass implements EdgeClass {
-    private final Class cls;
-
-    public DefaultEdgeClass(Class cls) {
-        this.cls = cls;
+    public Class forName(String className) {
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            throw new EdgeException(e);
+        }
     }
 
-    public Object newInstance() {
+    public Object newInstance(Class cls) {
         try {
             return cls.newInstance();
         } catch (InstantiationException e) {
@@ -24,7 +25,7 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    public Method getMethod(String methodName, Class[] parameterTypes) {
+    public Method getMethod(Class cls, String methodName, Class[] parameterTypes) {
         try {
             return cls.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException e) {
@@ -32,15 +33,11 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    public Field getDeclaredField(String fieldName) {
+    public Field getDeclaredField(Class cls, String fieldName) {
         try {
             return cls.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
             throw new EdgeException(e);
         }
-    }
-
-    public Class getNonEdge() {
-        return cls;
     }
 }

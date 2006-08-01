@@ -2,9 +2,8 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.Field;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClassFactory;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClassFactory;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
 import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
@@ -12,11 +11,10 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;
     private final EdgeReflect reflectEdge = new OldEdgeReflect();
-    private final EdgeClassFactory classFactory = new DefaultEdgeClassFactory();
+    private final EdgeClass edgeClass = new DefaultEdgeClass();
 
     public Field getDeclared(Class cls, String fieldName) {
-        EdgeClass edgeClass = classFactory.get(cls);
-        return edgeClass.getDeclaredField(fieldName);
+        return edgeClass.getDeclaredField(cls, fieldName);
     }
 
     public Object getStatic(Class cls, String fieldName) {

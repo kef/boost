@@ -12,6 +12,9 @@ public interface EdgeReflect {
 
     void setFieldValue(Field field, Object ref, Object value);
 
+    // FIX SC600 Move to EdgeClass.
+    Object newInstance(Class cls);
+
     // FIX SC600 EdgeConstructor.
     Object newInstance(Constructor constructor, Object[] parameters);
 
