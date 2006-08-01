@@ -11,11 +11,11 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
     private static final Class OBJECT_CLASS = Object.class;
     private static final Object OBJECT = new Object();
     private InstanceProvider instanceProvider;
-    private MockEdgeReflect mockReflectEdge;
+    private MockEdgeReflect mockEdgeClass;
 
     protected void setUp() throws Exception {
-        mockReflectEdge = new MockEdgeReflect();
-        instanceProvider = new DefaultInstanceProvider(mockReflectEdge);
+        mockEdgeClass = new MockEdgeReflect();
+        instanceProvider = new DefaultInstanceProvider(mockEdgeClass);
     }
 
     // FIXME: SC524 Test drive relevant class properties.
@@ -25,10 +25,10 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
 //    }
 
     public void testGetInstanceFromClass() {
-        mockReflectEdge.prepare(OBJECT);
+        mockEdgeClass.prepare(OBJECT);
         Object actualResult = instanceProvider.newInstance(OBJECT_CLASS);
         assertSame(OBJECT, actualResult);
-        assertSame(OBJECT_CLASS, mockReflectEdge.getCls());
+        assertSame(OBJECT_CLASS, mockEdgeClass.getCls());
     }
 
     // FIXME: SC524 Implement Boost version of all these bits.
