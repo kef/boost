@@ -2,12 +2,12 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import junit.framework.Assert;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {
-    private final EdgeReflect reflectEdge = new OldEdgeReflect();
+    private final EdgeMethod edgeMethod = new DefaultEdgeMethod();
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         Method method = getMethod(invokee, methodName);
@@ -38,7 +38,7 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     }
 
     private Object invoke(Object invokee, Method method, Object[] parameters) {
-        return reflectEdge.invoke(method, invokee, parameters);
+        return edgeMethod.invoke(method, invokee, parameters);
     }
 
     private boolean matches(Method method, String methodName) {

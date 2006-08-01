@@ -14,7 +14,4 @@ public interface EdgeReflect {
 
     // FIX SC600 EdgeMethod.
     Object invoke(Method method, Object instance);
-
-    // FIX SC600 EdgeMethod.
-    Object invoke(Method method, Object instance, Object[] args);
 }
