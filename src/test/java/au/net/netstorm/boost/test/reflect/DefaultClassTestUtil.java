@@ -2,15 +2,15 @@ package au.net.netstorm.boost.test.reflect;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Interface;
 
 public class DefaultClassTestUtil implements ClassTestUtil {
     private final ReflectMaster reflector = new DefaultReflectMaster();
-    private final EdgeReflect reflectEdge = new OldEdgeReflect();
+    private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private static final Object[] NO_PARAMETERS = {};
 
     // FIX SC509 Reorder parameters?
@@ -32,7 +32,7 @@ public class DefaultClassTestUtil implements ClassTestUtil {
     public Object newInstance(Class type) {
         Constructor constructor = reflector.getConstructor(type);
         constructor.setAccessible(true);
-        return reflectEdge.newInstance(constructor, NO_PARAMETERS);
+        return edgeConstructor.newInstance(constructor, NO_PARAMETERS);
     }
 
     private boolean isAssignable(Class superType, Class subType) {

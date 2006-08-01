@@ -3,8 +3,8 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeReflect;
-import au.net.netstorm.boost.edge.java.lang.reflect.OldEdgeReflect;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
@@ -15,7 +15,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 public final class TriangulationProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
-    private final EdgeReflect reflectEdge = new OldEdgeReflect();
+    private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private final TriangulationProvider knownTypes = new TriangulationProviderTestUtilSuppressed();
 
     // FIX SC050 ? Rename occurrences of "additional" to "extra".
@@ -73,6 +73,6 @@ public final class TriangulationProviderTestUtil {
         Class[] parameterTypes = constructor.getParameterTypes();
         Object[] params = getInstances(parameterTypes, additional);
         // FIX SC050 This barfs if the constructor is not "public".  Should be able to lower scope.
-        return reflectEdge.newInstance(constructor, params);
+        return edgeConstructor.newInstance(constructor, params);
     }
 }
