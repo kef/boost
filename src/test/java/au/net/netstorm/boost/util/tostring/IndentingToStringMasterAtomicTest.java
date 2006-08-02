@@ -5,6 +5,7 @@ import au.net.netstorm.boost.util.separator.Separator;
 import junit.framework.TestCase;
 
 // NOTE: Currently doesn't handle graphs, so recursive loops will kill it.
+// FIX SC600.  Test nulls.
 
 public class IndentingToStringMasterAtomicTest extends TestCase {
     private static final TestNoField NO_FIELDS = new TestNoField();

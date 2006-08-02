@@ -46,6 +46,8 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String fieldValue(FieldValueSpec fieldValue) {
+        // FIX SC600 incorporate and test this.
+//        if (fieldValue == null) return "null";
         Object value = fieldValue.getValue();
         return (isArray(value) ? arrayValue(value) : value.toString());
     }
