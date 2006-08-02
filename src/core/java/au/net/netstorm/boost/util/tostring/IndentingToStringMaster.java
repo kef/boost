@@ -13,6 +13,8 @@ public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
     private static final String LF = Separator.LINE;
     private final ClassMaster classMaster = new DefaultClassMaster();
+    // FIX SC600 Checkstyle should fail here.  Work out why it isn't.
+    private final DefaultReflectMaster reflect = new DefaultReflectMaster();
 
     public String getString(Object ref) {
         return getClassName(ref.getClass()) + formatFields(formatFields(ref));
@@ -33,8 +35,6 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String[] formatFields(Object ref) {
-        // FIX SC506 Field.
-        DefaultReflectMaster reflect = new DefaultReflectMaster();
         FieldValueSpec[] fields = reflect.getInstanceFields(ref);
         String[] result = new String[fields.length];
         for (int i = 0; i < result.length; i++) result[i] = formatField(fields[i]);
@@ -46,9 +46,9 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String fieldValue(FieldValueSpec fieldValue) {
-        // FIX SC600 incorporate and test this.
-//        if (fieldValue == null) return "null";
         Object value = fieldValue.getValue();
+        // FIX SC600 incorporate and test this.
+//        if (value == null) return "null";
         return (isArray(value) ? arrayValue(value) : value.toString());
     }
 
