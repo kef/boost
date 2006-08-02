@@ -13,9 +13,4 @@ public class DefaultIndenterMasterAtomicTest extends TestCase {
         assertEquals(EXPECTED_SINGLE_LINE, indenter.indent("hello"));
         assertEquals(EXPECTED_TWO_LINE, indenter.indent("line0" + LF + "line1"));
     }
-
-    // FIX SC506 Move this to IndentMasterAtomicTest.
-    public void testConstant() {
-        assertEquals("    ", IndenterMaster.INDENT);
-    }
 }

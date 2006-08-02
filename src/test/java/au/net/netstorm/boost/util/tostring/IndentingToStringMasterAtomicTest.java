@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.util.tostring;
 
-import au.net.netstorm.boost.util.indent.IndenterMaster;
 import au.net.netstorm.boost.util.separator.Separator;
 import junit.framework.TestCase;
 
@@ -15,9 +14,9 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
     private static final TestStringArrayField STRING_ARRAY_A_B = new TestStringArrayField(new String[]{"A", "B"});
     private static final TestIntArrayField INT_ARRAY = new TestIntArrayField(new int[]{1, 2, 4});
     private static final TestMixedArrayField MIXED_ARRAY = new TestMixedArrayField(new long[]{1L, 54L}, new String[]{"A", "Z"});
-    private static final TestMultipleNestedFields MULTIPLE_NESTED_FIELDS =
-            new TestMultipleNestedFields("multiple", new TestPreformattedTwoFields(2, 4));
+    private static final TestMultipleNestedFields MULTIPLE_NESTED_FIELDS = new TestMultipleNestedFields("multiple", new TestPreformattedTwoFields(2, 4));
     private static final TestStringArrayField STRING_ARRAY_C_D = new TestStringArrayField(new String[]{"C", "D"});
+    private static final String EXPECTED_INDENTATION = "    ";
 
     public void testToString() {
         checkToString("TestNoField[]", NO_FIELDS);
@@ -39,8 +38,7 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
     }
 
     private String multipleNestedFieldResult() {
-        return "TestMultipleNestedFields[" + lfIndent("name=multiple") + lfIndent("two=") +
-                twoFieldsResult(2, 4, 1) + lf("]");
+        return "TestMultipleNestedFields[" + lfIndent("name=multiple") + lfIndent("two=") + twoFieldsResult(2, 4, 1) + lf("]");
     }
 
     private String mixedArrayResult() {
@@ -73,7 +71,7 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
 
     private String indent(String content, int level) {
         String prefix = "";
-        for (int i = 0; i < level; i++) prefix += IndenterMaster.INDENT;
+        for (int i = 0; i < level; i++) prefix += EXPECTED_INDENTATION;
         return prefix + content;
     }
 
