@@ -33,6 +33,7 @@ class DefaultReflectFieldMaster implements ReflectFieldMaster {
     private DefaultFieldValueSpec createFieldSpec(Field field, Object ref) {
         String name = field.getName();
         Object value = getFieldValue(field, ref);
+        // FIX SC600 Instead of using a DefaultFieldSpec consider using a NullValueAllowedFieldSpec.
         return new DefaultFieldValueSpec(name, value);
     }
 
