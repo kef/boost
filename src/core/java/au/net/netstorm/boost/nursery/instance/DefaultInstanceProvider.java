@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.nursery.instance;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-
-public class DefaultInstanceProvider implements InstanceProvider {
+public DefaultInstanceProvider implements InstanceProvider {
     private final EdgeClass edge;
 
     public DefaultInstanceProvider(EdgeClass edge) {
