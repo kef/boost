@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.Data;
 public final class TriangulationProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
-    private final TriangulationProvider knownTypes = new OldTriangulationProvider();
+    private final TriangulationProvider knownTypes = new TestTriangulationProvider();
 
     // FIX SC050 ? Rename occurrences of "additional" to "extra".
     // FIX SC050 BREADCRUMB - Incorporate "additional"
