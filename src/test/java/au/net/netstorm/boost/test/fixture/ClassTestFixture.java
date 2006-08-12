@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 // FIX SC502 Does it make sense to have this fixtures area?
-
+// FIX SC600 Remove.  Or morph.
 final class ClassTestFixture {
     private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
