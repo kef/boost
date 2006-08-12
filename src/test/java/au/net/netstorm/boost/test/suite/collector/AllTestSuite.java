@@ -8,6 +8,7 @@ public class AllTestSuite extends PrimordialTestCase {
     public static Test suite() {
         TestSuite suite = new TestSuite("The Whole Box and Dice");
         suite.addTest(AtomicTestSuite.suite());
+        suite.addTest(DemoTestSuite.suite());
         return suite;
     }
 }
