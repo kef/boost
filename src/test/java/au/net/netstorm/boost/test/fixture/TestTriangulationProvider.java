@@ -5,7 +5,6 @@ import java.util.Random;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
-import au.net.netstorm.boost.util.exception.NotImplementedException;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
@@ -35,10 +34,9 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
         if (type == Long.class) return randomLong();
-        // FIXME: SC600 Float
-        // FIXME: SC600 Double.
-        // FIXME: SC600 return Primitive types.
-        throw new NotImplementedException();
+        if (type == Float.class) return randomFloat();
+        if (type == Double.class) return randomDouble();
+        return null;
     }
 
     private Object randomInterface(Class type) {
@@ -63,5 +61,15 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Long randomLong() {
         long l = random.nextLong();
         return Long.valueOf(l);
+    }
+
+    private Float randomFloat() {
+        float f = random.nextFloat();
+        return Float.valueOf(f);
+    }
+
+    private Double randomDouble() {
+        double d = random.nextDouble();
+        return Double.valueOf(d);
     }
 }
