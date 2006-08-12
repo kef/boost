@@ -6,6 +6,7 @@ import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
 import au.net.netstorm.boost.time.core.TimePoint;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIXME: SC600 Checkstyle suppressions inline.
 // FIX SC502 Rename.
 // FIX SC517 Instance provide needs to provide getA() / getB() as per triangulation requirements.  For both primitive (wrapped) and other.
 // FIX SC517 There is a class util.instance.DefaultInstanceProvider.  Merge with this.
