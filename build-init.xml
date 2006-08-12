@@ -23,6 +23,7 @@
     <property name="checkstyle.report.dir" location="${reports.dir}/checkstyle"/>
     <property name="checkstyle.cache.dir" location="${build.dir}/checkstyle-cache"/>
     <property name="simian.config.dir" location="${config.dir}/simian"/>
+    <property name="artifacts.template.dir" location="${config.dir}/artifacts"/>
 
     <property name="simian.report.dir" location="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
@@ -34,6 +35,10 @@
     <property name="test.class.dir" location="${classes.dir}/test"/>
     <property name="core.instrumented.dir" location="${instrumented.dir}/core"/>
     <property name="test.instrumented.dir" location="${instrumented.dir}/test"/>
+
+    <tstamp>
+        <format property="build.date" pattern="yyyyMMdd HH:mm:ss"/>
+    </tstamp>
 
     <fileset id="atomic.tests" dir="${test.src.dir}">
         <include name="**/*AtomicTest.java"/>
