@@ -28,6 +28,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         fixture.checkClass(Data.class, additional);
         Object[] parameters = instancer.getInstances(fields);
         Object instance = instancer.getInstance(cls, parameters);
+        // Check if Serializable.
         SerializationTestUtil.checkSerializable(instance);
         MethodTestFixture.checkMethods(instance, fields);
         MemberTestFixture.checkMembers(instance, fields, parameters);

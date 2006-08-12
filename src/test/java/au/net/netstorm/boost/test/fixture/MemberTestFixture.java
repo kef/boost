@@ -77,6 +77,7 @@ final class MemberTestFixture {
     private void checkDataProperty(Method method, Object expectedValue) {
         String methodName = method.getName();
         FieldValueSpec expectedFs = new DefaultFieldValueSpec(methodName, expectedValue);
+        method.setAccessible(true);
         Object actualValue = EDGE_METHOD.invoke(method, instance, null);
         FieldValueSpec actualFs = new DefaultFieldValueSpec(methodName, actualValue);
         Assert.assertEquals("Method '" + methodName + "' does not return an equal value from one of the constructor parameters", expectedFs, actualFs);

@@ -9,6 +9,7 @@ import junit.framework.Assert;
 
 // FIX SC517 ? public.
 // FIX SC517 interface.
+// FIX SC600 Remove.
 
 final class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIX SC517 Make public or private
@@ -19,6 +20,7 @@ final class MethodTestFixture {
         this.method = method;
     }
 
+    // FIX SC600 Lives on edge.  Remove.
     public static Method[] getDeclaredMethods(Object instance) {
         Class cls = instance.getClass();
         return cls.getDeclaredMethods();

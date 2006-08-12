@@ -3,6 +3,7 @@ package au.net.netstorm.boost.demo.data;
 import au.net.netstorm.boost.test.fixture.DataTestChecker;
 import au.net.netstorm.boost.test.fixture.DefaultDataTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
+import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
@@ -20,5 +21,11 @@ public final class DataDemoTest extends TestCase {
             String message = e.getMessage();
             assertEquals("NotPrimordialData is not a subclass of Primordial", message);
         }
+    }
+
+    public void testBasic() {
+        FieldSpec f1 = new DefaultFieldSpec("frog", String.class);
+        FieldSpec[] fields = { f1 };
+        dataChecker.checkIsData(BasicData.class, fields);
     }
 }
