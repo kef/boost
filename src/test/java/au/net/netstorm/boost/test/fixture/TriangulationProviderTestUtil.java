@@ -7,7 +7,6 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.type.Data;
 
 // FIX SC600 This tidies up as TestTriangulationProvider is stitched in.
 // FIX SC502 Move instances to their respective unit tests (as per POK theory).
@@ -17,7 +16,7 @@ import au.net.netstorm.boost.util.type.Data;
 public final class TriangulationProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
-    private final TriangulationProvider knownTypes = new OldTriangulationProvider();
+    private final TriangulationProvider knownTypes = new TestTriangulationProvider();
 
     // FIX SC050 ? Rename occurrences of "additional" to "extra".
     // FIX SC050 BREADCRUMB - Incorporate "additional"
@@ -41,13 +40,10 @@ public final class TriangulationProviderTestUtil {
     }
 
     private Object getInstance(Class type, TriangulationProvider additional) {
-        if (type.isArray()) return getArrayInstance(type);
-        if (Data.class.isAssignableFrom(type)) return getDataInstance(type, additional);
-        if (type.isPrimitive()) return getPrimitiveInstance(type);
-        // FIX SC050 We have to be careful object are primitive, data, immutable.  Where is this check?
-        // FIX SC050 ? How about trying to load a mock via no-arg class lookup.
         return knownTypes.getInstance(type);
     }
+
+    // FIX BREADCRUMB A whole bunch of code goes.  Follow the yellow.
 
     private Object getArrayInstance(Class type) {
         return Array.newInstance(type.getComponentType(), 0);

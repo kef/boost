@@ -12,6 +12,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler EMTPY_HANDLER = null;
+    private interface InternalInterface {}
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
     private Random random = new Random();
@@ -22,6 +23,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  Might be worth edgifying this type or talking to the boosters");
     }
 
+    // FIX SC600 We probably do not need this.
     public boolean canProvide(Class type) {
         Object ref = doGetInstance(type);
         return ref != null;
@@ -30,7 +32,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Object doGetInstance(Class type) {
         if (type.isInterface()) return randomInterface(type);
         if (type.isArray()) return randomArray(type);
-        return randomPrimitive(type);
+        return randomJavaType(type);
     }
 
     private Object randomInterface(Class type) {
@@ -42,14 +44,19 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return Array.newInstance(type.getComponentType(), 0);
     }
 
-    private Object randomPrimitive(Class type) {
+    private Object randomJavaType(Class type) {
         if (type == String.class) return randomString();
+        if (type == Class.class) return randomClass();
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
         if (type == Long.class) return randomLong();
         if (type == Float.class) return randomFloat();
         if (type == Double.class) return randomDouble();
         return null;
+    }
+
+    private Class randomClass() {
+        return InternalInterface.class;
     }
 
     private String randomString() {
