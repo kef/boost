@@ -10,8 +10,6 @@ import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX SC600 Create demo.
-
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler EMTPY_HANDLER = null;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
@@ -29,7 +27,6 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return ref != null;
     }
 
-    // FIX SC600 Arrays.
     private Object doGetInstance(Class type) {
         if (type.isInterface()) return randomInterface(type);
         if (type.isArray()) return randomArray(type);
