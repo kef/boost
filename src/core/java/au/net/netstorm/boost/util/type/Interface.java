@@ -4,7 +4,7 @@ import au.net.netstorm.boost.primordial.Primordial;
 
 // This is just an interface.  It is the strong type for interface.
 
-// FIXME: SC600 Interfacise this ;)
+// FIX SC600 Interfacise this ;)
 public final class Interface extends Primordial implements Data {
     private final Class type;
 

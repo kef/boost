@@ -9,6 +9,7 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Data;
 
+// FIX SC600 This tidies up as TestTriangulationProvider is stitched in.
 // FIX SC502 Move instances to their respective unit tests (as per POK theory).
 // FIX SC502 Interface it.
 // FIX SC502 Rename.
@@ -16,7 +17,7 @@ import au.net.netstorm.boost.util.type.Data;
 public final class TriangulationProviderTestUtil {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
-    private final TriangulationProvider knownTypes = new TestTriangulationProvider();
+    private final TriangulationProvider knownTypes = new OldTriangulationProvider();
 
     // FIX SC050 ? Rename occurrences of "additional" to "extra".
     // FIX SC050 BREADCRUMB - Incorporate "additional"

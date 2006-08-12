@@ -9,7 +9,7 @@ public class DefaultInstanceProvider implements InstanceProvider {
         this.edge = edge;
     }
 
-    // FIXME: SC524 Test drive null check for cls.
+    // FIX SC524 Test drive null check for cls.
     public Object newInstance(Class cls) {
         return edge.newInstance(cls);
     }
