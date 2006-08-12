@@ -3,14 +3,15 @@ package au.net.netstorm.boost.test.fixture;
 import java.lang.reflect.InvocationHandler;
 import java.util.Random;
 
-import au.net.netstorm.boost.util.exception.NotImplementedException;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.util.exception.NotImplementedException;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.Interface;
 
 // FIXME: SC600 Create demo.
+
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler EMTPY_HANDLER = null;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
@@ -33,6 +34,9 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == String.class) return randomString();
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
+        if (type == Long.class) return randomLong();
+        // FIXME: SC600 Float
+        // FIXME: SC600 Double.
         // FIXME: SC600 return Primitive types.
         throw new NotImplementedException();
     }
@@ -54,5 +58,10 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Integer randomInteger() {
         int i = random.nextInt();
         return Integer.valueOf(i);
+    }
+
+    private Long randomLong() {
+        long l = random.nextLong();
+        return Long.valueOf(l);
     }
 }
