@@ -40,8 +40,8 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         }
     }
 
-    // FIX SC523 This needs a refactor.
-    private void nullCheckConstructor(final Constructor constructor, int currentParameter, Class[] paramTypes) {
+    // FIX SC600 This needs a refactor.
+    private void nullCheckConstructor(Constructor constructor, int currentParameter, Class[] paramTypes) {
         final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
         try {
             invoke(constructor, paramValues);
@@ -54,12 +54,12 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     // FIX SC043 We need ability to turn accessibility on/off in just one place.
     private void invoke(final Constructor constructor, final Object[] paramValues) {
         constructor.setAccessible(true);
-        Call invokeBlock = new Call() {
+        Block invokeBlock = new Block() {
             public void execute() {
                 edgeConstructor.newInstance(constructor, paramValues);
             }
         };
-        parameterUtil.invokeBlock(invokeBlock);
+        parameterUtil.invoke(invokeBlock);
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Constructor constructor) {

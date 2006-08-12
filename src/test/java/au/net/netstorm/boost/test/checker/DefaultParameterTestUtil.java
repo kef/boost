@@ -23,9 +23,9 @@ final class DefaultParameterTestUtil implements ParameterTestUtil {
 
     // FIX SC523 Rename...
     // FIX SC043 R This belongs somewhere else.
-    public void invokeBlock(Call invokeBlock) {
+    public void invoke(Block block) {
         try {
-            invokeBlock.execute();
+            block.execute();
         } catch (EdgeException e) {
             handleException(e);
         }

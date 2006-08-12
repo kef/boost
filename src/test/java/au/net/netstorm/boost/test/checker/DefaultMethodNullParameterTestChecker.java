@@ -57,12 +57,12 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     // FIX SC043 This method is DUP with ConstructorNullParameter.
     private void invoke(final Object instance, final Method method, final Object[] paramValues) {
         method.setAccessible(true);
-        Call invokeBlock = new Call() {
+        Block block = new Block() {
             public void execute() {
                 edgeMethod.invoke(method, instance, paramValues);
             }
         };
-        parameterUtil.invokeBlock(invokeBlock);
+        parameterUtil.invoke(block);
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {

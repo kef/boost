@@ -7,5 +7,5 @@ public interface ParameterTestUtil {
 
     // FIX SC523 Rename...
 // FIX SC043 R This belongs somewhere else.
-    void invokeBlock(Call invokeBlock);
+    void invoke(Block block);
 }
