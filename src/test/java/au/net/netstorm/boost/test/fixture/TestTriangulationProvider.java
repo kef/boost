@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.Interface;
 // FIX SC517 Instance provide needs to provide getA() / getB() as per triangulation requirements.  For both primitive (wrapped) and other.
 // FIX SC517 There is a class util.instance.DefaultInstanceProvider.  Merge with this.
 
-public final class TriangulationProviderTestUtilSuppressed implements TriangulationProvider {
+public final class TestTriangulationProvider implements TriangulationProvider {
     public Object getInstance(Class type) {
         Object instance = doGetInstance(type);
         if (instance == null)
