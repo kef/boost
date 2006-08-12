@@ -26,6 +26,8 @@ public final class DefaultAssertException implements AssertException {
     }
 
     public void checkExceptionClass(Class expectedExceptionClass, Throwable throwable) {
+        // FIX SC600 Use something else.  Delegate.
+        // FIX SC600 How about a stacktrace object?
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         throwable.printStackTrace(new PrintStream(out));
         Class cls = throwable.getClass();

@@ -54,12 +54,12 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     // FIX SC043 We need ability to turn accessibility on/off in just one place.
     private void invoke(final Constructor constructor, final Object[] paramValues) {
         constructor.setAccessible(true);
-        Block invokeBlock = new Block() {
+        Block block = new Block() {
             public void execute() {
                 edgeConstructor.newInstance(constructor, paramValues);
             }
         };
-        parameterUtil.invoke(invokeBlock);
+        parameterUtil.invoke(block);
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Constructor constructor) {

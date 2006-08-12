@@ -21,7 +21,6 @@ final class DefaultParameterTestUtil implements ParameterTestUtil {
         return paramValues;
     }
 
-    // FIX SC523 Rename...
     // FIX SC043 R This belongs somewhere else.
     public void invoke(Block block) {
         try {
