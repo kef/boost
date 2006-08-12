@@ -5,6 +5,7 @@ import au.net.netstorm.boost.test.aggregator.TestAggregator;
 import au.net.netstorm.boost.test.aggregator.DefaultTestAggregator;
 import junit.framework.Test;
 
+// FIX SC600 Rename "build" area to "gen".
 // FIX SC600 Make sure to include build date in artifacts page.
 public class DemoTestSuite extends PrimordialTestCase {
     private static final Class CLASS_IN_TEST_TREE = DemoTestSuite.class;
