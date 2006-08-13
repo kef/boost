@@ -12,8 +12,7 @@ public final class DefaultImmutableTestUtil implements ImmutableTestUtil {
 
     // FIX SC050 Who should know about InstanceProvision (InstanceProviderForTest), the upper levels, or lower?
     public void checkIsImmutable(Class cls, FieldSpec[] fields) {
-        TestEmptyTriangulationProvider empty = new TestEmptyTriangulationProvider(); // FIX SC050 The fact that this is here is a BIG indicator of the smelliness of this code.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
-        fixture.checkClass(Immutable.class, empty);
+        fixture.checkClass(Immutable.class);
     }
 }

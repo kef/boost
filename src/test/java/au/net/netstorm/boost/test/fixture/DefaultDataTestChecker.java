@@ -5,18 +5,17 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 
 public final class DefaultDataTestChecker implements DataTestChecker {
-    private static final TriangulationProvider EMPTY_PROVIDER = new TestEmptyTriangulationProvider();
     private InstanceTestUtil instancer = new DefaultInstanceTestUtil();
 
     public void checkIsData(Class cls, FieldSpec[] fields) {
-        doCheckIsData(cls, fields, EMPTY_PROVIDER);
+        doCheckIsData(cls, fields);
     }
 
     public void checkIsData(Class cls, FieldSpec[] fields, TriangulationProvider additional) {
-        doCheckIsData(cls, fields, additional);
+        doCheckIsData(cls, fields);
     }
 
-    private void doCheckIsData(Class cls, FieldSpec[] fields, TriangulationProvider additional) {
+    private void doCheckIsData(Class cls, FieldSpec[] fields) {
         // FIX SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
         //
@@ -25,7 +24,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         // Checks constructor matches provided field specs.
         // Checks IAE is thrown if arguments are null.
         //
-        fixture.checkClass(Data.class, additional);
+        fixture.checkClass(Data.class);
         Object[] parameters = instancer.getInstances(fields);
         Object instance = instancer.getInstance(cls, parameters);
         // Check if Serializable.

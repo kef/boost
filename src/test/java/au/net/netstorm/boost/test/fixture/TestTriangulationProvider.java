@@ -20,7 +20,13 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     public Object getInstance(Class type) {
         Object ref = doGetInstance(type);
         if (ref != null) return ref;
-        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  Might be worth edgifying this type or talking to the boosters");
+        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
+    }
+
+    public Object[] getInstances(Class[] types) {
+        Object[] params = new Object[types.length];
+        for (int i = 0; i < types.length; i++) params[i] = getInstance(types[i]);
+        return params;
     }
 
     // FIX SC600 We probably do not need this.

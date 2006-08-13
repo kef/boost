@@ -2,8 +2,6 @@ package au.net.netstorm.boost.test.checker;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.test.fixture.TriangulationProvider;
-
 // FIX SC524 Build up Boost version of this.
 // FIX SC523 Pull in latest external changes.
 // FIX SC524 Make an interface for this.
@@ -13,7 +11,7 @@ public final class NullParameterTestChecker {
 
     // FIX SC050 Given we're seeing a lot of the constructor/parameters together, isn't it about time to build an aggregate?
     // FIX SC523 Rename additional.
-    public void checkNullConstructorParameters(Constructor constructor, Class[] parameterTypes, TriangulationProvider additional) {
+    public void checkNullConstructorParameters(Constructor constructor, Class[] parameterTypes) {
 //        for (int i = 0; i < parameterTypes.length; i++) {
 //            if (!parameterTypes[i].isPrimitive()) {
 //                checkNullParameter(constructor, parameterTypes, i, additional);
