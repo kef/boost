@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public interface ClassTestChecker {
     void checkImplementsAndFinal(Interface expectedInterface, Class cls);
 
-    void checkImplementsAndFinal(Class targetInterface, Class implementationClass);
+    void checkImplementsAndFinal(Class implementationClass, Class targetInterface);
 
     void checkSubInterfaceOf(Interface superInterface, Interface subInterface);
 

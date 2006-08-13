@@ -1,25 +1,35 @@
 package au.net.netstorm.boost.test.fixture;
 
 import au.net.netstorm.boost.test.serialize.SerializationTestUtil;
+import au.net.netstorm.boost.test.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 
+// FIX SC600 Rename FieldSpec to NamedType.  FieldSpec and BeanSpec can then extend NamedType.
+// FIX SC600 checkIsData should take in BeanSpecs.
 public final class DefaultDataTestChecker implements DataTestChecker {
     private InstanceTestUtil instancer = new DefaultInstanceTestUtil();
+    private ClassTestChecker classChecker = new DefaultClassTestChecker();
 
     public void checkIsData(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields);
     }
 
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
-        // FIX SC050 Tidy this up.
-        ClassTestFixture fixture = new ClassTestFixture(cls, fields);
+        classChecker.checkImplementsAndFinal(cls, Data.class);
         //
         // Checks is Data.class
         // Check extends Primordial.class
         // Checks constructor matches provided field specs.
-        // Checks IAE is thrown if arguments are null.
+        // Check constructor fails with combinations of nulls.  Including arrays with nulls.
+        // Arrays must be copied going in and copied coming out.
+        // Can have any number of private methods.
+        // Public methods must match field specifications.
         //
+        // FIX SC050 Tidy this up.
+        ClassTestFixture fixture = new ClassTestFixture(cls, fields);
+
         fixture.checkClass(Data.class);
         Object[] parameters = instancer.getInstances(fields);
         Object instance = instancer.getInstance(cls, parameters);
