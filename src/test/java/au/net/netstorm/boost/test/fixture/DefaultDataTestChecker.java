@@ -29,6 +29,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         checkClass(cls);
         checkConstructor(cls, fields);
+        // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
         // Checks is Data.class
         // Check extends Primordial.class
@@ -58,6 +59,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         Class[] declaredTypes = constructor.getParameterTypes();
         Class[] expectedTypes = getTypes(fields);
         checkConstructor(expectedTypes, declaredTypes);
+        // FIX SC600 BREADCRUMB Continue this.
         // Checks constructor matches provided field specs.
     }
 
