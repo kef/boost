@@ -2,6 +2,8 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Constructor;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
@@ -10,8 +12,6 @@ import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.serialize.SerializationTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import junit.framework.Assert;
 
 // FIX SC600 Rename FieldSpec to NamedType.  FieldSpec and BeanSpec can then extend NamedType.
@@ -39,6 +39,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         // Public methods must match field specifications.
         // Types must be Immutable or PrimitiveImmutable types.
         //
+        // FIX SC600 BELOW HERE GOES.
         // FIX SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
         fixture.checkClass(Data.class);
