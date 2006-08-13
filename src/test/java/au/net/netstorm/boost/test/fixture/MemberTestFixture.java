@@ -4,10 +4,10 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
-import au.net.netstorm.boost.test.checker.DefaultFieldTestChecker;
-import au.net.netstorm.boost.test.checker.FieldTestChecker;
-import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.checker.DefaultFieldTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.FieldTestChecker;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;

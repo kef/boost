@@ -5,8 +5,8 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.test.checker.ClassTestChecker;
-import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // FIX SC502 Does it make sense to have this fixtures area?

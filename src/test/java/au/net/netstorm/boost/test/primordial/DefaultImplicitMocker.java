@@ -4,10 +4,10 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
-import au.net.netstorm.boost.test.reflect.FieldTestUtil;
-import au.net.netstorm.boost.test.reflect.ModifierTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import org.jmock.Mock;
 
 final class DefaultImplicitMocker implements ImplicitMocker {

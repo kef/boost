@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.fixture;
 
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.test.reflect.DefaultModifierTestUtil;
-import au.net.netstorm.boost.test.reflect.ModifierTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
+import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 

@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.primordial;
 
-import au.net.netstorm.boost.test.checker.DefaultModifierTestChecker;
-import au.net.netstorm.boost.test.checker.ModifierTestChecker;
-import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
 import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.equals.MockEqualsMaster;

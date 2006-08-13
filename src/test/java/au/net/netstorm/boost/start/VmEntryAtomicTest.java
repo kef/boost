@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.start;
 
-import au.net.netstorm.boost.test.checker.ClassTestChecker;
-import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.test.reflect.ClassTestUtil;
-import au.net.netstorm.boost.test.reflect.DefaultClassTestUtil;
-import au.net.netstorm.boost.test.reflect.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import junit.framework.TestCase;
