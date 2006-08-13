@@ -15,10 +15,17 @@ public final class DefaultTimeRangeMaster implements TimeRangeMaster {
     }
 
     public EndTime end(TimeRange range) {
-        return new EndTime(new TimePoint(range.start().point.millis + range.duration().millis));
+        StartTime start = range.start();
+        Duration duration = range.duration();
+        TimePoint time = new TimePoint(start.point.millis + duration.millis);
+        return new EndTime(time);
     }
 
     private TimeRange bump(TimeRange range, long amount) {
-        return new DefaultTimeRange(range.start(), new Duration(range.duration().millis + amount));
+        StartTime start = range.start();
+        Duration duration = range.duration();
+        long newLength = duration.millis + amount;
+        Duration newDuration = new Duration(newLength);
+        return new DefaultTimeRange(start, newDuration);
     }
 }
