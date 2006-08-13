@@ -11,7 +11,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
-    private static final InvocationHandler EMTPY_HANDLER = null;
+    private static final InvocationHandler BORING_INVOCATION_HANDLER = null;
     private interface InternalInterface {}
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
@@ -29,12 +29,6 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return params;
     }
 
-    // FIX SC600 We probably do not need this.
-    public boolean canProvide(Class type) {
-        Object ref = doGetInstance(type);
-        return ref != null;
-    }
-
     private Object doGetInstance(Class type) {
         if (type.isInterface()) return randomInterface(type);
         if (type.isArray()) return randomArray(type);
@@ -43,7 +37,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
 
     private Object randomInterface(Class type) {
         Interface iface = new Interface(type);
-        return proxyFactory.newProxy(iface, EMTPY_HANDLER);
+        return proxyFactory.newProxy(iface, BORING_INVOCATION_HANDLER);
     }
 
     private Object randomArray(Class type) {
@@ -66,7 +60,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     }
 
     private String randomString() {
-        return "" + random.nextLong();
+        return "Some random string " + random.nextLong();
     }
 
     private Boolean randomBoolean() {
