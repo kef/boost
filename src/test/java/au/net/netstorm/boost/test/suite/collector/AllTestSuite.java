@@ -4,6 +4,7 @@ import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+// FIX BREADCRUMB Run demo tests as part of the build.
 public class AllTestSuite extends PrimordialTestCase {
     public static Test suite() {
         TestSuite suite = new TestSuite("The Whole Box and Dice");
