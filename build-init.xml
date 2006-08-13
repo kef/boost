@@ -107,6 +107,7 @@
 
     <path id="atomic.test.classpath">
         <path location="${edge.class.dir}"/>
+        <!-- FIX SC600 Does it make sense to have the atomic on the end? -->
         <path location="${core.instrumented.dir}/atomic"/>
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
