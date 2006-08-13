@@ -7,11 +7,7 @@ import java.io.ObjectOutputStream;
 
 import junit.framework.Assert;
 
-// FIX SC050 Define API class which only links to public APIs.
-
-// FIX SC506 Make instance instead of static.
-// FIX SC506 ? Surely there is a full serialise production class.
-public class SerializationTestUtil extends Assert {
+public class DefaultSerializationTestChecker implements SerializationTestChecker {
     public static void checkSerializable(Object instance) {
         try {
             tryCheckSerializable(instance);
@@ -23,12 +19,7 @@ public class SerializationTestUtil extends Assert {
     private static void tryCheckSerializable(Object instance) throws Exception {
         byte[] serialized = serialize(instance);
         Object rehydrated = deserialize(serialized);
-        // FIX SC050 !!!!!!!!!!!!!!!!!!!!!!!!!! REALLY NEED TO REINSTATE THIS !!!!!!!!!!!!!!!!!!!!!!!!!
-        // FIX SC050 Work out what we are really aiming for here.  The following line used to be in the
-        // FIX SC050 codebase.  It has been removed because a Data type which references a Mock (during testing).
-        // FIX SC050 This Mock references a test utility.  The test utility is not serialisable.  Made the field
-        // FIX SC050 transient.  This causes the following line to fail.
-//        assertEquals(instance, rehydrated);
+        Assert.assertEquals(instance, rehydrated);
     }
 
     private static Object deserialize(byte[] buf) throws Exception {

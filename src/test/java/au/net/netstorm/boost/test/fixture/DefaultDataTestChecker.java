@@ -9,7 +9,6 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.test.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.test.serialize.SerializationTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 import junit.framework.Assert;
@@ -45,8 +44,6 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         fixture.checkClass(Data.class);
         Object[] parameters = getInstances(fields);
         Object instance = getInstance(cls, parameters);
-        // Check if Serializable.
-        SerializationTestUtil.checkSerializable(instance);
         MethodTestFixture.checkMethods(instance, fields);
         MemberTestFixture.checkMembers(instance, fields, parameters);
     }
