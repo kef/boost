@@ -7,22 +7,17 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.test.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.test.checker.NullParameterTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // FIX SC502 Does it make sense to have this fixtures area?
 // FIX SC600 Remove.  Or morph.
 final class ClassTestFixture {
-    private final InstanceTestUtil instancer = new DefaultInstanceTestUtil();
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
-    private final NullParameterTestChecker nuller = new NullParameterTestChecker();
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
     private final Class cls;
-    private final FieldSpec[] parameters;
 
     public ClassTestFixture(Class cls, FieldSpec[] parameters) {
         this.cls = cls;
-        this.parameters = parameters;
     }
 
     // FIX S502 ? Allow the interfaces to check to be changes Data vs Immutable.

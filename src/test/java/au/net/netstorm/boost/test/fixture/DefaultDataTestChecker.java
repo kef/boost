@@ -18,7 +18,6 @@ import junit.framework.Assert;
 // FIX SC600 checkIsData should take in BeanSpecs.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
-    private InstanceTestUtil instancer = new DefaultInstanceTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
