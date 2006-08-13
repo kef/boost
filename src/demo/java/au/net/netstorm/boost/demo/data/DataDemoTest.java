@@ -9,6 +9,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
+// FIX SC600 The duplication section reads "prod".  Change this to "all".
+// FIX SC600 This guy currently does not appear in the test reports.
 // FIX SC600 Wire into build.
 public final class DataDemoTest extends TestCase {
     private static final Class NOT_PRIMORDIAL_CLASS = NotPrimordialData.class;

@@ -3,11 +3,19 @@
     <import file="build-init.xml"/>
 
     <target name="compile">
-        <!-- FIX SC518 This can all be nicely parameterised by the type "edge","core","test". -->
-        <macro_javac srcdir="${edge.src.dir}" destdir="${edge.class.dir}" classpathref="edge.classpath"/>
-        <macro_javac srcdir="${core.src.dir}" destdir="${core.class.dir}" classpathref="core.classpath"/>
-        <macro_javac srcdir="${test.src.dir}" destdir="${test.class.dir}" classpathref="test.classpath"/>
+        <macro_compile src.type="edge"/>
+        <macro_compile src.type="core"/>
+        <macro_compile src.type="test"/>
+        <macro_compile src.type="demo"/>
     </target>
+
+    <macrodef name="macro_compile">
+        <attribute name="src.type"/>
+        <sequential>
+            <macro_javac srcdir="${@{src.type}.src.dir}" destdir="${@{src.type}.class.dir}"
+                         classpathref="@{src.type}.compile.classpath"/>
+        </sequential>
+    </macrodef>
 
     <macrodef name="macro_javac">
         <attribute name="srcdir"/>
@@ -15,7 +23,8 @@
         <attribute name="classpathref"/>
         <sequential>
             <mkdir dir="@{destdir}"/>
-            <javac source="1.4" target="1.4" srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}" debug="true"/>
+            <javac source="1.4" target="1.4" srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}"
+                   debug="true"/>
         </sequential>
     </macrodef>
 </project>

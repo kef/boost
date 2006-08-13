@@ -6,5 +6,6 @@
     <import file="build-compile.xml"/>
     <import file="build-junit.xml"/>
     <import file="build-misc.xml"/>
+    <import file="build-tests.xml"/>
     <import file="build-simian.xml"/>
 </project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="boost" default="ignore">
+    <import file="build-junit.xml"/>
+
+    <target name="run_tests">
+        <macro_run_test type="atomic"/>
+        <macro_run_test type="demo"/>
+    </target>
+
+    <target name="report_tests">
+        <macro_junit_report test.type="atomic"/>
+        <macro_junit_report test.type="demo"/>
+    </target>
+
+    <target name="check_tests">
+        <macro_junit_check failure.property="atomic.tests.failed"/>
+        <macro_junit_check failure.property="demo.tests.failed"/>
+    </target>
+
+
+    <macrodef name="macro_run_test">
+        <attribute name="type"/>
+        <sequential>
+            <macro_junit_run tests.refid="@{type}.tests" failure.property="@{type}.tests.failed"
+                             classpath.refid="@{type}.test.classpath"
+                             test.type="@{type}"/>
+        </sequential>
+    </macrodef>
+</project>

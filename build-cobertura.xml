@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="boost" default="ignore" basedir=".">
+<project name="cobertura" default="ignore">
+    <import file="build-init.xml"/>
+
+    <property name="quality.atomic.coverage.branch" value="100"/>
+    <property name="quality.atomic.coverage.line" value="100"/>
 
     <target name="instrument">
-        <macro_cobertura_instrument code.type="core"/>
+        <macro_cobertura_instrument code.type="core" test.type="atomic"/>
     </target>
 
     <target name="report_coverage">
-        <macro_cobertura_report code.type="core" report.type="atomic"/>
+        <macro_cobertura_report code.type="core" test.type="atomic"/>
     </target>
 
     <target name="check_coverage">
-        <macro_cobertura_check code.type="core" branch.limit="100" line.limit="100"/>
-        <!-- Approach "du jour" is to not run coverage on "edge".  -->
+        <macro_cobertura_check code.type="core" test.type="atomic" branch.limit="${quality.atomic.coverage.branch}"
+                               line.limit="${quality.atomic.coverage.line}"/>
     </target>
 
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>
 
     <macrodef name="macro_cobertura_instrument">
         <attribute name="code.type"/>
+        <attribute name="test.type"/>
         <sequential>
             <mkdir dir="${instrumented.dir}/@{code.type}"/>
-            <cobertura-instrument todir="${instrumented.dir}/@{code.type}"
-                                  datafile="${coverage.dir}/@{code.type}_coverage.ser">
+            <cobertura-instrument todir="${instrumented.dir}/@{code.type}/@{test.type}"
+                                  datafile="${coverage.dir}/@{test.type}_coverage.ser">
                 <fileset dir="${classes.dir}/@{code.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
@@ -32,13 +37,12 @@
 
     <macrodef name="macro_cobertura_report">
         <attribute name="code.type"/>
-        <attribute name="report.type"/>
+        <attribute name="test.type"/>
         <sequential>
-            <mkdir dir="${coverage.reports.dir}/@{code.type}/@{report.type}"/>
-            <cobertura-report destdir="${coverage.reports.dir}/@{code.type}/@{report.type}"
-                              datafile="${coverage.dir}/@{code.type}_coverage.ser">
-                <!-- FIX SC502 Parameterise -->
-                <fileset dir="${core.src.dir}" includes="**/*.java"/>
+            <mkdir dir="${coverage.reports.dir}/@{code.type}/@{test.type}"/>
+            <cobertura-report destdir="${coverage.reports.dir}/@{code.type}/@{test.type}"
+                              datafile="${coverage.dir}/@{test.type}_coverage.ser">
+                <fileset dir="${@{code.type}.src.dir}" includes="**/*.java"/>
             </cobertura-report>
         </sequential>
     </macrodef>
@@ -47,11 +51,11 @@
         <attribute name="branch.limit"/>
         <attribute name="line.limit"/>
         <attribute name="code.type"/>
+        <attribute name="test.type"/>
         <sequential>
-            <!-- FIX SC502 Don't halt on failure. Follow with a <fail> task with a message consistent with other failures. -->
             <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
                              failureproperty="coverage.@{code.type}.failed" haltonfailure="true"
-                             datafile="${coverage.dir}/@{code.type}_coverage.ser"/>
+                             datafile="${coverage.dir}/@{test.type}_coverage.ser"/>
         </sequential>
     </macrodef>
 

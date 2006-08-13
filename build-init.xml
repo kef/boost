@@ -27,22 +27,24 @@
 
     <property name="simian.report.dir" location="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
+    <!-- FIX SC600 Remove the superfluous java indirection -->
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
     <property name="core.src.dir" location="${src.dir}/core/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
+    <property name="demo.src.dir" location="${src.dir}/demo/java"/>
     <property name="edge.class.dir" location="${classes.dir}/edge"/>
     <property name="core.class.dir" location="${classes.dir}/core"/>
     <property name="test.class.dir" location="${classes.dir}/test"/>
+    <property name="demo.class.dir" location="${classes.dir}/demo"/>
     <property name="core.instrumented.dir" location="${instrumented.dir}/core"/>
-    <property name="test.instrumented.dir" location="${instrumented.dir}/test"/>
 
     <tstamp>
         <format property="build.date" pattern="yyyyMMdd HH:mm:ss"/>
     </tstamp>
 
-    <fileset id="atomic.tests" dir="${test.src.dir}">
-        <include name="**/*AtomicTest.java"/>
-    </fileset>
+    <fileset id="atomic.tests" dir="${test.src.dir}" includes="**/*AtomicTest.java"/>
+    <fileset id="demo.tests" dir="${demo.src.dir}" includes="**/*DemoTest.java"/>
+
 
     <patternset id="code.pattern">
         <include name="**/*.java"/>
@@ -60,6 +62,7 @@
         <patternset refid="code.pattern"/>
     </fileset>
 
+    <!-- FIX SC600 Tidy this up. -->
     <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
         <exclude name="**/au/net/netstorm/boost/edge/**"/>
@@ -72,51 +75,51 @@
         <!-- FIX SC502 This was put in here due to duplication detected between test code and production code ... which is allowed? -->
     </fileset>
 
-    <fileset id="simian.boo.code" dir="${src.dir}">
-        <include name="**/pair/boo/**/*.java"/>
-    </fileset>
+    <fileset id="simian.boo.code" dir="${src.dir}" includes="**/pair/boo/**/*.java"/>
+    <fileset id="simian.monster.code" dir="${src.dir}" includes="**/pair/monster/**/*.java"/>
+    <fileset id="simian.rah.code" dir="${src.dir}" includes="**/pair/rah/**/*.java"/>
+    <fileset id="simian.scream.code" dir="${src.dir}" includes="**/pair/scream/**/*.java"/>
 
-    <fileset id="simian.monster.code" dir="${src.dir}">
-        <include name="**/pair/monster/**/*.java"/>
-    </fileset>
-
-    <fileset id="simian.rah.code" dir="${src.dir}">
-        <include name="**/pair/rah/**/*.java"/>
-    </fileset>
-
-    <fileset id="simian.scream.code" dir="${src.dir}">
-        <include name="**/pair/scream/**/*.java"/>
-    </fileset>
-
-    <path id="core.coverage.classpath">
-        <path location="${edge.class.dir}"/>
-        <path location="${core.instrumented.dir}"/>
-        <path location="${core.class.dir}"/>
-        <path location="${test.class.dir}"/>
-        <!-- FIX SC525 Should there be a test.classpath thingy -->
-        <path refid="cobertura.classpath"/>
-        <path refid="jmock.classpath"/>
-    </path>
-
-    <path id="edge.classpath"/>
-
-    <path id="core.classpath">
-        <path location="${edge.class.dir}"/>
-    </path>
-
-    <path id="test.classpath">
-        <path refid="core.classpath"/>
-        <path location="${core.class.dir}"/>
-        <path refid="junit.classpath"/>
-        <path refid="jmock.classpath"/>
-    </path>
-
-    <!-- FIX SC502 Create a jar patternset to remove duplication of includes here. -->
+    <!-- FIX SC600 Can we move this into build-cobertura.xml -->
     <path id="cobertura.classpath">
         <fileset dir="${lib.dir}/cobertura">
             <include name="**/*.jar"/>
         </fileset>
     </path>
+
+    <path id="edge.compile.classpath"/>
+
+    <path id="core.compile.classpath">
+        <path location="${edge.class.dir}"/>
+    </path>
+
+    <path id="test.compile.classpath">
+        <path refid="core.compile.classpath"/>
+        <path location="${core.class.dir}"/>
+        <path refid="junit.classpath"/>
+        <path refid="jmock.classpath"/>
+    </path>
+
+    <path id="demo.compile.classpath">
+        <path refid="test.compile.classpath"/>
+        <path location="${test.class.dir}"/>
+    </path>
+
+    <path id="atomic.test.classpath">
+        <path location="${edge.class.dir}"/>
+        <path location="${core.instrumented.dir}/atomic"/>
+        <path location="${core.class.dir}"/>
+        <path location="${test.class.dir}"/>
+        <path refid="cobertura.classpath"/>
+        <path refid="jmock.classpath"/>
+    </path>
+
+    <path id="demo.test.classpath">
+        <path refid="demo.compile.classpath"/>
+        <path location="${demo.class.dir}"/>
+    </path>
+
+    <!-- FIX SC600 Must have a demo.test.classpath -->
 
     <path id="checkstyle.class.path">
         <fileset dir="${lib.dir}/checkstyle">
