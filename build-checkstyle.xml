@@ -15,9 +15,7 @@
         <macro_check_checkstyle code.type="test"/>
     </target>
 
-    <!-- FIX SC502 Consider whether we need to keep separate rules for core/edge/test. -->
-    <!-- FIX SC502 Review and revise checkstyle rules. -->
-    <!-- FIX SC502 Fix all code to adhere to checkstyle rules - see suppressions. -->
+    <!-- FIX SC600 Move checkstyle inline. -->
     <!-- FIX SC502 Tighten suppressions so that checks are still done for kickstart pair code. -->
     <macrodef name="macro_run_checkstyle">
         <attribute name="code.type"/>

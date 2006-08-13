@@ -11,10 +11,6 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         doCheckIsData(cls, fields);
     }
 
-    public void checkIsData(Class cls, FieldSpec[] fields, TriangulationProvider additional) {
-        doCheckIsData(cls, fields);
-    }
-
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         // FIX SC050 Tidy this up.
         ClassTestFixture fixture = new ClassTestFixture(cls, fields);
