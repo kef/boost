@@ -11,7 +11,7 @@ public interface ClassTestChecker {
 
     void checkSubInterfaceOf(Interface superInterface, Interface subInterface);
 
-    void checkSubclassOf(Class superClass, Class subClass);
+    void checkSubclassOf(Class subClass, Class superClass);
 
     void checkSubclassOf(Class expectedImpl, Object ref);
 

@@ -5,6 +5,7 @@ import au.net.netstorm.boost.test.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.primordial.Primordial;
 
 // FIX SC600 Rename FieldSpec to NamedType.  FieldSpec and BeanSpec can then extend NamedType.
 // FIX SC600 checkIsData should take in BeanSpecs.
@@ -18,6 +19,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         classChecker.checkImplementsAndFinal(cls, Data.class);
+        classChecker.checkSubclassOf(cls, Primordial.class);
         //
         // Checks is Data.class
         // Check extends Primordial.class

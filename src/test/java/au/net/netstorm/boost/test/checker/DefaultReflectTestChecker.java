@@ -23,8 +23,8 @@ public final class DefaultReflectTestChecker implements ReflectTestChecker {
         clsChecker.checkSubInterfaceOf(superInterface, subInterface);
     }
 
-    public void checkSubclassOf(Class superClass, Class subClass) {
-        clsChecker.checkSubclassOf(superClass, subClass);
+    public void checkSubclassOf(Class subClass, Class superClass) {
+        clsChecker.checkSubclassOf(subClass, superClass);
     }
 
     public void checkSubclassOf(Class expectedImpl, Object ref) {

@@ -25,7 +25,7 @@ final class ClassTestFixture {
 
     // FIX S502 ? Allow the interfaces to check to be changes Data vs Immutable.
     public void checkClass(Class targetInterface) {
-        clsChecker.checkSubclassOf(Primordial.class, cls);
+        clsChecker.checkSubclassOf(cls, Primordial.class);
         clsChecker.checkImplementsAndFinal(cls, targetInterface);
         checkConstructor();
     }

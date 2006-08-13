@@ -14,7 +14,7 @@ public final class DefaultArrayFlattenerAtomicTest extends PrimordialTestCase {
 
     public void testProperties() {
         CLASS_CHECKER.checkImplementsAndFinal(DefaultArrayFlattener.class, ArrayFlattener.class);
-        CLASS_CHECKER.checkSubclassOf(Primordial.class, DefaultArrayFlattener.class);
+        CLASS_CHECKER.checkSubclassOf(DefaultArrayFlattener.class, Primordial.class);
         MODIFIER_CHECKER.checkFinal(DefaultArrayFlattener.class);
         MODIFIER_CHECKER.checkPublic(ArrayFlattener.class);
         MODIFIER_CHECKER.checkPublic(DefaultArrayFlattener.class);

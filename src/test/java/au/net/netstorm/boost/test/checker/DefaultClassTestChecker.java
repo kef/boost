@@ -33,7 +33,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         Assert.assertTrue(subInterface + " is not subinterface of  " + superInterface, isSubInterface);
     }
 
-    public void checkSubclassOf(Class superClass, Class subClass) {
+    public void checkSubclassOf(Class subClass, Class superClass) {
         boolean isSubclass = classes.isSubclassOf(superClass, subClass);
         checkSubclassOf(isSubclass, superClass, subClass);
     }
@@ -41,7 +41,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
     public void checkSubclassOf(Class superClass, Object ref) {
         Assert.assertNotNull(ref);
         Class cls = ref.getClass();
-        checkSubclassOf(superClass, cls);
+        checkSubclassOf(cls, superClass);
     }
 
     public void checkSynchronized(Class cls) {
