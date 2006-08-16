@@ -29,7 +29,7 @@ final class MethodDataChecker implements DataChecker {
         String methodName = method.getName();
         if (modifierUtil.isPublicInstance(method)) return;
         if (modifierUtil.isPrivate(method)) return;
-        fail("All methods must be either private or public non-static.  Method "+methodName+"() violates this constraint.");
+        fail("All methods must be public non-static or private.  Method " + methodName + "() violates this constraint.");
     }
 
     private void checkBeanAccessors(Class cls, FieldSpec[] fields) {

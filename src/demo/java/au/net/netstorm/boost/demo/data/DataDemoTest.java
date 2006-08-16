@@ -12,6 +12,7 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec[] NO_FIELDS = {};
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = { STRING_PROPERTY };
+    private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "All methods must be public non-static or private.  Method getGuitar() violates this constraint.";
 
     public void testBasic() {
         FieldSpec f1 = new DefaultFieldSpec("frog", String.class);
@@ -26,7 +27,8 @@ public final class DataDemoTest extends TestCase {
         checkData(NotPrimordialData.class, NO_FIELDS, "NotPrimordialData is not a subclass of Primordial");
         checkData(ConstructorParameterCountMismatchData.class, SINGLE_STRING_PROPERTY, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
         checkData(ConstructorParameterMismatchData.class, SINGLE_STRING_PROPERTY, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
-        checkData(ProtectedMethodsIllegalData.class, SINGLE_STRING_PROPERTY, "All methods must be either private or public non-static.  Method getGuitar() violates this constraint.");
+        checkData(ProtectedMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkData(PackagePrivateMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
     }
 
     private void checkData(Class cls, FieldSpec[] fields, String expectedMsg) {
