@@ -2,20 +2,13 @@ package au.net.netstorm.boost.demo.data;
 
 import au.net.netstorm.boost.test.atom.DataTestChecker;
 import au.net.netstorm.boost.test.atom.DefaultDataTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.AssertThrows;
-import au.net.netstorm.boost.test.reflect.checker.DefaultAssertThrows;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
-// FIX SC600 The duplication section reads "prod".  Change this to "all".
-// FIX SC600 This guy currently does not appear in the test reports.
-// FIX SC600 Wire into build.
-
 public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
-    private AssertThrows asserter = new DefaultAssertThrows();
     private static final FieldSpec[] NO_FIELDS = {};
 
     public void testBasic() {
