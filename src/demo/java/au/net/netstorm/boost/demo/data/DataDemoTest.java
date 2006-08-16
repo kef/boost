@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec[] NO_FIELDS = {};
-    private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("fieldName", String.class);
+    private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = { STRING_PROPERTY };
 
     public void testBasic() {
@@ -46,6 +46,11 @@ public final class DataDemoTest extends TestCase {
         } catch (AssertionFailedError e) {
             checkMessage(e, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
         }
+    }
+
+    public void testFieldNonExistent() {
+// FIX SC600 BREADCRUMB COMPLETE.
+//        dataChecker.checkIsData(FieldNonExistentData.class, SINGLE_STRING_PROPERTY);
     }
 
     private void checkMessage(AssertionFailedError e, String expected) {
