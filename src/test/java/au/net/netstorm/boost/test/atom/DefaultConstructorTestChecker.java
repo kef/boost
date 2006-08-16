@@ -20,10 +20,18 @@ public final class DefaultConstructorTestChecker implements ConstructorTestCheck
 
 
     private void checkConstructor(Class[] expectedTypes, Class[] declaredTypes) {
+        checkParameterCount(expectedTypes, declaredTypes);
+        checkParametersMatch(expectedTypes, declaredTypes);
+        // FIX SC600 BREADCRUMB Continue this.
+        // Checks constructor parameters match provided field specs.
+    }
+
+    private void checkParameterCount(Class[] expectedTypes, Class[] declaredTypes) {
         int expectedLength = expectedTypes.length;
         int declaredLength = declaredTypes.length;
         if (expectedLength != declaredLength) Assert.fail("Constructor must have " + expectedLength + " argument(s).  Instead it appears to have "+declaredLength +" arguments(s).");
-        // FIX SC600 BREADCRUMB Continue this.
-        // Checks constructor parameters match provided field specs.
+    }
+
+    private void checkParametersMatch(Class[] expected, Class[] declared) {
     }
 }
