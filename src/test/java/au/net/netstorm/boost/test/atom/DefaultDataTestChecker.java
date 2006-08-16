@@ -15,6 +15,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 import junit.framework.Assert;
 
+// FIX SC600 Remove OldDTC.
+
 public final class DefaultDataTestChecker implements DataTestChecker {
     private ClassTestUtil classUtil = new DefaultClassTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
