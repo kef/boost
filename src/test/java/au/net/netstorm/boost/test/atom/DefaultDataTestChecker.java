@@ -74,7 +74,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         int length = expectedTypes.length;
         Assert.assertEquals("Constructor must have " + length + "arguments", length, declaredTypes.length);
         // FIX SC600 BREADCRUMB Continue this.
-        // Checks constructor matches provided field specs.
+        // Checks constructor parameters match provided field specs.
     }
 
     private Class[] getTypes(FieldSpec[] fields) {
