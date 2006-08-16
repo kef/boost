@@ -66,13 +66,13 @@
     <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
         <exclude name="**/au/net/netstorm/boost/edge/**"/>
+        <!-- FIX SC600 Moves into kickstart.xml for courses. -->
         <exclude name="**/pair/*.java"/>
-        <!-- FIX SC502 Remove duplication and then remove these exclusions. -->
-        <!-- NO MORE WAIVERS/EXCLUSIONS HERE.  FIX FIRST!!!!  EVEN THOUGH SOME ARE SIMIAN FALSE POSITIVES -->
+        <!-- NO MORE WAIVERS/EXCLUSIONS HERE. -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
         <exclude name="**/MockListener.java"/>
-        <!-- FIX SC502 This was put in here due to duplication detected between test code and production code ... which is allowed? -->
+        <exclude name="**/Old*.java"/>
     </fileset>
 
     <fileset id="simian.boo.code" dir="${src.dir}" includes="**/pair/boo/**/*.java"/>

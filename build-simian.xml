@@ -26,7 +26,6 @@
         <sequential>
             <mkdir dir="${simian.report.dir}"/>
             <taskdef resource="simiantask.properties" classpathref="simian.class.path"/>
-            <!-- FIX SC502 Experiment with ignore options to strengthen check. -->
             <simian threshold="4" language="java" balanceParentheses="true" balanceSquareBrackets="true"
                     failureProperty="simian.@{code.type}.failed">
                 <fileset refid="simian.@{code.type}.code"/>
