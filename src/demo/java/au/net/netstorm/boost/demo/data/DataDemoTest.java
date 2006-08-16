@@ -14,14 +14,13 @@ import junit.framework.TestCase;
 // FIX SC600 Wire into build.
 
 public final class DataDemoTest extends TestCase {
-    private static final Class NOT_PRIMORDIAL_CLASS = NotPrimordialData.class;
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private AssertThrows asserter = new DefaultAssertThrows();
+    private static final FieldSpec[] NO_FIELDS = {};
 
-    public void testPrimordial() {
-        FieldSpec[] fields = {};
+    public void testNotPrimordial() {
         try {
-            dataChecker.checkIsData(NOT_PRIMORDIAL_CLASS, fields);
+            dataChecker.checkIsData(NotPrimordialData.class, NO_FIELDS);
         } catch (AssertionFailedError e) {
             // FIX SC600 Do the assertion utilities make this simpler.
             String message = e.getMessage();
@@ -39,6 +38,17 @@ public final class DataDemoTest extends TestCase {
 //            }
 //        };
 //        asserter.assertThrows(AssertionFailedError.class, "NotPrimordialData is not a subclass of Primordial", block);
+//    }
+
+    // FIX SC600 BREADCRUMB Reinstate.
+//    public void testConstructorCountMismatch() {
+//        try {
+//            dataChecker.checkIsData(ConstructorCountMismatchData.class, NO_FIELDS);
+//        } catch (AssertionFailedError e) {
+//            // FIX SC600 BREADCRUMB Remove dupe.
+//            String message = e.getMessage();
+//            assertEquals("Constructor FOO", message);
+//        }
 //    }
 
     public void testBasic() {
