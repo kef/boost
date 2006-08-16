@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.fixture;
+package au.net.netstorm.boost.test.atom;
 
 public interface TriangulationProvider {
     Object getInstance(Class type);

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.test.fixture.DataTestChecker;
+import au.net.netstorm.boost.test.atom.DataTestChecker;
 import au.net.netstorm.boost.test.fixture.DefaultDataTestChecker;
 import junit.framework.TestCase;
 

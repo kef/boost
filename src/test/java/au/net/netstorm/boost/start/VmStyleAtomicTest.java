@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.start;
 
-import au.net.netstorm.boost.test.fixture.DataTestChecker;
+import au.net.netstorm.boost.test.atom.DataTestChecker;
 import au.net.netstorm.boost.test.fixture.DefaultDataTestChecker;
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;

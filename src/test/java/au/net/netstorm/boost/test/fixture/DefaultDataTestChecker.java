@@ -7,8 +7,13 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.test.atom.DataTestChecker;
+import au.net.netstorm.boost.test.atom.TestTriangulationProvider;
+import au.net.netstorm.boost.test.atom.TriangulationProvider;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 import junit.framework.Assert;
@@ -18,6 +23,7 @@ import junit.framework.Assert;
 // FIX SC600 BREADCRUMB Move out of fixture package.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
+    private ClassTestUtil classUtil = new DefaultClassTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
@@ -30,6 +36,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         checkClass(cls);
         checkConstructor(cls, fields);
+        checkMethods(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
         // Checks is Data.class
@@ -39,6 +46,9 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         // Can have any number of private methods.
         // Public methods must match field specifications.
         // Types must be Immutable or PrimitiveImmutable types.
+        // Check nulls barf in methods.
+        // Check nulls barf in constructor.
+        // Check fields are final.
         //
         // FIX SC600 BELOW HERE GOES.
         // FIX SC050 Tidy this up.
@@ -50,23 +60,27 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         MemberTestFixture.checkMembers(instance, fields, parameters);
     }
 
-    private void checkClass(Class cls) {
-        classChecker.checkImplementsAndFinal(cls, Data.class);
-        classChecker.checkSubclassOf(cls, Primordial.class);
-    }
-
     private void checkConstructor(Class cls, FieldSpec[] fields) {
         Constructor constructor = reflectMaster.getConstructor(cls);
         Class[] declaredTypes = constructor.getParameterTypes();
         Class[] expectedTypes = getTypes(fields);
         checkConstructor(expectedTypes, declaredTypes);
-        // FIX SC600 BREADCRUMB Continue this.
-        // Checks constructor matches provided field specs.
+    }
+
+    private void checkMethods(Class cls, FieldSpec[] fields) {
+        // FIX SC600 BREADCRUMB Complete this.
+    }
+
+    private void checkClass(Class cls) {
+        classChecker.checkImplementsAndFinal(cls, Data.class);
+        classChecker.checkSubclassOf(cls, Primordial.class);
     }
 
     private void checkConstructor(Class[] expectedTypes, Class[] declaredTypes) {
         int length = expectedTypes.length;
         Assert.assertEquals("Constructor must have " + length + "arguments", length, declaredTypes.length);
+        // FIX SC600 BREADCRUMB Continue this.
+        // Checks constructor matches provided field specs.
     }
 
     private Class[] getTypes(FieldSpec[] fields) {

@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.test.fixture;
+package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
 import java.util.Random;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
@@ -12,7 +12,10 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler BORING_INVOCATION_HANDLER = null;
-    private interface InternalInterface {}
+
+    private interface InternalInterface {
+    }
+
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
     private Random random = new Random();
