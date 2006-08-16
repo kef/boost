@@ -11,7 +11,7 @@ public final class ConstructorDataChecker implements DataChecker {
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
 
-    public void check(Class cls, FieldSpec[] fields) {
+    public void checkStructure(Class cls, FieldSpec[] fields) {
         Constructor constructor = reflectMaster.getConstructor(cls);
         Class[] declaredTypes = constructor.getParameterTypes();
         Class[] expectedTypes = fieldSpecUtil.getTypes(fields);
