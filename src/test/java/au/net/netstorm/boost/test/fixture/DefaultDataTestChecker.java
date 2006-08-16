@@ -15,6 +15,7 @@ import junit.framework.Assert;
 
 // FIX SC600 Rename FieldSpec to NamedType.  FieldSpec and BeanSpec can then extend NamedType.
 // FIX SC600 checkIsData should take in BeanSpecs.
+// FIX SC600 BREADCRUMB Move out of fixture package.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
