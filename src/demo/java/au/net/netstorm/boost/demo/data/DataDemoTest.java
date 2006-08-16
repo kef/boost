@@ -29,6 +29,7 @@ public final class DataDemoTest extends TestCase {
         checkData(ConstructorParameterMismatchData.class, SINGLE_STRING_PROPERTY, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
         checkData(ProtectedMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkData(PackagePrivateMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkData(PublicStaticMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
     }
 
     private void checkData(Class cls, FieldSpec[] fields, String expectedMsg) {
