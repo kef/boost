@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
@@ -11,6 +9,8 @@ import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
+
+import java.lang.reflect.Constructor;
 
 // FIX SC600 Remove OldDTC.
 
@@ -29,7 +29,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         checkStructure(cls, fields);
-        checkCalls(cls, fields);
+        checkBehaviour(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
         // The can be checked by ensuring the field reference is different and the getXxx is different again.
@@ -41,18 +41,9 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         // Check constructor fails with combinations of nulls.  Including arrays with nulls.
         // Check fields are final.
         // Arrays must be copied going in and copied coming out.
-        //
-        // FIX SC600 BELOW HERE GOES.
-        // FIX SC050 Tidy this up.
-//        ClassTestFixture fixture = new ClassTestFixture(cls, fields);
-//        fixture.checkClassDeclaration(Data.class);
-//        Object[] parameters = getInstances(fields);
-//        Object instance = getInstance(cls, parameters);
-//        MethodTestFixture.checkMethods(instance, fields);
-//        MemberTestFixture.checkMembers(instance, fields, parameters);
     }
 
-    private void checkCalls(Class cls, FieldSpec[] fields) {
+    private void checkBehaviour(Class cls, FieldSpec[] fields) {
         // FIX SC600 BREADCRUMB Use instance provider and also perform null checks.
     }
 
