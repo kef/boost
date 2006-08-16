@@ -9,16 +9,14 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
-import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
-import junit.framework.Assert;
 
 // FIX SC600 Remove OldDTC.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
-    private ClassTestUtil classUtil = new DefaultClassTestUtil();
+    private ConstructorTestChecker constructorChecker = new DefaultConstructorTestChecker();
+    private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
@@ -29,7 +27,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
-        checkClass(cls);
+        checkClassDeclaration(cls);
         checkConstructor(cls, fields);
         checkMethods(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
@@ -47,7 +45,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         // FIX SC600 BELOW HERE GOES.
         // FIX SC050 Tidy this up.
 //        ClassTestFixture fixture = new ClassTestFixture(cls, fields);
-//        fixture.checkClass(Data.class);
+//        fixture.checkClassDeclaration(Data.class);
 //        Object[] parameters = getInstances(fields);
 //        Object instance = getInstance(cls, parameters);
 //        MethodTestFixture.checkMethods(instance, fields);
@@ -55,35 +53,16 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
-        Constructor constructor = reflectMaster.getConstructor(cls);
-        Class[] declaredTypes = constructor.getParameterTypes();
-        Class[] expectedTypes = getTypes(fields);
-        checkConstructor(expectedTypes, declaredTypes);
+        constructorChecker.checkMatches(cls, fields);
     }
 
     private void checkMethods(Class cls, FieldSpec[] fields) {
         // FIX SC600 BREADCRUMB Complete this.
     }
 
-    private void checkClass(Class cls) {
+    private void checkClassDeclaration(Class cls) {
         classChecker.checkImplementsAndFinal(cls, Data.class);
         classChecker.checkSubclassOf(cls, Primordial.class);
-    }
-
-    private void checkConstructor(Class[] expectedTypes, Class[] declaredTypes) {
-        int expectedLength = expectedTypes.length;
-        int declaredLength = declaredTypes.length;
-        if (expectedLength != declaredLength) Assert.fail("Constructor must have " + expectedLength + " argument(s).  Instead it appears to have "+declaredLength +" arguments(s).");
-        // FIX SC600 BREADCRUMB Continue this.
-        // Checks constructor parameters match provided field specs.
-    }
-
-    private Class[] getTypes(FieldSpec[] fields) {
-        Class[] classes = new Class[fields.length];
-        for (int i = 0; i < classes.length; i++) {
-            classes[i] = fields[i].getType();
-        }
-        return classes;
     }
 
     private Object getInstance(Class cls, Object[] parameters) {
@@ -92,7 +71,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private Object[] getInstances(FieldSpec[] fields) {
-        Class[] classes = getTypes(fields);
+        Class[] classes = fieldSpecUtil.getTypes(fields);
         return triangulationProvider.getInstances(classes);
     }
 
