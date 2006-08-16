@@ -34,15 +34,14 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         checkMethods(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
-        // Checks is Data.class
-        // Check extends Primordial.class
-        // Check constructor fails with combinations of nulls.  Including arrays with nulls.
         // Arrays must be copied going in and copied coming out.
+        // The can be checked by ensuring the field reference is different and the getXxx is different again.
         // Can have any number of private methods.
         // Public methods must match field specifications.
         // Types must be Immutable or PrimitiveImmutable types.
         // Check nulls barf in methods.
         // Check nulls barf in constructor.
+        // Check constructor fails with combinations of nulls.  Including arrays with nulls.
         // Check fields are final.
         //
         // FIX SC600 BELOW HERE GOES.

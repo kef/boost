@@ -12,13 +12,13 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler BORING_INVOCATION_HANDLER = null;
-
-    private interface InternalInterface {
-    }
-
+    private static final int ARRAY_LENGTH = 0;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
     private Random random = new Random();
+
+    private interface InternalInterface {
+    }
 
     public Object getInstance(Class type) {
         Object ref = doGetInstance(type);
@@ -44,7 +44,11 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     }
 
     private Object randomArray(Class type) {
-        return Array.newInstance(type.getComponentType(), 0);
+        Class componentType = type.getComponentType();
+        Object array = Array.newInstance(componentType, ARRAY_LENGTH);
+        // FIX SC600 Populate array with instances.
+        populate(array, componentType);
+        return array;
     }
 
     private Object randomJavaType(Class type) {
@@ -89,5 +93,12 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Double randomDouble() {
         double d = random.nextDouble();
         return Double.valueOf(d);
+    }
+
+    private void populate(Object array, Class type) {
+        for (int i = 0; i < ARRAY_LENGTH; i++) {
+            Object instance = getInstance(type);
+            Array.set(array, i, instance);
+        }
     }
 }
