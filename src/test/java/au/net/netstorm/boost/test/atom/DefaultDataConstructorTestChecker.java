@@ -7,11 +7,11 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import junit.framework.Assert;
 
-public final class DefaultConstructorTestChecker implements ConstructorTestChecker {
+public final class DefaultDataConstructorTestChecker implements DataChecker {
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
 
-    public void checkMatches(Class cls, FieldSpec[] fields) {
+    public void check(Class cls, FieldSpec[] fields) {
         Constructor constructor = reflectMaster.getConstructor(cls);
         Class[] declaredTypes = constructor.getParameterTypes();
         Class[] expectedTypes = fieldSpecUtil.getTypes(fields);

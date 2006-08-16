@@ -15,7 +15,8 @@ import au.net.netstorm.boost.util.type.Data;
 // FIX SC600 Remove OldDTC.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
-    private ConstructorTestChecker constructorChecker = new DefaultConstructorTestChecker();
+    private DataChecker constructorChecker = new DefaultDataConstructorTestChecker();
+    private DataChecker fieldChecker = new FieldDataChecker();
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
@@ -29,10 +30,10 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         checkClassDeclaration(cls);
         checkConstructor(cls, fields);
+        checkFields(cls, fields);
         checkMethods(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
-        // Arrays must be copied going in and copied coming out.
         // The can be checked by ensuring the field reference is different and the getXxx is different again.
         // Can have any number of private methods.
         // Public methods must match field specifications.
@@ -41,6 +42,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         // Check nulls barf in constructor.
         // Check constructor fails with combinations of nulls.  Including arrays with nulls.
         // Check fields are final.
+        // Arrays must be copied going in and copied coming out.
         //
         // FIX SC600 BELOW HERE GOES.
         // FIX SC050 Tidy this up.
@@ -53,7 +55,11 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
-        constructorChecker.checkMatches(cls, fields);
+        constructorChecker.check(cls, fields);
+    }
+
+    private void checkFields(Class cls, FieldSpec[] fields) {
+        fieldChecker.check(cls, fields);
     }
 
     private void checkMethods(Class cls, FieldSpec[] fields) {
