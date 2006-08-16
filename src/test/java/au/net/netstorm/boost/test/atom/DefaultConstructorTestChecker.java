@@ -33,5 +33,6 @@ public final class DefaultConstructorTestChecker implements ConstructorTestCheck
     }
 
     private void checkParametersMatch(Class[] expected, Class[] declared) {
+        
     }
 }
