@@ -21,6 +21,7 @@ final class MethodDataChecker implements DataChecker {
         Method[] methods = getAllMethods(cls);
         for (int i = 0; i < methods.length; i++) {
             checkMethodScope(methods[i]);
+            // FIX SC600 BREADCRUMB 10 Resume here.
             // FIX SC600 Must be no-arg method.
         }
     }
