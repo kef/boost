@@ -50,6 +50,14 @@ public final class DataDemoTest extends TestCase {
         }
     }
 
+    public void testProtectedMethodsIllegal() {
+        try {
+            dataChecker.checkIsData(ProtectedMethodsIllegalData.class, SINGLE_STRING_PROPERTY);
+        } catch (AssertionFailedError e) {
+            checkMessage(e, "All methods must be either private or public non-static.  Method getGuitar() violates this constraint.");
+        }
+    }
+
     private void checkMessage(AssertionFailedError e, String expected) {
         String message = e.getMessage();
         assertEquals(expected, message);

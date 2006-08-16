@@ -20,17 +20,16 @@ final class MethodDataChecker implements DataChecker {
     private void checkMethodSignatures(Class cls) {
         Method[] methods = getAllMethods(cls);
         for (int i = 0; i < methods.length; i++) {
-            checkMethodSignature(methods[i]);
+            checkMethodScope(methods[i]);
+            // FIX SC600 Must be no-arg method.
         }
     }
 
-    private void checkMethodSignature(Method method) {
+    private void checkMethodScope(Method method) {
         String methodName = method.getName();
-        method.getModifiers();
-//        Modifier.
-        if (!modifierUtil.isInstance(method)) fail(methodName + "All methods must be non-static");
-        // FIX SC600 BREADCRUMB Ensure no protected/package private methods.
-        // FIX SC600 No static methods cannot be public, package protected or protected.
+        if (modifierUtil.isPublicInstance(method)) return;
+        if (modifierUtil.isPrivate(method)) return;
+        fail("All methods must be either private or public non-static.  Method "+methodName+"() violates this constraint.");
     }
 
     private void checkBeanAccessors(Class cls, FieldSpec[] fields) {
