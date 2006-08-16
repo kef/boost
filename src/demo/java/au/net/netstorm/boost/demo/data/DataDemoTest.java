@@ -48,11 +48,6 @@ public final class DataDemoTest extends TestCase {
         }
     }
 
-    public void testFieldNonExistent() {
-// FIX SC600 BREADCRUMB COMPLETE.
-//        dataChecker.checkIsData(FieldNonExistentData.class, SINGLE_STRING_PROPERTY);
-    }
-
     private void checkMessage(AssertionFailedError e, String expected) {
         String message = e.getMessage();
         assertEquals(expected, message);

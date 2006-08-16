@@ -7,7 +7,7 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import junit.framework.Assert;
 
-public final class DefaultDataConstructorTestChecker implements DataChecker {
+public final class ConstructorDataChecker implements DataChecker {
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
 

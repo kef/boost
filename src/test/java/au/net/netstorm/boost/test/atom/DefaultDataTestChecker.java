@@ -15,8 +15,8 @@ import au.net.netstorm.boost.util.type.Data;
 // FIX SC600 Remove OldDTC.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
-    private DataChecker constructorChecker = new DefaultDataConstructorTestChecker();
-    private DataChecker fieldChecker = new FieldDataChecker();
+    private DataChecker constructorChecker = new ConstructorDataChecker();
+    private DataChecker methodChecker = new MethodDataChecker();
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
@@ -28,10 +28,8 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
-        checkClassDeclaration(cls);
-        checkConstructor(cls, fields);
-        checkFields(cls, fields);
-        checkMethods(cls, fields);
+        checkStructure(cls, fields);
+        checkCalls(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
         // The can be checked by ensuring the field reference is different and the getXxx is different again.
@@ -54,16 +52,23 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 //        MemberTestFixture.checkMembers(instance, fields, parameters);
     }
 
+    private void checkCalls(Class cls, FieldSpec[] fields) {
+        // FIX SC600 BREADCRUMB Use instance provider and also perform null checks.
+    }
+
+    private void checkStructure(Class cls, FieldSpec[] fields) {
+        checkClassDeclaration(cls);
+        checkConstructor(cls, fields);
+        checkMethods(cls, fields);
+    }
+
     private void checkConstructor(Class cls, FieldSpec[] fields) {
         constructorChecker.check(cls, fields);
     }
 
-    private void checkFields(Class cls, FieldSpec[] fields) {
-        fieldChecker.check(cls, fields);
-    }
 
     private void checkMethods(Class cls, FieldSpec[] fields) {
-        // FIX SC600 BREADCRUMB Complete this.
+        methodChecker.check(cls, fields);
     }
 
     private void checkClassDeclaration(Class cls) {
