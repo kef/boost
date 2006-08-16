@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 final class MethodDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
@@ -14,6 +14,7 @@ final class MethodDataChecker implements DataChecker {
         checkMethodSignatures(cls);
         checkBeanAccessors(cls, fields);
         // FIX SC600 Check each field individually.
+        // FIX SC600 Check return type.
         // FIX SC600 BREADCRUMB Ensure the public methods match exactly the field count.
     }
 
@@ -21,16 +22,22 @@ final class MethodDataChecker implements DataChecker {
         Method[] methods = getAllMethods(cls);
         for (int i = 0; i < methods.length; i++) {
             checkMethodScope(methods[i]);
-            // FIX SC600 BREADCRUMB 10 Resume here.
-            // FIX SC600 Must be no-arg method.
+            checkMethodNoArg(methods[i]);
         }
     }
 
     private void checkMethodScope(Method method) {
-        String methodName = method.getName();
         if (modifierUtil.isPublicInstance(method)) return;
         if (modifierUtil.isPrivate(method)) return;
-        fail("All methods must be public non-static or private.  Method " + methodName + "() violates this constraint.");
+        String name = getName(method);
+        fail("All methods must be public non-static or private.  " + name + " violates this constraint.");
+    }
+
+    private void checkMethodNoArg(Method method) {
+        Class[] parameterTypes = method.getParameterTypes();
+        if (parameterTypes.length == 0) return;
+        String name = getName(method);
+        fail(name + " has arguments.  All property accessor methods must have no arguments");
     }
 
     private void checkBeanAccessors(Class cls, FieldSpec[] fields) {
@@ -47,6 +54,11 @@ final class MethodDataChecker implements DataChecker {
 
     private Method[] getAllMethods(Class cls) {
         return cls.getDeclaredMethods();
+    }
+
+    private String getName(Method method) {
+        String name = method.getName();
+        return "Method " + name + "()";
     }
 
     private void fail(String msg) {

@@ -30,6 +30,7 @@ public final class DataDemoTest extends TestCase {
         checkData(ProtectedMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkData(PackagePrivateMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkData(PublicStaticMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkData(MethodWithArgumentsIllegalData.class, SINGLE_STRING_PROPERTY, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
     }
 
     private void checkData(Class cls, FieldSpec[] fields, String expectedMsg) {
