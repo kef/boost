@@ -18,12 +18,9 @@ public final class DefaultConstructorTestChecker implements ConstructorTestCheck
         checkConstructor(expectedTypes, declaredTypes);
     }
 
-
     private void checkConstructor(Class[] expectedTypes, Class[] declaredTypes) {
         checkParameterCount(expectedTypes, declaredTypes);
         checkParametersMatch(expectedTypes, declaredTypes);
-        // FIX SC600 BREADCRUMB Continue this.
-        // Checks constructor parameters match provided field specs.
     }
 
     private void checkParameterCount(Class[] expectedTypes, Class[] declaredTypes) {
@@ -33,6 +30,10 @@ public final class DefaultConstructorTestChecker implements ConstructorTestCheck
     }
 
     private void checkParametersMatch(Class[] expected, Class[] declared) {
-        
+        for (int i = 0; i < expected.length; i++) {
+            Class expectedCls = expected[i];
+            Class declaredCls = declared[i];
+            Assert.assertEquals("For constructor parameter 0 we", expectedCls, declaredCls);
+        }
     }
 }
