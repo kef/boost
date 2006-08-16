@@ -39,6 +39,7 @@ public final class DataDemoTest extends TestCase {
 
     // FIX SC600 Test only a single constructor.
     // FIX SC600 Ensure and protected or package private methods are banned.
+    // FIX SC600 BREADCRUMB No static methods.
 
     public void testConstructorParameterMismatch() {
         try {
