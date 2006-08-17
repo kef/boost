@@ -11,7 +11,7 @@ public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec[] NO_FIELDS = {};
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
-    private static final FieldSpec[] SINGLE_STRING_PROPERTY = { STRING_PROPERTY };
+    private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "All methods must be public non-static or private.  Method getGuitar() violates this constraint.";
 
     public void testBasic() {
@@ -21,8 +21,6 @@ public final class DataDemoTest extends TestCase {
     }
 
     // FIX SC600 Test only a single constructor.
-    // FIX SC600 Ensure and protected or package private methods are banned.
-    // FIX SC600 BREADCRUMB No static methods.
     public void testBadDataAtoms() {
         checkData(NotPrimordialData.class, NO_FIELDS, "NotPrimordialData is not a subclass of Primordial");
         checkData(ConstructorParameterCountMismatchData.class, SINGLE_STRING_PROPERTY, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
