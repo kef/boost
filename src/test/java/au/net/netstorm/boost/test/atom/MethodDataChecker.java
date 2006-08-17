@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
@@ -10,6 +12,7 @@ import java.lang.reflect.Method;
 final class MethodDataChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = { };
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
+    private EdgeClass edgeClass = new DefaultEdgeClass();
 
     public void checkStructure(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
@@ -50,9 +53,7 @@ final class MethodDataChecker implements DataChecker {
     private void checkPropertyAccessor(Class cls, FieldSpec field) {
         String propertyName = getPropertyMethodName(field);
         checkMethodExists(cls, propertyName);
-        // FIX SC600 Check name.
-        // FIX SC600 Check type.
-        // FIX SC600 Ensure method is public, instance method.
+        chechMethodSignature(cls, propertyName);
     }
 
     private void checkMethodExists(Class cls, String methodName) {
@@ -61,6 +62,13 @@ final class MethodDataChecker implements DataChecker {
         } catch (NoSuchMethodException e) {
             fail("Method " + methodName + "() expected but not found.");
         }
+    }
+
+    private void chechMethodSignature(Class cls, String propertyName) {
+        Method method = edgeClass.getMethod(cls, propertyName, NO_PARAMETERS);
+        // FIXME: SC600 Fail for the following guys.
+        modifierUtil.isPublicInstance(method);
+        // FIXME: SC600 check type.
     }
 
     private Method[] getAllMethods(Class cls) {
