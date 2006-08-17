@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
-
-import java.lang.reflect.Method;
 
 final class MethodDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
@@ -22,7 +22,7 @@ final class MethodDataChecker implements DataChecker {
         Method[] methods = getAllMethods(cls);
         for (int i = 0; i < methods.length; i++) {
             checkMethodScope(methods[i]);
-            checkMethodNoArg(methods[i]);
+            checkMethodHasNoArguments(methods[i]);
         }
     }
 
@@ -33,7 +33,7 @@ final class MethodDataChecker implements DataChecker {
         fail("All methods must be public non-static or private.  " + name + " violates this constraint.");
     }
 
-    private void checkMethodNoArg(Method method) {
+    private void checkMethodHasNoArguments(Method method) {
         Class[] parameterTypes = method.getParameterTypes();
         if (parameterTypes.length == 0) return;
         String name = getName(method);
@@ -47,9 +47,15 @@ final class MethodDataChecker implements DataChecker {
     }
 
     private void checkBeanAccessor(Class cls, FieldSpec field) {
+        getBeanName(field);
         // FIX SC600 Check name.
         // FIX SC600 Check type.
         // FIX SC600 Ensure method is public, instance method.
+    }
+
+    private void getBeanName(FieldSpec field) {
+        String beanName = field.getName();
+        // FIX SC600 BREADCRUMB.
     }
 
     private Method[] getAllMethods(Class cls) {
