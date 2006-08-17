@@ -1,18 +1,18 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 final class MethodDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
 
     public void checkStructure(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
-        checkBeanAccessors(cls, fields);
+        checkPropertyMethods(cls, fields);
         // FIX SC600 Check each field individually.
         // FIX SC600 Check return type.
         // FIX SC600 BREADCRUMB Ensure the public methods match exactly the field count.
@@ -40,22 +40,17 @@ final class MethodDataChecker implements DataChecker {
         fail(name + " has arguments.  All property accessor methods must have no arguments");
     }
 
-    private void checkBeanAccessors(Class cls, FieldSpec[] fields) {
+    private void checkPropertyMethods(Class cls, FieldSpec[] fields) {
         for (int i = 0; i < fields.length; i++) {
-            checkBeanAccessor(cls, fields[i]);
+            checkPropertyAccessor(cls, fields[i]);
         }
     }
 
-    private void checkBeanAccessor(Class cls, FieldSpec field) {
-        getBeanName(field);
+    private void checkPropertyAccessor(Class cls, FieldSpec field) {
+        String methodName = getPropertyMethodName(field);
         // FIX SC600 Check name.
         // FIX SC600 Check type.
         // FIX SC600 Ensure method is public, instance method.
-    }
-
-    private void getBeanName(FieldSpec field) {
-        String beanName = field.getName();
-        // FIX SC600 BREADCRUMB.
     }
 
     private Method[] getAllMethods(Class cls) {
@@ -65,6 +60,23 @@ final class MethodDataChecker implements DataChecker {
     private String getName(Method method) {
         String name = method.getName();
         return "Method " + name + "()";
+    }
+
+    private String getPropertyMethodName(FieldSpec field) {
+        String beanName = field.getName();
+        String upper = upperFirstLetter(beanName);
+        String remainder = getRemainder(beanName);
+        return "get" + upper + remainder;
+    }
+
+    private String upperFirstLetter(String beanName) {
+        String firstLetter = beanName.substring(0, 1);
+        return firstLetter.toUpperCase();
+    }
+
+    private String getRemainder(String beanName) {
+        int endIndex = beanName.length();
+        return beanName.substring(1, endIndex);
     }
 
     private void fail(String msg) {
