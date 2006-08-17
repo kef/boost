@@ -8,6 +8,7 @@ import junit.framework.Assert;
 import java.lang.reflect.Method;
 
 final class MethodDataChecker implements DataChecker {
+    private static final Class[] NO_PARAMETERS = { };
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
 
     public void checkStructure(Class cls, FieldSpec[] fields) {
@@ -29,14 +30,14 @@ final class MethodDataChecker implements DataChecker {
     private void checkMethodScope(Method method) {
         if (modifierUtil.isPublicInstance(method)) return;
         if (modifierUtil.isPrivate(method)) return;
-        String name = getName(method);
+        String name = toString(method);
         fail("All methods must be public non-static or private.  " + name + " violates this constraint.");
     }
 
     private void checkMethodHasNoArguments(Method method) {
         Class[] parameterTypes = method.getParameterTypes();
         if (parameterTypes.length == 0) return;
-        String name = getName(method);
+        String name = toString(method);
         fail(name + " has arguments.  All property accessor methods must have no arguments");
     }
 
@@ -47,19 +48,23 @@ final class MethodDataChecker implements DataChecker {
     }
 
     private void checkPropertyAccessor(Class cls, FieldSpec field) {
-        String methodName = getPropertyMethodName(field);
+        String propertyName = getPropertyMethodName(field);
+        checkMethodExists(cls, propertyName);
         // FIX SC600 Check name.
         // FIX SC600 Check type.
         // FIX SC600 Ensure method is public, instance method.
     }
 
-    private Method[] getAllMethods(Class cls) {
-        return cls.getDeclaredMethods();
+    private void checkMethodExists(Class cls, String methodName) {
+        try {
+            cls.getMethod(methodName, NO_PARAMETERS);
+        } catch (NoSuchMethodException e) {
+            fail("Method " + methodName + "() expected but not found.");
+        }
     }
 
-    private String getName(Method method) {
-        String name = method.getName();
-        return "Method " + name + "()";
+    private Method[] getAllMethods(Class cls) {
+        return cls.getDeclaredMethods();
     }
 
     private String getPropertyMethodName(FieldSpec field) {
@@ -77,6 +82,11 @@ final class MethodDataChecker implements DataChecker {
     private String getRemainder(String beanName) {
         int endIndex = beanName.length();
         return beanName.substring(1, endIndex);
+    }
+
+    private String toString(Method method) {
+        String name = method.getName();
+        return "Method " + name + "()";
     }
 
     private void fail(String msg) {
