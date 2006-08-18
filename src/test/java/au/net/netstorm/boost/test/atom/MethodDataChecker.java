@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
@@ -7,10 +9,8 @@ import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
-import java.lang.reflect.Method;
-
 final class MethodDataChecker implements DataChecker {
-    private static final Class[] NO_PARAMETERS = { };
+    private static final Class[] NO_PARAMETERS = {};
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private EdgeClass edgeClass = new DefaultEdgeClass();
 
@@ -60,7 +60,7 @@ final class MethodDataChecker implements DataChecker {
         try {
             cls.getDeclaredMethod(methodName, NO_PARAMETERS);
         } catch (NoSuchMethodException e) {
-            // FIXME: SC600 BREADCRUMB. 
+            // FIXME: SC600 BREADCRUMB.
             // FIXME: SC600 Remove dupe here
             fail("Method " + methodName + "() expected but not found.");
         }
@@ -68,7 +68,8 @@ final class MethodDataChecker implements DataChecker {
 
     private void chechMethodSignature(Class cls, String methodName) {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
-        if (!modifierUtil.isPublicInstance(method)) fail("Method "+methodName+"() must be a public instance method.");
+        if (!modifierUtil.isPublicInstance(method))
+            fail("Method " + methodName + "() must be a public instance method.");
         // FIXME: SC600 check return type.
     }
 
@@ -76,6 +77,8 @@ final class MethodDataChecker implements DataChecker {
         return cls.getDeclaredMethods();
     }
 
+    // FIX SC600 Move the property name determination into a separate class.
+    // FIX SC600 This was we can do get/is, and also the possibility of optional fields.
     private String getPropertyMethodName(FieldSpec field) {
         String beanName = field.getName();
         String upper = upperFirstLetter(beanName);

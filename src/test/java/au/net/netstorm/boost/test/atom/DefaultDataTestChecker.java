@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Constructor;
+
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
@@ -10,8 +12,10 @@ import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 
-import java.lang.reflect.Constructor;
-
+// FIX SC600 Think about how to incorporate a test with a marker interface which uses field
+// FIX SC600 introspection to determine which properties.  Declaration of a single array
+// FIX SC600 is probably enough to specify field/property order.  Might use volatile or
+// FIX SC600 transient to mark fields as optional.
 // FIX SC600 Remove OldDTC.
 
 public final class DefaultDataTestChecker implements DataTestChecker {
@@ -56,7 +60,6 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private void checkConstructor(Class cls, FieldSpec[] fields) {
         constructorChecker.checkStructure(cls, fields);
     }
-
 
     private void checkMethods(Class cls, FieldSpec[] fields) {
         methodChecker.checkStructure(cls, fields);
