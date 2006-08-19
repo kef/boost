@@ -45,13 +45,11 @@ public class PropertyMethodStructureChecker implements DataChecker {
         // FIXME: SC600 check return type.
     }
 
-    private String toString(String methodName) {
-        return "Method " + methodName + "()";
-    }
-
-
     private void fail(String msg) {
         Assert.fail(msg);
     }
 
+    private String toString(String methodName) {
+        return "Method " + methodName + "()";
+    }
 }
