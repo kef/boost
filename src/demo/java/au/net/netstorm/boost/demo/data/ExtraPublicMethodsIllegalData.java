@@ -13,4 +13,7 @@ final class ExtraPublicMethodsIllegalData extends Primordial implements Data {
     public String getGuitar() {
         return guitar;
     }
+
+    public void anExtraMethod() {
+    }
 }
