@@ -15,13 +15,12 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec[] SINGLE_BOOLEAN_PROPERTY = {BOOLEAN_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
-    public void testGoodDataAtoms() {
+    public void testGoodAtoms() {
         dataChecker.checkIsData(DefaultBasicData.class, SINGLE_STRING_PROPERTY);
         dataChecker.checkIsData(DefaultBooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
     }
 
-    // FIX SC600 Test only a single constructor.
-    public void testBadDataAtoms() {
+    public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 2 arguments(s).");
         checkBad(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
