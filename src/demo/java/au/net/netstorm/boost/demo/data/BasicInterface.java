@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.demo.data;
 
-public interface BasicInterface {
+import au.net.netstorm.boost.util.type.Data;
+
+public interface BasicInterface extends Data {
     String getGuitar();
 }
