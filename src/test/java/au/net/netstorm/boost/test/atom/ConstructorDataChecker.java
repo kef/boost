@@ -16,16 +16,20 @@ final class ConstructorDataChecker implements DataChecker {
 
     public void check(Class cls, FieldSpec[] fields) {
         checkSingleConstructor(cls);
-        Constructor constructor = reflectMaster.getConstructor(cls);
-        Class[] declaredTypes = constructor.getParameterTypes();
-        Class[] expectedTypes = fieldSpecUtil.getTypes(fields);
-        checkConstructor(expectedTypes, declaredTypes);
+        checkParametersMatch(cls, fields);
     }
 
     private void checkSingleConstructor(Class cls) {
         Constructor[] constructors = cls.getConstructors();
         if (constructors.length == 1) return;
         fail(cls, "must have a single constructor which has a parameter for each property.");
+    }
+
+    private void checkParametersMatch(Class cls, FieldSpec[] fields) {
+        Constructor constructor = reflectMaster.getConstructor(cls);
+        Class[] declaredTypes = constructor.getParameterTypes();
+        Class[] expectedTypes = fieldSpecUtil.getTypes(fields);
+        checkConstructor(expectedTypes, declaredTypes);
     }
 
     private void checkConstructor(Class[] expectedTypes, Class[] declaredTypes) {
@@ -36,7 +40,8 @@ final class ConstructorDataChecker implements DataChecker {
     private void checkParameterCount(Class[] expectedTypes, Class[] declaredTypes) {
         int expectedLength = expectedTypes.length;
         int declaredLength = declaredTypes.length;
-        if (expectedLength != declaredLength) Assert.fail("Constructor must have " + expectedLength + " argument(s).  Instead it appears to have " + declaredLength + " arguments(s).");
+        if (expectedLength == declaredLength) return;
+        fail("Constructor must have " + expectedLength + " argument(s).  Instead it appears to have " + declaredLength + " arguments(s).");
     }
 
     private void checkParametersMatch(Class[] expected, Class[] declared) {
@@ -49,6 +54,10 @@ final class ConstructorDataChecker implements DataChecker {
 
     private void fail(Class cls, String msg) {
         String shortName = classMaster.getShortName(cls);
-        Assert.fail(shortName + " " + msg);
+        fail(shortName + " " + msg);
+    }
+
+    private void fail(String msg) {
+        Assert.fail(msg);
     }
 }
