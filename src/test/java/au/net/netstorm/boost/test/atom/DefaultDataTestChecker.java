@@ -60,15 +60,15 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void checkPropertyMethodStructure(Class cls, FieldSpec[] fields) {
-        propertyMethodStructureChecker.checkStructure(cls, fields);
+        propertyMethodStructureChecker.check(cls, fields);
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
-        constructorChecker.checkStructure(cls, fields);
+        constructorChecker.check(cls, fields);
     }
 
     private void checkClassMethodStructure(Class cls, FieldSpec[] fields) {
-        classMethodStructureChecker.checkStructure(cls, fields);
+        classMethodStructureChecker.check(cls, fields);
     }
 
     private void checkClassDeclaration(Class cls) {

@@ -11,7 +11,7 @@ final class ClassMethodStructureDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private ClassMethodUtil classMethodUtil = new DefaultClassMethodUtil();
 
-    public void checkStructure(Class cls, FieldSpec[] fields) {
+    public void check(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
         // FIX SC600 Check each field individually.
         // FIX SC600 Check return type.

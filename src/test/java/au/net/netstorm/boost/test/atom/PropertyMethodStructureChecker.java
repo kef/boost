@@ -15,7 +15,7 @@ public class PropertyMethodStructureChecker implements DataChecker {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
 
-    public void checkStructure(Class cls, FieldSpec[] fields) {
+    public void check(Class cls, FieldSpec[] fields) {
         checkPropertyMethods(cls, fields);
     }
 
