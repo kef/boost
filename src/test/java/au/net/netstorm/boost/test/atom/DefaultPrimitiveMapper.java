@@ -5,8 +5,6 @@ import junit.framework.Assert;
 import java.util.HashMap;
 import java.util.Map;
 
-// FIX SC600 Stitch this into Triangulator.
-// FIX SC600 Add method to query whether we are dealing with a primitive.
 final class DefaultPrimitiveMapper implements PrimitiveMapper {
     private final Map map = new HashMap();
 
@@ -20,9 +18,16 @@ final class DefaultPrimitiveMapper implements PrimitiveMapper {
     }
 
     public Class getWrapped(Class primitive) {
-        Class mapped = (Class) map.get(primitive);
-        if (mapped == null) fail(primitive + " is not a primitive type");
-        return mapped;
+        if (!isPrimitive(primitive)) fail(primitive + " is not a primitive type");
+        return get(primitive);
+    }
+
+    public boolean isPrimitive(Class candidate) {
+        return get(candidate) != null;
+    }
+
+    private Class get(Class primitive) {
+        return (Class) map.get(primitive);
     }
 
     private void fail(String msg) {

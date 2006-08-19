@@ -18,6 +18,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private MethodTestUtil methodUtil = new DefaultMethodTestUtil();
+    private PrimitiveMapper primitiveMapper = new DefaultPrimitiveMapper();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
 

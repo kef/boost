@@ -15,6 +15,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private static final int ARRAY_LENGTH = 0;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
+    private PrimitiveMapper primitiveMapper = new DefaultPrimitiveMapper();
     private Random random = new Random();
     private interface InternalInterface {
     }
@@ -34,7 +35,13 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Object doGetInstance(Class type) {
         if (type.isInterface()) return randomInterface(type);
         if (type.isArray()) return randomArray(type);
+        if (isPrimitive(type)) return randomPrimitiveType(type);
         return randomJavaType(type);
+    }
+
+    private Object randomPrimitiveType(Class type) {
+        Class wrapped = primitiveMapper.getWrapped(type);
+        return randomJavaType(wrapped);
     }
 
     private Object randomInterface(Class type) {
@@ -49,19 +56,18 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return array;
     }
 
+    private boolean isPrimitive(Class type) {
+        return primitiveMapper.isPrimitive(type);
+    }
+
     private Object randomJavaType(Class type) {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
         if (type == Boolean.class) return randomBoolean();
-        if (type == boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
-        if (type == int.class) return randomInteger();
         if (type == Long.class) return randomLong();
-        if (type == long.class) return randomLong();
         if (type == Float.class) return randomFloat();
-        if (type == float.class) return randomFloat();
         if (type == Double.class) return randomDouble();
-        if (type == double.class) return randomDouble();
         return null;
     }
 
