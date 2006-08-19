@@ -15,7 +15,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private static final int ARRAY_LENGTH = 0;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
-    private PrimitiveMapper primitiveMapper = new DefaultPrimitiveMapper();
+    private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private Random random = new Random();
     private interface InternalInterface {
     }
@@ -40,8 +40,8 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     }
 
     private Object randomPrimitiveType(Class type) {
-        Class wrapped = primitiveMapper.getWrapped(type);
-        return randomJavaType(wrapped);
+        Class boxed = primitiveBoxer.getBoxed(type);
+        return randomJavaType(boxed);
     }
 
     private Object randomInterface(Class type) {
@@ -57,7 +57,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     }
 
     private boolean isPrimitive(Class type) {
-        return primitiveMapper.isPrimitive(type);
+        return primitiveBoxer.isPrimitive(type);
     }
 
     private Object randomJavaType(Class type) {

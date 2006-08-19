@@ -18,7 +18,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private MethodTestUtil methodUtil = new DefaultMethodTestUtil();
-    private PrimitiveMapper primitiveMapper = new DefaultPrimitiveMapper();
+    private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
 
@@ -50,10 +50,11 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         fail(methodName, "should return the same value as passed in to the constructor (" + value + ").  Instead it returned " + returnValue);
     }
 
+    // FIX SC600 Smells like an equals checker.
     private boolean equals(Object value, Object returnValue) {
-        return true;
-        // FIX SC600 BREADCRUMB
-//        return value == returnValue;
+        boolean boxed = isBoxed(value);
+        if (boxed) return value.equals(returnValue);
+        return value == returnValue;
     }
 
     private Object getInstance(Class cls, Object[] parameters) {
@@ -69,6 +70,11 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private Object getInstance(Constructor constructor, Object[] parameters) {
         constructor.setAccessible(true);
         return edgeConstructor.newInstance(constructor, parameters);
+    }
+
+    private boolean isBoxed(Object value) {
+        Class cls = value.getClass();
+        return primitiveBoxer.isBoxed(cls);
     }
 
     private void fail(String methodName, String msg) {

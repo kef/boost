@@ -2,10 +2,11 @@ package au.net.netstorm.boost.test.atom;
 
 import junit.framework.Assert;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-final class DefaultPrimitiveMapper implements PrimitiveMapper {
+final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
     private final Map map = new HashMap();
 
     {
@@ -17,13 +18,18 @@ final class DefaultPrimitiveMapper implements PrimitiveMapper {
         map.put(double.class, Double.class);
     }
 
-    public Class getWrapped(Class primitive) {
+    public Class getBoxed(Class primitive) {
         if (!isPrimitive(primitive)) fail(primitive + " is not a primitive type");
         return get(primitive);
     }
 
     public boolean isPrimitive(Class candidate) {
         return get(candidate) != null;
+    }
+
+    public boolean isBoxed(Class candidate) {
+        Collection values = map.values();
+        return values.contains(candidate);
     }
 
     private Class get(Class primitive) {
