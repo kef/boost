@@ -27,7 +27,6 @@ public final class DataDemoTest extends TestCase {
 //        checkGood(DeepInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
-    // FIX SC600 Must be a class (check fails with an interface.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
