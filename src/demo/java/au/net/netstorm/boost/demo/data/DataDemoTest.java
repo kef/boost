@@ -22,8 +22,8 @@ public final class DataDemoTest extends TestCase {
 
     // FIX SC600 Test only a single constructor.
     public void testBadDataAtoms() {
-        checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial");
-        checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
+        checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
+        checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 2 arguments(s).");
         checkBad(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
         checkBad(ProtectedMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkBad(PackagePrivateMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
@@ -33,6 +33,7 @@ public final class DataDemoTest extends TestCase {
         checkBad(PropertyGetterIncorrectlyScopedData.class, "Method getGuitar() must be a public instance method.");
         checkBad(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
         checkBad(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
+        checkBad(MultipleConstructorIllegalData.class, "MultipleConstructorIllegalData must have a single constructor which has a parameter for each property.");
     }
 
     private void checkBad(Class cls, String expectedMsg) {

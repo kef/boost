@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.reflect.ClassMaster;
+import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
@@ -10,12 +12,20 @@ import java.lang.reflect.Constructor;
 final class ConstructorDataChecker implements DataChecker {
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
+    private ClassMaster classMaster = new DefaultClassMaster();
 
     public void check(Class cls, FieldSpec[] fields) {
+        checkSingleConstructor(cls);
         Constructor constructor = reflectMaster.getConstructor(cls);
         Class[] declaredTypes = constructor.getParameterTypes();
         Class[] expectedTypes = fieldSpecUtil.getTypes(fields);
         checkConstructor(expectedTypes, declaredTypes);
+    }
+
+    private void checkSingleConstructor(Class cls) {
+        Constructor[] constructors = cls.getConstructors();
+        if (constructors.length == 1) return;
+        fail(cls, "must have a single constructor which has a parameter for each property.");
     }
 
     private void checkConstructor(Class[] expectedTypes, Class[] declaredTypes) {
@@ -35,5 +45,10 @@ final class ConstructorDataChecker implements DataChecker {
             Class declaredCls = declared[i];
             Assert.assertEquals("For constructor parameter 0 we", expectedCls, declaredCls);
         }
+    }
+
+    private void fail(Class cls, String msg) {
+        String shortName = classMaster.getShortName(cls);
+        Assert.fail(shortName + " " + msg);
     }
 }

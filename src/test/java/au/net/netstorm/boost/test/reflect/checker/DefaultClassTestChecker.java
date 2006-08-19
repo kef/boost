@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 // FIX SC521 reorder these.
 // FIX SC521 remove dupe.
@@ -30,7 +30,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
 
     public void checkSubInterfaceOf(Interface superInterface, Interface subInterface) {
         boolean isSubInterface = classes.isSubInterfaceOf(superInterface, subInterface);
-        Assert.assertTrue(subInterface + " is not subinterface of  " + superInterface, isSubInterface);
+        Assert.assertTrue(subInterface + " is not subinterface of  " + superInterface + ".", isSubInterface);
     }
 
     public void checkSubclassOf(Class subClass, Class superClass) {
@@ -54,7 +54,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
     private void checkSubclassOf(boolean isSubclass, Class superClass, Class subClass) {
         String superClassName = getShortName(superClass);
         String subClassName = getShortName(subClass);
-        Assert.assertTrue(subClassName + " is not a subclass of " + superClassName, isSubclass);
+        Assert.assertTrue(subClassName + " is not a subclass of " + superClassName + ".", isSubclass);
     }
 
     private void checkImplementsInterface(Interface iface, Class cls) {
@@ -65,7 +65,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
     private void checkImplementsInterface(boolean implementsIt, Interface iface, Class cls) {
         String implName = getShortName(cls);
         String targetName = getShortName(iface);
-        Assert.assertTrue(implName + " is not an implementation of " + targetName, implementsIt);
+        Assert.assertTrue(implName + " is not an implementation of " + targetName + ".", implementsIt);
     }
 
     private void checkSynchronizedIgnoringExclusions(Method method) {
