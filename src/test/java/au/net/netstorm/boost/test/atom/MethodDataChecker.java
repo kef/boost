@@ -63,14 +63,14 @@ final class MethodDataChecker implements DataChecker {
         } catch (NoSuchMethodException e) {
             // FIXME: SC600 BREADCRUMB.
             // FIXME: SC600 Remove dupe here
-            fail("Method " + methodName + "() expected but not found.");
+            fail(toString(methodName) + " expected but not found.");
         }
     }
 
     private void chechMethodSignature(Class cls, String methodName) {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
         // FIX SC600 BREADCRUMB Sort out line wrap issue.
-        if (!modifierUtil.isPublicInstance(method)) fail("Method " + methodName + "() must be a public instance method.");
+        if (!modifierUtil.isPublicInstance(method)) fail(toString(methodName) + " must be a public instance method.");
         // FIXME: SC600 check return type.
     }
 
@@ -79,8 +79,12 @@ final class MethodDataChecker implements DataChecker {
     }
 
     private String toString(Method method) {
-        String name = method.getName();
-        return "Method " + name + "()";
+        String methodName = method.getName();
+        return toString(methodName);
+    }
+
+    private String toString(String methodName) {
+        return "Method " + methodName + "()";
     }
 
     private void fail(String msg) {

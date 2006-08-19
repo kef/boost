@@ -23,14 +23,18 @@ public final class DataDemoTest extends TestCase {
     // FIX SC600 Test only a single constructor.
     public void testBadDataAtoms() {
         checkData(NotPrimordialData.class, NO_FIELDS, "NotPrimordialData is not a subclass of Primordial");
-        checkData(ConstructorParameterCountMismatchData.class, SINGLE_STRING_PROPERTY, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
-        checkData(ConstructorParameterMismatchData.class, SINGLE_STRING_PROPERTY, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
-        checkData(ProtectedMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
-        checkData(PackagePrivateMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
-        checkData(PublicStaticMethodsIllegalData.class, SINGLE_STRING_PROPERTY, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
-        checkData(MethodWithArgumentsIllegalData.class, SINGLE_STRING_PROPERTY, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
-        checkData(IncorrectlyNamedPropertyGetterData.class,  SINGLE_STRING_PROPERTY, "Method getGuitar() expected but not found.");
-        checkData(IncorrectlyScopedPropertyGetterData.class,  SINGLE_STRING_PROPERTY, "Method getGuitar() must be a public instance method.");
+        checkData(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
+        checkData(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
+        checkData(ProtectedMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkData(PackagePrivateMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkData(PublicStaticMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkData(MethodWithArgumentsIllegalData.class, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
+        checkData(IncorrectlyNamedPropertyGetterData.class, "Method getGuitar() expected but not found.");
+        checkData(IncorrectlyScopedPropertyGetterData.class, "Method getGuitar() must be a public instance method.");
+    }
+
+    private void checkData(Class cls, String expectedMsg) {
+        checkData(cls, SINGLE_STRING_PROPERTY, expectedMsg);
     }
 
     private void checkData(Class cls, FieldSpec[] fields, String expectedMsg) {
