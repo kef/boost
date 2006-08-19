@@ -19,6 +19,7 @@ public final class DataDemoTest extends TestCase {
         dataChecker.checkIsData(BasicData.class, fields);
     }
 
+    // FIX SC600 Test for boolean "isBlah".
     // FIX SC600 Test only a single constructor.
     public void testBadDataAtoms() {
         checkData(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial");
@@ -35,8 +36,12 @@ public final class DataDemoTest extends TestCase {
     }
 
     private void checkData(Class cls, String expectedMsg) {
+        checkData(cls, SINGLE_STRING_PROPERTY, expectedMsg);
+    }
+
+    private void checkData(Class cls, FieldSpec[] fields, String expectedMsg) {
         try {
-            dataChecker.checkIsData(cls, SINGLE_STRING_PROPERTY);
+            dataChecker.checkIsData(cls, fields);
             barf();
         } catch (AssertionFailedError e) {
             checkMessage(e, expectedMsg);
