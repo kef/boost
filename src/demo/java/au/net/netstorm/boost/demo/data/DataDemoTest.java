@@ -8,7 +8,6 @@ import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 // FIX SC600 Ensure all test data classes are package private.
-
 public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
