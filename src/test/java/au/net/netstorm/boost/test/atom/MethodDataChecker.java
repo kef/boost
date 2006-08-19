@@ -61,15 +61,12 @@ final class MethodDataChecker implements DataChecker {
         try {
             cls.getDeclaredMethod(methodName, NO_PARAMETERS);
         } catch (NoSuchMethodException e) {
-            // FIXME: SC600 BREADCRUMB.
-            // FIXME: SC600 Remove dupe here
             fail(toString(methodName) + " expected but not found.");
         }
     }
 
     private void chechMethodSignature(Class cls, String methodName) {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
-        // FIX SC600 BREADCRUMB Sort out line wrap issue.
         if (!modifierUtil.isPublicInstance(method)) fail(toString(methodName) + " must be a public instance method.");
         // FIXME: SC600 check return type.
     }
