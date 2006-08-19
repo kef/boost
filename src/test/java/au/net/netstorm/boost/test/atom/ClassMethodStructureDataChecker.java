@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 import java.lang.reflect.Method;
 
-final class MethodDataChecker implements DataChecker {
+final class ClassMethodStructureDataChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private EdgeClass edgeClass = new DefaultEdgeClass();
@@ -22,7 +22,7 @@ final class MethodDataChecker implements DataChecker {
         // FIX SC600 Check each field individually.
         // FIX SC600 Check return type.
         // FIX SC600 BREADCRUMB Ensure the public methods match exactly the field count.
-        checkClassScope(cls, fields);
+        checkClassInterface(cls, fields);
     }
 
     private void checkMethodSignatures(Class cls) {
@@ -40,7 +40,7 @@ final class MethodDataChecker implements DataChecker {
         fail("All methods must be public non-static or private.  " + name + " violates this constraint.");
     }
 
-    private void checkClassScope(Class cls, FieldSpec[] fields) {
+    private void checkClassInterface(Class cls, FieldSpec[] fields) {
         Method[] methods = classMethodUtil.getAllNotInheritedPublicInstance(cls);
         if (methods.length <= fields.length) return;
         fail("Too many public methods.  Only getters for the specified properties are allowed.");

@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
@@ -12,6 +10,8 @@ import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 
+import java.lang.reflect.Constructor;
+
 // FIX SC600 Think about how to incorporate a test with a marker interface which uses field
 // FIX SC600 introspection to determine which properties.  Declaration of a single array
 // FIX SC600 is probably enough to specify field/property order.  Might use volatile or
@@ -20,7 +20,7 @@ import au.net.netstorm.boost.util.type.Data;
 
 public final class DefaultDataTestChecker implements DataTestChecker {
     private DataChecker constructorChecker = new ConstructorDataChecker();
-    private DataChecker methodChecker = new MethodDataChecker();
+    private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
@@ -54,15 +54,15 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private void checkStructure(Class cls, FieldSpec[] fields) {
         checkClassDeclaration(cls);
         checkConstructor(cls, fields);
-        checkMethods(cls, fields);
+        checkClassMethodStructure(cls, fields);
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
         constructorChecker.checkStructure(cls, fields);
     }
 
-    private void checkMethods(Class cls, FieldSpec[] fields) {
-        methodChecker.checkStructure(cls, fields);
+    private void checkClassMethodStructure(Class cls, FieldSpec[] fields) {
+        classMethodStructureChecker.checkStructure(cls, fields);
     }
 
     private void checkClassDeclaration(Class cls) {
