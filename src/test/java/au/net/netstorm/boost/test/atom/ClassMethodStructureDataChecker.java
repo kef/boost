@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 final class ClassMethodStructureDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private ClassMethodUtil classMethodUtil = new DefaultClassMethodUtil();
+    private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
 
     public void check(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
@@ -30,8 +31,7 @@ final class ClassMethodStructureDataChecker implements DataChecker {
     private void checkMethodScope(Method method) {
         if (modifierUtil.isPublicInstance(method)) return;
         if (modifierUtil.isPrivate(method)) return;
-        String name = toString(method);
-        fail("All methods must be public non-static or private.  " + name + " violates this constraint.");
+        fail(method, "violates the constraint that all methods must be public non-static or private.");
     }
 
     private void checkClassInterface(Class cls, FieldSpec[] fields) {
@@ -43,17 +43,12 @@ final class ClassMethodStructureDataChecker implements DataChecker {
     private void checkMethodHasNoArguments(Method method) {
         Class[] parameterTypes = method.getParameterTypes();
         if (parameterTypes.length == 0) return;
-        String name = toString(method);
-        fail(name + " has arguments.  All property accessor methods must have no arguments");
+        fail(method, "has arguments.  All property accessor methods must have no arguments");
     }
 
-    private String toString(Method method) {
-        String methodName = method.getName();
-        return toString(methodName);
-    }
-
-    private String toString(String methodName) {
-        return "Method " + methodName + "()";
+    private void fail(Method method, String msg) {
+        String name = stringer.toString(method);
+        fail(name + " " + msg);
     }
 
     private void fail(String msg) {

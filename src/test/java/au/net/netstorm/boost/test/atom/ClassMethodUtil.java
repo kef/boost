@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.atom;
 
 import java.lang.reflect.Method;
 
-public interface ClassMethodUtil {
+interface ClassMethodUtil {
     Method[] getAll(Class cls);
 
     Method[] getAllPublicInstance(Class cls);

@@ -11,7 +11,7 @@ public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
-    private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "All methods must be public non-static or private.  Method getGuitar() violates this constraint.";
+    private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
     public void testBasic() {
         FieldSpec f1 = new DefaultFieldSpec("frog", String.class);
@@ -31,7 +31,7 @@ public final class DataDemoTest extends TestCase {
         checkData(PropertyGetterIncorrectlyNamedData.class, "Method getGuitar() expected but not found.");
         checkData(PropertyGetterIncorrectlyScopedData.class, "Method getGuitar() must be a public instance method.");
         checkData(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
-//        checkData(Property?ReturnTypeMismatchData.class)
+        checkData(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
     }
 
     private void checkData(Class cls, String expectedMsg) {

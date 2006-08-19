@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 public class PropertyMethodStructureChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
+    private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
 
@@ -27,29 +28,48 @@ public class PropertyMethodStructureChecker implements DataChecker {
 
     private void checkPropertyAccessor(Class cls, FieldSpec field) {
         String propertyName = nameProvider.getPropertyMethodName(field);
+        Class returnType = field.getType();
         checkMethodExists(cls, propertyName);
-        chechMethodSignature(cls, propertyName);
+        chechMethodSignature(cls, propertyName, returnType);
     }
 
     private void checkMethodExists(Class cls, String methodName) {
         try {
             cls.getDeclaredMethod(methodName, NO_PARAMETERS);
         } catch (NoSuchMethodException e) {
-            fail(toString(methodName) + " expected but not found.");
+            fail(methodName, "expected but not found.");
         }
     }
 
-    private void chechMethodSignature(Class cls, String methodName) {
+    private void chechMethodSignature(Class cls, String methodName, Class returnType) {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
-        if (!modifierUtil.isPublicInstance(method)) fail(toString(methodName) + " must be a public instance method.");
-        // FIXME: SC600 check return type.
+        checkPublicInstance(method);
+        checkReturnType(returnType, method);
     }
 
-    private void fail(String msg) {
-        Assert.fail(msg);
+    private void checkReturnType(Class expectedType, Method method) {
+        Class actualType = method.getReturnType();
+        if (actualType.equals(expectedType)) return;
+        fail(method, "must return " + expectedType + ".");
     }
 
-    private String toString(String methodName) {
-        return "Method " + methodName + "()";
+    private void checkPublicInstance(Method method) {
+        if (modifierUtil.isPublicInstance(method)) return;
+        fail(method, "must be a public instance method.");
+    }
+
+    private void fail(Method method, String msg) {
+        String name = stringer.toString(method);
+        barf(name, msg);
+    }
+
+    private void fail(String methodName, String msg) {
+        String name = stringer.toString(methodName);
+        barf(name, msg);
+    }
+
+    private void barf(String s1, String s2) {
+        Assert.fail(s1 + " " + s2);
     }
 }
+
