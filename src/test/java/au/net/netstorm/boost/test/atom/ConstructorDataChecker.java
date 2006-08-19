@@ -44,7 +44,7 @@ final class ConstructorDataChecker implements DataChecker {
             Class expectedCls = expected[i];
             Class declaredCls = declared[i];
             Assert.assertEquals("For constructor parameter 0 we", expectedCls, declaredCls);
-            ¤   }
+        }
     }
 
     private void fail(Class cls, String msg) {
