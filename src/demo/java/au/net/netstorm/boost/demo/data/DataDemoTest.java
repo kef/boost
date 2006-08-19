@@ -31,6 +31,8 @@ public final class DataDemoTest extends TestCase {
         checkData(MethodWithArgumentsIllegalData.class, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
         checkData(IncorrectlyNamedPropertyGetterData.class, "Method getGuitar() expected but not found.");
         checkData(IncorrectlyScopedPropertyGetterData.class, "Method getGuitar() must be a public instance method.");
+        // FIX SC600 BREADCRUMB REINSTATE.
+//        checkData(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
     }
 
     private void checkData(Class cls, String expectedMsg) {

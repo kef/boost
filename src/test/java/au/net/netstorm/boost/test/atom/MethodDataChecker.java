@@ -21,6 +21,7 @@ final class MethodDataChecker implements DataChecker {
         // FIX SC600 Check each field individually.
         // FIX SC600 Check return type.
         // FIX SC600 BREADCRUMB Ensure the public methods match exactly the field count.
+        checkClassScope(cls, fields);
     }
 
     private void checkMethodSignatures(Class cls) {
@@ -36,6 +37,13 @@ final class MethodDataChecker implements DataChecker {
         if (modifierUtil.isPrivate(method)) return;
         String name = toString(method);
         fail("All methods must be public non-static or private.  " + name + " violates this constraint.");
+    }
+
+    private void checkClassScope(Class cls, FieldSpec[] fields) {
+        Method[] methods = cls.getMethods();
+        if (methods.length <= fields.length) return;
+        // FIX SC600 BREADCRUMB REINSTATE.
+//        fail("Too many public methods.  Only getters for the specified properties are allowed.");
     }
 
     private void checkMethodHasNoArguments(Method method) {
@@ -71,6 +79,7 @@ final class MethodDataChecker implements DataChecker {
         // FIXME: SC600 check return type.
     }
 
+    // FIX SC600 Move this into ClassMethodUtil.
     private Method[] getAllMethods(Class cls) {
         return cls.getDeclaredMethods();
     }
