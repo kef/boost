@@ -79,6 +79,7 @@ final class MethodDataChecker implements DataChecker {
         // FIXME: SC600 check return type.
     }
 
+    // FIX SC600 BREADCRUMB 10 Stitch this in.
     // FIX SC600 Move this into ClassMethodUtil.
     private Method[] getAllMethods(Class cls) {
         return cls.getDeclaredMethods();
