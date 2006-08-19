@@ -37,8 +37,6 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         checkBehaviour(cls, fields);
         // FIX SC600 BREADCRUMB Back here after breadcrumb below.
         //
-        // The can be checked by ensuring the field reference is different and the getXxx is different again.
-        // Can have any number of private methods.
         // Public methods must match field specifications.
         // Types must be Immutable or PrimitiveImmutable types.
         // Check nulls barf in methods.
