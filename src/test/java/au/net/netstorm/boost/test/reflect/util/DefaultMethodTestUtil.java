@@ -17,9 +17,7 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     public Class getThrowsType(Method method) {
         Class[] exceptions = method.getExceptionTypes();
         String name = method.getName();
-        // FIX SC043 R Should this be a checker?
-        // FIX SC043 R Why isn't tbis Assert.assertEquals.
-        Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
+        if (exceptions.length != 1) fail(name + "() must throw a single exception.");
         return exceptions[0];
     }
 
@@ -45,5 +43,9 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     private boolean matches(Method method, String methodName) {
         String name = method.getName();
         return name.equals(methodName);
+    }
+
+    private void fail(String msg) {
+        Assert.fail(msg);
     }
 }
