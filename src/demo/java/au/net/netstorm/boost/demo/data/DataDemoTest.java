@@ -15,6 +15,8 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec[] SINGLE_BOOLEAN_PROPERTY = {BOOLEAN_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
+    // FIX SC600 Deep with interfaces.
+    // FIX SC600 Interfaces.
     public void testGoodAtoms() {
         dataChecker.checkIsData(BasicData.class, SINGLE_STRING_PROPERTY);
         dataChecker.checkIsData(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
