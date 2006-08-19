@@ -53,7 +53,8 @@ final class DefaultClassMethodUtil implements ClassMethodUtil {
     }
 
     private Method[] guardGetAll(Class cls) {
-        if (!cls.equals(Primordial.class)) Assert.fail("Currently we only support Primordial.  You requested " + cls);
+        Class superclass = cls.getSuperclass();
+        if (!superclass.equals(Primordial.class)) Assert.fail("Currently we only support Primordial as a superclass.  You requested " + superclass);
         return cls.getDeclaredMethods();
     }
 

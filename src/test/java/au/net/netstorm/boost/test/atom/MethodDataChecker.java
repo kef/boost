@@ -14,6 +14,7 @@ final class MethodDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
+    private ClassMethodUtil classMethodUtil = new DefaultClassMethodUtil();
 
     public void checkStructure(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
@@ -25,7 +26,7 @@ final class MethodDataChecker implements DataChecker {
     }
 
     private void checkMethodSignatures(Class cls) {
-        Method[] methods = getAllMethods(cls);
+        Method[] methods = classMethodUtil.getAll(cls);
         for (int i = 0; i < methods.length; i++) {
             checkMethodScope(methods[i]);
             checkMethodHasNoArguments(methods[i]);
@@ -77,12 +78,6 @@ final class MethodDataChecker implements DataChecker {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
         if (!modifierUtil.isPublicInstance(method)) fail(toString(methodName) + " must be a public instance method.");
         // FIXME: SC600 check return type.
-    }
-
-    // FIX SC600 BREADCRUMB 10 Stitch this in.
-    // FIX SC600 Move this into ClassMethodUtil.
-    private Method[] getAllMethods(Class cls) {
-        return cls.getDeclaredMethods();
     }
 
     private String toString(Method method) {
