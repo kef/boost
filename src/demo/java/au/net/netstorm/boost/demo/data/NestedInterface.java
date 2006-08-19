@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.data;
 
-public interface NestedInterface {
+import au.net.netstorm.boost.util.type.Data;
+
+public interface NestedInterface extends Data {
     String getGuitar();
 
     BasicInterface getBasic();
