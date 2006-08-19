@@ -11,12 +11,11 @@ import java.lang.reflect.InvocationHandler;
 import java.util.Random;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
-    private static final InvocationHandler BORING_INVOCATION_HANDLER = null;
+    private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 0;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
     private Random random = new Random();
-
     private interface InternalInterface {
     }
 
@@ -40,7 +39,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
 
     private Object randomInterface(Class type) {
         Interface iface = new Interface(type);
-        return proxyFactory.newProxy(iface, BORING_INVOCATION_HANDLER);
+        return proxyFactory.newProxy(iface, NO_OP_INVOCATION_HANDLER);
     }
 
     private Object randomArray(Class type) {
@@ -54,10 +53,15 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
         if (type == Boolean.class) return randomBoolean();
+        if (type == boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
+        if (type == int.class) return randomInteger();
         if (type == Long.class) return randomLong();
+        if (type == long.class) return randomLong();
         if (type == Float.class) return randomFloat();
+        if (type == float.class) return randomFloat();
         if (type == Double.class) return randomDouble();
+        if (type == double.class) return randomDouble();
         return null;
     }
 
