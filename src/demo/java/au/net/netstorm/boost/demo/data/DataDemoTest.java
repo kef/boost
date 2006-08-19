@@ -18,6 +18,7 @@ public final class DataDemoTest extends TestCase {
     public void testGoodAtoms() {
         dataChecker.checkIsData(DefaultBasicData.class, SINGLE_STRING_PROPERTY);
         dataChecker.checkIsData(DefaultBooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
+        dataChecker.checkIsData(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
     }
 
     public void testBadAtoms() {
