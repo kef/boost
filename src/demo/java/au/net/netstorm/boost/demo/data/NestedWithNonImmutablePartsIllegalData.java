@@ -2,20 +2,20 @@ package au.net.netstorm.boost.demo.data;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-final class NestedWithNonImmutablePartsIllegalData extends Primordial implements NestedInterface {
+final class NestedWithNonImmutablePartsIllegalData extends Primordial implements NestedNonImmutableInterface {
     private final String guitar;
-    private final BasicInterface basic;
+    private final NonImmutableInterface nonImmutable;
 
-    public NestedWithNonImmutablePartsIllegalData(String guitar, BasicInterface basic) {
+    public NestedWithNonImmutablePartsIllegalData(String guitar, NonImmutableInterface nonImmutable) {
         this.guitar = guitar;
-        this.basic = basic;
+        this.nonImmutable = nonImmutable;
     }
 
     public String getGuitar() {
         return guitar;
     }
 
-    public BasicInterface getBasic() {
-        return basic;
+    public NonImmutableInterface getNonImmutable() {
+        return nonImmutable;
     }
 }
