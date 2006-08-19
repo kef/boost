@@ -18,17 +18,16 @@ public final class DataDemoTest extends TestCase {
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
     // FIX SC600 Deep with interfaces.
-    // FIX SC600 Interfaces.
     // FIX SC600 Must fail if nested fields are not Data types or immutable.
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
+        checkGood(BasicNonFinalFieldsData.class, SINGLE_STRING_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(DefaultBasicInterfaceData.class, SINGLE_STRING_PROPERTY);
         checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
-    // FIX SC600 Non final fields are ok.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
