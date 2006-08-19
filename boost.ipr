@@ -36,7 +36,7 @@
         <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
       </value>
     </option>
-    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+    <option name="USE_PER_PROJECT_SETTINGS" value="false" />
   </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />

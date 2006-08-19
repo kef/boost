@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 final class MethodDataChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};
@@ -69,8 +69,7 @@ final class MethodDataChecker implements DataChecker {
     private void chechMethodSignature(Class cls, String methodName) {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
         // FIX SC600 BREADCRUMB Sort out line wrap issue.
-        if (!modifierUtil.isPublicInstance(method))
-            fail("Method " + methodName + "() must be a public instance method.");
+        if (!modifierUtil.isPublicInstance(method)) fail("Method " + methodName + "() must be a public instance method.");
         // FIXME: SC600 check return type.
     }
 
