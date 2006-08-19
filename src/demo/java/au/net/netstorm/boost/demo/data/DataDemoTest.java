@@ -18,9 +18,10 @@ public final class DataDemoTest extends TestCase {
     // FIX SC600 Deep with interfaces.
     // FIX SC600 Interfaces.
     public void testGoodAtoms() {
-        dataChecker.checkIsData(BasicData.class, SINGLE_STRING_PROPERTY);
-        dataChecker.checkIsData(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
-        dataChecker.checkIsData(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
+        checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
+        checkGood(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
+        checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
+        checkGood(DefaultSomeInterfaceBasicData.class, SINGLE_STRING_PROPERTY);
     }
 
     public void testBadAtoms() {
@@ -36,6 +37,10 @@ public final class DataDemoTest extends TestCase {
         checkBad(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
         checkBad(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
         checkBad(MultipleConstructorIllegalData.class, "MultipleConstructorIllegalData must have a single constructor which has a parameter for each property.");
+    }
+
+    private void checkGood(Class cls, FieldSpec[] fields) {
+        dataChecker.checkIsData(cls, fields);
     }
 
     private void checkBad(Class cls, String expectedMsg) {
