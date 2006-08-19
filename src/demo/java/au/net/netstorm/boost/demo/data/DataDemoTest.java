@@ -13,9 +13,11 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec BOOLEAN_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
     private static final FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
+    private static final FieldSpec NON_DATA_PROPERTY = new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
     private static final FieldSpec[] SINGLE_BOOLEAN_PROPERTY = {BOOLEAN_PROPERTY};
     private static final FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
+    private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
     // FIX SC600 Deep with interfaces.
@@ -44,6 +46,8 @@ public final class DataDemoTest extends TestCase {
         checkBad(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
         checkBad(MultipleConstructorIllegalData.class, "MultipleConstructorIllegalData must have a single constructor which has a parameter for each property.");
         checkBad(ReturnValueIncorrectData.class, "Method getGuitar() should return the same value as passed in to the constructor.  Instead it returned (You picked the wrong string).");
+        // FIX SC600 BREADCRUMB Reinstate.
+//   checkBad(NestedWithNonImmutablePartsIllegalData.class, COMPLEX_NON_DATA_PROPERTIES, "FOO");
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {

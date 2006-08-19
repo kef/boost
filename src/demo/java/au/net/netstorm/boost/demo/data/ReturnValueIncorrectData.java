@@ -4,7 +4,8 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
 
 final class ReturnValueIncorrectData extends Primordial implements Data {
-    private final String guitar;
+    private String guitar;
+    private NonImmutableInterface nonImmutable;
 
     public ReturnValueIncorrectData(String guitar) {
         this.guitar = guitar;
