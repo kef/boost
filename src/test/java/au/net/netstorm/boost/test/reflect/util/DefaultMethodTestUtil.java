@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.test.reflect.util;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {
     private final EdgeMethod edgeMethod = new DefaultEdgeMethod();
@@ -18,7 +18,7 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
         Class[] exceptions = method.getExceptionTypes();
         String name = method.getName();
         // FIX SC043 R Should this be a checker?
-        // FIX SC043 R WHy isn't tbis Assert.assertEquals.
+        // FIX SC043 R Why isn't tbis Assert.assertEquals.
         Assert.assertTrue(name + "() must throw a single exception.", exceptions.length == 1);
         return exceptions[0];
     }
@@ -38,6 +38,7 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     }
 
     private Object invoke(Object invokee, Method method, Object[] parameters) {
+        method.setAccessible(true);
         return edgeMethod.invoke(method, invokee, parameters);
     }
 
