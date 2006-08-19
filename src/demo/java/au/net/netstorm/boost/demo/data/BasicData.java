@@ -11,6 +11,7 @@ final class BasicData extends Primordial implements Data {
     }
 
     public String getGuitar() {
-        return guitar;
+        // FIX SC600 Remove this.
+        return "BETTER FIX THIS";
     }
 }
