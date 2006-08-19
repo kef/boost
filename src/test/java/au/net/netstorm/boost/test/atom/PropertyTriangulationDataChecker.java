@@ -47,7 +47,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     // FIX SC600 This is where array checking would scoot off somewhere else.
     private void checkEquals(Object value, Object returnValue, String methodName) {
         if (equals(value, returnValue)) return;
-        fail(methodName, "should return the same value as passed in to the constructor (" + value + ").  Instead it returned " + returnValue);
+        fail(methodName, "should return the same value as passed in to the constructor.  Instead it returned (" + returnValue + ").");
     }
 
     // FIX SC600 Smells like an equals checker.

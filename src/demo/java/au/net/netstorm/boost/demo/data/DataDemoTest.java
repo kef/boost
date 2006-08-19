@@ -43,6 +43,7 @@ public final class DataDemoTest extends TestCase {
         checkBad(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
         checkBad(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
         checkBad(MultipleConstructorIllegalData.class, "MultipleConstructorIllegalData must have a single constructor which has a parameter for each property.");
+        checkBad(ReturnValueIncorrectData.class, "Method getGuitar() should return the same value as passed in to the constructor.  Instead it returned (You picked the wrong string).");
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {
