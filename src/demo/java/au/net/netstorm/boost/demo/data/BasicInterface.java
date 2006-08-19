@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.demo.data;
 
-public interface SomeInterface {
+public interface BasicInterface {
     String getGuitar();
 }
