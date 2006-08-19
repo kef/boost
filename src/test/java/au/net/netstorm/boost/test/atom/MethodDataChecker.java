@@ -41,10 +41,9 @@ final class MethodDataChecker implements DataChecker {
     }
 
     private void checkClassScope(Class cls, FieldSpec[] fields) {
-        Method[] methods = cls.getMethods();
+        Method[] methods = classMethodUtil.getAllNotInheritedPublicInstance(cls);
         if (methods.length <= fields.length) return;
-        // FIX SC600 BREADCRUMB REINSTATE.
-//        fail("Too many public methods.  Only getters for the specified properties are allowed.");
+        fail("Too many public methods.  Only getters for the specified properties are allowed.");
     }
 
     private void checkMethodHasNoArguments(Method method) {
