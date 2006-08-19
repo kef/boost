@@ -28,9 +28,10 @@ public final class DataDemoTest extends TestCase {
         checkData(PackagePrivateMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkData(PublicStaticMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkData(MethodWithArgumentsIllegalData.class, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
-        checkData(IncorrectlyNamedPropertyGetterData.class, "Method getGuitar() expected but not found.");
-        checkData(IncorrectlyScopedPropertyGetterData.class, "Method getGuitar() must be a public instance method.");
+        checkData(PropertyGetterIncorrectlyNamedData.class, "Method getGuitar() expected but not found.");
+        checkData(PropertyGetterIncorrectlyScopedData.class, "Method getGuitar() must be a public instance method.");
         checkData(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
+//        checkData(Property?ReturnTypeMismatchData.class)
     }
 
     private void checkData(Class cls, String expectedMsg) {
