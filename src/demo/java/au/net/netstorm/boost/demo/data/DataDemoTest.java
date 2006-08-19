@@ -11,8 +11,10 @@ public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec BOOLEAN_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
+    private static final FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
     private static final FieldSpec[] SINGLE_BOOLEAN_PROPERTY = {BOOLEAN_PROPERTY};
+    private static final FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
     // FIX SC600 Deep with interfaces.
@@ -21,11 +23,14 @@ public final class DataDemoTest extends TestCase {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
-        checkGood(DefaultSomeInterfaceBasicData.class, SINGLE_STRING_PROPERTY);
+        checkGood(DefaultBasicInterfaceData.class, SINGLE_STRING_PROPERTY);
+//        checkGood(DeepInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
+    // FIX SC600 Must be a class (check fails with an interface.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
+        checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
         checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 2 arguments(s).");
         checkBad(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
         checkBad(ProtectedMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);

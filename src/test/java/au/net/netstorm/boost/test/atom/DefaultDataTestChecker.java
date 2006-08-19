@@ -2,13 +2,9 @@ package au.net.netstorm.boost.test.atom;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.type.Data;
 
 import java.lang.reflect.Constructor;
 
@@ -22,8 +18,8 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
     private DataChecker propertyMethodStructureChecker = new PropertyMethodStructureChecker();
+    private DataChecker classChecker = new ClassDataChecker();
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
-    private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
@@ -51,7 +47,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     }
 
     private void checkStructure(Class cls, FieldSpec[] fields) {
-        checkClassDeclaration(cls);
+        checkClassDeclaration(cls, fields);
         checkConstructor(cls, fields);
         checkClassMethodStructure(cls, fields);
         checkPropertyMethodStructure(cls, fields);
@@ -69,9 +65,8 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         classMethodStructureChecker.check(cls, fields);
     }
 
-    private void checkClassDeclaration(Class cls) {
-        classChecker.checkImplementsAndFinal(cls, Data.class);
-        classChecker.checkSubclassOf(cls, Primordial.class);
+    private void checkClassDeclaration(Class cls, FieldSpec[] fields) {
+        classChecker.check(cls, fields);
     }
 
     private Object getInstance(Class cls, Object[] parameters) {
