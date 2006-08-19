@@ -1,7 +1,9 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
+import junit.framework.Assert;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -12,7 +14,6 @@ import java.util.Set;
 // FIX SC600 Candidate for reflect.util.
 
 final class DefaultClassMethodUtil implements ClassMethodUtil {
-    // FUTURE: This only works for classes which inherit java.lang.Object (or Primordial).  Should work for all classes.
     private final Set inherited = new HashSet();
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
 
@@ -23,7 +24,7 @@ final class DefaultClassMethodUtil implements ClassMethodUtil {
     }
 
     public Method[] getAll(Class cls) {
-        return cls.getDeclaredMethods();
+        return guardGetAll(cls);
     }
 
     public Method[] getAllPublicInstance(Class cls) {
@@ -46,9 +47,14 @@ final class DefaultClassMethodUtil implements ClassMethodUtil {
     }
 
     private HashSet getAllAsSet(Class cls) {
-        Method[] all = getAll(cls);
+        Method[] all = guardGetAll(cls);
         List list = Arrays.asList(all);
         return new HashSet(list);
+    }
+
+    private Method[] guardGetAll(Class cls) {
+        if (!cls.equals(Primordial.class)) Assert.fail("Currently we only support Primordial.  You requested " + cls);
+        return cls.getDeclaredMethods();
     }
 
     private void keepPublicInstance(Set set) {
