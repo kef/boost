@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.data;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
 
-final class ManyPrivateMethodsBasicData extends Primordial implements Data, BasicData {
+final class ManyPrivateMethodsBasicData extends Primordial implements Data {
     private final String guitar;
 
     public ManyPrivateMethodsBasicData(String guitar) {

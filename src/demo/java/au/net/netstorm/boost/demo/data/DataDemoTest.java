@@ -16,8 +16,8 @@ public final class DataDemoTest extends TestCase {
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
     public void testGoodAtoms() {
-        dataChecker.checkIsData(DefaultBasicData.class, SINGLE_STRING_PROPERTY);
-        dataChecker.checkIsData(DefaultBooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
+        dataChecker.checkIsData(BasicData.class, SINGLE_STRING_PROPERTY);
+        dataChecker.checkIsData(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
         dataChecker.checkIsData(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
     }
 
