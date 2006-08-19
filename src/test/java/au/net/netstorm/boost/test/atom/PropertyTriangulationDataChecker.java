@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
@@ -9,6 +7,7 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
+import junit.framework.Assert;
 
 import java.lang.reflect.Constructor;
 
@@ -19,8 +18,8 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private MethodTestUtil methodUtil = new DefaultMethodTestUtil();
+    private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
-    private EdgeClass edgeClass = new DefaultEdgeClass();
 
     public void check(Class cls, FieldSpec[] fields) {
         Object[] values = getInstances(fields);
@@ -32,21 +31,28 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         return getInstance(cls, values);
     }
 
-    private void checkPropertyValuesMatch(Object instance, FieldSpec[] fields, Object[] parameters) {
+    private void checkPropertyValuesMatch(Object instance, FieldSpec[] fields, Object[] values) {
         for (int i = 0; i < fields.length; i++) {
-            Object parameter = parameters[i];
-            FieldSpec field = fields[i];
-            checkPropertyValueMatches(instance, field, parameter);
+            checkPropertyValueMatches(instance, fields[i], values[i]);
         }
     }
 
-    private void checkPropertyValueMatches(Object instance, FieldSpec field, Object parameter) {
+    private void checkPropertyValueMatches(Object instance, FieldSpec field, Object value) {
         String methodName = nameProvider.getPropertyMethodName(field);
-        invoke(instance, methodName);
+        Object returnValue = methodUtil.invoke(instance, methodName, NO_ARGUMENTS);
+        checkEquals(value, returnValue, methodName);
     }
 
-    private void invoke(Object instance, String methodName) {
-        methodUtil.invoke(instance, methodName, NO_ARGUMENTS);
+    // FIX SC600 This is where array checking would scoot off somewhere else.
+    private void checkEquals(Object value, Object returnValue, String methodName) {
+        if (equals(value, returnValue)) return;
+        fail(methodName, "should return the same value as passed in to the constructor (" + value + ").  Instead it returned " + returnValue);
+    }
+
+    private boolean equals(Object value, Object returnValue) {
+        return true;
+        // FIX SC600 BREADCRUMB
+//        return value == returnValue;
     }
 
     private Object getInstance(Class cls, Object[] parameters) {
@@ -62,5 +68,10 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private Object getInstance(Constructor constructor, Object[] parameters) {
         constructor.setAccessible(true);
         return edgeConstructor.newInstance(constructor, parameters);
+    }
+
+    private void fail(String methodName, String msg) {
+        String name = stringer.toString(methodName);
+        Assert.fail(name + " " + msg);
     }
 }
