@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationHandler;
-import java.util.Random;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
+
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
+import java.util.Random;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler BORING_INVOCATION_HANDLER = null;
@@ -46,7 +46,6 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Object randomArray(Class type) {
         Class componentType = type.getComponentType();
         Object array = Array.newInstance(componentType, ARRAY_LENGTH);
-        // FIX SC600 Populate array with instances.
         populate(array, componentType);
         return array;
     }
