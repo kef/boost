@@ -14,9 +14,6 @@ final class ClassMethodStructureDataChecker implements DataChecker {
 
     public void check(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
-        // FIX SC600 Check each field individually.
-        // FIX SC600 Check return type.
-        // FIX SC600 BREADCRUMB Ensure the public methods match exactly the field count.
         checkClassInterface(cls, fields);
     }
 

@@ -22,11 +22,11 @@ class PropertyMethodStructureChecker implements DataChecker {
 
     private void checkPropertyMethods(Class cls, FieldSpec[] fields) {
         for (int i = 0; i < fields.length; i++) {
-            checkPropertyAccessor(cls, fields[i]);
+            checkPropertyMethod(cls, fields[i]);
         }
     }
 
-    private void checkPropertyAccessor(Class cls, FieldSpec field) {
+    private void checkPropertyMethod(Class cls, FieldSpec field) {
         String propertyName = nameProvider.getPropertyMethodName(field);
         Class returnType = field.getType();
         checkMethodExists(cls, propertyName);
