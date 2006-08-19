@@ -10,36 +10,36 @@ import junit.framework.TestCase;
 public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
+    private static final FieldSpec BOOLEAN_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
+    private static final FieldSpec[] SINGLE_BOOLEAN_PROPERTY = {BOOLEAN_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
-    public void testBasic() {
-        FieldSpec f1 = new DefaultFieldSpec("frog", String.class);
-        FieldSpec[] fields = {f1};
-        dataChecker.checkIsData(BasicData.class, fields);
+    public void testGoodDataAtoms() {
+        dataChecker.checkIsData(DefaultBasicData.class, SINGLE_STRING_PROPERTY);
+        dataChecker.checkIsData(DefaultBooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
     }
 
-    // FIX SC600 Test for boolean "isBlah".
     // FIX SC600 Test only a single constructor.
     public void testBadDataAtoms() {
-        checkData(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial");
-        checkData(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
-        checkData(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
-        checkData(ProtectedMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
-        checkData(PackagePrivateMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
-        checkData(PublicStaticMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
-        checkData(MethodWithArgumentsIllegalData.class, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
-        checkData(PropertyGetterIncorrectlyNamedData.class, "Method getGuitar() expected but not found.");
-        checkData(PropertyGetterIncorrectlyScopedData.class, "Method getGuitar() must be a public instance method.");
-        checkData(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
-        checkData(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
+        checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial");
+        checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 0 arguments(s).");
+        checkBad(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
+        checkBad(ProtectedMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkBad(PackagePrivateMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkBad(PublicStaticMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
+        checkBad(MethodWithArgumentsIllegalData.class, "Method getGuitar() has arguments.  All property accessor methods must have no arguments");
+        checkBad(PropertyGetterIncorrectlyNamedData.class, "Method getGuitar() expected but not found.");
+        checkBad(PropertyGetterIncorrectlyScopedData.class, "Method getGuitar() must be a public instance method.");
+        checkBad(ExtraPublicMethodsIllegalData.class, "Too many public methods.  Only getters for the specified properties are allowed.");
+        checkBad(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
     }
 
-    private void checkData(Class cls, String expectedMsg) {
-        checkData(cls, SINGLE_STRING_PROPERTY, expectedMsg);
+    private void checkBad(Class cls, String expectedMsg) {
+        checkBad(cls, SINGLE_STRING_PROPERTY, expectedMsg);
     }
 
-    private void checkData(Class cls, FieldSpec[] fields, String expectedMsg) {
+    private void checkBad(Class cls, FieldSpec[] fields, String expectedMsg) {
         try {
             dataChecker.checkIsData(cls, fields);
             barf();

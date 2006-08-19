@@ -3,9 +3,6 @@ package au.net.netstorm.boost.test.atom;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class DefaultPropertyNameProvider implements PropertyNameProvider {
-    // FIX SC600 This was we can do get/is, and also the possibility of optional fields.
-    // FIX SC600 Move the property name determination into a separate class.
-    // FIX SC600 This was we can do get/is, and also the possibility of optional fields.
     public String getPropertyMethodName(FieldSpec field) {
         String beanName = field.getName();
         Class beanType = field.getType();
