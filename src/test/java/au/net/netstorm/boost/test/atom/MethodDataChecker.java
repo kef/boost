@@ -68,6 +68,7 @@ final class MethodDataChecker implements DataChecker {
 
     private void chechMethodSignature(Class cls, String methodName) {
         Method method = edgeClass.getDeclaredMethod(cls, methodName, NO_PARAMETERS);
+        // FIX SC600 BREADCRUMB Sort out line wrap issue.
         if (!modifierUtil.isPublicInstance(method))
             fail("Method " + methodName + "() must be a public instance method.");
         // FIXME: SC600 check return type.
