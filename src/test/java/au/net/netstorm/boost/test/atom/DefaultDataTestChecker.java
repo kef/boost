@@ -12,6 +12,7 @@ import java.lang.reflect.Constructor;
 // FIX SC600 introspection to determine which properties.  Declaration of a single array
 // FIX SC600 is probably enough to specify field/property order.  Might use volatile or
 // FIX SC600 transient to mark fields as optional.
+// FIX SC600 Rename to DataAtomTestChecker.
 // FIX SC600 Remove OldDTC.
 // FIX SC600 Narrow scope in this package.  Private classes for all but DDTC.
 public final class DefaultDataTestChecker implements DataTestChecker {
