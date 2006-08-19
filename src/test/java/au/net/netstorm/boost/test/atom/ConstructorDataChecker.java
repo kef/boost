@@ -48,7 +48,7 @@ final class ConstructorDataChecker implements DataChecker {
         for (int i = 0; i < expected.length; i++) {
             Class expectedCls = expected[i];
             Class declaredCls = declared[i];
-            Assert.assertEquals("For constructor parameter 0 we", expectedCls, declaredCls);
+            Assert.assertEquals("For constructor parameter " + i + " we", expectedCls, declaredCls);
         }
     }
 
