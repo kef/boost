@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 import java.lang.reflect.Method;
 
-public class PropertyMethodStructureChecker implements DataChecker {
+class PropertyMethodStructureChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
