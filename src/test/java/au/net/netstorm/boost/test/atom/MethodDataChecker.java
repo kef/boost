@@ -13,6 +13,7 @@ final class MethodDataChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private EdgeClass edgeClass = new DefaultEdgeClass();
+    private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
 
     public void checkStructure(Class cls, FieldSpec[] fields) {
         checkMethodSignatures(cls);
@@ -51,7 +52,7 @@ final class MethodDataChecker implements DataChecker {
     }
 
     private void checkPropertyAccessor(Class cls, FieldSpec field) {
-        String propertyName = getPropertyMethodName(field);
+        String propertyName = nameProvider.getPropertyMethodName(field);
         checkMethodExists(cls, propertyName);
         chechMethodSignature(cls, propertyName);
     }
@@ -75,25 +76,6 @@ final class MethodDataChecker implements DataChecker {
 
     private Method[] getAllMethods(Class cls) {
         return cls.getDeclaredMethods();
-    }
-
-    // FIX SC600 Move the property name determination into a separate class.
-    // FIX SC600 This was we can do get/is, and also the possibility of optional fields.
-    private String getPropertyMethodName(FieldSpec field) {
-        String beanName = field.getName();
-        String upper = upperFirstLetter(beanName);
-        String remainder = getRemainder(beanName);
-        return "get" + upper + remainder;
-    }
-
-    private String upperFirstLetter(String beanName) {
-        String firstLetter = beanName.substring(0, 1);
-        return firstLetter.toUpperCase();
-    }
-
-    private String getRemainder(String beanName) {
-        int endIndex = beanName.length();
-        return beanName.substring(1, endIndex);
     }
 
     private String toString(Method method) {
