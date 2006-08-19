@@ -19,18 +19,20 @@ public final class DataDemoTest extends TestCase {
 
     // FIX SC600 Deep with interfaces.
     // FIX SC600 Interfaces.
+    // FIX SC600 Must fail if nested fields are not Data types or immutable.
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(DefaultBasicInterfaceData.class, SINGLE_STRING_PROPERTY);
-//        checkGood(DeepInterfacedData.class, COMPLEX_PROPERTIES);
+        checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
+    // FIX SC600 Non final fields are ok.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
-        checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s).  Instead it appears to have 2 arguments(s).");
+        checkBad(ConstructorParameterCountMismatchData.class, "Constructor must have 1 argument(s) matching the properties.  Instead it appears to have 2 arguments(s).");
         checkBad(ConstructorParameterMismatchData.class, "For constructor parameter 0 we expected:<class java.lang.String> but was:<class java.lang.Integer>");
         checkBad(ProtectedMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);
         checkBad(PackagePrivateMethodsIllegalData.class, MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE);

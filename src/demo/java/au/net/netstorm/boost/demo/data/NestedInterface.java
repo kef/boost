@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.demo.data;
 
-final class DeepInterfacedData {
+public interface NestedInterface {
 }
