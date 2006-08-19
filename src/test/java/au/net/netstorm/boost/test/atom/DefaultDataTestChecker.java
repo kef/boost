@@ -21,6 +21,7 @@ import java.lang.reflect.Constructor;
 public final class DefaultDataTestChecker implements DataTestChecker {
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
+    private DataChecker propertyMethodStructureChecker = new PropertyMethodStructureChecker();
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
@@ -55,6 +56,11 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         checkClassDeclaration(cls);
         checkConstructor(cls, fields);
         checkClassMethodStructure(cls, fields);
+        checkPropertyMethodStructure(cls, fields);
+    }
+
+    private void checkPropertyMethodStructure(Class cls, FieldSpec[] fields) {
+        propertyMethodStructureChecker.checkStructure(cls, fields);
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
