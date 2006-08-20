@@ -13,10 +13,9 @@ final class ConstructorNullDataChecker implements DataChecker {
     private ClassMaster classMaster = new DefaultClassMaster();
 
     public void check(Class cls, FieldSpec[] fields) {
-        Object[] parameters = instanceHelper.getInstances(fields);
+        Object[] parameters = getInstances(fields);
         Class[] types = fieldUtil.getTypes(fields);
         checkNullsAreBumped(cls, parameters, types);
-        // FIX SC600 BREADCRUMB Complete.
     }
 
     private void checkNullsAreBumped(Class cls, Object[] parameters, Class[] types) {
@@ -25,18 +24,32 @@ final class ConstructorNullDataChecker implements DataChecker {
         }
     }
 
-    // FIX SC600 BREADCRUMB Tidy this.
     private void checkNullIsBumped(Class cls, Object[] parameters, Class type, int i) {
         if (isPrimitive(type)) return;
+        checkNullIsBumpedForNonPrimitive(cls, parameters, type, i);
+    }
+
+    private void checkNullIsBumpedForNonPrimitive(Class cls, Object[] parameters, Class type, int i) {
         Object[] oneNulled = nullParameterOut(parameters, i);
         try {
-            instanceHelper.getInstance(cls, oneNulled);
+            getInstance(cls, oneNulled);
             fail(type, i);
         } catch (Throwable t) {
-            boolean bumped = exceptionUtil.threw(t, IllegalArgumentException.class);
-            if (bumped) return;
-            fail(type, i);
+            checkBumpedNull(t, type, i);
         }
+    }
+
+    private void checkBumpedNull(Throwable throwable, Class type, int i) {
+        if (exceptionUtil.threw(throwable, IllegalArgumentException.class)) return;
+        fail(type, i);
+    }
+
+    private void getInstance(Class cls, Object[] oneNulled) {
+        instanceHelper.getInstance(cls, oneNulled);
+    }
+
+    private Object[] getInstances(FieldSpec[] fields) {
+        return instanceHelper.getInstances(fields);
     }
 
     private Object[] nullParameterOut(Object[] parameters, int i) {
