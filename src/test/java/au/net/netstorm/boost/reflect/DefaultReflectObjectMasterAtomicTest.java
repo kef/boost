@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
+import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 
 import java.lang.reflect.Constructor;
 

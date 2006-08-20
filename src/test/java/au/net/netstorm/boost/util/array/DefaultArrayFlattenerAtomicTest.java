@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.array;
 
+import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;

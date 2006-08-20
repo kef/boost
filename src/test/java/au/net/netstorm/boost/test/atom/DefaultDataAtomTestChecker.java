@@ -6,9 +6,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST introspection to determine which properties.  Declaration of a single array
 // SUGGEST is probably enough to specify field/property order.  Might use volatile or
 // SUGGEST transient to mark fields as optional.
-// FIX SC600 Rename to DataAtomTestChecker.
-// FIX SC600 Remove OldDTC.
-// FIX SC600 Actually just move it to the deprecated area for now.
 public final class DefaultDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();

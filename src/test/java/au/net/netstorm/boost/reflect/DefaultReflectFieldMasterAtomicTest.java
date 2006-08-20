@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
+import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
@@ -16,7 +16,6 @@ public class DefaultReflectFieldMasterAtomicTest extends PrimordialTestCase {
     private static final Object ONE_PRIMITIVE_INSTANCE_FIELD_OBJECT = new TestSubjects.TestOnePrimitiveInstanceFieldObject(1);
     private static final FieldValueSpec[] EXPECTED_FIELDS_1 = createFieldSpec(FIELD_VALUE_1);
     private static final FieldValueSpec[] EXPECTED_FIELDS_2 = createFieldSpec(FIELD_VALUE_2);
-
     private final ReflectFieldMaster master = new DefaultReflectFieldMaster();
 
     public void testFields() {

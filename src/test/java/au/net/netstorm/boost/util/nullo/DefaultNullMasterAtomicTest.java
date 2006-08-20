@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.nullo;
 
-import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
+import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 
 public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
     private NullMaster nullMaster = new DefaultNullMaster();

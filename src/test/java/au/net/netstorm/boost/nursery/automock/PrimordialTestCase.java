@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.primordial;
+package au.net.netstorm.boost.nursery.automock;
 
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
