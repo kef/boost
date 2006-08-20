@@ -57,7 +57,6 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
 
     // FIX SC600 This is not tested.  It never really was.  It has been flushed out in SC521.
     private ProxyFactory buildFactory() {
-        // FIX SC600 This is an interesting example of a wirer.  External parties only want to use a DOTM.
         // FIX SC600 Use Factory which knows about how to do this.
         EdgeProxy edge = new DefaultEdgeProxy();
         return new DefaultProxyFactory(edge);
