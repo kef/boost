@@ -24,13 +24,12 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         String name = targetMethod.getName();
         if (!methodNamesMatch(sourceMethod, name)) return false;
         Class[] params = targetMethod.getParams();
-        if (!paramsMatch(sourceMethod, params)) return false;
-        return true;
+        return paramsMatch(sourceMethod, params);
     }
 
     private boolean methodNamesMatch(Method sourceMethod, String targetMethodName) {
-        return sourceMethod.getName()
-                .equals(targetMethodName);
+        String methodName = sourceMethod.getName();
+        return methodName.equals(targetMethodName);
     }
 
     private boolean paramsMatch(Method sourceMethod, Class[] parameterTypes) {

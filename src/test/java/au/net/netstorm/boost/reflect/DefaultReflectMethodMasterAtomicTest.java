@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-// FIX SC600 This looks like it is testing too deep.  Should not it be testing DRMM ONLY!!!
+// FIX SC600 This looks like it is testing too deep.  Should not it be testing DRMM ONLY.  Sort out DRMM too.
 public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final String CHURCH_METHOD_NAME = "getSmeetOthEchuRchontIme";
     private static final String FRIDAY_METHOD_NAME = "fridayIsHere";
