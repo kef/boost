@@ -5,6 +5,12 @@
     <property name="quality.atomic.coverage.branch" value="100"/>
     <property name="quality.atomic.coverage.line" value="100"/>
 
+    <path id="cobertura.classpath">
+        <fileset dir="${lib.dir}/cobertura">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
     <target name="instrument">
         <macro_cobertura_instrument code.type="core" test.type="atomic"/>
     </target>

@@ -24,7 +24,7 @@
 
     <property name="simian.report.dir" location="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
-    <!-- FIX SC600 Remove the superfluous java indirection -->
+    <!-- SUGGEST Remove the superfluous java indirection -->
     <property name="edge.src.dir" location="${src.dir}/edge/java"/>
     <property name="core.src.dir" location="${src.dir}/core/java"/>
     <property name="test.src.dir" location="${src.dir}/test/java"/>
@@ -59,7 +59,6 @@
         <patternset refid="code.pattern"/>
     </fileset>
 
-    <!-- FIX SC600 Tidy this up. -->
     <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
         <exclude name="**/au/net/netstorm/boost/edge/**"/>
@@ -77,12 +76,6 @@
     <fileset id="simian.rah.code" dir="${src.dir}" includes="**/pair/rah/**/*.java"/>
     <fileset id="simian.scream.code" dir="${src.dir}" includes="**/pair/scream/**/*.java"/>
 
-    <!-- FIX SC600 Can we move this into build-cobertura.xml -->
-    <path id="cobertura.classpath">
-        <fileset dir="${lib.dir}/cobertura">
-            <include name="**/*.jar"/>
-        </fileset>
-    </path>
 
     <path id="edge.compile.classpath"/>
 
@@ -116,8 +109,6 @@
         <path refid="demo.compile.classpath"/>
         <path location="${demo.class.dir}"/>
     </path>
-
-    <!-- FIX SC600 Must have a demo.test.classpath -->
 
     <path id="checkstyle.class.path">
         <fileset dir="${lib.dir}/checkstyle">
