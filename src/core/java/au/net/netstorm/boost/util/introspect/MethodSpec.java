@@ -12,7 +12,6 @@ public final class MethodSpec extends Primordial implements Data {
     private final Class[] params;
 
     public MethodSpec(String name, Class[] params) {
-        // FIX SC502 Move into validate(...) method.
         this.name = name;
         validate(params);
         this.params = (Class[]) params.clone();
