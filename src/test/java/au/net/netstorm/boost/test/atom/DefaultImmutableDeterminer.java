@@ -2,13 +2,22 @@ package au.net.netstorm.boost.test.atom;
 
 import au.net.netstorm.boost.util.type.Immutable;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
+    private final Set registered = new HashSet();
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
+
+    {
+        registered.add(String.class);
+    }
 
     public boolean isImmutable(Class cls) {
         if (implementsImmutable(cls)) return true;
         if (isPrimitive(cls)) return true;
-        return isBoxedPrimitive(cls);
+        if (isBoxedPrimitive(cls)) return true;
+        return isRegistered(cls);
     }
 
     private boolean isBoxedPrimitive(Class cls) {
@@ -21,5 +30,9 @@ public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
 
     private boolean implementsImmutable(Class cls) {
         return Immutable.class.isAssignableFrom(cls);
+    }
+
+    private boolean isRegistered(Class cls) {
+        return registered.contains(cls);
     }
 }

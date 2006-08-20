@@ -20,8 +20,6 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
-    // FIX SC600 Deep with interfaces.
-    // FIX SC600 Must fail if nested fields are not Data types or immutable.
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
@@ -31,6 +29,7 @@ public final class DataDemoTest extends TestCase {
         checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
+    // FIX SC600 Arrays.  Basic one first.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
@@ -46,7 +45,7 @@ public final class DataDemoTest extends TestCase {
         checkBad(PropertyReturnTypeMismatchData.class, "Method getGuitar() must return class java.lang.String.");
         checkBad(MultipleConstructorIllegalData.class, "MultipleConstructorIllegalData must have a single constructor which has a parameter for each property.");
         checkBad(ReturnValueIncorrectData.class, "Method getGuitar() should return the same value as passed in to the constructor.  Instead it returned (You picked the wrong string).");
-//        checkBad(NestedWithNonImmutablePartsIllegalData.class, COMPLEX_NON_DATA_PROPERTIES, "FOO");
+        checkBad(NestedWithNonImmutablePartsIllegalData.class, COMPLEX_NON_DATA_PROPERTIES, "NonImmutableInterface is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {
@@ -72,6 +71,6 @@ public final class DataDemoTest extends TestCase {
     }
 
     private void barf() {
-        throw new RuntimeException("Test failed, however we throw a this exception to distinguish this test failing versus the data test checker failing");
+        throw new RuntimeException("Test failed, however we throw a this exception to distinguish this test failing versus the data test checker failing.");
     }
 }

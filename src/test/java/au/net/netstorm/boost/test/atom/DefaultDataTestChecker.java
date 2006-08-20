@@ -12,6 +12,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 public final class DefaultDataTestChecker implements DataTestChecker {
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
+    private DataChecker immutabilityChecker = new ImmutabilityDataChecker();
     private DataChecker propertyMethodStructureChecker = new PropertyMethodStructureChecker();
     private DataChecker classChecker = new ClassDataChecker();
     private DataChecker triangulationChecker = new PropertyTriangulationDataChecker();
@@ -23,15 +24,6 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private void doCheckIsData(Class cls, FieldSpec[] fields) {
         checkStructure(cls, fields);
         checkBehaviour(cls, fields);
-        // FIX SC600 BREADCRUMB Back here after breadcrumb below.
-        //
-        // Public methods must match field specifications.
-        // Types must be Immutable or PrimitiveImmutable types.
-        // Check nulls barf in methods.
-        // Check nulls barf in constructor.
-        // Check constructor fails with combinations of nulls.  Including arrays with nulls.
-        // Check fields are final.
-        // Arrays must be copied going in and copied coming out.
     }
 
     private void checkStructure(Class cls, FieldSpec[] fields) {
@@ -39,12 +31,16 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         checkConstructor(cls, fields);
         checkClassMethodStructure(cls, fields);
         checkPropertyMethodStructure(cls, fields);
+        checkPropertiesImmutable(cls, fields);
     }
 
     private void checkBehaviour(Class cls, FieldSpec[] fields) {
         checkTriangulationOnProperties(cls, fields);
 
         // FIX SC600 BREADCRUMB Use instance provider and also perform null checks.
+        // Check nulls barf in constructor.
+        // Check constructor fails with combinations of nulls.  Including arrays with nulls.
+        // Arrays must be copied going in and copied coming out.
     }
 
     private void checkPropertyMethodStructure(Class cls, FieldSpec[] fields) {
@@ -61,6 +57,10 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 
     private void checkClassDeclaration(Class cls, FieldSpec[] fields) {
         classChecker.check(cls, fields);
+    }
+
+    private void checkPropertiesImmutable(Class cls, FieldSpec[] fields) {
+        immutabilityChecker.check(cls, fields);
     }
 
     private void checkTriangulationOnProperties(Class cls, FieldSpec[] fields) {
