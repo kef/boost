@@ -1,12 +1,15 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.test.fixture.OldDataAtomTestChecker;
+import au.net.netstorm.boost.test.atom.DefaultDataAtomTestChecker;
 import junit.framework.TestCase;
 
 public class MethodSpecAtomicTest extends TestCase {
     // FIX SC509 Constants.
     public void testIsDataObject() {
-        new OldDataAtomTestChecker().checkAtom(MethodSpec.class, new DefaultFieldSpec[]{new DefaultFieldSpec("name", String.class), new DefaultFieldSpec("params", Class[].class)});
+        FieldSpec f1 = new DefaultFieldSpec("name", String.class);
+        FieldSpec f2 = new DefaultFieldSpec("params", Class[].class);
+        FieldSpec[] fields = {f1, f2};
+        new DefaultDataAtomTestChecker().checkAtom(MethodSpec.class, fields);
     }
 
     public void testNull() {

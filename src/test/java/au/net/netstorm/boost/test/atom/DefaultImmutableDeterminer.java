@@ -11,6 +11,7 @@ public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
 
     {
         registered.add(String.class);
+        registered.add(Class.class);
     }
 
     public boolean isImmutable(Class cls) {
