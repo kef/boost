@@ -25,15 +25,20 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
         checkEqualButDifferentReferences(expected, r1);
     }
 
-    private void checkEqualButDifferentReferences(Object[] expected, Object actual) {
+    private void checkEqualButDifferentReferences(Object[] expected, Object[] actual) {
         checkDifferentReferences(expected, actual);
-//        Object[] array = (Object[]) actual;
+        checkSameElements(expected, actual);
     }
 
     private void checkDifferentReferences(Object o1, Object o2) {
         if (o1 != o2) return;
         // FIX SC600 Fix this message.
         fail("MUST COPY ON ACCESSOR (FIX THIS MESSAGE");
+    }
+
+    private void checkSameElements(Object[] expected, Object[] actual) {
+        // FIX SC600 BREADCRUMB 
+        // FIX SC600 Complete.
     }
 
     private Object[] invoke(Object instance, FieldSpec candidate) {
