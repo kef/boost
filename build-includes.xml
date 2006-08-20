@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost" default="ignore" basedir=".">
     <import file="build-init.xml"/>
+    <import file="build-artifacts.xml"/>
     <import file="build-checkstyle.xml"/>
     <import file="build-cobertura.xml"/>
     <import file="build-compile.xml"/>

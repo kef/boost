@@ -8,24 +8,6 @@
         <delete dir="${build.dir}"/>
     </target>
 
-    <fileset id="artifacts" dir="${artifacts.template.dir}">
-        <include name="index.html"/>
-        <include name="show.html"/>
-        <include name="*.css"/>
-    </fileset>
-
-    <target name="artifacts">
-        <copy todir="${artifacts.dir}">
-            <fileset refid="artifacts"/>
-        </copy>
-        <copy file="${artifacts.template.dir}/artifacts.html" todir="${artifacts.dir}">
-            <filterset>
-                <filter token="BUILD_DATE" value="${build.date}"/>
-                <filter token="BUILD_LABEL" value="${label}"/>
-            </filterset>
-        </copy>
-    </target>
-
     <!-- FIX SC502 API jar which contains just Primordial? -->
     <target name="build_jar">
         <!-- FIX SC502 boost-run.jar which contains ONLY edge/core. -->

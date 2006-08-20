@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="boost" default="ignore" basedir=".">
+    <import file="build-init.xml"/>
+
+    <fileset id="artifacts" dir="${artifacts.template.dir}">
+        <include name="index.html"/>
+        <include name="show.html"/>
+        <include name="*.css"/>
+    </fileset>
+
+    <target name="artifacts">
+        <copy todir="${artifacts.dir}">
+            <fileset refid="artifacts"/>
+        </copy>
+        <copy file="${artifacts.template.dir}/artifacts.html" todir="${artifacts.dir}">
+            <filterset>
+                <filter token="BUILD_DATE" value="${build.date}"/>
+                <filter token="BUILD_LABEL" value="${label}"/>
+            </filterset>
+        </copy>
+    </target>
+
+</project>
