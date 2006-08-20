@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.reflect.checker;
 
 import java.lang.reflect.Constructor;
 
+// FIX SC600 Delete this.
 // FIX SC524 Build up Boost version of this.
 // FIX SC523 Pull in latest external changes.
 // FIX SC524 Make an interface for this.
