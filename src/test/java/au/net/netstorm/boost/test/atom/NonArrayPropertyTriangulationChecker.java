@@ -10,14 +10,14 @@ final class NonArrayPropertyTriangulationChecker implements TriangulationChecker
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
     private SameHelper sameHelper = new DefaultSameHelper();
 
-    public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
+    public void check(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
         Object instance = getInstance(cls, parameters);
-        checkPropertyValueMatches(instance, candidate, parameters[position]);
+        checkPropertyValueMatches(instance, candidate, parameter);
     }
 
-    private void checkPropertyValueMatches(Object instance, FieldSpec field, Object value) {
+    private void checkPropertyValueMatches(Object instance, FieldSpec field, Object parameter) {
         Object returnValue = propertyAccessor.invoke(instance, field);
-        checkEquals(value, returnValue, field);
+        checkEquals(parameter, returnValue, field);
     }
 
     private void checkEquals(Object value, Object returnValue, FieldSpec field) {

@@ -18,17 +18,17 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private void check(Class cls, FieldSpec[] fields, int position) {
         FieldSpec candidate = fields[position];
         Object[] instances = fieldUtil.getInstances(fields);
-        if (isArray(candidate)) arrayCheck(cls, instances, candidate, position);
-        else nonArrayCheck(cls, instances, candidate, position);
+        Object parameter = instances[position];
+        if (isArray(candidate)) arrayCheck(cls, instances, candidate, parameter);
+        else nonArrayCheck(cls, instances, candidate, parameter);
     }
 
-    private void arrayCheck(Class cls, Object[] parameters, FieldSpec candidate, int position) {
-        // FIX SC600 Hard fail on Arrays containing arrays.  We do not support them.
-        arrayChecker.check(cls, parameters, candidate, position);
+    private void arrayCheck(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
+        arrayChecker.check(cls, parameters, candidate, parameter);
     }
 
-    private void nonArrayCheck(Class cls, Object[] parameters, FieldSpec candidate, int position) {
-        nonArrayChecker.check(cls, parameters, candidate, position);
+    private void nonArrayCheck(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
+        nonArrayChecker.check(cls, parameters, candidate, parameter);
     }
 
     private boolean isArray(FieldSpec candidate) {

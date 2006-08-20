@@ -9,25 +9,25 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
     private SameHelper sameHelper = new DefaultSameHelper();
 
-    // FIX SC600 Pass parameter instead of position.
-    public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
+    public void check(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
+        Object[] arrayParameter = (Object[]) parameter;
+        // FIX SC600 BREADCRUMB Test this.
+//        checkNotArrayOfArrays();
         Object instance = instanceHelper.getInstance(cls, parameters);
-        checkCopyOnAccess(instance, parameters, candidate, position);
-        checkCopyOnCreate(instance, parameters, candidate, position);
+        checkCopyOnAccess(instance, parameters, candidate, arrayParameter);
+        checkCopyOnCreate(instance, parameters, candidate, arrayParameter);
     }
 
-    private void checkCopyOnAccess(Object instance, Object[] parameters, FieldSpec candidate, int position) {
-        Object[] expected = getParameter(parameters, position);
+    private void checkCopyOnAccess(Object instance, Object[] parameters, FieldSpec candidate, Object[] parameter) {
         Object[] r1 = invoke(instance, candidate);
-        checkEqualButDifferentReferences(expected, r1);
+        checkEqualButDifferentReferences(parameter, r1);
         Object[] r2 = invoke(instance, candidate);
         checkEqualButDifferentReferences(r1, r2);
     }
 
-    private void checkCopyOnCreate(Object instance, Object[] parameters, FieldSpec candidate, int position) {
-        Object[] mungeCandidate = getParameter(parameters, position);
-        Object[] expected = (Object[]) mungeCandidate.clone();
-        munge(mungeCandidate);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
+    private void checkCopyOnCreate(Object instance, Object[] parameters, FieldSpec candidate, Object[] parameter) {
+        Object[] expected = (Object[]) parameter.clone();
+        munge(parameter);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
         Object[] returnValue = invoke(instance, candidate);
         if (same(expected, returnValue)) return;
         fail("Array was not copied on create.");
