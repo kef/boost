@@ -8,7 +8,6 @@ final class NonArrayPropertyTriangulationChecker implements TriangulationChecker
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
-    private FieldSpecTestUtil fieldUtil = new DefaultFieldSpecTestUtil();
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
 
     public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
