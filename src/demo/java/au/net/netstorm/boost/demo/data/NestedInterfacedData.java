@@ -9,6 +9,7 @@ final class NestedInterfacedData extends Primordial implements NestedInterface {
     public NestedInterfacedData(String guitar, BasicInterface basic) {
         this.guitar = guitar;
         this.basic = basic;
+        validate();
     }
 
     public String getGuitar() {
@@ -17,5 +18,14 @@ final class NestedInterfacedData extends Primordial implements NestedInterface {
 
     public BasicInterface getBasic() {
         return basic;
+    }
+
+    private void validate() {
+        validate(guitar);
+        validate(basic);
+    }
+
+    private void validate(Object ref) {
+        if (ref == null) throw new IllegalArgumentException();
     }
 }

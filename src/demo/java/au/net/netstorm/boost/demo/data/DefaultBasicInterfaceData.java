@@ -7,6 +7,7 @@ final class DefaultBasicInterfaceData extends Primordial implements BasicInterfa
 
     public DefaultBasicInterfaceData(String guitar) {
         this.guitar = guitar;
+        if (this.guitar == null) throw new IllegalArgumentException();
     }
 
     public String getGuitar() {

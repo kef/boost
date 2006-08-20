@@ -8,9 +8,14 @@ final class BasicData extends Primordial implements Data {
 
     public BasicData(String guitar) {
         this.guitar = guitar;
+        validate();
     }
 
     public String getGuitar() {
         return guitar;
+    }
+
+    private void validate() {
+        if (guitar == null) throw new IllegalArgumentException();
     }
 }

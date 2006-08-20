@@ -7,8 +7,9 @@ final class ManyPrivateMethodsBasicData extends Primordial implements Data {
     private final String guitar;
 
     public ManyPrivateMethodsBasicData(String guitar) {
-        doSomeStuff();
         this.guitar = guitar;
+        doSomeStuff();
+        validate();
     }
 
     public String getGuitar() {
@@ -24,5 +25,9 @@ final class ManyPrivateMethodsBasicData extends Primordial implements Data {
     }
 
     private void doNothing() {
+    }
+
+    private void validate() {
+        if (guitar == null) throw new IllegalArgumentException();
     }
 }

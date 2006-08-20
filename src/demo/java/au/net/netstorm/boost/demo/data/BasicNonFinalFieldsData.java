@@ -7,10 +7,15 @@ final class BasicNonFinalFieldsData extends Primordial implements Data {
     private String guitar;
 
     public BasicNonFinalFieldsData(String guitar) {
+        validate(guitar);
         this.guitar = guitar;
     }
 
     public String getGuitar() {
         return guitar;
+    }
+
+    private void validate(String guitar) {
+        if (guitar == null) throw new IllegalArgumentException();
     }
 }

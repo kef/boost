@@ -21,14 +21,21 @@ final class ClassMethodStructureDataChecker implements DataChecker {
         Method[] methods = classMethodUtil.getAll(cls);
         for (int i = 0; i < methods.length; i++) {
             checkMethodScope(methods[i]);
-            checkMethodHasNoArguments(methods[i]);
+            checkPublicMethodHasNoArguments(methods[i]);
         }
     }
 
     private void checkMethodScope(Method method) {
-        if (modifierUtil.isPublicInstance(method)) return;
-        if (modifierUtil.isPrivate(method)) return;
+        if (isPublicInstance(method)) return;
+        if (isPrivate(method)) return;
         fail(method, "violates the constraint that all methods must be public non-static or private.");
+    }
+
+    private void checkPublicMethodHasNoArguments(Method method) {
+        if (isPrivate(method)) return;
+        Class[] parameterTypes = method.getParameterTypes();
+        if (parameterTypes.length == 0) return;
+        fail(method, "has arguments.  All property accessor methods must have no arguments");
     }
 
     private void checkClassInterface(Class cls, FieldSpec[] fields) {
@@ -37,10 +44,12 @@ final class ClassMethodStructureDataChecker implements DataChecker {
         fail("Too many public methods.  Only getters for the specified properties are allowed.");
     }
 
-    private void checkMethodHasNoArguments(Method method) {
-        Class[] parameterTypes = method.getParameterTypes();
-        if (parameterTypes.length == 0) return;
-        fail(method, "has arguments.  All property accessor methods must have no arguments");
+    private boolean isPublicInstance(Method method) {
+        return modifierUtil.isPublicInstance(method);
+    }
+
+    private boolean isPrivate(Method method) {
+        return modifierUtil.isPrivate(method);
     }
 
     private void fail(Method method, String msg) {
