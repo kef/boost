@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.start;
 
-import au.net.netstorm.boost.test.atom.DataTestChecker;
-import au.net.netstorm.boost.test.fixture.OldDataTestChecker;
+import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
+import au.net.netstorm.boost.test.fixture.OldDataAtomTestChecker;
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
@@ -10,12 +10,12 @@ public class VmStyleAtomicTest extends PrimordialTestCase {
     public static final VmStyle VM_STYLE_PINK_FLOYD = new VmStyle("Pink Floyd");
     public static final VmStyle VM_STYLE_ELO = new VmStyle("Electric Light Orchestra");
     public static final VmStyle VM_STYLE_YES = new VmStyle("YES");
-    private final DataTestChecker dataChecker = new OldDataTestChecker();
+    private final DataAtomTestChecker dataChecker = new OldDataAtomTestChecker();
     private FieldSpec f1 = new DefaultFieldSpec("style", String.class);
     private final FieldSpec[] fields = {f1};
 
     public void testIsDataObject() {
-        dataChecker.checkIsData(VmStyle.class, fields);
+        dataChecker.checkAtom(VmStyle.class, fields);
     }
 
     public void testNull() {

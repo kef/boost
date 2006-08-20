@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.test.atom.DataTestChecker;
-import au.net.netstorm.boost.test.atom.DefaultDataTestChecker;
+import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
+import au.net.netstorm.boost.test.atom.DefaultDataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 // SUGGEST We do not fully support copy-in/copy-out array checking.
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies.
 public final class DataDemoTest extends TestCase {
-    private DataTestChecker dataChecker = new DefaultDataTestChecker();
+    private DataAtomTestChecker dataChecker = new DefaultDataAtomTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
     private static final FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
@@ -59,7 +59,7 @@ public final class DataDemoTest extends TestCase {
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {
-        dataChecker.checkIsData(cls, fields);
+        dataChecker.checkAtom(cls, fields);
     }
 
     private void checkBad(Class cls, String expectedMsg) {
@@ -68,7 +68,7 @@ public final class DataDemoTest extends TestCase {
 
     private void checkBad(Class cls, FieldSpec[] fields, String expectedMsg) {
         try {
-            dataChecker.checkIsData(cls, fields);
+            dataChecker.checkAtom(cls, fields);
             barf();
         } catch (AssertionFailedError e) {
             checkMessage(e, expectedMsg);

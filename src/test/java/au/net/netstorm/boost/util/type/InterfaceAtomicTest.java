@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.type;
 
-import au.net.netstorm.boost.test.fixture.OldDataTestChecker;
+import au.net.netstorm.boost.test.fixture.OldDataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import junit.framework.TestCase;
 
@@ -9,7 +9,7 @@ public class InterfaceAtomicTest extends TestCase {
 
     public void testIsDataObject() {
         DefaultFieldSpec[] fields = {new DefaultFieldSpec("type", Class.class)};
-        new OldDataTestChecker().checkIsData(Interface.class, fields);
+        new OldDataAtomTestChecker().checkAtom(Interface.class, fields);
     }
 
     public void testTypeIsNotInterface() {

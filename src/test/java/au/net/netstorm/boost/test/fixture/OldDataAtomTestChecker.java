@@ -5,7 +5,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.test.atom.DataTestChecker;
+import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.test.atom.TestTriangulationProvider;
 import au.net.netstorm.boost.test.atom.TriangulationProvider;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
@@ -30,14 +30,14 @@ import java.lang.reflect.Constructor;
 //
 //
 //
-public final class OldDataTestChecker implements DataTestChecker {
+public final class OldDataAtomTestChecker implements DataAtomTestChecker {
     private ClassTestUtil classUtil = new DefaultClassTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
-    public void checkIsData(Class cls, FieldSpec[] fields) {
+    public void checkAtom(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields);
     }
 

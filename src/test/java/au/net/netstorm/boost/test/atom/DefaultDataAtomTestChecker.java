@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // FIX SC600 Rename to DataAtomTestChecker.
 // FIX SC600 Remove OldDTC.
 // FIX SC600 Actually just move it to the deprecated area for now.
-public final class DefaultDataTestChecker implements DataTestChecker {
+public final class DefaultDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
@@ -18,7 +18,7 @@ public final class DefaultDataTestChecker implements DataTestChecker {
     private DataChecker triangulationChecker = new PropertyTriangulationDataChecker();
     private DataChecker constructorNullChecker = new ConstructorNullDataChecker();
 
-    public void checkIsData(Class cls, FieldSpec[] fields) {
+    public void checkAtom(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields);
     }
 
