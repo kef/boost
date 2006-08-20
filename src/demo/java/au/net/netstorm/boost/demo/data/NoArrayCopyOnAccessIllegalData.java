@@ -7,8 +7,8 @@ final class NoArrayCopyOnAccessIllegalData extends Primordial implements Data {
     private final Integer[] integers;
 
     public NoArrayCopyOnAccessIllegalData(Integer[] integers) {
-        this.integers = integers;
         validate(integers);
+        this.integers = (Integer[]) integers.clone();
     }
 
     public Integer[] getIntegers() {
