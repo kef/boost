@@ -1,26 +1,17 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
-import java.lang.reflect.Constructor;
-
 final class PropertyTriangulationDataChecker implements DataChecker {
     private static final Object[] NO_ARGUMENTS = null;
-    private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
-    private TriangulationProvider triangulationProvider = new TestTriangulationProvider();
-    private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private MethodTestUtil methodUtil = new DefaultMethodTestUtil();
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
-    private ReflectMaster reflectMaster = new DefaultReflectMaster();
+    private InstanceHelper instanceHelper = new DefaultInstanceHelper();
 
     public void check(Class cls, FieldSpec[] fields) {
         Object[] values = getInstances(fields);
@@ -50,6 +41,14 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         fail(methodName, "should return the same value as passed in to the constructor.  Instead it returned (" + returnValue + ").");
     }
 
+    private Object[] getInstances(FieldSpec[] fields) {
+        return instanceHelper.getInstances(fields);
+    }
+
+    private Object getInstance(Class cls, Object[] values) {
+        return instanceHelper.getInstance(cls, values);
+    }
+
     // FIX SC600 BREADCRUMB Move the equals out.
     // FIX SC600 Smells like a equals/same checker.
     private boolean equals(Object value, Object returnValue) {
@@ -58,20 +57,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         return value == returnValue;
     }
 
-    private Object getInstance(Class cls, Object[] parameters) {
-        Constructor constructor = reflectMaster.getConstructor(cls);
-        return getInstance(constructor, parameters);
-    }
-
-    private Object[] getInstances(FieldSpec[] fields) {
-        Class[] classes = fieldSpecUtil.getTypes(fields);
-        return triangulationProvider.getInstances(classes);
-    }
-
-    private Object getInstance(Constructor constructor, Object[] parameters) {
-        constructor.setAccessible(true);
-        return edgeConstructor.newInstance(constructor, parameters);
-    }
+    // FIX SC600 BREADCRUMB Move this into an instance helper.
 
     private boolean isBoxed(Object value) {
         Class cls = value.getClass();

@@ -10,12 +10,13 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // FIX SC600 Remove OldDTC.
 // FIX SC600 Narrow scope in this package.  Private classes for all but DDTC.
 public final class DefaultDataTestChecker implements DataTestChecker {
+    private DataChecker classChecker = new ClassDataChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
-    private DataChecker immutabilityChecker = new ImmutabilityDataChecker();
     private DataChecker propertyMethodStructureChecker = new PropertyMethodStructureChecker();
-    private DataChecker classChecker = new ClassDataChecker();
+    private DataChecker immutabilityChecker = new ImmutabilityDataChecker();
     private DataChecker triangulationChecker = new PropertyTriangulationDataChecker();
+    private DataChecker constructorNullChecker = new ConstructorNullDataChecker();
 
     public void checkIsData(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields);
@@ -36,15 +37,15 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 
     private void checkBehaviour(Class cls, FieldSpec[] fields) {
         checkTriangulationOnProperties(cls, fields);
+        checkConstructorRefusesNulls(cls, fields);
 
-        // FIX SC600 BREADCRUMB Use instance provider and also perform null checks.
-        // Check nulls barf in constructor.
-        // Check constructor fails with combinations of nulls.  Including arrays with nulls.
+        // FIX SC600 BREADCRUMB Complete.
+        // Arrays with nulls.
         // Arrays must be copied going in and copied coming out.
     }
 
-    private void checkPropertyMethodStructure(Class cls, FieldSpec[] fields) {
-        propertyMethodStructureChecker.check(cls, fields);
+    private void checkClassDeclaration(Class cls, FieldSpec[] fields) {
+        classChecker.check(cls, fields);
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
@@ -55,8 +56,8 @@ public final class DefaultDataTestChecker implements DataTestChecker {
         classMethodStructureChecker.check(cls, fields);
     }
 
-    private void checkClassDeclaration(Class cls, FieldSpec[] fields) {
-        classChecker.check(cls, fields);
+    private void checkPropertyMethodStructure(Class cls, FieldSpec[] fields) {
+        propertyMethodStructureChecker.check(cls, fields);
     }
 
     private void checkPropertiesImmutable(Class cls, FieldSpec[] fields) {
@@ -65,5 +66,9 @@ public final class DefaultDataTestChecker implements DataTestChecker {
 
     private void checkTriangulationOnProperties(Class cls, FieldSpec[] fields) {
         triangulationChecker.check(cls, fields);
+    }
+
+    private void checkConstructorRefusesNulls(Class cls, FieldSpec[] fields) {
+        constructorNullChecker.check(cls, fields);
     }
 }
