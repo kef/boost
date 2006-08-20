@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.start;
+package au.net.netstorm.boost.nursery.start;
 
 class MockBootstrapper implements Bootstrapper {
     private VmStyle style;

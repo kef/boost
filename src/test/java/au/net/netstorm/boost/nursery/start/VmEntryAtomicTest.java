@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.start;
+package au.net.netstorm.boost.nursery.start;
 
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
@@ -10,8 +10,7 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import junit.framework.TestCase;
 
-// FIX SC502 Ensure test for private constructor.
-
+// SUGGEST Ensure test for private constructor.
 public class VmEntryAtomicTest extends TestCase {
     private static final VmStyle VM_STYLE_PINK_FLOYD = VmStyleAtomicTest.VM_STYLE_PINK_FLOYD;
     private static final VmStyle VM_STYLE_ELO = VmStyleAtomicTest.VM_STYLE_ELO;

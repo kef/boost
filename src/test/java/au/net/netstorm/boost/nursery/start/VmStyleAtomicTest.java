@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.start;
+package au.net.netstorm.boost.nursery.start;
 
 import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;

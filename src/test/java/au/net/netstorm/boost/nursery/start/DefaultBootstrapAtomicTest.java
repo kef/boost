@@ -1,9 +1,8 @@
-package au.net.netstorm.boost.start;
+package au.net.netstorm.boost.nursery.start;
 
 import junit.framework.TestCase;
 
 public class DefaultBootstrapAtomicTest extends TestCase {
-
     public void testAction() {
         DefaultBootstrapper bootstrapper = new DefaultBootstrapper();
         try {
@@ -11,5 +10,4 @@ public class DefaultBootstrapAtomicTest extends TestCase {
         } catch (UnsupportedOperationException expected) {
         }
     }
-
 }

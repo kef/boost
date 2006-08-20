@@ -1,15 +1,15 @@
-package au.net.netstorm.boost.start;
+package au.net.netstorm.boost.nursery.start;
 
 // NOTE: IllegalArgumentExceptions here have untested comment strings as this is a special case - JVM entry point.
 // The exception stacktrace is not seen by many tools calling us.
 
-// FIX SC600 Move this out of the "boost" area.
+// SUGGEST Move this out of the "boost" area.
 public final class VmEntry {
     private VmEntry() {
     }
 
     private static VmEntry instance = new VmEntry();
-    private Bootstrapper bootstrapper = new DefaultBootstrapper(); // FIX SC509 Test this with a wiring test.
+    private Bootstrapper bootstrapper = new DefaultBootstrapper(); // SUGGEST Test this with a wiring test.
 
     public static void main(String[] args) {
         validateArgList(args);
