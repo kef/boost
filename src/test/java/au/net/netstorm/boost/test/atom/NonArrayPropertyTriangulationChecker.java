@@ -4,11 +4,11 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 final class NonArrayPropertyTriangulationChecker implements TriangulationChecker {
-    private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
     private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
+    private SameHelper sameHelper = new DefaultSameHelper();
 
     public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
         Object instance = getInstance(cls, parameters);
@@ -26,18 +26,11 @@ final class NonArrayPropertyTriangulationChecker implements TriangulationChecker
     }
 
     private boolean equals(Object value, Object returnValue) {
-        boolean boxed = isBoxed(value);
-        if (boxed) return value.equals(returnValue);
-        return value == returnValue;
+        return sameHelper.same(value, returnValue);
     }
 
     private Object getInstance(Class cls, Object[] values) {
         return instanceHelper.getInstance(cls, values);
-    }
-
-    private boolean isBoxed(Object value) {
-        Class cls = value.getClass();
-        return primitiveBoxer.isBoxed(cls);
     }
 
     private void fail(FieldSpec field, String msg) {
