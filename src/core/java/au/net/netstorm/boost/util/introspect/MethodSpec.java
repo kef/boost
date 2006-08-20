@@ -6,7 +6,6 @@ import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Data;
 
 // FIX SC524 Make an interface for this.
-
 public final class MethodSpec extends Primordial implements Data {
     private NullMaster master = new DefaultNullMaster();
     private final String name;
@@ -14,10 +13,14 @@ public final class MethodSpec extends Primordial implements Data {
 
     public MethodSpec(String name, Class[] params) {
         // FIX SC502 Move into validate(...) method.
+        this.name = name;
+        validate(params);
+        this.params = (Class[]) params.clone();
+    }
+
+    private void validate(Class[] params) {
         master.check(name, "name");
         master.check(params, "params");
-        this.name = name;
-        this.params = (Class[]) params.clone();
     }
 
     public String getName() {
