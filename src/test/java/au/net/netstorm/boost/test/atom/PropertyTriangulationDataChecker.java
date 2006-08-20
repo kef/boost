@@ -46,7 +46,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         return instanceHelper.getInstance(cls, values);
     }
 
-    // FIX SC600 BREADCRUMB Move the equals out.
+    // FIX SC6µ00 BREADCRUMB Move the equals out.
     // FIX SC600 Smells like a equals/same checker.
     private boolean equals(Object value, Object returnValue) {
         boolean boxed = isBoxed(value);
