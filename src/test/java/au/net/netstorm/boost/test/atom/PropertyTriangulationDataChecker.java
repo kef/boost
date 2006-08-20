@@ -14,13 +14,9 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
 
     public void check(Class cls, FieldSpec[] fields) {
-        Object[] values = getInstances(fields);
-        Object instance = createInstanceWithValues(cls, values);
-        checkPropertyValuesMatch(instance, fields, values);
-    }
-
-    private Object createInstanceWithValues(Class cls, Object[] values) {
-        return getInstance(cls, values);
+        Object[] parameters = getInstances(fields);
+        Object instance = getInstance(cls, parameters);
+        checkPropertyValuesMatch(instance, fields, parameters);
     }
 
     private void checkPropertyValuesMatch(Object instance, FieldSpec[] fields, Object[] values) {
