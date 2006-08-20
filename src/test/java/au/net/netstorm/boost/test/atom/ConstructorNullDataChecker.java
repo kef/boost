@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.reflect.ClassMaster;
+import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
@@ -8,6 +10,7 @@ final class ConstructorNullDataChecker implements DataChecker {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private FieldSpecTestUtil fieldUtil = new DefaultFieldSpecTestUtil();
     private ExceptionUtil exceptionUtil = new DefaultExceptionUtil();
+    private ClassMaster classMaster = new DefaultClassMaster();
 
     public void check(Class cls, FieldSpec[] fields) {
         Object[] parameters = instanceHelper.getInstances(fields);
@@ -18,20 +21,21 @@ final class ConstructorNullDataChecker implements DataChecker {
 
     private void checkNullsAreBumped(Class cls, Object[] parameters, Class[] types) {
         for (int i = 0; i < parameters.length; i++) {
-            checkNullIsBumped(cls, parameters, types, i);
+            checkNullIsBumped(cls, parameters, types[i], i);
         }
     }
 
-    private void checkNullIsBumped(Class cls, Object[] parameters, Class[] types, int i) {
-        if (isPrimitive(types[i])) return;
+    // FIX SC600 BREADCRUMB Tidy this.
+    private void checkNullIsBumped(Class cls, Object[] parameters, Class type, int i) {
+        if (isPrimitive(type)) return;
         Object[] oneNulled = nullParameterOut(parameters, i);
         try {
             instanceHelper.getInstance(cls, oneNulled);
-            fail(i);
+            fail(type, i);
         } catch (Throwable t) {
             boolean bumped = exceptionUtil.threw(t, IllegalArgumentException.class);
             if (bumped) return;
-            fail(i);
+            fail(type, i);
         }
     }
 
@@ -45,7 +49,8 @@ final class ConstructorNullDataChecker implements DataChecker {
         return primitiveBoxer.isPrimitive(type);
     }
 
-    private void fail(int i) {
-        Assert.fail("Constructor parameter at position " + i + " can be null.  We do not allow nulls.");
+    private void fail(Class type, int i) {
+        String shortName = classMaster.getShortName(type);
+        Assert.fail("We do not allow nulls in Data atoms.  You must throw an IllegalArgumentException when parameter (" + shortName + ") at position " + i + " in the constructor is null.");
     }
 }

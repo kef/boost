@@ -29,8 +29,7 @@ public final class DataDemoTest extends TestCase {
         checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
-    // FIX SC600 Arrays.  Basic one first.
-    // FIX SC600 Nulls in constructor barf.
+    // FIX SC600 Arrays.  Basic one first.  Maybe bump arrays until implemented.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
@@ -47,11 +46,7 @@ public final class DataDemoTest extends TestCase {
         checkBad(MultipleConstructorIllegalData.class, "MultipleConstructorIllegalData must have a single constructor which has a parameter for each property.");
         checkBad(ReturnValueIncorrectData.class, "Method getGuitar() should return the same value as passed in to the constructor.  Instead it returned (You picked the wrong string).");
         checkBad(NestedWithNonImmutablePartsIllegalData.class, COMPLEX_NON_DATA_PROPERTIES, "NonImmutableInterface is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
-    }
-
-    // FIX SC600 BREADCRUMB Merge back.
-    public void testTheNullThing() {
-//        checkBad(NullsAreIllegalData.class, "FOO");
+        checkBad(NullsAreIllegalData.class, "We do not allow nulls in Data atoms.  You must throw an IllegalArgumentException when parameter (String) at position 0 in the constructor is null.");
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {
