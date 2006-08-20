@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.split;
+package au.net.netstorm.boost.splitter;
 
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;

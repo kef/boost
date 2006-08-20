@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.split;
+package au.net.netstorm.boost.splitter;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-// FIX SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();
@@ -56,9 +55,9 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
         if (ref == null) throw new IllegalArgumentException();
     }
 
-    // FIX SC521 This is not tested.  It never really was.  It has been flushed out in SC521.
+    // FIX SC600 This is not tested.  It never really was.  It has been flushed out in SC521.
     private ProxyFactory buildFactory() {
-        // FIX SC521 This is an interesting example of a wirer.  External parties only want to use a DOTM.
+        // FIX SC600 This is an interesting example of a wirer.  External parties only want to use a DOTM.
         // FIX SC600 Use Factory which knows about how to do this.
         EdgeProxy edge = new DefaultEdgeProxy();
         return new DefaultProxyFactory(edge);

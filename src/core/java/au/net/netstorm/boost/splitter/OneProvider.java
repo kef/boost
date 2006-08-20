@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.split;
+package au.net.netstorm.boost.splitter;
 
 public interface OneProvider {
     Object getOne();
