@@ -13,12 +13,10 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         }
     }
 
-    // FIX SC600 Tidy this.
-    // FIX SC600 Do we really need to pass position through?
     private void check(Class cls, FieldSpec[] fields, int position) {
-        FieldSpec candidate = fields[position];
         Object[] instances = fieldUtil.getInstances(fields);
         Object parameter = instances[position];
+        FieldSpec candidate = fields[position];
         if (isArray(candidate)) arrayCheck(cls, instances, candidate, parameter);
         else nonArrayCheck(cls, instances, candidate, parameter);
     }
