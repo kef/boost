@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-// FIX SC600 Candidate for reflect.util.
 public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     private final Set inherited = new HashSet();
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();

@@ -10,8 +10,8 @@ import junit.framework.Assert;
 
 import java.lang.reflect.Method;
 
-// FIX SC521 reorder these.
-// FIX SC521 remove dupe.
+// FIX SC600 reorder these.
+// FIX SC600 remove dupe.
 public final class DefaultClassTestChecker implements ClassTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
