@@ -40,7 +40,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     private void checkDifferentReferences(Object o1, Object o2) {
         if (o1 != o2) return;
-        // FIX SC600 Fix this message.
         fail("Array was not copied on access.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
     }
 
