@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.introspect.MethodSpec;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-// FIX SC521 Use "composer".  Create Factory for this guy.
+// SUGGEST Use "composer" when it is ready.
 public final class DefaultReflectMaster implements ReflectMaster {
     private final ReflectObjectMaster objectMaster = new DefaultReflectObjectMaster();
     private final ReflectMethodMaster methodMaster = new DefaultReflectMethodMaster();

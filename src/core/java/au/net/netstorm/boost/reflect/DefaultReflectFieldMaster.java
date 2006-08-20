@@ -10,8 +10,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-// FIX SC524 Classes should almost always be declared final - test drive this via a utility.
-class DefaultReflectFieldMaster implements ReflectFieldMaster {
+final class DefaultReflectFieldMaster implements ReflectFieldMaster {
     private final EdgeField edgeField = new DefaultEdgeField();
 
     public FieldValueSpec[] getInstanceFields(Object ref) {
@@ -32,7 +31,6 @@ class DefaultReflectFieldMaster implements ReflectFieldMaster {
     private DefaultFieldValueSpec createFieldSpec(Field field, Object ref) {
         String name = field.getName();
         Object value = getFieldValue(field, ref);
-        // FIX SC600 Instead of using a DefaultFieldSpec consider using a NullValueAllowedFieldSpec.
         return new DefaultFieldValueSpec(name, value);
     }
 
