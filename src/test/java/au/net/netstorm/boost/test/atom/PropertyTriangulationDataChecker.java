@@ -38,20 +38,20 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         fail(methodName, "should return the same value as passed in to the constructor.  Instead it returned (" + returnValue + ").");
     }
 
+    // FIX SC600 BREADCRUMB Move the equals out.
+    // FIX SC600 Smells like a equals/same checker.
+    private boolean equals(Object value, Object returnValue) {
+        boolean boxed = isBoxed(value);
+        if (boxed) return value.equals(returnValue);
+        return value == returnValue;
+    }
+
     private Object[] getInstances(FieldSpec[] fields) {
         return fieldUtil.getInstances(fields);
     }
 
     private Object getInstance(Class cls, Object[] values) {
         return instanceHelper.getInstance(cls, values);
-    }
-
-    // FIX SC6µ00 BREADCRUMB Move the equals out.
-    // FIX SC600 Smells like a equals/same checker.
-    private boolean equals(Object value, Object returnValue) {
-        boolean boxed = isBoxed(value);
-        if (boxed) return value.equals(returnValue);
-        return value == returnValue;
     }
 
     private boolean isBoxed(Object value) {
