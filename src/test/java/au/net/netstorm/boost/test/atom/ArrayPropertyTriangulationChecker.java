@@ -8,17 +8,11 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
     private SameHelper sameHelper = new DefaultSameHelper();
 
-    // FIX SC600 Hard fail on Arrays containing arrays.  We do not support them.
+    // FIX SC600 Pass parameter instead of position.
     public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
         Object instance = instanceHelper.getInstance(cls, parameters);
         checkCopyOnAccess(instance, parameters, candidate, position);
         checkCopyOnCreate(instance, parameters, candidate, position);
-        // FIX SC600 Check copy on creation.
-        // FIX SC600 Check copy on property access.
-        // FIX SC600 Must be different references.
-        // FIX SC600 Contents must be the same.
-        // FIX SC600 Subsequent calls should yield a different value.
-        // FIX SC600 BREADCRUMB Finish this off.
     }
 
     private void checkCopyOnAccess(Object instance, Object[] parameters, FieldSpec candidate, int position) {
