@@ -49,7 +49,7 @@ final class ConstructorNullDataChecker implements DataChecker {
     }
 
     private Object[] getInstances(FieldSpec[] fields) {
-        return instanceHelper.getInstances(fields);
+        return fieldUtil.getInstances(fields);
     }
 
     private Object[] nullParameterOut(Object[] parameters, int i) {

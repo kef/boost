@@ -12,6 +12,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
+    private FieldSpecTestUtil fieldUtil = new DefaultFieldSpecTestUtil();
 
     public void check(Class cls, FieldSpec[] fields) {
         Object[] parameters = getInstances(fields);
@@ -38,7 +39,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     }
 
     private Object[] getInstances(FieldSpec[] fields) {
-        return instanceHelper.getInstances(fields);
+        return fieldUtil.getInstances(fields);
     }
 
     private Object getInstance(Class cls, Object[] values) {
