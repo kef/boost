@@ -6,6 +6,7 @@ import junit.framework.Assert;
 final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
+    private SameHelper sameHelper = new DefaultSameHelper();
 
     // FIX SC600 Hard fail on Arrays containing arrays.  We do not support them.
     public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
@@ -37,8 +38,10 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private void checkSameElements(Object[] expected, Object[] actual) {
-        // FIX SC600 BREADCRUMB 
-        // FIX SC600 Complete.
+        boolean same = sameHelper.same(expected, actual);
+        if (same) return;
+        // FIX SC600 Fix this message.
+        fail("ELEMENTS OF TWO ARRAYS SHOULD BE THE SAME!");
     }
 
     private Object[] invoke(Object instance, FieldSpec candidate) {
