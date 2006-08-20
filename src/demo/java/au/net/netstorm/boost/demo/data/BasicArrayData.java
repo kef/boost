@@ -12,7 +12,7 @@ final class BasicArrayData extends Primordial implements Data {
     }
 
     public Integer[] getIntegers() {
-        return integers;
+        return (Integer[]) integers.clone();
     }
 
     private void validate() {
