@@ -20,7 +20,7 @@ final class ImmutabilityDataChecker implements DataChecker {
         Class type = field.getType();
         if (isImmutable(type)) return;
         if (isArrayContainingImmutables(type)) return;
-        fail(type, "is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
+        fail(type);
     }
 
     private boolean isImmutable(Class type) {
@@ -33,8 +33,19 @@ final class ImmutabilityDataChecker implements DataChecker {
         return isImmutable(componentType);
     }
 
-    private void fail(Class type, String msg) {
-        String shortName = clsMaster.getShortName(type);
-        Assert.fail(shortName + " " + msg);
+    private void fail(Class type) {
+        String rootType = getRootType(type);
+        if (type.isArray()) fail(rootType + "(array of arrays)");
+        fail(rootType);
+    }
+
+    private String getRootType(Class type) {
+        if (!type.isArray()) return clsMaster.getShortName(type);
+        Class componentType = type.getComponentType();
+        return getRootType(componentType);
+    }
+
+    private void fail(String type) {
+        Assert.fail(type + " " + "is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
     }
 }

@@ -11,8 +11,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     public void check(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
         Object[] arrayParameter = (Object[]) parameter;
-        // FIX SC600 BREADCRUMB Test this.
-//        checkNotArrayOfArrays();
         Object instance = instanceHelper.getInstance(cls, parameters);
         checkCopyOnAccess(instance, candidate, arrayParameter);
         checkCopyOnCreate(instance, candidate, arrayParameter);
