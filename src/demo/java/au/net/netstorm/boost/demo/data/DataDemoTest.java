@@ -51,6 +51,7 @@ public final class DataDemoTest extends TestCase {
         checkBad(NestedWithNonImmutablePartsIllegalData.class, COMPLEX_NON_DATA_PROPERTIES, "NonImmutableInterface is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
         checkBad(NullsAreIllegalData.class, "We do not allow nulls in Data atoms.  You must throw an IllegalArgumentException when parameter (String) at position 0 in the constructor is null.");
         checkBad(NoArrayCopyOnAccessIllegalData.class, SINGLE_ARRAY_PROPERTY, "Array was not copied on access.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
+        checkBad(NoArrayCopyOnCreateIllegalData.class, SINGLE_ARRAY_PROPERTY, "Array was not copied on create.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {

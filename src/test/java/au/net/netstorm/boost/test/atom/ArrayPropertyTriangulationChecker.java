@@ -4,6 +4,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
+    private static final String ARRAYS_NOTE = "Arrays must be copied on create and on each access.  Try using arrayRef.clone().";
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
     private SameHelper sameHelper = new DefaultSameHelper();
@@ -29,8 +30,7 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
         munge(mungeCandidate);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
         Object[] returnValue = invoke(instance, candidate);
         if (same(expected, returnValue)) return;
-        // FIX SC600 Fix message.
-        fail("MUST COPY ON CREATE");
+        fail("Array was not copied on create.");
     }
 
     private void checkEqualButDifferentReferences(Object[] expected, Object[] actual) {
@@ -40,7 +40,7 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     private void checkDifferentReferences(Object o1, Object o2) {
         if (o1 != o2) return;
-        fail("Array was not copied on access.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
+        fail("Array was not copied on access.");
     }
 
     private void checkSameElements(Object[] expected, Object[] actual) {
@@ -66,6 +66,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private void fail(String msg) {
-        Assert.fail(msg);
+        Assert.fail(msg + "  " + ARRAYS_NOTE);
     }
 }
