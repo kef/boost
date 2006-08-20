@@ -1,45 +1,31 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
-import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
-final class NonArrayPropertyTriangulationChecker implements DataChecker {
-    private static final Object[] NO_ARGUMENTS = null;
-    private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
-    private MethodTestUtil methodUtil = new DefaultMethodTestUtil();
+final class NonArrayPropertyTriangulationChecker implements TriangulationChecker {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
+    private PropertyAccessor propertyAccessor = new DefaultPropertyAccessor();
     private FieldSpecTestUtil fieldUtil = new DefaultFieldSpecTestUtil();
+    private PropertyNameProvider nameProvider = new DefaultPropertyNameProvider();
 
-    public void check(Class cls, FieldSpec[] fields) {
-        Object[] parameters = getInstances(fields);
+    public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
         Object instance = getInstance(cls, parameters);
-        checkPropertyValuesMatch(instance, fields, parameters);
-    }
-
-    private void checkPropertyValuesMatch(Object instance, FieldSpec[] fields, Object[] values) {
-        for (int i = 0; i < fields.length; i++) {
-            checkPropertyValueMatches(instance, fields[i], values[i]);
-        }
+        checkPropertyValueMatches(instance, candidate, parameters[position]);
     }
 
     private void checkPropertyValueMatches(Object instance, FieldSpec field, Object value) {
-        String methodName = nameProvider.getPropertyMethodName(field);
-        Object returnValue = methodUtil.invoke(instance, methodName, NO_ARGUMENTS);
-        checkEquals(value, returnValue, methodName);
+        Object returnValue = propertyAccessor.invoke(instance, field);
+        checkEquals(value, returnValue, field);
     }
 
-    // SUGGEST This is where array checking would scoot off somewhere else.
-    private void checkEquals(Object value, Object returnValue, String methodName) {
+    private void checkEquals(Object value, Object returnValue, FieldSpec field) {
         if (equals(value, returnValue)) return;
-        fail(methodName, "should return the same value as passed in to the constructor.  Instead it returned (" + returnValue + ").");
+        fail(field, "should return the same value as passed in to the constructor.  Instead it returned (" + returnValue + ").");
     }
 
-    // FIX SC600 BREADCRUMB Move the equals out.
-    // FIX SC600 Smells like a equals/same checker.
     private boolean equals(Object value, Object returnValue) {
         boolean boxed = isBoxed(value);
         if (boxed) return value.equals(returnValue);
@@ -59,7 +45,8 @@ final class NonArrayPropertyTriangulationChecker implements DataChecker {
         return primitiveBoxer.isBoxed(cls);
     }
 
-    private void fail(String methodName, String msg) {
+    private void fail(FieldSpec field, String msg) {
+        String methodName = nameProvider.getPropertyMethodName(field);
         String name = stringer.toString(methodName);
         Assert.fail(name + " " + msg);
     }
