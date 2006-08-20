@@ -36,6 +36,6 @@ public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
         try {
             master.getConstructor(cls);
             fail();
-        } catch (MultipleConstructorsNotSupportedException expected) { }
+        } catch (IllegalStateException expected) { }
     }
 }

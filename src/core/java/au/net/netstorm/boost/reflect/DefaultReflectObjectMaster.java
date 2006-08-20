@@ -15,6 +15,6 @@ class DefaultReflectObjectMaster implements ReflectObjectMaster {
     }
 
     private void checkSingleConstructor(Constructor[] constructors, Class cls) {
-        if (constructors.length != 1) throw new MultipleConstructorsNotSupportedException(cls);
+        if (constructors.length != 1) throw new IllegalStateException("We only support single constructors. " + cls);
     }
 }

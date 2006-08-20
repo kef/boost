@@ -31,8 +31,8 @@ public class DefaultReflectFieldMasterAtomicTest extends PrimordialTestCase {
         assertEquals(expectedFields, actualFields);
     }
 
-    // FIX SC600 What is our policy on private static methods?
     private static FieldValueSpec[] createFieldSpec(Object value) {
-        return new FieldValueSpec[]{new DefaultFieldValueSpec("value", value)};
+        DefaultFieldValueSpec field = new DefaultFieldValueSpec("value", value);
+        return new FieldValueSpec[]{field};
     }
 }
