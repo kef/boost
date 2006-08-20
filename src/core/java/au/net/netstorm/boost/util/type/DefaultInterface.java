@@ -3,8 +3,6 @@ package au.net.netstorm.boost.util.type;
 import au.net.netstorm.boost.primordial.Primordial;
 
 // This is just an interface.  It is the strong type for interface.
-
-// FIX SC600 Interfacise this ;)
 public final class DefaultInterface extends Primordial implements Interface {
     private final Class type;
 
