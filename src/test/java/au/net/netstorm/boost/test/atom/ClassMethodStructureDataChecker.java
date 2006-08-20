@@ -22,9 +22,13 @@ final class ClassMethodStructureDataChecker implements DataChecker {
     private void checkMethodSignatures(Class cls) {
         Method[] methods = classMethodUtil.getAll(cls);
         for (int i = 0; i < methods.length; i++) {
-            checkMethodScope(methods[i]);
-            checkPublicMethodHasNoArguments(methods[i]);
+            checkMethodSignature(methods[i]);
         }
+    }
+
+    private void checkMethodSignature(Method method) {
+        checkMethodScope(method);
+        checkPublicMethodHasNoArguments(method);
     }
 
     private void checkMethodScope(Method method) {
