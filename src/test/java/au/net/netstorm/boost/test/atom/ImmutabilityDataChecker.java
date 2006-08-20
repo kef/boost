@@ -18,8 +18,19 @@ final class ImmutabilityDataChecker implements DataChecker {
 
     private void checkImmutable(FieldSpec field) {
         Class type = field.getType();
-        if (immutableDeterminer.isImmutable(type)) return;
+        if (isImmutable(type)) return;
+        if (isArrayContainingImmutables(type)) return;
         fail(type, "is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
+    }
+
+    private boolean isImmutable(Class type) {
+        return immutableDeterminer.isImmutable(type);
+    }
+
+    private boolean isArrayContainingImmutables(Class type) {
+        if (!type.isArray()) return false;
+        Class componentType = type.getComponentType();
+        return isImmutable(componentType);
     }
 
     private void fail(Class type, String msg) {

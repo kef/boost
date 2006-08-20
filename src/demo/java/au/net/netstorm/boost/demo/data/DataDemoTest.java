@@ -7,28 +7,32 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
+// SUGGEST We do not fully support copy-in/copy-out array checking.
+// SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies.
 public final class DataDemoTest extends TestCase {
     private DataTestChecker dataChecker = new DefaultDataTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
-    private static final FieldSpec BOOLEAN_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
+    private static final FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
+    private static final FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
     private static final FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
     private static final FieldSpec NON_DATA_PROPERTY = new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
-    private static final FieldSpec[] SINGLE_BOOLEAN_PROPERTY = {BOOLEAN_PROPERTY};
+    private static final FieldSpec[] SINGLE_PRIMITIVE_PROPERTY = {PRIMITIVE_PROPERTY};
+    private static final FieldSpec[] SINGLE_ARRAY_PROPERTY = {ARRAY_PROPERTY};
     private static final FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
-        checkGood(BooleanBasicData.class, SINGLE_BOOLEAN_PROPERTY);
+        checkGood(BasicArrayData.class, SINGLE_ARRAY_PROPERTY);
+        checkGood(PrimitiveBasicData.class, SINGLE_PRIMITIVE_PROPERTY);
         checkGood(BasicNonFinalFieldsData.class, SINGLE_STRING_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(DefaultBasicInterfaceData.class, SINGLE_STRING_PROPERTY);
         checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
-    // FIX SC600 Arrays.  Basic one first.  Maybe bump arrays until implemented.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
