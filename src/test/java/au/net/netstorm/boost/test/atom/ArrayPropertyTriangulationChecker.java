@@ -14,18 +14,18 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
         // FIX SC600 BREADCRUMB Test this.
 //        checkNotArrayOfArrays();
         Object instance = instanceHelper.getInstance(cls, parameters);
-        checkCopyOnAccess(instance, parameters, candidate, arrayParameter);
-        checkCopyOnCreate(instance, parameters, candidate, arrayParameter);
+        checkCopyOnAccess(instance, candidate, arrayParameter);
+        checkCopyOnCreate(instance, candidate, arrayParameter);
     }
 
-    private void checkCopyOnAccess(Object instance, Object[] parameters, FieldSpec candidate, Object[] parameter) {
+    private void checkCopyOnAccess(Object instance, FieldSpec candidate, Object[] parameter) {
         Object[] r1 = invoke(instance, candidate);
         checkEqualButDifferentReferences(parameter, r1);
         Object[] r2 = invoke(instance, candidate);
         checkEqualButDifferentReferences(r1, r2);
     }
 
-    private void checkCopyOnCreate(Object instance, Object[] parameters, FieldSpec candidate, Object[] parameter) {
+    private void checkCopyOnCreate(Object instance, FieldSpec candidate, Object[] parameter) {
         Object[] expected = (Object[]) parameter.clone();
         munge(parameter);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
         Object[] returnValue = invoke(instance, candidate);
@@ -54,10 +54,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     private Object[] invoke(Object instance, FieldSpec candidate) {
         return (Object[]) propertyAccessor.invoke(instance, candidate);
-    }
-
-    private Object[] getParameter(Object[] parameters, int position) {
-        return (Object[]) parameters[position];
     }
 
     private boolean same(Object[] expected, Object[] actual) {
