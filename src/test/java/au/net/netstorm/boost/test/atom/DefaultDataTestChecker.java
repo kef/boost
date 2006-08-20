@@ -8,6 +8,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST transient to mark fields as optional.
 // FIX SC600 Rename to DataAtomTestChecker.
 // FIX SC600 Remove OldDTC.
+// FIX SC600 Actually just move it to the deprecated area for now.
 // FIX SC600 Narrow scope in this package.  Private classes for all but DDTC.
 public final class DefaultDataTestChecker implements DataTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
