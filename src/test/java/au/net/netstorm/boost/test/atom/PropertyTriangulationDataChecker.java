@@ -32,7 +32,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         checkEquals(value, returnValue, methodName);
     }
 
-    // FIX SC600 This is where array checking would scoot off somewhere else.
+    // SUGGEST This is where array checking would scoot off somewhere else.
     private void checkEquals(Object value, Object returnValue, String methodName) {
         if (equals(value, returnValue)) return;
         fail(methodName, "should return the same value as passed in to the constructor.  Instead it returned (" + returnValue + ").");
@@ -53,8 +53,6 @@ final class PropertyTriangulationDataChecker implements DataChecker {
         if (boxed) return value.equals(returnValue);
         return value == returnValue;
     }
-
-    // FIX SC600 BREADCRUMB Move this into an instance helper.
 
     private boolean isBoxed(Object value) {
         Class cls = value.getClass();
