@@ -32,10 +32,6 @@ final class NonArrayPropertyTriangulationChecker implements TriangulationChecker
         return value == returnValue;
     }
 
-    private Object[] getInstances(FieldSpec[] fields) {
-        return fieldUtil.getInstances(fields);
-    }
-
     private Object getInstance(Class cls, Object[] values) {
         return instanceHelper.getInstance(cls, values);
     }
