@@ -20,7 +20,6 @@
         <macro_check_simian code.type="scream"/>
     </target>
 
-    <!-- FIX SC502 Remove remaining duplication reports by Simian - see exclusions in fileset. -->
     <macrodef name="macro_run_simian">
         <attribute name="code.type"/>
         <sequential>

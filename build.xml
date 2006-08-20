@@ -4,7 +4,7 @@
 <project name="boost" default="all" basedir=".">
     <import file="build-includes.xml"/>
 
-    <target name="all" depends="clean, artifacts, compile, instrument, -run, -report, -check, build_jar"/>
+    <target name="all" depends="clean, artifacts, compile, instrument, -run, -report, -check, jar"/>
     <target name="quality" depends="run_checkstyle, run_simian, check_checkstyle, check_simian"/>
 
     <target name="-run" depends="run_tests, run_checkstyle, run_simian"/>
