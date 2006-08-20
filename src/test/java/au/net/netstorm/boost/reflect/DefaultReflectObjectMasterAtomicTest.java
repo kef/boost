@@ -4,7 +4,6 @@ import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 
 import java.lang.reflect.Constructor;
 
-// FIX SC506 This NEEDS to be a UnitTest!!!
 public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 
