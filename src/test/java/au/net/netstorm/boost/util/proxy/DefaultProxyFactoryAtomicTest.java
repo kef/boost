@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.util.proxy;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import junit.framework.TestCase;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.Map;
 
 public final class DefaultProxyFactoryAtomicTest extends TestCase {
-    private static final Interface TYPE_1 = new Interface(CharSequence.class);
-    private static final Interface TYPE_2 = new Interface(Map.class);
+    private static final DefaultInterface TYPE_1 = new DefaultInterface(CharSequence.class);
+    private static final DefaultInterface TYPE_2 = new DefaultInterface(Map.class);
     private final MockEdgeProxy mockEdgeProxyFactory = new MockEdgeProxy();
     private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
     private final InvocationHandler handler = new MockInvocationHandler();
@@ -18,7 +18,7 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
         checkFactory(TYPE_2);
     }
 
-    private void checkFactory(Interface type) {
+    private void checkFactory(DefaultInterface type) {
         Object expected = new Object();
         mockEdgeProxyFactory.init(expected);
         Object result = factory.newProxy(type, handler);
@@ -26,10 +26,10 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
         checkCall(type);
     }
 
-    private void checkCall(Interface type) {
+    private void checkCall(DefaultInterface type) {
         Class cls = factory.getClass();
         ClassLoader classLoader = cls.getClassLoader();
-        Interface[] types = {type};
+        DefaultInterface[] types = {type};
         mockEdgeProxyFactory.verify(classLoader, types, handler);
     }
 }

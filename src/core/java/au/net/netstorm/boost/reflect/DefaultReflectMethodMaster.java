@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.reflect;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.util.introspect.MethodSpec;
+
+import java.lang.reflect.Method;
 
 class DefaultReflectMethodMaster implements ReflectMethodMaster {
     public Method getMethod(Class cls, MethodSpec method) {

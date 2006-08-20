@@ -7,8 +7,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
-// SUGGEST We do not fully support copy-in/copy-out array checking.
-// SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies.
+// SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
 public final class DataDemoTest extends TestCase {
     private DataAtomTestChecker dataChecker = new DefaultDataAtomTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);

@@ -13,12 +13,12 @@ public class InterfaceAtomicTest extends TestCase {
         FieldSpec f1 = new DefaultFieldSpec("type", Class.class);
         FieldSpec[] fields = {f1};
         DataAtomTestChecker checker = new DefaultDataAtomTestChecker();
-        checker.checkAtom(Interface.class, fields);
+        checker.checkAtom(DefaultInterface.class, fields);
     }
 
     public void testTypeIsNotInterface() {
         try {
-            new Interface(NOT_AN_INTERFACE);
+            new DefaultInterface(NOT_AN_INTERFACE);
             fail();
         } catch (IllegalArgumentException expected) { }
     }

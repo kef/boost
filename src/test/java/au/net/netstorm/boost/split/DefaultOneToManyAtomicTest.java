@@ -4,6 +4,7 @@ import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -20,9 +21,9 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final int ZERO_LISTENERS = 0;
     private static final int SINGLE_LISTENER = 1;
     private static final int TWENTY_LISTENERS = 20;
-    private static final Interface INTERFACE_ONE = new Interface(TestInterfaceOne.class);
-    private static final Interface INTERFACE_TWO = new Interface(TestInterfaceTwo.class);
-    private static final Interface INTERFACE_THREE = new Interface(TestInterfaceThree.class);
+    private static final DefaultInterface INTERFACE_ONE = new DefaultInterface(TestInterfaceOne.class);
+    private static final DefaultInterface INTERFACE_TWO = new DefaultInterface(TestInterfaceTwo.class);
+    private static final Interface INTERFACE_THREE = new DefaultInterface(TestInterfaceThree.class);
     private static final String STRING = "Hello";
     private static final Integer INTEGER = new Integer(7);
     private static final Object[] NO_PARAMETERS = {};
@@ -74,7 +75,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         checkInvoke(listenerCount, INTERFACE_TWO, "methodTwo", METHOD_TWO_PARAMETERS);
     }
 
-    private void checkInvoke(int listenerCount, Interface type, String methodName, Object[] parameters) {
+    private void checkInvoke(int listenerCount, DefaultInterface type, String methodName, Object[] parameters) {
         oneToMany = new DefaultOneToMany(type);
         createMany(listenerCount, type, methodName, parameters);
         performAndCheckCalls(type, methodName, parameters);
@@ -89,7 +90,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         }
     }
 
-    private void createMany(int listenerCount, Interface type, String methodName, Object[] parameters) {
+    private void createMany(int listenerCount, DefaultInterface type, String methodName, Object[] parameters) {
         mockListeners.clear();
         for (int i = ZERO_LISTENERS; i < listenerCount; i++) {
             createListener(type, methodName, parameters);
@@ -112,7 +113,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         }
     }
 
-    private void createListener(Interface type, String methodName, Object[] parameters) {
+    private void createListener(DefaultInterface type, String methodName, Object[] parameters) {
         MockListener mockListener = createMockImpl(type, methodName, parameters);
         mockListeners.add(mockListener);
         Object listener = mockListener.getRef();
@@ -125,7 +126,7 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         return one;
     }
 
-    private MockListener createMockImpl(Interface face, String methodName, Object[] parameters) {
+    private MockListener createMockImpl(DefaultInterface face, String methodName, Object[] parameters) {
         MockListener mockImpl = new MockListener(face);
         mockImpl.setExpectation(methodName, parameters);
         return mockImpl;

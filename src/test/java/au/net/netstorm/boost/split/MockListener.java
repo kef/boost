@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.split;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import junit.framework.Assert;
 
 import java.lang.reflect.InvocationHandler;
@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 final class MockListener extends Assert implements InvocationHandler {
-    private final Interface type;
+    private final DefaultInterface type;
     private final Map calls = new HashMap();
     private String methodName;
     private Object[] parameters;
     private Throwable throwable;
 
-    public MockListener(Interface type) {
+    public MockListener(DefaultInterface type) {
         this.type = type;
     }
 

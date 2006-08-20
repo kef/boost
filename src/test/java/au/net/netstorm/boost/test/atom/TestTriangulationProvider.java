@@ -4,6 +4,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 import java.lang.reflect.Array;
@@ -45,7 +46,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     }
 
     private Object randomInterface(Class type) {
-        Interface iface = new Interface(type);
+        Interface iface = new DefaultInterface(type);
         return proxyFactory.newProxy(iface, NO_OP_INVOCATION_HANDLER);
     }
 

@@ -1,19 +1,18 @@
 package au.net.netstorm.boost.split;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
+// FIX SC521 Is "split" the best name we can come up with?  "multiplex" sucks.
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();

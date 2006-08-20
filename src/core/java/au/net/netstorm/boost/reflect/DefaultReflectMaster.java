@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.reflect;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 
-// FIX SC521 Use "composer".  Create Factory for this guy.
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
+// FIX SC521 Use "composer".  Create Factory for this guy.
 public final class DefaultReflectMaster implements ReflectMaster {
     private final ReflectObjectMaster objectMaster = new DefaultReflectObjectMaster();
     private final ReflectMethodMaster methodMaster = new DefaultReflectMethodMaster();

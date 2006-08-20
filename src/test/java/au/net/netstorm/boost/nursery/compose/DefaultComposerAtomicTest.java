@@ -4,6 +4,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -11,13 +12,12 @@ import junit.framework.TestCase;
 // FIX SC521 Move to using MockInvocationHandler.
 // FIX SC521 Check exceptions are thrown across the boundary.
 // FIX SC521 getProxy can be replaced with ProxyFactory.
-
 /**
  * The composer currently only supports composition of two classes.
  */
 public final class DefaultComposerAtomicTest extends TestCase {
-    private static final Interface INTERFACE_A_B = new Interface(TestInterfaceAB.class);
-    private static final Interface INTERFACE_A = new Interface(TestInterfaceA.class);
+    private static final Interface INTERFACE_A_B = new DefaultInterface(TestInterfaceAB.class);
+    private static final Interface INTERFACE_A = new DefaultInterface(TestInterfaceA.class);
     private final ProxyFactory proxyFactory = buildFactory();
     private final MockInvocationHandler mockHandlerA = new MockInvocationHandler();
     private final MockInvocationHandler mockHandlerB = new MockInvocationHandler();

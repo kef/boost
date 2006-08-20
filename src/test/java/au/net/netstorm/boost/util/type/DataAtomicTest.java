@@ -15,7 +15,7 @@ public class DataAtomicTest extends TestCase {
     }
 
     private void isData(Class type) {
-        Interface iface = new Interface(type);
+        Interface iface = new DefaultInterface(type);
         boolean isImplemention = clsProperties.isImplementationOf(iface, Data.class);
         assertTrue(isImplemention);
     }

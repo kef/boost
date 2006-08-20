@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.reflect;
 
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
@@ -26,7 +27,7 @@ public class DefaultClassMasterAtomicTest extends TestCase {
     }
 
     private void checkInterface(String expected, Class type) {
-        Interface iface = new Interface(type);
+        Interface iface = new DefaultInterface(type);
         String shortName = master.getShortName(iface);
         assertEquals(expected, shortName);
     }

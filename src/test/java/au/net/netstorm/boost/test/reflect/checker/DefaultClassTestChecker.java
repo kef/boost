@@ -4,6 +4,7 @@ import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
@@ -11,7 +12,6 @@ import java.lang.reflect.Method;
 
 // FIX SC521 reorder these.
 // FIX SC521 remove dupe.
-
 public final class DefaultClassTestChecker implements ClassTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
@@ -24,7 +24,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
     }
 
     public void checkImplementsAndFinal(Class cls, Class expectedInterface) {
-        Interface iface = new Interface(expectedInterface);
+        Interface iface = new DefaultInterface(expectedInterface);
         checkImplementsAndFinal(iface, cls);
     }
 

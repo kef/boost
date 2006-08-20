@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.util.introspect;
 
-import java.lang.reflect.Array;
-
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Immutable;
+
+import java.lang.reflect.Array;
 
 // FIX SC502 Who uses this.  Do we need it?
 // FIX SC506 Can just be an immutable.
