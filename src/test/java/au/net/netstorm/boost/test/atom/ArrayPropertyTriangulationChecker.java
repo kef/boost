@@ -17,8 +17,10 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     private void checkCopyOnAccess(Object instance, Object[] parameters, FieldSpec candidate, int position) {
         Object[] expected = getParameter(parameters, position);
-        Object[] returnValue = invoke(instance, candidate);
-        checkEqualButDifferentReferences(expected, returnValue);
+        Object[] r1 = invoke(instance, candidate);
+        checkEqualButDifferentReferences(expected, r1);
+        Object[] r2 = invoke(instance, candidate);
+        checkEqualButDifferentReferences(r1, r2);
     }
 
     private void checkCopyOnCreate(Object instance, Object[] parameters, FieldSpec candidate, int position) {
