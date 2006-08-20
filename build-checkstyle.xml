@@ -16,7 +16,6 @@
     </target>
 
     <!-- FIX SC600 Move checkstyle inline. -->
-    <!-- FIX SC502 Tighten suppressions so that checks are still done for kickstart pair code. -->
     <macrodef name="macro_run_checkstyle">
         <attribute name="code.type"/>
         <sequential>

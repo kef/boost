@@ -4,8 +4,6 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 <suppressions>
     <!-- FIX SC502 Fix problems and then remove these suppressions. -->
-    <!-- FIX SC600 Move to checkstyle inline. -->
-    <!-- FIX SC600 Frames version of artifacts page. -->
     <suppress checks="EmptyBlock" files=".*.java"/>
     <suppress checks="IllegalType" files=".*.java"/>
     <suppress checks="ClassDataAbstractionCoupling" files=".*.java"/>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost" default="ignore" basedir=".">
-    <!-- FIX SC518 Split into more files? -->
-    <!-- FIX SC518 Convert all targets to fit in with prefix/naming convention. -->
-    <!-- FIX SC518 Go through the SC512 dudes and see which are relevant to SC518. -->
-    <!-- FIX SC518 Move checkstyle cache into checkstyle sub area under target. -->
+    <!-- SUGGEST Split into more files? -->
     <property name="label" value="build-dev"/>
 
     <property name="build.dir" location="build"/>
