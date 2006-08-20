@@ -9,12 +9,16 @@ public final class Interface extends Primordial implements Data {
     private final Class type;
 
     public Interface(Class type) {
-        if (type == null) throw new IllegalArgumentException();
-        if (!type.isInterface()) throw new IllegalArgumentException();
         this.type = type;
+        validate();
     }
 
     public Class getType() {
         return type;
+    }
+
+    private void validate() {
+        if (type == null) throw new IllegalArgumentException();
+        if (!type.isInterface()) throw new IllegalArgumentException();
     }
 }

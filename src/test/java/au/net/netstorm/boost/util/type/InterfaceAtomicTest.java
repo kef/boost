@@ -12,8 +12,8 @@ public class InterfaceAtomicTest extends TestCase {
     public void testIsDataObject() {
         FieldSpec f1 = new DefaultFieldSpec("type", Class.class);
         FieldSpec[] fields = {f1};
-        DataAtomTestChecker defaultDataAtomTestChecker = new DefaultDataAtomTestChecker();
-        defaultDataAtomTestChecker.checkAtom(Interface.class, fields);
+        DataAtomTestChecker checker = new DefaultDataAtomTestChecker();
+        checker.checkAtom(Interface.class, fields);
     }
 
     public void testTypeIsNotInterface() {
