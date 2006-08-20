@@ -12,6 +12,7 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     public void check(Class cls, Object[] parameters, FieldSpec candidate, int position) {
         Object instance = instanceHelper.getInstance(cls, parameters);
         checkCopyOnAccess(instance, parameters, candidate, position);
+        checkCopyOnCreate(instance, parameters, candidate, position);
         // FIX SC600 Check copy on creation.
         // FIX SC600 Check copy on property access.
         // FIX SC600 Must be different references.
@@ -21,9 +22,19 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private void checkCopyOnAccess(Object instance, Object[] parameters, FieldSpec candidate, int position) {
-        Object[] r1 = invoke(instance, candidate);
         Object[] expected = getParameter(parameters, position);
-        checkEqualButDifferentReferences(expected, r1);
+        Object[] returnValue = invoke(instance, candidate);
+        checkEqualButDifferentReferences(expected, returnValue);
+    }
+
+    private void checkCopyOnCreate(Object instance, Object[] parameters, FieldSpec candidate, int position) {
+        Object[] mungeCandidate = getParameter(parameters, position);
+        Object[] expected = (Object[]) mungeCandidate.clone();
+        munge(mungeCandidate);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
+        Object[] returnValue = invoke(instance, candidate);
+        if (same(expected, returnValue)) return;
+        // FIX SC600 Fix message.
+        fail("MUST COPY ON CREATE");
     }
 
     private void checkEqualButDifferentReferences(Object[] expected, Object[] actual) {
@@ -38,10 +49,13 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private void checkSameElements(Object[] expected, Object[] actual) {
-        boolean same = sameHelper.same(expected, actual);
-        if (same) return;
+        if (same(expected, actual)) return;
         // FIX SC600 Fix this message.
         fail("ELEMENTS OF TWO ARRAYS SHOULD BE THE SAME!");
+    }
+
+    private void munge(Object[] parameters) {
+        parameters[0] = parameters[1];
     }
 
     private Object[] invoke(Object instance, FieldSpec candidate) {
@@ -50,6 +64,10 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     private Object[] getParameter(Object[] parameters, int position) {
         return (Object[]) parameters[position];
+    }
+
+    private boolean same(Object[] expected, Object[] actual) {
+        return sameHelper.same(expected, actual);
     }
 
     private void fail(String msg) {

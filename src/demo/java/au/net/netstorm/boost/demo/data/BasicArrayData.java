@@ -7,15 +7,15 @@ final class BasicArrayData extends Primordial implements Data {
     private final Integer[] integers;
 
     public BasicArrayData(Integer[] integers) {
-        this.integers = integers;
-        validate();
+        validate(integers);
+        this.integers = (Integer[]) integers.clone();
     }
 
     public Integer[] getIntegers() {
         return (Integer[]) integers.clone();
     }
 
-    private void validate() {
-        if (integers == null) throw new IllegalArgumentException();
+    private void validate(Object ref) {
+        if (ref == null) throw new IllegalArgumentException();
     }
 }

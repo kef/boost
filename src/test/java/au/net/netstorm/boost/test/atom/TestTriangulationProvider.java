@@ -12,7 +12,7 @@ import java.util.Random;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
-    private static final int ARRAY_LENGTH = 0;
+    private static final int ARRAY_LENGTH = 5;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
