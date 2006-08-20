@@ -45,8 +45,7 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     private void checkSameElements(Object[] expected, Object[] actual) {
         if (same(expected, actual)) return;
-        // FIX SC600 Fix this message.
-        fail("ELEMENTS OF TWO ARRAYS SHOULD BE THE SAME!");
+        fail("Elements of array not the same.");
     }
 
     private void munge(Object[] parameters) {
