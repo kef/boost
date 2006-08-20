@@ -3,10 +3,10 @@ package au.net.netstorm.boost.demo.data;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
 
-final class NoArrayCopyOnCreateIllegalData extends Primordial implements Data {
+final class NoArrayCopyOnAccessIllegalData extends Primordial implements Data {
     private final Integer[] integers;
 
-    public NoArrayCopyOnCreateIllegalData(Integer[] integers) {
+    public NoArrayCopyOnAccessIllegalData(Integer[] integers) {
         this.integers = integers;
         validate(integers);
     }
