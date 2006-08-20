@@ -3,7 +3,7 @@ package au.net.netstorm.boost.start;
 // NOTE: IllegalArgumentExceptions here have untested comment strings as this is a special case - JVM entry point.
 // The exception stacktrace is not seen by many tools calling us.
 
-// FIX SC509 ? Experiment with the SPECIAL-CASE flag.
+// FIX SC600 Move this out of the "boost" area.
 public final class VmEntry {
     private VmEntry() {
     }

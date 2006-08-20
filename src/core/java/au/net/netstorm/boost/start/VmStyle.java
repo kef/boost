@@ -10,9 +10,13 @@ public final class VmStyle extends Primordial implements Data {
 
     public VmStyle(String style) {
         // FIX SC502 Move to validate(...).
+        this.style = style;
+        validate();
+    }
+
+    private void validate() {
         NullMaster master = new DefaultNullMaster();
         master.check(style, "style");
-        this.style = style;
     }
 
     public String getStyle() {

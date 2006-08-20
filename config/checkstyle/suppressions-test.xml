@@ -3,7 +3,7 @@
         "-//Puppy Crawl//DTD Suppressions 1.0//EN"
         "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 <suppressions>
-    <!-- FIX SC502 Fix problems and then remove these suppressions. -->
+    <!-- FIX SC600 Fix problems and then remove these suppressions. -->
     <suppress checks="EmptyBlock" files=".*.java"/>
     <suppress checks="IllegalType" files=".*.java"/>
     <suppress checks="ClassDataAbstractionCoupling" files=".*.java"/>

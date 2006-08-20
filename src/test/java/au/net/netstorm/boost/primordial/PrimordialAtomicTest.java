@@ -14,8 +14,7 @@ import au.net.netstorm.boost.util.tostring.MockToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
-// FIX SC043 Looks like an integration test. Mock bits Primordial depends on.
-
+// FIX S600 Looks like an integration test. Mock bits Primordial depends on.
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
