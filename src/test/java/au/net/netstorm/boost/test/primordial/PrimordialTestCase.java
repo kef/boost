@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.primordial;
 
-import au.net.netstorm.boost.test.reflect.checker.AssertTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultAssertTestChecker;
+import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
+import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
 import junit.framework.TestCase;
 
 // FIX SC524 Remove the need for this altogether.

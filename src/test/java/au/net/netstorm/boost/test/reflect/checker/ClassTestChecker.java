@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
-import au.net.netstorm.boost.util.type.Interface;// FIX SC525 All the checkers should be moved into "reflect.check".  Existing "reflect" stuff should go into "reflect.util"
+import au.net.netstorm.boost.util.type.Interface;
+
 public interface ClassTestChecker {
     void checkImplementsAndFinal(Interface expectedInterface, Class cls);
 

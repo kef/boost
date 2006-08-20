@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect.checker;
+package au.net.netstorm.boost.nursery.reflect.checker;
 
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;

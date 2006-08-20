@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect.checker;
+package au.net.netstorm.boost.nursery.reflect.checker;
 
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;

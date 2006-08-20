@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.io;
 
-import au.net.netstorm.boost.test.reflect.checker.AssertTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultAssertTestChecker;
+import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
+import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
 import junit.framework.TestCase;
 
 public final class DefaultStreamConverterAtomicTest extends TestCase {

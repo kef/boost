@@ -1,9 +1,8 @@
-package au.net.netstorm.boost.test.reflect.checker;
+package au.net.netstorm.boost.nursery.reflect.checker;
 
 import junit.framework.Assert;
 
 // Do not extend Assert.  Users of this class may inadvertently pick up Assert's methods.  We don't want this :)
-
 public final class DefaultAssertTestChecker implements AssertTestChecker {
     // FIX SC524 Refactor duplication, if possible.
     public void checkEquals(Object[] expected, Object[] actual) {

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect.checker;
+package au.net.netstorm.boost.nursery.reflect.checker;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect.checker;
+package au.net.netstorm.boost.nursery.reflect.checker;
 
 // FIX SC043 R Remove.  Use Call instead.
 // FIX SC600 Move items which are not checkers out of this package.

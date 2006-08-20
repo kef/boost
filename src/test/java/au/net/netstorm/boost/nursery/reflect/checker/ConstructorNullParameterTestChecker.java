@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.reflect.checker;
+package au.net.netstorm.boost.nursery.reflect.checker;
 
 public interface ConstructorNullParameterTestChecker {
     void checkPublicConstructorsRejectNull(Class classToCheck);
