@@ -4,5 +4,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class ConstructorNullDataChecker implements DataChecker {
     public void check(Class cls, FieldSpec[] fields) {
+        // FIX SC600 BREADCRUMB Complete.
     }
 }
