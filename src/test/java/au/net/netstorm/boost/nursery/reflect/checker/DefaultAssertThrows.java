@@ -6,8 +6,8 @@ import junit.framework.AssertionFailedError;
 public final class DefaultAssertThrows implements AssertThrows {
     private AssertException assertException = new DefaultAssertException();
 
-    // FIX SC600 AssertThrowsChecker.
-    // FIX SC600 Why is the caught exception returned.
+    // SUGGEST AssertThrowsChecker.
+    // SUGGEST Why is the caught exception returned.
     public Throwable assertThrows(Class expectedException, String message, Block block) {
         Throwable result = assertThrows(expectedException, block);
         assertException.checkExceptionMessage(message, result);

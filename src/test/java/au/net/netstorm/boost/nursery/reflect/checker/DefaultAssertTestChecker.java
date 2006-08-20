@@ -4,7 +4,7 @@ import junit.framework.Assert;
 
 // Do not extend Assert.  Users of this class may inadvertently pick up Assert's methods.  We don't want this :)
 public final class DefaultAssertTestChecker implements AssertTestChecker {
-    // FIX SC524 Refactor duplication, if possible.
+    // SUGGEST Refactor duplication, if possible.
     public void checkEquals(Object[] expected, Object[] actual) {
         Assert.assertNotNull(expected);
         Assert.assertNotNull(actual);

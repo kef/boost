@@ -4,7 +4,7 @@ public final class FactoryTestUtil {
     private FactoryTestUtil() {
     }
 
-    // FIX SC524 Build up Boost version of this.
+    // SUGGEST Build up Boost version of this.
 //    private static final IocFactory IOC = new DefaultIocFactory();
 //    private static final MockIocFactory NULL_IOC_FACTORY = new MockIocFactory(null, null, null);
 //

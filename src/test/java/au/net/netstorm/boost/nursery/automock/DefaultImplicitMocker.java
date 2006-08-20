@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-// FIX SC600 Make sure no production code (core, edge or test) is using the nursery, outside of the nursery of course.
+// SUGGEST Make sure no production code (core, edge or test) is using the nursery, outside of the nursery of course.
 final class DefaultImplicitMocker implements ImplicitMocker {
     private final Map mocks = new HashMap();
     private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();

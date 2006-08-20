@@ -4,7 +4,7 @@ import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 
-// FIX SC523 Is this too much for an interface? Maybe just a test that it's an interface & public.
+// SUGGEST Is this too much for an interface? Maybe just a test that it's an interface & public.
 public final class BlockAtomicTest extends PrimordialTestCase {
     private static final ModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
     private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();

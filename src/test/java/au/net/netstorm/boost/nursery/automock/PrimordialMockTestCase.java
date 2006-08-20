@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.automock;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 
-// FIX SC525 So we don't need test subclasses.  We just have the one and it implements Marker interface to key the type of test.
+// SUGGEST So we don't need test subclasses.  We just have the one and it implements Marker interface to key the type of test.
 public abstract class PrimordialMockTestCase extends MockObjectTestCase implements MockTestCase, MockTestSetUp, MockProvider {
     private final ImplicitMocker implicitMocker = new DefaultImplicitMocker(this, this);
 
@@ -13,13 +13,13 @@ public abstract class PrimordialMockTestCase extends MockObjectTestCase implemen
     }
 
     public Mock mock(Class cls) {
-// FIX SC525 Complete.
+// SUGGEST Complete.
         return super.mock(cls);
     }
 
-    // FIX SC525 Rename cls.
+    // SUGGEST Rename cls.
     public Mock mock(Class cls, String role) {
-        // FIX SC525 complete.
+        // SUGGEST complete.
         if (cls.isInterface()) {
             return super.mock(cls, role);
         }
@@ -39,7 +39,7 @@ public abstract class PrimordialMockTestCase extends MockObjectTestCase implemen
 
     private void wireImplicitMocks() {
         implicitMocker.wireMocks();
-        // FIX SC525 Complete
+        // SUGGEST Complete
     }
 
     public void setUpMocks() {

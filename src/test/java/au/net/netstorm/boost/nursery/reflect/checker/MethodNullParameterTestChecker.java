@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
-// FIX SC043 R Names are a bit long here?
+// SUGGEST R Names are a bit long here?
 public interface MethodNullParameterTestChecker {
     void checkPublicMethodsRejectNull(Object instance);
 }

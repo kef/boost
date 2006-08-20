@@ -6,7 +6,7 @@ import junit.framework.Assert;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-// FIX SC600 Nearly the same as MockInvocationHandler in util.proxy package.
+// SUGGEST Nearly the same as MockInvocationHandler in util.proxy package.
 final class MockInvocationHandler extends Assert implements InvocationHandler {
     private boolean called;
 

@@ -9,12 +9,12 @@ public class DefaultInstanceProvider implements InstanceProvider {
         this.edge = edge;
     }
 
-    // FIX SC524 Test drive null check for cls.
+    // SUGGEST Test drive null check for cls.
     public Object newInstance(Class cls) {
         return edge.newInstance(cls);
     }
 
-    // FIX SC524 Test drive these.
+    // SUGGEST Test drive these.
 //    public Object newInstance(Class cls, Object argument, Class argumentType) {
 //        throw new NotImplementedException();
 //    }

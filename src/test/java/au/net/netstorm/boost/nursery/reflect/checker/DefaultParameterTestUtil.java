@@ -5,7 +5,7 @@ import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 
 import java.lang.reflect.InvocationTargetException;
 
-// FIX SC523 What to do with this class?
+// SUGGEST What to do with this class?
 final class DefaultParameterTestUtil implements ParameterTestUtil {
     public Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull) {
         Object[] paramValues = new Object[paramTypes.length];
@@ -16,7 +16,7 @@ final class DefaultParameterTestUtil implements ParameterTestUtil {
         return paramValues;
     }
 
-    // FIX SC043 R This belongs somewhere else.
+    // SUGGEST R This belongs somewhere else.
     public void invoke(Block block) {
         try {
             block.execute();

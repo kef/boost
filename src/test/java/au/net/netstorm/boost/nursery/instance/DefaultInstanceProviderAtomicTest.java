@@ -18,7 +18,7 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
         instanceProvider = new DefaultInstanceProvider(mockEdgeClass);
     }
 
-    // FIX SC524 Test drive relevant class properties.
+    // SUGGEST Test drive relevant class properties.
 //    public void testClassProperties() {
 //        FieldSpec f1 = new DefaultFieldSpec("classBoundary", ClassBoundary.class);
 //        ComponentTestUtil.checkComponent(DefaultInstanceProvider.class, InstanceProvider.class, new FieldSpec[]{f1});
@@ -31,7 +31,7 @@ public final class DefaultInstanceProviderAtomicTest extends TestCase {
         assertSame(OBJECT_CLASS, mockEdgeClass.getCls());
     }
 
-    // FIX SC524 Implement Boost version of all these bits.
+    // SUGGEST Implement Boost version of all these bits.
 //    public void testGetInstanceSingleArgument() {
 //        Object[] arguments = new Object[]{INTEGER_23};
 //        Class[] argumentTypes = new Class[]{INTEGER_CLASS};

@@ -26,8 +26,8 @@ public final class DefaultAssertException implements AssertException {
     }
 
     public void checkExceptionClass(Class expectedExceptionClass, Throwable throwable) {
-        // FIX SC600 Use something else.  Delegate.
-        // FIX SC600 How about a stacktrace object?
+        // SUGGEST Use something else.  Delegate.
+        // SUGGEST How about a stacktrace object?
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         throwable.printStackTrace(new PrintStream(out));
         Class cls = throwable.getClass();
@@ -39,14 +39,14 @@ public final class DefaultAssertException implements AssertException {
         Assert.assertEquals("Exception message doesn't match", expectedMessage, throwable.getMessage());
     }
 
-    // FIX SC523 Refactor this.
+    // SUGGEST Refactor this.
     private Throwable checkWraps(Throwable wrapperException, Class expectedExceptionClass, int depth) {
         Throwable cause = getCauseAtDepth(wrapperException, depth);
         checkExceptionClass(expectedExceptionClass, cause);
         return cause;
     }
 
-    // FIX SC043 Too big.
+    // SUGGEST Too big.
     private Throwable getCauseAtDepth(Throwable wrapperException, int depth) {
         Throwable cause = wrapperException.getCause();
         boolean maxedOut = cause == wrapperException;
