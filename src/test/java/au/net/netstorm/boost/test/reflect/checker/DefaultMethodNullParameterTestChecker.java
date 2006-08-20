@@ -1,9 +1,5 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
@@ -12,6 +8,10 @@ import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class DefaultMethodNullParameterTestChecker implements MethodNullParameterTestChecker {
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();

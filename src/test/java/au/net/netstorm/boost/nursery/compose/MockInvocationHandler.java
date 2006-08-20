@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.compose;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.util.exception.NotImplementedException;
 import junit.framework.Assert;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 // FIX SC600 Nearly the same as MockInvocationHandler in util.proxy package.
 final class MockInvocationHandler extends Assert implements InvocationHandler {

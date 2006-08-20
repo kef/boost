@@ -1,15 +1,14 @@
 package au.net.netstorm.boost.time.type;
 
-import java.util.Calendar;
-
 import junit.framework.TestCase;
 
-public final class DaySpecAtomicTest extends TestCase {
+import java.util.Calendar;
 
+public final class DaySpecAtomicTest extends TestCase {
     public void testValidDays() {
         final MonthSpec month = APRIL_2004;
         assertValid(month, 0);
-        assertValid(month, month.totalDays-1);
+        assertValid(month, month.totalDays - 1);
     }
 
     public void testInvalidDays() {
@@ -19,12 +18,12 @@ public final class DaySpecAtomicTest extends TestCase {
     }
 
     public void testComparableCheck() {
-         DaySpec d1 = new DaySpec(APRIL_2004, 0);
-         d1.compareTo(d1);
-         try {
-             d1.compareTo("THIS AIN'T GONNA WORK");
-             fail();
-         } catch (IllegalArgumentException ex) { }
+        DaySpec d1 = new DaySpec(APRIL_2004, 0);
+        d1.compareTo(d1);
+        try {
+            d1.compareTo("THIS AIN'T GONNA WORK");
+            fail();
+        } catch (IllegalArgumentException ex) { }
     }
 
     public void testCompareDaysWithMonth() {
@@ -45,7 +44,6 @@ public final class DaySpecAtomicTest extends TestCase {
         assertCompare(APRIL_2004, 0, APRIL_2006, 0, LESS_THAN);
         assertCompare(JANUARY_2006, 0, APRIL_2004, 0, GREATER_THAN);
         assertCompare(MAY_2004, 0, APRIL_2006, 0, LESS_THAN);
-
         assertCompare(DECEMBER_2004, 30, JANUARY_2005, 0, LESS_THAN);
     }
 
@@ -76,7 +74,6 @@ public final class DaySpecAtomicTest extends TestCase {
     private static final MonthSpec JANUARY_2005 = new MonthSpec(2005, Calendar.JANUARY);
     private static final MonthSpec APRIL_2006 = new MonthSpec(2006, Calendar.APRIL);
     private static final MonthSpec JANUARY_2006 = new MonthSpec(2006, Calendar.JANUARY);
-
     private static final int EQUAL_TO = 0;
     private static final int LESS_THAN = -1;
     private static final int GREATER_THAN = 1;

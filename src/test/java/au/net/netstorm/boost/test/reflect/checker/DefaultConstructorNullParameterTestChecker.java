@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
@@ -10,6 +8,8 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
+
+import java.lang.reflect.Constructor;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
     private final NullMaster nullMaster = new DefaultNullMaster();

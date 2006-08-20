@@ -1,8 +1,6 @@
-package au.net.netstorm.boost.test.atom;
+package au.net.netstorm.boost.test.reflect.util;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
-import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import junit.framework.Assert;
 
 import java.lang.reflect.Method;
@@ -12,8 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 // FIX SC600 Candidate for reflect.util.
-
-final class DefaultClassMethodUtil implements ClassMethodUtil {
+public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     private final Set inherited = new HashSet();
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
 

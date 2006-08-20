@@ -1,14 +1,12 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
-import java.lang.reflect.InvocationTargetException;
-
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 
+import java.lang.reflect.InvocationTargetException;
+
 // FIX SC523 What to do with this class?
-
 final class DefaultParameterTestUtil implements ParameterTestUtil {
-
     public Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull) {
         Object[] paramValues = new Object[paramTypes.length];
         for (int i = 0; i < paramTypes.length; i++) {

@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.reflect;
 
-import java.lang.reflect.Proxy;
-import java.rmi.Remote;
-
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
+
+import java.lang.reflect.Proxy;
+import java.rmi.Remote;
 
 public class DefaultClassMasterAtomicTest extends TestCase {
     private final ClassMaster master = new DefaultClassMaster();

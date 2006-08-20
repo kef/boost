@@ -1,19 +1,18 @@
 package au.net.netstorm.boost.reflect;
 
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
-
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
 // FIX SC509 Make sure all fields are EMPTY on create ;) !!!!
 // FIX SC509 ? Do we really want to force IOC on these boost components.
 // FIX SC509 This looks like it is testing too deep.  Should not it be testing DRMM ONLY!!!
-
 public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final String CHURCH_METHOD_NAME = "getSmeetOthEchuRchontIme";
     private static final String FRIDAY_METHOD_NAME = "fridayIsHere";

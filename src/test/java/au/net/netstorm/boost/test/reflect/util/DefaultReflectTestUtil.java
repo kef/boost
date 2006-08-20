@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.test.reflect.util;
 
+import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+import au.net.netstorm.boost.util.type.Interface;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
-
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultReflectTestUtil implements ReflectTestUtil {
     private final ClassTestUtil clsUtil = new DefaultClassTestUtil();

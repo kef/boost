@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.split;
 
+import au.net.netstorm.boost.util.type.Interface;
+import junit.framework.Assert;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
-
-import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.Assert;
 
 final class MockListener extends Assert implements InvocationHandler {
     private final Interface type;

@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.fixture;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.test.reflect.checker.DefaultFieldTestChecker;
@@ -14,6 +12,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Immutable;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 // FIX SC050 Tidy up this pile of bollocks code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // FIX SC050 Again and again we just keep getting nailed by this HEAP OF !!!!!!!!!
@@ -32,7 +32,6 @@ import junit.framework.Assert;
 //
 //
 //
-
 final class MemberTestFixture {
     private static final EdgeMethod EDGE_METHOD = new DefaultEdgeMethod();
     static final int GET_LENGTH = MethodTestFixture.GETTER_PREFIX

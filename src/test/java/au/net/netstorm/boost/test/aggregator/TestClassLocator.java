@@ -70,11 +70,11 @@ final class TestClassLocator implements ClassLocator {
     }
 
     private void ensureDir(File dir) {
-        if (!dir.exists()) barf(dir, " does not exist");
-        if (!dir.isDirectory()) barf(dir, " must be a directory.");
+        if (!dir.exists()) barf(dir, "does not exist");
+        if (!dir.isDirectory()) barf(dir, "must be a directory.");
     }
 
     private void barf(File dir, String content) {
-        throw new IllegalStateException(dir + content);
+        throw new IllegalStateException(dir + " " + content);
     }
 }

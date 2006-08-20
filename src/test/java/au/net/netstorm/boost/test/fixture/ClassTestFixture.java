@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.fixture;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
@@ -9,10 +7,11 @@ import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
+import java.lang.reflect.Constructor;
+
 // FIX SC600 Remove all the stuff in this fixture package.
 // FIX SC502 Does it make sense to have this fixtures area?
 // FIX SC600 Remove.  Or morph.
-
 final class ClassTestFixture {
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();

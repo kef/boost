@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.reflect;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.test.primordial.PrimordialTestCase;
 
-// FIX SC506 This NEEDS to be a UnitTest!!!
+import java.lang.reflect.Constructor;
 
+// FIX SC506 This NEEDS to be a UnitTest!!!
 public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 

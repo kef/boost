@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.time.core;
 
-import java.util.Date;
-
 import junit.framework.TestCase;
 
-public final class DefaultTimePointMasterAtomicTest extends TestCase {
+import java.util.Date;
 
+public final class DefaultTimePointMasterAtomicTest extends TestCase {
     public void testNext() {
         assertEquals(TIME_100, master.next(TIME_099));
         assertEquals(TIME_101, master.next(TIME_100));

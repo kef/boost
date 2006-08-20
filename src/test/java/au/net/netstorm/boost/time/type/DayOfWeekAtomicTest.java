@@ -1,19 +1,18 @@
 package au.net.netstorm.boost.time.type;
 
-import java.util.Calendar;
-
 import junit.framework.TestCase;
 
-public final class DayOfWeekAtomicTest extends TestCase {
+import java.util.Calendar;
 
+public final class DayOfWeekAtomicTest extends TestCase {
     public void testValid() {
-        assertEquals(Calendar.SUNDAY,    new DayOfWeek(Calendar.SUNDAY).value);
-        assertEquals(Calendar.MONDAY,    new DayOfWeek(Calendar.MONDAY).value);
-        assertEquals(Calendar.TUESDAY,   new DayOfWeek(Calendar.TUESDAY).value);
+        assertEquals(Calendar.SUNDAY, new DayOfWeek(Calendar.SUNDAY).value);
+        assertEquals(Calendar.MONDAY, new DayOfWeek(Calendar.MONDAY).value);
+        assertEquals(Calendar.TUESDAY, new DayOfWeek(Calendar.TUESDAY).value);
         assertEquals(Calendar.WEDNESDAY, new DayOfWeek(Calendar.WEDNESDAY).value);
-        assertEquals(Calendar.THURSDAY,  new DayOfWeek(Calendar.THURSDAY).value);
-        assertEquals(Calendar.FRIDAY,    new DayOfWeek(Calendar.FRIDAY).value);
-        assertEquals(Calendar.SATURDAY,  new DayOfWeek(Calendar.SATURDAY).value);
+        assertEquals(Calendar.THURSDAY, new DayOfWeek(Calendar.THURSDAY).value);
+        assertEquals(Calendar.FRIDAY, new DayOfWeek(Calendar.FRIDAY).value);
+        assertEquals(Calendar.SATURDAY, new DayOfWeek(Calendar.SATURDAY).value);
     }
 
     public void testInvalid() {
@@ -38,13 +37,13 @@ public final class DayOfWeekAtomicTest extends TestCase {
     }
 
     public void testToString() {
-        assertEquals("SUNDAY",    new DayOfWeek(Calendar.SUNDAY).toString());
-        assertEquals("MONDAY",    new DayOfWeek(Calendar.MONDAY).toString());
-        assertEquals("TUESDAY",   new DayOfWeek(Calendar.TUESDAY).toString());
+        assertEquals("SUNDAY", new DayOfWeek(Calendar.SUNDAY).toString());
+        assertEquals("MONDAY", new DayOfWeek(Calendar.MONDAY).toString());
+        assertEquals("TUESDAY", new DayOfWeek(Calendar.TUESDAY).toString());
         assertEquals("WEDNESDAY", new DayOfWeek(Calendar.WEDNESDAY).toString());
-        assertEquals("THURSDAY",  new DayOfWeek(Calendar.THURSDAY).toString());
-        assertEquals("FRIDAY",    new DayOfWeek(Calendar.FRIDAY).toString());
-        assertEquals("SATURDAY",  new DayOfWeek(Calendar.SATURDAY).toString());
+        assertEquals("THURSDAY", new DayOfWeek(Calendar.THURSDAY).toString());
+        assertEquals("FRIDAY", new DayOfWeek(Calendar.FRIDAY).toString());
+        assertEquals("SATURDAY", new DayOfWeek(Calendar.SATURDAY).toString());
     }
 
     private void assertNotEquals(DayOfWeek d1, DayOfWeek d2) {

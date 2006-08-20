@@ -1,15 +1,14 @@
 package au.net.netstorm.boost.time.type;
 
-import java.util.Calendar;
-
 import junit.framework.TestCase;
+
+import java.util.Calendar;
 
 public final class MonthSpecAtomicTest extends TestCase {
     // FIX SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
     // FIX SC507 Internal static per class is probably fine.
     public static final MonthSpec JANUARY_2000 = new MonthSpec(2000, 0);
     public static final MonthSpec DECEMBER_1999 = new MonthSpec(1999, 11);
-
     private static final int EQUAL_TO = 0;
     private static final int LESS_THAN = -1;
     private static final int GREATER_THAN = 1;
@@ -34,7 +33,6 @@ public final class MonthSpecAtomicTest extends TestCase {
     public void testComparableCheck() {
         MonthSpec m1 = new MonthSpec(2004, Calendar.JANUARY);
         m1.compareTo(m1);
-
         try {
             m1.compareTo("THIS AIN'T GONNA WORK");
             fail();
@@ -71,26 +69,25 @@ public final class MonthSpecAtomicTest extends TestCase {
     }
 
     public void testStartDayOfWeek() {
-        assertStartDay(Calendar.THURSDAY,  2004, Calendar.JANUARY);
-        assertStartDay(Calendar.SUNDAY,    2004, Calendar.FEBRUARY);
-        assertStartDay(Calendar.MONDAY,    2004, Calendar.MARCH);
-        assertStartDay(Calendar.THURSDAY,  2004, Calendar.APRIL);
-        assertStartDay(Calendar.SATURDAY,  2004, Calendar.MAY);
-        assertStartDay(Calendar.TUESDAY,   2004, Calendar.JUNE);
-        assertStartDay(Calendar.THURSDAY,  2004, Calendar.JULY);
-        assertStartDay(Calendar.SUNDAY,    2004, Calendar.AUGUST);
-        assertStartDay(Calendar.WEDNESDAY, 2004, Calendar.SEPTEMBER);
-        assertStartDay(Calendar.FRIDAY,    2004, Calendar.OCTOBER);
-        assertStartDay(Calendar.MONDAY,    2004, Calendar.NOVEMBER);
-        assertStartDay(Calendar.WEDNESDAY, 2004, Calendar.DECEMBER);
-
-        assertStartDay(Calendar.THURSDAY, 1999, Calendar.APRIL);
-        assertStartDay(Calendar.SUNDAY,   2001, Calendar.APRIL);
-        assertStartDay(Calendar.TUESDAY,  2003, Calendar.APRIL);
+        assertStartDay(Calendar.THURSDAY, 2004, Calendar.JANUARY);
+        assertStartDay(Calendar.SUNDAY, 2004, Calendar.FEBRUARY);
+        assertStartDay(Calendar.MONDAY, 2004, Calendar.MARCH);
         assertStartDay(Calendar.THURSDAY, 2004, Calendar.APRIL);
-        assertStartDay(Calendar.FRIDAY,   2005, Calendar.APRIL);
+        assertStartDay(Calendar.SATURDAY, 2004, Calendar.MAY);
+        assertStartDay(Calendar.TUESDAY, 2004, Calendar.JUNE);
+        assertStartDay(Calendar.THURSDAY, 2004, Calendar.JULY);
+        assertStartDay(Calendar.SUNDAY, 2004, Calendar.AUGUST);
+        assertStartDay(Calendar.WEDNESDAY, 2004, Calendar.SEPTEMBER);
+        assertStartDay(Calendar.FRIDAY, 2004, Calendar.OCTOBER);
+        assertStartDay(Calendar.MONDAY, 2004, Calendar.NOVEMBER);
+        assertStartDay(Calendar.WEDNESDAY, 2004, Calendar.DECEMBER);
+        assertStartDay(Calendar.THURSDAY, 1999, Calendar.APRIL);
+        assertStartDay(Calendar.SUNDAY, 2001, Calendar.APRIL);
+        assertStartDay(Calendar.TUESDAY, 2003, Calendar.APRIL);
+        assertStartDay(Calendar.THURSDAY, 2004, Calendar.APRIL);
+        assertStartDay(Calendar.FRIDAY, 2005, Calendar.APRIL);
         assertStartDay(Calendar.SATURDAY, 2006, Calendar.APRIL);
-        assertStartDay(Calendar.SUNDAY,   2007, Calendar.APRIL);
+        assertStartDay(Calendar.SUNDAY, 2007, Calendar.APRIL);
     }
 
     private void assertDaysInMonth(int expected, int year, int month) {
@@ -99,7 +96,7 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertEquals(expected, spec.totalDays);
     }
 
-    private void assertStartDay(int expected, int year, int month){
+    private void assertStartDay(int expected, int year, int month) {
         MonthSpec spec = new MonthSpec(year, month);
         assertEquals(expected, spec.startDay);
     }

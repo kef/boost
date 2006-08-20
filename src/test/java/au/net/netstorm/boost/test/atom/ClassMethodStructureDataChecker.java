@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.test.reflect.util.ClassMethodTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultClassMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
@@ -9,7 +11,7 @@ import java.lang.reflect.Method;
 
 final class ClassMethodStructureDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
-    private ClassMethodUtil classMethodUtil = new DefaultClassMethodUtil();
+    private ClassMethodTestUtil classMethodUtil = new DefaultClassMethodTestUtil();
     private MethodToStringUtil stringer = new DefaultMethodToStringUtil();
 
     public void check(Class cls, FieldSpec[] fields) {

@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.fixture;
 
-import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.primordial.Primordial;
@@ -18,6 +16,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Data;
 import junit.framework.Assert;
 
+import java.lang.reflect.Constructor;
+
 // FIX SC600 Rename FieldSpec to NamedType.  FieldSpec and BeanSpec can then extend NamedType.
 // FIX SC600 checkIsData should take in BeanSpecs.
 // FIX SC600 BREADCRUMB Move out of fixture package.
@@ -30,7 +30,6 @@ import junit.framework.Assert;
 //
 //
 //
-
 public final class OldDataTestChecker implements DataTestChecker {
     private ClassTestUtil classUtil = new DefaultClassTestUtil();
     private ClassTestChecker classChecker = new DefaultClassTestChecker();

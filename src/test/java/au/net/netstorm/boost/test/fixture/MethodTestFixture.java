@@ -1,16 +1,15 @@
 package au.net.netstorm.boost.test.fixture;
 
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
+import java.lang.reflect.Method;
+
 // FIX SC517 ? public.
 // FIX SC517 interface.
 // FIX SC600 Remove.
-
 final class MethodTestFixture {
     static final String GETTER_PREFIX = "get"; // FIX SC517 Make public or private
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.core;
 
-import java.util.Date;
-
 import junit.framework.TestCase;
+
+import java.util.Date;
 
 public final class TimePointAtomicTest extends TestCase {
     private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();

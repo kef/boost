@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.test.atom;
+package au.net.netstorm.boost.test.reflect.util;
 
 import java.lang.reflect.Method;
 
-interface ClassMethodUtil {
+public interface ClassMethodTestUtil {
     Method[] getAll(Class cls);
 
     Method[] getAllPublicInstance(Class cls);

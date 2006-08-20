@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.util.type;
 
-import java.io.Serializable;
-
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
 import junit.framework.TestCase;
+
+import java.io.Serializable;
 
 public class DataAtomicTest extends TestCase {
     private final ClassTestUtil clsProperties = new DefaultClassTestUtil();
@@ -19,5 +19,4 @@ public class DataAtomicTest extends TestCase {
         boolean isImplemention = clsProperties.isImplementationOf(iface, Data.class);
         assertTrue(isImplemention);
     }
-
 }

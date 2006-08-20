@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.test.primordial;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import org.jmock.Mock;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 final class DefaultImplicitMocker implements ImplicitMocker {
     private final Map mocks = new HashMap();
