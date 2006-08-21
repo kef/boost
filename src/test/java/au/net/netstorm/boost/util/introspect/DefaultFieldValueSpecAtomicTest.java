@@ -10,6 +10,7 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     private static final Object VALUE_2 = new Object();
     private static final FieldValueSpec FIELD_VALUE_SPEC_1 = new DefaultFieldValueSpec("field1", new Integer(77));
     private static final FieldValueSpec FIELD_VALUE_SPEC_2 = new DefaultFieldValueSpec("field7", "Is absolute zero cold enough?");
+    private static final Object VALUE_CAN_BE_NULL = null;
 
     public void testMarker() {
         assertTrue(Immutable.class.isAssignableFrom(DefaultFieldValueSpec.class));
@@ -17,10 +18,10 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
 
     public void testNullsIllegalInConstructor() {
         checkNullsIllegalInConstructor(null, VALUE_1);
-        checkNullsIllegalInConstructor(NAME_1, null);
     }
 
     public void testCreate() {
+        checkCreate(NAME_1, VALUE_CAN_BE_NULL);
         checkCreate(NAME_1, VALUE_1);
         checkCreate(NAME_2, VALUE_2);
     }

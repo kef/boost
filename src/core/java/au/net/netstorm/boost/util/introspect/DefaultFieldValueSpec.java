@@ -63,7 +63,6 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
 
     private void validate() {
         validate(name);
-        validate(value);
     }
 
     // FIX SC509 ? Null checker.
