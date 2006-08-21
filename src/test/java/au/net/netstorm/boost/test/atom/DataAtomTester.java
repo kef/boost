@@ -1,17 +1,14 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.util.introspect.FieldSpec;
-
+// FIX SC600 Complete combos.
 public interface DataAtomTester {
-    void checkAtom(FieldSpec fs1);
+    void checkAtom(Object field1);
 
-    void checkAtom(FieldSpec fs1, FieldSpec fs2);
+    void checkAtom(Object field1, Object field2);
 
-    void checkAtom(FieldSpec fs1, FieldSpec fs2, FieldSpec fs3);
+    void checkAtom(Object field1, Object field2, Object field3);
 
-    void checkAtom(FieldSpec fs1, FieldSpec fs2, FieldSpec fs3, FieldSpec fs4);
+    void checkAtom(Object field1, Object field2, Object field3, Object field4);
 
-    void checkAtom(FieldSpec fs1, FieldSpec fs2, FieldSpec fs3, FieldSpec fs4, FieldSpec fs5);
-
-    void checkAtom(FieldSpec[] fieldSpecs);
+    void checkAtom(Object[] fields);
 }

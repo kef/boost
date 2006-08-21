@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 // FIX SC600 BREADCRUMB Complete.
 // FIX SC600 Check bottom level classes are final.
 // FIX SC600 Check no-arg (single) constructor.
+// FIX SC600 Redefine setUp() to setup() which does not throw an exception.
 public abstract class PrimordialTestCase extends TestCase implements PrimordialTester {
     private final AssertTestChecker asserter = new DefaultAssertTestChecker();
 
