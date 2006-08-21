@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.start;
 
-import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.test.atom.DefaultDataAtomTestChecker;
+import au.net.netstorm.boost.test.atom.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 

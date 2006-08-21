@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.aggregator.DefaultTestAggregator;
 import au.net.netstorm.boost.test.aggregator.TestAggregator;
+import au.net.netstorm.boost.test.atom.PrimordialTestCase;
 import junit.framework.Test;
 
 // FIX SC600 Rename "build" area to "gen".

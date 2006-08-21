@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
+import au.net.netstorm.boost.test.atom.PrimordialTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
