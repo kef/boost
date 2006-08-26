@@ -63,7 +63,7 @@
         <patternset refid="code.pattern"/>
         <exclude name="**/au/net/netstorm/boost/edge/**"/>
         <!-- FIX SC600 Moves into kickstart.xml for courses. -->
-        <exclude name="**/pair/*.java"/>
+        <exclude name="**/kickstart/*.java"/>
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE. -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
@@ -71,10 +71,13 @@
         <exclude name="**/Old*.java"/>
     </fileset>
 
-    <fileset id="simian.boo.code" dir="${src.dir}" includes="**/pair/boo/**/*.java"/>
-    <fileset id="simian.monster.code" dir="${src.dir}" includes="**/pair/monster/**/*.java"/>
-    <fileset id="simian.rah.code" dir="${src.dir}" includes="**/pair/rah/**/*.java"/>
-    <fileset id="simian.scream.code" dir="${src.dir}" includes="**/pair/scream/**/*.java"/>
+    <!-- FIX SC600 Moves into kickstart.xml for courses. -->
+    <fileset id="simian.boo.code" dir="${src.dir}" includes="**/kickstart/boo/**/*.java"/>
+    <fileset id="simian.mike.code" dir="${src.dir}" includes="**/kickstart/mike/**/*.java"/>
+    <fileset id="simian.monster.code" dir="${src.dir}" includes="**/kickstart/monster/**/*.java"/>
+    <fileset id="simian.rah.code" dir="${src.dir}" includes="**/kickstart/rah/**/*.java"/>
+    <fileset id="simian.scream.code" dir="${src.dir}" includes="**/kickstart/scream/**/*.java"/>
+    <fileset id="simian.sulley.code" dir="${src.dir}" includes="**/kickstart/sulley/**/*.java"/>
 
 
     <path id="edge.compile.classpath"/>
@@ -133,6 +136,6 @@
             <include name="**/*.jar"/>
         </fileset>
     </path>
-    
+
     <target name="ignore"/>
 </project>

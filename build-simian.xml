@@ -6,18 +6,24 @@
 
     <target name="run_simian">
         <macro_run_simian code.type="boost"/>
+        <!-- FIX SC600 Moves into kickstart.xml for courses. -->
         <macro_run_simian code.type="boo"/>
+        <macro_run_simian code.type="mike"/>
         <macro_run_simian code.type="monster"/>
         <macro_run_simian code.type="rah"/>
         <macro_run_simian code.type="scream"/>
+        <macro_run_simian code.type="sulley"/>
     </target>
 
     <target name="check_simian">
         <macro_check_simian code.type="boost"/>
+        <!-- FIX SC600 Moves into kickstart.xml for courses. -->
         <macro_check_simian code.type="boo"/>
+        <macro_check_simian code.type="mike"/>
         <macro_check_simian code.type="monster"/>
         <macro_check_simian code.type="rah"/>
         <macro_check_simian code.type="scream"/>
+        <macro_check_simian code.type="sulley"/>
     </target>
 
     <macrodef name="macro_run_simian">
