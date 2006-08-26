@@ -64,6 +64,4 @@
                              datafile="${coverage.dir}/@{test.type}_coverage.ser"/>
         </sequential>
     </macrodef>
-
-    <import file="build-init.xml"/>
 </project>

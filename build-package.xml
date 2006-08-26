@@ -18,5 +18,4 @@
             <fileset dir="${test.src.dir}" includes="**"/>
         </jar>
     </target>
-
 </project>

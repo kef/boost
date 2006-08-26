@@ -17,7 +17,6 @@
         <macro_junit_check failure.property="demo.tests.failed"/>
     </target>
 
-
     <macrodef name="macro_run_test">
         <attribute name="type"/>
         <sequential>
