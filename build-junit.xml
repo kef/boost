@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="boost" default="ignore">
+<project name="boost-junit" default="ignore" basedir=".">
     <import file="build-init.xml"/>
 
     <property name="test.report.dir" location="${reports.dir}/test"/>

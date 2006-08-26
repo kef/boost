@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="cobertura" default="ignore">
+<project name="boost-cobertura" default="ignore" basedir=".">
     <import file="build-init.xml"/>
 
     <property name="quality.atomic.coverage.branch" value="100"/>
