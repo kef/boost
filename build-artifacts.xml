@@ -12,7 +12,9 @@
         <copy todir="${artifacts.dir}">
             <fileset refid="artifacts"/>
         </copy>
-        <copy file="${artifacts.template.dir}/artifacts.html" todir="${artifacts.dir}">
+        <property name="artifacts.template.file" value="artifacts.html"/>
+        <property name="artifacts.file" value="artifacts.html"/>
+        <copy file="${artifacts.template.dir}/${artifacts.template.file}" tofile="${artifacts.dir}/${artifacts.file}">
             <filterset>
                 <filter token="BUILD_DATE" value="${build.date}"/>
                 <filter token="BUILD_LABEL" value="${label}"/>

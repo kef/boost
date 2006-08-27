@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="kickstart" default="all" basedir=".">
-    <import file="build-includes.xml"/>
-
-    <target name="all" depends="clean, artifacts, compile, instrument, -run, -report, -check, jar"/>
-    <target name="quality" depends="run_checkstyle, run_simian, check_checkstyle, check_simian"/>
-
-    <target name="-run" depends="run_tests, run_checkstyle, run_simian"/>
-    <target name="-report" depends="report_tests, report_coverage"/>
-    <target name="-check" depends="check_tests, check_coverage, check_checkstyle, check_simian"/>
+<project name="boost-kickstart" default="all" basedir=".">
+    <property name="artifacts.template.file" value="artifacts-kickstart.html"/>
+    <import file="build.xml"/>
 </project>
