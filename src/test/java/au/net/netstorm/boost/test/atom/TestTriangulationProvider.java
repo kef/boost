@@ -24,7 +24,8 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     public Object getInstance(Class type) {
         Object ref = doGetInstance(type);
         if (ref != null) return ref;
-        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
+        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
+                "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
     }
 
     public Object[] getInstances(Class[] types) {

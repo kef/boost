@@ -46,6 +46,7 @@ final class ImmutabilityDataChecker implements DataChecker {
     }
 
     private void fail(String type) {
-        Assert.fail(type + " " + "is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
+        Assert.fail(type + " " + "is not immutable.  All properties must be immutable.  This means they either " +
+                "implement Immutable/Data or are known immutable types.");
     }
 }

@@ -62,8 +62,8 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertHashCode(500, new DefaultTimeRange(START_TIME_500, DURATION_200));
         assertHashCode(499, new DefaultTimeRange(START_TIME_499, DURATION_001));
         assertHashCode(499, new DefaultTimeRange(START_TIME_499, DURATION_200));
-        assertHashCode(1, new DefaultTimeRange(START_TIME_0x7FFFFFFF00000001, DURATION_001));
-        assertHashCode(1, new DefaultTimeRange(START_TIME_0x7FFFFFFF00000001, DURATION_200));
+        assertHashCode(1, new DefaultTimeRange(START_TIME_0X7FFFFFFF00000001, DURATION_001));
+        assertHashCode(1, new DefaultTimeRange(START_TIME_0X7FFFFFFF00000001, DURATION_200));
     }
 
     public void testToString() {
@@ -114,7 +114,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private static final TimePoint TIME_400 = TIME_FACTORY.createTime(new Date(400));
     private static final TimePoint TIME_500 = new TimePoint(500);
     private static final TimePoint TIME_499 = new TimePoint(499);
-    private static final TimePoint TIME_0x7FFFFFFF00000001 = new TimePoint(0x7FFFFFFF00000001L);
+    private static final TimePoint TIME_0X7FFFFFFF00000001 = new TimePoint(0x7FFFFFFF00000001L);
     private static final StartTime START_TIME_050 = new StartTime(TIME_050);
     private static final StartTime START_TIME_099 = new StartTime(TIME_099);
     private static final StartTime START_TIME_100 = new StartTime(TIME_100);
@@ -125,7 +125,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private static final StartTime START_TIME_300 = new StartTime(TIME_300);
     private static final StartTime START_TIME_500 = new StartTime(TIME_500);
     private static final StartTime START_TIME_499 = new StartTime(TIME_499);
-    private static final StartTime START_TIME_0x7FFFFFFF00000001 = new StartTime(TIME_0x7FFFFFFF00000001);
+    private static final StartTime START_TIME_0X7FFFFFFF00000001 = new StartTime(TIME_0X7FFFFFFF00000001);
     private static final EndTime END_TIME_100 = new EndTime(TIME_100);
     private static final EndTime END_TIME_101 = new EndTime(TIME_101);
     private static final EndTime END_TIME_102 = new EndTime(TIME_102);

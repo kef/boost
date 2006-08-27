@@ -41,7 +41,8 @@ final class ConstructorDataChecker implements DataChecker {
         int expectedLength = expectedTypes.length;
         int declaredLength = declaredTypes.length;
         if (expectedLength == declaredLength) return;
-        fail("Constructor must have " + expectedLength + " argument(s) matching the properties.  Instead it appears to have " + declaredLength + " arguments(s).");
+        fail("Constructor must have " + expectedLength + " argument(s) matching the properties.  Instead it appears to have "
+                + declaredLength + " arguments(s).");
     }
 
     private void checkParametersMatch(Class[] expected, Class[] declared) {

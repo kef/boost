@@ -9,9 +9,9 @@ import java.util.Date;
 public final class TimeFactoryAtomicTest extends TestCase {
     public void testCreateRange() {
         // FIX SC777 ? More than just triangulation values - is this an integration test.
-        checkCreateRange(DATE_RANGE_050__100, DATE_050, DATE_100);
-        checkCreateRange(DATE_RANGE_100__200, DATE_100, DATE_200);
-        checkCreateRange(DATE_RANGE_100__400, DATE_100, DATE_400);
+        checkCreateRange(DATE_RANGE_050_100, DATE_050, DATE_100);
+        checkCreateRange(DATE_RANGE_100_200, DATE_100, DATE_200);
+        checkCreateRange(DATE_RANGE_100_400, DATE_100, DATE_400);
     }
 
     public void testCreateTimePoint() {
@@ -75,7 +75,7 @@ public final class TimeFactoryAtomicTest extends TestCase {
     private static final Duration DURATION_050 = new Duration(50);
     private static final Duration DURATION_100 = new Duration(100);
     private static final Duration DURATION_300 = new Duration(300);
-    private static final TimeRange DATE_RANGE_050__100 = new DefaultTimeRange(START_TIME_050, DURATION_050);
-    private static final TimeRange DATE_RANGE_100__200 = new DefaultTimeRange(START_TIME_100, DURATION_100);
-    private static final TimeRange DATE_RANGE_100__400 = new DefaultTimeRange(START_TIME_100, DURATION_300);
+    private static final TimeRange DATE_RANGE_050_100 = new DefaultTimeRange(START_TIME_050, DURATION_050);
+    private static final TimeRange DATE_RANGE_100_200 = new DefaultTimeRange(START_TIME_100, DURATION_100);
+    private static final TimeRange DATE_RANGE_100_400 = new DefaultTimeRange(START_TIME_100, DURATION_300);
 }

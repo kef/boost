@@ -4,13 +4,10 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 <suppressions>
     <!-- FIX SC600 Fix problems and then remove these suppressions. -->
-    <suppress checks="EmptyBlock" files=".*.java"/>
-    <suppress checks="IllegalType" files=".*.java"/>
     <suppress checks="ClassDataAbstractionCoupling" files=".*.java"/>
-    <suppress checks="LineLength" files=".*.java"/>
     <suppress checks="JavaNCSS" files=".*.java"/>
-    <suppress checks="ConstantName" files=".*.java"/>
-    <suppress checks="ParameterNumber" files=".*.java"/>
-    <suppress checks="CyclomaticComplexity" files=".*.java"/>
-    <suppress checks="ReturnCount" files=".*.java"/>
+    <suppress checks="ParameterNumber" files="DaySpecAtomicTest.java" lines="65-69"/>
+    <suppress checks="ParameterNumber" files="MonthSpecAtomicTest.java" lines="110-114"/>
+    <suppress checks="CyclomaticComplexity" files="TestTriangulationProvider.java" lines="65-74"/>
+    <suppress checks="ReturnCount" files="TestTriangulationProvider.java" lines="65-74"/>
 </suppressions>

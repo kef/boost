@@ -42,7 +42,8 @@ public final class FactoryTestUtil {
 //        }
 //    }
 //
-//    private static void checkGetNullParamValue(Class implType, Object[] paramsForGet, Class[] paramTypesForGet, FieldValueSpec[] extraDependencies) {
+//    private static void checkGetNullParamValue(Class implType, Object[] paramsForGet, Class[] paramTypesForGet,
+//                                               FieldValueSpec[] extraDependencies) {
 //        try {
 //            get(implType, NULL_IOC_FACTORY, paramsForGet, paramTypesForGet, extraDependencies);
 //            Assert.fail("Expected IllegalArgumentException not thrown.");

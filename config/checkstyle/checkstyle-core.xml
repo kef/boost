@@ -16,5 +16,8 @@
         <module name="JavaNCSS">
             <property name="classMaximum" value="80"/>
         </module>
+        <module name="EmptyBlock">
+            <property name="option" value="text"/>
+        </module>
     </module>
 </module>

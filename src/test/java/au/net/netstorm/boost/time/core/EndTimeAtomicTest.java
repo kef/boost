@@ -28,7 +28,7 @@ public final class EndTimeAtomicTest extends TestCase {
     public void testHashCode() {
         assertHashCode(500, new EndTime(TIME_500));
         assertHashCode(499, new EndTime(TIME_499));
-        assertHashCode(1, new EndTime(TIME_0x7FFFFFFF00000001));
+        assertHashCode(1, new EndTime(TIME_0X7FFFFFFF00000001));
     }
 
     private void assertNotEquals(EndTime e1, EndTime e2) {
@@ -42,6 +42,6 @@ public final class EndTimeAtomicTest extends TestCase {
 
     private static final TimePoint TIME_500 = new TimePoint(500);
     private static final TimePoint TIME_499 = new TimePoint(499);
-    private static final TimePoint TIME_0x7FFFFFFF00000001 = new TimePoint(0x7FFFFFFF00000001L);
+    private static final TimePoint TIME_0X7FFFFFFF00000001 = new TimePoint(0x7FFFFFFF00000001L);
 }
 

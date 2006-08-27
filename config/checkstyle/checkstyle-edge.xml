@@ -19,5 +19,8 @@
         <module name="GenericIllegalRegexp">
             <property name="format" value="new RuntimeException|public class|static"/>
         </module>
+        <module name="EmptyBlock">
+            <property name="option" value="text"/>
+        </module>
     </module>
 </module>

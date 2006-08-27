@@ -36,13 +36,13 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     }
 
     public Method[] getAllNotInheritedPublicInstance(Class cls) {
-        HashSet result = getAllAsSet(cls);
+        Set result = getAllAsSet(cls);
         keepNonInherited(result);
         keepPublicInstance(result);
         return methods(result);
     }
 
-    private HashSet getAllAsSet(Class cls) {
+    private Set getAllAsSet(Class cls) {
         Method[] all = guardGetAll(cls);
         List list = Arrays.asList(all);
         return new HashSet(list);

@@ -98,9 +98,6 @@
 <module name="IllegalImport"/>
 <module name="AvoidStarImport"/>
 <module name="RedundantImport"/>
-<module name="EmptyBlock">
-    <property name="option" value="text"/>
-</module>
 <module name="InterfaceIsType">
     <property name="allowMarkerInterfaces" value="true"/>
 </module>

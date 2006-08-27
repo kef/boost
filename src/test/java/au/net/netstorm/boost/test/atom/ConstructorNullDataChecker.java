@@ -64,6 +64,7 @@ final class ConstructorNullDataChecker implements DataChecker {
 
     private void fail(Class type, int i) {
         String shortName = classMaster.getShortName(type);
-        Assert.fail("We do not allow nulls in Data atoms.  You must throw an IllegalArgumentException when parameter (" + shortName + ") at position " + i + " in the constructor is null.");
+        Assert.fail("We do not allow nulls in Data atoms.  You must throw an IllegalArgumentException when parameter ("
+                + shortName + ") at position " + i + " in the constructor is null.");
     }
 }

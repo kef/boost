@@ -14,7 +14,8 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
     private static final TestStringArrayField STRING_ARRAY_A_B = new TestStringArrayField(new String[]{"A", "B"});
     private static final TestIntArrayField INT_ARRAY = new TestIntArrayField(new int[]{1, 2, 4});
     private static final TestMixedArrayField MIXED_ARRAY = new TestMixedArrayField(new long[]{1L, 54L}, new String[]{"A", "Z"});
-    private static final TestMultipleNestedFields MULTIPLE_NESTED_FIELDS = new TestMultipleNestedFields("multiple", new TestPreformattedTwoFields(2, 4));
+    private static final TestMultipleNestedFields MULTIPLE_NESTED_FIELDS =
+            new TestMultipleNestedFields("multiple", new TestPreformattedTwoFields(2, 4));
     private static final TestStringArrayField STRING_ARRAY_C_D = new TestStringArrayField(new String[]{"C", "D"});
     private static final String EXPECTED_INDENTATION = "    ";
 
