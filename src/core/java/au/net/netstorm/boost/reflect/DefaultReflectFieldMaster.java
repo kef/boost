@@ -28,7 +28,7 @@ final class DefaultReflectFieldMaster implements ReflectFieldMaster {
         if (isInstance(field)) list.add(createFieldSpec(field, ref));
     }
 
-    private DefaultFieldValueSpec createFieldSpec(Field field, Object ref) {
+    private FieldValueSpec createFieldSpec(Field field, Object ref) {
         String name = field.getName();
         Object value = getFieldValue(field, ref);
         return new DefaultFieldValueSpec(name, value);

@@ -16,6 +16,7 @@ public final class DayInMonth extends Primordial {
 
     private void validate() {
         if (month == null) throw new IllegalArgumentException("Month cannot be null.");
-        if (day < 0 || day >= month.maxDays) throw new IllegalArgumentException("Day (day=" + day + ") must be in the range [0;" + (month.maxDays - 1) + "]");
+        if (day < 0 || day >= month.maxDays) throw new IllegalArgumentException(
+                "Day (day=" + day + ") must be in the range [0;" + (month.maxDays - 1) + "]");
     }
 }

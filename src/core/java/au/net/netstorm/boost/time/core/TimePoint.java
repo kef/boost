@@ -5,7 +5,8 @@ import au.net.netstorm.boost.util.type.Data;
 import java.io.Serializable;
 
 // FIX SC507 Introduce type stuff.
-// FIX SC502 Test drive requirement for "Data".  This was placed here to get external requirement complete whilst cruise was broken!
+// FIX SC502 Test drive requirement for "Data".  This was placed here to get external requirement complete
+//           whilst cruise was broken!
 public final class TimePoint implements Data, Serializable {
     private static final long EPOCH_MILLIS = 0L;
     private static final long EPOCH_ARGMAGEDDON = Long.MAX_VALUE;
@@ -31,12 +32,13 @@ public final class TimePoint implements Data, Serializable {
         return (int) millis;
     }
 
-    public static final TimePoint now() {
+    public static TimePoint now() {
         return new TimePoint(System.currentTimeMillis());
     }
 
     private void validate() {
-        if (millis < EPOCH_MILLIS) throw new IllegalArgumentException("The specified time (time=" + millis + ") cannot be less than the epoch (EPOCH=" + EPOCH + ").");
+        if (millis < EPOCH_MILLIS) throw new IllegalArgumentException(
+                "The specified time (time=" + millis + ") cannot be less than the epoch (EPOCH=" + EPOCH + ").");
     }
 
     private boolean equals(TimePoint time) {

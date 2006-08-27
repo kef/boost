@@ -3,6 +3,7 @@ package au.net.netstorm.boost.util.tostring;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.indent.DefaultIndenterMaster;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.separator.Separator;
@@ -13,8 +14,7 @@ public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
     private static final String LF = Separator.LINE;
     private final ClassMaster classMaster = new DefaultClassMaster();
-    // FIX SC600 Checkstyle should fail here.  Work out why it isn't.
-    private final DefaultReflectMaster reflect = new DefaultReflectMaster();
+    private final ReflectMaster reflect = new DefaultReflectMaster();
 
     public String getString(Object ref) {
         return getClassName(ref.getClass()) + formatFields(formatFields(ref));

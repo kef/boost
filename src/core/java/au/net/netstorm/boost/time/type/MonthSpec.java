@@ -13,7 +13,8 @@ public final class MonthSpec extends Primordial implements Comparable {
     public final int startDay;
 
     public MonthSpec(int year, int month) {
-        if (month < 0 || month > 11) throw new IllegalArgumentException(MONTH_OUT_OF_RANGE_MSG + " year=" + year + ",month=" + month);
+        if (month < 0 || month > 11) throw new IllegalArgumentException(
+                MONTH_OUT_OF_RANGE_MSG + " year=" + year + ",month=" + month);
         this.month = month;
         this.year = year;
         GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance();
@@ -25,8 +26,9 @@ public final class MonthSpec extends Primordial implements Comparable {
     }
 
     public int compareTo(Object o) {
-        if (! getClass().isAssignableFrom(o.getClass()))
-            throw new IllegalArgumentException("We can only perform a comparison on a " + getClass().getName() + ".  You provided a " + o.getClass().getName() + ".");
+        if (!getClass().isAssignableFrom(o.getClass()))
+            throw new IllegalArgumentException("We can only perform a comparison on a " + getClass().getName() + ".  " +
+                    "You provided a " + o.getClass().getName() + ".");
         MonthSpec target = (MonthSpec) o;
         return compareTo(target);
     }

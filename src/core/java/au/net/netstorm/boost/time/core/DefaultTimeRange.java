@@ -23,7 +23,10 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     public boolean intersects(TimeRange range) {
-        return range.contains(start().point) || range.contains(TIME_POINT_MASTER.previous(TIME_RANGE_MASTER.end(this).point)) || this.contains(range.start().point) || this.contains(TIME_POINT_MASTER.previous(TIME_RANGE_MASTER.end(range).point));
+        return range.contains(start().point)
+                || range.contains(TIME_POINT_MASTER.previous(TIME_RANGE_MASTER.end(this).point))
+                || this.contains(range.start().point)
+                || this.contains(TIME_POINT_MASTER.previous(TIME_RANGE_MASTER.end(range).point));
     }
 
     public boolean equals(Object o) {

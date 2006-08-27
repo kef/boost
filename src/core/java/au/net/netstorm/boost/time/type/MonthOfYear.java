@@ -38,7 +38,8 @@ public final class MonthOfYear {
     }
 
     private void validate() {
-        if (value < 0 || value >= MONTHS_IN_YEAR) throw new IllegalArgumentException("Invalid month (month=" + value + ").  Month must be between 0 and " + (MONTHS_IN_YEAR - 1) + ".");
+        if (value < 0 || value >= MONTHS_IN_YEAR) throw new IllegalArgumentException(
+                "Invalid month (month=" + value + ").  Month must be between 0 and " + (MONTHS_IN_YEAR - 1) + ".");
     }
 
     private int maxDays() {
@@ -51,5 +52,7 @@ public final class MonthOfYear {
         return STRINGS[value];
     }
 
-    private static final String[] STRINGS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    private static final String[] STRINGS = {
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    };
 }

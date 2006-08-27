@@ -13,6 +13,7 @@ public final class MinuteOfHour extends Primordial {
     }
 
     private void validate() {
-        if (value < 0 || value >= MINUTES_IN_HOUR) throw new IllegalArgumentException("Invalid minute (minute=" + value + ").");
+        if (value < 0 || value >= MINUTES_IN_HOUR)
+            throw new IllegalArgumentException("Invalid minute (minute=" + value + ").");
     }
 }

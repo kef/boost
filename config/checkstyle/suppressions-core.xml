@@ -4,11 +4,8 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 <suppressions>
     <!-- FIX SC600 Fix problems and then remove these suppressions. -->
-    <suppress checks="RedundantModifier" files=".*.java"/>
-    <suppress checks="LineLength" files=".*.java"/>
     <suppress checks="CyclomaticComplexity" files=".*.java"/>
     <suppress checks="JavaNCSS" files=".*.java"/>
     <suppress checks="ReturnCount" files=".*.java"/>
-    <suppress checks="IllegalType" files=".*.java"/>
-    <suppress checks="InterfaceIsType" files=".*.java"/>
+    <suppress checks="IllegalType" files="MonthSpec.java" lines="20"/>
 </suppressions>

@@ -32,22 +32,22 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return checkDefaultFieldSpec((DefaultFieldValueSpec) o);
     }
 
-    private boolean checkDefaultFieldSpec(DefaultFieldValueSpec spec) {
-        if (!spec.name.equals(name)) return false;
-        if (spec.value.getClass().isArray()) return arraysEquals(spec);
-        return spec.value.equals(value);
+    private boolean checkDefaultFieldSpec(FieldValueSpec spec) {
+        if (!spec.getName().equals(name)) return false;
+        if (spec.getValue().getClass().isArray()) return arraysEquals(spec);
+        return spec.getValue().equals(value);
     }
 
-    private boolean arraysEquals(DefaultFieldValueSpec spec) {
-        if (Array.getLength(spec.value) != Array.getLength(value)) return false;
-        for (int i = 0; i < Array.getLength(spec.value); i++) {
+    private boolean arraysEquals(FieldValueSpec spec) {
+        if (Array.getLength(spec.getValue()) != Array.getLength(value)) return false;
+        for (int i = 0; i < Array.getLength(spec.getValue()); i++) {
             if (memberArraysUnequal(spec, i)) return false;
         }
         return true;
     }
 
-    private boolean memberArraysUnequal(DefaultFieldValueSpec spec, int i) {
-        Object o1 = Array.get(spec.value, i);
+    private boolean memberArraysUnequal(FieldValueSpec spec, int i) {
+        Object o1 = Array.get(spec.getValue(), i);
         Object o2 = Array.get(value, i);
         return !o1.equals(o2);
     }

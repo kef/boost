@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.util.type.Interface;// FIX SC600 Doesn't work for Object[], gives "Object;"  Java 1.5 would solve this with .getSimpleName().
+import au.net.netstorm.boost.util.type.Interface;
+
+// FIX SC600 Doesn't work for Object[], gives "Object;"  Java 1.5 would solve this with .getSimpleName().
 public class DefaultClassMaster implements ClassMaster {
     public String getShortName(Interface iface) {
         Class type = iface.getType();

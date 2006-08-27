@@ -13,6 +13,7 @@ public final class SecondOfMinute extends Primordial {
     }
 
     private void validate() {
-        if (value < 0 || value >= SECONDS_IN_MINUTE) throw new IllegalArgumentException("Invalid second (second=" + value + ").");
+        if (value < 0 || value >= SECONDS_IN_MINUTE)
+            throw new IllegalArgumentException("Invalid second (second=" + value + ").");
     }
 }

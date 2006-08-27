@@ -13,7 +13,8 @@ public final class DaySpec extends Primordial implements Comparable {
     }
 
     public int compareTo(Object o) {
-        if (! getClass().isAssignableFrom(o.getClass())) throw new IllegalArgumentException("Cannot perform a comparison with a " + o.getClass() + ".");
+        if (!getClass().isAssignableFrom(o.getClass())) throw new IllegalArgumentException(
+                "Cannot perform a comparison with a " + o.getClass() + ".");
         DaySpec spec = (DaySpec) o;
         int us = compareValue(this);
         int them = compareValue(spec);
@@ -24,7 +25,8 @@ public final class DaySpec extends Primordial implements Comparable {
 
     private void validate() {
         int totalDays = month.totalDays;
-        if (day < 0 || day >= totalDays) throw new IllegalArgumentException("The day is out of range [0.." + (totalDays - 1) + "] (day=" + day + ")");
+        if (day < 0 || day >= totalDays) throw new IllegalArgumentException(
+                "The day is out of range [0.." + (totalDays - 1) + "] (day=" + day + ")");
     }
 
     private static int compareValue(DaySpec day) {
@@ -32,4 +34,3 @@ public final class DaySpec extends Primordial implements Comparable {
         return month.year * 10000 + month.month * 100 + day.day;
     }
 }
-

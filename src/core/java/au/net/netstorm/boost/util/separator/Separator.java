@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.util.separator;
 
-public interface Separator {
-    String LINE = System.getProperty("line.separator");
+public class Separator {
+    public static final String LINE = System.getProperty("line.separator");
 }

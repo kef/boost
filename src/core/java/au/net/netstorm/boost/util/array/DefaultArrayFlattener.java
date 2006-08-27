@@ -10,7 +10,7 @@ import java.util.List;
 public final class DefaultArrayFlattener extends Primordial implements ArrayFlattener {
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
 
-    // Note. Cannot use check(Object[]) as it uses this method, hence stack overflow, hence doesn't check embedded nulls.
+    // Note. Cannot use check(Object[]) as it uses this method, hence stack overflow, so doesn't check embedded nulls.
     public Object[] flatten(Object[] unflattened) {
         NULL_MASTER.check(unflattened, "unflattened");
         List flattened = doFlatten(unflattened);

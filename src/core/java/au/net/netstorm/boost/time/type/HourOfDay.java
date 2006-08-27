@@ -15,6 +15,7 @@ public final class HourOfDay extends Primordial {
     }
 
     private void validate() {
-        if (value < 0 || value >= HOURS_IN_A_DAY) throw new IllegalArgumentException("Invalid hour (hour=" + value + ").");
+        if (value < 0 || value >= HOURS_IN_A_DAY)
+            throw new IllegalArgumentException("Invalid hour (hour=" + value + ").");
     }
 }
