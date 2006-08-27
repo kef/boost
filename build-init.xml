@@ -62,8 +62,7 @@
     <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
         <exclude name="**/au/net/netstorm/boost/edge/**"/>
-        <!-- FIX SC600 Moves into kickstart.xml for courses. -->
-        <exclude name="**/kickstart/*.java"/>
+        <exclude name="**/kickstart/**/*.java"/>
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE. -->
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>

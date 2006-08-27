@@ -6,7 +6,6 @@
 
     <target name="run_simian">
         <macro_run_simian code.type="boost"/>
-        <!-- FIX SC600 Moves into kickstart.xml for courses. -->
         <macro_run_simian code.type="boo"/>
         <macro_run_simian code.type="mike"/>
         <macro_run_simian code.type="monster"/>
@@ -17,7 +16,6 @@
 
     <target name="check_simian">
         <macro_check_simian code.type="boost"/>
-        <!-- FIX SC600 Moves into kickstart.xml for courses. -->
         <macro_check_simian code.type="boo"/>
         <macro_check_simian code.type="mike"/>
         <macro_check_simian code.type="monster"/>
