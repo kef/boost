@@ -4,8 +4,27 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 <suppressions>
     <!-- FIX SC600 Fix problems and then remove these suppressions. -->
-    <suppress checks="ClassDataAbstractionCoupling" files=".*.java"/>
-    <suppress checks="JavaNCSS" files=".*.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultComposerAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultConstructorNullParameterTestChecker.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultMethodNullParameterTestChecker.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="PrimordialAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultReflectFieldMasterAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultOneToManyAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="TestClassLocator.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultDataAtomTestChecker.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="TestTriangulationProvider.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultTimeRangeAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="DefaultTimeRangeMasterAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="TimePointAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="FieldBasedEqualsMasterAtomicTest.java"/>
+    <suppress checks="ClassDataAbstractionCoupling" files="IndentingToStringMasterAtomicTest.java"/>
+    <suppress checks="JavaNCSS" files="DefaultAssertException.java" lines="50-64"/>
+    <suppress checks="JavaNCSS" files="TestTriangulationProvider.java" lines="65-75"/>
+    <suppress checks="JavaNCSS" files="DefaultTimeRangeAtomicTest.java" lines="32-48"/>
+    <suppress checks="JavaNCSS" files="DayInMonthAtomicTest.java" lines="17-30"/>
+    <suppress checks="JavaNCSS" files="DayInMonthUtilAtomicTest.java" lines="17-30"/>
+    <suppress checks="JavaNCSS" files="MonthOfYearAtomicTest.java" lines="35-48,50-63,77-90"/>
+    <suppress checks="JavaNCSS" files="MonthSpecAtomicTest.java" lines="42-58,71-91"/>
     <suppress checks="ParameterNumber" files="DaySpecAtomicTest.java" lines="65-69"/>
     <suppress checks="ParameterNumber" files="MonthSpecAtomicTest.java" lines="110-114"/>
     <suppress checks="CyclomaticComplexity" files="TestTriangulationProvider.java" lines="65-74"/>
