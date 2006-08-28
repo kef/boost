@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.test.atom;
 
-import junit.framework.Assert;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import junit.framework.Assert;
 
 final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
     private final Map map = new HashMap();
@@ -16,6 +16,8 @@ final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
         map.put(long.class, Long.class);
         map.put(float.class, Float.class);
         map.put(double.class, Double.class);
+        map.put(byte.class, Byte.class);
+        map.put(char.class, Character.class);
     }
 
     public Class getBoxed(Class primitive) {

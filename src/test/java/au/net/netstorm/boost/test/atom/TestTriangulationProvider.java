@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
+import java.util.Random;
+
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationHandler;
-import java.util.Random;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
@@ -70,6 +70,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == Long.class) return randomLong();
         if (type == Float.class) return randomFloat();
         if (type == Double.class) return randomDouble();
+        if (type == Byte.class) return randomByte();
         return null;
     }
 
@@ -104,6 +105,12 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private Double randomDouble() {
         double d = random.nextDouble();
         return Double.valueOf(d);
+    }
+
+    private Byte randomByte() {
+        byte[] bytes = new byte[1];
+        random.nextBytes(bytes);
+        return Byte.valueOf(bytes[0]);
     }
 
     private void populate(Object array, Class type) {
