@@ -39,6 +39,7 @@ public final class MonthSpecAtomicTest extends TestCase {
         } catch (IllegalArgumentException ex) { }
     }
 
+// CHECKSTYLE:OFF JavaNCSS
     public void testDaysInMonth() {
         assertDaysInMonth(31, 2004, Calendar.JANUARY);
         assertDaysInMonth(31, 2004, Calendar.MARCH);
@@ -56,6 +57,7 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertDaysInMonth(29, 2004, Calendar.FEBRUARY);
         assertDaysInMonth(28, 2003, Calendar.FEBRUARY);
     }
+// CHECKSTYLE:ON JavaNCSS
 
     public void testOutOfRange() {
         try {
@@ -68,6 +70,7 @@ public final class MonthSpecAtomicTest extends TestCase {
         } catch (IllegalArgumentException ex) { }
     }
 
+// CHECKSTYLE:OFF JavaNCSS
     public void testStartDayOfWeek() {
         assertStartDay(Calendar.THURSDAY, 2004, Calendar.JANUARY);
         assertStartDay(Calendar.SUNDAY, 2004, Calendar.FEBRUARY);
@@ -89,6 +92,7 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertStartDay(Calendar.SATURDAY, 2006, Calendar.APRIL);
         assertStartDay(Calendar.SUNDAY, 2007, Calendar.APRIL);
     }
+// CHECKSTYLE:ON JavaNCSS
 
     private void assertDaysInMonth(int expected, int year, int month) {
         MonthSpec spec = new MonthSpec(year, month);
@@ -107,9 +111,11 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertEquals(month, spec.month);
     }
 
+// CHECKSTYLE:OFF ParameterNumber
     private void assertCompare(int year, int month, int toYear, int toMonth, int status) {
         MonthSpec spec = new MonthSpec(year, month);
         MonthSpec toSpec = new MonthSpec(toYear, toMonth);
         assertEquals(status, spec.compareTo(toSpec));
     }
+// CHECKSTYLE:ON ParameterNumber
 }

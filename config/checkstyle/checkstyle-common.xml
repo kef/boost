@@ -1,3 +1,4 @@
+<module name="FileContentsHolder"/>
 <property name="fileExtensions" value="java"/>
 <property name="tabWidth" value="4"/>
         <!--

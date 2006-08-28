@@ -12,18 +12,22 @@ public final class MonthSpec extends Primordial implements Comparable {
     public final int totalDays;
     public final int startDay;
 
+// CHECKSTYLE:OFF CyclomaticComplexity|JavaNCSS
     public MonthSpec(int year, int month) {
         if (month < 0 || month > 11) throw new IllegalArgumentException(
                 MONTH_OUT_OF_RANGE_MSG + " year=" + year + ",month=" + month);
         this.month = month;
         this.year = year;
+// CHECKSTYLE:OFF IllegalType
         GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance();
+// CHECKSTYLE:ON IllegalType
         int totalDays = DAYS_IN_MONTH[month];
         if (month == Calendar.FEBRUARY && cal.isLeapYear(year)) totalDays += 1;
         this.totalDays = totalDays;
         cal.set(year, month, 1 /* First day */, 12 /* Midday ... avoid DST stuff. */, 0, 0);
         startDay = cal.get(Calendar.DAY_OF_WEEK);
     }
+// CHECKSTYLE:ON CyclomaticComplexity|JavaNCSS
 
     public int compareTo(Object o) {
         if (!getClass().isAssignableFrom(o.getClass()))

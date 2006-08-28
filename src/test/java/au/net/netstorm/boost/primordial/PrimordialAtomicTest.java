@@ -15,6 +15,7 @@ import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import junit.framework.TestCase;
 
 // FIX SC600 Looks like an integration test. Mock bits Primordial depends on.
+// CHECKSTYLE:OFF ClassDataAbstractionCoupling
 public final class PrimordialAtomicTest extends TestCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
@@ -94,3 +95,4 @@ public final class PrimordialAtomicTest extends TestCase {
         return primordial;
     }
 }
+// CHECKSTYLE:ON ClassDataAbstractionCoupling

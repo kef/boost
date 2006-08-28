@@ -1,9 +1,5 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationHandler;
-import java.util.Random;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
@@ -11,6 +7,11 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
+import java.util.Random;
+
+// CHECKSTYLE:OFF ClassDataAbstractionCoupling
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 5;
@@ -62,6 +63,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return primitiveBoxer.isPrimitive(type);
     }
 
+// CHECKSTYLE:OFF JavaNCSS|CyclomaticComplexity|ReturnCount
     private Object randomJavaType(Class type) {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
@@ -73,6 +75,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == Byte.class) return randomByte();
         return null;
     }
+// CHECKSTYLE:ON JavaNCSS|CyclomaticComplexity|ReturnCount
 
     private Class randomClass() {
         return InternalInterface.class;
@@ -120,3 +123,4 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         }
     }
 }
+// CHECKSTYLE:ON ClassDataAbstractionCoupling

@@ -22,6 +22,7 @@ public final class DayOfWeek {
         return 100;
     }
 
+// CHECKSTYLE:OFF CyclomaticComplexity|JavaNCSS|ReturnCount
     public String toString() {
         if (value == Calendar.SUNDAY) return "SUNDAY";
         if (value == Calendar.MONDAY) return "MONDAY";
@@ -31,6 +32,7 @@ public final class DayOfWeek {
         if (value == Calendar.FRIDAY) return "FRIDAY";
         return "SATURDAY";
     }
+// CHECKSTYLE:ON CyclomaticComplexity|JavaNCSS|ReturnCount
 
     private void validate() {
         if (value < Calendar.SUNDAY || value > Calendar.SATURDAY)
@@ -38,6 +40,7 @@ public final class DayOfWeek {
     }
 
     // FIX SC507 Move this into "edge" and reference.
+// CHECKSTYLE:OFF CyclomaticComplexity|JavaNCSS
     static void jdkCalendarCheck() {
         // Sanity check.  The logic of this class is based on assumption of the following.
         if (Calendar.SUNDAY != 1) throw new IllegalStateException(
@@ -55,6 +58,7 @@ public final class DayOfWeek {
         if (Calendar.SATURDAY != 7) throw new IllegalStateException(
                 "Expected Calendar.SATURDAY to be 7, instead it was " + Calendar.SATURDAY);
     }
+// CHECKSTYLE:ON CyclomaticComplexity|JavaNCSS
 
     static { jdkCalendarCheck(); }
 }

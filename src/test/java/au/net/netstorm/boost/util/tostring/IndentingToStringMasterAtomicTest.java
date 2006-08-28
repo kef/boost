@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 // NOTE: Currently doesn't handle graphs, so recursive loops will kill it.
 // FIX SC600.  Test nulls.
 
+// CHECKSTYLE:OFF ClassDataAbstractionCoupling
 public class IndentingToStringMasterAtomicTest extends TestCase {
     private static final TestNoField NO_FIELDS = new TestNoField();
     private static final TestTwoFields TWO_FIELDS_2_4 = new TestTwoFields(2, 4);
@@ -80,3 +81,4 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
         assertEquals(expected, new IndentingToStringMaster().getString(ref));
     }
 }
+// CHECKSTYLE:ON ClassDataAbstractionCoupling

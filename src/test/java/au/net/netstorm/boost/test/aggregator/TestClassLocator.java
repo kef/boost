@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+// CHECKSTYLE:OFF ClassDataAbstractionCoupling
 final class TestClassLocator implements ClassLocator {
     private final Comparator comparator = new TestFileComparator();
 
@@ -78,3 +79,4 @@ final class TestClassLocator implements ClassLocator {
         throw new IllegalStateException(dir + " " + content);
     }
 }
+// CHECKSTYLE:ON ClassDataAbstractionCoupling

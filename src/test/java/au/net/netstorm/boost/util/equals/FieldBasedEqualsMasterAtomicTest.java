@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 // NOTE: Careful when refactoring due to heavy use of equals!
 
+// CHECKSTYLE:OFF ClassDataAbstractionCoupling
 public class FieldBasedEqualsMasterAtomicTest extends TestCase {
     private final EqualsMaster master = new FieldBasedEqualsMaster();
     private static final Integer INTEGER = new Integer(1);
@@ -84,3 +85,4 @@ public class FieldBasedEqualsMasterAtomicTest extends TestCase {
         assertEquals(expected, master.equals(o2, o1));
     }
 }
+// CHECKSTYLE:ON ClassDataAbstractionCoupling

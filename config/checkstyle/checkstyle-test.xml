@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
-    "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd"
-[ <!ENTITY common-rules SYSTEM "file:config/checkstyle/checkstyle-common.xml"> ]
->
+        "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd"
+        [ <!ENTITY suppression-filter SYSTEM "file:config/checkstyle/checkstyle-suppression.xml">
+                <!ENTITY common-rules SYSTEM "file:config/checkstyle/checkstyle-common.xml"> ]
+        >
 <module name="Checker">
-    <module name="SuppressionFilter">
-        <property name="file" value="config/checkstyle/suppressions-test.xml"/>
-    </module>
+    &suppression-filter;
     <module name="TreeWalker">
         <property name="cacheFile" value="build/checkstyle/checkstyle-test.cache"/>
         &common-rules;
@@ -18,7 +17,8 @@
         </module>
         <module name="EmptyBlock">
             <property name="option" value="text"/>
-            <property name="tokens" value="LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_IF,LITERAL_FOR,LITERAL_TRY,LITERAL_WHILE,INSTANCE_INIT,STATIC_INIT"/>
+            <property name="tokens"
+                      value="LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_IF,LITERAL_FOR,LITERAL_TRY,LITERAL_WHILE,INSTANCE_INIT,STATIC_INIT"/>
         </module>
     </module>
 </module>

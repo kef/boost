@@ -15,6 +15,7 @@ import junit.framework.TestCase;
 /**
  * The composer currently only supports composition of two classes.
  */
+// CHECKSTYLE:OFF ClassDataAbstractionCoupling
 public final class DefaultComposerAtomicTest extends TestCase {
     private static final Interface INTERFACE_A_B = new DefaultInterface(TestInterfaceAB.class);
     private static final Interface INTERFACE_A = new DefaultInterface(TestInterfaceA.class);
@@ -47,3 +48,4 @@ public final class DefaultComposerAtomicTest extends TestCase {
         return new DefaultProxyFactory(edge);
     }
 }
+// CHECKSTYLE:ON ClassDataAbstractionCoupling

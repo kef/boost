@@ -14,6 +14,7 @@ public final class DayInMonthAtomicTest extends TestCase {
         assertEquals(DayInMonth.FIRST_DAY_OF_YEAR, new DayInMonth(0, MonthOfYear.JANUARY));
     }
 
+// CHECKSTYLE:OFF JavaNCSS
     public void testIllegalDay() {
         assertIllegalDay(31, MonthOfYear.JANUARY);
         assertIllegalDay(29, MonthOfYear.FEBRUARY);
@@ -28,6 +29,7 @@ public final class DayInMonthAtomicTest extends TestCase {
         assertIllegalDay(30, MonthOfYear.NOVEMBER);
         assertIllegalDay(31, MonthOfYear.DECEMBER);
     }
+// CHECKSTYLE:ON JavaNCSS
 
     public void testFields() {
         assertFields(0, MonthOfYear.JANUARY);
