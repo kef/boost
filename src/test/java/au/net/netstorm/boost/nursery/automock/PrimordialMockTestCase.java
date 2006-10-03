@@ -5,10 +5,11 @@ import org.jmock.MockObjectTestCase;
 
 // SUGGEST So we don't need test subclasses.  We just have the one and it implements Marker interface to key the type of test.
 // SUGGEST Do not extend MockObjectTestCase.
+// FIX SC525 Lock down final on methods.
 public abstract class PrimordialMockTestCase extends MockObjectTestCase implements MockTestCase, MockTestSetUp, MockProvider {
     private final ImplicitMocker implicitMocker = new DefaultImplicitMocker(this, this);
 
-    public void runBare() throws Throwable {
+    public final void runBare() throws Throwable {
         setUpPrimordialMock();
         super.runBare();
     }
