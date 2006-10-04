@@ -8,7 +8,7 @@ import org.jmock.MockObjectTestCase;
 // FIX SC525 Lock down final on methods.
 // FIX SC525 The primordial test case could populate expected fields providing container like functionality.
 // FIX SC525 For example subclasses wanting to mock would be provided with a mocker reference,
-// FIX SC525 rather than making upcalls.
+// FIX SC525 rather than making upcalls.  Fail if the field is not declared(?)
 public abstract class PrimordialMockTestCase extends MockObjectTestCase implements MockTestCase, MockTestSetUp, MockProvider {
     private final ImplicitMocker implicitMocker = new DefaultImplicitMocker(this, this);
 
