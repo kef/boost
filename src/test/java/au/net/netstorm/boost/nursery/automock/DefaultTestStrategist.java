@@ -19,6 +19,7 @@ public final class DefaultTestStrategist implements TestStrategist {
     }
 
     public TestStrategy determineStrategy(Object testCase) {
+        determineTestType(testCase);
         // FIX SC525 We have to do a bit more than this!  Determine type.
         Class cls = (Class) strategies.get(MockTestCase.class);
         return create(cls, testCase);
@@ -28,5 +29,10 @@ public final class DefaultTestStrategist implements TestStrategist {
         Constructor constructor = reflector.getConstructor(cls);
         Object[] params = { testCase };
         return (TestStrategy) edgeConstructor.newInstance(constructor, params);
+    }
+
+    private void determineTestType(Object testCase) {
+        // FIX SC525 Complete.
+        throw new UnsupportedOperationException();
     }
 }
