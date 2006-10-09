@@ -4,14 +4,12 @@ import junit.framework.TestCase;
 
 public class PrimordialTestCase extends TestCase {
 
-    // FIX SC525 Wire in hook to delegates.
     public void runBare() throws Throwable {
         init();
         try {
             super.runBare();
         } finally {
             destroy();
-            // FIX SC525 destroy.
         }
     }
 
