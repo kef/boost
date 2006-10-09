@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.automock;
 
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 
@@ -9,26 +10,27 @@ import org.jmock.MockObjectTestCase;
 // FIX SC525 The primordial test case could populate expected fields providing container like functionality.
 // FIX SC525 For example subclasses wanting to mock would be provided with a mocker reference,
 // FIX SC525 rather than making upcalls.  Fail if the field is not declared(?)
-public abstract class PrimordialMockTestCase extends MockObjectTestCase implements MockTestCase, MockTestSetUp, MockProvider {
+// FIX SC525 Move this sideways and delegate from PrimordialTestCase based on interface markings.
+
+public final class PrimordialMockTestCase  implements TestLifecycle, MockTestCase, MockTestSetUp, MockProvider {
+    private final MockObjectTestCase mocker = new MockObjectTestCase() {
+    };
     private final ImplicitMocker implicitMocker = new DefaultImplicitMocker(this, this);
 
-    public final void runBare() throws Throwable {
-        setUpPrimordialMock();
-        super.runBare();
+    public void init() {
+        throw new UnsupportedOperationException();
     }
 
     public Mock mock(Class cls) {
-// SUGGEST Complete.
-        return super.mock(cls);
+        checkIsInterface(cls);
+        Mock mock = mocker.mock(cls);
+        mocker.registerToVerify(mock);
+        return mock;
     }
 
-    // SUGGEST Rename cls.
-    public Mock mock(Class cls, String role) {
-        // SUGGEST complete.
-        if (cls.isInterface()) {
-            return super.mock(cls, role);
-        }
-        return super.mock(cls, role);
+    // FIX SC525 Complete.
+    public Mock mock(Class mockType, String role) {
+        throw new UnsupportedOperationException();
     }
 
     private void setUpPrimordialMock() {
@@ -54,5 +56,9 @@ public abstract class PrimordialMockTestCase extends MockObjectTestCase implemen
     }
 
     public void setUpFixtures() {
+    }
+
+    private void checkIsInterface(Class cls) {
+        new DefaultInterface(cls);
     }
 }
