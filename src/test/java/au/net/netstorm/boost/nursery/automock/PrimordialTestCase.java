@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.automock;
 import junit.framework.TestCase;
 
 public class PrimordialTestCase extends TestCase {
-    private TestStrategy test;
+    private TestStrategy strategy;
 
     public void runBare() throws Throwable {
         init();
@@ -16,11 +16,11 @@ public class PrimordialTestCase extends TestCase {
 
     private void init() {
         TestStrategist strategist = new DefaultTestStrategist();
-        test = strategist.determineStrategy();
-        test.init();
+        strategy = strategist.determineStrategy(this);
+        strategy.init();
     }
 
     private void destroy() {
-        test.destroy();
+        strategy.destroy();
     }
 }
