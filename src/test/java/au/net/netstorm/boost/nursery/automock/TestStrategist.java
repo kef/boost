@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.nursery.automock;
 
 public interface TestStrategist {
-    TestStrategy determineStrategy(Object testCase);
+    TestStrategy determineStrategy(Class cls);
 }
