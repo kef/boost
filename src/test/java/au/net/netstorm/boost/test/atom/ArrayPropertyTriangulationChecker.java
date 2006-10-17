@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Array;
+
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
@@ -10,28 +12,40 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     private SameHelper sameHelper = new DefaultSameHelper();
 
     public void check(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
-        Object[] arrayParameter = (Object[]) parameter;
         Object instance = instanceHelper.getInstance(cls, parameters);
-        checkCopyOnAccess(instance, candidate, arrayParameter);
-        checkCopyOnCreate(instance, candidate, arrayParameter);
+        checkCopyOnAccess(instance, candidate, parameter);
+        checkCopyOnCreate(instance, candidate, parameter);
     }
 
-    private void checkCopyOnAccess(Object instance, FieldSpec candidate, Object[] parameter) {
-        Object[] r1 = invoke(instance, candidate);
+    private void checkCopyOnAccess(Object instance, FieldSpec candidate, Object parameter) {
+        Object r1 = invoke(instance, candidate);
         checkEqualButDifferentReferences(parameter, r1);
-        Object[] r2 = invoke(instance, candidate);
+        Object r2 = invoke(instance, candidate);
         checkEqualButDifferentReferences(r1, r2);
     }
 
-    private void checkCopyOnCreate(Object instance, FieldSpec candidate, Object[] parameter) {
-        Object[] expected = (Object[]) parameter.clone();
+    private void checkCopyOnCreate(Object instance, FieldSpec candidate, Object parameter) {
+        Object expected = cloneObject(parameter);
         munge(parameter);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
-        Object[] returnValue = invoke(instance, candidate);
+        Object returnValue = invoke(instance, candidate);
         if (same(expected, returnValue)) return;
         fail("Array was not copied on create.");
     }
 
-    private void checkEqualButDifferentReferences(Object[] expected, Object[] actual) {
+    // FIX 525 Move to array helper.
+    private Object cloneObject(Object ref) {
+        int length = Array.getLength(ref);
+        Object firstElement = Array.get(ref, 0); // FIX 525 There is another way of doing this.
+        Class type = firstElement.getClass();
+        Object result = Array.newInstance(type, length);
+        for (int i = 0; i < length; i++) {
+            Object value = Array.get(ref, i);
+            Array.set(result, i, value);
+        }
+        return result;
+    }
+
+    private void checkEqualButDifferentReferences(Object expected, Object actual) {
         checkDifferentReferences(expected, actual);
         checkSameElements(expected, actual);
     }
@@ -41,20 +55,22 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
         fail("Array was not copied on access.");
     }
 
-    private void checkSameElements(Object[] expected, Object[] actual) {
+    private void checkSameElements(Object expected, Object actual) {
         if (same(expected, actual)) return;
         fail("Elements of array not the same.");
     }
 
-    private void munge(Object[] parameters) {
-        parameters[0] = parameters[1];
+    private void munge(Object parameters) {
+        Object value = Array.get(parameters, 1);
+        Array.set(parameters, 0, value);
     }
 
-    private Object[] invoke(Object instance, FieldSpec candidate) {
-        return (Object[]) propertyAccessor.invoke(instance, candidate);
+    private Object invoke(Object instance, FieldSpec candidate) {
+        // FIX BREADCRUMB 525 revert back to one line
+        return propertyAccessor.invoke(instance, candidate);
     }
 
-    private boolean same(Object[] expected, Object[] actual) {
+    private boolean same(Object expected, Object actual) {
         return sameHelper.same(expected, actual);
     }
 

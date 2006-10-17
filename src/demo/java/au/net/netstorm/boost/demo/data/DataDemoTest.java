@@ -27,6 +27,11 @@ public final class DataDemoTest extends TestCase {
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BasicArrayData.class, SINGLE_ARRAY_PROPERTY);
+        // FIX 525 Refactor.
+        FieldSpec field = new DefaultFieldSpec("bytes", byte[].class);
+        FieldSpec[] fields = {field};
+        // FIX 525 Reinstate.
+        checkGood(PrimitiveArrayData.class, fields);
         checkGood(PrimitiveBasicData.class, SINGLE_PRIMITIVE_PROPERTY);
         checkGood(BasicNonFinalFieldsData.class, SINGLE_STRING_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);

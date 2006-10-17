@@ -39,13 +39,11 @@
         <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99999" />
         <option name="IMPORT_LAYOUT_TABLE">
           <value>
-            <package name="java" withSubpackages="true" />
-            <package name="javax" withSubpackages="true" />
-            <emptyLine />
             <package name="" withSubpackages="true" />
             <emptyLine />
-            <package name="net.majitek" withSubpackages="true" />
-            <package name="com.majitek" withSubpackages="true" />
+            <package name="javax" withSubpackages="true" />
+            <emptyLine />
+            <package name="java" withSubpackages="true" />
           </value>
         </option>
         <option name="METHOD_CALL_CHAIN_WRAP" value="2" />

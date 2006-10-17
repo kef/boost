@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Array;
+
 final class DefaultSameHelper implements SameHelper {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
 
@@ -9,11 +11,15 @@ final class DefaultSameHelper implements SameHelper {
     }
 
     private boolean isArraySame(Object o1, Object o2) {
-        Object[] a1 = (Object[]) o1;
-        Object[] a2 = (Object[]) o2;
-        if (sameLength(a1, a2)) return false;
-        for (int i = 0; i < a1.length; i++) {
-            if (!same(a1[i], a2[i])) return false;
+        // FIX 525 Tidy this up now!!!
+        int length = Array.getLength(o1);
+//        Object[] a1 = (Object[]) o1;
+//        Object[] a2 = (Object[]) o2;
+//        if (sameLength(a1, a2)) return false;
+        for (int i = 0; i < length; i++) {
+            Object a1 = Array.get(o1, i);
+            Object a2 = Array.get(o2, i);
+            if (!same(a1, a2)) return false;
         }
         return true;
     }
