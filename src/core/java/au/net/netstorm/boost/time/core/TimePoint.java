@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 // FIX SC507 Introduce type stuff.
 // FIX SC502 Test drive requirement for "Data".  This was placed here to get external requirement complete
-//           whilst cruise was broken!
+// FIX SC502 whilst cruise was broken!
 public final class TimePoint implements Data, Serializable {
     private static final long EPOCH_MILLIS = 0L;
     private static final long EPOCH_ARGMAGEDDON = Long.MAX_VALUE;
