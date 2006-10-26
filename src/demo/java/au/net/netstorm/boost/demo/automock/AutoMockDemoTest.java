@@ -19,7 +19,7 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
     public void testInteraction() {
         CharSequence value = "Masters of Doom";
         expect.call(map, "get", value, "quake");
-        expect.call(delegate, "operate", value);
+        expect.call(delegate, "operate", null, value);
         subject.execute(map);
     }
 

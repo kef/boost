@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.automock;
 
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
+import org.jmock.builder.MatchBuilder;
 import org.jmock.core.Stub;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.constraint.IsSame;
@@ -18,17 +19,9 @@ public final class DefaultMockExpectations implements MockExpectations {
     public void call(Object ref, String method, Object returnValue, Object param0) {
         // FIX SC525 How to handle void return.
         Mock mock = autoMocker.getMock(ref);
-        mock.expects(once()).method(method).with(same(param0)).will(returnValue(returnValue));
-    }
-
-    public void call(Object ref, String method, Object param0) {
-        Mock mock = autoMocker.getMock(ref);
-        mock.expects(once()).method(method).with(same(param0));
-    }
-
-    public void exception(Object ref, String method, Exception exception) {
-        Mock mock = autoMocker.getMock(ref);
-        mock.expects(once()).method(method).will(throwException(exception));
+        MatchBuilder builder = mock.expects(once()).method(method).with(same(param0));
+        if (returnValue == null) return;
+        builder.will(returnValue(returnValue));
     }
 
     private Stub throwException(Exception exception) {
