@@ -16,11 +16,10 @@ final class DefaultAutoMocker implements AutoMocker {
     private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final UsesMocks testCase;
-    private final MockProvider mockProvider;
+    private final MockProvider mockProvider = new DefaultMockProvider();
 
-    public DefaultAutoMocker(UsesMocks testCase, MockProvider mockProvider) {
+    public DefaultAutoMocker(UsesMocks testCase) {
         this.testCase = testCase;
-        this.mockProvider = mockProvider;
     }
 
     public void wireMocks() {

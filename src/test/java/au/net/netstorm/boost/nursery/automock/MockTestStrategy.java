@@ -13,9 +13,11 @@ public final class MockTestStrategy implements TestStrategy {
     }
 
     public void init() {
-        MockExpectations mockExpectations = new DefaultMockExpectations();
+        AutoMocker autoMocker = new DefaultAutoMocker(testCase);
+        MockExpectations mockExpectations = new DefaultMockExpectations(autoMocker);
         testUtil.setInstance(testCase, "expect", mockExpectations);
         testCase.setupSubjects();
+        autoMocker.wireMocks();
         // FIX SC525 Set the "expect" reference in the test object.
         // FIX SC525 Wire in all mocks (via automocking).
         // FIX SC525 Complete.
