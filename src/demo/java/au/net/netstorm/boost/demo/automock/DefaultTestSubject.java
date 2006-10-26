@@ -11,7 +11,11 @@ public final class DefaultTestSubject implements TestSubject {
 
     public void execute(Map map) {
         // FIX SC525 This should pass in quake.
-//        CharSequence value = (CharSequence) map.get("foo");
-//        delegate.operate(null);
+        String value = map.get("quake").toString();
+        delegate.operate(value);
+    }
+
+    public void foo() {
+        throw new UnsupportedOperationException();
     }
 }

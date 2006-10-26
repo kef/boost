@@ -21,10 +21,10 @@ public final class BasicMockDemoTest extends MockObjectTestCase {
     }
 
     public void testInteraction() {
-// FIX SC525 Reinstate.
-//        CharSequence value = "Masters of Doom";
-//        mockMap.stubs().method("get").with(eq("quake")).will(returnValue(value));
-//        mockDelegate.stubs().method("operate").with(same(value));
-//        subject.execute(map);
+        CharSequence value = "Masters of Doom";
+        mockMap.expects(once()).method("get").with(eq("quake")).will(returnValue(value));
+        mockDelegate.expects(once()).method("operate").with(same(value));
+        subject.execute(map);
     }
+
 }

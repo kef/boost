@@ -4,4 +4,5 @@ import java.util.Map;
 
 public interface TestSubject {
     void execute(Map map);
+    void foo();
 }
