@@ -12,6 +12,10 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
     private TestSubject subject;
     private MockExpectations expect;
 
+    public void setupSubjects() {
+        subject = new DefaultTestSubject(delegate);
+    }
+
     public void testInteraction() {
         CharSequence value = "Masters of Doom";
         expect.call(map, "get", value, "quake");
@@ -19,12 +23,7 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
         subject.execute(map);
     }
 
-    public void setupSubjects() {
-        subject = new DefaultTestSubject(delegate);
-    }
-
     public void testExceptions() {
-        subject = new DefaultTestSubject(delegate);
 //        expect.exception(subject, "foo", new UnsupportedOperationException());
     }
 }
