@@ -14,6 +14,8 @@ public class PrimordialTestCase extends TestCase {
         }
     }
 
+    // FIX SC525 Override setUp(), tearDown().
+
     private void init() {
         TestStrategist strategist = new DefaultTestStrategist();
         strategy = strategist.determineStrategy(this);

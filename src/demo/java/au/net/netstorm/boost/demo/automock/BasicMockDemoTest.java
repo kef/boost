@@ -26,5 +26,4 @@ public final class BasicMockDemoTest extends MockObjectTestCase {
         mockDelegate.expects(once()).method("operate").with(same(value));
         subject.execute(map);
     }
-
 }
