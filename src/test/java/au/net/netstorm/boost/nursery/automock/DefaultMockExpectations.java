@@ -16,16 +16,19 @@ public final class DefaultMockExpectations implements MockExpectations {
         this.jMock = jMock;
     }
 
-    public void call(Object ref, String method, Object returnValue, Object param0) {
+    public void oneCall(Object ref, String method, Object returnValue, Object param0) {
+        // FIX SC525 Bundle up parameters and pass in to method(class?) as array.
         // FIX SC525 How to handle void return.
         Mock mock = autoMocker.getMock(ref);
         MatchBuilder builder = mock.expects(once()).method(method).with(same(param0));
-        if (returnValue == null) return;
+        // FIX SC525 Tidy this message up.
+        if (returnValue == null) throw new IllegalStateException("If your method returns void, pass in the void marker in the test interface.");
+        if (returnValue == UsesMocks.VOID) return;
         builder.will(returnValue(returnValue));
     }
 
-    private Stub throwException(Exception exception) {
-        return jMock.throwException(exception);
+    public void throwsException(Object ref, String methodName, Throwable throwable) {
+        // FIX SC525 Breadcrumb.
     }
 
     private InvocationMatcher once() {

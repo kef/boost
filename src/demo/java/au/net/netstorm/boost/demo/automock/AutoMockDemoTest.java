@@ -18,12 +18,13 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
 
     public void testInteraction() {
         CharSequence value = "Masters of Doom";
-        expect.call(map, "get", value, "quake");
-        expect.call(delegate, "operate", null, value);
+        expect.oneCall(map, "get", value, "quake");
+        expect.oneCall(delegate, "operate", VOID, value);
         subject.execute(map);
     }
 
     public void testExceptions() {
-//        expect.exception(subject, "foo", new UnsupportedOperationException());
+        // FIX SC525 This should fail at the moment.
+        expect.throwsException(subject, "fails", new UnsupportedOperationException());
     }
 }
