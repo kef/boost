@@ -12,10 +12,10 @@ import org.jmock.MockObjectTestCase;
 // FIX SC525 rather than making upcalls.  Fail if the field is not declared(?)
 // FIX SC525 Move this sideways and delegate from PrimordialTestCase based on interface markings.
 
-public final class PrimordialMockTestCase  implements MockTestCase, MockTestSetUp, MockProvider {
+public final class PrimordialMockTestCase  implements UsesMocks, MockTestSetUp, MockProvider {
     private final MockObjectTestCase mocker = new MockObjectTestCase() {
     };
-    private final ImplicitMocker implicitMocker = new DefaultImplicitMocker(this, this);
+    private final AutoMocker autoMocker = new DefaultAutoMocker(this, this);
 
     public Mock mock(Class cls) {
         checkIsInterface(cls);
@@ -41,7 +41,7 @@ public final class PrimordialMockTestCase  implements MockTestCase, MockTestSetU
     }
 
     private void wireImplicitMocks() {
-        implicitMocker.wireMocks();
+        autoMocker.wireMocks();
         // SUGGEST Complete
     }
 
@@ -56,5 +56,8 @@ public final class PrimordialMockTestCase  implements MockTestCase, MockTestSetU
 
     private void checkIsInterface(Class cls) {
         new DefaultInterface(cls);
+    }
+
+    public void wireFixtures() {
     }
 }

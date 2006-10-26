@@ -11,14 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 // SUGGEST Make sure no production code (core, edge or test) is using the nursery, outside of the nursery of course.
-final class DefaultImplicitMocker implements ImplicitMocker {
+final class DefaultAutoMocker implements AutoMocker {
     private final Map mocks = new HashMap();
     private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final MockTestCase testCase;
+    private final UsesMocks testCase;
     private final MockProvider mockProvider;
 
-    public DefaultImplicitMocker(MockTestCase testCase, MockProvider mockProvider) {
+    public DefaultAutoMocker(UsesMocks testCase, MockProvider mockProvider) {
         this.testCase = testCase;
         this.mockProvider = mockProvider;
     }
@@ -33,7 +33,7 @@ final class DefaultImplicitMocker implements ImplicitMocker {
         throw new IllegalStateException("Mock does not exist for provided proxy.");
     }
 
-    private void wireMocks(MockTestCase test) {
+    private void wireMocks(UsesMocks test) {
         Field[] fields = getDeclaredFields(test);
         for (int i = 0; i < fields.length; i++) {
             tryCreateMock(fields[i]);
