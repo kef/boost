@@ -58,6 +58,6 @@ public final class PrimordialMockTestCase  implements UsesMocks, MockTestSetUp, 
         new DefaultInterface(cls);
     }
 
-    public void wireFixtures() {
+    public void setupSubjects() {
     }
 }

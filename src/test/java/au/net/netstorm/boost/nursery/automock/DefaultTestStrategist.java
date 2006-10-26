@@ -5,7 +5,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 public final class DefaultTestStrategist implements TestStrategist {
     public TestStrategy determineStrategy(Object testCase) {
         Class cls = testCase.getClass();
-        if (is(UsesMocks.class, cls)) return new MockTestStrategy(testCase);
+        if (is(UsesMocks.class, cls)) return new MockTestStrategy((UsesMocks) testCase);
         throw new IllegalStateException("There is no supported test strategy for " + cls);
     }
 

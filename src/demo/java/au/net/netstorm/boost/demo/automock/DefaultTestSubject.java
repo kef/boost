@@ -11,7 +11,7 @@ public final class DefaultTestSubject implements TestSubject {
 
     public void execute(Map map) {
         // FIX SC525 This should pass in quake.
-        CharSequence value = (CharSequence) map.get("foo");
-        delegate.operate(value);
+//        CharSequence value = (CharSequence) map.get("foo");
+//        delegate.operate(null);
     }
 }

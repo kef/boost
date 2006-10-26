@@ -24,11 +24,13 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
     public void testInteraction() {
         // FIX SC525 Get this to work.
         CharSequence value = "Masters of Doom";
+        // FIX SC525 This should fail.
         expect.call(map, "get", value, "quake");
 //        expect.call(delegate, "operate", null, value);
+        subject.execute(map);
     }
 
-    public void wireFixtures() {
+    public void setupSubjects() {
         subject = new DefaultTestSubject(delegate);
     }
 }
