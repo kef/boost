@@ -11,6 +11,6 @@ public final class DefaultTimePointMaster implements TimePointMaster {
     }
 
     private TimePoint relative(TimePoint time, long amount) {
-        return new TimePoint(time.getMillis() + amount);
+        return new DefaultTimePoint(time.getMillis() + amount);
     }
 }

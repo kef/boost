@@ -8,7 +8,7 @@ import java.util.Date;
 public final class DefaultTimeRangeAtomicTest extends TestCase {
     public void testNullsInvalidInDualConstructor() {
         assertNullsInvalidInDualConstructor(null, Duration.QUANTUM);
-        assertNullsInvalidInDualConstructor(new StartTime(TimePoint.EPOCH), null);
+        assertNullsInvalidInDualConstructor(new StartTime(DefaultTimePoint.EPOCH), null);
     }
 
     public void testContains() {
@@ -57,7 +57,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertNotEquals(range, new DefaultTimeRange(START_TIME_100, DURATION_199));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_099, DURATION_201));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_101, DURATION_199));
-        assertEquals(range, new DefaultTimeRange(new StartTime(new TimePoint(100)), new Duration(200)));
+        assertEquals(range, new DefaultTimeRange(new StartTime(new DefaultTimePoint(100)), new Duration(200)));
     }
 
     public void testHashCode() {
@@ -115,9 +115,9 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private static final TimePoint TIME_300 = TIME_FACTORY.createTime(new Date(300));
     private static final TimePoint TIME_301 = TIME_FACTORY.createTime(new Date(301));
     private static final TimePoint TIME_400 = TIME_FACTORY.createTime(new Date(400));
-    private static final TimePoint TIME_500 = new TimePoint(500);
-    private static final TimePoint TIME_499 = new TimePoint(499);
-    private static final TimePoint TIME_0X7FFFFFFF00000001 = new TimePoint(0x7FFFFFFF00000001L);
+    private static final TimePoint TIME_500 = new DefaultTimePoint(500);
+    private static final TimePoint TIME_499 = new DefaultTimePoint(499);
+    private static final TimePoint TIME_0X7FFFFFFF00000001 = new DefaultTimePoint(0x7FFFFFFF00000001L);
     private static final StartTime START_TIME_050 = new StartTime(TIME_050);
     private static final StartTime START_TIME_099 = new StartTime(TIME_099);
     private static final StartTime START_TIME_100 = new StartTime(TIME_100);

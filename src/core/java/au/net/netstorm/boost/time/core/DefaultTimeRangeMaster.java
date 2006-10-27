@@ -16,7 +16,7 @@ public final class DefaultTimeRangeMaster implements TimeRangeMaster {
     public EndTime end(TimeRange range) {
         StartTime start = range.start();
         Duration duration = range.duration();
-        TimePoint time = new TimePoint(start.point.getMillis() + duration.millis);
+        TimePoint time = new DefaultTimePoint(start.point.getMillis() + duration.millis);
         return new EndTime(time);
     }
 

@@ -10,12 +10,12 @@ public final class DefaultTimeFactory implements TimeFactory {
     }
 
     public TimeRange createRange(long start, long endExclusive) {
-        return createRange(new TimePoint(start), new TimePoint(endExclusive));
+        return createRange(new DefaultTimePoint(start), new DefaultTimePoint(endExclusive));
     }
 
     public TimePoint createTime(Date timeDate) {
         if (timeDate == null) throw new IllegalArgumentException("Cannot create a time from a NULL date.");
-        return new TimePoint(timeDate.getTime());
+        return new DefaultTimePoint(timeDate.getTime());
     }
 
     private TimeRange createRange(TimePoint start, TimePoint end) {

@@ -10,44 +10,44 @@ public final class TimePointAtomicTest extends TestCase {
     private static final Object NULL = null;
 
     public void testEpoch() {
-        assertEquals(0L, TimePoint.EPOCH.getMillis());
+        assertEquals(0L, DefaultTimePoint.EPOCH.getMillis());
     }
 
     public void testArmaggedon() {
-        assertEquals(Long.MAX_VALUE, TimePoint.ARMAGGEDON.getMillis());
+        assertEquals(Long.MAX_VALUE, DefaultTimePoint.ARMAGGEDON.getMillis());
     }
 
     public void testInvalidTimePoints() {
-        assertInvalidTimePoints(TimePoint.EPOCH.getMillis() - 1);
+        assertInvalidTimePoints(DefaultTimePoint.EPOCH.getMillis() - 1);
         assertInvalidTimePoints(Long.MIN_VALUE);
     }
 
     public void testValidTimePoints() {
-        assertValidTimePoints(TimePoint.EPOCH.getMillis());
-        assertValidTimePoints(TimePoint.EPOCH.getMillis() + 1);
-        assertValidTimePoints(TimePoint.EPOCH.getMillis() + 100);
+        assertValidTimePoints(DefaultTimePoint.EPOCH.getMillis());
+        assertValidTimePoints(DefaultTimePoint.EPOCH.getMillis() + 1);
+        assertValidTimePoints(DefaultTimePoint.EPOCH.getMillis() + 100);
         assertValidTimePoints(Long.MAX_VALUE);
     }
 
     public void testEquality() {
-        TimePoint time = new TimePoint(500);
+        TimePoint time = new DefaultTimePoint(500);
         assertFalse(time.equals(NULL));
         assertFalse(time.equals(void.class));
-        assertNotEquals(time, new TimePoint(499));
-        assertEquals(time, new TimePoint(500));
+        assertNotEquals(time, new DefaultTimePoint(499));
+        assertEquals(time, new DefaultTimePoint(500));
     }
 
     public void testHashCode() {
-        assertHashCode(500, new TimePoint(500));
-        assertHashCode(499, new TimePoint(499));
-        assertHashCode(1, new TimePoint(0x7FFFFFFF00000001L));
+        assertHashCode(500, new DefaultTimePoint(500));
+        assertHashCode(499, new DefaultTimePoint(499));
+        assertHashCode(1, new DefaultTimePoint(0x7FFFFFFF00000001L));
     }
 
     public void testCurrent() {
         long reference = new Date().getTime();
-        TimePoint bottom = new TimePoint(reference - LEEWAY);
-        TimePoint top = new TimePoint(reference + LEEWAY);
-        TimePoint now = TimePoint.now();
+        TimePoint bottom = new DefaultTimePoint(reference - LEEWAY);
+        TimePoint top = new DefaultTimePoint(reference + LEEWAY);
+        TimePoint now = DefaultTimePoint.now();
         StartTime start = new StartTime(bottom);
         EndTime end = new EndTime(top);
         // FIX SC777 Tests TimeRange rather than TimePoint - move or delete.
@@ -57,7 +57,7 @@ public final class TimePointAtomicTest extends TestCase {
 
     private void assertInvalidTimePoints(long length) {
         try {
-            new TimePoint(length);
+            new DefaultTimePoint(length);
             fail();
         } catch (IllegalArgumentException ex) { succeed(); } // FIX SC777 Fix others to call succeed().
     }
@@ -77,7 +77,7 @@ public final class TimePointAtomicTest extends TestCase {
     }
 
     private void assertValidTimePoints(long length) {
-        assertEquals(length, new TimePoint(length).getMillis());
+        assertEquals(length, new DefaultTimePoint(length).getMillis());
     }
 
     private static final long LEEWAY = 5000;

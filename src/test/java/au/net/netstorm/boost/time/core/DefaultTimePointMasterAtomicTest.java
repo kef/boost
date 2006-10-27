@@ -21,14 +21,14 @@ public final class DefaultTimePointMasterAtomicTest extends TestCase {
 
     public void testPreviousInvalid() {
         try {
-            master.previous(TimePoint.EPOCH);
+            master.previous(DefaultTimePoint.EPOCH);
             fail();
         } catch (IllegalArgumentException ex) { }
     }
 
     public void testNextInvalid() {
         try {
-            master.next(TimePoint.ARMAGGEDON);
+            master.next(DefaultTimePoint.ARMAGGEDON);
             fail();
         } catch (IllegalArgumentException ex) { }
     }
