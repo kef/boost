@@ -10,6 +10,7 @@ import org.jmock.core.constraint.IsSame;
 
 // FIX SC525 Split into two classes.  The first is a facade.  The second the guts.
 // FIX SC525 Remove trainwrecks.
+
 // OK ParameterNumber|LineLength {
 public final class DefaultMockExpectations implements MockExpectations {
     private final AutoMocker autoMocker;
@@ -20,8 +21,8 @@ public final class DefaultMockExpectations implements MockExpectations {
         this.jMock = jMock;
     }
 
-    public void oneCall(Object ref, String methodName, Object returnValue, Object parameter0) {
-        Object[] parameters = {parameter0};
+    public void oneCall(Object ref, String methodName, Object returnValue, Object parameter1) {
+        Object[] parameters = {parameter1};
         oneCall(ref, methodName, returnValue, parameters);
     }
 
@@ -36,8 +37,37 @@ public final class DefaultMockExpectations implements MockExpectations {
     }
 
     public void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2, Object parameter3, Object parameter4) {
-        Object[] parameters = {parameter1,parameter2,parameter3,parameter4};
+        Object[] parameters = {parameter1, parameter2, parameter3, parameter4};
         oneCall(ref, methodName, returnValue, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1) {
+        Object[] parameters = {parameter1};
+        oneCall(ref, methodName, throwable, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2) {
+        Object[] parameters = {parameter1, parameter2};
+        oneCall(ref, methodName, throwable, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2, Object parameter3) {
+        Object[] parameters = {parameter1, parameter2, parameter3};
+        oneCall(ref, methodName, throwable, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2, Object parameter3, Object parameter4) {
+        Object[] parameters = {parameter1, parameter2, parameter3, parameter4};
+        oneCall(ref, methodName, throwable, parameters);
+    }
+
+    // FIX SC525 Split class here.
+    
+    private IsSame[] same(Object[] parameters) {
+        int length = parameters.length;
+        IsSame[] result = new IsSame[length];
+        for (int i = 0; i < length; i++) result[i] = same(parameters[i]);
+        return result;
     }
 
     public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
@@ -48,39 +78,15 @@ public final class DefaultMockExpectations implements MockExpectations {
         builder.will(returnValue(returnValue));
     }
 
-    // FIX SC525 Needs parameters.
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object param0) {
-        Object[] parameters = {param0};
-        oneCall(ref, methodName, throwable, parameters);
-    }
-
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2) {
-        // FIX SC525 Finish these.
-    }
-
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2, Object parameter3) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2, Object parameter3, Object parameter4) {
-        throw new UnsupportedOperationException();
-    }
-
     public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
         getMethod(ref, methodName).with(same(parameters))
                 .will(throwException(throwable));
     }
 
-    private IsSame[] same(Object[] parameters) {
-        int length = parameters.length;
-        IsSame[] result = new IsSame[length];
-        for (int i = 0; i < length; i++) result[i] = same(parameters[i]);
-        return result;
-    }
-
     private ArgumentsMatchBuilder getMethod(Object ref, String methodName) {
         Mock mock = getMock(ref);
-        return mock.expects(once()).method(methodName);
+        return mock.expects(once())
+                .method(methodName);
     }
 
     private Stub throwException(Throwable throwable) {
