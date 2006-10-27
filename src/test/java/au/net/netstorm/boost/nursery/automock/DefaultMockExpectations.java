@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.automock;
 
 // OK ParameterNumber|LineLength {
-public final class DefaultMockExpectations implements MockExpectations {
+final class DefaultMockExpectations implements MockExpectations {
     private MockExpectationHelper delegate;
 
     public DefaultMockExpectations(MockExpectationHelper delegate) {

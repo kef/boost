@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // SUGGEST Make sure no production code (core, edge or test) is using the nursery, outside of the nursery of course.
-final class DefaultAutoMocker implements AutoMocker {
+class DefaultAutoMocker implements AutoMocker {
     private final Map mocks = new HashMap();
     private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();

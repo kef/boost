@@ -5,7 +5,7 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // OK ClassDataAbstractionCoupling {
-public final class MockTestStrategy implements TestStrategy {
+final class MockTestStrategy implements TestStrategy {
     private final FieldTestUtil testUtil = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
