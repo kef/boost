@@ -14,7 +14,11 @@ public class PrimordialTestCase extends TestCase {
         }
     }
 
-    // FIX SC525 Override setUp(), tearDown().
+    protected final void setUp() {
+    }
+
+    protected final void tearDown() {
+    }
 
     private void init() {
         TestStrategist strategist = new DefaultTestStrategist();
