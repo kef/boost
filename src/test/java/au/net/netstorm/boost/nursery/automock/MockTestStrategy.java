@@ -4,7 +4,9 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
-// FIX SC525 Complete this.
+// FIX SC525 Sort this out.
+
+// DEBT ClassDataAbstractionCoupling {
 public final class MockTestStrategy implements TestStrategy {
     private final FieldTestUtil testUtil = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
@@ -17,15 +19,18 @@ public final class MockTestStrategy implements TestStrategy {
 
     public void init() {
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
-        MockExpectations mockExpectations = new DefaultMockExpectations(autoMocker, mocker);
+        MockExpectations mockExpectations = buildMockExpectations(autoMocker);
         testUtil.setInstance(testCase, "expect", mockExpectations);
         autoMocker.wireMocks();
         testCase.setupSubjects();
-        // FIX SC525 Set the "expect" reference in the test object.
-        // FIX SC525 Wire in all mocks (via automocking).
-        // FIX SC525 Complete.
+    }
+
+    private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
+        MockExpectationHelper delegate = new DefaultMockExpectationHelper(autoMocker, mocker);
+        return new DefaultMockExpectations(delegate);
     }
 
     public void destroy() {
     }
 }
+// } DEBT ClassDataAbstractionCoupling
