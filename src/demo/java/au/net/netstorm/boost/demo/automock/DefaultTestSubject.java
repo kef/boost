@@ -10,12 +10,15 @@ public final class DefaultTestSubject implements TestSubject {
     }
 
     public void execute(Map map) {
-        // FIX SC525 This should pass in quake.
-        String value = map.get("quake").toString();
-        delegate.operate(value);
+        try {
+            tryExecute(map);
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public void foo() {
-        throw new UnsupportedOperationException();
+    private void tryExecute(Map map) {
+        String value = map.get("quake").toString();
+        delegate.operate(value);
     }
 }
