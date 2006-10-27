@@ -9,6 +9,7 @@ import org.jmock.core.Stub;
 import org.jmock.core.constraint.IsSame;
 
 // FIX SC525 Split into two classes.  The first is a facade.  The second the guts.
+// FIX SC525 Remove trainwrecks.
 // OK ParameterNumber|LineLength {
 public final class DefaultMockExpectations implements MockExpectations {
     private final AutoMocker autoMocker;
