@@ -12,7 +12,6 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
     private TestSubject subject;
     private MockExpectations expect;
 
-    // FIX SC525 Rename to init().  Have destroy().  TestLifecycle.
     public void setupSubjects() {
         subject = new DefaultTestSubject(delegate);
     }
@@ -24,7 +23,6 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
         subject.execute(map);
     }
 
-    // FIX SC525 Complete exception mock test.
     public void testExceptions() {
         String value = "bad value";
         expect.oneCall(map, "get", value, "quake");
