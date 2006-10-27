@@ -10,22 +10,22 @@ public final class TimePointAtomicTest extends TestCase {
     private static final Object NULL = null;
 
     public void testEpoch() {
-        assertEquals(0L, TimePoint.EPOCH.millis);
+        assertEquals(0L, TimePoint.EPOCH.getMillis());
     }
 
     public void testArmaggedon() {
-        assertEquals(Long.MAX_VALUE, TimePoint.ARMAGGEDON.millis);
+        assertEquals(Long.MAX_VALUE, TimePoint.ARMAGGEDON.getMillis());
     }
 
     public void testInvalidTimePoints() {
-        assertInvalidTimePoints(TimePoint.EPOCH.millis - 1);
+        assertInvalidTimePoints(TimePoint.EPOCH.getMillis() - 1);
         assertInvalidTimePoints(Long.MIN_VALUE);
     }
 
     public void testValidTimePoints() {
-        assertValidTimePoints(TimePoint.EPOCH.millis);
-        assertValidTimePoints(TimePoint.EPOCH.millis + 1);
-        assertValidTimePoints(TimePoint.EPOCH.millis + 100);
+        assertValidTimePoints(TimePoint.EPOCH.getMillis());
+        assertValidTimePoints(TimePoint.EPOCH.getMillis() + 1);
+        assertValidTimePoints(TimePoint.EPOCH.getMillis() + 100);
         assertValidTimePoints(Long.MAX_VALUE);
     }
 
@@ -77,7 +77,7 @@ public final class TimePointAtomicTest extends TestCase {
     }
 
     private void assertValidTimePoints(long length) {
-        assertEquals(length, new TimePoint(length).millis);
+        assertEquals(length, new TimePoint(length).getMillis());
     }
 
     private static final long LEEWAY = 5000;

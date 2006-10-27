@@ -10,13 +10,13 @@ public final class DefaultTimeRangeMaster implements TimeRangeMaster {
     }
 
     public Duration duration(StartTime start, EndTime end) {
-        return new Duration(end.point.millis - start.point.millis);
+        return new Duration(end.point.getMillis() - start.point.getMillis());
     }
 
     public EndTime end(TimeRange range) {
         StartTime start = range.start();
         Duration duration = range.duration();
-        TimePoint time = new TimePoint(start.point.millis + duration.millis);
+        TimePoint time = new TimePoint(start.point.getMillis() + duration.millis);
         return new EndTime(time);
     }
 

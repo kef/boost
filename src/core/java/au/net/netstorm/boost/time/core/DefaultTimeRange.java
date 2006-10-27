@@ -18,7 +18,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     public boolean contains(TimePoint time) {
-        long diff = time.millis - start.point.millis;
+        long diff = time.getMillis() - start.point.getMillis();
         return diff < duration.millis && diff >= 0;
     }
 
@@ -40,7 +40,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     public String toString() {
-        return "DefaultTimeRange[start=" + start.point.millis + ",duration=" + duration.millis + "]";
+        return "DefaultTimeRange[start=" + start.point.getMillis() + ",duration=" + duration.millis + "]";
     }
 
     public DefaultTimeRange(StartTime start, Duration duration) {

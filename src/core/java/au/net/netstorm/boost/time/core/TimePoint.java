@@ -13,7 +13,7 @@ public final class TimePoint implements Data, Serializable {
     private static final long EPOCH_ARGMAGEDDON = Long.MAX_VALUE;
     public static final TimePoint EPOCH = new TimePoint(EPOCH_MILLIS);
     public static final TimePoint ARMAGGEDON = new TimePoint(EPOCH_ARGMAGEDDON);
-    public final long millis;
+    private final long millis;
 
     public TimePoint(long millis) {
         this.millis = millis;
@@ -44,5 +44,9 @@ public final class TimePoint implements Data, Serializable {
 
     private boolean equals(TimePoint time) {
         return time.millis == millis;
+    }
+
+    public long getMillis() {
+        return millis;
     }
 }
