@@ -30,7 +30,6 @@ public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMo
         try {
             subject.execute(map);
             fail();
-        } catch (IllegalArgumentException e) {
-        }
+        } catch (IllegalArgumentException e) { }
     }
 }
