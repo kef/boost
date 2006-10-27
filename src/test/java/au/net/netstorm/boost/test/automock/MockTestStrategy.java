@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.automock;
+package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;

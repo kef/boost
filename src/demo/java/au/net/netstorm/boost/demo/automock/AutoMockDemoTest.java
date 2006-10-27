@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.automock;
 
-import au.net.netstorm.boost.nursery.automock.MockExpectations;
-import au.net.netstorm.boost.nursery.automock.PrimordialTestCase;
-import au.net.netstorm.boost.nursery.automock.UsesMocks;
+import au.net.netstorm.boost.test.automock.MockExpectations;
+import au.net.netstorm.boost.test.automock.PrimordialTestCase;
+import au.net.netstorm.boost.test.automock.UsesMocks;
 
 import java.util.Map;
 

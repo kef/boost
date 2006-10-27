@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.automock;
+package au.net.netstorm.boost.test.automock;
 
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.automock;
+package au.net.netstorm.boost.test.automock;
 
 interface MockExpectationHelper {
     void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters);

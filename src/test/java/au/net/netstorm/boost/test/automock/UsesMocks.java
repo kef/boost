@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.automock;
+package au.net.netstorm.boost.test.automock;
 
 // SUGGEST Sort out the interface hierarchy.
 public interface UsesMocks {
