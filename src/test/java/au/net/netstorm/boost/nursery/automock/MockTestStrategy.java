@@ -4,9 +4,7 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
-// FIX SC525 Sort this out.
-
-// DEBT ClassDataAbstractionCoupling {
+// OK ClassDataAbstractionCoupling {
 public final class MockTestStrategy implements TestStrategy {
     private final FieldTestUtil testUtil = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
@@ -33,4 +31,4 @@ public final class MockTestStrategy implements TestStrategy {
     public void destroy() {
     }
 }
-// } DEBT ClassDataAbstractionCoupling
+// } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.

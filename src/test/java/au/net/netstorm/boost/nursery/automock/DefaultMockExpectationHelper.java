@@ -4,12 +4,10 @@ import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 import org.jmock.builder.ArgumentsMatchBuilder;
 import org.jmock.builder.MatchBuilder;
+import org.jmock.builder.NameMatchBuilder;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 import org.jmock.core.constraint.IsSame;
-
-// FIX SC525 Split into two classes.  The first is a facade.  The second the guts.
-// FIX SC525 Remove trainwrecks.
 
 final class DefaultMockExpectationHelper implements MockExpectationHelper {
     private final AutoMocker autoMocker;
@@ -20,19 +18,16 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
         this.jMock = jMock;
     }
 
-    // FIX SC525 Split class here.
-
     public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
         MatchBuilder builder = getMethod(ref, methodName).with(same(parameters));
-        if (returnValue == null)
-            throw new IllegalStateException("If your method returns void, pass in the void marker in the test interface.");
+        if (returnValue == null) barf();
         if (returnValue == UsesMocks.VOID) return;
         builder.will(returnValue(returnValue));
     }
 
     public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
-        getMethod(ref, methodName).with(same(parameters))
-                .will(throwException(throwable));
+        MatchBuilder builder = getMethod(ref, methodName).with(same(parameters));
+        builder.will(throwException(throwable));
     }
 
     private IsSame[] same(Object[] parameters) {
@@ -44,12 +39,16 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
 
     private ArgumentsMatchBuilder getMethod(Object ref, String methodName) {
         Mock mock = getMock(ref);
-        return mock.expects(once())
-                .method(methodName);
+        NameMatchBuilder builder = mock.expects(once());
+        return builder.method(methodName);
     }
 
     private Stub throwException(Throwable throwable) {
         return jMock.throwException(throwable);
+    }
+
+    private void barf() {
+        throw new IllegalStateException("If your method returns void, pass in the void marker in the test interface.");
     }
 
     private Mock getMock(Object ref) {
