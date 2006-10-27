@@ -9,7 +9,7 @@ import org.jmock.core.Stub;
 import org.jmock.core.constraint.IsSame;
 
 // FIX SC525 Split into two classes.  The first is a facade.  The second the guts.
-// OK ParameterNumber {
+// OK ParameterNumber|LineLength {
 public final class DefaultMockExpectations implements MockExpectations {
     private final AutoMocker autoMocker;
     private final MockObjectTestCase jMock;
@@ -29,18 +29,45 @@ public final class DefaultMockExpectations implements MockExpectations {
         oneCall(ref, methodName, returnValue, parameters);
     }
 
-    // FIX SC525 Needs parameters.
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object param0) {
-        getMethod(ref, methodName).with(same(param0))
-                .will(throwException(throwable));
+    public void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2, Object parameter3) {
+        Object[] parameters = {parameter1, parameter2, parameter3};
+        oneCall(ref, methodName, returnValue, parameters);
     }
 
-    private void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
+    public void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2, Object parameter3, Object parameter4) {
+        Object[] parameters = {parameter1,parameter2,parameter3,parameter4};
+        oneCall(ref, methodName, returnValue, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
         MatchBuilder builder = getMethod(ref, methodName).with(same(parameters));
         if (returnValue == null)
             throw new IllegalStateException("If your method returns void, pass in the void marker in the test interface.");
         if (returnValue == UsesMocks.VOID) return;
         builder.will(returnValue(returnValue));
+    }
+
+    // FIX SC525 Needs parameters.
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object param0) {
+        Object[] parameters = {param0};
+        oneCall(ref, methodName, throwable, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2) {
+        // FIX SC525 Finish these.
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2, Object parameter3) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1, Object parameter2, Object parameter3, Object parameter4) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
+        getMethod(ref, methodName).with(same(parameters))
+                .will(throwException(throwable));
     }
 
     private IsSame[] same(Object[] parameters) {
@@ -75,4 +102,4 @@ public final class DefaultMockExpectations implements MockExpectations {
         return jMock.same(ref);
     }
 }
-// } OK ParameterNumber - See interface.
+// } OK ParameterNumber|LineLength - See interface.
