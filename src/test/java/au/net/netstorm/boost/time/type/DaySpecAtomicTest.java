@@ -62,13 +62,13 @@ public final class DaySpecAtomicTest extends TestCase {
         } catch (IllegalArgumentException ex) { }
     }
 
-// CHECKSTYLE:OFF ParameterNumber
+// DEBT ParameterNumber {
     private void assertCompare(MonthSpec month, int dayOffset, MonthSpec toMonth, int toDayOffset, int status) {
         DaySpec spec = new DaySpec(month, dayOffset);
         DaySpec toSpec = new DaySpec(toMonth, toDayOffset);
         assertEquals(status, spec.compareTo(toSpec));
     }
-// CHECKSTYLE:ON ParameterNumber
+// } DEBT ParameterNumber
 
     private static final MonthSpec APRIL_2004 = new MonthSpec(2004, Calendar.APRIL);
     private static final MonthSpec MAY_2004 = new MonthSpec(2004, Calendar.MAY);

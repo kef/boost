@@ -13,7 +13,7 @@ import java.util.List;
 
 // FIX SC600 List/Map needs to be weak reference.
 // FIX SC600 Too complicated.  Simplify.
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final int ZERO_LISTENERS = 0;
     private static final int SINGLE_LISTENER = 1;
@@ -133,4 +133,4 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         assertTrue(expectedInterface.getType().isAssignableFrom(ref.getClass()));
     }
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

@@ -11,7 +11,7 @@ import junit.framework.Assert;
 
 import java.lang.reflect.Constructor;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
     private final NullMaster nullMaster = new DefaultNullMaster();
     private final ClassMaster classMaster = new DefaultClassMaster();
@@ -70,4 +70,4 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
         Assert.fail(message);
     }
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

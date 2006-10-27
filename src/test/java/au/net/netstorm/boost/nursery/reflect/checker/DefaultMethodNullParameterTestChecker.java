@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultMethodNullParameterTestChecker implements MethodNullParameterTestChecker {
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
     private static final ModifierTestUtil MODIFIER_UTIL = new DefaultModifierTestUtil();
@@ -87,4 +87,4 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         return (Method[]) publicMethods.toArray(new Method[]{});
     }
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

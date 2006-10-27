@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST introspection to determine which properties.  Declaration of a single array
 // SUGGEST is probably enough to specify field/property order.  Might use volatile or
 // SUGGEST transient to mark fields as optional.
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
@@ -66,4 +66,4 @@ public final class DefaultDataAtomTestChecker implements DataAtomTestChecker {
         constructorNullChecker.check(cls, fields);
     }
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

@@ -11,7 +11,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationHandler;
 import java.util.Random;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 5;
@@ -63,7 +63,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return primitiveBoxer.isPrimitive(type);
     }
 
-// CHECKSTYLE:OFF JavaNCSS|CyclomaticComplexity|ReturnCount
+// DEBT JavaNCSS|CyclomaticComplexity|ReturnCount {
     private Object randomJavaType(Class type) {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
@@ -75,7 +75,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == Byte.class) return randomByte();
         return null;
     }
-// CHECKSTYLE:ON JavaNCSS|CyclomaticComplexity|ReturnCount
+// } DEBT JavaNCSS|CyclomaticComplexity|ReturnCount
 
     private Class randomClass() {
         return InternalInterface.class;
@@ -123,4 +123,4 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         }
     }
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

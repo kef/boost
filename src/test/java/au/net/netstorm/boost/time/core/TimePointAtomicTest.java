@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import java.util.Date;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class TimePointAtomicTest extends TestCase {
     private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
     private static final Object NULL = null;
@@ -82,4 +82,4 @@ public final class TimePointAtomicTest extends TestCase {
 
     private static final long LEEWAY = 5000;
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

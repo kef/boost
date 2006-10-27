@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import java.util.Date;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
     public void testDuration() {
         assertEquals(DURATION_200, master.duration(START_TIME_200, END_TIME_400));
@@ -83,4 +83,4 @@ public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
     private static final TimeRange DATE_RANGE_100_200 = new DefaultTimeRange(START_TIME_100, DURATION_100);
     private static final TimeRange DATE_RANGE_100_400 = new DefaultTimeRange(START_TIME_100, DURATION_300);
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

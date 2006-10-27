@@ -12,7 +12,7 @@ public final class DaySpec extends Primordial implements Comparable {
         validate();
     }
 
-// CHECKSTYLE:OFF JavaNCSS
+// DEBT JavaNCSS {
     public int compareTo(Object o) {
         if (!getClass().isAssignableFrom(o.getClass())) throw new IllegalArgumentException(
                 "Cannot perform a comparison with a " + o.getClass() + ".");
@@ -23,7 +23,7 @@ public final class DaySpec extends Primordial implements Comparable {
         if (us > them) return 1;
         return 0;
     }
-// CHECKSTYLE:ON JavaNCSS
+// } DEBT JavaNCSS
 
     private void validate() {
         int totalDays = month.totalDays;

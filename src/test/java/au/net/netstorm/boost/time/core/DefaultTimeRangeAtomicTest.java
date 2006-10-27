@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import java.util.Date;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimeRangeAtomicTest extends TestCase {
     public void testNullsInvalidInDualConstructor() {
         assertNullsInvalidInDualConstructor(null, Duration.QUANTUM);
@@ -30,7 +30,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertEquals(duration, range.duration());
     }
 
-// CHECKSTYLE:OFF JavaNCSS
+// DEBT JavaNCSS {
     public void testIntersects() {
         assertIntersects(false, START_TIME_050, END_TIME_100);
         assertIntersects(false, START_TIME_050, END_TIME_100);
@@ -48,7 +48,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertIntersects(false, START_TIME_300, END_TIME_301);
         assertIntersects(false, START_TIME_300, END_TIME_400);
     }
-// CHECKSTYLE:ON JavaNCSS
+// } DEBT JavaNCSS
 
     public void testEquality() {
         assertFalse(range.equals(NULL));
@@ -144,4 +144,4 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
     private static final Duration DURATION_999 = new Duration(999);
     private static final Object NULL = null;
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

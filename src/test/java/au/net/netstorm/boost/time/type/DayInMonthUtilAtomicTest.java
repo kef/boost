@@ -14,7 +14,7 @@ public final class DayInMonthUtilAtomicTest extends TestCase {
         assertIncDecMonth(DEC_00, JAN_00);
     }
 
-// CHECKSTYLE:OFF JavaNCSS
+// DEBT JavaNCSS {
     public void testBoundaryDays() {
         assertEquals(FEB_28, master.incMonth(JAN_29));
         assertEquals(FEB_28, master.incMonth(JAN_30));
@@ -29,7 +29,7 @@ public final class DayInMonthUtilAtomicTest extends TestCase {
         assertEquals(SEP_29, master.decMonth(OCT_30));
         assertEquals(NOV_29, master.decMonth(DEC_30));
     }
-// CHECKSTYLE:ON JavaNCSS
+// } DEBT JavaNCSS
 
     public void testIncDecDay() {
         assertIncDecDay(JAN_00, JAN_01);

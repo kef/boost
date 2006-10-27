@@ -4,7 +4,7 @@ import au.net.netstorm.boost.test.atom.PrimordialTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
-// CHECKSTYLE:OFF ClassDataAbstractionCoupling
+// DEBT ClassDataAbstractionCoupling {
 public class DefaultReflectFieldMasterAtomicTest extends PrimordialTestCase {
     private static final FieldValueSpec[] NO_FIELDS = new FieldValueSpec[0];
     private static final String FIELD_VALUE_1 = "REFACTORING IS THE MOST IMPORTANT THING YOU COULD BE DOING";
@@ -37,4 +37,4 @@ public class DefaultReflectFieldMasterAtomicTest extends PrimordialTestCase {
         return new FieldValueSpec[]{field};
     }
 }
-// CHECKSTYLE:ON ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling

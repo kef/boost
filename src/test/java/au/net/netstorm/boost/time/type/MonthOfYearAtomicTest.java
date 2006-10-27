@@ -32,7 +32,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
         }
     }
 
-// CHECKSTYLE:OFF JavaNCSS
+// DEBT JavaNCSS {
     public void testMaximumDays() {
         assertEquals(31, JANUARY.maxDays);
         assertEquals(29, FEBRUARY.maxDays);
@@ -47,9 +47,9 @@ public final class MonthOfYearAtomicTest extends TestCase {
         assertEquals(30, NOVEMBER.maxDays);
         assertEquals(31, DECEMBER.maxDays);
     }
-// CHECKSTYLE:ON JavaNCSS
+// } DEBT JavaNCSS
 
-// CHECKSTYLE:OFF JavaNCSS
+// DEBT JavaNCSS {
     public void testConstants() {
         assertEquals(new MonthOfYear(0), JANUARY);
         assertEquals(new MonthOfYear(1), FEBRUARY);
@@ -64,7 +64,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
         assertEquals(new MonthOfYear(10), NOVEMBER);
         assertEquals(new MonthOfYear(11), DECEMBER);
     }
-// CHECKSTYLE:ON JavaNCSS
+// } DEBT JavaNCSS
 
     public void testEquality() {
         MonthOfYear month = new MonthOfYear(4);
@@ -78,7 +78,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
         assertEquals(100, new MonthOfYear(2).hashCode());
     }
 
-// CHECKSTYLE:OFF JavaNCSS
+// DEBT JavaNCSS {
     public void testToString() {
         assertToString("Jan", JANUARY);
         assertToString("Feb", FEBRUARY);
@@ -93,7 +93,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
         assertToString("Nov", NOVEMBER);
         assertToString("Dec", DECEMBER);
     }
-// CHECKSTYLE:ON JavaNCSS
+// } DEBT JavaNCSS
 
     private void assertToString(String expected, MonthOfYear month) {
         assertEquals(expected, month.toString());
