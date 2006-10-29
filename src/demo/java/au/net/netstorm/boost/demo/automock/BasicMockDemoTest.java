@@ -17,7 +17,7 @@ public final class BasicMockDemoTest extends MockObjectTestCase {
         map = (Map) mockMap.proxy();
         mockDelegate = mock(DelegateSubject.class);
         delegate = (DelegateSubject) mockDelegate.proxy();
-        subject = new DefaultTestSubject(delegate);
+        subject = new WorkingTestSubject(delegate);
     }
 
     public void testInteraction() {

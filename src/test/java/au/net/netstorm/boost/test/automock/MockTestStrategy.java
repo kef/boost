@@ -6,7 +6,7 @@ import org.jmock.MockObjectTestCase;
 
 // OK ClassDataAbstractionCoupling {
 final class MockTestStrategy implements TestStrategy {
-    private final FieldTestUtil testUtil = new DefaultFieldTestUtil();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final UsesMocks testCase;
@@ -18,9 +18,13 @@ final class MockTestStrategy implements TestStrategy {
     public void init() {
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations mockExpectations = buildMockExpectations(autoMocker);
-        testUtil.setInstance(testCase, "expect", mockExpectations);
+        setExpectField(mockExpectations);
         autoMocker.wireMocks();
         testCase.setupSubjects();
+    }
+
+    private void setExpectField(MockExpectations mockExpectations) {
+        fielder.setInstance(testCase, "expect", mockExpectations);
     }
 
     private MockExpectations buildMockExpectations(AutoMocker autoMocker) {

@@ -2,10 +2,10 @@ package au.net.netstorm.boost.demo.automock;
 
 import java.util.Map;
 
-public final class DefaultTestSubject implements TestSubject {
+public final class WorkingTestSubject implements TestSubject {
     private final DelegateSubject delegate;
 
-    public DefaultTestSubject(DelegateSubject delegate) {
+    public WorkingTestSubject(DelegateSubject delegate) {
         this.delegate = delegate;
     }
 
@@ -19,7 +19,6 @@ public final class DefaultTestSubject implements TestSubject {
 
     private void tryExecute(Map map) {
         String value = (String) map.get("quake");
-        // FIX SC525 The following does not fail an expectation if commented out.
         delegate.operate(value);
     }
 }

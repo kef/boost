@@ -8,14 +8,14 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 // FIX SC525 being performed.
 import java.util.Map;
 
-public final class AutoMockDemoTest extends PrimordialTestCase implements UsesMocks {
+public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements UsesMocks {
     private Map map;
     private DelegateSubject delegate;
     private TestSubject subject;
     private MockExpectations expect;
 
     public void setupSubjects() {
-        subject = new DefaultTestSubject(delegate);
+        subject = new WorkingTestSubject(delegate);
     }
 
     public void testInteraction() {

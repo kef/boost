@@ -497,10 +497,12 @@
     <library name="jmock">
       <CLASSES>
         <root url="file://$PROJECT_DIR$/lib/jmock" />
-        <root url="jar://$PROJECT_DIR$/lib/jmock/jmock-1.1.0RC1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/jmock/jmock-1.1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/lib/jmock/jmock-1.1.0-src.jar!/" />
+      </SOURCES>
     </library>
   </component>
   <component name="uidesigner-configuration">
