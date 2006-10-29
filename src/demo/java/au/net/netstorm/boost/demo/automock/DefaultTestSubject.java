@@ -18,7 +18,8 @@ public final class DefaultTestSubject implements TestSubject {
     }
 
     private void tryExecute(Map map) {
-        String value = map.get("quake").toString();
+        String value = (String) map.get("quake");
+        // FIX SC525 The following does not fail an expectation if commented out.
         delegate.operate(value);
     }
 }
