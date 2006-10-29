@@ -9,6 +9,8 @@ public class PrimordialTestCase extends TestCase {
         init();
         try {
             super.runBare();
+            // FIX SC525 Incorporate or remove.
+            verify();
         } finally {
             destroy();
         }
@@ -24,6 +26,10 @@ public class PrimordialTestCase extends TestCase {
         TestStrategist strategist = new DefaultTestStrategist();
         strategy = strategist.determineStrategy(this);
         strategy.init();
+    }
+
+    private void verify() {
+        strategy.verify();
     }
 
     private void destroy() {

@@ -23,6 +23,12 @@ final class MockTestStrategy implements TestStrategy {
         testCase.setupSubjects();
     }
 
+    public void verify() {
+    }
+
+    public void destroy() {
+    }
+
     private void setExpectField(MockExpectations mockExpectations) {
         fielder.setInstance(testCase, "expect", mockExpectations);
     }
@@ -30,9 +36,6 @@ final class MockTestStrategy implements TestStrategy {
     private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
         MockExpectationHelper delegate = new DefaultMockExpectationHelper(autoMocker, mocker);
         return new DefaultMockExpectations(delegate);
-    }
-
-    public void destroy() {
     }
 }
 // } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.
