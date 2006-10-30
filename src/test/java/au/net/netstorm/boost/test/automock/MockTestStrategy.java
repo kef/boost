@@ -24,6 +24,7 @@ final class MockTestStrategy implements TestStrategy {
     }
 
     public void verify() {
+        mocker.verify();
     }
 
     public void destroy() {

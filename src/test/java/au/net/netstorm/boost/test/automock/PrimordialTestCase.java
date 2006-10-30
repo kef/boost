@@ -22,14 +22,15 @@ public class PrimordialTestCase extends TestCase {
     protected final void tearDown() {
     }
 
+    /** Do not use this when writing tests.  It is exposed only so we can test this infrastructure. */
+    protected void verify() {
+        strategy.verify();
+    }
+
     private void init() {
         TestStrategist strategist = new DefaultTestStrategist();
         strategy = strategist.determineStrategy(this);
         strategy.init();
-    }
-
-    private void verify() {
-        strategy.verify();
     }
 
     private void destroy() {
