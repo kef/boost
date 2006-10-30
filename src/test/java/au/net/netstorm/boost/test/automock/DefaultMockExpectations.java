@@ -8,6 +8,12 @@ final class DefaultMockExpectations implements MockExpectations {
         this.delegate = delegate;
     }
 
+    // FIX SC525 Support no parameters.
+    public void oneCall(Object ref, String methodName, Object returnValue) {
+        // FIX SC525 Complete.
+        throw new UnsupportedOperationException();
+    }
+
     public void oneCall(Object ref, String methodName, Object returnValue, Object parameter1) {
         Object[] parameters = {parameter1};
         oneCall(ref, methodName, returnValue, parameters);
@@ -26,6 +32,11 @@ final class DefaultMockExpectations implements MockExpectations {
     public void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2, Object parameter3, Object parameter4) {
         Object[] parameters = {parameter1, parameter2, parameter3, parameter4};
         oneCall(ref, methodName, returnValue, parameters);
+    }
+
+    public void oneCall(Object ref, String methodName, Throwable throwable) {
+        // FIX SC525 Complete.
+        throw new UnsupportedOperationException();
     }
 
     public void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1) {
