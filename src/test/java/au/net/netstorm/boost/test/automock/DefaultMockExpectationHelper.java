@@ -10,6 +10,8 @@ import org.jmock.core.Stub;
 import org.jmock.core.constraint.IsSame;
 
 final class DefaultMockExpectationHelper implements MockExpectationHelper {
+    private static final Object VOID = UsesMocks.VOID;
+    private static final Object NULL = UsesMocks.NULL;
     private final AutoMocker autoMocker;
     private final MockObjectTestCase jMock;
 
@@ -20,12 +22,14 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
 
     public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
         MatchBuilder builder = getMethod(ref, methodName, parameters);
-        if (returnValue == null) barf();
-        if (returnValue == UsesMocks.VOID) return;
-        builder.will(returnValue(returnValue));
+        checkNotNull(returnValue);
+        if (returnValue == VOID) return;
+        Object value = (returnValue == NULL) ? null : returnValue;
+        builder.will(returnValue(value));
     }
 
     public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
+        checkNotNull(throwable);
         MatchBuilder builder = getMethod(ref, methodName, parameters);
         builder.will(throwException(throwable));
     }
@@ -66,5 +70,9 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
 
     private IsSame same(Object ref) {
         return jMock.same(ref);
+    }
+
+    private void checkNotNull(Object ref) {
+        if (ref == null) barf();
     }
 }
