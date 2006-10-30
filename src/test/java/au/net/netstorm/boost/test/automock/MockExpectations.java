@@ -8,7 +8,7 @@ public interface MockExpectations extends MockExpectationHelper {
     // FIX SC525 Support no parameters.
     // FIX SC525 Damn primitive types.
     void oneCall(Object ref, String methodName, Object returnValue, Object parameter1);
-    void oneCall(Object ref, String methodName, Object returnValue, Object pNarameter1, Object parameter2);
+    void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2);
     void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2, Object parameter3);
     void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2, Object parameter3, Object parameter4);
     void oneCall(Object ref, String methodName, Throwable throwable, Object parameter1);
