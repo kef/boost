@@ -9,7 +9,6 @@ public class PrimordialTestCase extends TestCase {
         init();
         try {
             super.runBare();
-            // FIX SC525 Incorporate or remove.
             verify();
         } finally {
             destroy();
