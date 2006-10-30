@@ -10,6 +10,5 @@ public final class BrokenTestSubject implements TestSubject {
     }
 
     public void execute(Map map) {
-        map.get("key");
     }
 }
