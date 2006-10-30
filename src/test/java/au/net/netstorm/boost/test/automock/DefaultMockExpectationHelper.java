@@ -19,14 +19,14 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
     }
 
     public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
-        MatchBuilder builder = getMethod(ref, methodName).with(same(parameters));
+        MatchBuilder builder = getMethod(ref, methodName, parameters);
         if (returnValue == null) barf();
         if (returnValue == UsesMocks.VOID) return;
         builder.will(returnValue(returnValue));
     }
 
     public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
-        MatchBuilder builder = getMethod(ref, methodName).with(same(parameters));
+        MatchBuilder builder = getMethod(ref, methodName, parameters);
         builder.will(throwException(throwable));
     }
 
@@ -37,14 +37,11 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
         return result;
     }
 
-    private ArgumentsMatchBuilder getMethod(Object ref, String methodName) {
+    private MatchBuilder getMethod(Object ref, String methodName, Object[] parameters) {
         Mock mock = getMock(ref);
         NameMatchBuilder builder = mock.expects(once());
-        return builder.method(methodName);
-    }
-
-    private Stub throwException(Throwable throwable) {
-        return jMock.throwException(throwable);
+        ArgumentsMatchBuilder matchBuilder = builder.method(methodName);
+        return matchBuilder.with(same(parameters));
     }
 
     private void barf() {
@@ -53,6 +50,10 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
 
     private Mock getMock(Object ref) {
         return autoMocker.getMock(ref);
+    }
+
+    private Stub throwException(Throwable throwable) {
+        return jMock.throwException(throwable);
     }
 
     private InvocationMatcher once() {

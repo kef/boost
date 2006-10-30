@@ -15,9 +15,11 @@ public class PrimordialTestCase extends TestCase {
         }
     }
 
+    /** Do not allow overriding of setup.  The test maintains the lifecycle. */
     protected final void setUp() {
     }
 
+    /** Do not allow overriding of setup.  The test maintains the lifecycle. */
     protected final void tearDown() {
     }
 
