@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
 // OK ParameterNumber|LineLength {
-// FIX SC525 How about canCall() / mayCall()?
 public interface MockExpectations extends MockExpectationHelper {
     void oneCall(Object ref, String methodName, Object returnValue);
     void oneCall(Object ref, String methodName, Object returnValue, Object parameter1);
