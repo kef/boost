@@ -39,7 +39,6 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
 
     private ArgumentsMatchBuilder getMethod(Object ref, String methodName) {
         Mock mock = getMock(ref);
-        // FIX SC525 Why don't we have to call stubs()?
         NameMatchBuilder builder = mock.expects(once());
         return builder.method(methodName);
     }

@@ -4,8 +4,6 @@ import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 
-// FIX SC525 Some failing conditions need to be introduced to ensure the mocking/expectations are actually
-// FIX SC525 being performed.
 import java.util.Map;
 
 public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements UsesMocks {
