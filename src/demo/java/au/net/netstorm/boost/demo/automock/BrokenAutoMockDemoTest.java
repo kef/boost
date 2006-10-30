@@ -17,7 +17,7 @@ public final class BrokenAutoMockDemoTest extends PrimordialTestCase implements 
         subject = new BrokenTestSubject(delegate);
     }
 
-    public void testFailsIfExpectationNotMet() {
+    public void testBroken() {
         expect.oneCall(map, "get", "return", "key");
         try {
             subject.execute(map);
