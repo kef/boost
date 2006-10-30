@@ -5,9 +5,9 @@ import org.jmock.MockObjectTestCase;
 import org.jmock.builder.ArgumentsMatchBuilder;
 import org.jmock.builder.MatchBuilder;
 import org.jmock.builder.NameMatchBuilder;
+import org.jmock.core.Constraint;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
-import org.jmock.core.constraint.IsSame;
 
 final class DefaultMockExpectationHelper implements MockExpectationHelper {
     private static final Object VOID = UsesMocks.VOID;
@@ -34,10 +34,10 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
         builder.will(throwException(throwable));
     }
 
-    private IsSame[] same(Object[] parameters) {
+    private Constraint[] same(Object[] parameters) {
         int length = parameters.length;
-        IsSame[] result = new IsSame[length];
-        for (int i = 0; i < length; i++) result[i] = same(parameters[i]);
+        Constraint[] result = new Constraint[length];
+        for (int i = 0; i < length; i++) result[i] = eq(parameters[i]);
         return result;
     }
 
@@ -68,8 +68,8 @@ final class DefaultMockExpectationHelper implements MockExpectationHelper {
         return jMock.returnValue(ref);
     }
 
-    private IsSame same(Object ref) {
-        return jMock.same(ref);
+    private Constraint eq(Object ref) {
+        return jMock.eq(ref);
     }
 
     private void checkNotNull(Object ref) {
