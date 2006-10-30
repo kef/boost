@@ -4,7 +4,6 @@ import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 import junit.framework.AssertionFailedError;
-import sun.plugin.dom.exception.InvalidStateException;
 
 import java.util.Map;
 
@@ -18,8 +17,7 @@ public final class BrokenAutoMockDemoTest extends PrimordialTestCase implements 
         subject = new BrokenTestSubject(delegate);
     }
 
-    public void testBroken() {
-        // FIX SC525 Assert an exception is thrown.
+    public void testFailsIfExpectationNotMet() {
         expect.oneCall(map, "get", "return", "key");
         try {
             subject.execute(map);
