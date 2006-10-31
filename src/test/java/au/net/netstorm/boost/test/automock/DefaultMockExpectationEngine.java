@@ -20,7 +20,7 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         this.jMock = jMock;
     }
 
-    public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
+    public void oneCall(Object ref, Object returnValue, String methodName, Object[] parameters) {
         MatchBuilder builder = getMethod(ref, methodName, parameters);
         checkNotNull(returnValue);
         if (returnValue == VOID) return;
