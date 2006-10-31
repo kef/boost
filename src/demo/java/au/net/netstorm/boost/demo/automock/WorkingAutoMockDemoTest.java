@@ -19,7 +19,14 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     public void testInteraction() {
         String value = "Masters of Doom";
         expect.oneCall(map, value, "get", "quake");
-        expect.oneCall(delegate, VOID, "operate", "Masters of Doom");
+        expect.oneCall(delegate, VOID, "operate", value);
+        subject.execute(map);
+    }
+
+    public void testNullValue() {
+        String value = null;
+        expect.oneCall(map, value, "get", "quake");
+        expect.oneCall(delegate, VOID, "operate", value);
         subject.execute(map);
     }
 

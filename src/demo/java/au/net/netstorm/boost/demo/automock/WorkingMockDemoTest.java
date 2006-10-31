@@ -5,7 +5,7 @@ import org.jmock.Mock;
 
 import java.util.Map;
 
-public final class BasicMockDemoTest extends MockObjectTestCase {
+public final class WorkingMockDemoTest extends MockObjectTestCase {
     private Mock mockMap;
     private Map map;
     private Mock mockDelegate;
