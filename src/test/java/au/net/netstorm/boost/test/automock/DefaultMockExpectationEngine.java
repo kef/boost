@@ -28,7 +28,7 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         builder.will(returnValue(value));
     }
 
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
+    public void oneCall(Object ref, Throwable throwable, String methodName, Object[] parameters) {
         checkNotNull(throwable);
         MatchBuilder builder = getMethod(ref, methodName, parameters);
         builder.will(throwException(throwable));

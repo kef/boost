@@ -63,7 +63,7 @@ final class DefaultMockExpectations implements MockExpectations {
     }
 
     private void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
-        delegate.oneCall(ref, methodName, throwable, parameters);
+        delegate.oneCall(ref, throwable, methodName, parameters);
     }
 }
 // } OK ParameterNumber|LineLength - See interface.
