@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.automock;
 
 // OK ParameterNumber|LineLength {
-public interface MockExpectations extends MockExpectationHelper {
+public interface MockExpectations {
     void oneCall(Object ref, String methodName, Object returnValue);
     void oneCall(Object ref, String methodName, Object returnValue, Object parameter1);
     void oneCall(Object ref, String methodName, Object returnValue, Object parameter1, Object parameter2);

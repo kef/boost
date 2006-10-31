@@ -2,9 +2,9 @@ package au.net.netstorm.boost.test.automock;
 
 // OK ParameterNumber|LineLength {
 final class DefaultMockExpectations implements MockExpectations {
-    private MockExpectationHelper delegate;
+    private MockExpectationEngine delegate;
 
-    public DefaultMockExpectations(MockExpectationHelper delegate) {
+    public DefaultMockExpectations(MockExpectationEngine delegate) {
         this.delegate = delegate;
     }
 
@@ -58,11 +58,11 @@ final class DefaultMockExpectations implements MockExpectations {
         oneCall(ref, methodName, throwable, parameters);
     }
 
-    public void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
+    private void oneCall(Object ref, String methodName, Object returnValue, Object[] parameters) {
         delegate.oneCall(ref, methodName, returnValue, parameters);
     }
 
-    public void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
+    private void oneCall(Object ref, String methodName, Throwable throwable, Object[] parameters) {
         delegate.oneCall(ref, methodName, throwable, parameters);
     }
 }

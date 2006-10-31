@@ -9,13 +9,13 @@ import org.jmock.core.Constraint;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 
-final class DefaultMockExpectationHelper implements MockExpectationHelper {
+final class DefaultMockExpectationEngine implements MockExpectationEngine {
     private static final Object VOID = UsesMocks.VOID;
     private static final Object NULL = UsesMocks.NULL;
     private final AutoMocker autoMocker;
     private final MockObjectTestCase jMock;
 
-    public DefaultMockExpectationHelper(AutoMocker autoMocker, MockObjectTestCase jMock) {
+    public DefaultMockExpectationEngine(AutoMocker autoMocker, MockObjectTestCase jMock) {
         this.autoMocker = autoMocker;
         this.jMock = jMock;
     }

@@ -35,7 +35,7 @@ final class MockTestStrategy implements TestStrategy {
     }
 
     private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
-        MockExpectationHelper delegate = new DefaultMockExpectationHelper(autoMocker, mocker);
+        MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
         return new DefaultMockExpectations(delegate);
     }
 }
