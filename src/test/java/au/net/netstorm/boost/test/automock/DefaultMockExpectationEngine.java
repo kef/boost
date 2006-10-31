@@ -10,8 +10,7 @@ import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 
 final class DefaultMockExpectationEngine implements MockExpectationEngine {
-    private static final String NULL = "null";
-    private static final String VOID = "void";
+    private static final Object VOID = UsesMocks.VOID;
     private final AutoMocker autoMocker;
     private final MockObjectTestCase jMock;
 
@@ -24,8 +23,7 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         MatchBuilder builder = getMethod(ref, methodName, parameters);
         checkNotNull(returnValue);
         if (returnValue.equals(VOID)) return;
-        Object value = (returnValue.equals(NULL)) ? null : returnValue;
-        builder.will(returnValue(value));
+        builder.will(returnValue(returnValue));
     }
 
     public void oneCall(Object ref, Throwable throwable, String methodName, Object[] parameters) {
