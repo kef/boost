@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Array;
-
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Array;
 
 final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     private static final String ARRAYS_NOTE = "Arrays must be copied on create and on each access.  Try using arrayRef.clone().";
