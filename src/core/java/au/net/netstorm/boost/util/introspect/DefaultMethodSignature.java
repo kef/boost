@@ -12,7 +12,6 @@ public final class DefaultMethodSignature extends Primordial implements Data {
     public DefaultMethodSignature(Object returnValue, String methodName, Object[] parameters) {
         this.returnValue = returnValue;
         this.methodName = methodName;
-        // FIX 525 Remove the need to clone.  We are mutable right?  ??????
         this.parameters = (Object[]) parameters.clone();
     }
 

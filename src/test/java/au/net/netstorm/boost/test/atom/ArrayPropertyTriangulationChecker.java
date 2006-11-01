@@ -13,9 +13,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
 
     public void check(Class cls, Object[] parameters, FieldSpec candidate, Object parameter) {
         Object instance = instanceHelper.getInstance(cls, parameters);
-        // FIX 525 Add simple equality check on access.
-
-        // FIX 525 Only do these if immutable.
         checkCopyOnAccess(instance, candidate, parameter);
         checkCopyOnCreate(instance, candidate, parameter);
     }

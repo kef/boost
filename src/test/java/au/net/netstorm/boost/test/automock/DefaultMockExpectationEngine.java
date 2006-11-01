@@ -20,11 +20,11 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
     }
 
     public void oneCall(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        calls(ref, methodName, parameters, returnValue, one());
+        calls(ref, returnValue, methodName, parameters, one());
     }
 
     public void manyCalls(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        calls(ref, methodName, parameters, returnValue, many());
+        calls(ref, returnValue, methodName, parameters, many());
     }
 
     public void oneCall(Object ref, Throwable throwable, String methodName, Object[] parameters) {
@@ -35,7 +35,7 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
 
     // FIX 525 Create a CallSpec.
     // DEBT ParameterNumber {
-    private void calls(Object ref, String methodName, Object[] parameters, Object returnValue, InvocationMatcher matcher) {
+    private void calls(Object ref, Object returnValue, String methodName, Object[] parameters, InvocationMatcher matcher) {
         MatchBuilder builder = getMethod(ref, methodName, parameters, matcher);
         if (VOID == returnValue) return;
         builder.will(returnValue(returnValue));
