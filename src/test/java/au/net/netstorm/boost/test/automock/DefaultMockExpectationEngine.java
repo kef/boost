@@ -20,16 +20,27 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
     }
 
     public void oneCall(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        MatchBuilder builder = getMethod(ref, methodName, parameters);
-        if (VOID == returnValue) return;
-        builder.will(returnValue(returnValue));
+        calls(ref, methodName, parameters, returnValue, one());
+    }
+
+    public void manyCalls(Object ref, Object returnValue, String methodName, Object[] parameters) {
+        calls(ref, methodName, parameters, returnValue, many());
     }
 
     public void oneCall(Object ref, Throwable throwable, String methodName, Object[] parameters) {
         checkNotNull(throwable);
-        MatchBuilder builder = getMethod(ref, methodName, parameters);
+        MatchBuilder builder = getMethod(ref, methodName, parameters, one());
         builder.will(throwException(throwable));
     }
+
+    // FIX SC525 Create a CallSpec.
+    // DEBT ParameterNumber {
+    private void calls(Object ref, String methodName, Object[] parameters, Object returnValue, InvocationMatcher matcher) {
+        MatchBuilder builder = getMethod(ref, methodName, parameters, matcher);
+        if (VOID == returnValue) return;
+        builder.will(returnValue(returnValue));
+    }
+    // } DEBT ParameterNumber - Dealing with jMock.
 
     private Constraint[] same(Object[] parameters) {
         int length = parameters.length;
@@ -38,9 +49,9 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         return result;
     }
 
-    private MatchBuilder getMethod(Object ref, String methodName, Object[] parameters) {
+    private MatchBuilder getMethod(Object ref, String methodName, Object[] parameters, InvocationMatcher matcher) {
         Mock mock = getMock(ref);
-        NameMatchBuilder builder = mock.expects(once());
+        NameMatchBuilder builder = mock.expects(matcher);
         ArgumentsMatchBuilder matchBuilder = builder.method(methodName);
         return matchBuilder.with(same(parameters));
     }
@@ -57,8 +68,12 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         return jMock.throwException(throwable);
     }
 
-    private InvocationMatcher once() {
+    private InvocationMatcher one() {
         return jMock.once();
+    }
+
+    private InvocationMatcher many() {
+        return jMock.atLeastOnce();
     }
 
     private Stub returnValue(Object ref) {
