@@ -12,9 +12,10 @@ final class DefaultSameHelper implements SameHelper {
 
     private boolean isArraySame(Object a1, Object a2) {
         // FIX 525 Tidy this up now!!!
-        int length = Array.getLength(a1);
+        int length = length(a1);
 //        Object[] a1 = (Object[]) o1;
 //        Object[] a2 = (Object[]) o2;
+        // FIX 525 Reinstate this.
 //        if (sameLength(a1, a2)) return false;
         for (int i = 0; i < length; i++) {
             Object x1 = Array.get(a1, i);
@@ -42,5 +43,9 @@ final class DefaultSameHelper implements SameHelper {
 
     private boolean sameLength(Object[] array1, Object[] array2) {
         return array1.length != array2.length;
+    }
+
+    private int length(Object array) {
+        return Array.getLength(array);
     }
 }
