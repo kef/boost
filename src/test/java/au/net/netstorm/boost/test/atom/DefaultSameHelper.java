@@ -13,13 +13,11 @@ final class DefaultSameHelper implements SameHelper {
     private boolean isArraySame(Object a1, Object a2) {
         // FIX 525 Tidy this up now!!!
         int length = length(a1);
-//        Object[] a1 = (Object[]) o1;
-//        Object[] a2 = (Object[]) o2;
         // FIX 525 Reinstate this.
 //        if (sameLength(a1, a2)) return false;
         for (int i = 0; i < length; i++) {
-            Object x1 = Array.get(a1, i);
-            Object x2 = Array.get(a2, i);
+            Object x1 = get(a1, i);
+            Object x2 = get(a2, i);
             if (!same(x1, x2)) return false;
         }
         return true;
@@ -41,8 +39,8 @@ final class DefaultSameHelper implements SameHelper {
         return primitiveBoxer.isBoxed(cls);
     }
 
-    private boolean sameLength(Object[] array1, Object[] array2) {
-        return array1.length != array2.length;
+    private Object get(Object array, int i) {
+        return Array.get(array, i);
     }
 
     private int length(Object array) {
