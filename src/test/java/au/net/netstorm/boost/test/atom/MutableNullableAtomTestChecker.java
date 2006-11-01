@@ -4,8 +4,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // SUGGEST: Actually what we really want is the ability to specify whether individual properties are
 // SUGGEST: meant to be mutable/nullable or not.
-public final class MutableNullableDataAtomTestChecker implements DataAtomTestChecker {
-    private DataAtomTestChecker checker = new GenericDataAtomTestChecker(false, false);
+public final class MutableNullableAtomTestChecker implements AtomTestChecker {
+    private AtomTestChecker checker = new GenericAtomTestChecker(false, false);
 
     // FIX 525 Demo test for this guy.
     public void checkAtom(Class cls, FieldSpec[] fields) {

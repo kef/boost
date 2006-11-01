@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST Should we be using a DataAtomConfiguration object which has set/get for behaviour.
 
 // DEBT ClassDataAbstractionCoupling {
-public final class GenericDataAtomTestChecker implements DataAtomTestChecker {
+public final class GenericAtomTestChecker implements AtomTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
@@ -20,7 +20,7 @@ public final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     private final boolean checkNulls;
     private final boolean checkImmutability;
 
-    public GenericDataAtomTestChecker(boolean checkNulls, boolean checkImmutability) {
+    public GenericAtomTestChecker(boolean checkNulls, boolean checkImmutability) {
         this.checkNulls = checkNulls;
         // FIX 525 If immutability is not checked then the object is not a Data object.
         this.checkImmutability = checkImmutability;
