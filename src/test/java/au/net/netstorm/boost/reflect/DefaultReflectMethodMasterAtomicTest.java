@@ -2,6 +2,7 @@ package au.net.netstorm.boost.reflect;
 
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.util.introspect.DefaultMethodSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.TestCase;
 
@@ -21,9 +22,9 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     private static final Class[] NO_PARAMETERS = new Class[]{};
     private static final Class INTERFACE_ONE = TestSubjects.TestInterfaceOne.class;
     private static final Class INTERFACE_TWO = TestSubjects.TestInterfaceTwo.class;
-    private static final MethodSpec METHOD_CHURCH = new MethodSpec(CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
-    private static final MethodSpec METHOD_FRIDAY = new MethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
-    private static final MethodSpec METHOD_CRAPOLA = new MethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
+    private static final MethodSpec METHOD_CHURCH = new DefaultMethodSpec(CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
+    private static final MethodSpec METHOD_FRIDAY = new DefaultMethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
+    private static final MethodSpec METHOD_CRAPOLA = new DefaultMethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
     private final ReflectMaster master = new DefaultReflectMaster();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 
@@ -40,7 +41,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
 
     public void testGetMethodWithSubtypeParam() {
         Class[] params = new Class[]{String.class, WeakHashMap.class};
-        Method result = master.getMethod(INTERFACE_ONE, new MethodSpec(CHURCH_METHOD_NAME, params));
+        Method result = master.getMethod(INTERFACE_ONE, new DefaultMethodSpec(CHURCH_METHOD_NAME, params));
         Method expected = getMethod(INTERFACE_ONE, CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
         assertEquals(expected, result);
     }
@@ -65,7 +66,7 @@ public class DefaultReflectMethodMasterAtomicTest extends TestCase {
     }
 
     private void checkNoMatchingMethod(Class[] parameterTypes) {
-        MethodSpec methodSpec = new MethodSpec(CHURCH_METHOD_NAME, parameterTypes);
+        MethodSpec methodSpec = new DefaultMethodSpec(CHURCH_METHOD_NAME, parameterTypes);
         Class cls = INTERFACE_ONE;
         try {
             master.getMethod(cls, methodSpec);
