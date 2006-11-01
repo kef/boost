@@ -63,6 +63,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return primitiveBoxer.isPrimitive(type);
     }
 
+    // FIX 525 Move into separate class?
 // DEBT JavaNCSS|CyclomaticComplexity|ReturnCount {
     private Object randomJavaType(Class type) {
         if (type == String.class) return randomString();
@@ -73,9 +74,9 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         if (type == Float.class) return randomFloat();
         if (type == Double.class) return randomDouble();
         if (type == Byte.class) return randomByte();
+        if (type == Object.class) return randomObject();
         return null;
-    }
-// } DEBT JavaNCSS|CyclomaticComplexity|ReturnCount
+    } // } DEBT JavaNCSS|CyclomaticComplexity|ReturnCount
 
     private Class randomClass() {
         return InternalInterface.class;
@@ -114,6 +115,10 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         byte[] bytes = new byte[1];
         random.nextBytes(bytes);
         return Byte.valueOf(bytes[0]);
+    }
+
+    private Object randomObject() {
+        return new Object();
     }
 
     private void populate(Object array, Class type) {

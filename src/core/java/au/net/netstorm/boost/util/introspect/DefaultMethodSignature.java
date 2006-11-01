@@ -5,14 +5,13 @@ import au.net.netstorm.boost.util.type.Data;
 
 // FIX 525 Extract interface.
 public final class DefaultMethodSignature extends Primordial implements Data {
-    private String returnValue;
+    private Object returnValue;
 
-    public DefaultMethodSignature(String returnValue) {
-        if (returnValue == null) throw new IllegalArgumentException();
+    public DefaultMethodSignature(Object returnValue) {
         this.returnValue = returnValue;
     }
 
-    public String getReturnValue() {
+    public Object getReturnValue() {
         return returnValue;
     }
 }

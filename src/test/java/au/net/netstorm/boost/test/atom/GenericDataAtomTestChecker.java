@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST Should we be using a DataAtomConfiguration object which has set/get for behaviour.
 
 // DEBT ClassDataAbstractionCoupling {
-final class GenericDataAtomTestChecker implements DataAtomTestChecker {
+public final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
