@@ -1,7 +1,9 @@
-package au.net.netstorm.boost.util.introspect;
+package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.LooseDataAtomTestChecker;
+import au.net.netstorm.boost.util.introspect.FieldSpec;
+import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import junit.framework.TestCase;
 
 // FIX 525 Since it is a method expectation move it into the automocking area.

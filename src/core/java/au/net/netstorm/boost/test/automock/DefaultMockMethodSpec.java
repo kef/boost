@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.util.introspect;
+package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-public final class DefaultMockMethodSpec extends Primordial implements MockMethodSpec {
+final class DefaultMockMethodSpec extends Primordial implements MockMethodSpec {
     private Object returnValue;
     private String methodName;
     private Object[] parameters;

@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.util.introspect;
+package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.util.type.LooseData;
 
-public interface MockMethodSpec extends LooseData {
+interface MockMethodSpec extends LooseData {
     Object getReturnValue();
 
     String getMethodName();
