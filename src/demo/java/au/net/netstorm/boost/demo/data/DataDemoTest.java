@@ -13,28 +13,26 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
     private static final FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
+    private static final FieldSpec PRIMITIVE_ARRAY_PROPERTY = new DefaultFieldSpec("bytes", byte[].class);
     private static final FieldSpec ARRAY_OF_ARRAYS_PROPERTY = new DefaultFieldSpec("floaters", float[][].class);
     private static final FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
     private static final FieldSpec NON_DATA_PROPERTY = new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
     private static final FieldSpec[] SINGLE_PRIMITIVE_PROPERTY = {PRIMITIVE_PROPERTY};
     private static final FieldSpec[] SINGLE_ARRAY_PROPERTY = {ARRAY_PROPERTY};
+    private static final FieldSpec[] SINGLE_PRIMITIVE_ARRAY_PROPERTY = { PRIMITIVE_ARRAY_PROPERTY };
     private static final FieldSpec[] SINGLE_ARRAY_OF_ARRAYS_PROPERTY = {ARRAY_OF_ARRAYS_PROPERTY};
     private static final FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
-// SUGGEST Odd message when the class is not public.
-// SUGGEST Test utility should force data object to implement interface (?).
+    // SUGGEST Odd message when the class is not public.
+    // SUGGEST Test utility should force data object to implement interface (?).
 
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BasicArrayData.class, SINGLE_ARRAY_PROPERTY);
-        // FIX 525 Refactor.
-        FieldSpec field = new DefaultFieldSpec("bytes", byte[].class);
-        FieldSpec[] fields = {field};
-        // FIX 525 Reinstate.
-        checkGood(PrimitiveArrayData.class, fields);
+        checkGood(PrimitiveArrayData.class, SINGLE_PRIMITIVE_ARRAY_PROPERTY);
         checkGood(PrimitiveBasicData.class, SINGLE_PRIMITIVE_PROPERTY);
         checkGood(BasicNonFinalFieldsData.class, SINGLE_STRING_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
