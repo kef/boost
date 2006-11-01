@@ -66,7 +66,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private Object invoke(Object instance, FieldSpec candidate) {
-        // FIX BREADCRUMB 525 revert back to one line
         return propertyAccessor.invoke(instance, candidate);
     }
 

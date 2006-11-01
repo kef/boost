@@ -7,7 +7,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-// FIX 525 Should this be renamed to something more generic?
 final class DefaultClassChecker implements ClassChecker {
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
 
