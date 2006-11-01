@@ -6,6 +6,8 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST introspection to determine which properties.  Declaration of a single array
 // SUGGEST is probably enough to specify field/property order.  Might use volatile or
 // SUGGEST transient to mark fields as optional.
+// SUGGEST Should we be using a DataAtomConfiguration object which has set/get for behaviour.
+
 // DEBT ClassDataAbstractionCoupling {
 final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker classChecker = new ClassDataChecker();
@@ -15,9 +17,13 @@ final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker immutabilityChecker = new ImmutabilityDataChecker();
     private DataChecker triangulationChecker = new PropertyTriangulationDataChecker();
     private DataChecker constructorNullChecker = new ConstructorNullDataChecker();
-    // FIX SC525 Compose these into a single reference.
-    private boolean checkNulls = true;
-    private boolean checkImmutability = true;
+    private final boolean checkNulls;
+    private final boolean checkImmutability;
+
+    public GenericDataAtomTestChecker(boolean checkNulls, boolean checkImmutability) {
+        this.checkNulls = checkNulls;
+        this.checkImmutability = checkImmutability;
+    }
 
     public void checkAtom(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields);
