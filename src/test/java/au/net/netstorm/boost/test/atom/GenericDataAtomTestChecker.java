@@ -15,6 +15,9 @@ final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     private DataChecker immutabilityChecker = new ImmutabilityDataChecker();
     private DataChecker triangulationChecker = new PropertyTriangulationDataChecker();
     private DataChecker constructorNullChecker = new ConstructorNullDataChecker();
+    // FIX SC525 Compose these into a single reference.
+    private boolean checkNulls = true;
+    private boolean checkImmutability = true;
 
     public void checkAtom(Class cls, FieldSpec[] fields) {
         doCheckIsData(cls, fields);
@@ -55,7 +58,7 @@ final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     }
 
     private void checkPropertiesImmutable(Class cls, FieldSpec[] fields) {
-        immutabilityChecker.check(cls, fields);
+        if (checkImmutability) immutabilityChecker.check(cls, fields);
     }
 
     private void checkTriangulationOnProperties(Class cls, FieldSpec[] fields) {
@@ -63,7 +66,7 @@ final class GenericDataAtomTestChecker implements DataAtomTestChecker {
     }
 
     private void checkConstructorRefusesNulls(Class cls, FieldSpec[] fields) {
-        constructorNullChecker.check(cls, fields);
+        if (checkNulls) constructorNullChecker.check(cls, fields);
     }
 }
 // } DEBT ClassDataAbstractionCoupling
