@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.util.type;
 
-public interface Data extends Immutable {
+public interface Data extends Immutable, NullIntolerant {
 }
