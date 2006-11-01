@@ -10,16 +10,16 @@ final class DefaultSameHelper implements SameHelper {
         return isNonArraySame(o1, o2);
     }
 
-    private boolean isArraySame(Object o1, Object o2) {
+    private boolean isArraySame(Object a1, Object a2) {
         // FIX 525 Tidy this up now!!!
-        int length = Array.getLength(o1);
+        int length = Array.getLength(a1);
 //        Object[] a1 = (Object[]) o1;
 //        Object[] a2 = (Object[]) o2;
 //        if (sameLength(a1, a2)) return false;
         for (int i = 0; i < length; i++) {
-            Object a1 = Array.get(o1, i);
-            Object a2 = Array.get(o2, i);
-            if (!same(a1, a2)) return false;
+            Object x1 = Array.get(a1, i);
+            Object x2 = Array.get(a2, i);
+            if (!same(x1, x2)) return false;
         }
         return true;
     }
