@@ -9,18 +9,14 @@ import au.net.netstorm.boost.util.type.Interface;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationHandler;
-import java.util.Random;
 
-// DEBT ClassDataAbstractionCoupling {
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 5;
     private EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private Random random = new Random();
-    private interface InternalInterface {
-    }
+    private RandomProvider randomProvider = new DefaultRandomProvider();
 
     public Object getInstance(Class type) {
         Object ref = doGetInstance(type);
@@ -63,62 +59,8 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return primitiveBoxer.isPrimitive(type);
     }
 
-    // FIX 525 Move into separate class?
-// DEBT JavaNCSS|CyclomaticComplexity|ReturnCount {
     private Object randomJavaType(Class type) {
-        if (type == String.class) return randomString();
-        if (type == Class.class) return randomClass();
-        if (type == Boolean.class) return randomBoolean();
-        if (type == Integer.class) return randomInteger();
-        if (type == Long.class) return randomLong();
-        if (type == Float.class) return randomFloat();
-        if (type == Double.class) return randomDouble();
-        if (type == Byte.class) return randomByte();
-        if (type == Object.class) return randomObject();
-        return null;
-    } // } DEBT JavaNCSS|CyclomaticComplexity|ReturnCount
-
-    private Class randomClass() {
-        return InternalInterface.class;
-    }
-
-    private String randomString() {
-        return "Some random string " + random.nextLong();
-    }
-
-    private Boolean randomBoolean() {
-        boolean bool = random.nextBoolean();
-        return Boolean.valueOf(bool);
-    }
-
-    private Integer randomInteger() {
-        int i = random.nextInt();
-        return Integer.valueOf(i);
-    }
-
-    private Long randomLong() {
-        long l = random.nextLong();
-        return Long.valueOf(l);
-    }
-
-    private Float randomFloat() {
-        float f = random.nextFloat();
-        return Float.valueOf(f);
-    }
-
-    private Double randomDouble() {
-        double d = random.nextDouble();
-        return Double.valueOf(d);
-    }
-
-    private Byte randomByte() {
-        byte[] bytes = new byte[1];
-        random.nextBytes(bytes);
-        return Byte.valueOf(bytes[0]);
-    }
-
-    private Object randomObject() {
-        return new Object();
+        return randomProvider.getRandom(type);
     }
 
     private void populate(Object array, Class type) {
@@ -128,4 +70,3 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         }
     }
 }
-// } DEBT ClassDataAbstractionCoupling

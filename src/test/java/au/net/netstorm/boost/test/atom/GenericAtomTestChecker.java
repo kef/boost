@@ -8,7 +8,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 // SUGGEST transient to mark fields as optional.
 // SUGGEST Should we be using a DataAtomConfiguration object which has set/get for behaviour.
 
-// DEBT ClassDataAbstractionCoupling {
 public final class GenericAtomTestChecker implements AtomTestChecker {
     private ClassChecker classChecker = new DefaultClassChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
@@ -73,4 +72,3 @@ public final class GenericAtomTestChecker implements AtomTestChecker {
         if (config.checkNulls()) constructorNullChecker.check(cls, fields);
     }
 }
-// } DEBT ClassDataAbstractionCoupling

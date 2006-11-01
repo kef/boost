@@ -21,5 +21,8 @@
         <module name="EmptyBlock">
             <property name="option" value="text"/>
         </module>
+        <module name="ClassDataAbstractionCoupling">
+            <property name="max" value="5"/>
+        </module>
     </module>
 </module>

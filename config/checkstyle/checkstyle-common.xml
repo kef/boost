@@ -102,6 +102,3 @@
 <module name="InterfaceIsType">
     <property name="allowMarkerInterfaces" value="true"/>
 </module>
-<module name="ClassDataAbstractionCoupling">
-    <property name="max" value="5"/>
-</module>
