@@ -88,11 +88,13 @@ final class DefaultMockExpectations implements MockExpectations {
     // Delegates...
 
     private void oneCall(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        delegate.oneCall(ref, returnValue, methodName, parameters);
+        MockMethodSpec spec = new DefaultMockMethodSpec(returnValue, methodName, parameters);
+        delegate.oneCall(ref, spec);
     }
 
     private void canCall(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        delegate.manyCalls(ref, returnValue, methodName, parameters);
+        MockMethodSpec spec = new DefaultMockMethodSpec(returnValue, methodName, parameters);
+        delegate.manyCalls(ref, spec);
     }
 
     private void oneCall(Object ref, Throwable throwable, String methodName, Object[] parameters) {

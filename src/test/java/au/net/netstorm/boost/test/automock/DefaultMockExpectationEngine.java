@@ -19,12 +19,12 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         this.jMock = jMock;
     }
 
-    public void oneCall(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        calls(ref, returnValue, methodName, parameters, one());
+    public void oneCall(Object ref, MockMethodSpec spec) {
+        calls(ref, one(), spec);
     }
 
-    public void manyCalls(Object ref, Object returnValue, String methodName, Object[] parameters) {
-        calls(ref, returnValue, methodName, parameters, many());
+    public void manyCalls(Object ref, MockMethodSpec spec) {
+        calls(ref, many(), spec);
     }
 
     public void oneCall(Object ref, Throwable throwable, String methodName, Object[] parameters) {
@@ -33,14 +33,18 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         builder.will(throwException(throwable));
     }
 
-    // FIX BREADCRUMB 525 Create a CallSpec.
-    // DEBT ParameterNumber {
-    private void calls(Object ref, Object returnValue, String methodName, Object[] parameters, InvocationMatcher matcher) {
+    private void calls(Object ref, InvocationMatcher matcher, MockMethodSpec spec) {
+        String methodName = spec.getMethodName();
+        Object[] parameters = spec.getParameters();
         MatchBuilder builder = getMethod(ref, methodName, parameters, matcher);
+        buildReturn(spec, builder);
+    }
+
+    private void buildReturn(MockMethodSpec spec, MatchBuilder builder) {
+        Object returnValue = spec.getReturnValue();
         if (VOID == returnValue) return;
         builder.will(returnValue(returnValue));
     }
-    // } DEBT ParameterNumber - Dealing with jMock.
 
     private Constraint[] same(Object[] parameters) {
         int length = parameters.length;
