@@ -6,6 +6,6 @@ import java.io.Serializable;
 
 public class ImmutableAtomicTest extends TestCase {
     public void testIsSerializable() {
-        assertTrue(Serializable.class.isAssignableFrom(Immutable.class));
+        assertEquals(true, Serializable.class.isAssignableFrom(Immutable.class));
     }
 }
