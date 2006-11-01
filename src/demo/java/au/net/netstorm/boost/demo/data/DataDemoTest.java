@@ -24,8 +24,8 @@ public final class DataDemoTest extends TestCase {
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
 
-// FIX 525 Odd message when the class is not public.
-// FIX 525 Test utility should force data object to implement interface (?).
+// SUGGEST Odd message when the class is not public.
+// SUGGEST Test utility should force data object to implement interface (?).
 
     public void testGoodAtoms() {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
