@@ -19,23 +19,16 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private RandomProvider randomProvider = new DefaultRandomProvider();
 
     public Object getInstance(Class type) {
-        Object ref = doGetInstance(type);
-        if (ref != null) return ref;
-        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
-                "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
+        if (type.isInterface()) return randomInterface(type);
+        if (type.isArray()) return randomArray(type);
+        if (isPrimitive(type)) return randomPrimitiveType(type);
+        return randomJavaType(type);
     }
 
     public Object[] getInstances(Class[] types) {
         Object[] params = new Object[types.length];
         for (int i = 0; i < types.length; i++) params[i] = getInstance(types[i]);
         return params;
-    }
-
-    private Object doGetInstance(Class type) {
-        if (type.isInterface()) return randomInterface(type);
-        if (type.isArray()) return randomArray(type);
-        if (isPrimitive(type)) return randomPrimitiveType(type);
-        return randomJavaType(type);
     }
 
     private Object randomPrimitiveType(Class type) {

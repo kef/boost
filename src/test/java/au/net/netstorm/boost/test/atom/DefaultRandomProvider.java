@@ -20,7 +20,8 @@ public final class DefaultRandomProvider implements RandomProvider {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
         if (type == Object.class) return randomObject();
-        return null;
+        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
+                "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
     }
 
     private Class randomClass() {
