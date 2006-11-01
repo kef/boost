@@ -1,15 +1,13 @@
 package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Data;
 
-// FIX 525 Extract interface.
-public final class DefaultMethodSignature extends Primordial implements Data {
+public final class DefaultMockMethodSpec extends Primordial implements MockMethodSpec {
     private Object returnValue;
     private String methodName;
     private Object[] parameters;
 
-    public DefaultMethodSignature(Object returnValue, String methodName, Object[] parameters) {
+    public DefaultMockMethodSpec(Object returnValue, String methodName, Object[] parameters) {
         this.returnValue = returnValue;
         this.methodName = methodName;
         this.parameters = (Object[]) parameters.clone();
