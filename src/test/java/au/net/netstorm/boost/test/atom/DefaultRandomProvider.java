@@ -9,7 +9,6 @@ public final class DefaultRandomProvider implements RandomProvider {
     private Random random = new Random();
 
     // FIX 525 Can we pull these apart?
-    // FIX 525 No nulls.
     public Object getRandom(Class type) {
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
