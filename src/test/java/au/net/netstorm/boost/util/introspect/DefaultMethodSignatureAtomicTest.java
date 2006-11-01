@@ -6,9 +6,9 @@ import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 
 public final class DefaultMethodSignatureAtomicTest extends TestCase {
     private final DataAtomTestChecker checker = new DefaultDataAtomTestChecker();
-    // FIX SC525 Convert to Object instead of String.
+    // FIX 525 Convert to Object instead of String.
     private FieldSpec returnValue = new DefaultFieldSpec("returnValue", String.class);
-    // FIX SC525 Complete this.
+    // FIX 525 Complete this.
     private final FieldSpec[] fields = {returnValue};
 
     public void testAtom() {

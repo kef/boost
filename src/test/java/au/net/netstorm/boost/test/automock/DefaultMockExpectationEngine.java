@@ -33,7 +33,7 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
         builder.will(throwException(throwable));
     }
 
-    // FIX SC525 Create a CallSpec.
+    // FIX 525 Create a CallSpec.
     // DEBT ParameterNumber {
     private void calls(Object ref, String methodName, Object[] parameters, Object returnValue, InvocationMatcher matcher) {
         MatchBuilder builder = getMethod(ref, methodName, parameters, matcher);
