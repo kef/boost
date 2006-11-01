@@ -10,8 +10,9 @@ public final class DefaultMethodSignatureAtomicTest extends TestCase {
     private final DataAtomTestChecker checker = new MutableNullableDataAtomTestChecker();
     private FieldSpec returnValue = new DefaultFieldSpec("returnValue", Object.class);
     private FieldSpec methodName = new DefaultFieldSpec("methodName", String.class);
+    private FieldSpec parameters = new DefaultFieldSpec("parameters", Object[].class);
     // FIX 525 Complete this.
-    private final FieldSpec[] fields = {returnValue, methodName};
+    private final FieldSpec[] fields = {returnValue, methodName, parameters};
 
     public void testAtom() {
         checker.checkAtom(DefaultMethodSignature.class, fields);

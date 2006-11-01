@@ -7,10 +7,13 @@ import au.net.netstorm.boost.util.type.Data;
 public final class DefaultMethodSignature extends Primordial implements Data {
     private Object returnValue;
     private String methodName;
+    private Object[] parameters;
 
-    public DefaultMethodSignature(Object returnValue, String methodName) {
+    public DefaultMethodSignature(Object returnValue, String methodName, Object[] parameters) {
         this.returnValue = returnValue;
         this.methodName = methodName;
+        // FIX 525 Remove the need to clone.  We are mutable right?  ??????
+        this.parameters = (Object[]) parameters.clone();
     }
 
     public Object getReturnValue() {
@@ -19,5 +22,9 @@ public final class DefaultMethodSignature extends Primordial implements Data {
 
     public String getMethodName() {
         return methodName;
+    }
+
+    public Object[] getParameters() {
+        return (Object[]) parameters.clone();
     }
 }
