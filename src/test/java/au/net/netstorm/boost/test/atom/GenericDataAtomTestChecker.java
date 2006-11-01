@@ -22,6 +22,7 @@ public final class GenericDataAtomTestChecker implements DataAtomTestChecker {
 
     public GenericDataAtomTestChecker(boolean checkNulls, boolean checkImmutability) {
         this.checkNulls = checkNulls;
+        // FIX 525 If immutability is not checked then the object is not a Data object.
         this.checkImmutability = checkImmutability;
     }
 
