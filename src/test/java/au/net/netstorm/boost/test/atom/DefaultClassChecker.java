@@ -4,15 +4,16 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-final class ClassDataChecker implements DataChecker {
+// FIX 525 Should this be renamed to something more generic?
+final class DefaultClassChecker implements ClassChecker {
     private ClassTestChecker classChecker = new DefaultClassTestChecker();
 
-    public void check(Class cls, FieldSpec[] fields) {
+    public void check(Class cls, FieldSpec[] fields, Interface type) {
         checkNotInterface(cls);
-        checkImplementsDataAndFinal(cls);
+        checkImplementsDataAndFinal(type, cls);
         checkSubclassOfPrimordial(cls);
     }
 
@@ -25,8 +26,8 @@ final class ClassDataChecker implements DataChecker {
         classChecker.checkSubclassOf(cls, Primordial.class);
     }
 
-    private void checkImplementsDataAndFinal(Class cls) {
-        classChecker.checkImplementsAndFinal(cls, Data.class);
+    private void checkImplementsDataAndFinal(Interface type, Class cls) {
+        classChecker.checkImplementsAndFinal(type, cls);
     }
 
     private void fail(String msg) {

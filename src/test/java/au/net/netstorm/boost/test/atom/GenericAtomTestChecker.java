@@ -10,20 +10,17 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class GenericAtomTestChecker implements AtomTestChecker {
-    private DataChecker classChecker = new ClassDataChecker();
+    private ClassChecker classChecker = new DefaultClassChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();
     private DataChecker propertyMethodStructureChecker = new PropertyMethodStructureChecker();
     private DataChecker immutabilityChecker = new ImmutabilityDataChecker();
     private DataChecker triangulationChecker = new PropertyTriangulationDataChecker();
     private DataChecker constructorNullChecker = new ConstructorNullDataChecker();
-    private final boolean checkNulls;
-    private final boolean checkImmutability;
+    private final AtomConfiguration config;
 
-    public GenericAtomTestChecker(boolean checkNulls, boolean checkImmutability) {
-        this.checkNulls = checkNulls;
-        // FIX 525 If immutability is not checked then the object is not a Data object.
-        this.checkImmutability = checkImmutability;
+    public GenericAtomTestChecker(AtomConfiguration config) {
+        this.config = config;
     }
 
     public void checkAtom(Class cls, FieldSpec[] fields) {
@@ -49,7 +46,7 @@ public final class GenericAtomTestChecker implements AtomTestChecker {
     }
 
     private void checkClassDeclaration(Class cls, FieldSpec[] fields) {
-        classChecker.check(cls, fields);
+        classChecker.check(cls, fields, config.getType());
     }
 
     private void checkConstructor(Class cls, FieldSpec[] fields) {
@@ -65,7 +62,7 @@ public final class GenericAtomTestChecker implements AtomTestChecker {
     }
 
     private void checkPropertiesImmutable(Class cls, FieldSpec[] fields) {
-        if (checkImmutability) immutabilityChecker.check(cls, fields);
+        if (config.checkImmutable()) immutabilityChecker.check(cls, fields);
     }
 
     private void checkTriangulationOnProperties(Class cls, FieldSpec[] fields) {
@@ -73,7 +70,7 @@ public final class GenericAtomTestChecker implements AtomTestChecker {
     }
 
     private void checkConstructorRefusesNulls(Class cls, FieldSpec[] fields) {
-        if (checkNulls) constructorNullChecker.check(cls, fields);
+        if (config.checkNulls()) constructorNullChecker.check(cls, fields);
     }
 }
 // } DEBT ClassDataAbstractionCoupling

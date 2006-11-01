@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.data;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
-import au.net.netstorm.boost.test.atom.DefaultAtomTestChecker;
+import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
 public final class DataDemoTest extends TestCase {
-    private AtomTestChecker checker = new DefaultAtomTestChecker();
+    private AtomTestChecker checker = new DataAtomTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
     private static final FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);

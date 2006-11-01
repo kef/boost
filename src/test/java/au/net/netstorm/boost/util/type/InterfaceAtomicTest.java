@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.type;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
-import au.net.netstorm.boost.test.atom.DefaultAtomTestChecker;
+import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.TestCase;
@@ -12,7 +12,7 @@ public class InterfaceAtomicTest extends TestCase {
     public void testIsDataObject() {
         FieldSpec f1 = new DefaultFieldSpec("type", Class.class);
         FieldSpec[] fields = {f1};
-        AtomTestChecker checker = new DefaultAtomTestChecker();
+        AtomTestChecker checker = new DataAtomTestChecker();
         checker.checkAtom(DefaultInterface.class, fields);
     }
 

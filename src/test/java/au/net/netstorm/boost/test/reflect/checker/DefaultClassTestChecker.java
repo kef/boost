@@ -23,7 +23,7 @@ public final class DefaultClassTestChecker implements ClassTestChecker {
         checkImplementsInterface(expectedInterface, cls);
     }
 
-    public void checkImplementsAndFinal(Class cls, Class expectedInterface) {
+    public void checkImplementsAndFinal(Class expectedInterface, Class cls) {
         Interface iface = new DefaultInterface(expectedInterface);
         checkImplementsAndFinal(iface, cls);
     }

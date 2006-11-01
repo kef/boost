@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.util.type.LooseData;
 
-public interface MockMethodSpec extends Data {
+public interface MockMethodSpec extends LooseData {
     Object getReturnValue();
 
     String getMethodName();
