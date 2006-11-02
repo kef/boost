@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
 public final class DataAtomDemoTest extends TestCase {
-    private AtomTestChecker checker = new DataAtomTestChecker();
     private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     private static final FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
     private static final FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
@@ -25,6 +24,7 @@ public final class DataAtomDemoTest extends TestCase {
     private static final FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
+    private AtomTestChecker checker = new DataAtomTestChecker();
 
     // SUGGEST Odd message when the class is not public.
     // SUGGEST Test utility should force data object to implement interface (?).
