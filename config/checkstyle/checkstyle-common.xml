@@ -56,7 +56,6 @@
 <module name="NestedTryDepth">
     <property name="max" value="1"/>
 </module>
-<module name="SuperClone"/>
 <module name="SuperFinalize"/>
 <module name="PackageDeclaration"/>
 <module name="IllegalType">

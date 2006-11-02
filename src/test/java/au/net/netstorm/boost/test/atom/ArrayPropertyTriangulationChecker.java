@@ -35,15 +35,9 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     // FIX 525 Move to array helper.
     // FIX 525 Move this out.
     private Object cloneArray(Object array) {
-        int length = Array.getLength(array);
-        Object firstElement = Array.get(array, 0); // FIX 525 There is another way of doing this.
-        Class type = firstElement.getClass();
-        Object result = Array.newInstance(type, length);
-        for (int i = 0; i < length; i++) {
-            Object value = Array.get(array, i);
-            Array.set(result, i, value);
-        }
-        return result;
+        ArrayHolder arrayHolder = new DefaultArrayHolder(array);
+        ArrayHolder clone = (ArrayHolder) arrayHolder.clone();
+        return clone.getArray();
     }
 
     private void checkEqualButDifferentReferences(Object expected, Object actual) {

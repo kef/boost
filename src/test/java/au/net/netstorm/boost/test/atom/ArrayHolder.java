@@ -5,4 +5,8 @@ interface ArrayHolder {
     Object get(int index);
     void set(int index, Object value);
     Class elementType();
+
+    Object clone();
+
+    Object getArray();
 }
