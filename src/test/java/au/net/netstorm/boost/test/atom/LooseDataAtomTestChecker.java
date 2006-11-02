@@ -9,7 +9,6 @@ public final class LooseDataAtomTestChecker implements AtomTestChecker {
     private AtomConfiguration config = new DefaultAtomConfiguration(LooseData.class);
     private AtomTestChecker checker = new GenericAtomTestChecker(config);
 
-    // FIX 525 Demo test for this guy.
     public void checkAtom(Class cls, FieldSpec[] fields) {
         checker.checkAtom(cls, fields);
     }

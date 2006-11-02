@@ -40,7 +40,6 @@ public final class DataAtomDemoTest extends TestCase {
         checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 
-    // FIX 525 Add tests for loose data.
     public void testBadAtoms() {
         checkBad(NotPrimordialData.class, "NotPrimordialData is not a subclass of Primordial.");
         checkBad(MustBeAClassData.class, "Data atoms must be a class not an interface.  The Data atom can implement interfaces.");
