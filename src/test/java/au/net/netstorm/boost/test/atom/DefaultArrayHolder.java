@@ -7,6 +7,7 @@ import java.lang.reflect.Array;
 // FIX 525 Stitch into existing test code.
 // FIX 525 Order methods.
 final class DefaultArrayHolder implements ArrayHolder {
+    private SameHelper sameHelper = new DefaultSameHelper();
     private final Object array;
 
     public DefaultArrayHolder(Object array) {
@@ -42,6 +43,33 @@ final class DefaultArrayHolder implements ArrayHolder {
 
     public Object getArray() {
         return array;
+    }
+
+    public boolean foo(ArrayHolder array) {
+        return isArraySame(array);
+    }
+
+    private boolean isArraySame(ArrayHolder a2) {
+        if (!sameLength(a2)) return false;
+        return areElementsSame(a2);
+    }
+
+    private boolean sameLength(ArrayHolder a2) {
+        return length() == a2.length();
+    }
+
+    private boolean areElementsSame(ArrayHolder a2) {
+        int length = length();
+        for (int i = 0; i < length; i++) {
+            if (!elementSame(i, a2)) return false;
+        }
+        return true;
+    }
+
+    private boolean elementSame(int i, ArrayHolder a2) {
+        Object x1 = get(i);
+        Object x2 = a2.get(i);
+        return sameHelper.same(x1, x2);
     }
 
     private void validate() {

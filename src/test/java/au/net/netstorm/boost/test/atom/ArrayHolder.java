@@ -9,4 +9,6 @@ interface ArrayHolder {
     Object clone();
 
     Object getArray();
+    // FIX 525 Convert this to equals().
+    boolean foo(ArrayHolder array);
 }
