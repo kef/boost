@@ -33,6 +33,7 @@ final class DefaultArrayHolder implements ArrayHolder {
     }
 
     public Object clone() {
+        // FIX 525 Tidy this.
         Object result = newInstance();
         for (int i = 0; i < length(); i++) {
             Object value = Array.get(array, i);
