@@ -33,6 +33,7 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     // FIX 525 Move to array helper.
+    // FIX 525 Move this out.
     private Object cloneArray(Object array) {
         int length = Array.getLength(array);
         Object firstElement = Array.get(array, 0); // FIX 525 There is another way of doing this.
