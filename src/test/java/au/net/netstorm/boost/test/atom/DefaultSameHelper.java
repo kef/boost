@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.atom;
 
 import java.lang.reflect.Array;
 
+// FIX 525 Stitch in ArrayHelper.
 final class DefaultSameHelper implements SameHelper {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
 
