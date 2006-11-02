@@ -2,7 +2,6 @@ package au.net.netstorm.boost.test.atom;
 
 import java.lang.reflect.Array;
 
-// FIX 525 Stitch into existing test code.
 final class DefaultArrayHolder implements ArrayHolder {
     private SameHelper sameHelper = new DefaultSameHelper();
     private final Object array;
