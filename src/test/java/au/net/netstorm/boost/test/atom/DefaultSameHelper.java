@@ -8,6 +8,7 @@ final class DefaultSameHelper implements SameHelper {
         return isNonArraySame(o1, o2);
     }
 
+    // FIX 525 Tidy this up.
     private boolean isArraySame(Object o1, Object o2) {
         if (!isArray(o2)) return false;
         ArrayHolder arrayHolder2 = new DefaultArrayHolder(o2);
