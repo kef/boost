@@ -49,19 +49,18 @@ final class DefaultArrayHolder implements ArrayHolder {
         return isArraySame(array);
     }
 
-    private boolean isArraySame(ArrayHolder a2) {
-        if (!sameLength(a2)) return false;
-        return areElementsSame(a2);
+    private boolean isArraySame(ArrayHolder array) {
+        if (!sameLength(array)) return false;
+        return areElementsSame(array);
     }
 
-    private boolean sameLength(ArrayHolder a2) {
-        return length() == a2.length();
+    private boolean sameLength(ArrayHolder array) {
+        return length() == array.length();
     }
 
-    private boolean areElementsSame(ArrayHolder a2) {
-        int length = length();
-        for (int i = 0; i < length; i++) {
-            if (!elementSame(i, a2)) return false;
+    private boolean areElementsSame(ArrayHolder array) {
+        for (int i = 0; i < length(); i++) {
+            if (!elementSame(i, array)) return false;
         }
         return true;
     }
