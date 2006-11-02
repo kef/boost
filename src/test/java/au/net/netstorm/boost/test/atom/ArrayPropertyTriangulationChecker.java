@@ -25,7 +25,7 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private void checkCopyOnCreate(Object instance, FieldSpec candidate, Object parameter) {
-        Object expected = cloneObject(parameter);
+        Object expected = cloneArray(parameter);
         munge(parameter);  // Remember the object has been created by this stage.  We are trying to rip out the rug.
         Object returnValue = invoke(instance, candidate);
         if (same(expected, returnValue)) return;
@@ -33,13 +33,13 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     // FIX 525 Move to array helper.
-    private Object cloneObject(Object ref) {
-        int length = Array.getLength(ref);
-        Object firstElement = Array.get(ref, 0); // FIX 525 There is another way of doing this.
+    private Object cloneArray(Object array) {
+        int length = Array.getLength(array);
+        Object firstElement = Array.get(array, 0); // FIX 525 There is another way of doing this.
         Class type = firstElement.getClass();
         Object result = Array.newInstance(type, length);
         for (int i = 0; i < length; i++) {
-            Object value = Array.get(ref, i);
+            Object value = Array.get(array, i);
             Array.set(result, i, value);
         }
         return result;
