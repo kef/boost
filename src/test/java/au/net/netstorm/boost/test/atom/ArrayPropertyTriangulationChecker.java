@@ -32,8 +32,6 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
         fail("Array was not copied on create.");
     }
 
-    // FIX 525 Move to array helper.
-    // FIX 525 Move this out.
     private Object cloneArray(Object array) {
         ArrayHolder arrayHolder = new DefaultArrayHolder(array);
         ArrayHolder clone = (ArrayHolder) arrayHolder.clone();

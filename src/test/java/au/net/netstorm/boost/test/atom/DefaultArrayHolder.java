@@ -2,10 +2,7 @@ package au.net.netstorm.boost.test.atom;
 
 import java.lang.reflect.Array;
 
-// FIX 525 Implement all methods.
-// FIX 525 Implement clone().
 // FIX 525 Stitch into existing test code.
-// FIX 525 Order methods.
 final class DefaultArrayHolder implements ArrayHolder {
     private SameHelper sameHelper = new DefaultSameHelper();
     private final Object array;
@@ -87,7 +84,6 @@ final class DefaultArrayHolder implements ArrayHolder {
         if (!isArray) throw new IllegalStateException(cls + " is not an array.");
     }
 
-    // FIX 525 Push this out through the interface.
     private Object newInstance() {
         Class type = elementType();
         int length = length();
