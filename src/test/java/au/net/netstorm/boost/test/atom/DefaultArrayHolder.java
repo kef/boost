@@ -46,7 +46,16 @@ final class DefaultArrayHolder implements ArrayHolder {
         return array;
     }
 
-    public boolean foo(ArrayHolder array) {
+    public int hashCode() {
+        return 42;
+    }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof ArrayHolder)) return false;
+        return equals((ArrayHolder) o);
+    }
+
+    public boolean equals(ArrayHolder array) {
         return isArraySame(array);
     }
 

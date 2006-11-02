@@ -13,7 +13,7 @@ final class DefaultSameHelper implements SameHelper {
         if (!isArray(o2)) return false;
         ArrayHolder arrayHolder2 = new DefaultArrayHolder(o2);
         ArrayHolder arrayHolder1 = new DefaultArrayHolder(o1);
-        return arrayHolder1.foo(arrayHolder2);
+        return arrayHolder1.equals(arrayHolder2);
     }
 
     private boolean isArray(Object ref) {
