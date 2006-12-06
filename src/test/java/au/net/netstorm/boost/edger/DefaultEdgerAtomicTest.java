@@ -12,7 +12,7 @@ public final class DefaultEdgerAtomicTest extends TestCase {
     public void testFactoryEdgification() {
         Edgifier edgifier = new DefaultEdifier();
         ClassFactory classFactory = (ClassFactory) edgifier.edgifyFactory(ClassFactory.class, Class.class);
-
+        Class cls = classFactory.newInstance();
 
         // FIX 1624 Complete factory.forName(String class).
         // FIX 1624 Try getInstance() say on a Map.class.
