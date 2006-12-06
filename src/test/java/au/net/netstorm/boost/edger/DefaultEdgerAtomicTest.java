@@ -13,6 +13,10 @@ public final class DefaultEdgerAtomicTest extends TestCase {
         Edgifier edgifier = new DefaultEdgifier();
         ClassFactory classFactory = (ClassFactory) edgifier.edgifyFactory(ClassFactory.class, Class.class);
         Class cls = classFactory.forName("java.util.Map");
+        // FIX 1624 BREADCRUMB Reinstate.
+//        assertNotNull(cls);
+        // FIX 1624 Reinstate this.
+//        Object instance = cls.newInstance();
 
         // FIX 1624 Complete factory.forName(String class).
         // FIX 1624 Try getInstance() say on a Map.class.

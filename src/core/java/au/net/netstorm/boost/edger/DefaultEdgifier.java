@@ -15,7 +15,7 @@ public final class DefaultEdgifier implements Edgifier {
 
     public Object edgifyFactory(Class factoryType, Class producedType) {
         Interface type = new DefaultInterface(factoryType);
-        InvocationHandler handler = new EdgifierInvocationHandler();
+        InvocationHandler handler = new EdgifierFactoryInvocationHandler(producedType);
         return proxyFactory.newProxy(type, handler);
     }
 }
