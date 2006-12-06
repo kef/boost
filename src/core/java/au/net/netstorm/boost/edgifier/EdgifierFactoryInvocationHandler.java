@@ -15,8 +15,9 @@ public final class EdgifierFactoryInvocationHandler implements InvocationHandler
 //        // FIX 1624 Check incoming method call matches a method on the non-edge fella.
 //        String edgeMethodName = edgeMethod.getName();
 //        Class[] parameterTypes = getTypes(parameters);
-//        // FIX 29228 Got to get the underlying implementation here.
-//        Method targetMethod = edgeType.getMethod(edgeMethodName, parameterTypes);
+//        // FIX 1624 Got to get the underlying implementation here.
+        // FIX 1624 BREADCRUMB Complete EdgifierMapper.
+//        Method targetMethod = realType.getMethod(edgeMethodName, parameterTypes);
 //        return targetMethod.invoke(parameters);
         return null;
     }
