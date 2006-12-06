@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edger;
+package au.net.netstorm.boost.edgifier;
 
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;

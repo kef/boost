@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.edger;
+package au.net.netstorm.boost.edgifier;
 
-import au.net.netstorm.boost.edger.edge.java.lang.Class;
-import au.net.netstorm.boost.edger.edge.java.lang.ClassFactory;
+import au.net.netstorm.boost.edgifier.edge.java.lang.Class;
+import au.net.netstorm.boost.edgifier.edge.java.lang.ClassFactory;
 import junit.framework.TestCase;
 
 // FIX 1624 This is actually an edge test not atomic.

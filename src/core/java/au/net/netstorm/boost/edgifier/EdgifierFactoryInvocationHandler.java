@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edger;
+package au.net.netstorm.boost.edgifier;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
