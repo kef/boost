@@ -9,7 +9,8 @@ public final class DefaultEdgerAtomicTest extends TestCase {
 
     public void testFactoryEdgification() {
         Edgifier edgifier = new DefaultEdifier();
-        Object edge = edgifier.edgifyFactory(ClassFactory.class);
+        ClassFactory edge = (ClassFactory) edgifier.edgifyFactory(ClassFactory.class);
+
         // FIX 1624 Complete factory.newInstance().
     }
 
