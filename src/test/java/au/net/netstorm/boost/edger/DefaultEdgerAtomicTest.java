@@ -12,7 +12,6 @@ public final class DefaultEdgerAtomicTest extends TestCase {
     public void testFactoryEdgification() {
         Edgifier edgifier = new DefaultEdifier();
         ClassFactory classFactory = (ClassFactory) edgifier.edgifyFactory(ClassFactory.class, Class.class);
-        classFactory.newInstance();
 
 
         // FIX 1624 Complete factory.forName(String class).
