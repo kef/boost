@@ -1,4 +1,5 @@
 package au.net.netstorm.boost.edger.edge.java.lang;
 
-public final class ClassFactory {
+public interface ClassFactory {
+    Class newInstance();
 }
