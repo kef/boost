@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.edger;
 
-import junit.framework.TestCase;
-import au.net.netstorm.boost.edger.edge.java.lang.ClassFactory;
 import au.net.netstorm.boost.edger.edge.java.lang.Class;
+import au.net.netstorm.boost.edger.edge.java.lang.ClassFactory;
+import junit.framework.TestCase;
 
 // FIX 1624 This is actually an edge test not atomic.
 // FIX 1624 Consider what to do with bloody generics.
@@ -10,9 +10,9 @@ import au.net.netstorm.boost.edger.edge.java.lang.Class;
 public final class DefaultEdgerAtomicTest extends TestCase {
 
     public void testFactoryEdgification() {
-        Edgifier edgifier = new DefaultEdifier();
+        Edgifier edgifier = new DefaultEdgifier();
         ClassFactory classFactory = (ClassFactory) edgifier.edgifyFactory(ClassFactory.class, Class.class);
-        Class cls = classFactory.newInstance();
+        Class cls = classFactory.forName("java.util.Map");
 
         // FIX 1624 Complete factory.forName(String class).
         // FIX 1624 Try getInstance() say on a Map.class.

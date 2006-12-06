@@ -9,7 +9,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 
 import java.lang.reflect.InvocationHandler;
 
-public final class DefaultEdifier implements Edgifier {
+public final class DefaultEdgifier implements Edgifier {
     private final EdgeProxy edgeProxy = new DefaultEdgeProxy();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
 
