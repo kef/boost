@@ -1,46 +1,46 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
-import junit.framework.Assert;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import junit.framework.Assert;
 
 public final class DefaultAssertException implements AssertException {
-    public Throwable assertWraps(Throwable wrapperException, Class expectedException) {
-        return assertWraps(wrapperException, expectedException, 1);
+
+    public Throwable assertWraps(Class expectedException, Throwable wrapperException) {
+        return assertWraps(expectedException, wrapperException, 1);
     }
 
-    public Throwable assertWraps(Throwable wrapperException, Class expectedException, String expectedMessage) {
-        return assertWraps(wrapperException, expectedMessage, expectedException, 1);
+    public Throwable assertWraps(Class expectedException, String expectedMessage, Throwable wrapperException) {
+        return assertWraps(expectedException, expectedMessage, wrapperException, 1);
     }
 
-    public Throwable assertWraps(Throwable wrapperException, Class expectedExceptionClass, int depthExceptionShouldAppearAt) {
+    public Throwable assertWraps(Class expectedExceptionClass, Throwable wrapperException, int depthExceptionShouldAppearAt) {
         int realDepth = depthExceptionShouldAppearAt <= 0 ? Integer.MAX_VALUE : depthExceptionShouldAppearAt;
-        return checkWraps(wrapperException, expectedExceptionClass, realDepth);
+        return checkWraps(expectedExceptionClass, wrapperException, realDepth);
     }
 
-    public Throwable assertWraps(Throwable wrapperException, String expectedMessage, Class expectedExceptionClass, int depthExceptionShouldAppearAt) {
-        Throwable cause = assertWraps(wrapperException, expectedExceptionClass, depthExceptionShouldAppearAt);
+    public Throwable assertWraps(Class expectedExceptionClass, String expectedMessage, Throwable wrapperException, int depthExceptionShouldAppearAt) {
+        Throwable cause = assertWraps(expectedExceptionClass, wrapperException, depthExceptionShouldAppearAt);
         checkExceptionMessage(expectedMessage, cause);
         return cause;
     }
 
-    public void checkExceptionClass(Class expectedExceptionClass, Throwable throwable) {
+    public void checkExceptionClass(Class expectedExceptionClass, Throwable actual) {
         // SUGGEST Use something else.  Delegate.
         // SUGGEST How about a stacktrace object?
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        throwable.printStackTrace(new PrintStream(out));
-        Class cls = throwable.getClass();
+        actual.printStackTrace(new PrintStream(out));
+        Class cls = actual.getClass();
         String message = "Expected " + expectedExceptionClass + " but was " + cls + ", stack trace:\n";
         Assert.assertEquals(message + out, expectedExceptionClass, cls);
     }
 
-    public void checkExceptionMessage(String expectedMessage, Throwable throwable) {
-        Assert.assertEquals("Exception message doesn't match", expectedMessage, throwable.getMessage());
+    public void checkExceptionMessage(String expectedMessage, Throwable actual) {
+        Assert.assertEquals("Exception message doesn't match", expectedMessage, actual.getMessage());
     }
 
     // SUGGEST Refactor this.
-    private Throwable checkWraps(Throwable wrapperException, Class expectedExceptionClass, int depth) {
+    private Throwable checkWraps(Class expectedExceptionClass, Throwable wrapperException, int depth) {
         Throwable cause = getCauseAtDepth(wrapperException, depth);
         checkExceptionClass(expectedExceptionClass, cause);
         return cause;

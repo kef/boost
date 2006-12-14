@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.test.reflect.util;
 
+import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import junit.framework.Assert;
-
-import java.lang.reflect.Method;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {
     private final EdgeMethod edgeMethod = new DefaultEdgeMethod();

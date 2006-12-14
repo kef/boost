@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
+import java.lang.reflect.InvocationTargetException;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
-
-import java.lang.reflect.InvocationTargetException;
 
 // SUGGEST What to do with this class?
 final class DefaultParameterTestUtil implements ParameterTestUtil {
@@ -17,9 +16,9 @@ final class DefaultParameterTestUtil implements ParameterTestUtil {
     }
 
     // SUGGEST R This belongs somewhere else.
-    public void invoke(Block block) {
+    public void invoke(Runnable block) {
         try {
-            block.execute();
+            block.run();
         } catch (EdgeException e) {
             handleException(e);
         }

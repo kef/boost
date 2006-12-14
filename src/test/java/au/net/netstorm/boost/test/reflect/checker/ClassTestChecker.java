@@ -7,7 +7,7 @@ public interface ClassTestChecker {
 
     void checkImplementsAndFinal(Class expectedInterface, Class implementationClass);
 
-    void checkSubInterfaceOf(Interface superInterface, Interface subInterface);
+    void checkSubInterfaceOf(Interface subInterface, Interface superInterface);
 
     void checkSubclassOf(Class subClass, Class superClass);
 

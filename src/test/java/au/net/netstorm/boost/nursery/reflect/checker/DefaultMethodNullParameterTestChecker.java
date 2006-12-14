@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
@@ -8,10 +11,6 @@ import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultMethodNullParameterTestChecker implements MethodNullParameterTestChecker {
@@ -58,8 +57,8 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     // SUGGEST This method is DUP with ConstructorNullParameter.
     private void invoke(final Object instance, final Method method, final Object[] paramValues) {
         method.setAccessible(true);
-        Block block = new Block() {
-            public void execute() {
+        Runnable block = new Runnable() {
+            public void run() {
                 edgeMethod.invoke(method, instance, paramValues);
             }
         };

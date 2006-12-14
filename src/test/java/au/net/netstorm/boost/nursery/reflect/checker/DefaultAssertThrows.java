@@ -8,16 +8,16 @@ public final class DefaultAssertThrows implements AssertThrows {
 
     // SUGGEST AssertThrowsChecker.
     // SUGGEST Why is the caught exception returned. (TJA: For additional checking not supplied by this class. Smelly.)
-    public Throwable assertThrows(Class expectedException, String message, Block block) {
+    public Throwable assertThrows(Class expectedException, String message, Runnable block) {
         Throwable result = assertThrows(expectedException, block);
         assertException.checkExceptionMessage(message, result);
         return result;
     }
 
-    public Throwable assertThrows(Class expectedException, Block block) {
+    public Throwable assertThrows(Class expectedException, Runnable block) {
         Throwable result = null;
         try {
-            block.execute();
+            block.run();
             Assert.fail("Failed to throw exception: " + expectedException);
         } catch (AssertionFailedError e) {
             throw e;

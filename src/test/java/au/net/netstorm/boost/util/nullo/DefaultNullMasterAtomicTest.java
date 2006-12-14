@@ -42,7 +42,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         checkRejectsNulls(parameters, "2");
     }
 
-    // FIX SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
+    // SUGGEST Remove this duplication.
     private void checkRejectsNulls(Object[] parameters, String badParamNumber) {
         try {
             checkNoNulls(parameters);
@@ -52,8 +52,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         }
     }
 
-    // FIX SC043 R Use a block then.
-    // FIX SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
+    // SUGGEST Remove this duplication.
     private void checkNullParamThrowsException() {
         try {
             nullMaster.check((Object) null);
@@ -62,7 +61,7 @@ public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
         }
     }
 
-    // FIX SC523 Gee I wish I had a way to remove this duplication... ;) Maybe like a Block...
+    // SUGGEST Remove this duplication.
     private void checkNullParamThrowsException(String parameter) {
         try {
             nullMaster.check(null, parameter);

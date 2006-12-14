@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
 public interface AssertException {
-    Throwable assertWraps(Throwable wrapperException, Class expectedException);
+    Throwable assertWraps(Class expectedException, Throwable wrapperException);
 
-    Throwable assertWraps(Throwable wrapperException, Class expectedException, String expectedMessage);
+    Throwable assertWraps(Class expectedException, String expectedMessage, Throwable wrapperException);
 
-    Throwable assertWraps(Throwable wrapperException, Class expectedExceptionClass, int depthExceptionShouldAppearAt);
+    Throwable assertWraps(Class expectedExceptionClass, Throwable wrapperException, int depthExceptionShouldAppearAt);
 
-    Throwable assertWraps(Throwable wrapperException, String expectedMessage, Class expectedExceptionClass, int depthExceptionShouldAppearAt);
+    Throwable assertWraps(Class expectedExceptionClass, String expectedMessage, Throwable wrapperException, int depthExceptionShouldAppearAt);
 
-    void checkExceptionClass(Class expectedExceptionClass, Throwable throwable);
+    void checkExceptionClass(Class expectedExceptionClass, Throwable actual);
 
-    void checkExceptionMessage(String expectedMessage, Throwable throwable);
+    void checkExceptionMessage(String expectedMessage, Throwable actual);
 }

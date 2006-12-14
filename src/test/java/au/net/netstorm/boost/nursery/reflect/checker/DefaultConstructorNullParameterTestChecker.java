@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
+import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
@@ -8,8 +9,6 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
-
-import java.lang.reflect.Constructor;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
@@ -55,8 +54,8 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     // SUGGEST We need ability to turn accessibility on/off in just one place.
     private void invoke(final Constructor constructor, final Object[] paramValues) {
         constructor.setAccessible(true);
-        Block block = new Block() {
-            public void execute() {
+        Runnable block = new Runnable() {
+            public void run() {
                 edgeConstructor.newInstance(constructor, paramValues);
             }
         };
