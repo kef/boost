@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
+import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
@@ -14,20 +15,20 @@ import junit.framework.Assert;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultMethodNullParameterTestChecker implements MethodNullParameterTestChecker {
-    private static final NullMaster NULL_MASTER = new DefaultNullMaster();
-    private static final ModifierTestUtil MODIFIER_UTIL = new DefaultModifierTestUtil();
-    private static final AssertException ASSERT_EXCEPTION = new DefaultAssertException();
+    private final NullMaster nullMaster = new DefaultNullMaster();
+    private final ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
+    private final AssertException assertException = new DefaultAssertException();
     private final EdgeMethod edgeMethod = new DefaultEdgeMethod();
     private final ParameterTestUtil parameterUtil = new DefaultParameterTestUtil();
     private final InstanceProvider instanceProvider;
 
     public DefaultMethodNullParameterTestChecker(InstanceProvider instanceProvider) {
-        NULL_MASTER.check(instanceProvider, "instanceProvider");
+        nullMaster.check(instanceProvider, "instanceProvider");
         this.instanceProvider = instanceProvider;
     }
 
     public void checkPublicMethodsRejectNull(Object instance) {
-        NULL_MASTER.check(instance);
+        nullMaster.check(instance);
         Method[] methods = getPublicMethods(instance.getClass());
         for (int i = 0; i < methods.length; i++) {
             checkMethodRejectsNull(instance, methods[i]);
@@ -35,7 +36,6 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
     }
 
     private void checkMethodRejectsNull(Object instance, Method method) {
-        NULL_MASTER.check(method);
         Class[] paramTypes = method.getParameterTypes();
         for (int i = 0; i < paramTypes.length; i++) {
             nullCheckMethod(instance, method, i, paramTypes);
@@ -44,25 +44,23 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
 
     // SUGGEST Pass block, reduce duplication with constructor form.
     private void nullCheckMethod(Object instance, final Method method, int currentParameter, Class[] paramTypes) {
-        final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
+        final Object[] paramValues = parameterUtil.createBadParamValues(instanceProvider, paramTypes, currentParameter, null);
         try {
             invoke(instance, method, paramValues);
             fail(paramTypes, currentParameter, method);
         } catch (Exception e) {
-            ASSERT_EXCEPTION.checkExceptionClass(IllegalArgumentException.class, e);
+            assertException.checkExceptionClass(IllegalArgumentException.class, e);
         }
     }
 
-    // SUGGEST R Why do we need the Call block?
     // SUGGEST This method is DUP with ConstructorNullParameter.
     private void invoke(final Object instance, final Method method, final Object[] paramValues) {
         method.setAccessible(true);
-        Runnable block = new Runnable() {
-            public void run() {
-                edgeMethod.invoke(method, instance, paramValues);
-            }
-        };
-        parameterUtil.invoke(block);
+        try {
+            edgeMethod.invoke(method, instance, paramValues);
+        } catch (EdgeException e) {
+            parameterUtil.handleException(e);
+        }
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Method method) {
@@ -74,12 +72,12 @@ public final class DefaultMethodNullParameterTestChecker implements MethodNullPa
         Assert.fail(message);
     }
 
-    // SUGGEST Better way to do this, maybe boost class?
+    // SUGGEST Better way to do this?
     private Method[] getPublicMethods(Class cls) {
         List publicMethods = new ArrayList();
         Method[] methods = cls.getDeclaredMethods();
         for (int i = 0; i < methods.length; i++) {
-            if (MODIFIER_UTIL.isPublic(methods[i])) {
+            if (modifierUtil.isPublic(methods[i])) {
                 publicMethods.add(methods[i]);
             }
         }

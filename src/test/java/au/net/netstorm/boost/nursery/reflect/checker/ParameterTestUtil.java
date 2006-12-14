@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
+import au.net.netstorm.boost.edge.EdgeException;
 
 public interface ParameterTestUtil {
-    Object[] createParameterValuesWithNull(InstanceProvider instanceProvider, Class[] paramTypes, int paramToMakeNull);
+    Object[] createBadParamValues(InstanceProvider instanceProvider, Class[] paramTypes, int indexOfParamToMakeBad,
+            Object badValue);
 
-    // SUGGEST R This belongs somewhere else.
-    void invoke(Runnable block);
+    void handleException(EdgeException e);
 }

@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.reflect.checker;
 import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
@@ -33,7 +34,6 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     }
 
     private void checkConstructorRejectsNull(Constructor constructor) {
-        nullMaster.check(constructor, "constructor");
         Class[] paramTypes = constructor.getParameterTypes();
         for (int i = 0; i < paramTypes.length; i++) {
             nullCheckConstructor(constructor, i, paramTypes);
@@ -42,7 +42,7 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
 
     // SUGGEST This needs a refactor.
     private void nullCheckConstructor(Constructor constructor, int currentParameter, Class[] paramTypes) {
-        final Object[] paramValues = parameterUtil.createParameterValuesWithNull(instanceProvider, paramTypes, currentParameter);
+        Object[] paramValues = parameterUtil.createBadParamValues(instanceProvider, paramTypes, currentParameter, null);
         try {
             invoke(constructor, paramValues);
             fail(paramTypes, currentParameter, constructor);
@@ -52,14 +52,13 @@ public final class DefaultConstructorNullParameterTestChecker implements Constru
     }
 
     // SUGGEST We need ability to turn accessibility on/off in just one place.
-    private void invoke(final Constructor constructor, final Object[] paramValues) {
+    private void invoke(Constructor constructor, Object[] paramValues) {
         constructor.setAccessible(true);
-        Runnable block = new Runnable() {
-            public void run() {
-                edgeConstructor.newInstance(constructor, paramValues);
-            }
-        };
-        parameterUtil.invoke(block);
+        try {
+            edgeConstructor.newInstance(constructor, paramValues);
+        } catch (EdgeException e) {
+            parameterUtil.handleException(e);
+        }
     }
 
     private void fail(Class[] paramTypes, int currentParameter, Constructor constructor) {
