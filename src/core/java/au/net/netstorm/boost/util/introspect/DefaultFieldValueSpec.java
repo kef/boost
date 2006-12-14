@@ -26,8 +26,8 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof DefaultFieldValueSpec)) return false;
-        return checkDefaultFieldSpec((DefaultFieldValueSpec) o);
+        if (!o.getClass().equals(DefaultFieldValueSpec.class)) return false;
+        return checkDefaultFieldSpec((FieldValueSpec) o);
     }
 
     private boolean checkDefaultFieldSpec(FieldValueSpec spec) {

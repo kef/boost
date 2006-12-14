@@ -33,6 +33,7 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     }
 
     public void testEquals() {
+        checkDifferentClasses();
         checkNames();
         checkSimpleValues();
     }
@@ -40,6 +41,11 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
     public void testToString() {
         checkToString("DefaultFieldValueSpec[name=field1,value=77]", FIELD_VALUE_SPEC_1);
         checkToString("DefaultFieldValueSpec[name=field7,value=Is absolute zero cold enough?]", FIELD_VALUE_SPEC_2);
+    }
+
+    private void checkDifferentClasses() {
+        checkNotEquals(FIELD_VALUE_SPEC_1, VALUE_1);
+        checkNotEquals(VALUE_1, FIELD_VALUE_SPEC_1);
     }
 
     private void checkNames() {
@@ -79,11 +85,11 @@ public class DefaultFieldValueSpecAtomicTest extends TestCase {
         }
     }
 
-    private void checkEquals(FieldValueSpec fieldValue1, FieldValueSpec fieldValue2) {
-        assertEquals(fieldValue1, fieldValue2);
+    private void checkEquals(Object o1, Object o2) {
+        assertEquals(o1, o2);
     }
 
-    private void checkNotEquals(FieldValueSpec fieldValue1, FieldValueSpec fieldValue2) {
-        assertTrue(!fieldValue1.equals(fieldValue2));
+    private void checkNotEquals(Object o1, Object o2) {
+        assertTrue(!o1.equals(o2));
     }
 }
