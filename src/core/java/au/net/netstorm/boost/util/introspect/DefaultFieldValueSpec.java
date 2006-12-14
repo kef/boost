@@ -5,7 +5,7 @@ import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Immutable;
 
-// FIX SC502 Who uses this.  Do we need it? TJA: It's the best thing since sliced bread. Who'd want to remove it???
+// FIX SC502 Who uses this. Do we need it? TJA: It's the best thing since sliced bread. Who'd want to remove it???
 // FIX SC506 Can just be an immutable.
 public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private final String name;
@@ -25,7 +25,6 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
         return value;
     }
 
-    // FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public boolean equals(Object o) {
         if (!(o instanceof DefaultFieldValueSpec)) return false;
         return checkDefaultFieldSpec((DefaultFieldValueSpec) o);
@@ -33,10 +32,16 @@ public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
 
     private boolean checkDefaultFieldSpec(FieldValueSpec spec) {
         if (!spec.getName().equals(name)) return false;
+        return checkValue(spec);
+    }
+
+    private boolean checkValue(FieldValueSpec spec) {
+        if (spec.getValue() == null) return spec.getValue() == value;
         if (spec.getValue().getClass().isArray()) return arraysEquals(spec);
         return spec.getValue().equals(value);
     }
 
+    // FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private boolean arraysEquals(FieldValueSpec spec) {
         if (Array.getLength(spec.getValue()) != Array.getLength(value)) return false;
         for (int i = 0; i < Array.getLength(spec.getValue()); i++) {

@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/demo/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/edge/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
