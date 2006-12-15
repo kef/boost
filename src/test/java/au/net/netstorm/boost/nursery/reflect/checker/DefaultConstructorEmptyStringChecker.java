@@ -4,18 +4,17 @@ import au.net.netstorm.boost.nursery.instance.InstanceProvider;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 
-public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
+public final class DefaultConstructorEmptyStringChecker implements ConstructorEmptyStringChecker {
     private final NullMaster nullMaster = new DefaultNullMaster();
     private final ParameterCheckerTestUtil parameterUtil;
 
-    public DefaultConstructorNullParameterTestChecker(InstanceProvider instanceProvider) {
+    public DefaultConstructorEmptyStringChecker(final InstanceProvider instanceProvider) {
         nullMaster.check(instanceProvider);
         parameterUtil = new DefaultParameterCheckerTestUtil(instanceProvider);
     }
 
-    public void checkPublicConstructorsRejectNull(Class classToCheck) {
+    public void checkPublicConstructorsRejectEmptyString(Class classToCheck) {
         nullMaster.check(classToCheck);
-        parameterUtil.checkConstructorsRejectsNull(classToCheck);
+        parameterUtil.checkConstructorsRejectEmptyString(classToCheck);
     }
-
 }
