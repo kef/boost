@@ -2,6 +2,7 @@ package au.net.netstorm.boost.edge.java.lang;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.EdgeException;
 
 public final class DefaultEdgeClass implements EdgeClass {
@@ -19,6 +20,14 @@ public final class DefaultEdgeClass implements EdgeClass {
         } catch (InstantiationException e) {
             throw new EdgeException(e);
         } catch (IllegalAccessException e) {
+            throw new EdgeException(e);
+        }
+    }
+
+    public Constructor getConstructor(Class cls, Class[] parameterTypes) {
+        try {
+            return cls.getConstructor(parameterTypes);
+        } catch (NoSuchMethodException e) {
             throw new EdgeException(e);
         }
     }
