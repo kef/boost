@@ -8,7 +8,7 @@ public final class FieldBasedEqualsMaster implements EqualsMaster {
     private final ReflectMaster master = new DefaultReflectMaster();
 
     public boolean equals(Object o1, Object o2) {
-        if (bothNull(o1, o2)) return true;
+        if (o1 == o2) return true;
         if (eitherNull(o1, o2)) return false;
         if (differentClasses(o1, o2)) return false;
         return determineEqualityFromFields(o1, o2);
@@ -16,10 +16,6 @@ public final class FieldBasedEqualsMaster implements EqualsMaster {
 
     private boolean eitherNull(Object o1, Object o2) {
         return o1 == null || o2 == null;
-    }
-
-    private boolean bothNull(Object o1, Object o2) {
-        return o1 == null && o2 == null;
     }
 
     private boolean determineEqualityFromFields(Object o1, Object o2) {
