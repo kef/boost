@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.util.type.Immutable;
-
 import java.util.HashSet;
 import java.util.Set;
+import au.net.netstorm.boost.util.type.Immutable;
 
 public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
     private final Set registered = new HashSet();
@@ -15,9 +14,15 @@ public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
     }
 
     public boolean isImmutable(Class cls) {
-        if (implementsImmutable(cls)) return true;
-        if (isPrimitive(cls)) return true;
-        if (isBoxedPrimitive(cls)) return true;
+        if (implementsImmutable(cls)) {
+            return true;
+        }
+        if (isPrimitive(cls)) {
+            return true;
+        }
+        if (isBoxedPrimitive(cls)) {
+            return true;
+        }
         return isRegistered(cls);
     }
 

@@ -1,13 +1,16 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.edge.EdgeException;
-
 import java.lang.reflect.InvocationTargetException;
+import au.net.netstorm.boost.edge.EdgeException;
 
 final class DefaultExceptionUtil implements ExceptionUtil {
     public boolean threw(Throwable throwable, Class contains) {
-        if (throwable instanceof EdgeException) return deEdgify((EdgeException) throwable, contains);
-        if (throwable instanceof InvocationTargetException) return deTarget((InvocationTargetException) throwable, contains);
+        if (throwable instanceof EdgeException) {
+            return deEdgify((EdgeException) throwable, contains);
+        }
+        if (throwable instanceof InvocationTargetException) {
+            return deTarget((InvocationTargetException) throwable, contains);
+        }
         return (same(throwable, contains));
     }
 

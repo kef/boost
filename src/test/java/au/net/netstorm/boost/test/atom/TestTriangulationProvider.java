@@ -1,14 +1,13 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationHandler;
 
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
@@ -19,15 +18,23 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private RandomProvider randomProvider = new DefaultRandomProvider();
 
     public Object getInstance(Class type) {
-        if (type.isInterface()) return randomInterface(type);
-        if (type.isArray()) return randomArray(type);
-        if (isPrimitive(type)) return randomPrimitiveType(type);
+        if (type.isInterface()) {
+            return randomInterface(type);
+        }
+        if (type.isArray()) {
+            return randomArray(type);
+        }
+        if (isPrimitive(type)) {
+            return randomPrimitiveType(type);
+        }
         return randomJavaType(type);
     }
 
     public Object[] getInstances(Class[] types) {
         Object[] params = new Object[types.length];
-        for (int i = 0; i < types.length; i++) params[i] = getInstance(types[i]);
+        for (int i = 0; i < types.length; i++) {
+            params[i] = getInstance(types[i]);
+        }
         return params;
     }
 

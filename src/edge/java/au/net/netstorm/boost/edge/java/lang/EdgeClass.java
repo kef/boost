@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.edge.java.lang;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Constructor;
 
 public interface EdgeClass {
     Class forName(String className);

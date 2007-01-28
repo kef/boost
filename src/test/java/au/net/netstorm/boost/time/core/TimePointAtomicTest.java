@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
-import junit.framework.TestCase;
-
 import java.util.Date;
+import junit.framework.TestCase;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class TimePointAtomicTest extends TestCase {
@@ -59,7 +58,9 @@ public final class TimePointAtomicTest extends TestCase {
         try {
             new DefaultTimePoint(length);
             fail();
-        } catch (IllegalArgumentException ex) { succeed(); } // FIX SC777 Fix others to call succeed().
+        } catch (IllegalArgumentException ex) {
+            succeed();
+        } // FIX SC777 Fix others to call succeed().
     }
 
     // FIX SC777 Push up into a PrimordialTestCase.

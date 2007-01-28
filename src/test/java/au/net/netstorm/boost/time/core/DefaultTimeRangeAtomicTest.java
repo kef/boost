@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
-import junit.framework.TestCase;
-
 import java.util.Date;
+import junit.framework.TestCase;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimeRangeAtomicTest extends TestCase {
@@ -30,7 +29,7 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         assertEquals(duration, range.duration());
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testIntersects() {
         assertIntersects(false, START_TIME_050, END_TIME_100);
         assertIntersects(false, START_TIME_050, END_TIME_100);
@@ -82,7 +81,8 @@ public final class DefaultTimeRangeAtomicTest extends TestCase {
         try {
             new DefaultTimeRange(start, duration);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
     private void assertIntersects(boolean expected, StartTime start, EndTime end) {

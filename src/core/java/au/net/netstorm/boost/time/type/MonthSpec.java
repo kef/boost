@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.primordial.Primordial;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import au.net.netstorm.boost.primordial.Primordial;
 
 // FIX SC507 Now that MonthOfYear exists, introduce it here.
 public final class MonthSpec extends Primordial implements Comparable {
@@ -12,17 +11,21 @@ public final class MonthSpec extends Primordial implements Comparable {
     public final int totalDays;
     public final int startDay;
 
-// DEBT CyclomaticComplexity|JavaNCSS {
+    // DEBT CyclomaticComplexity|JavaNCSS {
     public MonthSpec(int year, int month) {
-        if (month < 0 || month > 11) throw new IllegalArgumentException(
-                MONTH_OUT_OF_RANGE_MSG + " year=" + year + ",month=" + month);
+        if (month < 0 || month > 11) {
+            throw new IllegalArgumentException(
+                    MONTH_OUT_OF_RANGE_MSG + " year=" + year + ",month=" + month);
+        }
         this.month = month;
         this.year = year;
 // DEBT IllegalType {
         GregorianCalendar cal = (GregorianCalendar) GregorianCalendar.getInstance();
 // } DEBT IllegalType
         int totalDays = DAYS_IN_MONTH[month];
-        if (month == Calendar.FEBRUARY && cal.isLeapYear(year)) totalDays += 1;
+        if (month == Calendar.FEBRUARY && cal.isLeapYear(year)) {
+            totalDays += 1;
+        }
         this.totalDays = totalDays;
         cal.set(year, month, 1 /* First day */, 12 /* Midday ... avoid DST stuff. */, 0, 0);
         startDay = cal.get(Calendar.DAY_OF_WEEK);
@@ -30,9 +33,10 @@ public final class MonthSpec extends Primordial implements Comparable {
 // } DEBT CyclomaticComplexity|JavaNCSS
 
     public int compareTo(Object o) {
-        if (!getClass().isAssignableFrom(o.getClass()))
+        if (!getClass().isAssignableFrom(o.getClass())) {
             throw new IllegalArgumentException("We can only perform a comparison on a " + getClass().getName() + ".  " +
                     "You provided a " + o.getClass().getName() + ".");
+        }
         MonthSpec target = (MonthSpec) o;
         return compareTo(target);
     }
@@ -40,8 +44,12 @@ public final class MonthSpec extends Primordial implements Comparable {
     private int compareTo(MonthSpec target) {
         int us = year * 12 + month;
         int them = target.year * 12 + target.month;
-        if (us == them) return 0;
-        if (us < them) return -1;
+        if (us == them) {
+            return 0;
+        }
+        if (us < them) {
+            return -1;
+        }
         return 1;
     }
 

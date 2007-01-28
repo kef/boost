@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.atom;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
 import junit.framework.Assert;
 
 final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
@@ -21,7 +20,9 @@ final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
     }
 
     public Class getBoxed(Class primitive) {
-        if (!isPrimitive(primitive)) fail(primitive + " is not a primitive type");
+        if (!isPrimitive(primitive)) {
+            fail(primitive + " is not a primitive type");
+        }
         return get(primitive);
     }
 

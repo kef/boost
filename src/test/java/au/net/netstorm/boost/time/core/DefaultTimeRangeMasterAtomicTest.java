@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
-import junit.framework.TestCase;
-
 import java.util.Date;
+import junit.framework.TestCase;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
@@ -43,14 +42,16 @@ public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
         try {
             master.duration(start, end);
             fail();
-        } catch (IllegalArgumentException expected) { }
+        } catch (IllegalArgumentException expected) {
+        }
     }
 
     private void assertInvalidShorten(TimeRange range, Duration duration) {
         try {
             master.shorten(range, duration);
             fail();
-        } catch (IllegalArgumentException expected) { }
+        } catch (IllegalArgumentException expected) {
+        }
     }
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();

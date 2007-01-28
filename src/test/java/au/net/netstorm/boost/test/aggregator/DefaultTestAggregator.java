@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.test.aggregator;
 
-import junit.framework.Test;
-
 import java.io.File;
 import java.net.URL;
+import junit.framework.Test;
 
 public class DefaultTestAggregator implements TestAggregator {
     private final Class classInTestTree;

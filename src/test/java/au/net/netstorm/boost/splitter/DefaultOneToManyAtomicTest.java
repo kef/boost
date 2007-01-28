@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.splitter;
 
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
@@ -8,11 +10,9 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // FIX SC600 List/Map needs to be weak reference.
 // FIX SC600 Too complicated.  Simplify.
+
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultOneToManyAtomicTest extends TestCase {
     private static final int ZERO_LISTENERS = 0;
@@ -46,7 +46,8 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         try {
             new DefaultOneToMany(null);
             fail();
-        } catch (Exception expected) { }
+        } catch (Exception expected) {
+        }
     }
 
     public void testNullIllegal() {
@@ -54,7 +55,8 @@ public final class DefaultOneToManyAtomicTest extends TestCase {
         try {
             oneToMany.add(null);
             fail();
-        } catch (IllegalArgumentException expected) { }
+        } catch (IllegalArgumentException expected) {
+        }
     }
 
     public void testExceptionsAreExtractedFromInvocationTargetException() {

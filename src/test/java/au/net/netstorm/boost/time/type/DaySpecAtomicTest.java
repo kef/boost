@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
-
 import java.util.Calendar;
+import junit.framework.TestCase;
 
 public final class DaySpecAtomicTest extends TestCase {
     public void testValidDays() {
@@ -23,7 +22,8 @@ public final class DaySpecAtomicTest extends TestCase {
         try {
             d1.compareTo("THIS AIN'T GONNA WORK");
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
     public void testCompareDaysWithMonth() {
@@ -59,10 +59,11 @@ public final class DaySpecAtomicTest extends TestCase {
         try {
             new DaySpec(month, day);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
-// DEBT ParameterNumber {
+    // DEBT ParameterNumber {
     private void assertCompare(MonthSpec month, int dayOffset, MonthSpec toMonth, int toDayOffset, int status) {
         DaySpec spec = new DaySpec(month, dayOffset);
         DaySpec toSpec = new DaySpec(toMonth, toDayOffset);

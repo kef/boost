@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.edgifier;
 
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
-
 import java.lang.reflect.InvocationHandler;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultEdgifier implements Edgifier {
     private final EdgeProxy edgeProxy = new DefaultEdgeProxy();

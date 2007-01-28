@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.demo.automock;
 
+import java.util.Map;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 import junit.framework.AssertionFailedError;
-
-import java.util.Map;
 
 public final class BrokenAutoMockDemoTest extends PrimordialTestCase implements UsesMocks {
     private DelegateSubject delegate;
@@ -23,7 +22,8 @@ public final class BrokenAutoMockDemoTest extends PrimordialTestCase implements 
             subject.execute(map);
             verify();
             barf();
-        } catch (AssertionFailedError expected) { }
+        } catch (AssertionFailedError expected) {
+        }
         ensureVerifiesOkNow();
     }
 

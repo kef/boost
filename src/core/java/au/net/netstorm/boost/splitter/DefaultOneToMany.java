@@ -1,16 +1,15 @@
 package au.net.netstorm.boost.splitter;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
@@ -52,7 +51,9 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     }
 
     private void noNulls(Object ref) {
-        if (ref == null) throw new IllegalArgumentException();
+        if (ref == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     // FIX SC600 This is not tested.  It never really was.  It has been flushed out in SC521.

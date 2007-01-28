@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.util.proxy;
 
+import java.lang.reflect.InvocationHandler;
+import java.util.Map;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
-
-import java.lang.reflect.InvocationHandler;
-import java.util.Map;
 
 public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private static final Interface TYPE_1 = new DefaultInterface(CharSequence.class);

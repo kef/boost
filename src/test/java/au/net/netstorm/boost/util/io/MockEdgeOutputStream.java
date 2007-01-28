@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.util.io;
 
+import java.io.Serializable;
 import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
 import junit.framework.Assert;
-
-import java.io.Serializable;
 
 final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
     private final transient AssertTestChecker asserter = new DefaultAssertTestChecker();
@@ -14,13 +13,17 @@ final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Ser
     private boolean writeCalled = false;
 
     public void write(byte[] bytes) {
-        if (writeCalled) fail("Expecting a single call only to write.");
+        if (writeCalled) {
+            fail("Expecting a single call only to write.");
+        }
         writeCalled = true;
         actual = bytes;
     }
 
     public void flush() {
-        if (!writeCalled) fail("write(...) must be called prior to flush().");
+        if (!writeCalled) {
+            fail("write(...) must be called prior to flush().");
+        }
         flushed = true;
     }
 

@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
-
-import java.lang.reflect.Method;
 
 class PropertyMethodStructureChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};
@@ -49,12 +48,16 @@ class PropertyMethodStructureChecker implements DataChecker {
 
     private void checkReturnType(Class expectedType, Method method) {
         Class actualType = method.getReturnType();
-        if (actualType.equals(expectedType)) return;
+        if (actualType.equals(expectedType)) {
+            return;
+        }
         fail(method, "must return " + expectedType + ".");
     }
 
     private void checkPublicInstance(Method method) {
-        if (modifierUtil.isPublicInstance(method)) return;
+        if (modifierUtil.isPublicInstance(method)) {
+            return;
+        }
         fail(method, "must be a public instance method.");
     }
 

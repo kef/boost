@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.test.reflect.util;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import junit.framework.Assert;
-
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import au.net.netstorm.boost.primordial.Primordial;
+import junit.framework.Assert;
 
 public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     private final Set inherited = new HashSet();
@@ -50,27 +49,37 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
 
     private Method[] guardGetAll(Class cls) {
         Class superclass = cls.getSuperclass();
-        if (!superclass.equals(Primordial.class)) Assert.fail("Currently we only support Primordial as a superclass.  You requested " + superclass);
+        if (!superclass.equals(Primordial.class)) {
+            Assert.fail("Currently we only support Primordial as a superclass.  You requested " + superclass);
+        }
         return cls.getDeclaredMethods();
     }
 
     private void keepPublicInstance(Set set) {
         Method[] methods = methods(set);
-        for (int i = 0; i < methods.length; i++) keepPublicInstance(set, methods[i]);
+        for (int i = 0; i < methods.length; i++) {
+            keepPublicInstance(set, methods[i]);
+        }
     }
 
     private void keepNonInherited(Set set) {
         Method[] methods = methods(set);
-        for (int i = 0; i < methods.length; i++) keepNonInherited(set, methods[i]);
+        for (int i = 0; i < methods.length; i++) {
+            keepNonInherited(set, methods[i]);
+        }
     }
 
     private void keepPublicInstance(Set set, Method method) {
-        if (!modifierUtil.isPublicInstance(method)) set.remove(method);
+        if (!modifierUtil.isPublicInstance(method)) {
+            set.remove(method);
+        }
     }
 
     private void keepNonInherited(Set set, Method method) {
         String name = method.getName();
-        if (inherited.contains(name)) set.remove(method);
+        if (inherited.contains(name)) {
+            set.remove(method);
+        }
     }
 
     private Method[] methods(Set set) {

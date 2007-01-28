@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
+import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import junit.framework.Assert;
-
-import java.lang.reflect.Field;
 
 public final class DefaultFieldTestChecker implements FieldTestChecker {
     private final FieldTestUtil fielderUtil = new DefaultFieldTestUtil();

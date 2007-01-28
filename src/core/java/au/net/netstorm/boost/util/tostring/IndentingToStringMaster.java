@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.tostring;
 
+import java.lang.reflect.Array;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
@@ -7,8 +8,6 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.indent.DefaultIndenterMaster;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.separator.Separator;
-
-import java.lang.reflect.Array;
 
 public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
@@ -21,7 +20,9 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String formatFields(String[] s) {
-        if (s.length == 0) return "[]";
+        if (s.length == 0) {
+            return "[]";
+        }
         return "[" + LF + indent(getString(s)) + LF + "]";
     }
 
@@ -29,7 +30,9 @@ public class IndentingToStringMaster implements ToStringMaster {
         String result = "";
         for (int i = 0; i < s.length; i++) {
             result += s[i];
-            if (i < s.length - 1) result += LF;
+            if (i < s.length - 1) {
+                result += LF;
+            }
         }
         return result;
     }
@@ -37,7 +40,9 @@ public class IndentingToStringMaster implements ToStringMaster {
     private String[] formatFields(Object ref) {
         FieldValueSpec[] fields = reflect.getInstanceFields(ref);
         String[] result = new String[fields.length];
-        for (int i = 0; i < result.length; i++) result[i] = formatField(fields[i]);
+        for (int i = 0; i < result.length; i++) {
+            result[i] = formatField(fields[i]);
+        }
         return result;
     }
 
@@ -48,7 +53,9 @@ public class IndentingToStringMaster implements ToStringMaster {
     private String fieldValue(FieldValueSpec fieldValue) {
         Object value = fieldValue.getValue();
         // FIX SC600 incorporate and test this.
-        if (value == null) return "null"; // FIXME: SC600 Test drive this little sucker.  We can remove it.
+        if (value == null) {
+            return "null"; // FIXME: SC600 Test drive this little sucker.  We can remove it.
+        }
         return (isArray(value) ? arrayValue(value) : value.toString());
     }
 

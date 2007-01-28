@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.edge.java.lang;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.EdgeException;
 
 public final class DefaultEdgeClass implements EdgeClass {

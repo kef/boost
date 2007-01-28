@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
-
-import java.lang.reflect.Constructor;
 
 final class ConstructorDataChecker implements DataChecker {
     private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
@@ -21,7 +20,9 @@ final class ConstructorDataChecker implements DataChecker {
 
     private void checkSingleConstructor(Class cls) {
         Constructor[] constructors = cls.getConstructors();
-        if (constructors.length == 1) return;
+        if (constructors.length == 1) {
+            return;
+        }
         fail(cls, "must have a single constructor which has a parameter for each property.");
     }
 
@@ -40,8 +41,11 @@ final class ConstructorDataChecker implements DataChecker {
     private void checkParameterCount(Class[] expectedTypes, Class[] declaredTypes) {
         int expectedLength = expectedTypes.length;
         int declaredLength = declaredTypes.length;
-        if (expectedLength == declaredLength) return;
-        fail("Constructor must have " + expectedLength + " argument(s) matching the properties.  Instead it appears to have "
+        if (expectedLength == declaredLength) {
+            return;
+        }
+        fail("Constructor must have " + expectedLength +
+                " argument(s) matching the properties.  Instead it appears to have "
                 + declaredLength + " arguments(s).");
     }
 

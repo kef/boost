@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
-import junit.framework.TestCase;
-
 import java.util.Date;
+import junit.framework.TestCase;
 
 public final class DefaultTimePointMasterAtomicTest extends TestCase {
     public void testNext() {
@@ -23,14 +22,16 @@ public final class DefaultTimePointMasterAtomicTest extends TestCase {
         try {
             master.previous(DefaultTimePoint.EPOCH);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
     public void testNextInvalid() {
         try {
             master.next(DefaultTimePoint.ARMAGGEDON);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
     private final TimePointMaster master = new DefaultTimePointMaster();

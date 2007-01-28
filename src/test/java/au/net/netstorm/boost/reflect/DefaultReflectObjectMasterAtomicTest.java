@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.test.atom.PrimordialTestCase;
-
 import java.lang.reflect.Constructor;
+import au.net.netstorm.boost.test.atom.PrimordialTestCase;
 
 public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
@@ -35,6 +34,7 @@ public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
         try {
             master.getConstructor(cls);
             fail();
-        } catch (IllegalStateException expected) { }
+        } catch (IllegalStateException expected) {
+        }
     }
 }

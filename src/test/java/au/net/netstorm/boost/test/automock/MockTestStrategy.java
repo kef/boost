@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.automock;
 
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // OK ClassDataAbstractionCoupling {

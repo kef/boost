@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.util.introspect.MethodSpec;
-
 import java.lang.reflect.Method;
+import au.net.netstorm.boost.util.introspect.MethodSpec;
 
 class DefaultReflectMethodMaster implements ReflectMethodMaster {
     public Method getMethod(Class cls, MethodSpec method) {
@@ -15,14 +14,18 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
             Method sourceMethod = methods[i];
-            if (methodsMatch(sourceMethod, targetMethod)) return sourceMethod;
+            if (methodsMatch(sourceMethod, targetMethod)) {
+                return sourceMethod;
+            }
         }
         throw new NoSuchMethodError(targetMethod.toString());
     }
 
     private boolean methodsMatch(Method sourceMethod, MethodSpec targetMethod) {
         String name = targetMethod.getName();
-        if (!methodNamesMatch(sourceMethod, name)) return false;
+        if (!methodNamesMatch(sourceMethod, name)) {
+            return false;
+        }
         Class[] params = targetMethod.getParams();
         return paramsMatch(sourceMethod, params);
     }
@@ -34,9 +37,13 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
 
     private boolean paramsMatch(Method sourceMethod, Class[] parameterTypes) {
         Class[] params = sourceMethod.getParameterTypes();
-        if (parameterTypes.length != params.length) return false;
+        if (parameterTypes.length != params.length) {
+            return false;
+        }
         for (int i = 0; i < params.length; i++) {
-            if (!paramMatches(params[i], parameterTypes[i])) return false;
+            if (!paramMatches(params[i], parameterTypes[i])) {
+                return false;
+            }
         }
         return true;
     }
@@ -46,6 +53,8 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
     }
 
     private void checkNotNull(Object param) {
-        if (param == null) throw new IllegalArgumentException();
+        if (param == null) {
+            throw new IllegalArgumentException();
+        }
     }
 }

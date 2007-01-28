@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.util.array;
 
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class DefaultArrayFlattener extends Primordial implements ArrayFlattener {
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();

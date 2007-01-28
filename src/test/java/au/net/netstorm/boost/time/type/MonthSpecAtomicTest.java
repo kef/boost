@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
-
 import java.util.Calendar;
+import junit.framework.TestCase;
 
 public final class MonthSpecAtomicTest extends TestCase {
     // FIX SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
@@ -36,10 +35,11 @@ public final class MonthSpecAtomicTest extends TestCase {
         try {
             m1.compareTo("THIS AIN'T GONNA WORK");
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testDaysInMonth() {
         assertDaysInMonth(31, 2004, Calendar.JANUARY);
         assertDaysInMonth(31, 2004, Calendar.MARCH);
@@ -63,14 +63,16 @@ public final class MonthSpecAtomicTest extends TestCase {
         try {
             new MonthSpec(2004, -1);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
         try {
             new MonthSpec(2004, 12);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testStartDayOfWeek() {
         assertStartDay(Calendar.THURSDAY, 2004, Calendar.JANUARY);
         assertStartDay(Calendar.SUNDAY, 2004, Calendar.FEBRUARY);
@@ -111,7 +113,7 @@ public final class MonthSpecAtomicTest extends TestCase {
         assertEquals(month, spec.month);
     }
 
-// DEBT ParameterNumber {
+    // DEBT ParameterNumber {
     private void assertCompare(int year, int month, int toYear, int toMonth, int status) {
         MonthSpec spec = new MonthSpec(year, month);
         MonthSpec toSpec = new MonthSpec(toYear, toMonth);

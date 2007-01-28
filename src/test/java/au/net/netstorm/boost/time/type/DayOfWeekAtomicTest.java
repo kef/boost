@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
-
 import java.util.Calendar;
+import junit.framework.TestCase;
 
 public final class DayOfWeekAtomicTest extends TestCase {
     public void testValid() {
@@ -55,6 +54,7 @@ public final class DayOfWeekAtomicTest extends TestCase {
         try {
             new DayOfWeek(day);
             fail();
-        } catch (IllegalArgumentException ex) { }
+        } catch (IllegalArgumentException ex) {
+        }
     }
 }

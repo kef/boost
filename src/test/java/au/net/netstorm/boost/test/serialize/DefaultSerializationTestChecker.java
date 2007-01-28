@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.test.serialize;
 
-import junit.framework.Assert;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import junit.framework.Assert;
 
 public class DefaultSerializationTestChecker implements SerializationTestChecker {
     public static void checkSerializable(Object instance) {

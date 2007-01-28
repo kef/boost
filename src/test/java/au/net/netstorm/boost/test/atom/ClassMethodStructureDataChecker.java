@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Method;
 import au.net.netstorm.boost.test.reflect.util.ClassMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
-
-import java.lang.reflect.Method;
 
 final class ClassMethodStructureDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
@@ -32,21 +31,31 @@ final class ClassMethodStructureDataChecker implements DataChecker {
     }
 
     private void checkMethodScope(Method method) {
-        if (isPublicInstance(method)) return;
-        if (isPrivate(method)) return;
+        if (isPublicInstance(method)) {
+            return;
+        }
+        if (isPrivate(method)) {
+            return;
+        }
         fail(method, "violates the constraint that all methods must be public non-static or private.");
     }
 
     private void checkPublicMethodHasNoArguments(Method method) {
-        if (isPrivate(method)) return;
+        if (isPrivate(method)) {
+            return;
+        }
         Class[] parameterTypes = method.getParameterTypes();
-        if (parameterTypes.length == 0) return;
+        if (parameterTypes.length == 0) {
+            return;
+        }
         fail(method, "has arguments.  All property accessor methods must have no arguments");
     }
 
     private void checkClassInterface(Class cls, FieldSpec[] fields) {
         Method[] methods = classMethodUtil.getAllNotInheritedPublicInstance(cls);
-        if (methods.length <= fields.length) return;
+        if (methods.length <= fields.length) {
+            return;
+        }
         fail("Too many public methods.  Only getters for the specified properties are allowed.");
     }
 
