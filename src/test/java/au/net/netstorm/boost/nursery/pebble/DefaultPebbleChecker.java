@@ -20,7 +20,7 @@ public final class DefaultPebbleChecker implements PebbleChecker {
             edgeClass.forName(newer);
         } catch (EdgeException e) {
             if (e.causeIs(ClassNotFoundException.class)) {
-                throw new NoNewInterfaceException(newer, impl);
+                throw new NoNewerInterfaceException(newer, impl);
             }
         }
     }

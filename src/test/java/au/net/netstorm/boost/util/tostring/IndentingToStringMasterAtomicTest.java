@@ -12,6 +12,7 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
     private static final TestTwoFields TWO_FIELDS_2_4 = new TestTwoFields(2, 4);
     private static final TestTwoFields TWO_FIELDS_5_7 = new TestTwoFields(5, 7);
     private static final TestNestedFields NESTED_FIELDS = new TestNestedFields("Andy", new TestFixed());
+    private static final TestNullField NULL_FIELD = new TestNullField();
     private static final TestStringArrayField STRING_ARRAY_A_B = new TestStringArrayField(new String[]{"A", "B"});
     private static final TestIntArrayField INT_ARRAY = new TestIntArrayField(new int[]{1, 2, 4});
     private static final TestMixedArrayField MIXED_ARRAY = new TestMixedArrayField(new long[]{1L, 54L}, new String[]{"A", "Z"});
@@ -28,6 +29,7 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
 
     public void testToStringMultiple() {
         checkToString(nestedFieldResult(), NESTED_FIELDS);
+        checkToString(nullFieldResult(), NULL_FIELD);
         checkToString(stringArrayResult("A", "B"), STRING_ARRAY_A_B);
         checkToString(stringArrayResult("C", "D"), STRING_ARRAY_C_D);
         checkToString(intArrayResult(), INT_ARRAY);
@@ -37,6 +39,10 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
 
     private String nestedFieldResult() {
         return "TestNestedFields[" + lfIndent("name=Andy") + lfIndent("nested=FIXED") + lf("]");
+    }
+
+    private String nullFieldResult() {
+        return "TestNullField[" +lfIndent("nullString=null") + lf("]");
     }
 
     private String multipleNestedFieldResult() {
