@@ -8,5 +8,6 @@ public final class DefaultCreatorAtomicTest extends TestCase {
     public void testCreator() {
         Class type = HashSet.class;
         Creator creator = new DefaultCreator(type);
+        // FIX BREADCRUMB 1665 Pass in an implementation reference.
     }
 }
