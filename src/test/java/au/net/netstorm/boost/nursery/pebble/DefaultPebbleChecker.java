@@ -16,6 +16,11 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 public final class DefaultPebbleChecker implements PebbleChecker {
     EdgeClass edgeClass = new DefaultEdgeClass();
     ReflectMaster reflectMaster = new DefaultReflectMaster();
+    // FIX 1665 Rename.
+    private static final String FOO = "_";
+    // FIX BREADCRUMB 1665 Instead of <ClassImpl>_._(...) use <ClassImpl>Creator.create(...) 
+    // FIX 1665     private DefaultKeyResponseCreator keyResponseCreator;
+    // FIX 1665     keyResponseCreator.create(aggregateKey, keyClass);
 
     public void check(Class impl) {
         Interface creator = getCreator(impl);
@@ -24,7 +29,7 @@ public final class DefaultPebbleChecker implements PebbleChecker {
     }
 
     private Interface getCreator(Class impl) {
-        String creatorName = impl.getName() + "_";
+        String creatorName = impl.getName() + FOO;
         Class creatorType = tryForName(creatorName, impl);
         return new DefaultInterface(creatorType);
     }
@@ -43,7 +48,7 @@ public final class DefaultPebbleChecker implements PebbleChecker {
     private Method tryGetMethod(Interface creator, Class impl, Class[] parameters) {
         try {
             Class clsName = creator.getType();
-            return edgeClass.getMethod(clsName, "_", parameters);
+            return edgeClass.getMethod(clsName, FOO, parameters);
         } catch (EdgeException e) {
             if (e.causeIs(NoSuchMethodException.class)) {
                 throw new NonMatchingCreatorException(creator, impl);
