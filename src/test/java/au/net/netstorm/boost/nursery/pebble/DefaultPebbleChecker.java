@@ -7,6 +7,8 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 
 // FIX 1665 Move out of nursery.
 
@@ -16,10 +18,15 @@ public final class DefaultPebbleChecker implements PebbleChecker {
     ReflectMaster reflectMaster = new DefaultReflectMaster();
 
     public void check(Class impl) {
-        String newer = impl.getName() + "_";
-        Class creator = tryForName(newer, impl);
+        Interface creator = getCreator(impl);
         Class[] parameters = getConstructorParameters(impl);
         tryGetMethod(creator, impl, parameters);
+    }
+
+    private Interface getCreator(Class impl) {
+        String creatorName = impl.getName() + "_";
+        Class creatorType = tryForName(creatorName, impl);
+        return new DefaultInterface(creatorType);
     }
 
     private Class tryForName(String newer, Class impl) {
@@ -33,9 +40,10 @@ public final class DefaultPebbleChecker implements PebbleChecker {
         }
     }
 
-    private Method tryGetMethod(Class creator, Class impl, Class[] parameters) {
+    private Method tryGetMethod(Interface creator, Class impl, Class[] parameters) {
         try {
-            return edgeClass.getMethod(creator, "_", parameters);
+            Class clsName = creator.getType();
+            return edgeClass.getMethod(clsName, "_", parameters);
         } catch (EdgeException e) {
             if (e.causeIs(NoSuchMethodException.class)) {
                 throw new NonMatchingCreatorException(creator, impl);
