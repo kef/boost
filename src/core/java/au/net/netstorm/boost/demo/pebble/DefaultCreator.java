@@ -5,6 +5,7 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreator implements Creator {
     private Implementation impl;
@@ -15,17 +16,17 @@ public final class DefaultCreator implements Creator {
         this.impl = impl;
     }
 
-
     public Object create(Class[] parameters) {
         Class implClass = impl.getImpl();
         Constructor constructor = edgeClass.getConstructor(implClass, parameters);
+        edgeConstructor.newInstance(constructor, parameters);
+        Interface implType = impl.getType();
         return "";
     }
-/*
-        Object ref = edgeConstructor.newInstance(constructor, parameters);
+
+    /*
         // FIX 1665 Should we create Resolved object?  Yes please.
         // FIX BREADCRUMB 1665 Build up the resolved object class.
-        Interface implType = impl.getType();
         return wrap(ref, implType);
     }
 
