@@ -3,6 +3,7 @@ package au.net.netstorm.boost.demo.pebble;
 import au.net.netstorm.boost.nursery.pebble.DefaultPebbleChecker;
 import au.net.netstorm.boost.nursery.pebble.NoNewerInterfaceException;
 import au.net.netstorm.boost.nursery.pebble.PebbleChecker;
+import au.net.netstorm.boost.nursery.pebble.NonMatchingCreatorException;
 import junit.framework.TestCase;
 
 public final class PebbleDemoTest extends TestCase {
@@ -20,7 +21,17 @@ public final class PebbleDemoTest extends TestCase {
         }
     }
 
+    public void testMustHaveCreatorWhichMatchesConstructor() {
+        try {
+            pebbleChecker.check(DefaultPricklyWithNonMatchingCreator.class);
+            fail();
+        } catch (NonMatchingCreatorException expected) {
+        }
+    }
+
     // FIX 1665 Test pebble with no "new" interface.
-    // FIX 1665 Single constructor.
-    // FIX 1665 Interface "_" method must match signature of single constructor.
+    // FIX 1665 Creator must be interface.
+    // FIX 1665 Creator must have single method matching object constructor.
+    // FIX 1665 Creator method must be "_".
+    // FIX 1665 Creator method "_" must match object's single constructor parameters.
 }
