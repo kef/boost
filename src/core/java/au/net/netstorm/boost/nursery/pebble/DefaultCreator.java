@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.temp;
+package au.net.netstorm.boost.nursery.pebble;
 
 import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
