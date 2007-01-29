@@ -12,7 +12,7 @@ public final class DefaultCreator implements Creator {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
-    public DefaultCreator(Implementation impl) {
+    public DefaultCreator(Implementation impl, Onion onion) {
         this.impl = impl;
     }
 

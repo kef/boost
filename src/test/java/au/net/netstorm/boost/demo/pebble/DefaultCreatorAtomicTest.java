@@ -26,6 +26,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private Class[] parameters = new Class[]{};
     private Object ref = new Object();
     private Object wrapped = new Object();
+    private Onion onion;
 
     public void testCreator() {
         expect.oneCall(implementation, cls, "getImpl");
@@ -38,7 +39,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     }
 
     public void setupSubjects() {
-        subject = new DefaultCreator(implementation);
+        subject = new DefaultCreator(implementation, onion);
         fieldTestUtil.setInstance(subject, "edgeConstructor", edgeConstructor);
         fieldTestUtil.setInstance(subject, "edgeClass", edgeClass);
     }
