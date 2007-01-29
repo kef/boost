@@ -1,11 +1,12 @@
-package au.net.netstorm.boost.demo.pebble;
+package au.net.netstorm.boost.nursery.pebble;
 
-import junit.framework.TestCase;
-import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
+import au.net.netstorm.boost.nursery.pebble.pebble.DefaultImplementation;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
+import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
+import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
+import junit.framework.TestCase;
 
 // FIX 1665 Complete.
 public final class DefaultImplementationAtomicTest extends TestCase {

@@ -1,7 +1,9 @@
-package au.net.netstorm.boost.demo.pebble;
+package au.net.netstorm.boost.nursery.pebble;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.nursery.pebble.pebble.BermudaOnion;
+import au.net.netstorm.boost.nursery.pebble.pebble.Onion;
 import au.net.netstorm.boost.util.type.Interface;
+import junit.framework.TestCase;
 
 public final class BermudaOnionAtomicTest extends TestCase {
     private Interface type;

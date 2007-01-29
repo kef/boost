@@ -1,9 +1,9 @@
-package au.net.netstorm.boost.pebble.pebble;
+package au.net.netstorm.boost.nursery.pebble;
 
 import java.util.Set;
-import junit.framework.TestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
+import junit.framework.TestCase;
 
 public final class NonMatchingCreatorExceptionAtomicTest extends TestCase {
     private static final Class CREATOR_CLASS = Set.class;

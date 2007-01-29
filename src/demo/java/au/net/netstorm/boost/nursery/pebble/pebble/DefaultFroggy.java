@@ -1,6 +1,6 @@
-package au.net.netstorm.boost.demo.pebble;
+package au.net.netstorm.boost.nursery.pebble.pebble;
 
-import au.net.netstorm.boost.pebble.pebble.Pebble;
+import au.net.netstorm.boost.nursery.pebble.Pebble;
 
 public final class DefaultFroggy implements Froggy, Pebble {
 

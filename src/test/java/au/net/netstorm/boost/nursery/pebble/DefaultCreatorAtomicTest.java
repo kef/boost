@@ -1,11 +1,16 @@
-package au.net.netstorm.boost.demo.pebble;
+package au.net.netstorm.boost.nursery.pebble;
 
 import java.lang.reflect.Constructor;
 import java.util.HashSet;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.nursery.pebble.pebble.BermudaOnion;
+import au.net.netstorm.boost.nursery.pebble.pebble.Creator;
+import au.net.netstorm.boost.nursery.pebble.pebble.DefaultCreator;
+import au.net.netstorm.boost.nursery.pebble.pebble.Implementation;
+import au.net.netstorm.boost.nursery.pebble.pebble.Onion;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -13,7 +18,6 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1665 Move into nursery.pebble or wherever this is meant to end up.
 public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Creator subject;
     private MockExpectations expect;
