@@ -10,7 +10,7 @@ public final class DefaultCreator implements Creator {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
-    public DefaultCreator(Class type) {
+    public DefaultCreator(Implementation impl) {
     }
 
 /*
