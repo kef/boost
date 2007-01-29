@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.pebble;
 
-import au.net.netstorm.boost.nursery.pebble.pebble.DefaultImplementation;
+import au.net.netstorm.boost.nursery.pebble.DefaultImplementation;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
