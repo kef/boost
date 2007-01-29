@@ -15,8 +15,8 @@ public final class NonMatchingCreatorExceptionAtomicTest extends TestCase {
     public void testException() {
         Exception exception = new NonMatchingCreatorException(CREATOR_INTERFACE, IMPL_CLASS);
         String msg = exception.getMessage();
-        // OK LineLength {
-        assertEquals("Creator "+ CREATOR_CLASS_NAME + " does not have single _(...) method which matches "+ IMPL_CLASS_NAME +" single constructor.", msg);
-        // } OK
+        assertEquals("Creator " + CREATOR_CLASS_NAME +
+                " does not have single create(...) method which matches " + IMPL_CLASS_NAME +
+                " single constructor.", msg);
     }
 }

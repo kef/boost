@@ -23,7 +23,7 @@ public final class PebbleDemoTest extends TestCase {
 
     public void testMustHaveCreatorWhichMatchesConstructor() {
         try {
-            pebbleChecker.check(DefaultPricklyWithNonMatchingCreator.class);
+            pebbleChecker.check(DefaultPricklyWithNonMatchingParams.class);
             fail();
         } catch (NonMatchingCreatorException expected) {
         }
