@@ -34,13 +34,13 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
         expect.oneCall(edgeClass, constructor, "getConstructor", cls, parameters);
         expect.oneCall(edgeConstructor, ref, "newInstance", constructor, parameters);
         expect.oneCall(implementation, type, "getType");
+        expect.oneCall(onion, wrapped, "onionize", ref, type);
         Object result = subject.create(parameters);
-        // FIX BREADCRUMB 1665 Back here.
-        // FIX 1665 Complete.
-//        assertEquals(wrapped, result);
+        assertEquals(wrapped, result);
     }
 
     public void setupSubjects() {
+        // FIX 1665 Remove onion from the constructor
         subject = new DefaultCreator(implementation, onion);
         fieldTestUtil.setInstance(subject, "edgeConstructor", edgeConstructor);
         fieldTestUtil.setInstance(subject, "edgeClass", edgeClass);

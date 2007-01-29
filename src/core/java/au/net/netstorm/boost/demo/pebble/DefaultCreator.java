@@ -9,19 +9,22 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreator implements Creator {
     private Implementation impl;
+    private Onion onion;
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
+    // FIX 1665 Wire onion dependency inside.
     public DefaultCreator(Implementation impl, Onion onion) {
         this.impl = impl;
+        this.onion = onion;
     }
 
     public Object create(Class[] parameters) {
         Class implClass = impl.getImpl();
         Constructor constructor = edgeClass.getConstructor(implClass, parameters);
-        edgeConstructor.newInstance(constructor, parameters);
+        Object ref = edgeConstructor.newInstance(constructor, parameters);
         Interface implType = impl.getType();
-        return "";
+        return onion.onionize(ref, implType);
     }
 
     /*
