@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.pebble;
+package au.net.netstorm.boost.pebble;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -9,10 +9,10 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.pebble.pebble.PebbleChecker;
+import au.net.netstorm.boost.pebble.pebble.NoNewerInterfaceException;
+import au.net.netstorm.boost.pebble.pebble.NonMatchingCreatorException;
 
-// FIX 1665 Move out of nursery.
-
-// FIX 1665 Move to test tree.
 public final class DefaultPebbleChecker implements PebbleChecker {
     EdgeClass edgeClass = new DefaultEdgeClass();
     ReflectMaster reflectMaster = new DefaultReflectMaster();

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.pebble;
+package au.net.netstorm.boost.pebble.pebble;
 
 import junit.framework.TestCase;
 

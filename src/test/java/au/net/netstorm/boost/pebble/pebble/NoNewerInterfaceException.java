@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.pebble;
+package au.net.netstorm.boost.pebble.pebble;
 
 public final class NoNewerInterfaceException extends RuntimeException {
     public NoNewerInterfaceException(String newerInterfaceName, Class impl) {
