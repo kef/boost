@@ -14,9 +14,6 @@ public final class DefaultCreator implements Creator {
     }
 
 /*
-    public DefaultCreator(Implementation impl) {
-        this.impl = impl;
-    }
     
     Object create(Class[] parameters) {
         Class implClass = impl.getImpl();
@@ -34,4 +31,9 @@ public final class DefaultCreator implements Creator {
         // FIX 1665 Time to delegate to an onion :-)
     }
 */
+
+    public Object create(Class[] parameters) {
+        // FIX 1665 Fix.
+        return "";
+    }
 }
