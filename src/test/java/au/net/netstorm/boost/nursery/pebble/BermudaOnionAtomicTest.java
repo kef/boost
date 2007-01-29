@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.nursery.pebble;
 
-import au.net.netstorm.boost.nursery.pebble.BermudaOnion;
-import au.net.netstorm.boost.nursery.pebble.Onion;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
