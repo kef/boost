@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.pebble;
 
+import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
@@ -11,13 +12,16 @@ public final class DefaultCreator implements Creator {
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
     public DefaultCreator(Implementation impl) {
+        this.impl = impl;
     }
 
-/*
-    
-    Object create(Class[] parameters) {
+
+    public Object create(Class[] parameters) {
         Class implClass = impl.getImpl();
         Constructor constructor = edgeClass.getConstructor(implClass, parameters);
+        return "";
+    }
+/*
         Object ref = edgeConstructor.newInstance(constructor, parameters);
         // FIX 1665 Should we create Resolved object?  Yes please.
         // FIX BREADCRUMB 1665 Build up the resolved object class.
@@ -31,9 +35,4 @@ public final class DefaultCreator implements Creator {
         // FIX 1665 Time to delegate to an onion :-)
     }
 */
-
-    public Object create(Class[] parameters) {
-        // FIX 1665 Fix.
-        return "";
-    }
 }
