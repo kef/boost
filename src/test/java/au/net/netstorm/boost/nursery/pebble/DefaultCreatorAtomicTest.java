@@ -12,6 +12,11 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.temp.Creator;
+import au.net.netstorm.boost.nursery.temp.Implementation;
+import au.net.netstorm.boost.nursery.temp.Onion;
+import au.net.netstorm.boost.nursery.temp.BermudaOnion;
+import au.net.netstorm.boost.nursery.temp.DefaultCreator;
 
 public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Creator subject;
