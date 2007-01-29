@@ -28,13 +28,4 @@ public final class PebbleDemoTest extends TestCase {
         } catch (NonMatchingCreatorException expected) {
         }
     }
-
-    // FIX 1665 Creator must be interface.
-    // FIX 1665 Creator must have single method matching object constructor.
-
-
-    // DONE:
-    // FIX 1665 Test pebble with no "new" interface.
-    // FIX 1665 Creator method must be "_".
-    // FIX 1665 Creator method "_" must match object's single constructor parameters.
 }
