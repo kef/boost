@@ -14,19 +14,20 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Creator subject;
     private MockExpectations expect;
-    // FIX BREADCRUMB 1665 Look
     private EdgeClass edgeClass;
     private EdgeConstructor edgeConstructor;
-    // FIX 1665 Should triangulate here, but thinking of moving to stateful Edges.
-    private Class cls = HashSet.class;
     private Implementation implementation;
     private Interface type;
-    private FieldTestUtil fieldTestUtil = new DefaultFieldTestUtil();
+    private Onion onion;
+
+    // FIX 1665 Should triangulate here, but thinking of moving to stateful Edges.
+    private Class cls = HashSet.class;
     private Constructor constructor = HashSet.class.getConstructors()[0];
     private Class[] parameters = new Class[]{};
     private Object ref = new Object();
+    // FIX 1665 Rename.
     private Object wrapped = new Object();
-    private Onion onion;
+    private FieldTestUtil fieldTestUtil = new DefaultFieldTestUtil();
 
     public void testCreator() {
         expect.oneCall(implementation, cls, "getImpl");
@@ -34,8 +35,9 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
         expect.oneCall(edgeConstructor, ref, "newInstance", constructor, parameters);
         expect.oneCall(implementation, type, "getType");
         Object result = subject.create(parameters);
+        // FIX BREADCRUMB 1665 Back here.
+        // FIX 1665 Complete.
 //        assertEquals(wrapped, result);
-        // FIX BREADCRUMB 1665 -10000 Pass in an implementation reference.
     }
 
     public void setupSubjects() {
