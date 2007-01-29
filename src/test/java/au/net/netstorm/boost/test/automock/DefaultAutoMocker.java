@@ -87,8 +87,9 @@ class DefaultAutoMocker implements AutoMocker {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
-            if (field.getName().contains("$")) break;
-            result.add(field);
+            if (!field.getName().contains("$")) {
+                result.add(field);
+            }
         }
         return (Field[]) result.toArray(new Field[]{});
     }
