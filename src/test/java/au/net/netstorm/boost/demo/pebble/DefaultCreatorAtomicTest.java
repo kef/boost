@@ -3,7 +3,9 @@ package au.net.netstorm.boost.demo.pebble;
 import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -28,6 +30,12 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private Object concreteWithOnionLayer = new Object();
     private FieldTestUtil fieldTestUtil = new DefaultFieldTestUtil();
 
+    public void setupSubjects() {
+        subject = new DefaultCreator(implementation);
+        checkCreationOfInstanceVariables();
+        overwriteConstructedInstancesWithMocks();
+    }
+
     public void testCreator() {
         expect.oneCall(implementation, cls, "getImpl");
         expect.oneCall(edgeClass, constructor, "getConstructor", cls, parameters);
@@ -38,10 +46,22 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
         assertEquals(concreteWithOnionLayer, result);
     }
 
-    public void setupSubjects() {
-        // FIX 1665 Remove onion from the constructor
-        subject = new DefaultCreator(implementation, onion);
+    private void checkCreationOfInstanceVariables() {
+        checkConstructedInstanceVariable(subject, "edgeConstructor", DefaultEdgeConstructor.class);
+        checkConstructedInstanceVariable(subject, "edgeClass", DefaultEdgeClass.class);
+        checkConstructedInstanceVariable(subject, "onion", BermudaOnion.class);
+    }
+
+    // FIX 1665 Move this to a TestUtil or have a Wiring test that scoops all these somewhere, somehow...
+    private void checkConstructedInstanceVariable(Creator subject, String fieldName, Class implementationClass) {
+        Object o = fieldTestUtil.getInstance(subject, fieldName);
+        assertNotNull("You must create an instance of " + implementationClass + " for " + fieldName, o);
+        assertSame(o.getClass(), implementationClass);
+    }
+
+    private void overwriteConstructedInstancesWithMocks() {
         fieldTestUtil.setInstance(subject, "edgeConstructor", edgeConstructor);
         fieldTestUtil.setInstance(subject, "edgeClass", edgeClass);
+        fieldTestUtil.setInstance(subject, "onion", onion);
     }
 }
