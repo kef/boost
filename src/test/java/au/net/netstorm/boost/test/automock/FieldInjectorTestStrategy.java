@@ -8,7 +8,9 @@ import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
 import au.net.netstorm.boost.test.atom.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import org.jmock.MockObjectTestCase;
@@ -21,6 +23,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldSpecTestUtil fieldSpecTestUtil = new DefaultFieldSpecTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private final FieldRetriever fieldRetriever = new DefaultFieldRetriever();
+    private final ModifierTestUtil modifierTestUtil = new DefaultModifierTestUtil();
     private final UsesMocks testCase;
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
@@ -66,16 +69,22 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
             Class fieldType = field.getType();
-            if (isFieldRandomizableAndNotFixed(fieldType, field.getName())) {
-                FieldSpec fieldSpec = new DefaultFieldSpec(field.getName(), fieldType);
-                fieldSpecSet.add(fieldSpec);
+            String fieldName = field.getName();
+            boolean isFinal = modifierTestUtil.isFinal(field);
+            if (isFieldRandomizableAndNotFixed(isFinal, fieldType, fieldName)) {
+                addFieldToSet(fieldName, fieldType, fieldSpecSet);
             }
         }
         return (FieldSpec[]) fieldSpecSet.toArray(new FieldSpec[]{});
     }
 
-    private boolean isFieldRandomizableAndNotFixed(Class fieldType, String fieldName) {
-        return isFieldRandomizable(fieldType) && !fieldName.startsWith("fixed");
+    private void addFieldToSet(String fieldName, Class fieldType, Set fieldSpecSet) {
+        FieldSpec fieldSpec = new DefaultFieldSpec(fieldName, fieldType);
+        fieldSpecSet.add(fieldSpec);
+    }
+
+    private boolean isFieldRandomizableAndNotFixed(boolean isFinal, Class fieldType, String fieldName) {
+        return !isFinal && isFieldRandomizable(fieldType) && !fieldName.startsWith("fixed");
     }
 
     private boolean isFieldRandomizable(Class fieldType) {
