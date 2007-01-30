@@ -10,7 +10,7 @@ import au.net.netstorm.boost.nursery.pebble.onion.Onion;
 import au.net.netstorm.boost.nursery.pebble.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1665 Call this an instantiator?
+// FIX 1665 Build up an instantiator.  This then delegates to the instantiator and the onion.
 public final class DefaultCreator implements Creator {
     private Implementation impl;
     private Onion onion = new BermudaOnion();
