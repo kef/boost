@@ -5,4 +5,6 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public interface ProxyFactory {
     Object newProxy(Interface type, InvocationHandler handler);
+
+    Object newProxy(Interface[] types, InvocationHandler handler);
 }

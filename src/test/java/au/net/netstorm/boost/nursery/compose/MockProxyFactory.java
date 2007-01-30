@@ -10,4 +10,8 @@ final class MockProxyFactory extends Assert implements ProxyFactory {
     public Object newProxy(Interface type, InvocationHandler handler) {
         throw new NotImplementedException();
     }
+
+    public Object newProxy(Interface[] types, InvocationHandler handler) {
+        throw new NotImplementedException();
+    }
 }

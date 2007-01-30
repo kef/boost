@@ -12,10 +12,23 @@ public final class DefaultProxyFactory implements ProxyFactory {
     }
 
     public Object newProxy(Interface type, InvocationHandler handler) {
+        Interface[] types = {type};
+        return newProxy(types, handler);
+    }
+
+    public Object newProxy(Interface[] types, InvocationHandler handler) {
         ClassLoader classloader = getClassLoader();
-        Class cls = type.getType();
-        Class[] types = {cls};
-        return delegate.getProxy(classloader, types, handler);
+        Class[] ifaces = toClasses(types);
+        return delegate.getProxy(classloader, ifaces, handler);
+    }
+
+    private Class[] toClasses(Interface[] types) {
+        int length = types.length;
+        Class[] result = new Class[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = types[i].getType();
+        }
+        return result;
     }
 
     private ClassLoader getClassLoader() {

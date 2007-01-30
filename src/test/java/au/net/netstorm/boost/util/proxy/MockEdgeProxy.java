@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
@@ -36,11 +38,11 @@ final class MockEdgeProxy extends Assert implements EdgeProxy {
     }
 
     private Class[] toClasses(Interface[] types) {
-        int length = types.length;
-        Class[] result = new Class[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = types[i].getType();
+        List result = new ArrayList();
+        for (int i = 0; i < types.length; i++) {
+            Class cls = types[i].getType();
+            result.add(cls);
         }
-        return result;
+        return (Class[]) result.toArray(new Class[]{});
     }
 }

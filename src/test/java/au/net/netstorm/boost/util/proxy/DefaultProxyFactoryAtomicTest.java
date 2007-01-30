@@ -9,27 +9,48 @@ import junit.framework.TestCase;
 public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private static final Interface TYPE_1 = new DefaultInterface(CharSequence.class);
     private static final Interface TYPE_2 = new DefaultInterface(Map.class);
+    private static final Interface[] TYPES = { TYPE_1, TYPE_2 };
     private final MockEdgeProxy mockEdgeProxyFactory = new MockEdgeProxy();
     private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
     private final InvocationHandler handler = new MockInvocationHandler();
 
-    public void testFactory() {
-        checkFactory(TYPE_1);
-        checkFactory(TYPE_2);
+    public void testSingleType() {
+        checkSingleType(TYPE_1);
+        checkSingleType(TYPE_2);
     }
 
-    private void checkFactory(Interface type) {
-        Object expected = new Object();
-        mockEdgeProxyFactory.init(expected);
+    public void testMultipleTypes() {
+        checkMultipleTypes(TYPES);
+    }
+
+    private void checkSingleType(Interface type) {
+        Object expected = prepare();
         Object result = factory.newProxy(type, handler);
         assertSame(expected, result);
         checkCall(type);
     }
 
+    private void checkMultipleTypes(Interface[] types) {
+        Object expected = prepare();
+        Object result = factory.newProxy(types, handler);
+        assertSame(expected, result);
+        checkCall(types);
+    }
+
+    private Object prepare() {
+        Object expected = new Object();
+        mockEdgeProxyFactory.init(expected);
+        return expected;
+    }
+
     private void checkCall(Interface type) {
+        Interface[] types = {type};
+        checkCall(types);
+    }
+
+    private void checkCall(Interface[] types) {
         Class cls = factory.getClass();
         ClassLoader classLoader = cls.getClassLoader();
-        Interface[] types = {type};
         mockEdgeProxyFactory.verify(classLoader, types, handler);
     }
 }
