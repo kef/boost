@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.atom;
 
-interface PrimitiveBoxer {
+public interface PrimitiveBoxer {
     Class getBoxed(Class primitive);
 
     boolean isPrimitive(Class candidate);

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import junit.framework.Assert;
 
-final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
+public final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
     private final Map map = new HashMap();
 
     {
