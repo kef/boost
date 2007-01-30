@@ -33,36 +33,6 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         testCase.setupSubjects();
     }
 
-    private void assignRandomsToPrimitives(Field[] fields) {
-        FieldSpec[] primitiveFields = getPrimitiveFields(fields);
-        Object[] instances = fieldSpecTestUtil.getInstances(primitiveFields);
-        for (int i = 0; i < primitiveFields.length; i++) {
-            FieldSpec primitiveField = primitiveFields[i];
-            Object instanceValue = instances[i];
-            fielder.setInstance(testCase, primitiveField.getName(), instanceValue);
-        }
-    }
-
-    private FieldSpec[] getPrimitiveFields(Field[] fields) {
-        Set fieldSpecSet = new HashSet();
-        for (int i = 0; i < fields.length; i++) {
-            Field field = fields[i];
-            Class fieldType = field.getType();
-            if (primitiveBoxer.isPrimitive(fieldType)) {
-                FieldSpec fieldSpec = new DefaultFieldSpec(field.getName(), fieldType);
-                fieldSpecSet.add(fieldSpec);
-            }
-        }
-        return (FieldSpec[]) fieldSpecSet.toArray(new FieldSpec[]{});
-    }
-
-    private void autoMockRemainingFields(Field[] fields) {
-        AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
-        MockExpectations mockExpectations = buildMockExpectations(autoMocker);
-        setExpectField(mockExpectations);
-        autoMocker.wireMocks(fields);
-    }
-
     public void verify() {
         mocker.verify();
     }
@@ -100,6 +70,41 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private Field[] getDeclaredFields(Object ref) {
         Class cls = ref.getClass();
         return cls.getDeclaredFields();
+    }
+
+    private void assignRandomsToPrimitives(Field[] fields) {
+        FieldSpec[] primitiveFields = getPrimitiveFieldsForRandomization(fields);
+        Object[] instances = fieldSpecTestUtil.getInstances(primitiveFields);
+        for (int i = 0; i < primitiveFields.length; i++) {
+            FieldSpec primitiveField = primitiveFields[i];
+            Object instanceValue = instances[i];
+            fielder.setInstance(testCase, primitiveField.getName(), instanceValue);
+        }
+    }
+
+    private FieldSpec[] getPrimitiveFieldsForRandomization(Field[] fields) {
+        Set fieldSpecSet = new HashSet();
+        for (int i = 0; i < fields.length; i++) {
+            Field field = fields[i];
+            Class fieldType = field.getType();
+            if (isFieldPrimitiveAndNotFixed(fieldType)) {
+                FieldSpec fieldSpec = new DefaultFieldSpec(field.getName(), fieldType);
+                fieldSpecSet.add(fieldSpec);
+            }
+        }
+        return (FieldSpec[]) fieldSpecSet.toArray(new FieldSpec[]{});
+    }
+
+    private boolean isFieldPrimitiveAndNotFixed(Class fieldType) {
+        String fieldName = fieldType.getName();
+        return primitiveBoxer.isPrimitive(fieldType) && !fieldName.startsWith("fixed");
+    }
+
+    private void autoMockRemainingFields(Field[] fields) {
+        AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
+        MockExpectations mockExpectations = buildMockExpectations(autoMocker);
+        setExpectField(mockExpectations);
+        autoMocker.wireMocks(fields);
     }
 }
 // } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.
