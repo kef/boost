@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.pebble;
+package au.net.netstorm.boost.nursery.pebble.type;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Interface;
