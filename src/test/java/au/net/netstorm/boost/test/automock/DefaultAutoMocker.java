@@ -2,9 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -24,8 +22,10 @@ class DefaultAutoMocker implements AutoMocker {
         this.mockProvider = mockProvider;
     }
 
-    public void wireMocks() {
-        wireMocks(testCase);
+    public void wireMocks(Field[] fields) {
+        for (int i = 0; i < fields.length; i++) {
+            tryCreateMock(fields[i]);
+        }
     }
 
     public Mock getMock(Object proxy) {
@@ -34,13 +34,6 @@ class DefaultAutoMocker implements AutoMocker {
             return mock;
         }
         throw new IllegalStateException("Mock does not exist for provided proxy.");
-    }
-
-    private void wireMocks(UsesMocks test) {
-        Field[] fields = getFields(test);
-        for (int i = 0; i < fields.length; i++) {
-            tryCreateMock(fields[i]);
-        }
     }
 
     private void tryCreateMock(Field field) {
@@ -75,28 +68,6 @@ class DefaultAutoMocker implements AutoMocker {
         if (isFinal) {
             throw new IllegalStateException("Cannot set a final null field with a non null value");
         }
-    }
-
-    private Field[] getFields(Object ref) {
-        Field[] fields = getDeclaredFields(ref);
-        return siftOutSyntheticFields(fields);
-    }
-
-    // FIX 1665 Do we really need this.
-    private Field[] siftOutSyntheticFields(Field[] fields) {
-        Set result = new HashSet();
-        for (int i = 0; i < fields.length; i++) {
-            Field field = fields[i];
-            if (!field.getName().contains("$")) {
-                result.add(field);
-            }
-        }
-        return (Field[]) result.toArray(new Field[]{});
-    }
-
-    private Field[] getDeclaredFields(Object ref) {
-        Class cls = ref.getClass();
-        return cls.getDeclaredFields();
     }
 
     private Object getFieldValue(Field field) {
