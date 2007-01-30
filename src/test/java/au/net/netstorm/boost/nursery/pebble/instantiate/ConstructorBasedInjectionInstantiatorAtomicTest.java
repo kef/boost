@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 public final class ConstructorBasedInjectionInstantiatorAtomicTest extends TestCase {
 
     public void testInstantiate() {
+        Instantiator instantiator = new ConstructorBasedInjectionInstantiator();
         // FIX BREADCRUMB 1665 Complete.
     }
 }
