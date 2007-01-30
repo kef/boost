@@ -75,7 +75,11 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     private boolean isFieldRandomizableAndNotFixed(Class fieldType, String fieldName) {
-        return primitiveBoxer.isPrimitive(fieldType) && !fieldName.startsWith("fixed");
+        return isFieldRandomizable(fieldType) && !fieldName.startsWith("fixed");
+    }
+
+    private boolean isFieldRandomizable(Class fieldType) {
+        return primitiveBoxer.isPrimitive(fieldType) || fieldType.equals(String.class);
     }
 
     private void autoMockRemainingFields(Field[] fields) {
