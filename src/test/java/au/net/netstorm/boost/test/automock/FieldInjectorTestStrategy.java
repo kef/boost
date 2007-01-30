@@ -87,7 +87,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
             Class fieldType = field.getType();
-            if (isFieldPrimitiveAndNotFixed(fieldType)) {
+            if (isFieldPrimitiveAndNotFixed(fieldType, field.getName())) {
                 FieldSpec fieldSpec = new DefaultFieldSpec(field.getName(), fieldType);
                 fieldSpecSet.add(fieldSpec);
             }
@@ -95,8 +95,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         return (FieldSpec[]) fieldSpecSet.toArray(new FieldSpec[]{});
     }
 
-    private boolean isFieldPrimitiveAndNotFixed(Class fieldType) {
-        String fieldName = fieldType.getName();
+    private boolean isFieldPrimitiveAndNotFixed(Class fieldType, String fieldName) {
         return primitiveBoxer.isPrimitive(fieldType) && !fieldName.startsWith("fixed");
     }
 
