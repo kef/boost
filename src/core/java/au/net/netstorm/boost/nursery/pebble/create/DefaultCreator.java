@@ -20,11 +20,12 @@ public final class DefaultCreator implements Creator {
         this.impl = impl;
     }
 
+    // FIX 1665 Should pass in instances ... not types.
     public Object create(Class[] parameters) {
         Class implClass = impl.getImpl();
         Constructor constructor = edgeClass.getConstructor(implClass, parameters);
         Object ref = edgeConstructor.newInstance(constructor, parameters);
-        Interface implType = impl.getType();
-        return onion.onionize(ref, implType);
+        Interface[] implTypes = impl.getTypes();
+        return onion.onionize(ref, implTypes);
     }
 }

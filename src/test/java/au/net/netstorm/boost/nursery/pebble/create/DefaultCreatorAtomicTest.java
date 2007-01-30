@@ -22,7 +22,8 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private EdgeClass edgeClass;
     private EdgeConstructor edgeConstructor;
     private Implementation implementation;
-    private Interface type;
+    // FIX 1665 Fix auto mocking to handle this for us by creating a "random" thing.
+    private Interface[] types = { };
     private Onion onion;
 
     // FIX 1665 Should triangulate here, but thinking of moving to stateful Edges.
@@ -43,8 +44,8 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
         expect.oneCall(implementation, cls, "getImpl");
         expect.oneCall(edgeClass, constructor, "getConstructor", cls, parameters);
         expect.oneCall(edgeConstructor, concreteObject, "newInstance", constructor, parameters);
-        expect.oneCall(implementation, type, "getType");
-        expect.oneCall(onion, concreteWithOnionLayer, "onionize", concreteObject, type);
+        expect.oneCall(implementation, types, "getTypes");
+        expect.oneCall(onion, concreteWithOnionLayer, "onionize", concreteObject, types);
         Object result = subject.create(parameters);
         assertEquals(concreteWithOnionLayer, result);
     }

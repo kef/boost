@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 // FIX 1665 Complete.
 public final class DefaultImplementationAtomicTest extends TestCase {
     private AtomTestChecker checker = new DataAtomTestChecker();
-    private FieldSpec f1 = new DefaultFieldSpec("type", Interface.class);
+    private FieldSpec f1 = new DefaultFieldSpec("types", Interface[].class);
     private FieldSpec f2 = new DefaultFieldSpec("impl", Class.class);
     private FieldSpec[] fields = { f1, f2};
 
