@@ -7,6 +7,7 @@ public final class DefaultImplementation extends Primordial implements Implement
     Interface type;
     Class impl;
 
+    // FIX 1665 Two constructors?
     public DefaultImplementation(Interface type, Class impl) {
         // FIX 1665 This should check the impl actually implements the type. 
         this.type = type;
