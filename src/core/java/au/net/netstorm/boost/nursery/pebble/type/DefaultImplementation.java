@@ -7,9 +7,7 @@ public final class DefaultImplementation extends Primordial implements Implement
     Interface[] types;
     Class impl;
 
-    // FIX 1665 Two constructors?
     public DefaultImplementation(Interface[] types, Class impl) {
-        // FIX 1665 This should check the impl actually implements the type.
         if (types == null) throw new IllegalArgumentException();
         if (impl == null) throw new IllegalArgumentException();
         this.types = (Interface[]) types.clone();

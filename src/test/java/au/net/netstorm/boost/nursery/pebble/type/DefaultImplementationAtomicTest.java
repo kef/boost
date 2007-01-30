@@ -17,4 +17,6 @@ public final class DefaultImplementationAtomicTest extends TestCase {
     public void testDataAtom() {
         checker.checkAtom(DefaultImplementation.class, fields);
     }
+
+    // FIX 1665 This should check the impl actually implements the type.
 }

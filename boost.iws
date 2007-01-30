@@ -17,14 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementation.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/Implementation.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/Implementation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/onion/BermudaOnionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/onion/BermudaOnionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/onion/BermudaOnion.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/onion/BermudaOnion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/onion/Onion.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/onion/Onion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementationAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementationAtomicTest.java" />
     </list>
   </component>
@@ -141,10 +133,10 @@
   <component name="FavoritesProjectViewPane" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultImplementation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DefaultImplementation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="12" selection-start="537" selection-end="537" vertical-scroll-proportion="0.2984293">
+            <state line="10" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.22382198">
               <folding />
             </state>
           </provider>
@@ -213,10 +205,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultImplementationAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DefaultImplementationAtomicTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementationAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="34" selection-start="787" selection-end="787" vertical-scroll-proportion="0.2984293">
+            <state line="9" column="0" selection-start="371" selection-end="371" vertical-scroll-proportion="0.09947644">
               <folding />
             </state>
           </provider>
@@ -1302,7 +1294,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2557" height="1573" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
@@ -1318,7 +1310,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920255" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44376695" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44376695" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
@@ -1599,16 +1591,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementationAtomicTest.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="34" selection-start="787" selection-end="787" vertical-scroll-proportion="0.2984293">
+        <state line="10" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.22382198">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementation.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/type/DefaultImplementationAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="12" selection-start="537" selection-end="537" vertical-scroll-proportion="0.2984293">
+        <state line="9" column="0" selection-start="371" selection-end="371" vertical-scroll-proportion="0.09947644">
           <folding />
         </state>
       </provider>
