@@ -16,9 +16,7 @@
     <option name="USER" value="" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-    </list>
+    <list default="true" name="Default" comment="" />
   </component>
   <component name="ChangeListSynchronizer" />
   <component name="ChangesViewManager" flattened_view="true" />
@@ -154,7 +152,7 @@
       <file leaf-file-name="DefaultAutoMocker.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultAutoMocker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="7" selection-start="2699" selection-end="2699" vertical-scroll-proportion="0.48181817">
+            <state line="87" column="49" selection-start="2878" selection-end="2878" vertical-scroll-proportion="0.53939396">
               <folding />
             </state>
           </provider>
@@ -1021,12 +1019,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2557" height="1573" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="TODO" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2906504" order="6" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2906504" order="6" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23205742" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283683" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
@@ -1215,7 +1213,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultAutoMocker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="7" selection-start="2699" selection-end="2699" vertical-scroll-proportion="0.48181817">
+        <state line="87" column="49" selection-start="2878" selection-end="2878" vertical-scroll-proportion="0.53939396">
           <folding />
         </state>
       </provider>
