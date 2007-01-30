@@ -19,7 +19,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldSpecTestUtil fieldSpecTestUtil = new DefaultFieldSpecTestUtil();
-    private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
+    private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
+    private final FieldRetriever fieldRetriever = new DefaultFieldRetriever();
     private final UsesMocks testCase;
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
@@ -27,8 +28,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
-        Field[] fields = getFields(testCase);
-        assignRandomsToPrimitives(fields);
+        Field[] fields = fieldRetriever.retrieve(testCase);
+        assignRandomValuesToEligibleFields(fields);
         autoMockRemainingFields(fields);
         testCase.setupSubjects();
     }
@@ -49,45 +50,22 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         return new DefaultMockExpectations(delegate);
     }
 
-    // FIX 1671 Move this stuff to a different class.
-    private Field[] getFields(Object ref) {
-        Field[] fields = getDeclaredFields(ref);
-        return siftOutSyntheticFields(fields);
-    }
-
-    // FIX 1665 Do we really need this.
-    private Field[] siftOutSyntheticFields(Field[] fields) {
-        Set result = new HashSet();
-        for (int i = 0; i < fields.length; i++) {
-            Field field = fields[i];
-            if (!field.getName().contains("$")) {
-                result.add(field);
-            }
-        }
-        return (Field[]) result.toArray(new Field[]{});
-    }
-
-    private Field[] getDeclaredFields(Object ref) {
-        Class cls = ref.getClass();
-        return cls.getDeclaredFields();
-    }
-
-    private void assignRandomsToPrimitives(Field[] fields) {
-        FieldSpec[] primitiveFields = getPrimitiveFieldsForRandomization(fields);
-        Object[] instances = fieldSpecTestUtil.getInstances(primitiveFields);
-        for (int i = 0; i < primitiveFields.length; i++) {
-            FieldSpec primitiveField = primitiveFields[i];
-            Object instanceValue = instances[i];
-            fielder.setInstance(testCase, primitiveField.getName(), instanceValue);
+    private void assignRandomValuesToEligibleFields(Field[] fields) {
+        FieldSpec[] eligibleFields = getFieldsToRandomize(fields);
+        Object[] randomInstances = fieldSpecTestUtil.getInstances(eligibleFields);
+        for (int i = 0; i < eligibleFields.length; i++) {
+            FieldSpec primitiveField = eligibleFields[i];
+            Object randomValue = randomInstances[i];
+            fielder.setInstance(testCase, primitiveField.getName(), randomValue);
         }
     }
 
-    private FieldSpec[] getPrimitiveFieldsForRandomization(Field[] fields) {
+    private FieldSpec[] getFieldsToRandomize(Field[] fields) {
         Set fieldSpecSet = new HashSet();
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
             Class fieldType = field.getType();
-            if (isFieldPrimitiveAndNotFixed(fieldType, field.getName())) {
+            if (isFieldRandomizableAndNotFixed(fieldType, field.getName())) {
                 FieldSpec fieldSpec = new DefaultFieldSpec(field.getName(), fieldType);
                 fieldSpecSet.add(fieldSpec);
             }
@@ -95,7 +73,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         return (FieldSpec[]) fieldSpecSet.toArray(new FieldSpec[]{});
     }
 
-    private boolean isFieldPrimitiveAndNotFixed(Class fieldType, String fieldName) {
+    private boolean isFieldRandomizableAndNotFixed(Class fieldType, String fieldName) {
         return primitiveBoxer.isPrimitive(fieldType) && !fieldName.startsWith("fixed");
     }
 
