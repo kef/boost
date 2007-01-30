@@ -50,6 +50,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         return new DefaultMockExpectations(delegate);
     }
 
+    // FIX 1671 Seperate Class called AutoRandomizer like AutoMocker.
     private void assignRandomValuesToEligibleFields(Field[] fields) {
         FieldSpec[] eligibleFields = getFieldsToRandomize(fields);
         Object[] randomInstances = fieldSpecTestUtil.getInstances(eligibleFields);
