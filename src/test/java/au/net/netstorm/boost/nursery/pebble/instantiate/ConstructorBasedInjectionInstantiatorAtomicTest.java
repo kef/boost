@@ -7,6 +7,7 @@ public final class ConstructorBasedInjectionInstantiatorAtomicTest extends TestC
 
     public void testInstantiate() {
         checkInstantiate("Hi");
+//        checkInstantiate("There");
         // FIX BREADCRUMB 1665 Complete.
     }
 
