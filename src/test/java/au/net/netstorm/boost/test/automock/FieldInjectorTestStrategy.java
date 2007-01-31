@@ -71,7 +71,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
             Class fieldType = field.getType();
             String fieldName = field.getName();
             boolean isFinal = modifierTestUtil.isFinal(field);
-            if (isFieldRandomizableAndNotFixed(isFinal, fieldType, fieldName)) {
+            if (isFieldRandomizableAndNotFinal(isFinal, fieldType)) {
                 addFieldToSet(fieldName, fieldType, fieldSpecSet);
             }
         }
@@ -83,8 +83,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         fieldSpecSet.add(fieldSpec);
     }
 
-    private boolean isFieldRandomizableAndNotFixed(boolean isFinal, Class fieldType, String fieldName) {
-        return !isFinal && isFieldRandomizable(fieldType) && !fieldName.startsWith("fixed");
+    private boolean isFieldRandomizableAndNotFinal(boolean isFinal, Class fieldType) {
+        return !isFinal && isFieldRandomizable(fieldType);
     }
 
     private boolean isFieldRandomizable(Class fieldType) {
