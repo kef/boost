@@ -136,7 +136,7 @@
       <file leaf-file-name="ConstructorBasedInjectionInstantiator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/ConstructorBasedInjectionInstantiator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="19" selection-start="226" selection-end="226" vertical-scroll-proportion="0.09947644">
+            <state line="4" column="19" selection-start="226" selection-end="226" vertical-scroll-proportion="0.09934641">
               <folding />
             </state>
           </provider>
@@ -145,7 +145,7 @@
       <file leaf-file-name="ConstructorBasedInjectionInstantiatorAtomicTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/ConstructorBasedInjectionInstantiatorAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="8" selection-start="309" selection-end="309" vertical-scroll-proportion="0.19895288">
+            <state line="9" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.22352941">
               <folding />
             </state>
           </provider>
@@ -154,7 +154,7 @@
       <file leaf-file-name="Instantiator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/Instantiator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.07460733">
+            <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.07450981">
               <folding />
             </state>
           </provider>
@@ -1296,7 +1296,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920255" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44376695" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44308943" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
@@ -1578,21 +1578,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/Instantiator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.07460733">
+        <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.07450981">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/ConstructorBasedInjectionInstantiator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="19" selection-start="226" selection-end="226" vertical-scroll-proportion="0.09947644">
+        <state line="4" column="19" selection-start="226" selection-end="226" vertical-scroll-proportion="0.09934641">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/ConstructorBasedInjectionInstantiatorAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="8" selection-start="309" selection-end="309" vertical-scroll-proportion="0.19895288">
+        <state line="9" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.22352941">
           <folding />
         </state>
       </provider>
