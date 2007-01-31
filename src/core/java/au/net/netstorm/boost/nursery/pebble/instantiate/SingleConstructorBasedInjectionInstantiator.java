@@ -12,7 +12,7 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
 
     public Object instantiate(Class type, Object[] parameters) {
         Constructor constructor = reflectMaster.getConstructor(type);
-    
+        constructor.setAccessible(true);
         return edgeConstructor.newInstance(constructor, parameters);
     }
 }

@@ -17,10 +17,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java" />
     </list>
   </component>
   <component name="ChangeListSynchronizer" />
@@ -139,7 +138,7 @@
       <file leaf-file-name="SingleConstructorBasedInjectionInstantiator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="4" selection-start="729" selection-end="729" vertical-scroll-proportion="0.34680575">
+            <state line="14" column="36" selection-start="759" selection-end="763" vertical-scroll-proportion="0.34680575">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,7 +167,7 @@
       <file leaf-file-name="SingleConstructorBasedInjectionInstantiatorAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="39" selection-start="603" selection-end="603" vertical-scroll-proportion="0.3963494">
+            <state line="17" column="30" selection-start="659" selection-end="659" vertical-scroll-proportion="0.42112124">
               <folding />
             </state>
           </provider>
@@ -177,7 +176,7 @@
       <file leaf-file-name="TestObject.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="62" selection-start="251" selection-end="251" vertical-scroll-proportion="0.17340288">
+            <state line="8" column="4" selection-start="249" selection-end="249" vertical-scroll-proportion="0.1981747">
               <folding />
             </state>
           </provider>
@@ -1136,6 +1135,9 @@
     <option name="SHOW_DIALOG" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="au.net.netstorm.boost.nursery.pebble.instantiate" />
       <recent name="au.net.netstorm.boost.nursery.pebble.create" />
@@ -1674,13 +1676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/DefaultEdgeConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="602" selection-end="602" vertical-scroll-proportion="0.29726207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="41" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.47066492">
@@ -1688,9 +1683,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/DefaultEdgeConstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="22" selection-start="602" selection-end="602" vertical-scroll-proportion="0.29726207">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="4" selection-start="729" selection-end="729" vertical-scroll-proportion="0.34680575">
+        <state line="14" column="36" selection-start="759" selection-end="763" vertical-scroll-proportion="0.34680575">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1699,14 +1701,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="39" selection-start="603" selection-end="603" vertical-scroll-proportion="0.3963494">
+        <state line="17" column="30" selection-start="659" selection-end="659" vertical-scroll-proportion="0.42112124">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="62" selection-start="251" selection-end="251" vertical-scroll-proportion="0.17340288">
+        <state line="8" column="4" selection-start="249" selection-end="249" vertical-scroll-proportion="0.1981747">
           <folding />
         </state>
       </provider>
