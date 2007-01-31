@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-import au.net.netstorm.boost.nursery.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.nursery.pebble.instantiate.Instantiator;
+import au.net.netstorm.boost.nursery.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.nursery.pebble.onion.BermudaOnion;
 import au.net.netstorm.boost.nursery.pebble.onion.Onion;
 import au.net.netstorm.boost.test.automock.MockExpectations;
@@ -28,10 +28,10 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     }
 
     public void testCreator() {
-//        expect.oneCall(instantiator, rawRef, "instantiate", type, parameters);
-//        expect.oneCall(onion, wrappedRef, "onionize", rawRef);
+        expect.oneCall(instantiator, rawRef, "instantiate", type, parameters);
+        expect.oneCall(onion, wrappedRef, "onionize", rawRef);
         Object result = subject.create(type, parameters);
-//        assertEquals(wrappedRef, result);
+        assertEquals(wrappedRef, result);
     }
 
     private void checkCreationOfInstanceVariables() {

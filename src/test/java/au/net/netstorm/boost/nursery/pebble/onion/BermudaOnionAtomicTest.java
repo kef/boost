@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.pebble.onion;
 
-import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 public final class BermudaOnionAtomicTest extends TestCase {

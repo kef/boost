@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-import junit.framework.TestCase;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
+import au.net.netstorm.boost.util.introspect.FieldSpec;
+import junit.framework.TestCase;
 
 public final class DefaultCreatorFieldAtomicTest extends TestCase {
     private DataAtomTestChecker checker = new DataAtomTestChecker();
