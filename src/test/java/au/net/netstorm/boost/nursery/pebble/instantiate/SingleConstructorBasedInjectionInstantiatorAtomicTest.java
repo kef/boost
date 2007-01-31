@@ -2,8 +2,8 @@ package au.net.netstorm.boost.nursery.pebble.instantiate;
 
 import junit.framework.TestCase;
 
-public final class ConstructorBasedInjectionInstantiatorAtomicTest extends TestCase {
-    private Instantiator instantiator = new ConstructorBasedInjectionInstantiator();
+public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends TestCase {
+    private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
 
     public void testInstantiate() {
         checkInstantiate("Hi");
