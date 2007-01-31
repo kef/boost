@@ -9,6 +9,7 @@ public final class ConstructorBasedInjectionInstantiatorAtomicTest extends TestC
         Class type = String.class;
         Object[] parameters = { "Hi" };
         Object ref = instantiator.instantiate(type, parameters);
+        assertEquals("Hi", ref);
         // FIX BREADCRUMB 1665 Complete.
     }
 }
