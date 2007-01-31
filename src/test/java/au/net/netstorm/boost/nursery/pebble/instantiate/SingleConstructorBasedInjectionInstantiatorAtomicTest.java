@@ -7,14 +7,15 @@ public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends
 
     public void testInstantiate() {
         checkInstantiate("Hi");
-//        checkInstantiate("There");
+        checkInstantiate("There");
         // FIX BREADCRUMB 1665 Complete.
     }
 
     private void checkInstantiate(String parameter) {
-        Class type = String.class;
+        Class type = TestObject.class;
         Object[] parameters = {parameter};
         Object ref = instantiator.instantiate(type, parameters);
-        assertEquals(parameter, ref);
+        TestObject expected = new TestObject(parameter);
+        assertEquals(expected, ref);
     }
 }
