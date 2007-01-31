@@ -7,7 +7,9 @@ import au.net.netstorm.boost.nursery.pebble.onion.Onion;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldInstantiationChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldInstantiationChecker;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
@@ -20,6 +22,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private Object rawRef = new Object();
     private Object wrappedRef = new Object();
     private FieldTestUtil fieldTestUtil = new DefaultFieldTestUtil();
+    private FieldInstantiationChecker fieldInstantiationChecker = new DefaultFieldInstantiationChecker();
 
     public void setupSubjects() {
         subject = new DefaultCreator();
@@ -35,15 +38,8 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     }
 
     private void checkCreationOfInstanceVariables() {
-        checkConstructedInstanceVariable(subject, "instantiator", SingleConstructorBasedInjectionInstantiator.class);
-        checkConstructedInstanceVariable(subject, "onion", BermudaOnion.class);
-    }
-
-    // FIX 1665 Move this to a TestUtil or have a Wiring test that scoops all these somewhere, somehow...
-    private void checkConstructedInstanceVariable(Creator subject, String fieldName, Class implementationClass) {
-        Object o = fieldTestUtil.getInstance(subject, fieldName);
-        assertNotNull("You must create an instance of " + implementationClass + " for " + fieldName, o);
-        assertSame(o.getClass(), implementationClass);
+        fieldInstantiationChecker.check(subject, "instantiator", SingleConstructorBasedInjectionInstantiator.class);
+        fieldInstantiationChecker.check(subject, "onion", BermudaOnion.class);
     }
 
     private void overwriteConstructedInstancesWithMocks() {

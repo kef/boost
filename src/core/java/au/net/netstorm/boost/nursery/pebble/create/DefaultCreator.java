@@ -5,7 +5,6 @@ import au.net.netstorm.boost.nursery.pebble.instantiate.SingleConstructorBasedIn
 import au.net.netstorm.boost.nursery.pebble.onion.BermudaOnion;
 import au.net.netstorm.boost.nursery.pebble.onion.Onion;
 
-// FIX 1665 Build up an instantiator.  This then delegates to the instantiator and the onion.
 public final class DefaultCreator implements Creator {
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private Onion onion = new BermudaOnion();
