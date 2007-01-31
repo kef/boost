@@ -64,6 +64,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         }
     }
 
+    // FIX 32416 Too big.
     private FieldSpec[] getFieldsToRandomize(Field[] fields) {
         Set fieldSpecSet = new HashSet();
         for (int i = 0; i < fields.length; i++) {
