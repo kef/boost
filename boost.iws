@@ -18,7 +18,7 @@
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
     </list>
   </component>
@@ -135,57 +135,10 @@
   <component name="FavoritesProjectViewPane" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SingleConstructorBasedInjectionInstantiator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="36" selection-start="759" selection-end="763" vertical-scroll-proportion="0.34680575">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultCreator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="41" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.47066492">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultEdgeConstructor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/DefaultEdgeConstructor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="22" selection-start="602" selection-end="602" vertical-scroll-proportion="0.29726207">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SingleConstructorBasedInjectionInstantiatorAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SingleConstructorBasedInjectionInstantiatorAtomicTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="30" selection-start="659" selection-end="659" vertical-scroll-proportion="0.42112124">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestObject.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="4" selection-start="249" selection-end="249" vertical-scroll-proportion="0.1981747">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Instantiator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/Instantiator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.07431552">
+            <state line="10" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.13323984">
               <folding />
             </state>
           </provider>
@@ -1400,7 +1353,7 @@
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2906504" order="6" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23205742" order="0" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23205742" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283683" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32859078" order="8" x="72" y="86" width="1202" height="1407" />
@@ -1410,7 +1363,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920255" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4417344" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4417344" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
@@ -1669,46 +1622,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/Instantiator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.07431552">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="41" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.47066492">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/DefaultEdgeConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="602" selection-end="602" vertical-scroll-proportion="0.29726207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="759" selection-end="763" vertical-scroll-proportion="0.34680575">
+        <state line="14" column="36" selection-start="761" selection-end="761" vertical-scroll-proportion="0.18653576">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="30" selection-start="659" selection-end="659" vertical-scroll-proportion="0.42112124">
+        <state line="27" column="41" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.25315568">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/instantiate/Instantiator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="20" selection-start="111" selection-end="111" vertical-scroll-proportion="0.039971948">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/TestObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="4" selection-start="249" selection-end="249" vertical-scroll-proportion="0.1981747">
+        <state line="7" column="4" selection-start="186" selection-end="186" vertical-scroll-proportion="0.09326788">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/DefaultEdgeConstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="22" selection-start="602" selection-end="602" vertical-scroll-proportion="0.15988779">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/instantiate/SingleConstructorBasedInjectionInstantiatorAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.13323984">
           <folding />
         </state>
       </provider>

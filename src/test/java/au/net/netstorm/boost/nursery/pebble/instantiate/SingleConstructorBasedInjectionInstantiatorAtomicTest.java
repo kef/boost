@@ -8,7 +8,6 @@ public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends
     public void testInstantiate() {
         checkInstantiate("Hi");
         checkInstantiate("There");
-        // FIX BREADCRUMB 1665 Complete.
     }
 
     private void checkInstantiate(String parameter) {
