@@ -10,7 +10,7 @@ public final class DefaultFieldRetriever implements FieldRetriever {
         return siftOutSyntheticFields(fields);
     }
 
-    // FIX 1665 Do we really need this. Maybe use Java 1.5 field.isSynthetic()
+    // SUGGEST: Can maybe be replaced with field.isSynthetic() in 1.5?
     private Field[] siftOutSyntheticFields(Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {

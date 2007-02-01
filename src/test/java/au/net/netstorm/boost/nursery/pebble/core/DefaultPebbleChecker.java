@@ -23,9 +23,16 @@ public final class DefaultPebbleChecker implements PebbleChecker {
     }
 
     private Interface getCreator(Class impl) {
-        String creatorClassName = impl.getName() + "Creator";
+        String creatorClassName = insertNewIntoName(impl.getName());
         Class creatorType = tryForName(creatorClassName, impl);
         return new DefaultInterface(creatorType);
+    }
+
+    private String insertNewIntoName(String implName) {
+        int lastDot = implName.lastIndexOf(".") + 1;
+        String packageName = implName.substring(0, lastDot);
+        String className = implName.substring(lastDot, implName.length());
+        return packageName + "New" + className;
     }
 
     private Class tryForName(String creatorClassName, Class impl) {

@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.demo.pebble;
 
-public interface DefaultPricklyWithNonMatchingParamsCreator {
+public interface NewDefaultPricklyWithNonMatchingParams {
     DefaultPricklyWithNonMatchingParams create(int prickles, String wrongType);
 }
