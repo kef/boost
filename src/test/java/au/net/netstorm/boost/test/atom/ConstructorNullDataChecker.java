@@ -5,7 +5,7 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
-final class ConstructorNullDataChecker implements DataChecker {
+public final class ConstructorNullDataChecker implements DataChecker {
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private FieldSpecTestUtil fieldUtil = new DefaultFieldSpecTestUtil();
