@@ -9,7 +9,6 @@ public final class DefaultCreator implements Creator {
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private Onion onion = new BermudaOnion();
 
-
     public Object create(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
         return onion.onionize(ref);

@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
-import au.net.netstorm.boost.test.atom.PrimordialTestCase;
+import au.net.netstorm.boost.test.atom.AssertTestCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 
-public final class BlockAtomicTest extends PrimordialTestCase {
+public final class BlockAtomicTest extends AssertTestCase {
     private final ModifierTestChecker modifierChecker = new DefaultModifierTestChecker();
 
     public void testProperties() {

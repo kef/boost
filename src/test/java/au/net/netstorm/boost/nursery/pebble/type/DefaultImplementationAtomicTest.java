@@ -7,8 +7,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
-// FIX 1665 Complete.
-public final class DefaultImplementationAtomicTest extends TestCase {
+public final class DefaultImplementationAtomicTest extends TestCase  {
     private AtomTestChecker checker = new DataAtomTestChecker();
     private FieldSpec f1 = new DefaultFieldSpec("types", Interface[].class);
     private FieldSpec f2 = new DefaultFieldSpec("impl", Class.class);
@@ -17,6 +16,4 @@ public final class DefaultImplementationAtomicTest extends TestCase {
     public void testDataAtom() {
         checker.checkAtom(DefaultImplementation.class, fields);
     }
-
-    // FIX 1665 This should check the impl actually implements the type.
 }

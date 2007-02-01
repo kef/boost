@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.test.atom.PrimordialTestCase;
+import au.net.netstorm.boost.test.atom.AssertTestCase;
 
-public class DefaultReflectObjectMasterAtomicTest extends PrimordialTestCase {
+public class DefaultReflectObjectMasterAtomicTest extends AssertTestCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
 
     public void testFailsWithMultipleConstructors() {

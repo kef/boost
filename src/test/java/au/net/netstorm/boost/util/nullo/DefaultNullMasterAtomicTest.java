@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.nullo;
 
-import au.net.netstorm.boost.test.atom.PrimordialTestCase;
+import au.net.netstorm.boost.test.atom.AssertTestCase;
 
-public final class DefaultNullMasterAtomicTest extends PrimordialTestCase {
+public final class DefaultNullMasterAtomicTest extends AssertTestCase {
     private NullMaster nullMaster = new DefaultNullMaster();
 
     public void testNullMessageIsOk() {
