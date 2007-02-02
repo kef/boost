@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -10,20 +11,18 @@ import junit.framework.TestCase;
 public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
     private Creator creator = new DefaultCreator();
     private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(creator);
-    private DefaultEdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();
+    private EdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
 
-    public void testThatWeCanCreateAFred() {
+    public void testFredCallsCreatorsFromConstructor() {
         CreatorProxySupplier creatorProxySupplier =
                 new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
         NedCreator nedCreatorImpl = (NedCreator) creatorProxySupplier.create(new DefaultInterface(NedCreator.class));
-        new Fred(tedCreatorImpl, nedCreatorImpl);
+        Fred fred = new Fred(tedCreatorImpl, nedCreatorImpl);
+        fred.doStuff();
     }
     
-    private class Ted {}
-    private class Ned {}
-
     private interface TedCreator {
         Ted create();
     }
@@ -54,6 +53,20 @@ public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
 
         private void doStuffWithTed(Ted ted) {
             // do nothing
+        }
+    }
+
+    private class Bob {}
+
+    private interface BobCreator {
+        Bob create();
+    }
+
+    private class Rob {
+        private BobCreator bobCreator;
+
+        public void doStuff(){
+            bobCreator.create();
         }
     }
 }

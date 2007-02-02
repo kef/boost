@@ -11,7 +11,7 @@ public final class DefaultCreatorInvocationHandler implements InvocationHandler 
     }
 
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
-        Class ref = object.getClass();
-        return creator.create(ref, objects);
+        Class returnType = method.getReturnType();
+        return creator.create(returnType, objects);
     }
 }
