@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 1665 Is this really a Factory? Rename.
 public final class DefaultProxyFactory implements ProxyFactory {
     private final EdgeProxySupplier delegate;
 

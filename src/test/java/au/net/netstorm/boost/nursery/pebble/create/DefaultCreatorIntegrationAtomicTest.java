@@ -5,6 +5,7 @@ import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 
 public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCase implements UsesMocks {
@@ -13,6 +14,7 @@ public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCas
     private ClassLoader classLoader = this.getClass().getClassLoader();
     private InvocationHandler invocationHandler;
     private EdgeProxySupplier edgeProxySupplier;
+    private ProxyFactory proxyFactory;
 
     public void setupSubjects() {
     }
@@ -24,7 +26,7 @@ public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCas
     // FIX 1665 Reinstate when DefaultCreatorProxySupplier is impl'ed
     public void brokenTestThatWeCanCreateAFred() {
         CreatorProxySupplier creatorProxySupplier =
-                new DefaultCreatorProxySupplier(classLoader, invocationHandler, edgeProxySupplier);
+                new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
         NedCreator nedCreatorImpl = (NedCreator) creatorProxySupplier.create(new DefaultInterface(NedCreator.class));
         new Fred(tedCreatorImpl, nedCreatorImpl);
