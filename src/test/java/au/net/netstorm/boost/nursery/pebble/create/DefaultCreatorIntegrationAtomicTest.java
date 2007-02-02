@@ -1,30 +1,19 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
-import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import junit.framework.TestCase;
 
-public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private MockExpectations expect;
-    // FIX 1665 fix
-    private ClassLoader classLoader = this.getClass().getClassLoader();
-    private InvocationHandler invocationHandler;
-    private EdgeProxySupplier edgeProxySupplier;
-    private ProxyFactory proxyFactory;
+public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
+    private Creator creator = new DefaultCreator();
+    private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(creator);
+    private DefaultEdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();
+    private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
 
-    public void setupSubjects() {
-    }
-
-    // FIX 1665 Remove
-    public void testNothing() {
-    }
-
-    // FIX 1665 Reinstate when DefaultCreatorProxySupplier is impl'ed
-    public void brokenTestThatWeCanCreateAFred() {
+    public void testThatWeCanCreateAFred() {
         CreatorProxySupplier creatorProxySupplier =
                 new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
@@ -60,7 +49,7 @@ public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCas
         }
 
         private void doStuffWithNed(Ned ned) {
-
+            // do nothing
         }
 
         private void doStuffWithTed(Ted ted) {
