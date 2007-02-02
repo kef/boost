@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1665 Delete me?
 public final class DefaultCreatorProxySupplier implements CreatorProxySupplier {
     private InvocationHandler invocationHandler;
     private ProxyFactory proxyFactory;
