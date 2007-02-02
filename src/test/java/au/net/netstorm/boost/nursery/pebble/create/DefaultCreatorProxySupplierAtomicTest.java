@@ -13,14 +13,14 @@ public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestC
     private Interface type;
     private InvocationHandler invocationHandler;
     private ProxyFactory proxyFactory;
+    private Object creatorProxy = new Object();
 
     public void setupSubjects() {
         subject = new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
     }
 
-    // FIX 1665 Do more here
     public void testCreate() {
-//        proxyFactory.newProxy(type, invocationHandler);
-        assertNull(subject.create(type));
+        expect.oneCall(proxyFactory, creatorProxy, "newProxy", type, invocationHandler);
+        assertSame(creatorProxy, subject.create(type));
     }
 }
