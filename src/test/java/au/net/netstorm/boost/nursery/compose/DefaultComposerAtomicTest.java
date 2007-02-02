@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.compose;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -44,7 +44,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
 
     // SUGGEST Dupe.  See DefaultOneToMany.
     private ProxyFactory buildFactory() {
-        EdgeProxy edge = new DefaultEdgeProxy();
+        EdgeProxySupplier edge = new DefaultEdgeProxySupplier();
         return new DefaultProxyFactory(edge);
     }
 }

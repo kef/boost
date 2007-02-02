@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -14,7 +14,7 @@ public final class DefaultCreatorInjectorAtomicTest extends PrimordialTestCase i
     private CreatorInjector subject;
     private MockExpectations expect;
     private ProxyFactory proxyFactory;
-    private EdgeProxy edgeProxy;
+    private EdgeProxySupplier edgeProxySupplier;
     private InvocationHandler creationInvocationHandler;
     private MockableObject objectToInject;
     
@@ -24,7 +24,7 @@ public final class DefaultCreatorInjectorAtomicTest extends PrimordialTestCase i
 
     public void testInject() {
         Interface type = new DefaultInterface(Serializable.class);
-        expect.oneCall(proxyFactory, edgeProxy, "newProxy", type, creationInvocationHandler);
+        expect.oneCall(proxyFactory, edgeProxySupplier, "newProxy", type, creationInvocationHandler);
         subject.inject(objectToInject);
     }
 

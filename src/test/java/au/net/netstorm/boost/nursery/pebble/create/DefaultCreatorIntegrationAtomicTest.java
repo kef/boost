@@ -1,12 +1,18 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
+import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 
 public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCase implements UsesMocks {
     private MockExpectations expect;
+    // FIX 1665 fix
+    private ClassLoader classLoader = this.getClass().getClassLoader();
+    private InvocationHandler invocationHandler;
+    private EdgeProxySupplier edgeProxySupplier;
 
     public void setupSubjects() {
     }
@@ -17,7 +23,8 @@ public final class DefaultCreatorIntegrationAtomicTest extends PrimordialTestCas
 
     // FIX 1665 Reinstate when DefaultCreatorProxySupplier is impl'ed
     public void brokenTestThatWeCanCreateAFred() {
-        CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier();
+        CreatorProxySupplier creatorProxySupplier =
+                new DefaultCreatorProxySupplier(classLoader, invocationHandler, edgeProxySupplier);
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
         NedCreator nedCreatorImpl = (NedCreator) creatorProxySupplier.create(new DefaultInterface(NedCreator.class));
         new Fred(tedCreatorImpl, nedCreatorImpl);

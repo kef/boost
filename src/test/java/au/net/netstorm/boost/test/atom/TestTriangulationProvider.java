@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.atom;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxy;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -12,8 +12,8 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class TestTriangulationProvider implements TriangulationProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 5;
-    private EdgeProxy edgeProxy = new DefaultEdgeProxy();
-    private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxy);
+    private EdgeProxySupplier edgeProxySupplier = new DefaultEdgeProxySupplier();
+    private ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private RandomProvider randomProvider = new DefaultRandomProvider();
 

@@ -10,7 +10,7 @@ public final class DefaultProxyFactoryAtomicTest extends TestCase {
     private static final Interface TYPE_1 = new DefaultInterface(CharSequence.class);
     private static final Interface TYPE_2 = new DefaultInterface(Map.class);
     private static final Interface[] TYPES = { TYPE_1, TYPE_2 };
-    private final MockEdgeProxy mockEdgeProxyFactory = new MockEdgeProxy();
+    private final MockEdgeProxySupplier mockEdgeProxyFactory = new MockEdgeProxySupplier();
     private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
     private final InvocationHandler handler = new MockInvocationHandler();
 

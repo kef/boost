@@ -3,13 +3,13 @@ package au.net.netstorm.boost.util.proxy;
 import java.lang.reflect.InvocationHandler;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxy;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
-final class MockEdgeProxy extends Assert implements EdgeProxy {
+final class MockEdgeProxySupplier extends Assert implements EdgeProxySupplier {
     private final AssertTestChecker asserter = new DefaultAssertTestChecker();
     private ClassLoader loader;
     private Class[] types;
