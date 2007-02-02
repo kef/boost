@@ -23,12 +23,12 @@ public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
         fred.doStuff();
     }
 
-//    public void brokenTestRobCallsInjectedFieldCreators() {
-//        Rob rob = new Rob();
-//        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector();
-//        creatorProxyInjector.inject(rob);
-//        rob.doStuff();
-//    }
+    public void brokenTestRobCallsInjectedFieldCreators() {
+        Rob rob = new Rob();
+        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector();
+        creatorProxyInjector.inject(rob);
+        rob.doStuff();
+    }
 
     private interface TedCreator {
         Ted create();
