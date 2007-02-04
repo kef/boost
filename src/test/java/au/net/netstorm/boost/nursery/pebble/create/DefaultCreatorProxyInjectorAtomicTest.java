@@ -1,13 +1,19 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.PrimordialTestCase;
+import au.net.netstorm.boost.test.automock.UsesMocks;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 
-public final class DefaultCreatorProxyInjectorAtomicTest extends TestCase {
-    private CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector();
+public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
+    private CreatorProxyInjector subject;
+    private MockExpectations expect;
 
-    // FIX BREADCRUMB 1665 
+    public void setupSubjects() {
+        subject = new DefaultCreatorProxyInjector();
+    }
+
     public void testInject() {
         Object object = new Object();
-        creatorProxyInjector.inject(object);
+        subject.inject(object);
     }
 }
