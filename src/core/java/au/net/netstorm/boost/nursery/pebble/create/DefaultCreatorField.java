@@ -6,12 +6,10 @@ import au.net.netstorm.boost.util.type.Data;
 // FIX 1665 Interface.
 public final class DefaultCreatorField extends Primordial implements Data, CreatorField {
     private Class creatorType;
-    private Class instanceType;
     private String fieldName;
 
-    public DefaultCreatorField(Class creatorType, Class instanceType, String fieldName) {
+    public DefaultCreatorField(Class creatorType, String fieldName) {
         this.creatorType = creatorType;
-        this.instanceType = instanceType;
         this.fieldName = fieldName;
         validate();
     }
@@ -20,17 +18,12 @@ public final class DefaultCreatorField extends Primordial implements Data, Creat
         return creatorType;
     }
 
-    public Class getInstanceType() {
-        return instanceType;
-    }
-
     public String getFieldName() {
         return fieldName;
     }
 
     private void validate() {
         if (creatorType == null) throw new IllegalArgumentException();
-        if (instanceType == null) throw new IllegalArgumentException();
         if (fieldName == null) throw new IllegalArgumentException();
     }
 }
