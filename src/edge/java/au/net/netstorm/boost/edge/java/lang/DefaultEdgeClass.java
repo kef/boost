@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.EdgeException;
 
 public final class DefaultEdgeClass implements EdgeClass {
+
     public Class forName(String className) {
         try {
             return Class.forName(className);
@@ -54,5 +55,9 @@ public final class DefaultEdgeClass implements EdgeClass {
         } catch (NoSuchFieldException e) {
             throw new EdgeException(e);
         }
+    }
+
+    public Field[] getDeclaredFields(Class cls) {
+        return cls.getDeclaredFields();
     }
 }

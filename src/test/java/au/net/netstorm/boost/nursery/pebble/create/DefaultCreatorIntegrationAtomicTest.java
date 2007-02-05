@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.pebble.create;
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -13,10 +14,9 @@ public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
     private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(creator);
     private EdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
+    private CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
 
     public void testFredCallsCreatorsFromConstructor() {
-        CreatorProxySupplier creatorProxySupplier =
-                new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
         NedCreator nedCreatorImpl = (NedCreator) creatorProxySupplier.create(new DefaultInterface(NedCreator.class));
         Fred fred = new Fred(tedCreatorImpl, nedCreatorImpl);
@@ -25,7 +25,7 @@ public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
 
     public void brokenTestRobCallsInjectedFieldCreators() {
         Rob rob = new Rob();
-        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector();
+        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, new DefaultEdgeClass());
         creatorProxyInjector.inject(rob);
         rob.doStuff();
     }

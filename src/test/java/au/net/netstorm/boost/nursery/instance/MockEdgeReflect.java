@@ -18,6 +18,10 @@ class MockEdgeReflect implements EdgeClass {
         throw new NotImplementedException();
     }
 
+    public Field[] getDeclaredFields(Class cls) {
+        throw new NotImplementedException();
+    }
+
     public Object newInstance(Class cls) {
         this.cls = cls;
         return result;
