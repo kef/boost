@@ -10,8 +10,8 @@ public final class DefaultCreatorInvocationHandler implements InvocationHandler 
         this.creator = creator;
     }
 
-    public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
+    public Object invoke(Object object, Method method, Object[] params) throws Throwable {
         Class returnType = method.getReturnType();
-        return creator.create(returnType, objects);
+        return creator.create(returnType, params);
     }
 }

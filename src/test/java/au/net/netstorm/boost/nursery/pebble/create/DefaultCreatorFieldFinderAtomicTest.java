@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.reflect.ClassMaster;
 
-public final class DefaultCreatorFinderAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class DefaultCreatorFieldFinderAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Fred object = new Fred();
     private CreatorFieldFinder subject;
     private MockExpectations expect;
