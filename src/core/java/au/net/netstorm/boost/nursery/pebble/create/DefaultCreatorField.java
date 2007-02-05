@@ -4,7 +4,7 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
 
 // FIX 1665 Interface.
-public final class DefaultCreatorField extends Primordial implements Data {
+public final class DefaultCreatorField extends Primordial implements Data, CreatorField {
     private Class creatorType;
     private Class instanceType;
     private String fieldName;

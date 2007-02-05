@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import junit.framework.TestCase;
 
-public final class DefaultCreatorIntegrationAtomicTest extends TestCase {
+public final class DefaultCreatorMolecularTest extends TestCase {
     private Creator creator = new DefaultCreator();
     private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(creator);
     private EdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();

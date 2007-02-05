@@ -1,14 +1,24 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import junit.framework.TestCase;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreatorFinderAtomicTest extends TestCase {
-    private Interface object;
+    private Fred object = new Fred();
 
     public void testFinder() {
         CreatorFieldFinder fieldFinder = new DefaultCreatorFieldFinder();
-        DefaultCreatorField[] creatorfields = fieldFinder.find(object);
+        CreatorField[] creatorfields = fieldFinder.find(object);
+
+    }
+
+    private class NewTed {}
+    private class NewNed {}
+
+    private class Fred {
+        private NewTed newTed;
+        private NewNed newNed;
+        private String notACretorField;
+
     }
 
 }
