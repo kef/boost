@@ -12,8 +12,8 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldInstantiationChecker;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-public final class DefaultMegaCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private MegaCreator subject;
+public final class DefaultGenericCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
+    private GenericCreator subject;
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
@@ -25,7 +25,7 @@ public final class DefaultMegaCreatorAtomicTest extends PrimordialTestCase imple
     private FieldInstantiationChecker fieldInstantiationChecker = new DefaultFieldInstantiationChecker();
 
     public void setupSubjects() {
-        subject = new DefaultMegaCreator();
+        subject = new DefaultGenericCreator();
         checkCreationOfInstanceVariables();
         overwriteConstructedInstancesWithMocks();
     }

@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-public interface MegaCreator {
+public interface GenericCreator {
     Object create(Class type, Object[] parameters);
 }

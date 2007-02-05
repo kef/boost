@@ -5,7 +5,7 @@ import au.net.netstorm.boost.nursery.pebble.instantiate.SingleConstructorBasedIn
 import au.net.netstorm.boost.nursery.pebble.onion.BermudaOnion;
 import au.net.netstorm.boost.nursery.pebble.onion.Onion;
 
-public final class DefaultMegaCreator implements MegaCreator {
+public final class DefaultGenericCreator implements GenericCreator {
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private Onion onion = new BermudaOnion();
 

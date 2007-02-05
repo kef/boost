@@ -10,8 +10,8 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorMolecularTest extends TestCase {
-    private MegaCreator megaCreator = new DefaultMegaCreator();
-    private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(megaCreator);
+    private GenericCreator genericCreator = new DefaultGenericCreator();
+    private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(genericCreator);
     private EdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
