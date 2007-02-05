@@ -12,6 +12,7 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     }
 
     public void inject(Object object) {
-        edgeClass.getDeclaredFields(object.getClass());
+        // FIX 1665 Reinstate
+        // edgeClass.getDeclaredFields(object.getClass());
     }
 }
