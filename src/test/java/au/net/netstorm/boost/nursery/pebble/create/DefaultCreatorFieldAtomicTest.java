@@ -13,6 +13,6 @@ public final class DefaultCreatorFieldAtomicTest extends TestCase {
     private FieldSpec[] fields = { f1, f2, f3 };
 
     public void testDataAtom() {
-        checker.checkAtom(DefaultCreateField.class, fields);
+        checker.checkAtom(DefaultCreatorField.class, fields);
     }
 }
