@@ -1,21 +1,52 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.Field;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.PrimordialTestCase;
+import au.net.netstorm.boost.test.automock.UsesMocks;
+import au.net.netstorm.boost.test.automock.MockExpectations;
+import au.net.netstorm.boost.reflect.ClassMaster;
 
-public final class DefaultCreatorFinderAtomicTest extends TestCase {
+public final class DefaultCreatorFinderAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Fred object = new Fred();
+    private CreatorFieldFinder subject;
+    private MockExpectations expect;
+    private ClassMaster classMaster;
+
+    public void setupSubjects() {
+        subject = new DefaultCreatorFieldFinder(classMaster);
+    }
 
     public void testFinder() {
-        CreatorFieldFinder fieldFinder = new DefaultCreatorFieldFinder();
         Field[] expectedFields = createExpectedCreatorFields();
-        CreatorField[] actualFields = fieldFinder.find(object);
+        setupClassMasterExpectations();
+        CreatorField[] actualFields = subject.find(object);
         checkFields(expectedFields, actualFields);
     }
 
-    // FIX 1665 Fix this
+    private void setupClassMasterExpectations() {
+        expectGetShortNameCall("newTed", "NewTed");
+        expectGetShortNameCall("newNed", "NewNed");
+        expectGetShortNameCall("notACreatorField", "String");
+    }
+
     private Field[] createExpectedCreatorFields() {
-        return object.getClass().getDeclaredFields();
+        Field[] fields = new Field[2];
+        fields[0] = getField("newTed");
+        fields[1] = getField("newNed");
+        return fields;
+    }
+
+    private void expectGetShortNameCall(String fieldName, String className) {
+        Field field = getField(fieldName);
+        expect.oneCall(classMaster, className, "getShortName", field.getType());
+    }
+
+    private Field getField(String fieldName) {
+        try {
+            return object.getClass().getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void checkFields(Field[] expectedFields, CreatorField[] actualFields) {
@@ -28,11 +59,7 @@ public final class DefaultCreatorFinderAtomicTest extends TestCase {
     }
 
     private void checkField(String actualName, CreatorField actualCreatorField) {
-        try {
-            Field expectedField = object.getClass().getDeclaredField(actualName);
-            assertEquals(expectedField.getType(), actualCreatorField.getCreatorType());
-        } catch (NoSuchFieldException e) {
-            fail("Expected list to contain a field called " + actualName);
-        }
+        Field expectedField = getField(actualName);
+        assertEquals(expectedField.getType(), actualCreatorField.getCreatorType());
     }
 }
