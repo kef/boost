@@ -4,14 +4,14 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public final class DefaultCreatorInvocationHandler implements InvocationHandler {
-    private Creator creator;
+    private MegaCreator megaCreator;
 
-    public DefaultCreatorInvocationHandler(Creator creator) {
-        this.creator = creator;
+    public DefaultCreatorInvocationHandler(MegaCreator megaCreator) {
+        this.megaCreator = megaCreator;
     }
 
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
         Class returnType = method.getReturnType();
-        return creator.create(returnType, params);
+        return megaCreator.create(returnType, params);
     }
 }

@@ -60,7 +60,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     }
 
     private Object createCreatorProxy() {
-        Mock mockCreatorProxy = new Mock(Creator.class);
+        Mock mockCreatorProxy = new Mock(MegaCreator.class);
         return mockCreatorProxy.proxy();
     }
 }
