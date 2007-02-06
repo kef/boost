@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,9 +12,16 @@ import java.util.List;
 final class TestClassLocator implements ClassLocator {
     private final Comparator comparator = new TestFileComparator();
 
-    public JavaClass[] locate(File root, RegexPattern pattern) {
+    public JavaClass[] locate(Class starter, RegexPattern pattern) {
+        File root = getRoot(starter);
         File[] files = sortedDeepLocate(root, pattern);
         return toClassNames(root, files);
+    }
+
+    private File getRoot(Class starter) {
+        URL resource = starter.getResource("/");
+        String testRoot = resource.getFile();
+        return new File(testRoot);
     }
 
     private File[] sortedDeepLocate(File root, RegexPattern pattern) {
@@ -71,8 +79,10 @@ final class TestClassLocator implements ClassLocator {
     }
 
     private void ensureDir(File dir) {
-        if (!dir.exists()) barf(dir, "does not exist");
-        if (!dir.isDirectory()) barf(dir, "must be a directory.");
+        if (!dir.exists())
+            barf(dir, "does not exist");
+        if (!dir.isDirectory())
+            barf(dir, "must be a directory.");
     }
 
     private void barf(File dir, String content) {
