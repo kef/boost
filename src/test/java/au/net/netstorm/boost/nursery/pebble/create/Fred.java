@@ -17,5 +17,6 @@ public class Fred {
     private class NewNedCreator implements Creator {
     }
 
-    private class NewDoesNotImplementMarker { }
+    private class NewDoesNotImplementMarker {
+    }
 }
