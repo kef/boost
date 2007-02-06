@@ -16,6 +16,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private CreatorFieldFinder creatorFieldFinder;
     private CreatorField creatorField;
     private Interface creatorInterface;
+    private String fieldName;
 
     public void setupSubjects() {
         subject = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
@@ -32,6 +33,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
         for (int i = 0; i < creatorFields.length; i++) {
             expect.oneCall(creatorField, creatorInterface, "getCreatorInterface");
             expect.oneCall(creatorProxySupplier, proxy, "create", creatorInterface);
+            expect.oneCall(creatorField, fieldName, "getFieldName");
         }
     }
 }

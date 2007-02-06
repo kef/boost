@@ -32,6 +32,7 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private void inject(Object ref, CreatorField creatorField) {
         Interface type = creatorField.getCreatorInterface();
         proxySupplier.create(type);
+        creatorField.getFieldName();
     }
 
     // FIX 1665 Test drive up and hook in.
