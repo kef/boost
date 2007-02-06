@@ -2,18 +2,15 @@ package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.Set;
 import java.util.HashSet;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
+import java.util.Set;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 
 // FIX 1665 Test drive ClassMaster support for getPackageName and stitch into Edgifier (talk to Larry).
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
-    private EdgeField edgeField = new DefaultEdgeField();
-    private ClassMaster classMaster = new DefaultClassMaster();
     private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
+    private EdgeField edgeField = new DefaultEdgeField();
 
     public CreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
@@ -36,11 +33,11 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private boolean isCreator(Object ref, Field field) {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
-        if (!fieldHasMarker(field)) return false;
+        if (!implementsMarker(field)) return false;
         return nameStartsWith(field, "new");
     }
 
-    private boolean fieldHasMarker(Field field) {
+    private boolean implementsMarker(Field field) {
         Class type = field.getType();
         return CREATOR_MARKER_INTERFACE.isAssignableFrom(type);
     }
