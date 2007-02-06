@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.test.aggregator;
 
-interface JavaClass {
+public interface JavaClass {
     String getFullyQualified();
 }

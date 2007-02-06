@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.test.aggregator;
 
-interface RegexPattern {
+public interface RegexPattern {
     String getPattern();
 }
