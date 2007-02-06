@@ -16,4 +16,3 @@ Just some rough ideas we might use in Boost -- Mr O'Keeffe.
  * Dynamic checked exception wrapper proxy.
  * Boundaries themselves may be able to be generated, possibly dynamically.
  * Compare and contrast with testing utilities in JUnit Addons, particularly for testing Primordial stuff.
- 
