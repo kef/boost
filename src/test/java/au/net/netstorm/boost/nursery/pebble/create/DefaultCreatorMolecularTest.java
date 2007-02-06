@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
@@ -25,12 +26,26 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         fred.doStuff();
     }
 
+    // FIX 1665 Remove when done.
     public void brokenTestRobCallsInjectedFieldCreators() {
         Rob rob = new Rob();
         CreatorProxyInjector creatorProxyInjector =
                 new DefaultCreatorProxyInjector(creatorProxySupplier, new DefaultEdgeClass());
         creatorProxyInjector.inject(rob);
         rob.doStuff();
+    }
+
+    // FIX 1665 Remove once we're done.
+    public void wiringTest() {
+        // FIX BREADCRUMB 1665 -1000000 Remove following dependencies: EdgeClass, ProxyFactory.
+        EdgeProxySupplier edgeProxySupplier = new DefaultEdgeProxySupplier();
+        ProxyFactory proxyFactory = new DefaultProxyFactory(edgeProxySupplier);
+        GenericCreator genericCreator = new DefaultGenericCreator();
+        // FIX 1665 Rename DCIH to CIH.
+        InvocationHandler bar = new DefaultCreatorInvocationHandler(genericCreator);
+        CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory, bar);
+        EdgeClass edgeClass = new DefaultEdgeClass();
+        new DefaultCreatorProxyInjector(creatorProxySupplier, edgeClass);
     }
 
     private interface TedCreator {

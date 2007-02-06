@@ -12,12 +12,13 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldInstantiationChecker;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
+// FIX 1665 Pass in dependencies.
 public final class DefaultGenericCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private GenericCreator subject;
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
-    private Object[] parameters = { "Hi", "There" };
+    private Object[] parameters = {"Hi", "There"};
     private Class type = String.class;
     private Object rawRef = new Object();
     private Object wrappedRef = new Object();
