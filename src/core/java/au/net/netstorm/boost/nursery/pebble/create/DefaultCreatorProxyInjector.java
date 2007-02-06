@@ -9,12 +9,16 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
     private CreatorProxySupplier creatorProxySupplier;
+    private CreatorFieldFinder creatorFieldFinder;
 
-    public DefaultCreatorProxyInjector(CreatorProxySupplier creatorProxySupplier) {
+    public DefaultCreatorProxyInjector(CreatorProxySupplier creatorProxySupplier,
+            CreatorFieldFinder creatorFieldFinder) {
         this.creatorProxySupplier = creatorProxySupplier;
+        this.creatorFieldFinder = creatorFieldFinder;
     }
 
     public void inject(Object ref) {
+        creatorFieldFinder.find(ref);
         // FIX 1665 Call CreatorFieldsFinder.
         // FIX 1665 Use ProxySupplier to get the Object proxy.
         // FIX 1665 Set Object proxy in fields.
