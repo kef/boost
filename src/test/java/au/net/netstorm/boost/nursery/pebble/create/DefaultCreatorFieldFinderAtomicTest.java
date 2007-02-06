@@ -3,7 +3,6 @@ package au.net.netstorm.boost.nursery.pebble.create;
 import java.lang.reflect.Field;
 import junit.framework.TestCase;
 
-// FIX 1665 Do we need to call this something else.  It is not atomic.
 public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
     private Fred object = new Fred();
     private CreatorFieldFinder subject = new DefaultCreatorFieldFinder();
