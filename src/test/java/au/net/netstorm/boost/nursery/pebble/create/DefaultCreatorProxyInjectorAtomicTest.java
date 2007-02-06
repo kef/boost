@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.util.type.Interface;
 import org.jmock.Mock;
 
 public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
@@ -21,6 +21,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
         subject = new DefaultCreatorProxyInjector(creatorProxySupplier, edgeClass);
     }
 
+    // FIX 1665 Rename.  CreatorInjector.
     // FIX 1665 Remove
     public void testNothing() {
         subject.inject(objectToInject);
@@ -35,7 +36,6 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
         expect.oneCall(edgeClass, fields, "getDeclaredFields", type);
         expectAllFieldsToBeCreators(fields, type);
         subject.inject(objectToInject);
-
     }
 
     private void expectAllFieldsToBeCreators(Field[] fields, Class type) {
