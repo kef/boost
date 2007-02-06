@@ -1,18 +1,17 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 
 public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private CreatorProxySupplier proxySupplier;
-    private EdgeClass edgeClass;
-    private CreatorFieldFinder fieldFinder;
+    private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
 
-    public DefaultCreatorProxyInjector(CreatorProxySupplier creatorProxySupplier, EdgeClass edgeClass) {
+    public DefaultCreatorProxyInjector(CreatorProxySupplier creatorProxySupplier) {
         this.proxySupplier = creatorProxySupplier;
-        this.edgeClass = edgeClass;
     }
 
     public void inject(Object ref) {

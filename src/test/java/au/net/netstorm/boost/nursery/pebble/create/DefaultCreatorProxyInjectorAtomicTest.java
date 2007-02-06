@@ -18,7 +18,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private String nameWithNewInIt = "NewMonkey";
 
     public void setupSubjects() {
-        subject = new DefaultCreatorProxyInjector(creatorProxySupplier, edgeClass);
+        subject = new DefaultCreatorProxyInjector(creatorProxySupplier);
     }
 
     // FIX 1665 Rename.  CreatorInjector.

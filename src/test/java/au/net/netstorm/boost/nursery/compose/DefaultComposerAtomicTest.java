@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.compose;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -11,6 +11,7 @@ import junit.framework.TestCase;
 // SUGGEST What to do for equals, hashCode, toString...
 // SUGGEST Move to using MockInvocationHandler.
 // SUGGEST Check exceptions are thrown across the boundary.
+
 // SUGGEST getProxy can be replaced with ProxyFactory.
 /**
  * The composer currently only supports composition of two classes.
@@ -44,7 +45,7 @@ public final class DefaultComposerAtomicTest extends TestCase {
 
     // SUGGEST Dupe.  See DefaultOneToMany.
     private ProxyFactory buildFactory() {
-        EdgeProxySupplier edge = new DefaultEdgeProxySupplier();
+        ProxySupplier edge = new DefaultProxySupplier();
         return new DefaultProxyFactory(edge);
     }
 }
