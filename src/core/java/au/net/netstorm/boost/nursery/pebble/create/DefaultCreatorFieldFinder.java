@@ -38,7 +38,6 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return nameStartsWith(field, "new");
     }
 
-    // FIX 1665 Put these into general field support utility.
     private boolean isFinal(Field field) {
         int modifiers = field.getModifiers();
         return Modifier.isFinal(modifiers);
