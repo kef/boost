@@ -12,20 +12,16 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-// FIX 1665 Tidy this up.
-
-// FIX 1665 Remove dupe.
 public final class DefaultAutoRandomizer implements AutoRandomizer {
-    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private final FieldSpecTestUtil fieldSpecTestUtil = new DefaultFieldSpecTestUtil();
+    private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final UsesMocks testCase;
 
     public DefaultAutoRandomizer(UsesMocks useMocks) {
         this.testCase = useMocks;
     }
 
-    // FIX BREADCRUMB 1665 -100000 Hard to read.
     public void randomizePrimitivesAndStrings(Field[] fields) {
         FieldSpec[] randomizableFields = getFieldsToRandomize(fields);
         performRandomization(randomizableFields);
@@ -33,15 +29,15 @@ public final class DefaultAutoRandomizer implements AutoRandomizer {
 
     private void performRandomization(FieldSpec[] fields) {
         Object[] randomInstances = fieldSpecTestUtil.getInstances(fields);
-        for (int fieldCount = 0; fieldCount < fields.length; fieldCount++) {
-            assignRandomValue(fields, fieldCount, randomInstances);
+        for (int i = 0; i < fields.length; i++) {
+            FieldSpec primitiveField = fields[i];
+            Object randomValue = randomInstances[i];
+            assignRandomValue(primitiveField, randomValue);
         }
     }
 
-    private void assignRandomValue(FieldSpec[] fields, int fieldCount, Object[] randomValues) {
-        FieldSpec primitiveField = fields[fieldCount];
-        Object randomValue = randomValues[fieldCount];
-        String fieldName = primitiveField.getName();
+    private void assignRandomValue(FieldSpec fieldSpec, Object randomValue) {
+        String fieldName = fieldSpec.getName();
         fielder.setInstance(testCase, fieldName, randomValue);
     }
 
