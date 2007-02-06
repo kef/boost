@@ -16,8 +16,8 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
 
     private Field[] createExpectedCreatorFields() {
         Field[] fields = new Field[2];
-        fields[0] = getField("newTed");
-        fields[1] = getField("newNed");
+        fields[0] = getField("newTedCreator");
+        fields[1] = getField("newNedCreator");
         return fields;
     }
 
