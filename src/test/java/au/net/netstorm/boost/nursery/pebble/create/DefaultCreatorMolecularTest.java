@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.InvocationHandler;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeProxySupplier;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -15,7 +15,8 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(genericCreator);
     private EdgeProxySupplier proxySupplier = new DefaultEdgeProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
-    private CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory,invocationHandler);
+    private CreatorProxySupplier creatorProxySupplier =
+            new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
 
     public void testFredCallsCreatorsFromConstructor() {
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
@@ -26,7 +27,8 @@ public final class DefaultCreatorMolecularTest extends TestCase {
 
     public void brokenTestRobCallsInjectedFieldCreators() {
         Rob rob = new Rob();
-        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, new DefaultEdgeClass());
+        CreatorProxyInjector creatorProxyInjector =
+                new DefaultCreatorProxyInjector(creatorProxySupplier, new DefaultEdgeClass());
         creatorProxyInjector.inject(rob);
         rob.doStuff();
     }
@@ -64,7 +66,8 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         }
     }
 
-    private class Bob {}
+    private class Bob {
+    }
 
     private interface BobCreator {
         Bob create();
@@ -73,7 +76,7 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private class Rob {
         private BobCreator bobCreator;
 
-        public void doStuff(){
+        public void doStuff() {
             bobCreator.create();
         }
     }

@@ -5,15 +5,18 @@ class Fred {
     private NewTedCreator newTedCreator;
     private String newNotACreatorType;
     private final NewTedCreator newNotACreatorBecauseFinal = null;
-    private NewNedCreator newNotACreatorBecauseAssigned = new NewNedCreator();
+    private NewNedCreator newNotACreatorBecauseAssigned = new DefaultNewNedCreator();
     private NewDoesNotImplementMarker newNotACreatorDoesNotImplementMarker;
 
-    private class NewTedCreator implements Creator {
+    private interface NewTedCreator extends Creator {
     }
 
-    private class NewNedCreator implements Creator {
+    private interface NewNedCreator extends Creator {
     }
 
-    private class NewDoesNotImplementMarker {
+    private interface NewDoesNotImplementMarker {
+    }
+
+    private class DefaultNewNedCreator implements NewNedCreator {
     }
 }

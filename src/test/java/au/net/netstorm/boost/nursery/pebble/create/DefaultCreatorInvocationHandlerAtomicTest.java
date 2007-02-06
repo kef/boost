@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-import java.lang.reflect.Method;
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 
 public final class DefaultCreatorInvocationHandlerAtomicTest extends PrimordialTestCase implements UsesMocks {
     private InvocationHandler subject;

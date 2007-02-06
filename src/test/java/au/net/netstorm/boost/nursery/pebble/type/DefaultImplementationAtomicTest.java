@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.pebble.type;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 import au.net.netstorm.boost.test.atom.AtomConfiguration;
 import au.net.netstorm.boost.test.atom.AtomStructureChecker;
 import au.net.netstorm.boost.test.atom.ConstructorNullDataChecker;

@@ -1,7 +1,10 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-public interface CreatorField {
-    Class getCreatorType();
+import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.util.type.Interface;
+
+public interface CreatorField extends Data {
+    Interface getCreatorType();
 
     String getFieldName();
 }

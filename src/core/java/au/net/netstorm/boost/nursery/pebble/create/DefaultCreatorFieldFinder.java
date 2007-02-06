@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
@@ -27,6 +29,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return (CreatorField[]) result.toArray(new CreatorField[]{});
     }
 
+    // FIX 1665 Can we stop the wrap.
     private boolean isCreator(Object ref, Field field) {
         if (isFinal(field))
             return false;
@@ -58,9 +61,10 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return name.startsWith(prefix);
     }
 
-    private void addCreator(Set creatorFields, Field declaredField) {
-        Class type = declaredField.getType();
-        String name = declaredField.getName();
+    private void addCreator(Set creatorFields, Field field) {
+        String name = field.getName();
+        Class cls = field.getType();
+        Interface type = new DefaultInterface(cls);
         CreatorField creatorField = new DefaultCreatorField(type, name);
         creatorFields.add(creatorField);
     }

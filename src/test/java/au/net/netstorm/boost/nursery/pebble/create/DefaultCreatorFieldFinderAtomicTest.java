@@ -3,6 +3,8 @@ package au.net.netstorm.boost.nursery.pebble.create;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
@@ -28,6 +30,7 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         return edgeClass.getDeclaredField(type, fieldName);
     }
 
+    // FIX 1665 Tidy this up.  Thick and hard to read.
     private void checkFields(Field[] expectedFields, CreatorField[] actualFields) {
         assertEquals(expectedFields.length, actualFields.length);
         for (int i = 0; i < actualFields.length; i++) {
@@ -39,8 +42,9 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
 
     private void checkField(String actualName, CreatorField actualCreatorField) {
         Field expectedField = getField(actualName);
-        Class expectedType = expectedField.getType();
-        Class creatorType = actualCreatorField.getCreatorType();
+        Class expectedClass = expectedField.getType();
+        Interface expectedType = new DefaultInterface(expectedClass);
+        Interface creatorType = actualCreatorField.getCreatorType();
         assertEquals(expectedType, creatorType);
     }
 }

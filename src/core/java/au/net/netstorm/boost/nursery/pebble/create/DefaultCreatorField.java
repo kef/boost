@@ -1,19 +1,20 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorField extends Primordial implements Data, CreatorField {
-    private Class creatorType;
+public final class DefaultCreatorField extends Primordial implements CreatorField {
+    private Interface creatorType;
     private String fieldName;
 
-    public DefaultCreatorField(Class creatorType, String fieldName) {
+    // FIX BREADCRUMB 1665 An interface.
+    public DefaultCreatorField(Interface creatorType, String fieldName) {
         this.creatorType = creatorType;
         this.fieldName = fieldName;
         validate();
     }
 
-    public Class getCreatorType() {
+    public Interface getCreatorType() {
         return creatorType;
     }
 
@@ -22,7 +23,9 @@ public final class DefaultCreatorField extends Primordial implements Data, Creat
     }
 
     private void validate() {
-        if (creatorType == null) throw new IllegalArgumentException();
-        if (fieldName == null) throw new IllegalArgumentException();
+        if (creatorType == null)
+            throw new IllegalArgumentException();
+        if (fieldName == null)
+            throw new IllegalArgumentException();
     }
 }

@@ -16,7 +16,9 @@ public final class DefaultInterface extends Primordial implements Interface {
     }
 
     private void validate() {
-        if (type == null) throw new IllegalArgumentException();
-        if (!type.isInterface()) throw new IllegalArgumentException();
+        if (type == null)
+            throw new IllegalArgumentException();
+        if (!type.isInterface())
+            throw new IllegalArgumentException("Not interface " + type);
     }
 }
