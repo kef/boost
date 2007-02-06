@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.test.aggregator;
 
-interface ClassLocator {
+public interface ClassLocator {
     JavaClass[] locate(Class starter, RegexPattern pattern);
 }

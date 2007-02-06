@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 // DEBT ClassDataAbstractionCoupling {
-final class TestClassLocator implements ClassLocator {
+public final class TestClassLocator implements ClassLocator {
     private final Comparator comparator = new TestFileComparator();
 
     public JavaClass[] locate(Class starter, RegexPattern pattern) {
@@ -79,10 +79,12 @@ final class TestClassLocator implements ClassLocator {
     }
 
     private void ensureDir(File dir) {
-        if (!dir.exists())
+        if (!dir.exists()) {
             barf(dir, "does not exist");
-        if (!dir.isDirectory())
+        }
+        if (!dir.isDirectory()) {
             barf(dir, "must be a directory.");
+        }
     }
 
     private void barf(File dir, String content) {
