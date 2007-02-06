@@ -36,8 +36,6 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
         return nameStartsWith(field, "new");
-        // FIX 1665 Check final (ignore).
-        // FIX 1665 Check already set (ignore).
     }
 
     // FIX 1665 Put these into general field support utility.
