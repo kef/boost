@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
+import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
@@ -23,29 +24,10 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
             CreatorField creatorField = creatorFields[i];
             inject(ref, creatorField);
         }
-        // FIX 1665 Call CreatorFieldsFinder.
-        // FIX 1665 Use ProxySupplier to get the Object proxy.
-        // FIX 1665 Set Object proxy in fields.
-        // FIX 1665 Reinstate
-    }
-
-    private void inject(Object ref, CreatorField creatorField) {
-        Interface type = creatorField.getCreatorInterface();
-        proxySupplier.create(type);
-        creatorField.getFieldName();
-    }
-
-    // FIX 1665 Test drive up and hook in.
-/*
-    private void spike(Object ref) {
-        CreatorField[] creatorFields = fieldFinder.find(ref);
-        for (int i = 0; i < creatorFields.length; i++) {
-            inject(ref, creatorFields[i]);
-        }
     }
 
     private void inject(Object ref, CreatorField field) {
-        Interface type = field.getCreatorType();
+        Interface type = field.getCreatorInterface();
         Object proxy = proxySupplier.create(type);
         inject(ref, proxy, field);
     }
@@ -54,8 +36,7 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
         String fieldName = creatorField.getFieldName();
         Class cls = ref.getClass();
         Field field = edgeClass.getDeclaredField(cls, fieldName);
+        field.setAccessible(true);
         edgeField.set(field, ref, proxy);
-
     }
-*/
 }
