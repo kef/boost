@@ -18,12 +18,11 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     }
 
     public void inject(Object ref) {
-        creatorFieldFinder.find(ref);
+        CreatorField[] creatorFields = creatorFieldFinder.find(ref);
         // FIX 1665 Call CreatorFieldsFinder.
         // FIX 1665 Use ProxySupplier to get the Object proxy.
         // FIX 1665 Set Object proxy in fields.
         // FIX 1665 Reinstate
-        // edgeClass.getDeclaredFields(object.getClass());
     }
 
     // FIX 1665 Test drive up and hook in.
