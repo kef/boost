@@ -55,7 +55,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     // FIX BREADCRUMB 1665 -100000000000 Over here.
-    // FIX 1665 Create a PrimitiveRandomizer which behave and looks like automocker.  Delegate to it.
+    // FIX 1665 Create a PrimitiveRandomizer which behaves and looks like automocker.  Delegate to it.
     // FIX 1671 Seperate Class called AutoRandomizer like AutoMocker.
     private void assignRandomValuesToEligibleFields(Field[] fields) {
         FieldSpec[] eligibleFields = getFieldsToRandomize(fields);
