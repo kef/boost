@@ -1,11 +1,14 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
     private Fred object = new Fred();
     private CreatorFieldFinder subject = new DefaultCreatorFieldFinder();
+    private EdgeClass edgeClass = new DefaultEdgeClass();
 
     public void testFinder() {
         Field[] expectedFields = createExpectedCreatorFields();
@@ -21,11 +24,8 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
     }
 
     private Field getField(String fieldName) {
-        try {
-            return object.getClass().getDeclaredField(fieldName);
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        }
+        Class type = object.getClass();
+        return edgeClass.getDeclaredField(type, fieldName);
     }
 
     private void checkFields(Field[] expectedFields, CreatorField[] actualFields) {

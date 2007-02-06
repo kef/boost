@@ -1,4 +1,5 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-public final class Ted {
+// FIX 1665 Use or remove.
+final class Ted {
 }
