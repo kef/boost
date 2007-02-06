@@ -13,6 +13,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private EdgeField edgeField = new DefaultEdgeField();
     private ClassMaster classMaster = new DefaultClassMaster();
+    private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
 
     public CreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
@@ -35,7 +36,13 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private boolean isCreator(Object ref, Field field) {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
+        if (!fieldHasMarker(field)) return false;
         return nameStartsWith(field, "new");
+    }
+
+    private boolean fieldHasMarker(Field field) {
+        Class type = field.getType();
+        return CREATOR_MARKER_INTERFACE.isAssignableFrom(type);
     }
 
     private boolean isFinal(Field field) {
