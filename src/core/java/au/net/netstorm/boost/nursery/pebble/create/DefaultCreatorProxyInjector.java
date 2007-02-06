@@ -16,7 +16,6 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     }
 
     public void inject(Object ref) {
-        // FIX 1665 Rename CreatorField.getCreatorType to getCreatorInterface.
         // FIX 1665 Call CreatorFieldsFinder.
         // FIX 1665 Use ProxySupplier to get the Object proxy.
         // FIX 1665 Set Object proxy in fields.
