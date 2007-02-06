@@ -10,10 +10,11 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private CreatorProxyInjector subject;
     private MockExpectations expect;
     private Object object = new Object();
+    private Object proxy = new Object();
+    private CreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
     private CreatorProxySupplier creatorProxySupplier;
     private CreatorFieldFinder creatorFieldFinder;
     private CreatorField creatorField;
-    private CreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
     private Interface creatorInterface;
 
     public void setupSubjects() {
@@ -30,6 +31,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private void setArrayElementExpectations() {
         for (int i = 0; i < creatorFields.length; i++) {
             expect.oneCall(creatorField, creatorInterface, "getCreatorInterface");
+            expect.oneCall(creatorProxySupplier, proxy, "create", creatorInterface);
         }
     }
 }
