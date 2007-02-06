@@ -19,10 +19,18 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
 
     public void inject(Object ref) {
         CreatorField[] creatorFields = creatorFieldFinder.find(ref);
+        for (int i = 0; i < creatorFields.length; i++) {
+            CreatorField creatorField = creatorFields[i];
+            inject(ref, creatorField);
+        }
         // FIX 1665 Call CreatorFieldsFinder.
         // FIX 1665 Use ProxySupplier to get the Object proxy.
         // FIX 1665 Set Object proxy in fields.
         // FIX 1665 Reinstate
+    }
+
+    private void inject(Object ref, CreatorField creatorField) {
+        creatorField.getCreatorInterface();
     }
 
     // FIX 1665 Test drive up and hook in.
