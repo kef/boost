@@ -37,7 +37,6 @@ public final class DefaultCreatorMolecularTest extends TestCase {
 
     // FIX 1665 Leave here for demo purposes.
     public void wiringTest() {
-        // FIX BREADCRUMB 1665 -1000000 Remove following dependencies: EdgeClass, ProxyFactory.
         ProxySupplier proxySupplier = new DefaultProxySupplier();
         ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
         GenericCreator genericCreator = new DefaultGenericCreator();
