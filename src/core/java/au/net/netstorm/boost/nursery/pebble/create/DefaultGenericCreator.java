@@ -12,6 +12,7 @@ public final class DefaultGenericCreator implements GenericCreator {
 
     public Object create(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
+        // FIX 1665 Probably we should be onionizing outside of here.
         return onion.onionize(ref);
     }
 }
