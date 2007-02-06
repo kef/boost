@@ -7,33 +7,36 @@ import java.util.Set;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 
-// FIX 1665 Test drive ClassMaster support for getPackageName and stitch into Edgifier (talk to Larry).
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
     private EdgeField edgeField = new DefaultEdgeField();
 
     public CreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
-        return find(declaredFields, ref);
+        return find(ref, declaredFields);
     }
 
-    // FIX BREADCRUMB 1665 Flip fields and ref params.
-    private CreatorField[] find(Field[] fields, Object ref) {
+    private CreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
             if (isCreator(ref, field)) {
-                add(field, result);
+                addCreator(result, field);
             }
         }
         return (CreatorField[]) result.toArray(new CreatorField[]{});
     }
 
-    // FIX 1665 Put in test for marker (Creator) interface.
     private boolean isCreator(Object ref, Field field) {
-        if (isFinal(field)) return false;
-        if (isSet(ref, field)) return false;
-        if (!implementsMarker(field)) return false;
+        if (isFinal(field)) {
+            return false;
+        }
+        if (isSet(ref, field)) {
+            return false;
+        }
+        if (!implementsMarker(field)) {
+            return false;
+        }
         return nameStartsWith(field, "new");
     }
 
@@ -58,7 +61,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return name.startsWith(prefix);
     }
 
-    private void add(Field declaredField, Set creatorFields) {
+    private void addCreator(Set creatorFields, Field declaredField) {
         Class type = declaredField.getType();
         String name = declaredField.getName();
         CreatorField creatorField = new DefaultCreatorField(type, name);
