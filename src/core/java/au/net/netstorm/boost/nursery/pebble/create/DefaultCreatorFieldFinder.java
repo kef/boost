@@ -28,15 +28,12 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     }
 
     private boolean isCreator(Object ref, Field field) {
-        if (isFinal(field)) {
+        if (isFinal(field))
             return false;
-        }
-        if (isSet(ref, field)) {
+        if (isSet(ref, field))
             return false;
-        }
-        if (!implementsMarker(field)) {
+        if (!implementsMarker(field))
             return false;
-        }
         return nameStartsWith(field, "new");
     }
 
