@@ -6,12 +6,12 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 
 public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
-    private CreatorProxySupplier proxySupplier;
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
+    private CreatorProxySupplier creatorProxySupplier;
 
     public DefaultCreatorProxyInjector(CreatorProxySupplier creatorProxySupplier) {
-        this.proxySupplier = creatorProxySupplier;
+        this.creatorProxySupplier = creatorProxySupplier;
     }
 
     public void inject(Object ref) {
