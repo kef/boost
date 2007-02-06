@@ -5,9 +5,6 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
-// FIX 1665 Remove dupe.
-// FIX 1665 Convert all 1671 fixes to 1665.
-
 // OK ClassDataAbstractionCoupling {
 final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();

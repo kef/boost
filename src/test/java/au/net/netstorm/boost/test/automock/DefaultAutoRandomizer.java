@@ -13,6 +13,8 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // FIX 1665 Tidy this up.
+
+// FIX 1665 Remove dupe.
 public final class DefaultAutoRandomizer implements AutoRandomizer {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
