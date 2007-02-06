@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.pebble.create;
+package au.net.netstorm.boost.nursery.pebble.create.fixtures;
 
 // FIX 1665 Move out of nursery.
 
