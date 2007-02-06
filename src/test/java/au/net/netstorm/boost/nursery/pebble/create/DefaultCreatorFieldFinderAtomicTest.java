@@ -40,6 +40,8 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
 
     private void checkField(String actualName, CreatorField actualCreatorField) {
         Field expectedField = getField(actualName);
-        assertEquals(expectedField.getType(), actualCreatorField.getCreatorType());
+        Class expectedType = expectedField.getType();
+        Class creatorType = actualCreatorField.getCreatorType();
+        assertEquals(expectedType, creatorType);
     }
 }
