@@ -7,7 +7,6 @@ public final class DefaultCreatorField extends Primordial implements CreatorFiel
     private Interface creatorType;
     private String fieldName;
 
-    // FIX BREADCRUMB 1665 An interface.
     public DefaultCreatorField(Interface creatorType, String fieldName) {
         this.creatorType = creatorType;
         this.fieldName = fieldName;
