@@ -27,13 +27,22 @@ public final class DefaultAutoRandomizer implements AutoRandomizer {
 
     // FIX BREADCRUMB 1665 -100000 Hard to read.
     public void randomizePrimitivesAndStrings(Field[] fields) {
-        FieldSpec[] eligibleFields = getFieldsToRandomize(fields);
-        Object[] randomInstances = fieldSpecTestUtil.getInstances(eligibleFields);
-        for (int i = 0; i < eligibleFields.length; i++) {
-            FieldSpec primitiveField = eligibleFields[i];
-            Object randomValue = randomInstances[i];
-            fielder.setInstance(testCase, primitiveField.getName(), randomValue);
+        FieldSpec[] randomizableFields = getFieldsToRandomize(fields);
+        performRandomization(randomizableFields);
+    }
+
+    private void performRandomization(FieldSpec[] fields) {
+        Object[] randomInstances = fieldSpecTestUtil.getInstances(fields);
+        for (int fieldCount = 0; fieldCount < fields.length; fieldCount++) {
+            assignRandomValue(fields, fieldCount, randomInstances);
         }
+    }
+
+    private void assignRandomValue(FieldSpec[] fields, int fieldCount, Object[] randomValues) {
+        FieldSpec primitiveField = fields[fieldCount];
+        Object randomValue = randomValues[fieldCount];
+        String fieldName = primitiveField.getName();
+        fielder.setInstance(testCase, fieldName, randomValue);
     }
 
     private FieldSpec[] getFieldsToRandomize(Field[] fields) {
