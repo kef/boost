@@ -5,6 +5,7 @@ import au.net.netstorm.boost.nursery.pebble.instantiate.SingleConstructorBasedIn
 import au.net.netstorm.boost.nursery.pebble.onion.BermudaOnion;
 import au.net.netstorm.boost.nursery.pebble.onion.Onion;
 
+// FIX 1665 This is an instantiator (not a creator)?
 public final class DefaultGenericCreator implements GenericCreator {
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private Onion onion = new BermudaOnion();
