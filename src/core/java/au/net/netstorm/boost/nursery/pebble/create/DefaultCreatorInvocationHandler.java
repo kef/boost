@@ -10,6 +10,7 @@ public final class DefaultCreatorInvocationHandler implements InvocationHandler 
         this.genericCreator = genericCreator;
     }
 
+    // FIX 1665 If we added a line like "if (!method.getName().equals("create")) barf();"
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
         Class returnType = method.getReturnType();
         return genericCreator.create(returnType, params);

@@ -9,6 +9,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import junit.framework.TestCase;
 
+// FIX 1665 Dodgy.  Tidy up.  Remove dupe.
 public final class DefaultCreatorMolecularTest extends TestCase {
     private GenericCreator genericCreator = new DefaultGenericCreator();
     private InvocationHandler invocationHandler = new DefaultCreatorInvocationHandler(genericCreator);
@@ -38,6 +39,8 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         Ned create();
     }
 
+    // FIX 1665 Nicer names.
+    // FIX 1665 Move these out of here.
     private class Fred {
         private TedCreator tedCreator;
         private NedCreator nedCreator;
@@ -55,11 +58,9 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         }
 
         private void doStuffWithNed(Ned ned) {
-            // do nothing
         }
 
         private void doStuffWithTed(Ted ted) {
-            // do nothing
         }
     }
 

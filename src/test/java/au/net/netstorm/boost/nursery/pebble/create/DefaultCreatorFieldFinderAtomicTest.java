@@ -1,32 +1,17 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
-import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.reflect.ClassMaster;
+import junit.framework.TestCase;
 
-public final class DefaultCreatorFieldFinderAtomicTest extends PrimordialTestCase implements UsesMocks {
+// FIX 1665 Do we need to call this something else.  It is not atomic.
+public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
     private Fred object = new Fred();
-    private CreatorFieldFinder subject;
-    private MockExpectations expect;
-    private ClassMaster classMaster;
-
-    public void setupSubjects() {
-        subject = new DefaultCreatorFieldFinder(classMaster);
-    }
+    private CreatorFieldFinder subject = new DefaultCreatorFieldFinder();
 
     public void testFinder() {
         Field[] expectedFields = createExpectedCreatorFields();
-        setupClassMasterExpectations();
         CreatorField[] actualFields = subject.find(object);
         checkFields(expectedFields, actualFields);
-    }
-
-    private void setupClassMasterExpectations() {
-        expectGetShortNameCall("newTed", "NewTed");
-        expectGetShortNameCall("newNed", "NewNed");
-        expectGetShortNameCall("notACreatorField", "String");
     }
 
     private Field[] createExpectedCreatorFields() {
@@ -34,11 +19,6 @@ public final class DefaultCreatorFieldFinderAtomicTest extends PrimordialTestCas
         fields[0] = getField("newTed");
         fields[1] = getField("newNed");
         return fields;
-    }
-
-    private void expectGetShortNameCall(String fieldName, String className) {
-        Field field = getField(fieldName);
-        expect.oneCall(classMaster, className, "getShortName", field.getType());
     }
 
     private Field getField(String fieldName) {

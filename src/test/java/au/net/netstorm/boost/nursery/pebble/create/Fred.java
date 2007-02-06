@@ -1,8 +1,11 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
+// FIX 1665 Close down scope.  Make package-private.
 public class Fred {
-    private NewTed newTed;
+    private final NewTed newTedNotACreatorField = null;
+    private NewNed newNedNotACreatorField = new NewNed();
     private NewNed newNed;
+    private NewTed newTed;
     private String notACreatorField;
 
     private class NewTed {
