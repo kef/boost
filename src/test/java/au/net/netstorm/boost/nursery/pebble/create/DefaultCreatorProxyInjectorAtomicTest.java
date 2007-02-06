@@ -9,6 +9,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import org.jmock.Mock;
 
+// FIX 1665 Remove jMock.
 public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private CreatorProxyInjector subject;
     private MockExpectations expect;
