@@ -4,17 +4,17 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreatorField extends Primordial implements CreatorField {
-    private Interface creatorType;
+    private Interface creatorInterface;
     private String fieldName;
 
-    public DefaultCreatorField(Interface creatorType, String fieldName) {
-        this.creatorType = creatorType;
+    public DefaultCreatorField(Interface creatorInterface, String fieldName) {
+        this.creatorInterface = creatorInterface;
         this.fieldName = fieldName;
         validate();
     }
 
-    public Interface getCreatorType() {
-        return creatorType;
+    public Interface getCreatorInterface() {
+        return creatorInterface;
     }
 
     public String getFieldName() {
@@ -22,7 +22,7 @@ public final class DefaultCreatorField extends Primordial implements CreatorFiel
     }
 
     private void validate() {
-        if (creatorType == null)
+        if (creatorInterface == null)
             throw new IllegalArgumentException();
         if (fieldName == null)
             throw new IllegalArgumentException();

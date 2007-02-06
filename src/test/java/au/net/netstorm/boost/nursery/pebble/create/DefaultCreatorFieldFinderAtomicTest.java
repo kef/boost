@@ -25,26 +25,37 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         return fields;
     }
 
-    private Field getField(String fieldName) {
-        Class type = object.getClass();
-        return edgeClass.getDeclaredField(type, fieldName);
+    private void checkFields(Field[] expected, CreatorField[] actual) {
+        checkFieldLength(expected, actual);
+        checkFieldInterfaces(expected, actual);
     }
 
-    // FIX 1665 Tidy this up.  Thick and hard to read.
-    private void checkFields(Field[] expectedFields, CreatorField[] actualFields) {
-        assertEquals(expectedFields.length, actualFields.length);
-        for (int i = 0; i < actualFields.length; i++) {
-            CreatorField actualCreatorField = actualFields[i];
-            String actualName = actualCreatorField.getFieldName();
-            checkField(actualName, actualCreatorField);
+    private void checkFieldLength(Field[] expected, CreatorField[] actual) {
+        int expectedLength = expected.length;
+        int actualLength = actual.length;
+        assertEquals(expectedLength, actualLength);
+    }
+
+    private void checkFieldInterfaces(Field[] expected, CreatorField[] actual) {
+        for (int i = 0; i < actual.length; i++) {
+            CreatorField creatorField = actual[i];
+            checkFieldInterface(expected[i], creatorField);
         }
     }
 
-    private void checkField(String actualName, CreatorField actualCreatorField) {
-        Field expectedField = getField(actualName);
-        Class expectedClass = expectedField.getType();
-        Interface expectedType = new DefaultInterface(expectedClass);
-        Interface creatorType = actualCreatorField.getCreatorType();
-        assertEquals(expectedType, creatorType);
+    private void checkFieldInterface(Field expectedField, CreatorField actualField) {
+        Interface expected = getExpectedInterface(expectedField);
+        Interface actual = actualField.getCreatorInterface();
+        assertEquals(expected, actual);
+    }
+
+    private Interface getExpectedInterface(Field field) {
+        Class expectedClass = field.getType();
+        return new DefaultInterface(expectedClass);
+    }
+
+    private Field getField(String fieldName) {
+        Class type = object.getClass();
+        return edgeClass.getDeclaredField(type, fieldName);
     }
 }
