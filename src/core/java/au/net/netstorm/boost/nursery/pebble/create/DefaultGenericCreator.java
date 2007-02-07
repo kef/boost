@@ -16,6 +16,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 public final class DefaultGenericCreator implements GenericCreator {
     // FIX 1665 We should be given the proxy injector, not building it here?
     // FIX 1665 Moved the stinky onion to stop duplication problems.  Fix me now!
+    // FIX 1665 Inject these dependencies.
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final ProxySupplier proxySupplier = new DefaultProxySupplier();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
