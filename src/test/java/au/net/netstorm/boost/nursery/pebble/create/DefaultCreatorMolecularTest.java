@@ -5,11 +5,15 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 // FIX 1665 Move into Demo.  This is what it is.
 
 // FIX 1665 Dodgy.  Tidy up.  Remove dupe.
+
+// DEBT LineLength {
 public final class DefaultCreatorMolecularTest extends TestCase {
     private GenericCreator genericCreator = new DefaultGenericCreator();
     private InvocationHandler invocationHandler = new CreatorInvocationHandler(genericCreator);
@@ -17,11 +21,30 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private CreatorProxySupplier creatorProxySupplier =
             new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
+    private CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
 
-    // FIX 1665 Reintroduce when we're done.
-    public void testReintroduce() {
+    public void testFieldInjection() {
+        // FIX BREADCRUMB 1665 Re-introduce.
+//        Rob rob = new Rob();
+//        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
+//        creatorProxyInjector.inject(rob);
+//        rob.doStuff();
     }
-/*
+
+    public void testConstructorInjection() {
+        // FIX BREADCRUMB 1665 Re-introduce.
+//        TedCreator tedCreatorProxy = (TedCreator) createProxy(TedCreator.class);
+//        NedCreator nedCreatorProxy = (NedCreator) createProxy(NedCreator.class);
+//        ConstructorInjection constructorInjection = new ConstructorInjection(tedCreatorProxy, nedCreatorProxy);
+//        constructorInjection.doStuff();
+    }
+
+    private Object createProxy(Class cls) {
+        Interface clsInterface = new DefaultInterface(cls);
+        return creatorProxySupplier.create(clsInterface);
+    }
+
+    /*
     public void testFredCallsCreatorsFromConstructor() {
         TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
         NedCreator nedCreatorImpl = (NedCreator) creatorProxySupplier.create(new DefaultInterface(NedCreator.class));
@@ -37,7 +60,9 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         creatorProxyInjector.inject(rob);
         rob.doStuff();
     }
+*/
 
+    /*
     // FIX 1665 Leave here for demo purposes.
     public void wiringTest() {
         ProxySupplier proxySupplier = new DefaultProxySupplier();
@@ -47,5 +72,6 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory, bar);
         CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier);
     }
-*/
+    */
 }
+// } DEBT LineLength
