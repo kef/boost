@@ -14,6 +14,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 // FIX 1665 Move into Demo.  This is what it is.
+// FIX 1665 This does not get run as part of the atomic tests.
 
 // FIX 1665 Dodgy.  Tidy up.  Remove dupe.
 
@@ -44,35 +45,5 @@ public final class DefaultCreatorMolecularTest extends TestCase {
         Interface clsInterface = new DefaultInterface(cls);
         return creatorProxySupplier.create(clsInterface);
     }
-
-    /*
-    public void testFredCallsCreatorsFromConstructor() {
-        TedCreator tedCreatorImpl = (TedCreator) creatorProxySupplier.create(new DefaultInterface(TedCreator.class));
-        NedCreator nedCreatorImpl = (NedCreator) creatorProxySupplier.create(new DefaultInterface(NedCreator.class));
-        Fred fred = new Fred(tedCreatorImpl, nedCreatorImpl);
-        fred.doStuff();
-    }
-
-    // FIX 1665 Remove when done.
-    public void brokenTestRobCallsInjectedFieldCreators() {
-        Rob rob = new Rob();
-        CreatorProxyInjector creatorProxyInjector =
-                new DefaultCreatorProxyInjector(creatorProxySupplier);
-        creatorProxyInjector.inject(rob);
-        rob.doStuff();
-    }
-*/
-
-    /*
-    // FIX 1665 Leave here for demo purposes.
-    public void wiringTest() {
-        ProxySupplier proxySupplier = new DefaultProxySupplier();
-        ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
-        GenericCreator genericCreator = new DefaultGenericCreator();
-        InvocationHandler bar = new CreatorInvocationHandler(genericCreator);
-        CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory, bar);
-        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier);
-    }
-    */
 }
 // } DEBT LineLength
