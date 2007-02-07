@@ -17,10 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/ClassNameMorpher.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/ClassNameMorpher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
     </list>
     <list name="Rejected commit: Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java" />
@@ -166,10 +163,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultClassNameMorpherAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DefaultClassNameMorpherAtomicTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="38" selection-start="327" selection-end="327" vertical-scroll-proportion="0.2486911">
+            <state line="13" column="45" selection-start="461" selection-end="461" vertical-scroll-proportion="0.32329842">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,7 +183,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultClassNameMorpher.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DefaultClassNameMorpher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="6" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.14921466">
@@ -810,12 +807,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="38" selection-start="327" selection-end="327" vertical-scroll-proportion="0.2486911">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="6" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.14921466">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -826,10 +821,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.14921466">
-          <folding />
+        <state line="13" column="45" selection-start="461" selection-end="461" vertical-scroll-proportion="0.32329842">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
