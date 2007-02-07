@@ -18,11 +18,11 @@ public final class DefaultGenericCreator implements GenericCreator {
     // FIX 1665 Moved the stinky onion to stop duplication problems.  Fix me now!
     // FIX 1665 Inject these dependencies.
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
+    private final Onion onion = new BermudaOnion();
     private final ProxySupplier proxySupplier = new DefaultProxySupplier();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private final InvocationHandler invocationHandler = new CreatorInvocationHandler(this);
     private final CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
-    private final Onion onion = new BermudaOnion();
     private final CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
     private final CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
 
