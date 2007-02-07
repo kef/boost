@@ -6,4 +6,8 @@ public interface ClassMaster {
     String getShortName(Interface iface);
 
     String getShortName(Class cls);
+
+    String getPackageName(Interface iface);
+
+    String getPackageName(Class cls);
 }

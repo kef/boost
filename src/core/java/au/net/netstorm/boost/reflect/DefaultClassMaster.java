@@ -14,4 +14,15 @@ public class DefaultClassMaster implements ClassMaster {
         int lastPeriod = clsName.lastIndexOf('.');
         return clsName.substring(lastPeriod + 1);
     }
+
+    public String getPackageName(Interface iface) {
+        Class type = iface.getType();
+        return getPackageName(type);
+    }
+
+    public String getPackageName(Class cls) {
+        String fullName = cls.getName();
+        int lastDot = fullName.lastIndexOf(".");
+        return fullName.substring(0, lastDot);
+    }
 }
