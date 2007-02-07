@@ -18,6 +18,7 @@
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java" />
     </list>
     <list name="Rejected commit: Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java" />
@@ -166,7 +167,7 @@
       <file leaf-file-name="DefaultClassNameMorpherAtomicTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="45" selection-start="461" selection-end="461" vertical-scroll-proportion="0.32329842">
+            <state line="15" column="29" selection-start="493" selection-end="493" vertical-scroll-proportion="0.37303665">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,8 +187,10 @@
       <file leaf-file-name="DefaultClassNameMorpher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.14921466">
-              <folding />
+            <state line="21" column="0" selection-start="933" selection-end="933" vertical-scroll-proportion="0.5222513">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -615,7 +618,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="22" width="2562" height="1574" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
@@ -631,7 +634,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24910465" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44414353" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44414353" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
@@ -807,10 +810,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="277" selection-end="277" vertical-scroll-proportion="0.14921466">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.14921466">
-          <folding />
+        <state line="21" column="0" selection-start="933" selection-end="933" vertical-scroll-proportion="0.5222513">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -823,7 +835,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="45" selection-start="461" selection-end="461" vertical-scroll-proportion="0.32329842">
+        <state line="15" column="29" selection-start="493" selection-end="493" vertical-scroll-proportion="0.37303665">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
