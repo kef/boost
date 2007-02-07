@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.pebble.create.fixtures;
+package au.net.netstorm.boost.demo.pebble.fixtures;
 
 import au.net.netstorm.boost.nursery.pebble.create.Creator;
 
