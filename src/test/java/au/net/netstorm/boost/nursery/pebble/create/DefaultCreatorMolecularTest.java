@@ -20,6 +20,7 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private InvocationHandler invocationHandler = new CreatorInvocationHandler(genericCreator);
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
+    // FIX 1665 Why is re-format doing the artificial line break?? ahhhhhhhhhhhhhh.
     private CreatorProxySupplier creatorProxySupplier =
             new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
     private CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
