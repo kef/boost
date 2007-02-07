@@ -3,7 +3,10 @@ package au.net.netstorm.boost.nursery.pebble.create;
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.nursery.pebble.create.fixtures.ConstructorInjection;
+import au.net.netstorm.boost.nursery.pebble.create.fixtures.NedCreator;
 import au.net.netstorm.boost.nursery.pebble.create.fixtures.Rob;
+import au.net.netstorm.boost.nursery.pebble.create.fixtures.TedCreator;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -31,11 +34,10 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     }
 
     public void testConstructorInjection() {
-        // FIX BREADCRUMB 1665 Re-introduce.
-//        TedCreator tedCreatorProxy = (TedCreator) createProxy(TedCreator.class);
-//        NedCreator nedCreatorProxy = (NedCreator) createProxy(NedCreator.class);
-//        ConstructorInjection constructorInjection = new ConstructorInjection(tedCreatorProxy, nedCreatorProxy);
-//        constructorInjection.doStuff();
+        TedCreator tedCreatorProxy = (TedCreator) createProxy(TedCreator.class);
+        NedCreator nedCreatorProxy = (NedCreator) createProxy(NedCreator.class);
+        ConstructorInjection constructorInjection = new ConstructorInjection(tedCreatorProxy, nedCreatorProxy);
+        constructorInjection.doStuff();
     }
 
     private Object createProxy(Class cls) {
