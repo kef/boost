@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.pebble.create;
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.nursery.pebble.create.fixtures.Rob;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -25,10 +26,11 @@ public final class DefaultCreatorMolecularTest extends TestCase {
 
     public void testFieldInjection() {
         // FIX BREADCRUMB 1665 Re-introduce.
-//        Rob rob = new Rob();
-//        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
-//        creatorProxyInjector.inject(rob);
-//        rob.doStuff();
+        Rob rob = new Rob();
+        CreatorProxyInjector creatorProxyInjector =
+                new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
+        creatorProxyInjector.inject(rob);
+        rob.doStuff();
     }
 
     public void testConstructorInjection() {

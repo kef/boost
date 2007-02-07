@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.pebble.create.fixtures;
 
-public interface TedCreator {
+import au.net.netstorm.boost.nursery.pebble.create.Creator;
+
+public interface TedCreator extends Creator {
     Ted create();
 }
