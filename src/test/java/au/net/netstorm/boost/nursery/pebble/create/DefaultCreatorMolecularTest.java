@@ -28,17 +28,29 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
 
     public void testFieldInjection() {
-        Rob rob = new Rob();
-        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
-        creatorProxyInjector.inject(rob);
-        rob.doStuff();
+        primeRob();
     }
+
+    // FIX 1665 Re-instate.
+//    public void testMoreGoodiesAtThe32FloorOfWaterFrontPlace() {
+//        Rob rob = primeRob();
+//        Bob bob = rob.bob;
+//        assertNotNull("What Master Gwegowy wants", bob.newJobCreator);
+//    }
 
     public void testConstructorInjection() {
         TedCreator tedCreatorProxy = (TedCreator) createProxy(TedCreator.class);
         NedCreator nedCreatorProxy = (NedCreator) createProxy(NedCreator.class);
         ConstructorInjection constructorInjection = new ConstructorInjection(tedCreatorProxy, nedCreatorProxy);
         constructorInjection.doStuff();
+    }
+
+    private Rob primeRob() {
+        Rob rob = new Rob();
+        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
+        creatorProxyInjector.inject(rob);
+        rob.doStuff();
+        return rob;
     }
 
     private Object createProxy(Class cls) {
