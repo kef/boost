@@ -50,6 +50,7 @@ public final class DefaultCreatorDemoTest extends TestCase {
 
     private Rob createRob() {
         Rob rob = new Rob();
+        // FIX 1665 We should be calling the creator here and not the injector.
         CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
         creatorProxyInjector.inject(rob);
         return rob;
