@@ -21,14 +21,12 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     // FIX 1665 Why is re-format doing the artificial line break?? ahhhhhhhhhhhhhh.
-    private CreatorProxySupplier creatorProxySupplier =
-            new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
+    private CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
     private CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
 
     public void testFieldInjection() {
         Rob rob = new Rob();
-        CreatorProxyInjector creatorProxyInjector =
-                new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
+        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
         creatorProxyInjector.inject(rob);
         rob.doStuff();
     }

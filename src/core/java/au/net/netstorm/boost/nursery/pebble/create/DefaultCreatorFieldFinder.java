@@ -31,12 +31,9 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
 
     // FIX 1665 Can we stop the wrap.
     private boolean isCreator(Object ref, Field field) {
-        if (isFinal(field))
-            return false;
-        if (isSet(ref, field))
-            return false;
-        if (!implementsMarker(field))
-            return false;
+        if (isFinal(field)) return false;
+        if (isSet(ref, field)) return false;
+        if (!implementsMarker(field)) return false;
         return nameStartsWith(field, "new");
     }
 
