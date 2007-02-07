@@ -1,8 +1,17 @@
-package au.net.netstorm.boost.nursery.pebble.create;
+package au.net.netstorm.boost.demo.pebble;
 
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.nursery.pebble.create.CreatorFieldFinder;
+import au.net.netstorm.boost.nursery.pebble.create.CreatorInvocationHandler;
+import au.net.netstorm.boost.nursery.pebble.create.CreatorProxyInjector;
+import au.net.netstorm.boost.nursery.pebble.create.CreatorProxySupplier;
+import au.net.netstorm.boost.nursery.pebble.create.DefaultCreatorFieldFinder;
+import au.net.netstorm.boost.nursery.pebble.create.DefaultCreatorProxyInjector;
+import au.net.netstorm.boost.nursery.pebble.create.DefaultCreatorProxySupplier;
+import au.net.netstorm.boost.nursery.pebble.create.DefaultGenericCreator;
+import au.net.netstorm.boost.nursery.pebble.create.GenericCreator;
 import au.net.netstorm.boost.nursery.pebble.create.fixtures.ConstructorInjection;
 import au.net.netstorm.boost.nursery.pebble.create.fixtures.NedCreator;
 import au.net.netstorm.boost.nursery.pebble.create.fixtures.Rob;
@@ -13,6 +22,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
+// FIX BREADCRUMB 1665 -10000000 Move all fixtures in here.
 // FIX 1665 Move into Demo.  This is what it is.
 // FIX 1665 This does not get run as part of the atomic tests.
 
