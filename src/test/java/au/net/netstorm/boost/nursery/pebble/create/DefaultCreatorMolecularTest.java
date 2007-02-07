@@ -26,7 +26,6 @@ public final class DefaultCreatorMolecularTest extends TestCase {
     private CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
 
     public void testFieldInjection() {
-        // FIX BREADCRUMB 1665 Re-introduce.
         Rob rob = new Rob();
         CreatorProxyInjector creatorProxyInjector =
                 new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);

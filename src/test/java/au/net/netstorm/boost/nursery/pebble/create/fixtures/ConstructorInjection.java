@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.nursery.pebble.create.fixtures;
 
 public final class ConstructorInjection {
-    // FIX 1665 Nicer names.
-    // FIX 1665 Move these out of here.
     private TedCreator tedCreator;
     private NedCreator nedCreator;
 
