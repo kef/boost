@@ -29,8 +29,8 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private void inject(Object ref, CreatorField field) {
         Interface creatorInterface = field.getCreatorInterface();
         Class instanceImplementation = field.getInstanceImplementation();
-        proxySupplier.create(creatorInterface, instanceImplementation);
-        inject(ref, "nine", field);
+        Object proxy = proxySupplier.create(creatorInterface, instanceImplementation);
+        inject(ref, proxy, field);
     }
 
     private void inject(Object ref, Object proxy, CreatorField creatorField) {
