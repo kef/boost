@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.pebble.create;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.sql.DriverManager;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -10,11 +11,12 @@ public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase
     private InvocationHandler subject;
     private MockExpectations expect;
     private Creator creator;
-    private Class implClass = void.class;
+    private Class implClass = DriverManager.class;
     private Object proxyObject = new Object();
     private Object[] methodParams = new Object[]{};
     private Object createdObject = new Object();
 
+    // FIX BREADCRUMB 1665 COMPLETE.
     public void setupSubjects() {
         subject = new CreatorInvocationHandler(creator, implClass);
     }
