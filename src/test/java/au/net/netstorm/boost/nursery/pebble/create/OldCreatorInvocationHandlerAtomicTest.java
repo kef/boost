@@ -9,7 +9,7 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 public final class OldCreatorInvocationHandlerAtomicTest extends PrimordialTestCase implements UsesMocks {
     private InvocationHandler subject;
     private MockExpectations expect;
-    private Creator creator;
+    private OldCreator creator;
     private Object proxyObject = new Object();
     private Object[] createMethodParameters = new Object[]{};
     private Object createdObject = new Object();

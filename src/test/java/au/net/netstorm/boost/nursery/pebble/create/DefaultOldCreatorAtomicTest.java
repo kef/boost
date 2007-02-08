@@ -13,8 +13,8 @@ import au.net.netstorm.boost.test.reflect.util.FieldInstantiationChecker;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 // FIX 1665 Pass in dependencies.
-public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private Creator subject;
+public final class DefaultOldCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
+    private OldCreator subject;
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
@@ -26,7 +26,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private FieldInstantiationChecker fieldInstantiationChecker = new DefaultFieldInstantiationChecker();
 
     public void setupSubjects() {
-        subject = new DefaultCreator();
+        subject = new DefaultOldCreator();
         checkCreationOfInstanceVariables();
         overwriteConstructedInstancesWithMocks();
     }

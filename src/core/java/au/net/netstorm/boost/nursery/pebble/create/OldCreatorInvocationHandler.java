@@ -4,9 +4,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public final class OldCreatorInvocationHandler implements InvocationHandler {
-    private Creator creator;
+    private OldCreator creator;
 
-    public OldCreatorInvocationHandler(Creator creator) {
+    public OldCreatorInvocationHandler(OldCreator creator) {
         this.creator = creator;
     }
 
