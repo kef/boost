@@ -4,10 +4,10 @@ import au.net.netstorm.boost.nursery.pebble.create.Ned;
 import au.net.netstorm.boost.nursery.pebble.create.Ted;
 
 public final class ConstructorInjection {
-    private TedCreator tedCreator;
-    private NedCreator nedCreator;
+    private TedNewer tedCreator;
+    private NedNewer nedCreator;
 
-    public ConstructorInjection(TedCreator tedCreator, NedCreator nedCreator) {
+    public ConstructorInjection(TedNewer tedCreator, NedNewer nedCreator) {
         this.tedCreator = tedCreator;
         this.nedCreator = nedCreator;
     }

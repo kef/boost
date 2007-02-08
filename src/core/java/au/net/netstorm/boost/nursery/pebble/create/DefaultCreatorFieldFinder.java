@@ -15,7 +15,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
-    private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
+    private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     private EdgeField edgeField = new DefaultEdgeField();
     private ClassNameMorpher classNameMorpher = new DefaultClassNameMorpher();
 

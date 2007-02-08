@@ -7,8 +7,8 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private CreatorProxySupplier subject;
+public final class DefaultOldCreatorProxySupplierAtomicTest extends PrimordialTestCase implements UsesMocks {
+    private OldCreatorProxySupplier subject;
     private MockExpectations expect;
     private Interface type;
     private InvocationHandler invocationHandler;
@@ -16,7 +16,7 @@ public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestC
     private Object creatorProxy = new Object();
 
     public void setupSubjects() {
-        subject = new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
+        subject = new DefaultOldCreatorProxySupplier(proxyFactory, invocationHandler);
     }
 
     public void testCreate() {

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble;
 
 import au.net.netstorm.boost.demo.pebble.fixtures.Bob;
-import au.net.netstorm.boost.demo.pebble.fixtures.JobCreator;
+import au.net.netstorm.boost.demo.pebble.fixtures.JobNewer;
 import au.net.netstorm.boost.demo.pebble.fixtures.Rob;
 import au.net.netstorm.boost.nursery.pebble.create.DefaultGenericCreator;
 import au.net.netstorm.boost.nursery.pebble.create.GenericCreator;
@@ -15,7 +15,7 @@ public final class DefaultCreatorDemoTest extends TestCase {
         Rob rob = createRob();
         rob.doStuff();
         Bob bob = rob.getBob();
-        JobCreator newJobCreator = bob.getNewJobCreator();
+        JobNewer newJobCreator = bob.getNewJobCreator();
         assertNotNull("newJobCreator should have been created as a dependency", newJobCreator);
     }
 

@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultOldCreatorFieldFinder implements OldCreatorFieldFinder {
-    private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
+    private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     private EdgeField edgeField = new DefaultEdgeField();
 
     public OldCreatorField[] find(Object ref) {

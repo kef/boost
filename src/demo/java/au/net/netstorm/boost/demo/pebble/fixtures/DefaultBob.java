@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.demo.pebble.fixtures;
 
 public final class DefaultBob implements Bob {
-    private JobCreator newJobCreator;
+    private JobNewer newJobCreator;
 
     public DefaultBob(String comment) {
     }
 
-    public JobCreator getNewJobCreator() {
+    public JobNewer getNewJobCreator() {
         return newJobCreator;
     }
 }

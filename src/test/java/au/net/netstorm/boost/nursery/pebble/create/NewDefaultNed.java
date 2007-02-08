@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
-public interface NewDefaultNed extends Creator {
+public interface NewDefaultNed extends Newer {
     Ned create();
 }

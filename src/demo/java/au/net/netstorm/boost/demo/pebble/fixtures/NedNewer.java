@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.pebble.fixtures;
 
-import au.net.netstorm.boost.nursery.pebble.create.Creator;
 import au.net.netstorm.boost.nursery.pebble.create.Ned;
+import au.net.netstorm.boost.nursery.pebble.create.Newer;
 
-public interface NedCreator extends Creator {
+public interface NedNewer extends Newer {
     Ned create();
 }

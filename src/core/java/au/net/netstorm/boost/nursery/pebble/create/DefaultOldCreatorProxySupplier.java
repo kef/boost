@@ -4,11 +4,11 @@ import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorProxySupplier implements CreatorProxySupplier {
+public final class DefaultOldCreatorProxySupplier implements OldCreatorProxySupplier {
     private InvocationHandler invocationHandler;
     private ProxyFactory proxyFactory;
 
-    public DefaultCreatorProxySupplier(ProxyFactory proxyFactory, InvocationHandler invocationHandler) {
+    public DefaultOldCreatorProxySupplier(ProxyFactory proxyFactory, InvocationHandler invocationHandler) {
         this.invocationHandler = invocationHandler;
         this.proxyFactory = proxyFactory;
     }

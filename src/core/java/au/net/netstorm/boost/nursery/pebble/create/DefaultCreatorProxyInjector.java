@@ -10,10 +10,10 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
-    private CreatorProxySupplier proxySupplier;
+    private OldCreatorProxySupplier proxySupplier;
     private OldCreatorFieldFinder fieldFinder;
 
-    public DefaultCreatorProxyInjector(CreatorProxySupplier proxySupplier, OldCreatorFieldFinder fieldFinder) {
+    public DefaultCreatorProxyInjector(OldCreatorProxySupplier proxySupplier, OldCreatorFieldFinder fieldFinder) {
         this.proxySupplier = proxySupplier;
         this.fieldFinder = fieldFinder;
     }
