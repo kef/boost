@@ -17,14 +17,12 @@ public final class DefaultClassNameMorpher implements ClassNameMorpher {
         return edgeClass.forName(morphedClassName);
     }
 
-    // DEBT LineLength {
     private String stripPrefix(String prefix, String shortName) {
         if (!isPrefixIn(prefix, shortName))
             throw new IllegalArgumentException(prefix + " is not a prefix of " + shortName);
         int length = prefix.length();
         return shortName.substring(length);
     }
-    // } DEBT LineLength
 
     private boolean isPrefixIn(String prefix, String shortName) {
         return shortName.startsWith(prefix);
