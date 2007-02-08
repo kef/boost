@@ -9,5 +9,6 @@ public final class DefaultPassThroughInvovationHandlerAtomicTest extends TestCas
 
     public void testHandler() {
         // FIX 1665 Complete this.
+        new DefaultPassThroughInvocationHandler();
     }
 }
