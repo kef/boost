@@ -10,7 +10,6 @@ import junit.framework.TestCase;
 public final class DefaultClassNameMorpherAtomicTest extends TestCase {
     private ClassNameMorpher morpher = new DefaultClassNameMorpher();
 
-    // FIX 1665 Handle result class not existing.
     public void testStripPrefix() {
         checkStripPrefix(Map.class, "Tree", TreeMap.class);
         checkStripPrefix(Set.class, "Hash", HashSet.class);

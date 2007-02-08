@@ -140,7 +140,7 @@
       <file leaf-file-name="AllTestSuite.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.1003963">
+            <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.09947644">
               <folding />
             </state>
           </provider>
@@ -149,25 +149,25 @@
       <file leaf-file-name="CreatorFieldFinder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/CreatorFieldFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="71" selection-end="71" vertical-scroll-proportion="0.05019815">
+            <state line="2" column="17" selection-start="71" selection-end="71" vertical-scroll-proportion="0.04973822">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="40" selection-start="995" selection-end="995" vertical-scroll-proportion="0.4266843">
+            <state line="24" column="40" selection-start="995" selection-end="995" vertical-scroll-proportion="0.42277488">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultClassNameMorpherAtomicTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DefaultClassNameMorpherAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="42" selection-start="949" selection-end="949" vertical-scroll-proportion="0.7278732">
+            <state line="26" column="38" selection-start="818" selection-end="818" vertical-scroll-proportion="0.64659685">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,7 +178,7 @@
       <file leaf-file-name="EdgeClass.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/EdgeClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="15" selection-start="195" selection-end="195" vertical-scroll-proportion="0.12549537">
+            <state line="16" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.34816754">
               <folding />
             </state>
           </provider>
@@ -187,7 +187,7 @@
       <file leaf-file-name="DefaultEdgeClass.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="19" selection-start="625" selection-end="625" vertical-scroll-proportion="0.45178336">
+            <state line="21" column="19" selection-start="625" selection-end="625" vertical-scroll-proportion="0.44764397">
               <folding />
             </state>
           </provider>
@@ -196,7 +196,7 @@
       <file leaf-file-name="ClassNameMorpher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/ClassNameMorpher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="26" selection-start="58" selection-end="58" vertical-scroll-proportion="0.05019815">
+            <state line="2" column="26" selection-start="58" selection-end="58" vertical-scroll-proportion="0.04973822">
               <folding />
             </state>
           </provider>
@@ -205,7 +205,7 @@
       <file leaf-file-name="DefaultClassNameMorpher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="44" selection-start="509" selection-end="509" vertical-scroll-proportion="0.27608982">
+            <state line="11" column="44" selection-start="509" selection-end="509" vertical-scroll-proportion="0.2735602">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -636,7 +636,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="22" width="2562" height="1574" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
@@ -652,7 +652,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24910465" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44625852" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44414353" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
@@ -809,28 +809,21 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.1003963">
+        <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.09947644">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/CreatorFieldFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="71" selection-end="71" vertical-scroll-proportion="0.05019815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="40" selection-start="995" selection-end="995" vertical-scroll-proportion="0.4266843">
+        <state line="2" column="17" selection-start="71" selection-end="71" vertical-scroll-proportion="0.04973822">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/DefaultClassNameMorpher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="44" selection-start="509" selection-end="509" vertical-scroll-proportion="0.27608982">
+        <state line="11" column="44" selection-start="509" selection-end="509" vertical-scroll-proportion="0.2735602">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -839,31 +832,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/ClassNameMorpher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="26" selection-start="58" selection-end="58" vertical-scroll-proportion="0.05019815">
+        <state line="2" column="26" selection-start="58" selection-end="58" vertical-scroll-proportion="0.04973822">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="19" selection-start="625" selection-end="625" vertical-scroll-proportion="0.45178336">
+        <state line="21" column="19" selection-start="625" selection-end="625" vertical-scroll-proportion="0.44764397">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/EdgeClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="15" selection-start="195" selection-end="195" vertical-scroll-proportion="0.12549537">
+        <state line="16" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.34816754">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/DefaultClassNameMorpherAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="42" selection-start="949" selection-end="949" vertical-scroll-proportion="0.7278732">
+        <state line="26" column="38" selection-start="818" selection-end="818" vertical-scroll-proportion="0.64659685">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorFieldFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="40" selection-start="995" selection-end="995" vertical-scroll-proportion="0.42277488">
+          <folding />
         </state>
       </provider>
     </entry>
