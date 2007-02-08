@@ -14,7 +14,11 @@ public final class DefaultCreatorProxySupplier implements CreatorProxySupplier {
         this.proxyFactory = proxyFactory;
     }
 
-    public Object create(Interface type) {
+    public Object create(Interface creatorInterface, Class instanceImplementation) {
+/*
+        InvocationHandler handler = new CreatorInvocationHandler(creator, implClass);
+        proxyFactory.newProxy(type, handler);
+*/
         return null;
     }
 }
