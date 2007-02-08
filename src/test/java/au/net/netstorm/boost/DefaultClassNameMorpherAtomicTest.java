@@ -4,13 +4,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import au.net.netstorm.boost.edge.EdgeException;
 import junit.framework.TestCase;
 
 public final class DefaultClassNameMorpherAtomicTest extends TestCase {
     private ClassNameMorpher morpher = new DefaultClassNameMorpher();
 
-    // FIX 1665 Triangulate.
-    // FIX 1665 Handle prefix not in class.
     // FIX 1665 Handle result class not existing.
     public void testStripPrefix() {
         checkStripPrefix(Map.class, "Tree", TreeMap.class);
@@ -22,6 +21,13 @@ public final class DefaultClassNameMorpherAtomicTest extends TestCase {
             morpher.stripPrefix("Bollackery", HashSet.class);
             fail();
         } catch (IllegalArgumentException expected) { }
+    }
+
+    public void testStrippedClassNonExistent() {
+        try {
+            morpher.stripPrefix("TreeM", TreeMap.class);
+            fail();
+        } catch (EdgeException expected) { }
     }
 
     private void checkStripPrefix(Class expected, String prefix, Class cls) {
