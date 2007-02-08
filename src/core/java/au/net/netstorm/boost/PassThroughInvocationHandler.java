@@ -1,4 +1,7 @@
 package au.net.netstorm.boost;
 
-public interface PassThroughInvocationHandler {
+import java.lang.reflect.InvocationHandler;
+
+public interface PassThroughInvocationHandler extends InvocationHandler {
+    void setDelegate(Object delegate);
 }
