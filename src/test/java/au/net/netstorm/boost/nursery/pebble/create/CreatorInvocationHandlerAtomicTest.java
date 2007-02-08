@@ -16,7 +16,6 @@ public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase
     private Object[] methodParams = new Object[]{};
     private Object createdObject = new Object();
 
-    // FIX BREADCRUMB 1665 COMPLETE.
     public void setupSubjects() {
         subject = new CreatorInvocationHandler(creator, implClass);
     }
