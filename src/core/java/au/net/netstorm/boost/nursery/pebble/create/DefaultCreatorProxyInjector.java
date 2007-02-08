@@ -10,29 +10,30 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
-    private OldCreatorProxySupplier proxySupplier;
-    private OldCreatorFieldFinder fieldFinder;
+    private CreatorProxySupplier proxySupplier;
+    private CreatorFieldFinder fieldFinder;
 
-    public DefaultCreatorProxyInjector(OldCreatorProxySupplier proxySupplier, OldCreatorFieldFinder fieldFinder) {
+    public DefaultCreatorProxyInjector(CreatorProxySupplier proxySupplier, CreatorFieldFinder fieldFinder) {
         this.proxySupplier = proxySupplier;
         this.fieldFinder = fieldFinder;
     }
 
     public void inject(Object ref) {
-        OldCreatorField[] creatorFields = fieldFinder.find(ref);
+        CreatorField[] creatorFields = fieldFinder.find(ref);
         for (int i = 0; i < creatorFields.length; i++) {
-            OldCreatorField creatorField = creatorFields[i];
+            CreatorField creatorField = creatorFields[i];
             inject(ref, creatorField);
         }
     }
 
-    private void inject(Object ref, OldCreatorField field) {
-        Interface type = field.getCreatorInterface();
-        Object proxy = proxySupplier.create(type);
+    private void inject(Object ref, CreatorField field) {
+        Interface creatorInterface = field.getCreatorInterface();
+        Class instanceImplementation = field.getInstanceImplementation();
+        Object proxy = proxySupplier.create(creatorInterface, instanceImplementation);
         inject(ref, proxy, field);
     }
 
-    private void inject(Object ref, Object proxy, OldCreatorField creatorField) {
+    private void inject(Object ref, Object proxy, CreatorField creatorField) {
         String fieldName = creatorField.getFieldName();
         Class cls = ref.getClass();
         Field field = edgeClass.getDeclaredField(cls, fieldName);

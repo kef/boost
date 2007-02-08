@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
+import java.util.Random;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -12,19 +13,19 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private MockExpectations expect;
     private Object object = new Larry("ten");
     private Object proxy = "nine";
-    private OldCreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
-    private OldCreatorProxySupplier creatorProxySupplier;
-    private OldCreatorFieldFinder creatorFieldFinder;
-    private OldCreatorField creatorField;
+    private CreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
+    private CreatorProxySupplier creatorProxySupplier;
+    private CreatorFieldFinder creatorFieldFinder;
+    private CreatorField creatorField;
     private Interface creatorInterface;
     private String fieldName = "fingers";
+    private Class instanceImplementation = Random.class;
     private Object expectedLarry = new Larry("nine");
-
     private FieldTestUtil fieldTestUtil = new DefaultFieldTestUtil();
 
     public void setupSubjects() {
         subject = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
-        creatorFields = new OldCreatorField[]{creatorField, creatorField};
+        creatorFields = new CreatorField[]{creatorField, creatorField};
     }
 
     public void testSubject() {
@@ -37,7 +38,8 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private void setArrayElementExpectations() {
         for (int i = 0; i < creatorFields.length; i++) {
             expect.oneCall(creatorField, creatorInterface, "getCreatorInterface");
-            expect.oneCall(creatorProxySupplier, proxy, "create", creatorInterface);
+            expect.oneCall(creatorField, instanceImplementation, "getInstanceImplementation");
+            expect.oneCall(creatorProxySupplier, proxy, "create", creatorInterface, instanceImplementation);
             expect.oneCall(creatorField, fieldName, "getFieldName");
         }
     }
