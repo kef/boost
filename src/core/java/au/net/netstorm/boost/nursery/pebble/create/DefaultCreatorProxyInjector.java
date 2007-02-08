@@ -19,20 +19,20 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     }
 
     public void inject(Object ref) {
-        CreatorField[] creatorFields = fieldFinder.find(ref);
+        OldCreatorField[] creatorFields = fieldFinder.find(ref);
         for (int i = 0; i < creatorFields.length; i++) {
-            CreatorField creatorField = creatorFields[i];
+            OldCreatorField creatorField = creatorFields[i];
             inject(ref, creatorField);
         }
     }
 
-    private void inject(Object ref, CreatorField field) {
+    private void inject(Object ref, OldCreatorField field) {
         Interface type = field.getCreatorInterface();
         Object proxy = proxySupplier.create(type);
         inject(ref, proxy, field);
     }
 
-    private void inject(Object ref, Object proxy, CreatorField creatorField) {
+    private void inject(Object ref, Object proxy, OldCreatorField creatorField) {
         String fieldName = creatorField.getFieldName();
         Class cls = ref.getClass();
         Field field = edgeClass.getDeclaredField(cls, fieldName);

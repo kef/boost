@@ -67,7 +67,7 @@
         <exclude name="**/StartTime.java"/>
         <exclude name="**/EndTime.java"/>
         <exclude name="**/MockListener.java"/>
-        <exclude name="**/Old*.java"/>
+        <exclude name="**/*Old*.java"/>
     </fileset>
 
     <!-- FIX SC600 Moves into kickstart.xml for courses. -->

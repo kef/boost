@@ -12,10 +12,10 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private MockExpectations expect;
     private Object object = new Larry("ten");
     private Object proxy = "nine";
-    private CreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
+    private OldCreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
     private CreatorProxySupplier creatorProxySupplier;
     private CreatorFieldFinder creatorFieldFinder;
-    private CreatorField creatorField;
+    private OldCreatorField creatorField;
     private Interface creatorInterface;
     private String fieldName = "fingers";
     private Object expectedLarry = new Larry("nine");
@@ -24,7 +24,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
 
     public void setupSubjects() {
         subject = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
-        creatorFields = new CreatorField[]{creatorField, creatorField};
+        creatorFields = new OldCreatorField[]{creatorField, creatorField};
     }
 
     public void testSubject() {

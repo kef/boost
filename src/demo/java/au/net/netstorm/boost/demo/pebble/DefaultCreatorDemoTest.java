@@ -7,7 +7,7 @@ import au.net.netstorm.boost.nursery.pebble.create.DefaultGenericCreator;
 import au.net.netstorm.boost.nursery.pebble.create.GenericCreator;
 import junit.framework.TestCase;
 
-// DEBT LineLength {
+// FIX 1665 Stitch in new CreatorField.
 public final class DefaultCreatorDemoTest extends TestCase {
     private GenericCreator genericCreator = new DefaultGenericCreator();
 
@@ -24,4 +24,3 @@ public final class DefaultCreatorDemoTest extends TestCase {
         return (Rob) genericCreator.create(Rob.class, parameters);
     }
 }
-// } DEBT LineLength

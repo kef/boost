@@ -14,7 +14,7 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
 
     public void testFinder() {
         Field[] expectedFields = createExpectedCreatorFields();
-        CreatorField[] actualFields = subject.find(object);
+        OldCreatorField[] actualFields = subject.find(object);
         checkFields(expectedFields, actualFields);
     }
 
@@ -25,25 +25,25 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         return fields;
     }
 
-    private void checkFields(Field[] expected, CreatorField[] actual) {
+    private void checkFields(Field[] expected, OldCreatorField[] actual) {
         checkFieldLength(expected, actual);
         checkFieldInterfaces(expected, actual);
     }
 
-    private void checkFieldLength(Field[] expected, CreatorField[] actual) {
+    private void checkFieldLength(Field[] expected, OldCreatorField[] actual) {
         int expectedLength = expected.length;
         int actualLength = actual.length;
         assertEquals(expectedLength, actualLength);
     }
 
-    private void checkFieldInterfaces(Field[] expected, CreatorField[] actual) {
+    private void checkFieldInterfaces(Field[] expected, OldCreatorField[] actual) {
         for (int i = 0; i < actual.length; i++) {
-            CreatorField creatorField = actual[i];
+            OldCreatorField creatorField = actual[i];
             checkFieldInterface(expected[i], creatorField);
         }
     }
 
-    private void checkFieldInterface(Field expectedField, CreatorField actualField) {
+    private void checkFieldInterface(Field expectedField, OldCreatorField actualField) {
         Interface expected = getExpectedInterface(expectedField);
         Interface actual = actualField.getCreatorInterface();
         assertEquals(expected, actual);
