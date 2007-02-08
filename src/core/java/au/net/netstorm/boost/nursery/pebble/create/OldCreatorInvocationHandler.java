@@ -3,10 +3,10 @@ package au.net.netstorm.boost.nursery.pebble.create;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public final class CreatorInvocationHandler implements InvocationHandler {
+public final class OldCreatorInvocationHandler implements InvocationHandler {
     private Creator creator;
 
-    public CreatorInvocationHandler(Creator creator) {
+    public OldCreatorInvocationHandler(Creator creator) {
         this.creator = creator;
     }
 

@@ -21,7 +21,7 @@ public final class DefaultCreator implements Creator {
     private final Onion onion = new BermudaOnion();
     private final ProxySupplier proxySupplier = new DefaultProxySupplier();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
-    private final InvocationHandler invocationHandler = new CreatorInvocationHandler(this);
+    private final InvocationHandler invocationHandler = new OldCreatorInvocationHandler(this);
     private final OldCreatorProxySupplier creatorProxySupplier = new DefaultOldCreatorProxySupplier(proxyFactory, invocationHandler);
     private final OldCreatorFieldFinder creatorFieldFinder = new DefaultOldCreatorFieldFinder();
     private final CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
