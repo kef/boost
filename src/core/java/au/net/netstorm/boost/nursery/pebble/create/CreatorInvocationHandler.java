@@ -5,9 +5,11 @@ import java.lang.reflect.Method;
 
 public final class CreatorInvocationHandler implements InvocationHandler {
     private Creator creator;
+    private Class implClass;
 
-    public CreatorInvocationHandler(Creator creator) {
+    public CreatorInvocationHandler(Creator creator, Class implClass) {
         this.creator = creator;
+        this.implClass = implClass;
     }
 
     /*

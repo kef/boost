@@ -10,19 +10,19 @@ public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase
     private InvocationHandler subject;
     private MockExpectations expect;
     private Creator creator;
+    private Class implClass = void.class;
     private Object proxyObject = new Object();
-    private Object[] createMethodParameters = new Object[]{};
+    private Object[] methodParams = new Object[]{};
     private Object createdObject = new Object();
 
     public void setupSubjects() {
-        subject = new CreatorInvocationHandler(creator);
+        subject = new CreatorInvocationHandler(creator, implClass);
     }
 
     public void testInvokeCreate() throws Throwable {
-        Method createMethod = Object.class.getMethod("toString", null);
-        Object methodReturnType = createMethod.getReturnType();
-        expect.oneCall(creator, createdObject, "create", methodReturnType, createMethodParameters);
-        Object actualObject = subject.invoke(proxyObject, createMethod, createMethodParameters);
+        Method method = Object.class.getMethod("wait", null);
+        expect.oneCall(creator, createdObject, "create", implClass, methodParams);
+        Object actualObject = subject.invoke(proxyObject, method, methodParams);
         assertSame(createdObject, actualObject);
     }
 }

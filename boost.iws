@@ -18,10 +18,8 @@
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandler.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandlerAtomicTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandlerAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandlerAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandler.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
   </component>
@@ -138,19 +136,10 @@
   <component name="FavoritesProjectViewPane" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultOldCreatorProxySupplier.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultOldCreatorProxySupplier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="75" selection-start="278" selection-end="278" vertical-scroll-proportion="0.08137045">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DefaultCreatorProxySupplier.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorProxySupplier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="33" selection-start="435" selection-end="435" vertical-scroll-proportion="0.1830835">
+            <state line="11" column="33" selection-start="435" selection-end="435" vertical-scroll-proportion="0.18446602">
               <folding />
             </state>
           </provider>
@@ -159,7 +148,16 @@
       <file leaf-file-name="DefaultCreatorProxySupplierAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorProxySupplierAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="23" selection-start="725" selection-end="725" vertical-scroll-proportion="0.26445395">
+            <state line="8" column="19" selection-start="356" selection-end="356" vertical-scroll-proportion="0.0819849">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllTestSuite.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0819849">
               <folding />
             </state>
           </provider>
@@ -168,7 +166,7 @@
       <file leaf-file-name="CreatorInvocationHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="23" selection-start="155" selection-end="155" vertical-scroll-proportion="0.08137045">
+            <state line="29" column="0" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.57389426">
               <folding />
             </state>
           </provider>
@@ -177,7 +175,7 @@
       <file leaf-file-name="OldCreatorInvocationHandlerAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandlerAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="25" selection-start="740" selection-end="740" vertical-scroll-proportion="0.26445395">
+            <state line="17" column="25" selection-start="740" selection-end="740" vertical-scroll-proportion="0.2664509">
               <folding />
             </state>
           </provider>
@@ -186,7 +184,7 @@
       <file leaf-file-name="CreatorInvocationHandlerAtomicTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandlerAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="22" selection-start="332" selection-end="332" vertical-scroll-proportion="0.08137045">
+            <state line="12" column="40" selection-start="559" selection-end="559" vertical-scroll-proportion="0.1639698">
               <folding />
             </state>
           </provider>
@@ -195,7 +193,7 @@
       <file leaf-file-name="OldCreatorInvocationHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="19" selection-start="151" selection-end="151" vertical-scroll-proportion="0.08137045">
+            <state line="5" column="19" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0819849">
               <folding />
             </state>
           </provider>
@@ -204,7 +202,7 @@
       <file leaf-file-name="Creator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/Creator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.12205567">
+            <state line="6" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.122977346">
               <folding />
             </state>
           </provider>
@@ -213,7 +211,7 @@
       <file leaf-file-name="DefaultCreator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="63" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.30513918">
+            <state line="23" column="63" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.30744338">
               <folding />
             </state>
           </provider>
@@ -222,7 +220,7 @@
       <file leaf-file-name="DefaultCreatorAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="30" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.366167">
+            <state line="28" column="30" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.36893204">
               <folding />
             </state>
           </provider>
@@ -884,14 +882,14 @@
     </key>
   </component>
   <component name="RestoreUpdateTree" />
-  <component name="RunManager" selected="JUnit.DefaultCreatorProxySupplierAtomicTest">
-    <tempConfiguration default="false" name="DefaultCreatorProxySupplierAtomicTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <pattern value="au.net.netstorm.boost.nursery.pebble.create.*" />
+  <component name="RunManager" selected="JUnit.AllTestSuite">
+    <tempConfiguration default="false" name="AllTestSuite" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <pattern value="au.net.netstorm.boost.test.suite.collector.*" />
       <module name="boost" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="au.net.netstorm.boost.nursery.pebble.create" />
-      <option name="MAIN_CLASS_NAME" value="au.net.netstorm.boost.nursery.pebble.create.DefaultCreatorProxySupplierAtomicTest" />
+      <option name="PACKAGE_NAME" value="au.net.netstorm.boost.test.suite.collector" />
+      <option name="MAIN_CLASS_NAME" value="au.net.netstorm.boost.test.suite.collector.AllTestSuite" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -1046,7 +1044,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23199363" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283683" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32904536" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33061224" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -1266,13 +1264,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.08137045">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultOldCreatorProxySupplierAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="15" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.366167">
@@ -1289,63 +1280,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/Creator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.12205567">
+        <state line="6" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.122977346">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="30" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.366167">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorProxySupplierAtomicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="23" selection-start="725" selection-end="725" vertical-scroll-proportion="0.26445395">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorProxySupplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="33" selection-start="435" selection-end="435" vertical-scroll-proportion="0.1830835">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="151" selection-end="151" vertical-scroll-proportion="0.08137045">
+        <state line="28" column="30" selection-start="1488" selection-end="1488" vertical-scroll-proportion="0.36893204">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="63" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.30513918">
+        <state line="23" column="63" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.30744338">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0819849">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="23" selection-start="155" selection-end="155" vertical-scroll-proportion="0.08137045">
+        <state line="29" column="0" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.57389426">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/OldCreatorInvocationHandlerAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="25" selection-start="740" selection-end="740" vertical-scroll-proportion="0.26445395">
+        <state line="17" column="25" selection-start="740" selection-end="740" vertical-scroll-proportion="0.2664509">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorProxySupplier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="33" selection-start="435" selection-end="435" vertical-scroll-proportion="0.18446602">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/DefaultCreatorProxySupplierAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="19" selection-start="356" selection-end="356" vertical-scroll-proportion="0.0819849">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0819849">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/pebble/create/CreatorInvocationHandlerAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="332" selection-end="332" vertical-scroll-proportion="0.08137045">
+        <state line="12" column="40" selection-start="559" selection-end="559" vertical-scroll-proportion="0.1639698">
           <folding />
         </state>
       </provider>
