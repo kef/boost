@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
+import java.lang.reflect.InvocationHandler;
 import java.util.Random;
+import au.net.netstorm.boost.nursery.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -15,28 +17,18 @@ public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestC
     private ProxyFactory proxyFactory;
     private Object creatorProxy = new Object();
     private Creator creator;
+    private InvocationHandler invocationHandler;
+    private Instantiator instantiator;
 
     public void setupSubjects() {
-        subject = new DefaultCreatorProxySupplier(proxyFactory, creator);
+        subject = new DefaultCreatorProxySupplier(proxyFactory, creator, instantiator);
     }
 
     public void testCreate() {
-        subject.create(creatorInterface, instanceImplementation);
-//        expect.oneCall(proxyFactory, creatorProxy, "newProxy", creatorType, is);
-//        assertSame(creatorProxy, subject.create(type));
+        Object[] parameters = new Object[]{creator, instanceImplementation};
+        expect.oneCall(instantiator, invocationHandler, "instantiate", CreatorInvocationHandler.class, parameters);
+        expect.oneCall(proxyFactory, creatorProxy, "newProxy", creatorInterface, invocationHandler);
+        Object actual = subject.create(creatorInterface, instanceImplementation);
+        assertSame(creatorProxy, actual);
     }
-/*
-    private ProxyFactory proxyFactory;
-    private GenericCreator genericCreator;
-
-    public DefaultCreatorProxySupplier(ProxyFactory proxyFactory, GenericCreator genericCreator) {
-        this.proxyFactory = proxyFactory;
-        this.genericCreator = genericCreator;
-    }
-
-    public Object create(Class instanceImplementation, Interface creatorInterface) {
-        InvocationHandler invocationHandler = new CreatorInvocationHandler(genericCreator, instanceImplementation);
-        return proxyFactory.newProxy(creatorInterface, invocationHandler);
-    }
-*/
 }
