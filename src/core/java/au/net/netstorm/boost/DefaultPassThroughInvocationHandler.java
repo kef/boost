@@ -6,7 +6,7 @@ public final class DefaultPassThroughInvocationHandler implements PassThroughInv
     private Object delegate;
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        return null;
+        return method.invoke(delegate, args);
     }
 
     public void setDelegate(Object delegate) {
