@@ -24,7 +24,7 @@ public final class DefaultCreator implements Creator {
     private final InvocationHandler invocationHandler = new OldCreatorInvocationHandler(this);
     private final OldCreatorProxySupplier creatorProxySupplier = new DefaultOldCreatorProxySupplier(proxyFactory, invocationHandler);
     private final OldCreatorFieldFinder creatorFieldFinder = new DefaultOldCreatorFieldFinder();
-    private final CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
+    private final OldCreatorProxyInjector creatorProxyInjector = new DefaultOldCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
 
     public Object create(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
