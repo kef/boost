@@ -4,27 +4,21 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Set;
-import au.net.netstorm.boost.ClassNameMorpher;
-import au.net.netstorm.boost.DefaultClassNameMorpher;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1665 Is this really debt?
-
-// DEBT ClassDataAbstractionCoupling {
-public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
+public final class DefaultOldCreatorFieldFinder implements OldCreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
     private EdgeField edgeField = new DefaultEdgeField();
-    private ClassNameMorpher classNameMorpher = new DefaultClassNameMorpher();
 
-    public CreatorField[] find(Object ref) {
+    public OldCreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
         return find(ref, declaredFields);
     }
 
-    private CreatorField[] find(Object ref, Field[] fields) {
+    private OldCreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
             Field field = fields[i];
@@ -32,7 +26,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
                 addCreator(result, field);
             }
         }
-        return (CreatorField[]) result.toArray(new CreatorField[]{});
+        return (OldCreatorField[]) result.toArray(new OldCreatorField[]{});
     }
 
     private boolean isCreator(Object ref, Field field) {
@@ -64,11 +58,10 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     }
 
     private void addCreator(Set creatorFields, Field field) {
-        Class fieldType = field.getType();
-        Interface creatorInterface = new DefaultInterface(fieldType);
-        Class instanceImplementation = classNameMorpher.stripPrefix("New", fieldType);
-        String fieldName = field.getName();
-        CreatorField creatorField = new DefaultCreatorField(creatorInterface, instanceImplementation, fieldName);
+        String name = field.getName();
+        Class cls = field.getType();
+        Interface type = new DefaultInterface(cls);
+        OldCreatorField creatorField = new DefaultOldCreatorField(type, name);
         creatorFields.add(creatorField);
     }
 
@@ -77,4 +70,3 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 }
-// } DEBT ClassDataAbstractionCoupling

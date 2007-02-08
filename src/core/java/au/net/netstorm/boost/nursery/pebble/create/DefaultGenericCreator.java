@@ -23,7 +23,7 @@ public final class DefaultGenericCreator implements GenericCreator {
     private final ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private final InvocationHandler invocationHandler = new CreatorInvocationHandler(this);
     private final CreatorProxySupplier creatorProxySupplier = new DefaultCreatorProxySupplier(proxyFactory, invocationHandler);
-    private final CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
+    private final OldCreatorFieldFinder creatorFieldFinder = new DefaultOldCreatorFieldFinder();
     private final CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
 
     public Object create(Class type, Object[] parameters) {

@@ -1,22 +1,19 @@
 package au.net.netstorm.boost.nursery.pebble.create;
 
 class Fred {
-    private NewNedCreator newNedCreator;
-    private NewTedCreator newTedCreator;
+    private NewDefaultNed newDefaultNed;
+    private NewTedImpl newTedImpl;
     private String newNotACreatorType;
-    private final NewTedCreator newNotACreatorBecauseFinal = null;
-    private NewNedCreator newNotACreatorBecauseAssigned = new DefaultNewNedCreator();
+    private final NewTedImpl newNotACreatorBecauseFinal = null;
+    private NewDefaultNed newNotACreatorBecauseAssigned = new AnImplementatationOfNewDefaultNed();
     private NewDoesNotImplementMarker newNotACreatorDoesNotImplementMarker;
-
-    private interface NewTedCreator extends Creator {
-    }
-
-    private interface NewNedCreator extends Creator {
-    }
 
     private interface NewDoesNotImplementMarker {
     }
 
-    private class DefaultNewNedCreator implements NewNedCreator {
+    private class AnImplementatationOfNewDefaultNed implements NewDefaultNed {
+        public Ned create() {
+            throw new UnsupportedOperationException();
+        }
     }
 }

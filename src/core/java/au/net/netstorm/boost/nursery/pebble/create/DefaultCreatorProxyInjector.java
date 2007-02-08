@@ -11,9 +11,9 @@ public final class DefaultCreatorProxyInjector implements CreatorProxyInjector {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
     private CreatorProxySupplier proxySupplier;
-    private CreatorFieldFinder fieldFinder;
+    private OldCreatorFieldFinder fieldFinder;
 
-    public DefaultCreatorProxyInjector(CreatorProxySupplier proxySupplier, CreatorFieldFinder fieldFinder) {
+    public DefaultCreatorProxyInjector(CreatorProxySupplier proxySupplier, OldCreatorFieldFinder fieldFinder) {
         this.proxySupplier = proxySupplier;
         this.fieldFinder = fieldFinder;
     }

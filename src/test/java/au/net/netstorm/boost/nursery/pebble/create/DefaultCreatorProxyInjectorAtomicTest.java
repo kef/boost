@@ -14,7 +14,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private Object proxy = "nine";
     private OldCreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
     private CreatorProxySupplier creatorProxySupplier;
-    private CreatorFieldFinder creatorFieldFinder;
+    private OldCreatorFieldFinder creatorFieldFinder;
     private OldCreatorField creatorField;
     private Interface creatorInterface;
     private String fieldName = "fingers";
