@@ -13,7 +13,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 // FIX 1665 This is an instantiator (not a creator)?
 
 // DEBT LineLength|ClassDataAbstractionCoupling {
-public final class DefaultGenericCreator implements GenericCreator {
+public final class DefaultCreator implements Creator {
     // FIX 1665 We should be given the proxy injector, not building it here?
     // FIX 1665 Moved the stinky onion to stop duplication problems.  Fix me now!
     // FIX 1665 Inject these dependencies.

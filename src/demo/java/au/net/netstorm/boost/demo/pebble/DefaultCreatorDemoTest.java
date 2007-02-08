@@ -3,13 +3,13 @@ package au.net.netstorm.boost.demo.pebble;
 import au.net.netstorm.boost.demo.pebble.fixtures.Bob;
 import au.net.netstorm.boost.demo.pebble.fixtures.JobNewer;
 import au.net.netstorm.boost.demo.pebble.fixtures.Rob;
-import au.net.netstorm.boost.nursery.pebble.create.DefaultGenericCreator;
-import au.net.netstorm.boost.nursery.pebble.create.GenericCreator;
+import au.net.netstorm.boost.nursery.pebble.create.Creator;
+import au.net.netstorm.boost.nursery.pebble.create.DefaultCreator;
 import junit.framework.TestCase;
 
 // FIX 1665 Stitch in new CreatorField.
 public final class DefaultCreatorDemoTest extends TestCase {
-    private GenericCreator genericCreator = new DefaultGenericCreator();
+    private Creator creator = new DefaultCreator();
 
     public void testFieldInjectionWithDependencies() {
         Rob rob = createRob();
@@ -21,6 +21,6 @@ public final class DefaultCreatorDemoTest extends TestCase {
 
     private Rob createRob() {
         Object[] parameters = {};
-        return (Rob) genericCreator.create(Rob.class, parameters);
+        return (Rob) creator.create(Rob.class, parameters);
     }
 }

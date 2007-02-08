@@ -4,10 +4,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public final class CreatorInvocationHandler implements InvocationHandler {
-    private GenericCreator genericCreator;
+    private Creator creator;
 
-    public CreatorInvocationHandler(GenericCreator genericCreator) {
-        this.genericCreator = genericCreator;
+    public CreatorInvocationHandler(Creator creator) {
+        this.creator = creator;
     }
 
     // FIX 1665 If we added a line like "if (!method.getName().equals("create")) barf();"
@@ -16,6 +16,6 @@ public final class CreatorInvocationHandler implements InvocationHandler {
         // FIX 1665 We'll need to pass in the impl type?
         // FIX BREADCRUMB 1665 -10 Do not use the return type.
         Class returnType = method.getReturnType();
-        return genericCreator.create(returnType, params);
+        return creator.create(returnType, params);
     }
 }
