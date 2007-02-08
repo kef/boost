@@ -17,6 +17,13 @@ public final class DefaultClassNameMorpherAtomicTest extends TestCase {
         checkStripPrefix(Set.class, "Hash", HashSet.class);
     }
 
+    public void testPrefixNotInClass() {
+        try {
+            morpher.stripPrefix("Bollackery", HashSet.class);
+            fail();
+        } catch (IllegalArgumentException expected) { }
+    }
+
     private void checkStripPrefix(Class expected, String prefix, Class cls) {
         Class result = morpher.stripPrefix(prefix, cls);
         assertEquals(expected, result);
