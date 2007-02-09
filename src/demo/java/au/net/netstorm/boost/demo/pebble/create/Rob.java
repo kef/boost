@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.pebble.create;
 
-public final class Rob {
+final class Rob {
     private NewDefaultBob newDefaultBob;
     private Bob bob;
 

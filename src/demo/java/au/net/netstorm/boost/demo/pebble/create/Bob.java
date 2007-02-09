@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.demo.pebble.create;
 
-public interface Bob {
+interface Bob {
     NewHeadJob getNewHeadJob();
 }
