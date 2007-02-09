@@ -12,7 +12,6 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldInstantiationChecker;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-// FIX 1665 Pass in dependencies.
 public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Creator subject;
     private MockExpectations expect;

@@ -6,7 +6,6 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
-// FIX 1665 Remove all Old classes.
 public final class DefaultCreatorFieldAtomicTest extends TestCase {
     private DataAtomTestChecker checker = new DataAtomTestChecker();
     private FieldSpec f1 = new DefaultFieldSpec("creatorInterface", Interface.class);

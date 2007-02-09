@@ -8,7 +8,7 @@ import au.net.netstorm.boost.edge.EdgeException;
 import junit.framework.TestCase;
 
 public final class DefaultClassNameMorpherAtomicTest extends TestCase {
-    private ClassNameMorpher morpher = new DefaultClassNameMorpher();
+    private ClassMorpher morpher = new DefaultClassMorpher();
 
     public void testStripPrefix() {
         checkStripPrefix(Map.class, "Tree", TreeMap.class);

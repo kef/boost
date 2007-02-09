@@ -3,8 +3,7 @@ package au.net.netstorm.boost.reflect;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-// FIX 1665 Rename to ClassMorpher?
-public final class DefaultClassNameMorpher implements ClassNameMorpher {
+public final class DefaultClassMorpher implements ClassMorpher {
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 

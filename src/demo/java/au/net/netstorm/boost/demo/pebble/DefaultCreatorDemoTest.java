@@ -7,7 +7,6 @@ import au.net.netstorm.boost.nursery.pebble.create.Creator;
 import au.net.netstorm.boost.nursery.pebble.create.DefaultCreator;
 import junit.framework.TestCase;
 
-// FIX 1665 Stitch in new CreatorField.
 public final class DefaultCreatorDemoTest extends TestCase {
     private Creator creator = new DefaultCreator();
 

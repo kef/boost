@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.reflect.ClassNameMorpher;
-import au.net.netstorm.boost.reflect.DefaultClassNameMorpher;
+import au.net.netstorm.boost.reflect.ClassMorpher;
+import au.net.netstorm.boost.reflect.DefaultClassMorpher;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -17,7 +17,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     private EdgeField edgeField = new DefaultEdgeField();
-    private ClassNameMorpher classNameMorpher = new DefaultClassNameMorpher();
+    private ClassMorpher classMorpher = new DefaultClassMorpher();
 
     public CreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
@@ -69,7 +69,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private void addCreator(Set creatorFields, Field field) {
         Class fieldType = field.getType();
         Interface creatorInterface = new DefaultInterface(fieldType);
-        Class instanceImplementation = classNameMorpher.stripPrefix("New", fieldType);
+        Class instanceImplementation = classMorpher.stripPrefix("New", fieldType);
         String fieldName = field.getName();
         CreatorField creatorField = new DefaultCreatorField(creatorInterface, instanceImplementation, fieldName);
         creatorFields.add(creatorField);

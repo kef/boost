@@ -13,7 +13,8 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private MockExpectations expect;
     private Object object = new Larry("ten");
     private String proxy;
-    private CreatorField[] creatorFields = {}; // FIX 1665 This flushes out the need to deal with arrays differently.
+    private CreatorField[] creatorFields =
+            {}; // FIX 1665 Put CARD into boost.  This flushes out the need to deal with arrays differently.
     private CreatorProxySupplier creatorProxySupplier;
     private CreatorFieldFinder creatorFieldFinder;
     private CreatorField creatorField;
