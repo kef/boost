@@ -1,9 +1,7 @@
-package au.net.netstorm.boost;
+package au.net.netstorm.boost.reflect;
 
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
 
 // FIX 1665 Rename to ClassMorpher?
 public final class DefaultClassNameMorpher implements ClassNameMorpher {

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost;
+package au.net.netstorm.boost.reflect;
 
 import java.util.HashSet;
 import java.util.Map;

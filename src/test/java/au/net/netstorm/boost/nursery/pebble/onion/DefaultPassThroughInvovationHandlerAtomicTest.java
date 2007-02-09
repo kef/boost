@@ -1,4 +1,4 @@
-package au.net.netstorm.boost;
+package au.net.netstorm.boost.nursery.pebble.onion;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -7,9 +7,6 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import junit.framework.TestCase;
 
-// FIX 1665 Move into appropriate package.
-
-// FIX 1665 Fix FIX #.
 public final class DefaultPassThroughInvovationHandlerAtomicTest extends TestCase {
     private static final Class[] PARAMETER_TYPES = {Object.class};
     private EdgeClass edgeClass = new DefaultEdgeClass();
@@ -19,7 +16,6 @@ public final class DefaultPassThroughInvovationHandlerAtomicTest extends TestCas
     private Object[] parameters = {key};
 
     public void testHandler() throws Throwable {
-        // FIX 1665 Complete this.
         map.put(key, value);
         PassThroughInvocationHandler handler = new DefaultPassThroughInvocationHandler();
         handler.setDelegate(map);

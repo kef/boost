@@ -4,10 +4,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Set;
-import au.net.netstorm.boost.ClassNameMorpher;
-import au.net.netstorm.boost.DefaultClassNameMorpher;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
+import au.net.netstorm.boost.reflect.ClassNameMorpher;
+import au.net.netstorm.boost.reflect.DefaultClassNameMorpher;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -36,9 +36,12 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     }
 
     private boolean isCreator(Object ref, Field field) {
-        if (isFinal(field)) return false;
-        if (isSet(ref, field)) return false;
-        if (!implementsMarker(field)) return false;
+        if (isFinal(field))
+            return false;
+        if (isSet(ref, field))
+            return false;
+        if (!implementsMarker(field))
+            return false;
         return nameStartsWith(field, "new");
     }
 

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost;
+package au.net.netstorm.boost.nursery.pebble.onion;
 
 import java.lang.reflect.InvocationHandler;
 
