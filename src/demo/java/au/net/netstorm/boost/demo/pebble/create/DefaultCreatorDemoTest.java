@@ -1,8 +1,5 @@
-package au.net.netstorm.boost.demo.pebble;
+package au.net.netstorm.boost.demo.pebble.create;
 
-import au.net.netstorm.boost.demo.pebble.fixtures.Bob;
-import au.net.netstorm.boost.demo.pebble.fixtures.NewHeadJob;
-import au.net.netstorm.boost.demo.pebble.fixtures.Rob;
 import au.net.netstorm.boost.nursery.pebble.create.Creator;
 import au.net.netstorm.boost.nursery.pebble.create.DefaultCreator;
 import junit.framework.TestCase;

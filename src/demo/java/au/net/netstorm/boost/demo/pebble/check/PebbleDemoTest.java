@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.pebble;
+package au.net.netstorm.boost.demo.pebble.check;
 
 import au.net.netstorm.boost.nursery.pebble.core.DefaultPebbleChecker;
 import au.net.netstorm.boost.nursery.pebble.core.PebbleChecker;

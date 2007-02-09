@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.pebble.fixtures;
+package au.net.netstorm.boost.demo.pebble.create;
 
 public interface Bob {
     NewHeadJob getNewHeadJob();
