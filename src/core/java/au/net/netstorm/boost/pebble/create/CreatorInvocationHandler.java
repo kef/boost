@@ -12,7 +12,6 @@ public final class CreatorInvocationHandler implements InvocationHandler {
         this.implClass = implClass;
     }
 
-    // FIX 1665 If we added a line like "if (!method.getName().equals("create")) barf();"
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
         return creator.create(implClass, params);
     }

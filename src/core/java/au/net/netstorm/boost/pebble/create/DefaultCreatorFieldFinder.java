@@ -11,9 +11,7 @@ import au.net.netstorm.boost.reflect.DefaultClassMorpher;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1665 Is this really debt?
-
-// DEBT ClassDataAbstractionCoupling {
+// OK ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     private EdgeField edgeField = new DefaultEdgeField();
@@ -27,12 +25,14 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private CreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
-            Field field = fields[i];
-            if (isCreator(ref, field)) {
-                addCreator(result, field);
-            }
+            find(result, ref, fields[i]);
         }
         return (CreatorField[]) result.toArray(new CreatorField[]{});
+    }
+
+    private void find(Set result, Object ref, Field field) {
+        if (isCreator(ref, field))
+            addCreator(result, field);
     }
 
     private boolean isCreator(Object ref, Field field) {
@@ -80,4 +80,4 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 }
-// } DEBT ClassDataAbstractionCoupling
+// } OK ClassDataAbstractionCoupling
