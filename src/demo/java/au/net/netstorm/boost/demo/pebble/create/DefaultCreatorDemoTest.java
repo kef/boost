@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.demo.pebble.create;
 
 import au.net.netstorm.boost.pebble.create.Creator;
-import au.net.netstorm.boost.pebble.create.DefaultCreator;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorDemoTest extends TestCase {
-    private Creator creator = new DefaultCreator();
+    private final CreatorAssembler creatorAssembler = new DefaultCreatorAssembler();
+    private Creator creator = creatorAssembler.assembleCreator();
 
     public void testFieldInjectionWithDependencies() {
         Rob rob = createRob();
