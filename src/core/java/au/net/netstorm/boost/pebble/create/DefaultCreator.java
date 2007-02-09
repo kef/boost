@@ -12,10 +12,14 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 // DEBT LineLength|ClassDataAbstractionCoupling {
 public final class DefaultCreator implements Creator {
     // FIX 1665 Move assembly out into demo area.
+    // FIX 1665 Introduce the proxy pass through.
+    // FIX 1665 Pass in "true" depencencies.
+    // FIX 1665 Move the wiring into CreatorWirer.
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final Onion onion = new BermudaOnion();
     private final ProxySupplier proxySupplier = new DefaultProxySupplier();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
+    //    private final PassThroughInvocationHandler passThroughInvocationHandler = new DefaultPassThroughInvocationHandler();
     private final CreatorProxySupplier creatorProxySupplier =
             new DefaultCreatorProxySupplier(proxyFactory, this, instantiator);
     private final CreatorFieldFinder creatorFieldFinder = new DefaultCreatorFieldFinder();
