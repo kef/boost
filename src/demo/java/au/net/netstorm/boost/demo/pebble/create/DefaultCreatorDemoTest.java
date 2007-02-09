@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.create;
 
-import au.net.netstorm.boost.nursery.pebble.create.Creator;
-import au.net.netstorm.boost.nursery.pebble.create.DefaultCreator;
+import au.net.netstorm.boost.pebble.create.Creator;
+import au.net.netstorm.boost.pebble.create.DefaultCreator;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorDemoTest extends TestCase {

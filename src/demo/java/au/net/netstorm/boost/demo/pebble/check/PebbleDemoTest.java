@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.pebble.check;
 
-import au.net.netstorm.boost.nursery.pebble.core.DefaultPebbleChecker;
-import au.net.netstorm.boost.nursery.pebble.core.PebbleChecker;
-import au.net.netstorm.boost.nursery.pebble.type.NoCreatorInterfaceException;
-import au.net.netstorm.boost.nursery.pebble.type.NonMatchingCreatorException;
+import au.net.netstorm.boost.pebble.core.DefaultPebbleChecker;
+import au.net.netstorm.boost.pebble.core.PebbleChecker;
+import au.net.netstorm.boost.pebble.type.NoCreatorInterfaceException;
+import au.net.netstorm.boost.pebble.type.NonMatchingCreatorException;
 import junit.framework.TestCase;
 
 public final class PebbleDemoTest extends TestCase {
