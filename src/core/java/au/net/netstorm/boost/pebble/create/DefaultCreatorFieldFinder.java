@@ -22,6 +22,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return find(ref, declaredFields);
     }
 
+    // FIX 33203 Barf if field matches but does not implement Newer or contain IMPLEMENTATION field.
     private CreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
