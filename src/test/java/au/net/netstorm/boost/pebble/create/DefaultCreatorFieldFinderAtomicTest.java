@@ -16,6 +16,10 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         checkFields(expected, actual);
     }
 
+    // FIX BREADCRUMB 33203
+    public void testFieldMustImplementNewer() {
+    }
+
     private CreatorField[] createExpectedCreatorFields() {
         List result = new ArrayList();
         addCreatorField(result, NewTedImpl.class, TedImpl.class, "newTedImpl");

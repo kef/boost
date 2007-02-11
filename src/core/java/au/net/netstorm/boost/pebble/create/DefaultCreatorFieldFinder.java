@@ -11,7 +11,9 @@ import au.net.netstorm.boost.reflect.DefaultClassMorpher;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// OK ClassDataAbstractionCoupling {
+// FIX 33203 Sort this coupling out.
+
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     private EdgeField edgeField = new DefaultEdgeField();
@@ -78,4 +80,4 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 }
-// } OK ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling
