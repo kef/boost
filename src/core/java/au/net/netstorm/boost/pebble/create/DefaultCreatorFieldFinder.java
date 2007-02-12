@@ -27,7 +27,11 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return find(ref, declaredFields);
     }
 
-    // FIX 33203 Barf if CreatorInterface does not contain IMPLEMENTATION field?
+    private Field[] getDeclaredFields(Object ref) {
+        Class refType = ref.getClass();
+        return refType.getDeclaredFields();
+    }
+
     private CreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
@@ -41,6 +45,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
             addCreator(result, field);
     }
 
+    // FIX 33203 Barf if CreatorInterface does not contain IMPLEMENTATION field?
     private boolean isCreator(Object ref, Field field) {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
@@ -80,11 +85,6 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         String fieldName = field.getName();
         CreatorField creatorField = new DefaultCreatorField(creatorInterface, instanceImplementation, fieldName);
         creatorFields.add(creatorField);
-    }
-
-    private Field[] getDeclaredFields(Object ref) {
-        Class refType = ref.getClass();
-        return refType.getDeclaredFields();
     }
 }
 // } DEBT ClassDataAbstractionCoupling
