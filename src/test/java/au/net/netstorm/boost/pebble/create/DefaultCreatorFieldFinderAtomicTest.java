@@ -23,6 +23,7 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
             subject.find(objectWithBrokenNewer);
             fail();
         } catch (DoesNotImplementNewerException expected) {
+            // FIX 33203 Do we need this?
             String message = expected.getMessage();
             assertTrue(message.indexOf("NewDoesNotImplementNewer") > 0);
         }

@@ -12,6 +12,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 33203 Sort this coupling out.
+// FIX 33203 Split this based on field.  Have a single CreatorFieldChecker (or something).
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
@@ -49,6 +50,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
 
     private boolean implementsMarker(Field field) {
         Class type = field.getType();
+        // FIX 33203 Can we move this out of here.
         if (!CREATOR_MARKER_INTERFACE.isAssignableFrom(type)) {
             throw new DoesNotImplementNewerException(type);
         }
