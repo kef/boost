@@ -45,6 +45,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
         if (!nameStartsWith(field, "new")) return false;
+        // FIX BREADCRUMB 33203 Add check for field type?
         checkImplementsMarker(field);
         return true;
     }

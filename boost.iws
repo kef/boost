@@ -17,7 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
@@ -147,7 +146,7 @@
       <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.7027897">
+            <state line="47" column="57" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.65450644">
               <folding />
             </state>
           </provider>
@@ -1595,7 +1594,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1920" selection-end="1920" vertical-scroll-proportion="0.7027897">
+        <state line="47" column="57" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.65450644">
           <folding />
         </state>
       </provider>
