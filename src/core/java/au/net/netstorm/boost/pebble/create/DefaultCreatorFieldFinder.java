@@ -11,15 +11,15 @@ import au.net.netstorm.boost.reflect.DefaultClassMorpher;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 33203 Sort this coupling out.
-// FIX 33203 Split this based on field.  Have a single CreatorFieldChecker (or something).
+// FIX 1665 Sort this coupling out.
+// FIX 1665 Split this based on field.  Have a single CreatorFieldChecker (or something).
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
 
     private EdgeField edgeField = new DefaultEdgeField();
-    // FIX 33203 Should be passed in via the constructor.
+    // FIX 1665 Should be passed in via the constructor.
     private ClassMorpher classMorpher = new DefaultClassMorpher();
 
     public CreatorField[] find(Object ref) {
@@ -45,12 +45,12 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
             addCreator(result, field);
     }
 
-    // FIX 33203 Barf if CreatorInterface does not contain IMPLEMENTATION field?
+    // FIX 1665 Barf if CreatorInterface does not contain IMPLEMENTATION field?
     private boolean isCreator(Object ref, Field field) {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
         if (!nameStartsWith(field, "new")) return false;
-        // FIX BREADCRUMB 33203 Add check for field type?
+        // FIX BREADCRUMB 1665 Add check for field type?
         checkImplementsMarker(field);
         return true;
     }
