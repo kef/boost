@@ -17,16 +17,11 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         checkFields(expected, actual);
     }
 
-    // FIX BREADCRUMB 33203
     public void testFieldMustImplementNewer() {
         try {
             subject.find(objectWithBrokenNewer);
             fail();
-        } catch (DoesNotImplementNewerException expected) {
-            // FIX 33203 Do we need this?
-            String message = expected.getMessage();
-            assertTrue(message.indexOf("NewDoesNotImplementNewer") > 0);
-        }
+        } catch (DoesNotImplementNewerException expected) { }
     }
 
     private CreatorField[] createExpectedCreatorFields() {

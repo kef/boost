@@ -17,7 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
@@ -135,19 +135,19 @@
   <component name="FavoritesProjectViewPane" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="50" selection-start="2089" selection-end="2089" vertical-scroll-proportion="0.4807288">
+            <state line="52" column="50" selection-start="2089" selection-end="2089" vertical-scroll-proportion="0.7360515">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoesNotImplementNewerException.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DoesNotImplementNewerException.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="19" selection-start="143" selection-end="143" vertical-scroll-proportion="0.053258583">
+            <state line="4" column="19" selection-start="143" selection-end="143" vertical-scroll-proportion="0.08154506">
               <folding />
             </state>
           </provider>
@@ -156,7 +156,7 @@
       <file leaf-file-name="DefaultCreatorFieldFinderAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="68" selection-start="380" selection-end="380" vertical-scroll-proportion="0.06657323">
+            <state line="23" column="59" selection-start="894" selection-end="894" vertical-scroll-proportion="0.38733906">
               <folding />
             </state>
           </provider>
@@ -165,7 +165,7 @@
       <file leaf-file-name="DefaultCreatorField.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="11" selection-start="357" selection-end="357" vertical-scroll-proportion="0.119831815">
+            <state line="10" column="11" selection-start="357" selection-end="357" vertical-scroll-proportion="0.18347639">
               <folding />
             </state>
           </provider>
@@ -174,7 +174,7 @@
       <file leaf-file-name="DoesNotImplementNewerExceptionAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerExceptionAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.119831815">
+            <state line="9" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.18347639">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,7 +185,7 @@
       <file leaf-file-name="DefaultPebbleChecker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/core/DefaultPebbleChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="35" selection-start="855" selection-end="855" vertical-scroll-proportion="0.106517166">
+            <state line="18" column="35" selection-start="855" selection-end="855" vertical-scroll-proportion="0.16309012">
               <folding />
             </state>
           </provider>
@@ -194,7 +194,7 @@
       <file leaf-file-name="Fred.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Fred.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="7" selection-start="216" selection-end="216" vertical-scroll-proportion="0.079887874">
+            <state line="6" column="7" selection-start="216" selection-end="216" vertical-scroll-proportion="0.1223176">
               <folding />
             </state>
           </provider>
@@ -203,7 +203,7 @@
       <file leaf-file-name="FredWithBrokenNewer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/FredWithBrokenNewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="14" selection-start="94" selection-end="94" vertical-scroll-proportion="0.039943937">
+            <state line="3" column="14" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0611588">
               <folding />
             </state>
           </provider>
@@ -212,7 +212,7 @@
       <file leaf-file-name="NewDoesNotImplementNewer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDoesNotImplementNewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="40" selection-start="86" selection-end="86" vertical-scroll-proportion="0.026629291">
+            <state line="2" column="40" selection-start="86" selection-end="86" vertical-scroll-proportion="0.04077253">
               <folding />
             </state>
           </provider>
@@ -221,7 +221,7 @@
       <file leaf-file-name="NewDefaultNed.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDefaultNed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.026629291">
+            <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.04077253">
               <folding />
             </state>
           </provider>
@@ -1315,7 +1315,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1574" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
@@ -1324,7 +1324,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23058543" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283683" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33039945" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33039945" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -1504,14 +1504,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDefaultNed.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.026629291">
+        <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.04077253">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDoesNotImplementNewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="40" selection-start="86" selection-end="86" vertical-scroll-proportion="0.026629291">
+        <state line="2" column="40" selection-start="86" selection-end="86" vertical-scroll-proportion="0.04077253">
           <folding />
         </state>
       </provider>
@@ -1539,58 +1539,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/FredWithBrokenNewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="14" selection-start="94" selection-end="94" vertical-scroll-proportion="0.039943937">
+        <state line="3" column="14" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0611588">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/core/DefaultPebbleChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="35" selection-start="855" selection-end="855" vertical-scroll-proportion="0.106517166">
+        <state line="18" column="35" selection-start="855" selection-end="855" vertical-scroll-proportion="0.16309012">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="19" selection-start="143" selection-end="143" vertical-scroll-proportion="0.053258583">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerExceptionAtomicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.119831815">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="11" selection-start="357" selection-end="357" vertical-scroll-proportion="0.119831815">
+        <state line="10" column="11" selection-start="357" selection-end="357" vertical-scroll-proportion="0.18347639">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Fred.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="7" selection-start="216" selection-end="216" vertical-scroll-proportion="0.079887874">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="68" selection-start="380" selection-end="380" vertical-scroll-proportion="0.06657323">
+        <state line="6" column="7" selection-start="216" selection-end="216" vertical-scroll-proportion="0.1223176">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="50" selection-start="2089" selection-end="2089" vertical-scroll-proportion="0.4807288">
+        <state line="52" column="50" selection-start="2089" selection-end="2089" vertical-scroll-proportion="0.7360515">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerExceptionAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.18347639">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="59" selection-start="894" selection-end="894" vertical-scroll-proportion="0.38733906">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="143" selection-end="143" vertical-scroll-proportion="0.08154506">
           <folding />
         </state>
       </provider>
