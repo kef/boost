@@ -17,12 +17,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/FredWithBrokenNewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultNewDoesNotImplementNewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Fred.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Fred.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDoesNotImplementNewer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerExceptionAtomicTest.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
   </component>
@@ -139,37 +139,48 @@
   <component name="FavoritesProjectViewPane" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultCreator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="34" selection-start="738" selection-end="738" vertical-scroll-proportion="0.34656653">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultCreatorProxyInjector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorProxyInjector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="27" selection-start="651" selection-end="651" vertical-scroll-proportion="0.16309012">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DefaultCreatorFieldFinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="5" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.57081544">
+            <state line="45" column="9" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.38752627">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultCreatorFieldFinderAtomicTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DoesNotImplementNewerException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="19" selection-start="143" selection-end="143" vertical-scroll-proportion="0.053258583">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultCreatorFieldFinderAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="8" selection-start="705" selection-end="705" vertical-scroll-proportion="0.32618025">
+            <state line="8" column="34" selection-start="272" selection-end="272" vertical-scroll-proportion="0.053258583">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DoesNotImplementNewerExceptionAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerExceptionAtomicTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.119831815">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultPebbleChecker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/core/DefaultPebbleChecker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="35" selection-start="855" selection-end="855" vertical-scroll-proportion="0.106517166">
               <folding />
             </state>
           </provider>
@@ -178,7 +189,7 @@
       <file leaf-file-name="Fred.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Fred.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="52" selection-end="52" vertical-scroll-proportion="0.04077253">
+            <state line="2" column="73" selection-start="119" selection-end="119" vertical-scroll-proportion="0.026629291">
               <folding />
             </state>
           </provider>
@@ -187,7 +198,7 @@
       <file leaf-file-name="FredWithBrokenNewer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/FredWithBrokenNewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="16" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0611588">
+            <state line="3" column="14" selection-start="94" selection-end="94" vertical-scroll-proportion="0.039943937">
               <folding />
             </state>
           </provider>
@@ -196,34 +207,16 @@
       <file leaf-file-name="NewDoesNotImplementNewer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDoesNotImplementNewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.08154506">
+            <state line="2" column="40" selection-start="86" selection-end="86" vertical-scroll-proportion="0.026629291">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultNewDoesNotImplementNewer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultNewDoesNotImplementNewer.java">
+      <file leaf-file-name="NewDefaultNed.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDefaultNed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="87" selection-start="133" selection-end="133" vertical-scroll-proportion="0.04077253">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultNed.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultNed.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="12" selection-start="58" selection-end="58" vertical-scroll-proportion="0.04077253">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ned.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Ned.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.04077253">
+            <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.026629291">
               <folding />
             </state>
           </provider>
@@ -271,6 +264,76 @@
           <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
         </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="reflect" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -283,6 +346,28 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="pebble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="type" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -340,6 +425,28 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="pebble" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="core" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="nursery" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
@@ -359,6 +466,102 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="edgifier" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="reflect" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -707,7 +910,7 @@
       <abbreviatePackageNames />
       <showStructure ProjectPane="false" Scope="false" PackagesPane="false" />
       <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollFromSource PackagesPane="true" />
       <sortByType />
     </navigator>
   </component>
@@ -729,20 +932,23 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="au.net.netstorm.boost.nursery.pebble.create" />
       <recent name="au.net.netstorm.boost" />
     </key>
   </component>
   <component name="RestoreUpdateTree" />
-  <component name="RunManager" selected="JUnit.AllTestSuite">
-    <tempConfiguration default="false" name="AllTestSuite" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <pattern value="au.net.netstorm.boost.test.suite.collector.*" />
+  <component name="RunManager" selected="JUnit.DefaultCreatorFieldFinderAtomicTest">
+    <tempConfiguration default="false" name="DefaultCreatorFieldFinderAtomicTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <pattern value="au.net.netstorm.boost.pebble.create.*" />
       <module name="boost" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="au.net.netstorm.boost.test.suite.collector" />
-      <option name="MAIN_CLASS_NAME" value="au.net.netstorm.boost.test.suite.collector.AllTestSuite" />
+      <option name="PACKAGE_NAME" value="au.net.netstorm.boost.pebble.create" />
+      <option name="MAIN_CLASS_NAME" value="au.net.netstorm.boost.pebble.create.DefaultCreatorFieldFinderAtomicTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -1104,7 +1310,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1574" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
@@ -1113,7 +1319,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23058543" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283683" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33039945" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33039945" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -1277,30 +1483,23 @@
     <option name="myLastEditedConfigurable" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultNewDoesNotImplementNewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0819849">
+        <state line="2" column="87" selection-start="133" selection-end="133" vertical-scroll-proportion="0.04064171">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreator.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/type/NoCreatorInterfaceExceptionAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="34" selection-start="738" selection-end="738" vertical-scroll-proportion="0.34656653">
+        <state line="8" column="82" selection-start="320" selection-end="390" vertical-scroll-proportion="0.15252294">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorProxyInjector.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/type/NoCreatorInterfaceException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="27" selection-start="651" selection-end="651" vertical-scroll-proportion="0.16309012">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Ned.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.04077253">
+        <state line="4" column="91" selection-start="291" selection-end="291" vertical-scroll-proportion="0.08715596">
           <folding />
         </state>
       </provider>
@@ -1312,51 +1511,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultNed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="58" selection-end="58" vertical-scroll-proportion="0.04077253">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultNewDoesNotImplementNewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="87" selection-start="133" selection-end="133" vertical-scroll-proportion="0.04077253">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/NewDoesNotImplementNewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.08154506">
+        <state line="2" column="40" selection-start="86" selection-end="86" vertical-scroll-proportion="0.026629291">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/DefaultEdgeField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="21" selection-start="280" selection-end="280" vertical-scroll-proportion="0.15252294">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar!/java/lang/reflect/Field.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="161" selection-end="161" vertical-scroll-proportion="0.088681445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/reflect/EdgeField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="11" selection-start="128" selection-end="128" vertical-scroll-proportion="0.10894495">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/FredWithBrokenNewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="16" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0611588">
+        <state line="3" column="14" selection-start="94" selection-end="94" vertical-scroll-proportion="0.039943937">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/Fred.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="52" selection-end="52" vertical-scroll-proportion="0.04077253">
+        <state line="2" column="73" selection-start="119" selection-end="119" vertical-scroll-proportion="0.026629291">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/core/DefaultPebbleChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="35" selection-start="855" selection-end="855" vertical-scroll-proportion="0.106517166">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerExceptionAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.119831815">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="34" selection-start="272" selection-end="272" vertical-scroll-proportion="0.053258583">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DoesNotImplementNewerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="143" selection-end="143" vertical-scroll-proportion="0.053258583">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="5" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.57081544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/pebble/create/DefaultCreatorFieldFinderAtomicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="705" selection-end="705" vertical-scroll-proportion="0.32618025">
+        <state line="45" column="9" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.38752627">
           <folding />
         </state>
       </provider>

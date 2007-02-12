@@ -16,6 +16,8 @@ import au.net.netstorm.boost.util.type.Interface;
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
+
+    // FIX 33203 Get rid of these. Should be passed in via the constructor.
     private EdgeField edgeField = new DefaultEdgeField();
     private ClassMorpher classMorpher = new DefaultClassMorpher();
 
@@ -41,13 +43,16 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private boolean isCreator(Object ref, Field field) {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
-        if (!implementsMarker(field)) return false;
-        return nameStartsWith(field, "new");
+        if (!nameStartsWith(field, "new")) return false;
+        return implementsMarker(field);
     }
 
     private boolean implementsMarker(Field field) {
         Class type = field.getType();
-        return CREATOR_MARKER_INTERFACE.isAssignableFrom(type);
+        if (!CREATOR_MARKER_INTERFACE.isAssignableFrom(type)) {
+            throw new DoesNotImplementNewerException(type);
+        }
+        return true;
     }
 
     private boolean isFinal(Field field) {

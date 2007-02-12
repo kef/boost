@@ -7,8 +7,9 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
-    private Fred object = new Fred();
     private CreatorFieldFinder subject = new DefaultCreatorFieldFinder();
+    private Fred object = new Fred();
+    private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();
 
     public void testFinder() {
         CreatorField[] expected = createExpectedCreatorFields();
@@ -18,6 +19,13 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
 
     // FIX BREADCRUMB 33203
     public void testFieldMustImplementNewer() {
+        try {
+            subject.find(objectWithBrokenNewer);
+            fail();
+        } catch (DoesNotImplementNewerException expected) {
+            String message = expected.getMessage();
+            assertTrue(message.indexOf("NewDoesNotImplementNewer") > 0);
+        }
     }
 
     private CreatorField[] createExpectedCreatorFields() {
