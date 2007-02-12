@@ -7,7 +7,6 @@ import java.util.Set;
 // FIX 1665 Sort this coupling out.
 // FIX 1665 Split this based on field.  Have a single CreatorFieldChecker (or something).
 
-// DEBT ClassDataAbstractionCoupling {
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
     private FieldInspector fieldInspector = new DefaultFieldInspector();
@@ -30,4 +29,3 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return (CreatorField[]) result.toArray(new CreatorField[]{});
     }
 }
-// } DEBT ClassDataAbstractionCoupling
