@@ -18,8 +18,8 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
 
-    // FIX 33203 Get rid of these. Should be passed in via the constructor.
     private EdgeField edgeField = new DefaultEdgeField();
+    // FIX 33203 Should be passed in via the constructor.
     private ClassMorpher classMorpher = new DefaultClassMorpher();
 
     public CreatorField[] find(Object ref) {
