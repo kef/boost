@@ -45,16 +45,15 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         if (isFinal(field)) return false;
         if (isSet(ref, field)) return false;
         if (!nameStartsWith(field, "new")) return false;
-        return implementsMarker(field);
+        checkImplementsMarker(field);
+        return true;
     }
 
-    private boolean implementsMarker(Field field) {
+    private void checkImplementsMarker(Field field) {
         Class type = field.getType();
-        // FIX 33203 Can we move this out of here.
         if (!CREATOR_MARKER_INTERFACE.isAssignableFrom(type)) {
             throw new DoesNotImplementNewerException(type);
         }
-        return true;
     }
 
     private boolean isFinal(Field field) {
