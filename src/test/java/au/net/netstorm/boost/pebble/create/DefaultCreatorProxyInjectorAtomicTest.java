@@ -4,8 +4,6 @@ import java.util.Random;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
@@ -21,7 +19,6 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private Interface creatorInterface;
     private String fieldName = "fingers";
     private Class instanceImplementation = Random.class;
-    private FieldTestUtil fieldTestUtil = new DefaultFieldTestUtil();
 
     public void setupSubjects() {
         subject = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
