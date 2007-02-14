@@ -3,31 +3,32 @@ package au.net.netstorm.boost.pebble.create;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Set;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.reflect.ClassMorpher;
-import au.net.netstorm.boost.reflect.DefaultClassMorpher;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX DEBT ClassDataAbstractionCoupling {
 public final class DefaultFieldInspector implements FieldInspector {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     // FIX 1665 Should be passed in via the constructor.
-    private ClassMorpher classMorpher = new DefaultClassMorpher();
     private final EdgeField edgeField = new DefaultEdgeField();
+    private final EdgeClass edgeClass = new DefaultEdgeClass();
 
     public void creatorFieldChecker(Object ref, Field declaredField, Set creatorFields) {
         if (isCreator(ref, declaredField)) {
-            addCreator(creatorFields, declaredField);
+            addCreator(creatorFields, declaredField, ref);
         }
     }
 
-    private void addCreator(Set creatorFields, Field declaredField) {
+    private void addCreator(Set creatorFields, Field declaredField, Object ref) {
         Class fieldType = declaredField.getType();
         Interface creatorInterface = new DefaultInterface(fieldType);
-        Class instanceImplementation = classMorpher.stripPrefix("New", fieldType);
         String fieldName = declaredField.getName();
+        Field implementationField = edgeClass.getDeclaredField(fieldType, "IMPLEMENTATION");
+        implementationField.setAccessible(true);
+        Class instanceImplementation = (Class) edgeField.get(implementationField, ref);
         CreatorField creatorField = new DefaultCreatorField(creatorInterface, instanceImplementation, fieldName);
         creatorFields.add(creatorField);
     }
@@ -66,4 +67,3 @@ public final class DefaultFieldInspector implements FieldInspector {
         return Modifier.isFinal(modifiers);
     }
 }
-// } DEBT ClassDataAbstractionCoupling

@@ -5,6 +5,10 @@ public final class EdgeException extends RuntimeException {
         super(throwable);
     }
 
+    public EdgeException(String message, Throwable throwable) {
+        super(message, throwable);
+    }
+
     public boolean causeIs(Class type) {
         Throwable cause = getCause();
         if (cause == null) {
