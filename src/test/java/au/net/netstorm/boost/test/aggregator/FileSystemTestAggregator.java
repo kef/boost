@@ -6,7 +6,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 public final class FileSystemTestAggregator implements TestAggregator {
-    private final ClassLocator locator = new TestClassLocator();
+    private final ClassNameLocator nameLocator = new TestClassNameLocator();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
     private Class starter;
 
@@ -21,7 +21,7 @@ public final class FileSystemTestAggregator implements TestAggregator {
 
     private JavaClass[] findMatches(String regex, Class starter) {
         RegexPattern expression = new TestRegexPattern(regex);
-        return locator.locate(starter, expression);
+        return nameLocator.locate(starter, expression);
     }
 
     private Test buildSuite(String suiteName, JavaClass[] classes) {

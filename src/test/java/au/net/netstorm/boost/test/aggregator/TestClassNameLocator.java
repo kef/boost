@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 // DEBT ClassDataAbstractionCoupling {
-public final class TestClassLocator implements ClassLocator {
+public final class TestClassNameLocator implements ClassNameLocator {
     private final Comparator comparator = new TestFileComparator();
 
     public JavaClass[] locate(Class starter, RegexPattern pattern) {
