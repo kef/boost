@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,9 +39,7 @@ class DefaultAutoMocker implements AutoMocker {
 
     private void tryCreateMock(Field field) {
         Object value = getFieldValue(field);
-        if (value != null) {
-            return;
-        }
+        if (value != null) return;
         ensureNotFinal(field);
         createMock(field);
     }
@@ -48,12 +47,33 @@ class DefaultAutoMocker implements AutoMocker {
     private void createMock(Field field) {
         String name = field.getName();
         Class type = field.getType();
+        boolean isArrayType = type.isArray();
+        if (isArrayType) {
+            handleArrayMock(type, name);
+        } else {
+            handleSingleMock(type, name);
+        }
+    }
+
+    // FIX BREADCRUMB 35058 Complete.
+    private void handleArrayMock(Class type, String name) {
+        Class arrayType = type.getComponentType();
+        int randomValue = (int) (Math.random() * 10);
+        Object someArray = Array.newInstance(arrayType, randomValue);
+        for (int i = 0; i < randomValue; i++) {
+            Object mock = createMock(arrayType, name);
+            Array.set(someArray, i, mock);
+        }
+        setField(name, someArray);
+    }
+
+    private void handleSingleMock(Class type, String name) {
         Object proxy = createMock(type, name);
         setField(name, proxy);
     }
 
-    private Object createMock(Class type, String name) {
-        Mock mock = mockProvider.mock(type, name);
+    private Object createMock(Class cls, String name) {
+        Mock mock = mockProvider.mock(cls, name);
         Object proxy = mock.proxy();
         mocks.put(proxy, mock);
         return proxy;

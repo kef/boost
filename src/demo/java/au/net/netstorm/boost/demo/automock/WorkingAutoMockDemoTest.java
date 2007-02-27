@@ -10,7 +10,7 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     private DelegateSubject delegate;
     private TestSubject subject;
     private MockExpectations expect;
-    // FIX BREADCRUMB 35058 Re-instate.
+    // FIX BREADCRUMB 35058 Make this private.
 //    private DataInput[] dataInputs;
 
     public void setupSubjects() {
@@ -41,7 +41,6 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
         } catch (IllegalArgumentException e) { }
     }
 
-    // FIX BREADCRUMB 35058 Re-instate.
 //    public void testArray() {
 //        expect.oneCall(map, VOID, "put", "streetfighter", dataInputs);
 //        subject.executePut(map, dataInputs);

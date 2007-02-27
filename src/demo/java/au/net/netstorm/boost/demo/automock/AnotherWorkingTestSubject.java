@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.automock;
 
+import java.io.DataInput;
 import java.util.Map;
 
 public final class AnotherWorkingTestSubject implements TestSubject {
@@ -13,6 +14,6 @@ public final class AnotherWorkingTestSubject implements TestSubject {
         delegate.operate("foo");
     }
 
-    public void executePut(Map map, Object value) {
+    public void executePut(Map map, DataInput[] dataInputs) {
     }
 }
