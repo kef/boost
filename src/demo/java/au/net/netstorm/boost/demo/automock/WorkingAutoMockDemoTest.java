@@ -42,11 +42,15 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     }
 
     public void testArray() {
-        Integer dummySize = new Integer(2);
+        setupArrayExpectations();
+        subject.executePut(map, lists);
+    }
+
+    private void setupArrayExpectations() {
         expect.oneCall(map, VOID, "put", "streetfighter", lists);
+        Integer dummySize = new Integer(2);
         for (int i = 0; i < lists.length; i++) {
             expect.oneCall(lists[i], dummySize, "size");
         }
-        subject.executePut(map, lists);
     }
 }
