@@ -9,6 +9,9 @@ public final class BrokenTestSubject implements TestSubject {
         this.delegate = delegate;
     }
 
-    public void execute(Map map) {
+    public void executeGet(Map map) {
+    }
+
+    public void executePut(Map map, Object value) {
     }
 }

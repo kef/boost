@@ -23,6 +23,6 @@ public final class WorkingMockDemoTest extends MockObjectTestCase {
         CharSequence value = "Masters of Doom";
         mockMap.expects(once()).method("get").with(eq("quake")).will(returnValue(value));
         mockDelegate.expects(once()).method("operate").with(same(value));
-        subject.execute(map);
+        subject.executeGet(map);
     }
 }

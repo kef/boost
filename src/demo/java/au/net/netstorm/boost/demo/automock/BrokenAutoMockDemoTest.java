@@ -19,7 +19,7 @@ public final class BrokenAutoMockDemoTest extends PrimordialTestCase implements 
     public void testBroken() {
         expect.oneCall(map, "return", "get", "key");
         try {
-            subject.execute(map);
+            subject.executeGet(map);
             verify();
             barf();
         } catch (AssertionFailedError expected) {

@@ -15,7 +15,7 @@ public final class AnotherWorkingAutoMockDemoTest extends PrimordialTestCase imp
 
     public void testMultipleCalls() {
         expect.manyCalls(delegate, VOID, "operate", "foo");
-        subject.execute(null);
-        subject.execute(null);
+        subject.executeGet(null);
+        subject.executeGet(null);
     }
 }

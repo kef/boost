@@ -10,6 +10,8 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     private DelegateSubject delegate;
     private TestSubject subject;
     private MockExpectations expect;
+    // FIX BREADCRUMB 35058 Re-instate.
+//    private DataInput[] dataInputs;
 
     public void setupSubjects() {
         subject = new WorkingTestSubject(delegate);
@@ -19,14 +21,14 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
         String value = "Masters of Doom";
         expect.oneCall(map, value, "get", "quake");
         expect.oneCall(delegate, VOID, "operate", value);
-        subject.execute(map);
+        subject.executeGet(map);
     }
 
     public void testNullValue() {
         String value = null;
         expect.oneCall(map, value, "get", "quake");
         expect.oneCall(delegate, VOID, "operate", value);
-        subject.execute(map);
+        subject.executeGet(map);
     }
 
     public void testExceptions() {
@@ -34,8 +36,14 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
         expect.oneCall(map, value, "get", "quake");
         expect.oneCall(delegate, new IllegalStateException(), "operate", value);
         try {
-            subject.execute(map);
+            subject.executeGet(map);
             fail();
         } catch (IllegalArgumentException e) { }
     }
+
+    // FIX BREADCRUMB 35058 Re-instate.
+//    public void testArray() {
+//        expect.oneCall(map, VOID, "put", "streetfighter", dataInputs);
+//        subject.executePut(map, dataInputs);
+//    }
 }

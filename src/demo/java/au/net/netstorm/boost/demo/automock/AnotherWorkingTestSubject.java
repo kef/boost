@@ -9,7 +9,10 @@ public final class AnotherWorkingTestSubject implements TestSubject {
         this.delegate = delegate;
     }
 
-    public void execute(Map map) {
+    public void executeGet(Map map) {
         delegate.operate("foo");
+    }
+
+    public void executePut(Map map, Object value) {
     }
 }

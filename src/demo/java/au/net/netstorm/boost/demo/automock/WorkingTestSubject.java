@@ -9,15 +9,19 @@ public final class WorkingTestSubject implements TestSubject {
         this.delegate = delegate;
     }
 
-    public void execute(Map map) {
+    public void executeGet(Map map) {
         try {
-            tryExecute(map);
+            tryExecuteGet(map);
         } catch (IllegalStateException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void tryExecute(Map map) {
+    public void executePut(Map map, Object value) {
+        map.put("streetfighter", value);
+    }
+
+    private void tryExecuteGet(Map map) {
         String value = (String) map.get("quake");
         delegate.operate(value);
     }
