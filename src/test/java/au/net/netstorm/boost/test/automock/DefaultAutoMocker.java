@@ -55,13 +55,17 @@ class DefaultAutoMocker implements AutoMocker {
 
     private void handleArrayMock(Class type, String name) {
         Class arrayType = type.getComponentType();
-        int randomValue = (int) (Math.random() * 10);
+        int randomValue = randomBetweenZeroAndTen();
         Object array = Array.newInstance(arrayType, randomValue);
         for (int i = 0; i < randomValue; i++) {
             Object mock = createMock(arrayType, name);
             Array.set(array, i, mock);
         }
         setField(name, array);
+    }
+
+    private int randomBetweenZeroAndTen() {
+        return (int) (Math.random() * 10);
     }
 
     private void handleSingleMock(Class type, String name) {
