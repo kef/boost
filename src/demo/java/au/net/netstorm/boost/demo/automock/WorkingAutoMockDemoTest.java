@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.automock;
 
-import java.io.DataInput;
+import java.util.List;
 import java.util.Map;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
@@ -11,7 +11,7 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     private DelegateSubject delegate;
     private TestSubject subject;
     private MockExpectations expect;
-    private DataInput[] dataInputs;
+    private List[] lists;
 
     public void setupSubjects() {
         subject = new WorkingTestSubject(delegate);
@@ -42,7 +42,11 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     }
 
     public void testArray() {
-        expect.oneCall(map, VOID, "put", "streetfighter", dataInputs);
-        subject.executePut(map, dataInputs);
+        Integer dummySize = new Integer(2);
+        expect.oneCall(map, VOID, "put", "streetfighter", lists);
+        for (int i = 0; i < lists.length; i++) {
+            expect.oneCall(lists[i], dummySize, "size");
+        }
+        subject.executePut(map, lists);
     }
 }

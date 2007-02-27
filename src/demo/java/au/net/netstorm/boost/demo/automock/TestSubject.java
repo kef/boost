@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.demo.automock;
 
-import java.io.DataInput;
+import java.util.List;
 import java.util.Map;
 
 public interface TestSubject {
     void executeGet(Map map);
 
-    void executePut(Map map, DataInput[] dataInputs);
+    void executePut(Map map, List[] dataInputs);
 }

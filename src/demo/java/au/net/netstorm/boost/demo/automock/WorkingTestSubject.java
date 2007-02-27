@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.automock;
 
-import java.io.DataInput;
+import java.util.List;
 import java.util.Map;
 
 public final class WorkingTestSubject implements TestSubject {
@@ -18,8 +18,11 @@ public final class WorkingTestSubject implements TestSubject {
         }
     }
 
-    public void executePut(Map map, DataInput[] dataInputs) {
-        map.put("streetfighter", dataInputs);
+    public void executePut(Map map, List[] lists) {
+        map.put("streetfighter", lists);
+        for (int i = 0; i < lists.length; i++) {
+            lists[i].size();
+        }
     }
 
     private void tryExecuteGet(Map map) {

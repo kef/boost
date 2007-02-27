@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.automock;
 
-import java.io.DataInput;
+import java.util.List;
 import java.util.Map;
 
 public final class BrokenTestSubject implements TestSubject {
@@ -13,6 +13,6 @@ public final class BrokenTestSubject implements TestSubject {
     public void executeGet(Map map) {
     }
 
-    public void executePut(Map map, DataInput[] dataInputs) {
+    public void executePut(Map map, List[] dataInputs) {
     }
 }

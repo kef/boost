@@ -31,9 +31,7 @@ class DefaultAutoMocker implements AutoMocker {
 
     public Mock getMock(Object proxy) {
         Mock mock = (Mock) mocks.get(proxy);
-        if (mock != null) {
-            return mock;
-        }
+        if (mock != null) return mock;
         throw new IllegalStateException("Mock does not exist for provided proxy.");
     }
 
