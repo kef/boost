@@ -25,9 +25,9 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         // FIX 35593 Is it an interface?
         // FIX 35593 Is it an array?  Does the array contain a basic type.
 
-        // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings (collect for arrays).
+        // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings.
         assignRandomValues(eligibleFields);
-        // FIX BREADCRUMB 35593 Step 3: Mock mockables (collect for arrays).
+        // FIX BREADCRUMB 35593 Step 3: Mock mockables.
         assignMocks(eligibleFields);
         // FIX BREADCRUMB 35593 Step 4: Insert stubs/mocks into arrays.
         // FIX BREADCRUMB 35593 Step 5: Barf if any null fields left.
