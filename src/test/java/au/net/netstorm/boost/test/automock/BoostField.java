@@ -17,5 +17,5 @@ public interface BoostField {
 
     boolean isInterface();
 
-    boolean isFooable();
+    boolean isMockable();
 }

@@ -23,7 +23,7 @@ public final class AutoMockFieldRetriever implements FieldRetriever {
 
     private void examine(Object ref, List list, Field field) {
         BoostField boostField = new DefaultBoostField(ref, field);
-        if (boostField.isFooable()) list.add(field);
+        if (boostField.isMockable()) list.add(field);
     }
 
     private Field[] getDeclaredFields(Object ref) {

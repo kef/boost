@@ -67,7 +67,7 @@ public final class DefaultBoostField implements BoostField {
 
     // FIX BREADCRUMB 35593 Should we split this into: canRandomize(), canMock(), canStub()?
     // FIX BREADCRUMB 35593 Rename this if not splitting.
-    public boolean isFooable() {
+    public boolean isMockable() {
         return isNull() && !isFinal() && !isSynthetic();
     }
 }
