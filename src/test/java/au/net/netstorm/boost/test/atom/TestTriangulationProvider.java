@@ -18,15 +18,9 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private RandomProvider randomProvider = new DefaultRandomProvider();
 
     public Object getInstance(Class type) {
-        if (type.isInterface()) {
-            return randomInterface(type);
-        }
-        if (type.isArray()) {
-            return randomArray(type);
-        }
-        if (isPrimitive(type)) {
-            return randomPrimitiveType(type);
-        }
+        if (type.isInterface()) return randomInterface(type);
+        if (type.isArray()) return randomArray(type);
+        if (isPrimitive(type)) return randomPrimitiveType(type);
         return randomJavaType(type);
     }
 

@@ -12,22 +12,22 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-public final class DefaultAutoRandomizer implements AutoRandomizer {
+public final class PrimitiveAutoRandomizer implements AutoRandomizer {
     private final FieldSpecTestUtil fieldSpecTestUtil = new DefaultFieldSpecTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final UsesMocks testCase;
 
-    public DefaultAutoRandomizer(UsesMocks useMocks) {
+    public PrimitiveAutoRandomizer(UsesMocks useMocks) {
         this.testCase = useMocks;
     }
 
-    public void randomizePrimitivesAndStrings(Field[] fields) {
+    public void randomize(Field[] fields) {
         FieldSpec[] randomizableFields = getFieldsToRandomize(fields);
-        performRandomization(randomizableFields);
+        randomize(randomizableFields);
     }
 
-    private void performRandomization(FieldSpec[] fields) {
+    private void randomize(FieldSpec[] fields) {
         Object[] randomInstances = fieldSpecTestUtil.getInstances(fields);
         for (int i = 0; i < fields.length; i++) {
             FieldSpec primitiveField = fields[i];

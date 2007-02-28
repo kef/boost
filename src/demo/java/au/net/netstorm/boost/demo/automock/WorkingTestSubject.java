@@ -25,6 +25,13 @@ public final class WorkingTestSubject implements TestSubject {
         }
     }
 
+    public void stringLengths(String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            String string = strings[i];
+            string.length();
+        }
+    }
+
     private void tryExecuteGet(Map map) {
         String value = (String) map.get("quake");
         delegate.operate(value);

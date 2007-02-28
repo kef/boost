@@ -35,14 +35,9 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         fielder.setInstance(testCase, "expect", mockExpectations);
     }
 
-    private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
-        MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
-        return new DefaultMockExpectations(delegate);
-    }
-
     private void assignRandomValuesToEligibleFields(Field[] fields) {
-        AutoRandomizer autoRandomizer = new DefaultAutoRandomizer(testCase);
-        autoRandomizer.randomizePrimitivesAndStrings(fields);
+        AutoRandomizer autoRandomizer = new PrimitiveAutoRandomizer(testCase);
+        autoRandomizer.randomize(fields);
     }
 
     private void autoMockRemainingFields(Field[] fields) {
@@ -50,6 +45,11 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         MockExpectations mockExpectations = buildMockExpectations(autoMocker);
         setExpectField(mockExpectations);
         autoMocker.wireMocks(fields);
+    }
+
+    private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
+        MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
+        return new DefaultMockExpectations(delegate);
     }
 }
 // } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.

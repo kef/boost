@@ -16,4 +16,7 @@ public final class AnotherWorkingTestSubject implements TestSubject {
 
     public void executePut(Map map, List[] dataInputs) {
     }
+
+    public void stringLengths(String[] strings) {
+    }
 }

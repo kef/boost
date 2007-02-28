@@ -7,4 +7,6 @@ public interface TestSubject {
     void executeGet(Map map);
 
     void executePut(Map map, List[] dataInputs);
+
+    void stringLengths(String[] strings);
 }
