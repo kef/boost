@@ -50,7 +50,7 @@ public final class DefaultBoostField implements BoostField {
         return primitiveBoxer.isPrimitive(type);
     }
 
-    public boolean isSupportedConcrete() {
+    public boolean isRandomizable() {
         Class type = field.getType();
         return randomProvider.isRandomizable(type);
     }

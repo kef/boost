@@ -13,7 +13,7 @@ public interface BoostField {
 
     boolean isPrimitive();
 
-    boolean isSupportedConcrete();
+    boolean isRandomizable();
 
     boolean isInterface();
 
