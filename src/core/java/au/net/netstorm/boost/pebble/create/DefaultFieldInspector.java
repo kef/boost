@@ -10,6 +10,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 1665 Do we use this any more.  Yes.  Rename and tidy up
 public final class DefaultFieldInspector implements FieldInspector {
     private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
     // FIX 1665 Should be passed in via the constructor.
@@ -22,6 +23,7 @@ public final class DefaultFieldInspector implements FieldInspector {
         }
     }
 
+    // FIX 1665 To thick and fat.
     private void addCreator(Set creatorFields, Field declaredField, Object ref) {
         Class fieldType = declaredField.getType();
         Interface creatorInterface = new DefaultInterface(fieldType);

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class DefaultFieldRetriever implements FieldRetriever {
+
     public Field[] retrieve(Object ref) {
         Field[] fields = getDeclaredFields(ref);
         return siftOutSyntheticFields(fields);
