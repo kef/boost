@@ -84,6 +84,7 @@ class DefaultAutoMocker implements AutoMocker {
         fielder.setInstance(testCase, name, proxy);
     }
 
+    // FIX 35593 FROZEN METHOD.
     private void ensureNotFinal(Field field) {
         boolean isFinal = modifiers.isFinal(field);
         if (isFinal) {

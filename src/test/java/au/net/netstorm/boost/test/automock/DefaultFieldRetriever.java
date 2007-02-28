@@ -10,6 +10,7 @@ public final class DefaultFieldRetriever implements FieldRetriever {
         return siftOutSyntheticFields(fields);
     }
 
+    // FIX 35593 Delegate to a field inspector.
     // SUGGEST: Can maybe be replaced with field.isSynthetic() in 1.5?
     private Field[] siftOutSyntheticFields(Field[] fields) {
         Set result = new HashSet();

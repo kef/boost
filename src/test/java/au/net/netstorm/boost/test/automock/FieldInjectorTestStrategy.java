@@ -2,7 +2,9 @@ package au.net.netstorm.boost.test.automock;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // OK ClassDataAbstractionCoupling {
@@ -11,6 +13,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldRetriever fieldRetriever = new DefaultFieldRetriever();
+    private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final UsesMocks testCase;
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
@@ -18,7 +21,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
-        Field[] fields = fieldRetriever.retrieve(testCase);
+        Field[] allFields = fieldRetriever.retrieve(testCase);
+//        Field[] eligibleFields = determinEligibleFields(allFields);
         // FIX BREADCRUMB 35593 Step 0: Detect non-null and non-final fields.
         // FIX BREADCRUMB 35593 Step 1: Find arrays and barf if duplicate component types found.
         // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings (collect for arrays).
@@ -27,8 +31,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         // FIX BREADCRUMB 35593 Step 5: Barf if any null fields left.
 
         // FIX 35593 Old stuff.  Remove when done.
-        assignRandomValuesToEligibleFields(fields);
-        autoMockRemainingFields(fields);
+        assignRandomValuesToEligibleFields(allFields);
+        autoMockRemainingFields(allFields);
         testCase.setupSubjects();
     }
 
@@ -58,6 +62,10 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
         MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
         return new DefaultMockExpectations(delegate);
+    }
+
+    private boolean isFinal(Field field) {
+        return modifiers.isFinal(field);
     }
 }
 // } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.
