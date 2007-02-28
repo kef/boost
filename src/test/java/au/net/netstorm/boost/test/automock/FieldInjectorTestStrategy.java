@@ -18,8 +18,6 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
-        // FIX BREADCRUMB 35593 Step 0: Detect non-null and non-final fields. (done)
-        // FIX BREADCRUMB 35593 Step 1: Find arrays and barf if duplicate component types found. (done)
         Field[] eligibleFields = fieldRetriever.retrieve(testCase);
         // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings (collect for arrays).
         assignRandomValues(eligibleFields);
