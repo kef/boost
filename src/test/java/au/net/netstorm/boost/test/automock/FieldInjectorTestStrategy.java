@@ -2,9 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // OK ClassDataAbstractionCoupling {
@@ -13,7 +11,6 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldRetriever fieldRetriever = new AutoMockFieldRetriever();
-    private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final UsesMocks testCase;
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
@@ -25,14 +22,13 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         // FIX BREADCRUMB 35593 Step 1: Find arrays and barf if duplicate component types found. (done)
         Field[] eligibleFields = fieldRetriever.retrieve(testCase);
         // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings (collect for arrays).
-
+        assignRandomValues(eligibleFields);
         // FIX BREADCRUMB 35593 Step 3: Mock mockables (collect for arrays).
+        assignMocks(eligibleFields);
         // FIX BREADCRUMB 35593 Step 4: Insert stubs/mocks into arrays.
         // FIX BREADCRUMB 35593 Step 5: Barf if any null fields left.
 
         // FIX 35593 Old stuff.  Remove when done.
-        assignRandomValuesToEligibleFields(eligibleFields);
-        autoMockRemainingFields(eligibleFields);
         testCase.setupSubjects();
     }
 
@@ -47,12 +43,12 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         fielder.setInstance(testCase, "expect", mockExpectations);
     }
 
-    private void assignRandomValuesToEligibleFields(Field[] fields) {
+    private void assignRandomValues(Field[] fields) {
         AutoRandomizer autoRandomizer = new PrimitiveAutoRandomizer(testCase);
         autoRandomizer.randomize(fields);
     }
 
-    private void autoMockRemainingFields(Field[] fields) {
+    private void assignMocks(Field[] fields) {
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations mockExpectations = buildMockExpectations(autoMocker);
         setExpectField(mockExpectations);
@@ -62,10 +58,6 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     private MockExpectations buildMockExpectations(AutoMocker autoMocker) {
         MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
         return new DefaultMockExpectations(delegate);
-    }
-
-    private boolean isFinal(Field field) {
-        return modifiers.isFinal(field);
     }
 }
 // } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.

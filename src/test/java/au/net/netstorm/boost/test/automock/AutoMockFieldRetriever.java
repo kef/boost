@@ -13,7 +13,6 @@ import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 public final class AutoMockFieldRetriever implements FieldRetriever {
     private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final List arrayTypes = new ArrayList();
 
     public Field[] retrieve(Object ref) {
         Field[] fields = getDeclaredFields(ref);
@@ -30,28 +29,10 @@ public final class AutoMockFieldRetriever implements FieldRetriever {
         return (Field[]) result.toArray(new Field[]{});
     }
 
-    // DEBT CyclomaticComplexity {
     private void examine(Object ref, List list, Field field) {
         if (isSynthetic(field)) list.remove(field);
         if (isFinal(field)) list.remove(field);
         if (!isNull(ref, field)) list.remove(field);
-        if (isArray(field)) checkForDuplicateArrays(field);
-    }
-    // } DEBT CyclomaticComplexity
-
-    // FIX BREADCRUMB 35593 Add bad demo test which has multiple arrays of same component type.
-
-    private void checkForDuplicateArrays(Field field) {
-        Class cls = field.getType();
-        Class componentType = cls.getComponentType();
-        if (arrayTypes.contains(componentType))
-            throw new IllegalStateException("Duplicate array component type " + componentType + " found");
-        arrayTypes.add(componentType);
-    }
-
-    private boolean isArray(Field field) {
-        Class cls = field.getType();
-        return cls.isArray();
     }
 
     private boolean isNull(Object ref, Field field) {
