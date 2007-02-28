@@ -59,4 +59,15 @@ public final class DefaultBoostField implements BoostField {
         Class type = field.getType();
         return type.isInterface();
     }
+
+    public boolean isSynthetic() {
+        String fieldName = field.getName();
+        return fieldName.contains("$");
+    }
+
+    // FIX BREADCRUMB 35593 Should we split this into: canRandomize(), canMock(), canStub()?
+    // FIX BREADCRUMB 35593 Rename this if not splitting.
+    public boolean isFooable() {
+        return isNull() && !isFinal() && !isSynthetic();
+    }
 }

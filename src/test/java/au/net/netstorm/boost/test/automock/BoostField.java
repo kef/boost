@@ -16,4 +16,6 @@ public interface BoostField {
     boolean isSupportedConcrete();
 
     boolean isInterface();
+
+    boolean isFooable();
 }
