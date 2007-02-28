@@ -23,15 +23,16 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     public void init() {
         // FIX BREADCRUMB 35593 Step 0: Detect non-null and non-final fields. (done)
         // FIX BREADCRUMB 35593 Step 1: Find arrays and barf if duplicate component types found. (done)
-        Field[] eligableFields = fieldRetriever.retrieve(testCase);
+        Field[] eligibleFields = fieldRetriever.retrieve(testCase);
         // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings (collect for arrays).
+
         // FIX BREADCRUMB 35593 Step 3: Mock mockables (collect for arrays).
         // FIX BREADCRUMB 35593 Step 4: Insert stubs/mocks into arrays.
         // FIX BREADCRUMB 35593 Step 5: Barf if any null fields left.
 
         // FIX 35593 Old stuff.  Remove when done.
-        assignRandomValuesToEligibleFields(eligableFields);
-        autoMockRemainingFields(eligableFields);
+        assignRandomValuesToEligibleFields(eligibleFields);
+        autoMockRemainingFields(eligibleFields);
         testCase.setupSubjects();
     }
 
