@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
-interface RandomProvider {
+public interface RandomProvider {
     Object getRandom(Class type);
+
+    boolean isRandomizable(Class type);
 }

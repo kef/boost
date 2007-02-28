@@ -6,9 +6,22 @@ import java.util.Random;
 public final class DefaultRandomProvider implements RandomProvider {
     private interface InternalInterface {
     }
+
     private Random random = new Random();
 
     public Object getRandom(Class type) {
+        Object result = doGetRandom(type);
+        if (result != null) return result;
+        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
+                "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
+    }
+
+    public boolean isRandomizable(Class type) {
+        Object result = doGetRandom(type);
+        return result != null;
+    }
+
+    private Object doGetRandom(Class type) {
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
         if (type == Long.class) return randomLong();
@@ -18,8 +31,7 @@ public final class DefaultRandomProvider implements RandomProvider {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
         if (type == Object.class) return randomObject();
-        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
-                "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
+        return null;
     }
 
     private Class randomClass() {
@@ -64,6 +76,5 @@ public final class DefaultRandomProvider implements RandomProvider {
     private Object randomObject() {
         return new Object();
     }
-
 } // } OK JavaNCSS|CyclomaticComplexity|ReturnCount
 

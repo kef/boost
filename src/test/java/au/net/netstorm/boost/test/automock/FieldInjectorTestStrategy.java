@@ -5,7 +5,7 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
-// OK ClassDataAbstractionCoupling {
+// DEBT ClassDataAbstractionCoupling {
 final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
@@ -19,6 +19,12 @@ final class FieldInjectorTestStrategy implements TestStrategy {
 
     public void init() {
         Field[] eligibleFields = fieldRetriever.retrieve(testCase);
+        // FIX 35593 Supported basic types are:
+        // FIX 35593 Is a primitive?
+        // FIX 35593 Is it a supported type?
+        // FIX 35593 Is it an interface?
+        // FIX 35593 Is it an array?  Does the array contain a basic type.
+
         // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings (collect for arrays).
         assignRandomValues(eligibleFields);
         // FIX BREADCRUMB 35593 Step 3: Mock mockables (collect for arrays).
@@ -58,4 +64,4 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         return new DefaultMockExpectations(delegate);
     }
 }
-// } OK ClassDataAbstractionCoupling - This class is basically a wirer / assembler.
+// } DEBT ClassDataAbstractionCoupling - This class is basically a wirer / assembler.
