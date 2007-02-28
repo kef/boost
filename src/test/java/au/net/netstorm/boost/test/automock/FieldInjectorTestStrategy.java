@@ -25,6 +25,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         // FIX BREADCRUMB 35593 Step 3: Mock mockables (collect for arrays).
         // FIX BREADCRUMB 35593 Step 4: Insert stubs/mocks into arrays.
         // FIX BREADCRUMB 35593 Step 5: Barf if any null fields left.
+
+        // FIX 35593 Old stuff.  Remove when done.
         assignRandomValuesToEligibleFields(fields);
         autoMockRemainingFields(fields);
         testCase.setupSubjects();
