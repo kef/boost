@@ -17,12 +17,15 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private RandomProvider randomProvider = new DefaultRandomProvider();
 
+    // OK CyclomaticComplexity {
     public Object getInstance(Class type) {
         if (isInterface(type)) return randomInterface(type);
-        if (isArray(type)) return randomArray(type);
         if (isPrimitive(type)) return randomPrimitiveType(type);
-        return randomJavaType(type);
+        if (isSupportedConcrete(type)) return randomSupportedConcrete(type);
+        if (isArray(type)) return randomArray(type);
+        throw new IllegalStateException("Unsupported type " + type);
     }
+    // } OK CyclomaticComplexity
 
     public Object[] getInstances(Class[] types) {
         Object[] params = new Object[types.length];
@@ -32,9 +35,20 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return params;
     }
 
-    private Object randomPrimitiveType(Class type) {
-        Class boxed = primitiveBoxer.getBoxed(type);
-        return randomJavaType(boxed);
+    private boolean isInterface(Class type) {
+        return type.isInterface();
+    }
+
+    private boolean isPrimitive(Class type) {
+        return primitiveBoxer.isPrimitive(type);
+    }
+
+    private boolean isSupportedConcrete(Class type) {
+        return randomProvider.isRandomizable(type);
+    }
+
+    private boolean isArray(Class type) {
+        return type.isArray();
     }
 
     private Object randomInterface(Class type) {
@@ -42,27 +56,20 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return proxyFactory.newProxy(iface, NO_OP_INVOCATION_HANDLER);
     }
 
+    private Object randomPrimitiveType(Class type) {
+        Class boxed = primitiveBoxer.getBoxed(type);
+        return randomProvider.getRandom(boxed);
+    }
+
+    private Object randomSupportedConcrete(Class type) {
+        return randomProvider.getRandom(type);
+    }
+
     private Object randomArray(Class type) {
         Class componentType = type.getComponentType();
         Object array = Array.newInstance(componentType, ARRAY_LENGTH);
         populate(array, componentType);
         return array;
-    }
-
-    private boolean isPrimitive(Class type) {
-        return primitiveBoxer.isPrimitive(type);
-    }
-
-    private Object randomJavaType(Class type) {
-        return randomProvider.getRandom(type);
-    }
-
-    private boolean isInterface(Class type) {
-        return type.isInterface();
-    }
-
-    private boolean isArray(Class type) {
-        return type.isArray();
     }
 
     private void populate(Object array, Class type) {
