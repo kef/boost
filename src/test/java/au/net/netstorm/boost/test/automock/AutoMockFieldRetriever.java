@@ -7,23 +7,23 @@ import java.util.List;
 // FIX 35593 Delete our field inspector.
 public final class AutoMockFieldRetriever implements FieldRetriever {
 
-    public Field[] retrieve(Object ref) {
+    public BoostField[] retrieve(Object ref) {
         Field[] fields = getDeclaredFields(ref);
         return doRetrieve(ref, fields);
     }
 
     // SUGGEST: Can maybe be replaced with field.isSynthetic() in 1.5?
-    private Field[] doRetrieve(Object ref, Field[] fields) {
+    private BoostField[] doRetrieve(Object ref, Field[] fields) {
         List eligibleFields = new ArrayList();
         for (int i = 0; i < fields.length; i++) {
             examine(ref, eligibleFields, fields[i]);
         }
-        return (Field[]) eligibleFields.toArray(new Field[]{});
+        return (BoostField[]) eligibleFields.toArray(new BoostField[]{});
     }
 
     private void examine(Object ref, List list, Field field) {
         BoostField boostField = new DefaultBoostField(ref, field);
-        if (boostField.isMockable()) list.add(field);
+        if (boostField.isMockable()) list.add(boostField);
     }
 
     private Field[] getDeclaredFields(Object ref) {

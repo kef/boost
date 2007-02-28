@@ -1,19 +1,14 @@
 package au.net.netstorm.boost.test.automock;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import org.jmock.Mock;
 
 // SUGGEST Make sure no production code (core, edge or test) is using the nursery, outside of the nursery of course.
 class DefaultAutoMocker implements AutoMocker {
     private final Map mocks = new HashMap();
-    private final ModifierTestUtil modifiers = new DefaultModifierTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final UsesMocks testCase;
     private final MockProvider mockProvider;
@@ -23,7 +18,7 @@ class DefaultAutoMocker implements AutoMocker {
         this.mockProvider = mockProvider;
     }
 
-    public void wireMocks(Field[] fields) {
+    public void wireMocks(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
             tryCreateMock(fields[i]);
         }
@@ -35,40 +30,15 @@ class DefaultAutoMocker implements AutoMocker {
         throw new IllegalStateException("Mock does not exist for provided proxy.");
     }
 
-    private void tryCreateMock(Field field) {
-        Object value = getFieldValue(field);
+    private void tryCreateMock(BoostField field) {
+        Object value = field.get();
         if (value != null) return;
-        ensureNotFinal(field);
         createMock(field);
     }
 
-    private void createMock(Field field) {
-        String name = field.getName();
+    private void createMock(BoostField field) {
         Class type = field.getType();
-        boolean isArrayType = type.isArray();
-        if (isArrayType) {
-            handleArrayMock(type, name);
-        } else {
-            handleSingleMock(type, name);
-        }
-    }
-
-    private void handleArrayMock(Class type, String name) {
-        Class arrayType = type.getComponentType();
-        int randomValue = randomBetweenZeroAndTen();
-        Object array = Array.newInstance(arrayType, randomValue);
-        for (int i = 0; i < randomValue; i++) {
-            Object mock = createMock(arrayType, name);
-            Array.set(array, i, mock);
-        }
-        setField(name, array);
-    }
-
-    private int randomBetweenZeroAndTen() {
-        return (int) (Math.random() * 10);
-    }
-
-    private void handleSingleMock(Class type, String name) {
+        String name = field.getName();
         Object proxy = createMock(type, name);
         setField(name, proxy);
     }
@@ -82,17 +52,5 @@ class DefaultAutoMocker implements AutoMocker {
 
     private void setField(String name, Object proxy) {
         fielder.setInstance(testCase, name, proxy);
-    }
-
-    // FIX 35593 FROZEN METHOD.
-    private void ensureNotFinal(Field field) {
-        boolean isFinal = modifiers.isFinal(field);
-        if (isFinal) {
-            throw new IllegalStateException("Cannot set a final null field with a non null value");
-        }
-    }
-
-    private Object getFieldValue(Field field) {
-        return fielder.getInstance(testCase, field);
     }
 }

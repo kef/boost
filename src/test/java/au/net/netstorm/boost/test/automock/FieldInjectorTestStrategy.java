@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.test.automock;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
@@ -18,7 +17,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
-        Field[] eligibleFields = fieldRetriever.retrieve(testCase);
+        BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
         // FIX 35593 Supported basic types are:
         // FIX 35593 Is a primitive?
         // FIX 35593 Is it a supported type?
@@ -47,12 +46,12 @@ final class FieldInjectorTestStrategy implements TestStrategy {
         fielder.setInstance(testCase, "expect", mockExpectations);
     }
 
-    private void assignRandomValues(Field[] fields) {
+    private void assignRandomValues(BoostField[] fields) {
         AutoRandomizer autoRandomizer = new PrimitiveAutoRandomizer(testCase);
         autoRandomizer.randomize(fields);
     }
 
-    private void assignMocks(Field[] fields) {
+    private void assignMocks(BoostField[] fields) {
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations mockExpectations = buildMockExpectations(autoMocker);
         setExpectField(mockExpectations);

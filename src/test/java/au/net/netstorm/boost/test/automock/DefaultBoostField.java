@@ -65,9 +65,17 @@ public final class DefaultBoostField implements BoostField {
         return fieldName.contains("$");
     }
 
+    public String getName() {
+        return field.getName();
+    }
+
+    public Class getType() {
+        return field.getType();
+    }
+
     // FIX BREADCRUMB 35593 Should we split this into: canRandomize(), canMock(), canStub()?
     // FIX BREADCRUMB 35593 Rename this if not splitting.
     public boolean isMockable() {
-        return isNull() && !isFinal() && !isSynthetic();
+        return isNull() && !isFinal() && !isSynthetic() && !isArray();
     }
 }

@@ -18,4 +18,8 @@ public interface BoostField {
     boolean isInterface();
 
     boolean isMockable();
+
+    String getName();
+
+    Class getType();
 }

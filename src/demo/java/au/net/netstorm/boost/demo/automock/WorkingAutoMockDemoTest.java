@@ -11,9 +11,13 @@ public final class WorkingAutoMockDemoTest extends PrimordialTestCase implements
     private DelegateSubject delegate;
     private TestSubject subject;
     private MockExpectations expect;
-    private List[] lists;
+    private List list1;
+    private List list2;
+    private final List[] lists = new List[2];
 
     public void setupSubjects() {
+        lists[0] = list1;
+        lists[1] = list2;
         subject = new WorkingTestSubject(delegate);
     }
 
