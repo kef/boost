@@ -26,9 +26,7 @@ public final class PrimitiveAutoRandomizer implements AutoRandomizer {
     private void randomize(FieldSpec[] fields) {
         Object[] randomInstances = fieldSpecTestUtil.getInstances(fields);
         for (int i = 0; i < fields.length; i++) {
-            FieldSpec primitiveField = fields[i];
-            Object randomValue = randomInstances[i];
-            assignRandomValue(primitiveField, randomValue);
+            assignRandomValue(fields[i], randomInstances[i]);
         }
     }
 
@@ -48,11 +46,11 @@ public final class PrimitiveAutoRandomizer implements AutoRandomizer {
     private void addIfRandomizable(BoostField field, Set result) {
         String name = field.getName();
         Class type = field.getType();
-        if (field.isRandomizable()) addFieldToSet(name, type, result);
+        if (field.isRandomizable()) addField(result, name, type);
     }
 
-    private void addFieldToSet(String fieldName, Class fieldType, Set fieldSpecSet) {
+    private void addField(Set set, String fieldName, Class fieldType) {
         FieldSpec fieldSpec = new DefaultFieldSpec(fieldName, fieldType);
-        fieldSpecSet.add(fieldSpec);
+        set.add(fieldSpec);
     }
 }
