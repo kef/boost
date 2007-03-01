@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-// FIX 35593 Delete our field inspector.
 public final class AutoMockFieldRetriever implements FieldRetriever {
 
     public BoostField[] retrieve(Object ref) {

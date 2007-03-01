@@ -18,20 +18,8 @@ final class FieldInjectorTestStrategy implements TestStrategy {
 
     public void init() {
         BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
-        // FIX 35593 Supported basic types are:
-        // FIX 35593 Is a primitive?
-        // FIX 35593 Is it a supported type?
-        // FIX 35593 Is it an interface?
-        // FIX 35593 Is it an array?  Does the array contain a basic type.
-
-        // FIX BREADCRUMB 35593 Step 2: Stub primitives/strings.
         assignRandomValues(eligibleFields);
-        // FIX BREADCRUMB 35593 Step 3: Mock mockables.
         assignMocks(eligibleFields);
-        // FIX BREADCRUMB 35593 Step 4: Insert stubs/mocks into arrays.
-        // FIX BREADCRUMB 35593 Step 5: Barf if any null fields left.
-
-        // FIX 35593 Old stuff.  Remove when done.
         testCase.setupSubjects();
     }
 
