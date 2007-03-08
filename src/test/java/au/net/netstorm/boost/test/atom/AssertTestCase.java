@@ -25,11 +25,7 @@ public class AssertTestCase extends TestCase {
         asserter.checkEquals(expected, actual);
     }
 
-    public void assertNotEquals(byte[] value1, byte[] value2) {
-        asserter.checkNotEquals(value1, value2);
-    }
-
-    public void assertImmutable(byte[] value1, byte[] value2) {
-        asserter.checkImmutable(value1, value2);
+    public void assertNotEquals(byte[] expected, byte[] actual) {
+        asserter.checkNotEquals(expected, actual);
     }
 }

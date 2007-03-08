@@ -21,8 +21,4 @@ public abstract class InteractionTestCase extends PrimordialTestCase implements 
     public final void assertNotEquals(byte[] expected, byte[] actual) {
         assertTestChecker.checkNotEquals(expected, actual);
     }
-
-    public final void assertImmutable(byte[] expected, byte[] actual) {
-        assertTestChecker.checkImmutable(expected, actual);
-    }
 }
