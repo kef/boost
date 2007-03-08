@@ -5,9 +5,9 @@ public interface AssertTestChecker {
 
     void checkEquals(byte[] expected, byte[] actual);
 
-    void assertEquals(int[] expected, int[] actual);
+    void checkEquals(int[] expected, int[] actual);
 
-    void assertNotEquals(byte[] value1, byte[] value2);
+    void checkNotEquals(byte[] value1, byte[] value2);
 
-    void assertImmutable(byte[] value1, byte[] value2);
+    void checkImmutable(byte[] value1, byte[] value2);
 }
