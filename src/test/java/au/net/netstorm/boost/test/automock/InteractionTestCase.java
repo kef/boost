@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
 
-public class InteractionTestCase extends PrimordialTestCase {
+public abstract class InteractionTestCase extends PrimordialTestCase implements UsesMocks {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
     public final void assertEquals(Object[] expected, Object[] actual) {
@@ -18,11 +18,11 @@ public class InteractionTestCase extends PrimordialTestCase {
         assertTestChecker.checkEquals(expected, actual);
     }
 
-    public final void assertNotEquals(byte[] value1, byte[] value2) {
-        assertTestChecker.checkNotEquals(value1, value2);
+    public final void assertNotEquals(byte[] expected, byte[] actual) {
+        assertTestChecker.checkNotEquals(expected, actual);
     }
 
-    public final void assertImmutable(byte[] value1, byte[] value2) {
-        assertTestChecker.checkImmutable(value1, value2);
+    public final void assertImmutable(byte[] expected, byte[] actual) {
+        assertTestChecker.checkImmutable(expected, actual);
     }
 }
