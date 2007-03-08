@@ -2,8 +2,8 @@ package au.net.netstorm.boost.nursery.reflect.checker;
 
 import junit.framework.Assert;
 
-// Do not extend Assert.  Users of this class may inadvertently pick up Assert's methods.  We don't want this :)
 public final class DefaultAssertTestChecker implements AssertTestChecker {
+
     // SUGGEST Refactor duplication, if possible.
     public void checkEquals(Object[] expected, Object[] actual) {
         Assert.assertNotNull(expected);
@@ -17,5 +17,22 @@ public final class DefaultAssertTestChecker implements AssertTestChecker {
         Assert.assertNotNull(actualBytes);
         Assert.assertEquals(expectedBytes.length, actualBytes.length);
         for (int i = 0; i < actualBytes.length; i++) Assert.assertEquals("" + i, expectedBytes[i], actualBytes[i]);
+    }
+
+    public void assertEquals(int[] expected, int[] actual) {
+        Assert.assertEquals(expected.length, actual.length);
+        for (int i = 0; i < expected.length; i++) Assert.assertEquals(expected[i], actual[i]);
+    }
+
+    public void assertNotEquals(byte[] value1, byte[] value2) {
+        if (value1.length != value2.length) return;
+        for (int i = 0; i < value1.length; i++)
+            if (value1[i] != value2[i]) return;
+        Assert.fail();
+    }
+
+    public void assertImmutable(byte[] value1, byte[] value2) {
+        Assert.assertTrue(value1 != value2);
+        Assert.assertEquals(value1, value2);
     }
 }
