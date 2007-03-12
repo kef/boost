@@ -2,9 +2,8 @@ package au.net.netstorm.boost.pebble.create;
 
 import java.lang.reflect.Field;
 
-public interface FieldInspector {
-
+public interface CreatorFieldInspector {
     boolean isCreator(Object ref, Field field);
 
-    CreatorField getCreator(Field declaredField, Object ref);
+    CreatorField getCreator(Object ref, Field field);
 }

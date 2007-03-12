@@ -9,7 +9,7 @@ import java.util.Set;
 
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
-    private FieldInspector inspector = new DefaultFieldInspector();
+    private CreatorFieldInspector inspectorCreator = new DefaultCreatorFieldInspector();
 
     public CreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
@@ -30,8 +30,8 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     }
 
     private void add(Set result, Field field, Object ref) {
-        if (!inspector.isCreator(ref, field)) return;
-        CreatorField creator = inspector.getCreator(field, ref);
+        if (!inspectorCreator.isCreator(ref, field)) return;
+        CreatorField creator = inspectorCreator.getCreator(ref, field);
         result.add(creator);
     }
 }
