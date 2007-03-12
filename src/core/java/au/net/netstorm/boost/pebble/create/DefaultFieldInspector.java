@@ -17,14 +17,23 @@ public final class DefaultFieldInspector implements FieldInspector {
     private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 
-    public void creatorFieldChecker(Object ref, Field declaredField, Set creatorFields) {
+    public void creatorFieldChecker(Set result, Object ref, Field declaredField) {
         if (isCreator(ref, declaredField)) {
-            addCreator(creatorFields, declaredField, ref);
+            addCreator(result, declaredField, ref);
         }
     }
 
+    // FIX 1665 Barf if CreatorInterface does not contain IMPLEMENTATION field?
+    public boolean isCreator(Object ref, Field field) {
+        if (isFinal(field)) return false;
+        if (isSet(ref, field)) return false;
+        if (!nameStartsWith(field, "new")) return false;
+        checkImplementsMarker(field);
+        return true;
+    }
+
     // FIX 1665 To thick and fat.
-    private void addCreator(Set creatorFields, Field declaredField, Object ref) {
+    public void addCreator(Set creatorFields, Field declaredField, Object ref) {
         Class fieldType = declaredField.getType();
         Interface creatorInterface = new DefaultInterface(fieldType);
         String fieldName = declaredField.getName();
@@ -33,15 +42,6 @@ public final class DefaultFieldInspector implements FieldInspector {
         Class instanceImplementation = (Class) edgeField.get(implementationField, ref);
         CreatorField creatorField = new DefaultCreatorField(creatorInterface, instanceImplementation, fieldName);
         creatorFields.add(creatorField);
-    }
-
-    // FIX 1665 Barf if CreatorInterface does not contain IMPLEMENTATION field?
-    private boolean isCreator(Object ref, Field field) {
-        if (isFinal(field)) return false;
-        if (isSet(ref, field)) return false;
-        if (!nameStartsWith(field, "new")) return false;
-        checkImplementsMarker(field);
-        return true;
     }
 
     private void checkImplementsMarker(Field field) {

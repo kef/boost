@@ -16,7 +16,7 @@ public final class DefaultCreator implements Creator {
 
     public Object create(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
-        // FIX 1715 Pass in type.
+        // FIX 1715 Pass in type (later).
         injector.inject(ref);
         return onion.onionize(ref);
     }

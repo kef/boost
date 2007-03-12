@@ -21,10 +21,11 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 
+    // FIX 1715 Fix this up.
     private CreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
-            fieldInspector.creatorFieldChecker(ref, fields[i], result);
+            fieldInspector.creatorFieldChecker(result, ref, fields[i]);
         }
         return (CreatorField[]) result.toArray(new CreatorField[]{});
     }
