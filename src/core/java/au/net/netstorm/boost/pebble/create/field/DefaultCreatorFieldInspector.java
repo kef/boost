@@ -6,14 +6,14 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.pebble.create.DoesNotImplementNewerException;
-import au.net.netstorm.boost.pebble.create.Newer;
+import au.net.netstorm.boost.pebble.create.Creator;
+import au.net.netstorm.boost.pebble.create.DoesNotImplementCreatorException;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1665 Do we use this any more.  Yes.  Rename and tidy up
 public final class DefaultCreatorFieldInspector implements CreatorFieldInspector {
-    private static final Class CREATOR_MARKER_INTERFACE = Newer.class;
+    private static final Class CREATOR_MARKER_INTERFACE = Creator.class;
     // FIX 1665 Should be passed in via the constructor.
     private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
@@ -50,7 +50,7 @@ public final class DefaultCreatorFieldInspector implements CreatorFieldInspector
     private void checkImplementsMarker(Field field) {
         Class type = field.getType();
         if (!CREATOR_MARKER_INTERFACE.isAssignableFrom(type)) {
-            throw new DoesNotImplementNewerException(type);
+            throw new DoesNotImplementCreatorException(type);
         }
     }
 

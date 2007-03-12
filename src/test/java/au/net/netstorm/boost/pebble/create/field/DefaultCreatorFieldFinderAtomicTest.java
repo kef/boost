@@ -2,10 +2,10 @@ package au.net.netstorm.boost.pebble.create.field;
 
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.pebble.create.DoesNotImplementNewerException;
+import au.net.netstorm.boost.pebble.create.DoesNotImplementCreatorException;
 import au.net.netstorm.boost.pebble.create.fixture.DefaultNed;
 import au.net.netstorm.boost.pebble.create.fixture.Fred;
-import au.net.netstorm.boost.pebble.create.fixture.FredWithBrokenNewer;
+import au.net.netstorm.boost.pebble.create.fixture.FredWithBrokenCreator;
 import au.net.netstorm.boost.pebble.create.fixture.NewDefaultNed;
 import au.net.netstorm.boost.pebble.create.fixture.NewTedImpl;
 import au.net.netstorm.boost.pebble.create.fixture.TedImpl;
@@ -16,7 +16,7 @@ import junit.framework.TestCase;
 public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
     private CreatorFieldFinder subject = new DefaultCreatorFieldFinder();
     private Fred object = new Fred();
-    private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();
+    private FredWithBrokenCreator objectWithBrokenCreator = new FredWithBrokenCreator();
 
     public void testFinder() {
         CreatorField[] expected = createExpectedCreatorFields();
@@ -24,11 +24,11 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         checkFields(expected, actual);
     }
 
-    public void testFieldMustImplementNewer() {
+    public void testFieldMustImplementCreator() {
         try {
-            subject.find(objectWithBrokenNewer);
+            subject.find(objectWithBrokenCreator);
             fail();
-        } catch (DoesNotImplementNewerException expected) { }
+        } catch (DoesNotImplementCreatorException expected) { }
     }
 
     private CreatorField[] createExpectedCreatorFields() {

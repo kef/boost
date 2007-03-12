@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.pebble.create.fixture;
 
-import au.net.netstorm.boost.pebble.create.Newer;
+import au.net.netstorm.boost.pebble.create.Creator;
 
-public interface NewDefaultNed extends Newer {
+public interface NewDefaultNed extends Creator {
     Class IMPLEMENTATION = DefaultNed.class;
 
     Ned create();
