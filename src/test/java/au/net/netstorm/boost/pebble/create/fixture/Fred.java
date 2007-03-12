@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.pebble.create;
+package au.net.netstorm.boost.pebble.create.fixture;
 
 // FIX BREADCRUMB 1665 -6000 Do we really want these broken fields here?
-class Fred {
+public class Fred {
     private NewDefaultNed newDefaultNed;
     private NewTedImpl newTedImpl;
     // FIX 33203 Jury is out on this one.

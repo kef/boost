@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.pebble.create;
+package au.net.netstorm.boost.pebble.create.fixture;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-final class Larry extends Primordial {
+public final class Larry extends Primordial {
     private String fingers;
 
     public Larry(String fingers) {

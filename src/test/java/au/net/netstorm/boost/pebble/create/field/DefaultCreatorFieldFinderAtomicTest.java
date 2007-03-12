@@ -1,7 +1,14 @@
-package au.net.netstorm.boost.pebble.create;
+package au.net.netstorm.boost.pebble.create.field;
 
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.pebble.create.DoesNotImplementNewerException;
+import au.net.netstorm.boost.pebble.create.fixture.DefaultNed;
+import au.net.netstorm.boost.pebble.create.fixture.Fred;
+import au.net.netstorm.boost.pebble.create.fixture.FredWithBrokenNewer;
+import au.net.netstorm.boost.pebble.create.fixture.NewDefaultNed;
+import au.net.netstorm.boost.pebble.create.fixture.NewTedImpl;
+import au.net.netstorm.boost.pebble.create.fixture.TedImpl;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;

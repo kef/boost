@@ -5,6 +5,8 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
+import au.net.netstorm.boost.pebble.create.field.CreatorField;
+import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class CreatorProxyInjector implements Injector {
