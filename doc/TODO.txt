@@ -1,4 +1,4 @@
-Just some rough ideas we might use in Boost -- Mr O'Keeffe.
+Just some rough ideas we might use in Boost -- Mr O'Keeffe
 
  * InstanceProvider - construction vs resolution implementations, see IOC resolve() in easydoc.
  * How do we boostrap instance of InstanceProvider itself? Construct just that one in Primordial or provide a global way of accessing it.
