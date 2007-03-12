@@ -11,20 +11,19 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
-    // FIX BREADCRUMB 1715 Create splitter class.
-    private Injector creatorProxyInjector;
+    private Injector injector;
     private Object[] parameters = {"Hi", "There"};
     private Class type = String.class;
     private Object rawRef = new Object();
     private Object wrappedRef = new Object();
 
     public void setupSubjects() {
-        subject = new DefaultCreator(onion, creatorProxyInjector, instantiator);
+        subject = new DefaultCreator(onion, injector, instantiator);
     }
 
     public void testCreator() {
         expect.oneCall(instantiator, rawRef, "instantiate", type, parameters);
-        expect.oneCall(creatorProxyInjector, VOID, "inject", rawRef);
+        expect.oneCall(injector, VOID, "inject", rawRef);
         expect.oneCall(onion, wrappedRef, "onionize", rawRef);
         Object result = subject.create(type, parameters);
         assertEquals(wrappedRef, result);
