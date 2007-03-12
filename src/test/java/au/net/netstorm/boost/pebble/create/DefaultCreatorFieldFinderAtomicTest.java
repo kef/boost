@@ -37,6 +37,7 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         result.add(tedCreatorField);
     }
 
+    // FIX 1715 AssertHelper does this.
     private void checkFields(CreatorField[] expected, CreatorField[] actual) {
         checkFieldCount(expected, actual);
         for (int i = 0; i < actual.length; i++) {
