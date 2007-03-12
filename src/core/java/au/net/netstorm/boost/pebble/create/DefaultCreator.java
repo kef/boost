@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.pebble.create;
 
+import au.net.netstorm.boost.pebble.create.injector.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 
