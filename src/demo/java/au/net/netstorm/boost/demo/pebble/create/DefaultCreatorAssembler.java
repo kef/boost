@@ -9,6 +9,7 @@ import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
 import au.net.netstorm.boost.pebble.create.DefaultCreator;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorFieldFinder;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.pebble.onion.BermudaOnion;
@@ -33,8 +34,9 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
         Creator passThroughCreator = (Creator) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
         CreatorProxySupplier creatorProxySupplier =
                 new DefaultCreatorProxySupplier(proxyFactory, passThroughCreator, instantiator);
-        au.net.netstorm.boost.pebble.create.Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
+        Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
         DefaultCreator creator = new DefaultCreator(onion, creatorProxyInjector, instantiator);
+        // FIX BREADCRUMB 1715 Stitch in FieldInjector.
         passThroughHandler.setDelegate(creator);
         return creator;
     }
