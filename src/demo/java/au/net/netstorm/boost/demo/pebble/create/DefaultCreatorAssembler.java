@@ -27,16 +27,19 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
     private static final Interface CREATOR_TYPE = new DefaultInterface(Creator.class);
 
     public Creator assembleCreator() {
-        Onion onion = new BermudaOnion();
-        Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-        ProxySupplier proxySupplier = new DefaultProxySupplier();
-        ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
+        ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
         Creator passThroughCreator = (Creator) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
+        Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         Injector objectInjector = assembleInjector(proxyFactory, passThroughCreator, instantiator);
-        Creator creator = new DefaultCreator(onion, objectInjector, instantiator);
+        Creator creator = assembleCreator(objectInjector, instantiator);
         passThroughHandler.setDelegate(creator);
         return creator;
+    }
+
+    private ProxyFactory assembleProxyFactory() {
+        ProxySupplier proxySupplier = new DefaultProxySupplier();
+        return new DefaultProxyFactory(proxySupplier);
     }
 
     private Injector assembleInjector(ProxyFactory proxyFactory, Creator passThroughCreator, Instantiator instantiator) {
@@ -46,5 +49,10 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
         Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
         Injector dependencyInjector = new DependencyInjector();
         return new ObjectInjector(creatorProxyInjector, dependencyInjector);
+    }
+
+    private Creator assembleCreator(Injector objectInjector, Instantiator instantiator) {
+        Onion onion = new BermudaOnion();
+        return new DefaultCreator(onion, objectInjector, instantiator);
     }
 }
