@@ -8,12 +8,15 @@ public final class ObjectInjectorAtomicTest extends InteractionTestCase {
     private MockExpectations expect;
     private Injector creatorInjector;
     private Injector resolverInjector;
+    private Object ref;
 
     public void setupSubjects() {
-        ObjectInjector subject = new ObjectInjector(creatorInjector, resolverInjector);
+        subject = new ObjectInjector(creatorInjector, resolverInjector);
     }
 
     public void testAggregation() {
-        // FIX 1715 Complete.
+        expect.oneCall(creatorInjector, VOID, "inject", ref);
+        expect.oneCall(resolverInjector, VOID, "inject", ref);
+        subject.inject(ref);
     }
 }
