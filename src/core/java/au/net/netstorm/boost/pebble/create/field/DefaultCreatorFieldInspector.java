@@ -21,7 +21,7 @@ public final class DefaultCreatorFieldInspector implements CreatorFieldInspector
     // FIX 1665 Barf if CreatorInterface does not contain IMPLEMENTATION field?
     public boolean isCreator(Object ref, Field field) {
         if (isFinal(field)) return false;
-        if (isSet(ref, field)) return false;
+        if (!isNull(field, ref)) return false;
         if (!nameStartsWith(field, "new")) return false;
         checkImplementsMarker(field);
         return true;
@@ -29,13 +29,22 @@ public final class DefaultCreatorFieldInspector implements CreatorFieldInspector
 
     // FIX 1665 To thick and fat.
     public PebbleField getCreator(Object ref, Field field) {
-        Class fieldType = field.getType();
-        Interface creatorInterface = new DefaultInterface(fieldType);
+        if (!isCreator(ref, field)) throw new IllegalStateException("Not a creator field");
+        return doGetCreator(field, ref);
+    }
+
+    private PebbleField doGetCreator(Field field, Object ref) {
+        Class creatorCls = field.getType();
+        Interface creatorType = new DefaultInterface(creatorCls);
+        Class creationImpl = getClassToCreate(creatorCls, ref);
         String fieldName = field.getName();
-        Field implementationField = edgeClass.getDeclaredField(fieldType, "IMPLEMENTATION");
-        implementationField.setAccessible(true);
-        Class instanceImplementation = (Class) edgeField.get(implementationField, ref);
-        return new DefaultPebbleField(creatorInterface, instanceImplementation, fieldName);
+        return new DefaultPebbleField(creatorType, creationImpl, fieldName);
+    }
+
+    private Class getClassToCreate(Class creatorType, Object ref) {
+        Field implField = edgeClass.getDeclaredField(creatorType, "IMPLEMENTATION");
+        implField.setAccessible(true);
+        return (Class) edgeField.get(implField, ref);
     }
 
     private void checkImplementsMarker(Field field) {
@@ -50,12 +59,10 @@ public final class DefaultCreatorFieldInspector implements CreatorFieldInspector
         return name.startsWith(prefix);
     }
 
-    private boolean isSet(Object ref, Field field) {
-        // FIX BREADCRUMB 33203 Do we really want to do this here?
+    private boolean isNull(Field field, Object ref) {
         field.setAccessible(true);
-        // FIX BREADCRUMB 33203 Why not have a containsValue?
         Object value = edgeField.get(field, ref);
-        return value != null;
+        return value == null;
     }
 
     private boolean isFinal(Field field) {
