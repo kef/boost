@@ -9,7 +9,7 @@ import java.util.Set;
 
 public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
-    private FieldInspector fieldInspector = new DefaultFieldInspector();
+    private FieldInspector inspector = new DefaultFieldInspector();
 
     public CreatorField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
@@ -21,12 +21,17 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 
-    // FIX 1715 Fix this up.
     private CreatorField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
-            fieldInspector.creatorFieldChecker(result, ref, fields[i]);
+            add(result, fields[i], ref);
         }
         return (CreatorField[]) result.toArray(new CreatorField[]{});
+    }
+
+    private void add(Set result, Field field, Object ref) {
+        if (!inspector.isCreator(ref, field)) return;
+        CreatorField creator = inspector.getCreator(field, ref);
+        result.add(creator);
     }
 }
