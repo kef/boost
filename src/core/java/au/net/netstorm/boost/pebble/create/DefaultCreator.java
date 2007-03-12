@@ -6,9 +6,9 @@ import au.net.netstorm.boost.pebble.onion.Onion;
 public final class DefaultCreator implements Creator {
     private Onion onion;
     private Instantiator instantiator;
-    private CreatorProxyInjector creatorProxyInjector;
+    private Injector creatorProxyInjector;
 
-    public DefaultCreator(Onion onion, CreatorProxyInjector creatorProxyInjector, Instantiator instantiator) {
+    public DefaultCreator(Onion onion, Injector creatorProxyInjector, Instantiator instantiator) {
         this.onion = onion;
         this.creatorProxyInjector = creatorProxyInjector;
         this.instantiator = instantiator;

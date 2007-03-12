@@ -322,7 +322,8 @@
   </component>
   <component name="StarteamVcsAdapter" />
   <component name="ToggleTest">
-    <toggle from="*" to="*UnitTest" />
+    <toggle from="*" to="*Wirer" />
+    <toggle from="*" to="*MolecularTest" />
     <toggle from="*" to="*AtomicTest" />
   </component>
   <component name="VssVcs" />

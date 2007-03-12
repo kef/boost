@@ -8,7 +8,6 @@ import au.net.netstorm.boost.pebble.create.CreatorProxyInjector;
 import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
 import au.net.netstorm.boost.pebble.create.DefaultCreator;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorFieldFinder;
-import au.net.netstorm.boost.pebble.create.DefaultCreatorProxyInjector;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorProxySupplier;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
@@ -34,7 +33,7 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
         Creator passThroughCreator = (Creator) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
         CreatorProxySupplier creatorProxySupplier =
                 new DefaultCreatorProxySupplier(proxyFactory, passThroughCreator, instantiator);
-        CreatorProxyInjector creatorProxyInjector = new DefaultCreatorProxyInjector(creatorProxySupplier, fieldFinder);
+        au.net.netstorm.boost.pebble.create.Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
         DefaultCreator creator = new DefaultCreator(onion, creatorProxyInjector, instantiator);
         passThroughHandler.setDelegate(creator);
         return creator;

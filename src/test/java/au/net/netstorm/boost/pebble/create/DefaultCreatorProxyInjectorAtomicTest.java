@@ -7,7 +7,7 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private CreatorProxyInjector subject;
+    private Injector subject;
     private MockExpectations expect;
     private Object object = new Larry("ten");
     private String proxy;
@@ -21,7 +21,7 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private Class instanceImplementation = Random.class;
 
     public void setupSubjects() {
-        subject = new DefaultCreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
+        subject = new CreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
         creatorFields = new CreatorField[]{creatorField, creatorField};
     }
 

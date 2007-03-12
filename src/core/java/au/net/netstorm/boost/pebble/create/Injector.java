@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.pebble.create;
 
-public interface CreatorProxyInjector {
+public interface Injector {
     void inject(Object object);
 }

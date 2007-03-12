@@ -11,7 +11,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
-    private CreatorProxyInjector creatorProxyInjector;
+    private Injector creatorProxyInjector;
     private Object[] parameters = {"Hi", "There"};
     private Class type = String.class;
     private Object rawRef = new Object();
