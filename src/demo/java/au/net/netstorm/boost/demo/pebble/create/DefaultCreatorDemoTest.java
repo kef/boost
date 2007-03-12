@@ -17,6 +17,6 @@ public final class DefaultCreatorDemoTest extends TestCase {
 
     private Rob createRob() {
         Object[] parameters = {};
-        return (Rob) objectProvider.create(Rob.class, parameters);
+        return (Rob) objectProvider.provide(Rob.class, parameters);
     }
 }

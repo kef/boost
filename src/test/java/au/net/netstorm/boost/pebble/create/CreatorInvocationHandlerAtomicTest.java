@@ -22,7 +22,7 @@ public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase
 
     public void testInvokeCreate() throws Throwable {
         Method method = Object.class.getMethod("wait", null);
-        expect.oneCall(objectProvider, createdObject, "create", implClass, methodParams);
+        expect.oneCall(objectProvider, createdObject, "provide", implClass, methodParams);
         Object actualObject = subject.invoke(proxyObject, method, methodParams);
         assertSame(createdObject, actualObject);
     }

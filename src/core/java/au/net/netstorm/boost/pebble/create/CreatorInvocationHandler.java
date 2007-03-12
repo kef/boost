@@ -13,6 +13,6 @@ public final class CreatorInvocationHandler implements InvocationHandler {
     }
 
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
-        return objectProvider.create(implClass, params);
+        return objectProvider.provide(implClass, params);
     }
 }

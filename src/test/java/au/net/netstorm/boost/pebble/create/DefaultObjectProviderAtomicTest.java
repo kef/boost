@@ -7,7 +7,7 @@ import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 
-public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class DefaultObjectProviderAtomicTest extends PrimordialTestCase implements UsesMocks {
     private ObjectProvider subject;
     private MockExpectations expect;
     private Onion onion;
@@ -26,7 +26,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
         expect.oneCall(instantiator, rawRef, "instantiate", type, parameters);
         expect.oneCall(injector, VOID, "inject", rawRef);
         expect.oneCall(onion, wrappedRef, "onionize", rawRef);
-        Object result = subject.create(type, parameters);
+        Object result = subject.provide(type, parameters);
         assertEquals(wrappedRef, result);
     }
 }

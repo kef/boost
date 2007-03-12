@@ -15,7 +15,7 @@ public final class DefaultObjectProvider implements ObjectProvider {
         this.instantiator = instantiator;
     }
 
-    public Object create(Class type, Object[] parameters) {
+    public Object provide(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
         // FIX 1715 Pass in type (later).
         injector.inject(ref);
