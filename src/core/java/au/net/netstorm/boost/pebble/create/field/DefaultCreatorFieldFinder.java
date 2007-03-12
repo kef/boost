@@ -11,7 +11,7 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
     private CreatorFieldInspector creatorFieldInspector = new DefaultCreatorFieldInspector();
 
-    public CreatorField[] find(Object ref) {
+    public PebbleField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
         return find(ref, declaredFields);
     }
@@ -21,17 +21,17 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 
-    private CreatorField[] find(Object ref, Field[] fields) {
+    private PebbleField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
             add(result, fields[i], ref);
         }
-        return (CreatorField[]) result.toArray(new CreatorField[]{});
+        return (PebbleField[]) result.toArray(new PebbleField[]{});
     }
 
     private void add(Set result, Field field, Object ref) {
         if (!creatorFieldInspector.isCreator(ref, field)) return;
-        CreatorField creator = creatorFieldInspector.getCreator(ref, field);
+        PebbleField creator = creatorFieldInspector.getCreator(ref, field);
         result.add(creator);
     }
 }

@@ -28,14 +28,14 @@ public final class DefaultCreatorFieldInspector implements CreatorFieldInspector
     }
 
     // FIX 1665 To thick and fat.
-    public CreatorField getCreator(Object ref, Field field) {
+    public PebbleField getCreator(Object ref, Field field) {
         Class fieldType = field.getType();
         Interface creatorInterface = new DefaultInterface(fieldType);
         String fieldName = field.getName();
         Field implementationField = edgeClass.getDeclaredField(fieldType, "IMPLEMENTATION");
         implementationField.setAccessible(true);
         Class instanceImplementation = (Class) edgeField.get(implementationField, ref);
-        return new DefaultCreatorField(creatorInterface, instanceImplementation, fieldName);
+        return new DefaultPebbleField(creatorInterface, instanceImplementation, fieldName);
     }
 
     private void checkImplementsMarker(Field field) {

@@ -19,8 +19,8 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
     private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();
 
     public void testFinder() {
-        CreatorField[] expected = createExpectedCreatorFields();
-        CreatorField[] actual = subject.find(object);
+        PebbleField[] expected = createExpectedCreatorFields();
+        PebbleField[] actual = subject.find(object);
         checkFields(expected, actual);
     }
 
@@ -31,28 +31,28 @@ public final class DefaultCreatorFieldFinderAtomicTest extends TestCase {
         } catch (DoesNotImplementNewerException expected) { }
     }
 
-    private CreatorField[] createExpectedCreatorFields() {
+    private PebbleField[] createExpectedCreatorFields() {
         List result = new ArrayList();
         addCreatorField(result, NewTedImpl.class, TedImpl.class, "newTedImpl");
         addCreatorField(result, NewDefaultNed.class, DefaultNed.class, "newDefaultNed");
-        return (CreatorField[]) result.toArray(new CreatorField[]{});
+        return (PebbleField[]) result.toArray(new PebbleField[]{});
     }
 
     private void addCreatorField(List result, Class creatorInterface, Class instanceImplementation, String fieldName) {
         Interface iface = new DefaultInterface(creatorInterface);
-        CreatorField tedCreatorField = new DefaultCreatorField(iface, instanceImplementation, fieldName);
+        PebbleField tedCreatorField = new DefaultPebbleField(iface, instanceImplementation, fieldName);
         result.add(tedCreatorField);
     }
 
     // FIX 1715 AssertHelper does this.
-    private void checkFields(CreatorField[] expected, CreatorField[] actual) {
+    private void checkFields(PebbleField[] expected, PebbleField[] actual) {
         checkFieldCount(expected, actual);
         for (int i = 0; i < actual.length; i++) {
             assertEquals(expected[i], actual[i]);
         }
     }
 
-    private void checkFieldCount(CreatorField[] expected, CreatorField[] actual) {
+    private void checkFieldCount(PebbleField[] expected, PebbleField[] actual) {
         int expectedLength = expected.length;
         int actualLength = actual.length;
         assertEquals(expectedLength, actualLength);
