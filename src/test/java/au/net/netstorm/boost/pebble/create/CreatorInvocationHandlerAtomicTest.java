@@ -10,19 +10,19 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase implements UsesMocks {
     private InvocationHandler subject;
     private MockExpectations expect;
-    private Creator creator;
+    private ObjectProvider objectProvider;
     private Class implClass = Random.class;
     private Object proxyObject = new Object();
     private Object[] methodParams = new Object[]{};
     private Object createdObject = new Object();
 
     public void setupSubjects() {
-        subject = new CreatorInvocationHandler(creator, implClass);
+        subject = new CreatorInvocationHandler(objectProvider, implClass);
     }
 
     public void testInvokeCreate() throws Throwable {
         Method method = Object.class.getMethod("wait", null);
-        expect.oneCall(creator, createdObject, "create", implClass, methodParams);
+        expect.oneCall(objectProvider, createdObject, "create", implClass, methodParams);
         Object actualObject = subject.invoke(proxyObject, method, methodParams);
         assertSame(createdObject, actualObject);
     }

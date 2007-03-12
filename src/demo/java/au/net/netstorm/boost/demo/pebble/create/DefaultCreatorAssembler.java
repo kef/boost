@@ -2,10 +2,10 @@ package au.net.netstorm.boost.demo.pebble.create;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.pebble.create.Creator;
 import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
-import au.net.netstorm.boost.pebble.create.DefaultCreator;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.DefaultObjectProvider;
+import au.net.netstorm.boost.pebble.create.ObjectProvider;
 import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
 import au.net.netstorm.boost.pebble.create.field.DefaultCreatorFieldFinder;
 import au.net.netstorm.boost.pebble.create.inject.CreatorProxyInjector;
@@ -24,17 +24,17 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultCreatorAssembler implements CreatorAssembler {
-    private static final Interface CREATOR_TYPE = new DefaultInterface(Creator.class);
+    private static final Interface CREATOR_TYPE = new DefaultInterface(ObjectProvider.class);
 
-    public Creator assembleCreator() {
+    public ObjectProvider assembleCreator() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
-        Creator passThroughCreator = (Creator) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
+        ObjectProvider passThroughObjectProvider = (ObjectProvider) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-        Injector objectInjector = assembleInjector(proxyFactory, passThroughCreator, instantiator);
-        Creator creator = assembleCreator(objectInjector, instantiator);
-        passThroughHandler.setDelegate(creator);
-        return creator;
+        Injector objectInjector = assembleInjector(proxyFactory, passThroughObjectProvider, instantiator);
+        ObjectProvider objectProvider = assembleCreator(objectInjector, instantiator);
+        passThroughHandler.setDelegate(objectProvider);
+        return objectProvider;
     }
 
     private ProxyFactory assembleProxyFactory() {
@@ -42,17 +42,17 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private Injector assembleInjector(ProxyFactory proxyFactory, Creator passThroughCreator, Instantiator instantiator) {
+    private Injector assembleInjector(ProxyFactory proxyFactory, ObjectProvider passThroughObjectProvider, Instantiator instantiator) {
         CreatorProxySupplier creatorProxySupplier =
-                new DefaultCreatorProxySupplier(proxyFactory, passThroughCreator, instantiator);
+                new DefaultCreatorProxySupplier(proxyFactory, passThroughObjectProvider, instantiator);
         CreatorFieldFinder fieldFinder = new DefaultCreatorFieldFinder();
         Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
         Injector dependencyInjector = new DependencyInjector();
         return new ObjectInjector(creatorProxyInjector, dependencyInjector);
     }
 
-    private Creator assembleCreator(Injector objectInjector, Instantiator instantiator) {
+    private ObjectProvider assembleCreator(Injector objectInjector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
-        return new DefaultCreator(onion, objectInjector, instantiator);
+        return new DefaultObjectProvider(onion, objectInjector, instantiator);
     }
 }

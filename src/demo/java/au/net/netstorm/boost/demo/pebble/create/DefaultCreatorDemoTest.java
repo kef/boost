@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.demo.pebble.create;
 
-import au.net.netstorm.boost.pebble.create.Creator;
+import au.net.netstorm.boost.pebble.create.ObjectProvider;
 import junit.framework.TestCase;
 
 public final class DefaultCreatorDemoTest extends TestCase {
     private final CreatorAssembler creatorAssembler = new DefaultCreatorAssembler();
-    private Creator creator = creatorAssembler.assembleCreator();
+    private ObjectProvider objectProvider = creatorAssembler.assembleCreator();
 
     public void testFieldInjectionWithDependencies() {
         Rob rob = createRob();
@@ -17,6 +17,6 @@ public final class DefaultCreatorDemoTest extends TestCase {
 
     private Rob createRob() {
         Object[] parameters = {};
-        return (Rob) creator.create(Rob.class, parameters);
+        return (Rob) objectProvider.create(Rob.class, parameters);
     }
 }

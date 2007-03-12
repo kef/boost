@@ -16,16 +16,16 @@ public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestC
     private Class instanceImplementation = Random.class;
     private ProxyFactory proxyFactory;
     private Object creatorProxy = new Object();
-    private Creator creator;
+    private ObjectProvider objectProvider;
     private InvocationHandler invocationHandler;
     private Instantiator instantiator;
 
     public void setupSubjects() {
-        subject = new DefaultCreatorProxySupplier(proxyFactory, creator, instantiator);
+        subject = new DefaultCreatorProxySupplier(proxyFactory, objectProvider, instantiator);
     }
 
     public void testCreate() {
-        Object[] parameters = new Object[]{creator, instanceImplementation};
+        Object[] parameters = new Object[]{objectProvider, instanceImplementation};
         expect.oneCall(instantiator, invocationHandler, "instantiate", CreatorInvocationHandler.class, parameters);
         expect.oneCall(proxyFactory, creatorProxy, "newProxy", creatorInterface, invocationHandler);
         Object actual = subject.create(creatorInterface, instanceImplementation);

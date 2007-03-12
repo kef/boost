@@ -8,7 +8,7 @@ import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 
 public final class DefaultCreatorAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private Creator subject;
+    private ObjectProvider subject;
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
@@ -19,7 +19,7 @@ public final class DefaultCreatorAtomicTest extends PrimordialTestCase implement
     private Object wrappedRef = new Object();
 
     public void setupSubjects() {
-        subject = new DefaultCreator(onion, injector, instantiator);
+        subject = new DefaultObjectProvider(onion, injector, instantiator);
     }
 
     public void testCreator() {
