@@ -28,17 +28,17 @@ public final class DefaultCreatorFieldInspector implements CreatorFieldInspector
     }
 
     // FIX 1665 To thick and fat.
-    public PebbleField getCreator(Object ref, Field field) {
+    public CreatorField getCreator(Object ref, Field field) {
         if (!isCreator(ref, field)) throw new IllegalStateException("Not a creator field");
         return doGetCreator(field, ref);
     }
 
-    private PebbleField doGetCreator(Field field, Object ref) {
+    private CreatorField doGetCreator(Field field, Object ref) {
         Class creatorCls = field.getType();
         Interface creatorType = new DefaultInterface(creatorCls);
         Class creationImpl = getClassToCreate(creatorCls, ref);
         String fieldName = field.getName();
-        return new DefaultPebbleField(creatorType, creationImpl, fieldName);
+        return new DefaultCreatorField(creatorType, creationImpl, fieldName);
     }
 
     private Class getClassToCreate(Class creatorType, Object ref) {

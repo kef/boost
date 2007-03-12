@@ -6,8 +6,8 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.field.CreatorField;
 import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
-import au.net.netstorm.boost.pebble.create.field.PebbleField;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class CreatorProxyInjector implements Injector {
@@ -22,21 +22,21 @@ public final class CreatorProxyInjector implements Injector {
     }
 
     public void inject(Object ref) {
-        PebbleField[] creatorFields = fieldFinder.find(ref);
+        CreatorField[] creatorFields = fieldFinder.find(ref);
         for (int i = 0; i < creatorFields.length; i++) {
-            PebbleField creatorField = creatorFields[i];
+            CreatorField creatorField = creatorFields[i];
             inject(ref, creatorField);
         }
     }
 
-    private void inject(Object ref, PebbleField field) {
+    private void inject(Object ref, CreatorField field) {
         Interface creatorInterface = field.getCreatorInterface();
         Class instanceImplementation = field.getInstanceImplementation();
         Object proxy = proxySupplier.create(creatorInterface, instanceImplementation);
         inject(ref, proxy, field);
     }
 
-    private void inject(Object ref, Object proxy, PebbleField creatorField) {
+    private void inject(Object ref, Object proxy, CreatorField creatorField) {
         String fieldName = creatorField.getFieldName();
         Class cls = ref.getClass();
         Field field = edgeClass.getDeclaredField(cls, fieldName);

@@ -2,8 +2,8 @@ package au.net.netstorm.boost.pebble.create.inject;
 
 import java.util.Random;
 import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.field.CreatorField;
 import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
-import au.net.netstorm.boost.pebble.create.field.PebbleField;
 import au.net.netstorm.boost.pebble.create.fixture.Larry;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
@@ -15,18 +15,18 @@ public final class DefaultCreatorProxyInjectorAtomicTest extends PrimordialTestC
     private MockExpectations expect;
     private Object object = new Larry("ten");
     private String proxy;
-    private PebbleField[] creatorFields =
+    private CreatorField[] creatorFields =
             {}; // SUGGEST: Put CARD into boost.  This flushes out the need to deal with arrays differently.
     private CreatorProxySupplier creatorProxySupplier;
     private CreatorFieldFinder creatorFieldFinder;
-    private PebbleField creatorField;
+    private CreatorField creatorField;
     private Interface creatorInterface;
     private String fieldName = "fingers";
     private Class instanceImplementation = Random.class;
 
     public void setupSubjects() {
         subject = new CreatorProxyInjector(creatorProxySupplier, creatorFieldFinder);
-        creatorFields = new PebbleField[]{creatorField, creatorField};
+        creatorFields = new CreatorField[]{creatorField, creatorField};
     }
 
     public void testSubject() {

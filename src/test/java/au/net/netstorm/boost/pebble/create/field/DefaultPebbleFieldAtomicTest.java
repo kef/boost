@@ -14,6 +14,6 @@ public final class DefaultPebbleFieldAtomicTest extends TestCase {
     private FieldSpec[] fields = {f1, f2, f3};
 
     public void testDataAtom() {
-        checker.checkAtom(DefaultPebbleField.class, fields);
+        checker.checkAtom(DefaultCreatorField.class, fields);
     }
 }
