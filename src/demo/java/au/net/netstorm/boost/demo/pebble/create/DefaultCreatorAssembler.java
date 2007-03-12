@@ -35,7 +35,6 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
         Creator passThroughCreator = (Creator) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
         Injector objectInjector = assembleInjector(proxyFactory, passThroughCreator, instantiator);
         Creator creator = new DefaultCreator(onion, objectInjector, instantiator);
-        // FIX BREADCRUMB 1715 Stitch in FieldInjector.
         passThroughHandler.setDelegate(creator);
         return creator;
     }
