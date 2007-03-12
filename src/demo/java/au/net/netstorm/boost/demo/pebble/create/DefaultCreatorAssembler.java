@@ -9,7 +9,9 @@ import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
 import au.net.netstorm.boost.pebble.create.DefaultCreator;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorFieldFinder;
 import au.net.netstorm.boost.pebble.create.DefaultCreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.DependencyInjector;
 import au.net.netstorm.boost.pebble.create.Injector;
+import au.net.netstorm.boost.pebble.create.ObjectInjector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.pebble.onion.BermudaOnion;
@@ -28,16 +30,22 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
         Onion onion = new BermudaOnion();
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         ProxySupplier proxySupplier = new DefaultProxySupplier();
-        CreatorFieldFinder fieldFinder = new DefaultCreatorFieldFinder();
         ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
         PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
         Creator passThroughCreator = (Creator) proxyFactory.newProxy(CREATOR_TYPE, passThroughHandler);
-        CreatorProxySupplier creatorProxySupplier =
-                new DefaultCreatorProxySupplier(proxyFactory, passThroughCreator, instantiator);
-        Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
-        DefaultCreator creator = new DefaultCreator(onion, creatorProxyInjector, instantiator);
+        Injector objectInjector = assembleInjector(proxyFactory, passThroughCreator, instantiator);
+        Creator creator = new DefaultCreator(onion, objectInjector, instantiator);
         // FIX BREADCRUMB 1715 Stitch in FieldInjector.
         passThroughHandler.setDelegate(creator);
         return creator;
+    }
+
+    private Injector assembleInjector(ProxyFactory proxyFactory, Creator passThroughCreator, Instantiator instantiator) {
+        CreatorProxySupplier creatorProxySupplier =
+                new DefaultCreatorProxySupplier(proxyFactory, passThroughCreator, instantiator);
+        CreatorFieldFinder fieldFinder = new DefaultCreatorFieldFinder();
+        Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
+        Injector dependencyInjector = new DependencyInjector();
+        return new ObjectInjector(creatorProxyInjector, dependencyInjector);
     }
 }
