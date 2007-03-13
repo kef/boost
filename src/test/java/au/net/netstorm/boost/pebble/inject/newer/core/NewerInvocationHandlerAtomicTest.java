@@ -3,6 +3,7 @@ package au.net.netstorm.boost.pebble.inject.newer.core;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.Random;
+import au.net.netstorm.boost.pebble.core.ObjectProvider;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 

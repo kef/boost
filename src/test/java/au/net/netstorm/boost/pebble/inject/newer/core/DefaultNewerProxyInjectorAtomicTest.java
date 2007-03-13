@@ -1,7 +1,6 @@
-package au.net.netstorm.boost.pebble.inject.newer.inject;
+package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import java.util.Random;
-import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerField;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;

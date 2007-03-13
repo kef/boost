@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.pebble.resolve;
 import java.util.Set;
 import au.net.netstorm.boost.demo.pebble.newer.DefaultObjectProviderAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.ObjectProviderAssembler;
-import au.net.netstorm.boost.pebble.inject.newer.core.ObjectProvider;
+import au.net.netstorm.boost.pebble.core.ObjectProvider;
 import au.net.netstorm.boost.test.automock.BoooostTestCase;
 
 public final class DefaultResolveDemoTest extends BoooostTestCase {

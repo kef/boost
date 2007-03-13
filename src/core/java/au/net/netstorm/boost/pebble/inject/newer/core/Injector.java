@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.inject.newer.inject;
+package au.net.netstorm.boost.pebble.inject.newer.core;
 
 public interface Injector {
     void inject(Object object);

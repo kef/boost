@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-import au.net.netstorm.boost.pebble.inject.newer.core.ObjectProvider;
+import au.net.netstorm.boost.pebble.core.ObjectProvider;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.inject.newer.inject;
+package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
