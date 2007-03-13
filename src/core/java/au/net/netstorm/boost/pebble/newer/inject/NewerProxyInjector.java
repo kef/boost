@@ -24,8 +24,7 @@ public final class NewerProxyInjector implements Injector {
     public void inject(Object ref) {
         NewerField[] newerFields = fieldFinder.find(ref);
         for (int i = 0; i < newerFields.length; i++) {
-            NewerField newerField = newerFields[i];
-            inject(ref, newerField);
+            inject(ref, newerFields[i]);
         }
     }
 

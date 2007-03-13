@@ -4,7 +4,7 @@ final class Rob {
     private NewDefaultBob newDefaultBob;
     private Bob bob;
 
-    public void doStuff() {
+    public void checkNewerHasBeenPopulated() {
         bob = newDefaultBob.create("I am your friend.");
     }
 

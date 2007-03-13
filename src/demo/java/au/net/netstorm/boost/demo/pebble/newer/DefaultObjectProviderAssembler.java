@@ -23,7 +23,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultObjectProvderAssembler implements ObjectProvderAssembler {
+public final class DefaultObjectProviderAssembler implements ObjectProviderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ObjectProvider.class);
 
     public ObjectProvider assemble() {
