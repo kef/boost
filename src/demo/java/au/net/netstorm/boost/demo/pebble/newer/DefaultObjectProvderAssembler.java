@@ -23,16 +23,16 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultNewerAssembler implements NewerAssembler {
+public final class DefaultObjectProvderAssembler implements ObjectProvderAssembler {
     private static final Interface NEWER_TYPE = new DefaultInterface(ObjectProvider.class);
 
-    public ObjectProvider assembleNewer() {
+    public ObjectProvider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
         ObjectProvider passThroughObjectProvider = (ObjectProvider) proxyFactory.newProxy(NEWER_TYPE, passThroughHandler);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         Injector objectInjector = assembleInjector(proxyFactory, passThroughObjectProvider, instantiator);
-        ObjectProvider objectProvider = assembleNewer(objectInjector, instantiator);
+        ObjectProvider objectProvider = assembleProvider(objectInjector, instantiator);
         passThroughHandler.setDelegate(objectProvider);
         return objectProvider;
     }
@@ -42,16 +42,15 @@ public final class DefaultNewerAssembler implements NewerAssembler {
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private Injector assembleInjector(ProxyFactory proxyFactory, ObjectProvider passThroughObjectProvider, Instantiator instantiator) {
-        NewerProxySupplier newerProxySupplier =
-                new DefaultNewerProxySupplier(proxyFactory, passThroughObjectProvider, instantiator);
+    private Injector assembleInjector(ProxyFactory proxyFactory, ObjectProvider objectProvider, Instantiator instantiator) {
+        NewerProxySupplier newerProxySupplier = new DefaultNewerProxySupplier(proxyFactory, objectProvider, instantiator);
         NewerFieldFinder fieldFinder = new DefaultNewerFieldFinder();
         Injector newerProxyInjector = new NewerProxyInjector(newerProxySupplier, fieldFinder);
         Injector dependencyInjector = new DependencyInjector();
         return new ObjectInjector(newerProxyInjector, dependencyInjector);
     }
 
-    private ObjectProvider assembleNewer(Injector objectInjector, Instantiator instantiator) {
+    private ObjectProvider assembleProvider(Injector objectInjector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
         return new DefaultObjectProvider(onion, objectInjector, instantiator);
     }
