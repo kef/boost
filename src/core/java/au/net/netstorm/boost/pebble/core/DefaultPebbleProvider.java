@@ -18,8 +18,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
 
     public Object provide(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
-        // FIX 1715 Pass in type (later).
-        injector.inject(ref);
-        return onion.onionize(ref);
+        injector.inject(ref); // FIX 1715 Pass in type (later).
+        return onion.onionise(ref);
     }
 }

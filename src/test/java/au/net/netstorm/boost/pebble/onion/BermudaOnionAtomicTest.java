@@ -7,7 +7,7 @@ public final class BermudaOnionAtomicTest extends TestCase {
 
     public void testOnionize() {
         Onion onion = new BermudaOnion();
-        Object layeredObject = onion.onionize(ref);
+        Object layeredObject = onion.onionise(ref);
         assertSame(ref, layeredObject);
     }
 }
