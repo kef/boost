@@ -9,11 +9,13 @@ import au.net.netstorm.boost.pebble.newer.fixture.FredWithBrokenNewer;
 import au.net.netstorm.boost.pebble.newer.fixture.NewDefaultNed;
 import au.net.netstorm.boost.pebble.newer.fixture.NewTedImpl;
 import au.net.netstorm.boost.pebble.newer.fixture.TedImpl;
+import au.net.netstorm.boost.test.automock.AssertionCheckTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
-public final class DefaultNewerFieldFinderAtomicTest extends TestCase {
+// FIX 1715 This should extend PrimodialTestCase. No strategy though. Figure this.
+public final class DefaultNewerFieldFinderAtomicTest extends AssertionCheckTestCase {
+
     private NewerFieldFinder subject = new DefaultNewerFieldFinder();
     private Fred object = new Fred();
     private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();
@@ -21,7 +23,7 @@ public final class DefaultNewerFieldFinderAtomicTest extends TestCase {
     public void testFinder() {
         NewerField[] expected = createExpectedNewerFields();
         NewerField[] actual = subject.find(object);
-        checkFields(expected, actual);
+        assertEquals(expected, actual);
     }
 
     public void testFieldMustImplementNewer() {
@@ -42,19 +44,5 @@ public final class DefaultNewerFieldFinderAtomicTest extends TestCase {
         Interface iface = new DefaultInterface(newerInterface);
         NewerField tedNewerField = new DefaultNewerField(iface, instanceImplementation, fieldName);
         result.add(tedNewerField);
-    }
-
-    // FIX 1715 AssertHelper does this.
-    private void checkFields(NewerField[] expected, NewerField[] actual) {
-        checkFieldCount(expected, actual);
-        for (int i = 0; i < actual.length; i++) {
-            assertEquals(expected[i], actual[i]);
-        }
-    }
-
-    private void checkFieldCount(NewerField[] expected, NewerField[] actual) {
-        int expectedLength = expected.length;
-        int actualLength = actual.length;
-        assertEquals(expectedLength, actualLength);
     }
 }
