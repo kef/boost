@@ -1,4 +1,6 @@
-package au.net.netstorm.boost.pebble.inject.newer.core;
+package au.net.netstorm.boost.pebble.inject.resolver.core;
+
+import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 
 // FIX BREADCRUMB 1715 Build up a "demo" test for this.
 public final class DependencyInjector implements Injector {

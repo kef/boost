@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.pebble.inject.newer.core;
 
+import au.net.netstorm.boost.pebble.inject.resolver.core.DependencyInjector;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 
