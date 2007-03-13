@@ -7,7 +7,7 @@ import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 
-public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class NewerInvocationHandlerAtomicTest extends PrimordialTestCase implements UsesMocks {
     private InvocationHandler subject;
     private MockExpectations expect;
     private ObjectProvider objectProvider;
@@ -17,7 +17,7 @@ public final class CreatorInvocationHandlerAtomicTest extends PrimordialTestCase
     private Object createdObject = new Object();
 
     public void setupSubjects() {
-        subject = new CreatorInvocationHandler(objectProvider, implClass);
+        subject = new NewerInvocationHandler(objectProvider, implClass);
     }
 
     public void testInvokeCreate() throws Throwable {

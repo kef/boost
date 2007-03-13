@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.TestCase;
 
-public final class DefaultCreatorFieldAtomicTest extends TestCase {
+public final class DefaultNewerFieldAtomicTest extends TestCase {
     private DataAtomTestChecker checker = new DataAtomTestChecker();
     private FieldSpec f1 = new DefaultFieldSpec("creatorInterface", Interface.class);
     private FieldSpec f2 = new DefaultFieldSpec("instanceImplementation", Class.class);
@@ -14,6 +14,6 @@ public final class DefaultCreatorFieldAtomicTest extends TestCase {
     private FieldSpec[] fields = {f1, f2, f3};
 
     public void testDataAtom() {
-        checker.checkAtom(DefaultCreatorField.class, fields);
+        checker.checkAtom(DefaultNewerField.class, fields);
     }
 }

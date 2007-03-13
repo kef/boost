@@ -3,12 +3,12 @@ package au.net.netstorm.boost.pebble.create.field;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorField extends Primordial implements CreatorField {
+public final class DefaultNewerField extends Primordial implements NewerField {
     private Interface creatorInterface;
     private Class instanceImplementation;
     private String fieldName;
 
-    public DefaultCreatorField(Interface creatorInterface, Class instanceImplementation, String fieldName) {
+    public DefaultNewerField(Interface creatorInterface, Class instanceImplementation, String fieldName) {
         this.creatorInterface = creatorInterface;
         this.instanceImplementation = instanceImplementation;
         this.fieldName = fieldName;

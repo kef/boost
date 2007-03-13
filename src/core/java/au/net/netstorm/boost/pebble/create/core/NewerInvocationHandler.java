@@ -3,11 +3,11 @@ package au.net.netstorm.boost.pebble.create.core;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public final class CreatorInvocationHandler implements InvocationHandler {
+public final class NewerInvocationHandler implements InvocationHandler {
     private ObjectProvider objectProvider;
     private Class implClass;
 
-    public CreatorInvocationHandler(ObjectProvider objectProvider, Class implClass) {
+    public NewerInvocationHandler(ObjectProvider objectProvider, Class implClass) {
         this.objectProvider = objectProvider;
         this.implClass = implClass;
     }

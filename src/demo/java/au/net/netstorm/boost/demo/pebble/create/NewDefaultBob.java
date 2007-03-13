@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.pebble.create;
 
-import au.net.netstorm.boost.pebble.create.core.Creator;
+import au.net.netstorm.boost.pebble.create.core.Newer;
 
-interface NewDefaultBob extends Creator {
+interface NewDefaultBob extends Newer {
     Class IMPLEMENTATION = DefaultBob.class;
 
     Bob create(String comment);

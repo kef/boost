@@ -3,13 +3,13 @@ package au.net.netstorm.boost.pebble.type;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import junit.framework.TestCase;
 
-public final class NoCreatorInterfaceExceptionAtomicTest extends TestCase {
+public final class NoNewerInterfaceExceptionAtomicTest extends TestCase {
     private static final Class CLASS = Pebble.class;
     private static final String EXCEPTION_MESSAGE =
             "No creator interface yabadabadoo found for class " + CLASS.getName();
 
     public void testException() {
-        Exception exception = new NoCreatorInterfaceException("yabadabadoo", CLASS);
+        Exception exception = new NoNewerInterfaceException("yabadabadoo", CLASS);
         String message = exception.getMessage();
         assertEquals(EXCEPTION_MESSAGE, message);
     }

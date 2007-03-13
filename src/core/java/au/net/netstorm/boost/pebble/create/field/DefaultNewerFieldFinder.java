@@ -7,11 +7,11 @@ import java.util.Set;
 // FIX 1665 Sort this coupling out.
 // FIX 1665 Split this based on field.  Have a single CreatorFieldChecker (or something).
 
-public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
+public final class DefaultNewerFieldFinder implements NewerFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
-    private CreatorFieldInspector creatorFieldInspector = new DefaultCreatorFieldInspector();
+    private NewerFieldInspector newerFieldInspector = new DefaultNewerFieldInspector();
 
-    public CreatorField[] find(Object ref) {
+    public NewerField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
         return find(ref, declaredFields);
     }
@@ -21,17 +21,17 @@ public final class DefaultCreatorFieldFinder implements CreatorFieldFinder {
         return refType.getDeclaredFields();
     }
 
-    private CreatorField[] find(Object ref, Field[] fields) {
+    private NewerField[] find(Object ref, Field[] fields) {
         Set result = new HashSet();
         for (int i = 0; i < fields.length; i++) {
             add(result, fields[i], ref);
         }
-        return (CreatorField[]) result.toArray(new CreatorField[]{});
+        return (NewerField[]) result.toArray(new NewerField[]{});
     }
 
     private void add(Set result, Field field, Object ref) {
-        if (!creatorFieldInspector.isCreator(ref, field)) return;
-        CreatorField creator = creatorFieldInspector.getCreator(ref, field);
-        result.add(creator);
+        if (!newerFieldInspector.isNewer(ref, field)) return;
+        NewerField newer = newerFieldInspector.getNewer(ref, field);
+        result.add(newer);
     }
 }

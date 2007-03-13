@@ -2,8 +2,8 @@ package au.net.netstorm.boost.demo.pebble.check;
 
 import au.net.netstorm.boost.pebble.core.DefaultPebbleChecker;
 import au.net.netstorm.boost.pebble.core.PebbleChecker;
-import au.net.netstorm.boost.pebble.type.NoCreatorInterfaceException;
-import au.net.netstorm.boost.pebble.type.NonMatchingCreatorException;
+import au.net.netstorm.boost.pebble.type.NoNewerInterfaceException;
+import au.net.netstorm.boost.pebble.type.NonMatchingNewerException;
 import junit.framework.TestCase;
 
 public final class PebbleDemoTest extends TestCase {
@@ -17,7 +17,7 @@ public final class PebbleDemoTest extends TestCase {
         try {
             pebbleChecker.check(DefaultPricklyWithNoNewInterface.class);
             fail();
-        } catch (NoCreatorInterfaceException expected) {
+        } catch (NoNewerInterfaceException expected) {
         }
     }
 
@@ -25,7 +25,7 @@ public final class PebbleDemoTest extends TestCase {
         try {
             pebbleChecker.check(DefaultPricklyWithNonMatchingParams.class);
             fail();
-        } catch (NonMatchingCreatorException expected) {
+        } catch (NonMatchingNewerException expected) {
         }
     }
 }

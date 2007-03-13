@@ -9,8 +9,8 @@ import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestCase implements UsesMocks {
-    private CreatorProxySupplier subject;
+public final class DefaultNewerProxySupplierAtomicTest extends PrimordialTestCase implements UsesMocks {
+    private NewerProxySupplier subject;
     private MockExpectations expect;
     private Interface creatorInterface;
     private Class instanceImplementation = Random.class;
@@ -21,12 +21,12 @@ public final class DefaultCreatorProxySupplierAtomicTest extends PrimordialTestC
     private Instantiator instantiator;
 
     public void setupSubjects() {
-        subject = new DefaultCreatorProxySupplier(proxyFactory, objectProvider, instantiator);
+        subject = new DefaultNewerProxySupplier(proxyFactory, objectProvider, instantiator);
     }
 
     public void testCreate() {
         Object[] parameters = new Object[]{objectProvider, instanceImplementation};
-        expect.oneCall(instantiator, invocationHandler, "instantiate", CreatorInvocationHandler.class, parameters);
+        expect.oneCall(instantiator, invocationHandler, "instantiate", NewerInvocationHandler.class, parameters);
         expect.oneCall(proxyFactory, creatorProxy, "newProxy", creatorInterface, invocationHandler);
         Object actual = subject.create(creatorInterface, instanceImplementation);
         assertSame(creatorProxy, actual);

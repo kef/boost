@@ -5,12 +5,12 @@ import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorProxySupplier implements CreatorProxySupplier {
+public final class DefaultNewerProxySupplier implements NewerProxySupplier {
     private ProxyFactory proxyFactory;
     private Instantiator instantiator;
     private ObjectProvider objectProvider;
 
-    public DefaultCreatorProxySupplier(ProxyFactory proxyFactory, ObjectProvider objectProvider,
+    public DefaultNewerProxySupplier(ProxyFactory proxyFactory, ObjectProvider objectProvider,
             Instantiator instantiator) {
         this.objectProvider = objectProvider;
         this.proxyFactory = proxyFactory;
@@ -24,6 +24,6 @@ public final class DefaultCreatorProxySupplier implements CreatorProxySupplier {
 
     private InvocationHandler createHandler(Class instanceImplementation) {
         Object[] parameters = {objectProvider, instanceImplementation};
-        return (InvocationHandler) instantiator.instantiate(CreatorInvocationHandler.class, parameters);
+        return (InvocationHandler) instantiator.instantiate(NewerInvocationHandler.class, parameters);
     }
 }

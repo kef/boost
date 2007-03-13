@@ -2,15 +2,15 @@ package au.net.netstorm.boost.demo.pebble.create;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.pebble.create.core.CreatorProxySupplier;
-import au.net.netstorm.boost.pebble.create.core.DefaultCreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.core.DefaultNewerProxySupplier;
 import au.net.netstorm.boost.pebble.create.core.DefaultObjectProvider;
+import au.net.netstorm.boost.pebble.create.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.create.core.ObjectProvider;
-import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
-import au.net.netstorm.boost.pebble.create.field.DefaultCreatorFieldFinder;
-import au.net.netstorm.boost.pebble.create.inject.CreatorProxyInjector;
+import au.net.netstorm.boost.pebble.create.field.DefaultNewerFieldFinder;
+import au.net.netstorm.boost.pebble.create.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.create.inject.DependencyInjector;
 import au.net.netstorm.boost.pebble.create.inject.Injector;
+import au.net.netstorm.boost.pebble.create.inject.NewerProxyInjector;
 import au.net.netstorm.boost.pebble.create.inject.ObjectInjector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
@@ -23,7 +23,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultCreatorAssembler implements CreatorAssembler {
+public final class DefaultNewerAssembler implements NewerAssembler {
     private static final Interface CREATOR_TYPE = new DefaultInterface(ObjectProvider.class);
 
     public ObjectProvider assembleCreator() {
@@ -43,10 +43,10 @@ public final class DefaultCreatorAssembler implements CreatorAssembler {
     }
 
     private Injector assembleInjector(ProxyFactory proxyFactory, ObjectProvider passThroughObjectProvider, Instantiator instantiator) {
-        CreatorProxySupplier creatorProxySupplier =
-                new DefaultCreatorProxySupplier(proxyFactory, passThroughObjectProvider, instantiator);
-        CreatorFieldFinder fieldFinder = new DefaultCreatorFieldFinder();
-        Injector creatorProxyInjector = new CreatorProxyInjector(creatorProxySupplier, fieldFinder);
+        NewerProxySupplier newerProxySupplier =
+                new DefaultNewerProxySupplier(proxyFactory, passThroughObjectProvider, instantiator);
+        NewerFieldFinder fieldFinder = new DefaultNewerFieldFinder();
+        Injector creatorProxyInjector = new NewerProxyInjector(newerProxySupplier, fieldFinder);
         Injector dependencyInjector = new DependencyInjector();
         return new ObjectInjector(creatorProxyInjector, dependencyInjector);
     }

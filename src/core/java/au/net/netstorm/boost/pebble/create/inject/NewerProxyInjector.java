@@ -5,39 +5,39 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.pebble.create.core.CreatorProxySupplier;
-import au.net.netstorm.boost.pebble.create.field.CreatorField;
-import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
+import au.net.netstorm.boost.pebble.create.core.NewerProxySupplier;
+import au.net.netstorm.boost.pebble.create.field.NewerField;
+import au.net.netstorm.boost.pebble.create.field.NewerFieldFinder;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class CreatorProxyInjector implements Injector {
+public final class NewerProxyInjector implements Injector {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
-    private CreatorProxySupplier proxySupplier;
-    private CreatorFieldFinder fieldFinder;
+    private NewerProxySupplier proxySupplier;
+    private NewerFieldFinder fieldFinder;
 
-    public CreatorProxyInjector(CreatorProxySupplier proxySupplier, CreatorFieldFinder fieldFinder) {
+    public NewerProxyInjector(NewerProxySupplier proxySupplier, NewerFieldFinder fieldFinder) {
         this.proxySupplier = proxySupplier;
         this.fieldFinder = fieldFinder;
     }
 
     public void inject(Object ref) {
-        CreatorField[] creatorFields = fieldFinder.find(ref);
-        for (int i = 0; i < creatorFields.length; i++) {
-            CreatorField creatorField = creatorFields[i];
-            inject(ref, creatorField);
+        NewerField[] newerFields = fieldFinder.find(ref);
+        for (int i = 0; i < newerFields.length; i++) {
+            NewerField newerField = newerFields[i];
+            inject(ref, newerField);
         }
     }
 
-    private void inject(Object ref, CreatorField field) {
+    private void inject(Object ref, NewerField field) {
         Interface creatorInterface = field.getCreatorInterface();
         Class instanceImplementation = field.getInstanceImplementation();
         Object proxy = proxySupplier.create(creatorInterface, instanceImplementation);
         inject(ref, proxy, field);
     }
 
-    private void inject(Object ref, Object proxy, CreatorField creatorField) {
-        String fieldName = creatorField.getFieldName();
+    private void inject(Object ref, Object proxy, NewerField newerField) {
+        String fieldName = newerField.getFieldName();
         Class cls = ref.getClass();
         Field field = edgeClass.getDeclaredField(cls, fieldName);
         field.setAccessible(true);
