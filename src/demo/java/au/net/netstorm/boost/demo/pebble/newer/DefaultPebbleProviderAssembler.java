@@ -2,9 +2,9 @@ package au.net.netstorm.boost.demo.pebble.newer;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.pebble.core.DefaultObjectProvider;
-import au.net.netstorm.boost.pebble.core.ObjectInjector;
-import au.net.netstorm.boost.pebble.core.ObjectProvider;
+import au.net.netstorm.boost.pebble.core.DefaultPebbleProvider;
+import au.net.netstorm.boost.pebble.core.PebbleInjector;
+import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.newer.core.DefaultNewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.core.DependencyInjector;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
@@ -23,18 +23,18 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultObjectProviderAssembler implements ObjectProviderAssembler {
-    private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ObjectProvider.class);
+public final class DefaultPebbleProviderAssembler implements PebbleProviderAssembler {
+    private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProvider.class);
 
-    public ObjectProvider assemble() {
+    public PebbleProvider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
-        ObjectProvider passThroughObjectProvider = (ObjectProvider) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThroughHandler);
+        PebbleProvider passThroughPebbleProvider = (PebbleProvider) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThroughHandler);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-        Injector objectInjector = assembleInjector(proxyFactory, passThroughObjectProvider, instantiator);
-        ObjectProvider objectProvider = assembleProvider(objectInjector, instantiator);
-        passThroughHandler.setDelegate(objectProvider);
-        return objectProvider;
+        Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator);
+        PebbleProvider pebbleProvider = assembleProvider(objectInjector, instantiator);
+        passThroughHandler.setDelegate(pebbleProvider);
+        return pebbleProvider;
     }
 
     private ProxyFactory assembleProxyFactory() {
@@ -42,16 +42,16 @@ public final class DefaultObjectProviderAssembler implements ObjectProviderAssem
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private Injector assembleInjector(ProxyFactory proxyFactory, ObjectProvider objectProvider, Instantiator instantiator) {
-        NewerProxySupplier newerProxySupplier = new DefaultNewerProxySupplier(proxyFactory, objectProvider, instantiator);
+    private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProvider pebbleProvider, Instantiator instantiator) {
+        NewerProxySupplier newerProxySupplier = new DefaultNewerProxySupplier(proxyFactory, pebbleProvider, instantiator);
         NewerFieldFinder fieldFinder = new DefaultNewerFieldFinder();
         Injector newerProxyInjector = new NewerProxyInjector(newerProxySupplier, fieldFinder);
         Injector dependencyInjector = new DependencyInjector();
-        return new ObjectInjector(newerProxyInjector, dependencyInjector);
+        return new PebbleInjector(newerProxyInjector, dependencyInjector);
     }
 
-    private ObjectProvider assembleProvider(Injector objectInjector, Instantiator instantiator) {
+    private PebbleProvider assembleProvider(Injector objectInjector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
-        return new DefaultObjectProvider(onion, objectInjector, instantiator);
+        return new DefaultPebbleProvider(onion, objectInjector, instantiator);
     }
 }

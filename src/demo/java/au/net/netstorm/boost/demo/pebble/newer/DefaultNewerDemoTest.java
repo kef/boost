@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-import au.net.netstorm.boost.pebble.core.ObjectProvider;
+import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
-    private final ObjectProviderAssembler objectProviderAssembler = new DefaultObjectProviderAssembler();
-    private final ObjectProvider objectProvider = objectProviderAssembler.assemble();
+    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler();
+    private final PebbleProvider pebbleProvider = pebbleProviderAssembler.assemble();
 
     public void testRecursiveNewerInjection() {
-        Rob rob = (Rob) objectProvider.provide(Rob.class, NO_PARAMETERS);
+        Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
         rob.checkNewerHasBeenPopulated();
         checkNewersRecurse(rob);
     }

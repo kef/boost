@@ -4,7 +4,7 @@ import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 
-public final class ObjectInjectorAtomicTest extends InteractionTestCase {
+public final class PebbleInjectorAtomicTest extends InteractionTestCase {
     private Injector subject;
     private MockExpectations expect;
     private Injector newerInjector;
@@ -12,7 +12,7 @@ public final class ObjectInjectorAtomicTest extends InteractionTestCase {
     private Object ref;
 
     public void setupSubjects() {
-        subject = new ObjectInjector(newerInjector, dependencyInjector);
+        subject = new PebbleInjector(newerInjector, dependencyInjector);
     }
 
     public void testAggregation() {

@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.pebble.core;
 
-public interface ObjectProvider {
+public interface PebbleProvider {
     Object provide(Class type, Object[] parameters);
 }

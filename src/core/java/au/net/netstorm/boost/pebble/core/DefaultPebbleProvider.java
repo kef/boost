@@ -4,12 +4,13 @@ import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 
-public final class DefaultObjectProvider implements ObjectProvider {
+// FIX 1715 All types must implement Pebble interface?
+public final class DefaultPebbleProvider implements PebbleProvider {
     private Onion onion;
     private Instantiator instantiator;
     private Injector injector;
 
-    public DefaultObjectProvider(Onion onion, Injector injector, Instantiator instantiator) {
+    public DefaultPebbleProvider(Onion onion, Injector injector, Instantiator instantiator) {
         this.onion = onion;
         this.injector = injector;
         this.instantiator = instantiator;

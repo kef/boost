@@ -6,8 +6,8 @@ import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 
-public final class DefaultObjectProviderAtomicTest extends InteractionTestCase {
-    private ObjectProvider subject;
+public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
+    private PebbleProvider subject;
     private MockExpectations expect;
     private Onion onion;
     private Instantiator instantiator;
@@ -18,7 +18,7 @@ public final class DefaultObjectProviderAtomicTest extends InteractionTestCase {
     private Object wrappedRef = new Object();
 
     public void setupSubjects() {
-        subject = new DefaultObjectProvider(onion, injector, instantiator);
+        subject = new DefaultPebbleProvider(onion, injector, instantiator);
     }
 
     public void testNewer() {
