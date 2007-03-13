@@ -5,7 +5,7 @@ final class Rob {
     private Bob bob;
 
     public void checkNewerHasBeenPopulated() {
-        bob = newDefaultBob.create("I am your friend.");
+        bob = newDefaultBob.nu("I am your friend.");
     }
 
     public Bob getBob() {

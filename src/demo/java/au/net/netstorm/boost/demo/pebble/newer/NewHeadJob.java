@@ -5,5 +5,5 @@ import au.net.netstorm.boost.pebble.newer.core.Newer;
 interface NewHeadJob extends Newer {
     Class IMPLEMENTATION = HeadJob.class;
 
-    Job create();
+    Job nu();
 }

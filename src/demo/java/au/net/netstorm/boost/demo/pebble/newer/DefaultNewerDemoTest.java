@@ -17,6 +17,6 @@ public final class DefaultNewerDemoTest extends TestCase {
     private void checkNewersRecurse(Rob rob) {
         Bob bob = rob.getBob();
         NewHeadJob newJobNewer = bob.getNewHeadJob();
-        assertNotNull("newJobNewer should have been created as a dependency", newJobNewer);
+        assertNotNull("newJobNewer should have been created recursively.", newJobNewer);
     }
 }
