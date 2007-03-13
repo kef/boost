@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Data;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface NewerField extends Data {
-    Interface getCreatorInterface();
+    Interface getNewerInterface();
 
     Class getInstanceImplementation();
 

@@ -14,7 +14,7 @@ public final class NewerInvocationHandlerAtomicTest extends PrimordialTestCase i
     private Class implClass = Random.class;
     private Object proxyObject = new Object();
     private Object[] methodParams = new Object[]{};
-    private Object createdObject = new Object();
+    private Object newedObject = new Object();
 
     public void setupSubjects() {
         subject = new NewerInvocationHandler(objectProvider, implClass);
@@ -22,8 +22,8 @@ public final class NewerInvocationHandlerAtomicTest extends PrimordialTestCase i
 
     public void testInvokeCreate() throws Throwable {
         Method method = Object.class.getMethod("wait", null);
-        expect.oneCall(objectProvider, createdObject, "provide", implClass, methodParams);
+        expect.oneCall(objectProvider, newedObject, "provide", implClass, methodParams);
         Object actualObject = subject.invoke(proxyObject, method, methodParams);
-        assertSame(createdObject, actualObject);
+        assertSame(newedObject, actualObject);
     }
 }

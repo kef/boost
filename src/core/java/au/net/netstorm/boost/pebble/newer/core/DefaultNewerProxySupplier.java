@@ -17,12 +17,12 @@ public final class DefaultNewerProxySupplier implements NewerProxySupplier {
         this.instantiator = instantiator;
     }
 
-    public Object create(Interface creatorInterface, Class instanceImplementation) {
-        InvocationHandler handler = createHandler(instanceImplementation);
-        return proxyFactory.newProxy(creatorInterface, handler);
+    public Object nu(Interface newerInterface, Class instanceImplementation) {
+        InvocationHandler handler = newHandler(instanceImplementation);
+        return proxyFactory.newProxy(newerInterface, handler);
     }
 
-    private InvocationHandler createHandler(Class instanceImplementation) {
+    private InvocationHandler newHandler(Class instanceImplementation) {
         Object[] parameters = {objectProvider, instanceImplementation};
         return (InvocationHandler) instantiator.instantiate(NewerInvocationHandler.class, parameters);
     }

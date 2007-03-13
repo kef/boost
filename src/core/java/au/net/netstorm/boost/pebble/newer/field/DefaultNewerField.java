@@ -4,19 +4,19 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerField extends Primordial implements NewerField {
-    private Interface creatorInterface;
+    private Interface newerInterface;
     private Class instanceImplementation;
     private String fieldName;
 
-    public DefaultNewerField(Interface creatorInterface, Class instanceImplementation, String fieldName) {
-        this.creatorInterface = creatorInterface;
+    public DefaultNewerField(Interface newerInterface, Class instanceImplementation, String fieldName) {
+        this.newerInterface = newerInterface;
         this.instanceImplementation = instanceImplementation;
         this.fieldName = fieldName;
         validate();
     }
 
-    public Interface getCreatorInterface() {
-        return creatorInterface;
+    public Interface getNewerInterface() {
+        return newerInterface;
     }
 
     public Class getInstanceImplementation() {
@@ -28,7 +28,7 @@ public final class DefaultNewerField extends Primordial implements NewerField {
     }
 
     private void validate() {
-        if (creatorInterface == null)
+        if (newerInterface == null)
             throw new IllegalArgumentException();
         if (instanceImplementation == null)
             throw new IllegalArgumentException();

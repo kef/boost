@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.type;
 
 public final class NoNewerInterfaceException extends RuntimeException {
-    public NoNewerInterfaceException(String creatorInterfaceName, Class impl) {
-        super("No creator interface " + creatorInterfaceName + " found for class " + impl.getName());
+    public NoNewerInterfaceException(String newerInterfaceName, Class impl) {
+        super("No newer interface " + newerInterfaceName + " found for class " + impl.getName());
     }
 }

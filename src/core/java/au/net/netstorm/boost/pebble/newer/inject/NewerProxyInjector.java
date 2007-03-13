@@ -30,9 +30,9 @@ public final class NewerProxyInjector implements Injector {
     }
 
     private void inject(Object ref, NewerField field) {
-        Interface creatorInterface = field.getCreatorInterface();
+        Interface newerInterface = field.getNewerInterface();
         Class instanceImplementation = field.getInstanceImplementation();
-        Object proxy = proxySupplier.create(creatorInterface, instanceImplementation);
+        Object proxy = proxySupplier.nu(newerInterface, instanceImplementation);
         inject(ref, proxy, field);
     }
 

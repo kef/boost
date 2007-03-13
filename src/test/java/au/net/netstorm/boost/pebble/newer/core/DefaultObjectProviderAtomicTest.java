@@ -22,7 +22,7 @@ public final class DefaultObjectProviderAtomicTest extends PrimordialTestCase im
         subject = new DefaultObjectProvider(onion, injector, instantiator);
     }
 
-    public void testCreator() {
+    public void testNewer() {
         expect.oneCall(instantiator, rawRef, "instantiate", type, parameters);
         expect.oneCall(injector, VOID, "inject", rawRef);
         expect.oneCall(onion, wrappedRef, "onionize", rawRef);

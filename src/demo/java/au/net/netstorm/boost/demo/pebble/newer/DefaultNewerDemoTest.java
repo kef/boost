@@ -5,14 +5,14 @@ import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private final NewerAssembler newerAssembler = new DefaultNewerAssembler();
-    private ObjectProvider objectProvider = newerAssembler.assembleCreator();
+    private ObjectProvider objectProvider = newerAssembler.assembleNewer();
 
     public void testFieldInjectionWithDependencies() {
         Rob rob = createRob();
         rob.doStuff();
         Bob bob = rob.getBob();
-        NewHeadJob newJobCreator = bob.getNewHeadJob();
-        assertNotNull("newJobCreator should have been created as a dependency", newJobCreator);
+        NewHeadJob newJobNewer = bob.getNewHeadJob();
+        assertNotNull("newJobNewer should have been created as a dependency", newJobNewer);
     }
 
     private Rob createRob() {

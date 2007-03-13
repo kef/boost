@@ -21,7 +21,7 @@ public final class PebbleDemoTest extends TestCase {
         }
     }
 
-    public void testMustHaveCreatorWhichMatchesConstructor() {
+    public void testMustHaveNewerWhichMatchesConstructor() {
         try {
             pebbleChecker.check(DefaultPricklyWithNonMatchingParams.class);
             fail();

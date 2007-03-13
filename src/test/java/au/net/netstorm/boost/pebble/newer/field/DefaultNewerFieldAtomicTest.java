@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 
 public final class DefaultNewerFieldAtomicTest extends TestCase {
     private DataAtomTestChecker checker = new DataAtomTestChecker();
-    private FieldSpec f1 = new DefaultFieldSpec("creatorInterface", Interface.class);
+    private FieldSpec f1 = new DefaultFieldSpec("newerInterface", Interface.class);
     private FieldSpec f2 = new DefaultFieldSpec("instanceImplementation", Class.class);
     private FieldSpec f3 = new DefaultFieldSpec("fieldName", String.class);
     private FieldSpec[] fields = {f1, f2, f3};

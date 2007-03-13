@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 // FIX 1665 Sort this coupling out.
-// FIX 1665 Split this based on field.  Have a single CreatorFieldChecker (or something).
+// FIX 1665 Split this based on field.  Have a single NewerFieldChecker (or something).
 
 public final class DefaultNewerFieldFinder implements NewerFieldFinder {
     // FIX 1665 Should be passed in via the constructor.

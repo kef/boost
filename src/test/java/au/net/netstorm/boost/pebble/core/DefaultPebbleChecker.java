@@ -17,15 +17,15 @@ public final class DefaultPebbleChecker implements PebbleChecker {
     ReflectMaster reflectMaster = new DefaultReflectMaster();
 
     public void check(Class impl) {
-        Interface creator = getCreator(impl);
+        Interface newer = getNewer(impl);
         Class[] parameters = getConstructorParameters(impl);
-        tryGetMethod(creator, impl, parameters);
+        tryGetMethod(newer, impl, parameters);
     }
 
-    private Interface getCreator(Class impl) {
-        String creatorClassName = insertNewIntoName(impl.getName());
-        Class creatorType = tryForName(creatorClassName, impl);
-        return new DefaultInterface(creatorType);
+    private Interface getNewer(Class impl) {
+        String newerClassName = insertNewIntoName(impl.getName());
+        Class newerType = tryForName(newerClassName, impl);
+        return new DefaultInterface(newerType);
     }
 
     private String insertNewIntoName(String implName) {
@@ -35,24 +35,24 @@ public final class DefaultPebbleChecker implements PebbleChecker {
         return packageName + "New" + className;
     }
 
-    private Class tryForName(String creatorClassName, Class impl) {
+    private Class tryForName(String newerClassName, Class impl) {
         try {
-            return edgeClass.forName(creatorClassName);
+            return edgeClass.forName(newerClassName);
         } catch (EdgeException e) {
             if (e.causeIs(ClassNotFoundException.class)) {
-                throw new NoNewerInterfaceException(creatorClassName, impl);
+                throw new NoNewerInterfaceException(newerClassName, impl);
             }
             throw e;
         }
     }
 
-    private Method tryGetMethod(Interface creator, Class impl, Class[] parameters) {
+    private Method tryGetMethod(Interface newer, Class impl, Class[] parameters) {
         try {
-            Class clsName = creator.getType();
-            return edgeClass.getMethod(clsName, "create", parameters);
+            Class clsName = newer.getType();
+            return edgeClass.getMethod(clsName, "nu", parameters);
         } catch (EdgeException e) {
             if (e.causeIs(NoSuchMethodException.class)) {
-                throw new NonMatchingNewerException(creator, impl);
+                throw new NonMatchingNewerException(newer, impl);
             }
             throw e;
         }

@@ -10,9 +10,6 @@ import au.net.netstorm.boost.test.automock.PrimordialTestCase;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1715 Rename all fields with creator in to "newer".
-
-// FIX 1715 Rename all creator packages to newer.
 public final class DefaultNewerProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
     private Injector subject;
     private MockExpectations expect;
@@ -42,9 +39,9 @@ public final class DefaultNewerProxyInjectorAtomicTest extends PrimordialTestCas
 
     private void setArrayElementExpectations() {
         for (int i = 0; i < newerFields.length; i++) {
-            expect.oneCall(newerField, newerInterface, "getCreatorInterface");
+            expect.oneCall(newerField, newerInterface, "getNewerInterface");
             expect.oneCall(newerField, instanceImplementation, "getInstanceImplementation");
-            expect.oneCall(newerProxySupplier, proxy, "create", newerInterface, instanceImplementation);
+            expect.oneCall(newerProxySupplier, proxy, "nu", newerInterface, instanceImplementation);
             expect.oneCall(newerField, fieldName, "getFieldName");
         }
     }

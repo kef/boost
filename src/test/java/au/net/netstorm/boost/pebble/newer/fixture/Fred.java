@@ -5,9 +5,9 @@ public class Fred {
     private NewDefaultNed newDefaultNed;
     private NewTedImpl newTedImpl;
     // FIX 33203 Jury is out on this one.
-    //    private String newNotACreatorType;
-    private final NewTedImpl newNotACreatorBecauseFinal = null;
-    private NewDefaultNed newNotACreatorBecauseAssigned = new AnImplementatationOfNewDefaultNed();
+    //    private String newNotANewerType;
+    private final NewTedImpl newNotANewerBecauseFinal = null;
+    private NewDefaultNed newNotANewerBecauseAssigned = new AnImplementatationOfNewDefaultNed();
 
     private interface NewDoesNotImplementMarker {
     }

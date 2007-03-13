@@ -19,27 +19,27 @@ public final class DefaultNewerFieldFinderAtomicTest extends TestCase {
     private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();
 
     public void testFinder() {
-        NewerField[] expected = createExpectedCreatorFields();
+        NewerField[] expected = createExpectedNewerFields();
         NewerField[] actual = subject.find(object);
         checkFields(expected, actual);
     }
 
-    public void testFieldMustImplementCreator() {
+    public void testFieldMustImplementNewer() {
         try {
             subject.find(objectWithBrokenNewer);
             fail();
         } catch (DoesNotImplementNewerException expected) { }
     }
 
-    private NewerField[] createExpectedCreatorFields() {
+    private NewerField[] createExpectedNewerFields() {
         List result = new ArrayList();
-        addCreatorField(result, NewTedImpl.class, TedImpl.class, "newTedImpl");
-        addCreatorField(result, NewDefaultNed.class, DefaultNed.class, "newDefaultNed");
+        addNewerField(result, NewTedImpl.class, TedImpl.class, "newTedImpl");
+        addNewerField(result, NewDefaultNed.class, DefaultNed.class, "newDefaultNed");
         return (NewerField[]) result.toArray(new NewerField[]{});
     }
 
-    private void addCreatorField(List result, Class creatorInterface, Class instanceImplementation, String fieldName) {
-        Interface iface = new DefaultInterface(creatorInterface);
+    private void addNewerField(List result, Class newerInterface, Class instanceImplementation, String fieldName) {
+        Interface iface = new DefaultInterface(newerInterface);
         NewerField tedNewerField = new DefaultNewerField(iface, instanceImplementation, fieldName);
         result.add(tedNewerField);
     }
