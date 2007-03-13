@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.util.array;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.test.atom.AssertTestCase;
+import au.net.netstorm.boost.test.automock.BoooostTestCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 
-public final class DefaultArrayFlattenerAtomicTest extends AssertTestCase {
+public final class DefaultArrayFlattenerAtomicTest extends BoooostTestCase {
     private static final ClassTestChecker CLASS_CHECKER = new DefaultClassTestChecker();
     private static final ModifierTestChecker MODIFIER_CHECKER = new DefaultModifierTestChecker();
     private ArrayFlattener flattener = new DefaultArrayFlattener();
