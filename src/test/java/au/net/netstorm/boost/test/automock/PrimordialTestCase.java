@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
-import junit.framework.TestCase;
-
-public class PrimordialTestCase extends TestCase {
+public class PrimordialTestCase extends AssertionCheckTestCase {
     private TestStrategy strategy;
 
     public void runBare() throws Throwable {
@@ -15,15 +13,21 @@ public class PrimordialTestCase extends TestCase {
         }
     }
 
-    /** Do not allow overriding of setup.  The test maintains the lifecycle. */
+    /**
+     * Do not allow overriding of setup.  The test maintains the lifecycle.
+     */
     protected final void setUp() {
     }
 
-    /** Do not allow overriding of setup.  The test maintains the lifecycle. */
+    /**
+     * Do not allow overriding of setup.  The test maintains the lifecycle.
+     */
     protected final void tearDown() {
     }
 
-    /** Do not use this when writing tests.  It is exposed only so we can test this infrastructure. */
+    /**
+     * Do not use this when writing tests.  It is exposed only so we can test this infrastructure.
+     */
     protected void verify() {
         strategy.verify();
     }
