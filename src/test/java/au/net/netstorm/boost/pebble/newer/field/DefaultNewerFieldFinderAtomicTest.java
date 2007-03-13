@@ -8,7 +8,6 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerFieldFinderAtomicTest extends BoooostTestCase {
-
     private NewerFieldFinder subject = new DefaultNewerFieldFinder();
     private Fred object = new Fred();
     private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();
