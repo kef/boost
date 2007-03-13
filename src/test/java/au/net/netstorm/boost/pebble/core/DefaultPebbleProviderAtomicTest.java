@@ -24,7 +24,7 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     public void testNewer() {
         expect.oneCall(instantiator, rawRef, "instantiate", type, parameters);
         expect.oneCall(injector, VOID, "inject", rawRef);
-        expect.oneCall(onion, wrappedRef, "onionize", rawRef);
+        expect.oneCall(onion, wrappedRef, "onionise", rawRef);
         Object result = subject.provide(type, parameters);
         assertEquals(wrappedRef, result);
     }
