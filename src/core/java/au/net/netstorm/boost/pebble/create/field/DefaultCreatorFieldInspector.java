@@ -6,8 +6,8 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.pebble.create.Creator;
-import au.net.netstorm.boost.pebble.create.DoesNotImplementCreatorException;
+import au.net.netstorm.boost.pebble.create.core.Creator;
+import au.net.netstorm.boost.pebble.create.core.DoesNotImplementCreatorException;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 

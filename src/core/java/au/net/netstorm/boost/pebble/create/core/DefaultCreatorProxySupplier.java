@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.create;
+package au.net.netstorm.boost.pebble.create.core;
 
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;

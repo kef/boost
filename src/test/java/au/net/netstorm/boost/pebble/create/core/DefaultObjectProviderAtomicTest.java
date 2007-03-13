@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.create;
+package au.net.netstorm.boost.pebble.create.core;
 
 import au.net.netstorm.boost.pebble.create.inject.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;

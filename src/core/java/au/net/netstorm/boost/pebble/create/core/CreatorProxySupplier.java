@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.create;
+package au.net.netstorm.boost.pebble.create.core;
 
 import au.net.netstorm.boost.util.type.Interface;
 

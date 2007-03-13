@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.create.inject;
 
 import java.util.Random;
-import au.net.netstorm.boost.pebble.create.CreatorProxySupplier;
+import au.net.netstorm.boost.pebble.create.core.CreatorProxySupplier;
 import au.net.netstorm.boost.pebble.create.field.CreatorField;
 import au.net.netstorm.boost.pebble.create.field.CreatorFieldFinder;
 import au.net.netstorm.boost.pebble.create.fixture.Larry;
