@@ -12,6 +12,7 @@ public final class DefaultResolveDemoTest extends BoooostTestCase {
     private PebbleProvider pebbleProvider = pebbleProviderAssembler.assemble();
 
     public void testResolve() {
+        // FIX 1715 provide -> Pebblise.
         Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
         Set result = rob.getSet();
         // FIX BREADCRUMB 1715 Acceptance test for this card.
