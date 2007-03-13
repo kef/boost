@@ -17,5 +17,6 @@ public final class DefaultResolveDemoTest extends BoooostTestCase {
         Set result = rob.getSet();
         // FIX BREADCRUMB 1715 Acceptance test for this card.
 //        assertNotNull(result);
+//        assertEquals(true, result instanceof HashSet);
     }
 }
