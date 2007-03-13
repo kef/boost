@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.pebble.newer.fixture;
+package au.net.netstorm.boost.pebble.newer.field;
 
 import au.net.netstorm.boost.pebble.newer.core.Newer;
 
-public interface NewTedImpl extends Newer {
+interface NewTedImpl extends Newer {
     Class IMPLEMENTATION = TedImpl.class;
 
     Ted create();
