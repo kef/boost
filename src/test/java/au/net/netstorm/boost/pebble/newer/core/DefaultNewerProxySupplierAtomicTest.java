@@ -3,13 +3,12 @@ package au.net.netstorm.boost.pebble.newer.core;
 import java.lang.reflect.InvocationHandler;
 import java.util.Random;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultNewerProxySupplierAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCase {
     private NewerProxySupplier subject;
     private MockExpectations expect;
     private Interface newerInterface;

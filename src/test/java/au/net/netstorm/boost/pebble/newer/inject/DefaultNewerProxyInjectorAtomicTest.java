@@ -5,12 +5,11 @@ import au.net.netstorm.boost.pebble.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.newer.field.NewerField;
 import au.net.netstorm.boost.pebble.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.newer.fixture.Larry;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultNewerProxyInjectorAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCase {
     private Injector subject;
     private MockExpectations expect;
     private Object object = new Larry("ten");

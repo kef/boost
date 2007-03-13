@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
-public class PrimordialTestCase extends AssertionCheckTestCase {
+public class StrategyTestCase extends BoooostTestCase {
     private TestStrategy strategy;
 
     public void runBare() throws Throwable {

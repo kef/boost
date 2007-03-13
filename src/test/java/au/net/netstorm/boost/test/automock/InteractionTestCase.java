@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.test.automock;
 
-public abstract class InteractionTestCase extends PrimordialTestCase implements UsesMocks {
+public abstract class InteractionTestCase extends StrategyTestCase implements UsesMocks {
 }

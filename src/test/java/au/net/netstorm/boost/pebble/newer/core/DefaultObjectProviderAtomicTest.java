@@ -3,11 +3,10 @@ package au.net.netstorm.boost.pebble.newer.core;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.newer.inject.Injector;
 import au.net.netstorm.boost.pebble.onion.Onion;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
 
-public final class DefaultObjectProviderAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class DefaultObjectProviderAtomicTest extends InteractionTestCase {
     private ObjectProvider subject;
     private MockExpectations expect;
     private Onion onion;

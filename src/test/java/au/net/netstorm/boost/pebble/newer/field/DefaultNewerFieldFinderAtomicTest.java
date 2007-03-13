@@ -9,12 +9,12 @@ import au.net.netstorm.boost.pebble.newer.fixture.FredWithBrokenNewer;
 import au.net.netstorm.boost.pebble.newer.fixture.NewDefaultNed;
 import au.net.netstorm.boost.pebble.newer.fixture.NewTedImpl;
 import au.net.netstorm.boost.pebble.newer.fixture.TedImpl;
-import au.net.netstorm.boost.test.automock.AssertionCheckTestCase;
+import au.net.netstorm.boost.test.automock.BoooostTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1715 This should extend PrimodialTestCase. No strategy though. Figure this.
-public final class DefaultNewerFieldFinderAtomicTest extends AssertionCheckTestCase {
+public final class DefaultNewerFieldFinderAtomicTest extends BoooostTestCase {
 
     private NewerFieldFinder subject = new DefaultNewerFieldFinder();
     private Fred object = new Fred();

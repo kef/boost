@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.demo.automock;
 
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
 
-public final class AnotherWorkingAutoMockDemoTest extends PrimordialTestCase implements UsesMocks {
+public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
     private TestSubject subject;
     private DelegateSubject delegate;
     private MockExpectations expect;

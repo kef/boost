@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.demo.automock;
 
 import java.util.Map;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
 import junit.framework.AssertionFailedError;
 
-public final class BrokenAutoMockDemoTest extends PrimordialTestCase implements UsesMocks {
+public final class BrokenAutoMockDemoTest extends InteractionTestCase {
     private DelegateSubject delegate;
     private TestSubject subject;
     private Map map;

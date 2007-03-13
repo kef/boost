@@ -3,11 +3,10 @@ package au.net.netstorm.boost.pebble.newer.core;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.Random;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.automock.PrimordialTestCase;
-import au.net.netstorm.boost.test.automock.UsesMocks;
 
-public final class NewerInvocationHandlerAtomicTest extends PrimordialTestCase implements UsesMocks {
+public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase {
     private InvocationHandler subject;
     private MockExpectations expect;
     private ObjectProvider objectProvider;
