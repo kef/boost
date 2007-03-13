@@ -24,12 +24,12 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultObjectProvderAssembler implements ObjectProvderAssembler {
-    private static final Interface NEWER_TYPE = new DefaultInterface(ObjectProvider.class);
+    private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ObjectProvider.class);
 
     public ObjectProvider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
-        ObjectProvider passThroughObjectProvider = (ObjectProvider) proxyFactory.newProxy(NEWER_TYPE, passThroughHandler);
+        ObjectProvider passThroughObjectProvider = (ObjectProvider) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThroughHandler);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         Injector objectInjector = assembleInjector(proxyFactory, passThroughObjectProvider, instantiator);
         ObjectProvider objectProvider = assembleProvider(objectInjector, instantiator);
