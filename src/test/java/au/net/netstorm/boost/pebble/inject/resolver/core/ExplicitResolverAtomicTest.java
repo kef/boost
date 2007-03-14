@@ -1,26 +1,28 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
-import java.util.HashSet;
-import java.util.Set;
+import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.BoooostTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class ExplicitResolverAtomicTest extends BoooostTestCase {
-    private final ExplicitResolver subject = new DefaultExplicitResolver();
+    private final ExplicitResolver resolver = new DefaultExplicitResolver();
 
     {
-        subject.add(Set.class, HashSet.class);
+        resolver.add(LazyBastard.class, Larry.class);
+        resolver.add(Legend.class, DomainBastin.class);
     }
 
+    // FIX 1715 Fail if iface is not an interface.
     public void testResolve() {
-        Implementation result = resolve(subject, Set.class);
-//        checkEquals(HashSet.class, result)
+        Implementation result = resolve(resolver, LazyBastard.class);
+        checkEquals(Larry.class, result);
     }
 
     private void checkEquals(Class cls, Implementation result) {
-//        new DefaultImplementation(cls);
+        Implementation expected = new DefaultImplementation(cls);
+        assertEquals(expected, result);
     }
 
     private Implementation resolve(Resolver resolver, Class cls) {
