@@ -11,7 +11,6 @@ import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxyInjector;
 import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.Resolver;
@@ -31,6 +30,11 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderAssembler implements PebbleProviderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProvider.class);
+    private Resolver resolver;
+
+    public DefaultPebbleProviderAssembler(Resolver resolver) {
+        this.resolver = resolver;
+    }
 
     public PebbleProvider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
@@ -57,7 +61,6 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
 
     private ResolverInjector assembleResolverInjector(PebbleProvider pebbleProvider) {
         ResolverFieldFinder fieldFinder = new DefaultResolverFieldFinder();
-        Resolver resolver = new DefaultExplicitResolver();
         FieldResolver fieldResolver = new DefaultFieldResolver(resolver, pebbleProvider);
         return new ResolverInjector(fieldFinder, fieldResolver);
     }
