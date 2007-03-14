@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.pebble.inject.resolver.field;
 
+import java.lang.reflect.Field;
+
 public interface ResolverFieldFinder {
-    void find(Object ref);
+    Field[] find(Object ref);
 }
