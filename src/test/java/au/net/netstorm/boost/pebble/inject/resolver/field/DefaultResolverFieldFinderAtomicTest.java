@@ -20,6 +20,7 @@ public final class DefaultResolverFieldFinderAtomicTest extends BoooostTestCase 
         Field[] result = subject.find(pebble);
         Field[] expected = buildExpected();
         assertEquals(expected.length, result.length);
+//        assertEquals(expected, result);
     }
 
     private Field[] buildExpected() {
