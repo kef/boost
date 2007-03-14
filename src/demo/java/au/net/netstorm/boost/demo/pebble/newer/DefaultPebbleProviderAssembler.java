@@ -11,6 +11,13 @@ import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxyInjector;
 import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.Resolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
+import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFinder;
+import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.pebble.onion.BermudaOnion;
@@ -42,15 +49,38 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
     }
 
     private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProvider pebbleProvider, Instantiator instantiator) {
+        Injector newerProxyInjector = assembleNewerInjector(proxyFactory, pebbleProvider, instantiator);
+        Injector resolverInjector = assembleResolverInjector(pebbleProvider);
+        // FIX 1715 Put some stitches in this 
+        return new PebbleInjector(newerProxyInjector, newerProxyInjector); // FIX 1715 Cheat until we stitch in resolver injector.
+    }
+
+    private ResolverInjector assembleResolverInjector(PebbleProvider pebbleProvider) {
+        ResolverFieldFinder fieldFinder = new DefaultResolverFieldFinder();
+        Resolver resolver = new DefaultExplicitResolver();
+        FieldResolver fieldResolver = new DefaultFieldResolver(resolver, pebbleProvider);
+        return new ResolverInjector(fieldFinder, fieldResolver);
+    }
+
+    private Injector assembleNewerInjector(ProxyFactory proxyFactory, PebbleProvider pebbleProvider, Instantiator instantiator) {
         NewerProxySupplier newerProxySupplier = new DefaultNewerProxySupplier(proxyFactory, pebbleProvider, instantiator);
         NewerFieldFinder newerFieldFinder = new DefaultNewerFieldFinder();
-        Injector newerProxyInjector = new NewerProxyInjector(newerProxySupplier, newerFieldFinder);
-//        Injector dependencyInjector = new ResolverInjector(null, null); // FIX 1715 No nulls.
-        return new PebbleInjector(newerProxyInjector, newerProxyInjector); // FIX 1715 Cheat until we stitch in resolver injector.
+        return new NewerProxyInjector(newerProxySupplier, newerFieldFinder);
     }
 
     private PebbleProvider assembleProvider(Injector objectInjector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
         return new DefaultPebbleProvider(onion, objectInjector, instantiator);
     }
+    /*
+      , ; ,   .-'"""'-.   , ; ,
+      \\|/  .'         '.  \|//
+       \-;-/   ()   ()   \-;-/
+       // ;               ; \\
+      //__; :.         .; ;__\\
+     `-----\'.'-.....-'.'/-----'
+            '.'.-.-,_.'.'
+              '(  (..-'
+                '-'
+    */
 }
