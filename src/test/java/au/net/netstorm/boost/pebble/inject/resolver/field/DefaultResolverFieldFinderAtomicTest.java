@@ -5,7 +5,8 @@ import au.net.netstorm.boost.test.automock.BoooostTestCase;
 public final class DefaultResolverFieldFinderAtomicTest extends BoooostTestCase {
     private ResolverFieldFinder subject;
 
-    // FIX BREADCRUMB 1715 Return here.
+    // FIX 1715 Complete this test.
+    // FIX 1715 Ensure we get only two fields from the field finder.
     public void testSubject() {
         subject = new DefaultResolverFieldFinder();
     }
