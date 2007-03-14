@@ -15,7 +15,12 @@ public final class ExplicitResolverAtomicTest extends BoooostTestCase {
     }
 
     public void testResolve() {
-        resolve(subject, Set.class);
+        Implementation result = resolve(subject, Set.class);
+//        checkEquals(HashSet.class, result)
+    }
+
+    private void checkEquals(Class cls, Implementation result) {
+//        new DefaultImplementation(cls);
     }
 
     private Implementation resolve(Resolver resolver, Class cls) {
