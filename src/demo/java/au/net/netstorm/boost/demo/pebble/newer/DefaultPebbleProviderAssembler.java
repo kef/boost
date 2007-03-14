@@ -11,7 +11,6 @@ import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxyInjector;
 import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
-import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.pebble.onion.BermudaOnion;
@@ -46,8 +45,8 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
         NewerProxySupplier newerProxySupplier = new DefaultNewerProxySupplier(proxyFactory, pebbleProvider, instantiator);
         NewerFieldFinder newerFieldFinder = new DefaultNewerFieldFinder();
         Injector newerProxyInjector = new NewerProxyInjector(newerProxySupplier, newerFieldFinder);
-        Injector dependencyInjector = new ResolverInjector(null, null); // FIX 1715 No nulls.
-        return new PebbleInjector(newerProxyInjector, dependencyInjector);
+//        Injector dependencyInjector = new ResolverInjector(null, null); // FIX 1715 No nulls.
+        return new PebbleInjector(newerProxyInjector, newerProxyInjector); // FIX 1715 Cheat until we stitch in resolver injector.
     }
 
     private PebbleProvider assembleProvider(Injector objectInjector, Instantiator instantiator) {

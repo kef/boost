@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
+import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
@@ -16,10 +17,6 @@ public final class ResolverInjector implements Injector {
     }
 
     public void inject(Object ref) {
-    }
-
-    // FIX 1715 Use this as a guide.
-/*    private void doInject(Object ref) {
         Field[] fields = fieldFinder.find(ref);
         for (int i = 0; i < fields.length; i++) {
             inject(ref, fields[i]);
@@ -27,10 +24,8 @@ public final class ResolverInjector implements Injector {
     }
 
     private void inject(Object ref, Field field) {
-        Object implementation = fieldResolver.resolve(field);
-        fielder.set(field, ref, implementation);
+        fieldResolver.resolve(field);
     }
 
     // FIX 1715 Remove when done.
-    */
 }
