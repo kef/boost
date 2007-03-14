@@ -13,8 +13,8 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     private static final Class IMPLEMENTATION = VeryHappyChap.class;
     private static final VeryHappyChap INSTANCE = new VeryHappyChap();
-    private final EdgeClass classer = new DefaultEdgeClass();
     private FieldResolver subject;
+    private final EdgeClass classer = new DefaultEdgeClass();
     private Field field = someField();
     private Interface iface = new DefaultInterface(HappyChap.class);
     private MockExpectations expect;
