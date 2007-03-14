@@ -19,11 +19,19 @@ public final class DefaultImplementationAtomicTest extends BoooostCase {
 
     private void checkImplementation(Class implementation, Class[] interfaces) {
         Implementation subject = new DefaultImplementation(implementation);
+        checkImpl(subject, implementation);
+        checkTypes(subject, interfaces);
+    }
+
+    private void checkTypes(Implementation subject, Class[] types) {
+        Interface[] result = subject.getTypes();
+        Interface[] expected = buildInterfaces(types);
+        assertBagEquals(expected, result);
+    }
+
+    private void checkImpl(Implementation subject, Class impl) {
         Class result = subject.getImpl();
-        assertEquals(implementation, result);
-        Interface[] resultTypes = subject.getTypes();
-        // FIX 1715 De-train wreck.
-        assertBagEquals(buildInterfaces(interfaces), resultTypes);
+        assertEquals(impl, result);
     }
 
     private Interface[] buildInterfaces(Class[] ifaces) {

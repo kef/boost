@@ -27,6 +27,4 @@ public final class ResolverInjector implements Injector {
         Object value = fieldResolver.resolve(field);
         fielder.set(field, ref, value);
     }
-
-    // FIX 1715 Remove when done.
 }
