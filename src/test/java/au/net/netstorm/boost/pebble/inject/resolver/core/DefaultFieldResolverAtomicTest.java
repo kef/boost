@@ -1,15 +1,24 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
+import java.lang.reflect.Field;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import junit.framework.TestCase;
 
 public final class DefaultFieldResolverAtomicTest extends TestCase {
+    private final FieldResolver subject = new DefaultFieldResolver();
+    private final EdgeClass classer = new DefaultEdgeClass();
+    private final Field field = classer.getDeclaredField(JuicyPebble.class, "someOneIKnow");
 
     public void testResolve() {
-        // FIX BREADCRUMB 1715 Complete me. 
+        // FIX BREADCRUMB 1715 Complete me.
+        Object resolved = subject.resolve(field);
     }
 
     // FIX 1715 Use this as a guide.
-/*
+
+    // FIX 1715 Remove when done.
+    /*
     private void doInject(Object ref) {
         Field[] fields = fieldFinder.find(ref);
         for (int i = 0; i < fields.length; i++) {
@@ -36,5 +45,4 @@ public final class DefaultFieldResolverAtomicTest extends TestCase {
         return provider.provide(impl, parameters);
     }
 */
-    // FIX 1715 Remove when done.
 }
