@@ -16,12 +16,6 @@ public final class ResolverInjector implements Injector {
     }
 
     public void inject(Object ref) {
-        // FIX 1715 Do this.
-        // FIX 1715 Nail 4 next.
-        // 1. For each candidate field.
-        // 2. Determine field interface.
-        // 4. Instantiate implementation.
-        // 5. Set field.
     }
 
     // FIX 1715 Use this as a guide.
