@@ -8,8 +8,8 @@ import au.net.netstorm.boost.test.automock.BoooostCase;
 public final class DefaultResolverInjectorAtomicTest extends BoooostCase {
 
     private ResolverFieldFinder fieldFinder;
-    private ExplicitResolver explicitResolver;
-    private Injector subject = new ResolverInjector(fieldFinder, explicitResolver);
+    private FieldResolver fieldResolver;
+    private Injector subject = new ResolverInjector(fieldFinder, fieldResolver);
     private JuicyPebble juicy = new JuicyPebble();
 
     public void testInjector() {
