@@ -8,4 +8,6 @@ public interface AssertTestChecker {
     void checkEquals(int[] value1, int[] value2);
 
     void checkNotEquals(byte[] value1, byte[] value2);
+
+    void checkBagEquals(Object[] o1, Object[] o2);
 }

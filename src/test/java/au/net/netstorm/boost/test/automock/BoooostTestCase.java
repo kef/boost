@@ -17,6 +17,10 @@ public abstract class BoooostTestCase extends TestCase {
         assertTestChecker.checkEquals(expected, actual);
     }
 
+    public final void assertBagEquals(Object[] expected, Object[] actual) {
+        assertTestChecker.checkBagEquals(expected, actual);
+    }
+
     public final void assertEquals(byte[] expected, byte[] actual) {
         assertTestChecker.checkEquals(expected, actual);
     }
