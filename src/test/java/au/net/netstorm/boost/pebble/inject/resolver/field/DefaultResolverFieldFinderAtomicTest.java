@@ -13,7 +13,7 @@ public final class DefaultResolverFieldFinderAtomicTest extends BoooostTestCase 
     // FIX 1715 Check the others did not get modified.
     public void testFind() {
         Field[] fields = subject.find(pebble);
-//        int length = fields.length;
-//        assertEquals(2, length);
+        int length = fields.length;
+        assertEquals(2, length);
     }
 }
