@@ -9,15 +9,19 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultExplicitResolverAtomicTest extends BoooostTestCase {
     private static final Class LAZY_BASTARD = LazyBastard.class;
     private static final Class LARRY = Larry.class;
+    private static final Class LEGEND = Legend.class;
+    private static final Class AN_DO = AnDo.class;
     private final ExplicitResolver resolver = new DefaultExplicitResolver();
 
     {
         resolver.add(LAZY_BASTARD, LARRY);
+        resolver.add(LEGEND, AN_DO);
     }
 
     // FIX 1715 Fail if iface is not an interface.
     public void testResolve() {
         checkResolve(LAZY_BASTARD, LARRY);
+        checkResolve(LEGEND, AN_DO);
     }
 
     private void checkResolve(Class iface, Class impl) {
