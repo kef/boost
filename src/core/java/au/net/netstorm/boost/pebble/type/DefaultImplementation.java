@@ -1,19 +1,18 @@
 package au.net.netstorm.boost.pebble.type;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplementation extends Primordial implements Implementation {
-    Interface[] types;
-    Class impl;
+    private final Interface[] types;
+    private final Class impl;
 
-    public DefaultImplementation(Interface[] types, Class impl) {
-        validate(types, impl);
-        this.types = (Interface[]) types.clone();
+    public DefaultImplementation(Class impl) {
         this.impl = impl;
-        checkImplements();
+        types = buildInterfaces();
     }
 
     public Interface[] getTypes() {
@@ -24,28 +23,13 @@ public final class DefaultImplementation extends Primordial implements Implement
         return impl;
     }
 
-    private void checkImplements() {
-        Class[] implInterfaces = impl.getInterfaces();
-        List list = Arrays.asList(implInterfaces);
-        int length = types.length;
-        for (int i = 0; i < length; i++) {
-            checkTypeIsImplemented(list, types[i]);
+    private Interface[] buildInterfaces() {
+        Class[] ifaces = impl.getInterfaces();
+        List result = new ArrayList();
+        for (int i = 0; i < ifaces.length; i++) {
+            Interface iface = new DefaultInterface(ifaces[i]);
+            result.add(iface);
         }
-    }
-
-    private void checkTypeIsImplemented(List listOfImplementations, Interface type) {
-        if (!listOfImplementations.contains(type.getType())) {
-            String typeName = type.getType().getName();
-            throw new IllegalArgumentException("The interface " + impl.getName() + " does not implement " + typeName);
-        }
-    }
-
-    private void validate(Interface[] types, Class impl) {
-        if (types == null) {
-            throw new IllegalArgumentException();
-        }
-        if (impl == null) {
-            throw new IllegalArgumentException();
-        }
+        return (Interface[]) result.toArray(new Interface[]{});
     }
 }
