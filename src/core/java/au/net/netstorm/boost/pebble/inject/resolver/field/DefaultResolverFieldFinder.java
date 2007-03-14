@@ -1,10 +1,15 @@
 package au.net.netstorm.boost.pebble.inject.resolver.field;
 
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
+    private final EdgeClass classer = new DefaultEdgeClass();
+
     public Field[] find(Object ref) {
-        // FIX 1715 We have to do more than this.
-        return new Field[2];
+        Class cls = ref.getClass();
+        Field[] fields = classer.getDeclaredFields(cls);
+        return fields;
     }
 }
