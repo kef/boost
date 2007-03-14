@@ -15,13 +15,17 @@ public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
 
     // FIX 1715 Tidy this rot up.  Too complex.
     public Field[] find(Object ref) {
-        Class cls = ref.getClass();
-        Field[] fields = classer.getDeclaredFields(cls);
+        Field[] fields = getDeclaredFields(ref);
+        List result = find(ref, fields);
+        return (Field[]) result.toArray(new Field[]{});
+    }
+
+    private List find(Object ref, Field[] fields) {
         List result = new ArrayList();
         for (int i = 0; i < fields.length; i++) {
             optionallyAdd(result, ref, fields[i]);
         }
-        return (Field[]) result.toArray(new Field[]{});
+        return result;
     }
 
     private void optionallyAdd(List result, Object ref, Field field) {
@@ -38,5 +42,10 @@ public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
     private boolean isFinal(Field field) {
         int modifiers = field.getModifiers();
         return Modifier.isFinal(modifiers);
+    }
+
+    private Field[] getDeclaredFields(Object ref) {
+        Class cls = ref.getClass();
+        return classer.getDeclaredFields(cls);
     }
 }
