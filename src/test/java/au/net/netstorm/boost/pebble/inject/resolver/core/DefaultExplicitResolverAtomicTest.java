@@ -20,8 +20,6 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
         subject.add(LEGEND, AN_DO);
     }
 
-    // FIX 1715 Fail if iface is not an interface.
-
     public void testResolve() {
         checkResolve(LAZY_BASTARD, LARRY);
         checkResolve(LEGEND, AN_DO);
