@@ -17,10 +17,9 @@ public final class DefaultResolverFieldFinderAtomicTest extends BoooostTestCase 
     // FIX 1715 Ensure we get only two fields from the field finder.
     // FIX 1715 Check the others did not get modified.
     public void testFind() {
-        Field[] fields = subject.find(pebble);
+        Field[] result = subject.find(pebble);
         Field[] expected = buildExpected();
-        int length = fields.length;
-        assertEquals(2, length);
+        assertEquals(expected.length, result.length);
     }
 
     private Field[] buildExpected() {
