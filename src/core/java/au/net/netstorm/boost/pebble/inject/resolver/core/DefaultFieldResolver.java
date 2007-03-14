@@ -20,6 +20,7 @@ public final class DefaultFieldResolver implements FieldResolver {
         return resolve(iface);
     }
 
+    // SUGGEST: This is probably the true resolver entry point and will likely take a "flavour".
     private Object resolve(Interface iface) {
         Implementation implementation = resolver.resolve(iface);
         return create(implementation);

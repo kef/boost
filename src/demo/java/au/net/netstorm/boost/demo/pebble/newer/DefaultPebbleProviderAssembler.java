@@ -38,42 +38,42 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
 
     public PebbleProvider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
-        PassThroughInvocationHandler passThroughHandler = new DefaultPassThroughInvocationHandler();
-        PebbleProvider passThroughPebbleProvider = (PebbleProvider) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThroughHandler);
+        PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
+        PebbleProvider passThroughPebbleProvider = (PebbleProvider) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator);
         PebbleProvider pebbleProvider = assembleProvider(objectInjector, instantiator);
-        passThroughHandler.setDelegate(pebbleProvider);
+        passThrough.setDelegate(pebbleProvider);
         return pebbleProvider;
     }
 
+    // FIX 1715 Publicise some of these methods.
     private ProxyFactory assembleProxyFactory() {
         ProxySupplier proxySupplier = new DefaultProxySupplier();
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProvider pebbleProvider, Instantiator instantiator) {
-        Injector newerProxyInjector = assembleNewerInjector(proxyFactory, pebbleProvider, instantiator);
-        Injector resolverInjector = assembleResolverInjector(pebbleProvider);
-        // FIX 1715 Put some stitches in this...
-        return new PebbleInjector(newerProxyInjector, resolverInjector); // FIX 1715 Cheat until we stitch in resolver injector.
+    private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProvider provider, Instantiator instantiator) {
+        Injector newer = assembleNewerInjector(proxyFactory, provider, instantiator);
+        Injector resolver = assembleResolverInjector(provider);
+        return new PebbleInjector(newer, resolver);
     }
 
     private ResolverInjector assembleResolverInjector(PebbleProvider pebbleProvider) {
-        ResolverFieldFinder fieldFinder = new DefaultResolverFieldFinder();
+        ResolverFieldFinder finder = new DefaultResolverFieldFinder();
         FieldResolver fieldResolver = new DefaultFieldResolver(resolver, pebbleProvider);
-        return new ResolverInjector(fieldFinder, fieldResolver);
+        return new ResolverInjector(finder, fieldResolver);
     }
 
-    private Injector assembleNewerInjector(ProxyFactory proxyFactory, PebbleProvider pebbleProvider, Instantiator instantiator) {
-        NewerProxySupplier newerProxySupplier = new DefaultNewerProxySupplier(proxyFactory, pebbleProvider, instantiator);
-        NewerFieldFinder newerFieldFinder = new DefaultNewerFieldFinder();
-        return new NewerProxyInjector(newerProxySupplier, newerFieldFinder);
+    private Injector assembleNewerInjector(ProxyFactory proxyFactory, PebbleProvider provider, Instantiator instantiator) {
+        NewerProxySupplier supplier = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
+        NewerFieldFinder finder = new DefaultNewerFieldFinder();
+        return new NewerProxyInjector(supplier, finder);
     }
 
-    private PebbleProvider assembleProvider(Injector objectInjector, Instantiator instantiator) {
+    private PebbleProvider assembleProvider(Injector injector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
-        return new DefaultPebbleProvider(onion, objectInjector, instantiator);
+        return new DefaultPebbleProvider(onion, injector, instantiator);
     }
     /*
       , ; ,   .-'"""'-.   , ; ,
