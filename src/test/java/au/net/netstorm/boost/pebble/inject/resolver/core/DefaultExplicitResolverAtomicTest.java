@@ -6,17 +6,23 @@ import au.net.netstorm.boost.test.automock.BoooostTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class ExplicitResolverAtomicTest extends BoooostTestCase {
+public final class DefaultExplicitResolverAtomicTest extends BoooostTestCase {
+    private static final Class LAZY_BASTARD = LazyBastard.class;
+    private static final Class LARRY = Larry.class;
     private final ExplicitResolver resolver = new DefaultExplicitResolver();
 
     {
-        resolver.add(LazyBastard.class, Larry.class);
+        resolver.add(LAZY_BASTARD, LARRY);
     }
 
     // FIX 1715 Fail if iface is not an interface.
     public void testResolve() {
-        Implementation result = resolve(resolver, LazyBastard.class);
-        checkEquals(Larry.class, result);
+        checkResolve(LAZY_BASTARD, LARRY);
+    }
+
+    private void checkResolve(Class iface, Class impl) {
+        Implementation result = resolve(resolver, iface);
+        checkEquals(impl, result);
     }
 
     private void checkEquals(Class cls, Implementation result) {
