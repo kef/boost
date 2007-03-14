@@ -11,7 +11,6 @@ public final class ExplicitResolverAtomicTest extends BoooostTestCase {
 
     {
         resolver.add(LazyBastard.class, Larry.class);
-        resolver.add(Legend.class, DomainBastin.class);
     }
 
     // FIX 1715 Fail if iface is not an interface.
