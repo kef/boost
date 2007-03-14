@@ -11,11 +11,11 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
-    private final ExplicitResolver resolver = new DefaultExplicitResolver();
+    private final ExplicitResolver subject = new DefaultExplicitResolver();
 
     {
-        resolver.add(LAZY_BASTARD, LARRY);
-        resolver.add(LEGEND, AN_DO);
+        subject.add(LAZY_BASTARD, LARRY);
+        subject.add(LEGEND, AN_DO);
     }
 
     // FIX 1715 Fail if iface is not an interface.
@@ -27,13 +27,13 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
 
     public void testMustBeInterface() {
         try {
-            resolver.add(LARRY, LARRY);
+            subject.add(LARRY, LARRY);
             fail();
         } catch (IllegalArgumentException expected) { }
     }
 
     private void checkResolve(Class iface, Class impl) {
-        Implementation result = resolve(resolver, iface);
+        Implementation result = resolve(subject, iface);
         checkEquals(impl, result);
     }
 
