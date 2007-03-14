@@ -19,7 +19,7 @@ public final class DefaultResolverFieldFinderAtomicTest extends BoooostTestCase 
     public void testFind() {
         Field[] result = subject.find(pebble);
         Field[] expected = buildExpected();
-//        assertEquals(expected, result);
+        assertEquals(expected, result);
     }
 
     private Field[] buildExpected() {
