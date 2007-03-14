@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.pebble.type;
 
 import java.util.Set;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
-public final class NonMatchingNewerExceptionAtomicTest extends TestCase {
+public final class NonMatchingNewerExceptionAtomicTest extends BoooostCase {
     private static final Class NEWER_CLASS = Set.class;
     private static final Interface NEWER_INTERFACE = new DefaultInterface(NEWER_CLASS);
     private static final Class IMPL_CLASS = String.class;

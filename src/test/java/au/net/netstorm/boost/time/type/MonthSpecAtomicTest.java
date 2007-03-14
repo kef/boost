@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class MonthSpecAtomicTest extends TestCase {
+public final class MonthSpecAtomicTest extends BoooostCase {
     // FIX SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
     // FIX SC507 Internal static per class is probably fine.
     public static final MonthSpec JANUARY_2000 = new MonthSpec(2000, 0);

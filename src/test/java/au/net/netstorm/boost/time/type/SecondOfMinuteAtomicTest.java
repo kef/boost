@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class SecondOfMinuteAtomicTest extends TestCase {
+public final class SecondOfMinuteAtomicTest extends BoooostCase {
     public void testSecondOfMinute() {
         assertEquals(60, SecondOfMinute.SECONDS_IN_MINUTE);
     }

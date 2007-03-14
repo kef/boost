@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.time.core;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;// FIX SC507 Remove duplication between this class and StartTimeTest.
 
-// FIX SC507 Remove duplication between this class and StartTimeTest.
 // FIX SC507 Primordialize.
-public final class EndTimeAtomicTest extends TestCase {
+public final class EndTimeAtomicTest extends BoooostCase {
     public void testNullInvalidInConstructor() {
         try {
             new EndTime(null);

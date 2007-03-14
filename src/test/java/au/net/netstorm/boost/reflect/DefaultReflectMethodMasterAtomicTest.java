@@ -7,12 +7,12 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultMethodSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
-import junit.framework.TestCase;
 
 // FIX SC600 This looks like it is testing too deep.  Should not it be testing DRMM ONLY.  Sort out DRMM too.
-public class DefaultReflectMethodMasterAtomicTest extends TestCase {
+public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
     private static final String CHURCH_METHOD_NAME = "getSmeetOthEchuRchontIme";
     private static final String FRIDAY_METHOD_NAME = "fridayIsHere";
     private static final String CRAPOLA_METHOD_NAME = "justSomeOldMethod";

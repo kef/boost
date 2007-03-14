@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.pebble.instantiate;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends TestCase {
+public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends BoooostCase {
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
 
     public void testInstantiate() {

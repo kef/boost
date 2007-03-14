@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.separator;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
-import junit.framework.TestCase;
 
-public final class SeparatorAtomicTest extends TestCase {
+public final class SeparatorAtomicTest extends BoooostCase {
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     // FIX SC600 Strengthen this to ensure constructor is private.

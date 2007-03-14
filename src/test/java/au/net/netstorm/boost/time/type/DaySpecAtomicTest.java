@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DaySpecAtomicTest extends TestCase {
+public final class DaySpecAtomicTest extends BoooostCase {
     public void testValidDays() {
         final MonthSpec month = APRIL_2004;
         assertValid(month, 0);

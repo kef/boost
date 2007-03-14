@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.nursery.instance;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultInstanceProviderAtomicTest extends TestCase {
+public final class DefaultInstanceProviderAtomicTest extends BoooostCase {
 //    private static final Integer INTEGER_23 = new Integer(23);
 //    private static final Integer INTEGER_32 = new Integer(32);
 //    private static final Object POINT_23_32 = new Point(23, 32);
 //    private static final Class INTEGER_CLASS = Integer.class;
-//    private static final Class POINT_CLASS = Point.class;
+    //    private static final Class POINT_CLASS = Point.class;
     private static final Class OBJECT_CLASS = Object.class;
     private static final Object OBJECT = new Object();
     private InstanceProvider instanceProvider;

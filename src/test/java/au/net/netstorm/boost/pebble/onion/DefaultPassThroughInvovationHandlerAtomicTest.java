@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultPassThroughInvovationHandlerAtomicTest extends TestCase {
+public final class DefaultPassThroughInvovationHandlerAtomicTest extends BoooostCase {
     private static final Class[] PARAMETER_TYPES = {Object.class};
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private Map map = new HashMap();

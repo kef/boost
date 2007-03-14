@@ -2,11 +2,11 @@ package au.net.netstorm.boost.nursery.compose;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
 // SUGGEST What to do for equals, hashCode, toString...
 // SUGGEST Move to using MockInvocationHandler.
@@ -17,7 +17,7 @@ import junit.framework.TestCase;
  * The composer currently only supports composition of two classes.
  */
 // DEBT ClassDataAbstractionCoupling {
-public final class DefaultComposerAtomicTest extends TestCase {
+public final class DefaultComposerAtomicTest extends BoooostCase {
     private static final Interface INTERFACE_A_B = new DefaultInterface(TestInterfaceAB.class);
     private static final Interface INTERFACE_A = new DefaultInterface(TestInterfaceA.class);
     private final ProxyFactory proxyFactory = buildFactory();

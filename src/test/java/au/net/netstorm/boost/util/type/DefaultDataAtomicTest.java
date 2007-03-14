@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.type;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultDataAtomicTest extends TestCase {
+public final class DefaultDataAtomicTest extends BoooostCase {
     public void testExtends() {
         checkExtends(Immutable.class);
         checkExtends(NullIntolerant.class);

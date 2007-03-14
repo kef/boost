@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.start;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
@@ -8,10 +9,9 @@ import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import junit.framework.TestCase;
 
 // SUGGEST Ensure test for private constructor.
-public class VmEntryAtomicTest extends TestCase {
+public class VmEntryAtomicTest extends BoooostCase {
     private static final VmStyle VM_STYLE_PINK_FLOYD = VmStyleAtomicTest.VM_STYLE_PINK_FLOYD;
     private static final VmStyle VM_STYLE_ELO = VmStyleAtomicTest.VM_STYLE_ELO;
     private static final VmStyle VM_STYLE_YES = VmStyleAtomicTest.VM_STYLE_YES;

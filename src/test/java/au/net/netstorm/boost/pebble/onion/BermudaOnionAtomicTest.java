@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.pebble.onion;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class BermudaOnionAtomicTest extends TestCase {
+public final class BermudaOnionAtomicTest extends BoooostCase {
     private Object ref = new Object();
 
     public void testOnionize() {

@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
 // DEBT ClassDataAbstractionCoupling {
-public final class DefaultTimeRangeMasterAtomicTest extends TestCase {
+public final class DefaultTimeRangeMasterAtomicTest extends BoooostCase {
     public void testDuration() {
         assertEquals(DURATION_200, master.duration(START_TIME_200, END_TIME_400));
         assertEquals(DURATION_001, master.duration(START_TIME_099, END_TIME_100));

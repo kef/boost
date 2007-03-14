@@ -4,9 +4,8 @@ import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.LooseDataAtomTestChecker;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import junit.framework.TestCase;
 
-public final class DefaultMockMethodSpecAtomicTest extends TestCase {
+public final class DefaultMockMethodSpecAtomicTest extends BoooostCase {
     private AtomTestChecker checker = new LooseDataAtomTestChecker();
     private FieldSpec returnValue = new DefaultFieldSpec("returnValue", Object.class);
     private FieldSpec methodName = new DefaultFieldSpec("methodName", String.class);

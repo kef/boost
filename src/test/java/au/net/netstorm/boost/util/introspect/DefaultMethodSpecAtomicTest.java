@@ -2,9 +2,9 @@ package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public class DefaultMethodSpecAtomicTest extends TestCase {
+public class DefaultMethodSpecAtomicTest extends BoooostCase {
     private FieldSpec f1 = new DefaultFieldSpec("name", String.class);
     private FieldSpec f2 = new DefaultFieldSpec("params", Class[].class);
     private FieldSpec[] fields = {f1, f2};

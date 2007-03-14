@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.pebble.type;
 
 import au.net.netstorm.boost.pebble.core.Pebble;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class NoNewerInterfaceExceptionAtomicTest extends TestCase {
+public final class NoNewerInterfaceExceptionAtomicTest extends BoooostCase {
     private static final Class CLASS = Pebble.class;
     private static final String EXCEPTION_MESSAGE =
             "No newer interface yabadabadoo found for class " + CLASS.getName();

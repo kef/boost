@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.indent;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.separator.Separator;
-import junit.framework.TestCase;
 
-public class DefaultIndenterMasterAtomicTest extends TestCase {
+public class DefaultIndenterMasterAtomicTest extends BoooostCase {
     private static final String LF = Separator.LINE;
     private static final String EXPECTED_SINGLE_LINE = "    hello";
     private static final String EXPECTED_TWO_LINE = "    line0" + LF + "    line1";

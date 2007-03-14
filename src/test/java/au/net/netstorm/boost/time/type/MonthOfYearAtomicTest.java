@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class MonthOfYearAtomicTest extends TestCase {
+public final class MonthOfYearAtomicTest extends BoooostCase {
     private static final MonthOfYear JANUARY = MonthOfYear.JANUARY;
     private static final MonthOfYear FEBRUARY = MonthOfYear.FEBRUARY;
     private static final MonthOfYear MARCH = MonthOfYear.MARCH;
@@ -32,7 +32,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
         }
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testMaximumDays() {
         assertEquals(31, JANUARY.maxDays);
         assertEquals(29, FEBRUARY.maxDays);
@@ -49,7 +49,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
     }
 // } DEBT JavaNCSS
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testConstants() {
         assertEquals(new MonthOfYear(0), JANUARY);
         assertEquals(new MonthOfYear(1), FEBRUARY);
@@ -78,7 +78,7 @@ public final class MonthOfYearAtomicTest extends TestCase {
         assertEquals(100, new MonthOfYear(2).hashCode());
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testToString() {
         assertToString("Jan", JANUARY);
         assertToString("Feb", FEBRUARY);

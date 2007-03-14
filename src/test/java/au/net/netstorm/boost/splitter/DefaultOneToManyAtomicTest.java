@@ -2,19 +2,19 @@ package au.net.netstorm.boost.splitter;
 
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
 // FIX SC600 List/Map needs to be weak reference.
 // FIX SC600 Too complicated.  Simplify.
 
 // DEBT ClassDataAbstractionCoupling {
-public final class DefaultOneToManyAtomicTest extends TestCase {
+public final class DefaultOneToManyAtomicTest extends BoooostCase {
     private static final int ZERO_LISTENERS = 0;
     private static final int SINGLE_LISTENER = 1;
     private static final int TWENTY_LISTENERS = 20;

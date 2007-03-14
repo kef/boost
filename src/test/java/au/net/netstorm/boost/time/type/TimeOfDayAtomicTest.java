@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class TimeOfDayAtomicTest extends TestCase {
+public final class TimeOfDayAtomicTest extends BoooostCase {
     public static final HourOfDay AN_HOUR = new HourOfDay(3);
     public static final MinuteOfHour A_MINUTE = new MinuteOfHour(42);
     public static final SecondOfMinute A_SECOND = new SecondOfMinute(7);

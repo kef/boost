@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import au.net.netstorm.boost.edge.EdgeException;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultClassNameMorpherAtomicTest extends TestCase {
+public final class DefaultClassNameMorpherAtomicTest extends BoooostCase {
     private ClassMorpher morpher = new DefaultClassMorpher();
 
     public void testStripPrefix() {

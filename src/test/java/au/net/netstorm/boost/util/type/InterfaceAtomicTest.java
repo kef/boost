@@ -2,11 +2,11 @@ package au.net.netstorm.boost.util.type;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
-import junit.framework.TestCase;
 
-public class InterfaceAtomicTest extends TestCase {
+public class InterfaceAtomicTest extends BoooostCase {
     private static final Class NOT_AN_INTERFACE = Object.class;
 
     public void testIsDataObject() {

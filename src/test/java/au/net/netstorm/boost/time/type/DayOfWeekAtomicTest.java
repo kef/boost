@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DayOfWeekAtomicTest extends TestCase {
+public final class DayOfWeekAtomicTest extends BoooostCase {
     public void testValid() {
         assertEquals(Calendar.SUNDAY, new DayOfWeek(Calendar.SUNDAY).value);
         assertEquals(Calendar.MONDAY, new DayOfWeek(Calendar.MONDAY).value);

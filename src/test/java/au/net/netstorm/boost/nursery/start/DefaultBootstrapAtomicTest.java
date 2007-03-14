@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.start;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public class DefaultBootstrapAtomicTest extends TestCase {
+public class DefaultBootstrapAtomicTest extends BoooostCase {
     public void testAction() {
         Bootstrapper bootstrapper = new DefaultBootstrapper();
         try {

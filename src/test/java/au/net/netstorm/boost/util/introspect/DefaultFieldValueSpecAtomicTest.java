@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.introspect;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.Immutable;
-import junit.framework.TestCase;
 
-public class DefaultFieldValueSpecAtomicTest extends TestCase {
+public class DefaultFieldValueSpecAtomicTest extends BoooostCase {
     private static final String NAME_1 = "x";
     private static final String NAME_2 = "y";
     private static final Object VALUE_1 = new Object();

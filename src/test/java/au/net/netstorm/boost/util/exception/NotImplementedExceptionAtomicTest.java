@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.exception;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class NotImplementedExceptionAtomicTest extends TestCase {
+public final class NotImplementedExceptionAtomicTest extends BoooostCase {
 
     // FIX SC050 Tighten this up.
     public void testType() {

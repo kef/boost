@@ -4,11 +4,11 @@ import java.lang.reflect.Proxy;
 import java.rmi.Remote;
 import java.security.PrivateKey;
 import java.util.Collection;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
-public class DefaultClassMasterAtomicTest extends TestCase {
+public class DefaultClassMasterAtomicTest extends BoooostCase {
     private final ClassMaster master = new DefaultClassMaster();
 
     public void testGetShortNameByClass() {

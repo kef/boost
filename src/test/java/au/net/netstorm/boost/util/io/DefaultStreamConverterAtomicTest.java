@@ -2,9 +2,9 @@ package au.net.netstorm.boost.util.io;
 
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultStreamConverterAtomicTest extends TestCase {
+public final class DefaultStreamConverterAtomicTest extends BoooostCase {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
     private static final byte[] BYTE_ARRAY_1 = bytes("The bravery of being out of range.");
     private static final byte[] BYTE_ARRAY_2 = bytes("You deafen the canyon.");

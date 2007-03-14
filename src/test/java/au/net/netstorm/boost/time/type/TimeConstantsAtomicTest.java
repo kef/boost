@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.time.type;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
-import junit.framework.TestCase;
 
-public final class TimeConstantsAtomicTest extends TestCase {
+public final class TimeConstantsAtomicTest extends BoooostCase {
 
     // FIX SC600 Strengthen this to ensure constructor is private.
     public void testPrivateConstructor() {

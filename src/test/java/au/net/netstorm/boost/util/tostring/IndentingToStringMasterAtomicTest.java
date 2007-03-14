@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.util.tostring;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.separator.Separator;
-import junit.framework.TestCase;
 
 // NOTE: Currently doesn't handle graphs, so recursive loops will kill it.
 // FIX SC600.  Test nulls.
 
 // DEBT ClassDataAbstractionCoupling {
-public class IndentingToStringMasterAtomicTest extends TestCase {
+public class IndentingToStringMasterAtomicTest extends BoooostCase {
     private static final TestNoField NO_FIELDS = new TestNoField();
     private static final TestTwoFields TWO_FIELDS_2_4 = new TestTwoFields(2, 4);
     private static final TestTwoFields TWO_FIELDS_5_7 = new TestTwoFields(5, 7);
@@ -42,7 +42,7 @@ public class IndentingToStringMasterAtomicTest extends TestCase {
     }
 
     private String nullFieldResult() {
-        return "TestNullField[" +lfIndent("nullString=null") + lf("]");
+        return "TestNullField[" + lfIndent("nullString=null") + lf("]");
     }
 
     private String multipleNestedFieldResult() {

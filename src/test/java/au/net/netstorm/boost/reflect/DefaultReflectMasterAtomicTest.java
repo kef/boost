@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.reflect;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
 // FIX SC600 Reinstate tests.  Do not use JMock. Actually do use it now via new implicit mocking facilities.
-public class DefaultReflectMasterAtomicTest extends TestCase {
+public class DefaultReflectMasterAtomicTest extends BoooostCase {
 //    private static final MethodSpec METHOD_SPEC = new MethodSpec("booleanValue", new Class[]{});
 //    private static final FieldValueSpec[] FIELD_SPEC_ARRAY = new FieldValueSpec[]{new DefaultFieldValueSpec("name", "value")};
 

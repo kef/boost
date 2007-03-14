@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.primordial;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
@@ -12,11 +13,11 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.MockToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
-import junit.framework.TestCase;
 
 // FIX SC600 Looks like an integration test. Mock bits Primordial depends on.
+
 // DEBT ClassDataAbstractionCoupling {
-public final class PrimordialAtomicTest extends TestCase {
+public final class PrimordialAtomicTest extends BoooostCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 

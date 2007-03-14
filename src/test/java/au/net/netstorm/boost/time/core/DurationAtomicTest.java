@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.time.core;
 
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import junit.framework.Assert;
-import junit.framework.TestCase;
 
-public final class DurationAtomicTest extends TestCase {
+public final class DurationAtomicTest extends BoooostCase {
     public void testFields() {
         Assert.assertEquals(new Duration(1L), Duration.QUANTUM);
     }

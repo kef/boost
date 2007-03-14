@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DayInMonthAtomicTest extends TestCase {
+public final class DayInMonthAtomicTest extends BoooostCase {
     public void testNullsInvalidInConstructor() {
         try {
             new DayInMonth(0, null);
@@ -14,7 +14,7 @@ public final class DayInMonthAtomicTest extends TestCase {
         assertEquals(DayInMonth.FIRST_DAY_OF_YEAR, new DayInMonth(0, MonthOfYear.JANUARY));
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public void testIllegalDay() {
         assertIllegalDay(31, MonthOfYear.JANUARY);
         assertIllegalDay(29, MonthOfYear.FEBRUARY);

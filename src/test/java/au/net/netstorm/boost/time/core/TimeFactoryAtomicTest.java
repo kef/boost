@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
 // FIX SC511 This belongs in "edge".
 
 // FIX SC502 Wire into edge tests.
-public final class TimeFactoryAtomicTest extends TestCase {
+public final class TimeFactoryAtomicTest extends BoooostCase {
     public void testCreateRange() {
         // FIX SC777 ? More than just triangulation values - is this an integration test.
         checkCreateRange(DATE_RANGE_050_100, DATE_050, DATE_100);

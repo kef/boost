@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class HourOfDayAtomicTest extends TestCase {
+public final class HourOfDayAtomicTest extends BoooostCase {
     public void testHoursInDay() {
         assertEquals(24, HourOfDay.HOURS_IN_A_DAY);
     }

@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.pebble.inject.newer.field;
 
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
-public final class DefaultNewerFieldAtomicTest extends TestCase {
+public final class DefaultNewerFieldAtomicTest extends BoooostCase {
     private DataAtomTestChecker checker = new DataAtomTestChecker();
     private FieldSpec f1 = new DefaultFieldSpec("newerInterface", Interface.class);
     private FieldSpec f2 = new DefaultFieldSpec("instanceImplementation", Class.class);

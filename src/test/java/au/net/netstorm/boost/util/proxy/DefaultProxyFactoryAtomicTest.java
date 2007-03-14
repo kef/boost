@@ -2,11 +2,11 @@ package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.Map;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import junit.framework.TestCase;
 
-public final class DefaultProxyFactoryAtomicTest extends TestCase {
+public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private static final Interface TYPE_1 = new DefaultInterface(CharSequence.class);
     private static final Interface TYPE_2 = new DefaultInterface(Map.class);
     private static final Interface[] TYPES = {TYPE_1, TYPE_2};
