@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
+import java.util.Map;
 import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.BoooostCase;
@@ -11,6 +12,7 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
+    private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
     private final ExplicitResolver subject = new DefaultExplicitResolver();
 
     {
@@ -23,6 +25,13 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
     public void testResolve() {
         checkResolve(LAZY_BASTARD, LARRY);
         checkResolve(LEGEND, AN_DO);
+    }
+
+    public void testCannotResolve() {
+        try {
+            subject.resolve(NON_EXISTENT);
+            fail();
+        } catch (IllegalStateException expected) { }
     }
 
     public void testMustBeInterface() {
