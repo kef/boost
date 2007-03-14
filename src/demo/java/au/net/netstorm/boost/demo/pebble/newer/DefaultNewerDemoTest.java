@@ -9,13 +9,13 @@ public final class DefaultNewerDemoTest extends TestCase {
     private final PebbleProvider pebbleProvider = pebbleProviderAssembler.assemble();
 
     public void testRecursiveNewerInjection() {
+        // FIX BREADCRUMB 1715 -1000000 This is the time for us to work out how to signify we want a field which is NULL.
         Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
-        rob.checkNewerHasBeenPopulated();
-        checkNewersRecurse(rob);
+        Bob bob = rob.getBob();
+        checkNewersRecurse(bob);
     }
 
-    private void checkNewersRecurse(Rob rob) {
-        Bob bob = rob.getBob();
+    private void checkNewersRecurse(Bob bob) {
         NewHeadJob newJobNewer = bob.getNewHeadJob();
         checkCreatedRecursively(newJobNewer);
     }

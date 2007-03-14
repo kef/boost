@@ -51,8 +51,8 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
     private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProvider pebbleProvider, Instantiator instantiator) {
         Injector newerProxyInjector = assembleNewerInjector(proxyFactory, pebbleProvider, instantiator);
         Injector resolverInjector = assembleResolverInjector(pebbleProvider);
-        // FIX 1715 Put some stitches in this 
-        return new PebbleInjector(newerProxyInjector, newerProxyInjector); // FIX 1715 Cheat until we stitch in resolver injector.
+        // FIX 1715 Put some stitches in this...
+        return new PebbleInjector(newerProxyInjector, resolverInjector); // FIX 1715 Cheat until we stitch in resolver injector.
     }
 
     private ResolverInjector assembleResolverInjector(PebbleProvider pebbleProvider) {
