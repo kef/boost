@@ -19,9 +19,17 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostTestCase {
     }
 
     // FIX 1715 Fail if iface is not an interface.
+
     public void testResolve() {
         checkResolve(LAZY_BASTARD, LARRY);
         checkResolve(LEGEND, AN_DO);
+    }
+
+    public void testMustBeInterface() {
+        try {
+            resolver.add(LARRY, LARRY);
+            fail();
+        } catch (IllegalArgumentException expected) { }
     }
 
     private void checkResolve(Class iface, Class impl) {
