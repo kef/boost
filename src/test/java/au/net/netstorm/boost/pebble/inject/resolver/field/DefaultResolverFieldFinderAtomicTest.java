@@ -7,6 +7,7 @@ public final class DefaultResolverFieldFinderAtomicTest extends BoooostTestCase 
 
     // FIX 1715 Complete this test.
     // FIX 1715 Ensure we get only two fields from the field finder.
+    // FIX 1715 Check the others did not get modified.
     public void testSubject() {
         subject = new DefaultResolverFieldFinder();
     }
