@@ -10,7 +10,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
     private Instantiator instantiator;
     private Injector injector;
 
-    public DefaultPebbleProvider(Onion onion, Injector injector, Instantiator instantiator) {
+    public DefaultPebbleProvider(Onion onion, Injector injector, Instantiator instantiator, Instantiator gaijinator) {
         this.onion = onion;
         this.injector = injector;
         this.instantiator = instantiator;
@@ -21,4 +21,15 @@ public final class DefaultPebbleProvider implements PebbleProvider {
         injector.inject(ref); // FIX 1715 Pass in type (later).
         return onion.onionise(ref);
     }
+
+    // FIX 1715 Remove when done.
+/*
+    if (gaijin(type)) {
+        return gaijiniator.instantiate(type, parameters);
+    } else {
+        Object ref = instantiator.instantiate(type, parameters);
+        injector.inject(ref); // FIX 1715 Pass in type (later).
+        return onion.onionise(ref);
+    }
+*/
 }
