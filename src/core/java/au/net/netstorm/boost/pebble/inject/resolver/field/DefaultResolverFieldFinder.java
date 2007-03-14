@@ -13,7 +13,6 @@ public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final EdgeField fielder = new DefaultEdgeField();
 
-    // FIX 1715 Tidy this rot up.  Too complex.
     public Field[] find(Object ref) {
         Field[] fields = getDeclaredFields(ref);
         List result = find(ref, fields);
