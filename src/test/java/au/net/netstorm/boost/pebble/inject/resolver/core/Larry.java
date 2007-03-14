@@ -1,4 +1,6 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
-final class Larry implements LazyBastard {
+import au.net.netstorm.boost.primordial.Primordial;
+
+final class Larry extends Primordial implements LazyBastard {
 }

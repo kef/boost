@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.nullo;
 
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultNullMasterAtomicTest extends BoooostTestCase {
+public final class DefaultNullMasterAtomicTest extends BoooostCase {
     private NullMaster nullMaster = new DefaultNullMaster();
 
     public void testNullMessageIsOk() {

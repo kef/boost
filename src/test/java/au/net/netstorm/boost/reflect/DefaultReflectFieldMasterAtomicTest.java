@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 // DEBT ClassDataAbstractionCoupling {
-public class DefaultReflectFieldMasterAtomicTest extends BoooostTestCase {
+public class DefaultReflectFieldMasterAtomicTest extends BoooostCase {
     private static final FieldValueSpec[] NO_FIELDS = new FieldValueSpec[0];
     private static final String FIELD_VALUE_1 = "REFACTORING IS THE MOST IMPORTANT THING YOU COULD BE DOING";
     private static final String FIELD_VALUE_2 = "TEAR DOWN THE BARRIERS TO ADHOC PAIRING";

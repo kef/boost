@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-public class AllTestSuite extends BoooostTestCase {
+public class AllTestSuite extends BoooostCase {
     public static Test suite() {
         TestSuite suite = new TestSuite("The Whole Box and Dice");
         suite.addTest(AtomicTestSuite.suite());

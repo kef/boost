@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 // FIX SC600 Check no-arg (single) constructor.
 
 // FIX SC600 Redefine setUp() to setup() which does not throw an exception.
-public abstract class BoooostTestCase extends TestCase {
+public abstract class BoooostCase extends TestCase {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
     public final void assertEquals(Object[] expected, Object[] actual) {

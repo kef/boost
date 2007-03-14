@@ -3,11 +3,11 @@ package au.net.netstorm.boost.pebble.type;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultImplementationAtomicTest extends BoooostTestCase {
+public final class DefaultImplementationAtomicTest extends BoooostCase {
     private static final Class[] STRING_INTERFACES = {CharSequence.class, Comparable.class, Serializable.class,};
     private static final Class[] HASH_MAP_INTERFACES = {Cloneable.class, Map.class, Serializable.class};
     // FIX 1715 Ensure it extends Primordial.  Or check two the same are equal.

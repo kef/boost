@@ -3,11 +3,11 @@ package au.net.netstorm.boost.pebble.inject.newer.field;
 import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.pebble.inject.newer.core.DoesNotImplementNewerException;
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultNewerFieldFinderAtomicTest extends BoooostTestCase {
+public final class DefaultNewerFieldFinderAtomicTest extends BoooostCase {
     private NewerFieldFinder subject = new DefaultNewerFieldFinder();
     private Fred object = new Fred();
     private FredWithBrokenNewer objectWithBrokenNewer = new FredWithBrokenNewer();

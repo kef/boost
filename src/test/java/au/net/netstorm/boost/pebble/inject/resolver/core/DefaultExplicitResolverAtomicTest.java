@@ -2,11 +2,11 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 
 import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultExplicitResolverAtomicTest extends BoooostTestCase {
+public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
     private static final Class LAZY_BASTARD = LazyBastard.class;
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;

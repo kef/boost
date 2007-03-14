@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.test.automock.BoooostTestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
 // FIX SC600 BREADCRUMB Rename DataDemoTest to DataDemoTestCase.  Rename to DataAtomScenarioTest.
 
 // FIX SC600 BREADCRUMB Complete this.
-public class DataAtomTestCase extends BoooostTestCase implements DataAtomTester {
+public class DataAtomTestCase extends BoooostCase implements DataAtomTester {
     public void checkAtom(Object field1) {
         Object[] fields = {field1};
         checkAtom(fields);

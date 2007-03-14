@@ -3,16 +3,18 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultFieldResolverAtomicTest extends TestCase {
+public final class DefaultFieldResolverAtomicTest extends BoooostCase {
     private final FieldResolver subject = new DefaultFieldResolver();
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Field field = classer.getDeclaredField(JuicyPebble.class, "someOneIKnow");
+    private final LazyBastard lazareetus = new Larry();
 
     public void testResolve() {
         // FIX BREADCRUMB 1715 Complete me.
         Object resolved = subject.resolve(field);
+//        assertEquals(lazareetus, resolved);
     }
 
     // FIX 1715 Use this as a guide.
