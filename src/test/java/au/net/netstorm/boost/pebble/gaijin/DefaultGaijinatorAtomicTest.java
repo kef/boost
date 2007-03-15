@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.pebble.gaijin;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class DefaultGaijinatorAtomicTest extends TestCase {
+public final class DefaultGaijinatorAtomicTest extends BoooostCase {
 
     public void testGaijin() {
-        // FIX BREADCRUMB 1715 Back here.
+        // FIX BREADCRUMB 1757 Back here.
     }
 }

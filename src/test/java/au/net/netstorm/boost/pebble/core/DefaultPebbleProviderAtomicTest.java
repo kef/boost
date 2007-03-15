@@ -15,7 +15,7 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private MockExpectations expect;
     private Onion onion;
     private Instantiator pebblator;
-    private Gaijinator gaijinator; // FIX 1715 Drive up a DefaultGaijinator.
+    private Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     private Injector injector;
     private Object[] parameters = {"Hi", "There"};
     private Class type = String.class;
@@ -35,7 +35,7 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
         assertEquals(wrappedRef, result);
     }
 
-    // FIX BREADCRUMB 1715 Reinstate?
+    // FIX BREADCRUMB 1757 Reinstate?
 //    public void testGaijinProvider() {
 //        expect.oneCall(gaijinator, rawRef, "instantiate", type, NO_PARAMS);
 //        subject.provide(Barbarian.class, NO_PARAMS);

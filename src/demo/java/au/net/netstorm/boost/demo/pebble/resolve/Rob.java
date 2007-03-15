@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-import java.util.Set;
-
 final class Rob {
-    Set set;
+    // FIX 1757 Reinstate this as a gaijin.
+    //    Set set;
+    private TheDude theDude;
 
-    public Set getSet() {
-        return set;
+    public TheDude getTheDude() {
+        return theDude;
     }
 }
