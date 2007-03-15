@@ -6,6 +6,7 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 1715 Fail if an interface is passed in.
 public final class DefaultImplementation extends Primordial implements Implementation {
     private final Interface[] types;
     private final Class impl;

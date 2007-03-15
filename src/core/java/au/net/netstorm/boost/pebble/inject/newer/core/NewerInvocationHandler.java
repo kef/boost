@@ -2,13 +2,13 @@ package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 
 public final class NewerInvocationHandler implements InvocationHandler {
-    private PebbleProvider pebbleProvider;
+    private PebbleProviderEngine pebbleProvider;
     private Class implClass;
 
-    public NewerInvocationHandler(PebbleProvider pebbleProvider, Class implClass) {
+    public NewerInvocationHandler(PebbleProviderEngine pebbleProvider, Class implClass) {
         this.pebbleProvider = pebbleProvider;
         this.implClass = implClass;
     }

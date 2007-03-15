@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
 import au.net.netstorm.boost.demo.pebble.core.PebbleGraph;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.Resolver;
 import junit.framework.TestCase;
@@ -11,7 +11,7 @@ public final class DefaultNewerDemoTest extends TestCase {
     private final Resolver resolver = new DefaultExplicitResolver();
     private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(resolver);
     private final PebbleGraph pebbleGraph = pebbleProviderAssembler.assemble();
-    private final PebbleProvider pebbleProvider = pebbleGraph.getProvider();
+    private final PebbleProviderEngine pebbleProvider = pebbleGraph.getProvider();
 
     public void testRecursiveNewerInjection() {
         Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);

@@ -3,7 +3,7 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
@@ -19,7 +19,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     private Interface iface = new DefaultInterface(HappyChap.class);
     private MockExpectations expect;
     private Resolver resolver;
-    private PebbleProvider provider;
+    private PebbleProviderEngine provider;
     private Implementation implementation;
 
     public void setupSubjects() {

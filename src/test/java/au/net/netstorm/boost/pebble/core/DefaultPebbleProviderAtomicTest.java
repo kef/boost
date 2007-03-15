@@ -11,7 +11,7 @@ import au.net.netstorm.boost.test.automock.MockExpectations;
 
 public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private static final Object[] NO_PARAMS = new Object[]{};
-    private PebbleProvider subject;
+    private PebbleProviderEngine subject;
     private MockExpectations expect;
     private Onion onion;
     private Instantiator pebblator;

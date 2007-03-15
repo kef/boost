@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
-import junit.framework.TestCase;
+import au.net.netstorm.boost.test.automock.BoooostCase;
 
-public final class UnresolvedDependencyExceptionAtomicTest extends TestCase {
+// FIX 1715 Stitch in.
+public final class UnresolvedDependencyExceptionAtomicTest extends BoooostCase {
 
     public void testException() {
         // FIX 1715 Complete.

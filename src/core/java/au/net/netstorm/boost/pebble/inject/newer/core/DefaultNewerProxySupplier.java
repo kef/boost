@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
@@ -9,9 +9,9 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultNewerProxySupplier implements NewerProxySupplier {
     private ProxyFactory proxyFactory;
     private Instantiator instantiator;
-    private PebbleProvider pebbleProvider;
+    private PebbleProviderEngine pebbleProvider;
 
-    public DefaultNewerProxySupplier(ProxyFactory proxyFactory, PebbleProvider pebbleProvider,
+    public DefaultNewerProxySupplier(ProxyFactory proxyFactory, PebbleProviderEngine pebbleProvider,
             Instantiator instantiator) {
         this.pebbleProvider = pebbleProvider;
         this.proxyFactory = proxyFactory;

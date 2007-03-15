@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.Random;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
@@ -16,7 +16,7 @@ public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCa
     private Class instanceImplementation = Random.class;
     private ProxyFactory proxyFactory;
     private Object newerProxy = new Object();
-    private PebbleProvider pebbleProvider;
+    private PebbleProviderEngine pebbleProvider;
     private InvocationHandler invocationHandler;
     private Instantiator instantiator;
 
