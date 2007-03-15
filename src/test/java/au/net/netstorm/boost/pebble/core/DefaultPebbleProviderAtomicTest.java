@@ -14,12 +14,10 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private Object provided;
     private Implementation implementation = new DefaultImplementation(SmoothRock.class);
 
-    // FIX 1715 Expect field into interaction test case.
-    // FIX BREADCRUMB 1715 Complete this.
     public void testMapping() {
         expect.oneCall(engine, provided, "provider", implementation, PARAMETERS);
         Object result = subject.provide(SmoothRock.class, PARAMETERS);
-        // FIX 1715 Test return value.
+        assertEquals(provided, result);
     }
 
     public void setupSubjects() {
