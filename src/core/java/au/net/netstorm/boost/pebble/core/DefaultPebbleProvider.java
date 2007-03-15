@@ -12,6 +12,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
 
     public Object provide(Class type, Object[] parameters) {
         Implementation implementation = new DefaultImplementation(type);
-        return engine.provider(implementation, parameters);
+        engine.provider(implementation, parameters);
+        return null; // FIX 1715 This is broken.
     }
 }
