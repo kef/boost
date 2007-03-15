@@ -9,7 +9,7 @@ import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 
-public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
+public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTestCase {
     private static final Object[] NO_PARAMS = new Object[]{};
     private PebbleProviderEngine subject;
     private MockExpectations expect;
