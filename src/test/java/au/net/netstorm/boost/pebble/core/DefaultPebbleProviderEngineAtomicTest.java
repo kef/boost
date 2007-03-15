@@ -18,7 +18,7 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
     private Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     private Injector injector;
     private Object[] parameters = {"Hi", "There"};
-    private Class type = String.class;
+    private Implementation implementation;
     private Object rawRef = new Object();
     private Object wrappedRef = new Object();
     private Implementation gaijin = new DefaultImplementation(Barbarian.class);
@@ -28,10 +28,10 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
     }
 
     public void testPebbleProvider() {
-        expect.oneCall(pebblator, rawRef, "instantiate", type, parameters);
+        expect.oneCall(pebblator, rawRef, "instantiate", implementation, parameters);
         expect.oneCall(injector, VOID, "inject", rawRef);
         expect.oneCall(onion, wrappedRef, "onionise", rawRef);
-        Object result = subject.provide(type, parameters);
+        Object result = subject.provide(implementation, parameters);
         assertEquals(wrappedRef, result);
     }
 

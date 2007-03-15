@@ -7,6 +7,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerField;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
+import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class NewerProxyInjector implements Injector {
@@ -29,7 +30,7 @@ public final class NewerProxyInjector implements Injector {
 
     private void inject(Object ref, NewerField field) {
         Interface newerInterface = field.getNewerInterface();
-        Class instanceImplementation = field.getInstanceImplementation();
+        Implementation instanceImplementation = field.getInstanceImplementation();
         Object proxy = proxySupplier.nu(newerInterface, instanceImplementation);
         inject(ref, proxy, field);
     }

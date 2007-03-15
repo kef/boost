@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
+import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
@@ -11,7 +12,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
-    private static final Class IMPLEMENTATION = VeryHappyChap.class;
+    private static final Implementation IMPLEMENTATION = new DefaultImplementation(VeryHappyChap.class);
     private static final VeryHappyChap INSTANCE = new VeryHappyChap();
     private FieldResolver subject;
     private final EdgeClass classer = new DefaultEdgeClass();
@@ -20,15 +21,13 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     private MockExpectations expect;
     private Resolver resolver;
     private PebbleProviderEngine provider;
-    private Implementation implementation;
 
     public void setupSubjects() {
         subject = new DefaultFieldResolver(resolver, provider);
     }
 
     public void testResolve() {
-        expect.oneCall(resolver, implementation, "resolve", iface);
-        expect.oneCall(implementation, IMPLEMENTATION, "getImpl");
+        expect.oneCall(resolver, IMPLEMENTATION, "resolve", iface);
         expect.oneCall(provider, INSTANCE, "provide", IMPLEMENTATION, new Object[]{});
         Object result = subject.resolve(field);
         assertEquals(INSTANCE, result);

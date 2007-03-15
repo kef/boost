@@ -3,6 +3,8 @@ package au.net.netstorm.boost.pebble.inject.newer.field;
 import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.pebble.inject.newer.core.DoesNotImplementNewerException;
+import au.net.netstorm.boost.pebble.type.DefaultImplementation;
+import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
@@ -34,7 +36,8 @@ public final class DefaultNewerFieldFinderAtomicTest extends BoooostCase {
 
     private void addNewerField(List result, Class newerInterface, Class instanceImplementation, String fieldName) {
         Interface iface = new DefaultInterface(newerInterface);
-        NewerField tedNewerField = new DefaultNewerField(iface, instanceImplementation, fieldName);
+        Implementation implementation = new DefaultImplementation(instanceImplementation);
+        NewerField tedNewerField = new DefaultNewerField(iface, implementation, fieldName);
         result.add(tedNewerField);
     }
 }

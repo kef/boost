@@ -8,10 +8,14 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.newer.core.DoesNotImplementNewerException;
 import au.net.netstorm.boost.pebble.inject.newer.core.Newer;
+import au.net.netstorm.boost.pebble.type.DefaultImplementation;
+import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1665 Do we use this any more.  Yes.  Rename and tidy up
+
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     private static final Class NEWER_MARKER_INTERFACE = Newer.class;
     // FIX 1665 Should be passed in via the constructor.
@@ -36,15 +40,16 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     private NewerField doGetNewer(Field field, Object ref) {
         Class newerCls = field.getType();
         Interface newerType = new DefaultInterface(newerCls);
-        Class newedImpl = getClassToNew(newerCls, ref);
+        Implementation newedImpl = getImplementationToNew(newerCls, ref);
         String fieldName = field.getName();
         return new DefaultNewerField(newerType, newedImpl, fieldName);
     }
 
-    private Class getClassToNew(Class newerType, Object ref) {
+    private Implementation getImplementationToNew(Class newerType, Object ref) {
         Field implField = edgeClass.getDeclaredField(newerType, "IMPLEMENTATION");
         implField.setAccessible(true);
-        return (Class) edgeField.get(implField, ref);
+        Class cls = (Class) edgeField.get(implField, ref);
+        return new DefaultImplementation(cls);
     }
 
     private void checkImplementsMarker(Field field) {
@@ -70,3 +75,4 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
         return Modifier.isFinal(modifiers);
     }
 }
+// } DEBT ClassDataAbstractionCoupling

@@ -1,14 +1,15 @@
 package au.net.netstorm.boost.pebble.inject.newer.field;
 
+import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerField extends Primordial implements NewerField {
     private Interface newerInterface;
-    private Class instanceImplementation;
+    private Implementation instanceImplementation;
     private String fieldName;
 
-    public DefaultNewerField(Interface newerInterface, Class instanceImplementation, String fieldName) {
+    public DefaultNewerField(Interface newerInterface, Implementation instanceImplementation, String fieldName) {
         this.newerInterface = newerInterface;
         this.instanceImplementation = instanceImplementation;
         this.fieldName = fieldName;
@@ -19,7 +20,7 @@ public final class DefaultNewerField extends Primordial implements NewerField {
         return newerInterface;
     }
 
-    public Class getInstanceImplementation() {
+    public Implementation getInstanceImplementation() {
         return instanceImplementation;
     }
 
@@ -28,11 +29,8 @@ public final class DefaultNewerField extends Primordial implements NewerField {
     }
 
     private void validate() {
-        if (newerInterface == null)
-            throw new IllegalArgumentException();
-        if (instanceImplementation == null)
-            throw new IllegalArgumentException();
-        if (fieldName == null)
-            throw new IllegalArgumentException();
+        if (newerInterface == null) throw new IllegalArgumentException();
+        if (instanceImplementation == null) throw new IllegalArgumentException();
+        if (fieldName == null) throw new IllegalArgumentException();
     }
 }

@@ -28,8 +28,7 @@ public final class DefaultFieldResolver implements FieldResolver {
 
     private Object create(Implementation implementation) {
         Object[] parameters = {};
-        Class impl = implementation.getImpl();
-        return provider.provide(impl, parameters);
+        return provider.provide(implementation, parameters);
     }
 
     private Interface getInterface(Field field) {
