@@ -17,7 +17,6 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
         this.instantiator = instantiator;
     }
 
-    // FIX 1715 Pass in Implementation.
     public Object provide(Implementation impl, Object[] parameters) {
         Object ref = instantiator.instantiate(impl, parameters);
         injector.inject(ref); // FIX 1757 Pass in type (later).

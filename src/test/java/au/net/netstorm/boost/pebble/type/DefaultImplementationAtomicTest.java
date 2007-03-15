@@ -20,6 +20,13 @@ public final class DefaultImplementationAtomicTest extends BoooostCase {
         checkImplementation(HashMap.class, HASH_MAP_INTERFACES);
     }
 
+    public void testFailsIfInterface() {
+        try {
+            new DefaultImplementation(YoInterface.class);
+            fail();
+        } catch (IllegalArgumentException expected) { }
+    }
+
     public void testPrimordial() {
         classer.checkSubclassOf(DefaultImplementation.class, Primordial.class);
     }
