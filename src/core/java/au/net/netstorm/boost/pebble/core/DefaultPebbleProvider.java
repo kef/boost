@@ -16,6 +16,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
         this.instantiator = instantiator;
     }
 
+    // FIX 1715 Pass in Implementation.
     public Object provide(Class type, Object[] parameters) {
         Object ref = instantiator.instantiate(type, parameters);
         injector.inject(ref); // FIX 1715 Pass in type (later).
@@ -23,6 +24,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
     }
 
     // FIX 1715 Remove when done.
+    // FIX BREADCRUMB 1715 !!!!!!!! We probably want to onionise the Gaijins.
 /*
     if (gaijin(type)) {
         return gaijiniator.instantiate(type, parameters);

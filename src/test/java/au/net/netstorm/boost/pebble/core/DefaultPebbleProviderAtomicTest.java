@@ -1,8 +1,11 @@
 package au.net.netstorm.boost.pebble.core;
 
+import java.util.HashSet;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
+import au.net.netstorm.boost.pebble.type.DefaultImplementation;
+import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 
@@ -12,12 +15,14 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private MockExpectations expect;
     private Onion onion;
     private Instantiator pebblator;
-    private Instantiator gaijinator;
+    private Gaijinator gaijinator; // FIX 1715 Drive up a DefaultGaijin.
     private Injector injector;
     private Object[] parameters = {"Hi", "There"};
     private Class type = String.class;
     private Object rawRef = new Object();
     private Object wrappedRef = new Object();
+    private Implementation gaijin = new DefaultImplementation(HashSet.class);
+    private Implementation[] gaijins = {gaijin};
 
     public void setupSubjects() {
         subject = new DefaultPebbleProvider(onion, injector, pebblator, gaijinator);
@@ -31,7 +36,11 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
         assertEquals(wrappedRef, result);
     }
 
-//    public void testGaijin() {
-//        subject.provide(HashSet.class, NO_PARAMS);
-//    }
+    // FIX BREADCRUMB 1715 Reinstate.
+/*
+    public void testGaijin() {
+        expect.oneCall(gaijinator, rawRef, "instantiate", type, NO_PARAMS);
+        subject.provide(HashSet.class, NO_PARAMS);
+    }
+*/
 }
