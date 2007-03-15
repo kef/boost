@@ -4,6 +4,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
     public DefaultPebbleProvider(PebbleProviderEngine engine) {
     }
 
-    public void provide(Class type, Object[] parameters) {
+    public Object provide(Class type, Object[] parameters) {
+        return null;
     }
 }
