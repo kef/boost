@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
+import au.net.netstorm.boost.demo.pebble.core.DefaultPebbleGraph;
+import au.net.netstorm.boost.demo.pebble.core.PebbleGraph;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.pebble.core.DefaultPebbleProvider;
@@ -36,7 +38,7 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
         this.resolver = resolver;
     }
 
-    public PebbleProvider assemble() {
+    public PebbleGraph assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         PebbleProvider passThroughPebbleProvider = (PebbleProvider) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
@@ -44,7 +46,7 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
         Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator);
         PebbleProvider pebbleProvider = assembleProvider(objectInjector, instantiator);
         passThrough.setDelegate(pebbleProvider);
-        return pebbleProvider;
+        return new DefaultPebbleGraph(pebbleProvider, objectInjector);
     }
 
     // FIX 1715 Publicise some of these methods.

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.demo.pebble.core.PebbleGraph;
 
 public interface PebbleProviderAssembler {
-    PebbleProvider assemble();
+    PebbleGraph assemble();
 }
