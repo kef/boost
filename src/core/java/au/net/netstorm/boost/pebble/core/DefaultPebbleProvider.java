@@ -10,7 +10,7 @@ public final class DefaultPebbleProvider implements PebbleProvider {
     private Instantiator instantiator;
     private Injector injector;
 
-    public DefaultPebbleProvider(Onion onion, Injector injector, Instantiator instantiator, Instantiator gaijinator) {
+    public DefaultPebbleProvider(Onion onion, Injector injector, Instantiator instantiator) {
         this.onion = onion;
         this.injector = injector;
         this.instantiator = instantiator;

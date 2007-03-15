@@ -49,7 +49,6 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
         return new DefaultPebbleGraph(pebbleProvider, objectInjector);
     }
 
-    // FIX 1715 Publicise some of these methods.
     private ProxyFactory assembleProxyFactory() {
         ProxySupplier proxySupplier = new DefaultProxySupplier();
         return new DefaultProxyFactory(proxySupplier);
@@ -75,7 +74,7 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
 
     private PebbleProvider assembleProvider(Injector injector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
-        return new DefaultPebbleProvider(onion, injector, instantiator, null); // FIX 1757 Null sucks.
+        return new DefaultPebbleProvider(onion, injector, instantiator);
     }
     /*
       , ; ,   .-'"""'-.   , ; ,

@@ -24,7 +24,7 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private Implementation gaijin = new DefaultImplementation(Barbarian.class);
 
     public void setupSubjects() {
-        subject = new DefaultPebbleProvider(onion, injector, pebblator, gaijinator);
+        subject = new DefaultPebbleProvider(onion, injector, pebblator);
     }
 
     public void testPebbleProvider() {

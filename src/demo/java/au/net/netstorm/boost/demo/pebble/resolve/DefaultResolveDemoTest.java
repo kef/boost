@@ -22,8 +22,7 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     // FIX 1757 When you see the HashSet must have a single constructor ... remember Pebble as a marker interface.
 
     public void testResolve() {
-        // FIX BREADCRUMB 1715 Acceptance test for this card.
-        // FIX 1715 provide -> Pebblise.
+        // FIX 1715 provide must implement -> Pebblise (make configurable).
         Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
         TheDude result = rob.getTheDude();
         assertNotNull(result);
