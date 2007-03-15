@@ -6,6 +6,14 @@ import au.net.netstorm.boost.test.automock.BoooostCase;
 
 // FIX SC600 BREADCRUMB Complete this.
 public class DataAtomTestCase extends BoooostCase implements DataAtomTester {
+
+    protected final void setup() {
+        // FIX SC600 BREADCRUMB Delegate to populate fields using getDeclaredFields() which excludes inherited ones :-)
+        // FIX SC600 Populate each of the subclasses fields using TriangulationProvider.
+        // FIX SC600 Use the populated fields values to correlate with checkAtom(...) parameters.
+        // FIX SC600 Perform and fail on fields not being Data/Immutable.
+    }
+
     public void checkAtom(Object field1) {
         Object[] fields = {field1};
         checkAtom(fields);
@@ -30,12 +38,5 @@ public class DataAtomTestCase extends BoooostCase implements DataAtomTester {
         // FIX SC600 BREADCRUMB DELEGATE To SUPPORTING DUDE.
         // FIX SC600 Use field name to obtain bean property name.
         // FIX SC600 BREADCRUMB Complete.
-    }
-
-    protected final void setUp() throws Exception {
-        // FIX SC600 BREADCRUMB Delegate to populate fields using getDeclaredFields() which excludes inherited ones :-)
-        // FIX SC600 Populate each of the subclasses fields using TriangulationProvider.
-        // FIX SC600 Use the populated fields values to correlate with checkAtom(...) parameters.
-        // FIX SC600 Perform and fail on fields not being Data/Immutable.
     }
 }

@@ -13,9 +13,24 @@ import junit.framework.TestCase;
 
 // OK GenericIllegalRegexp {
 public abstract class BoooostCase extends TestCase {
-// } OK GenericIllegalRegexp
-
+    // } OK GenericIllegalRegexp
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
+
+    protected final void setUp() throws Exception {
+        super.setUp();
+        setup();
+    }
+
+    protected final void tearDown() throws Exception {
+        teardown();
+        super.tearDown();
+    }
+
+    protected void setup() {
+    }
+
+    protected void teardown() {
+    }
 
     public final void assertEquals(Object[] expected, Object[] actual) {
         assertTestChecker.checkEquals(expected, actual);
