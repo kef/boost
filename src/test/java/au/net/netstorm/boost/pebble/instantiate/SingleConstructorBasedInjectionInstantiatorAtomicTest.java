@@ -12,13 +12,12 @@ public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends
         checkInstantiate("There");
     }
 
-    // FIX 1715 TestObject is just so 1990s.
     private void checkInstantiate(String parameter) {
-        Class type = TestObject.class;
+        Class type = TestObjectimoto.class;
         Object[] parameters = {parameter};
         Implementation implementation = new DefaultImplementation(type);
         Object ref = instantiator.instantiate(implementation, parameters);
-        TestObject expected = new TestObject(parameter);
+        TestObjectimoto expected = new TestObjectimoto(parameter);
         assertEquals(expected, ref);
     }
 }

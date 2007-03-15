@@ -23,7 +23,6 @@ public final class DefaultResolveDemoTest extends BoooostCase {
 
     public void testResolve() {
         // FIX 1715 provide must implement -> Pebblise (make configurable).
-        // FIX 1715 PebbleProvider -> PebbleProviderEngine which takes Implementation.  Front with PebbleProvider.
         Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
         TheDude result = rob.getTheDude();
         assertNotNull(result);
