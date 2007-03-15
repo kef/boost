@@ -13,9 +13,11 @@
             <fileset dir="${core.class.dir}" includes="**"/>
             <fileset dir="${edge.class.dir}" includes="**"/>
             <fileset dir="${test.class.dir}" includes="**"/>
+            <fileset dir="${demo.class.dir}" includes="**"/>
             <fileset dir="${core.src.dir}" includes="**"/>
             <fileset dir="${edge.src.dir}" includes="**"/>
             <fileset dir="${test.src.dir}" includes="**"/>
+            <fileset dir="${demo.src.dir}" includes="**"/>
         </jar>
     </target>
 </project>
