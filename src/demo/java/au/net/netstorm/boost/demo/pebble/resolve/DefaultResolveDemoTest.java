@@ -8,6 +8,7 @@ import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitResolver
 import au.net.netstorm.boost.pebble.inject.resolver.core.ExplicitResolver;
 import au.net.netstorm.boost.test.automock.BoooostCase;
 
+// FIX 1715 LAST Make sure all work resides in correct packages.
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final ExplicitResolver resolver = new DefaultExplicitResolver();

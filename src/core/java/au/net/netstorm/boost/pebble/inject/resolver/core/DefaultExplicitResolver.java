@@ -12,8 +12,7 @@ public final class DefaultExplicitResolver implements ExplicitResolver {
 
     public Implementation resolve(Interface type) {
         Class cls = (Class) map.get(type);
-        // FIX 1715 Throw a not resolved exception.
-        if (cls == null) throw new IllegalStateException("Cannot resolve " + type);
+        if (cls == null) throw new UnresolvedDependencyException(type);
         return new DefaultImplementation(cls);
     }
 

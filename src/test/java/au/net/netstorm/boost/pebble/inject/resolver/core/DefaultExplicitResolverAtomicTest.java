@@ -29,7 +29,7 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
         try {
             subject.resolve(NON_EXISTENT);
             fail();
-        } catch (IllegalStateException expected) { }
+        } catch (UnresolvedDependencyException expected) { }
     }
 
     public void testMustBeInterface() {

@@ -7,4 +7,6 @@ public interface Implementation extends Data {
     Interface[] getTypes();
 
     Class getImpl();
+
+    boolean is(Class cls);
 }

@@ -18,6 +18,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     }
 
     public Object provide(Implementation impl, Object[] parameters) {
+//        if (!impl.instanceOf(marker)) throw new IllegalStateException("Not a pebble");
         Object ref = instantiator.instantiate(impl, parameters);
         injector.inject(ref); // FIX 1757 Pass in type (later).
         return onion.onionise(ref);
@@ -25,6 +26,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
 
     // FIX 1757 Remove when done.
     // FIX BREADCRUMB 1757 !!!!!!!! We probably want to onionise the Gaijins.
+    // FIX 1757 Pebble provider should remain pure.  Front-end.
 /*
     if (gaijin(type)) {
         return gaijiniator.instantiate(type, parameters);

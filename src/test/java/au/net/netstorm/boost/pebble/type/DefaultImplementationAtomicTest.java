@@ -27,6 +27,17 @@ public final class DefaultImplementationAtomicTest extends BoooostCase {
         } catch (IllegalArgumentException expected) { }
     }
 
+    public void testIs() {
+        Implementation implementation = new DefaultImplementation(String.class);
+        checkIs(true, implementation, Comparable.class);
+        checkIs(false, implementation, Map.class);
+    }
+
+    private void checkIs(boolean expected, Implementation implementation, Class cls) {
+        boolean actual = implementation.is(cls);
+        assertEquals(expected, actual);
+    }
+
     public void testPrimordial() {
         classer.checkSubclassOf(DefaultImplementation.class, Primordial.class);
     }

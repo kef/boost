@@ -24,6 +24,14 @@ public final class DefaultImplementation extends Primordial implements Implement
         return impl;
     }
 
+    public boolean is(Class cls) {
+        Interface iFace = new DefaultInterface(cls);
+        for (int i = 0; i < types.length; i++) {
+            if (iFace.equals(types[i])) return true;
+        }
+        return false;
+    }
+
     private Interface[] buildInterfaces() {
         Class[] ifaces = impl.getInterfaces();
         List result = new ArrayList();
