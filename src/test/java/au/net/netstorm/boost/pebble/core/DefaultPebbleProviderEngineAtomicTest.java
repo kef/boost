@@ -8,8 +8,11 @@ import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockExpectations;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTestCase {
+    private static final Interface PEBBLE = new DefaultInterface(Pebble.class);
     private static final Object[] NO_PARAMS = new Object[]{};
     private PebbleProviderEngine subject;
     private MockExpectations expect;
@@ -18,20 +21,20 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
     private Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     private Injector injector;
     private Object[] parameters = {"Hi", "There"};
-    private Implementation implementation;
+    private Implementation pebble;
     private Object rawRef = new Object();
     private Object wrappedRef = new Object();
     private Implementation gaijin = new DefaultImplementation(Barbarian.class);
 
     public void setupSubjects() {
-        subject = new DefaultPebbleProviderEngine(onion, injector, pebblator);
+        subject = new DefaultPebbleProviderEngine(PEBBLE, onion, injector, pebblator);
     }
 
     public void testPebbleProvider() {
-        expect.oneCall(pebblator, rawRef, "instantiate", implementation, parameters);
+        expect.oneCall(pebblator, rawRef, "instantiate", pebble, parameters);
         expect.oneCall(injector, VOID, "inject", rawRef);
         expect.oneCall(onion, wrappedRef, "onionise", rawRef);
-        Object result = subject.provide(implementation, parameters);
+        Object result = subject.provide(pebble, parameters);
         assertEquals(wrappedRef, result);
     }
 

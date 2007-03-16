@@ -4,14 +4,17 @@ import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.pebble.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1715 All types must implement Pebble interface?
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
+    private final Interface marker;
     private Onion onion;
     private Instantiator instantiator;
     private Injector injector;
 
-    public DefaultPebbleProviderEngine(Onion onion, Injector injector, Instantiator instantiator) {
+    public DefaultPebbleProviderEngine(Interface marker, Onion onion, Injector injector, Instantiator instantiator) {
+        this.marker = marker;
         this.onion = onion;
         this.injector = injector;
         this.instantiator = instantiator;
