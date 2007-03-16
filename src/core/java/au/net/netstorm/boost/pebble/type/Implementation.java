@@ -8,5 +8,5 @@ public interface Implementation extends Data {
 
     Class getImpl();
 
-    boolean is(Class cls);
+    boolean is(Interface iface);
 }

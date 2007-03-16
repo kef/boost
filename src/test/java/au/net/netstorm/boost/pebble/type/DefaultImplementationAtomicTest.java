@@ -34,7 +34,8 @@ public final class DefaultImplementationAtomicTest extends BoooostCase {
     }
 
     private void checkIs(boolean expected, Implementation implementation, Class cls) {
-        boolean actual = implementation.is(cls);
+        Interface iface = new DefaultInterface(cls);
+        boolean actual = implementation.is(iface);
         assertEquals(expected, actual);
     }
 

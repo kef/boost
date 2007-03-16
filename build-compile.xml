@@ -3,27 +3,30 @@
     <import file="build-init.xml"/>
 
     <target name="compile">
-        <macro_compile src.type="edge"/>
-        <macro_compile src.type="core"/>
-        <macro_compile src.type="test"/>
-        <macro_compile src.type="demo"/>
+        <macro_compile version="1.4" src.type="edge"/>
+        <macro_compile version="1.4" src.type="core"/>
+        <macro_compile version="1.5" src.type="test"/>
+        <macro_compile version="1.5" src.type="demo"/>
     </target>
 
     <macrodef name="macro_compile">
+        <attribute name="version"/>
         <attribute name="src.type"/>
         <sequential>
-            <macro_javac srcdir="${@{src.type}.src.dir}" destdir="${@{src.type}.class.dir}"
+            <macro_javac version="@{version}" srcdir="${@{src.type}.src.dir}" destdir="${@{src.type}.class.dir}"
                          classpathref="@{src.type}.compile.classpath"/>
         </sequential>
     </macrodef>
 
     <macrodef name="macro_javac">
+        <attribute name="version"/>
         <attribute name="srcdir"/>
         <attribute name="destdir"/>
         <attribute name="classpathref"/>
         <sequential>
             <mkdir dir="@{destdir}"/>
-            <javac source="1.4" target="1.4" srcdir="@{srcdir}" destdir="@{destdir}" classpathref="@{classpathref}"
+            <javac source="@{version}" target="@{version}" srcdir="@{srcdir}" destdir="@{destdir}"
+                   classpathref="@{classpathref}"
                    debug="true"/>
         </sequential>
     </macrodef>

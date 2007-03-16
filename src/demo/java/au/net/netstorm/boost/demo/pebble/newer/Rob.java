@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-final class Rob {
+import au.net.netstorm.boost.pebble.core.Pebble;
+
+final class Rob implements Pebble {
     private NewDefaultBob newDefaultBob;
 
     public Bob getBob() {

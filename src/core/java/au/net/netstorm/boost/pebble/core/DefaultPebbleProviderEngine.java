@@ -21,10 +21,14 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     }
 
     public Object provide(Implementation impl, Object[] parameters) {
-//        if (!impl.instanceOf(marker)) throw new IllegalStateException("Not a pebble");
+        if (!impl.is(marker)) return boom(impl);
         Object ref = instantiator.instantiate(impl, parameters);
         injector.inject(ref); // FIX 1757 Pass in type (later).
         return onion.onionise(ref);
+    }
+
+    private Object boom(Implementation impl) {
+        throw new IllegalStateException("I know you want to be my darling, but you're not a " + marker + " -> " + impl);
     }
 
     // FIX 1757 Remove when done.

@@ -306,7 +306,7 @@
       <module fileurl="file://$PROJECT_DIR$/boost.iml" filepath="$PROJECT_DIR$/boost.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="false" project-jdk-name="1.5" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK" />
   <component name="ProjectRunConfigurationManager" />
   <component name="RAILS_PROJECT_VIEW_PANE" />
   <component name="RUBY_DOC_SETTINGS">

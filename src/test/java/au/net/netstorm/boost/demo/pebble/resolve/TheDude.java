@@ -1,4 +1,6 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-interface TheDude {
+import au.net.netstorm.boost.pebble.core.Pebble;
+
+interface TheDude extends Pebble {
 }

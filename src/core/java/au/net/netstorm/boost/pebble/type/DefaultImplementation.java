@@ -24,12 +24,19 @@ public final class DefaultImplementation extends Primordial implements Implement
         return impl;
     }
 
-    public boolean is(Class cls) {
-        Interface iFace = new DefaultInterface(cls);
+    public boolean is(Interface iface) {
         for (int i = 0; i < types.length; i++) {
-            if (iFace.equals(types[i])) return true;
+            Interface type = types[i];
+            if (is(type, iface)) return true;
         }
         return false;
+    }
+
+    // FIX 1715 This belongs in Interface (and probably even a separate utility).
+    private boolean is(Interface subject, Interface find) {
+        Class subjectCls = subject.getType();
+        Class findType = find.getType();
+        return findType.isAssignableFrom(subjectCls);
     }
 
     private Interface[] buildInterfaces() {
