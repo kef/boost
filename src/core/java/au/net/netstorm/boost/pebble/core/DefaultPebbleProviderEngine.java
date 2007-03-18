@@ -28,7 +28,8 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     }
 
     private Object boom(Implementation impl) {
-        throw new IllegalStateException("I know you want to be my darling, but you're not a " + marker + " -> " + impl);
+        // FIX 1715 Replace this with ICE.
+        throw new IllegalStateException();
     }
 
     // FIX 1757 Remove when done.
