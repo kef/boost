@@ -8,10 +8,14 @@ import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 public class DefaultInterfaceAtomicTest extends BoooostCase {
     private static final Class NOT_AN_INTERFACE = Object.class;
     private final ClassTestChecker classer = new DefaultClassTestChecker();
+    private final Interface soldier = new DefaultInterface(Soldier.class);
+    private final Interface clown = new DefaultInterface(Clown.class);
 
+    // FIX 1715 Override assertTrue/assertFalse to barf in BoooostCase.
     // FIX 1715 Complete this guy.
     public void testIsA() {
-        new DefaultInterface(Jester.class);
+        Interface jester = new DefaultInterface(Jester.class);
+        assertEquals(true, jester.is(clown));
     }
 
     public void testTypeIsNotInterface() {

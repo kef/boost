@@ -15,6 +15,10 @@ public final class DefaultInterface extends Primordial implements Interface {
         return type;
     }
 
+    public boolean is(Interface iface) {
+        return true;
+    }
+
     private void validate() {
         if (type == null)
             throw new IllegalArgumentException();
