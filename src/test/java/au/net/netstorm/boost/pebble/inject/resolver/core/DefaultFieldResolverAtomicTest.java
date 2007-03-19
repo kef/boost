@@ -7,7 +7,6 @@ import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -18,7 +17,6 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     private final EdgeClass classer = new DefaultEdgeClass();
     private Field field = someField();
     private Interface iface = new DefaultInterface(HappyChap.class);
-    private MockExpectations expect;
     private Resolver resolver;
     private PebbleProviderEngine provider;
 

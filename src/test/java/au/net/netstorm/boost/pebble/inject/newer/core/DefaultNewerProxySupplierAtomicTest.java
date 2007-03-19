@@ -6,14 +6,12 @@ import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCase {
     private static final Implementation NEWER_INVOCATION_HANDLER = new DefaultImplementation(NewerInvocationHandler.class);
     private NewerProxySupplier subject;
-    private MockExpectations expect;
     private Interface newerInterface;
     private Implementation instanceImplementation;
     private ProxyFactory proxyFactory;

@@ -8,10 +8,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 
 public final class DefaultResolverInjectorAtomicTest extends InteractionTestCase {
-    private MockExpectations expect;
     private Injector subject;
     private final EdgeClass classer = new DefaultEdgeClass();
     private EdgeField edgeFielder = new DefaultEdgeField();

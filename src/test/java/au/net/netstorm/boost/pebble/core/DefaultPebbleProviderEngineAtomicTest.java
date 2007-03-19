@@ -7,13 +7,11 @@ import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTestCase {
     private static final Object[] NO_PARAMS = new Object[]{};
     private PebbleProviderEngine subject;
-    private MockExpectations expect;
     private Onion onion;
     private Instantiator pebblator;
     private Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.

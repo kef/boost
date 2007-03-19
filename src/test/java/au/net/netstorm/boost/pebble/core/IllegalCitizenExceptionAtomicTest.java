@@ -2,12 +2,9 @@ package au.net.netstorm.boost.pebble.core;
 
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.BoooostCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class IllegalCitizenExceptionAtomicTest extends BoooostCase {
-    // FIX BREADCRUMB 1715 -100 Remove this.
-    private MockExpectations expect;
     private RuntimeException subject;
     private Interface marker;
     private Implementation impl;

@@ -4,12 +4,10 @@ import au.net.netstorm.boost.pebble.inject.newer.field.NewerField;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCase {
     private Injector subject;
-    private MockExpectations expect;
     private Object object = new Larry("ten");
     private String proxy;
     private NewerField[] newerFields =

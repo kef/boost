@@ -30,7 +30,7 @@ final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     private void setExpectField(MockExpectations mockExpectations) {
-        fielder.setInstance(testCase, "expect", mockExpectations);
+        fielder.setPublicInstance(testCase, "expect", mockExpectations);
     }
 
     private void assignRandomValues(BoostField[] fields) {

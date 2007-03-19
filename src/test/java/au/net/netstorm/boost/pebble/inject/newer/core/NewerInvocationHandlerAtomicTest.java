@@ -5,11 +5,9 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase {
     private InvocationHandler subject;
-    private MockExpectations expect;
     private PebbleProviderEngine pebbleProvider;
     private Implementation impl;
     private Object proxyObject = new Object();
