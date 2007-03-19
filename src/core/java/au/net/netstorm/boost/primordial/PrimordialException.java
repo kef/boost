@@ -1,6 +1,6 @@
-package au.net.netstorm.boost.pebble.core;
+package au.net.netstorm.boost.primordial;
 
-// FIX BREADCRUMB 1715 Move to appropriate package.
+import au.net.netstorm.boost.pebble.core.BoostException;
 
 // FIX 1715 Atomically test.
 public class PrimordialException extends RuntimeException implements BoostException {
