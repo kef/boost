@@ -23,7 +23,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     public Object provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) return boom(impl);
         Object ref = instantiator.instantiate(impl, parameters);
-        injector.inject(ref); // FIX 1757 Pass in type (later).
+        injector.inject(ref);
         return onion.onionise(ref);
     }
 
