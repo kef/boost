@@ -16,13 +16,13 @@ public class StrategyTestCase extends BoooostCase {
     /**
      * Do not allow overriding of setup.  The test maintains the lifecycle.
      */
-    protected final void setup() {
+    protected void setup() {
     }
 
     /**
      * Do not allow overriding of setup.  The test maintains the lifecycle.
      */
-    protected final void teardown() {
+    protected void teardown() {
     }
 
     /**
