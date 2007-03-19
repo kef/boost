@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.pebble.core;
 
+import au.net.netstorm.boost.pebble.gaijin.Barbarian;
 import au.net.netstorm.boost.pebble.gaijin.Gaijinator;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;

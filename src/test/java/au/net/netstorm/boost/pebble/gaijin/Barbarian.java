@@ -1,5 +1,6 @@
-package au.net.netstorm.boost.pebble.core;
+package au.net.netstorm.boost.pebble.gaijin;
 
+// FIX 1757 Make package private. 
 public class Barbarian {
     private String name;
 
