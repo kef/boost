@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.pebble.core;
 
 import au.net.netstorm.boost.pebble.type.Implementation;
+import au.net.netstorm.boost.primordial.BoostException;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Interface;
 
