@@ -10,7 +10,7 @@ public final class DefaultFieldTestChecker implements FieldTestChecker {
     private final ModifierTestChecker modifiers = new DefaultModifierTestChecker();
 
     public void checkPrivateFinalInstanceField(Class type, String fieldName) {
-        Field declared = fielderUtil.getDeclared(type, fieldName);
+        Field declared = fielderUtil.get(type, fieldName);
         modifiers.checkPrivateFinalInstance(declared);
     }
 

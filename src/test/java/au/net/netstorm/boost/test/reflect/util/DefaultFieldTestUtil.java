@@ -12,12 +12,20 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 
-    public Field getDeclared(Class cls, String fieldName) {
+    public Field get(Class cls, String fieldName) {
         return edgeClass.getDeclaredField(cls, fieldName);
+    }
+
+    public Field getPublic(Class cls, String fieldName) {
+        throw new UnsupportedOperationException();
     }
 
     public Object getStatic(Class cls, String fieldName) {
         return getFieldValue(cls, MARKER_STATIC_FIELD, fieldName);
+    }
+
+    public Object getPublicStatic(Class cls, String fieldName) {
+        throw new UnsupportedOperationException();
     }
 
     public Object getInstance(Object ref, Field field) {
@@ -29,6 +37,10 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         return getFieldValue(cls, ref, fieldName);
     }
 
+    public Object getPublicInstance(Object ref, String fieldName) {
+        throw new UnsupportedOperationException();
+    }
+
     public void setInstance(Object ref, String fieldName, Object fieldValue) {
         Class cls = ref.getClass();
         setField(cls, ref, fieldName, fieldValue);
@@ -38,6 +50,16 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         String name = fieldValue.getName();
         Object value = fieldValue.getValue();
         setInstance(ref, name, value);
+    }
+
+    public void setPublicInstance(Object ref, String fieldName, Object value) {
+        Class cls = ref.getClass();
+        Field field = edgeClass.getField(cls, fieldName);
+        setField(ref, field, value);
+    }
+
+    public void setPublicInstance(Object ref, FieldValueSpec fieldValue) {
+        throw new UnsupportedOperationException();
     }
 
     public void setStatic(Class cls, String fieldName, Object fieldValue) {
@@ -52,7 +74,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     private void setField(Class cls, Object f, String fieldName, Object fieldValue) {
-        Field field = getDeclared(cls, fieldName);
+        Field field = get(cls, fieldName);
         setField(f, field, fieldValue);
     }
 
@@ -62,7 +84,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {
-        Field field = getDeclared(cls, fieldName);
+        Field field = get(cls, fieldName);
         return value(ref, field);
     }
 
