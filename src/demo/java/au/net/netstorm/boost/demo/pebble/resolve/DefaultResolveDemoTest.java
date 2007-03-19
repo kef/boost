@@ -20,8 +20,6 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     {
         resolver.add(TheDude.class, DavidPetit.class);
     }
-    // FIX 1757 We need a gaijin provider for Set/HashSet.
-    // FIX 1757 When you see the HashSet must have a single constructor ... remember Pebble as a marker interface.
 
     public void testResolve() {
         Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
