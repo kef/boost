@@ -53,11 +53,24 @@ public final class DefaultEdgeClass implements EdgeClass {
         try {
             return cls.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
-            throw new EdgeException("There is no such field called " + fieldName + " in class " + cls.getName(), e);
+            throw barf(cls, fieldName, e);
+        }
+    }
+
+    public Field getField(Class cls, String fieldName) {
+        try {
+            return cls.getField(fieldName);
+        } catch (NoSuchFieldException e) {
+            throw barf(cls, fieldName, e);
         }
     }
 
     public Field[] getDeclaredFields(Class cls) {
         return cls.getDeclaredFields();
+    }
+
+    private EdgeException barf(Class cls, String fieldName, NoSuchFieldException e) {
+        String name = cls.getName();
+        return new EdgeException("There is no such field called \"" + fieldName + "\" in class " + name, e);
     }
 }

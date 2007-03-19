@@ -17,5 +17,7 @@ public interface EdgeClass {
 
     Field getDeclaredField(Class cls, String fieldName);
 
+    Field getField(Class cls, String fieldName);
+
     Field[] getDeclaredFields(Class cls);
 }
