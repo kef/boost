@@ -5,6 +5,7 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
+import au.net.netstorm.boost.util.exception.NotImplementedException;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
@@ -17,7 +18,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     public Field getPublic(Class cls, String fieldName) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedException();
     }
 
     public Object getStatic(Class cls, String fieldName) {
@@ -25,7 +26,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     public Object getPublicStatic(Class cls, String fieldName) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedException();
     }
 
     public Object getInstance(Object ref, Field field) {
@@ -38,7 +39,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     public Object getPublicInstance(Object ref, String fieldName) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedException();
     }
 
     public void setInstance(Object ref, String fieldName, Object fieldValue) {
@@ -59,7 +60,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     }
 
     public void setPublicInstance(Object ref, FieldValueSpec fieldValue) {
-        throw new UnsupportedOperationException();
+        throw new NotImplementedException();
     }
 
     public void setStatic(Class cls, String fieldName, Object fieldValue) {
