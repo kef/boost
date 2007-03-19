@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.type;
 
 import java.util.Set;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 

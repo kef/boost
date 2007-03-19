@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 

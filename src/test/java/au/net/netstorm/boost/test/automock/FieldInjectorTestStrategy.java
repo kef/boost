@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.test.cases.TestStrategy;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
-final class FieldInjectorTestStrategy implements TestStrategy {
+public final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);

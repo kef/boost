@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.core;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;// FIX SC507 Remove duplication between this class and StartTimeTest.
+import au.net.netstorm.boost.test.cases.BoooostCase;// FIX SC507 Remove duplication between this class and StartTimeTest.
 
 // FIX SC507 Primordialize.
 

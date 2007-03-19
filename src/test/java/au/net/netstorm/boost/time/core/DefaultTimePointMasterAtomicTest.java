@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultTimePointMasterAtomicTest extends BoooostCase {
     public void testNext() {

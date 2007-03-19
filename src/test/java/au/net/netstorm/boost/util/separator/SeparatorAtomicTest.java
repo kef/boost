@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.separator;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
 
 public final class SeparatorAtomicTest extends BoooostCase {

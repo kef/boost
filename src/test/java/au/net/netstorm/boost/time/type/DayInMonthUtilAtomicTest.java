@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DayInMonthUtilAtomicTest extends BoooostCase {
     private final DayInMonthMaster master = new DefaultDayInMonthMaster();

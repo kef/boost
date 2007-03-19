@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.start;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public class DefaultBootstrapAtomicTest extends BoooostCase {
     public void testAction() {

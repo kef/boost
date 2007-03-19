@@ -1,5 +1,7 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.cases;
 
+import au.net.netstorm.boost.test.automock.FieldInjectorTestStrategy;
+import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
 final class DefaultTestStrategist implements TestStrategist {

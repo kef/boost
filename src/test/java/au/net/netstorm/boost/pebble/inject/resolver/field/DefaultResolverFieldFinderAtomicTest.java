@@ -6,7 +6,7 @@ import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.pebble.core.Pebble;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolverFieldFinderAtomicTest extends BoooostCase {
     private final ResolverFieldFinder subject = new DefaultResolverFieldFinder();

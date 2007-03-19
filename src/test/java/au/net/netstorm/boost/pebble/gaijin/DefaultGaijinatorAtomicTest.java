@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.pebble.gaijin;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultGaijinatorAtomicTest extends BoooostCase {
 

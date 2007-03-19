@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.type;
 
 import au.net.netstorm.boost.pebble.core.Pebble;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class NoNewerInterfaceExceptionAtomicTest extends BoooostCase {
     private static final Class CLASS = Pebble.class;

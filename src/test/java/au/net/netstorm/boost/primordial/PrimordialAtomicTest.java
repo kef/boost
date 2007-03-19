@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.primordial;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.start;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;

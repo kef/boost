@@ -3,7 +3,7 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.util.Map;
 import au.net.netstorm.boost.pebble.type.DefaultImplementation;
 import au.net.netstorm.boost.pebble.type.Implementation;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 

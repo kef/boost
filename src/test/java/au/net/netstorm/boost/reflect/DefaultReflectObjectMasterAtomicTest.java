@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public class DefaultReflectObjectMasterAtomicTest extends BoooostCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();

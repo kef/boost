@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.util.equals;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;// NOTE: Careful when refactoring due to heavy use of equals!
+import au.net.netstorm.boost.test.cases.BoooostCase;// NOTE: Careful when refactoring due to heavy use of equals!
 
 // DEBT ClassDataAbstractionCoupling {
+
 public class FieldBasedEqualsMasterAtomicTest extends BoooostCase {
     private final EqualsMaster master = new FieldBasedEqualsMaster();
     private static final Integer INTEGER = new Integer(1);

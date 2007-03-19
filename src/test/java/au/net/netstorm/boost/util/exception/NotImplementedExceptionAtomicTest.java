@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.exception;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class NotImplementedExceptionAtomicTest extends BoooostCase {
 

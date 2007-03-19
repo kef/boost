@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.cases;
 
 public class StrategyTestCase extends BoooostCase {
     private TestStrategy strategy;
@@ -13,21 +13,12 @@ public class StrategyTestCase extends BoooostCase {
         }
     }
 
-    /**
-     * Do not allow overriding of setup.  The test maintains the lifecycle.
-     */
-    protected void setup() {
+    protected final void gearup() {
     }
 
-    /**
-     * Do not allow overriding of setup.  The test maintains the lifecycle.
-     */
-    protected void teardown() {
+    protected final void geardown() {
     }
 
-    /**
-     * Do not use this when writing tests.  It is exposed only so we can test this infrastructure.
-     */
     protected void verify() {
         strategy.verify();
     }

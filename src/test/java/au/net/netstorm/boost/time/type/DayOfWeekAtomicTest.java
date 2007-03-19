@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DayOfWeekAtomicTest extends BoooostCase {
     public void testValid() {

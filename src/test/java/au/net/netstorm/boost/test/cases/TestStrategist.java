@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.cases;
 
 interface TestStrategist {
     TestStrategy determineStrategy(Object testCase);

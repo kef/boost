@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.Map;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 

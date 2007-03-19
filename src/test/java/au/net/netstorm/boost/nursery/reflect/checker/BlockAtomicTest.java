@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.reflect.checker;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 

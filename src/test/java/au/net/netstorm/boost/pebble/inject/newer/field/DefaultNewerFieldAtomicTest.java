@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.inject.newer.field;
 
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;

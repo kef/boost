@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.cases;
 
 import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
 import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
@@ -8,6 +8,8 @@ import junit.framework.TestCase;
 // SUGGEST Check bottom level classes are final.
 // SUGGEST Check no-arg (single) constructor.
 
+// FIX 1715 Move test cases into appropriate area.
+
 // OK GenericIllegalRegexp {
 public abstract class BoooostCase extends TestCase {
     // } OK GenericIllegalRegexp
@@ -15,18 +17,18 @@ public abstract class BoooostCase extends TestCase {
 
     protected final void setUp() throws Exception {
         super.setUp();
-        setup();
+        gearup();
     }
 
     protected final void tearDown() throws Exception {
-        teardown();
+        geardown();
         super.tearDown();
     }
 
-    protected void setup() {
+    protected void gearup() {
     }
 
-    protected void teardown() {
+    protected void geardown() {
     }
 
     public final void assertEquals(Object[] expected, Object[] actual) {
