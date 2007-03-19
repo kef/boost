@@ -12,8 +12,6 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     private final Interface soldier = new DefaultInterface(Soldier.class);
     private final Interface clown = new DefaultInterface(Clown.class);
 
-    // FIX 1715 Override assertTrue/assertFalse to barf in BoooostCase.
-    // FIX 1715 Complete this guy.
     public void testIsA() {
         checkIsA(true, clown);
         checkIsA(false, soldier);
