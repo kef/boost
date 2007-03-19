@@ -32,7 +32,7 @@ public final class DefaultImplementation extends Primordial implements Implement
         return false;
     }
 
-    // FIX 1715 This belongs in Interface (and probably even a separate utility).
+    // FIX BREADCRUMB 1715 This belongs in Interface.
     private boolean is(Interface subject, Interface find) {
         Class subjectCls = subject.getType();
         Class findType = find.getType();

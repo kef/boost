@@ -6,7 +6,6 @@ import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1715 All types must implement Pebble interface?
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     private final Interface marker;
     private Onion onion;
