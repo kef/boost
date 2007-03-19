@@ -5,11 +5,8 @@ import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
 import junit.framework.TestCase;
 
 // SUGGEST Remove the need for this altogether.
-// FIX SC600 BREADCRUMB Complete.
-// FIX SC600 Check bottom level classes are final.
-// FIX SC600 Check no-arg (single) constructor.
-
-// FIX SC600 Redefine setUp() to setup() which does not throw an exception.
+// SUGGEST Check bottom level classes are final.
+// SUGGEST Check no-arg (single) constructor.
 
 // OK GenericIllegalRegexp {
 public abstract class BoooostCase extends TestCase {

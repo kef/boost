@@ -73,13 +73,15 @@ public final class DefaultBoostField implements BoostField {
         return field.getType();
     }
 
-    // OK CyclomaticComplexity|ReturnCount {
     public boolean isMockable() {
         if (isArray()) return false;
         if (isSynthetic()) return false;
         if (isFinal()) return false;
-        if (!isNull()) return false;
-        return true;
+        return isTypeMockkable();
     }
-    // } OK CyclomaticComplexity|ReturnCount
+
+    private boolean isTypeMockkable() {
+        if (isPrimitive()) return true;
+        return isNull();
+    }
 }
