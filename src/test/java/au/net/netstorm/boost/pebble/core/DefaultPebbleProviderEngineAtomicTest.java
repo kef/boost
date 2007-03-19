@@ -41,8 +41,7 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
         try {
             subject.provide(pebble, parameters);
             fail();
-            // FIX 1715 Better exception needed.
-        } catch (IllegalStateException expected) { }
+        } catch (IllegalCitizenException expected) { }
     }
 
     // FIX BREADCRUMB 1757 Reinstate?

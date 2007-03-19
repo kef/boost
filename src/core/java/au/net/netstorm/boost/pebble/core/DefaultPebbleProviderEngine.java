@@ -28,8 +28,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     }
 
     private Object boom(Implementation impl) {
-        // FIX 1715 Replace this with ICE.
-        throw new IllegalStateException();
+        throw new IllegalCitizenException(marker, impl);
     }
 
     // FIX 1757 Remove when done.

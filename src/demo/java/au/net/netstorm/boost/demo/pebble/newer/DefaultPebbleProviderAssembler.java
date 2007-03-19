@@ -6,7 +6,6 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.pebble.core.DefaultPebbleProvider;
 import au.net.netstorm.boost.pebble.core.DefaultPebbleProviderEngine;
-import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleInjector;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.inject.newer.core.DefaultNewerProxySupplier;
@@ -34,11 +33,12 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderAssembler implements PebbleProviderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
-    private Resolver resolver;
-    private static final Interface PEBBLE = new DefaultInterface(Pebble.class);
+    private final Class citizen;
+    private final Resolver resolver;
 
-    public DefaultPebbleProviderAssembler(Resolver resolver) {
+    public DefaultPebbleProviderAssembler(Class citizen, Resolver resolver) {
         this.resolver = resolver;
+        this.citizen = citizen;
     }
 
     public PebbleGraph assemble() {
@@ -78,7 +78,8 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
 
     private PebbleProviderEngine assembleProvider(Injector injector, Instantiator instantiator) {
         Onion onion = new BermudaOnion();
-        return new DefaultPebbleProviderEngine(PEBBLE, onion, injector, instantiator);
+        Interface marker = new DefaultInterface(citizen);
+        return new DefaultPebbleProviderEngine(marker, onion, injector, instantiator);
     }
     /*
       , ; ,   .-'"""'-.   , ; ,
