@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.automock.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-public class InterfaceAtomicTest extends BoooostCase {
+public class DefaultInterfaceAtomicTest extends BoooostCase {
     private static final Class NOT_AN_INTERFACE = Object.class;
 
     public void testIsDataObject() {
