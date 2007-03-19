@@ -7,6 +7,6 @@ public final class NotImplementedExceptionAtomicTest extends BoooostCase {
     // FIX SC050 Tighten this up.
     public void testType() {
         NotImplementedException exception = new NotImplementedException();
-        assertTrue(exception instanceof RuntimeException);
+        assertEquals(true, exception instanceof RuntimeException);
     }
 }

@@ -25,8 +25,8 @@ public final class DayOfWeekAtomicTest extends BoooostCase {
 
     public void testEquality() {
         DayOfWeek dow = new DayOfWeek(4);
-        assertFalse(dow.equals(null));
-        assertFalse(dow.equals(void.class));
+        assertEquals(false, dow.equals(null));
+        assertEquals(false, dow.equals(void.class));
         assertNotEquals(dow, new DayOfWeek(3));
         assertEquals(dow, new DayOfWeek(4));
     }
@@ -46,8 +46,8 @@ public final class DayOfWeekAtomicTest extends BoooostCase {
     }
 
     private void assertNotEquals(DayOfWeek d1, DayOfWeek d2) {
-        assertFalse(d1.equals(d2));
-        assertFalse(d2.equals(d1));
+        assertEquals(false, d1.equals(d2));
+        assertEquals(false, d2.equals(d1));
     }
 
     private void assertInvalidDay(int day) {

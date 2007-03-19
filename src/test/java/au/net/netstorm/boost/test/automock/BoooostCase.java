@@ -48,4 +48,26 @@ public abstract class BoooostCase extends TestCase {
     public final void assertNotEquals(byte[] expected, byte[] actual) {
         assertTestChecker.checkNotEquals(expected, actual);
     }
+
+    public static final void assertTrue(boolean expected) {
+        suffer();
+    }
+
+    public static final void assertTrue(String msg, boolean expected) {
+        suffer();
+    }
+
+    public static final void assertFalse(boolean expected) {
+        suffer();
+    }
+
+    public static final void assertFalse(String msg, boolean expected) {
+        suffer();
+    }
+
+    // OK LineLength {
+    private static void suffer() {
+        throw new UnsupportedOperationException("Use assertEquals(true|false, expected) ... assertTrue/assertFalse precludes refactoring opportunities (_x_)");
+    }
+    // } OK LineLength - Abusing others is fine if they are doing the wrong thing ;-)
 }

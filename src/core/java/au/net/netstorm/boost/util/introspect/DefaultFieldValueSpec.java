@@ -6,8 +6,9 @@ import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Immutable;
 
 // FIX SC502 Who uses this. Do we need it? TJA: It's the best thing since sliced bread. Who'd want to remove it???
+
 // FIX SC506 Can just be an immutable.
-public class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
+public final class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private final String name;
     private final Object value;
 

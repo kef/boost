@@ -11,11 +11,11 @@ public final class DefaultTimeRangeAtomicTest extends BoooostCase {
     }
 
     public void testContains() {
-        assertFalse(range.contains(TIME_099));
-        assertTrue(range.contains(TIME_100));
-        assertTrue(range.contains(TIME_200));
-        assertFalse(range.contains(TIME_300));
-        assertFalse(range.contains(TIME_301));
+        assertEquals(false, range.contains(TIME_099));
+        assertEquals(true, range.contains(TIME_100));
+        assertEquals(true, range.contains(TIME_200));
+        assertEquals(false, range.contains(TIME_300));
+        assertEquals(false, range.contains(TIME_301));
     }
 
     public void testGetters() {
@@ -50,8 +50,8 @@ public final class DefaultTimeRangeAtomicTest extends BoooostCase {
 // } DEBT JavaNCSS
 
     public void testEquality() {
-        assertFalse(range.equals(NULL));
-        assertFalse(range.equals(void.class));
+        assertEquals(false, range.equals(NULL));
+        assertEquals(false, range.equals(void.class));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_100, DURATION_201));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_100, DURATION_199));
         assertNotEquals(range, new DefaultTimeRange(START_TIME_099, DURATION_201));
@@ -92,8 +92,8 @@ public final class DefaultTimeRangeAtomicTest extends BoooostCase {
     }
 
     private void assertNotEquals(TimeRange r1, TimeRange r2) {
-        assertFalse(r1.equals(r2));
-        assertFalse(r2.equals(r1));
+        assertEquals(false, r1.equals(r2));
+        assertEquals(false, r2.equals(r1));
     }
 
     private void assertHashCode(int hash, TimeRange range) {

@@ -22,8 +22,8 @@ public final class DurationAtomicTest extends BoooostCase {
 
     public void testEquality() {
         Duration duration = new Duration(1000);
-        assertFalse(duration.equals(null));
-        assertFalse(duration.equals(void.class));
+        assertEquals(false, duration.equals(null));
+        assertEquals(false, duration.equals(void.class));
         assertNotEquals(duration, new Duration(1001));
         assertEquals(duration, new Duration(1000));
     }
@@ -42,8 +42,8 @@ public final class DurationAtomicTest extends BoooostCase {
     }
 
     private void assertNotEquals(Duration d1, Duration d2) {
-        assertFalse(d1.equals(d2));
-        assertFalse(d2.equals(d1));
+        assertEquals(false, d1.equals(d2));
+        assertEquals(false, d2.equals(d1));
     }
 
     private void assertHashCode(int hash, Duration duration) {

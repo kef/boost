@@ -50,6 +50,7 @@ public final class MonthOfYearAtomicTest extends BoooostCase {
 // } DEBT JavaNCSS
 
     // DEBT JavaNCSS {
+
     public void testConstants() {
         assertEquals(new MonthOfYear(0), JANUARY);
         assertEquals(new MonthOfYear(1), FEBRUARY);
@@ -68,8 +69,8 @@ public final class MonthOfYearAtomicTest extends BoooostCase {
 
     public void testEquality() {
         MonthOfYear month = new MonthOfYear(4);
-        assertFalse(month.equals(NULL));
-        assertFalse(month.equals(void.class));
+        assertEquals(false, month.equals(NULL));
+        assertEquals(false, month.equals(void.class));
         assertNotEquals(month, new MonthOfYear(7));
         assertEquals(month, new MonthOfYear(4));
     }
@@ -100,8 +101,8 @@ public final class MonthOfYearAtomicTest extends BoooostCase {
     }
 
     private void assertNotEquals(MonthOfYear m1, MonthOfYear m2) {
-        assertFalse(m1.equals(m2));
-        assertFalse(m2.equals(m1));
+        assertEquals(false, m1.equals(m2));
+        assertEquals(false, m2.equals(m1));
     }
 
     private void assertInvalidMonth(int month) {

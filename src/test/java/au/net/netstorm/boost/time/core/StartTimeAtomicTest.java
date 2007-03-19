@@ -17,8 +17,8 @@ public final class StartTimeAtomicTest extends BoooostCase {
 
     public void testEquality() {
         StartTime start = new StartTime(TIME_500);
-        assertFalse(start.equals(null));
-        assertFalse(start.equals(void.class));
+        assertEquals(false, start.equals(null));
+        assertEquals(false, start.equals(void.class));
         assertNotEquals(start, new StartTime(TIME_499));
         assertEquals(start, new StartTime(new DefaultTimePoint(500)));
     }
@@ -30,8 +30,8 @@ public final class StartTimeAtomicTest extends BoooostCase {
     }
 
     private void assertNotEquals(StartTime s1, StartTime s2) {
-        assertFalse(s1.equals(s2));
-        assertFalse(s2.equals(s1));
+        assertEquals(false, s1.equals(s2));
+        assertEquals(false, s2.equals(s1));
     }
 
     private void assertHashCode(int hash, StartTime start) {

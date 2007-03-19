@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.util.introspect;
 
 import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.type.Immutable;
 
 public class DefaultFieldValueSpecAtomicTest extends BoooostCase {
@@ -12,9 +14,10 @@ public class DefaultFieldValueSpecAtomicTest extends BoooostCase {
     private static final FieldValueSpec FIELD_VALUE_SPEC_2 = new DefaultFieldValueSpec("field7", "Is absolute zero cold enough?");
     private static final FieldValueSpec FIELD_VALUE_SPEC_NULL = new DefaultFieldValueSpec(NAME_1, null);
     private static final Object VALUE_CAN_BE_NULL = null;
+    private final ClassTestChecker classer = new DefaultClassTestChecker();
 
     public void testMarker() {
-        assertTrue(Immutable.class.isAssignableFrom(DefaultFieldValueSpec.class));
+        classer.checkImplementsAndFinal(Immutable.class, DefaultFieldValueSpec.class);
     }
 
     public void testNullNameIllegalInConstructor() {
@@ -90,6 +93,6 @@ public class DefaultFieldValueSpecAtomicTest extends BoooostCase {
     }
 
     private void checkNotEquals(Object o1, Object o2) {
-        assertTrue(!o1.equals(o2));
+        assertEquals(false, o1.equals(o2));
     }
 }

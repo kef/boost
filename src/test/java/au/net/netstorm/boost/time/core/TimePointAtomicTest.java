@@ -30,8 +30,8 @@ public final class TimePointAtomicTest extends BoooostCase {
 
     public void testEquality() {
         TimePoint time = new DefaultTimePoint(500);
-        assertFalse(time.equals(NULL));
-        assertFalse(time.equals(void.class));
+        assertEquals(false, time.equals(NULL));
+        assertEquals(false, time.equals(void.class));
         assertNotEquals(time, new DefaultTimePoint(499));
         assertEquals(time, new DefaultTimePoint(500));
     }
@@ -51,7 +51,7 @@ public final class TimePointAtomicTest extends BoooostCase {
         EndTime end = new EndTime(top);
         // FIX SC777 Tests TimeRange rather than TimePoint - move or delete.
         TimeRange range = new DefaultTimeRange(start, TIME_RANGE_MASTER.duration(start, end));
-        assertTrue(range.contains(now));
+        assertEquals(true, range.contains(now));
     }
 
     private void assertInvalidTimePoints(long length) {
@@ -65,12 +65,12 @@ public final class TimePointAtomicTest extends BoooostCase {
 
     // FIX SC777 Push up into a PrimordialTestCase.
     private void succeed() {
-        assertTrue(true);
+        assert (true);
     }
 
     private void assertNotEquals(TimePoint t1, TimePoint t2) {
-        assertFalse(t1.equals(t2));
-        assertFalse(t2.equals(t1));
+        assertEquals(false, t1.equals(t2));
+        assertEquals(false, t2.equals(t1));
     }
 
     private void assertHashCode(int hash, TimePoint time) {

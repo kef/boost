@@ -64,8 +64,8 @@ public final class PrimordialAtomicTest extends BoooostCase {
     private void checkEquals(boolean expected, Primordial primordial, MockEqualsMaster mockEquals) {
         Object o = new Object();
         boolean result = primordial.equals(o);
-        assertTrue(primordial == mockEquals.getObject1());
-        assertTrue(o == mockEquals.getObject2());
+        assertEquals(true, primordial == mockEquals.getObject1());
+        assertEquals(true, o == mockEquals.getObject2());
         assertEquals(expected, result);
     }
 

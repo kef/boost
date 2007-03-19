@@ -3,6 +3,7 @@ package au.net.netstorm.boost.time.core;
 import au.net.netstorm.boost.test.automock.BoooostCase;// FIX SC507 Remove duplication between this class and StartTimeTest.
 
 // FIX SC507 Primordialize.
+
 public final class EndTimeAtomicTest extends BoooostCase {
     public void testNullInvalidInConstructor() {
         try {
@@ -18,8 +19,8 @@ public final class EndTimeAtomicTest extends BoooostCase {
 
     public void testEquality() {
         EndTime end = new EndTime(TIME_500);
-        assertFalse(end.equals(null));
-        assertFalse(end.equals(void.class));
+        assertEquals(false, end.equals(null));
+        assertEquals(false, end.equals(void.class));
         assertNotEquals(end, new EndTime(TIME_499));
         assertEquals(end, new EndTime(TIME_500));
     }
@@ -31,8 +32,8 @@ public final class EndTimeAtomicTest extends BoooostCase {
     }
 
     private void assertNotEquals(EndTime e1, EndTime e2) {
-        assertFalse(e1.equals(e2));
-        assertFalse(e2.equals(e1));
+        assertEquals(false, e1.equals(e2));
+        assertEquals(false, e2.equals(e1));
     }
 
     private void assertHashCode(int hash, EndTime end) {

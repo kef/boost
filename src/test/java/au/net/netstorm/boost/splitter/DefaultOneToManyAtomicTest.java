@@ -132,7 +132,7 @@ public final class DefaultOneToManyAtomicTest extends BoooostCase {
     }
 
     private void checkProxyType(Interface expectedInterface, Object ref) {
-        assertTrue(expectedInterface.getType().isAssignableFrom(ref.getClass()));
+        assertEquals(true, expectedInterface.getType().isAssignableFrom(ref.getClass()));
     }
 }
 // } DEBT ClassDataAbstractionCoupling
