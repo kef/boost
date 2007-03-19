@@ -13,11 +13,8 @@ public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase
         subject = new IllegalCitizenException(marker, impl);
     }
 
-    // FIX 1715 Complete.
-
-    // FIX BREADCRUMB 1715 Return and complete.
-
     public void testException() {
-//        assertEquals("I know you want to be my darling, but you're not a " + marker + " -> " + impl, "" + subject);
+        String result = subject.getMessage();
+        assertEquals("I know you want to be my darling, but you're not a " + marker + " -> " + impl, result);
     }
 }
