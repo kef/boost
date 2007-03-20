@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-import au.net.netstorm.boost.demo.pebble.core.DefaultPebbleGraph;
-import au.net.netstorm.boost.demo.pebble.core.PebbleGraph;
+import au.net.netstorm.boost.demo.pebble.core.DefaultPebblePortal;
+import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.pebble.core.DefaultPebbleProvider;
@@ -42,7 +42,7 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
         this.citizen = citizen;
     }
 
-    public PebbleGraph assemble() {
+    public PebblePortal assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         PebbleProviderEngine passThroughPebbleProvider = (PebbleProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
@@ -51,7 +51,7 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
         DefaultPebbleProvider pebbleProvider = new DefaultPebbleProvider(pebbleProviderEngine);
-        return new DefaultPebbleGraph(pebbleProvider, objectInjector);
+        return new DefaultPebblePortal(pebbleProvider, objectInjector);
     }
 
     private ProxyFactory assembleProxyFactory() {

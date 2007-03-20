@@ -23,7 +23,7 @@ public final class DefaultFieldResolver implements FieldResolver {
     // SUGGEST: This is probably the true resolver entry point and will likely take a "flavour".
     private Object resolve(Interface iface) {
         Implementation implementation = lookup.find(iface);
-        return create(implementation);
+        return resolve(implementation);
     }
 
     // FIX BREADCRUMB 1779 Drive this out...
@@ -46,7 +46,7 @@ public final class DefaultFieldResolver implements FieldResolver {
 //        }
 //    }
 
-    private Object create(Implementation implementation) {
+    private Object resolve(Implementation implementation) {
         Object[] dependencies = new Object[]{};
         return provider.provide(implementation, dependencies);
     }
