@@ -17,7 +17,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultNewerFieldInspector implements NewerFieldInspector {
-    private static final Class NEWER_MARKER_INTERFACE = Newer.class;
+    private static final Interface NEWER_MARKER = new DefaultInterface(Newer.class);
     // FIX 1665 Should be passed in via the constructor.
     private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
@@ -53,9 +53,10 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     }
 
     private void checkImplementsMarker(Field field) {
-        Class type = field.getType();
-        if (!NEWER_MARKER_INTERFACE.isAssignableFrom(type)) {
-            throw new DoesNotImplementNewerException(type);
+        Class typeClass = field.getType();
+        Interface type = new DefaultInterface(typeClass);
+        if (!type.is(NEWER_MARKER)) {
+            throw new DoesNotImplementNewerException(typeClass);
         }
     }
 
