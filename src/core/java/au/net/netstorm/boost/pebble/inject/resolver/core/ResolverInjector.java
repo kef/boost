@@ -24,8 +24,7 @@ public final class ResolverInjector implements Injector {
     }
 
     private void inject(Object ref, Field field) {
-        Object[] dependencies = {};
-        Object value = fieldResolver.resolve(field, dependencies);
+        Object value = fieldResolver.resolve(field);
         fielder.set(field, ref, value);
     }
 }

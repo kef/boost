@@ -15,19 +15,39 @@ public final class DefaultFieldResolver implements FieldResolver {
         this.resolver = resolver;
     }
 
-    public Object resolve(Field field, Object[] dependencies) {
+    public Object resolve(Field field) {
         Interface iface = getInterface(field);
-        return resolve(iface, dependencies);
+        return resolve(iface);
     }
 
     // SUGGEST: This is probably the true resolver entry point and will likely take a "flavour".
-    private Object resolve(Interface iface, Object[] dependencies) {
+    private Object resolve(Interface iface) {
         Implementation implementation = resolver.resolve(iface);
-        return create(implementation, dependencies);
+        return create(implementation);
     }
 
-    private Object create(Implementation implementation, Object[] dependencies) {
-        // FIX BREADCRUMB 1779 Take some params like a good little boy.
+    // FIX BREADCRUMB 1779 Drive this out...
+//    private Object[] resolveDependencies(Implementation implementation) {
+//        List dependencyList = new ArrayList();
+//        Class impl = implementation.getImpl();
+//        // FIX 1779 use DefaultReflectMaster here.
+//        Constructor constructor = impl.getDeclaredConstructors()[0];
+//        Class[] dependencyTypes = constructor.getParameterTypes();
+//        resolveEachDependency(dependencyTypes, dependencyList);
+//        return dependencyList.toArray(new Object[]{});
+//    }
+//
+//    private void resolveEachDependency(Class[] dependencyTypes, List dependencyList) {
+//        for (int i = 0; i < dependencyTypes.length; i++) {
+//            Class dependencyType = dependencyTypes[i];
+//            DefaultInterface dependencyInterface = new DefaultInterface(dependencyType);
+//            Object dependency = resolve(dependencyInterface);
+//            dependencyList.add(dependency);
+//        }
+//    }
+
+    private Object create(Implementation implementation) {
+        Object[] dependencies = new Object[]{};
         return provider.provide(implementation, dependencies);
     }
 
