@@ -44,6 +44,7 @@ public final class DefaultResolver implements Resolver {
         return resolve(unresolved);
     }
 
+    // FIX BREADCRUMB 1779 Stitch in utility.
     // FIX 1779 Move into utility.
     private Interface[] interfaces(Class[] parameters) {
         int length = parameters.length;
