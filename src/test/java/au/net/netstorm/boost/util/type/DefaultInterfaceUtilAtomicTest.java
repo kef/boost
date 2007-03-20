@@ -6,6 +6,6 @@ public final class DefaultInterfaceUtilAtomicTest extends BoooostCase {
     private final InterfaceUtil subject = new DefaultInterfaceUtil();
 
     public void testZero() {
-        subject.interfaces(new Class[]{});
+        Interface[] result = subject.interfaces(new Class[]{});
     }
 }
