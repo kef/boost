@@ -6,7 +6,6 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DoesNotImplementNewerException extends PrimordialException {
 
     public DoesNotImplementNewerException(Interface type, Interface marker) {
-        // FIX 35820 Sort this out.  Must toString() actual types.
-        super("type should implement marker");
+        super(type + " should implement " + marker);
     }
 }
