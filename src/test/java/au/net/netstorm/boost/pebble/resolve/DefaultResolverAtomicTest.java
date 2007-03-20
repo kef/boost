@@ -10,22 +10,30 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Resolver subject;
     private PebbleProviderEngine provider;
     private Object ref;
-    private Implementation noarg = new DefaultImplementation(NoArgJim.class);
+    private Implementation noArg = impl(NoArgJim.class);
+    private Implementation oneArg = impl(OneArgJack.class);
+
     private Object[] noparams = {};
 
     public void setupSubjects() {
         subject = new DefaultResolver(provider);
     }
 
-    // FIX BREADCRUMB 1779 In here and write.
     public void testNoUnresolvedDependencies() {
-        expect.oneCall(provider, ref, "provide", noarg, noparams);
-        Object result = subject.resolve(noarg);
+        expect.oneCall(provider, ref, "provide", noArg, noparams);
+        Object result = subject.resolve(noArg);
         assertEquals(ref, result);
     }
 
-    // FIX 1779 One arg.
+    public void testOneUnresolvedDependencies() {
+        // FIX 1779 Complete.
+    }
+
     // FIX 1779 Multi-arg case.
+    // FIX 1779 One arg.
+    private Implementation impl(Class cls) {
+        return new DefaultImplementation(cls);
+    }
 }
 
 // FIX 1779 Remove when done.

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.pebble.resolve;
 
-public final class NoArgJim {
+final class NoArgJim implements Jim {
     NoArgJim() {
     }
 }
