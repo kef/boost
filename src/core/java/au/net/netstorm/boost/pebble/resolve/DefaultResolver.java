@@ -30,8 +30,7 @@ public final class DefaultResolver implements Resolver {
         return provider.provide(impl, resolved);
     }
 
-    // FIX 1779 Make public.
-    private Object[] resolve(Interface[] ifaces) {
+    public Object[] resolve(Interface[] ifaces) {
         int length = ifaces.length;
         Object[] result = new Object[length];
         for (int i = 0; i < length; i++) {
