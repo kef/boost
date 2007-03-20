@@ -22,7 +22,7 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 
-    // FIX 1665 Barf if NewerInterface does not contain IMPLEMENTATION field?
+    // FIX 1665 Barf if NewerInterface does not contain CLASS_TO_NU field?
     public boolean isNewer(Object ref, Field field) {
         if (isFinal(field)) return false;
         if (!isNull(field, ref)) return false;
