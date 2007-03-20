@@ -5,18 +5,17 @@ import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationLookup;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultResolver implements Resolver {
-    private final PebbleProviderEngine provider;
-    private final Resolver resolver;
-    private final ImplementationLookup lookup;
     private final ReflectMaster reflector = new DefaultReflectMaster();
+    private final PebbleProviderEngine provider;
+    private final ImplementationLookup lookup;
 
-    public DefaultResolver(PebbleProviderEngine provider, Resolver resolver, ImplementationLookup lookup) {
+    public DefaultResolver(PebbleProviderEngine provider, ImplementationLookup lookup) {
         this.provider = provider;
-        this.resolver = resolver;
         this.lookup = lookup;
     }
 
@@ -31,12 +30,33 @@ public final class DefaultResolver implements Resolver {
         return provider.provide(impl, resolved);
     }
 
-    private Object[] resolve(Class[] parameters) {
-        return new Object[]{};
+    // FIX 1779 Make public.
+    private Object[] resolve(Interface[] ifaces) {
+        int length = ifaces.length;
+        Object[] result = new Object[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = resolve(ifaces[i]);
+        }
+        return result;
     }
 
-    private Class[] getParameters(Implementation iface) {
-        Class cls = iface.getClass();
+    private Object[] resolve(Class[] parameters) {
+        Interface[] unresolved = toInterfaces(parameters);
+        return resolve(unresolved);
+    }
+
+    // FIX 1779 Move into utility.
+    private Interface[] toInterfaces(Class[] parameters) {
+        int length = parameters.length;
+        Interface[] result = new Interface[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = new DefaultInterface(parameters[i]);
+        }
+        return result;
+    }
+
+    private Class[] getParameters(Implementation impl) {
+        Class cls = impl.getImpl();
         Constructor constructor = reflector.getConstructor(cls);
         return constructor.getParameterTypes();
     }

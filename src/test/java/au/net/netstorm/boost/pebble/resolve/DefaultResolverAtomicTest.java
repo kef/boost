@@ -13,32 +13,33 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Resolver subject;
     private PebbleProviderEngine provider;
     private ImplementationLookup lookup;
-    private Object impl;
+    private Object jimInstance;
+    private Object jackInstance;
     private Interface jim = iface(Jim.class);
+    private Interface jack = iface(Jack.class);
     private Implementation jimImpl = impl(NoArgJim.class);
-    private Implementation implOneArg = impl(OneArgJack.class);
+    private Implementation jackImpl = impl(OneArgJack.class);
     private Object[] noparams = {};
-    private Resolver resolver;
 
     public void setupSubjects() {
-        subject = new DefaultResolver(provider, resolver, lookup);
+        subject = new DefaultResolver(provider, lookup);
     }
 
     // FIX BREADCRUMB 1779 Fix StringMaster.toString to flatten objects with a single field.
     public void testNoUnresolvedDependencies() {
         expect.oneCall(lookup, jimImpl, "find", jim);
-        expect.oneCall(provider, impl, "provide", jimImpl, noparams);
+        expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
         Object result = subject.resolve(jim);
-        assertEquals(impl, result);
+        assertEquals(jimInstance, result);
     }
 
     public void testOneUnresolvedDependencies() {
-/*
-        expect.oneCall(resolver, jimImpl, "resolve", jim);
-        expect.oneCall(provider, impl, "provide", oneArg, new Object[] { jimImpl });
-        Object result = subject.resolve(oneArg);
-        assertEquals(impl, result);
-*/
+        expect.oneCall(lookup, jackImpl, "find", jack);
+        expect.oneCall(lookup, jimImpl, "find", jim);
+        expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
+        expect.oneCall(provider, jackInstance, "provide", jackImpl, new Object[]{jimInstance});
+        Object result = subject.resolve(jack);
+        assertEquals(jackInstance, result);
         // FIX 1779 Complete.
     }
 
