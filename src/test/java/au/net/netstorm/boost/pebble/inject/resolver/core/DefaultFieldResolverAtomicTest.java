@@ -11,7 +11,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
-    private static final Implementation IMPLEMENTATION = new DefaultImplementation(VeryHappyChap.class);
+    private static final Implementation CLASS_TO_NU = new DefaultImplementation(VeryHappyChap.class);
     private static final VeryHappyChap INSTANCE = new VeryHappyChap();
     private FieldResolver subject;
     private final EdgeClass classer = new DefaultEdgeClass();
@@ -25,8 +25,8 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     }
 
     public void testResolve() {
-        expect.oneCall(resolver, IMPLEMENTATION, "resolve", iface);
-        expect.oneCall(provider, INSTANCE, "provide", IMPLEMENTATION, new Object[]{});
+        expect.oneCall(resolver, CLASS_TO_NU, "resolve", iface);
+        expect.oneCall(provider, INSTANCE, "provide", CLASS_TO_NU, new Object[]{});
         Object result = subject.resolve(field);
         assertEquals(INSTANCE, result);
     }

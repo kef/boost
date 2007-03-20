@@ -46,7 +46,7 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     }
 
     private Implementation getImplementationToNew(Class newerType, Object ref) {
-        Field implField = edgeClass.getDeclaredField(newerType, "IMPLEMENTATION");
+        Field implField = edgeClass.getDeclaredField(newerType, "CLASS_TO_NU");
         implField.setAccessible(true);
         Class cls = (Class) edgeField.get(implField, ref);
         return new DefaultImplementation(cls);
