@@ -2,11 +2,13 @@ package au.net.netstorm.boost.pebble.resolve;
 
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.Interface;
 
 // FIX BREADCRUMB 1779 Stitch in to DefaultFieldResolver.
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Resolver subject;
     private PebbleProviderEngine provider;
+    private Interface iface;
 
     public void setupSubjects() {
         subject = new DefaultResolver(provider);
@@ -14,6 +16,7 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
 
     // FIX BREADCRUMB 1779 In here and write.
     public void testResolve() {
+        subject.resolve(iface);
     }
 }
 
