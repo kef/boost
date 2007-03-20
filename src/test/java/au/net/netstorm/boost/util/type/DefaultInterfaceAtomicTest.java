@@ -12,6 +12,8 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     private final Interface soldier = new DefaultInterface(Soldier.class);
     private final Interface clown = new DefaultInterface(Clown.class);
 
+    // FIX 35820 Test drive getType().
+    // FIX 35820 Complete isAssignable().
     public void testIsA() {
         checkIsA(true, clown);
         checkIsA(false, soldier);
