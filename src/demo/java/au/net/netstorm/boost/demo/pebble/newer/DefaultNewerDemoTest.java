@@ -3,14 +3,14 @@ package au.net.netstorm.boost.demo.pebble.newer;
 import au.net.netstorm.boost.demo.pebble.core.PebbleGraph;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitResolver;
-import au.net.netstorm.boost.pebble.inject.resolver.core.Resolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitImplementationLookup;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationLookup;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
-    private final Resolver resolver = new DefaultExplicitResolver();
-    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(Pebble.class, resolver);
+    private final ImplementationLookup implementationLookup = new DefaultExplicitImplementationLookup();
+    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(Pebble.class, implementationLookup);
     private final PebbleGraph pebbleGraph = pebbleProviderAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebbleGraph.getProvider();
 

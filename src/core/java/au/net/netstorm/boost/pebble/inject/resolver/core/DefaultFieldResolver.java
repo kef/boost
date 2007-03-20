@@ -7,12 +7,12 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolver implements FieldResolver {
-    private final Resolver resolver;
+    private final ImplementationLookup implementationLookup;
     private final PebbleProviderEngine provider;
 
-    public DefaultFieldResolver(Resolver resolver, PebbleProviderEngine provider) {
+    public DefaultFieldResolver(ImplementationLookup implementationLookup, PebbleProviderEngine provider) {
         this.provider = provider;
-        this.resolver = resolver;
+        this.implementationLookup = implementationLookup;
     }
 
     public Object resolve(Field field) {
@@ -22,7 +22,7 @@ public final class DefaultFieldResolver implements FieldResolver {
 
     // SUGGEST: This is probably the true resolver entry point and will likely take a "flavour".
     private Object resolve(Interface iface) {
-        Implementation implementation = resolver.resolve(iface);
+        Implementation implementation = implementationLookup.find(iface);
         return create(implementation);
     }
 

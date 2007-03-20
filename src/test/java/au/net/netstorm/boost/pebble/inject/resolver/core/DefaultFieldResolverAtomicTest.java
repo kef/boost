@@ -17,15 +17,15 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     private final EdgeClass classer = new DefaultEdgeClass();
     private Field field = someField();
     private Interface iface = new DefaultInterface(HappyChap.class);
-    private Resolver resolver;
+    private ImplementationLookup implementationLookup;
     private PebbleProviderEngine provider;
 
     public void setupSubjects() {
-        subject = new DefaultFieldResolver(resolver, provider);
+        subject = new DefaultFieldResolver(implementationLookup, provider);
     }
 
     public void testResolve() {
-        expect.oneCall(resolver, CLASS_TO_NU, "resolve", iface);
+        expect.oneCall(implementationLookup, CLASS_TO_NU, "find", iface);
         expect.oneCall(provider, INSTANCE, "provide", CLASS_TO_NU, new Object[]{});
         Object result = subject.resolve(field);
         assertEquals(INSTANCE, result);

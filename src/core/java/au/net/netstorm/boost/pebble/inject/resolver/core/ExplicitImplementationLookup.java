@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
-public interface ExplicitResolver extends Resolver {
+public interface ExplicitImplementationLookup extends ImplementationLookup {
     void add(Class iface, Class implementation);
 }

@@ -13,7 +13,7 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-    private final ExplicitResolver subject = new DefaultExplicitResolver();
+    private final ExplicitImplementationLookup subject = new DefaultExplicitImplementationLookup();
 
     {
         subject.add(LAZY_BASTARD, LARRY);
@@ -27,7 +27,7 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
 
     public void testCannotResolve() {
         try {
-            subject.resolve(NON_EXISTENT);
+            subject.find(NON_EXISTENT);
             fail();
         } catch (UnresolvedDependencyException expected) { }
     }
@@ -49,8 +49,8 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
         assertEquals(expected, result);
     }
 
-    private Implementation resolve(Resolver resolver, Class cls) {
+    private Implementation resolve(ImplementationLookup implementationLookup, Class cls) {
         Interface iface = new DefaultInterface(cls);
-        return resolver.resolve(iface);
+        return implementationLookup.find(iface);
     }
 }

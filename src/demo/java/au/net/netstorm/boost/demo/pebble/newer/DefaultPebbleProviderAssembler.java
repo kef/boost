@@ -16,7 +16,7 @@ import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
-import au.net.netstorm.boost.pebble.inject.resolver.core.Resolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationLookup;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
@@ -34,10 +34,10 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultPebbleProviderAssembler implements PebbleProviderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
     private final Class citizen;
-    private final Resolver resolver;
+    private final ImplementationLookup implementationLookup;
 
-    public DefaultPebbleProviderAssembler(Class citizen, Resolver resolver) {
-        this.resolver = resolver;
+    public DefaultPebbleProviderAssembler(Class citizen, ImplementationLookup implementationLookup) {
+        this.implementationLookup = implementationLookup;
         this.citizen = citizen;
     }
 
@@ -66,7 +66,7 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
 
     private ResolverInjector assembleResolverInjector(PebbleProviderEngine pebbleProvider) {
         ResolverFieldFinder finder = new DefaultResolverFieldFinder();
-        FieldResolver fieldResolver = new DefaultFieldResolver(resolver, pebbleProvider);
+        FieldResolver fieldResolver = new DefaultFieldResolver(implementationLookup, pebbleProvider);
         return new ResolverInjector(finder, fieldResolver);
     }
 

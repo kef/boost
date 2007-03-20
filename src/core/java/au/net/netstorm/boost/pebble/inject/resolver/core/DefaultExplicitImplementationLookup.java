@@ -7,10 +7,10 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultExplicitResolver implements ExplicitResolver {
+public final class DefaultExplicitImplementationLookup implements ExplicitImplementationLookup {
     private final Map map = new HashMap();
 
-    public Implementation resolve(Interface type) {
+    public Implementation find(Interface type) {
         Class cls = (Class) map.get(type);
         if (cls == null) throw new UnresolvedDependencyException(type);
         return new DefaultImplementation(cls);
