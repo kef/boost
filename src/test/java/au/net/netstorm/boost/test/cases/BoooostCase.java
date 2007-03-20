@@ -8,8 +8,6 @@ import junit.framework.TestCase;
 // SUGGEST Check bottom level classes are final.
 // SUGGEST Check no-arg (single) constructor.
 
-// FIX 1715 Move test cases into appropriate area.
-
 // OK GenericIllegalRegexp {
 public abstract class BoooostCase extends TestCase {
     // } OK GenericIllegalRegexp

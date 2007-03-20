@@ -13,10 +13,10 @@ public class StrategyTestCase extends BoooostCase {
         }
     }
 
-    protected final void gearup() {
+    protected void gearup() {
     }
 
-    protected final void geardown() {
+    protected void geardown() {
     }
 
     protected void verify() {
