@@ -20,22 +20,20 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         resolver.add(TheDude.class, JeffBridges.class);
         resolver.add(Quote.class, ClassicQuote.class);
         resolver.add(Movie.class, BigLebowski.class);
+        resolver.add(Cinema.class, RegalCinema.class);
     }
 
     public void testNoArgProvide() {
-        Movie movie = (Movie) pebbleProvider.provide(BigLebowski.class, NO_PARAMETERS);
-        checkRealLebowski((BigLebowski) movie);
+        TheDude theDude = (TheDude) pebbleProvider.provide(JeffBridges.class, NO_PARAMETERS);
+        checkTheDudeIsReallyJeff(theDude);
     }
 
-    // FIX 1779 Reinstate
-//    public void testProvide() {
-//        Cinema regalCinema = (Cinema) pebbleProvider.provide(Cinema.class);
-//        Movie movie = regalCinema.getMovie();
-//        checkRealLebowski((BigLebowski) movie);
-//    }
+    public void testProvide() {
+        // FIX 1779 Reinstate this acceptance test for this card.
+        // Cinema regalCinema = (Cinema) pebbleProvider.provide(RegalCinema.class, NO_PARAMETERS);
+    }
 
-    private void checkRealLebowski(BigLebowski bigLebowski) {
-        TheDude theDude = bigLebowski.getTheDude();
+    private void checkTheDudeIsReallyJeff(TheDude theDude) {
         assertNotNull(theDude);
         assertEquals(true, theDude instanceof JeffBridges);
         Quote quote = theDude.getQuote();

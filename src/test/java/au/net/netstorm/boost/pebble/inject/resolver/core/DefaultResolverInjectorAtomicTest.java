@@ -11,6 +11,7 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultResolverInjectorAtomicTest extends InteractionTestCase {
     private Injector subject;
+    private static final Object[] NO_PARAMETERS = {};
     private final EdgeClass classer = new DefaultEdgeClass();
     private EdgeField edgeFielder = new DefaultEdgeField();
     private EdgeField fielder;
@@ -30,8 +31,8 @@ public final class DefaultResolverInjectorAtomicTest extends InteractionTestCase
 
     public void testInjector() {
         expect.oneCall(fieldFinder, fields, "find", juicy);
-        expect.oneCall(fieldResolver, lazyBastard, "resolve", fieldLazareetus);
-        expect.oneCall(fieldResolver, moley, "resolve", fieldCruisyMole);
+        expect.oneCall(fieldResolver, lazyBastard, "resolve", fieldLazareetus, NO_PARAMETERS);
+        expect.oneCall(fieldResolver, moley, "resolve", fieldCruisyMole, NO_PARAMETERS);
         expect.oneCall(fielder, VOID, "set", fieldLazareetus, juicy, lazyBastard);
         expect.oneCall(fielder, VOID, "set", fieldCruisyMole, juicy, moley);
         subject.inject(juicy);

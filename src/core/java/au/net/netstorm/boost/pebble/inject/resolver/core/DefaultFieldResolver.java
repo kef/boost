@@ -15,21 +15,20 @@ public final class DefaultFieldResolver implements FieldResolver {
         this.resolver = resolver;
     }
 
-    public Object resolve(Field field) {
+    public Object resolve(Field field, Object[] dependencies) {
         Interface iface = getInterface(field);
-        return resolve(iface);
+        return resolve(iface, dependencies);
     }
 
     // SUGGEST: This is probably the true resolver entry point and will likely take a "flavour".
-    private Object resolve(Interface iface) {
+    private Object resolve(Interface iface, Object[] dependencies) {
         Implementation implementation = resolver.resolve(iface);
-        return create(implementation);
+        return create(implementation, dependencies);
     }
 
-    private Object create(Implementation implementation) {
+    private Object create(Implementation implementation, Object[] dependencies) {
         // FIX BREADCRUMB 1779 Take some params like a good little boy.
-        Object[] parameters = {};
-        return provider.provide(implementation, parameters);
+        return provider.provide(implementation, dependencies);
     }
 
     private Interface getInterface(Field field) {
