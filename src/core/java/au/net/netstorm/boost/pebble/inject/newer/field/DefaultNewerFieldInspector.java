@@ -56,7 +56,7 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
         Class typeClass = field.getType();
         Interface type = new DefaultInterface(typeClass);
         if (!type.is(NEWER_MARKER)) {
-            throw new DoesNotImplementNewerException(typeClass);
+            throw new DoesNotImplementNewerException(type, NEWER_MARKER);
         }
     }
 

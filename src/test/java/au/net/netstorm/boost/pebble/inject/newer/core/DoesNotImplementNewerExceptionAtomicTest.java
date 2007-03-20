@@ -1,15 +1,21 @@
 package au.net.netstorm.boost.pebble.inject.newer.core;
 
-import au.net.netstorm.boost.pebble.core.Pebble;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.primordial.BoostException;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.Interface;
 
-public final class DoesNotImplementNewerExceptionAtomicTest extends BoooostCase {
-    private static final Class CLASS = Pebble.class;
-    private static final String EXPECTED_MESSAGE = "No newer interface found for class " + CLASS.getName();
+public final class DoesNotImplementNewerExceptionAtomicTest extends InteractionTestCase {
+    private BoostException subject;
+    private Interface type;
+    private Interface marker;
+
+    public void setupSubjects() {
+        subject = new DoesNotImplementNewerException(type, marker);
+    }
 
     public void testException() {
-        Exception actualException = new DoesNotImplementNewerException(CLASS);
-        String actualMessage = actualException.getMessage();
-        assertEquals(EXPECTED_MESSAGE, actualMessage);
+        String actual = subject.getMessage();
+        String expected = type + " should implement " + marker;
+        assertEquals(expected, actual);
     }
 }
