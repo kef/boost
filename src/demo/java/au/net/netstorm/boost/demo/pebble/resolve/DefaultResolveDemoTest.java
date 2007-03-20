@@ -18,25 +18,28 @@ public final class DefaultResolveDemoTest extends BoooostCase {
 
     {
         resolver.add(TheDude.class, JeffBridges.class);
+        resolver.add(Quote.class, ClassicQuote.class);
         resolver.add(Movie.class, BigLebowski.class);
     }
 
-    public void testSingleLevelResolve() {
+    public void testNoArgProvide() {
         Movie movie = (Movie) pebbleProvider.provide(BigLebowski.class, NO_PARAMETERS);
         checkRealLebowski((BigLebowski) movie);
     }
 
-    // FIX BREADCRUMB 1779 Reinstate.
-//    public void testRecursiveResolve() {
+    // FIX 1779 Reinstate
+//    public void testProvide() {
 //        Cinema regalCinema = (Cinema) pebbleProvider.provide(Cinema.class);
 //        Movie movie = regalCinema.getMovie();
 //        checkRealLebowski((BigLebowski) movie);
 //    }
 
     private void checkRealLebowski(BigLebowski bigLebowski) {
-        TheDude result = bigLebowski.getTheDude();
-        assertNotNull(result);
-        assertEquals(true, result instanceof JeffBridges);
+        TheDude theDude = bigLebowski.getTheDude();
+        assertNotNull(theDude);
+        assertEquals(true, theDude instanceof JeffBridges);
+        Quote quote = theDude.getQuote();
+        assertNotNull(quote);
     }
 }
  

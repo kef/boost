@@ -1,6 +1,9 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-public final class JeffBridges implements TheDude {
-    JeffBridges() {
+final class JeffBridges implements TheDude {
+    private Quote quote;
+
+    public Quote getQuote() {
+        return quote;
     }
 }
