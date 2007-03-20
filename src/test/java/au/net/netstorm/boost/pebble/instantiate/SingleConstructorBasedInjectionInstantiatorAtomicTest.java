@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.pebble.instantiate;
 
-import au.net.netstorm.boost.pebble.type.DefaultImplementation;
-import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.Implementation;
 
 public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends BoooostCase {
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();

@@ -2,9 +2,9 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 
 import java.util.HashMap;
 import java.util.Map;
-import au.net.netstorm.boost.pebble.type.DefaultImplementation;
-import au.net.netstorm.boost.pebble.type.Implementation;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultExplicitResolver implements ExplicitResolver {

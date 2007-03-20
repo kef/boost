@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.core;
 
-import au.net.netstorm.boost.pebble.type.DefaultImplementation;
-import au.net.netstorm.boost.pebble.type.Implementation;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.Implementation;
 
 public final class DefaultPebbleProvider implements PebbleProvider {
     private final PebbleProviderEngine engine;

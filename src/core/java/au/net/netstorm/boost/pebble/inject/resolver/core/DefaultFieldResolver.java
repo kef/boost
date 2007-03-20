@@ -2,8 +2,8 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
-import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolver implements FieldResolver {

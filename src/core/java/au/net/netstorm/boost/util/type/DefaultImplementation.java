@@ -1,10 +1,8 @@
-package au.net.netstorm.boost.pebble.type;
+package au.net.netstorm.boost.util.type;
 
 import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplementation extends Primordial implements Implementation {
     private final Interface[] types;

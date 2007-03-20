@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.inject.newer.field;
 
-import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerField extends Primordial implements NewerField {

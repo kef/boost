@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.type;
+package au.net.netstorm.boost.util.type;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -7,8 +7,6 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplementationAtomicTest extends BoooostCase {
     private static final Class[] STRING_INTERFACES = {CharSequence.class, Comparable.class, Serializable.class,};

@@ -3,7 +3,7 @@ package au.net.netstorm.boost.pebble.inject.newer.core;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
-import au.net.netstorm.boost.pebble.type.Implementation;
+import au.net.netstorm.boost.util.type.Implementation;
 
 public final class NewerInvocationHandler implements InvocationHandler {
     private PebbleProviderEngine pebbleProvider;

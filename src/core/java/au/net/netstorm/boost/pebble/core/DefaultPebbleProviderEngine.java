@@ -3,7 +3,7 @@ package au.net.netstorm.boost.pebble.core;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
-import au.net.netstorm.boost.pebble.type.Implementation;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {

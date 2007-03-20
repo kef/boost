@@ -3,8 +3,8 @@ package au.net.netstorm.boost.pebble.inject.newer.core;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
-import au.net.netstorm.boost.pebble.type.Implementation;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.Implementation;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase {
     private InvocationHandler subject;
