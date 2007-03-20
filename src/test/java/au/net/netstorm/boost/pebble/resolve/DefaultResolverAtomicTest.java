@@ -2,22 +2,30 @@ package au.net.netstorm.boost.pebble.resolve;
 
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.Implementation;
 
 // FIX BREADCRUMB 1779 Stitch in to DefaultFieldResolver.
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Resolver subject;
     private PebbleProviderEngine provider;
-    private Interface iface;
+    private Object ref;
+    private Implementation noarg = new DefaultImplementation(NoArgJim.class);
+    private Object[] noparams = {};
 
     public void setupSubjects() {
         subject = new DefaultResolver(provider);
     }
 
     // FIX BREADCRUMB 1779 In here and write.
-    public void testResolve() {
-        subject.resolve(iface);
+    public void testNoUnresolvedDependencies() {
+        expect.oneCall(provider, ref, "provide", noarg, noparams);
+        Object result = subject.resolve(noarg);
+        assertEquals(ref, result);
     }
+
+    // FIX 1779 One arg.
+    // FIX 1779 Multi-arg case.
 }
 
 // FIX 1779 Remove when done.

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.resolve;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.Implementation;
 
 public interface Resolver {
-    Object resolve(Interface iface);
+    Object resolve(Implementation iface);
 }
