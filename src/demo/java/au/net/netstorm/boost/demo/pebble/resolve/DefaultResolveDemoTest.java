@@ -17,14 +17,14 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     private final PebbleProvider pebbleProvider = pebbleGraph.getProvider();
 
     {
-        resolver.add(TheDude.class, DavidPetit.class);
+        resolver.add(TheDude.class, JeffBridges.class);
     }
 
     public void testResolve() {
-        Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
-        TheDude result = rob.getTheDude();
+        BigLebowski bigLebowski = (BigLebowski) pebbleProvider.provide(BigLebowski.class, NO_PARAMETERS);
+        TheDude result = bigLebowski.getTheDude();
         assertNotNull(result);
-        assertEquals(true, result instanceof DavidPetit);
+        assertEquals(true, result instanceof JeffBridges);
     }
 }
  
