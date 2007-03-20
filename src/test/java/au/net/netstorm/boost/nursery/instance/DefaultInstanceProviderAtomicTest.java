@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.nursery.instance;
 
-import au.net.netstorm.boost.test.automock.BoooostCase;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultInstanceProviderAtomicTest extends BoooostCase {
 //    private static final Integer INTEGER_23 = new Integer(23);
-//    private static final Integer INTEGER_32 = new Integer(32);
-//    private static final Object POINT_23_32 = new Point(23, 32);
+    //    private static final Integer INTEGER_32 = new Integer(32);
+    //    private static final Object POINT_23_32 = new Point(23, 32);
     //    private static final Class INTEGER_CLASS = Integer.class;
     //    private static final Class POINT_CLASS = Point.class;
     private static final Class OBJECT_CLASS = Object.class;
@@ -13,7 +13,7 @@ public final class DefaultInstanceProviderAtomicTest extends BoooostCase {
     private InstanceProvider instanceProvider;
     private MockEdgeReflect mockEdgeClass;
 
-    protected void setup() {
+    protected void gearup() {
         mockEdgeClass = new MockEdgeReflect();
         instanceProvider = new DefaultInstanceProvider(mockEdgeClass);
     }
