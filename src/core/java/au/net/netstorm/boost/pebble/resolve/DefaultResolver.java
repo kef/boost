@@ -40,12 +40,12 @@ public final class DefaultResolver implements Resolver {
     }
 
     private Object[] resolve(Class[] parameters) {
-        Interface[] unresolved = toInterfaces(parameters);
+        Interface[] unresolved = interfaces(parameters);
         return resolve(unresolved);
     }
 
     // FIX 1779 Move into utility.
-    private Interface[] toInterfaces(Class[] parameters) {
+    private Interface[] interfaces(Class[] parameters) {
         int length = parameters.length;
         Interface[] result = new Interface[length];
         for (int i = 0; i < length; i++) {
