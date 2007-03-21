@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class TestRandomProvider implements RandomProvider {
+public final class DefaultRandomProvider implements RandomProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 5;
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
