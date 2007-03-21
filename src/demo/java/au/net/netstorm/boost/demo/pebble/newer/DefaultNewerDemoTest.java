@@ -10,8 +10,8 @@ import junit.framework.TestCase;
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
     private final ImplementationLookup implementationLookup = new DefaultExplicitImplementationLookup();
-    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(Pebble.class, implementationLookup);
-    private final PebblePortal pebblePortal = pebbleProviderAssembler.assemble();
+    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, implementationLookup);
+    private final PebblePortal pebblePortal = pebbleAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     public void testRecursiveNewerInjection() {

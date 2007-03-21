@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
 import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
-import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleProviderAssembler;
-import au.net.netstorm.boost.demo.pebble.newer.PebbleProviderAssembler;
+import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
+import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitImplementationLookup;
@@ -12,8 +12,8 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final ExplicitImplementationLookup lookup = new DefaultExplicitImplementationLookup();
-    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(Pebble.class, lookup);
-    private final PebblePortal pebblePortal = pebbleProviderAssembler.assemble();
+    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, lookup);
+    private final PebblePortal pebblePortal = pebbleAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     {

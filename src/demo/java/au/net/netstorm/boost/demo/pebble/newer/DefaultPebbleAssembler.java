@@ -33,13 +33,12 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1779 Rename to DefaultPebbleGraphAssembler
-public final class DefaultPebbleProviderAssembler implements PebbleProviderAssembler {
+public final class DefaultPebbleAssembler implements PebbleAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
     private final Class citizen;
     private final ImplementationLookup lookup;
 
-    public DefaultPebbleProviderAssembler(Class citizen, ImplementationLookup lookup) {
+    public DefaultPebbleAssembler(Class citizen, ImplementationLookup lookup) {
         this.lookup = lookup;
         this.citizen = citizen;
     }
