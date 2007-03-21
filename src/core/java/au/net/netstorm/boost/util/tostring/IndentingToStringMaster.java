@@ -12,21 +12,28 @@ import au.net.netstorm.boost.util.separator.Separator;
 public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
     private static final String LF = Separator.LINE;
+    private static final String BLANK = "";
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ReflectMaster reflect = new DefaultReflectMaster();
 
     public String getString(Object ref) {
-        return getClassName(ref.getClass()) + formatFields(formatFields(ref));
+        String[] strings = formatFields(ref);
+        boolean extended = useExtended(strings);
+        return getClassName(ref, extended) + layoutFields(strings);
     }
 
-    private String formatFields(String[] s) {
+    private String getClassName(Object ref, boolean extended) {
+        return extended ? getClassName(ref) : BLANK;
+    }
+
+    private String layoutFields(String[] s) {
         if (s.length == 0) return "[]";
-        if (s.length == 1) return "[ " + getString(s) + " ]";
+        if (s.length == 1) return getString(s);
         return "[" + LF + indent(getString(s)) + LF + "]";
     }
 
     private String getString(String[] s) {
-        String result = "";
+        String result = BLANK;
         for (int i = 0; i < s.length; i++) {
             result += s[i];
             if (i < s.length - 1) {
@@ -38,24 +45,33 @@ public class IndentingToStringMaster implements ToStringMaster {
 
     private String[] formatFields(Object ref) {
         FieldValueSpec[] fields = reflect.getInstanceFields(ref);
-        String[] result = new String[fields.length];
-        for (int i = 0; i < result.length; i++) {
+        boolean extended = useExtended(fields);
+        return extended ? formatMultipleFields(fields) : formatSingleField(fields[0]);
+    }
+
+    private String[] formatMultipleFields(FieldValueSpec[] fields) {
+        int length = fields.length;
+        String[] result = new String[length];
+        for (int i = 0; i < length; i++) {
             result[i] = formatField(fields[i]);
         }
         return result;
     }
 
+    private String[] formatSingleField(FieldValueSpec field) {
+        return new String[]{fieldValue(field)};
+    }
+
     private String formatField(FieldValueSpec fieldValue) {
-        return fieldValue.getName() + "=" + fieldValue(fieldValue);
+        String name = fieldValue.getName();
+        String value = fieldValue(fieldValue);
+        return name + "=" + value;
     }
 
     private String fieldValue(FieldValueSpec fieldValue) {
         Object value = fieldValue.getValue();
-        // FIX SC600 incorporate and test this.
-        if (value == null) {
-            return "null"; // FIXME: SC600 Test drive this little sucker.  We can remove it.
-        }
-        return (isArray(value) ? arrayValue(value) : value.toString());
+        if (value == null) return "null";
+        return isArray(value) ? arrayValue(value) : value.toString();
     }
 
     private String arrayValue(Object array) {
@@ -63,7 +79,7 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String arrayToString(Object array) {
-        String result = "";
+        String result = BLANK;
         for (int i = 0; i < Array.getLength(array); i++) {
             result += Array.get(array, i)
                     .toString() + COMMA;
@@ -71,13 +87,14 @@ public class IndentingToStringMaster implements ToStringMaster {
         return removeLastChar(result);
     }
 
-    private String getClassName(Class cls) {
+    private String getClassName(Object ref) {
+        Class cls = ref.getClass();
         return classMaster.getShortName(cls);
     }
 
     private boolean isArray(Object value) {
-        return value.getClass()
-                .isArray();
+        Class cls = value.getClass();
+        return cls.isArray();
     }
 
     private String removeLastChar(String s) {
@@ -87,5 +104,9 @@ public class IndentingToStringMaster implements ToStringMaster {
     private String indent(String result) {
         return new DefaultIndenterMaster().indent(result);
     }
+
+    private boolean useExtended(Object[] refs) {
+        return refs.length != 1;
+    }
 }
-// FEATURE: It would be nice if byte[]s (int, long?) printed out in ASCII as well (hexdump style).
+// SUGGEST: It would be nice if byte[]s (int, long?) printed out in ASCII as well (hexdump style).

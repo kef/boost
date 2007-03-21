@@ -20,9 +20,11 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
             new TestMultipleNestedFields("multiple", new TestPreformattedTwoFields(2, 4));
     private static final TestStringArrayField STRING_ARRAY_C_D = new TestStringArrayField(new String[]{"C", "D"});
     private static final String EXPECTED_INDENTATION = "    ";
+    private static final TestSingleField SINGLE_FIELD = new TestSingleField(9);
 
     public void testToString() {
         checkToString("TestNoField[]", NO_FIELDS);
+        checkToString(singleField(9), SINGLE_FIELD);
         checkToString(twoFieldsResult(2, 4, 0), TWO_FIELDS_2_4);
         checkToString(twoFieldsResult(5, 7, 0), TWO_FIELDS_5_7);
     }
@@ -37,12 +39,16 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
         checkToString(multipleNestedFieldResult(), MULTIPLE_NESTED_FIELDS);
     }
 
+    private String singleField(int i) {
+        return "" + i;
+    }
+
     private String nestedFieldResult() {
         return "TestNestedFields[" + lfIndent("name=Andy") + lfIndent("nested=FIXED") + lf("]");
     }
 
     private String nullFieldResult() {
-        return "TestNullField[ nullString=null ]";
+        return "null";
     }
 
     private String multipleNestedFieldResult() {
@@ -54,11 +60,11 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String intArrayResult() {
-        return "TestIntArrayField[ ints={1,2,4} ]";
+        return "{1,2,4}";
     }
 
     private String stringArrayResult(String x, String y) {
-        return "TestStringArrayField[ strings={" + x + "," + y + "} ]";
+        return "{" + x + "," + y + "}";
     }
 
     private String twoFieldsResult(int x, int y, int depth) {
