@@ -5,11 +5,13 @@ import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationLookup;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.InterfaceUtil;
 
 public final class DefaultResolver implements Resolver {
+    private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final PebbleProviderEngine provider;
     private final ImplementationLookup lookup;
@@ -40,19 +42,8 @@ public final class DefaultResolver implements Resolver {
     }
 
     private Object[] resolve(Class[] parameters) {
-        Interface[] unresolved = interfaces(parameters);
+        Interface[] unresolved = interfacer.interfaces(parameters);
         return resolve(unresolved);
-    }
-
-    // FIX BREADCRUMB 1779 Stitch in utility.
-    // FIX 1779 Move into utility.
-    private Interface[] interfaces(Class[] parameters) {
-        int length = parameters.length;
-        Interface[] result = new Interface[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = new DefaultInterface(parameters[i]);
-        }
-        return result;
     }
 
     private Class[] getParameters(Implementation impl) {
@@ -71,5 +62,5 @@ public final class DefaultResolver implements Resolver {
           `|  \<M`    `\ \`\_/ / /| | |   `\`\| | /'    \ \ \| | |   `\`\| |
            `\  `(B---/| \ `---' / |/^\|     \ | |/       \/^\\.^\|     \ | |
              `\  `?_~~`\_`~~~~~`  ~~~~~      )^\,\,      `~~~~~~~~      )^\,\,
-               `~~~~~~~~~~                   ~~~~~~                     ~~~~~~
+               `~~~~~~~~~~       CROM        ~~~~~~                     ~~~~~~
 */
