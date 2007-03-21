@@ -11,16 +11,16 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
-    private final ExplicitImplementationLookup resolver = new DefaultExplicitImplementationLookup();
-    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(Pebble.class, resolver);
+    private final ExplicitImplementationLookup lookup = new DefaultExplicitImplementationLookup();
+    private final PebbleProviderAssembler pebbleProviderAssembler = new DefaultPebbleProviderAssembler(Pebble.class, lookup);
     private final PebblePortal pebblePortal = pebbleProviderAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     {
-        resolver.add(TheDude.class, JeffBridges.class);
-        resolver.add(Quote.class, ClassicQuote.class);
-        resolver.add(Movie.class, BigLebowski.class);
-        resolver.add(Cinema.class, RegalCinema.class);
+        lookup.add(TheDude.class, JeffBridges.class);
+        lookup.add(Quote.class, ClassicQuote.class);
+        lookup.add(Movie.class, BigLebowski.class);
+        lookup.add(Cinema.class, RegalCinema.class);
     }
 
     public void testNoArgProvide() {
@@ -29,8 +29,8 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     }
 
     public void testProvide() {
-        // FIX 1779 Reinstate this acceptance test for this card.
-        // Cinema regalCinema = (Cinema) pebbleProvider.provide(RegalCinema.class, NO_PARAMETERS);
+        Cinema regalCinema = (Cinema) pebbleProvider.provide(RegalCinema.class, NO_PARAMETERS);
+        assertNotNull(regalCinema);
     }
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {
