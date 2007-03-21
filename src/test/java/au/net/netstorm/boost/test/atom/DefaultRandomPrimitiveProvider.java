@@ -3,11 +3,11 @@ package au.net.netstorm.boost.test.atom;
 import java.util.Random;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
-public final class DefaultRandomProvider implements RandomProvider {
+public final class DefaultRandomPrimitiveProvider implements RandomPrimitiveProvider {
+    private Random random = new Random();
+
     private interface InternalInterface {
     }
-
-    private Random random = new Random();
 
     public Object getRandom(Class type) {
         Object result = doGetRandom(type);
@@ -16,17 +16,16 @@ public final class DefaultRandomProvider implements RandomProvider {
                 "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
     }
 
-    public boolean isRandomizable(Class type) {
-        Object result = doGetRandom(type);
-        return result != null;
+    public boolean canProvide(Class type) {
+        return doGetRandom(type) != null;
     }
 
     private Object doGetRandom(Class type) {
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();
         if (type == Long.class) return randomLong();
-        if (type == Float.class) return randomFloat();
         if (type == Double.class) return randomDouble();
+        if (type == Float.class) return randomFloat();
         if (type == Byte.class) return randomByte();
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();

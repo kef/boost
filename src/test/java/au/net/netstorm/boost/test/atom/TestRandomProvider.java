@@ -9,13 +9,13 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class TestTriangulationProvider implements TriangulationProvider {
+public final class TestRandomProvider implements RandomProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private static final int ARRAY_LENGTH = 5;
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private RandomProvider randomProvider = new DefaultRandomProvider();
+    private RandomPrimitiveProvider randomPrimitiveProvider = new DefaultRandomPrimitiveProvider();
 
     // OK CyclomaticComplexity {
     public Object getInstance(Class type) {
@@ -35,6 +35,11 @@ public final class TestTriangulationProvider implements TriangulationProvider {
         return params;
     }
 
+    // FIX 37874 Change calls to randomPrimitiveProvider.canProvide() to this...
+    public boolean canProvide(Class type) {
+        return getInstance(type) != null;
+    }
+
     private boolean isInterface(Class type) {
         return type.isInterface();
     }
@@ -44,7 +49,7 @@ public final class TestTriangulationProvider implements TriangulationProvider {
     }
 
     private boolean isSupportedConcrete(Class type) {
-        return randomProvider.isRandomizable(type);
+        return randomPrimitiveProvider.canProvide(type);
     }
 
     private boolean isArray(Class type) {
@@ -58,11 +63,11 @@ public final class TestTriangulationProvider implements TriangulationProvider {
 
     private Object randomPrimitiveType(Class type) {
         Class boxed = primitiveBoxer.getBoxed(type);
-        return randomProvider.getRandom(boxed);
+        return randomPrimitiveProvider.getRandom(boxed);
     }
 
     private Object randomSupportedConcrete(Class type) {
-        return randomProvider.getRandom(type);
+        return randomPrimitiveProvider.getRandom(type);
     }
 
     private Object randomArray(Class type) {
