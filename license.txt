@@ -1,4 +1,4 @@
-Copyright 2005 Netstorm (www.netstorm.net.au) 
+Copyright 2005, 2006, 2007 Netstorm (www.netstorm.net.au) 
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use files in Boost except in compliance with the License. You may obtain a copy
