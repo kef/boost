@@ -19,7 +19,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
         this.instantiator = instantiator;
     }
 
-    // FIX 1779 Strongly type Object[] as Dependencies?
+    // SUGGEST: Strongly type Object[] as Dependencies?
     public Object provide(Implementation impl, Object[] resolved) {
         if (!impl.is(marker)) return boom(impl);
         Object ref = instantiator.instantiate(impl, resolved);
