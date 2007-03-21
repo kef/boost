@@ -48,11 +48,12 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         PebbleProviderEngine passThroughPebbleProvider = (PebbleProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-        Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator);
+        Resolver resolver = new DefaultResolver(passThroughPebbleProvider, lookup);
+        Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
         DefaultPebbleProvider pebbleProvider = new DefaultPebbleProvider(pebbleProviderEngine);
-        return new DefaultPebblePortal(pebbleProvider, objectInjector);
+        return new DefaultPebblePortal(pebbleProvider, objectInjector, resolver);
     }
 
     private ProxyFactory assembleProxyFactory() {
@@ -60,15 +61,14 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProviderEngine provider, Instantiator instantiator) {
-        Injector newer = assembleNewerInjector(proxyFactory, provider, instantiator);
-        Injector resolver = assembleResolverInjector(provider);
-        return new PebbleInjector(newer, resolver);
+    private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProviderEngine pebbleProviderEngine, Instantiator instantiator, Resolver resolver) {
+        Injector newer = assembleNewerInjector(proxyFactory, pebbleProviderEngine, instantiator);
+        Injector injector = assembleResolverInjector(resolver);
+        return new PebbleInjector(newer, injector);
     }
 
-    private ResolverInjector assembleResolverInjector(PebbleProviderEngine pebbleProvider) {
+    private ResolverInjector assembleResolverInjector(Resolver resolver) {
         ResolverFieldFinder finder = new DefaultResolverFieldFinder();
-        Resolver resolver = new DefaultResolver(pebbleProvider, lookup);
         FieldResolver fieldResolver = new DefaultFieldResolver(resolver);
         return new ResolverInjector(finder, fieldResolver);
     }
