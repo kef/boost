@@ -2,8 +2,10 @@ package au.net.netstorm.boost.test.automock;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.test.atom.DefaultRandomArrayDetective;
 import au.net.netstorm.boost.test.atom.DefaultRandomPrimitiveProvider;
 import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
+import au.net.netstorm.boost.test.atom.RandomArrayDetective;
 import au.net.netstorm.boost.test.atom.RandomPrimitiveProvider;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
@@ -17,6 +19,7 @@ public final class DefaultBoostField implements BoostField {
     private final RandomPrimitiveProvider randomPrimitiveProvider = new DefaultRandomPrimitiveProvider();
     private final Object ref;
     private final Field field;
+    private RandomArrayDetective randomArrayDetective = new DefaultRandomArrayDetective();
 
     public DefaultBoostField(Object ref, Field field) {
         this.ref = ref;
@@ -52,7 +55,8 @@ public final class DefaultBoostField implements BoostField {
 
     public boolean isRandomizable() {
         Class type = field.getType();
-        return randomPrimitiveProvider.canProvide(type);
+        if (randomPrimitiveProvider.canProvide(type)) return true;
+        return randomArrayDetective.isRandomizable(type);
     }
 
     public boolean isInterface() {
