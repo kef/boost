@@ -46,6 +46,7 @@ public final class DefaultResolver implements Resolver {
         return resolve(unresolved);
     }
 
+    // SUGGEST: This really belongs in the pebble constructor area.  It is injection specific.
     private Class[] getParameters(Implementation impl) {
         Class cls = impl.getImpl();
         Constructor constructor = reflector.getConstructor(cls);
