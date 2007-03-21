@@ -35,11 +35,6 @@ public final class DefaultRandomProvider implements RandomProvider {
         return params;
     }
 
-    // FIX 37874 Change calls to randomPrimitiveProvider.canProvide() to this...
-    public boolean canProvide(Class type) {
-        return getInstance(type) != null;
-    }
-
     private boolean isInterface(Class type) {
         return type.isInterface();
     }
