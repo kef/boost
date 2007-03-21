@@ -42,7 +42,7 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String nullFieldResult() {
-        return "TestNullField[" + lfIndent("nullString=null") + lf("]");
+        return "TestNullField[ nullString=null ]";
     }
 
     private String multipleNestedFieldResult() {
@@ -54,11 +54,11 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String intArrayResult() {
-        return "TestIntArrayField[" + lfIndent("ints={1,2,4}") + lf("]");
+        return "TestIntArrayField[ ints={1,2,4} ]";
     }
 
     private String stringArrayResult(String x, String y) {
-        return "TestStringArrayField[" + lfIndent("strings={" + x + "," + y + "}") + lf("]");
+        return "TestStringArrayField[ strings={" + x + "," + y + "} ]";
     }
 
     private String twoFieldsResult(int x, int y, int depth) {
@@ -84,7 +84,9 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private void checkToString(String expected, Object ref) {
-        assertEquals(expected, new IndentingToStringMaster().getString(ref));
+        ToStringMaster indentingToStringMaster = new IndentingToStringMaster();
+        String result = indentingToStringMaster.getString(ref);
+        assertEquals(expected, result);
     }
 }
 // } DEBT ClassDataAbstractionCoupling
