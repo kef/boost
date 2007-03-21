@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.reflect.checker;
+package au.net.netstorm.boost.retire.reflect;
 
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;

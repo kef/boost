@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.reflect.checker;
+package au.net.netstorm.boost.retire.reflect;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -47,7 +47,8 @@ public final class DefaultAssertException implements AssertException {
     }
 
     // SUGGEST Too big.
-// DEBT JavaNCSS {
+
+    // DEBT JavaNCSS {
     private Throwable getCauseAtDepth(Throwable wrapperException, int depth) {
         Throwable cause = wrapperException.getCause();
         boolean maxedOut = cause == wrapperException;
@@ -56,7 +57,7 @@ public final class DefaultAssertException implements AssertException {
             Throwable currentWrapper = cause;
             cause = cause.getCause();
             maxedOut = cause == currentWrapper;
-            currentDepth ++;
+            currentDepth++;
         }
         if (depth != Integer.MAX_VALUE) {
             Assert.assertEquals("Wrapped exception not found at correct depth ", depth, currentDepth);

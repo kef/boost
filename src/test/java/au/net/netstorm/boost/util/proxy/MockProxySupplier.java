@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationHandler;
 import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.nursery.reflect.checker.AssertTestChecker;
-import au.net.netstorm.boost.nursery.reflect.checker.DefaultAssertTestChecker;
+import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
+import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 

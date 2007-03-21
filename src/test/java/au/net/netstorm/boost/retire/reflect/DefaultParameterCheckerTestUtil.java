@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.reflect.checker;
+package au.net.netstorm.boost.retire.reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
