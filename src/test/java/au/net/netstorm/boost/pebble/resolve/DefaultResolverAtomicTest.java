@@ -8,7 +8,6 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX BREADCRUMB 1779 Stitch in to DefaultFieldResolver.
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Resolver subject;
     private PebbleProviderEngine provider;
@@ -25,7 +24,6 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
         subject = new DefaultResolver(provider, lookup);
     }
 
-    // FIX BREADCRUMB 1779 Fix StringMaster.toString to flatten objects with a single field.
     public void testNoUnresolvedDependencies() {
         expect.oneCall(lookup, jimImpl, "find", jim);
         expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);

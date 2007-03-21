@@ -3,32 +3,27 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
+import au.net.netstorm.boost.pebble.resolve.Resolver;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
-    private static final Implementation CLASS_TO_NU = new DefaultImplementation(VeryHappyChap.class);
-    private static final VeryHappyChap INSTANCE = new VeryHappyChap();
-    private FieldResolver subject;
     private final EdgeClass classer = new DefaultEdgeClass();
+    private Interface happyChap = new DefaultInterface(HappyChap.class);
+    private FieldResolver subject;
     private Field field = someField();
-    private Interface iface = new DefaultInterface(HappyChap.class);
-    private ImplementationLookup implementationLookup;
-    private PebbleProviderEngine provider;
+    private Resolver resolver;
+    private Object resolved;
 
     public void setupSubjects() {
-        subject = new DefaultFieldResolver(implementationLookup, provider);
+        subject = new DefaultFieldResolver(resolver);
     }
 
     public void testResolve() {
-        expect.oneCall(implementationLookup, CLASS_TO_NU, "find", iface);
-        expect.oneCall(provider, INSTANCE, "provide", CLASS_TO_NU, new Object[]{});
+        expect.oneCall(resolver, resolved, "resolve", happyChap);
         Object result = subject.resolve(field);
-        assertEquals(INSTANCE, result);
+        assertEquals(resolved, result);
     }
 
     private Field someField() {

@@ -26,6 +26,8 @@ import au.net.netstorm.boost.pebble.onion.BermudaOnion;
 import au.net.netstorm.boost.pebble.onion.DefaultPassThroughInvocationHandler;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.pebble.onion.PassThroughInvocationHandler;
+import au.net.netstorm.boost.pebble.resolve.DefaultResolver;
+import au.net.netstorm.boost.pebble.resolve.Resolver;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -35,10 +37,10 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultPebbleProviderAssembler implements PebbleProviderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
     private final Class citizen;
-    private final ImplementationLookup implementationLookup;
+    private final ImplementationLookup lookup;
 
-    public DefaultPebbleProviderAssembler(Class citizen, ImplementationLookup implementationLookup) {
-        this.implementationLookup = implementationLookup;
+    public DefaultPebbleProviderAssembler(Class citizen, ImplementationLookup lookup) {
+        this.lookup = lookup;
         this.citizen = citizen;
     }
 
@@ -67,7 +69,8 @@ public final class DefaultPebbleProviderAssembler implements PebbleProviderAssem
 
     private ResolverInjector assembleResolverInjector(PebbleProviderEngine pebbleProvider) {
         ResolverFieldFinder finder = new DefaultResolverFieldFinder();
-        FieldResolver fieldResolver = new DefaultFieldResolver(implementationLookup, pebbleProvider);
+        Resolver resolver = new DefaultResolver(pebbleProvider, lookup);
+        FieldResolver fieldResolver = new DefaultFieldResolver(resolver);
         return new ResolverInjector(finder, fieldResolver);
     }
 
