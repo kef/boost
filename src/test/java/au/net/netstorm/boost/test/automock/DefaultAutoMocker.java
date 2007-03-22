@@ -18,6 +18,12 @@ class DefaultAutoMocker implements AutoMocker {
         this.mockProvider = mockProvider;
     }
 
+    public Mock get(Object proxy) {
+        Mock mock = (Mock) mocks.get(proxy);
+        if (mock != null) return mock;
+        throw new IllegalStateException("Mock does not exist for provided proxy.");
+    }
+
     // FIX 1676 Move into thing called FieldMocker.
     public void mock(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
@@ -26,12 +32,6 @@ class DefaultAutoMocker implements AutoMocker {
             if (!fields[i].isInterface()) continue;
             tryCreateMock(fields[i]);
         }
-    }
-
-    public Mock mock(Object proxy) {
-        Mock mock = (Mock) mocks.get(proxy);
-        if (mock != null) return mock;
-        throw new IllegalStateException("Mock does not exist for provided proxy.");
     }
 
     private void tryCreateMock(BoostField field) {

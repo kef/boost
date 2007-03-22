@@ -65,7 +65,7 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
     }
 
     private Mock getMock(Object ref) {
-        return autoMocker.mock(ref);
+        return autoMocker.get(ref);
     }
 
     private Stub throwException(Throwable throwable) {
