@@ -20,7 +20,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldBuilder builder = new BoostFieldBuilder();
     private final FieldSelector selector = new DefaultFieldSelector();
     private final UsesMocks testCase;
-    private Matcher matcher = new MockableMatcher();
+    private Matcher mockMatcher = new MockableMatcher();
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
@@ -28,11 +28,11 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
 
     public void init() {
         BoostField[] fields = builder.build(testCase);
-        selector.select(fields, matcher);
+        BoostField[] mockFields = selector.select(fields, mockMatcher);
         // FIX 1676 The whole list of injectable fields is not interesting.
         // Change this to return only MOCKABLE fields. This should use the fieldFinder pattern.
         BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
-        assignMocks(eligibleFields);
+        assignMocks(mockFields);
         assignRandomValues(eligibleFields);
         testCase.setupSubjects();
     }
