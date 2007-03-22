@@ -5,5 +5,5 @@ public interface Registry {
     void prototype(Class iface, Class implementation);
 
     // FIX BREADCRUMB 1824 Re-instate.
-//    void instance(Interface iface, Instance instance);
+//    void instance(Class iface, Instance instance);
 }

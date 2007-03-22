@@ -20,4 +20,9 @@ public final class DefaultRegistryEngine implements RegistryEngine {
         Interface inyerface = new DefaultInterface(iface);
         map.put(inyerface, implementation);
     }
+    // FIX BREADCRUMB 1824 Re-instate.
+//
+//    public void instance(Class iface, Instance instance) {
+//        throw new UnsupportedOperationException();
+//    }
 }

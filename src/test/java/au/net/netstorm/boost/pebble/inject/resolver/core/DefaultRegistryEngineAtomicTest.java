@@ -12,12 +12,18 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
+    private static final Class FRENCH_CLOISON = FrenchCloison.class;
+
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
+
     private final RegistryEngine subject = new DefaultRegistryEngine();
+
+//    private static final Instance DAVID_PETIT = ;
 
     {
         subject.prototype(LAZY_BASTARD, LARRY);
         subject.prototype(LEGEND, AN_DO);
+//        subject.instance(FRENCH_CLOISON, DAVID_PETIT);
     }
 
     public void testResolve() {
