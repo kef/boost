@@ -27,9 +27,6 @@ class DefaultAutoMocker implements AutoMocker {
 
     public void mock(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
-            // FIX 1676 This does not belong.  It belongs in a FieldFinder type thing.
-            // FIX 1676 Instead pass in ONLY the fields we mock.
-            if (!fields[i].isInterface()) continue;
             tryCreateMock(fields[i]);
         }
     }
