@@ -27,6 +27,9 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
+        // FIX 1676 Break for primitive fields (maybe which aren't final).
+        // FIX 1676 Break for fields which are not package private?
+        // FIX 1676 Break if any fields are final.
         BoostField[] fields = builder.build(testCase);
         BoostField[] mockFields = selector.select(fields, mockMatcher);
         // FIX 1676 The whole list of injectable fields is not interesting.
