@@ -2,21 +2,24 @@ package au.net.netstorm.boost.test.atom;
 
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.test.random.DefaultFieldSpecTestUtil;
-import au.net.netstorm.boost.test.random.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
+import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 public final class ConstructorNullDataChecker implements DataChecker {
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private FieldSpecTestUtil fieldUtil = new DefaultFieldSpecTestUtil();
+    private FieldRandomizer fieldUtil = new DefaultFieldRandomizer();
     private ExceptionUtil exceptionUtil = new DefaultExceptionUtil();
     private ClassMaster classMaster = new DefaultClassMaster();
+    private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
 
     public void check(Class cls, FieldSpec[] fields) {
         Object[] parameters = getInstances(fields);
-        Class[] types = fieldUtil.getTypes(fields);
+        Class[] types = fielder.getTypes(fields);
         checkNullsAreBumped(cls, parameters, types);
     }
 

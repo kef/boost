@@ -5,15 +5,15 @@ import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.test.random.DefaultFieldSpecTestUtil;
-import au.net.netstorm.boost.test.random.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 final class ConstructorDataChecker implements DataChecker {
-    private FieldSpecTestUtil fieldSpecUtil = new DefaultFieldSpecTestUtil();
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private ClassMaster classMaster = new DefaultClassMaster();
+    private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
 
     public void check(Class cls, FieldSpec[] fields) {
         checkSingleConstructor(cls);
@@ -31,7 +31,7 @@ final class ConstructorDataChecker implements DataChecker {
     private void checkParametersMatch(Class cls, FieldSpec[] fields) {
         Constructor constructor = reflectMaster.getConstructor(cls);
         Class[] declaredTypes = constructor.getParameterTypes();
-        Class[] expectedTypes = fieldSpecUtil.getTypes(fields);
+        Class[] expectedTypes = fielder.getTypes(fields);
         checkConstructor(expectedTypes, declaredTypes);
     }
 

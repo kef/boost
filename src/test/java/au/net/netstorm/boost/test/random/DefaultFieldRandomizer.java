@@ -1,21 +1,16 @@
 package au.net.netstorm.boost.test.random;
 
+import au.net.netstorm.boost.test.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-public final class DefaultFieldSpecTestUtil implements FieldSpecTestUtil {
+public final class DefaultFieldRandomizer implements FieldRandomizer {
     private RandomProvider randomProvider = new EverythingRandomProvider();
-
-    public Class[] getTypes(FieldSpec[] fields) {
-        Class[] classes = new Class[fields.length];
-        for (int i = 0; i < classes.length; i++) {
-            classes[i] = fields[i].getType();
-        }
-        return classes;
-    }
+    private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
 
     // FIX 1676 Split.  These two methods do completely different things.
     public Object[] getInstances(FieldSpec[] fields) {
-        Class[] types = getTypes(fields);
+        Class[] types = fielder.getTypes(fields);
         Object[] result = new Object[types.length];
         for (int i = 0; i < types.length; i++) {
             result[i] = randomProvider.get(types[i]);

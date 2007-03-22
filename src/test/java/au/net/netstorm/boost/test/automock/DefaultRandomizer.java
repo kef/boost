@@ -2,15 +2,15 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashSet;
 import java.util.Set;
-import au.net.netstorm.boost.test.random.DefaultFieldSpecTestUtil;
-import au.net.netstorm.boost.test.random.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
+import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 public final class DefaultRandomizer implements Randomizer {
-    private final FieldSpecTestUtil fieldSpecTestUtil = new DefaultFieldSpecTestUtil();
+    private final FieldRandomizer fieldRandomizer = new DefaultFieldRandomizer();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final UsesMocks testCase;
 
@@ -24,7 +24,7 @@ public final class DefaultRandomizer implements Randomizer {
     }
 
     private void randomize(FieldSpec[] fields) {
-        Object[] randomInstances = fieldSpecTestUtil.getInstances(fields);
+        Object[] randomInstances = fieldRandomizer.getInstances(fields);
         for (int i = 0; i < fields.length; i++) {
             assignRandomValue(fields[i], randomInstances[i]);
         }
