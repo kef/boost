@@ -13,11 +13,11 @@ public final class DefaultExplicitImplementationRegistryAtomicTest extends Boooo
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-    private final ExplicitImplementationRegistry subject = new DefaultExplicitImplementationRegistry();
+    private final RegistryEngine subject = new DefaultRegistryEngine();
 
     {
-        subject.add(LAZY_BASTARD, LARRY);
-        subject.add(LEGEND, AN_DO);
+        subject.prototype(LAZY_BASTARD, LARRY);
+        subject.prototype(LEGEND, AN_DO);
     }
 
     public void testResolve() {
@@ -27,14 +27,14 @@ public final class DefaultExplicitImplementationRegistryAtomicTest extends Boooo
 
     public void testCannotResolve() {
         try {
-            subject.find(NON_EXISTENT);
+            subject.getImplementation(NON_EXISTENT);
             fail();
         } catch (UnresolvedDependencyException expected) { }
     }
 
     public void testMustBeInterface() {
         try {
-            subject.add(LARRY, LARRY);
+            subject.prototype(LARRY, LARRY);
             fail();
         } catch (IllegalArgumentException expected) { }
     }
@@ -49,8 +49,8 @@ public final class DefaultExplicitImplementationRegistryAtomicTest extends Boooo
         assertEquals(expected, result);
     }
 
-    private Implementation resolve(ExplicitImplementationRegistry registry, Class cls) {
+    private Implementation resolve(RegistryEngine registryEngine, Class cls) {
         Interface iface = new DefaultInterface(cls);
-        return registry.find(iface);
+        return registryEngine.getImplementation(iface);
     }
 }

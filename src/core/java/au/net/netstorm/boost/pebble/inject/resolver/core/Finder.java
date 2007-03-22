@@ -1,6 +1,11 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
+import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
+
 public interface Finder {
+    Implementation getImplementation(Interface iface);
+
     // FIX BREADCRUMB 1824 Re-instate.
 //    boolean hasInstance(Interface iface);
 //
@@ -8,5 +13,4 @@ public interface Finder {
 //
 //    boolean hasImplementation(Interface iface);
 //
-//    Implementation getImplementation(Interface iface);
 }
