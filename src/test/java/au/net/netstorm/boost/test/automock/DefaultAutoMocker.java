@@ -18,7 +18,8 @@ class DefaultAutoMocker implements AutoMocker {
         this.mockProvider = mockProvider;
     }
 
-    public void wireMocks(BoostField[] fields) {
+    // FIX 1676 Move into thing called FieldMocker.
+    public void mock(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
             // FIX 1676 This does not belong.  It belongs in a FieldFinder type thing.
             // FIX 1676 Instead pass in ONLY the fields we mock.
@@ -27,7 +28,7 @@ class DefaultAutoMocker implements AutoMocker {
         }
     }
 
-    public Mock getMock(Object proxy) {
+    public Mock mock(Object proxy) {
         Mock mock = (Mock) mocks.get(proxy);
         if (mock != null) return mock;
         throw new IllegalStateException("Mock does not exist for provided proxy.");

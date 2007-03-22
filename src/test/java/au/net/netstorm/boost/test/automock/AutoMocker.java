@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.automock;
 import org.jmock.Mock;
 
 interface AutoMocker {
-    Mock getMock(Object proxy);
+    Mock mock(Object proxy);
 
-    void wireMocks(BoostField[] fields);
+    void mock(BoostField[] fields);
 }

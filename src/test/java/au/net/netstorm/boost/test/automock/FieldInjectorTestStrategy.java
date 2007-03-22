@@ -43,7 +43,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations mockExpectations = buildMockExpectations(autoMocker);
         setExpectField(mockExpectations);
-        autoMocker.wireMocks(fields);
+        autoMocker.mock(fields);
     }
 
     private MockExpectations buildMockExpectations(AutoMocker autoMocker) {

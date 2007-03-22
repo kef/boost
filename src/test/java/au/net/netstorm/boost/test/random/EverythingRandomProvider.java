@@ -10,7 +10,6 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1676 Move into "random" package?
 public final class EverythingRandomProvider implements RandomProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
