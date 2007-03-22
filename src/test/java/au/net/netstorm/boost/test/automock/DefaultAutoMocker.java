@@ -24,7 +24,6 @@ class DefaultAutoMocker implements AutoMocker {
         throw new IllegalStateException("Mock does not exist for provided proxy.");
     }
 
-    // FIX 1676 Move into thing called FieldMocker.
     public void mock(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
             // FIX 1676 This does not belong.  It belongs in a FieldFinder type thing.
