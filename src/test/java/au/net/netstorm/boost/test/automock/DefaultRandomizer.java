@@ -9,7 +9,6 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-// FIX BREADCRUMB 1676 Remove the canProvider from the randomizer.
 public final class DefaultRandomizer implements Randomizer {
     private final FieldSpecTestUtil fieldSpecTestUtil = new DefaultFieldSpecTestUtil();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
