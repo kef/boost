@@ -13,6 +13,7 @@ public interface BoostField {
 
     boolean isPrimitive();
 
+    // FIX 1676 Remove this squirter.
     boolean isRandomizable();
 
     boolean isInterface();
