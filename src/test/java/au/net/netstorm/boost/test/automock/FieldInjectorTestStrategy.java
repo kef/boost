@@ -17,6 +17,8 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
+        // FIX 1676 The whole list of injectable fields is not interesting.
+        // Change this to return only MOCKABLE fields. This should use the fieldFinder pattern.
         BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
         assignMocks(eligibleFields);
         assignRandomValues(eligibleFields);

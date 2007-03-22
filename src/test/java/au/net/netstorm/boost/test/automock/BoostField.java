@@ -15,9 +15,10 @@ public interface BoostField {
 
     boolean isInterface();
 
-    boolean isMockable();
-
     String getName();
 
     Class getType();
+
+    // FIX 1676 Out boy, out!
+    boolean isInjectable();
 }

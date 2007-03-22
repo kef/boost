@@ -8,7 +8,7 @@ import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 
-public final class DefaultBoostField implements BoostField {
+final class DefaultBoostField implements BoostField {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
@@ -65,15 +65,14 @@ public final class DefaultBoostField implements BoostField {
         return field.getType();
     }
 
-    public boolean isMockable() {
+    // FIX 1676 Move this.
+    // DEBT CyclomaticComplexity|ReturnCount {
+    public boolean isInjectable() {
         if (isArray()) return false;
         if (isSynthetic()) return false;
         if (isFinal()) return false;
-        return isTypeMockkable();
-    }
-
-    private boolean isTypeMockkable() {
         if (isPrimitive()) return true;
         return isNull();
     }
+    // } DEBT CyclomaticComplexity|ReturnCount
 }

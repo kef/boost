@@ -15,14 +15,14 @@ public final class AutoMockFieldRetriever implements FieldRetriever {
     private BoostField[] doRetrieve(Object ref, Field[] fields) {
         List eligibleFields = new ArrayList();
         for (int i = 0; i < fields.length; i++) {
-            examine(ref, eligibleFields, fields[i]);
+            examine(eligibleFields, ref, fields[i]);
         }
         return (BoostField[]) eligibleFields.toArray(new BoostField[]{});
     }
 
-    private void examine(Object ref, List list, Field field) {
+    private void examine(List list, Object ref, Field field) {
         BoostField boostField = new DefaultBoostField(ref, field);
-        if (boostField.isMockable()) list.add(boostField);
+        if (boostField.isInjectable()) list.add(boostField);
     }
 
     private Field[] getDeclaredFields(Object ref) {
