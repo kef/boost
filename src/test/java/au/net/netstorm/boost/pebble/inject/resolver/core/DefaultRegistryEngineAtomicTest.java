@@ -3,8 +3,10 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.util.Map;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.DefaultInstance;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
@@ -12,18 +14,16 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
+    private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
     private static final Class FRENCH_CLOISON = FrenchCloison.class;
-
+    private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-
     private final RegistryEngine subject = new DefaultRegistryEngine();
-
-//    private static final Instance DAVID_PETIT = ;
 
     {
         subject.prototype(LAZY_BASTARD, LARRY);
         subject.prototype(LEGEND, AN_DO);
-//        subject.instance(FRENCH_CLOISON, DAVID_PETIT);
+        subject.instance(FRENCH_CLOISON, DAVID_PETIT);
     }
 
     public void testResolve() {
