@@ -49,8 +49,8 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
         assertEquals(expected, result);
     }
 
-    private Implementation resolve(ImplementationRegistry implementationRegistry, Class cls) {
+    private Implementation resolve(ExplicitImplementationRegistry registry, Class cls) {
         Interface iface = new DefaultInterface(cls);
-        return implementationRegistry.find(iface);
+        return registry.find(iface);
     }
 }

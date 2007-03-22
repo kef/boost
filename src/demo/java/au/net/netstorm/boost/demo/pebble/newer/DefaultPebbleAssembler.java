@@ -15,8 +15,8 @@ import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ExplicitImplementationRegistry;
 import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
-import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationRegistry;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
@@ -36,9 +36,9 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultPebbleAssembler implements PebbleAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
     private final Class citizen;
-    private final ImplementationRegistry registry;
+    private final ExplicitImplementationRegistry registry;
 
-    public DefaultPebbleAssembler(Class citizen, ImplementationRegistry registry) {
+    public DefaultPebbleAssembler(Class citizen, ExplicitImplementationRegistry registry) {
         this.registry = registry;
         this.citizen = citizen;
     }
