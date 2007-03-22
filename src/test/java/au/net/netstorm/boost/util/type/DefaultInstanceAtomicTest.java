@@ -14,6 +14,13 @@ public final class DefaultInstanceAtomicTest extends BoooostCase {
         checkGet(SOLDIER);
     }
 
+    public void testNullIllegal() {
+        try {
+            new DefaultInstance(null);
+            fail();
+        } catch (IllegalArgumentException expected) { }
+    }
+
     private void checkGet(Object ref) {
         Instance instance = new DefaultInstance(ref);
         Object actual = instance.getRef();

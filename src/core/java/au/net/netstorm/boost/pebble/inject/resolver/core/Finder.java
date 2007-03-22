@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public interface Finder {
     boolean hasInstance(Interface iface);
 
+    // FIX BREADCRUMB 1824 Re-instate.
 //    Instance getInstance(Interface iface);
 
     boolean hasImplementation(Interface iface);

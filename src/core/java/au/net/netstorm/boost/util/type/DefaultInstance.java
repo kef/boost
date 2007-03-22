@@ -7,9 +7,14 @@ public final class DefaultInstance extends Primordial implements Instance {
 
     public DefaultInstance(Object ref) {
         this.ref = ref;
+        validate();
     }
 
     public Object getRef() {
         return ref;
+    }
+
+    private void validate() {
+        if (ref == null) throw new IllegalArgumentException();
     }
 }
