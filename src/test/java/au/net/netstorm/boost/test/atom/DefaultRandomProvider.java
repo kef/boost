@@ -23,8 +23,7 @@ public final class DefaultRandomProvider implements RandomProvider {
         if (isInterface(type)) return randomInterface(type);
         if (isPrimitive(type)) return randomPrimitiveType(type);
         if (isArray(type)) return randomArray(type);
-        if (isSupportedConcrete(type)) return randomSupportedConcrete(type);
-        throw new IllegalStateException("Unsupported type " + type);
+        return randomSupportedConcrete(type);
     }
     // } OK CyclomaticComplexity
 
@@ -36,10 +35,6 @@ public final class DefaultRandomProvider implements RandomProvider {
 
     private boolean isPrimitive(Class type) {
         return primitiveBoxer.isPrimitive(type);
-    }
-
-    private boolean isSupportedConcrete(Class type) {
-        return randomConcreteProvider.canProvide(type);
     }
 
     private boolean isArray(Class type) {
