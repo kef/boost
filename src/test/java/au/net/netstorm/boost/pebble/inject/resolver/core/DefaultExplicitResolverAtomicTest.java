@@ -13,7 +13,7 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-    private final ExplicitImplementationLookup subject = new DefaultExplicitImplementationLookup();
+    private final ExplicitImplementationRegistry subject = new DefaultExplicitImplementationRegistry();
 
     {
         subject.add(LAZY_BASTARD, LARRY);
@@ -49,8 +49,8 @@ public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
         assertEquals(expected, result);
     }
 
-    private Implementation resolve(ImplementationLookup implementationLookup, Class cls) {
+    private Implementation resolve(ImplementationRegistry implementationRegistry, Class cls) {
         Interface iface = new DefaultInterface(cls);
-        return implementationLookup.find(iface);
+        return implementationRegistry.find(iface);
     }
 }

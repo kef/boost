@@ -3,15 +3,15 @@ package au.net.netstorm.boost.demo.pebble.newer;
 import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitImplementationLookup;
-import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationLookup;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitImplementationRegistry;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationRegistry;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
-    private final ImplementationLookup implementationLookup = new DefaultExplicitImplementationLookup();
-    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, implementationLookup);
-    private final PebblePortal pebblePortal = pebbleAssembler.assemble();
+    private final ImplementationRegistry implementationRegistry = new DefaultExplicitImplementationRegistry();
+    private final PebbleAssembler pebbleProviderAssembler = new DefaultPebbleAssembler(Pebble.class, implementationRegistry);
+    private final PebblePortal pebblePortal = pebbleProviderAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     public void testRecursiveNewerInjection() {

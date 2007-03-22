@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultExplicitImplementationLookup implements ExplicitImplementationLookup {
+public final class DefaultExplicitImplementationRegistry implements ExplicitImplementationRegistry {
     private final Map map = new HashMap();
 
     public Implementation find(Interface type) {

@@ -5,22 +5,22 @@ import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitImplementationLookup;
-import au.net.netstorm.boost.pebble.inject.resolver.core.ExplicitImplementationLookup;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultExplicitImplementationRegistry;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ExplicitImplementationRegistry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
-    private final ExplicitImplementationLookup lookup = new DefaultExplicitImplementationLookup();
-    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, lookup);
+    private final ExplicitImplementationRegistry registry = new DefaultExplicitImplementationRegistry();
+    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, registry);
     private final PebblePortal pebblePortal = pebbleAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     {
-        lookup.add(TheDude.class, JeffBridges.class);
-        lookup.add(Quote.class, ClassicQuote.class);
-        lookup.add(Movie.class, BigLebowski.class);
-        lookup.add(Cinema.class, RegalCinema.class);
+        registry.add(TheDude.class, JeffBridges.class);
+        registry.add(Quote.class, ClassicQuote.class);
+        registry.add(Movie.class, BigLebowski.class);
+        registry.add(Cinema.class, RegalCinema.class);
     }
 
     public void testNoArgProvide() {

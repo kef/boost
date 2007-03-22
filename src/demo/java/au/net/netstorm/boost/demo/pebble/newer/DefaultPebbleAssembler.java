@@ -16,7 +16,7 @@ import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
-import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationLookup;
+import au.net.netstorm.boost.pebble.inject.resolver.core.ImplementationRegistry;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
@@ -36,10 +36,10 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultPebbleAssembler implements PebbleAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
     private final Class citizen;
-    private final ImplementationLookup lookup;
+    private final ImplementationRegistry registry;
 
-    public DefaultPebbleAssembler(Class citizen, ImplementationLookup lookup) {
-        this.lookup = lookup;
+    public DefaultPebbleAssembler(Class citizen, ImplementationRegistry registry) {
+        this.registry = registry;
         this.citizen = citizen;
     }
 
@@ -48,7 +48,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         PebbleProviderEngine passThroughPebbleProvider = (PebbleProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-        Resolver resolver = new DefaultResolver(passThroughPebbleProvider, lookup);
+        Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registry);
         Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
