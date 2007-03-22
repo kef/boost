@@ -18,8 +18,8 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
 
     public void init() {
         BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
-        assignRandomValues(eligibleFields);
         assignMocks(eligibleFields);
+        assignRandomValues(eligibleFields);
         testCase.setupSubjects();
     }
 
