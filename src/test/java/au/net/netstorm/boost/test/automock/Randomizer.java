@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.test.automock;
 
-public interface AutoRandomizer {
+public interface Randomizer {
     void randomize(BoostField[] fields);
 }

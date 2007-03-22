@@ -35,8 +35,8 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     private void assignRandomValues(BoostField[] fields) {
-        AutoRandomizer autoRandomizer = new DefaultAutoRandomizer(testCase);
-        autoRandomizer.randomize(fields);
+        Randomizer randomizer = new DefaultRandomizer(testCase);
+        randomizer.randomize(fields);
     }
 
     private void assignMocks(BoostField[] fields) {
