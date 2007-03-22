@@ -26,12 +26,12 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         subject.instance(FRENCH_CLOISON, DAVID_PETIT);
     }
 
-    public void testResolve() {
-        checkResolve(LAZY_BASTARD, LARRY);
-        checkResolve(LEGEND, AN_DO);
+    public void testGetImplementation() {
+        checkGetImplementation(LAZY_BASTARD, LARRY);
+        checkGetImplementation(LEGEND, AN_DO);
     }
 
-    public void testCannotResolve() {
+    public void testCannotGetImplementation() {
         try {
             subject.getImplementation(NON_EXISTENT);
             fail();
@@ -45,8 +45,8 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         } catch (IllegalArgumentException expected) { }
     }
 
-    private void checkResolve(Class iface, Class impl) {
-        Implementation result = resolve(subject, iface);
+    private void checkGetImplementation(Class iface, Class impl) {
+        Implementation result = getImplementation(iface);
         checkEquals(impl, result);
     }
 
@@ -55,8 +55,8 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         assertEquals(expected, result);
     }
 
-    private Implementation resolve(RegistryEngine registryEngine, Class cls) {
+    private Implementation getImplementation(Class cls) {
         Interface iface = new DefaultInterface(cls);
-        return registryEngine.getImplementation(iface);
+        return subject.getImplementation(iface);
     }
 }
