@@ -18,6 +18,10 @@ public final class DefaultRegistryEngine implements RegistryEngine {
         return new DefaultImplementation(cls);
     }
 
+    public Instance getInstance(Interface iface) {
+        return (Instance) instanceMap.get(iface);
+    }
+
     public void prototype(Class iface, Class implementation) {
         add(implementationMap, iface, implementation);
     }

@@ -31,6 +31,13 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         checkGetImplementation(LEGEND, AN_DO);
     }
 
+    // FIX BREADCRUMB 1824 Make sure no one can add an existing instance.
+    public void testGetInstance() {
+        Interface iface = new DefaultInterface(FRENCH_CLOISON);
+        Instance result = subject.getInstance(iface);
+        assertEquals(DAVID_PETIT, result);
+    }
+
     public void testCannotGetImplementation() {
         try {
             subject.getImplementation(NON_EXISTENT);
