@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.test.field.BoostField;
 import org.jmock.Mock;
 
 interface AutoMocker {

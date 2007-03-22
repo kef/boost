@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashMap;
 import java.util.Map;
+import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.Mock;

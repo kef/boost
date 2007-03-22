@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.test.DefaultFieldSpecTestUtil;
-import au.net.netstorm.boost.test.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 public final class DefaultFieldRandomizer implements FieldRandomizer {

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test;
+package au.net.netstorm.boost.test.field;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 

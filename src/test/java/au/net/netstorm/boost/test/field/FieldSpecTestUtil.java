@@ -1,8 +1,7 @@
-package au.net.netstorm.boost.test;
+package au.net.netstorm.boost.test.field;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
-// FIX 1676 Move.
 public interface FieldSpecTestUtil {
     Class[] getTypes(FieldSpec[] fields);
 }

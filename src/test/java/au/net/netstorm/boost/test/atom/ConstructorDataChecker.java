@@ -5,8 +5,8 @@ import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.test.DefaultFieldSpecTestUtil;
-import au.net.netstorm.boost.test.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 

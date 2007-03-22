@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashSet;
 import java.util.Set;
+import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;

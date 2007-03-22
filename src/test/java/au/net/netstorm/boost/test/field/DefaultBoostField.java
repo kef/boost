@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.field;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
@@ -8,7 +8,8 @@ import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 
-final class DefaultBoostField implements BoostField {
+// FIX 1676 Make local. Leave iface public.
+public final class DefaultBoostField implements BoostField {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();

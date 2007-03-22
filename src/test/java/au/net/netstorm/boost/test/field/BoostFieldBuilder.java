@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.field;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
