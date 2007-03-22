@@ -16,7 +16,7 @@ public final class DefaultRandomProvider implements RandomProvider {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     // FIX 1676 Make a RandomProvider iface...
     private RandomConcreteProvider randomConcreteProvider = new DefaultRandomConcreteProvider();
-    private RandomArrayProvider randomArrayProvider = new DefaultArrayRandomProvider(this);
+    private RandomProvider randomArrayProvider = new DefaultArrayRandomProvider(this);
 
     // OK CyclomaticComplexity {
     public Object get(Class type) {

@@ -2,11 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
-import au.net.netstorm.boost.test.atom.DefaultRandomArrayDetective;
-import au.net.netstorm.boost.test.atom.DefaultRandomConcreteProvider;
 import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
-import au.net.netstorm.boost.test.atom.RandomArrayDetective;
-import au.net.netstorm.boost.test.atom.RandomConcreteProvider;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -16,10 +12,8 @@ public final class DefaultBoostField implements BoostField {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private final RandomConcreteProvider randomConcreteProvider = new DefaultRandomConcreteProvider();
     private final Object ref;
     private final Field field;
-    private RandomArrayDetective randomArrayDetective = new DefaultRandomArrayDetective();
 
     public DefaultBoostField(Object ref, Field field) {
         this.ref = ref;
@@ -51,18 +45,6 @@ public final class DefaultBoostField implements BoostField {
     public boolean isPrimitive() {
         Class type = field.getType();
         return primitiveBoxer.isPrimitive(type);
-    }
-
-    // FIX 1676 Delegate to DefaultRandomProvider??
-    public boolean isRandomizable() {
-        Class tempType = field.getType();
-        Class type = boxIt(tempType);
-        return (randomConcreteProvider.canProvide(type));
-//        return randomArrayDetective.isRandomizable(type);
-    }
-
-    private Class boxIt(Class type) {
-        return isPrimitive() ? primitiveBoxer.getBoxed(type) : type;
     }
 
     public boolean isInterface() {
