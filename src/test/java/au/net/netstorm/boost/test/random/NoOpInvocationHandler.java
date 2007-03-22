@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.atom;
+package au.net.netstorm.boost.test.random;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

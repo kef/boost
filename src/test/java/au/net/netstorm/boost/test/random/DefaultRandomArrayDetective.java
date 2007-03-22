@@ -1,4 +1,7 @@
-package au.net.netstorm.boost.test.atom;
+package au.net.netstorm.boost.test.random;
+
+import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
 
 public final class DefaultRandomArrayDetective implements RandomArrayDetective {
     private PrimitiveBoxer marquessDeQueensbury = new DefaultPrimitiveBoxer();

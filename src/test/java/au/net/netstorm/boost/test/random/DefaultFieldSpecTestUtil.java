@@ -1,9 +1,9 @@
-package au.net.netstorm.boost.test.atom;
+package au.net.netstorm.boost.test.random;
 
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 public final class DefaultFieldSpecTestUtil implements FieldSpecTestUtil {
-    private RandomProvider randomProvider = new DefaultRandomProvider();
+    private RandomProvider randomProvider = new EverythingRandomProvider();
 
     public Class[] getTypes(FieldSpec[] fields) {
         Class[] classes = new Class[fields.length];

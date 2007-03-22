@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashSet;
 import java.util.Set;
-import au.net.netstorm.boost.test.atom.DefaultFieldSpecTestUtil;
-import au.net.netstorm.boost.test.atom.FieldSpecTestUtil;
+import au.net.netstorm.boost.test.random.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.random.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;

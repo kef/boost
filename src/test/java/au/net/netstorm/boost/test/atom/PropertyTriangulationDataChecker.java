@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.test.random.DefaultFieldSpecTestUtil;
+import au.net.netstorm.boost.test.random.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class PropertyTriangulationDataChecker implements DataChecker {

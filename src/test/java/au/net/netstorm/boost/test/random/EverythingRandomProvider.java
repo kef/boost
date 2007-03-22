@@ -1,21 +1,23 @@
-package au.net.netstorm.boost.test.atom;
+package au.net.netstorm.boost.test.random;
 
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1676 Move into "random" package?
-public final class DefaultRandomProvider implements RandomProvider {
+public final class EverythingRandomProvider implements RandomProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private RandomProvider concretes = new DefaultRandomConcreteProvider();
-    private RandomProvider arrays = new DefaultArrayRandomProvider(this);
+    private RandomProvider concretes = new ConcreteRandomProvider();
+    private RandomProvider arrays = new ArrayRandomProvider(this);
 
     // OK CyclomaticComplexity {
     public Object get(Class type) {
