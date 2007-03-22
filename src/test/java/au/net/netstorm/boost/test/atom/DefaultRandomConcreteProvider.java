@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.atom;
 import java.util.Random;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
-public final class DefaultRandomPrimitiveProvider implements RandomPrimitiveProvider {
+public final class DefaultRandomConcreteProvider implements RandomConcreteProvider {
     private Random random = new Random();
 
     private interface InternalInterface {

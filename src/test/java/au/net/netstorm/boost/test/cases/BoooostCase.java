@@ -45,8 +45,12 @@ public abstract class BoooostCase extends TestCase {
         assertTestChecker.checkEquals(expected, actual);
     }
 
-    public final void assertNotEquals(byte[] expected, byte[] actual) {
-        assertTestChecker.checkNotEquals(expected, actual);
+    public final void assertNotEquals(byte[] v1, byte[] v2) {
+        assertTestChecker.checkNotEquals(v1, v2);
+    }
+
+    public final void assertNotEquals(int v1, int v2) {
+        assertEquals(true, v1 != v2);
     }
 
     public static final void assertTrue(boolean expected) {

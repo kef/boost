@@ -15,10 +15,10 @@ public final class DefaultRandomProvider implements RandomProvider {
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private RandomPrimitiveProvider randomPrimitiveProvider = new DefaultRandomPrimitiveProvider();
+    private RandomConcreteProvider randomConcreteProvider = new DefaultRandomConcreteProvider();
 
     // OK CyclomaticComplexity {
-    public Object getInstance(Class type) {
+    public Object get(Class type) {
         if (isInterface(type)) return randomInterface(type);
         if (isPrimitive(type)) return randomPrimitiveType(type);
         if (isSupportedConcrete(type)) return randomSupportedConcrete(type);
@@ -27,13 +27,15 @@ public final class DefaultRandomProvider implements RandomProvider {
     }
     // } OK CyclomaticComplexity
 
-    public Object[] getInstances(Class[] types) {
+    public Object[] get(Class[] types) {
         Object[] params = new Object[types.length];
         for (int i = 0; i < types.length; i++) {
-            params[i] = getInstance(types[i]);
+            params[i] = get(types[i]);
         }
         return params;
     }
+
+    // FIX 1676 Add isRandomizable method().
 
     private boolean isInterface(Class type) {
         return type.isInterface();
@@ -44,7 +46,7 @@ public final class DefaultRandomProvider implements RandomProvider {
     }
 
     private boolean isSupportedConcrete(Class type) {
-        return randomPrimitiveProvider.canProvide(type);
+        return randomConcreteProvider.canProvide(type);
     }
 
     private boolean isArray(Class type) {
@@ -58,13 +60,14 @@ public final class DefaultRandomProvider implements RandomProvider {
 
     private Object randomPrimitiveType(Class type) {
         Class boxed = primitiveBoxer.getBoxed(type);
-        return randomPrimitiveProvider.getRandom(boxed);
+        return randomConcreteProvider.getRandom(boxed);
     }
 
     private Object randomSupportedConcrete(Class type) {
-        return randomPrimitiveProvider.getRandom(type);
+        return randomConcreteProvider.getRandom(type);
     }
 
+    // FIX 1676 Move this into a randomArrayProvider???
     private Object randomArray(Class type) {
         Class componentType = type.getComponentType();
         Object array = Array.newInstance(componentType, ARRAY_LENGTH);
@@ -74,7 +77,7 @@ public final class DefaultRandomProvider implements RandomProvider {
 
     private void populate(Object array, Class type) {
         for (int i = 0; i < ARRAY_LENGTH; i++) {
-            Object instance = getInstance(type);
+            Object instance = get(type);
             Array.set(array, i, instance);
         }
     }
