@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultExplicitResolverAtomicTest extends BoooostCase {
+public final class DefaultExplicitImplementationRegistryAtomicTest extends BoooostCase {
     private static final Class LAZY_BASTARD = LazyBastard.class;
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;

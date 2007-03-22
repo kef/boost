@@ -4,7 +4,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultExplicitInstanceRegistry implements ExplicitInstanceRegistry {
-    public void add(Class iface, Class implementation) {
+    // FIX BREADCRUMB 1824 Can we strongly type 'ref'? e.g. Singleton type?
+    public void add(Class iface, Object ref) {
         throw new UnsupportedOperationException();
     }
 
