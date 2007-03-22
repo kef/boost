@@ -46,7 +46,8 @@ public final class PrimitiveAutoRandomizer implements AutoRandomizer {
     private void addIfRandomizable(BoostField field, Set result) {
         String name = field.getName();
         Class type = field.getType();
-        if (field.isRandomizable()) addField(result, name, type);
+        // FIX 1676 This condition goes out of here.  Pass is ONLY the things to randomize.
+        if (field.isNull() || field.isPrimitive()) addField(result, name, type);
     }
 
     private void addField(Set set, String fieldName, Class fieldType) {
