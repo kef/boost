@@ -9,13 +9,13 @@ import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
-    private final ImplementationRegistry implementationRegistry = new DefaultExplicitImplementationRegistry();
-    private final PebbleAssembler pebbleProviderAssembler = new DefaultPebbleAssembler(Pebble.class, implementationRegistry);
-    private final PebblePortal pebblePortal = pebbleProviderAssembler.assemble();
-    private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
+    private final ImplementationRegistry registry = new DefaultExplicitImplementationRegistry();
+    private final PebbleAssembler assembler = new DefaultPebbleAssembler(Pebble.class, registry);
+    private final PebblePortal portal = assembler.assemble();
+    private final PebbleProvider provider = portal.getProvider();
 
     public void testRecursiveNewerInjection() {
-        Rob rob = (Rob) pebbleProvider.provide(Rob.class, NO_PARAMETERS);
+        Rob rob = (Rob) provider.provide(Rob.class, NO_PARAMETERS);
         Bob bob = rob.getBob();
         checkNewersRecurse(bob);
     }
