@@ -22,8 +22,8 @@ public final class DefaultRandomProvider implements RandomProvider {
     public Object get(Class type) {
         if (isInterface(type)) return randomInterface(type);
         if (isPrimitive(type)) return randomPrimitiveType(type);
-        if (isSupportedConcrete(type)) return randomSupportedConcrete(type);
         if (isArray(type)) return randomArray(type);
+        if (isSupportedConcrete(type)) return randomSupportedConcrete(type);
         throw new IllegalStateException("Unsupported type " + type);
     }
     // } OK CyclomaticComplexity
