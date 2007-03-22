@@ -3,21 +3,17 @@ package au.net.netstorm.boost.test.atom;
 import java.util.Random;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
-public final class DefaultRandomConcreteProvider implements RandomConcreteProvider {
+public final class DefaultRandomConcreteProvider implements RandomProvider {
     private Random random = new Random();
 
     private interface InternalInterface {
     }
 
-    public Object getRandom(Class type) {
+    public Object get(Class type) {
         Object result = doGetRandom(type);
         if (result != null) return result;
         throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
                 "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
-    }
-
-    public boolean canProvide(Class type) {
-        return doGetRandom(type) != null;
     }
 
     private Object doGetRandom(Class type) {

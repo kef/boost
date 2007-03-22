@@ -14,9 +14,8 @@ public final class DefaultRandomProvider implements RandomProvider {
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    // FIX 1676 Make a RandomProvider iface...
-    private RandomConcreteProvider randomConcreteProvider = new DefaultRandomConcreteProvider();
-    private RandomProvider randomArrayProvider = new DefaultArrayRandomProvider(this);
+    private RandomProvider concretes = new DefaultRandomConcreteProvider();
+    private RandomProvider arrays = new DefaultArrayRandomProvider(this);
 
     // OK CyclomaticComplexity {
     public Object get(Class type) {
@@ -48,14 +47,14 @@ public final class DefaultRandomProvider implements RandomProvider {
 
     private Object randomPrimitiveType(Class type) {
         Class boxed = primitiveBoxer.getBoxed(type);
-        return randomConcreteProvider.getRandom(boxed);
+        return concretes.get(boxed);
     }
 
     private Object randomSupportedConcrete(Class type) {
-        return randomConcreteProvider.getRandom(type);
+        return concretes.get(type);
     }
 
     private Object randomArray(Class type) {
-        return randomArrayProvider.get(type);
+        return arrays.get(type);
     }
 }
