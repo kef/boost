@@ -13,6 +13,7 @@ public final class DefaultFieldSpecTestUtil implements FieldSpecTestUtil {
         return classes;
     }
 
+    // FIX 1676 Split.  These two methods do completely different things.
     public Object[] getInstances(FieldSpec[] fields) {
         Class[] types = getTypes(fields);
         Object[] result = new Object[types.length];
