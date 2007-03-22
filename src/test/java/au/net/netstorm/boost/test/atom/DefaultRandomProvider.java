@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
@@ -9,13 +8,15 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 1676 Move into "random" package?
 public final class DefaultRandomProvider implements RandomProvider {
     private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
-    private static final int ARRAY_LENGTH = 5;
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
+    // FIX 1676 Make a RandomProvider iface...
     private RandomConcreteProvider randomConcreteProvider = new DefaultRandomConcreteProvider();
+    private RandomArrayProvider randomArrayProvider = new DefaultArrayRandomProvider(this);
 
     // OK CyclomaticComplexity {
     public Object get(Class type) {
@@ -26,14 +27,6 @@ public final class DefaultRandomProvider implements RandomProvider {
         throw new IllegalStateException("Unsupported type " + type);
     }
     // } OK CyclomaticComplexity
-
-    public Object[] get(Class[] types) {
-        Object[] params = new Object[types.length];
-        for (int i = 0; i < types.length; i++) {
-            params[i] = get(types[i]);
-        }
-        return params;
-    }
 
     // FIX 1676 Add isRandomizable method().
 
@@ -67,18 +60,7 @@ public final class DefaultRandomProvider implements RandomProvider {
         return randomConcreteProvider.getRandom(type);
     }
 
-    // FIX 1676 Move this into a randomArrayProvider???
     private Object randomArray(Class type) {
-        Class componentType = type.getComponentType();
-        Object array = Array.newInstance(componentType, ARRAY_LENGTH);
-        populate(array, componentType);
-        return array;
-    }
-
-    private void populate(Object array, Class type) {
-        for (int i = 0; i < ARRAY_LENGTH; i++) {
-            Object instance = get(type);
-            Array.set(array, i, instance);
-        }
+        return randomArrayProvider.get(type);
     }
 }

@@ -15,6 +15,10 @@ public final class DefaultFieldSpecTestUtil implements FieldSpecTestUtil {
 
     public Object[] getInstances(FieldSpec[] fields) {
         Class[] types = getTypes(fields);
-        return randomProvider.get(types);
+        Object[] result = new Object[types.length];
+        for (int i = 0; i < types.length; i++) {
+            result[i] = randomProvider.get(types[i]);
+        }
+        return result;
     }
 }

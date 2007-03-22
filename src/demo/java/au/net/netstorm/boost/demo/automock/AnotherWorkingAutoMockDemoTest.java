@@ -23,7 +23,6 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
         assertNotEquals(randomInt1, randomInt2);
     }
 
-    // FIX 1676 Change card and reinstate.
 //    public void testPrimitiveArrays() {
 //        assertEquals(5, randomStrings.length);
 //    }

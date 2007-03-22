@@ -13,6 +13,7 @@ public final class DefaultMethodSpec extends Primordial implements MethodSpec {
     public DefaultMethodSpec(String name, Class[] params) {
         this.name = name;
         validate(params);
+        // FIX 1676 Huh?
         this.params = (Class[]) params.clone();
     }
 
