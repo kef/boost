@@ -20,6 +20,7 @@ final class DefaultBoostField implements BoostField {
         this.field = field;
     }
 
+    // FIX 1676 Remove set/get from here.
     public Object get() {
         return fielder.getInstance(ref, field);
     }

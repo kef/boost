@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+// FIX BREADCRUMB 1676 FREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEZZE!!!!!!!!!!!!!!
 public final class AutoMockFieldRetriever implements FieldRetriever {
 
     public BoostField[] retrieve(Object ref) {

@@ -94,4 +94,3 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
         return edgeField.get(field, ref);
     }
 }
-// SUGGEST: Imagine if all these utilities took Edge*
