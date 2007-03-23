@@ -4,12 +4,14 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     private RegistryFacade subject;
+    private Class iface;
 
     public void setupSubjects() {
         subject = new DefaultRegistryFacade();
     }
 
-    public void testSubject() {
-        // FIX BREADCRUMB 1824 Complete me.
+    // FIX BREADCRUMB 1824 Complete.
+    public void testHasImplementation() {
+        subject.hasImplementation(iface);
     }
 }
