@@ -63,11 +63,16 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         } catch (IllegalArgumentException expected) { }
     }
 
-    // FIX BREADCRUMB 1824 Triangulate.
-    // FIX BREADCRUMB 1824 Test hasImplementation.
     public void testHasInstance() {
         checkHasInstance(FRENCH_CLOISON, true);
         checkHasInstance(LAZY_BASTARD, false);
+    }
+
+    // FIX BREADCRUMB 1824 Triangulate.
+    public void testHasImplementation() {
+        Interface iface = new DefaultInterface(LAZY_BASTARD);
+        boolean result = subject.hasImplementation(iface);
+        assertEquals(true, result);
     }
 
     private void checkHasInstance(Class cls, boolean expected) {
@@ -77,8 +82,8 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     }
 
     private void checkGetInstance(Class iface, Instance expect) {
-        Interface iface1 = new DefaultInterface(iface);
-        Instance result = subject.getInstance(iface1);
+        Interface inyerface = new DefaultInterface(iface);
+        Instance result = subject.getInstance(inyerface);
         assertEquals(expect, result);
     }
 

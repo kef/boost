@@ -28,6 +28,10 @@ public final class DefaultRegistryEngine implements RegistryEngine {
         return instance;
     }
 
+    public boolean hasImplementation(Interface iface) {
+        return implementationMap.containsKey(iface);
+    }
+
     public void prototype(Class iface, Class implementation) {
         add(implementationMap, iface, implementation);
     }

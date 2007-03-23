@@ -11,5 +11,5 @@ public interface Finder {
 
     Instance getInstance(Interface iface);
 
-//    boolean hasImplementation(Interface iface);
+    boolean hasImplementation(Interface iface);
 }
