@@ -5,19 +5,15 @@ import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFinder;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
-    private final RegistryFinder registryFinder = new DefaultRegistryFinder();
-    private final RegistryEngine registryEngine = new DefaultRegistryEngine(registryFinder);
-    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, registryEngine);
+    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class);
     private final PebblePortal pebblePortal = pebbleAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
+    private final RegistryEngine registryEngine = pebblePortal.getRegistry();
 
     {
         registryEngine.prototype(TheDude.class, JeffBridges.class);

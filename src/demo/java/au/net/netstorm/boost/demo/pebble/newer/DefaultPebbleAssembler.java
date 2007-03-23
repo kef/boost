@@ -15,8 +15,11 @@ import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
@@ -36,10 +39,8 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultPebbleAssembler implements PebbleAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
     private final Class citizen;
-    private final RegistryEngine registryEngine;
 
-    public DefaultPebbleAssembler(Class citizen, RegistryEngine registryEngine) {
-        this.registryEngine = registryEngine;
+    public DefaultPebbleAssembler(Class citizen) {
         this.citizen = citizen;
     }
 
@@ -48,6 +49,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         PebbleProviderEngine passThroughPebbleProvider = (PebbleProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
+        RegistryEngine registryEngine = assembleRegistry();
         Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registryEngine);
         Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
@@ -59,6 +61,11 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
     private ProxyFactory assembleProxyFactory() {
         ProxySupplier proxySupplier = new DefaultProxySupplier();
         return new DefaultProxyFactory(proxySupplier);
+    }
+
+    private RegistryEngine assembleRegistry() {
+        RegistryFinder finder = new DefaultRegistryFinder();
+        return new DefaultRegistryEngine(finder);
     }
 
     private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProviderEngine pebbleProviderEngine, Instantiator instantiator, Resolver resolver) {
