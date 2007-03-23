@@ -21,4 +21,8 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
         boolean result = subject.hasImplementation(FrenchCloison.class);
         assertEquals(hasImplementation, result);
     }
+
+    public void testHasInstance() {
+        boolean result = subject.hasInstance(FrenchRoll.class);
+    }
 }

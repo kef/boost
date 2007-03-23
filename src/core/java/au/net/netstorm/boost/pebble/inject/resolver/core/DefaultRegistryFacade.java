@@ -15,4 +15,8 @@ public final class DefaultRegistryFacade implements RegistryFacade {
         Interface inyerface = new DefaultInterface(iface);
         return registryEngine.hasImplementation(inyerface);
     }
+
+    public boolean hasInstance(Class iface) {
+        return true;
+    }
 }
