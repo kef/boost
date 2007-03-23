@@ -66,9 +66,14 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     // FIX BREADCRUMB 1824 Triangulate.
     // FIX BREADCRUMB 1824 Test hasImplementation.
     public void testHasInstance() {
-        Interface iface = new DefaultInterface(FRENCH_CLOISON);
+        checkHasInstance(FRENCH_CLOISON, true);
+        checkHasInstance(LAZY_BASTARD, false);
+    }
+
+    private void checkHasInstance(Class cls, boolean expected) {
+        Interface iface = new DefaultInterface(cls);
         boolean result = subject.hasInstance(iface);
-        assertEquals(true, result);
+        assertEquals(expected, result);
     }
 
     private void checkGetInstance(Class iface, Instance expect) {
