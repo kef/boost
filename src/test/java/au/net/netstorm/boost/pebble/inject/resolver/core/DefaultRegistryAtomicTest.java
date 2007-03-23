@@ -8,8 +8,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
-    private RegistryEngine subject;
+public final class DefaultRegistryAtomicTest extends InteractionTestCase {
+    private Registry subject;
     private Class frenchCloison = FrenchCloison.class;
     private Class frenchRoll = FrenchRoll.class;
     private Class davidPetit = DavidPetit.class;
@@ -29,7 +29,7 @@ public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
     private Object ref;
 
     public void setupSubjects() {
-        subject = new DefaultRegistryEngine(registerMaster);
+        subject = new DefaultRegistry(registerMaster);
     }
 
     public void testHasImplementation() {

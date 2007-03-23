@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.resolve;
 
 import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
@@ -15,20 +15,20 @@ public final class DefaultResolver implements Resolver {
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final PebbleProviderEngine provider;
-    private final RegistryEngine registryEngine;
+    private final Registry registry;
 
-    public DefaultResolver(PebbleProviderEngine provider, RegistryEngine registryEngine) {
+    public DefaultResolver(PebbleProviderEngine provider, Registry registry) {
         this.provider = provider;
-        this.registryEngine = registryEngine;
+        this.registry = registry;
     }
 
     public Object resolve(Interface iface) {
         // FIX BREADCRUMB 1824 Refactor this.
-        if (registryEngine.hasInstance(iface)) {
-            Instance instance = registryEngine.getInstance(iface);
+        if (registry.hasInstance(iface)) {
+            Instance instance = registry.getInstance(iface);
             return instance.getRef();
         }
-        Implementation impl = registryEngine.getImplementation(iface);
+        Implementation impl = registry.getImplementation(iface);
         return resolve(impl);
     }
 

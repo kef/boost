@@ -2,17 +2,17 @@ package au.net.netstorm.boost.demo.pebble.core;
 
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 
 public final class DefaultPebblePortal implements PebblePortal {
     private final PebbleProvider provider;
     private final Injector injector;
     private final Resolver resolver;
-    private final RegistryEngine registry;
+    private final Registry registry;
 
     public DefaultPebblePortal(PebbleProvider provider, Injector injector, Resolver resolver,
-            RegistryEngine registry) {
+            Registry registry) {
         this.provider = provider;
         this.injector = injector;
         this.resolver = resolver;
@@ -31,7 +31,7 @@ public final class DefaultPebblePortal implements PebblePortal {
         return resolver;
     }
 
-    public RegistryEngine getRegistry() {
+    public Registry getRegistry() {
         return registry;
     }
 }

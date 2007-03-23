@@ -7,10 +7,10 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultRegistryEngine implements RegistryEngine {
+public final class DefaultRegistry implements Registry {
     private final RegisterMaster registerMaster;
 
-    public DefaultRegistryEngine(RegisterMaster registerMaster) {
+    public DefaultRegistry(RegisterMaster registerMaster) {
         this.registerMaster = registerMaster;
     }
 

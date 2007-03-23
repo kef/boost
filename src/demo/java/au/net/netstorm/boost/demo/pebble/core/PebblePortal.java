@@ -2,7 +2,7 @@ package au.net.netstorm.boost.demo.pebble.core;
 
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 
 public interface PebblePortal {
@@ -12,5 +12,5 @@ public interface PebblePortal {
 
     Resolver getResolver();
 
-    RegistryEngine getRegistry();
+    Registry getRegistry();
 }
