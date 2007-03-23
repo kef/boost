@@ -18,6 +18,10 @@ public final class DefaultRegistryEngine implements RegistryEngine {
         return new DefaultImplementation(cls);
     }
 
+    public boolean hasInstance(Interface iface) {
+        return instanceMap.containsKey(iface);
+    }
+
     public Instance getInstance(Interface iface) {
         Instance instance = (Instance) instanceMap.get(iface);
         if (instance == null) throw new UnresolvedDependencyException(iface);
