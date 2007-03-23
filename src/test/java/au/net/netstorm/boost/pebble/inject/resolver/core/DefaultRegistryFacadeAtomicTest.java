@@ -3,6 +3,7 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX BREADCRUMB 1824 Complete.
@@ -16,6 +17,7 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     private boolean hasInstance;
     private Interface someInterface;
     private Implementation implementation;
+    private Instance instance;
 
     public void setupSubjects() {
         subject = new DefaultRegistryFacade(registryEngine);
@@ -37,5 +39,11 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
         expect.oneCall(registryEngine, implementation, "getImplementation", someInterface);
         Implementation result = subject.getImplementation(someInterface);
         assertEquals(implementation, result);
+    }
+
+    public void testGetInstance() {
+        expect.oneCall(registryEngine, instance, "getInstance", someInterface);
+        Instance result = subject.getInstance(someInterface);
+        assertEquals(instance, result);
     }
 }

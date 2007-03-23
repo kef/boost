@@ -2,6 +2,7 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX BREADCRUMB 1824 Rename.
@@ -24,5 +25,9 @@ public final class DefaultRegistryFacade implements RegistryFacade {
 
     public Implementation getImplementation(Interface iface) {
         return registryEngine.getImplementation(iface);
+    }
+
+    public Instance getInstance(Interface iface) {
+        return registryEngine.getInstance(iface);
     }
 }
