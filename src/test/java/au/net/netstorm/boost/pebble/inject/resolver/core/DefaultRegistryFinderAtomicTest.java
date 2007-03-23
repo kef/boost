@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
+public final class DefaultRegistryFinderAtomicTest extends BoooostCase {
     private static final Interface LAZY_BASTARD = new DefaultInterface(LazyBastard.class);
     private static final Implementation LARRY = new DefaultImplementation(Larry.class);
     private static final Interface LEGEND = new DefaultInterface(Legend.class);
@@ -21,7 +21,7 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
     private static final Instance DAMIEN = new DefaultInstance(DAMIEN_REF);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-    private final RegistryEngine subject = new DefaultRegistryEngine();
+    private final RegistryFinder subject = new DefaultRegistryFinder();
 
     {
         subject.prototype(LAZY_BASTARD, LARRY);

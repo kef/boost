@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultRegistryEngine implements RegistryEngine {
+public final class DefaultRegistryFinder implements RegistryFinder {
     private final Map implementationMap = new HashMap();
     private final Map instanceMap = new HashMap();
 

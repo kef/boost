@@ -6,27 +6,27 @@ import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFacade;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFacade;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFinder;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
-    private final RegistryEngine registryEngine = new DefaultRegistryEngine();
-    private final RegistryFacade registryFacade = new DefaultRegistryFacade(registryEngine);
-    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, registryFacade);
+    private final RegistryFinder registryFinder = new DefaultRegistryFinder();
+    private final RegistryEngine registryEngine = new DefaultRegistryEngine(registryFinder);
+    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, registryEngine);
     private final PebblePortal pebblePortal = pebbleAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     {
-        registryFacade.prototype(TheDude.class, JeffBridges.class);
-        registryFacade.prototype(Quote.class, ClassicQuote.class);
-        registryFacade.prototype(Movie.class, BigLebowski.class);
-        registryFacade.prototype(Cinema.class, RegalCinema.class);
-        registryFacade.instance(Actor.class, new PeterSellers());
-        registryFacade.instance(Celebrity.class, new BritneySpears());
-        registryFacade.prototype(Hollywood.class, GlitzyHollywood.class);
+        registryEngine.prototype(TheDude.class, JeffBridges.class);
+        registryEngine.prototype(Quote.class, ClassicQuote.class);
+        registryEngine.prototype(Movie.class, BigLebowski.class);
+        registryEngine.prototype(Cinema.class, RegalCinema.class);
+        registryEngine.instance(Actor.class, new PeterSellers());
+        registryEngine.instance(Celebrity.class, new BritneySpears());
+        registryEngine.prototype(Hollywood.class, GlitzyHollywood.class);
     }
 
     public void testNoArgProvide() {

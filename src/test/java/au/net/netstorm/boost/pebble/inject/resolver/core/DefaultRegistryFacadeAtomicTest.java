@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // FIX BREADCRUMB 1824 Complete.
 public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
-    private RegistryFacade subject;
+    private RegistryEngine subject;
     private Class frenchCloison = FrenchCloison.class;
     private Class frenchRoll = FrenchRoll.class;
     private Class davidPetit = DavidPetit.class;
@@ -20,7 +20,7 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     private Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
     private Instance rollInstance = new DefaultInstance(damienInstance);
     private Class iface;
-    private RegistryEngine registryEngine;
+    private RegistryFinder registryFinder;
     private boolean hasImplementation;
     private boolean hasInstance;
     private Interface someInterface;
@@ -30,40 +30,40 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     private Object ref;
 
     public void setupSubjects() {
-        subject = new DefaultRegistryFacade(registryEngine);
+        subject = new DefaultRegistryEngine(registryFinder);
     }
 
     public void testHasImplementation() {
-        expect.oneCall(registryEngine, hasImplementation, "hasImplementation", cloisonInterface);
+        expect.oneCall(registryFinder, hasImplementation, "hasImplementation", cloisonInterface);
         boolean result = subject.hasImplementation(FrenchCloison.class);
         assertEquals(hasImplementation, result);
     }
 
     public void testHasInstance() {
-        expect.oneCall(registryEngine, hasInstance, "hasInstance", rollInterface);
+        expect.oneCall(registryFinder, hasInstance, "hasInstance", rollInterface);
         boolean result = subject.hasInstance(FrenchRoll.class);
         assertEquals(hasInstance, result);
     }
 
     public void testGetImplementation() {
-        expect.oneCall(registryEngine, implementation, "getImplementation", someInterface);
+        expect.oneCall(registryFinder, implementation, "getImplementation", someInterface);
         Implementation result = subject.getImplementation(someInterface);
         assertEquals(implementation, result);
     }
 
     public void testGetInstance() {
-        expect.oneCall(registryEngine, instance, "getInstance", someInterface);
+        expect.oneCall(registryFinder, instance, "getInstance", someInterface);
         Instance result = subject.getInstance(someInterface);
         assertEquals(instance, result);
     }
 
     public void testPrototype() {
-        expect.oneCall(registryEngine, VOID, "prototype", cloisonInterface, cloisonImplementation);
+        expect.oneCall(registryFinder, VOID, "prototype", cloisonInterface, cloisonImplementation);
         subject.prototype(frenchCloison, davidPetit);
     }
 
     public void testInstance() {
-        expect.oneCall(registryEngine, VOID, "instance", rollInterface, rollInstance);
+        expect.oneCall(registryFinder, VOID, "instance", rollInterface, rollInstance);
         subject.instance(frenchRoll, damienInstance);
     }
 }
