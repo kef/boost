@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
-public interface RegisterMaster extends Registry, Finder {
+public interface RegisterMaster extends RegistryEnginer, Finder {
 }
