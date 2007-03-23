@@ -7,6 +7,7 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.InterfaceUtil;
 
@@ -22,11 +23,11 @@ public final class DefaultResolver implements Resolver {
     }
 
     public Object resolve(Interface iface) {
-        // FIX BREADCRUMB 1824 Test-drive this bad boy up.
-//        if (registryEngine.hasInstance(iface)) {
-//            Instance instance = registryEngine.getInstance(iface);
-//            return instance.getRef();
-//        }
+        // FIX BREADCRUMB 1824 Refactor this.
+        if (registryEngine.hasInstance(iface)) {
+            Instance instance = registryEngine.getInstance(iface);
+            return instance.getRef();
+        }
         Implementation impl = registryEngine.getImplementation(iface);
         return resolve(impl);
     }
