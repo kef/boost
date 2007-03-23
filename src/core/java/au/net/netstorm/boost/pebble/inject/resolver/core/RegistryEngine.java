@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-public interface RegistryFacade {
+public interface RegistryEngine {
     boolean hasImplementation(Class iface);
 
     boolean hasInstance(Class iface);
