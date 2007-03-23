@@ -27,6 +27,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
+        // FIX BREADCRUMB 1676 Boom on primitives.
         // FIX 1676 Break for primitive fields (maybe which aren't final).
         // FIX 1676 Break for fields which are not package private?
         // FIX 1676 Break if any fields are final (and not static?).
