@@ -16,11 +16,11 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
-    private final FieldBuilder builder = new BoostFieldBuilder();
+    private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
     private final FieldSelector selector = new DefaultFieldSelector();
     private final UsesMocks testCase;
-    private Matcher mockMatcher = new MockableMatcher();
-    private Matcher dummyMatcher = new DummyMatcher();
+    private final Matcher mockMatcher = new MockableMatcher();
+    private final Matcher dummyMatcher = new DummyMatcher();
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
@@ -30,10 +30,14 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
         // FIX 1676 Break for primitive fields (maybe which aren't final).
         // FIX 1676 Break for fields which are not package private?
         // FIX 1676 Break if any fields are final (and not static?).
-        BoostField[] fields = builder.build(testCase);
+        BoostField[] fields = getAllFields();
         injectMocks(fields);
         injectDummies(fields);
         testCase.setupSubjects();
+    }
+
+    private BoostField[] getAllFields() {
+        return fieldBuilder.build(testCase);
     }
 
     public void verify() {

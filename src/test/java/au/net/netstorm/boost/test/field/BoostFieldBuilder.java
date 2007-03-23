@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-// FIX 1676 Stitch this in.
 public final class BoostFieldBuilder implements FieldBuilder {
     public BoostField[] build(Object ref) {
         Field[] fields = getFields(ref);
