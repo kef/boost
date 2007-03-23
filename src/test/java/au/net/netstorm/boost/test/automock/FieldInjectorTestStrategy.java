@@ -21,6 +21,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldSelector selector = new DefaultFieldSelector();
     private final UsesMocks testCase;
     private Matcher mockMatcher = new MockableMatcher();
+    private Matcher dummyMatcher = new DummyMatcher();
 
     public FieldInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
@@ -31,12 +32,8 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
         // FIX 1676 Break for fields which are not package private?
         // FIX 1676 Break if any fields are final (and not static?).
         BoostField[] fields = builder.build(testCase);
-        BoostField[] mockFields = selector.select(fields, mockMatcher);
-        // FIX 1676 The whole list of injectable fields is not interesting.
-        // Change this to return only MOCKABLE fields. This should use the fieldFinder pattern.
-        BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
-        injectMocks(mockFields);
-        injectDummies(eligibleFields);
+        injectMocks(fields);
+        injectDummies(fields);
         testCase.setupSubjects();
     }
 
@@ -52,15 +49,17 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     private void injectDummies(BoostField[] fields) {
+        BoostField[] dummyFields = selector.select(fields, dummyMatcher);
         Randomizer randomizer = new DefaultRandomizer(testCase);
-        randomizer.randomize(fields);
+        randomizer.randomize(dummyFields);
     }
 
     private void injectMocks(BoostField[] fields) {
+        BoostField[] mockFields = selector.select(fields, mockMatcher);
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations expect = buildExpect(autoMocker);
         setExpectField(expect);
-        autoMocker.mock(fields);
+        autoMocker.mock(mockFields);
     }
 
     private MockExpectations buildExpect(AutoMocker autoMocker) {
