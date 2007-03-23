@@ -5,9 +5,9 @@ import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface RegistryEngine {
-    boolean hasImplementation(Class iface);
+    boolean hasImplementation(Interface iface);
 
-    boolean hasInstance(Class iface);
+    boolean hasInstance(Interface iface);
 
     Implementation getImplementation(Interface iface);
 

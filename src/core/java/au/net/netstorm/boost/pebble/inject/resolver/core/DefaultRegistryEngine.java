@@ -14,14 +14,12 @@ public final class DefaultRegistryEngine implements RegistryEngine {
         this.registryFinder = registryFinder;
     }
 
-    public boolean hasImplementation(Class iface) {
-        Interface inyerface = new DefaultInterface(iface);
-        return registryFinder.hasImplementation(inyerface);
+    public boolean hasImplementation(Interface iface) {
+        return registryFinder.hasImplementation(iface);
     }
 
-    public boolean hasInstance(Class iface) {
-        Interface inyerface = new DefaultInterface(iface);
-        return registryFinder.hasInstance(inyerface);
+    public boolean hasInstance(Interface iface) {
+        return registryFinder.hasInstance(iface);
     }
 
     public Implementation getImplementation(Interface iface) {

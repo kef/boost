@@ -34,13 +34,13 @@ public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
 
     public void testHasImplementation() {
         expect.oneCall(registryFinder, hasImplementation, "hasImplementation", cloisonInterface);
-        boolean result = subject.hasImplementation(FrenchCloison.class);
+        boolean result = subject.hasImplementation(cloisonInterface);
         assertEquals(hasImplementation, result);
     }
 
     public void testHasInstance() {
         expect.oneCall(registryFinder, hasInstance, "hasInstance", rollInterface);
-        boolean result = subject.hasInstance(FrenchRoll.class);
+        boolean result = subject.hasInstance(rollInterface);
         assertEquals(hasInstance, result);
     }
 
