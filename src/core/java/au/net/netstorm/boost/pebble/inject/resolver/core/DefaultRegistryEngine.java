@@ -8,37 +8,37 @@ import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRegistryEngine implements RegistryEngine {
-    private final RegistryFinder registryFinder;
+    private final RegisterMaster registerMaster;
 
-    public DefaultRegistryEngine(RegistryFinder registryFinder) {
-        this.registryFinder = registryFinder;
+    public DefaultRegistryEngine(RegisterMaster registerMaster) {
+        this.registerMaster = registerMaster;
     }
 
     public boolean hasImplementation(Interface iface) {
-        return registryFinder.hasImplementation(iface);
+        return registerMaster.hasImplementation(iface);
     }
 
     public boolean hasInstance(Interface iface) {
-        return registryFinder.hasInstance(iface);
+        return registerMaster.hasInstance(iface);
     }
 
     public Implementation getImplementation(Interface iface) {
-        return registryFinder.getImplementation(iface);
+        return registerMaster.getImplementation(iface);
     }
 
     public Instance getInstance(Interface iface) {
-        return registryFinder.getInstance(iface);
+        return registerMaster.getInstance(iface);
     }
 
     public void prototype(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryFinder.prototype(inyerface, implementation);
+        registerMaster.prototype(inyerface, implementation);
     }
 
     public void instance(Class iface, Object ref) {
         Interface inyerface = new DefaultInterface(iface);
         Instance instance = new DefaultInstance(ref);
-        registryFinder.instance(inyerface, instance);
+        registerMaster.instance(inyerface, instance);
     }
 }

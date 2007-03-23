@@ -15,11 +15,11 @@ import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.pebble.inject.newer.field.DefaultNewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegisterMaster;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.FieldResolver;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegisterMaster;
 import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.core.ResolverInjector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFinder;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
@@ -64,7 +64,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
     }
 
     private RegistryEngine assembleRegistry() {
-        RegistryFinder finder = new DefaultRegistryFinder();
+        RegisterMaster finder = new DefaultRegisterMaster();
         return new DefaultRegistryEngine(finder);
     }
 

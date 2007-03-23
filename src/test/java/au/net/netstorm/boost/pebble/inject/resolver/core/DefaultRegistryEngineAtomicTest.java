@@ -19,7 +19,7 @@ public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
     private Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
     private Instance rollInstance = new DefaultInstance(damienInstance);
     private Class iface;
-    private RegistryFinder registryFinder;
+    private RegisterMaster registerMaster;
     private Boolean hasImplementation;
     private Boolean hasInstance;
     private Interface someInterface;
@@ -29,40 +29,40 @@ public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
     private Object ref;
 
     public void setupSubjects() {
-        subject = new DefaultRegistryEngine(registryFinder);
+        subject = new DefaultRegistryEngine(registerMaster);
     }
 
     public void testHasImplementation() {
-        expect.oneCall(registryFinder, hasImplementation, "hasImplementation", cloisonInterface);
+        expect.oneCall(registerMaster, hasImplementation, "hasImplementation", cloisonInterface);
         Boolean result = subject.hasImplementation(cloisonInterface);
         assertEquals(hasImplementation, result);
     }
 
     public void testHasInstance() {
-        expect.oneCall(registryFinder, hasInstance, "hasInstance", rollInterface);
+        expect.oneCall(registerMaster, hasInstance, "hasInstance", rollInterface);
         Boolean result = subject.hasInstance(rollInterface);
         assertEquals(hasInstance, result);
     }
 
     public void testGetImplementation() {
-        expect.oneCall(registryFinder, implementation, "getImplementation", someInterface);
+        expect.oneCall(registerMaster, implementation, "getImplementation", someInterface);
         Implementation result = subject.getImplementation(someInterface);
         assertEquals(implementation, result);
     }
 
     public void testGetInstance() {
-        expect.oneCall(registryFinder, instance, "getInstance", someInterface);
+        expect.oneCall(registerMaster, instance, "getInstance", someInterface);
         Instance result = subject.getInstance(someInterface);
         assertEquals(instance, result);
     }
 
     public void testPrototype() {
-        expect.oneCall(registryFinder, VOID, "prototype", cloisonInterface, cloisonImplementation);
+        expect.oneCall(registerMaster, VOID, "prototype", cloisonInterface, cloisonImplementation);
         subject.prototype(frenchCloison, davidPetit);
     }
 
     public void testInstance() {
-        expect.oneCall(registryFinder, VOID, "instance", rollInterface, rollInstance);
+        expect.oneCall(registerMaster, VOID, "instance", rollInterface, rollInstance);
         subject.instance(frenchRoll, damienInstance);
     }
 }
