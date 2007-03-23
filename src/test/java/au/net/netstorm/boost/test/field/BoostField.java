@@ -5,6 +5,10 @@ public interface BoostField {
 
     void set(Object value);
 
+    String getName();
+
+    Class getType();
+
     boolean isNull();
 
     boolean isFinal();
@@ -16,8 +20,4 @@ public interface BoostField {
     boolean isPrimitive();
 
     boolean isInterface();
-
-    String getName();
-
-    Class getType();
 }
