@@ -1,58 +1,21 @@
 package au.net.netstorm.boost.test.automock;
 
-import java.util.HashSet;
-import java.util.Set;
 import au.net.netstorm.boost.test.field.BoostField;
-import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
-import au.net.netstorm.boost.test.random.FieldRandomizer;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
+import au.net.netstorm.boost.test.random.EverythingRandomProvider;
+import au.net.netstorm.boost.test.random.RandomProvider;
 
 public final class DefaultRandomizer implements Randomizer {
-    private final FieldRandomizer fieldRandomizer = new DefaultFieldRandomizer();
-    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final UsesMocks testCase;
-
-    public DefaultRandomizer(UsesMocks useMocks) {
-        this.testCase = useMocks;
-    }
+    private RandomProvider randomProvider = new EverythingRandomProvider();
 
     public void randomize(BoostField[] fields) {
-        FieldSpec[] randomizableFields = getFieldsToRandomize(fields);
-        randomize(randomizableFields);
-    }
-
-    private void randomize(FieldSpec[] fields) {
-        Object[] randomInstances = fieldRandomizer.getInstances(fields);
         for (int i = 0; i < fields.length; i++) {
-            assignRandomValue(fields[i], randomInstances[i]);
+            randomize(fields[i]);
         }
     }
 
-    private void assignRandomValue(FieldSpec fieldSpec, Object randomValue) {
-        String fieldName = fieldSpec.getName();
-        fielder.setInstance(testCase, fieldName, randomValue);
-    }
-
-    private FieldSpec[] getFieldsToRandomize(BoostField[] fields) {
-        Set result = new HashSet();
-        for (int i = 0; i < fields.length; i++) {
-            addIfRandomizable(fields[i], result);
-        }
-        return (FieldSpec[]) result.toArray(new FieldSpec[]{});
-    }
-
-    private void addIfRandomizable(BoostField field, Set result) {
-        String name = field.getName();
-        Class type = field.getType();
-        // FIX 1676 This condition goes out of here.  Pass is ONLY the things to randomize.
-        if (field.isNull() || field.isPrimitive()) addField(result, name, type);
-    }
-
-    private void addField(Set set, String fieldName, Class fieldType) {
-        FieldSpec fieldSpec = new DefaultFieldSpec(fieldName, fieldType);
-        set.add(fieldSpec);
+    private void randomize(BoostField field) {
+        Class cls = field.getType();
+        Object random = randomProvider.get(cls);
+        field.set(random);
     }
 }

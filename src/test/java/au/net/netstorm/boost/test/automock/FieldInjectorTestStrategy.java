@@ -53,7 +53,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
 
     private void injectDummies(BoostField[] fields) {
         BoostField[] dummyFields = selector.select(fields, dummyMatcher);
-        Randomizer randomizer = new DefaultRandomizer(testCase);
+        Randomizer randomizer = new DefaultRandomizer();
         randomizer.randomize(dummyFields);
     }
 

@@ -8,6 +8,7 @@ public final class DefaultFieldRandomizer implements FieldRandomizer {
     private RandomProvider randomProvider = new EverythingRandomProvider();
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
 
+    // FIX 1676 Go for a walk in usages....
     public Object[] getInstances(FieldSpec[] fields) {
         Class[] types = fielder.getTypes(fields);
         Object[] result = new Object[types.length];

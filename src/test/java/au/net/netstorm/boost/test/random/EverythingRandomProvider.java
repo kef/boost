@@ -27,8 +27,6 @@ public final class EverythingRandomProvider implements RandomProvider {
     }
     // } OK CyclomaticComplexity
 
-    // FIX 1676 Add isRandomizable method().
-
     private boolean isInterface(Class type) {
         return type.isInterface();
     }
