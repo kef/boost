@@ -10,7 +10,6 @@ public final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
 
     {
         map.put(boolean.class, Boolean.class);
-        map.put(char.class, Character.class);
         map.put(int.class, Integer.class);
         map.put(long.class, Long.class);
         map.put(float.class, Float.class);

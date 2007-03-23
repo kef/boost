@@ -6,10 +6,13 @@ import au.net.netstorm.boost.test.field.Matcher;
 public final class DummyMatcher implements Matcher {
     MockableMatcher mockMatcher = new MockableMatcher();
 
+    // OK CyclomaticComplexity|ReturnCount {
     public boolean matches(BoostField field) {
         if (mockMatcher.matches(field)) return false;
-        // FIX BREADCRUMB 1676 Here I am.  Wish you were here.
-//        if (poisonMatcher.matches(field)) return false;
-        return true;
+        if (field.isPrimitive()) return false;
+        if (field.isFinal()) return false;
+        if (field.isStatic()) return false;
+        return field.isNull();
     }
+    // } OK CyclomaticComplexity|ReturnCount
 }

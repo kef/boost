@@ -16,12 +16,12 @@ public final class DefaultBoostField implements BoostField {
     private final Object ref;
     private final Field field;
 
+    // FIX 1676 Use MTU as much as possible here.
     public DefaultBoostField(Object ref, Field field) {
         this.ref = ref;
         this.field = field;
     }
 
-    // FIX 1676 Remove set/get from here.
     public Object get() {
         return fielder.getInstance(ref, field);
     }
@@ -39,13 +39,13 @@ public final class DefaultBoostField implements BoostField {
         return modifier.isFinal(field);
     }
 
+    public boolean isStatic() {
+        return modifier.isStatic(field);
+    }
+
     public boolean isArray() {
         Class type = field.getType();
         return type.isArray();
-    }
-
-    public boolean isStatic() {
-        return modifier.isStatic(field);
     }
 
     public boolean isPrimitive() {
