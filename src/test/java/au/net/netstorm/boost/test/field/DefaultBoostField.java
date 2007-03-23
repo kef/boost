@@ -8,15 +8,13 @@ import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 
-// FIX 1676 Make local. Leave iface public.
-public final class DefaultBoostField implements BoostField {
+final class DefaultBoostField implements BoostField {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ModifierTestUtil modifier = new DefaultModifierTestUtil();
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private final Object ref;
     private final Field field;
 
-    // FIX 1676 Use MTU as much as possible here.
     public DefaultBoostField(Object ref, Field field) {
         this.ref = ref;
         this.field = field;
@@ -70,15 +68,4 @@ public final class DefaultBoostField implements BoostField {
     public Class getType() {
         return field.getType();
     }
-
-    // FIX 1676 Move this.
-    // DEBT CyclomaticComplexity|ReturnCount {
-    public boolean isInjectable() {
-        if (isArray()) return false;
-        if (isSynthetic()) return false;
-        if (isFinal()) return false;
-        if (isPrimitive()) return true;
-        return isNull();
-    }
-    // } DEBT CyclomaticComplexity|ReturnCount
 }

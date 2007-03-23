@@ -20,7 +20,4 @@ public interface BoostField {
     String getName();
 
     Class getType();
-
-    // FIX 1676 Out boy, out!
-    boolean isInjectable();
 }
