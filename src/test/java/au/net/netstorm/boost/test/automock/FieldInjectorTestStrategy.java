@@ -16,7 +16,6 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
-    private final FieldRetriever fieldRetriever = new AutoMockFieldRetriever();
     private final FieldBuilder builder = new BoostFieldBuilder();
     private final FieldSelector selector = new DefaultFieldSelector();
     private final UsesMocks testCase;
