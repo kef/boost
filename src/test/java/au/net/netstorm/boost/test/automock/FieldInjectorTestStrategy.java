@@ -35,6 +35,11 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     private void validate(BoostField[] fields) {
+        // FIX 1676 Delegate.
+        for (int i = 0; i < fields.length; i++) {
+            BoostField field = fields[i];
+            if (field.isPrimitive()) throw new IllegalStateException("Rooster head.");
+        }
         // FIX BREADCRUMB 1676 Boom on primitives.
         // FIX 1676 Break for primitive fields (maybe which aren't final).
         // FIX 1676 Break for fields which are not package private?
@@ -45,6 +50,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
         return fieldBuilder.build(testCase);
     }
 
+    // Hook in from jMock.
     public void verify() {
         mocker.verify();
     }
