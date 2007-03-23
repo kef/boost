@@ -10,4 +10,5 @@ public final class MockableMatcher implements Matcher {
         if (field.isStatic()) return false;
         return field.isNull();
     }
-}
+
+    {}
