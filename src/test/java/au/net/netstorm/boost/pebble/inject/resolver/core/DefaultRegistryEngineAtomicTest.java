@@ -10,12 +10,12 @@ import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
-    private static final Class LAZY_BASTARD = LazyBastard.class;
-    private static final Class LARRY = Larry.class;
-    private static final Class LEGEND = Legend.class;
-    private static final Class AN_DO = AnDo.class;
-    private static final Class FRENCH_CLOISON = FrenchCloison.class;
-    private static final Class FRENCH_ROLL = FrenchRoll.class;
+    private static final Interface LAZY_BASTARD = new DefaultInterface(LazyBastard.class);
+    private static final Implementation LARRY = new DefaultImplementation(Larry.class);
+    private static final Interface LEGEND = new DefaultInterface(Legend.class);
+    private static final Implementation AN_DO = new DefaultImplementation(AnDo.class);
+    private static final Interface FRENCH_CLOISON = new DefaultInterface(FrenchCloison.class);
+    private static final Interface FRENCH_ROLL = new DefaultInterface(FrenchRoll.class);
     private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
     private static final FrenchRoll DAMIEN_REF = new Damien();
     private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
@@ -54,13 +54,6 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         } catch (UnresolvedDependencyException expected) { }
     }
 
-    public void testInstanceMustBeInterface() {
-        try {
-            subject.instance(LARRY, DAMIEN);
-            fail();
-        } catch (IllegalArgumentException expected) { }
-    }
-
     public void testHasInstance() {
         checkHasInstance(FRENCH_CLOISON, true);
         checkHasInstance(LAZY_BASTARD, false);
@@ -71,21 +64,18 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         checkHasImplementation(FRENCH_CLOISON, false);
     }
 
-    private void checkHasImplementation(Class iface, boolean expected) {
-        Interface inyerface = new DefaultInterface(iface);
-        boolean result = subject.hasImplementation(inyerface);
+    private void checkHasImplementation(Interface iface, boolean expected) {
+        boolean result = subject.hasImplementation(iface);
         assertEquals(expected, result);
     }
 
-    private void checkHasInstance(Class iface, boolean expected) {
-        Interface inyerface = new DefaultInterface(iface);
-        boolean result = subject.hasInstance(inyerface);
+    private void checkHasInstance(Interface iface, boolean expected) {
+        boolean result = subject.hasInstance(iface);
         assertEquals(expected, result);
     }
 
-    private void checkGetInstance(Class iface, Instance expect) {
-        Interface inyerface = new DefaultInterface(iface);
-        Instance result = subject.getInstance(inyerface);
+    private void checkGetInstance(Interface iface, Instance expect) {
+        Instance result = subject.getInstance(iface);
         assertEquals(expect, result);
     }
 
@@ -96,25 +86,12 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         } catch (UnresolvedDependencyException expected) { }
     }
 
-    public void testMustBeInterface() {
-        try {
-            subject.prototype(LARRY, LARRY);
-            fail();
-        } catch (IllegalArgumentException expected) { }
+    private void checkGetImplementation(Interface iface, Implementation expected) {
+        Implementation result = subject.getImplementation(iface);
+        checkEquals(expected, result);
     }
 
-    private void checkGetImplementation(Class iface, Class impl) {
-        Implementation result = getImplementation(iface);
-        checkEquals(impl, result);
-    }
-
-    private void checkEquals(Class cls, Implementation result) {
-        Implementation expected = new DefaultImplementation(cls);
+    private void checkEquals(Implementation expected, Implementation result) {
         assertEquals(expected, result);
-    }
-
-    private Implementation getImplementation(Class cls) {
-        Interface iface = new DefaultInterface(cls);
-        return subject.getImplementation(iface);
     }
 }

@@ -12,4 +12,8 @@ public interface RegistryFacade {
     Implementation getImplementation(Interface iface);
 
     Instance getInstance(Interface iface);
+
+    void prototype(Class iface, Class implClass);
+
+    void instance(Class iface, Object ref);
 }

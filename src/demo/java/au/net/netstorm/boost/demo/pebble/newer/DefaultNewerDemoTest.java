@@ -4,13 +4,16 @@ import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFacade;
 import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFacade;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
     private final RegistryEngine registryEngine = new DefaultRegistryEngine();
-    private final PebbleAssembler assembler = new DefaultPebbleAssembler(Pebble.class, registryEngine);
+    private final RegistryFacade registryFacade = new DefaultRegistryFacade(registryEngine);
+    private final PebbleAssembler assembler = new DefaultPebbleAssembler(Pebble.class, registryFacade);
     private final PebblePortal portal = assembler.assemble();
     private final PebbleProvider provider = portal.getProvider();
 

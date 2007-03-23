@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.resolve;
 
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFacade;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -11,7 +11,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Resolver subject;
     private PebbleProviderEngine provider;
-    private RegistryEngine registryEngine;
+    private RegistryFacade registryFacade;
     private Object jimInstance;
     private Object jackInstance;
     private Interface jim = iface(Jim.class);
@@ -21,20 +21,20 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private Object[] noparams = {};
 
     public void setupSubjects() {
-        subject = new DefaultResolver(provider, registryEngine);
+        subject = new DefaultResolver(provider, registryFacade);
     }
 
     public void testNoUnresolvedDependencies() {
-        expect.oneCall(registryEngine, jimImpl, "getImplementation", jim);
+        expect.oneCall(registryFacade, jimImpl, "getImplementation", jim);
         expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
         Object result = subject.resolve(jim);
         assertEquals(jimInstance, result);
     }
 
     public void testOneUnresolvedDependencies() {
-        expect.oneCall(registryEngine, jimImpl, "getImplementation", jim);
+        expect.oneCall(registryFacade, jimImpl, "getImplementation", jim);
         expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
-        expect.oneCall(registryEngine, jackImpl, "getImplementation", jack);
+        expect.oneCall(registryFacade, jackImpl, "getImplementation", jack);
         expect.oneCall(provider, jackInstance, "provide", jackImpl, new Object[]{jimInstance});
         Object result = subject.resolve(jack);
         assertEquals(jackInstance, result);

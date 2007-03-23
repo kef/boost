@@ -6,21 +6,24 @@ import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
 import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.DefaultRegistryFacade;
 import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryEngine;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryFacade;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final RegistryEngine registryEngine = new DefaultRegistryEngine();
-    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, registryEngine);
+    private final RegistryFacade registryFacade = new DefaultRegistryFacade(registryEngine);
+    private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class, registryFacade);
     private final PebblePortal pebblePortal = pebbleAssembler.assemble();
     private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
 
     {
-        registryEngine.prototype(TheDude.class, JeffBridges.class);
-        registryEngine.prototype(Quote.class, ClassicQuote.class);
-        registryEngine.prototype(Movie.class, BigLebowski.class);
-        registryEngine.prototype(Cinema.class, RegalCinema.class);
+        registryFacade.prototype(TheDude.class, JeffBridges.class);
+        registryFacade.prototype(Quote.class, ClassicQuote.class);
+        registryFacade.prototype(Movie.class, BigLebowski.class);
+        registryFacade.prototype(Cinema.class, RegalCinema.class);
         // FIX BREADCRUMB 1824 Re-instate after we have a registry facade.
 //        registryEngine.instance(Actor.class, new PeterSellers());
 //        registryEngine.instance(Celebrity.class, new BritneySpears());
