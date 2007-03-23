@@ -7,22 +7,26 @@ import au.net.netstorm.boost.util.type.Interface;
 // FIX BREADCRUMB 1824 Complete.
 public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     private RegistryFacade subject;
-    private Interface inyerface = new DefaultInterface(FrenchCloison.class);
+    private Interface cloisonInterface = new DefaultInterface(FrenchCloison.class);
+    private Interface rollInterface = new DefaultInterface(FrenchRoll.class);
     private Class iface;
     private RegistryEngine registryEngine;
     private boolean hasImplementation;
+    private boolean hasInstance;
 
     public void setupSubjects() {
         subject = new DefaultRegistryFacade(registryEngine);
     }
 
     public void testHasImplementation() {
-        expect.oneCall(registryEngine, hasImplementation, "hasImplementation", inyerface);
+        expect.oneCall(registryEngine, hasImplementation, "hasImplementation", cloisonInterface);
         boolean result = subject.hasImplementation(FrenchCloison.class);
         assertEquals(hasImplementation, result);
     }
 
     public void testHasInstance() {
+        expect.oneCall(registryEngine, hasInstance, "hasInstance", rollInterface);
         boolean result = subject.hasInstance(FrenchRoll.class);
+        assertEquals(hasInstance, result);
     }
 }
