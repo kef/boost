@@ -41,11 +41,9 @@ public final class DefaultRegistryEngine implements RegistryEngine {
         add(instanceMap, iface, instance);
     }
 
-    // FIX BREADCRUMB 1824 This will end up using the hasInstance method.
     private void checkInstanceNotExists(Class iface) {
         Interface inyerface = new DefaultInterface(iface);
-        boolean exists = instanceMap.containsKey(inyerface);
-        if (exists) throw new InstanceExistsException(inyerface);
+        if (hasInstance(inyerface)) throw new InstanceExistsException(inyerface);
     }
 
     private void add(Map map, Class cls, Object value) {
