@@ -16,14 +16,20 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     private static final Class AN_DO = AnDo.class;
     private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
     private static final Class FRENCH_CLOISON = FrenchCloison.class;
+    private static final Class FRENCH_ROLL = FrenchRoll.class;
     private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
+    private static final FrenchRoll DAMIEN_REF = new Damien();
+    private static final Instance DAMIEN = new DefaultInstance(DAMIEN_REF);
+
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
+
     private final RegistryEngine subject = new DefaultRegistryEngine();
 
     {
         subject.prototype(LAZY_BASTARD, LARRY);
         subject.prototype(LEGEND, AN_DO);
         subject.instance(FRENCH_CLOISON, DAVID_PETIT);
+        subject.instance(FRENCH_ROLL, DAMIEN);
     }
 
     public void testGetImplementation() {
@@ -33,9 +39,14 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
 
     // FIX BREADCRUMB 1824 Make sure no one can add an existing instance.
     public void testGetInstance() {
-        Interface iface = new DefaultInterface(FRENCH_CLOISON);
-        Instance result = subject.getInstance(iface);
-        assertEquals(DAVID_PETIT, result);
+        checkGetInstance(FRENCH_CLOISON, DAVID_PETIT);
+        checkGetInstance(FRENCH_ROLL, DAMIEN);
+    }
+
+    private void checkGetInstance(Class iface, Instance expect) {
+        Interface iface1 = new DefaultInterface(iface);
+        Instance result = subject.getInstance(iface1);
+        assertEquals(expect, result);
     }
 
     public void testCannotGetImplementation() {
