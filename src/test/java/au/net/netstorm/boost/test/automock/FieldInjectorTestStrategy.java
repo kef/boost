@@ -28,7 +28,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
 
     public void init() {
         BoostField[] fields = getAllFields();
-//        validate(fields);
+        validate(fields);
         injectMocks(fields);
         injectDummies(fields);
         testCase.setupSubjects();

@@ -20,8 +20,8 @@ public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
     private Instance rollInstance = new DefaultInstance(damienInstance);
     private Class iface;
     private RegistryFinder registryFinder;
-    private boolean hasImplementation;
-    private boolean hasInstance;
+    private Boolean hasImplementation;
+    private Boolean hasInstance;
     private Interface someInterface;
     private Implementation implementation;
     private Instance instance;
@@ -34,13 +34,13 @@ public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
 
     public void testHasImplementation() {
         expect.oneCall(registryFinder, hasImplementation, "hasImplementation", cloisonInterface);
-        boolean result = subject.hasImplementation(cloisonInterface);
+        Boolean result = subject.hasImplementation(cloisonInterface);
         assertEquals(hasImplementation, result);
     }
 
     public void testHasInstance() {
         expect.oneCall(registryFinder, hasInstance, "hasInstance", rollInterface);
-        boolean result = subject.hasInstance(rollInterface);
+        Boolean result = subject.hasInstance(rollInterface);
         assertEquals(hasInstance, result);
     }
 
