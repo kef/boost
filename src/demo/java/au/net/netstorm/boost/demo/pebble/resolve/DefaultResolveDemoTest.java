@@ -24,9 +24,9 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         registryFacade.prototype(Quote.class, ClassicQuote.class);
         registryFacade.prototype(Movie.class, BigLebowski.class);
         registryFacade.prototype(Cinema.class, RegalCinema.class);
-        // FIX BREADCRUMB 1824 Re-instate after we have a registry facade.
-//        registryEngine.instance(Actor.class, new PeterSellers());
-//        registryEngine.instance(Celebrity.class, new BritneySpears());
+        registryFacade.instance(Actor.class, new PeterSellers());
+        registryFacade.instance(Celebrity.class, new BritneySpears());
+        registryFacade.prototype(Hollywood.class, GlitzyHollywood.class);
     }
 
     public void testNoArgProvide() {
@@ -37,6 +37,12 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     public void testProvide() {
         Cinema regalCinema = (Cinema) pebbleProvider.provide(RegalCinema.class, NO_PARAMETERS);
         assertNotNull(regalCinema);
+    }
+
+    public void testProvideSingleton() {
+        // FIX BREADCRUMB 1824 Complete me! Test singleton!
+//        Hollywood hollywood = (Hollywood) pebbleProvider.provide(GlitzyHollywood.class, NO_PARAMETERS);
+//        assertNotNull(hollywood);
     }
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {
