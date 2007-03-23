@@ -22,6 +22,11 @@ public final class DefaultResolver implements Resolver {
     }
 
     public Object resolve(Interface iface) {
+        // FIX BREADCRUMB 1824 Test-drive this bad boy up.
+//        if (registryEngine.hasInstance(iface)) {
+//            Instance instance = registryEngine.getInstance(iface);
+//            return instance.getRef();
+//        }
         Implementation impl = registryEngine.getImplementation(iface);
         return resolve(impl);
     }
