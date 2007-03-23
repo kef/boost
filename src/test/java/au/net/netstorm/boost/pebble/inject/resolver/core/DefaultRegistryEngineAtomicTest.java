@@ -56,6 +56,13 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         } catch (UnresolvedDependencyException expected) { }
     }
 
+    public void testInstanceMustBeInterface() {
+        try {
+            subject.instance(LARRY, DAMIEN);
+            fail();
+        } catch (IllegalArgumentException expected) { }
+    }
+
     private void checkGetInstance(Class iface, Instance expect) {
         Interface iface1 = new DefaultInterface(iface);
         Instance result = subject.getInstance(iface1);
