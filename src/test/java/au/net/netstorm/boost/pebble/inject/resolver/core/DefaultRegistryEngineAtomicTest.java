@@ -8,8 +8,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX BREADCRUMB 1824 Complete.
-public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
+public final class DefaultRegistryEngineAtomicTest extends InteractionTestCase {
     private RegistryEngine subject;
     private Class frenchCloison = FrenchCloison.class;
     private Class frenchRoll = FrenchRoll.class;
