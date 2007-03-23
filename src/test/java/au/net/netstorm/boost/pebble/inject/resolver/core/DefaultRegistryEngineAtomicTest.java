@@ -14,15 +14,13 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
     private static final Class LARRY = Larry.class;
     private static final Class LEGEND = Legend.class;
     private static final Class AN_DO = AnDo.class;
-    private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
     private static final Class FRENCH_CLOISON = FrenchCloison.class;
     private static final Class FRENCH_ROLL = FrenchRoll.class;
-    private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
+    private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
     private static final FrenchRoll DAMIEN_REF = new Damien();
+    private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
     private static final Instance DAMIEN = new DefaultInstance(DAMIEN_REF);
-
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-
     private final RegistryEngine subject = new DefaultRegistryEngine();
 
     {

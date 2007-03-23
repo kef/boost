@@ -21,6 +21,9 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         registryEngine.prototype(Quote.class, ClassicQuote.class);
         registryEngine.prototype(Movie.class, BigLebowski.class);
         registryEngine.prototype(Cinema.class, RegalCinema.class);
+        // FIX BREADCRUMB 1824 Re-instate after we have a registry facade.
+//        registryEngine.instance(Actor.class, new PeterSellers());
+//        registryEngine.instance(Celebrity.class, new BritneySpears());
     }
 
     public void testNoArgProvide() {
