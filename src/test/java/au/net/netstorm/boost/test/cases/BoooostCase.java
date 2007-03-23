@@ -49,8 +49,12 @@ public abstract class BoooostCase extends TestCase {
         assertTestChecker.checkNotEquals(v1, v2);
     }
 
+    public final void assertNotEquals(Object v1, Object v2) {
+        assertEquals(false, v1.equals(v2));
+    }
+
     public final void assertNotEquals(int v1, int v2) {
-        assertEquals(true, v1 != v2);
+        assertEquals(false, v1 == v2);
     }
 
     public static final void assertTrue(boolean expected) {
