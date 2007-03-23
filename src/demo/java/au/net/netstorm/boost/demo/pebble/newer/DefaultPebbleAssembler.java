@@ -53,7 +53,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
         DefaultPebbleProvider pebbleProvider = new DefaultPebbleProvider(pebbleProviderEngine);
-        return new DefaultPebblePortal(pebbleProvider, objectInjector, resolver);
+        return new DefaultPebblePortal(pebbleProvider, objectInjector, resolver, registryEngine);
     }
 
     private ProxyFactory assembleProxyFactory() {
