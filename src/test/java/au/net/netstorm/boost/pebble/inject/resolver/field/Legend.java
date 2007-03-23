@@ -5,8 +5,9 @@ import java.util.TreeSet;
 import au.net.netstorm.boost.pebble.core.Pebble;
 
 final class Legend implements Pebble {
-    private Set resolveMe;
-    private final Set doNotResolveMe = null;
-    private Set doNotResolveMeEither = new TreeSet();
-    private Set resolveMeToo;
+    Set resolveMe;
+    final Set doNotResolveMe = null;
+    Set doNotResolveMeEither = new TreeSet();
+    Set resolveMeToo;
+    private Set doNotResolveMeIAmPrivate;
 }

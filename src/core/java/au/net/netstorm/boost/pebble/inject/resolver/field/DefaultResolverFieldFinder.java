@@ -31,7 +31,13 @@ public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
         field.setAccessible(true);
         if (!isNull(ref, field)) return;
         if (isFinal(field)) return;
+        if (isPrivate(field)) return;
         result.add(field);
+    }
+
+    private boolean isPrivate(Field field) {
+        int modifiers = field.getModifiers();
+        return Modifier.isPrivate(modifiers);
     }
 
     private boolean isNull(Object ref, Field field) {

@@ -55,6 +55,6 @@ public final class DefaultAssertTestChecker implements AssertTestChecker {
     private void basicCheck(Object[] o1, Object[] o2) {
         Assert.assertNotNull(o1);
         Assert.assertNotNull(o2);
-        Assert.assertEquals(o1.length, o2.length);
+        Assert.assertEquals("Array lengths do not match.", o1.length, o2.length);
     }
 }
