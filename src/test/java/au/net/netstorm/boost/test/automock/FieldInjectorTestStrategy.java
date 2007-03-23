@@ -27,14 +27,18 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     }
 
     public void init() {
+        BoostField[] fields = getAllFields();
+        validate(fields);
+        injectMocks(fields);
+        injectDummies(fields);
+        testCase.setupSubjects();
+    }
+
+    private void validate(BoostField[] fields) {
         // FIX BREADCRUMB 1676 Boom on primitives.
         // FIX 1676 Break for primitive fields (maybe which aren't final).
         // FIX 1676 Break for fields which are not package private?
         // FIX 1676 Break if any fields are final (and not static?).
-        BoostField[] fields = getAllFields();
-        injectMocks(fields);
-        injectDummies(fields);
-        testCase.setupSubjects();
     }
 
     private BoostField[] getAllFields() {
