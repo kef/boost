@@ -23,6 +23,6 @@ public final class DefaultRegistryFacade implements RegistryFacade {
     }
 
     public Implementation getImplementation(Interface iface) {
-        return null;
+        return registryEngine.getImplementation(iface);
     }
 }

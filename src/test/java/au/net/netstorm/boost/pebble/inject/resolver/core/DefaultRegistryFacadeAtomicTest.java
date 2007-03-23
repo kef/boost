@@ -15,6 +15,7 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     private boolean hasImplementation;
     private boolean hasInstance;
     private Interface someInterface;
+    private Implementation implementation;
 
     public void setupSubjects() {
         subject = new DefaultRegistryFacade(registryEngine);
@@ -33,6 +34,8 @@ public final class DefaultRegistryFacadeAtomicTest extends InteractionTestCase {
     }
 
     public void testGetImplementation() {
+        expect.oneCall(registryEngine, implementation, "getImplementation", someInterface);
         Implementation result = subject.getImplementation(someInterface);
+        assertEquals(implementation, result);
     }
 }
