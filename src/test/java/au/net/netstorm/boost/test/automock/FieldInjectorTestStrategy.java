@@ -36,7 +36,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
         // Change this to return only MOCKABLE fields. This should use the fieldFinder pattern.
         BoostField[] eligibleFields = fieldRetriever.retrieve(testCase);
         injectMocks(mockFields);
-        injectRandoms(eligibleFields);
+        injectDummies(eligibleFields);
         testCase.setupSubjects();
     }
 
@@ -51,7 +51,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
         fielder.setPublicInstance(testCase, "expect", mockExpectations);
     }
 
-    private void injectRandoms(BoostField[] fields) {
+    private void injectDummies(BoostField[] fields) {
         Randomizer randomizer = new DefaultRandomizer(testCase);
         randomizer.randomize(fields);
     }

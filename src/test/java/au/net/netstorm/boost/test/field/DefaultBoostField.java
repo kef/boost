@@ -44,6 +44,10 @@ public final class DefaultBoostField implements BoostField {
         return type.isArray();
     }
 
+    public boolean isStatic() {
+        return modifier.isStatic(field);
+    }
+
     public boolean isPrimitive() {
         Class type = field.getType();
         return primitiveBoxer.isPrimitive(type);

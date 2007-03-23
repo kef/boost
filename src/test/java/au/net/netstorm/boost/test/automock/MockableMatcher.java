@@ -5,7 +5,8 @@ import au.net.netstorm.boost.test.field.Matcher;
 
 public final class MockableMatcher implements Matcher {
     public boolean matches(BoostField field) {
-        if (field.isFinal()) return false;
-        return field.isInterface();
+        if (!field.isInterface()) return false;
+        if (field.isStatic()) return false;
+        return field.isNull();
     }
 }

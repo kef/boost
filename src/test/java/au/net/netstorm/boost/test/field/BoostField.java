@@ -9,6 +9,8 @@ public interface BoostField {
 
     boolean isFinal();
 
+    boolean isStatic();
+
     boolean isArray();
 
     boolean isPrimitive();
