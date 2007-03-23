@@ -12,14 +12,16 @@ public final class DefaultRegistryEngine implements RegistryEngine {
     private final Map implementationMap = new HashMap();
     private final Map instanceMap = new HashMap();
 
-    public Implementation getImplementation(Interface type) {
-        Class cls = (Class) implementationMap.get(type);
-        if (cls == null) throw new UnresolvedDependencyException(type);
+    public Implementation getImplementation(Interface iface) {
+        Class cls = (Class) implementationMap.get(iface);
+        if (cls == null) throw new UnresolvedDependencyException(iface);
         return new DefaultImplementation(cls);
     }
 
     public Instance getInstance(Interface iface) {
-        return (Instance) instanceMap.get(iface);
+        Instance instance = (Instance) instanceMap.get(iface);
+        if (instance == null) throw new UnresolvedDependencyException(iface);
+        return instance;
     }
 
     public void prototype(Class iface, Class implementation) {

@@ -37,7 +37,6 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         checkGetImplementation(LEGEND, AN_DO);
     }
 
-    // FIX BREADCRUMB 1824 Make sure no one can add an existing instance.
     public void testGetInstance() {
         checkGetInstance(FRENCH_CLOISON, DAVID_PETIT);
         checkGetInstance(FRENCH_ROLL, DAMIEN);
@@ -48,6 +47,13 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
             subject.instance(FRENCH_ROLL, DAMIEN);
             fail();
         } catch (InstanceExistsException expected) { }
+    }
+
+    public void testInstanceDoesNotExist() {
+        try {
+            subject.getInstance(NON_EXISTENT);
+            fail();
+        } catch (UnresolvedDependencyException expected) { }
     }
 
     private void checkGetInstance(Class iface, Instance expect) {
