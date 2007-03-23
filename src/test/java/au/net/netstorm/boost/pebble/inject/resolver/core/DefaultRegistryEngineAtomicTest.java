@@ -43,6 +43,13 @@ public final class DefaultRegistryEngineAtomicTest extends BoooostCase {
         checkGetInstance(FRENCH_ROLL, DAMIEN);
     }
 
+    public void testDuplicateInstance() {
+        try {
+            subject.instance(FRENCH_ROLL, DAMIEN);
+            fail();
+        } catch (InstanceExistsException expected) { }
+    }
+
     private void checkGetInstance(Class iface, Instance expect) {
         Interface iface1 = new DefaultInterface(iface);
         Instance result = subject.getInstance(iface1);
