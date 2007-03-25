@@ -22,6 +22,7 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         registry.prototype(Cinema.class, RegalCinema.class);
         registry.instance(Actor.class, new PeterSellers());
         registry.instance(Celebrity.class, new BritneySpears());
+        // FIX BREADCRUMB 1824 What happens when we want to create an instance that relies on another prototype/instance?
         registry.prototype(Hollywood.class, GlitzyHollywood.class);
         registry.prototype(Business.class, MovieBusiness.class);
     }
@@ -36,7 +37,6 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         assertNotNull(regalCinema);
     }
 
-    // FIX BREADCRUMB 1824 Are there any more singleton tests we need to cater for?
     public void testProvideSingleton() {
         Hollywood hollywood = (Hollywood) provide(GlitzyHollywood.class, NO_PARAMETERS);
         Business business = (Business) provide(MovieBusiness.class, NO_PARAMETERS);
