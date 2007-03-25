@@ -12,7 +12,7 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
-public final class FieldInjectorTestStrategy implements TestStrategy {
+public final class InteractionInjectorTestStrategy implements TestStrategy {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
@@ -22,7 +22,7 @@ public final class FieldInjectorTestStrategy implements TestStrategy {
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
 
-    public FieldInjectorTestStrategy(UsesMocks testCase) {
+    public InteractionInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
     }
 
