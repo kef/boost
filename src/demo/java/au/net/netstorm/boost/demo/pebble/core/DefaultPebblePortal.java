@@ -11,8 +11,7 @@ public final class DefaultPebblePortal implements PebblePortal {
     private final Resolver resolver;
     private final Registry registry;
 
-    public DefaultPebblePortal(PebbleProvider provider, Injector injector, Resolver resolver,
-            Registry registry) {
+    public DefaultPebblePortal(PebbleProvider provider, Injector injector, Resolver resolver, Registry registry) {
         this.provider = provider;
         this.injector = injector;
         this.resolver = resolver;
