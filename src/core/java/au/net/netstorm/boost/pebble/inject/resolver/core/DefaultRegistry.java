@@ -9,21 +9,21 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // FIX BREADCRUMB 1824 This should only have the methods prototype and instance, the others can go.
 public final class DefaultRegistry implements Registry {
-    private final RegisterMaster registerMaster;
+    private final RegistryMaster registryMaster;
 
-    public DefaultRegistry(RegisterMaster registerMaster) {
-        this.registerMaster = registerMaster;
+    public DefaultRegistry(RegistryMaster registryMaster) {
+        this.registryMaster = registryMaster;
     }
 
     public void prototype(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registerMaster.prototype(inyerface, implementation);
+        registryMaster.prototype(inyerface, implementation);
     }
 
     public void instance(Class iface, Object ref) {
         Interface inyerface = new DefaultInterface(iface);
         Instance instance = new DefaultInstance(ref);
-        registerMaster.instance(inyerface, instance);
+        registryMaster.instance(inyerface, instance);
     }
 }

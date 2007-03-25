@@ -19,7 +19,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
     Instance rollInstance = new DefaultInstance(damienInstance);
     Class iface;
-    RegisterMaster registerMaster;
+    RegistryMaster registryMaster;
     Boolean hasImplementation;
     Boolean hasInstance;
     Interface someInterface;
@@ -29,16 +29,16 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     Object ref;
 
     public void setupSubjects() {
-        subject = new DefaultRegistry(registerMaster);
+        subject = new DefaultRegistry(registryMaster);
     }
 
     public void testPrototype() {
-        expect.oneCall(registerMaster, VOID, "prototype", cloisonInterface, cloisonImplementation);
+        expect.oneCall(registryMaster, VOID, "prototype", cloisonInterface, cloisonImplementation);
         subject.prototype(frenchCloison, davidPetit);
     }
 
     public void testInstance() {
-        expect.oneCall(registerMaster, VOID, "instance", rollInterface, rollInstance);
+        expect.oneCall(registryMaster, VOID, "instance", rollInterface, rollInstance);
         subject.instance(frenchRoll, damienInstance);
     }
 }

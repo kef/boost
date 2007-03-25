@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.resolve;
 
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
-import au.net.netstorm.boost.pebble.inject.resolver.core.RegisterMaster;
+import au.net.netstorm.boost.pebble.inject.resolver.core.RegistryMaster;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInstance;
@@ -13,7 +13,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
     Resolver subject;
     PebbleProviderEngine provider;
-    RegisterMaster registryMaster;
+    RegistryMaster registryMaster;
     Object jimInstance;
     Object jackInstance;
     Interface jim = iface(Jim.class);
