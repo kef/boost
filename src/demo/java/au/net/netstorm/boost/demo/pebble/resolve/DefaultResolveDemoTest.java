@@ -41,6 +41,8 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     public void testProvideSingleton() {
         Hollywood hollywood = (Hollywood) pebbleProvider.provide(GlitzyHollywood.class, NO_PARAMETERS);
         assertNotNull(hollywood);
+        Business business = (Business) pebbleProvider.provide(MovieBusiness.class, NO_PARAMETERS);
+        assertNotNull(business);
     }
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {
