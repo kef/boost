@@ -5,10 +5,6 @@ import au.net.netstorm.boost.test.field.BoostField;
 // OK CyclomaticComplexity|NCSS {
 public final class DefaultFieldValidator implements FieldValidator {
 
-    // FIX BREADCRUMB 1676 Boom on primitives.
-    // FIX 1676 Break for primitive fields (maybe which aren't final).
-    // FIX 1676 Break for fields which are not package private?
-    // FIX 1676 Break if any fields are final (and not static?).
     public void validate(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
             validate(fields[i]);
