@@ -7,7 +7,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX BREADCRUMB 1824 This should only have the methods prototype and instance, the others can go.
 public final class DefaultRegistry implements Registry {
     private final RegistryMaster registryMaster;
 
