@@ -9,24 +9,24 @@ import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRegistryAtomicTest extends InteractionTestCase {
-    private Registry subject;
-    private Class frenchCloison = FrenchCloison.class;
-    private Class frenchRoll = FrenchRoll.class;
-    private Class davidPetit = DavidPetit.class;
-    private Damien damienInstance = new Damien();
-    private Interface cloisonInterface = new DefaultInterface(frenchCloison);
-    private Interface rollInterface = new DefaultInterface(frenchRoll);
-    private Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
-    private Instance rollInstance = new DefaultInstance(damienInstance);
-    private Class iface;
-    private RegisterMaster registerMaster;
-    private Boolean hasImplementation;
-    private Boolean hasInstance;
-    private Interface someInterface;
-    private Implementation implementation;
-    private Instance instance;
-    private Class implClass;
-    private Object ref;
+    Registry subject;
+    Class frenchCloison = FrenchCloison.class;
+    Class frenchRoll = FrenchRoll.class;
+    Class davidPetit = DavidPetit.class;
+    Damien damienInstance = new Damien();
+    Interface cloisonInterface = new DefaultInterface(frenchCloison);
+    Interface rollInterface = new DefaultInterface(frenchRoll);
+    Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
+    Instance rollInstance = new DefaultInstance(damienInstance);
+    Class iface;
+    RegisterMaster registerMaster;
+    Boolean hasImplementation;
+    Boolean hasInstance;
+    Interface someInterface;
+    Implementation implementation;
+    Instance instance;
+    Class implClass;
+    Object ref;
 
     public void setupSubjects() {
         subject = new DefaultRegistry(registerMaster);

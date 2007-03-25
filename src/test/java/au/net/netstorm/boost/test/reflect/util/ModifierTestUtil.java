@@ -5,6 +5,8 @@ import java.lang.reflect.Member;
 public interface ModifierTestUtil {
     boolean isPublic(Member member);
 
+    boolean isProtected(Member member);
+
     boolean isPrivate(Member member);
 
     boolean isPublicInstance(Member member);

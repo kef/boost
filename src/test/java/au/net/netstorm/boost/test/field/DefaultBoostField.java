@@ -56,6 +56,18 @@ final class DefaultBoostField implements BoostField {
         return type.isInterface();
     }
 
+    public boolean isPublic() {
+        return modifier.isPublic(field);
+    }
+
+    public boolean isProtected() {
+        return modifier.isProtected(field);
+    }
+
+    public boolean isPrivate() {
+        return modifier.isPrivate(field);
+    }
+
     public boolean isSynthetic() {
         String fieldName = field.getName();
         return fieldName.contains("$");

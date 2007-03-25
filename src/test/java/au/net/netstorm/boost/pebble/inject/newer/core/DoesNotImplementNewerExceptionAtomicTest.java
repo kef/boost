@@ -5,9 +5,9 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DoesNotImplementNewerExceptionAtomicTest extends InteractionTestCase {
-    private BoostException subject;
-    private Interface type;
-    private Interface marker;
+    BoostException subject;
+    Interface type;
+    Interface marker;
 
     public void setupSubjects() {
         subject = new DoesNotImplementNewerException(type, marker);

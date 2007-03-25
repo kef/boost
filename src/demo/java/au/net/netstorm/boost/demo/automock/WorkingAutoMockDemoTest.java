@@ -5,16 +5,15 @@ import java.util.Map;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class WorkingAutoMockDemoTest extends InteractionTestCase {
-    private Map map;
-    private DelegateSubject delegate;
-    private TestSubject subject;
-    private List list1;
-    private List list2;
-    private final List[] lists = new List[2];
+    TestSubject subject;
+    Map map;
+    DelegateSubject delegate;
+    List list2;
+    List list1;
+    List[] lists;
 
     public void setupSubjects() {
-        lists[0] = list1;
-        lists[1] = list2;
+        lists = new List[]{list1, list2};
         subject = new WorkingTestSubject(delegate);
     }
 

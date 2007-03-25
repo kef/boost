@@ -3,11 +3,11 @@ package au.net.netstorm.boost.demo.automock;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
-    private TestSubject subject;
-    private DelegateSubject delegate;
-    private String[] randomStrings;
-    private Integer integer1;
-    private Integer integer2;
+    TestSubject subject;
+    DelegateSubject delegate;
+    String[] randomStrings;
+    Integer integer1;
+    Integer integer2;
 
     public void setupSubjects() {
         subject = new AnotherWorkingTestSubject(delegate);

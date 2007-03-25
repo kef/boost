@@ -11,20 +11,19 @@ import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
-    private Resolver subject;
-    private PebbleProviderEngine provider;
-    private Registry registry;
-    private Object jimInstance;
-    private Object jackInstance;
-    private Interface jim = iface(Jim.class);
-    private Interface jack = iface(Jack.class);
-    private Interface spoo = iface(Spoo.class);
-    private Implementation jimImpl = impl(NoArgJim.class);
-    private Implementation jackImpl = impl(OneArgJack.class);
-    private Spoo kseniaSpoo = new KseniaSpoo();
-    private Instance spooInstance = new DefaultInstance(kseniaSpoo);
-
-    private Object[] noparams = {};
+    Resolver subject;
+    PebbleProviderEngine provider;
+    Registry registry;
+    Object jimInstance;
+    Object jackInstance;
+    Interface jim = iface(Jim.class);
+    Interface jack = iface(Jack.class);
+    Interface spoo = iface(Spoo.class);
+    Implementation jimImpl = impl(NoArgJim.class);
+    Implementation jackImpl = impl(OneArgJack.class);
+    Spoo kseniaSpoo = new KseniaSpoo();
+    Instance spooInstance = new DefaultInstance(kseniaSpoo);
+    Object[] noparams = {};
 
     public void setupSubjects() {
         subject = new DefaultResolver(provider, registry);

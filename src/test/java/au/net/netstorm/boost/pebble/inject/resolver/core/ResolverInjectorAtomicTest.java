@@ -10,18 +10,18 @@ import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class ResolverInjectorAtomicTest extends InteractionTestCase {
-    private Injector subject;
-    private final EdgeClass classer = new DefaultEdgeClass();
-    private EdgeField edgeFielder = new DefaultEdgeField();
-    private EdgeField fielder;
-    private ResolverFieldFinder fieldFinder;
-    private FieldResolver fieldResolver;
-    private JuicyPebble juicy = new JuicyPebble();
-    private LazyBastard lazyBastard;
-    private CruisyMole moley;
-    private Field fieldLazareetus = field("lazareetus");
-    private Field fieldCruisyMole = field("moley");
-    private Field[] fields = {fieldLazareetus, fieldCruisyMole};
+    Injector subject;
+    EdgeClass classer = new DefaultEdgeClass();
+    EdgeField edgeFielder = new DefaultEdgeField();
+    EdgeField fielder;
+    ResolverFieldFinder fieldFinder;
+    FieldResolver fieldResolver;
+    JuicyPebble juicy = new JuicyPebble();
+    LazyBastard lazyBastard;
+    CruisyMole moley;
+    Field fieldLazareetus = field("lazareetus");
+    Field fieldCruisyMole = field("moley");
+    Field[] fields = {fieldLazareetus, fieldCruisyMole};
 
     public void setupSubjects() {
         subject = new ResolverInjector(fieldFinder, fieldResolver);

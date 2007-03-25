@@ -7,17 +7,17 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCase {
-    private Injector subject;
-    private Object object = new Larry("ten");
-    private String proxy;
-    private NewerField[] newerFields =
+    Injector subject;
+    Object object = new Larry("ten");
+    String proxy;
+    NewerField[] newerFields =
             {}; // SUGGEST: Put CARD into boost.  This flushes out the need to deal with arrays differently.
-    private NewerProxySupplier newerProxySupplier;
-    private NewerFieldFinder newerFieldFinder;
-    private NewerField newerField;
-    private Interface newerInterface;
-    private Implementation instanceImplementation;
-    private String fieldName = "fingers";
+    NewerProxySupplier newerProxySupplier;
+    NewerFieldFinder newerFieldFinder;
+    NewerField newerField;
+    Interface newerInterface;
+    Implementation instanceImplementation;
+    String fieldName = "fingers";
 
     public void setupSubjects() {
         subject = new NewerProxyInjector(newerProxySupplier, newerFieldFinder);

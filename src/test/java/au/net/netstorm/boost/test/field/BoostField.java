@@ -20,4 +20,10 @@ public interface BoostField {
     boolean isPrimitive();
 
     boolean isInterface();
+
+    boolean isPublic();
+
+    boolean isProtected();
+
+    boolean isPrivate();
 }

@@ -5,9 +5,9 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import junit.framework.AssertionFailedError;
 
 public final class BrokenAutoMockDemoTest extends InteractionTestCase {
-    private DelegateSubject delegate;
-    private TestSubject subject;
-    private Map map;
+    DelegateSubject delegate;
+    TestSubject subject;
+    Map map;
 
     public void setupSubjects() {
         subject = new BrokenTestSubject(delegate);

@@ -7,12 +7,12 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Implementation;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase {
-    private InvocationHandler subject;
-    private PebbleProviderEngine pebbleProvider;
-    private Implementation impl;
-    private Object proxyObject = new Object();
-    private Object[] methodParams = new Object[]{};
-    private Object newedObject = new Object();
+    InvocationHandler subject;
+    PebbleProviderEngine pebbleProvider;
+    Implementation impl;
+    Object proxyObject = new Object();
+    Object[] methodParams = new Object[]{};
+    Object newedObject = new Object();
 
     public void setupSubjects() {
         subject = new NewerInvocationHandler(pebbleProvider, impl);

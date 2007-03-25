@@ -6,9 +6,9 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase {
-    private BoostException subject;
-    private Interface marker;
-    private Implementation impl;
+    BoostException subject;
+    Interface marker;
+    Implementation impl;
 
     public void setupSubjects() {
         subject = new IllegalCitizenException(marker, impl);

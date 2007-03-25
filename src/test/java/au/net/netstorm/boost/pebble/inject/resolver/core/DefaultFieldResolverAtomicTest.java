@@ -9,12 +9,12 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
-    private final EdgeClass classer = new DefaultEdgeClass();
-    private Interface happyChap = new DefaultInterface(HappyChap.class);
-    private FieldResolver subject;
-    private Field field = someField();
-    private Resolver resolver;
-    private Object resolved;
+    EdgeClass classer = new DefaultEdgeClass();
+    Interface happyChap = new DefaultInterface(HappyChap.class);
+    FieldResolver subject;
+    Field field = someField();
+    Resolver resolver;
+    Object resolved;
 
     public void setupSubjects() {
         subject = new DefaultFieldResolver(resolver);

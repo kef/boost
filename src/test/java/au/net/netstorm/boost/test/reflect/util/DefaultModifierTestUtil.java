@@ -10,6 +10,11 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
         return Modifier.isPublic(modifiers);
     }
 
+    public boolean isProtected(Member member) {
+        int modifiers = getModifiers(member);
+        return Modifier.isProtected(modifiers);
+    }
+
     public boolean isPrivate(Member member) {
         int modifiers = getModifiers(member);
         return Modifier.isPrivate(modifiers);

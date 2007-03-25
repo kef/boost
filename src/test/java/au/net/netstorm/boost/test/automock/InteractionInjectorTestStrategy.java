@@ -18,41 +18,38 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
     private final FieldSelector selector = new DefaultFieldSelector();
-    private final UsesMocks testCase;
+    private final FieldValidator validator = new DefaultFieldValidator();
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
+    private final UsesMocks testCase;
 
     public InteractionInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
     }
 
-    public void init() {
-        BoostField[] fields = getAllFields();
-//        validate(fields);
-        injectMocks(fields);
-        injectDummies(fields);
-        testCase.setupSubjects();
+    // Hook in from jMock.  Needed for jMock to actually verify.
+    public void verify() {
+        mocker.verify();
     }
 
-    private void validate(BoostField[] fields) {
-        // FIX 1676 Delegate.
-        for (int i = 0; i < fields.length; i++) {
-            BoostField field = fields[i];
-            if (field.isPrimitive()) throw new IllegalStateException("Rooster head.");
-        }
-        // FIX BREADCRUMB 1676 Boom on primitives.
-        // FIX 1676 Break for primitive fields (maybe which aren't final).
-        // FIX 1676 Break for fields which are not package private?
-        // FIX 1676 Break if any fields are final (and not static?).
+    public void init() {
+        BoostField[] fields = getAllFields();
+        validate(fields);
+        injectMocks(fields);
+        injectDummies(fields);
+        invokeSubjectSetup();
     }
 
     private BoostField[] getAllFields() {
         return fieldBuilder.build(testCase);
     }
 
-    // Hook in from jMock.
-    public void verify() {
-        mocker.verify();
+    private void validate(BoostField[] fields) {
+        validator.validate(fields);
+    }
+
+    private void invokeSubjectSetup() {
+        testCase.setupSubjects();
     }
 
     public void destroy() {

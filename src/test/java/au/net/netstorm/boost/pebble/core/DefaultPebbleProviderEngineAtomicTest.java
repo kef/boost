@@ -12,17 +12,17 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTestCase {
     private static final Object[] NO_PARAMS = new Object[]{};
-    private PebbleProviderEngine subject;
-    private Onion onion;
-    private Instantiator pebblator;
-    private Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
-    private Injector injector;
-    private Object[] parameters = {"Hi", "There"};
-    private Implementation pebble;
-    private Interface marker;
-    private Object rawRef = new Object();
-    private Object wrappedRef = new Object();
-    private Implementation gaijin = new DefaultImplementation(Barbarian.class);
+    PebbleProviderEngine subject;
+    Onion onion;
+    Instantiator pebblator;
+    Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
+    Injector injector;
+    Object[] parameters = {"Hi", "There"};
+    Implementation pebble;
+    Interface marker;
+    Object rawRef = new Object();
+    Object wrappedRef = new Object();
+    Implementation gaijin = new DefaultImplementation(Barbarian.class);
 
     public void setupSubjects() {
         subject = new DefaultPebbleProviderEngine(marker, onion, injector, pebblator);
