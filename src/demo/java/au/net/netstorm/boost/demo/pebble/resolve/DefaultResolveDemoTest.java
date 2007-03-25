@@ -37,12 +37,27 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     }
 
     // FIX BREADCRUMB 1824 Are there any more singleton tests we need to cater for?
-    // FIX BREADCRUMB 1824 Ensure the same PeterSellers and BritneySpears are returned!!!
     public void testProvideSingleton() {
-        Hollywood hollywood = (Hollywood) pebbleProvider.provide(GlitzyHollywood.class, NO_PARAMETERS);
-        assertNotNull(hollywood);
-        Business business = (Business) pebbleProvider.provide(MovieBusiness.class, NO_PARAMETERS);
-        assertNotNull(business);
+        Hollywood hollywood = (Hollywood) provide(GlitzyHollywood.class, NO_PARAMETERS);
+        Business business = (Business) provide(MovieBusiness.class, NO_PARAMETERS);
+        checkSameInstances(hollywood, business);
+    }
+
+    private void checkSameInstances(Hollywood hollywood, Business business) {
+        checkSameActorInstance(hollywood, business);
+        checkCelebritySameInstance(hollywood, business);
+    }
+
+    private void checkCelebritySameInstance(Hollywood hollywood, Business business) {
+        Celebrity hollywoodCelebrity = hollywood.getCelebrity();
+        Celebrity movieCelebrity = business.getCelebrity();
+        assertSame(hollywoodCelebrity, movieCelebrity);
+    }
+
+    private void checkSameActorInstance(Hollywood hollywood, Business business) {
+        Actor hollywoodActor = hollywood.getActor();
+        Actor movieActor = business.getActor();
+        assertSame(hollywoodActor, movieActor);
     }
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {
@@ -50,6 +65,12 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         assertEquals(true, theDude instanceof JeffBridges);
         Quote quote = theDude.getQuote();
         assertNotNull(quote);
+    }
+
+    private Object provide(Class impl, Object[] parameters) {
+        Object ref = pebbleProvider.provide(impl, parameters);
+        assertNotNull(ref);
+        return ref;
     }
 }
  
