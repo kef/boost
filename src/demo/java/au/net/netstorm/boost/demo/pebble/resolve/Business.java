@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-public interface Hollywood {
-    Movie getMovie();
-
+public interface Business {
     Celebrity getCelebrity();
 
     Actor getActor();

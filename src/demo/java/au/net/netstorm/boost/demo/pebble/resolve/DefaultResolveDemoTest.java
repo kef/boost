@@ -23,6 +23,7 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         registry.instance(Actor.class, new PeterSellers());
         registry.instance(Celebrity.class, new BritneySpears());
         registry.prototype(Hollywood.class, GlitzyHollywood.class);
+        registry.prototype(Business.class, MovieBusiness.class);
     }
 
     public void testNoArgProvide() {
