@@ -44,7 +44,6 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         this.citizen = citizen;
     }
 
-    // FIX BREADCRUMB 1824 Can we refactor this anymore??
     public PebblePortal assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
