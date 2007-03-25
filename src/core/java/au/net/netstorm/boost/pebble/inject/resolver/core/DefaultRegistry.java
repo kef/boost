@@ -15,22 +15,6 @@ public final class DefaultRegistry implements Registry {
         this.registerMaster = registerMaster;
     }
 
-    public boolean hasImplementation(Interface iface) {
-        return registerMaster.hasImplementation(iface);
-    }
-
-    public boolean hasInstance(Interface iface) {
-        return registerMaster.hasInstance(iface);
-    }
-
-    public Implementation getImplementation(Interface iface) {
-        return registerMaster.getImplementation(iface);
-    }
-
-    public Instance getInstance(Interface iface) {
-        return registerMaster.getInstance(iface);
-    }
-
     public void prototype(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);

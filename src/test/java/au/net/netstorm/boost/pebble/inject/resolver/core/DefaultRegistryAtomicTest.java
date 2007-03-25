@@ -32,30 +32,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
         subject = new DefaultRegistry(registerMaster);
     }
 
-    public void testHasImplementation() {
-        expect.oneCall(registerMaster, hasImplementation, "hasImplementation", cloisonInterface);
-        Boolean result = subject.hasImplementation(cloisonInterface);
-        assertEquals(hasImplementation, result);
-    }
-
-    public void testHasInstance() {
-        expect.oneCall(registerMaster, hasInstance, "hasInstance", rollInterface);
-        Boolean result = subject.hasInstance(rollInterface);
-        assertEquals(hasInstance, result);
-    }
-
-    public void testGetImplementation() {
-        expect.oneCall(registerMaster, implementation, "getImplementation", someInterface);
-        Implementation result = subject.getImplementation(someInterface);
-        assertEquals(implementation, result);
-    }
-
-    public void testGetInstance() {
-        expect.oneCall(registerMaster, instance, "getInstance", someInterface);
-        Instance result = subject.getInstance(someInterface);
-        assertEquals(instance, result);
-    }
-
     public void testPrototype() {
         expect.oneCall(registerMaster, VOID, "prototype", cloisonInterface, cloisonImplementation);
         subject.prototype(frenchCloison, davidPetit);

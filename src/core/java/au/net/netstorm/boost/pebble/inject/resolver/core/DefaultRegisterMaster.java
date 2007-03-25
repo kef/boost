@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX BREADCRUMB 1824 Rename this to RegistryMaster - not Register...
 public final class DefaultRegisterMaster implements RegisterMaster {
     private final Map implementationMap = new HashMap();
     private final Map instanceMap = new HashMap();

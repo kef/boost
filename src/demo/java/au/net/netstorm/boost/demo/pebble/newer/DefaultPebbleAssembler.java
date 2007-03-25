@@ -44,13 +44,15 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         this.citizen = citizen;
     }
 
+    // FIX BREADCRUMB 1824 Can we refactor this anymore??
     public PebblePortal assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         PebbleProviderEngine passThroughPebbleProvider = (PebbleProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-        Registry registry = assembleRegistry();
-        Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registry);
+        RegisterMaster registryMaster = new DefaultRegisterMaster();
+        Registry registry = new DefaultRegistry(registryMaster);
+        Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registryMaster);
         Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
@@ -61,11 +63,6 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
     private ProxyFactory assembleProxyFactory() {
         ProxySupplier proxySupplier = new DefaultProxySupplier();
         return new DefaultProxyFactory(proxySupplier);
-    }
-
-    private Registry assembleRegistry() {
-        RegisterMaster finder = new DefaultRegisterMaster();
-        return new DefaultRegistry(finder);
     }
 
     private Injector assembleInjector(ProxyFactory proxyFactory, PebbleProviderEngine pebbleProviderEngine, Instantiator instantiator, Resolver resolver) {
