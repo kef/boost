@@ -35,10 +35,11 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         assertNotNull(regalCinema);
     }
 
+    // FIX BREADCRUMB 1824 Are there any more singleton tests we need to cater for?
+    // FIX BREADCRUMB 1824 Ensure the same PeterSellers and BritneySpears are returned!!!
     public void testProvideSingleton() {
-        // FIX BREADCRUMB 1824 Complete me! Test singleton!
-//        Hollywood hollywood = (Hollywood) pebbleProvider.provide(GlitzyHollywood.class, NO_PARAMETERS);
-//        assertNotNull(hollywood);
+        Hollywood hollywood = (Hollywood) pebbleProvider.provide(GlitzyHollywood.class, NO_PARAMETERS);
+        assertNotNull(hollywood);
     }
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {

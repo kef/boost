@@ -23,11 +23,7 @@ public final class DefaultResolver implements Resolver {
     }
 
     public Object resolve(Interface iface) {
-        // FIX BREADCRUMB 1824 Refactor this.
-        if (registryMaster.hasInstance(iface)) {
-            Instance instance = registryMaster.getInstance(iface);
-            return instance.getRef();
-        }
+        if (hasInstance(iface)) return getInstance(iface);
         Implementation impl = registryMaster.getImplementation(iface);
         return resolve(impl);
     }
@@ -57,6 +53,15 @@ public final class DefaultResolver implements Resolver {
         Class cls = impl.getImpl();
         Constructor constructor = reflector.getConstructor(cls);
         return constructor.getParameterTypes();
+    }
+
+    private Object getInstance(Interface iface) {
+        Instance instance = registryMaster.getInstance(iface);
+        return instance.getRef();
+    }
+
+    private boolean hasInstance(Interface iface) {
+        return registryMaster.hasInstance(iface);
     }
 }
 /*
