@@ -17,6 +17,7 @@ public final class DefaultFieldValidator implements FieldValidator {
     }
 
     private void instanceChecks(BoostField field) {
+        // FIX 1676 bangPrimitives if array.getComponentType() is a primitive. 
         if (field.isPrimitive()) bangPrimitives(field);
         if (field.isPublic()) troglodyte(field);
         if (field.isProtected()) troglodyte(field);
