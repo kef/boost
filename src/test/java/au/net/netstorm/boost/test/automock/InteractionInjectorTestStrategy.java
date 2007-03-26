@@ -36,13 +36,17 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         mocker.verify();
     }
 
+    public void destroy() {
+    }
+
     public void init() {
         BoostField[] fields = getAllFields();
         validate(fields);
         injectMocks(fields);
         injectDummies(fields);
         injectDummyArrays(fields);
-        invokeSubjectSetup();
+        subjectSetup();
+        injectSubjects();
         setExpectField();
     }
 
@@ -55,21 +59,9 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         validator.validate(fields);
     }
 
-    private void invokeSubjectSetup() {
-        testCase.setupSubjects();
-    }
-
-    public void destroy() {
-    }
-
     private void injectMocks(BoostField[] fields) {
         BoostField[] mockFields = selector.select(fields, mockMatcher);
         autoMocker.mock(mockFields);
-    }
-
-    private void setExpectField() {
-        MockExpectations expect = buildExpect();
-        fielder.setPublicInstance(testCase, "expect", expect);
     }
 
     private void injectDummies(BoostField[] fields) {
@@ -80,6 +72,19 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private void injectDummyArrays(BoostField[] fields) {
         BoostField[] arrays = selector.select(fields, dummyArrayMatcher);
         randomizer.randomize(arrays);
+    }
+
+    private void subjectSetup() {
+        testCase.setupSubjects();
+    }
+
+    private void injectSubjects() {
+        // FIX 1676 Inject subject fields using pebbliser.
+    }
+
+    private void setExpectField() {
+        MockExpectations expect = buildExpect();
+        fielder.setPublicInstance(testCase, "expect", expect);
     }
 
     private MockExpectations buildExpect() {
