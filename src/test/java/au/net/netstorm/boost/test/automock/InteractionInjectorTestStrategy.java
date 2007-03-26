@@ -21,6 +21,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private final FieldValidator validator = new DefaultFieldValidator();
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
+    private final Matcher dummyArrayMatcher = new DummyArrayMatcher();
     private final UsesMocks testCase;
 
     public InteractionInjectorTestStrategy(UsesMocks testCase) {
@@ -37,6 +38,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         validate(fields);
         injectMocks(fields);
         injectDummies(fields);
+        injectDummyArrays(fields);
         invokeSubjectSetup();
     }
 
@@ -59,18 +61,24 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         fielder.setPublicInstance(testCase, "expect", mockExpectations);
     }
 
-    private void injectDummies(BoostField[] fields) {
-        BoostField[] dummyFields = selector.select(fields, dummyMatcher);
-        Randomizer randomizer = new DefaultRandomizer();
-        randomizer.randomize(dummyFields);
-    }
-
     private void injectMocks(BoostField[] fields) {
         BoostField[] mockFields = selector.select(fields, mockMatcher);
         AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations expect = buildExpect(autoMocker);
         setExpectField(expect);
         autoMocker.mock(mockFields);
+    }
+
+    private void injectDummies(BoostField[] fields) {
+        BoostField[] dummyFields = selector.select(fields, dummyMatcher);
+        Randomizer randomizer = new DefaultRandomizer();
+        randomizer.randomize(dummyFields);
+    }
+
+    private void injectDummyArrays(BoostField[] fields) {
+        Randomizer randomizer = new ArrayRandomizer();
+        BoostField[] arrays = selector.select(fields, dummyArrayMatcher);
+        randomizer.randomize(arrays);
     }
 
     private MockExpectations buildExpect(AutoMocker autoMocker) {
