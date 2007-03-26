@@ -9,6 +9,8 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
     String[] strings2;
     Integer integer1;
     Integer integer2;
+    SomeInterface[] monkeys;
+    SomeInterface[] apes;
 
     public void setupSubjects() {
         subject = new AnotherWorkingTestSubject(delegate);
@@ -26,5 +28,9 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
 
     public void testPrimitiveArrays() {
         assertNotEquals(strings1, strings2);
+    }
+
+    public void testInterfaces() {
+        assertNotEquals(monkeys, apes);
     }
 }

@@ -34,12 +34,13 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         mocker.verify();
     }
 
+    // FIX 1676 So ... now we are dummying all arrays, which ones are we going to mock?
     public void init() {
         BoostField[] fields = getAllFields();
         validate(fields);
+        injectDummyArrays(fields);
         injectMocks(fields);
         injectDummies(fields);
-        injectDummyArrays(fields);
         invokeSubjectSetup();
     }
 
