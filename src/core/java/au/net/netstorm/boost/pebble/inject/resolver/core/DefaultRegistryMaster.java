@@ -16,10 +16,6 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return implementation;
     }
 
-    public boolean hasInstance(Interface iface) {
-        return instanceMap.containsKey(iface);
-    }
-
     public Instance getInstance(Interface iface) {
         Instance instance = (Instance) instanceMap.get(iface);
         if (instance == null) throw new UnresolvedDependencyException(iface);
@@ -28,6 +24,10 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public boolean hasImplementation(Interface iface) {
         return implementationMap.containsKey(iface);
+    }
+
+    public boolean hasInstance(Interface iface) {
+        return instanceMap.containsKey(iface);
     }
 
     public void prototype(Interface iface, Implementation implementation) {
