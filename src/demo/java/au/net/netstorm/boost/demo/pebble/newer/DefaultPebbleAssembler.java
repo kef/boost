@@ -52,11 +52,11 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         RegistryMaster registryMaster = new DefaultRegistryMaster();
         Registry registry = new DefaultRegistry(registryMaster);
         Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registryMaster);
-        Injector objectInjector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
-        PebbleProviderEngine pebbleProviderEngine = assembleProvider(objectInjector, instantiator);
+        Injector injector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
+        PebbleProviderEngine pebbleProviderEngine = assembleProvider(injector, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
-        DefaultPebbleProvider pebbleProvider = new DefaultPebbleProvider(pebbleProviderEngine);
-        return new DefaultPebblePortal(pebbleProvider, objectInjector, resolver, registry);
+        DefaultPebbleProvider provider = new DefaultPebbleProvider(pebbleProviderEngine);
+        return new DefaultPebblePortal(provider, injector, resolver, registry);
     }
 
     private ProxyFactory assembleProxyFactory() {
