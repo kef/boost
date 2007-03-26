@@ -24,9 +24,11 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private final Matcher dummyMatcher = new DummyMatcher();
     private final Matcher dummyArrayMatcher = new DummyArrayMatcher();
     private final UsesMocks testCase;
+    private final AutoMocker autoMocker;
 
     public InteractionInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
+        autoMocker = new DefaultAutoMocker(testCase, mockProvider);
     }
 
     // Hook in from jMock.  Needed for jMock to actually verify.
@@ -37,13 +39,14 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     public void init() {
         BoostField[] fields = getAllFields();
         validate(fields);
-        injectDummyArrays(fields);
         injectMocks(fields);
         injectDummies(fields);
+        injectDummyArrays(fields);
         invokeSubjectSetup();
     }
 
     private BoostField[] getAllFields() {
+        // FIX 1676 Don't get anything which starts with "subject".
         return fieldBuilder.build(testCase);
     }
 
@@ -64,7 +67,6 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
 
     private void injectMocks(BoostField[] fields) {
         BoostField[] mockFields = selector.select(fields, mockMatcher);
-        AutoMocker autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         MockExpectations expect = buildExpect(autoMocker);
         setExpectField(expect);
         autoMocker.mock(mockFields);
