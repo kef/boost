@@ -25,7 +25,6 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
     }
 
     public void testPrimitiveArrays() {
-        // FIX 1676 Here.
-//        assertNotEquals(strings1, strings2);
+        assertNotEquals(strings1, strings2);
     }
 }

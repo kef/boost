@@ -19,6 +19,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
     private final FieldSelector selector = new DefaultFieldSelector();
     private final FieldValidator validator = new DefaultFieldValidator();
+    private final Randomizer randomizer = new DefaultRandomizer();
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
     private final Matcher dummyArrayMatcher = new DummyArrayMatcher();
@@ -71,12 +72,10 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
 
     private void injectDummies(BoostField[] fields) {
         BoostField[] dummyFields = selector.select(fields, dummyMatcher);
-        Randomizer randomizer = new DefaultRandomizer();
         randomizer.randomize(dummyFields);
     }
 
     private void injectDummyArrays(BoostField[] fields) {
-        Randomizer randomizer = new ArrayRandomizer();
         BoostField[] arrays = selector.select(fields, dummyArrayMatcher);
         randomizer.randomize(arrays);
     }
