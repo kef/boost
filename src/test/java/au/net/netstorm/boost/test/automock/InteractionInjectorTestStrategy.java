@@ -43,6 +43,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         injectDummies(fields);
         injectDummyArrays(fields);
         invokeSubjectSetup();
+        setExpectField();
     }
 
     private BoostField[] getAllFields() {
@@ -61,15 +62,14 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     public void destroy() {
     }
 
-    private void setExpectField(MockExpectations mockExpectations) {
-        fielder.setPublicInstance(testCase, "expect", mockExpectations);
-    }
-
     private void injectMocks(BoostField[] fields) {
         BoostField[] mockFields = selector.select(fields, mockMatcher);
-        MockExpectations expect = buildExpect(autoMocker);
-        setExpectField(expect);
         autoMocker.mock(mockFields);
+    }
+
+    private void setExpectField() {
+        MockExpectations expect = buildExpect();
+        fielder.setPublicInstance(testCase, "expect", expect);
     }
 
     private void injectDummies(BoostField[] fields) {
@@ -82,7 +82,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         randomizer.randomize(arrays);
     }
 
-    private MockExpectations buildExpect(AutoMocker autoMocker) {
+    private MockExpectations buildExpect() {
         MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
         return new DefaultMockExpectations(delegate);
     }
