@@ -5,7 +5,8 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
     TestSubject subject;
     DelegateSubject delegate;
-    String[] randomStrings;
+    String[] strings1;
+    String[] strings2;
     Integer integer1;
     Integer integer2;
 
@@ -23,7 +24,8 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
         assertNotEquals(integer1, integer2);
     }
 
-//    public void testPrimitiveArrays() {
-//        assertEquals(5, randomStrings.length);
-//    }
+    public void testPrimitiveArrays() {
+        // FIX 1676 Here.
+//        assertNotEquals(strings1, strings2);
+    }
 }
