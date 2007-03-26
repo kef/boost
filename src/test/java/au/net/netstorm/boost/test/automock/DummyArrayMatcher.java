@@ -4,10 +4,10 @@ import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.Matcher;
 
 public final class DummyArrayMatcher implements Matcher {
+    private final Matcher common = new CommonMatcher();
+
     public boolean matches(BoostField field) {
-        if (field.isStatic()) return false;
-        if (field.isFinal()) return false;
-        if (!field.isArray()) return false;
-        return field.isNull();
+        if (!common.matches(field)) return false;
+        return field.isArray();
     }
 }

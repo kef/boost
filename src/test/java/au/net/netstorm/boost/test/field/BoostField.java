@@ -26,4 +26,8 @@ public interface BoostField {
     boolean isProtected();
 
     boolean isPrivate();
+
+    boolean prefix(String s);
+
+    boolean is(String s);
 }
