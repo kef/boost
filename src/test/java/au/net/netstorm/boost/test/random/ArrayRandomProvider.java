@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.random;
 import java.lang.reflect.Array;
 
 public final class ArrayRandomProvider implements RandomProvider {
-    private static final int ARRAY_LENGTH = 5;
     private final RandomProvider randomProvider;
 
     public ArrayRandomProvider(RandomProvider randomProvider) {
@@ -12,15 +11,21 @@ public final class ArrayRandomProvider implements RandomProvider {
 
     public Object get(Class type) {
         Class componentType = type.getComponentType();
-        Object array = Array.newInstance(componentType, ARRAY_LENGTH);
-        populate(array, componentType);
+        int size = randomSize();
+        Object array = Array.newInstance(componentType, size);
+        populate(size, componentType, array);
         return array;
     }
 
-    private void populate(Object array, Class type) {
-        for (int i = 0; i < ARRAY_LENGTH; i++) {
-            Object instance = randomProvider.get(type);
+    private void populate(int size, Class componentType, Object array) {
+        for (int i = 0; i < size; i++) {
+            Object instance = randomProvider.get(componentType);
             Array.set(array, i, instance);
         }
+    }
+
+    private int randomSize() {
+        Boolean on = (Boolean) randomProvider.get(Boolean.class);
+        return on ? 2 : 3;
     }
 }
