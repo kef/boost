@@ -17,7 +17,7 @@ public final class DefaultFieldValidator implements FieldValidator {
     }
 
     private void instanceChecks(BoostField field) {
-        if (field.isPrimitive()) rooster(field);
+        if (field.isPrimitive()) bangPrimitives(field);
         if (field.isPublic()) troglodyte(field);
         if (field.isProtected()) troglodyte(field);
         if (field.isPrivate()) troglodyte(field);
@@ -32,8 +32,8 @@ public final class DefaultFieldValidator implements FieldValidator {
         return field.isStatic();
     }
 
-    private void rooster(BoostField field) {
-        kaboom("Rooster head.", field);
+    private void bangPrimitives(BoostField field) {
+        kaboom("Rooster head ... no primitives in tests.", field);
     }
 
     private void bangFinals(BoostField field) {
@@ -45,9 +45,8 @@ public final class DefaultFieldValidator implements FieldValidator {
     }
 
     private void kaboom(String s, BoostField field) {
-        // FIX 1676 Change to InteractionTestException?
         String name = field.getName();
-        throw new IllegalStateException(s + " : " + name);
+        throw new InteractionTestException(s + " : " + name);
     }
 }
 // } OK CyclomaticComplexity|NCSS
