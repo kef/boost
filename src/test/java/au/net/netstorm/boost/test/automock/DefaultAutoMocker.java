@@ -27,14 +27,8 @@ class DefaultAutoMocker implements AutoMocker {
 
     public void mock(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
-            tryCreateMock(fields[i]);
+            createMock(fields[i]);
         }
-    }
-
-    private void tryCreateMock(BoostField field) {
-        Object value = field.get();
-        if (value != null) return;
-        createMock(field);
     }
 
     private void createMock(BoostField field) {
