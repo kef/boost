@@ -22,7 +22,6 @@ public final class DefaultResolveDemoTest extends BoooostCase {
         registry.prototype(Cinema.class, RegalCinema.class);
         registry.instance(Actor.class, new PeterSellers());
         registry.instance(Celebrity.class, new BritneySpears());
-        // FIX BREADCRUMB 1824 What happens when we want to create an instance that relies on another prototype/instance?
         registry.prototype(Hollywood.class, GlitzyHollywood.class);
         registry.prototype(Business.class, MovieBusiness.class);
     }
@@ -40,21 +39,21 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     public void testProvideSingleton() {
         Hollywood hollywood = (Hollywood) provide(GlitzyHollywood.class, NO_PARAMETERS);
         Business business = (Business) provide(MovieBusiness.class, NO_PARAMETERS);
-        checkSameInstances(hollywood, business);
+        checkSameInternals(hollywood, business);
     }
 
-    private void checkSameInstances(Hollywood hollywood, Business business) {
-        checkSameActorInstance(hollywood, business);
-        checkCelebritySameInstance(hollywood, business);
+    private void checkSameInternals(Hollywood hollywood, Business business) {
+        checkSameActor(hollywood, business);
+        checkSameCelebrity(hollywood, business);
     }
 
-    private void checkCelebritySameInstance(Hollywood hollywood, Business business) {
+    private void checkSameCelebrity(Hollywood hollywood, Business business) {
         Celebrity hollywoodCelebrity = hollywood.getCelebrity();
         Celebrity movieCelebrity = business.getCelebrity();
         assertSame(hollywoodCelebrity, movieCelebrity);
     }
 
-    private void checkSameActorInstance(Hollywood hollywood, Business business) {
+    private void checkSameActor(Hollywood hollywood, Business business) {
         Actor hollywoodActor = hollywood.getActor();
         Actor movieActor = business.getActor();
         assertSame(hollywoodActor, movieActor);

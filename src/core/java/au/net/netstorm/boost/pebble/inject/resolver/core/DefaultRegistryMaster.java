@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 32755 Should you be able to register an implementation and an instance?  I think not.
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map implementationMap = new HashMap();
     private final Map instanceMap = new HashMap();
