@@ -1,18 +1,23 @@
 package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 // FIX BREADCRUMB 32755 Back here and complete.
 public final class DefaultInjectorAtomicTest extends InteractionTestCase {
     Injector subject;
     Object ref;
+    InjectorEngine engine;
+    UnresolvedInstance unresolved;
 
     public void setupSubjects() {
-        subject = new DefaultInjector();
+        unresolved = new DefaultBaseReference(ref);
+        subject = new DefaultInjector(engine);
     }
 
     public void testInjector() {
+        expect.oneCall(engine, VOID, "inject", unresolved);
         subject.inject(ref);
-        // FIX BREADCRUMB 32755 Complete this.
     }
 }
