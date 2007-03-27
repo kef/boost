@@ -10,44 +10,48 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 32755 Should we barf if we attempt to insert something which already exists?
 public final class DefaultRegistryMaster implements RegistryMaster {
-    private final Map implementationMap = new HashMap();
-    private final Map instanceMap = new HashMap();
+    private final Map registrations = new HashMap();
 
     public Implementation getImplementation(Interface iface) {
-        Implementation implementation = (Implementation) implementationMap.get(iface);
+        // FIX 32755 This should barf if the map contains a instance.
+        Implementation implementation = (Implementation) registrations.get(iface);
         if (implementation == null) throw new UnresolvedDependencyException(iface);
         return implementation;
     }
 
     public Instance getInstance(Interface iface) {
-        Instance instance = (Instance) instanceMap.get(iface);
+        // FIX 32755 This should barf if the map contains an interface.
+        Instance instance = (Instance) registrations.get(iface);
         if (instance == null) throw new UnresolvedDependencyException(iface);
         return instance;
     }
 
     public boolean hasImplementation(Interface iface) {
-        return implementationMap.containsKey(iface);
+        return has(iface, Implementation.class);
     }
 
     public boolean hasInstance(Interface iface) {
-        return instanceMap.containsKey(iface);
+        return has(iface, Instance.class);
     }
 
     public void prototype(Interface iface, Implementation implementation) {
         // FIX 32755 we should check whether implementation exists before adding it.
-        add(implementationMap, iface, implementation);
+        registrations.put(iface, implementation);
     }
 
     public void instance(Interface iface, Instance instance) {
-        checkInstanceNotExists(iface);
-        add(instanceMap, iface, instance);
+        barfIfExists(iface);
+        registrations.put(iface, instance);
     }
 
-    private void checkInstanceNotExists(Interface iface) {
+    private boolean has(Interface iface, Class type) {
+        Object ref = registrations.get(iface);
+        if (ref == null) return false;
+        Class cls = ref.getClass();
+        return type.isAssignableFrom(cls);
+    }
+
+    private void barfIfExists(Interface iface) {
         if (hasInstance(iface)) throw new InstanceExistsException(iface);
-    }
-
-    private void add(Map map, Interface cls, Object value) {
-        map.put(cls, value);
     }
 }
