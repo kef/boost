@@ -4,7 +4,6 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-// FIX BREADCRUMB 32755 Back here and complete.
 public final class DefaultInjectorAtomicTest extends InteractionTestCase {
     Injector subject;
     Object ref;
