@@ -49,13 +49,14 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     public void testDuplicateImplementation() {
-        // FIX BREADCRUMB 32755 Back here.
-        // FIX 32755 Try catch.
         try {
             subject.implementation(LAZY_BASTARD, GREG);
             fail();
         } catch (AlreadyRegisteredException expected) {}
     }
+
+    // FIX 32755 Fail if we ask for an interface when it is an implementation.
+    // FIX 32755 Fail if we ask for an implementation when it is an interface.
 
     public void testInstanceDoesNotExist() {
         try {
