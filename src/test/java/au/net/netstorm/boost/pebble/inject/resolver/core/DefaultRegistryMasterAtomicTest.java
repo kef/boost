@@ -49,6 +49,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     public void testDuplicateImplementation() {
+        // FIX BREADCRUMB 32755 Back here.
+        // FIX 32755 Try catch.
         subject.implementation(LAZY_BASTARD, GREG);
     }
 
