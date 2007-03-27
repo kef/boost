@@ -45,9 +45,12 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         injectMocks(fields);
         injectDummies(fields);
         injectDummyArrays(fields);
+        // FIX 1676 Move the setExpectField call to below the subjectSetup.
+        // This is so we dont get expectations in our setupSubjects.
+        // FIX 32755 See above.
+        setExpectField();
         subjectSetup();
         injectSubjects();
-        setExpectField();
     }
 
     private BoostField[] getAllFields() {
