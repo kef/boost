@@ -13,7 +13,6 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
-    // FIX 32755 Return UnresolvedInstance?
     public UnresolvedInstance instantiate(Implementation impl, Object[] parameters) {
         Class cls = impl.getImpl();
         Constructor constructor = reflectMaster.getConstructor(cls);

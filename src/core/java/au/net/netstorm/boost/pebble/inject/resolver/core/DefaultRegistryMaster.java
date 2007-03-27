@@ -7,6 +7,8 @@ import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 32755 Should you be able to register an implementation and an instance?  I think not.
+
+// FIX 32755 Should we barf if we attempt to insert something which already exists?
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map implementationMap = new HashMap();
     private final Map instanceMap = new HashMap();
@@ -32,6 +34,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public void prototype(Interface iface, Implementation implementation) {
+        // FIX 32755 we should check whether implementation exists before adding it
         add(implementationMap, iface, implementation);
     }
 

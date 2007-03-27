@@ -18,7 +18,6 @@ public final class ResolverInjector implements Injector {
         this.fieldResolver = fieldResolver;
     }
 
-    // FIX 32755 Is "ref" an UnresolvedReference.
     public void inject(UnresolvedInstance unresolved) {
         Object ref = unresolved.getRef();
         Field[] fields = fieldFinder.find(ref);
@@ -27,7 +26,6 @@ public final class ResolverInjector implements Injector {
         }
     }
 
-    // FIX 32755 Is "ref" an UnresolvedReference.
     private void inject(Object ref, Field field) {
         Instance instance = fieldResolver.resolve(field);
         Object value = instance.getRef();
