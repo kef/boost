@@ -1,11 +1,14 @@
 package au.net.netstorm.boost.pebble.instantiate;
 
 import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends BoooostCase {
-    private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
+    private static final Implementation IMPLEMENTATION = new DefaultImplementation(TestObjectimoto.class);
+    private Instantiator subject = new SingleConstructorBasedInjectionInstantiator();
 
     public void testInstantiate() {
         checkInstantiate("Hi");
@@ -13,11 +16,14 @@ public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends
     }
 
     private void checkInstantiate(String parameter) {
-        Class type = TestObjectimoto.class;
+        UnresolvedInstance expected = buildExpected(parameter);
         Object[] parameters = {parameter};
-        Implementation implementation = new DefaultImplementation(type);
-        Object ref = instantiator.instantiate(implementation, parameters);
+        UnresolvedInstance unresolved = subject.instantiate(IMPLEMENTATION, parameters);
+        assertEquals(expected, unresolved);
+    }
+
+    private UnresolvedInstance buildExpected(String parameter) {
         TestObjectimoto expected = new TestObjectimoto(parameter);
-        assertEquals(expected, ref);
+        return new DefaultBaseReference(expected);
     }
 }

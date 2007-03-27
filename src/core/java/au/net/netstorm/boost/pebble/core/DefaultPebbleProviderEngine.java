@@ -6,6 +6,8 @@ import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     private final Interface marker;
@@ -21,11 +23,12 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     }
 
     // SUGGEST: Strongly type Object[] as Dependencies?
-    public Instance provide(Implementation impl, Object[] resolved) {
+    public Instance provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
-        Object ref = instantiator.instantiate(impl, resolved);
-        injector.inject(ref);
-        return onion.onionise(ref);
+        UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
+        injector.inject(unresolved);
+        ResolvedInstance resolved = (ResolvedInstance) unresolved;
+        return onion.onionise(resolved);
     }
 
     // FIX 1757 Remove when done.

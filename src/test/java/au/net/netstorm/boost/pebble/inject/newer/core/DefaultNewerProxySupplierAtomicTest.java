@@ -8,6 +8,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCase {
     private static final Implementation NEWER_INVOCATION_HANDLER = new DefaultImplementation(NewerInvocationHandler.class);
@@ -19,6 +20,7 @@ public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCa
     PebbleProviderEngine pebbleProvider;
     InvocationHandler invocationHandler;
     Instantiator instantiator;
+    UnresolvedInstance unresolved;
 
     public void setupSubjects() {
         subject = new DefaultNewerProxySupplier(proxyFactory, pebbleProvider, instantiator);
@@ -26,7 +28,8 @@ public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCa
 
     public void testCreate() {
         Object[] parameters = new Object[]{pebbleProvider, instanceImplementation};
-        expect.oneCall(instantiator, invocationHandler, "instantiate", NEWER_INVOCATION_HANDLER, parameters);
+        expect.oneCall(instantiator, unresolved, "instantiate", NEWER_INVOCATION_HANDLER, parameters);
+        expect.oneCall(unresolved, invocationHandler, "getRef");
         expect.oneCall(proxyFactory, newerProxy, "newProxy", newerInterface, invocationHandler);
         Object actual = subject.nu(newerInterface, instanceImplementation);
         assertSame(newerProxy, actual);

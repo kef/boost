@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInstance;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
@@ -22,7 +22,7 @@ public final class DefaultRegistry implements Registry {
 
     public void instance(Class iface, Object ref) {
         Interface inyerface = new DefaultInterface(iface);
-        Instance instance = new DefaultInstance(ref);
+        Instance instance = new DefaultBaseReference(ref);
         registryMaster.instance(inyerface, instance);
     }
 }

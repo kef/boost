@@ -5,10 +5,12 @@ import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCase {
     Injector subject;
-    Object object = new Larry("ten");
+    Object larry = new Larry("ten");
+    UnresolvedInstance unresolved;
     String proxy;
     NewerField[] newerFields =
             {}; // SUGGEST: Put CARD into boost.  This flushes out the need to deal with arrays differently.
@@ -25,11 +27,12 @@ public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCa
     }
 
     public void testSubject() {
-        expect.oneCall(newerFieldFinder, newerFields, "find", object);
+        expect.oneCall(unresolved, larry, "getRef");
+        expect.oneCall(newerFieldFinder, newerFields, "find", larry);
         setArrayElementExpectations();
-        subject.inject(object);
+        subject.inject(unresolved);
         Object expectedLarry = new Larry(proxy);
-        assertEquals(expectedLarry, object);
+        assertEquals(expectedLarry, larry);
     }
 
     private void setArrayElementExpectations() {

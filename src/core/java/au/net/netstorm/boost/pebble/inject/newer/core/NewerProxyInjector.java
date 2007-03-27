@@ -9,6 +9,7 @@ import au.net.netstorm.boost.pebble.inject.newer.field.NewerField;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class NewerProxyInjector implements Injector {
     private EdgeClass edgeClass = new DefaultEdgeClass();
@@ -21,8 +22,13 @@ public final class NewerProxyInjector implements Injector {
         this.fieldFinder = fieldFinder;
     }
 
-    public void inject(Object ref) {
+    public void inject(UnresolvedInstance unresolved) {
+        Object ref = unresolved.getRef();
         NewerField[] newerFields = fieldFinder.find(ref);
+        inject(ref, newerFields);
+    }
+
+    private void inject(Object ref, NewerField[] newerFields) {
         for (int i = 0; i < newerFields.length; i++) {
             inject(ref, newerFields[i]);
         }

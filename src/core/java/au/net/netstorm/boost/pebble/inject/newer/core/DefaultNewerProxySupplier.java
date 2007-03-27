@@ -7,6 +7,7 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultNewerProxySupplier implements NewerProxySupplier {
     private static final Implementation HANDLER = new DefaultImplementation(NewerInvocationHandler.class);
@@ -27,6 +28,7 @@ public final class DefaultNewerProxySupplier implements NewerProxySupplier {
 
     private InvocationHandler newHandler(Implementation instanceImplementation) {
         Object[] parameters = {pebbleProvider, instanceImplementation};
-        return (InvocationHandler) instantiator.instantiate(HANDLER, parameters);
+        UnresolvedInstance instantiated = instantiator.instantiate(HANDLER, parameters);
+        return (InvocationHandler) instantiated.getRef();
     }
 }

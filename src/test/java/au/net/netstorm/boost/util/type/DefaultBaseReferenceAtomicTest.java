@@ -7,7 +7,7 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 
-public final class DefaultInstanceAtomicTest extends BoooostCase {
+public final class DefaultBaseReferenceAtomicTest extends BoooostCase {
     private static final Map MAP = new HashMap();
     private static final Soldier SOLDIER = new BooostSoldier();
     private final ClassTestChecker classer = new DefaultClassTestChecker();
@@ -19,18 +19,18 @@ public final class DefaultInstanceAtomicTest extends BoooostCase {
 
     public void testNullIllegal() {
         try {
-            new DefaultInstance(null);
+            new DefaultBaseReference(null);
             fail();
         } catch (IllegalArgumentException expected) { }
     }
 
     private void checkGet(Object ref) {
-        Instance instance = new DefaultInstance(ref);
+        Instance instance = new DefaultBaseReference(ref);
         Object actual = instance.getRef();
         assertEquals(ref, actual);
     }
 
     public void testPrimordial() {
-        classer.checkSubclassOf(DefaultInstance.class, Primordial.class);
+        classer.checkSubclassOf(DefaultBaseReference.class, Primordial.class);
     }
 }

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.pebble.inject.resolver.core;
 
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInstance;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
@@ -17,7 +17,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     Interface cloisonInterface = new DefaultInterface(frenchCloison);
     Interface rollInterface = new DefaultInterface(frenchRoll);
     Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
-    Instance rollInstance = new DefaultInstance(damienInstance);
+    Instance rollInstance = new DefaultBaseReference(damienInstance);
     Class iface;
     RegistryMaster registryMaster;
     Boolean hasImplementation;

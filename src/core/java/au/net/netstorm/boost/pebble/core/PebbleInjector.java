@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.pebble.core;
 
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class PebbleInjector implements Injector {
     private final Injector newerInjector;
@@ -11,8 +12,8 @@ public final class PebbleInjector implements Injector {
         this.resolverInjector = resolverInjector;
     }
 
-    public void inject(Object ref) {
-        newerInjector.inject(ref);
-        resolverInjector.inject(ref);
+    public void inject(UnresolvedInstance unresolved) {
+        newerInjector.inject(unresolved);
+        resolverInjector.inject(unresolved);
     }
 }

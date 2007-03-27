@@ -5,17 +5,20 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class SingleConstructorBasedInjectionInstantiator implements Instantiator {
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
     // FIX 32755 Return UnresolvedInstance?
-    public Object instantiate(Implementation impl, Object[] parameters) {
+    public UnresolvedInstance instantiate(Implementation impl, Object[] parameters) {
         Class cls = impl.getImpl();
         Constructor constructor = reflectMaster.getConstructor(cls);
         constructor.setAccessible(true);
-        return edgeConstructor.newInstance(constructor, parameters);
+        Object ref = edgeConstructor.newInstance(constructor, parameters);
+        return new DefaultBaseReference(ref);
     }
 }

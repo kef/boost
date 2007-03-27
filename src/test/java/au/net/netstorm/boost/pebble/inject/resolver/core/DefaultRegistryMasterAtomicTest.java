@@ -2,8 +2,8 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 
 import java.util.Map;
 import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInstance;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
@@ -18,8 +18,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final Interface FRENCH_ROLL = new DefaultInterface(FrenchRoll.class);
     private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
     private static final FrenchRoll DAMIEN_REF = new Damien();
-    private static final Instance DAVID_PETIT = new DefaultInstance(DAVID_PETIT_REF);
-    private static final Instance DAMIEN = new DefaultInstance(DAMIEN_REF);
+    private static final Instance DAVID_PETIT = new DefaultBaseReference(DAVID_PETIT_REF);
+    private static final Instance DAMIEN = new DefaultBaseReference(DAMIEN_REF);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
     private final RegistryMaster subject = new DefaultRegistryMaster();
 

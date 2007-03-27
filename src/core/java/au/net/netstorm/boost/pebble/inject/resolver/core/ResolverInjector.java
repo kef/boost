@@ -6,6 +6,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.util.type.Instance;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class ResolverInjector implements Injector {
     private final EdgeField fielder = new DefaultEdgeField();
@@ -18,7 +19,8 @@ public final class ResolverInjector implements Injector {
     }
 
     // FIX 32755 Is "ref" an UnresolvedReference.
-    public void inject(Object ref) {
+    public void inject(UnresolvedInstance unresolved) {
+        Object ref = unresolved.getRef();
         Field[] fields = fieldFinder.find(ref);
         for (int i = 0; i < fields.length; i++) {
             inject(ref, fields[i]);
