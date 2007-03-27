@@ -4,7 +4,7 @@ import java.util.Random;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 
-final class DefaultMockProvider implements MockProvider {
+public final class DefaultMockProvider implements MockProvider {
     private Random random = new Random();
     private MockObjectTestCase jMock;
 

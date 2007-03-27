@@ -3,8 +3,14 @@ package au.net.netstorm.boost.test.random;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-final class NoOpInvocationHandler implements InvocationHandler {
+final class ObjectInvocationHandler implements InvocationHandler {
+    private final Object o;
+
+    public ObjectInvocationHandler(Object o) {
+        this.o = o;
+    }
+
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        return null;
+        return method.invoke(o, args);
     }
 }

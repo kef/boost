@@ -1,22 +1,19 @@
 package au.net.netstorm.boost.test.random;
 
-import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
 import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class EverythingRandomProvider implements RandomProvider {
-    private static final InvocationHandler NO_OP_INVOCATION_HANDLER = new NoOpInvocationHandler();
     private ProxySupplier proxySupplier = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(proxySupplier);
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private RandomProvider concretes = new ConcreteRandomProvider();
     private RandomProvider arrays = new ArrayRandomProvider(this);
+    private RandomProvider interfaces = new InterfaceRandomProvider();
 
     // OK CyclomaticComplexity {
     public Object get(Class type) {
@@ -40,8 +37,7 @@ public final class EverythingRandomProvider implements RandomProvider {
     }
 
     private Object randomInterface(Class type) {
-        Interface iface = new DefaultInterface(type);
-        return proxyFactory.newProxy(iface, NO_OP_INVOCATION_HANDLER);
+        return interfaces.get(type);
     }
 
     private Object randomPrimitiveType(Class type) {

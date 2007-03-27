@@ -33,5 +33,7 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
 
     public void testInterfaces() {
         assertNotEquals(monkeys, apes);
+        // FIX BREADCRUMB 37874 Here we are.
+//        assertEquals(monkeys[0].equals(monkeys[0]));
     }
 }
