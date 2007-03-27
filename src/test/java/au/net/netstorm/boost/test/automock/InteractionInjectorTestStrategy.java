@@ -43,14 +43,12 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         BoostField[] fields = getAllFields();
         validate(fields);
         injectMocks(fields);
+        // FIX 1676 Inject mockArrays here. We need to have elements in an array that we can set expectations on.
         injectDummies(fields);
         injectDummyArrays(fields);
-        // FIX 1676 Move the setExpectField call to below the subjectSetup.
-        // This is so we dont get expectations in our setupSubjects.
-        // FIX 32755 See above.
-        setExpectField();
         subjectSetup();
         injectSubjects();
+        setExpectField();
     }
 
     private BoostField[] getAllFields() {
