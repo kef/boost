@@ -17,7 +17,7 @@ public final class DefaultRegistry implements Registry {
     public void prototype(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryMaster.prototype(inyerface, implementation);
+        registryMaster.implementation(inyerface, implementation);
     }
 
     public void instance(Class iface, Object ref) {

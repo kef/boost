@@ -33,7 +33,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     }
 
     public void testPrototype() {
-        expect.oneCall(registryMaster, VOID, "prototype", cloisonInterface, cloisonImplementation);
+        expect.oneCall(registryMaster, VOID, "implementation", cloisonInterface, cloisonImplementation);
         subject.prototype(frenchCloison, davidPetit);
     }
 

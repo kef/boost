@@ -34,7 +34,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return has(iface, Instance.class);
     }
 
-    public void prototype(Interface iface, Implementation implementation) {
+    public void implementation(Interface iface, Implementation implementation) {
         // FIX 32755 we should check whether implementation exists before adding it.
         registrations.put(iface, implementation);
     }

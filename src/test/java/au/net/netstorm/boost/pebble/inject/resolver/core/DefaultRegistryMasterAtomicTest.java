@@ -24,8 +24,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private final RegistryMaster subject = new DefaultRegistryMaster();
 
     {
-        subject.prototype(LAZY_BASTARD, LARRY);
-        subject.prototype(LEGEND, AN_DO);
+        subject.implementation(LAZY_BASTARD, LARRY);
+        subject.implementation(LEGEND, AN_DO);
         subject.instance(FRENCH_CLOISON, DAVID_PETIT);
         subject.instance(FRENCH_ROLL, DAMIEN);
     }
