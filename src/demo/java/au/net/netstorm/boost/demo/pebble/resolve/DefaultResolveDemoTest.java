@@ -5,7 +5,7 @@ import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
 import au.net.netstorm.boost.pebble.core.Provider;
-import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
+import au.net.netstorm.boost.pebble.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {

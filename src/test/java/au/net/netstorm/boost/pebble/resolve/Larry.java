@@ -15,7 +15,7 @@
  (o)_--"      ""                "--_, "-_,__--/
  ""---___-"
  */
-package au.net.netstorm.boost.pebble.inject.resolver.core;
+package au.net.netstorm.boost.pebble.resolve;
 
 final class Larry implements LazyBastard {
 }

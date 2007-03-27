@@ -1,6 +1,7 @@
-package au.net.netstorm.boost.pebble.inject.resolver.core;
+package au.net.netstorm.boost.pebble.resolve;
 
 import java.util.Map;
+import au.net.netstorm.boost.pebble.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;

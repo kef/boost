@@ -18,15 +18,15 @@ public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase 
     EdgeField fielder;
     ResolverFieldFinder fieldFinder;
     FieldResolver fieldResolver;
-    JuicyPebble juicy = new JuicyPebble();
+    JuicyRock juicy = new JuicyRock();
     UnresolvedInstance unresolved;
     Instance lazyBastard;
     Instance moley;
-    LazyBastard bastardRef;
-    CruisyMole moleyRef;
-    Field fieldLazareetus = field("lazareetus");
-    Field fieldCruisyMole = field("moley");
-    Field[] fields = {fieldLazareetus, fieldCruisyMole};
+    Juicy juicyRef;
+    Rock rockRef;
+    Field fieldJuicy = field("juicy");
+    Field fieldRock = field("rock");
+    Field[] fields = {fieldJuicy, fieldRock};
 
     public void setupSubjects() {
         subject = new ResolverInjectorEngine(fieldFinder, fieldResolver);
@@ -36,12 +36,12 @@ public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase 
     public void testInjector() {
         expect.oneCall(unresolved, juicy, "getRef");
         expect.oneCall(fieldFinder, fields, "find", juicy);
-        expect.oneCall(fieldResolver, lazyBastard, "resolve", fieldLazareetus);
-        expect.oneCall(fieldResolver, moley, "resolve", fieldCruisyMole);
-        expect.oneCall(lazyBastard, bastardRef, "getRef");
-        expect.oneCall(moley, moleyRef, "getRef");
-        expect.oneCall(fielder, VOID, "set", fieldLazareetus, juicy, bastardRef);
-        expect.oneCall(fielder, VOID, "set", fieldCruisyMole, juicy, moleyRef);
+        expect.oneCall(fieldResolver, lazyBastard, "resolve", fieldJuicy);
+        expect.oneCall(fieldResolver, moley, "resolve", fieldRock);
+        expect.oneCall(lazyBastard, juicyRef, "getRef");
+        expect.oneCall(moley, rockRef, "getRef");
+        expect.oneCall(fielder, VOID, "set", fieldJuicy, juicy, juicyRef);
+        expect.oneCall(fielder, VOID, "set", fieldRock, juicy, rockRef);
         subject.inject(unresolved);
     }
 
