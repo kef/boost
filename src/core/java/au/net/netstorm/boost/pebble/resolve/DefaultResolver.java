@@ -17,13 +17,11 @@ public final class DefaultResolver implements Resolver {
     private final PebbleProviderEngine provider;
     private final Finder finder;
 
-    // FIX BREADCRUMB 32755 Look at test.  Just changed RegistryMaster to Finder.
     public DefaultResolver(PebbleProviderEngine provider, Finder finder) {
         this.provider = provider;
         this.finder = finder;
     }
 
-    // FIX BREADCRUMB 32755 Return Instance?
     public Instance resolve(Interface iface) {
         // FIX 32755 What about onionising the instance?
         if (hasInstance(iface)) return getInstance(iface);
@@ -31,14 +29,12 @@ public final class DefaultResolver implements Resolver {
         return resolve(impl);
     }
 
-    // FIX BREADCRUMB 32755 Return Instance?
     public Instance resolve(Implementation impl) {
         Class[] parameters = getParameters(impl);
         Object[] resolved = resolve(parameters);
         return provider.provide(impl, resolved);
     }
 
-    // FIX BREADCRUMB 32755 Return Instances?
     public Instance[] resolve(Interface[] ifaces) {
         int length = ifaces.length;
         Instance[] result = new Instance[length];
