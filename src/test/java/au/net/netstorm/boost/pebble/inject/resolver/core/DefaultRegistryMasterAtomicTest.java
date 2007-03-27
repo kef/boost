@@ -20,6 +20,7 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final FrenchRoll DAMIEN_REF = new Damien();
     private static final Instance DAVID_PETIT = new DefaultBaseReference(DAVID_PETIT_REF);
     private static final Instance DAMIEN = new DefaultBaseReference(DAMIEN_REF);
+    private static final Implementation GREG = new DefaultImplementation(Greg.class);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
     private final RegistryMaster subject = new DefaultRegistryMaster();
 
@@ -45,6 +46,10 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
             subject.instance(FRENCH_ROLL, DAMIEN);
             fail();
         } catch (InstanceExistsException expected) { }
+    }
+
+    public void testDuplicateImplementation() {
+        subject.implementation(LAZY_BASTARD, GREG);
     }
 
     public void testInstanceDoesNotExist() {
