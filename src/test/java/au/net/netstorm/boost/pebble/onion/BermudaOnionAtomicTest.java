@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.onion;
 
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.BaseReference;
-import au.net.netstorm.boost.util.type.Instance;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class BermudaOnionAtomicTest extends InteractionTestCase {
     Onion subject;
@@ -13,7 +13,7 @@ public final class BermudaOnionAtomicTest extends InteractionTestCase {
     }
 
     public void testOnionize() {
-        Instance instance = subject.onionise(resolved);
+        WrappedInstance instance = subject.onionise(resolved);
         assertEquals(resolved, instance);
     }
 }

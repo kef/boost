@@ -8,8 +8,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase {
     InjectorEngine subject;
@@ -20,8 +20,8 @@ public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase 
     FieldResolver fieldResolver;
     JuicyRock juicy = new JuicyRock();
     UnresolvedInstance unresolved;
-    Instance lazyBastard;
-    Instance moley;
+    WrappedInstance lazyBastard;
+    WrappedInstance moley;
     Juicy juicyRef;
     Rock rockRef;
     Field fieldJuicy = field("juicy");

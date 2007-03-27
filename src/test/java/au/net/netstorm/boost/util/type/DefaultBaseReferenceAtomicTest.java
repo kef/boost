@@ -25,7 +25,7 @@ public final class DefaultBaseReferenceAtomicTest extends BoooostCase {
     }
 
     private void checkGet(Object ref) {
-        Instance instance = new DefaultBaseReference(ref);
+        WrappedInstance instance = new DefaultBaseReference(ref);
         Object actual = instance.getRef();
         assertEquals(ref, actual);
     }

@@ -6,9 +6,9 @@ import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.InterfaceUtil;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultResolver implements Resolver {
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
@@ -21,22 +21,22 @@ public final class DefaultResolver implements Resolver {
         this.finder = finder;
     }
 
-    public Instance resolve(Interface iface) {
+    public WrappedInstance resolve(Interface iface) {
         // FIX 32755 What about onionising the instance?
         if (hasInstance(iface)) return getInstance(iface);
         Implementation impl = finder.getImplementation(iface);
         return resolve(impl);
     }
 
-    public Instance resolve(Implementation impl) {
+    public WrappedInstance resolve(Implementation impl) {
         Class[] parameters = getParameters(impl);
         Object[] resolved = resolve(parameters);
         return provider.provide(impl, resolved);
     }
 
-    public Instance[] resolve(Interface[] ifaces) {
+    public WrappedInstance[] resolve(Interface[] ifaces) {
         int length = ifaces.length;
-        Instance[] result = new Instance[length];
+        WrappedInstance[] result = new WrappedInstance[length];
         for (int i = 0; i < length; i++) {
             result[i] = resolve(ifaces[i]);
         }
@@ -55,7 +55,7 @@ public final class DefaultResolver implements Resolver {
         return constructor.getParameterTypes();
     }
 
-    private Instance getInstance(Interface iface) {
+    private WrappedInstance getInstance(Interface iface) {
         return finder.getInstance(iface);
     }
 

@@ -5,21 +5,21 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultResolverAtomicTest extends InteractionTestCase {
     Resolver subject;
     PebbleProviderEngine provider;
     RegistryMaster registryMaster;
-    Instance jimInstance;
-    Instance jackInstance;
+    WrappedInstance jimInstance;
+    WrappedInstance jackInstance;
     Interface jim = iface(Jim.class);
     Interface jack = iface(Jack.class);
     Interface spoo = iface(Spoo.class);
     Implementation jimImpl = impl(NoArgJim.class);
     Implementation jackImpl = impl(OneArgJack.class);
-    Instance spooInstance;
+    WrappedInstance spooInstance;
     Object[] noparams = {};
 
     public void setupSubjects() {
@@ -30,7 +30,7 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
         expect.oneCall(registryMaster, false, "hasInstance", jim);
         expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
         expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
-        Instance result = subject.resolve(jim);
+        WrappedInstance result = subject.resolve(jim);
         assertEquals(jimInstance, result);
     }
 
@@ -41,14 +41,14 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
         expect.oneCall(registryMaster, false, "hasInstance", jim);
         expect.oneCall(registryMaster, jackImpl, "getImplementation", jack);
         expect.oneCall(provider, jackInstance, "provide", jackImpl, new Object[]{jimInstance});
-        Instance result = subject.resolve(jack);
+        WrappedInstance result = subject.resolve(jack);
         assertEquals(jackInstance, result);
     }
 
     public void testResolvedInstance() {
         expect.oneCall(registryMaster, true, "hasInstance", spoo);
         expect.oneCall(registryMaster, spooInstance, "getInstance", spoo);
-        Instance result = subject.resolve(spoo);
+        WrappedInstance result = subject.resolve(spoo);
         assertEquals(spooInstance, result);
     }
 

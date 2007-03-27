@@ -3,8 +3,8 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultFieldResolver implements FieldResolver {
     private final Resolver resolver;
@@ -13,7 +13,7 @@ public final class DefaultFieldResolver implements FieldResolver {
         this.resolver = resolver;
     }
 
-    public Instance resolve(Field field) {
+    public WrappedInstance resolve(Field field) {
         Interface iface = getInterface(field);
         return resolver.resolve(iface);
     }

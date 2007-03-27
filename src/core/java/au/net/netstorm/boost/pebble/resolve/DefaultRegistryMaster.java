@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import au.net.netstorm.boost.pebble.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map registrations = new HashMap();
@@ -15,9 +16,9 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return (Implementation) get(iface);
     }
 
-    public Instance getInstance(Interface iface) {
+    public WrappedInstance getInstance(Interface iface) {
         if (hasImplementation(iface)) throw new WrongRegistrationTypeException(iface);
-        return (Instance) get(iface);
+        return (WrappedInstance) get(iface);
     }
 
     public boolean hasImplementation(Interface iface) {
@@ -25,7 +26,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public boolean hasInstance(Interface iface) {
-        return has(iface, Instance.class);
+        return has(iface, ResolvedInstance.class);
     }
 
     public void implementation(Interface iface, Implementation implementation) {
@@ -33,7 +34,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         registrations.put(iface, implementation);
     }
 
-    public void instance(Interface iface, Instance instance) {
+    public void instance(Interface iface, ResolvedInstance instance) {
         barfIfExists(iface);
         registrations.put(iface, instance);
     }

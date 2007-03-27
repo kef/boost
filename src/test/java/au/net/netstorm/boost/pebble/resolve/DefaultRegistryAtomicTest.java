@@ -5,8 +5,8 @@ import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     Registry subject;
@@ -17,14 +17,14 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     Interface cloisonInterface = new DefaultInterface(frenchCloison);
     Interface rollInterface = new DefaultInterface(frenchRoll);
     Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
-    Instance rollInstance = new DefaultBaseReference(damienInstance);
+    WrappedInstance rollInstance = new DefaultBaseReference(damienInstance);
     Class iface;
     RegistryMaster registryMaster;
     Boolean hasImplementation;
     Boolean hasInstance;
     Interface someInterface;
     Implementation implementation;
-    Instance instance;
+    WrappedInstance instance;
     Class implClass;
     Object ref;
 

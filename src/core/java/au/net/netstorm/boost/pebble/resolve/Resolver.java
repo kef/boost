@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.pebble.resolve;
 
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public interface Resolver {
-    Instance resolve(Interface iface);
+    WrappedInstance resolve(Interface iface);
 
-    Instance[] resolve(Interface[] ifaces);
+    WrappedInstance[] resolve(Interface[] ifaces);
 
-    Instance resolve(Implementation impl);
+    WrappedInstance resolve(Implementation impl);
 }
