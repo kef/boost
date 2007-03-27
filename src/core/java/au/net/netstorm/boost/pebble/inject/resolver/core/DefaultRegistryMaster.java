@@ -6,24 +6,18 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 32755 Should you be able to register an implementation and an instance?  I think not.
-
-// FIX 32755 Should we barf if we attempt to insert something which already exists?
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map registrations = new HashMap();
 
+    // FIX 32755 Throw something better than ISE.
     public Implementation getImplementation(Interface iface) {
-        // FIX 32755 This should barf if the map contains a instance.
-        Implementation implementation = (Implementation) registrations.get(iface);
-        barfIfNull(implementation, iface);
-        return implementation;
+        if (hasInstance(iface)) throw new IllegalStateException();
+        return (Implementation) get(iface);
     }
 
     public Instance getInstance(Interface iface) {
-        // FIX 32755 This should barf if the map contains an implementation.
-        Instance instance = (Instance) registrations.get(iface);
-        barfIfNull(instance, iface);
-        return instance;
+        if (hasImplementation(iface)) throw new IllegalStateException();
+        return (Instance) get(iface);
     }
 
     public boolean hasImplementation(Interface iface) {
@@ -42,6 +36,12 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     public void instance(Interface iface, Instance instance) {
         barfIfExists(iface);
         registrations.put(iface, instance);
+    }
+
+    private Object get(Interface type) {
+        Object value = registrations.get(type);
+        barfIfNull(value, type);
+        return value;
     }
 
     private boolean has(Interface iface, Class type) {

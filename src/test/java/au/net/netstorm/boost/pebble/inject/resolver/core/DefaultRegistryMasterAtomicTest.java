@@ -55,14 +55,18 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
         } catch (AlreadyRegisteredException expected) {}
     }
 
-    public void testNotImplementation() {
-        // FIX 32755 Reinstate.
-/*
+    public void testNotInstance() {
         try {
             subject.getInstance(LAZY_BASTARD);
             fail();
         } catch (IllegalStateException expected) { }
-*/
+    }
+
+    public void testNotImplementation() {
+        try {
+            subject.getImplementation(FRENCH_ROLL);
+            fail();
+        } catch (IllegalStateException expected) { }
     }
     // FIX 32755 Fail if we ask for an interface when it is an implementation.
     // FIX 32755 Fail if we ask for an implementation when it is an interface.
