@@ -7,8 +7,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCase {
-    Injector subject;
+public final class DefaultNewerProxyInjectorEngineAtomicTest extends InteractionTestCase {
+    InjectorEngine subject;
     Object larry = new Larry("ten");
     UnresolvedInstance unresolved;
     String proxy;
@@ -22,7 +22,7 @@ public final class DefaultNewerProxyInjectorAtomicTest extends InteractionTestCa
     String fieldName = "fingers";
 
     public void setupSubjects() {
-        subject = new NewerProxyInjector(newerProxySupplier, newerFieldFinder);
+        subject = new NewerProxyInjectorEngine(newerProxySupplier, newerFieldFinder);
         newerFields = new NewerField[]{newerField, newerField};
     }
 

@@ -5,14 +5,14 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
+import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class ResolverInjectorAtomicTest extends InteractionTestCase {
-    Injector subject;
+public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase {
+    InjectorEngine subject;
     EdgeClass classer = new DefaultEdgeClass();
     EdgeField edgeFielder = new DefaultEdgeField();
     EdgeField fielder;
@@ -29,7 +29,7 @@ public final class ResolverInjectorAtomicTest extends InteractionTestCase {
     Field[] fields = {fieldLazareetus, fieldCruisyMole};
 
     public void setupSubjects() {
-        subject = new ResolverInjector(fieldFinder, fieldResolver);
+        subject = new ResolverInjectorEngine(fieldFinder, fieldResolver);
         overrideFields();
     }
 

@@ -11,13 +11,13 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class NewerProxyInjector implements Injector {
+public final class NewerProxyInjectorEngine implements InjectorEngine {
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private EdgeField edgeField = new DefaultEdgeField();
     private NewerProxySupplier proxySupplier;
     private NewerFieldFinder fieldFinder;
 
-    public NewerProxyInjector(NewerProxySupplier proxySupplier, NewerFieldFinder fieldFinder) {
+    public NewerProxyInjectorEngine(NewerProxySupplier proxySupplier, NewerFieldFinder fieldFinder) {
         this.proxySupplier = proxySupplier;
         this.fieldFinder = fieldFinder;
     }

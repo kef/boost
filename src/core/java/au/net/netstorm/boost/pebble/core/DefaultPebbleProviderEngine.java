@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.pebble.core;
 
-import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
+import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -13,16 +13,19 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     private final Interface marker;
     private Onion onion;
     private Instantiator instantiator;
-    private Injector injector;
+    private InjectorEngine injector;
 
-    public DefaultPebbleProviderEngine(Interface marker, Onion onion, Injector injector, Instantiator instantiator) {
+    // OK LineLength {
+    public DefaultPebbleProviderEngine(Interface marker, Onion onion, InjectorEngine injector, Instantiator instantiator) {
         this.marker = marker;
         this.onion = onion;
         this.injector = injector;
         this.instantiator = instantiator;
     }
+    // } OK LineLength 
 
     // SUGGEST: Strongly type Object[] as Dependencies?
+
     public Instance provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);

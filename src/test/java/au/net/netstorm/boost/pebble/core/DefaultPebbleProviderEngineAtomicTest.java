@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.core;
 
 import au.net.netstorm.boost.pebble.gaijin.Barbarian;
 import au.net.netstorm.boost.pebble.gaijin.Gaijinator;
-import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
+import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
@@ -17,7 +17,7 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
     Onion onion;
     Instantiator pebblator;
     Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
-    Injector injector;
+    InjectorEngine injector;
     Object[] parameters = {"Hi", "There"};
     Implementation pebble;
     Interface marker;
