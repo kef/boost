@@ -4,8 +4,8 @@ import au.net.netstorm.boost.demo.pebble.core.DefaultPebblePortal;
 import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.pebble.core.DefaultPebbleProvider;
 import au.net.netstorm.boost.pebble.core.DefaultPebbleProviderEngine;
+import au.net.netstorm.boost.pebble.core.DefaultProvider;
 import au.net.netstorm.boost.pebble.core.PebbleInjectorEngine;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.pebble.inject.newer.core.DefaultInjector;
@@ -57,7 +57,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
         PebbleProviderEngine pebbleProviderEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
-        DefaultPebbleProvider provider = new DefaultPebbleProvider(pebbleProviderEngine);
+        DefaultProvider provider = new DefaultProvider(pebbleProviderEngine);
         Injector injector = new DefaultInjector(injectorEngine);
         return new DefaultPebblePortal(provider, injector, resolver, registry);
     }

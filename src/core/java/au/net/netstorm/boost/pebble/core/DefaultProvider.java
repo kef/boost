@@ -4,10 +4,10 @@ import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Instance;
 
-public final class DefaultPebbleProvider implements PebbleProvider {
+public final class DefaultProvider implements Provider {
     private final PebbleProviderEngine engine;
 
-    public DefaultPebbleProvider(PebbleProviderEngine engine) {
+    public DefaultProvider(PebbleProviderEngine engine) {
         this.engine = engine;
     }
 

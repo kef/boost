@@ -2,14 +2,14 @@ package au.net.netstorm.boost.demo.pebble.newer;
 
 import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.pebble.core.Pebble;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.Provider;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
     private final PebbleAssembler assembler = new DefaultPebbleAssembler(Pebble.class);
     private final PebblePortal portal = assembler.assemble();
-    private final PebbleProvider provider = portal.getProvider();
+    private final Provider provider = portal.getProvider();
 
     public void testRecursiveNewerInjection() {
         Rob rob = (Rob) provider.provide(Rob.class, NO_PARAMETERS);

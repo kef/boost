@@ -68,8 +68,6 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
             fail();
         } catch (IllegalStateException expected) { }
     }
-    // FIX 32755 Fail if we ask for an interface when it is an implementation.
-    // FIX 32755 Fail if we ask for an implementation when it is an interface.
 
     public void testInstanceDoesNotExist() {
         try {

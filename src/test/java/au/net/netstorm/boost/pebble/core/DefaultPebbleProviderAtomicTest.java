@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.type.Instance;
 public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private static final Object SAND = new Sand();
     private static final Object[] PARAMETERS = {SAND};
-    PebbleProvider subject;
+    Provider subject;
     PebbleProviderEngine engine;
     Instance provided;
     Object ref;
@@ -22,6 +22,6 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     }
 
     public void setupSubjects() {
-        subject = new DefaultPebbleProvider(engine);
+        subject = new DefaultProvider(engine);
     }
 }

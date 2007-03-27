@@ -4,7 +4,7 @@ import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Pebble;
-import au.net.netstorm.boost.pebble.core.PebbleProvider;
+import au.net.netstorm.boost.pebble.core.Provider;
 import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
@@ -12,7 +12,7 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Pebble.class);
     private final PebblePortal pebblePortal = pebbleAssembler.assemble();
-    private final PebbleProvider pebbleProvider = pebblePortal.getProvider();
+    private final Provider provider = pebblePortal.getProvider();
     private final Registry registry = pebblePortal.getRegistry();
 
     {
@@ -27,12 +27,12 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     }
 
     public void testNoArgProvide() {
-        TheDude theDude = (TheDude) pebbleProvider.provide(JeffBridges.class, NO_PARAMETERS);
+        TheDude theDude = (TheDude) provider.provide(JeffBridges.class, NO_PARAMETERS);
         checkTheDudeIsReallyJeff(theDude);
     }
 
     public void testProvide() {
-        Cinema regalCinema = (Cinema) pebbleProvider.provide(RegalCinema.class, NO_PARAMETERS);
+        Cinema regalCinema = (Cinema) provider.provide(RegalCinema.class, NO_PARAMETERS);
         assertNotNull(regalCinema);
     }
 
@@ -67,7 +67,7 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     }
 
     private Object provide(Class impl, Object[] parameters) {
-        Object ref = pebbleProvider.provide(impl, parameters);
+        Object ref = provider.provide(impl, parameters);
         assertNotNull(ref);
         return ref;
     }
