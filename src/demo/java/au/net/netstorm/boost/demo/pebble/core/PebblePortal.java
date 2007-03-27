@@ -6,6 +6,7 @@ import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 
 public interface PebblePortal {
+    // FIX 32755 Rename to just Provider.
     PebbleProvider getProvider();
 
     Injector getInjector();
