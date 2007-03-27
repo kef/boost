@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.core;
 
 import au.net.netstorm.boost.pebble.core.PebbleProvider;
-import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
+import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.inject.resolver.core.Registry;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 
@@ -10,7 +10,7 @@ public interface PebblePortal {
     PebbleProvider getProvider();
 
     // FIX 32755 Drive up an injector and stitch in.
-    InjectorEngine getInjector();
+    Injector getInjector();
 
     Resolver getResolver();
 

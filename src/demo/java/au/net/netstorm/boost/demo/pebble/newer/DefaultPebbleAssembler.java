@@ -8,7 +8,9 @@ import au.net.netstorm.boost.pebble.core.DefaultPebbleProvider;
 import au.net.netstorm.boost.pebble.core.DefaultPebbleProviderEngine;
 import au.net.netstorm.boost.pebble.core.PebbleInjectorEngine;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
+import au.net.netstorm.boost.pebble.inject.newer.core.DefaultInjector;
 import au.net.netstorm.boost.pebble.inject.newer.core.DefaultNewerProxySupplier;
+import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxyInjectorEngine;
 import au.net.netstorm.boost.pebble.inject.newer.core.NewerProxySupplier;
@@ -52,10 +54,11 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         RegistryMaster registryMaster = new DefaultRegistryMaster();
         Registry registry = new DefaultRegistry(registryMaster);
         Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registryMaster);
-        InjectorEngine injector = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
-        PebbleProviderEngine pebbleProviderEngine = assembleProvider(injector, instantiator);
+        InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
+        PebbleProviderEngine pebbleProviderEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(pebbleProviderEngine);
         DefaultPebbleProvider provider = new DefaultPebbleProvider(pebbleProviderEngine);
+        Injector injector = new DefaultInjector(injectorEngine);
         return new DefaultPebblePortal(provider, injector, resolver, registry);
     }
 
