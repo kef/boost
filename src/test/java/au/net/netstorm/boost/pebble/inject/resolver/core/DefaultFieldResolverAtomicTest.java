@@ -6,6 +6,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
@@ -14,7 +15,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     FieldResolver subject;
     Field field = someField();
     Resolver resolver;
-    Object resolved;
+    Instance resolved;
 
     public void setupSubjects() {
         subject = new DefaultFieldResolver(resolver);
@@ -22,7 +23,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
 
     public void testResolve() {
         expect.oneCall(resolver, resolved, "resolve", happyChap);
-        Object result = subject.resolve(field);
+        Instance result = subject.resolve(field);
         assertEquals(resolved, result);
     }
 

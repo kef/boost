@@ -5,14 +5,16 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase {
     InvocationHandler subject;
     PebbleProviderEngine pebbleProvider;
     Implementation impl;
-    Object proxyObject = new Object();
+    Object proxyObject;
+    Instance newedInstance;
     Object[] methodParams = new Object[]{};
-    Object newedObject = new Object();
+    Object newedObject;
 
     public void setupSubjects() {
         subject = new NewerInvocationHandler(pebbleProvider, impl);
@@ -20,7 +22,8 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
 
     public void testInvokeCreate() throws Throwable {
         Method method = Object.class.getMethod("wait", null);
-        expect.oneCall(pebbleProvider, newedObject, "provide", impl, methodParams);
+        expect.oneCall(pebbleProvider, newedInstance, "provide", impl, methodParams);
+        expect.oneCall(newedInstance, newedObject, "getRef");
         Object actualObject = subject.invoke(proxyObject, method, methodParams);
         assertSame(newedObject, actualObject);
     }

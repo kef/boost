@@ -24,7 +24,7 @@ public final class DefaultResolver implements Resolver {
     }
 
     // FIX BREADCRUMB 32755 Return Instance?
-    public Object resolve(Interface iface) {
+    public Instance resolve(Interface iface) {
         // FIX 32755 What about onionising the instance?
         if (hasInstance(iface)) return getInstance(iface);
         Implementation impl = finder.getImplementation(iface);
@@ -32,16 +32,16 @@ public final class DefaultResolver implements Resolver {
     }
 
     // FIX BREADCRUMB 32755 Return Instance?
-    public Object resolve(Implementation impl) {
+    public Instance resolve(Implementation impl) {
         Class[] parameters = getParameters(impl);
         Object[] resolved = resolve(parameters);
         return provider.provide(impl, resolved);
     }
 
     // FIX BREADCRUMB 32755 Return Instances?
-    public Object[] resolve(Interface[] ifaces) {
+    public Instance[] resolve(Interface[] ifaces) {
         int length = ifaces.length;
-        Object[] result = new Object[length];
+        Instance[] result = new Instance[length];
         for (int i = 0; i < length; i++) {
             result[i] = resolve(ifaces[i]);
         }
@@ -60,9 +60,8 @@ public final class DefaultResolver implements Resolver {
         return constructor.getParameterTypes();
     }
 
-    private Object getInstance(Interface iface) {
-        Instance instance = finder.getInstance(iface);
-        return instance.getRef();
+    private Instance getInstance(Interface iface) {
+        return finder.getInstance(iface);
     }
 
     private boolean hasInstance(Interface iface) {

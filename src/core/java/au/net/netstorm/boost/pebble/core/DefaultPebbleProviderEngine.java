@@ -4,6 +4,7 @@ import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
@@ -20,15 +21,11 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     }
 
     // SUGGEST: Strongly type Object[] as Dependencies?
-    public Object provide(Implementation impl, Object[] resolved) {
-        if (!impl.is(marker)) return boom(impl);
+    public Instance provide(Implementation impl, Object[] resolved) {
+        if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
         Object ref = instantiator.instantiate(impl, resolved);
         injector.inject(ref);
         return onion.onionise(ref);
-    }
-
-    private Object boom(Implementation impl) {
-        throw new IllegalCitizenException(marker, impl);
     }
 
     // FIX 1757 Remove when done.

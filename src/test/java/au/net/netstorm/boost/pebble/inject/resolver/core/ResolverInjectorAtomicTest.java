@@ -8,6 +8,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.newer.core.Injector;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.Instance;
 
 public final class ResolverInjectorAtomicTest extends InteractionTestCase {
     Injector subject;
@@ -17,8 +18,10 @@ public final class ResolverInjectorAtomicTest extends InteractionTestCase {
     ResolverFieldFinder fieldFinder;
     FieldResolver fieldResolver;
     JuicyPebble juicy = new JuicyPebble();
-    LazyBastard lazyBastard;
-    CruisyMole moley;
+    Instance lazyBastard;
+    Instance moley;
+    LazyBastard bastardRef;
+    CruisyMole moleyRef;
     Field fieldLazareetus = field("lazareetus");
     Field fieldCruisyMole = field("moley");
     Field[] fields = {fieldLazareetus, fieldCruisyMole};
@@ -32,8 +35,10 @@ public final class ResolverInjectorAtomicTest extends InteractionTestCase {
         expect.oneCall(fieldFinder, fields, "find", juicy);
         expect.oneCall(fieldResolver, lazyBastard, "resolve", fieldLazareetus);
         expect.oneCall(fieldResolver, moley, "resolve", fieldCruisyMole);
-        expect.oneCall(fielder, VOID, "set", fieldLazareetus, juicy, lazyBastard);
-        expect.oneCall(fielder, VOID, "set", fieldCruisyMole, juicy, moley);
+        expect.oneCall(lazyBastard, bastardRef, "getRef");
+        expect.oneCall(moley, moleyRef, "getRef");
+        expect.oneCall(fielder, VOID, "set", fieldLazareetus, juicy, bastardRef);
+        expect.oneCall(fielder, VOID, "set", fieldCruisyMole, juicy, moleyRef);
         subject.inject(juicy);
     }
 
