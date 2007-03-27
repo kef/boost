@@ -3,7 +3,7 @@ package au.net.netstorm.boost.pebble.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
+import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;

@@ -11,7 +11,7 @@ public final class DefaultProvider implements Provider {
         this.engine = engine;
     }
 
-    // FIX 32755 Can we get people to deal directly with the "engine"
+    // SUGGEST: Can we get people to deal directly with the "engine"
     public Object provide(Class type, Object[] parameters) {
         Implementation implementation = new DefaultImplementation(type);
         Instance instance = engine.provide(implementation, parameters);

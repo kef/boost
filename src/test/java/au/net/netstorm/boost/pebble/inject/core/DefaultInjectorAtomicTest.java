@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.pebble.inject.newer.core;
+package au.net.netstorm.boost.pebble.inject.core;
 
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;

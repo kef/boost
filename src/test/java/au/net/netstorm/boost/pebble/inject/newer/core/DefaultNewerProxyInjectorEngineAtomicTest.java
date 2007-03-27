@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.pebble.inject.newer.core;
 
+import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerField;
 import au.net.netstorm.boost.pebble.inject.newer.field.NewerFieldFinder;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;

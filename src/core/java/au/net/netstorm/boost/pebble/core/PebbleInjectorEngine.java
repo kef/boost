@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.pebble.core;
 
-import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
+import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class PebbleInjectorEngine implements InjectorEngine {

@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.core;
 
 import au.net.netstorm.boost.pebble.gaijin.Barbarian;
 import au.net.netstorm.boost.pebble.gaijin.Gaijinator;
-import au.net.netstorm.boost.pebble.inject.newer.core.InjectorEngine;
+import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
