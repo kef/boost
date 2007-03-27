@@ -15,14 +15,14 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     public Implementation getImplementation(Interface iface) {
         // FIX 32755 This should barf if the map contains a instance.
         Implementation implementation = (Implementation) registrations.get(iface);
-        if (implementation == null) throw new UnresolvedDependencyException(iface);
+        barfIfNull(implementation, iface);
         return implementation;
     }
 
     public Instance getInstance(Interface iface) {
         // FIX 32755 This should barf if the map contains an implementation.
         Instance instance = (Instance) registrations.get(iface);
-        if (instance == null) throw new UnresolvedDependencyException(iface);
+        barfIfNull(instance, iface);
         return instance;
     }
 
@@ -53,5 +53,9 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     private void barfIfExists(Interface iface) {
         if (registrations.get(iface) != null) throw new AlreadyRegisteredException(iface);
+    }
+
+    private void barfIfNull(Object ref, Interface iface) {
+        if (ref == null) throw new UnresolvedDependencyException(iface);
     }
 }
