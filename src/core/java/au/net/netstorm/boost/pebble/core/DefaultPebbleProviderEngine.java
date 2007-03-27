@@ -4,8 +4,8 @@ import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.onion.Onion;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 import au.net.netstorm.boost.util.type.WrappedInstance;
 
@@ -30,7 +30,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         injector.inject(unresolved);
-        ResolvedInstance resolved = (ResolvedInstance) unresolved;
+        Instance resolved = (Instance) unresolved;
         return onion.onionise(resolved);
     }
 

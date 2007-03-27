@@ -9,6 +9,7 @@ public interface Finder {
 
     boolean hasInstance(Interface iface);
 
+    // FIX BREADCRUMB 32755 Make this a resolved instance.
     WrappedInstance getInstance(Interface iface);
 
     boolean hasImplementation(Interface iface);
