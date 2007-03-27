@@ -26,7 +26,8 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
         assertNotEquals(integer1, integer2);
     }
 
-    public void testPrimitiveArrays() {
+    public void testArrays() {
+        assertEquals(true, strings1[0] != null);
         assertNotEquals(strings1, strings2);
     }
 
