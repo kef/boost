@@ -36,6 +36,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public void implementation(Interface iface, Implementation implementation) {
         // FIX 32755 we should check whether implementation exists before adding it.
+        barfIfExists(iface);
         registrations.put(iface, implementation);
     }
 
@@ -52,6 +53,6 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private void barfIfExists(Interface iface) {
-        if (hasInstance(iface)) throw new InstanceExistsException(iface);
+        if (registrations.get(iface) != null) throw new AlreadyRegisteredException(iface);
     }
 }

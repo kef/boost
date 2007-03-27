@@ -45,13 +45,16 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
         try {
             subject.instance(FRENCH_ROLL, DAMIEN);
             fail();
-        } catch (InstanceExistsException expected) { }
+        } catch (AlreadyRegisteredException expected) { }
     }
 
     public void testDuplicateImplementation() {
         // FIX BREADCRUMB 32755 Back here.
         // FIX 32755 Try catch.
-        subject.implementation(LAZY_BASTARD, GREG);
+        try {
+            subject.implementation(LAZY_BASTARD, GREG);
+            fail();
+        } catch (AlreadyRegisteredException expected) {}
     }
 
     public void testInstanceDoesNotExist() {
