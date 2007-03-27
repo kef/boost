@@ -60,14 +60,14 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
         try {
             subject.getInstance(LAZY_BASTARD);
             fail();
-        } catch (IllegalStateException expected) { }
+        } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testNotImplementation() {
         try {
             subject.getImplementation(FRENCH_ROLL);
             fail();
-        } catch (IllegalStateException expected) { }
+        } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testInstanceDoesNotExist() {

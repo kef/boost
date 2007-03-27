@@ -10,14 +10,13 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map registrations = new HashMap();
 
-    // FIX 32755 Throw something better than ISE.
     public Implementation getImplementation(Interface iface) {
-        if (hasInstance(iface)) throw new IllegalStateException();
+        if (hasInstance(iface)) throw new WrongRegistrationTypeException(iface);
         return (Implementation) get(iface);
     }
 
     public Instance getInstance(Interface iface) {
-        if (hasImplementation(iface)) throw new IllegalStateException();
+        if (hasImplementation(iface)) throw new WrongRegistrationTypeException(iface);
         return (Instance) get(iface);
     }
 
