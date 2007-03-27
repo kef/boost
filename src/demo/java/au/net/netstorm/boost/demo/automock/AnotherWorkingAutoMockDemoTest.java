@@ -9,8 +9,8 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
     String[] strings2;
     Integer integer1;
     Integer integer2;
-    SomeInterface[] monkeys;
-    SomeInterface[] apes;
+    Simian[] monkeys;
+    Simian[] apes;
 
     public void setupSubjects() {
         subject = new AnotherWorkingTestSubject(delegate);
