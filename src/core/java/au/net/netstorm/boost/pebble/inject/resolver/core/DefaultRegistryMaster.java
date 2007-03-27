@@ -20,7 +20,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public Instance getInstance(Interface iface) {
-        // FIX 32755 This should barf if the map contains an interface.
+        // FIX 32755 This should barf if the map contains an implementation.
         Instance instance = (Instance) registrations.get(iface);
         if (instance == null) throw new UnresolvedDependencyException(iface);
         return instance;
