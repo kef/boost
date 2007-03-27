@@ -4,8 +4,8 @@ import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Instance;
 import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
     private final RegistryMaster registryMaster;
@@ -22,7 +22,7 @@ public final class DefaultRegistry implements Registry {
 
     public void instance(Class iface, Object ref) {
         Interface inyerface = new DefaultInterface(iface);
-        Instance instance = new DefaultBaseReference(ref);
+        ResolvedInstance instance = new DefaultBaseReference(ref);
         registryMaster.instance(inyerface, instance);
     }
 }
