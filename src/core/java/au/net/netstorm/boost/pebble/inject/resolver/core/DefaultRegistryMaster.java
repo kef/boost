@@ -34,7 +34,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public void prototype(Interface iface, Implementation implementation) {
-        // FIX 32755 we should check whether implementation exists before adding it
+        // FIX 32755 we should check whether implementation exists before adding it.
         add(implementationMap, iface, implementation);
     }
 
