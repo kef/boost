@@ -22,7 +22,6 @@ public final class DefaultResolver implements Resolver {
     }
 
     public ResolvedInstance resolve(Interface iface) {
-        // FIX 32755 What about onionising the instance?
         if (hasInstance(iface)) return getInstance(iface);
         Implementation impl = finder.getImplementation(iface);
         return resolve(impl);
@@ -56,6 +55,7 @@ public final class DefaultResolver implements Resolver {
     }
 
     private ResolvedInstance getInstance(Interface iface) {
+        // FIX 32755 What about onionising the instance?
         return finder.getInstance(iface);
     }
 
