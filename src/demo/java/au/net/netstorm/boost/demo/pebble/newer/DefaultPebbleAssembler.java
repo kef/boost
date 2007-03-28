@@ -4,10 +4,10 @@ import au.net.netstorm.boost.demo.pebble.core.DefaultPebblePortal;
 import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.pebble.core.DefaultPebbleProviderEngine;
 import au.net.netstorm.boost.pebble.core.DefaultProvider;
+import au.net.netstorm.boost.pebble.core.DefaultProviderEngine;
 import au.net.netstorm.boost.pebble.core.PebbleInjectorEngine;
-import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
+import au.net.netstorm.boost.pebble.core.ProviderEngine;
 import au.net.netstorm.boost.pebble.inject.core.DefaultInjector;
 import au.net.netstorm.boost.pebble.inject.core.Injector;
 import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
@@ -39,7 +39,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultPebbleAssembler implements PebbleAssembler {
-    private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(PebbleProviderEngine.class);
+    private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
     private final Class citizen;
 
     public DefaultPebbleAssembler(Class citizen) {
@@ -49,15 +49,15 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
     public PebblePortal assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
-        PebbleProviderEngine passThroughPebbleProvider = (PebbleProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
+        ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         RegistryMaster registryMaster = new DefaultRegistryMaster();
         Registry registry = new DefaultRegistry(registryMaster);
-        Resolver resolver = new DefaultResolver(passThroughPebbleProvider, registryMaster);
-        InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughPebbleProvider, instantiator, resolver);
-        PebbleProviderEngine pebbleProviderEngine = assembleProvider(injectorEngine, instantiator);
-        passThrough.setDelegate(pebbleProviderEngine);
-        DefaultProvider provider = new DefaultProvider(pebbleProviderEngine);
+        Resolver resolver = new DefaultResolver(passThroughProvider, registryMaster);
+        InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolver);
+        ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
+        passThrough.setDelegate(providerEngine);
+        DefaultProvider provider = new DefaultProvider(providerEngine);
         Injector injector = new DefaultInjector(injectorEngine);
         return new DefaultPebblePortal(provider, injector, resolver, registry);
     }
@@ -67,8 +67,8 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private InjectorEngine assembleInjector(ProxyFactory proxyFactory, PebbleProviderEngine pebbleProviderEngine, Instantiator instantiator, Resolver resolver) {
-        InjectorEngine newer = assembleNewerInjector(proxyFactory, pebbleProviderEngine, instantiator);
+    private InjectorEngine assembleInjector(ProxyFactory proxyFactory, ProviderEngine providerEngine, Instantiator instantiator, Resolver resolver) {
+        InjectorEngine newer = assembleNewerInjector(proxyFactory, providerEngine, instantiator);
         InjectorEngine injector = assembleResolverInjector(resolver);
         return new PebbleInjectorEngine(newer, injector);
     }
@@ -79,16 +79,16 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         return new ResolverInjectorEngine(finder, fieldResolver);
     }
 
-    private InjectorEngine assembleNewerInjector(ProxyFactory proxyFactory, PebbleProviderEngine provider, Instantiator instantiator) {
+    private InjectorEngine assembleNewerInjector(ProxyFactory proxyFactory, ProviderEngine provider, Instantiator instantiator) {
         NewerProxySupplier supplier = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
         NewerFieldFinder finder = new DefaultNewerFieldFinder();
         return new NewerProxyInjectorEngine(supplier, finder);
     }
 
-    private PebbleProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
+    private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
         Onionizer onionizer = new BermudaOnionizer();
         Interface marker = new DefaultInterface(citizen);
-        return new DefaultPebbleProviderEngine(marker, onionizer, injector, instantiator);
+        return new DefaultProviderEngine(marker, onionizer, injector, instantiator);
     }
     /*
       , ; ,   .-'"""'-.   , ; ,

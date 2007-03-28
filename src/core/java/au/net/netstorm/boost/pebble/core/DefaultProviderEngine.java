@@ -8,14 +8,14 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
+public final class DefaultProviderEngine implements ProviderEngine {
     private final Interface marker;
     private Onionizer onionizer;
     private Instantiator instantiator;
     private InjectorEngine injector;
 
     // OK LineLength {
-    public DefaultPebbleProviderEngine(Interface marker, Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
+    public DefaultProviderEngine(Interface marker, Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
         this.marker = marker;
         this.onionizer = onionizer;
         this.injector = injector;

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.resolve;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
+import au.net.netstorm.boost.pebble.core.ProviderEngine;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
@@ -13,10 +13,10 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultResolver implements Resolver {
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
-    private final PebbleProviderEngine provider;
+    private final ProviderEngine provider;
     private final Finder finder;
 
-    public DefaultResolver(PebbleProviderEngine provider, Finder finder) {
+    public DefaultResolver(ProviderEngine provider, Finder finder) {
         this.provider = provider;
         this.finder = finder;
     }

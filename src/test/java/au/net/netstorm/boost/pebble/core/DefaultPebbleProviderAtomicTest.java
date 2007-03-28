@@ -9,7 +9,7 @@ public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private static final Object SAND = new Sand();
     private static final Object[] PARAMETERS = {SAND};
     Provider subject;
-    PebbleProviderEngine engine;
+    ProviderEngine engine;
     ResolvedInstance provided;
     Object ref;
     Implementation implementation = new DefaultImplementation(SmoothRock.class);

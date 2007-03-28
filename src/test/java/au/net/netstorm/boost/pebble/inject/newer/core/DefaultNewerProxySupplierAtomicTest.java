@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.pebble.inject.newer.core;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
+import au.net.netstorm.boost.pebble.core.ProviderEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
@@ -17,17 +17,17 @@ public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCa
     Implementation instanceImplementation;
     ProxyFactory proxyFactory;
     Object newerProxy = new Object();
-    PebbleProviderEngine pebbleProvider;
+    ProviderEngine provider;
     InvocationHandler invocationHandler;
     Instantiator instantiator;
     UnresolvedInstance unresolved;
 
     public void setupSubjects() {
-        subject = new DefaultNewerProxySupplier(proxyFactory, pebbleProvider, instantiator);
+        subject = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
     }
 
     public void testCreate() {
-        Object[] parameters = new Object[]{pebbleProvider, instanceImplementation};
+        Object[] parameters = new Object[]{provider, instanceImplementation};
         expect.oneCall(instantiator, unresolved, "instantiate", NEWER_INVOCATION_HANDLER, parameters);
         expect.oneCall(unresolved, invocationHandler, "getRef");
         expect.oneCall(proxyFactory, newerProxy, "newProxy", newerInterface, invocationHandler);
