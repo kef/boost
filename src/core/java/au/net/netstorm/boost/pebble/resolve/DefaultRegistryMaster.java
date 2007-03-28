@@ -15,7 +15,6 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return (Implementation) get(iface);
     }
 
-    // FIX 32755 This guy returns a ResolvedInstance.  Not a WrappedInstance!!!!!!!!!!!!!!
     public ResolvedInstance getInstance(Interface iface) {
         if (hasImplementation(iface)) throw new WrongRegistrationTypeException(iface);
         return (ResolvedInstance) get(iface);
