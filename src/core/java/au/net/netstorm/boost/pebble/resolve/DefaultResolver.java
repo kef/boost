@@ -55,7 +55,7 @@ public final class DefaultResolver implements Resolver {
     }
 
     private ResolvedInstance getInstance(Interface iface) {
-        // FIX 32755 What about onionising the instance?
+        // FIX 1887 What about onionising the instance?
         return finder.getInstance(iface);
     }
 
