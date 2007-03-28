@@ -23,9 +23,9 @@ import au.net.netstorm.boost.pebble.inject.resolver.field.DefaultResolverFieldFi
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
 import au.net.netstorm.boost.pebble.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.pebble.onion.BermudaOnion;
+import au.net.netstorm.boost.pebble.onion.BermudaOnionizer;
 import au.net.netstorm.boost.pebble.onion.DefaultPassThroughInvocationHandler;
-import au.net.netstorm.boost.pebble.onion.Onion;
+import au.net.netstorm.boost.pebble.onion.Onionizer;
 import au.net.netstorm.boost.pebble.onion.PassThroughInvocationHandler;
 import au.net.netstorm.boost.pebble.resolve.DefaultRegistry;
 import au.net.netstorm.boost.pebble.resolve.DefaultRegistryMaster;
@@ -86,9 +86,9 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
     }
 
     private PebbleProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
-        Onion onion = new BermudaOnion();
+        Onionizer onionizer = new BermudaOnionizer();
         Interface marker = new DefaultInterface(citizen);
-        return new DefaultPebbleProviderEngine(marker, onion, injector, instantiator);
+        return new DefaultPebbleProviderEngine(marker, onionizer, injector, instantiator);
     }
     /*
       , ; ,   .-'"""'-.   , ; ,

@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.type.WrappedInstance;
 // FIX 32755 Create a utility to determine whether an object reference is an onion or not.
 
 // SUGGEST: Do some proxy magic in here ;)
-public final class BermudaOnion implements Onion {
+public final class BermudaOnionizer implements Onionizer {
 
     public WrappedInstance onionise(ResolvedInstance resolved) {
         return (WrappedInstance) resolved;

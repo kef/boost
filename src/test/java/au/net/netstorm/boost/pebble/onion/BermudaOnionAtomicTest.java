@@ -5,11 +5,11 @@ import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class BermudaOnionAtomicTest extends InteractionTestCase {
-    Onion subject;
+    Onionizer subject;
     BaseReference resolved;
 
     public void setupSubjects() {
-        subject = new BermudaOnion();
+        subject = new BermudaOnionizer();
     }
 
     public void testOnionize() {

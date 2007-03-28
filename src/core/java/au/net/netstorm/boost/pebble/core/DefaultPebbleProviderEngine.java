@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.core;
 
 import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.instantiate.Instantiator;
-import au.net.netstorm.boost.pebble.onion.Onion;
+import au.net.netstorm.boost.pebble.onion.Onionizer;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -11,14 +11,14 @@ import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     private final Interface marker;
-    private Onion onion;
+    private Onionizer onionizer;
     private Instantiator instantiator;
     private InjectorEngine injector;
 
     // OK LineLength {
-    public DefaultPebbleProviderEngine(Interface marker, Onion onion, InjectorEngine injector, Instantiator instantiator) {
+    public DefaultPebbleProviderEngine(Interface marker, Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
         this.marker = marker;
-        this.onion = onion;
+        this.onionizer = onionizer;
         this.injector = injector;
         this.instantiator = instantiator;
     }
@@ -31,7 +31,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         injector.inject(unresolved);
         ResolvedInstance resolved = (ResolvedInstance) unresolved;
-        return onion.onionise(resolved);
+        return onionizer.onionise(resolved);
     }
 
     // FIX 1757 Remove when done.
