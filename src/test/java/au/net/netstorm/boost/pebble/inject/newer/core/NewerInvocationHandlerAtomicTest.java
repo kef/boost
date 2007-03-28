@@ -5,14 +5,14 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.WrappedInstance;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase {
     InvocationHandler subject;
     PebbleProviderEngine pebbleProvider;
     Implementation impl;
     Object proxyObject;
-    WrappedInstance newedInstance;
+    ResolvedInstance newedInstance;
     Object[] methodParams = new Object[]{};
     Object newedObject;
 

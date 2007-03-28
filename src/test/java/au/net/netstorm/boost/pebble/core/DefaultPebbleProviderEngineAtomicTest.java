@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.WrappedInstance;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTestCase {
     PebbleProviderEngine subject;
@@ -23,7 +23,7 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
     Interface marker;
     BaseReference unresolved;
     Object rawRef;
-    WrappedInstance wrapped;
+    ResolvedInstance wrapped;
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
 
     public void setupSubjects() {
@@ -35,7 +35,7 @@ public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTest
         expect.oneCall(pebblator, unresolved, "instantiate", pebble, parameters);
         expect.oneCall(injector, VOID, "inject", unresolved);
         expect.oneCall(onionizer, wrapped, "onionise", unresolved);
-        WrappedInstance result = subject.provide(pebble, parameters);
+        ResolvedInstance result = subject.provide(pebble, parameters);
         assertEquals(wrapped, result);
     }
 

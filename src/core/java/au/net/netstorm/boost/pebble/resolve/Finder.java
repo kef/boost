@@ -2,7 +2,7 @@ package au.net.netstorm.boost.pebble.resolve;
 
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.WrappedInstance;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public interface Finder {
     Implementation getImplementation(Interface iface);
@@ -10,7 +10,7 @@ public interface Finder {
     boolean hasInstance(Interface iface);
 
     // FIX BREADCRUMB 32755 Make this a resolved instance.
-    WrappedInstance getInstance(Interface iface);
+    ResolvedInstance getInstance(Interface iface);
 
     boolean hasImplementation(Interface iface);
 }

@@ -7,7 +7,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
-import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
     private final Interface marker;
@@ -26,7 +25,7 @@ public final class DefaultPebbleProviderEngine implements PebbleProviderEngine {
 
     // SUGGEST: Strongly type Object[] as Dependencies?
 
-    public WrappedInstance provide(Implementation impl, Object[] parameters) {
+    public ResolvedInstance provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         injector.inject(unresolved);

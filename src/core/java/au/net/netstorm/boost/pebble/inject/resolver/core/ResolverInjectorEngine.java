@@ -5,8 +5,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.pebble.inject.core.InjectorEngine;
 import au.net.netstorm.boost.pebble.inject.resolver.field.ResolverFieldFinder;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
-import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class ResolverInjectorEngine implements InjectorEngine {
     private final EdgeField fielder = new DefaultEdgeField();
@@ -27,7 +27,7 @@ public final class ResolverInjectorEngine implements InjectorEngine {
     }
 
     private void inject(Object ref, Field field) {
-        WrappedInstance instance = fieldResolver.resolve(field);
+        ResolvedInstance instance = fieldResolver.resolve(field);
         Object value = instance.getRef();
         fielder.set(field, ref, value);
     }

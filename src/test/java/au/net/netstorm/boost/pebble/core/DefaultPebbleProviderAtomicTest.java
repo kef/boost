@@ -3,14 +3,14 @@ package au.net.netstorm.boost.pebble.core;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.WrappedInstance;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultPebbleProviderAtomicTest extends InteractionTestCase {
     private static final Object SAND = new Sand();
     private static final Object[] PARAMETERS = {SAND};
     Provider subject;
     PebbleProviderEngine engine;
-    WrappedInstance provided;
+    ResolvedInstance provided;
     Object ref;
     Implementation implementation = new DefaultImplementation(SmoothRock.class);
 

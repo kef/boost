@@ -9,7 +9,6 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.WrappedInstance;
 
 public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final Interface LAZY_BASTARD = new DefaultInterface(LazyBastard.class);
@@ -99,7 +98,7 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     private void checkGetInstance(Interface iface, ResolvedInstance expect) {
-        WrappedInstance result = subject.getInstance(iface);
+        ResolvedInstance result = subject.getInstance(iface);
         assertEquals(expect, result);
     }
 

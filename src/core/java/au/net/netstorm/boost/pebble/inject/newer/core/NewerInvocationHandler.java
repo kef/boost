@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.pebble.core.PebbleProviderEngine;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.WrappedInstance;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class NewerInvocationHandler implements InvocationHandler {
     private PebbleProviderEngine pebbleProvider;
@@ -16,7 +16,7 @@ public final class NewerInvocationHandler implements InvocationHandler {
     }
 
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
-        WrappedInstance instance = pebbleProvider.provide(impl, params);
+        ResolvedInstance instance = pebbleProvider.provide(impl, params);
         return instance.getRef();
     }
 }
