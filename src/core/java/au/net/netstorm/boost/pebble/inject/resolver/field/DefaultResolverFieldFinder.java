@@ -27,12 +27,20 @@ public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
         return result;
     }
 
+    // DEBT CyclomaticComplexity|NCSS {
     private void optionallyAdd(List result, Object ref, Field field) {
         field.setAccessible(true);
+        if (isSynthetic(field)) return;
         if (!isNull(ref, field)) return;
         if (isFinal(field)) return;
         if (isPrivate(field)) return;
         result.add(field);
+    }
+    // } DEBT CyclomaticComplexity|NCSS
+
+    private boolean isSynthetic(Field field) {
+        String fieldName = field.getName();
+        return fieldName.contains("$");
     }
 
     private boolean isPrivate(Field field) {

@@ -78,11 +78,6 @@ final class DefaultBoostField implements BoostField {
         return name.equals(s);
     }
 
-    public boolean isSynthetic() {
-        String fieldName = field.getName();
-        return fieldName.contains("$");
-    }
-
     public String getName() {
         return field.getName();
     }

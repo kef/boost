@@ -18,8 +18,12 @@ public final class DefaultFieldResolver implements FieldResolver {
         return resolver.resolve(iface);
     }
 
+    // DEBT LineLength {
     private Interface getInterface(Field field) {
         Class type = field.getType();
+        if (!type.isInterface())
+            throw new IllegalStateException("Aaaaaaaaaaaaaaaaaaaaaaaaaaaargh " + field + ", " + field.getName());
         return new DefaultInterface(type);
     }
+    // } DEBT LineLength
 }
