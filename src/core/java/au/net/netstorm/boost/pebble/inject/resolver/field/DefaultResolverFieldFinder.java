@@ -30,12 +30,18 @@ public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
     // DEBT CyclomaticComplexity|NCSS {
     private void optionallyAdd(List result, Object ref, Field field) {
         field.setAccessible(true);
+        if (isStatic(field)) return;
         if (!isNull(ref, field)) return;
         if (isFinal(field)) return;
         if (isPrivate(field)) return;
         result.add(field);
     }
     // } DEBT CyclomaticComplexity|NCSS
+
+    private boolean isStatic(Field field) {
+        int modifiers = field.getModifiers();
+        return Modifier.isStatic(modifiers);
+    }
 
     private boolean isPrivate(Field field) {
         int modifiers = field.getModifiers();

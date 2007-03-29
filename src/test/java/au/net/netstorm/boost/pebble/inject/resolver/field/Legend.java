@@ -10,4 +10,5 @@ final class Legend implements Pebble {
     Set doNotResolveMeEither = new TreeSet();
     Set resolveMeToo;
     private Set doNotResolveMeIAmPrivate;
+    static Class doNotResolveStaticOrSynthetic;
 }
