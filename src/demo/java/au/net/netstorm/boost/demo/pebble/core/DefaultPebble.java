@@ -4,7 +4,11 @@ import au.net.netstorm.boost.pebble.core.Provider;
 import au.net.netstorm.boost.pebble.inject.core.Injector;
 import au.net.netstorm.boost.pebble.resolve.Registry;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
+import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// FIX 1676 Test drive.
 public final class DefaultPebble implements Pebble {
     private final Provider provider;
     private final Injector injector;
@@ -18,19 +22,31 @@ public final class DefaultPebble implements Pebble {
         this.registry = registry;
     }
 
-    public Provider getProvider() {
-        return provider;
+    public Object provide(Class type, Object[] parameters) {
+        return provider.provide(type, parameters);
     }
 
-    public Injector getInjector() {
-        return injector;
+    public void inject(Object ref) {
+        injector.inject(ref);
     }
 
-    public Resolver getResolver() {
-        return resolver;
+    public ResolvedInstance resolve(Interface iface) {
+        return resolver.resolve(iface);
     }
 
-    public Registry getRegistry() {
-        return registry;
+    public ResolvedInstance[] resolve(Interface[] ifaces) {
+        return resolver.resolve(ifaces);
+    }
+
+    public ResolvedInstance resolve(Implementation impl) {
+        return resolver.resolve(impl);
+    }
+
+    public void prototype(Class iface, Class impl) {
+        registry.prototype(iface, impl);
+    }
+
+    public void instance(Class iface, Object ref) {
+        registry.instance(iface, ref);
     }
 }

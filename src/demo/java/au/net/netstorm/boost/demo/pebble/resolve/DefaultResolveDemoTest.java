@@ -12,8 +12,8 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Citizen.class);
     private final Pebble pebble = pebbleAssembler.assemble();
-    private final Provider provider = pebble.getProvider();
-    private final Registry registry = pebble.getRegistry();
+    private final Provider provider = pebble;
+    private final Registry registry = pebble;
 
     {
         registry.prototype(TheDude.class, JeffBridges.class);
