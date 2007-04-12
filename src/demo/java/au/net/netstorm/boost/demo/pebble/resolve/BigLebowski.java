@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-import au.net.netstorm.boost.pebble.core.Pebble;
+import au.net.netstorm.boost.pebble.core.Citizen;
 
-final class BigLebowski implements Movie, Pebble {
+final class BigLebowski implements Movie, Citizen {
     private final TheDude theDude;
 
     public BigLebowski(TheDude theDude) {

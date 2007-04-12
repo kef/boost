@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-import au.net.netstorm.boost.pebble.core.Pebble;
+import au.net.netstorm.boost.pebble.core.Citizen;
 
-public final class MovieBusiness implements Pebble, Business {
+public final class MovieBusiness implements Citizen, Business {
     private Actor actor;
     private Celebrity celebrity;
 
