@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-import au.net.netstorm.boost.demo.pebble.core.PebblePortal;
+import au.net.netstorm.boost.demo.pebble.core.Pebble;
 
 public interface PebbleAssembler {
-    PebblePortal assemble();
+    Pebble assemble();
 }

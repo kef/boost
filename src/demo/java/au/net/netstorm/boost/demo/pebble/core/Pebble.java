@@ -5,7 +5,7 @@ import au.net.netstorm.boost.pebble.inject.core.Injector;
 import au.net.netstorm.boost.pebble.resolve.Registry;
 import au.net.netstorm.boost.pebble.resolve.Resolver;
 
-public interface PebblePortal {
+public interface Pebble {
     Provider getProvider();
 
     Injector getInjector();
