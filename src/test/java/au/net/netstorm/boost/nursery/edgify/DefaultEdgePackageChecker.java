@@ -7,7 +7,7 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import junit.framework.Assert;
 
 public final class DefaultEdgePackageChecker implements EdgeChecker {
-    private static final String EDGE_PACKAGE_PREFIX = "com.rsa.kms.edge.";
+    private static final String EDGE_PACKAGE_PREFIX = "com.rsa.keymanager.edge.";
     private static final String DEFAULT_EDGE = "DefaultEdge";
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final List checkExceptions = new ArrayList();

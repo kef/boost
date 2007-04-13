@@ -6,7 +6,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 // FIX 33398 Use ClassMaster for some of these private methods.  Add getPackage to ClassMaster.
 public final class DefaultEdgifierHorizon implements EdgifierHorizon {
     private static final String DOT = ".";
-    private static final String EDGE_PACKAGE_PREFIX = "com.rsa.kms.edge.";
+    private static final String EDGE_PACKAGE_PREFIX = "com.rsa.keymanager.edge.";
     private static final String EDGE_INTERFACE_PREFIX = "";
     private static final String EDGE_CLASS_NAME_PREFIX = "Default" + EDGE_INTERFACE_PREFIX;
     private EdgeClass classer = new DefaultEdgeClass();
