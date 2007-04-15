@@ -12,7 +12,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultPebbleProviderEngineAtomicTest extends InteractionTestCase {
+public final class DefaultProviderEngineAtomicTest extends InteractionTestCase {
     ProviderEngine subject;
     Onionizer onionizer;
     Instantiator pebblator;
