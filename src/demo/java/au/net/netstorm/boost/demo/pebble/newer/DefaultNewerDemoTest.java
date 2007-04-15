@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
 import au.net.netstorm.boost.demo.pebble.core.Spidery;
-import au.net.netstorm.boost.pebble.core.Citizen;
+import au.net.netstorm.boost.spider.core.Citizen;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {

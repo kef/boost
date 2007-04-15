@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-import au.net.netstorm.boost.pebble.core.Citizen;
+import au.net.netstorm.boost.spider.core.Citizen;
 
 public final class GlitzyHollywood implements Citizen, Hollywood {
     private Celebrity celebrity;

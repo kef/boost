@@ -3,9 +3,9 @@ package au.net.netstorm.boost.demo.pebble.resolve;
 import au.net.netstorm.boost.demo.pebble.core.Spidery;
 import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
-import au.net.netstorm.boost.pebble.core.Citizen;
-import au.net.netstorm.boost.pebble.core.Provider;
-import au.net.netstorm.boost.pebble.resolve.Registry;
+import au.net.netstorm.boost.spider.core.Citizen;
+import au.net.netstorm.boost.spider.core.Provider;
+import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
