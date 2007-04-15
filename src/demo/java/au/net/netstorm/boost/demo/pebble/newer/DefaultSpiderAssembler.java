@@ -4,9 +4,9 @@ import au.net.netstorm.boost.demo.pebble.core.DefaultSpidery;
 import au.net.netstorm.boost.demo.pebble.core.Spidery;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.spider.core.CitizenInjectorEngine;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
-import au.net.netstorm.boost.spider.core.PebbleInjectorEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
@@ -70,7 +70,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private InjectorEngine assembleInjector(ProxyFactory proxyFactory, ProviderEngine providerEngine, Instantiator instantiator, Resolver resolver) {
         InjectorEngine newer = assembleNewerInjector(proxyFactory, providerEngine, instantiator);
         InjectorEngine injector = assembleResolverInjector(resolver);
-        return new PebbleInjectorEngine(newer, injector);
+        return new CitizenInjectorEngine(newer, injector);
     }
 
     private ResolverInjectorEngine assembleResolverInjector(Resolver resolver) {

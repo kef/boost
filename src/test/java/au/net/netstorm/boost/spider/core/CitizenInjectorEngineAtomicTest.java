@@ -4,14 +4,14 @@ import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class PebbleInjectorEngineAtomicTest extends InteractionTestCase {
+public final class CitizenInjectorEngineAtomicTest extends InteractionTestCase {
     InjectorEngine subject;
     InjectorEngine newerInjector;
     InjectorEngine dependencyInjector;
     UnresolvedInstance unresolved;
 
     public void setupSubjects() {
-        subject = new PebbleInjectorEngine(newerInjector, dependencyInjector);
+        subject = new CitizenInjectorEngine(newerInjector, dependencyInjector);
     }
 
     public void testAggregation() {
