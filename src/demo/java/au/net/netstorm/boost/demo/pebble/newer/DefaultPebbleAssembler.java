@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.pebble.newer;
 
-import au.net.netstorm.boost.demo.pebble.core.DefaultPebble;
-import au.net.netstorm.boost.demo.pebble.core.Pebble;
+import au.net.netstorm.boost.demo.pebble.core.DefaultSpidery;
+import au.net.netstorm.boost.demo.pebble.core.Spidery;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.pebble.core.DefaultProvider;
@@ -46,7 +46,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         this.citizen = citizen;
     }
 
-    public Pebble assemble() {
+    public Spidery assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
@@ -59,7 +59,7 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         passThrough.setDelegate(providerEngine);
         DefaultProvider provider = new DefaultProvider(providerEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        return new DefaultPebble(provider, injector, resolver, registry);
+        return new DefaultSpidery(provider, injector, resolver, registry);
     }
 
     private ProxyFactory assembleProxyFactory() {

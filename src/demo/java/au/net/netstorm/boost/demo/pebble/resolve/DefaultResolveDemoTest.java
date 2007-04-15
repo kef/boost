@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.pebble.resolve;
 
-import au.net.netstorm.boost.demo.pebble.core.Pebble;
+import au.net.netstorm.boost.demo.pebble.core.Spidery;
 import au.net.netstorm.boost.demo.pebble.newer.DefaultPebbleAssembler;
 import au.net.netstorm.boost.demo.pebble.newer.PebbleAssembler;
 import au.net.netstorm.boost.pebble.core.Citizen;
@@ -11,9 +11,9 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final PebbleAssembler pebbleAssembler = new DefaultPebbleAssembler(Citizen.class);
-    private final Pebble pebble = pebbleAssembler.assemble();
-    private final Provider provider = pebble;
-    private final Registry registry = pebble;
+    private final Spidery spider = pebbleAssembler.assemble();
+    private final Provider provider = spider;
+    private final Registry registry = spider;
 
     {
         registry.prototype(TheDude.class, JeffBridges.class);
