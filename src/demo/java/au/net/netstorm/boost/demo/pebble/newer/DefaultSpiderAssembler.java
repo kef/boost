@@ -38,11 +38,11 @@ import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultPebbleAssembler implements PebbleAssembler {
+public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
     private final Class citizen;
 
-    public DefaultPebbleAssembler(Class citizen) {
+    public DefaultSpiderAssembler(Class citizen) {
         this.citizen = citizen;
     }
 
@@ -91,14 +91,16 @@ public final class DefaultPebbleAssembler implements PebbleAssembler {
         return new DefaultProviderEngine(marker, onionizer, injector, instantiator);
     }
     /*
-      , ; ,   .-'"""'-.   , ; ,
-      \\|/  .'         '.  \|//
-       \-;-/   ()   ()   \-;-/
-       // ;               ; \\
-      //__; :.         .; ;__\\
-     `-----\'.'-.....-'.'/-----'
-            '.'.-.-,_.'.'
-              '(  (..-'
-                '-'
+                  _.._
+                .'    '.
+               /   __   \
+            ,  |   ><   |  ,
+           . \  \      /  / .
+            \_'--`(  )'--'_/
+              .--'/()\'--.
+             /  /` '' `\  \
+               |        |
+                \      /
+
     */
 }

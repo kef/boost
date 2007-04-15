@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
-    private final PebbleAssembler assembler = new DefaultPebbleAssembler(Citizen.class);
+    private final SpiderAssembler assembler = new DefaultSpiderAssembler(Citizen.class);
     private final Spidery spider = assembler.assemble();
 
     public void testRecursiveNewerInjection() {
