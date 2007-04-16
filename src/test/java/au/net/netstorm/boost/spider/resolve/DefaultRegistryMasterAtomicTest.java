@@ -23,6 +23,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final ResolvedInstance DAMIEN = new DefaultBaseReference(DAMIEN_REF);
     private static final Implementation GREG = new DefaultImplementation(Greg.class);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
+    private static final Interface PRINCESS = new DefaultInterface(Matryoshka.class);
+    private static final ResolvedInstance KSENIA = new DefaultBaseReference(Matryoshka.class);
     private final RegistryMaster subject = new DefaultRegistryMaster();
 
     {
@@ -54,6 +56,17 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
             subject.implementation(LAZY_BASTARD, GREG);
             fail();
         } catch (AlreadyRegisteredException expected) {}
+    }
+
+    public void testClassInstanceFails() {
+        try {
+            subject.instance(PRINCESS, KSENIA);
+            fail();
+        } catch (WrongInstanceTypeException expected) {
+            String actualMessage = KSENIA.getRef() + " is a class and cannot be registered as an instance.";
+            String expectedMessage = expected.getMessage();
+            assertEquals(expectedMessage, actualMessage);
+        }
     }
 
     public void testNotInstance() {

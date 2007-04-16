@@ -34,8 +34,16 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public void instance(Interface iface, ResolvedInstance instance) {
+        barfIfInstanceIsClass(instance);
         barfIfExists(iface);
         registrations.put(iface, instance);
+    }
+
+    private void barfIfInstanceIsClass(ResolvedInstance instance) {
+        Object ref = instance.getRef();
+        if (ref instanceof Class) {
+            throw new WrongInstanceTypeException(ref + " is a class and cannot be registered as an instance.");
+        }
     }
 
     private Object get(Interface type) {
