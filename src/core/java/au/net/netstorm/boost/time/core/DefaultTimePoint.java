@@ -51,7 +51,7 @@ public final class DefaultTimePoint implements TimePoint {
     /*
               _____
            _.'_____`._
-         .'.-'  12 `-.`.   SINCE DAYLIGHT SAVINGS TIME ISN'T FUCKED UP ENOUGH
+         .'.-'  12 `-.`.   SINCE DAYLIGHT SAVINGS TIME ISN'T WRECKED UP ENOUGH
         /,' 11      1 `.\   LET'S KIND OF RANDOMLY CHANGE IT JUST TO
        // 10      /   2 \\   MAKE THINGS MORE DIFFICULT
       ;;         /       ::

@@ -4,7 +4,7 @@ import java.util.Date;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 // DEBT ClassDataAbstractionCoupling {
-public final class TimePointAtomicTest extends BoooostCase {
+public final class DefaultTimePointAtomicTest extends BoooostCase {
     private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
     private static final Object NULL = null;
 
