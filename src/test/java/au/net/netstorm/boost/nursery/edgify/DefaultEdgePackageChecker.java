@@ -7,12 +7,13 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import junit.framework.Assert;
 
 public final class DefaultEdgePackageChecker implements EdgeChecker {
-    private static final String EDGE_PACKAGE_PREFIX = "com.rsa.keymanager.edge.";
     private static final String DEFAULT_EDGE = "DefaultEdge";
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final List checkExceptions = new ArrayList();
+    private final String packagePrefix;
 
-    {
+    public DefaultEdgePackageChecker(String packagePrefix) {
+        this.packagePrefix = packagePrefix;
         checkExceptions.add(DefaultEdgifierHorizon.class);
     }
 
@@ -40,7 +41,7 @@ public final class DefaultEdgePackageChecker implements EdgeChecker {
     }
 
     private String getRealClassPackage(String className) {
-        int prefixLength = EDGE_PACKAGE_PREFIX.length();
+        int prefixLength = packagePrefix.length();
         int lastIndexOfDot = className.lastIndexOf(".");
         return className.substring(prefixLength, lastIndexOfDot);
     }
@@ -54,7 +55,7 @@ public final class DefaultEdgePackageChecker implements EdgeChecker {
     }
 
     private void checkEdgePackage(String packageName, String shortName) {
-        boolean isEdgePackage = packageName.startsWith(EDGE_PACKAGE_PREFIX);
+        boolean isEdgePackage = packageName.startsWith(packageName);
         if (!isEdgePackage) Assert.fail(shortName + " must live in the edge package.");
     }
 }

@@ -8,18 +8,16 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.array.ArrayOperator;
 import au.net.netstorm.boost.util.array.DefaultArrayOperator;
 
-// FIX 33398 Write test to check for edgify engine.
-
 // OK ClassDataAbstractionCoupling {
 public final class EdgeCheckerModuleTest extends BoooostCase {
-    private final ArrayOperator arrayOperator = new DefaultArrayOperator();
+    private final ArrayOperator array = new DefaultArrayOperator();
     private final TestClassLocator classLocator = new TestClassLocator();
-    private final EdgeChecker edgeConstructorChecker = new DefaultEdgeConstructorChecker();
-    private final EdgeChecker edgeFieldChecker = new DefaultEdgeFieldChecker();
-    private final EdgeChecker edgeClassChecker = new DefaultEdgeClassChecker();
-    private final EdgeChecker edgeEdgifierChecker = new DefaultEdgeEdgifierChecker();
-    private final EdgeChecker edgeParameterChecker = new DefaultEdgeParameterChecker();
-    private final EdgeChecker edgePackageChecker = new DefaultEdgePackageChecker();
+    private final EdgeChecker constructorChecker = new DefaultEdgeConstructorChecker();
+    private final EdgeChecker fieldChecker = new DefaultEdgeFieldChecker();
+    private final EdgeChecker classChecker = new DefaultEdgeClassChecker();
+    private final EdgeChecker edgifierChecker = new DefaultEdgeEdgifierChecker();
+    private final EdgeChecker parameterChecker = new DefaultEdgeParameterChecker();
+    private final EdgeChecker packageChecker = new DefaultEdgePackageChecker("com.rsa.keymanager.edge.");
     private Class[] edgeClasses;
 
     protected void gearup() {
@@ -27,9 +25,9 @@ public final class EdgeCheckerModuleTest extends BoooostCase {
         Class[] endingWithSupplier = getClasses(".*Supplier");
         Class[] endingWithConverter = getClasses(".*Converter");
         Class[] endingWithChecker = getClasses(".*Checker");
-        Class[] excludingSuppliers = (Class[]) arrayOperator.minus(startingWithEdge, endingWithSupplier);
-        Class[] excludingCheckers = (Class[]) arrayOperator.minus(excludingSuppliers, endingWithChecker);
-        edgeClasses = (Class[]) arrayOperator.minus(excludingCheckers, endingWithConverter);
+        Class[] excludingSuppliers = (Class[]) array.minus(startingWithEdge, endingWithSupplier);
+        Class[] excludingCheckers = (Class[]) array.minus(excludingSuppliers, endingWithChecker);
+        edgeClasses = (Class[]) array.minus(excludingCheckers, endingWithConverter);
     }
 
     public void testEdgeStructure() {
@@ -39,12 +37,12 @@ public final class EdgeCheckerModuleTest extends BoooostCase {
     }
 
     private void checkStructure(Class edgeClass) {
-        edgeConstructorChecker.check(edgeClass);
-        edgeFieldChecker.check(edgeClass);
-        edgeClassChecker.check(edgeClass);
-        edgeEdgifierChecker.check(edgeClass);
-        edgeParameterChecker.check(edgeClass);
-        edgePackageChecker.check(edgeClass);
+        constructorChecker.check(edgeClass);
+        fieldChecker.check(edgeClass);
+        classChecker.check(edgeClass);
+        edgifierChecker.check(edgeClass);
+        parameterChecker.check(edgeClass);
+        packageChecker.check(edgeClass);
     }
 
     private Class[] getClasses(String regex) {
