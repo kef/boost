@@ -30,11 +30,6 @@ public final class DefaultTimePoint implements TimePoint {
         return (int) millis;
     }
 
-    public static TimePoint now() {
-        long now = System.currentTimeMillis();
-        return new DefaultTimePoint(now);
-    }
-
     private void validate() {
         if (millis < EPOCH_MILLIS) throw new IllegalArgumentException(
                 "The specified time (time=" + millis + ") cannot be less than the epoch (EPOCH=" + EPOCH + ").");

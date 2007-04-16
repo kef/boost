@@ -1,11 +1,9 @@
 package au.net.netstorm.boost.time.core;
 
-import java.util.Date;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimePointAtomicTest extends BoooostCase {
-    private static final TimeRangeMaster TIME_RANGE_MASTER = new DefaultTimeRangeMaster();
     private static final Object NULL = null;
 
     public void testEpoch() {
@@ -42,18 +40,6 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
         assertHashCode(1, new DefaultTimePoint(0x7FFFFFFF00000001L));
     }
 
-    public void testCurrent() {
-        long reference = new Date().getTime();
-        TimePoint bottom = new DefaultTimePoint(reference - LEEWAY);
-        TimePoint top = new DefaultTimePoint(reference + LEEWAY);
-        TimePoint now = DefaultTimePoint.now();
-        StartTime start = new StartTime(bottom);
-        EndTime end = new EndTime(top);
-        // FIX SC777 Tests TimeRange rather than TimePoint - move or delete.
-        TimeRange range = new DefaultTimeRange(start, TIME_RANGE_MASTER.duration(start, end));
-        assertEquals(true, range.contains(now));
-    }
-
     private void assertInvalidTimePoints(long length) {
         try {
             new DefaultTimePoint(length);
@@ -65,7 +51,7 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
 
     // FIX SC777 Push up into a PrimordialTestCase.
     private void succeed() {
-        assert (true);
+        assert true;
     }
 
     private void assertNotEquals(TimePoint t1, TimePoint t2) {
@@ -80,7 +66,5 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
     private void assertValidTimePoints(long length) {
         assertEquals(length, new DefaultTimePoint(length).getMillis());
     }
-
-    private static final long LEEWAY = 5000;
 }
 // } DEBT ClassDataAbstractionCoupling
