@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.demo.spider.core.Spidery;
+import au.net.netstorm.boost.demo.spider.core.Spider;
 
 public interface SpiderAssembler {
-    Spidery assemble();
+    Spider assemble();
 }

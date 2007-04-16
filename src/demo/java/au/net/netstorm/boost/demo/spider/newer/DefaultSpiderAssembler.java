@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.demo.spider.core.DefaultSpidery;
-import au.net.netstorm.boost.demo.spider.core.Spidery;
+import au.net.netstorm.boost.demo.spider.core.DefaultSpider;
+import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.core.CitizenInjectorEngine;
@@ -46,7 +46,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         this.citizen = citizen;
     }
 
-    public Spidery assemble() {
+    public Spider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
         PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
@@ -59,7 +59,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         passThrough.setDelegate(providerEngine);
         DefaultProvider provider = new DefaultProvider(providerEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        return new DefaultSpidery(provider, injector, resolver, registry);
+        return new DefaultSpider(provider, injector, resolver, registry);
     }
 
     private ProxyFactory assembleProxyFactory() {

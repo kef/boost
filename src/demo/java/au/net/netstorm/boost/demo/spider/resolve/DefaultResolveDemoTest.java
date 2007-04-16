@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.demo.spider.core.Spidery;
+import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.demo.spider.newer.DefaultSpiderAssembler;
 import au.net.netstorm.boost.demo.spider.newer.SpiderAssembler;
 import au.net.netstorm.boost.spider.core.Citizen;
@@ -11,9 +11,9 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 public final class DefaultResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(Citizen.class);
-    private final Spidery spidery = spiderAssembler.assemble();
-    private final Provider provider = spidery;
-    private final Registry registry = spidery;
+    private final Spider spider = spiderAssembler.assemble();
+    private final Provider provider = spider;
+    private final Registry registry = spider;
 
     {
         registry.prototype(TheDude.class, JeffBridges.class);

@@ -9,13 +9,13 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX 1676 Test drive.  This triggers work on "compose".
-public final class DefaultSpidery implements Spidery {
+public final class DefaultSpider implements Spider {
     private final Provider provider;
     private final Injector injector;
     private final Resolver resolver;
     private final Registry registry;
 
-    public DefaultSpidery(Provider provider, Injector injector, Resolver resolver, Registry registry) {
+    public DefaultSpider(Provider provider, Injector injector, Resolver resolver, Registry registry) {
         this.provider = provider;
         this.injector = injector;
         this.resolver = resolver;

@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.demo.spider.core.Spidery;
+import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.spider.core.Citizen;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private static final Object[] NO_PARAMETERS = new Object[]{};
     private final SpiderAssembler assembler = new DefaultSpiderAssembler(Citizen.class);
-    private final Spidery spider = assembler.assemble();
+    private final Spider spider = assembler.assemble();
 
     public void testRecursiveNewerInjection() {
         Rob rob = (Rob) spider.provide(Rob.class, NO_PARAMETERS);
