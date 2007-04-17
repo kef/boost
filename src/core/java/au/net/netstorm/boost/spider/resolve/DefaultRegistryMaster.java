@@ -8,8 +8,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-// FIX 39821 Come back and make a RegistryValidator to get rid of the Exceptions
-
 // DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map registrations = new HashMap();
