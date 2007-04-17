@@ -35,11 +35,6 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase {
 
     public void testProvider() {
         checkProvider(false);
-    }
-
-    public void testInitialsable() {
-        expect.oneCall(unresolved, initialisable, "getRef");
-        expect.oneCall(initialisable, VOID, "init");
         checkProvider(true);
     }
 
@@ -48,9 +43,16 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase {
         expect.oneCall(instantiator, unresolved, "instantiate", providezMoi, parameters);
         expect.oneCall(injector, VOID, "inject", unresolved);
         expect.oneCall(onionizer, wrapped, "onionise", unresolved);
-        expect.oneCall(providezMoi, initialise, "is", initMarker);
+        optionalInit(initialise);
         ResolvedInstance result = subject.provide(providezMoi, parameters);
         assertEquals(wrapped, result);
+    }
+
+    private void optionalInit(boolean initialise) {
+        expect.oneCall(providezMoi, initialise, "is", initMarker);
+        if (!initialise) return;
+        expect.oneCall(unresolved, initialisable, "getRef");
+        expect.oneCall(initialisable, VOID, "init");
     }
 
     public void testNotMarker() {
