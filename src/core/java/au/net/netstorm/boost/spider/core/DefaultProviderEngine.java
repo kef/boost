@@ -3,13 +3,15 @@ package au.net.netstorm.boost.spider.core;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.Onionizer;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultProviderEngine implements ProviderEngine {
-    private final Interface marker;
+    private static final Interface INITIALISABLE = new DefaultInterface(Initialisable.class);
+    private Interface marker;
     private Onionizer onionizer;
     private Instantiator instantiator;
     private InjectorEngine injector;
@@ -30,6 +32,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         injector.inject(unresolved);
         ResolvedInstance resolved = (ResolvedInstance) unresolved;
+        impl.is(INITIALISABLE);
         return onionizer.onionise(resolved);
     }
 
