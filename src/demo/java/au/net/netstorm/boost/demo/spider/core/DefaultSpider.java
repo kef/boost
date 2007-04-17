@@ -50,8 +50,7 @@ public final class DefaultSpider implements Spider {
         registry.instance(iface, ref);
     }
 
-    // FIX BREADCRUMB 39821 Nous sommes ici
     public Interface[] getKeys() {
-        throw new UnsupportedOperationException();
+        return registry.getKeys();
     }
 }
