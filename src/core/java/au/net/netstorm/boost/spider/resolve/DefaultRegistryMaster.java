@@ -2,11 +2,15 @@ package au.net.netstorm.boost.spider.resolve;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// FIX 39821 Come back and make a RegistryValidator to get rid of the Exceptions
+
+// DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map registrations = new HashMap();
 
@@ -22,6 +26,11 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public boolean hasImplementation(Interface iface) {
         return has(iface, Implementation.class);
+    }
+
+    public Interface[] getInterfaces() {
+        Set set = registrations.keySet();
+        return (Interface[]) set.toArray(new Interface[]{});
     }
 
     public boolean hasInstance(Interface iface) {
@@ -67,3 +76,4 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         if (ref == null) throw new UnresolvedDependencyException(iface);
     }
 }
+// } DEBT DataAbstractionCoupling
