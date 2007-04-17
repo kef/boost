@@ -51,7 +51,7 @@ public final class DefaultSpider implements Spider {
     }
 
     // FIX BREADCRUMB 39821 Nous sommes ici
-    public Interface[] getInterfaces() {
+    public Interface[] getKeys() {
         throw new UnsupportedOperationException();
     }
 }

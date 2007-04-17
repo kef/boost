@@ -26,7 +26,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return has(iface, Implementation.class);
     }
 
-    public Interface[] getInterfaces() {
+    public Interface[] getKeys() {
         Set set = registrations.keySet();
         return (Interface[]) set.toArray(new Interface[]{});
     }

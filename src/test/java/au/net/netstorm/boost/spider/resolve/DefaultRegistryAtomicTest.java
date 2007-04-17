@@ -44,8 +44,8 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     }
 
     public void testGetInterfaces() {
-        expect.oneCall(registryMaster, interfaces, "getInterfaces");
-        Interface[] result = subject.getInterfaces();
+        expect.oneCall(registryMaster, interfaces, "getKeys");
+        Interface[] result = subject.getKeys();
         assertEquals(interfaces, result);
     }
 }

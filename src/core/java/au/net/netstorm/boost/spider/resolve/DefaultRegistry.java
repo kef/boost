@@ -26,7 +26,7 @@ public final class DefaultRegistry implements Registry {
         registryMaster.instance(inyerface, instance);
     }
 
-    public Interface[] getInterfaces() {
-        return registryMaster.getInterfaces();
+    public Interface[] getKeys() {
+        return registryMaster.getKeys();
     }
 }

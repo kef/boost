@@ -7,5 +7,5 @@ public interface Registry {
 
     void instance(Class iface, Object ref);
 
-    Interface[] getInterfaces();
+    Interface[] getKeys();
 }

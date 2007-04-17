@@ -103,7 +103,7 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     public void testElements() {
-        Interface[] result = subject.getInterfaces();
+        Interface[] result = subject.getKeys();
         Interface[] expected = new Interface[]{LEGEND, LAZY_BASTARD, FRENCH_CLOISON, FRENCH_ROLL};
         checkElements(expected, result);
     }

@@ -13,5 +13,5 @@ public interface Finder {
 
     boolean hasImplementation(Interface iface);
 
-    Interface[] getInterfaces();
+    Interface[] getKeys();
 }
