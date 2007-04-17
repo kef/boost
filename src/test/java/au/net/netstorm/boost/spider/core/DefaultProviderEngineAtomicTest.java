@@ -20,36 +20,43 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase {
     Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     InjectorEngine injector;
     Object[] parameters = {"Hi", "There"};
-    Implementation provideMoi;
-    Interface marker;
+    Implementation providezMoi;
+    Interface citizenMarker;
     BaseReference unresolved;
     Object rawRef;
     ResolvedInstance wrapped;
+    Initialisable initialisable;
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
-    Interface initialisable = new DefaultInterface(Initialisable.class);
+    Interface initMarker = new DefaultInterface(Initialisable.class);
 
     public void setupSubjects() {
-        subject = new DefaultProviderEngine(marker, onionizer, injector, instantiator);
+        subject = new DefaultProviderEngine(citizenMarker, onionizer, injector, instantiator);
     }
 
     public void testProvider() {
         checkProvider(false);
     }
 
+    public void testInitialsable() {
+        expect.oneCall(unresolved, initialisable, "getRef");
+        expect.oneCall(initialisable, VOID, "init");
+        checkProvider(true);
+    }
+
     private void checkProvider(boolean initialise) {
-        expect.oneCall(provideMoi, true, "is", marker);
-        expect.oneCall(instantiator, unresolved, "instantiate", provideMoi, parameters);
+        expect.oneCall(providezMoi, true, "is", citizenMarker);
+        expect.oneCall(instantiator, unresolved, "instantiate", providezMoi, parameters);
         expect.oneCall(injector, VOID, "inject", unresolved);
         expect.oneCall(onionizer, wrapped, "onionise", unresolved);
-        expect.oneCall(provideMoi, initialise, "is", initialisable);
-        ResolvedInstance result = subject.provide(provideMoi, parameters);
+        expect.oneCall(providezMoi, initialise, "is", initMarker);
+        ResolvedInstance result = subject.provide(providezMoi, parameters);
         assertEquals(wrapped, result);
     }
 
     public void testNotMarker() {
-        expect.oneCall(provideMoi, false, "is", marker);
+        expect.oneCall(providezMoi, false, "is", citizenMarker);
         try {
-            subject.provide(provideMoi, parameters);
+            subject.provide(providezMoi, parameters);
             fail();
         } catch (IllegalCitizenException expected) { }
     }

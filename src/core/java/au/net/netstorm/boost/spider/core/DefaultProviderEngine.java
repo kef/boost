@@ -32,8 +32,13 @@ public final class DefaultProviderEngine implements ProviderEngine {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         injector.inject(unresolved);
         ResolvedInstance resolved = (ResolvedInstance) unresolved;
-        impl.is(INITIALISABLE);
+        if (impl.is(INITIALISABLE)) init(resolved);
         return onionizer.onionise(resolved);
+    }
+
+    private void init(ResolvedInstance resolved) {
+        Initialisable initialisable = (Initialisable) resolved.getRef();
+        initialisable.init();
     }
 
     // FIX 1757 Remove when done.
