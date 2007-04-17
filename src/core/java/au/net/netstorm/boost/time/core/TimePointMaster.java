@@ -8,4 +8,6 @@ public interface TimePointMaster {
     TimePoint previous(TimePoint time);
 
     TimePoint now(EdgeSystem system);
+
+    TimePoint get(long millis);
 }

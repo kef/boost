@@ -8,6 +8,8 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
     TimePointMaster master;
     EdgeSystem system;
     private static final long NOW = 1L;
+    private static final long MILLIS_1 = 12L;
+    private static final long MILLIS_2 = 9L;
 
     public void setupSubjects() {
         master = new DefaultTimePointMaster();
@@ -32,6 +34,17 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
         TimePoint expected = new DefaultTimePoint(NOW);
         TimePoint actual = master.now(system);
         assertEquals(expected, actual);
+    }
+
+    public void testGet() {
+        checkGet(MILLIS_1);
+        checkGet(MILLIS_2);
+    }
+
+    private void checkGet(long millis) {
+        TimePoint timePoint = master.get(millis);
+        long actual = timePoint.getMillis();
+        assertEquals(millis, actual);
     }
 
     public void testPreviousInvalid() {
