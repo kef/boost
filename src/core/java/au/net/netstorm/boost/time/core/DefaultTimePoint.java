@@ -57,7 +57,7 @@ public final class DefaultTimePoint implements TimePoint {
          '.`-.__6__.-'.'
           ((-._____.-))
           _))       ((_
-         '--'SSt    '--'
+         '--'       '--'
     
      */
 }
