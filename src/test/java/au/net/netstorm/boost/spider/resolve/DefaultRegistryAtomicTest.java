@@ -27,6 +27,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     ResolvedInstance instance;
     Class implClass;
     Object ref;
+    Interface[] interfaces;
 
     public void setupSubjects() {
         subject = new DefaultRegistry(registryMaster);
@@ -40,5 +41,11 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     public void testInstance() {
         expect.oneCall(registryMaster, VOID, "instance", rollInterface, rollInstance);
         subject.instance(frenchRoll, damienInstance);
+    }
+
+    public void testGetInterfaces() {
+        expect.oneCall(registryMaster, interfaces, "getInterfaces");
+        Interface[] result = subject.getInterfaces();
+        assertEquals(interfaces, result);
     }
 }

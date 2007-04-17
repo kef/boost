@@ -49,4 +49,9 @@ public final class DefaultSpider implements Spider {
     public void instance(Class iface, Object ref) {
         registry.instance(iface, ref);
     }
+
+    // FIX BREADCRUMB 39821 Nous sommes ici
+    public Interface[] getInterfaces() {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -25,4 +25,8 @@ public final class DefaultRegistry implements Registry {
         ResolvedInstance instance = new DefaultBaseReference(ref);
         registryMaster.instance(inyerface, instance);
     }
+
+    public Interface[] getInterfaces() {
+        return registryMaster.getInterfaces();
+    }
 }
