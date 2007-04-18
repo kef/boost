@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.cases.TestStrategy;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
@@ -42,6 +43,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     public void init() {
         BoostField[] fields = getAllFields();
         validate(fields);
+        initialise();
         injectMocks(fields);
         // FIX 1676 Inject mockArrays here. We need to have elements in an array that we can set expectations on.
         injectDummies(fields);
@@ -49,6 +51,11 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
         subjectSetup();
         injectSubjects();
         setExpectField();
+    }
+
+    private void initialise() {
+        if (!implementsInitialisable()) return;
+        ((Initialisable) testCase).init();
     }
 
     private BoostField[] getAllFields() {
@@ -91,6 +98,11 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private MockExpectations buildExpect() {
         MockExpectationEngine delegate = new DefaultMockExpectationEngine(autoMocker, mocker);
         return new DefaultMockExpectations(delegate);
+    }
+
+    private boolean implementsInitialisable() {
+        Class cls = testCase.getClass();
+        return Initialisable.class.isAssignableFrom(cls);
     }
 }
 // } DEBT DataAbstractionCoupling
