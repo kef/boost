@@ -44,14 +44,7 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
         try {
             new DefaultTimePoint(length);
             fail();
-        } catch (IllegalArgumentException ex) {
-            succeed();
-        } // FIX SC777 Fix others to call succeed().
-    }
-
-    // FIX SC777 Push up into a PrimordialTestCase.
-    private void succeed() {
-        assert true;
+        } catch (IllegalArgumentException ex) { }
     }
 
     private void assertNotEquals(TimePoint t1, TimePoint t2) {

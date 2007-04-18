@@ -1,9 +1,5 @@
 package au.net.netstorm.boost.time.core;
 
-// FIX SC507 Introduce type stuff.
-// FIX SC502 Test drive requirement for "Data".  This was placed here to get external requirement complete
-// FIX SC502 whilst cruise was broken!
-
 // FIX SC502 Should be "immutable", not "Data".
 public final class DefaultTimePoint implements TimePoint {
     private static final long EPOCH_MILLIS = 0L;
