@@ -17,6 +17,10 @@ public final class DefaultTimePoint implements TimePoint {
         validate();
     }
 
+    public long getMillis() {
+        return millis;
+    }
+
     public String toString() {
         return "TimePoint[" + millis + "]";
     }
@@ -37,10 +41,6 @@ public final class DefaultTimePoint implements TimePoint {
 
     private boolean equals(TimePoint time) {
         return time.getMillis() == millis;
-    }
-
-    public long getMillis() {
-        return millis;
     }
 
     /*
