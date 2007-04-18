@@ -4,7 +4,7 @@ public class StrategyTestCase extends BoooostCase {
     private TestStrategy strategy;
 
     public void runBare() throws Throwable {
-        init();
+        initialise();
         try {
             super.runBare();
             verify();
@@ -23,7 +23,7 @@ public class StrategyTestCase extends BoooostCase {
         strategy.verify();
     }
 
-    private void init() {
+    private void initialise() {
         TestStrategist strategist = new DefaultTestStrategist();
         strategy = strategist.determineStrategy(this);
         strategy.init();
