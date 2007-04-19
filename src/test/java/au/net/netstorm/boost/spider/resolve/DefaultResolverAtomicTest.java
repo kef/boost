@@ -13,5 +13,6 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
     // FIX 1914 Complete this.
     // FIX 1914 Rename.
     public void testXxx() {
+        subject.resolve(Fruity.class);
     }
 }
