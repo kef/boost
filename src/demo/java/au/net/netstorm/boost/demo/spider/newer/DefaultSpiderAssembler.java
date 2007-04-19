@@ -32,7 +32,9 @@ import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
+import au.net.netstorm.boost.spider.resolve.Finder;
 import au.net.netstorm.boost.spider.resolve.Registry;
+import au.net.netstorm.boost.spider.resolve.RegistryEngine;
 import au.net.netstorm.boost.spider.resolve.RegistryMaster;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
@@ -55,18 +57,20 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         RegistryMaster registryMaster = new DefaultRegistryMaster();
-        ResolverEngine resolverEngine = new DefaultResolverEngine(passThroughProvider, registryMaster);
+        Finder finder = registryMaster;
+        RegistryEngine registryEngine = registryMaster;
+        ResolverEngine resolverEngine = new DefaultResolverEngine(passThroughProvider, finder);
         InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
+        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryEngine);
     }
 
-    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryMaster registryMaster) {
+    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryEngine registryEngine) {
         Provider provider = new DefaultProvider(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        Registry registry = new DefaultRegistry(registryMaster);
+        Registry registry = new DefaultRegistry(registryEngine);
         return new DefaultSpider(provider, injector, resolver, registry);
     }
 

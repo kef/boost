@@ -42,11 +42,4 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
         expect.oneCall(registryMaster, VOID, "instance", rollInterface, rollInstance);
         subject.instance(frenchRoll, damienInstance);
     }
-
-    // FIX 1914 Should we be exposing this?  I don't think so.  Talk to deep fried bastin.
-    public void testGetInterfaces() {
-        expect.oneCall(registryMaster, interfaces, "getKeys");
-        Interface[] result = subject.getKeys();
-        assertEquals(interfaces, result);
-    }
 }

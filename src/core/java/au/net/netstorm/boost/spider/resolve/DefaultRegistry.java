@@ -8,25 +8,21 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
-    private final RegistryMaster registryMaster;
+    private final RegistryEngine registryEngine;
 
-    public DefaultRegistry(RegistryMaster registryMaster) {
-        this.registryMaster = registryMaster;
+    public DefaultRegistry(RegistryEngine registryEngine) {
+        this.registryEngine = registryEngine;
     }
 
     public void prototype(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryMaster.implementation(inyerface, implementation);
+        registryEngine.implementation(inyerface, implementation);
     }
 
     public void instance(Class iface, Object ref) {
         Interface inyerface = new DefaultInterface(iface);
         ResolvedInstance instance = new DefaultBaseReference(ref);
-        registryMaster.instance(inyerface, instance);
-    }
-
-    public Interface[] getKeys() {
-        return registryMaster.getKeys();
+        registryEngine.instance(inyerface, instance);
     }
 }

@@ -4,7 +4,6 @@ import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1676 Test drive.  This triggers work on "compose".
 public final class DefaultSpider implements Spider {
@@ -38,9 +37,5 @@ public final class DefaultSpider implements Spider {
 
     public void instance(Class iface, Object ref) {
         registry.instance(iface, ref);
-    }
-
-    public Interface[] getKeys() {
-        return registry.getKeys();
     }
 }
