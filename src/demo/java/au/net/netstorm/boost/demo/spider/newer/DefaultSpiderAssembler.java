@@ -101,8 +101,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     /*
                   _.._
                 .SPIDER.
-               /        \
-            ,  \   ><   |  ,
+               /   []   \
+            ,  \   <>   |  ,
            . \  \      /  / .
             \_'--`(  )'--'_/
               .--'/()\'--.
