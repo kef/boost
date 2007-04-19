@@ -3,7 +3,7 @@ package au.net.netstorm.boost.spider.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.spider.resolve.Resolver;
+import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
@@ -14,7 +14,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase {
     Interface happyChap = new DefaultInterface(HappyChap.class);
     FieldResolver subject;
     Field field = someField();
-    Resolver resolver;
+    ResolverEngine resolver;
     ResolvedInstance resolved;
 
     public void setupSubjects() {

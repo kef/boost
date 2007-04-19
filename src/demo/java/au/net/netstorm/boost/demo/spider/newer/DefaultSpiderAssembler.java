@@ -29,10 +29,10 @@ import au.net.netstorm.boost.spider.onion.Onionizer;
 import au.net.netstorm.boost.spider.onion.PassThroughInvocationHandler;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
-import au.net.netstorm.boost.spider.resolve.DefaultResolver;
+import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.RegistryMaster;
-import au.net.netstorm.boost.spider.resolve.Resolver;
+import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -53,7 +53,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         RegistryMaster registryMaster = new DefaultRegistryMaster();
         Registry registry = new DefaultRegistry(registryMaster);
-        Resolver resolver = new DefaultResolver(passThroughProvider, registryMaster);
+        ResolverEngine resolver = new DefaultResolverEngine(passThroughProvider, registryMaster);
         InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolver);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
@@ -67,13 +67,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private InjectorEngine assembleInjector(ProxyFactory proxyFactory, ProviderEngine providerEngine, Instantiator instantiator, Resolver resolver) {
+    private InjectorEngine assembleInjector(ProxyFactory proxyFactory, ProviderEngine providerEngine, Instantiator instantiator, ResolverEngine resolver) {
         InjectorEngine newer = assembleNewerInjector(proxyFactory, providerEngine, instantiator);
         InjectorEngine injector = assembleResolverInjector(resolver);
         return new CitizenInjectorEngine(newer, injector);
     }
 
-    private ResolverInjectorEngine assembleResolverInjector(Resolver resolver) {
+    private ResolverInjectorEngine assembleResolverInjector(ResolverEngine resolver) {
         ResolverFieldFinder finder = new DefaultResolverFieldFinder();
         FieldResolver fieldResolver = new DefaultFieldResolver(resolver);
         return new ResolverInjectorEngine(finder, fieldResolver);

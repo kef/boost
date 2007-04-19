@@ -10,13 +10,13 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.InterfaceUtil;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolver implements Resolver {
+public final class DefaultResolverEngine implements ResolverEngine {
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final ProviderEngine provider;
     private final Finder finder;
 
-    public DefaultResolver(ProviderEngine provider, Finder finder) {
+    public DefaultResolverEngine(ProviderEngine provider, Finder finder) {
         this.provider = provider;
         this.finder = finder;
     }

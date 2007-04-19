@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.spider.core;
 import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Registry;
-import au.net.netstorm.boost.spider.resolve.Resolver;
+import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -12,10 +12,10 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultSpider implements Spider {
     private final Provider provider;
     private final Injector injector;
-    private final Resolver resolver;
+    private final ResolverEngine resolver;
     private final Registry registry;
 
-    public DefaultSpider(Provider provider, Injector injector, Resolver resolver, Registry registry) {
+    public DefaultSpider(Provider provider, Injector injector, ResolverEngine resolver, Registry registry) {
         this.provider = provider;
         this.injector = injector;
         this.resolver = resolver;

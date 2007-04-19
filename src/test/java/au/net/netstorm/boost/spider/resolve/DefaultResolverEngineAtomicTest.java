@@ -8,8 +8,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolverAtomicTest extends InteractionTestCase {
-    Resolver subject;
+public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
+    ResolverEngine subject;
     ProviderEngine provider;
     RegistryMaster registryMaster;
     ResolvedInstance jimInstance;
@@ -23,7 +23,7 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
     Object[] noparams = {};
 
     public void setupSubjects() {
-        subject = new DefaultResolver(provider, registryMaster);
+        subject = new DefaultResolverEngine(provider, registryMaster);
     }
 
     public void testNoUnresolvedDependencies() {
