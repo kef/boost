@@ -13,5 +13,6 @@ public interface Finder {
 
     boolean hasImplementation(Interface iface);
 
+    // FIX 1914 Merge with the one in Registry.
     Interface[] getKeys();
 }
