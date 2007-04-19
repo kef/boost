@@ -9,8 +9,9 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
     private static final Class FRUITY = Fruity.class;
     Resolver subject;
     ResolverEngine resolverEngine;
-    ResolvedInstance resolved;
+    ResolvedInstance resolvedInstance;
     Interface fruity = new DefaultInterface(FRUITY);
+    Object resolved = this;
 
     public void setupSubjects() {
         subject = new DefaultResolver(resolverEngine);
@@ -18,7 +19,9 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
 
     // FIX 1914 Complete this.
     public void testResolve() {
-        expect.oneCall(resolverEngine, resolved, "resolve", fruity);
+        expect.oneCall(resolverEngine, resolvedInstance, "resolve", fruity);
+        expect.oneCall(resolvedInstance, resolved, "getRef");
         Object result = subject.resolve(FRUITY);
+        assertEquals(resolved, result);
     }
 }
