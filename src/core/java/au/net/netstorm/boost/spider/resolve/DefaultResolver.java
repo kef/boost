@@ -5,6 +5,7 @@ public final class DefaultResolver implements Resolver {
     public DefaultResolver(ResolverEngine engine) {
     }
 
-    public void resolve(Class type) {
+    public Object resolve(Class type) {
+        return null;
     }
 }
