@@ -12,6 +12,17 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map registrations = new HashMap();
 
+    public void implementation(Interface iface, Implementation implementation) {
+        barfIfExists(iface);
+        registrations.put(iface, implementation);
+    }
+
+    public void instance(Interface iface, ResolvedInstance instance) {
+        barfIfInstanceIsClass(instance);
+        barfIfExists(iface);
+        registrations.put(iface, instance);
+    }
+
     public Implementation getImplementation(Interface iface) {
         if (hasInstance(iface)) throw new WrongRegistrationTypeException(iface);
         return (Implementation) get(iface);
@@ -26,24 +37,13 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return has(iface, Implementation.class);
     }
 
-    public Interface[] getKeys() {
-        Set set = registrations.keySet();
-        return (Interface[]) set.toArray(new Interface[]{});
-    }
-
     public boolean hasInstance(Interface iface) {
         return has(iface, ResolvedInstance.class);
     }
 
-    public void implementation(Interface iface, Implementation implementation) {
-        barfIfExists(iface);
-        registrations.put(iface, implementation);
-    }
-
-    public void instance(Interface iface, ResolvedInstance instance) {
-        barfIfInstanceIsClass(instance);
-        barfIfExists(iface);
-        registrations.put(iface, instance);
+    public Interface[] getKeys() {
+        Set set = registrations.keySet();
+        return (Interface[]) set.toArray(new Interface[]{});
     }
 
     private void barfIfInstanceIsClass(ResolvedInstance instance) {
