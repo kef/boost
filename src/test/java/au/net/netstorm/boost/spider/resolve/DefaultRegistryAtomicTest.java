@@ -20,14 +20,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     ResolvedInstance rollInstance = new DefaultBaseReference(damienInstance);
     Class iface;
     RegistryMaster registryMaster;
-    Boolean hasImplementation;
-    Boolean hasInstance;
-    Interface someInterface;
-    Implementation implementation;
-    ResolvedInstance instance;
-    Class implClass;
-    Object ref;
-    Interface[] interfaces;
 
     public void setupSubjects() {
         subject = new DefaultRegistry(registryMaster);
