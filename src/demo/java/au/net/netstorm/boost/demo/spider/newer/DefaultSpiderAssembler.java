@@ -7,6 +7,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.core.CitizenInjectorEngine;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
+import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
@@ -29,9 +30,11 @@ import au.net.netstorm.boost.spider.onion.Onionizer;
 import au.net.netstorm.boost.spider.onion.PassThroughInvocationHandler;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
+import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.RegistryMaster;
+import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
@@ -52,13 +55,18 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         RegistryMaster registryMaster = new DefaultRegistryMaster();
-        Registry registry = new DefaultRegistry(registryMaster);
-        ResolverEngine resolver = new DefaultResolverEngine(passThroughProvider, registryMaster);
-        InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolver);
+        ResolverEngine resolverEngine = new DefaultResolverEngine(passThroughProvider, registryMaster);
+        InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        DefaultProvider provider = new DefaultProvider(providerEngine);
+        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
+    }
+
+    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryMaster registryMaster) {
+        Provider provider = new DefaultProvider(providerEngine);
+        Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
+        Registry registry = new DefaultRegistry(registryMaster);
         return new DefaultSpider(provider, injector, resolver, registry);
     }
 

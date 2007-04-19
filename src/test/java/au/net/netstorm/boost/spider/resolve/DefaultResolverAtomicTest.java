@@ -17,7 +17,6 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase {
         subject = new DefaultResolver(resolverEngine);
     }
 
-    // FIX 1914 Complete this.
     public void testResolve() {
         expect.oneCall(resolverEngine, resolvedInstance, "resolve", fruity);
         expect.oneCall(resolvedInstance, resolved, "getRef");
