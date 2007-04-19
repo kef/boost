@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public interface Finder {
+public interface FinderEngine {
     Implementation getImplementation(Interface iface);
 
     ResolvedInstance getInstance(Interface iface);
@@ -13,6 +13,5 @@ public interface Finder {
 
     boolean hasInstance(Interface iface);
 
-    // FIX 1914 Merge with the one in Registry.
     Interface[] getKeys();
 }

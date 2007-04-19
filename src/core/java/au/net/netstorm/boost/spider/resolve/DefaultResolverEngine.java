@@ -14,9 +14,9 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final ProviderEngine provider;
-    private final Finder finder;
+    private final FinderEngine finder;
 
-    public DefaultResolverEngine(ProviderEngine provider, Finder finder) {
+    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder) {
         this.provider = provider;
         this.finder = finder;
     }

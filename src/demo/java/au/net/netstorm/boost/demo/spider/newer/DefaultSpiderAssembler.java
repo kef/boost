@@ -32,7 +32,7 @@ import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
-import au.net.netstorm.boost.spider.resolve.Finder;
+import au.net.netstorm.boost.spider.resolve.FinderEngine;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.RegistryEngine;
 import au.net.netstorm.boost.spider.resolve.RegistryMaster;
@@ -57,7 +57,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         RegistryMaster registryMaster = new DefaultRegistryMaster();
-        Finder finder = registryMaster;
+        FinderEngine finder = registryMaster;
         RegistryEngine registryEngine = registryMaster;
         ResolverEngine resolverEngine = new DefaultResolverEngine(passThroughProvider, finder);
         InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolverEngine);
