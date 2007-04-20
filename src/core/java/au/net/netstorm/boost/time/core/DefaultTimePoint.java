@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
+// FIX 1914 Rename to Millis.  Consider introducing Seconds class.
+
 // FIX SC502 Should be "immutable", not "Data".
 public final class DefaultTimePoint implements TimePoint {
     private static final long EPOCH_MILLIS = 0L;
