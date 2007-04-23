@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.time.core;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
+import au.net.netstorm.boost.spider.core.GoodCitizen;
 
-public final class DefaultClock implements Clock {
+public final class DefaultClock implements Clock, GoodCitizen {
     TimePointMaster drWho;
     EdgeSystem system;
 
