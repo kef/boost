@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.spider.core;
 
-public interface Citizen {
+public interface GoodCitizen {
 }
