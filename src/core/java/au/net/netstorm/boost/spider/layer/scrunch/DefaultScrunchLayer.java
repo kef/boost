@@ -12,4 +12,7 @@ public final class DefaultScrunchLayer implements ScrunchLayer {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         return method.invoke(next, args);
     }
+
+    public void scrunch() {
+    }
 }
