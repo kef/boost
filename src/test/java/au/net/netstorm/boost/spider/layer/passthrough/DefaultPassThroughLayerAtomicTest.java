@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.layer;
+package au.net.netstorm.boost.spider.layer.passthrough;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
