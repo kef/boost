@@ -2,7 +2,7 @@ package au.net.netstorm.boost.spider.layer;
 
 import java.lang.reflect.Method;
 
-public final class DefaultPassThroughInvocationHandler implements PassThroughInvocationHandler {
+public final class DefaultPassThroughLayer implements PassThroughLayer {
     private Object delegate;
 
     public Object invoke(Object proxy, Method method, Object[] parameters) throws Throwable {

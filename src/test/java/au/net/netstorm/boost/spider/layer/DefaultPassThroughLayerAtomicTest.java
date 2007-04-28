@@ -7,7 +7,7 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
-public final class DefaultPassThroughInvovationHandlerAtomicTest extends BoooostCase {
+public final class DefaultPassThroughLayerAtomicTest extends BoooostCase {
     private static final Class[] PARAMETER_TYPES = {Object.class};
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private Map map = new HashMap();
@@ -17,10 +17,10 @@ public final class DefaultPassThroughInvovationHandlerAtomicTest extends Boooost
 
     public void testHandler() throws Throwable {
         map.put(key, value);
-        PassThroughInvocationHandler handler = new DefaultPassThroughInvocationHandler();
-        handler.setDelegate(map);
+        PassThroughLayer layer = new DefaultPassThroughLayer();
+        layer.setDelegate(map);
         Method isEmptyMethod = edgeClass.getMethod(Map.class, "get", PARAMETER_TYPES);
-        Object actual = handler.invoke(map, isEmptyMethod, parameters);
+        Object actual = layer.invoke(map, isEmptyMethod, parameters);
         assertEquals(value, actual);
     }
 }

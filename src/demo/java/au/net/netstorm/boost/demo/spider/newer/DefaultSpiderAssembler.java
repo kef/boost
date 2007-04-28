@@ -24,8 +24,8 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolverFieldFi
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.spider.layer.DefaultPassThroughInvocationHandler;
-import au.net.netstorm.boost.spider.layer.PassThroughInvocationHandler;
+import au.net.netstorm.boost.spider.layer.DefaultPassThroughLayer;
+import au.net.netstorm.boost.spider.layer.PassThroughLayer;
 import au.net.netstorm.boost.spider.onion.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.Onionizer;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
@@ -53,7 +53,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     public Spider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
-        PassThroughInvocationHandler passThrough = new DefaultPassThroughInvocationHandler();
+        PassThroughLayer passThrough = new DefaultPassThroughLayer();
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         RegistryMaster registryMaster = new DefaultRegistryMaster();
