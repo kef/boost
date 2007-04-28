@@ -15,6 +15,7 @@ public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase {
     Object value;
     Class[] addMethodTypes = {Object.class};
 
+    // FIX 1936 Testing this becomes a whole lot easier when ONION w/ outside/inside is complete.
     public void setupSubjects() {
         subject = new DefaultScrunchLayer(next);
     }
@@ -28,13 +29,10 @@ public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase {
 
     public void testScrunch() throws Throwable {
         subject.scrunch();
-        // FIX 1936 Reinstate.
-/*
         try {
             addThroughLayer();
             fail();
         } catch (ScrunchException expected) { }
-*/
     }
 
     private void addThroughLayer() throws Throwable {
