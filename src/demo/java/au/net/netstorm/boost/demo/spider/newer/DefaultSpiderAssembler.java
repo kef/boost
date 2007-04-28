@@ -24,10 +24,10 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolverFieldFi
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
+import au.net.netstorm.boost.spider.layer.DefaultPassThroughInvocationHandler;
+import au.net.netstorm.boost.spider.layer.PassThroughInvocationHandler;
 import au.net.netstorm.boost.spider.onion.BermudaOnionizer;
-import au.net.netstorm.boost.spider.onion.DefaultPassThroughInvocationHandler;
 import au.net.netstorm.boost.spider.onion.Onionizer;
-import au.net.netstorm.boost.spider.onion.PassThroughInvocationHandler;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
@@ -45,10 +45,10 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
-    private final Class citizen;
+    private final Interface citizen;
 
     public DefaultSpiderAssembler(Class citizen) {
-        this.citizen = citizen;
+        this.citizen = new DefaultInterface(citizen);
     }
 
     public Spider assemble() {
@@ -99,8 +99,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
         Onionizer onionizer = new BermudaOnionizer();
-        Interface marker = new DefaultInterface(citizen);
-        return new DefaultProviderEngine(marker, onionizer, injector, instantiator);
+        return new DefaultProviderEngine(citizen, onionizer, injector, instantiator);
     }
     /*
                   _.._
