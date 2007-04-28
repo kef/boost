@@ -15,12 +15,14 @@ public final class DefaultPassThroughLayerAtomicTest extends BoooostCase {
     private Object value = new Object();
     private Object[] parameters = {key};
 
+    // FIX 1936 Do the "put" as well.
+    // FIX 1936 Need to triangulate and test more modes.
     public void testHandler() throws Throwable {
         map.put(key, value);
         PassThroughLayer layer = new DefaultPassThroughLayer();
         layer.setDelegate(map);
-        Method isEmptyMethod = edgeClass.getMethod(Map.class, "get", PARAMETER_TYPES);
-        Object actual = layer.invoke(map, isEmptyMethod, parameters);
+        Method getMethod = edgeClass.getMethod(Map.class, "get", PARAMETER_TYPES);
+        Object actual = layer.invoke(map, getMethod, parameters);
         assertEquals(value, actual);
     }
 }
