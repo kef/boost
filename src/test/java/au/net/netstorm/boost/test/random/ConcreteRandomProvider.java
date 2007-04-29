@@ -6,9 +6,6 @@ import java.util.Random;
 public final class ConcreteRandomProvider implements RandomProvider {
     private Random random = new Random();
 
-    private interface InternalInterface {
-    }
-
     public Object get(Class type) {
         Object result = doGetRandom(type);
         if (result != null) return result;
@@ -30,7 +27,7 @@ public final class ConcreteRandomProvider implements RandomProvider {
     }
 
     private Class randomClass() {
-        return InternalInterface.class;
+        return LovelyInterface.class;
     }
 
     private String randomString() {
