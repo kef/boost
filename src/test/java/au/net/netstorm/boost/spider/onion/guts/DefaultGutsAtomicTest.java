@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.onion;
+package au.net.netstorm.boost.spider.onion.guts;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -14,18 +14,35 @@ public final class DefaultGutsAtomicTest extends InteractionTestCase {
     List guts = new ArrayList();
     Method add = method("add", new Class[]{Object.class});
     Method size = method("size", new Class[]{});
+    Method toarray = method("toArray", new Class[]{});
     Object[] args = {this};
+    Object[] noargs = {};
+    Object[] elements = {this, this};
 
     public void setupSubjects() {
         subject = new DefaultGuts(guts);
     }
 
-    // FIX 1936 Implement "add".
-    // FIX 1936 Implement "size" to check return values.
     public void testGuts() {
+        add();
+        add();
+        size();
+        toarray();
+    }
+
+    private void add() {
         Object result = subject.invoke(add, args);
         assertEquals(true, result);
-        assertEquals(this, guts.get(0));
+    }
+
+    private void size() {
+        Object result = subject.invoke(size, noargs);
+        assertEquals(2, result);
+    }
+
+    private void toarray() {
+        Object[] result = (Object[]) subject.invoke(toarray, noargs);
+        assertEquals(elements, result);
     }
 
     private Method method(String name, Class[] parameters) {

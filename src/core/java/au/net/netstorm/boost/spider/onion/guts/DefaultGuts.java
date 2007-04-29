@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.onion;
+package au.net.netstorm.boost.spider.onion.guts;
 
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
