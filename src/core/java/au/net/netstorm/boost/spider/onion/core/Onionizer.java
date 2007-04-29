@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.onion;
+package au.net.netstorm.boost.spider.onion.core;
 
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 

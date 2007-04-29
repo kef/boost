@@ -2,7 +2,7 @@ package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
-import au.net.netstorm.boost.spider.onion.Onionizer;
+import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;

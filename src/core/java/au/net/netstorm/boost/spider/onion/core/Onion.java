@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.onion;
+package au.net.netstorm.boost.spider.onion.core;
 
 // FIX 1936 Create "Core".  This should implement Layer and call the core object.
 

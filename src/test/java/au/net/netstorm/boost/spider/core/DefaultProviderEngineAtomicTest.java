@@ -4,7 +4,7 @@ import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.gaijin.Gaijinator;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
-import au.net.netstorm.boost.spider.onion.Onionizer;
+import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;

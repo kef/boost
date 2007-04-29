@@ -1,10 +1,10 @@
-package au.net.netstorm.boost.spider.onion;
+package au.net.netstorm.boost.spider.onion.core;
 
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class BermudaOnionAtomicTest extends InteractionTestCase {
+public final class BermudaOnionizerAtomicTest extends InteractionTestCase {
     Onionizer subject;
     BaseReference resolved;
 
