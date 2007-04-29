@@ -1,10 +1,14 @@
 package au.net.netstorm.boost.test.random;
 
+import java.lang.reflect.Method;
 import java.util.Random;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
 public final class ConcreteRandomProvider implements RandomProvider {
     private Random random = new Random();
+    private EdgeClass classer = new DefaultEdgeClass();
 
     public Object get(Class type) {
         Object result = doGetRandom(type);
@@ -23,6 +27,7 @@ public final class ConcreteRandomProvider implements RandomProvider {
         if (type == String.class) return randomString();
         if (type == Class.class) return randomClass();
         if (type == Object.class) return randomObject();
+        if (type == Method.class) return randomMethod();
         return null;
     }
 
@@ -67,6 +72,10 @@ public final class ConcreteRandomProvider implements RandomProvider {
 
     private Object randomObject() {
         return new Object();
+    }
+
+    private Method randomMethod() {
+        return classer.getMethod(LovelyInterface.class, "gorgeous", new Class[]{});
     }
 } // } OK JavaNCSS|CyclomaticComplexity|ReturnCount
 
