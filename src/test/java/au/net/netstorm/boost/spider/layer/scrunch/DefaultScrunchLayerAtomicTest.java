@@ -19,7 +19,6 @@ public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase {
         subject = new DefaultScrunchLayer(next);
     }
 
-    // FIX 1936 Complete.
     public void testUsable() {
         expect.oneCall(next, returned, "invoke", method, parameters);
         Object result = subject.invoke(method, parameters);
