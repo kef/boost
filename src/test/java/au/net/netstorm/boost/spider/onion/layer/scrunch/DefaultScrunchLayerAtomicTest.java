@@ -10,9 +10,8 @@ public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase {
     EdgeClass edgeClass = new DefaultEdgeClass();
     ScrunchLayer subject;
     Layer next;
-    Object value;
     Object returned;
-    Object[] parameters = new Object[]{value};
+    Object[] parameters;
     Method method;
 
     public void setupSubjects() {
