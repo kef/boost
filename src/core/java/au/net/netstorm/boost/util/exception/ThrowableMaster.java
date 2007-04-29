@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.util.exception;
 
-public interface ExceptionMaster {
+public interface ThrowableMaster {
     boolean isChecked(Throwable t);
 }
