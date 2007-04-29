@@ -17,6 +17,7 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
     // FIX 1936 Check Throwable.
     // FIX 1936 Check Runtime.
     // FIX 1936 Check subclass of Runtime.
+    // FIX 1936 Check subclass of Throwable.
     public void testChecked() {
         isChecked(true, EXCEPTION_1);
         isChecked(true, EXCEPTION_2);
