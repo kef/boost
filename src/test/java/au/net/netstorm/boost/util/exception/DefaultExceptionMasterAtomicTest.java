@@ -12,6 +12,7 @@ public final class DefaultExceptionMasterAtomicTest extends BoooostCase {
     // FIX 1936 Check Throwable.
     // FIX 1936 Check Runtime.
     // FIX 1936 Check subclass of Runtime.
-    public void testXxx() {
+    public void testType() {
+        boolean result = subject.isChecked(new RuntimeException());
     }
 }
