@@ -18,6 +18,7 @@ public final class DefaultPassThroughLayerAtomicTest extends BoooostCase {
     // FIX 1936 Testing this becomes a whole lot easier when ONION w/ outside/inside is complete.
     // FIX 1936 Do the "put" as well.
     // FIX 1936 Need to triangulate and test more modes.
+    // FIX 1936 Drive up a ThrowableUtil.
     public void testHandler() throws Throwable {
         map.put(key, value);
         PassThroughLayer layer = new DefaultPassThroughLayer();
