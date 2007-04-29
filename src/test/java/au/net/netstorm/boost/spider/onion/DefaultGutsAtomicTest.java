@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.onion;
 
 import java.lang.reflect.Method;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
@@ -11,7 +11,7 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 public final class DefaultGutsAtomicTest extends InteractionTestCase {
     EdgeClass classer = new DefaultEdgeClass();
     Guts subject;
-    Set guts = new HashSet();
+    List guts = new ArrayList();
     Method add = method("add", new Class[]{Object.class});
     Method size = method("size", new Class[]{});
     Object[] args = {this};
@@ -25,9 +25,11 @@ public final class DefaultGutsAtomicTest extends InteractionTestCase {
     public void testGuts() {
         Object result = subject.invoke(add, args);
         assertEquals(true, result);
+        assertEquals(this, guts.get(0));
     }
 
     private Method method(String name, Class[] parameters) {
-        return classer.getMethod(HashSet.class, name, parameters);
+        Class cls = guts.getClass();
+        return classer.getMethod(cls, name, parameters);
     }
 }
