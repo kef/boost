@@ -1,9 +1,9 @@
-package au.net.netstorm.boost.spider.layer.scrunch;
+package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.spider.layer.core.Layer;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase {

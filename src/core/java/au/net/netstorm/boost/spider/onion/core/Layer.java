@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.layer.core;
+package au.net.netstorm.boost.spider.onion.core;
 
 import java.lang.reflect.Method;
 

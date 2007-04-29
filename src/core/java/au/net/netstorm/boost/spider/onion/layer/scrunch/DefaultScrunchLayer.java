@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.spider.layer.scrunch;
+package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import java.lang.reflect.Method;
-import au.net.netstorm.boost.spider.layer.core.Layer;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultScrunchLayer implements ScrunchLayer {
     private final Layer next;

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.layer.scrunch;
+package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import au.net.netstorm.boost.primordial.BoostException;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;

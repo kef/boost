@@ -24,10 +24,10 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolverFieldFi
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.spider.layer.passthrough.DefaultPassThroughLayer;
-import au.net.netstorm.boost.spider.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
+import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
+import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
