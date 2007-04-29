@@ -7,7 +7,6 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-// FIX 1936 Move to separate package.
 public final class DefaultGutsAtomicTest extends InteractionTestCase {
     EdgeClass classer = new DefaultEdgeClass();
     Guts subject;
