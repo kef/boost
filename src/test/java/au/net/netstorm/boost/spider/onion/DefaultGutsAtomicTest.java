@@ -20,8 +20,11 @@ public final class DefaultGutsAtomicTest extends InteractionTestCase {
         subject = new DefaultGuts(guts);
     }
 
+    // FIX 1936 Implement "add".
+    // FIX 1936 Implement "size" to check return values.
     public void testGuts() {
         Object result = subject.invoke(add, args);
+        assertEquals(true, result);
     }
 
     private Method method(String name, Class[] parameters) {

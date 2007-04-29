@@ -7,6 +7,6 @@ public final class DefaultGuts implements Guts {
     }
 
     public Object invoke(Method method, Object[] parameters) {
-        return null;
+        return Boolean.TRUE;
     }
 }
