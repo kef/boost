@@ -4,6 +4,6 @@ package au.net.netstorm.boost.util.exception;
 public final class DefaultExceptionMaster implements ExceptionMaster {
     public boolean isChecked(Throwable t) {
         // FIX 1936 Complete.
-        return true;
+        return false;
     }
 }
