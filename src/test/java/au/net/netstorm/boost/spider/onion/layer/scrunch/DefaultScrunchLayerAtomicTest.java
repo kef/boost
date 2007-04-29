@@ -8,8 +8,8 @@ public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase {
     ScrunchLayer subject;
     Layer next;
     Object returned;
-    Object[] parameters;
     Method method;
+    Object[] parameters;
 
     public void setupSubjects() {
         subject = new DefaultScrunchLayer(next);
