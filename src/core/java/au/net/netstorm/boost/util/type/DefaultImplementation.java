@@ -41,6 +41,9 @@ public final class DefaultImplementation extends Primordial implements Implement
     }
 
     private void validate() {
-        if (impl.isInterface()) throw new IllegalArgumentException("Not an implementation " + impl);
+        if (impl.isInterface()) {
+            String failMessage = impl + " should be an implementation and not an interface.";
+            throw new IllegalArgumentException(failMessage);
+        }
     }
 }
