@@ -12,8 +12,8 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     ResolverEngine subject;
     ProviderEngine provider;
     RegistryMaster registryMaster;
-    ResolvedInstance jimInstance;
-    ResolvedInstance jackInstance;
+    ResolvedInstance jimResolvedInstance;
+    ResolvedInstance jackResolvedInstance;
     Interface jim = iface(Jim.class);
     Interface jack = iface(Jack.class);
     Interface spoo = iface(Spoo.class);
@@ -21,6 +21,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     Implementation jackImpl = impl(OneArgJack.class);
     ResolvedInstance spooInstance;
     Object[] noparams = {};
+    Jim jimInstance = new NoArgJim();
 
     public void setupSubjects() {
         subject = new DefaultResolverEngine(provider, registryMaster);
@@ -29,20 +30,21 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     public void testNoUnresolvedDependencies() {
         expect.oneCall(registryMaster, false, "hasInstance", jim);
         expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
-        expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
+        expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
         ResolvedInstance result = subject.resolve(jim);
-        assertEquals(jimInstance, result);
+        assertEquals(jimResolvedInstance, result);
     }
 
     public void testOneUnresolvedDependencies() {
         expect.oneCall(registryMaster, false, "hasInstance", jack);
         expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
-        expect.oneCall(provider, jimInstance, "provide", jimImpl, noparams);
+        expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
+        expect.oneCall(jimResolvedInstance, jimInstance, "getRef");
         expect.oneCall(registryMaster, false, "hasInstance", jim);
         expect.oneCall(registryMaster, jackImpl, "getImplementation", jack);
-        expect.oneCall(provider, jackInstance, "provide", jackImpl, new Object[]{jimInstance});
+        expect.oneCall(provider, jackResolvedInstance, "provide", jackImpl, new Object[]{jimInstance});
         ResolvedInstance result = subject.resolve(jack);
-        assertEquals(jackInstance, result);
+        assertEquals(jackResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
