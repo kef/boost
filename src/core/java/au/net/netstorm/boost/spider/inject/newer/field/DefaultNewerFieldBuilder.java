@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultFieldBuilder implements NewerFieldBuilder {
+public final class DefaultNewerFieldBuilder implements NewerFieldBuilder {
     private static final Object IGNORED = new Object();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
     private final EdgeField edgeField = new DefaultEdgeField();

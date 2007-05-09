@@ -10,7 +10,7 @@ import java.util.Set;
 public final class DefaultNewerFieldFinder implements NewerFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
     private NewerFieldInspector newerFieldInspector = new DefaultNewerFieldInspector();
-    private NewerFieldBuilder newerFieldBuilder = new DefaultFieldBuilder();
+    private NewerFieldBuilder newerFieldBuilder = new DefaultNewerFieldBuilder();
 
     public NewerField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
