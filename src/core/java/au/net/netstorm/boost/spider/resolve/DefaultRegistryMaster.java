@@ -3,13 +3,16 @@ package au.net.netstorm.boost.spider.resolve;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
+    private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final Map registrations = new HashMap();
 
     public void implementation(Interface iface, Implementation implementation) {
@@ -38,6 +41,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public boolean hasInstance(Interface iface) {
+        if (iface.is(NEWER)) return true;
         return has(iface, ResolvedInstance.class);
     }
 

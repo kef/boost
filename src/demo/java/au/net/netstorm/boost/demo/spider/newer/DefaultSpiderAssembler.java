@@ -72,7 +72,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
         Registry registry = new DefaultRegistry(registryEngine);
-        return new DefaultSpider(provider, injector, resolver, registry, newerSupplier);
+        return new DefaultSpider(provider, injector, resolver, registry);
     }
 
     private ProxyFactory assembleProxyFactory() {
