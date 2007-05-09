@@ -4,7 +4,7 @@ import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
-public final class DefaultNewerBuilderAtomicTest extends BoooostCase {
+public final class DefaultNewerAssemblerAtomicTest extends BoooostCase {
     NewerAssembler subject = new DefaultNewerAssembler();
 
     public void testAssemble() {
