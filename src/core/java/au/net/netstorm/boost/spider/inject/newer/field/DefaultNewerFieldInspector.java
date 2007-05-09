@@ -18,6 +18,7 @@ import au.net.netstorm.boost.util.type.Interface;
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     private static final Interface NEWER_MARKER = new DefaultInterface(Newer.class);
+    private static final Object IGNORED = new Object();
     // FIX 1665 Should be passed in via the constructor.
     private final EdgeField edgeField = new DefaultEdgeField();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
@@ -25,30 +26,25 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     // FIX 1665 Barf if NewerInterface does not contain CLASS_TO_NU field?
     public boolean isNewer(Object ref, Field field) {
         if (isFinal(field)) return false;
-        if (!isNull(field, ref)) return false;
+        if (!isNull(ref, field)) return false;
         if (!nameStartsWith(field, "new")) return false;
         checkImplementsMarker(field);
         return true;
     }
 
     // FIX 1665 To thick and fat.
-    public NewerField getNewer(Object ref, Field field) {
-        if (!isNewer(ref, field)) throw new IllegalStateException("Not a newer field");
-        return doGetNewer(field, ref);
-    }
-
-    private NewerField doGetNewer(Field field, Object ref) {
+    public NewerField convert(Field field) {
         Class newerType = field.getType();
         Interface newerInterface = new DefaultInterface(newerType);
-        Implementation classToNu = getClasstoNu(newerType, ref);
+        Implementation classToNu = getClasstoNu(newerType);
         String fieldName = field.getName();
         return new DefaultNewerField(newerInterface, classToNu, fieldName);
     }
 
-    private Implementation getClasstoNu(Class newerType, Object ref) {
+    private Implementation getClasstoNu(Class newerType) {
         Field classToNuField = edgeClass.getDeclaredField(newerType, "CLASS_TO_NU");
         classToNuField.setAccessible(true);
-        Class classToNu = (Class) edgeField.get(classToNuField, ref);
+        Class classToNu = (Class) edgeField.get(classToNuField, IGNORED);
         return new DefaultImplementation(classToNu);
     }
 
@@ -65,7 +61,7 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
         return name.startsWith(prefix);
     }
 
-    private boolean isNull(Field field, Object ref) {
+    private boolean isNull(Object ref, Field field) {
         field.setAccessible(true);
         Object value = edgeField.get(field, ref);
         return value == null;

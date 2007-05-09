@@ -31,7 +31,7 @@ public final class DefaultNewerFieldFinder implements NewerFieldFinder {
 
     private void add(Set result, Field field, Object ref) {
         if (!newerFieldInspector.isNewer(ref, field)) return;
-        NewerField newer = newerFieldInspector.getNewer(ref, field);
+        NewerField newer = newerFieldInspector.convert(field);
         result.add(newer);
     }
 }
