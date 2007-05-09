@@ -92,9 +92,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     }
 
     private InjectorEngine assembleNewerInjector(ProxyFactory proxyFactory, ProviderEngine provider, Instantiator instantiator) {
-        NewerProxySupplier supplier = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
+        NewerProxySupplier newerSupplier = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
         NewerFieldFinder finder = new DefaultNewerFieldFinder();
-        return new NewerProxyInjectorEngine(supplier, finder);
+        return new NewerProxyInjectorEngine(newerSupplier, finder);
     }
 
     private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
