@@ -10,6 +10,7 @@ import java.util.Set;
 public final class DefaultNewerFieldFinder implements NewerFieldFinder {
     // FIX 1665 Should be passed in via the constructor.
     private NewerFieldInspector newerFieldInspector = new DefaultNewerFieldInspector();
+    private NewerFieldBuilder newerFieldBuilder = new DefaultFieldBuilder();
 
     public NewerField[] find(Object ref) {
         Field[] declaredFields = getDeclaredFields(ref);
@@ -31,7 +32,7 @@ public final class DefaultNewerFieldFinder implements NewerFieldFinder {
 
     private void add(Set result, Field field, Object ref) {
         if (!newerFieldInspector.isNewer(ref, field)) return;
-        NewerField newer = newerFieldInspector.convert(field);
+        NewerField newer = newerFieldBuilder.build(field);
         result.add(newer);
     }
 }

@@ -2,15 +2,11 @@ package au.net.netstorm.boost.spider.inject.newer.field;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.newer.core.DoesNotImplementNewerException;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1665 Do we use this any more.  Yes.  Rename and tidy up
@@ -18,10 +14,8 @@ import au.net.netstorm.boost.util.type.Interface;
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     private static final Interface NEWER_MARKER = new DefaultInterface(Newer.class);
-    private static final Object IGNORED = new Object();
     // FIX 1665 Should be passed in via the constructor.
     private final EdgeField edgeField = new DefaultEdgeField();
-    private final EdgeClass edgeClass = new DefaultEdgeClass();
 
     // FIX 1665 Barf if NewerInterface does not contain CLASS_TO_NU field?
     public boolean isNewer(Object ref, Field field) {
@@ -30,22 +24,6 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
         if (!nameStartsWith(field, "new")) return false;
         checkImplementsMarker(field);
         return true;
-    }
-
-    // FIX 1665 To thick and fat.
-    public NewerField convert(Field field) {
-        Class newerType = field.getType();
-        Interface newerInterface = new DefaultInterface(newerType);
-        Implementation classToNu = getClasstoNu(newerType);
-        String fieldName = field.getName();
-        return new DefaultNewerField(newerInterface, classToNu, fieldName);
-    }
-
-    private Implementation getClasstoNu(Class newerType) {
-        Field classToNuField = edgeClass.getDeclaredField(newerType, "CLASS_TO_NU");
-        classToNuField.setAccessible(true);
-        Class classToNu = (Class) edgeField.get(classToNuField, IGNORED);
-        return new DefaultImplementation(classToNu);
     }
 
     private void checkImplementsMarker(Field field) {
