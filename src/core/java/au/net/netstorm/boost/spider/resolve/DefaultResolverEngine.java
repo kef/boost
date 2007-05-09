@@ -4,6 +4,11 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerAssembler;
+import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
+import au.net.netstorm.boost.spider.inject.newer.core.Newer;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
@@ -11,8 +16,10 @@ import au.net.netstorm.boost.util.type.InterfaceUtil;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngine implements ResolverEngine {
+    private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
+    private final NewerAssembler newerAssembler = new DefaultNewerAssembler();
     private final ProviderEngine provider;
     private final FinderEngine finder;
 
@@ -29,8 +36,8 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public ResolvedInstance resolve(Implementation impl) {
         Class[] parameters = getParameters(impl);
-        Object[] resolved = resolve(parameters);
-        return provider.provide(impl, resolved);
+        Object[] resolvedParams = resolve(parameters);
+        return provider.provide(impl, resolvedParams);
     }
 
     public Object[] resolve(Interface[] ifaces) {
@@ -57,11 +64,17 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance getInstance(Interface iface) {
         // FIX 1887 What about onionising the instance?
+        if (iface.is(NEWER)) return aNewer(iface);
         return finder.getInstance(iface);
     }
 
     private boolean hasInstance(Interface iface) {
+        if (iface.is(NEWER)) return true;
         return finder.hasInstance(iface);
+    }
+
+    private ResolvedInstance aNewer(Interface iface) {
+        return new DefaultBaseReference(newerAssembler.assemble(iface));
     }
 }
 /*

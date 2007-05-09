@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -17,6 +18,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     Interface jim = iface(Jim.class);
     Interface jack = iface(Jack.class);
     Interface spoo = iface(Spoo.class);
+    Interface newer = iface(NewDefaultTestDummy.class);
     Implementation jimImpl = impl(NoArgJim.class);
     Implementation jackImpl = impl(OneArgJack.class);
     ResolvedInstance spooInstance;
@@ -52,6 +54,12 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
         expect.oneCall(registryMaster, spooInstance, "getInstance", spoo);
         ResolvedInstance result = subject.resolve(spoo);
         assertEquals(spooInstance, result);
+    }
+
+    public void testResolveNewer() {
+        ResolvedInstance result = subject.resolve(newer);
+        NewDefaultTestDummy actualNewer = (NewDefaultTestDummy) result.getRef();
+        assertNotNull(actualNewer);
     }
 
     private Implementation impl(Class cls) {

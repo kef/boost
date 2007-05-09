@@ -3,20 +3,14 @@ package au.net.netstorm.boost.spider.resolve;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerAssembler;
-import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
-import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
-    private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final Map registrations = new HashMap();
-    private final NewerAssembler newerAssembler = new DefaultNewerAssembler();
 
     public void implementation(Interface iface, Implementation implementation) {
         barfIfExists(iface);
@@ -60,14 +54,12 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private Object get(Interface iface) {
-        if (iface.is(NEWER)) return newerAssembler.assemble(iface);
         Object value = registrations.get(iface);
         barfIfNull(value, iface);
         return value;
     }
 
     private boolean has(Interface iface, Class type) {
-        if (iface.is(NEWER)) return true;
         return checkRegister(iface, type);
     }
 
