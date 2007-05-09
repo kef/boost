@@ -52,10 +52,6 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         return (Interface[]) set.toArray(new Interface[]{});
     }
 
-    private boolean isANewer(Interface iface) {
-        return iface.is(NEWER);
-    }
-
     private void barfIfInstanceIsClass(ResolvedInstance instance) {
         Object ref = instance.getRef();
         if (ref instanceof Class) {
@@ -63,15 +59,19 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         }
     }
 
-    private Object get(Interface type) {
-        if (isANewer(type)) return newerAssembler.assemble(type);
-        Object value = registrations.get(type);
-        barfIfNull(value, type);
+    private Object get(Interface iface) {
+        if (iface.is(NEWER)) return newerAssembler.assemble(iface);
+        Object value = registrations.get(iface);
+        barfIfNull(value, iface);
         return value;
     }
 
     private boolean has(Interface iface, Class type) {
-        if (isANewer(iface)) return true;
+        if (iface.is(NEWER)) return true;
+        return checkRegister(iface, type);
+    }
+
+    private boolean checkRegister(Interface iface, Class type) {
         Object ref = registrations.get(iface);
         if (ref == null) return false;
         Class cls = ref.getClass();
