@@ -12,7 +12,7 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
-import au.net.netstorm.boost.spider.inject.newer.core.DefaultNewerProxySupplier;
+import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerProxySupplier;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerProxyInjectorEngine;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.spider.inject.newer.field.DefaultNewerFieldFinder;

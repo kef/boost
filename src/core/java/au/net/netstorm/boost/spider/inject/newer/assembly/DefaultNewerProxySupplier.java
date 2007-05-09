@@ -1,7 +1,9 @@
-package au.net.netstorm.boost.spider.inject.newer.core;
+package au.net.netstorm.boost.spider.inject.newer.assembly;
 
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.inject.newer.core.NewerInvocationHandler;
+import au.net.netstorm.boost.spider.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultImplementation;

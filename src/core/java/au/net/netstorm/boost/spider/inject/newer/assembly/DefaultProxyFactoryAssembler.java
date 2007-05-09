@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.inject.newer;
+package au.net.netstorm.boost.spider.inject.newer.assembly;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
