@@ -47,6 +47,7 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
 
     private Implementation getClasstoNu(Class newerType, Object ref) {
         Field classToNuField = edgeClass.getDeclaredField(newerType, "CLASS_TO_NU");
+        classToNuField.setAccessible(true);
         Class classToNu = (Class) edgeField.get(classToNuField, ref);
         return new DefaultImplementation(classToNu);
     }

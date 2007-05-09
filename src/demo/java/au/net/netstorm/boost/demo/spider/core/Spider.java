@@ -6,4 +6,5 @@ import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public interface Spider extends Provider, Injector, Resolver, Registry {
+    Object provideNewer(Class newerType, Object newerContainer);
 }

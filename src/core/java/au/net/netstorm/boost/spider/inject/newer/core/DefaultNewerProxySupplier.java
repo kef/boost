@@ -21,8 +21,8 @@ public final class DefaultNewerProxySupplier implements NewerProxySupplier {
         this.instantiator = instantiator;
     }
 
-    public Object nu(Interface newerInterface, Implementation instanceImplementation) {
-        InvocationHandler handler = newHandler(instanceImplementation);
+    public Object nu(Interface newerInterface, Implementation classToNu) {
+        InvocationHandler handler = newHandler(classToNu);
         return proxyFactory.newProxy(newerInterface, handler);
     }
 

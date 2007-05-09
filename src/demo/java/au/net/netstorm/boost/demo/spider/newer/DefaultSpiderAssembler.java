@@ -53,25 +53,26 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     public Spider assemble() {
         ProxyFactory proxyFactory = assembleProxyFactory();
+        Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
         OldPassThroughLayer passThrough = new DefaultOldPassThroughLayer();
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
+        NewerProxySupplier newerSupplier = new DefaultNewerProxySupplier(proxyFactory, passThroughProvider, instantiator);
         RegistryMaster registryMaster = new DefaultRegistryMaster();
         FinderEngine finder = registryMaster;
         RegistryEngine registryEngine = registryMaster;
         ResolverEngine resolverEngine = new DefaultResolverEngine(passThroughProvider, finder);
-        InjectorEngine injectorEngine = assembleInjector(proxyFactory, passThroughProvider, instantiator, resolverEngine);
+        InjectorEngine injectorEngine = assembleInjector(resolverEngine, newerSupplier);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryEngine);
+        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryEngine, newerSupplier);
     }
 
-    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryEngine registryEngine) {
+    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryEngine registryEngine, NewerProxySupplier newerSupplier) {
         Provider provider = new DefaultProvider(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
         Registry registry = new DefaultRegistry(registryEngine);
-        return new DefaultSpider(provider, injector, resolver, registry);
+        return new DefaultSpider(provider, injector, resolver, registry, newerSupplier);
     }
 
     private ProxyFactory assembleProxyFactory() {
@@ -79,8 +80,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultProxyFactory(proxySupplier);
     }
 
-    private InjectorEngine assembleInjector(ProxyFactory proxyFactory, ProviderEngine providerEngine, Instantiator instantiator, ResolverEngine resolver) {
-        InjectorEngine newer = assembleNewerInjector(proxyFactory, providerEngine, instantiator);
+    private InjectorEngine assembleInjector(ResolverEngine resolver, NewerProxySupplier newerSupplier) {
+        InjectorEngine newer = assembleNewerInjector(newerSupplier);
         InjectorEngine injector = assembleResolverInjector(resolver);
         return new CitizenInjectorEngine(newer, injector);
     }
@@ -91,8 +92,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new ResolverInjectorEngine(finder, fieldResolver);
     }
 
-    private InjectorEngine assembleNewerInjector(ProxyFactory proxyFactory, ProviderEngine provider, Instantiator instantiator) {
-        NewerProxySupplier newerSupplier = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
+    private InjectorEngine assembleNewerInjector(NewerProxySupplier newerSupplier) {
         NewerFieldFinder finder = new DefaultNewerFieldFinder();
         return new NewerProxyInjectorEngine(newerSupplier, finder);
     }
