@@ -19,7 +19,7 @@ public final class DefaultNewerProxyInjectorEngineAtomicTest extends Interaction
     NewerFieldFinder newerFieldFinder;
     NewerField newerField;
     Interface newerInterface;
-    Implementation instanceImplementation;
+    Implementation classToNu;
     String fieldName = "fingers";
 
     public void setupSubjects() {
@@ -39,8 +39,8 @@ public final class DefaultNewerProxyInjectorEngineAtomicTest extends Interaction
     private void setArrayElementExpectations() {
         for (int i = 0; i < newerFields.length; i++) {
             expect.oneCall(newerField, newerInterface, "getNewerInterface");
-            expect.oneCall(newerField, instanceImplementation, "getInstanceImplementation");
-            expect.oneCall(newerProxySupplier, proxy, "nu", newerInterface, instanceImplementation);
+            expect.oneCall(newerField, classToNu, "getClassToNu");
+            expect.oneCall(newerProxySupplier, proxy, "nu", newerInterface, classToNu);
             expect.oneCall(newerField, fieldName, "getFieldName");
         }
     }

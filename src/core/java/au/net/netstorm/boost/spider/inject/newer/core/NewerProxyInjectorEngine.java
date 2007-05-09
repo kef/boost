@@ -37,8 +37,8 @@ public final class NewerProxyInjectorEngine implements InjectorEngine {
 
     private void inject(Object ref, NewerField field) {
         Interface newerInterface = field.getNewerInterface();
-        Implementation instanceImplementation = field.getInstanceImplementation();
-        Object proxy = proxySupplier.nu(newerInterface, instanceImplementation);
+        Implementation classToNu = field.getClassToNu();
+        Object proxy = proxySupplier.nu(newerInterface, classToNu);
         inject(ref, proxy, field);
     }
 

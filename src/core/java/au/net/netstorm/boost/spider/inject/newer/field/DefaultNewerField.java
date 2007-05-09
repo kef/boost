@@ -6,12 +6,12 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerField extends Primordial implements NewerField {
     private Interface newerInterface;
-    private Implementation instanceImplementation;
+    private Implementation classToNu;
     private String fieldName;
 
-    public DefaultNewerField(Interface newerInterface, Implementation instanceImplementation, String fieldName) {
+    public DefaultNewerField(Interface newerInterface, Implementation classToNu, String fieldName) {
         this.newerInterface = newerInterface;
-        this.instanceImplementation = instanceImplementation;
+        this.classToNu = classToNu;
         this.fieldName = fieldName;
         validate();
     }
@@ -20,8 +20,8 @@ public final class DefaultNewerField extends Primordial implements NewerField {
         return newerInterface;
     }
 
-    public Implementation getInstanceImplementation() {
-        return instanceImplementation;
+    public Implementation getClassToNu() {
+        return classToNu;
     }
 
     public String getFieldName() {
@@ -30,7 +30,7 @@ public final class DefaultNewerField extends Primordial implements NewerField {
 
     private void validate() {
         if (newerInterface == null) throw new IllegalArgumentException();
-        if (instanceImplementation == null) throw new IllegalArgumentException();
+        if (classToNu == null) throw new IllegalArgumentException();
         if (fieldName == null) throw new IllegalArgumentException();
     }
 }

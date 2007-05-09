@@ -38,14 +38,14 @@ public final class DefaultNewerFieldInspector implements NewerFieldInspector {
     }
 
     private NewerField doGetNewer(Field field, Object ref) {
-        Class newerCls = field.getType();
-        Interface newerType = new DefaultInterface(newerCls);
-        Implementation newedImpl = getImplementationToNew(newerCls, ref);
+        Class newerType = field.getType();
+        Interface newerInterface = new DefaultInterface(newerType);
+        Implementation classToNu = getClasstoNu(newerType, ref);
         String fieldName = field.getName();
-        return new DefaultNewerField(newerType, newedImpl, fieldName);
+        return new DefaultNewerField(newerInterface, classToNu, fieldName);
     }
 
-    private Implementation getImplementationToNew(Class newerType, Object ref) {
+    private Implementation getClasstoNu(Class newerType, Object ref) {
         Field classToNuField = edgeClass.getDeclaredField(newerType, "CLASS_TO_NU");
         classToNuField.setAccessible(true);
         Class classToNu = (Class) edgeField.get(classToNuField, ref);
