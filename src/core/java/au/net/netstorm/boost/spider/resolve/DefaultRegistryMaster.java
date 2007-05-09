@@ -3,6 +3,8 @@ package au.net.netstorm.boost.spider.resolve;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import au.net.netstorm.boost.spider.inject.newer.DefaultNewerAssembler;
+import au.net.netstorm.boost.spider.inject.newer.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -14,6 +16,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultRegistryMaster implements RegistryMaster {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final Map registrations = new HashMap();
+    private final NewerAssembler newerAssembler = new DefaultNewerAssembler();
 
     public void implementation(Interface iface, Implementation implementation) {
         barfIfExists(iface);
@@ -41,13 +44,16 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public boolean hasInstance(Interface iface) {
-        if (iface.is(NEWER)) return true;
         return has(iface, ResolvedInstance.class);
     }
 
     public Interface[] getKeys() {
         Set set = registrations.keySet();
         return (Interface[]) set.toArray(new Interface[]{});
+    }
+
+    private boolean isANewer(Interface iface) {
+        return iface.is(NEWER);
     }
 
     private void barfIfInstanceIsClass(ResolvedInstance instance) {
@@ -58,12 +64,14 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private Object get(Interface type) {
+        if (isANewer(type)) return newerAssembler.assemble(type);
         Object value = registrations.get(type);
         barfIfNull(value, type);
         return value;
     }
 
     private boolean has(Interface iface, Class type) {
+        if (isANewer(iface)) return true;
         Object ref = registrations.get(iface);
         if (ref == null) return false;
         Class cls = ref.getClass();

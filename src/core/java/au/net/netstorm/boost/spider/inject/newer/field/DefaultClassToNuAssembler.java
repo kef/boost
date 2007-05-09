@@ -8,12 +8,12 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 
-public final class DefaultClassToNuBuilder implements ClassToNuBuilder {
+public final class DefaultClassToNuAssembler implements ClassToNuAssembler {
     private static final Object IGNORED = new Object();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
     private final EdgeField edgeField = new DefaultEdgeField();
 
-    public Implementation build(Class newerType) {
+    public Implementation assemble(Class newerType) {
         Field classToNuField = edgeClass.getDeclaredField(newerType, "CLASS_TO_NU");
         classToNuField.setAccessible(true);
         Class classToNu = (Class) edgeField.get(classToNuField, IGNORED);
