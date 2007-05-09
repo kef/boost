@@ -17,7 +17,21 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
         Class cls = impl.getImpl();
         Constructor constructor = reflectMaster.getConstructor(cls);
         constructor.setAccessible(true);
-        Object ref = edgeConstructor.newInstance(constructor, parameters);
+        Object ref = tryInstantiate(constructor, parameters, impl);
         return new DefaultBaseReference(ref);
+    }
+
+    private Object tryInstantiate(Constructor constructor, Object[] parameters, Implementation impl) {
+        try {
+            return edgeConstructor.newInstance(constructor, parameters);
+        } catch (IllegalArgumentException e) {
+            String message = createTypeMismatchMessage(parameters, impl);
+            throw new InstantiationException(message, e);
+        }
+    }
+
+    private String createTypeMismatchMessage(Object[] parameters, Implementation impl) {
+        String parameterType = parameters[0].getClass().getName();
+        return "Unable to construct a " + impl.getImpl() + " using " + parameterType;
     }
 }
