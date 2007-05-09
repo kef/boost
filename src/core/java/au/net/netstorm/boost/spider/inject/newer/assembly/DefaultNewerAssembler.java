@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.inject.newer.assembly;
 
+import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.spider.inject.newer.field.ClassToNuAssembler;
 import au.net.netstorm.boost.spider.inject.newer.field.DefaultClassToNuAssembler;
@@ -10,10 +11,10 @@ public final class DefaultNewerAssembler implements NewerAssembler {
     private final ClassToNuAssembler classToNuAssembler = new DefaultClassToNuAssembler();
     private NewerProxySupplierAssembler newerSupplierAssembler = new DefaultNewerProxySupplierAssembler();
 
-    public Object assemble(Interface type) {
+    public Newer assemble(Interface type) {
         Class newerClass = type.getType();
         Implementation classToNu = classToNuAssembler.assemble(newerClass);
         NewerProxySupplier newerProxySupplier = newerSupplierAssembler.assemble();
-        return newerProxySupplier.nu(type, classToNu);
+        return (Newer) newerProxySupplier.nu(type, classToNu);
     }
 }
