@@ -60,8 +60,18 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
         } catch (AlreadyRegisteredException expected) {}
     }
 
-    public void testImplImplementsInterface() {
-//        subject.implementation(BREAKFAST_CEREAL, );
+    public void testImplImplementsInterfaceFails() {
+        try {
+            subject.implementation(MATRYOSHKA, CROCODILE_IMPL);
+            fail();
+        } catch (WrongInterfaceRegistrationException expected) { }
+    }
+
+    public void testInstanceImplementsInterfaceFails() {
+        try {
+            subject.instance(MATRYOSHKA, FOOTBALL_INSTANCE);
+            fail();
+        } catch (WrongInterfaceRegistrationException expected) { }
     }
 
     public void testClassInstanceFails() {

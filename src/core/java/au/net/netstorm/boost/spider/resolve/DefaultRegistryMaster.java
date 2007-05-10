@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -14,11 +15,13 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public void implementation(Interface iface, Implementation implementation) {
         barfIfExists(iface);
+        barfIfNotImplOfIface(iface, implementation);
         registrations.put(iface, implementation);
     }
 
     public void instance(Interface iface, ResolvedInstance instance) {
         barfIfInstanceIsClass(instance);
+        barfIfNotImplOfIface(iface, instance);
         barfIfExists(iface);
         registrations.put(iface, instance);
     }
@@ -44,6 +47,17 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     public Interface[] getKeys() {
         Set set = registrations.keySet();
         return (Interface[]) set.toArray(new Interface[]{});
+    }
+
+    private void barfIfNotImplOfIface(Interface iface, ResolvedInstance instance) {
+        Object instanceRef = instance.getRef();
+        Class instanceClass = instanceRef.getClass();
+        Implementation impl = new DefaultImplementation(instanceClass);
+        barfIfNotImplOfIface(iface, impl);
+    }
+
+    private void barfIfNotImplOfIface(Interface iface, Implementation impl) {
+        if (!impl.is(iface)) throw new WrongInterfaceRegistrationException(impl, iface);
     }
 
     private void barfIfInstanceIsClass(ResolvedInstance instance) {
