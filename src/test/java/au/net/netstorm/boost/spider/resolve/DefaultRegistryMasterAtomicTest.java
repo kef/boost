@@ -19,9 +19,11 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final Interface BREAKFAST_CEREAL = new DefaultInterface(BreakfastCereal.class);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
     private static final Interface MATRYOSHKA = new DefaultInterface(Matryoshka.class);
+    private static final Interface JACK = new DefaultInterface(Jack.class);
     private static final Implementation MAMMAL_IMPL = new DefaultImplementation(Mammal.class);
-    private static final Implementation CAR_IMPL = new DefaultImplementation(Car.class);
     private static final Implementation CROCODILE_IMPL = new DefaultImplementation(Crocodile.class);
+    private static final Implementation JACK_IMPL = new DefaultImplementation(OneArgJack.class);
+    private static final Implementation CAR_IMPL = new DefaultImplementation(Car.class);
     private static final Sport FOOTBALL = new Football();
     private static final BreakfastCereal COCO_POPS = new CocoPops();
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);

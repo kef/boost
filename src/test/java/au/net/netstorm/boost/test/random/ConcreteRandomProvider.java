@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.random;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
@@ -7,8 +8,9 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
 public final class ConcreteRandomProvider implements RandomProvider {
-    private Random random = new Random();
-    private EdgeClass classer = new DefaultEdgeClass();
+    private final Random random = new Random();
+    private final EdgeClass classer = new DefaultEdgeClass();
+    private final Class[] randomClasses = {LovelyInterface.class, Random.class, Serializable.class};
 
     public Object get(Class type) {
         Object result = doGetRandom(type);
@@ -29,10 +31,6 @@ public final class ConcreteRandomProvider implements RandomProvider {
         if (type == Object.class) return randomObject();
         if (type == Method.class) return randomMethod();
         return null;
-    }
-
-    private Class randomClass() {
-        return LovelyInterface.class;
     }
 
     private String randomString() {
@@ -68,6 +66,11 @@ public final class ConcreteRandomProvider implements RandomProvider {
         byte[] bytes = new byte[1];
         random.nextBytes(bytes);
         return Byte.valueOf(bytes[0]);
+    }
+
+    private Class randomClass() {
+        int i = Math.abs(randomInteger()) % 3;
+        return randomClasses[i];
     }
 
     private Object randomObject() {
