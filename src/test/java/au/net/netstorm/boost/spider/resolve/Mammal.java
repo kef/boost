@@ -17,5 +17,5 @@
  */
 package au.net.netstorm.boost.spider.resolve;
 
-final class Larry implements LazyBastard {
+final class Mammal implements Animal {
 }

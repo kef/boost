@@ -10,14 +10,14 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistryAtomicTest extends InteractionTestCase {
     Registry subject;
-    Class frenchCloison = FrenchCloison.class;
-    Class frenchRoll = FrenchRoll.class;
-    Class davidPetit = DavidPetit.class;
-    Damien damienInstance = new Damien();
+    Class frenchCloison = Sport.class;
+    Class frenchRoll = BreakfastCereal.class;
+    Class davidPetit = Football.class;
+    CocoPops cocoPopsInstance = new CocoPops();
     Interface cloisonInterface = new DefaultInterface(frenchCloison);
     Interface rollInterface = new DefaultInterface(frenchRoll);
     Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
-    ResolvedInstance rollInstance = new DefaultBaseReference(damienInstance);
+    ResolvedInstance rollInstance = new DefaultBaseReference(cocoPopsInstance);
     Class iface;
     RegistryMaster registryMaster;
 
@@ -32,6 +32,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase {
 
     public void testInstance() {
         expect.oneCall(registryMaster, VOID, "instance", rollInterface, rollInstance);
-        subject.instance(frenchRoll, damienInstance);
+        subject.instance(frenchRoll, cocoPopsInstance);
     }
 }

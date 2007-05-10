@@ -13,59 +13,63 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
-    private static final Interface LAZY_BASTARD = new DefaultInterface(LazyBastard.class);
-    private static final Implementation LARRY = new DefaultImplementation(Larry.class);
-    private static final Interface LEGEND = new DefaultInterface(Legend.class);
-    private static final Implementation AN_DO = new DefaultImplementation(AnDo.class);
-    private static final Interface FRENCH_CLOISON = new DefaultInterface(FrenchCloison.class);
-    private static final Interface FRENCH_ROLL = new DefaultInterface(FrenchRoll.class);
-    private static final FrenchCloison DAVID_PETIT_REF = new DavidPetit();
-    private static final FrenchRoll DAMIEN_REF = new Damien();
-    private static final ResolvedInstance DAVID_PETIT = new DefaultBaseReference(DAVID_PETIT_REF);
-    private static final ResolvedInstance DAMIEN = new DefaultBaseReference(DAMIEN_REF);
-    private static final Implementation GREG = new DefaultImplementation(Greg.class);
+    private static final Interface ANIMAL = new DefaultInterface(Animal.class);
+    private static final Interface SPORT = new DefaultInterface(Sport.class);
+    private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);
+    private static final Interface BREAKFAST_CEREAL = new DefaultInterface(BreakfastCereal.class);
     private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
-    private static final Interface PRINCESS = new DefaultInterface(Matryoshka.class);
-    private static final ResolvedInstance KSENIA = new DefaultBaseReference(Matryoshka.class);
+    private static final Interface MATRYOSHKA = new DefaultInterface(Matryoshka.class);
+    private static final Implementation MAMMAL_IMPL = new DefaultImplementation(Mammal.class);
+    private static final Implementation CAR_IMPL = new DefaultImplementation(Car.class);
+    private static final Implementation CROCODILE_IMPL = new DefaultImplementation(Crocodile.class);
+    private static final Sport FOOTBALL = new Football();
+    private static final BreakfastCereal COCO_POPS = new CocoPops();
+    private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
+    private static final ResolvedInstance COCO_POPS_INSTANCE = new DefaultBaseReference(COCO_POPS);
+    private static final ResolvedInstance MATRYOSKA_INSTANCE = new DefaultBaseReference(Matryoshka.class);
     private final RegistryMaster subject = new DefaultRegistryMaster();
 
     {
-        subject.implementation(LAZY_BASTARD, LARRY);
-        subject.implementation(LEGEND, AN_DO);
-        subject.instance(FRENCH_CLOISON, DAVID_PETIT);
-        subject.instance(FRENCH_ROLL, DAMIEN);
+        subject.implementation(ANIMAL, MAMMAL_IMPL);
+        subject.implementation(VEHICLE, CAR_IMPL);
+        subject.instance(SPORT, FOOTBALL_INSTANCE);
+        subject.instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
     }
 
     public void testGetImplementation() {
-        checkGetImplementation(LAZY_BASTARD, LARRY);
-        checkGetImplementation(LEGEND, AN_DO);
+        checkGetImplementation(ANIMAL, MAMMAL_IMPL);
+        checkGetImplementation(VEHICLE, CAR_IMPL);
     }
 
     public void testGetInstance() {
-        checkGetInstance(FRENCH_CLOISON, DAVID_PETIT);
-        checkGetInstance(FRENCH_ROLL, DAMIEN);
+        checkGetInstance(SPORT, FOOTBALL_INSTANCE);
+        checkGetInstance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
     }
 
     public void testDuplicateInstance() {
         try {
-            subject.instance(FRENCH_ROLL, DAMIEN);
+            subject.instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
             fail();
         } catch (AlreadyRegisteredException expected) { }
     }
 
     public void testDuplicateImplementation() {
         try {
-            subject.implementation(LAZY_BASTARD, GREG);
+            subject.implementation(ANIMAL, CROCODILE_IMPL);
             fail();
         } catch (AlreadyRegisteredException expected) {}
     }
 
+    public void testImplImplementsInterface() {
+//        subject.implementation(BREAKFAST_CEREAL, );
+    }
+
     public void testClassInstanceFails() {
         try {
-            subject.instance(PRINCESS, KSENIA);
+            subject.instance(MATRYOSHKA, MATRYOSKA_INSTANCE);
             fail();
         } catch (WrongInstanceTypeException expected) {
-            String actualMessage = KSENIA.getRef() + " is a class and cannot be registered as an instance.";
+            String actualMessage = MATRYOSKA_INSTANCE.getRef() + " is a class and cannot be registered as an instance.";
             String expectedMessage = expected.getMessage();
             assertEquals(expectedMessage, actualMessage);
         }
@@ -73,14 +77,14 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
 
     public void testNotInstance() {
         try {
-            subject.getInstance(LAZY_BASTARD);
+            subject.getInstance(ANIMAL);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testNotImplementation() {
         try {
-            subject.getImplementation(FRENCH_ROLL);
+            subject.getImplementation(BREAKFAST_CEREAL);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
@@ -93,18 +97,18 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     public void testHasInstance() {
-        checkHasInstance(FRENCH_CLOISON, true);
-        checkHasInstance(LAZY_BASTARD, false);
+        checkHasInstance(SPORT, true);
+        checkHasInstance(ANIMAL, false);
     }
 
     public void testHasImplementation() {
-        checkHasImplementation(LAZY_BASTARD, true);
-        checkHasImplementation(FRENCH_CLOISON, false);
+        checkHasImplementation(ANIMAL, true);
+        checkHasImplementation(SPORT, false);
     }
 
     public void testElements() {
         Interface[] result = subject.getKeys();
-        Interface[] expected = new Interface[]{LEGEND, LAZY_BASTARD, FRENCH_CLOISON, FRENCH_ROLL};
+        Interface[] expected = new Interface[]{VEHICLE, ANIMAL, SPORT, BREAKFAST_CEREAL};
         checkElements(expected, result);
     }
 
