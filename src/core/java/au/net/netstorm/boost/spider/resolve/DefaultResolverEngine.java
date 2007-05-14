@@ -6,7 +6,6 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -64,17 +63,19 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance getInstance(Interface iface) {
         // FIX 1887 What about onionising the instance?
-        if (iface.is(NEWER)) return aNewer(iface);
+        // FIX 39663 Reinstate.
+//        if (iface.is(NEWER)) return aNewer(iface);
         return finder.getInstance(iface);
     }
 
     private boolean hasInstance(Interface iface) {
-        if (iface.is(NEWER)) return true;
+        // FIX 39663 Reinstate
+//        if (iface.is(NEWER)) return true;
         return finder.hasInstance(iface);
     }
 
-    private ResolvedInstance aNewer(Interface iface) {
-        Newer newer = (Newer) newerAssembler.assemble(iface);
-        return new DefaultBaseReference(newer);
-    }
+//    private ResolvedInstance aNewer(Interface iface) {
+//        Newer newer = (Newer) newerAssembler.assemble(iface);
+//        return new DefaultBaseReference(newer);
+//    }
 }
