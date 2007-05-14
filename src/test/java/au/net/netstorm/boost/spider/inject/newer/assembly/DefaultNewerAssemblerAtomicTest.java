@@ -1,11 +1,13 @@
 package au.net.netstorm.boost.spider.inject.newer.assembly;
 
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
-public final class DefaultNewerAssemblerAtomicTest extends BoooostCase {
-    NewerAssembler subject = new DefaultNewerAssembler();
+public final class DefaultNewerAssemblerAtomicTest extends InteractionTestCase {
+    NewerAssembler subject;
+    ProviderEngine provider;
 
     public void testAssemble() {
         Object result = subject.assemble(new DefaultInterface(NewDefaultTestDummy.class));
@@ -21,5 +23,9 @@ public final class DefaultNewerAssemblerAtomicTest extends BoooostCase {
             String actualMessage = result.getMessage();
             assertEquals(expectedMessage, actualMessage);
         }
+    }
+
+    public void setupSubjects() {
+        subject = new DefaultNewerAssembler(provider);
     }
 }

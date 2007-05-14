@@ -2,7 +2,10 @@ package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
+import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
+import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -13,8 +16,10 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     ResolverEngine subject;
     ProviderEngine provider;
     RegistryMaster registryMaster;
+    NewerAssembler newerAssembler;
     ResolvedInstance jimResolvedInstance;
     ResolvedInstance jackResolvedInstance;
+    Newer newerImpl;
     Interface jim = iface(Jim.class);
     Interface jack = iface(Jack.class);
     Interface spoo = iface(Spoo.class);
@@ -26,7 +31,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     Jim jimInstance = new NoArgJim();
 
     public void setupSubjects() {
-        subject = new DefaultResolverEngine(provider, registryMaster);
+        subject = new DefaultResolverEngine(provider, registryMaster, newerAssembler);
     }
 
     public void testNoUnresolvedDependencies() {
@@ -57,9 +62,10 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     }
 
     public void testResolveNewer() {
-        ResolvedInstance result = subject.resolve(newer);
-        NewDefaultTestDummy actualNewer = (NewDefaultTestDummy) result.getRef();
-        assertNotNull(actualNewer);
+        expect.oneCall(newerAssembler, newerImpl, "assemble", newer);
+        ResolvedInstance expected = new DefaultBaseReference(newerImpl);
+        ResolvedInstance actual = subject.resolve(newer);
+        assertEquals(expected, actual);
     }
 
     private Implementation impl(Class cls) {

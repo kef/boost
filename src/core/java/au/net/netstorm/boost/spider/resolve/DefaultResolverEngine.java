@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -19,13 +18,14 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final InterfaceUtil interfacer = new DefaultInterfaceUtil();
     private final ReflectMaster reflector = new DefaultReflectMaster();
-    private final NewerAssembler newerAssembler = new DefaultNewerAssembler();
     private final ProviderEngine provider;
     private final FinderEngine finder;
+    private NewerAssembler newerAssembler;
 
-    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder) {
+    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newerAssembler) {
         this.provider = provider;
         this.finder = finder;
+        this.newerAssembler = newerAssembler;
     }
 
     public ResolvedInstance resolve(Interface iface) {
@@ -78,15 +78,3 @@ public final class DefaultResolverEngine implements ResolverEngine {
         return new DefaultBaseReference(newer);
     }
 }
-/*
-             ./' .v~__,/~ _____   _____     _____   )~\      _____     _____
-           ./  .(W---\| /',---.`\ |\./\     |\./|  / | \     |\./\     |\./|
-          ,|  /<M.    ./././~\`\ \| |\ \    | | |././^\ \    | |\ \    | | |
-\~b__________/$@|\------------\ \ \--\`\`\--| | |----^ \ \------\`\`\--| | |-.
- >@)$$$$$$$$($( )#H>===========) ) )==`\`\`\| | |=====\ \ \======`\`\`\| | |-->
-/_p~~~~~~~~~~\$@|/------------/ / /-----`\`\\ | |------\ \ \-------`\`\\ | |-'
-          `|  \<M`    `\ \`\_/ / /| | |   `\`\| | /'    \ \ \| | |   `\`\| |
-           `\  `(B---/| \ `---' / |/^\|     \ | |/       \/^\\.^\|     \ | |
-             `\  `?_~~`\_`~~~~~`  ~~~~~      )^\,\,      `~~~~~~~~      )^\,\,
-               `~~~~~~~~~~        CROM       ~~~~~~                     ~~~~~~
-*/

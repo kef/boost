@@ -1,4 +1,9 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-final class HeadJob implements Job {
+import au.net.netstorm.boost.spider.core.GoodCitizen;
+
+final class HeadJob implements Job, GoodCitizen {
+    public String sayHi() {
+        return "Hi";
+    }
 }
