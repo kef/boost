@@ -6,6 +6,7 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
+import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -19,9 +20,9 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final ProviderEngine provider;
     private final FinderEngine finder;
-    private NewerAssembler newerAssembler;
+    private final NewerAssembler newerAssembler;
 
-    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder) {
+    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newerAssembler) {
         this.provider = provider;
         this.finder = finder;
         this.newerAssembler = newerAssembler;
@@ -63,19 +64,17 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance getInstance(Interface iface) {
         // FIX 1887 What about onionising the instance?
-        // FIX 39663 Reinstate.
-//        if (iface.is(NEWER)) return aNewer(iface);
+        if (iface.is(NEWER)) return aNewer(iface);
         return finder.getInstance(iface);
     }
 
     private boolean hasInstance(Interface iface) {
-        // FIX 39663 Reinstate
-//        if (iface.is(NEWER)) return true;
+        if (iface.is(NEWER)) return true;
         return finder.hasInstance(iface);
     }
 
-//    private ResolvedInstance aNewer(Interface iface) {
-//        Newer newer = (Newer) newerAssembler.assemble(iface);
-//        return new DefaultBaseReference(newer);
-//    }
+    private ResolvedInstance aNewer(Interface iface) {
+        Newer newer = (Newer) newerAssembler.assemble(iface);
+        return new DefaultBaseReference(newer);
+    }
 }

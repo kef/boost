@@ -9,13 +9,12 @@ public final class DefaultNewerDemoTest extends TestCase {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = assembler.assemble();
 
-    // FIX 39663 Reinstate.
-//    public void testResolveNewer() {
-//        NewHeadJob newHeadJob = (NewHeadJob) spider.resolve(NewHeadJob.class);
-//        assertNotNull(newHeadJob);
-//        Job job = newHeadJob.nu();
-//        job.sayHi();
-//    }
+    public void testResolveNewer() {
+        NewHeadJob newHeadJob = (NewHeadJob) spider.resolve(NewHeadJob.class);
+        assertNotNull(newHeadJob);
+        Job job = newHeadJob.nu();
+        job.sayHi();
+    }
 
     public void testRecursiveNewerInjection() {
         Rob rob = (Rob) spider.provide(Rob.class, NO_PARAMETERS);
