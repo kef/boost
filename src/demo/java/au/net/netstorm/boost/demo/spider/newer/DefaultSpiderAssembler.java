@@ -45,9 +45,9 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
-    private final ProxyFactory proxyFactory = assembleProxyFactory();
-    private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final OldPassThroughLayer passThrough = new DefaultOldPassThroughLayer();
+    private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
+    private final ProxyFactory proxyFactory = assembleProxyFactory();
     private final Interface citizen;
 
     public DefaultSpiderAssembler(Class citizen) {
