@@ -2,7 +2,6 @@ package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
-import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -15,7 +14,6 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     ResolverEngine subject;
     ProviderEngine provider;
     RegistryMaster registryMaster;
-    NewerAssembler newerAssembler;
     ResolvedInstance jimResolvedInstance;
     ResolvedInstance jackResolvedInstance;
     Newer newerImpl;
@@ -30,7 +28,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
     Jim jimInstance = new NoArgJim();
 
     public void setupSubjects() {
-        subject = new DefaultResolverEngine(provider, registryMaster, newerAssembler);
+        subject = new DefaultResolverEngine(provider, registryMaster);
     }
 
     public void testNoUnresolvedDependencies() {
@@ -60,7 +58,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase {
         assertEquals(spooInstance, result);
     }
 
-    // FIX 39663 Reinstate.
+    // FIX 39663 Reinstate. Must pass in a newerAssembler to the subject.
 //    public void testResolveNewer() {
 //        expect.oneCall(newerAssembler, newerImpl, "assemble", newer);
 //        ResolvedInstance expected = new DefaultBaseReference(newerImpl);

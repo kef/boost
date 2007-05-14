@@ -2,6 +2,8 @@ package au.net.netstorm.boost.demo.spider.newer;
 
 import au.net.netstorm.boost.demo.spider.core.DefaultSpider;
 import au.net.netstorm.boost.demo.spider.core.Spider;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.core.CitizenInjectorEngine;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
@@ -10,10 +12,7 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
-import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerProxySupplier;
-import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.inject.newer.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerProxyInjectorEngine;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.spider.inject.newer.field.DefaultNewerFieldFinder;
@@ -39,16 +38,13 @@ import au.net.netstorm.boost.spider.resolve.RegistryEngine;
 import au.net.netstorm.boost.spider.resolve.RegistryMaster;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
-    private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
-    private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-    private final OldPassThroughLayer passThrough = new DefaultOldPassThroughLayer();
-    private final RegistryMaster registryMaster = new DefaultRegistryMaster();
     private final Interface citizen;
 
     public DefaultSpiderAssembler(Class citizen) {
@@ -56,18 +52,22 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     }
 
     public Spider assemble() {
-        ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
+        ProxyFactory proxyFactory = assembleProxyFactory();
+        Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
+        OldPassThroughLayer passThrough = new DefaultOldPassThroughLayer();
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         NewerProxySupplier newerSupplier = new DefaultNewerProxySupplier(proxyFactory, passThroughProvider, instantiator);
-        ResolverEngine resolverEngine = assembleResolver(registryMaster, passThroughProvider);
+        RegistryMaster registryMaster = new DefaultRegistryMaster();
+        FinderEngine finder = registryMaster;
+        RegistryEngine registryEngine = registryMaster;
+        ResolverEngine resolverEngine = new DefaultResolverEngine(passThroughProvider, finder);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine, newerSupplier);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        RegistryEngine registryEngine = registryMaster;
-        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryEngine);
+        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryEngine, newerSupplier);
     }
 
-    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryEngine registryEngine) {
+    private Spider buildSpider(ProviderEngine providerEngine, ResolverEngine resolverEngine, InjectorEngine injectorEngine, RegistryEngine registryEngine, NewerProxySupplier newerSupplier) {
         Provider provider = new DefaultProvider(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
@@ -75,9 +75,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultSpider(provider, injector, resolver, registry);
     }
 
-    private ResolverEngine assembleResolver(FinderEngine finder, ProviderEngine passThroughProvider) {
-        DefaultNewerAssembler newerAssembler = new DefaultNewerAssembler(passThroughProvider);
-        return new DefaultResolverEngine(passThroughProvider, finder, newerAssembler);
+    private ProxyFactory assembleProxyFactory() {
+        ProxySupplier proxySupplier = new DefaultProxySupplier();
+        return new DefaultProxyFactory(proxySupplier);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver, NewerProxySupplier newerSupplier) {

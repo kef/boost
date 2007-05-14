@@ -21,7 +21,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private final FinderEngine finder;
     private NewerAssembler newerAssembler;
 
-    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newerAssembler) {
+    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder) {
         this.provider = provider;
         this.finder = finder;
         this.newerAssembler = newerAssembler;
