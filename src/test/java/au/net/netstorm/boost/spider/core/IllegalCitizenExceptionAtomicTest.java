@@ -16,6 +16,6 @@ public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase
 
     public void testException() {
         String result = subject.getMessage();
-        assertEquals("I know you want to be my darling, but you're not a " + marker + " -> " + impl, result);
+        assertEquals("I know you want to be my darling,... \nbut you're not a " + marker + " -> " + impl, result);
     }
 }
