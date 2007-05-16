@@ -54,8 +54,9 @@ public final class ConcreteRandomProvider implements RandomProvider {
     }
 
     private Character randomCharacter() {
-        // FIX BREADCRUMB 39663 Complete me.
-        throw new UnsupportedOperationException();
+        Byte b = randomByte();
+        byte value = b.byteValue();
+        return (char) value;
     }
 
     private Float randomFloat() {
