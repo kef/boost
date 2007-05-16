@@ -5,34 +5,34 @@ import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase {
-    TimePointMaster master;
+    TimePointMaster subject;
     EdgeSystem system;
     private static final long NOW = 1L;
     private static final long MILLIS_1 = 12L;
     private static final long MILLIS_2 = 9L;
 
     public void setupSubjects() {
-        master = new DefaultTimePointMaster();
+        subject = new DefaultTimePointMaster();
     }
 
     public void testNext() {
-        assertEquals(TIME_100, master.next(TIME_099));
-        assertEquals(TIME_101, master.next(TIME_100));
-        assertEquals(TIME_200, master.next(TIME_199));
-        assertEquals(TIME_201, master.next(TIME_200));
+        assertEquals(TIME_100, subject.next(TIME_099));
+        assertEquals(TIME_101, subject.next(TIME_100));
+        assertEquals(TIME_200, subject.next(TIME_199));
+        assertEquals(TIME_201, subject.next(TIME_200));
     }
 
     public void testPrevious() {
-        assertEquals(TIME_099, master.previous(TIME_100));
-        assertEquals(TIME_100, master.previous(TIME_101));
-        assertEquals(TIME_199, master.previous(TIME_200));
-        assertEquals(TIME_200, master.previous(TIME_201));
+        assertEquals(TIME_099, subject.previous(TIME_100));
+        assertEquals(TIME_100, subject.previous(TIME_101));
+        assertEquals(TIME_199, subject.previous(TIME_200));
+        assertEquals(TIME_200, subject.previous(TIME_201));
     }
 
     public void testNow() {
         expect.oneCall(system, NOW, "currentTimeMillis");
         TimePoint expected = new DefaultTimePoint(NOW);
-        TimePoint actual = master.now(system);
+        TimePoint actual = subject.now(system);
         assertEquals(expected, actual);
     }
 
@@ -42,14 +42,14 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
     }
 
     private void checkGet(long millis) {
-        TimePoint timePoint = master.get(millis);
+        TimePoint timePoint = subject.get(millis);
         long actual = timePoint.getMillis();
         assertEquals(millis, actual);
     }
 
     public void testPreviousInvalid() {
         try {
-            master.previous(DefaultTimePoint.EPOCH);
+            subject.previous(DefaultTimePoint.EPOCH);
             fail();
         } catch (IllegalArgumentException ex) {
         }
@@ -57,7 +57,7 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
 
     public void testNextInvalid() {
         try {
-            master.next(DefaultTimePoint.ARMAGGEDON);
+            subject.next(DefaultTimePoint.ARMAGGEDON);
             fail();
         } catch (IllegalArgumentException ex) {
         }

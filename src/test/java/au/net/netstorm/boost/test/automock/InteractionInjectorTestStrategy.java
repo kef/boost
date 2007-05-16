@@ -8,6 +8,8 @@ import au.net.netstorm.boost.test.field.DefaultFieldSelector;
 import au.net.netstorm.boost.test.field.FieldBuilder;
 import au.net.netstorm.boost.test.field.FieldSelector;
 import au.net.netstorm.boost.test.field.Matcher;
+import au.net.netstorm.boost.test.inject.DefaultSubjectInjector;
+import au.net.netstorm.boost.test.inject.SubjectInjector;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
@@ -26,6 +28,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     private final Matcher dummyArrayMatcher = new DummyArrayMatcher();
     private final UsesMocks testCase;
     private final AutoMocker autoMocker;
+    private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
 
     public InteractionInjectorTestStrategy(UsesMocks testCase) {
         this.testCase = testCase;
@@ -91,7 +94,7 @@ public final class InteractionInjectorTestStrategy implements TestStrategy {
     }
 
     private void injectSubjects() {
-        // FIX 1676 Inject subject fields using pebbliser.
+        subjectInjector.inject(testCase);
     }
 
     private void setExpectField() {
