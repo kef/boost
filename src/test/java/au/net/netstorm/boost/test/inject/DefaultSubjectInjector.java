@@ -20,7 +20,7 @@ public final class DefaultSubjectInjector implements SubjectInjector {
     public void inject(UsesMocks testCase) {
         Object subject = fielder.getInstance(testCase, "subject");
         Field[] unresolvedFields = finder.find(subject);
-        List availableFieldsList = getAvailableFieldNames();
+        List availableFieldsList = getAvailableFieldNames(testCase);
         inject(testCase, subject, unresolvedFields, availableFieldsList);
     }
 
@@ -32,8 +32,8 @@ public final class DefaultSubjectInjector implements SubjectInjector {
         }
     }
 
-    private List getAvailableFieldNames() {
-        Field[] availableFields = getAvailableFields();
+    private List getAvailableFieldNames(UsesMocks testCase) {
+        Field[] availableFields = getAvailableFields(testCase);
         List availableFieldsList = new ArrayList();
         for (int i = 0; i < availableFields.length; i++) {
             String name = availableFields[i].getName();
@@ -42,8 +42,8 @@ public final class DefaultSubjectInjector implements SubjectInjector {
         return availableFieldsList;
     }
 
-    private Field[] getAvailableFields() {
-        Class cls = this.getClass();
+    private Field[] getAvailableFields(UsesMocks testCase) {
+        Class cls = testCase.getClass();
         return classer.getDeclaredFields(cls);
     }
 }
