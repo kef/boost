@@ -30,6 +30,7 @@ public final class ConcreteRandomProvider implements RandomProvider {
         if (type == Class.class) return randomClass();
         if (type == Object.class) return randomObject();
         if (type == Method.class) return randomMethod();
+        if (type == Character.class) return randomCharacter();
         return null;
     }
 
@@ -50,6 +51,11 @@ public final class ConcreteRandomProvider implements RandomProvider {
     private Long randomLong() {
         long l = random.nextLong();
         return Long.valueOf(l);
+    }
+
+    private Character randomCharacter() {
+        // FIX BREADCRUMB 39663 Complete me.
+        throw new UnsupportedOperationException();
     }
 
     private Float randomFloat() {
