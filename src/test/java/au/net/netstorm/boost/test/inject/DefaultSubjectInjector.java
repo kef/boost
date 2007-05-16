@@ -10,6 +10,7 @@ import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.UsesMocks;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import junit.framework.Assert;
 
 public final class DefaultSubjectInjector implements SubjectInjector {
     private final MockInjector injector = new DefaultMockInjector();
@@ -19,6 +20,7 @@ public final class DefaultSubjectInjector implements SubjectInjector {
 
     public void inject(UsesMocks testCase) {
         Object subject = fielder.getInstance(testCase, "subject");
+        Assert.assertNotNull("The subject is null. Create one in setupSubjects().", subject);
         Field[] unresolvedFields = finder.find(subject);
         List availableFieldsList = getAvailableFieldNames(testCase);
         inject(testCase, subject, unresolvedFields, availableFieldsList);
