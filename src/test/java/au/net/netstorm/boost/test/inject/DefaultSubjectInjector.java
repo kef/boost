@@ -19,7 +19,7 @@ public final class DefaultSubjectInjector implements SubjectInjector {
     private final EdgeClass classer = new DefaultEdgeClass();
 
     public void inject(UsesMocks testCase) {
-        Object subject = tryGetSubject(testCase);
+        Object subject = nullGetSubject(testCase);
         // FIX 39663 Is this ok for tests to have no subject.
         if (subject != null) {
             Field[] unresolvedFields = finder.find(subject);
@@ -28,7 +28,7 @@ public final class DefaultSubjectInjector implements SubjectInjector {
         }
     }
 
-    private Object tryGetSubject(UsesMocks testCase) {
+    private Object nullGetSubject(UsesMocks testCase) {
         try {
             return fielder.getInstance(testCase, "subject");
         } catch (EdgeException e) {
