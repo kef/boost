@@ -12,14 +12,14 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 public final class DefaultSubjectInjector implements SubjectInjector {
     private final MockInjector injector = new DefaultMockInjector();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final ResolverFieldFinder finder = new DefaultResolverFieldFinder();
-    private final TestFieldNameFinder testFieldNameFinder = new DefaultTestFieldNameFinder();
+    private final ResolverFieldFinder resolverFieldFinder = new DefaultResolverFieldFinder();
+    private final FieldNameFinder fieldNameFinder = new DefaultFieldNameFinder();
 
     public void inject(UsesMocks testCase) {
         Object subject = nullGetSubject(testCase);
         if (testContainsSubjectField(subject)) {
-            Field[] subjectFields = finder.find(subject);
-            List testFields = testFieldNameFinder.find(testCase);
+            Field[] subjectFields = resolverFieldFinder.find(subject);
+            List testFields = fieldNameFinder.find(testCase);
             inject(testCase, testFields, subject, subjectFields);
         }
     }
