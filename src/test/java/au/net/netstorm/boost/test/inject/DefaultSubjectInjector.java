@@ -1,11 +1,8 @@
 package au.net.netstorm.boost.test.inject;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolverFieldFinder;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
 import au.net.netstorm.boost.test.automock.UsesMocks;
@@ -16,15 +13,14 @@ public final class DefaultSubjectInjector implements SubjectInjector {
     private final MockInjector injector = new DefaultMockInjector();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ResolverFieldFinder finder = new DefaultResolverFieldFinder();
-    private final EdgeClass classer = new DefaultEdgeClass();
+    private final TestFieldNameFinder testFieldNameFinder = new DefaultTestFieldNameFinder();
 
     public void inject(UsesMocks testCase) {
         Object subject = nullGetSubject(testCase);
-        // FIX 39663 Is this ok for tests to have no subject.
-        if (subject != null) {
-            Field[] unresolvedFields = finder.find(subject);
-            List availableFieldsList = getAvailableFieldNames(testCase);
-            inject(testCase, subject, unresolvedFields, availableFieldsList);
+        if (testContainsSubjectField(subject)) {
+            Field[] subjectFields = finder.find(subject);
+            List testFields = testFieldNameFinder.find(testCase);
+            inject(testCase, testFields, subject, subjectFields);
         }
     }
 
@@ -36,26 +32,15 @@ public final class DefaultSubjectInjector implements SubjectInjector {
         }
     }
 
-    private void inject(UsesMocks testCase, Object subject, Field[] unresolvedFields, List availableFields) {
-        for (int i = 0; i < unresolvedFields.length; i++) {
-            Field field = unresolvedFields[i];
-            String name = field.getName();
-            if (availableFields.contains(name)) injector.inject(testCase, subject, name);
-        }
+    private boolean testContainsSubjectField(Object subject) {
+        return subject != null;
     }
 
-    private List getAvailableFieldNames(UsesMocks testCase) {
-        Field[] availableFields = getAvailableFields(testCase);
-        List availableFieldsList = new ArrayList();
-        for (int i = 0; i < availableFields.length; i++) {
-            String name = availableFields[i].getName();
-            availableFieldsList.add(name);
+    private void inject(UsesMocks testCase, List testFields, Object subject, Field[] subjectFields) {
+        for (int i = 0; i < subjectFields.length; i++) {
+            Field subjectField = subjectFields[i];
+            String subjectFieldName = subjectField.getName();
+            if (testFields.contains(subjectFieldName)) injector.inject(testCase, subject, subjectFieldName);
         }
-        return availableFieldsList;
-    }
-
-    private Field[] getAvailableFields(UsesMocks testCase) {
-        Class cls = testCase.getClass();
-        return classer.getDeclaredFields(cls);
     }
 }
