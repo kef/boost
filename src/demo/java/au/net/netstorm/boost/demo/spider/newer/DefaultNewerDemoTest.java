@@ -5,7 +5,6 @@ import au.net.netstorm.boost.spider.core.GoodCitizen;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
-    private static final Object[] NO_PARAMETERS = new Object[]{};
     private final SpiderAssembler assembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = assembler.assemble();
 
@@ -17,7 +16,9 @@ public final class DefaultNewerDemoTest extends TestCase {
     }
 
     public void testRecursiveNewerInjection() {
-        Rob rob = (Rob) spider.provide(Rob.class, NO_PARAMETERS);
+        spider.prototype(Rob.class, DefaultRob.class);
+        Rob rob = (Rob) spider.resolve(Rob.class);
+        spider.inject(rob);
         Bob bob = rob.getBob();
         checkNewersRecurse(bob);
     }
