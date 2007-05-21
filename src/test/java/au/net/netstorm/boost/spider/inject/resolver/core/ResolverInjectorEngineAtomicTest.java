@@ -7,11 +7,12 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase {
+public final class ResolverInjectorEngineAtomicTest extends InteractionTestCase implements HasSubjects {
     InjectorEngine subject;
     EdgeClass classer = new DefaultEdgeClass();
     EdgeField edgeFielder = new DefaultEdgeField();

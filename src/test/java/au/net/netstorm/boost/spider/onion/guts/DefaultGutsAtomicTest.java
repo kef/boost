@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-public final class DefaultGutsAtomicTest extends InteractionTestCase {
+public final class DefaultGutsAtomicTest extends InteractionTestCase implements HasSubjects {
     EdgeClass classer = new DefaultEdgeClass();
     Guts subject;
     List guts = new ArrayList();

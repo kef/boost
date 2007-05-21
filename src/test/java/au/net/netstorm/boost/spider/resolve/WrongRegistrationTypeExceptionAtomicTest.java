@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.primordial.BoostException;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class WrongRegistrationTypeExceptionAtomicTest extends InteractionTestCase {
+public final class WrongRegistrationTypeExceptionAtomicTest extends InteractionTestCase implements HasSubjects {
     Interface type;
     BoostException subject;
 

@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.demo.automock;
 
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase {
+public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase implements HasSubjects {
     TestSubject subject;
     DelegateSubject delegate;
     String[] strings1;

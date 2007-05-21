@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class CitizenInjectorEngineAtomicTest extends InteractionTestCase {
+public final class CitizenInjectorEngineAtomicTest extends InteractionTestCase implements HasSubjects {
     InjectorEngine subject;
     InjectorEngine dependencyInjector;
     UnresolvedInstance unresolved;

@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.cases.TestLifecycle;
 // FIX 1524 Remove abstract.
 
 // FIX 1524 Remove uses mocks.
-public abstract class InteractionTestCase extends BoooostCase implements UsesMocks {
+public class InteractionTestCase extends BoooostCase implements UsesExpectations {
     private TestLifecycle lifecycle = new InteractionTest(this);
     public MockExpectations expect;
 

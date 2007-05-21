@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class AlreadyRegisteredExceptionAtomicTest extends InteractionTestCase {
+public final class AlreadyRegisteredExceptionAtomicTest extends InteractionTestCase implements HasSubjects {
     Interface iface;
     AlreadyRegisteredException subject;
 

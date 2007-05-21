@@ -2,9 +2,10 @@ package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
 import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase {
+public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase implements HasSubjects {
     TimePointMaster subject;
     EdgeSystem system;
     private static final long NOW = 1L;

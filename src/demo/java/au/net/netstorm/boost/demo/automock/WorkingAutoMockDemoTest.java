@@ -2,9 +2,10 @@ package au.net.netstorm.boost.demo.automock;
 
 import java.util.List;
 import java.util.Map;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-public final class WorkingAutoMockDemoTest extends InteractionTestCase {
+public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasSubjects {
     TestSubject subject;
     Map map;
     DelegateSubject delegate;

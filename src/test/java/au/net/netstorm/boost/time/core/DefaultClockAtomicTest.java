@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.time.core;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-public final class DefaultClockAtomicTest extends InteractionTestCase {
+public final class DefaultClockAtomicTest extends InteractionTestCase implements HasSubjects {
     Clock subject;
     TimePointMaster timeLord;
     TimePoint expected;

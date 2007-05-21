@@ -10,7 +10,7 @@ import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 
 final class DefaultMockExpectationEngine implements MockExpectationEngine {
-    private static final Object VOID = UsesMocks.VOID;
+    private static final Object VOID = UsesExpectations.VOID;
     private final AutoMocker autoMocker;
     private final MockObjectTestCase jMock;
 

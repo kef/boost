@@ -5,6 +5,7 @@ import au.net.netstorm.boost.spider.gaijin.Gaijinator;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -13,7 +14,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultProviderEngineAtomicTest extends InteractionTestCase {
+public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasSubjects {
     ProviderEngine subject;
     Onionizer onionizer;
     Instantiator instantiator;

@@ -119,8 +119,8 @@ public final class InteractionTest implements TestLifecycle {
     }
 
     private void doSetupSubject() {
-        if (!hasMarker(UsesMocks.class)) return;
-        ((UsesMocks) testCase).setupSubjects();
+        if (!hasMarker(HasSubjects.class)) return;
+        ((HasSubjects) testCase).setupSubjects();
     }
 }
 // } DEBT DataAbstractionCoupling

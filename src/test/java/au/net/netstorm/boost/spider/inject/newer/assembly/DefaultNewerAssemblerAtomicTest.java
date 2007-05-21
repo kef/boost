@@ -2,10 +2,11 @@ package au.net.netstorm.boost.spider.inject.newer.assembly;
 
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
-public final class DefaultNewerAssemblerAtomicTest extends InteractionTestCase {
+public final class DefaultNewerAssemblerAtomicTest extends InteractionTestCase implements HasSubjects {
     NewerAssembler subject;
     ProviderEngine provider;
 
