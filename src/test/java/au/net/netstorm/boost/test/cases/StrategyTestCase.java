@@ -17,12 +17,6 @@ public class StrategyTestCase extends BoooostCase {
         }
     }
 
-    protected void gearup() {
-    }
-
-    protected void geardown() {
-    }
-
     protected void verify() {
         strategy.verify();
     }
