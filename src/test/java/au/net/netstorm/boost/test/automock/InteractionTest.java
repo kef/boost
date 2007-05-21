@@ -53,6 +53,11 @@ public final class InteractionTest implements TestLifecycle {
     }
 
     private void injectTestFields(BoostField[] fields) {
+        if (!hasMarker(UsesAutoMocks.class))
+            doInjectTesttFields(fields);
+    }
+
+    private void doInjectTesttFields(BoostField[] fields) {
         injectMocks(fields);
         // FIX 1676 Inject mockArrays here. We need to have elements in an array that we can set expectations on.
         injectDummies(fields);
@@ -92,6 +97,11 @@ public final class InteractionTest implements TestLifecycle {
     }
 
     private void setExpectField() {
+        if (!hasMarker(UsesExpectations.class)) return;
+        doSetExpectField();
+    }
+
+    private void doSetExpectField() {
         MockExpectations expect = buildExpect();
         fielder.setPublicInstance(testCase, "expect", expect);
     }
