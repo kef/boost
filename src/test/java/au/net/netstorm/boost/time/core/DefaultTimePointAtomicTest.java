@@ -40,6 +40,27 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
         assertHashCode(1, new DefaultTimePoint(0x7FFFFFFF00000001L));
     }
 
+    public void testComparable() {
+        TimePoint a = new DefaultTimePoint(0);
+        TimePoint b = new DefaultTimePoint(1);
+        checkCompareChecksType(a);
+        checkCompare(a, b, -1);
+        checkCompare(b, a, 1);
+        checkCompare(a, a, 0);
+    }
+
+    private void checkCompareChecksType(TimePoint a) {
+        try {
+            a.compareTo(new Object());
+            fail();
+        } catch (ClassCastException expected) { }
+    }
+
+    private void checkCompare(TimePoint a, TimePoint b, int expected) {
+        int actual = a.compareTo(b);
+        assertEquals(expected, actual);
+    }
+
     private void assertInvalidTimePoints(long length) {
         try {
             new DefaultTimePoint(length);

@@ -32,6 +32,13 @@ public final class DefaultTimePoint implements TimePoint {
         return (int) millis;
     }
 
+    public int compareTo(Object o) {
+        TimePoint timePoint = (TimePoint) o;
+        if (millis < timePoint.getMillis()) return -1;
+        if (millis > timePoint.getMillis()) return 1;
+        return 0;
+    }
+
     private void validate() {
         if (millis < EPOCH_MILLIS) throw new IllegalArgumentException(
                 "The specified time (time=" + millis + ") cannot be less than the epoch (EPOCH=" + EPOCH + ").");
@@ -44,7 +51,7 @@ public final class DefaultTimePoint implements TimePoint {
     /*
               _____
            _.'_____`._
-         .'.-'  12 `-.`.   SINCE DAYLIGHT SAVINGS TIME ISN'T FUCKED UP ENOUGH
+         .'.-'  12 `-.`.   SINCE DAYLIGHT SAVINGS TIME ISN'T WRECKED ENOUGH
         /,' 11      1 `.\   LET'S KIND OF RANDOMLY CHANGE IT JUST TO
        // 10      /   2 \\   MAKE THINGS MORE DIFFICULT
       ;;         /       ::
@@ -56,6 +63,6 @@ public final class DefaultTimePoint implements TimePoint {
           ((-._____.-))
           _))       ((_
          '--'       '--'
-    
+
      */
 }
