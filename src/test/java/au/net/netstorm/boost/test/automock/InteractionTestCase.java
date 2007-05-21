@@ -7,7 +7,7 @@ public class InteractionTestCase extends BoooostCase implements UsesExpectations
     private TestLifecycle lifecycle = new InteractionTest(this);
     public MockExpectations expect;
 
-    public void runBare() throws Throwable {
+    public final void runBare() throws Throwable {
         lifecycle.initialise();
         try {
             super.runTest();
