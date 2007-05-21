@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.cases.TestStrategy;
 import au.net.netstorm.boost.test.field.BoostField;
@@ -41,6 +42,8 @@ public final class InteractionTestLifecycle implements TestStrategy {
     }
 
     public void destroy() {
+        if (!hasMarker(Destroyable.class)) return;
+        ((Destroyable) testCase).destroy();
     }
 
     public void initialise() {
@@ -61,7 +64,7 @@ public final class InteractionTestLifecycle implements TestStrategy {
     }
 
     private void doInitialise() {
-        if (!implementsInitialisable()) return;
+        if (!hasMarker(Initialisable.class)) return;
         ((Initialisable) testCase).initialise();
     }
 
@@ -107,9 +110,9 @@ public final class InteractionTestLifecycle implements TestStrategy {
         return new DefaultMockExpectations(delegate);
     }
 
-    private boolean implementsInitialisable() {
+    private boolean hasMarker(Class marker) {
         Class cls = testCase.getClass();
-        return Initialisable.class.isAssignableFrom(cls);
+        return marker.isAssignableFrom(cls);
     }
 }
 // } DEBT DataAbstractionCoupling
