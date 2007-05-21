@@ -2,7 +2,6 @@ package au.net.netstorm.boost.time.core;
 
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
-// DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimePointAtomicTest extends BoooostCase {
     private static final Object NULL = null;
     private TimePoint a;
@@ -98,4 +97,3 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
         assertEquals(length, new DefaultTimePoint(length).getMillis());
     }
 }
-// } DEBT ClassDataAbstractionCoupling
