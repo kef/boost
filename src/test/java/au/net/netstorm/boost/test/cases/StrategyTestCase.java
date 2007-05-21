@@ -7,9 +7,10 @@ public class StrategyTestCase extends BoooostCase {
     // FIX 1524 Remove the cast.
     private TestStrategy strategy = new InteractionTestStrategy((UsesMocks) this);
 
-    public void runBare() {
+    public void runBare() throws Throwable {
         initialise();
         try {
+            super.runTest();
             verify();
         } finally {
             destroy();

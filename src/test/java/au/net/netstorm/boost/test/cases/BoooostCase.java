@@ -10,23 +10,26 @@ import junit.framework.TestCase;
 
 /**
  * This class acts as a buffer to get us out of the
- * broken world` of JUnit.
+ * broken world of JUnit.
  */
 // OK GenericIllegalRegexp|LineLength {
-public abstract class BoooostCase extends TestCase {
+public class BoooostCase extends TestCase {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
-    public void runBare() {
-        // DO NOT super.runBare()!!!  We are deliberately taking over the pony show.
-        noInheritance();
-    }
-
     protected final void setUp() throws Exception {
-        noInheritance();
+        super.setUp();
+        gearup();
     }
 
     protected final void tearDown() throws Exception {
-        noInheritance();
+        geardown();
+        super.tearDown();
+    }
+
+    protected void gearup() {
+    }
+
+    protected void geardown() {
     }
 
     public final void assertEquals(Object[] expected, Object[] actual) {
@@ -73,12 +76,8 @@ public abstract class BoooostCase extends TestCase {
         suffer();
     }
 
-    private void noInheritance() {
-        throw new IllegalStateException("To use, override runBare() and invoke lifecycle methods on your test.  See examples.");
-    }
-
     private static void suffer() {
         throw new UnsupportedOperationException("Use assertEquals(true|false, expected) ... assertTrue/assertFalse precludes refactoring opportunities (_x_)");
     }
 }
-// } OK GenericIllegalRegexp|LineLength - Abstract is ok we're getting out of JUnit.  Abusing others is fine if they are doing the wrong thing ;-)
+// } OK GenericIllegalRegexp|LineLength - Abusing others is fine if they are doing the wrong thing ;-)
