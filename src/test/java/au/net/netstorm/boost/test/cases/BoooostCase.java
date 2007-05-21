@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 
 /**
  * This class acts as a buffer to get us out of the
- * broken world of JUnit.
+ * broken world` of JUnit.
  */
 // OK GenericIllegalRegexp {
 public abstract class BoooostCase extends TestCase {

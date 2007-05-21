@@ -1,7 +1,11 @@
 package au.net.netstorm.boost.test.cases;
 
+import au.net.netstorm.boost.test.automock.InteractionInjectorTestStrategy;
+import au.net.netstorm.boost.test.automock.UsesMocks;
+
 public class StrategyTestCase extends BoooostCase {
-    private TestStrategy strategy;
+    // FIX 1524 Remove the cast.
+    private TestStrategy strategy = new InteractionInjectorTestStrategy((UsesMocks) this);
 
     public void runBare() throws Throwable {
         initialise();
@@ -24,8 +28,6 @@ public class StrategyTestCase extends BoooostCase {
     }
 
     private void initialise() {
-        TestStrategist strategist = new DefaultTestStrategist();
-        strategy = strategist.determineStrategy(this);
         strategy.init();
     }
 
