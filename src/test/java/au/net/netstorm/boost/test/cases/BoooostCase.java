@@ -18,6 +18,7 @@ public abstract class BoooostCase extends TestCase {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
     protected final void setUp() throws Exception {
+        // FIX 1524 Fail.  We're overriding runBare so don't even call setUp();
         super.setUp();
         gearup();
     }
