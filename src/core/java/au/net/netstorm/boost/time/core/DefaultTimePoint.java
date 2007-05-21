@@ -19,6 +19,14 @@ public final class DefaultTimePoint implements TimePoint {
         return millis;
     }
 
+    public boolean before(TimePoint timePoint) {
+        return compareTo(timePoint) < 0;
+    }
+
+    public boolean after(TimePoint timePoint) {
+        return compareTo(timePoint) > 0;
+    }
+
     public String toString() {
         return "TimePoint[" + millis + "]";
     }
