@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.cases.BoooostCase;
-import au.net.netstorm.boost.test.cases.TestStrategy;
+import au.net.netstorm.boost.test.cases.TestLifecycle;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.DefaultFieldSelector;
@@ -17,7 +17,7 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
-public final class InteractionTestLifecycle implements TestStrategy {
+public final class InteractionTest implements TestLifecycle {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
@@ -32,7 +32,7 @@ public final class InteractionTestLifecycle implements TestStrategy {
     private final BoooostCase testCase;
     private final AutoMocker autoMocker;
 
-    public InteractionTestLifecycle(BoooostCase testCase) {
+    public InteractionTest(BoooostCase testCase) {
         this.testCase = testCase;
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
     }
