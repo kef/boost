@@ -514,7 +514,9 @@
         <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/" />
+      </SOURCES>
     </library>
     <library name="jmock">
       <CLASSES>
