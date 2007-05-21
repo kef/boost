@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.test.cases;
 
-interface TestLifecycle {
-    void init();
+import au.net.netstorm.boost.spider.core.Destroyable;
+import au.net.netstorm.boost.spider.core.Initialisable;
 
+interface TestLifecycle extends Initialisable, Destroyable {
     void verify();
-
-    void destroy();
 }
