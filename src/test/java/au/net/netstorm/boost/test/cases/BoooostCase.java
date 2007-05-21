@@ -12,6 +12,7 @@ import junit.framework.TestCase;
  * This class acts as a buffer to get us out of the
  * broken world of JUnit.
  */
+// FIX 1524 Rename to DoNotUseMeTestCase.
 // OK GenericIllegalRegexp|LineLength {
 public class BoooostCase extends TestCase {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
