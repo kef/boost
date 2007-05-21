@@ -62,7 +62,7 @@ public final class InteractionTestStrategy implements TestStrategy {
 
     private void initialise() {
         if (!implementsInitialisable()) return;
-        ((Initialisable) testCase).init();
+        ((Initialisable) testCase).initialise();
     }
 
     private BoostField[] getAllFields() {

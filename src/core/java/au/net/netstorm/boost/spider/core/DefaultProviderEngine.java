@@ -38,7 +38,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
 
     private void init(ResolvedInstance resolved) {
         Initialisable initialisable = (Initialisable) resolved.getRef();
-        initialisable.init();
+        initialisable.initialise();
     }
 
     // FIX 1757 Remove when done.

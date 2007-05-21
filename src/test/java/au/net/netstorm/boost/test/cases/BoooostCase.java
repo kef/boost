@@ -16,12 +16,12 @@ import junit.framework.TestCase;
 public class BoooostCase extends TestCase {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
-    protected final void setUp() throws Exception {
+    protected void setUp() throws Exception {
         super.setUp();
         gearup();
     }
 
-    protected final void tearDown() throws Exception {
+    protected void tearDown() throws Exception {
         geardown();
         super.tearDown();
     }

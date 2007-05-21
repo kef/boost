@@ -52,7 +52,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase {
         expect.oneCall(providezMoi, initialise, "is", initMarker);
         if (!initialise) return;
         expect.oneCall(unresolved, initialisable, "getRef");
-        expect.oneCall(initialisable, VOID, "init");
+        expect.oneCall(initialisable, VOID, "initialise");
     }
 
     public void testNotMarker() {
