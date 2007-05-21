@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.cases.TestStrategy;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
@@ -27,11 +28,11 @@ public final class InteractionTestLifecycle implements TestStrategy {
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
     private final Matcher dummyArrayMatcher = new DummyArrayMatcher();
-    private final UsesMocks testCase;
-    private final AutoMocker autoMocker;
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
+    private final BoooostCase testCase;
+    private final AutoMocker autoMocker;
 
-    public InteractionTestLifecycle(UsesMocks testCase) {
+    public InteractionTestLifecycle(BoooostCase testCase) {
         this.testCase = testCase;
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
     }
@@ -41,17 +42,12 @@ public final class InteractionTestLifecycle implements TestStrategy {
         mocker.verify();
     }
 
-    public void destroy() {
-        if (!hasMarker(Destroyable.class)) return;
-        ((Destroyable) testCase).destroy();
-    }
-
     public void initialise() {
         BoostField[] fields = getAllFields();
         validate(fields);
         injectTestFields(fields);
         doInitialise();
-        subjectSetup();
+        doSetupSubject();
         injectSubjects();
         setExpectField();
     }
@@ -63,9 +59,8 @@ public final class InteractionTestLifecycle implements TestStrategy {
         injectDummyArrays(fields);
     }
 
-    private void doInitialise() {
-        if (!hasMarker(Initialisable.class)) return;
-        ((Initialisable) testCase).initialise();
+    public void destroy() {
+        doDestroy();
     }
 
     private BoostField[] getAllFields() {
@@ -92,10 +87,6 @@ public final class InteractionTestLifecycle implements TestStrategy {
         randomizer.randomize(arrays);
     }
 
-    private void subjectSetup() {
-        testCase.setupSubjects();
-    }
-
     private void injectSubjects() {
         subjectInjector.inject(testCase);
     }
@@ -113,6 +104,23 @@ public final class InteractionTestLifecycle implements TestStrategy {
     private boolean hasMarker(Class marker) {
         Class cls = testCase.getClass();
         return marker.isAssignableFrom(cls);
+    }
+
+    // Below are our marker calls.
+
+    private void doDestroy() {
+        if (!hasMarker(Destroyable.class)) return;
+        ((Destroyable) testCase).destroy();
+    }
+
+    private void doInitialise() {
+        if (!hasMarker(Initialisable.class)) return;
+        ((Initialisable) testCase).initialise();
+    }
+
+    private void doSetupSubject() {
+        if (!hasMarker(UsesMocks.class)) return;
+        ((UsesMocks) testCase).setupSubjects();
     }
 }
 // } DEBT DataAbstractionCoupling

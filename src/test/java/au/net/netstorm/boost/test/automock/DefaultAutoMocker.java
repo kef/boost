@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashMap;
 import java.util.Map;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -11,10 +12,10 @@ import org.jmock.Mock;
 class DefaultAutoMocker implements AutoMocker {
     private final Map mocks = new HashMap();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final UsesMocks testCase;
+    private final BoooostCase testCase;
     private final MockProvider mockProvider;
 
-    public DefaultAutoMocker(UsesMocks testCase, MockProvider mockProvider) {
+    public DefaultAutoMocker(BoooostCase testCase, MockProvider mockProvider) {
         this.testCase = testCase;
         this.mockProvider = mockProvider;
     }

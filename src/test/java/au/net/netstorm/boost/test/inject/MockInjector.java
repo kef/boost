@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.inject;
 
-import au.net.netstorm.boost.test.automock.UsesMocks;
+import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public interface MockInjector {
-    void inject(UsesMocks test, Object subject, String fieldName);
+    void inject(BoooostCase test, Object subject, String fieldName);
 }
