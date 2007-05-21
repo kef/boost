@@ -12,26 +12,21 @@ import junit.framework.TestCase;
  * This class acts as a buffer to get us out of the
  * broken world` of JUnit.
  */
-// OK GenericIllegalRegexp {
+// OK GenericIllegalRegexp|LineLength {
 public abstract class BoooostCase extends TestCase {
-    // } OK GenericIllegalRegexp
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
+    public void runBare() {
+        // DO NOT super.runBare()!!!  We are deliberately taking over the pony show.
+        noInheritance();
+    }
+
     protected final void setUp() throws Exception {
-        // FIX 1524 Fail.  We're overriding runBare so don't even call setUp();
-        super.setUp();
-        gearup();
+        noInheritance();
     }
 
     protected final void tearDown() throws Exception {
-        geardown();
-        super.tearDown();
-    }
-
-    protected void gearup() {
-    }
-
-    protected void geardown() {
+        noInheritance();
     }
 
     public final void assertEquals(Object[] expected, Object[] actual) {
@@ -78,9 +73,12 @@ public abstract class BoooostCase extends TestCase {
         suffer();
     }
 
-    // OK LineLength {
+    private void noInheritance() {
+        throw new IllegalStateException("To use, override runBare() and invoke lifecycle methods on your test.  See examples.");
+    }
+
     private static void suffer() {
         throw new UnsupportedOperationException("Use assertEquals(true|false, expected) ... assertTrue/assertFalse precludes refactoring opportunities (_x_)");
     }
-    // } OK LineLength - Abusing others is fine if they are doing the wrong thing ;-)
 }
+// } OK GenericIllegalRegexp|LineLength - Abstract is ok we're getting out of JUnit.  Abusing others is fine if they are doing the wrong thing ;-)
