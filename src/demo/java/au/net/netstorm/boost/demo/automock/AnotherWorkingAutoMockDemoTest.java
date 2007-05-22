@@ -25,7 +25,7 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase im
     }
 
     public void testRandomInteger() {
-        // FIX DEBT Reintroduce this check (once sufficiently random).
+        // FIX DEBT Reintroduce this check (once sufficiently random).  Ha Ha Ha
 //        assertNotEquals(integer1, integer2);
     }
 
