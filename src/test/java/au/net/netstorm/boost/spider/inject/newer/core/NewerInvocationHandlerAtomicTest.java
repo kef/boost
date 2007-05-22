@@ -5,10 +5,11 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasSubjects {
+public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     InvocationHandler subject;
     ProviderEngine provider;
     Implementation impl;

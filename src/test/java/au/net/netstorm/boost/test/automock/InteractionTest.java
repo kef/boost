@@ -45,19 +45,14 @@ public final class InteractionTest implements TestLifecycle {
     public void initialise() {
         BoostField[] fields = getAllFields();
         validate(fields);
-        injectTestFields(fields);
+        doInjectAutoMocks(fields);
         doInitialise();
         doSetupSubject();
         injectSubjects();
         setExpectField();
     }
 
-    private void injectTestFields(BoostField[] fields) {
-        if (!hasMarker(UsesAutoMocks.class))
-            doInjectTesttFields(fields);
-    }
-
-    private void doInjectTesttFields(BoostField[] fields) {
+    private void injectAutoMocks(BoostField[] fields) {
         injectMocks(fields);
         // FIX 1676 Inject mockArrays here. We need to have elements in an array that we can set expectations on.
         injectDummies(fields);
@@ -119,18 +114,19 @@ public final class InteractionTest implements TestLifecycle {
     // Below are our marker calls.
 
     private void doDestroy() {
-        if (!hasMarker(Destroyable.class)) return;
-        ((Destroyable) testCase).destroy();
+        if (hasMarker(Destroyable.class)) ((Destroyable) testCase).destroy();
     }
 
     private void doInitialise() {
-        if (!hasMarker(Initialisable.class)) return;
-        ((Initialisable) testCase).initialise();
+        if (hasMarker(Initialisable.class)) ((Initialisable) testCase).initialise();
     }
 
     private void doSetupSubject() {
-        if (!hasMarker(HasSubjects.class)) return;
-        ((HasSubjects) testCase).setupSubjects();
+        if (hasMarker(HasSubjects.class)) ((HasSubjects) testCase).setupSubjects();
+    }
+
+    private void doInjectAutoMocks(BoostField[] fields) {
+        if (hasMarker(UsesAutoMocks.class)) injectAutoMocks(fields);
     }
 }
 // } DEBT DataAbstractionCoupling

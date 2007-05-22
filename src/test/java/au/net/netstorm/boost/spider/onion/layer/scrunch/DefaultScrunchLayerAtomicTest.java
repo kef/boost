@@ -4,8 +4,9 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase implements HasSubjects {
+public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     ScrunchLayer subject;
     Layer next;
     Object returned;

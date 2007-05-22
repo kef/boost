@@ -2,11 +2,12 @@ package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultProviderAtomicTest extends InteractionTestCase implements HasSubjects {
+public final class DefaultProviderAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     private static final Object SAND = new Sand();
     private static final Object[] PARAMETERS = {SAND};
     Provider subject;

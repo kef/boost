@@ -6,11 +6,12 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultFieldResolverAtomicTest extends InteractionTestCase implements HasSubjects {
+public final class DefaultFieldResolverAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     EdgeClass classer = new DefaultEdgeClass();
     Interface happyChap = new DefaultInterface(HappyChap.class);
     FieldResolver subject;
