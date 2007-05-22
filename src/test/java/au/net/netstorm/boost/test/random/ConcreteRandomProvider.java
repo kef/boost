@@ -8,6 +8,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
 public final class ConcreteRandomProvider implements RandomProvider {
+    private static final int SUFFICIENTLY_RANDOM = 10;
     private final Random random = new Random();
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Class[] randomClasses = {LovelyInterface.class, Random.class, Serializable.class};
@@ -44,12 +45,12 @@ public final class ConcreteRandomProvider implements RandomProvider {
     }
 
     private Integer randomInteger() {
-        int i = random.nextInt();
+        int i = random.nextInt() % SUFFICIENTLY_RANDOM;
         return Integer.valueOf(i);
     }
 
     private Long randomLong() {
-        long l = random.nextLong();
+        long l = random.nextLong() % SUFFICIENTLY_RANDOM;
         return Long.valueOf(l);
     }
 
