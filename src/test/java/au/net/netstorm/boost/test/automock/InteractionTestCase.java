@@ -7,8 +7,8 @@ public class InteractionTestCase extends CleanTestCase implements UsesExpectatio
     public MockExpectations expect;
 
     public final void runBare() throws Throwable {
-        lifecycle.initialise();
         try {
+            lifecycle.initialise();
             super.runTest();
             lifecycle.verify();
         } finally {
