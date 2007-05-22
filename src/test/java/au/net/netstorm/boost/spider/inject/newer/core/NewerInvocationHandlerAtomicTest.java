@@ -23,7 +23,7 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
     }
 
     public void testInvokeCreate() throws Throwable {
-        Method method = Object.class.getMethod("wait", null);
+        Method method = Object.class.getMethod("wait", (Class[]) null);
         expect.oneCall(provider, newedInstance, "provide", impl, methodParams);
         expect.oneCall(newedInstance, newedObject, "getRef");
         Object actualObject = subject.invoke(proxyObject, method, methodParams);

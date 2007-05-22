@@ -36,13 +36,6 @@ public final class InteractionTest implements JUnitLifecycle {
         autoMockTest.validate();
     }
 
-    private boolean hasMarker(Class marker) {
-        Class cls = testCase.getClass();
-        return marker.isAssignableFrom(cls);
-    }
-
-    // Below are our marker calls.
-
     private void doInjectSubject() {
         if (hasMarker(InjectSubject.class)) autoMockTest.injectSubject();
     }
@@ -65,5 +58,10 @@ public final class InteractionTest implements JUnitLifecycle {
 
     private void doInjectAutoMocks() {
         if (hasMarker(UsesAutoMocks.class)) autoMockTest.injectAutoMocks();
+    }
+
+    private boolean hasMarker(Class marker) {
+        Class cls = testCase.getClass();
+        return marker.isAssignableFrom(cls);
     }
 }
