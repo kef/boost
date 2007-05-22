@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.cases.BoooostCase;
-import au.net.netstorm.boost.test.cases.TestLifecycle;
+import au.net.netstorm.boost.test.cases.JUnitLifecycle;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.DefaultFieldSelector;
@@ -17,7 +17,7 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
-public final class InteractionTest implements TestLifecycle {
+public final class InteractionTest implements JUnitLifecycle {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
@@ -38,11 +38,11 @@ public final class InteractionTest implements TestLifecycle {
     }
 
     // Hook in from jMock.  Needed for jMock to actually verify.
-    public void verify() {
+    public void post() {
         mocker.verify();
     }
 
-    public void initialise() {
+    public void pre() {
         BoostField[] fields = getAllFields();
         validate(fields);
         doInjectAutoMocks(fields);
@@ -59,7 +59,7 @@ public final class InteractionTest implements TestLifecycle {
         injectDummyArrays(fields);
     }
 
-    public void destroy() {
+    public void cleanup() {
         doDestroy();
     }
 

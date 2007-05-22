@@ -1,18 +1,18 @@
 package au.net.netstorm.boost.test.automock;
 
-import au.net.netstorm.boost.test.cases.TestLifecycle;
+import au.net.netstorm.boost.test.cases.JUnitLifecycle;
 
 public class InteractionTestCase extends CleanTestCase implements UsesExpectations {
-    private TestLifecycle lifecycle = new InteractionTest(this);
+    private JUnitLifecycle lifecycle = new InteractionTest(this);
     public MockExpectations expect;
 
     public final void runBare() throws Throwable {
         try {
-            lifecycle.initialise();
+            lifecycle.pre();
             super.runTest();
-            lifecycle.verify();
+            lifecycle.post();
         } finally {
-            lifecycle.destroy();
+            lifecycle.cleanup();
         }
     }
 }
