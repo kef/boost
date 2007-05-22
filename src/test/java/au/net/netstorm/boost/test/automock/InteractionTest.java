@@ -31,10 +31,12 @@ public final class InteractionTest implements JUnitLifecycle {
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
     private final BoooostCase testCase;
     private final AutoMocker autoMocker;
+    private final BoostField[] fields;
 
     public InteractionTest(BoooostCase testCase) {
         this.testCase = testCase;
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
+        fields = getAllFields();
     }
 
     // Hook in from jMock.  Needed for jMock to actually verify.
@@ -43,13 +45,12 @@ public final class InteractionTest implements JUnitLifecycle {
     }
 
     public void pre() {
-        BoostField[] fields = getAllFields();
-        validate(fields);
-        doInjectAutoMocks(fields);
+        doValidate();
+        doInjectAutoMocks();
         doInitialise();
         doSetupSubject();
-        injectSubjects();
-        setExpectField();
+        doInjectSubject();
+        doExceptField();
     }
 
     private void injectAutoMocks(BoostField[] fields) {
@@ -68,7 +69,7 @@ public final class InteractionTest implements JUnitLifecycle {
         return fieldBuilder.build(testCase);
     }
 
-    private void validate(BoostField[] fields) {
+    private void doValidate() {
         validator.validate(fields);
     }
 
@@ -87,16 +88,11 @@ public final class InteractionTest implements JUnitLifecycle {
         randomizer.randomize(arrays);
     }
 
-    private void injectSubjects() {
+    private void injectSubject() {
         subjectInjector.inject(testCase);
     }
 
     private void setExpectField() {
-        if (!hasMarker(UsesExpectations.class)) return;
-        doSetExpectField();
-    }
-
-    private void doSetExpectField() {
         MockExpectations expect = buildExpect();
         fielder.setPublicInstance(testCase, "expect", expect);
     }
@@ -113,6 +109,14 @@ public final class InteractionTest implements JUnitLifecycle {
 
     // Below are our marker calls.
 
+    private void doInjectSubject() {
+        if (hasMarker(InjectSubject.class)) injectSubject();
+    }
+
+    private void doExceptField() {
+        if (hasMarker(UsesExpectations.class)) setExpectField();
+    }
+
     private void doDestroy() {
         if (hasMarker(Destroyable.class)) ((Destroyable) testCase).destroy();
     }
@@ -125,7 +129,7 @@ public final class InteractionTest implements JUnitLifecycle {
         if (hasMarker(HasSubjects.class)) ((HasSubjects) testCase).setupSubjects();
     }
 
-    private void doInjectAutoMocks(BoostField[] fields) {
+    private void doInjectAutoMocks() {
         if (hasMarker(UsesAutoMocks.class)) injectAutoMocks(fields);
     }
 }
