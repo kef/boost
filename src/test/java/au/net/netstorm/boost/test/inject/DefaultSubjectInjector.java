@@ -36,6 +36,7 @@ public final class DefaultSubjectInjector implements SubjectInjector {
         }
     }
 
+    // FIX DEBT Stinky.  Need a getField or fieldExists().
     private Object nullGetSubject(BoooostCase testCase) {
         try {
             return fielder.getInstance(testCase, "subject");

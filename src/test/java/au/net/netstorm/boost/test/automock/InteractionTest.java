@@ -50,7 +50,7 @@ public final class InteractionTest implements JUnitLifecycle {
         doInitialise();
         doSetupSubject();
         doInjectSubject();
-        doExceptField();
+        doSetExpectField();
     }
 
     private void injectAutoMocks(BoostField[] fields) {
@@ -113,7 +113,7 @@ public final class InteractionTest implements JUnitLifecycle {
         if (hasMarker(InjectSubject.class)) injectSubject();
     }
 
-    private void doExceptField() {
+    private void doSetExpectField() {
         if (hasMarker(UsesExpectations.class)) setExpectField();
     }
 
