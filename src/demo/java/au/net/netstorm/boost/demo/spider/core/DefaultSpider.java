@@ -19,6 +19,10 @@ public final class DefaultSpider implements Spider {
         this.registry = registry;
     }
 
+    public Object provide(Class type) {
+        return provider.provide(type);
+    }
+
     public Object provide(Class type, Object[] parameters) {
         return provider.provide(type, parameters);
     }
