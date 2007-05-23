@@ -15,7 +15,6 @@ public final class DefaultProvider implements Provider {
         return provide(type, new Object[]{});
     }
 
-    // SUGGEST: Can we get people to deal directly with the "engine"
     public Object provide(Class type, Object[] parameters) {
         Implementation implementation = new DefaultImplementation(type);
         ResolvedInstance instance = engine.provide(implementation, parameters);
