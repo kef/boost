@@ -25,14 +25,14 @@ import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultOldPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.OldPassThroughLayer;
+import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
-import au.net.netstorm.boost.spider.resolve.DefaultSpiderWeb;
 import au.net.netstorm.boost.spider.resolve.DefaultWebSpinner;
 import au.net.netstorm.boost.spider.resolve.FinderEngine;
+import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.spider.resolve.SpiderWeb;
 import au.net.netstorm.boost.spider.resolve.WebSpinner;
 import au.net.netstorm.boost.spider.resolve.WebSpinnerEngine;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
@@ -68,8 +68,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         Provider provider = new DefaultProvider(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        SpiderWeb web = new DefaultSpiderWeb(spinnerEngine);
-        return new DefaultSpider(provider, injector, resolver, web);
+        Registry registry = new DefaultRegistry(spinnerEngine);
+        return new DefaultSpider(provider, injector, resolver, registry);
     }
 
     private WebSpinner brandNewWeb() {

@@ -7,10 +7,10 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultSpiderWeb implements SpiderWeb {
+public final class DefaultRegistry implements Registry {
     private final WebSpinnerEngine spinnerEngine;
 
-    public DefaultSpiderWeb(WebSpinnerEngine spinnerEngine) {
+    public DefaultRegistry(WebSpinnerEngine spinnerEngine) {
         this.spinnerEngine = spinnerEngine;
     }
 

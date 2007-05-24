@@ -10,8 +10,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultSpiderWebAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
-    SpiderWeb subject;
+public final class DefaultRegistryAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+    Registry subject;
     Class frenchCloison = Sport.class;
     Class frenchRoll = BreakfastCereal.class;
     Class davidPetit = Football.class;
@@ -24,7 +24,7 @@ public final class DefaultSpiderWebAtomicTest extends InteractionTestCase implem
     WebSpinner webSpinner;
 
     public void setupSubjects() {
-        subject = new DefaultSpiderWeb(webSpinner);
+        subject = new DefaultRegistry(webSpinner);
     }
 
     public void testPrototype() {

@@ -5,7 +5,7 @@ import au.net.netstorm.boost.demo.spider.newer.DefaultSpiderAssembler;
 import au.net.netstorm.boost.demo.spider.newer.SpiderAssembler;
 import au.net.netstorm.boost.spider.core.GoodCitizen;
 import au.net.netstorm.boost.spider.core.Provider;
-import au.net.netstorm.boost.spider.resolve.SpiderWeb;
+import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultResolveDemoTest extends BoooostCase {
@@ -13,17 +13,17 @@ public final class DefaultResolveDemoTest extends BoooostCase {
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
     private final Provider provider = spider;
-    private final SpiderWeb web = spider;
+    private final Registry registry = spider;
 
     {
-        web.prototype(TheDude.class, JeffBridges.class);
-        web.prototype(Quote.class, ClassicQuote.class);
-        web.prototype(Movie.class, BigLebowski.class);
-        web.prototype(Cinema.class, RegalCinema.class);
-        web.instance(Actor.class, new PeterSellers());
-        web.instance(Celebrity.class, new BritneySpears());
-        web.prototype(Hollywood.class, GlitzyHollywood.class);
-        web.prototype(Business.class, MovieBusiness.class);
+        registry.prototype(TheDude.class, JeffBridges.class);
+        registry.prototype(Quote.class, ClassicQuote.class);
+        registry.prototype(Movie.class, BigLebowski.class);
+        registry.prototype(Cinema.class, RegalCinema.class);
+        registry.instance(Actor.class, new PeterSellers());
+        registry.instance(Celebrity.class, new BritneySpears());
+        registry.prototype(Hollywood.class, GlitzyHollywood.class);
+        registry.prototype(Business.class, MovieBusiness.class);
     }
 
     public void testNoArgProvide() {
