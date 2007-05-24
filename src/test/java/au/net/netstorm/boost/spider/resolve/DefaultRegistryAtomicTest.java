@@ -21,19 +21,19 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     Implementation footballImplementation = new DefaultImplementation(football);
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     Class iface;
-    WebSpinner webSpinner;
+    RegistryMaster registryMaster;
 
     public void setupSubjects() {
-        subject = new DefaultRegistry(webSpinner);
+        subject = new DefaultRegistry(registryMaster);
     }
 
     public void testPrototype() {
-        expect.oneCall(webSpinner, VOID, "implementation", sportInterface, footballImplementation);
+        expect.oneCall(registryMaster, VOID, "implementation", sportInterface, footballImplementation);
         subject.prototype(sport, football);
     }
 
     public void testInstance() {
-        expect.oneCall(webSpinner, VOID, "instance", cerealInterface, resolvedCocoPops);
+        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops);
         subject.instance(cereal, cocoPops);
     }
 }

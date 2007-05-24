@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT DataAbstractionCoupling {
-public final class DefaultWebSpinner implements WebSpinner {
+public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map web = new HashMap();
 
     public void implementation(Interface iface, Implementation implementation) {

@@ -17,7 +17,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     ResolverEngine subject;
     ProviderEngine provider;
-    WebSpinner webSpinner;
+    RegistryMaster registryMaster;
     NewerAssembler newerAssembler;
     ResolvedInstance jimResolvedInstance;
     ResolvedInstance jackResolvedInstance;
@@ -33,32 +33,32 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Jim jimInstance = new NoArgJim();
 
     public void setupSubjects() {
-        subject = new DefaultResolverEngine(provider, webSpinner, newerAssembler);
+        subject = new DefaultResolverEngine(provider, registryMaster, newerAssembler);
     }
 
     public void testNoUnresolvedDependencies() {
-        expect.oneCall(webSpinner, false, "hasInstance", jim);
-        expect.oneCall(webSpinner, jimImpl, "getImplementation", jim);
+        expect.oneCall(registryMaster, false, "hasInstance", jim);
+        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
         expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
         ResolvedInstance result = subject.resolve(jim);
         assertEquals(jimResolvedInstance, result);
     }
 
     public void testOneUnresolvedDependencies() {
-        expect.oneCall(webSpinner, false, "hasInstance", jack);
-        expect.oneCall(webSpinner, jimImpl, "getImplementation", jim);
+        expect.oneCall(registryMaster, false, "hasInstance", jack);
+        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
         expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
         expect.oneCall(jimResolvedInstance, jimInstance, "getRef");
-        expect.oneCall(webSpinner, false, "hasInstance", jim);
-        expect.oneCall(webSpinner, jackImpl, "getImplementation", jack);
+        expect.oneCall(registryMaster, false, "hasInstance", jim);
+        expect.oneCall(registryMaster, jackImpl, "getImplementation", jack);
         expect.oneCall(provider, jackResolvedInstance, "provide", jackImpl, new Object[]{jimInstance});
         ResolvedInstance result = subject.resolve(jack);
         assertEquals(jackResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(webSpinner, true, "hasInstance", spoo);
-        expect.oneCall(webSpinner, spooInstance, "getInstance", spoo);
+        expect.oneCall(registryMaster, true, "hasInstance", spoo);
+        expect.oneCall(registryMaster, spooInstance, "getInstance", spoo);
         ResolvedInstance result = subject.resolve(spoo);
         assertEquals(spooInstance, result);
     }

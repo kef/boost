@@ -27,15 +27,15 @@ import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultOldPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.OldPassThroughLayer;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
+import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
-import au.net.netstorm.boost.spider.resolve.DefaultWebSpinner;
 import au.net.netstorm.boost.spider.resolve.FinderEngine;
 import au.net.netstorm.boost.spider.resolve.Registry;
+import au.net.netstorm.boost.spider.resolve.RegistryEngine;
+import au.net.netstorm.boost.spider.resolve.RegistryMaster;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.spider.resolve.WebSpinner;
-import au.net.netstorm.boost.spider.resolve.WebSpinnerEngine;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -55,18 +55,18 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     public Spider assemble() {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        WebSpinner webSpinner = brandNewWeb();
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, webSpinner);
+        RegistryMaster registryMaster = brandNewWeb();
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, registryMaster);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        return buildSpider(providerEngine, resolverEngine, injectorEngine, webSpinner);
+        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
     }
 
     private Spider buildSpider(ProviderEngine providerEngine,
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine,
-            WebSpinnerEngine spinnerEngine) {
+            RegistryEngine spinnerEngine) {
         ProviderEngine cProviderEngine = new ContextProviderEngine(providerEngine, RESOLVED_THINGS);
         Provider provider = new DefaultProvider(cProviderEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
@@ -75,8 +75,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultSpider(provider, injector, resolver, registry);
     }
 
-    private WebSpinner brandNewWeb() {
-        return new DefaultWebSpinner();
+    private RegistryMaster brandNewWeb() {
+        return new DefaultRegistryMaster();
     }
 
     private DefaultResolverEngine assembleResolver(ProviderEngine passThroughProvider, FinderEngine finder) {
