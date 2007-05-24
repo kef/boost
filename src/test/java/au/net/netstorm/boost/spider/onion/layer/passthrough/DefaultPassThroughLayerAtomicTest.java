@@ -7,7 +7,7 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
-public final class DefaultOldPassThroughLayerAtomicTest extends BoooostCase {
+public final class DefaultPassThroughLayerAtomicTest extends BoooostCase {
     private static final Class[] PARAMETER_TYPES = {Object.class};
     private EdgeClass edgeClass = new DefaultEdgeClass();
     private Map map = new HashMap();
@@ -21,7 +21,7 @@ public final class DefaultOldPassThroughLayerAtomicTest extends BoooostCase {
     // FIX 1936 Drive up a ThrowableUtil.
     public void testHandler() throws Throwable {
         map.put(key, value);
-        OldPassThroughLayer layer = new DefaultOldPassThroughLayer();
+        PassThroughLayer layer = new DefaultPassThroughLayer();
         layer.setDelegate(map);
         Method getMethod = edgeClass.getMethod(Map.class, "get", PARAMETER_TYPES);
         Object actual = layer.invoke(map, getMethod, parameters);
