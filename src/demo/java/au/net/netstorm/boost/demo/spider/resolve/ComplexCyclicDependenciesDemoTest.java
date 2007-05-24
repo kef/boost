@@ -24,7 +24,10 @@ public final class ComplexCyclicDependenciesDemoTest extends BoooostCase {
         Teacher teacher1 = resolveTeacher(25);
         Teacher teacher2 = resolveTeacher(55);
         // FIX BREADCRUMB 1971 Re-instate.
-//        checkResolve(teacher1, teacher2, 25, 55);
+/*
+        assertNotEquals(teacher1, teacher2);
+        checkResolve(teacher1, teacher2, 25, 55);
+*/
     }
 
     private void checkResolve(Teacher teacher1, Teacher teacher2, int teacher1Age, int teacher2Age) {
