@@ -25,6 +25,6 @@ public final class ComplexCyclicDependenciesDemoTest extends BoooostCase {
     // FIX 1971 Rename.
     public void testSomething() {
         // FIX 1971 Reinstate.
-//        Teacher teacher = (Teacher) spider.resolve(Teacher.class);
+        Teacher teacher = (Teacher) spider.resolve(Teacher.class);
     }
 }

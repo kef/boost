@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.core;
 
-import java.util.HashMap;
-import java.util.Map;
+import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
@@ -13,12 +13,11 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface INITIALISABLE = new DefaultInterface(Initialisable.class);
+    private final ResolvedThings resolvedThings = new DefaultResolvedThings();
     private Interface marker;
     private Onionizer onionizer;
     private Instantiator instantiator;
     private InjectorEngine injector;
-    // FIX 1971 Remove.
-    private Map resolvedInterfaces = new HashMap();
 
     // OK LineLength {
     public DefaultProviderEngine(Interface marker, Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
@@ -33,14 +32,19 @@ public final class DefaultProviderEngine implements ProviderEngine {
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
-        // FIX BREADCRUMB 1971 Re-instate (maybe).  Otherwise remove.
-//        if (resolvedInterfaces.containsKey(impl)) return (ResolvedInstance) resolvedInterfaces.get(impl);
-        UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
-//        resolvedInterfaces.put(impl, unresolved);
-        injector.inject(unresolved);
-        ResolvedInstance resolved = (ResolvedInstance) unresolved;
+        // FIX 1971 Test drive this check up.
+        if (resolvedThings.exists(impl)) return resolvedThings.get(impl);
+        ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (impl.is(INITIALISABLE)) init(resolved);
         return onionizer.onionise(resolved);
+    }
+
+    private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
+        UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
+        // FIX 1971 Test drive this check up.
+        resolvedThings.put(impl, unresolved);
+        injector.inject(unresolved);
+        return (ResolvedInstance) unresolved;
     }
 
     private void init(ResolvedInstance resolved) {

@@ -22,8 +22,8 @@ public final class SimpleCyclicDependenciesDemoTest extends BoooostCase {
     }
 
     public void testDependencyWithTwoObjects() {
-//        checkOneWay();
-//        checkTheOtherWay();
+        checkOneWay();
+        checkTheOtherWay();
     }
 
     private void checkOneWay() {

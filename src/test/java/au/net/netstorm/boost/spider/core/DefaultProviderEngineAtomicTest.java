@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.spider.core;
 
+import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.gaijin.Gaijinator;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -30,6 +32,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     Initialisable initialisable;
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
     Interface initMarker = new DefaultInterface(Initialisable.class);
+    ResolvedThings resolvedThings = new DefaultResolvedThings();
 
     public void setupSubjects() {
         subject = new DefaultProviderEngine(citizenMarker, onionizer, injector, instantiator);
@@ -41,6 +44,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     }
 
     private void checkProvider(boolean initialise) {
+        resolvedThings.clear();
         expect.oneCall(providezMoi, true, "is", citizenMarker);
         expect.oneCall(instantiator, unresolved, "instantiate", providezMoi, parameters);
         expect.oneCall(injector, VOID, "inject", unresolved);

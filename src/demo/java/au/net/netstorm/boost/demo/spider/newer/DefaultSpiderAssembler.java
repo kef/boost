@@ -9,6 +9,7 @@ import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.inject.core.ContextProviderEngine;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -42,6 +43,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
+    private static final ResolvedThings RESOLVED_THINGS = new DefaultResolvedThings();
     private final OldPassThroughLayer passThrough = new DefaultOldPassThroughLayer();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final ProxyFactory proxyFactory = assembleProxyFactory();
@@ -65,7 +67,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine,
             WebSpinnerEngine spinnerEngine) {
-        Provider provider = new DefaultProvider(providerEngine);
+        ProviderEngine cProviderEngine = new ContextProviderEngine(providerEngine, RESOLVED_THINGS);
+        Provider provider = new DefaultProvider(cProviderEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
         Registry registry = new DefaultRegistry(spinnerEngine);
