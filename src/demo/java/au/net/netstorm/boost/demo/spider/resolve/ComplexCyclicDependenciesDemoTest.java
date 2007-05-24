@@ -20,11 +20,23 @@ public final class ComplexCyclicDependenciesDemoTest extends BoooostCase {
         web.prototype(Exam.class, DefaultExam.class);
     }
 
-    // FIX BREADCRUMB 1971 Rename.
-    // FIX 1971 Do field assertions.
-    // FIX 1971 Rename.
-    public void testSomething() {
-        // FIX 1971 Reinstate.
-        Teacher teacher = (Teacher) spider.resolve(Teacher.class);
+    public void testResolve() {
+        Teacher teacher1 = resolveTeacher(25);
+        Teacher teacher2 = resolveTeacher(55);
+        // FIX BREADCRUMB 1971 Re-instate.
+//        checkResolve(teacher1, teacher2, 25, 55);
+    }
+
+    private void checkResolve(Teacher teacher1, Teacher teacher2, int teacher1Age, int teacher2Age) {
+        int actualAge1 = teacher1.getAge();
+        int actualAge2 = teacher2.getAge();
+        assertEquals(teacher1Age, actualAge1);
+        assertEquals(teacher2Age, actualAge2);
+    }
+
+    private Teacher resolveTeacher(int age) {
+        Teacher teacher1 = (Teacher) spider.resolve(Teacher.class);
+        teacher1.setAge(age);
+        return teacher1;
     }
 }
