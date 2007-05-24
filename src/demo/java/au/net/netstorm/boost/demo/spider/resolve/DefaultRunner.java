@@ -8,4 +8,8 @@ public final class DefaultRunner implements Runner, GoodCitizen {
     public Ball getBall() {
         return ball;
     }
+
+    public int getAge() {
+        return 25;
+    }
 }

@@ -8,4 +8,8 @@ public final class DefaultBall implements Ball, GoodCitizen {
     public Runner getRunner() {
         return runner;
     }
+
+    public int getSize() {
+        return 4;
+    }
 }

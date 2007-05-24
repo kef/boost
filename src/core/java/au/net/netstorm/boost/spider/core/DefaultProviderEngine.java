@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.spider.core;
 
+import java.util.HashMap;
+import java.util.Map;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
@@ -15,6 +17,8 @@ public final class DefaultProviderEngine implements ProviderEngine {
     private Onionizer onionizer;
     private Instantiator instantiator;
     private InjectorEngine injector;
+    // FIX 1971 Remove.
+    private Map resolvedInterfaces = new HashMap();
 
     // OK LineLength {
     public DefaultProviderEngine(Interface marker, Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
@@ -29,7 +33,10 @@ public final class DefaultProviderEngine implements ProviderEngine {
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
+        // FIX BREADCRUMB 1971 Re-instate (maybe).  Otherwise remove.
+//        if (resolvedInterfaces.containsKey(impl)) return (ResolvedInstance) resolvedInterfaces.get(impl);
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
+//        resolvedInterfaces.put(impl, unresolved);
         injector.inject(unresolved);
         ResolvedInstance resolved = (ResolvedInstance) unresolved;
         if (impl.is(INITIALISABLE)) init(resolved);
