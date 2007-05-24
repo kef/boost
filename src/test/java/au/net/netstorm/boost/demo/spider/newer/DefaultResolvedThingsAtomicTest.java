@@ -12,17 +12,15 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
     Implementation impl;
     BaseReference expected;
     Implementation doesNotExist;
-    BaseReference ref;
 
     public void setupSubjects() {
         subject = new DefaultResolvedThings();
     }
 
-    // FIX BREADCRUMB 1971 Refactor this bad boy.
     public void testExists() {
+        checkExists(impl, false);
         checkPut(impl, expected);
-        boolean actual = subject.exists(impl);
-        assertEquals(true, actual);
+        checkExists(impl, true);
     }
 
     public void testPutSuccess() {
@@ -35,6 +33,11 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
             subject.get(doesNotExist);
             fail();
         } catch (IllegalStateException expected) { }
+    }
+
+    private void checkExists(Implementation myimpl, boolean myexpected) {
+        boolean actual = subject.exists(myimpl);
+        assertEquals(myexpected, actual);
     }
 
     private void checkPut(Implementation implementation, BaseReference baseReference) {
