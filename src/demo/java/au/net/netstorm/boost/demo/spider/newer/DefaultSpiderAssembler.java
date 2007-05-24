@@ -25,16 +25,16 @@ import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultOldPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.OldPassThroughLayer;
-import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
-import au.net.netstorm.boost.spider.resolve.DefaultRegistryMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
+import au.net.netstorm.boost.spider.resolve.DefaultSpiderWeb;
+import au.net.netstorm.boost.spider.resolve.DefaultWebSpinner;
 import au.net.netstorm.boost.spider.resolve.FinderEngine;
-import au.net.netstorm.boost.spider.resolve.Registry;
-import au.net.netstorm.boost.spider.resolve.RegistryEngine;
-import au.net.netstorm.boost.spider.resolve.RegistryMaster;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
+import au.net.netstorm.boost.spider.resolve.SpiderWeb;
+import au.net.netstorm.boost.spider.resolve.WebSpinner;
+import au.net.netstorm.boost.spider.resolve.WebSpinnerEngine;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -53,27 +53,27 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     public Spider assemble() {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        RegistryMaster registryMaster = brandNewRegistry();
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, registryMaster);
+        WebSpinner webSpinner = brandNewWeb();
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, webSpinner);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
+        return buildSpider(providerEngine, resolverEngine, injectorEngine, webSpinner);
     }
 
     private Spider buildSpider(ProviderEngine providerEngine,
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine,
-            RegistryEngine registryEngine) {
+            WebSpinnerEngine spinnerEngine) {
         Provider provider = new DefaultProvider(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        Registry registry = new DefaultRegistry(registryEngine);
-        return new DefaultSpider(provider, injector, resolver, registry);
+        SpiderWeb web = new DefaultSpiderWeb(spinnerEngine);
+        return new DefaultSpider(provider, injector, resolver, web);
     }
 
-    private RegistryMaster brandNewRegistry() {
-        return new DefaultRegistryMaster();
+    private WebSpinner brandNewWeb() {
+        return new DefaultWebSpinner();
     }
 
     private DefaultResolverEngine assembleResolver(ProviderEngine passThroughProvider, FinderEngine finder) {

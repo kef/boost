@@ -10,20 +10,20 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT DataAbstractionCoupling {
-public final class DefaultRegistryMaster implements RegistryMaster {
-    private final Map registrations = new HashMap();
+public final class DefaultWebSpinner implements WebSpinner {
+    private final Map web = new HashMap();
 
     public void implementation(Interface iface, Implementation implementation) {
         barfIfExists(iface);
         barfIfNotImplOfIface(iface, implementation);
-        registrations.put(iface, implementation);
+        web.put(iface, implementation);
     }
 
     public void instance(Interface iface, ResolvedInstance instance) {
         barfIfInstanceIsClass(instance);
         barfIfNotImplOfIface(iface, instance);
         barfIfExists(iface);
-        registrations.put(iface, instance);
+        web.put(iface, instance);
     }
 
     public Implementation getImplementation(Interface iface) {
@@ -45,7 +45,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public Interface[] getKeys() {
-        Set set = registrations.keySet();
+        Set set = web.keySet();
         return (Interface[]) set.toArray(new Interface[]{});
     }
 
@@ -68,7 +68,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private Object get(Interface iface) {
-        Object value = registrations.get(iface);
+        Object value = web.get(iface);
         barfIfNull(value, iface);
         return value;
     }
@@ -78,14 +78,14 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private boolean checkRegister(Interface iface, Class type) {
-        Object ref = registrations.get(iface);
+        Object ref = web.get(iface);
         if (ref == null) return false;
         Class cls = ref.getClass();
         return type.isAssignableFrom(cls);
     }
 
     private void barfIfExists(Interface iface) {
-        if (registrations.get(iface) != null) throw new AlreadyRegisteredException(iface);
+        if (web.get(iface) != null) throw new AlreadyRegisteredException(iface);
     }
 
     private void barfIfNull(Object ref, Interface iface) {

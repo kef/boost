@@ -29,7 +29,7 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
     private static final ResolvedInstance COCO_POPS_INSTANCE = new DefaultBaseReference(COCO_POPS);
     private static final ResolvedInstance MATRYOSKA_INSTANCE = new DefaultBaseReference(Matryoshka.class);
-    private final RegistryMaster subject = new DefaultRegistryMaster();
+    private final WebSpinner subject = new DefaultWebSpinner();
 
     {
         subject.implementation(ANIMAL, MAMMAL_IMPL);

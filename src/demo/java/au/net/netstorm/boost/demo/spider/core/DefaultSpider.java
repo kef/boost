@@ -2,21 +2,21 @@ package au.net.netstorm.boost.demo.spider.core;
 
 import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
-import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
+import au.net.netstorm.boost.spider.resolve.SpiderWeb;
 
 // FIX 1676 Test drive.  This triggers work on "compose".
 public final class DefaultSpider implements Spider {
     private final Provider provider;
     private final Injector injector;
     private final Resolver resolver;
-    private final Registry registry;
+    private final SpiderWeb web;
 
-    public DefaultSpider(Provider provider, Injector injector, Resolver resolver, Registry registry) {
+    public DefaultSpider(Provider provider, Injector injector, Resolver resolver, SpiderWeb web) {
         this.provider = provider;
         this.injector = injector;
         this.resolver = resolver;
-        this.registry = registry;
+        this.web = web;
     }
 
     public Object provide(Class type) {
@@ -36,10 +36,10 @@ public final class DefaultSpider implements Spider {
     }
 
     public void prototype(Class iface, Class impl) {
-        registry.prototype(iface, impl);
+        web.prototype(iface, impl);
     }
 
     public void instance(Class iface, Object ref) {
-        registry.instance(iface, ref);
+        web.instance(iface, ref);
     }
 }

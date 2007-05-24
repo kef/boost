@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public interface RegistryEngine {
+public interface WebSpinnerEngine {
     void implementation(Interface iface, Implementation implementation);
 
     void instance(Interface iface, ResolvedInstance instance);

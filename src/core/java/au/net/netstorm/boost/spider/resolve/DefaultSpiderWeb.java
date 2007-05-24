@@ -7,22 +7,22 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultRegistry implements Registry {
-    private final RegistryEngine registryEngine;
+public final class DefaultSpiderWeb implements SpiderWeb {
+    private final WebSpinnerEngine spinnerEngine;
 
-    public DefaultRegistry(RegistryEngine registryEngine) {
-        this.registryEngine = registryEngine;
+    public DefaultSpiderWeb(WebSpinnerEngine spinnerEngine) {
+        this.spinnerEngine = spinnerEngine;
     }
 
     public void prototype(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryEngine.implementation(inyerface, implementation);
+        spinnerEngine.implementation(inyerface, implementation);
     }
 
     public void instance(Class iface, Object ref) {
         Interface inyerface = new DefaultInterface(iface);
         ResolvedInstance instance = new DefaultBaseReference(ref);
-        registryEngine.instance(inyerface, instance);
+        spinnerEngine.instance(inyerface, instance);
     }
 }

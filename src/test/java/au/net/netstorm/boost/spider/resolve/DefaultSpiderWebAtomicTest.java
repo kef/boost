@@ -10,8 +10,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultRegistryAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
-    Registry subject;
+public final class DefaultSpiderWebAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+    SpiderWeb subject;
     Class frenchCloison = Sport.class;
     Class frenchRoll = BreakfastCereal.class;
     Class davidPetit = Football.class;
@@ -21,19 +21,19 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
     ResolvedInstance rollInstance = new DefaultBaseReference(cocoPopsInstance);
     Class iface;
-    RegistryMaster registryMaster;
+    WebSpinner webSpinner;
 
     public void setupSubjects() {
-        subject = new DefaultRegistry(registryMaster);
+        subject = new DefaultSpiderWeb(webSpinner);
     }
 
     public void testPrototype() {
-        expect.oneCall(registryMaster, VOID, "implementation", cloisonInterface, cloisonImplementation);
+        expect.oneCall(webSpinner, VOID, "implementation", cloisonInterface, cloisonImplementation);
         subject.prototype(frenchCloison, davidPetit);
     }
 
     public void testInstance() {
-        expect.oneCall(registryMaster, VOID, "instance", rollInterface, rollInstance);
+        expect.oneCall(webSpinner, VOID, "instance", rollInterface, rollInstance);
         subject.instance(frenchRoll, cocoPopsInstance);
     }
 }
