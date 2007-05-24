@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class DefaultBall implements Ball {
+import au.net.netstorm.boost.spider.core.GoodCitizen;
+
+public final class DefaultBall implements Ball, GoodCitizen {
     Runner runner;
 
     public Runner getRunner() {
