@@ -12,14 +12,14 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistryAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     Registry subject;
-    Class frenchCloison = Sport.class;
-    Class frenchRoll = BreakfastCereal.class;
-    Class davidPetit = Football.class;
-    CocoPops cocoPopsInstance = new CocoPops();
-    Interface cloisonInterface = new DefaultInterface(frenchCloison);
-    Interface rollInterface = new DefaultInterface(frenchRoll);
-    Implementation cloisonImplementation = new DefaultImplementation(davidPetit);
-    ResolvedInstance rollInstance = new DefaultBaseReference(cocoPopsInstance);
+    Class sport = Sport.class;
+    Class cereal = BreakfastCereal.class;
+    Class football = Football.class;
+    CocoPops cocoPops = new CocoPops();
+    Interface sportInterface = new DefaultInterface(sport);
+    Interface cerealInterface = new DefaultInterface(cereal);
+    Implementation footballImplementation = new DefaultImplementation(football);
+    ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     Class iface;
     WebSpinner webSpinner;
 
@@ -28,12 +28,12 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     }
 
     public void testPrototype() {
-        expect.oneCall(webSpinner, VOID, "implementation", cloisonInterface, cloisonImplementation);
-        subject.prototype(frenchCloison, davidPetit);
+        expect.oneCall(webSpinner, VOID, "implementation", sportInterface, footballImplementation);
+        subject.prototype(sport, football);
     }
 
     public void testInstance() {
-        expect.oneCall(webSpinner, VOID, "instance", rollInterface, rollInstance);
-        subject.instance(frenchRoll, cocoPopsInstance);
+        expect.oneCall(webSpinner, VOID, "instance", cerealInterface, resolvedCocoPops);
+        subject.instance(cereal, cocoPops);
     }
 }
