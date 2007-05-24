@@ -55,7 +55,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     public Spider assemble() {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        RegistryMaster registryMaster = brandNewWeb();
+        RegistryMaster registryMaster = brandNewRegistry();
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, registryMaster);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
@@ -75,7 +75,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultSpider(provider, injector, resolver, registry);
     }
 
-    private RegistryMaster brandNewWeb() {
+    private RegistryMaster brandNewRegistry() {
         return new DefaultRegistryMaster();
     }
 
