@@ -13,8 +13,10 @@ public final class DefaultTryFinallyHandler implements TryFinallyHandler {
     }
 
     public Object invoke(Object object, Method method, Object[] parameters) throws Throwable {
-        // FIX 54976 Return a non-null.
+        // FIX 54976 try finally.
         tryFinally.in();
-        return method.invoke(delegate, parameters);
+        Object result = method.invoke(delegate, parameters);
+        tryFinally.out();
+        return result;
     }
 }
