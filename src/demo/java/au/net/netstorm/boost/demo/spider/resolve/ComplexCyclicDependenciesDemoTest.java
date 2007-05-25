@@ -23,6 +23,7 @@ public final class ComplexCyclicDependenciesDemoTest extends BoooostCase {
     public void testResolve() {
         Teacher teacher1 = resolveTeacher(25);
         Teacher teacher2 = resolveTeacher(55);
+        // FIX 54976 Reinstate.
         // FIX BREADCRUMB 1971 Re-instate.
 /*
         assertNotEquals(teacher1, teacher2);

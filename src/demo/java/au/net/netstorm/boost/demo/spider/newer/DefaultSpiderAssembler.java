@@ -63,6 +63,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
     }
 
+    // FIX 54976 Remove context provider completely and the tests.
     private Spider buildSpider(ProviderEngine providerEngine,
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine,
