@@ -15,5 +15,6 @@ public final class SpiderTryFinally implements TryFinally {
     }
 
     public void out() {
+        resolvedThings.clear();
     }
 }
