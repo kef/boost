@@ -59,7 +59,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
-        return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
+        Spider spider = buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
+        return threadLocal(spider);
+    }
+
+    // FIX 54976 Instate threadlocal.
+    private Spider threadLocal(Spider spider) {
+        return spider;
     }
 
     // FIX BREADCRUMB 54976 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Stitch in ResolvedThings map interceptor.
