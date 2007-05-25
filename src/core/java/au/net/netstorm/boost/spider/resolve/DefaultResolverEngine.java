@@ -30,8 +30,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public ResolvedInstance resolve(Interface iface) {
         if (hasInstance(iface)) return getInstance(iface);
-        Implementation impl = finder.getImplementation(iface);
-        return resolve(impl);
+        return getImplementation(iface);
     }
 
     public ResolvedInstance resolve(Implementation impl) {
@@ -48,6 +47,11 @@ public final class DefaultResolverEngine implements ResolverEngine {
             result[i] = resolvedInstance.getRef();
         }
         return result;
+    }
+
+    private ResolvedInstance getImplementation(Interface iface) {
+        Implementation impl = finder.getImplementation(iface);
+        return resolve(impl);
     }
 
     private Object[] resolve(Class[] parameters) {
