@@ -9,13 +9,17 @@ import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
 public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
     TryFinallyHandler subject;
-    Apron apron = new DefaultApron();
+    Knot knot;
+    Apron apron;
     EdgeClass classer = new DefaultEdgeClass();
     Method tieMethod = getTieMethod();
+    Object[] params;
+    Integer result;
     Object irrelevant;
     TryFinally tryfinally;
 
     public void setupSubjects() {
+        params = new Object[]{knot};
         subject = new DefaultTryFinallyHandler(apron, tryfinally);
     }
 
@@ -25,7 +29,9 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
     // FIX 54976 Complete this test.
     public void testSomething() throws Throwable {
         expect.oneCall(tryfinally, VOID, "in");
-        Object result = subject.invoke(irrelevant, tieMethod, null);
+        expect.oneCall(apron, result, "tie", knot);
+        Object result = subject.invoke(irrelevant, tieMethod, params);
+//        assertEquals(result, )
     }
 
     private Method getTieMethod() {
