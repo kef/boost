@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.spider.core;
 
+import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
 import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
@@ -9,6 +10,7 @@ import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.core.SpiderTryFinally;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -23,6 +25,8 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
+import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyHandler;
+import au.net.netstorm.boost.spider.onion.layer.closure.TryFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.resolve.DefaultRegistry;
@@ -65,13 +69,11 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     // FIX 54976 Instate threadlocal.
     private Spider threadLocal(Spider spider) {
-        Spider result = spider;
-/*
         Interface type = new DefaultInterface(Spider.class);
+        ResolvedThings resolvedThings = new DefaultResolvedThings();
+        TryFinally tryFinally = new SpiderTryFinally(resolvedThings);
         InvocationHandler handler = new DefaultTryFinallyHandler(spider, tryFinally);
-        Spider result = (Spider) proxyFactory.newProxy(type, handler);
-*/
-        return result;
+        return (Spider) proxyFactory.newProxy(type, handler);
     }
 
     // FIX BREADCRUMB 54976 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Stitch in ResolvedThings map interceptor.
