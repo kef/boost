@@ -7,7 +7,5 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public interface ResolverEngine {
     ResolvedInstance resolve(Interface iface);
 
-    Object[] resolve(Interface[] ifaces);
-
     ResolvedInstance resolve(Implementation impl);
 }

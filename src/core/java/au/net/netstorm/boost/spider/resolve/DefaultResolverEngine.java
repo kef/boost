@@ -39,7 +39,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
         return provider.provide(impl, resolvedParams);
     }
 
-    public Object[] resolve(Interface[] ifaces) {
+    private Object[] resolve(Interface[] ifaces) {
         int length = ifaces.length;
         Object[] result = new Object[length];
         for (int i = 0; i < length; i++) {
