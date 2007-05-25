@@ -8,6 +8,7 @@ import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// FIX 54976 Remove.
 public final class ContextProviderEngineAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     ProviderEngine subject;
     ProviderEngine providerEngine;

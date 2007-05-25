@@ -9,7 +9,6 @@ import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.spider.inject.core.ContextProviderEngine;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -63,13 +62,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return buildSpider(providerEngine, resolverEngine, injectorEngine, registryMaster);
     }
 
+    // FIX BREADCRUMB 54976 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Stitch in ResolvedThings map interceptor.
     // FIX 54976 Remove context provider completely and the tests.
     private Spider buildSpider(ProviderEngine providerEngine,
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine,
             RegistryEngine spinnerEngine) {
-        ProviderEngine cProviderEngine = new ContextProviderEngine(providerEngine, RESOLVED_THINGS);
-        Provider provider = new DefaultProvider(cProviderEngine);
+        Provider provider = new DefaultProvider(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
         Registry registry = new DefaultRegistry(spinnerEngine);
