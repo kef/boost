@@ -17,7 +17,6 @@ public class ContextProviderEngine implements ProviderEngine {
 
     public ResolvedInstance provide(Implementation implementation, Object[] resolved) {
         try {
-            resolvedThings.clear();
             return delegate.provide(implementation, resolved);
         } finally {
             resolvedThings.clear();
