@@ -14,9 +14,9 @@ public final class SpiderTryFinallyAtomicTest extends InteractionTestCase implem
         subject = new SpiderTryFinally(resolvedThings);
     }
 
-    // FIX 54976 Complete.
-    public void testTryFinally() {
+    // FIX 54976 Complete out().
+    public void testIn() {
+        expect.oneCall(resolvedThings, VOID, "clear");
         subject.in();
-        subject.out();
     }
 }
