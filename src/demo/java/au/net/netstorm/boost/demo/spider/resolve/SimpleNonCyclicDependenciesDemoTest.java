@@ -6,10 +6,13 @@ import au.net.netstorm.boost.demo.spider.core.SpiderAssembler;
 import au.net.netstorm.boost.spider.core.GoodCitizen;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final Registry web = spider;
 
     {
@@ -19,9 +22,10 @@ public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
 
     // FIX BREADCRUMB 1971 Re-instate.
     public void testResolve() {
-//        Bicycle bicycle = (Bicycle) spider.resolve(Bicycle.class);
-//        Wheel frontWheel = bicycle.getFrontWheel();
-//        Wheel rearWheel = bicycle.getRearWheel();
-//        assertNotEquals(frontWheel, rearWheel);
+        Bicycle bicycle = (Bicycle) spider.resolve(Bicycle.class);
+        Object o1 = fielder.getInstance(bicycle, "front");
+        Object o2 = fielder.getInstance(bicycle, "rear");
+        // FIX 1971 Reinstate.
+//        assertNotEquals(o1, o2);
     }
 }
