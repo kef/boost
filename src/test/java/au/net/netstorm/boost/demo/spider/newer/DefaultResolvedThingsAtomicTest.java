@@ -35,6 +35,12 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
         } catch (IllegalStateException expected) { }
     }
 
+    public void testRemove() {
+        subject.put(impl, expected);
+        subject.remove(impl);
+        checkExists(impl, false);
+    }
+
     private void checkExists(Implementation myimpl, boolean myexpected) {
         boolean actual = subject.exists(myimpl);
         assertEquals(myexpected, actual);

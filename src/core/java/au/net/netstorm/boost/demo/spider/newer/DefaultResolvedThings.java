@@ -34,6 +34,11 @@ public final class DefaultResolvedThings implements ResolvedThings {
         map.put(impl, ref);
     }
 
+    public void remove(Implementation impl) {
+        Map map = get();
+        map.remove(impl);
+    }
+
     private Map get() {
         return (Map) LOCAL_MON.get();
     }

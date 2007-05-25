@@ -44,6 +44,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
         // FIX 1971 Test drive this check up.
         resolvedThings.put(impl, unresolved);
         injector.inject(unresolved);
+        resolvedThings.remove(impl);
         return (ResolvedInstance) unresolved;
     }
 

@@ -26,6 +26,6 @@ public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
         Object o1 = fielder.getInstance(bicycle, "front");
         Object o2 = fielder.getInstance(bicycle, "rear");
         // FIX 1971 Reinstate.
-//        assertNotEquals(o1, o2);
+        assertNotEquals(o1, o2);
     }
 }

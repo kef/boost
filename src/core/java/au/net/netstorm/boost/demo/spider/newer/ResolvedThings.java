@@ -12,4 +12,6 @@ public interface ResolvedThings {
     ResolvedInstance get(Implementation impl);
 
     void put(Implementation impl, UnresolvedInstance ref);
+
+    void remove(Implementation impl);
 }
