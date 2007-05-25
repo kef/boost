@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class BmxBicycle implements Bicycle {
+import au.net.netstorm.boost.spider.core.GoodCitizen;
+
+public final class BmxBicycle implements Bicycle, GoodCitizen {
     Wheel rearWheel;
     Wheel frontWheel;
 
