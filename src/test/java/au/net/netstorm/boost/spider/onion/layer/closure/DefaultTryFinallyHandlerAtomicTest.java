@@ -30,8 +30,8 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
     public void testSomething() throws Throwable {
         expect.oneCall(tryfinally, VOID, "in");
         expect.oneCall(apron, result, "tie", knot);
-        Object result = subject.invoke(irrelevant, tieMethod, params);
-//        assertEquals(result, )
+        Object actual = subject.invoke(irrelevant, tieMethod, params);
+//        assertEquals(result, actual);
     }
 
     private Method getTieMethod() {
