@@ -46,6 +46,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
+    private static final Interface SPIDER_TYPE = new DefaultInterface(Spider.class);
     private static final ResolvedThings RESOLVED_THINGS = new DefaultResolvedThings();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
@@ -67,17 +68,12 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return threadLocal(spider);
     }
 
-    // FIX 54976 Instate threadlocal.
     private Spider threadLocal(Spider spider) {
-        Interface type = new DefaultInterface(Spider.class);
-        ResolvedThings resolvedThings = new DefaultResolvedThings();
-        TryFinally tryFinally = new SpiderTryFinally(resolvedThings);
+        TryFinally tryFinally = new SpiderTryFinally(RESOLVED_THINGS);
         InvocationHandler handler = new DefaultTryFinallyHandler(spider, tryFinally);
-        return (Spider) proxyFactory.newProxy(type, handler);
+        return (Spider) proxyFactory.newProxy(SPIDER_TYPE, handler);
     }
 
-    // FIX BREADCRUMB 54976 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Stitch in ResolvedThings map interceptor.
-    // FIX 54976 Remove context provider completely and the tests.
     private Spider buildSpider(ProviderEngine providerEngine,
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine,
