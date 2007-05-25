@@ -21,26 +21,12 @@ public final class ComplexCyclicDependenciesDemoTest extends BoooostCase {
     }
 
     public void testResolve() {
-        Teacher teacher1 = resolveTeacher(25);
-        Teacher teacher2 = resolveTeacher(55);
-        // FIX 54976 Reinstate.
-        // FIX BREADCRUMB 1971 Re-instate.
-/*
+        Teacher teacher1 = resolveTeacher();
+        Teacher teacher2 = resolveTeacher();
         assertNotEquals(teacher1, teacher2);
-        checkResolve(teacher1, teacher2, 25, 55);
-*/
     }
 
-    private void checkResolve(Teacher teacher1, Teacher teacher2, int teacher1Age, int teacher2Age) {
-        int actualAge1 = teacher1.getAge();
-        int actualAge2 = teacher2.getAge();
-        assertEquals(teacher1Age, actualAge1);
-        assertEquals(teacher2Age, actualAge2);
-    }
-
-    private Teacher resolveTeacher(int age) {
-        Teacher teacher1 = (Teacher) spider.resolve(Teacher.class);
-        teacher1.setAge(age);
-        return teacher1;
+    private Teacher resolveTeacher() {
+        return (Teacher) spider.resolve(Teacher.class);
     }
 }
