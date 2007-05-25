@@ -15,7 +15,6 @@ public final class DefaultTryFinallyHandler implements TryFinallyHandler {
     public Object invoke(Object object, Method method, Object[] parameters) throws Throwable {
         // FIX 54976 Return a non-null.
         tryFinally.in();
-        method.invoke(delegate, parameters);
-        return null;
+        return method.invoke(delegate, parameters);
     }
 }
