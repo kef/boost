@@ -24,7 +24,7 @@ public final class DefaultResolvedThings implements ResolvedThings {
     }
 
     public ResolvedInstance get(Implementation impl) {
-        if (!exists(impl)) throw new IllegalStateException("Naff of you trollop.");
+        if (!exists(impl)) throw new IllegalStateException("Naff off you trollop.");
         Map map = get();
         return (ResolvedInstance) map.get(impl);
     }
