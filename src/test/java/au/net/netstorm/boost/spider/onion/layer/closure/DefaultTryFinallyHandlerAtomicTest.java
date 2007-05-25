@@ -23,14 +23,16 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
         subject = new DefaultTryFinallyHandler(apron, tryfinally);
     }
 
-    // FIX 54976 3. Ensure out() is called even when an exception is thrown.
-    // FIX 54976 Complete this test.
-    public void testSomething() throws Throwable {
+    public void testNormal() throws Throwable {
         expect.oneCall(tryfinally, VOID, "in");
         expect.oneCall(apron, result, "tie", knot);
         expect.oneCall(tryfinally, VOID, "out");
         Object actual = subject.invoke(irrelevant, tieMethod, params);
         assertEquals(result, actual);
+    }
+
+    public void testException() {
+        // FIX 54976 3. Ensure out() is called even when an exception is thrown.
     }
 
     private Method getTieMethod() {
