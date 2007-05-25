@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
+import au.net.netstorm.boost.demo.spider.core.DefaultSpiderAssembler;
 import au.net.netstorm.boost.demo.spider.core.Spider;
+import au.net.netstorm.boost.demo.spider.core.SpiderAssembler;
 import au.net.netstorm.boost.spider.core.GoodCitizen;
 import junit.framework.TestCase;
 

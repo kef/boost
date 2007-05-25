@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.demo.spider.newer;
+package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.demo.spider.core.DefaultSpider;
-import au.net.netstorm.boost.demo.spider.core.Spider;
+import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.core.CitizenInjectorEngine;
@@ -65,7 +65,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     // FIX 54976 Instate threadlocal.
     private Spider threadLocal(Spider spider) {
-        return spider;
+        Spider result = spider;
+/*
+        Interface type = new DefaultInterface(Spider.class);
+        InvocationHandler handler = new DefaultTryFinallyHandler(spider, tryFinally);
+        Spider result = (Spider) proxyFactory.newProxy(type, handler);
+*/
+        return result;
     }
 
     // FIX BREADCRUMB 54976 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Stitch in ResolvedThings map interceptor.
