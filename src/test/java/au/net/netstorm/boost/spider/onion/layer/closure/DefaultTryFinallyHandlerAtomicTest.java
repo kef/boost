@@ -34,7 +34,6 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
     }
 
     public void testException() throws Throwable {
-        // FIX 54976 3. Ensure out() is called even when an exception is thrown.
         expect.oneCall(tryfinally, VOID, "in");
         expect.oneCall(apron, throwable, "tie", knot);
         expect.oneCall(tryfinally, VOID, "out");
