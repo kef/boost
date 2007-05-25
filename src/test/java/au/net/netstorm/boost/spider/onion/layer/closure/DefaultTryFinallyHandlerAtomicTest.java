@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
@@ -8,11 +9,12 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
 public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
+    UnknownKnotException throwable = new UnknownKnotException();
+    EdgeClass classer = new DefaultEdgeClass();
+    Method tieMethod = getTieMethod();
     TryFinallyHandler subject;
     Knot knot;
     Apron apron;
-    EdgeClass classer = new DefaultEdgeClass();
-    Method tieMethod = getTieMethod();
     Object[] params;
     Integer result;
     Object irrelevant;
@@ -31,8 +33,18 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
         assertEquals(result, actual);
     }
 
-    public void testException() {
+    public void testException() throws Throwable {
         // FIX 54976 3. Ensure out() is called even when an exception is thrown.
+        expect.oneCall(tryfinally, VOID, "in");
+        expect.oneCall(apron, throwable, "tie", knot);
+        expect.oneCall(tryfinally, VOID, "out");
+        try {
+            subject.invoke(irrelevant, tieMethod, params);
+            fail();
+        } catch (InvocationTargetException expected) {
+            Throwable actual = expected.getTargetException();
+            assertEquals(throwable, actual);
+        }
     }
 
     private Method getTieMethod() {
