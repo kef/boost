@@ -7,7 +7,7 @@ import au.net.netstorm.boost.spider.core.GoodCitizen;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
-public final class ComplexNonCyclicDependenciesDemoTest extends BoooostCase {
+public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
     private final Registry web = spider;
