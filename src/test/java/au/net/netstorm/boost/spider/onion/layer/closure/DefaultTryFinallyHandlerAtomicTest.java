@@ -24,6 +24,7 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
     // FIX 54976 3. Ensure out() is called even when an exception is thrown.
     // FIX 54976 Complete this test.
     public void testSomething() throws Throwable {
+        expect.oneCall(tryfinally, VOID, "in");
         Object result = subject.invoke(irrelevant, tieMethod, null);
     }
 
