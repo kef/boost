@@ -9,13 +9,18 @@ public final class DefaultTryFinallyClosureAtomicTest extends InteractionTestCas
     TryFinallyClosure subject;
     Method method;
     Object irrelevant;
+    Object delegate;
+    TryFinally tryfinally;
 
     public void setupSubjects() {
-        subject = new DefaultTryFinallyClosure();
+        subject = new DefaultTryFinallyClosure(delegate, tryfinally);
     }
 
+    // FIX 54976 1. Ensure in() is called.
+    // FIX 54976 2. Ensure out() is called.
+    // FIX 54976 3. Ensure out() is called even when an exception is thrown.
+    // FIX 54976 Complete this test.
     public void testSomething() throws Throwable {
-        subject.invoke(irrelevant, method, null);
-        // FIX 54976 Complete.
+        Object result = subject.invoke(irrelevant, method, null);
     }
 }
