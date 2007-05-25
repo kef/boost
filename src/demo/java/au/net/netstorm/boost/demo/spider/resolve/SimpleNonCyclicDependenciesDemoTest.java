@@ -21,7 +21,7 @@ public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
     }
 
     // FIX BREADCRUMB 1971 Re-instate.
-    public void testResolve() {
+    public void testMultipleInstanceOfTheSameThing() {
         Bicycle bicycle = (Bicycle) spider.resolve(Bicycle.class);
         Object o1 = fielder.getInstance(bicycle, "front");
         Object o2 = fielder.getInstance(bicycle, "rear");
