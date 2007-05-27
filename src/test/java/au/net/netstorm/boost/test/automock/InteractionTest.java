@@ -37,7 +37,7 @@ public final class InteractionTest implements JUnitLifecycle {
     }
 
     private void doInjectSubject() {
-        if (hasMarker(InjectSubject.class)) autoMockTest.injectSubject();
+        if (hasMarker(InjectableSubject.class)) autoMockTest.injectSubject();
     }
 
     private void doSetExpectField() {

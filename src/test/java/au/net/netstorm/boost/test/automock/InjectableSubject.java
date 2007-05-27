@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.test.automock;
 
-public interface InjectSubject {
+public interface InjectableSubject {
 }
