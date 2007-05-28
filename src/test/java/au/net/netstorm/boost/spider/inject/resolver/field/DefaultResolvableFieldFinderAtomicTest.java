@@ -8,8 +8,8 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.core.GoodCitizen;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
-public final class DefaultResolverFieldFinderAtomicTest extends BoooostCase {
-    private final ResolverFieldFinder subject = new DefaultResolverFieldFinder();
+public final class DefaultResolvableFieldFinderAtomicTest extends BoooostCase {
+    private final ResolvableFieldFinder subject = new DefaultResolvableFieldFinder();
     private final EdgeClass classer = new DefaultEdgeClass();
     private final GoodCitizen goodCitizen = new Legend();
 

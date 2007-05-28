@@ -5,7 +5,6 @@ import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
 import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.spider.core.CitizenInjectorEngine;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.Provider;
@@ -17,10 +16,10 @@ import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.spider.inject.resolver.core.DefaultInjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
-import au.net.netstorm.boost.spider.inject.resolver.core.ResolverInjectorEngine;
-import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolverFieldFinder;
-import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
+import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldFinder;
+import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
@@ -100,14 +99,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
-        InjectorEngine injector = assembleResolverInjector(resolver);
-        return new CitizenInjectorEngine(injector);
+        return assembleResolverInjector(resolver);
     }
 
-    private ResolverInjectorEngine assembleResolverInjector(ResolverEngine resolver) {
-        ResolverFieldFinder finder = new DefaultResolverFieldFinder();
+    private DefaultInjectorEngine assembleResolverInjector(ResolverEngine resolver) {
+        ResolvableFieldFinder finder = new DefaultResolvableFieldFinder();
         FieldResolver fieldResolver = new DefaultFieldResolver(resolver);
-        return new ResolverInjectorEngine(finder, fieldResolver);
+        return new DefaultInjectorEngine(finder, fieldResolver);
     }
 
     private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {

@@ -9,7 +9,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 
-public final class DefaultResolverFieldFinder implements ResolverFieldFinder {
+public final class DefaultResolvableFieldFinder implements ResolvableFieldFinder {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final EdgeField fielder = new DefaultEdgeField();
 

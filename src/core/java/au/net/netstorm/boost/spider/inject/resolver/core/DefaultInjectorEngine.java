@@ -4,16 +4,16 @@ import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
-import au.net.netstorm.boost.spider.inject.resolver.field.ResolverFieldFinder;
+import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class ResolverInjectorEngine implements InjectorEngine {
+public final class DefaultInjectorEngine implements InjectorEngine {
     private final EdgeField fielder = new DefaultEdgeField();
-    private final ResolverFieldFinder fieldFinder;
+    private final ResolvableFieldFinder fieldFinder;
     private final FieldResolver fieldResolver;
 
-    public ResolverInjectorEngine(ResolverFieldFinder fieldFinder, FieldResolver fieldResolver) {
+    public DefaultInjectorEngine(ResolvableFieldFinder fieldFinder, FieldResolver fieldResolver) {
         this.fieldFinder = fieldFinder;
         this.fieldResolver = fieldResolver;
     }
