@@ -19,6 +19,7 @@ public final class DefaultTimePoint implements TimePoint {
         return millis;
     }
 
+    // FIX 51915 Move these two dodgy boys into TimeMaster or TimeRangeMaster.
     public boolean before(TimePoint timePoint) {
         return compareTo(timePoint) < 0;
     }
