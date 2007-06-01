@@ -13,19 +13,17 @@ public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final Registry web = spider;
+    private final Registry registry = spider;
 
     {
-        web.multiple(Bicycle.class, BmxBicycle.class);
-        web.multiple(Wheel.class, DefaultWheel.class);
+        registry.multiple(Bicycle.class, BmxBicycle.class);
+        registry.multiple(Wheel.class, DefaultWheel.class);
     }
 
-    // FIX BREADCRUMB 1971 Re-instate.
     public void testMultipleInstanceOfTheSameThing() {
         Bicycle bicycle = (Bicycle) spider.resolve(Bicycle.class);
         Object o1 = fielder.getInstance(bicycle, "front");
         Object o2 = fielder.getInstance(bicycle, "rear");
-        // FIX 1971 Reinstate.
         assertNotEquals(o1, o2);
     }
 }
