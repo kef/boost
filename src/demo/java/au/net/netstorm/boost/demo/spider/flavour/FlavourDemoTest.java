@@ -4,6 +4,7 @@ import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
+// FIX 1977 Acceptance test for this CARD.
 public final class FlavourDemoTest extends ResolverDemooooTest {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
@@ -17,7 +18,6 @@ public final class FlavourDemoTest extends ResolverDemooooTest {
 
     // FIX 1977 Remove GoodCitizen.
     // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
-    // FIX 1977 Acceptance test.
     public void testFlavours() {
         Party party = (Party) resolver.resolve(Party.class);
         checkField(party, Madras.class, "mild");
