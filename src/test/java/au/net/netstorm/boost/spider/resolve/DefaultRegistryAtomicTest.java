@@ -42,8 +42,12 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     // FIX 1977 Complete testInstanceFlavoured.
 
     public void testInstanceUnflavoured() {
-        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops, unflavoured);
+        setupInstance(unflavoured);
         subject.instance(cereal, cocoPops);
+    }
+
+    private void setupInstance(Flavour flavour) {
+        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops, flavour);
     }
 
     private void setupMultiple(Flavour flavour) {
