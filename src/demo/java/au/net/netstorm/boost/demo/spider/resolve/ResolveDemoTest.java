@@ -8,7 +8,7 @@ import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
-public final class DefaultResolveDemoTest extends BoooostCase {
+public final class ResolveDemoTest extends BoooostCase {
     private static final Object[] NO_PARAMETERS = {};
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
