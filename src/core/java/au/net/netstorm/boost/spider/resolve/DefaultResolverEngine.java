@@ -36,7 +36,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     public ResolvedInstance resolve(Implementation impl, Flavour flavour) {
-        // FIX BREADCRUMB 1936 LLLLLLLLLLLLLLLLLLLLLLLLLLLLL parameters is always ZERO.  Remove dodgy code.
+        // FIX BREADCRUMB 1977 LLLLLLLLLLLLLLLLLLLLLLLLLLLLL parameters is always ZERO.  Remove dodgy code.
         Class[] parameters = getParameters(impl);
         Object[] resolvedParams = resolve(parameters, flavour);
         return provider.provide(impl, resolvedParams);
