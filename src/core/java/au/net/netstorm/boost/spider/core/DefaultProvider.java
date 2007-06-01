@@ -15,7 +15,7 @@ public final class DefaultProvider implements Provider {
         return provide(type, new Object[]{});
     }
 
-    public Object provide(Class type, Object[] parameters) {
+    private Object provide(Class type, Object[] parameters) {
         Implementation implementation = new DefaultImplementation(type);
         ResolvedInstance instance = engine.provide(implementation, parameters);
         return instance.getRef();

@@ -9,7 +9,6 @@ import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class ResolveDemoTest extends BoooostCase {
-    private static final Object[] NO_PARAMETERS = {};
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
     private final Provider provider = spider;
@@ -27,18 +26,18 @@ public final class ResolveDemoTest extends BoooostCase {
     }
 
     public void testNoArgProvide() {
-        TheDude theDude = (TheDude) provider.provide(JeffBridges.class, NO_PARAMETERS);
+        TheDude theDude = (TheDude) provider.provide(JeffBridges.class);
         checkTheDudeIsReallyJeff(theDude);
     }
 
     public void testProvide() {
-        Cinema regalCinema = (Cinema) provider.provide(RegalCinema.class, NO_PARAMETERS);
+        Cinema regalCinema = (Cinema) provider.provide(RegalCinema.class);
         assertNotNull(regalCinema);
     }
 
     public void testProvideSingleton() {
-        Hollywood hollywood = (Hollywood) provide(GlitzyHollywood.class, NO_PARAMETERS);
-        Business business = (Business) provide(MovieBusiness.class, NO_PARAMETERS);
+        Hollywood hollywood = (Hollywood) provide(GlitzyHollywood.class);
+        Business business = (Business) provide(MovieBusiness.class);
         checkSameInternals(hollywood, business);
     }
 
@@ -66,8 +65,8 @@ public final class ResolveDemoTest extends BoooostCase {
         assertNotNull(quote);
     }
 
-    private Object provide(Class impl, Object[] parameters) {
-        Object ref = provider.provide(impl, parameters);
+    private Object provide(Class impl) {
+        Object ref = provider.provide(impl);
         assertNotNull(ref);
         return ref;
     }

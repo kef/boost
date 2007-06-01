@@ -8,9 +8,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultProviderAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
-    private static final Object SAND = new Sand();
-    private static final Object[] PARAMETERS = {SAND};
-    private static final Object[] NO_PARAMETERS = {};
+    Object[] noParams = {};
     Provider subject;
     ProviderEngine engine;
     ResolvedInstance provided;
@@ -22,23 +20,9 @@ public final class DefaultProviderAtomicTest extends InteractionTestCase impleme
     }
 
     public void testShortcut() {
-        prepare(NO_PARAMETERS);
-        Object result = subject.provide(SmoothRock.class);
-        checkEquals(result);
-    }
-
-    public void testFull() {
-        prepare(PARAMETERS);
-        Object result = subject.provide(SmoothRock.class, PARAMETERS);
-        checkEquals(result);
-    }
-
-    private void prepare(Object[] parameters) {
-        expect.oneCall(engine, provided, "provide", implementation, parameters);
+        expect.oneCall(engine, provided, "provide", implementation, noParams);
         expect.oneCall(provided, ref, "getRef");
-    }
-
-    private void checkEquals(Object result) {
+        Object result = subject.provide(SmoothRock.class);
         assertEquals(ref, result);
     }
 }

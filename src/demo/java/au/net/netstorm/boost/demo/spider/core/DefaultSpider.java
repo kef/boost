@@ -23,10 +23,6 @@ public final class DefaultSpider implements Spider {
         return provider.provide(type);
     }
 
-    public Object provide(Class type, Object[] parameters) {
-        return provider.provide(type, parameters);
-    }
-
     public void inject(Object ref) {
         injector.inject(ref);
     }
