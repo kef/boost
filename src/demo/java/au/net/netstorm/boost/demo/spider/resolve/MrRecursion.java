@@ -1,4 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class MrRecursion implements Recursion {
+import au.net.netstorm.boost.spider.core.GoodCitizen;
+
+public final class MrRecursion implements Recursion, GoodCitizen {
 }

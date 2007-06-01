@@ -19,6 +19,8 @@ public final class SingleRecursiveDependencyDemoTest extends BoooostCase {
     }
 
     public void testXxx() {
+        Recursion recursion = (Recursion) resolver.resolve(Recursion.class);
+        // FIX 1977 Check the field equals the original object.
         // FIX BREADCRUMB 1977 QQQQQQQQQQQQQQQQQQQQQQ Complete me.
     }
 }
