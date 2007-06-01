@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
@@ -21,6 +22,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     Implementation footballImplementation = new DefaultImplementation(football);
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     RegistryMaster registryMaster;
+    Flavour unflavoured = Flavour.UNFLAVOURED;
 
     public void setupSubjects() {
         subject = new DefaultRegistry(registryMaster);
@@ -28,13 +30,13 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
 
     public void testMultiple() {
         // FIX 1977 No nulls.
-        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation, null);
+        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation, unflavoured);
         subject.multiple(sport, football);
     }
 
     public void testInstance() {
         // FIX 1977 No nulls.
-        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops, null);
+        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops, unflavoured);
         subject.instance(cereal, cocoPops);
     }
 }
