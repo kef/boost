@@ -18,7 +18,7 @@ public final class DefaultNewerDemoTest extends TestCase {
     }
 
     public void testRecursiveNewerInjection() {
-        spider.prototype(Rob.class, DefaultRob.class);
+        spider.multiple(Rob.class, DefaultRob.class);
         Rob rob = (Rob) spider.resolve(Rob.class);
         Bob bob = rob.getBob();
         checkNewersRecurse(bob);

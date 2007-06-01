@@ -14,10 +14,10 @@ public final class ComplexCyclicDependenciesDemoTest extends BoooostCase {
     private final Registry web = spider;
 
     {
-        web.prototype(Teacher.class, DefaultTeacher.class);
-        web.prototype(Student.class, DefaultStudent.class);
-        web.prototype(Homework.class, DefaultHomework.class);
-        web.prototype(Exam.class, DefaultExam.class);
+        web.multiple(Teacher.class, DefaultTeacher.class);
+        web.multiple(Student.class, DefaultStudent.class);
+        web.multiple(Homework.class, DefaultHomework.class);
+        web.multiple(Exam.class, DefaultExam.class);
     }
 
     public void testResolve() {

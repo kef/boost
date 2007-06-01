@@ -16,14 +16,14 @@ public final class ResolveDemoTest extends BoooostCase {
     private final Registry registry = spider;
 
     {
-        registry.prototype(TheDude.class, JeffBridges.class);
-        registry.prototype(Quote.class, ClassicQuote.class);
-        registry.prototype(Movie.class, BigLebowski.class);
-        registry.prototype(Cinema.class, RegalCinema.class);
+        registry.multiple(TheDude.class, JeffBridges.class);
+        registry.multiple(Quote.class, ClassicQuote.class);
+        registry.multiple(Movie.class, BigLebowski.class);
+        registry.multiple(Cinema.class, RegalCinema.class);
         registry.instance(Actor.class, new PeterSellers());
         registry.instance(Celebrity.class, new BritneySpears());
-        registry.prototype(Hollywood.class, GlitzyHollywood.class);
-        registry.prototype(Business.class, MovieBusiness.class);
+        registry.multiple(Hollywood.class, GlitzyHollywood.class);
+        registry.multiple(Business.class, MovieBusiness.class);
     }
 
     public void testNoArgProvide() {

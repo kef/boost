@@ -16,8 +16,8 @@ public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
     private final Registry web = spider;
 
     {
-        web.prototype(Bicycle.class, BmxBicycle.class);
-        web.prototype(Wheel.class, DefaultWheel.class);
+        web.multiple(Bicycle.class, BmxBicycle.class);
+        web.multiple(Wheel.class, DefaultWheel.class);
     }
 
     // FIX BREADCRUMB 1971 Re-instate.

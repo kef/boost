@@ -35,8 +35,8 @@ public final class DefaultSpider implements Spider {
         return resolver.resolve(type);
     }
 
-    public void prototype(Class iface, Class impl) {
-        registry.prototype(iface, impl);
+    public void multiple(Class iface, Class impl) {
+        registry.multiple(iface, impl);
     }
 
     public void instance(Class iface, Object ref) {

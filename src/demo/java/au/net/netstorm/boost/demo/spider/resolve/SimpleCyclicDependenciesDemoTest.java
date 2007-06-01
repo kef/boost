@@ -17,8 +17,8 @@ public final class SimpleCyclicDependenciesDemoTest extends BoooostCase {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     {
-        registry.prototype(Ball.class, DefaultBall.class);
-        registry.prototype(Runner.class, DefaultRunner.class);
+        registry.multiple(Ball.class, DefaultBall.class);
+        registry.multiple(Runner.class, DefaultRunner.class);
     }
 
     public void testDependencyWithTwoObjects() {

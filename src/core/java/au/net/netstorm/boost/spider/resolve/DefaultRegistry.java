@@ -14,7 +14,7 @@ public final class DefaultRegistry implements Registry {
         this.registryEngine = spinnerEngine;
     }
 
-    public void prototype(Class iface, Class impl) {
+    public void multiple(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
         registryEngine.implementation(inyerface, implementation);

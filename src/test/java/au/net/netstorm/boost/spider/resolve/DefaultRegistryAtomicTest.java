@@ -27,9 +27,9 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
         subject = new DefaultRegistry(registryMaster);
     }
 
-    public void testPrototype() {
+    public void testMultiple() {
         expect.oneCall(registryMaster, VOID, "implementation", sportInterface, footballImplementation);
-        subject.prototype(sport, football);
+        subject.multiple(sport, football);
     }
 
     public void testInstance() {
