@@ -23,6 +23,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private final FinderEngine finder;
     private final NewerAssembler newerAssembler;
 
+    // FIX BREADCRUMB 1977 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH Split this.
     public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newerAssembler) {
         this.provider = provider;
         this.finder = finder;
