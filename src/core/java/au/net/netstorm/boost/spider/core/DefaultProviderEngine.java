@@ -29,6 +29,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
     // } OK LineLength 
 
     // SUGGEST: Strongly type Object[] as Dependencies?
+    // FIX 1936 Object[] should be ConstructorParameter[].
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
         if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
