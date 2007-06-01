@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -28,35 +29,35 @@ public final class DefaultResolverEngine implements ResolverEngine {
         this.newerAssembler = newerAssembler;
     }
 
-    public ResolvedInstance resolve(Interface iface) {
-        if (hasInstance(iface)) return getInstance(iface);
-        return getImplementation(iface);
+    public ResolvedInstance resolve(Interface iface, Flavour flavour) {
+        if (hasInstance(iface, flavour)) return getInstance(iface, flavour);
+        return getImplementation(iface, flavour);
     }
 
-    public ResolvedInstance resolve(Implementation impl) {
+    public ResolvedInstance resolve(Implementation impl, Flavour flavour) {
         Class[] parameters = getParameters(impl);
-        Object[] resolvedParams = resolve(parameters);
+        Object[] resolvedParams = resolve(parameters, flavour);
         return provider.provide(impl, resolvedParams);
     }
 
-    private Object[] resolve(Interface[] ifaces) {
+    private Object[] resolve(Interface[] ifaces, Flavour flavour) {
         int length = ifaces.length;
         Object[] result = new Object[length];
         for (int i = 0; i < length; i++) {
-            ResolvedInstance resolvedInstance = resolve(ifaces[i]);
+            ResolvedInstance resolvedInstance = resolve(ifaces[i], flavour);
             result[i] = resolvedInstance.getRef();
         }
         return result;
     }
 
-    private ResolvedInstance getImplementation(Interface iface) {
-        Implementation impl = finder.getImplementation(iface);
-        return resolve(impl);
+    private ResolvedInstance getImplementation(Interface iface, Flavour flavour) {
+        Implementation impl = finder.getImplementation(iface, flavour);
+        return resolve(impl, flavour);
     }
 
-    private Object[] resolve(Class[] parameters) {
+    private Object[] resolve(Class[] parameters, Flavour flavour) {
         Interface[] unresolved = interfacer.interfaces(parameters);
-        return resolve(unresolved);
+        return resolve(unresolved, flavour);
     }
 
     // SUGGEST: This really belongs in the pebble constructor area.  It is injection specific.
@@ -66,15 +67,15 @@ public final class DefaultResolverEngine implements ResolverEngine {
         return constructor.getParameterTypes();
     }
 
-    private ResolvedInstance getInstance(Interface iface) {
+    private ResolvedInstance getInstance(Interface iface, Flavour flavour) {
         // FIX 1887 What about onionising the instance?
         if (iface.is(NEWER)) return aNewer(iface);
-        return finder.getInstance(iface);
+        return finder.getInstance(iface, flavour);
     }
 
-    private boolean hasInstance(Interface iface) {
+    private boolean hasInstance(Interface iface, Flavour flavour) {
         if (iface.is(NEWER)) return true;
-        return finder.hasInstance(iface);
+        return finder.hasInstance(iface, flavour);
     }
 
     private ResolvedInstance aNewer(Interface iface) {

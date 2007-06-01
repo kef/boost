@@ -20,7 +20,8 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase impleme
     }
 
     public void testResolve() {
-        expect.oneCall(resolverEngine, resolvedInstance, "resolve", fruity);
+        // FIX 1977 Should be real flavour.
+        expect.oneCall(resolverEngine, resolvedInstance, "resolve", fruity, null);
         expect.oneCall(resolvedInstance, resolved, "getRef");
         Object result = subject.resolve(FRUITY);
         assertEquals(resolved, result);

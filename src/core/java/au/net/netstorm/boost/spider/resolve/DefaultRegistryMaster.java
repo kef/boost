@@ -2,6 +2,7 @@ package au.net.netstorm.boost.spider.resolve;
 
 import java.util.HashMap;
 import java.util.Map;
+import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -25,21 +26,21 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         web.put(iface, instance);
     }
 
-    public Implementation getImplementation(Interface iface) {
-        if (hasInstance(iface)) throw new WrongRegistrationTypeException(iface);
+    public Implementation getImplementation(Interface iface, Flavour flavour) {
+        if (hasInstance(iface, flavour)) throw new WrongRegistrationTypeException(iface);
         return (Implementation) get(iface);
     }
 
-    public ResolvedInstance getInstance(Interface iface) {
-        if (hasImplementation(iface)) throw new WrongRegistrationTypeException(iface);
+    public ResolvedInstance getInstance(Interface iface, Flavour flavour) {
+        if (hasImplementation(iface, flavour)) throw new WrongRegistrationTypeException(iface);
         return (ResolvedInstance) get(iface);
     }
 
-    public boolean hasImplementation(Interface iface) {
+    public boolean hasImplementation(Interface iface, Flavour flavour) {
         return has(iface, Implementation.class);
     }
 
-    public boolean hasInstance(Interface iface) {
+    public boolean hasInstance(Interface iface, Flavour flavour) {
         return has(iface, ResolvedInstance.class);
     }
 

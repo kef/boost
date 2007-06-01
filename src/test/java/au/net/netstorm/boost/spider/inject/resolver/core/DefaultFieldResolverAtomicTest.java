@@ -24,7 +24,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
     }
 
     public void testResolve() {
-        expect.oneCall(resolver, resolved, "resolve", happyChap);
+        expect.oneCall(resolver, resolved, "resolve", happyChap, null); // FIX 1977 Shouldn't be null.
         ResolvedInstance result = subject.resolve(field);
         assertEquals(resolved, result);
     }

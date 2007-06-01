@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
@@ -22,6 +23,8 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     ResolvedInstance jimResolvedInstance;
     ResolvedInstance jackResolvedInstance;
     Newer newerImpl;
+    // FIX 1977 Test with real flavours.
+    Flavour flavour;
     Interface jim = iface(Jim.class);
     Interface jack = iface(Jack.class);
     Interface spoo = iface(Spoo.class);
@@ -37,36 +40,36 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testNoUnresolvedDependencies() {
-        expect.oneCall(registryMaster, false, "hasInstance", jim);
-        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
+        expect.oneCall(registryMaster, false, "hasInstance", jim, flavour);
+        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim, flavour);
         expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
-        ResolvedInstance result = subject.resolve(jim);
+        ResolvedInstance result = subject.resolve(jim, flavour);
         assertEquals(jimResolvedInstance, result);
     }
 
     public void testOneUnresolvedDependencies() {
-        expect.oneCall(registryMaster, false, "hasInstance", jack);
-        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim);
+        expect.oneCall(registryMaster, false, "hasInstance", jack, flavour);
+        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim, flavour);
         expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
         expect.oneCall(jimResolvedInstance, jimInstance, "getRef");
-        expect.oneCall(registryMaster, false, "hasInstance", jim);
-        expect.oneCall(registryMaster, jackImpl, "getImplementation", jack);
+        expect.oneCall(registryMaster, false, "hasInstance", jim, flavour);
+        expect.oneCall(registryMaster, jackImpl, "getImplementation", jack, flavour);
         expect.oneCall(provider, jackResolvedInstance, "provide", jackImpl, new Object[]{jimInstance});
-        ResolvedInstance result = subject.resolve(jack);
+        ResolvedInstance result = subject.resolve(jack, flavour);
         assertEquals(jackResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(registryMaster, true, "hasInstance", spoo);
-        expect.oneCall(registryMaster, spooInstance, "getInstance", spoo);
-        ResolvedInstance result = subject.resolve(spoo);
+        expect.oneCall(registryMaster, true, "hasInstance", spoo, flavour);
+        expect.oneCall(registryMaster, spooInstance, "getInstance", spoo, flavour);
+        ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);
     }
 
     public void testResolveNewer() {
         expect.oneCall(newerAssembler, newerImpl, "assemble", newer);
         ResolvedInstance expected = new DefaultBaseReference(newerImpl);
-        ResolvedInstance actual = subject.resolve(newer);
+        ResolvedInstance actual = subject.resolve(newer, flavour);
         assertEquals(expected, actual);
     }
 
