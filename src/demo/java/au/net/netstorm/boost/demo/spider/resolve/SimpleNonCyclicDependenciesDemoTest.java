@@ -20,7 +20,7 @@ public final class SimpleNonCyclicDependenciesDemoTest extends BoooostCase {
         registry.multiple(Wheel.class, DefaultWheel.class);
     }
 
-    public void testMultipleInstanceOfTheSameThing() {
+    public void testDifferentWheels() {
         Bicycle bicycle = (Bicycle) spider.resolve(Bicycle.class);
         Object o1 = fielder.getInstance(bicycle, "front");
         Object o2 = fielder.getInstance(bicycle, "rear");
