@@ -25,13 +25,7 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
         try {
             return edgeConstructor.newInstance(constructor, parameters);
         } catch (IllegalArgumentException e) {
-            String message = createTypeMismatchMessage(parameters, impl);
-            throw new InstantiationException(message, e);
+            throw new InstantiationException("Unable to construct a " + impl.getImpl(), e);
         }
-    }
-
-    private String createTypeMismatchMessage(Object[] parameters, Implementation impl) {
-        String parameterType = parameters[0].getClass().getName();
-        return "Unable to construct a " + impl.getImpl() + " using " + parameterType;
     }
 }
