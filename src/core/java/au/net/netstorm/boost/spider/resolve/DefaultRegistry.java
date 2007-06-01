@@ -20,15 +20,19 @@ public final class DefaultRegistry implements Registry {
         multiple(iface, impl, UNFLAVOURED);
     }
 
+    public void instance(Class iface, Object ref) {
+        instance(iface, ref, UNFLAVOURED);
+    }
+
+    public void instance(Class iface, Object ref, Flavour flavour) {
+        Interface inyerface = new DefaultInterface(iface);
+        ResolvedInstance instance = new DefaultBaseReference(ref);
+        registryEngine.instance(inyerface, instance, flavour);
+    }
+
     public void multiple(Class iface, Class impl, Flavour flavour) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
         registryEngine.multiple(inyerface, implementation, flavour);
-    }
-
-    public void instance(Class iface, Object ref) {
-        Interface inyerface = new DefaultInterface(iface);
-        ResolvedInstance instance = new DefaultBaseReference(ref);
-        registryEngine.instance(inyerface, instance, UNFLAVOURED);
     }
 }

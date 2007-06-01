@@ -40,6 +40,10 @@ public final class DefaultSpider implements Spider {
         registry.multiple(iface, impl, flavour);
     }
 
+    public void instance(Class iface, Object ref, Flavour flavour) {
+        registry.instance(iface, ref, flavour);
+    }
+
     public void instance(Class iface, Object ref) {
         registry.instance(iface, ref);
     }

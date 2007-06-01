@@ -8,4 +8,6 @@ public interface Registry {
     void instance(Class iface, Object ref);
 
     void multiple(Class iface, Class impl, Flavour flavour);
+
+    void instance(Class iface, Object ref, Flavour flavour);
 }

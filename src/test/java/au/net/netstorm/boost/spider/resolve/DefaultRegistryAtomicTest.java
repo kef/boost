@@ -39,11 +39,14 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
         subject.multiple(sport, football, flavour);
     }
 
-    // FIX 1977 Complete testInstanceFlavoured.
-
     public void testInstanceUnflavoured() {
         setupInstance(unflavoured);
         subject.instance(cereal, cocoPops);
+    }
+
+    public void testInstanceflavoured() {
+        setupInstance(flavour);
+        subject.instance(cereal, cocoPops, flavour);
     }
 
     private void setupInstance(Flavour flavour) {
