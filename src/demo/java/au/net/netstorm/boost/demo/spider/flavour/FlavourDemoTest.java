@@ -22,6 +22,20 @@ public final class FlavourDemoTest extends BoooostCase {
 */
     }
 
+    /*
+    void instance(Interface iface, ResolvedInstance instance);
+
+    void multiple(Interface iface, Implementation implementation);
+
+    void single(Interface iface, Implementation implementation);
+
+    void instance(Interface iface, ResolvedInstance instance, Flavour flavour);
+
+    void multiple(Interface inyerface, Implementation implementation, Flavour foo);
+
+    void single(Interface iface, Implementation implementation, Flavour flavour);
+    */
+
 /*
     {
         // Flavours
