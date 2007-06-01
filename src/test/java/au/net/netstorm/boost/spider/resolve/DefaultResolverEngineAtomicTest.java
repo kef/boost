@@ -22,7 +22,6 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     NewerAssembler newerAssembler;
     ResolvedInstance jimResolvedInstance;
     Newer newerImpl;
-    // FIX 1977 Test with real flavours.
     Flavour flavour;
     Interface jim = iface(Jim.class);
     Interface spoo = iface(Spoo.class);
