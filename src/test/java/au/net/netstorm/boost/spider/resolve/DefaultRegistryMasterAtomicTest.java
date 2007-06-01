@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import java.util.Map;
+import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.test.cases.BoooostCase;
@@ -26,11 +27,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
     private static final ResolvedInstance COCO_POPS_INSTANCE = new DefaultBaseReference(COCO_POPS);
     private static final ResolvedInstance MATRYOSKA_INSTANCE = new DefaultBaseReference(Matryoshka.class);
+    private static final Flavour DODGY = new DefaultFlavour("dodgy"); // FIX 1977 Fix this to use real flavours.
     private final RegistryMaster subject = new DefaultRegistryMaster();
-    // FIX 1977 Fix.  No nulls.
-    Flavour flavour = null;
-
-    private static final Flavour DODGY = null;
 
     {
         multiple(ANIMAL, MAMMAL_IMPL);
@@ -92,21 +90,21 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
 
     public void testNotInstance() {
         try {
-            subject.getInstance(ANIMAL, flavour);
+            subject.getInstance(ANIMAL, DODGY);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testNotImplementation() {
         try {
-            subject.getImplementation(BREAKFAST_CEREAL, flavour);
+            subject.getImplementation(BREAKFAST_CEREAL, DODGY);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testInstanceDoesNotExist() {
         try {
-            subject.getInstance(NON_EXISTENT, flavour);
+            subject.getInstance(NON_EXISTENT, DODGY);
             fail();
         } catch (UnresolvedDependencyException expected) { }
     }
@@ -122,29 +120,29 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {
-        boolean result = subject.hasImplementation(iface, flavour);
+        boolean result = subject.hasImplementation(iface, DODGY);
         assertEquals(expected, result);
     }
 
     private void checkHasInstance(Interface iface, boolean expected) {
-        boolean result = subject.hasInstance(iface, flavour);
+        boolean result = subject.hasInstance(iface, DODGY);
         assertEquals(expected, result);
     }
 
     private void checkGetInstance(Interface iface, ResolvedInstance expect) {
-        ResolvedInstance result = subject.getInstance(iface, flavour);
+        ResolvedInstance result = subject.getInstance(iface, DODGY);
         assertEquals(expect, result);
     }
 
     public void testCannotGetImplementation() {
         try {
-            subject.getImplementation(NON_EXISTENT, flavour);
+            subject.getImplementation(NON_EXISTENT, DODGY);
             fail();
         } catch (UnresolvedDependencyException expected) { }
     }
 
     private void checkGetImplementation(Interface iface, Implementation expected) {
-        Implementation result = subject.getImplementation(iface, flavour);
+        Implementation result = subject.getImplementation(iface, DODGY);
         checkEquals(expected, result);
     }
 
