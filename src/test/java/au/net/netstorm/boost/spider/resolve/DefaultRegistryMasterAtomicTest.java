@@ -30,11 +30,15 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     // FIX 1977 Fix.  No nulls.
     Flavour flavour = null;
 
+    private static final Flavour DODGY = null;
+
     {
-        subject.multiple(ANIMAL, MAMMAL_IMPL);
-        subject.multiple(VEHICLE, CAR_IMPL);
-        subject.instance(SPORT, FOOTBALL_INSTANCE);
-        subject.instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
+        multiple(ANIMAL, MAMMAL_IMPL);
+        multiple(VEHICLE, CAR_IMPL);
+        Interface iface = SPORT;
+        ResolvedInstance instance = FOOTBALL_INSTANCE;
+        instance(iface, instance);
+        instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
     }
 
     public void testGetImplementation() {
@@ -49,35 +53,35 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
 
     public void testDuplicateInstance() {
         try {
-            subject.instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
+            instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
             fail();
         } catch (AlreadyRegisteredException expected) { }
     }
 
     public void testDuplicateImplementation() {
         try {
-            subject.multiple(ANIMAL, CROCODILE_IMPL);
+            multiple(ANIMAL, CROCODILE_IMPL);
             fail();
         } catch (AlreadyRegisteredException expected) {}
     }
 
     public void testImplImplementsInterfaceFails() {
         try {
-            subject.multiple(MATRYOSHKA, CROCODILE_IMPL);
+            multiple(MATRYOSHKA, CROCODILE_IMPL);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
     }
 
     public void testInstanceImplementsInterfaceFails() {
         try {
-            subject.instance(MATRYOSHKA, FOOTBALL_INSTANCE);
+            instance(MATRYOSHKA, FOOTBALL_INSTANCE);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
     }
 
     public void testClassInstanceFails() {
         try {
-            subject.instance(MATRYOSHKA, MATRYOSKA_INSTANCE);
+            instance(MATRYOSHKA, MATRYOSKA_INSTANCE);
             fail();
         } catch (WrongInstanceTypeException expected) {
             String actualMessage = MATRYOSKA_INSTANCE.getRef() + " is a class and cannot be registered as an instance.";
@@ -146,5 +150,13 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
 
     private void checkEquals(Implementation expected, Implementation result) {
         assertEquals(expected, result);
+    }
+
+    private void instance(Interface iface, ResolvedInstance instance) {
+        subject.instance(iface, instance, DODGY);
+    }
+
+    private void multiple(Interface iface, Implementation impl) {
+        subject.multiple(iface, impl, DODGY);
     }
 }

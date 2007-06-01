@@ -10,6 +10,7 @@ public final class FlavourDemoTest extends BoooostCase {
     Registry registry;
     Resolver resolver;
 
+    // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Test with instances too.
     // FIX 1977 Acceptance test.
     public void testFlavours() {
         // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate.

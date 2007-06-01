@@ -20,7 +20,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     Interface cerealInterface = new DefaultInterface(cereal);
     Implementation footballImplementation = new DefaultImplementation(football);
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
-    Class iface;
     RegistryMaster registryMaster;
 
     public void setupSubjects() {
@@ -28,12 +27,14 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     }
 
     public void testMultiple() {
-        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation);
+        // FIX 1977 No nulls.
+        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation, null);
         subject.multiple(sport, football);
     }
 
     public void testInstance() {
-        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops);
+        // FIX 1977 No nulls.
+        expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops, null);
         subject.instance(cereal, cocoPops);
     }
 }
