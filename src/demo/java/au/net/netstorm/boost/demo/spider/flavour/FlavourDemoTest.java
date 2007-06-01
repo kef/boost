@@ -1,18 +1,35 @@
 package au.net.netstorm.boost.demo.spider.flavour;
 
 import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 public final class FlavourDemoTest extends ResolverDemooooTest {
-    // FIX 1977 Remove GoodCitizen.
-    // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
-    // FIX 1977 Acceptance test.
-    public void testFlavours() {
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+
+    {
         // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate.
         registry.multiple(Curry.class, Madras.class, "mild");
 //        registry.multiple(Curry.class, Vindaloo.class, "hot");
 //        registry.multiple(Curry.class, PrawnMalai.class, "stevesFavourite");
         registry.multiple(Party.class, DefaultParty.class);
+    }
+
+    // FIX 1977 Remove GoodCitizen.
+    // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
+    // FIX 1977 Acceptance test.
+    public void testFlavours() {
         Party party = (Party) resolver.resolve(Party.class);
+        checkField(party, Madras.class, "mild");
+        // FIX BREADCRUMB 1977 GGGGGGGGGGGGGGGGGGGGGGGGGGGG Reinstate.
+//        checkField(party, Vindaloo.class, "hot");
+//        checkField(party, PrawnMalai.class, "stevesFavourite");
+    }
+
+    private void checkField(Party party, Class expected, String field) {
+        Object value = fielder.getInstance(party, field);
+        Class cls = value.getClass();
+        assertEquals(true, expected.isAssignableFrom(cls));
     }
 
     /*
