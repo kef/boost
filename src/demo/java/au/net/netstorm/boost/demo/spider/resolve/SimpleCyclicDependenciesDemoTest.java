@@ -9,7 +9,7 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-// FIX 1971 Right package?
+// FIX 1977 Even simpler...  An object referencing itself.  Implement as separate test case.
 public final class SimpleCyclicDependenciesDemoTest extends BoooostCase {
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler(GoodCitizen.class);
     private final Spider spider = spiderAssembler.assemble();
@@ -22,16 +22,16 @@ public final class SimpleCyclicDependenciesDemoTest extends BoooostCase {
     }
 
     public void testDependencyWithTwoObjects() {
-        checkOneWay();
-        checkTheOtherWay();
+        checkResolveBall();
+        checkResolveRunner();
     }
 
-    private void checkOneWay() {
+    private void checkResolveBall() {
         Ball ball = (Ball) spider.resolve(Ball.class);
         checkSet(ball, "runner");
     }
 
-    private void checkTheOtherWay() {
+    private void checkResolveRunner() {
         Runner runner = (Runner) spider.resolve(Runner.class);
         checkSet(runner, "ball");
     }
@@ -40,7 +40,4 @@ public final class SimpleCyclicDependenciesDemoTest extends BoooostCase {
         Object value = fielder.getInstance(ref, fieldName);
         assertNotNull(value);
     }
-
-    // FIX BREADCRUMB 1971 Write multiple dependency test.
-    // FIX BREADCRUMB 1971 Write test that depends on itself.
 }

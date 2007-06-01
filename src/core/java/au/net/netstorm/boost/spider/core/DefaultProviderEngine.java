@@ -43,6 +43,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
     private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         // FIX 1971 Test drive this check up.
+        // FIX 1977 Put in a proxy.
         resolvedThings.put(impl, unresolved);
         injector.inject(unresolved);
         resolvedThings.remove(impl);
