@@ -18,7 +18,6 @@ public final class FlavourDemoTest extends BoooostCase {
         registry.multiple(Curry.class, PrawnMalai.class, "stevesFavourite");
         registry.multiple(Party.class, DefaultParty.class);
         Party party = (Party) resolver.resolve(Party.class);
-*/
     }
 
     /*
@@ -88,4 +87,4 @@ public final class FlavourDemoTest extends BoooostCase {
     }
     
 */
-}
+    }
