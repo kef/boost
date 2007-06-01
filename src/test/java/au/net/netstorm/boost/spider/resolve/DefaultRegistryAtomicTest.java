@@ -23,20 +23,30 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     RegistryMaster registryMaster;
     Flavour unflavoured = Flavour.UNFLAVOURED;
+    Flavour flavour;
 
     public void setupSubjects() {
         subject = new DefaultRegistry(registryMaster);
     }
 
-    public void testMultiple() {
-        // FIX 1977 No nulls.
-        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation, unflavoured);
+    public void testMultipleUnflavoured() {
+        setupMultiple(unflavoured);
         subject.multiple(sport, football);
     }
 
-    public void testInstance() {
-        // FIX 1977 No nulls.
+    public void testMultipleFlavoured() {
+        setupMultiple(flavour);
+        subject.multiple(sport, football, flavour);
+    }
+
+    // FIX 1977 Complete testInstanceFlavoured.
+
+    public void testInstanceUnflavoured() {
         expect.oneCall(registryMaster, VOID, "instance", cerealInterface, resolvedCocoPops, unflavoured);
         subject.instance(cereal, cocoPops);
+    }
+
+    private void setupMultiple(Flavour flavour) {
+        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation, flavour);
     }
 }

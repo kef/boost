@@ -17,9 +17,13 @@ public final class DefaultRegistry implements Registry {
     }
 
     public void multiple(Class iface, Class impl) {
+        multiple(iface, impl, UNFLAVOURED);
+    }
+
+    public void multiple(Class iface, Class impl, Flavour flavour) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryEngine.multiple(inyerface, implementation, UNFLAVOURED);
+        registryEngine.multiple(inyerface, implementation, flavour);
     }
 
     public void instance(Class iface, Object ref) {
