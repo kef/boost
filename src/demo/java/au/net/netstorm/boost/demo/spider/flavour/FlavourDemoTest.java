@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.spider.resolve;
+package au.net.netstorm.boost.demo.spider.flavour;
 
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
