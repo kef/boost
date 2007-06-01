@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
@@ -23,9 +24,11 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     RegistryMaster registryMaster;
     Flavour unflavoured = Flavour.UNFLAVOURED;
+    String stringFlavour;
     Flavour flavour;
 
     public void setupSubjects() {
+        flavour = new DefaultFlavour(stringFlavour);
         subject = new DefaultRegistry(registryMaster);
     }
 
@@ -36,7 +39,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
 
     public void testMultipleFlavoured() {
         setupMultiple(flavour);
-        subject.multiple(sport, football, flavour);
+        subject.multiple(sport, football, stringFlavour);
     }
 
     public void testInstanceUnflavoured() {
@@ -46,7 +49,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
 
     public void testInstanceflavoured() {
         setupInstance(flavour);
-        subject.instance(cereal, cocoPops, flavour);
+        subject.instance(cereal, cocoPops, stringFlavour);
     }
 
     private void setupInstance(Flavour flavour) {

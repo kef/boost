@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.demo.spider.core;
 
 import au.net.netstorm.boost.spider.core.Provider;
-import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
@@ -36,11 +35,11 @@ public final class DefaultSpider implements Spider {
         registry.multiple(iface, impl);
     }
 
-    public void multiple(Class iface, Class impl, Flavour flavour) {
+    public void multiple(Class iface, Class impl, String flavour) {
         registry.multiple(iface, impl, flavour);
     }
 
-    public void instance(Class iface, Object ref, Flavour flavour) {
+    public void instance(Class iface, Object ref, String flavour) {
         registry.instance(iface, ref, flavour);
     }
 

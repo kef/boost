@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -24,15 +25,29 @@ public final class DefaultRegistry implements Registry {
         instance(iface, ref, UNFLAVOURED);
     }
 
-    public void instance(Class iface, Object ref, Flavour flavour) {
-        Interface inyerface = new DefaultInterface(iface);
-        ResolvedInstance instance = new DefaultBaseReference(ref);
-        registryEngine.instance(inyerface, instance, flavour);
+    public void instance(Class iface, Object ref, String flavour) {
+        Flavour tastyFlavour = flavour(flavour);
+        instance(iface, ref, tastyFlavour);
     }
 
-    public void multiple(Class iface, Class impl, Flavour flavour) {
+    public void multiple(Class iface, Class impl, String flavour) {
+        Flavour tastyFlavour = flavour(flavour);
+        multiple(iface, impl, tastyFlavour);
+    }
+
+    private void multiple(Class iface, Class impl, Flavour tastyFlavour) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryEngine.multiple(inyerface, implementation, flavour);
+        registryEngine.multiple(inyerface, implementation, tastyFlavour);
+    }
+
+    private void instance(Class iface, Object ref, Flavour tastyFlavour) {
+        Interface inyerface = new DefaultInterface(iface);
+        ResolvedInstance instance = new DefaultBaseReference(ref);
+        registryEngine.instance(inyerface, instance, tastyFlavour);
+    }
+
+    private Flavour flavour(String flavour) {
+        return new DefaultFlavour(flavour);
     }
 }
