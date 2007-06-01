@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.demo.spider.flavour;
 
-public interface Party {
+public final class PrawnMalai implements Curry {
 }
