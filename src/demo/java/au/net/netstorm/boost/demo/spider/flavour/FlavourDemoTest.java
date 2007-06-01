@@ -5,12 +5,10 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class FlavourDemoTest extends BoooostCase {
-    // FIX BREADCRUMB 1977 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Change name.
-    // FIX 1977 Change prototype to multiple.
     Registry registry;
     Resolver resolver;
 
-    // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Test with instances too.
+    // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
     // FIX 1977 Acceptance test.
     public void testFlavours() {
         // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate.
