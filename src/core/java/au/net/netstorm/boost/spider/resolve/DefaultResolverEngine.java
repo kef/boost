@@ -33,8 +33,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     public ResolvedInstance resolve(Implementation impl, Flavour flavour) {
-        // FIX BREADCRUMB 1977 LLLLLLLLLLLLLLLLLLLLLLLLLLLLL parameters is always ZERO.  Remove dodgy code.
-        // FIX 1936 Modify provider to take no args.
+        // FIX 1936 Modify provider to take no args.  Newer proxies use the arg'ed versions.
         return provider.provide(impl, NO_PARAMS);
     }
 
