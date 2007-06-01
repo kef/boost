@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.resolve;
 
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
@@ -15,7 +13,6 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultResolverEngine implements ResolverEngine {
     private static final Object[] NO_PARAMS = {};
     private static final Interface NEWER = new DefaultInterface(Newer.class);
-    private final ReflectMaster reflector = new DefaultReflectMaster();
     private final ProviderEngine provider;
     private final FinderEngine finder;
     private final NewerAssembler newerAssembler;
