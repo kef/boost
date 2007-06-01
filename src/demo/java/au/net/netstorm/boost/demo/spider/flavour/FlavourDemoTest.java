@@ -1,21 +1,16 @@
 package au.net.netstorm.boost.demo.spider.flavour;
 
-import au.net.netstorm.boost.spider.resolve.Registry;
-import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 
-public final class FlavourDemoTest extends BoooostCase {
-    Registry registry;
-    Resolver resolver;
+public final class FlavourDemoTest extends ResolverDemooooTest {
 
     // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
     // FIX 1977 Acceptance test.
     public void testFlavours() {
         // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate.
-/*
         registry.multiple(Curry.class, Madras.class, "mild");
-        registry.multiple(Curry.class, Vindaloo.class, "hot");
-        registry.multiple(Curry.class, PrawnMalai.class, "stevesFavourite");
+//        registry.multiple(Curry.class, Vindaloo.class, "hot");
+//        registry.multiple(Curry.class, PrawnMalai.class, "stevesFavourite");
         registry.multiple(Party.class, DefaultParty.class);
         Party party = (Party) resolver.resolve(Party.class);
     }
@@ -87,5 +82,4 @@ public final class FlavourDemoTest extends BoooostCase {
     }
     
 */
-    }
 }
