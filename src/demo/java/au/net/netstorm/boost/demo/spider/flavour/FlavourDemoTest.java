@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.spider.flavour;
 import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 
 public final class FlavourDemoTest extends ResolverDemooooTest {
-
+    // FIX 1977 Remove GoodCitizen.
     // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
     // FIX 1977 Acceptance test.
     public void testFlavours() {
