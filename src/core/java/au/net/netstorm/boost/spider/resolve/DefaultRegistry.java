@@ -20,6 +20,7 @@ public final class DefaultRegistry implements Registry {
     public void multiple(Class iface, Class impl) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
+        // FIX BREADCRUMB 1977 EEEEEEEEEEEEEEEEEEEEEEEEEEE Drive up "global" flavour on the interface.
         registryEngine.multiple(inyerface, implementation, DODGY);
     }
 
