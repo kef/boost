@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.resolve;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.test.cases.BoooostCase;
@@ -114,21 +112,6 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     public void testHasImplementation() {
         checkHasImplementation(ANIMAL, true);
         checkHasImplementation(SPORT, false);
-    }
-
-    public void testElements() {
-        Interface[] result = subject.getKeys();
-        Interface[] expected = new Interface[]{VEHICLE, ANIMAL, SPORT, BREAKFAST_CEREAL};
-        checkElements(expected, result);
-    }
-
-    private void checkElements(Interface[] expected, Interface[] actual) {
-        assertEquals(expected.length, actual.length);
-        List actualAsList = Arrays.asList(actual);
-        for (int i = 0; i < expected.length; i++) {
-            Interface inyerface = expected[i];
-            assertEquals(true, actualAsList.contains(inyerface));
-        }
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {

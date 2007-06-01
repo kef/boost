@@ -2,7 +2,6 @@ package au.net.netstorm.boost.spider.resolve;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -42,11 +41,6 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public boolean hasInstance(Interface iface) {
         return has(iface, ResolvedInstance.class);
-    }
-
-    public Interface[] getKeys() {
-        Set set = web.keySet();
-        return (Interface[]) set.toArray(new Interface[]{});
     }
 
     private void barfIfNotImplOfIface(Interface iface, ResolvedInstance instance) {

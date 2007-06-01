@@ -12,6 +12,4 @@ public interface FinderEngine {
     boolean hasImplementation(Interface iface);
 
     boolean hasInstance(Interface iface);
-
-    Interface[] getKeys();
 }
