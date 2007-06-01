@@ -31,8 +31,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     Flavour flavour = null;
 
     {
-        subject.implementation(ANIMAL, MAMMAL_IMPL);
-        subject.implementation(VEHICLE, CAR_IMPL);
+        subject.multiple(ANIMAL, MAMMAL_IMPL);
+        subject.multiple(VEHICLE, CAR_IMPL);
         subject.instance(SPORT, FOOTBALL_INSTANCE);
         subject.instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
     }
@@ -56,14 +56,14 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
 
     public void testDuplicateImplementation() {
         try {
-            subject.implementation(ANIMAL, CROCODILE_IMPL);
+            subject.multiple(ANIMAL, CROCODILE_IMPL);
             fail();
         } catch (AlreadyRegisteredException expected) {}
     }
 
     public void testImplImplementsInterfaceFails() {
         try {
-            subject.implementation(MATRYOSHKA, CROCODILE_IMPL);
+            subject.multiple(MATRYOSHKA, CROCODILE_IMPL);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
     }

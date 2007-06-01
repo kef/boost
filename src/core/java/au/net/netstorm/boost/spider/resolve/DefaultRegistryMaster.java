@@ -13,7 +13,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map web = new HashMap();
 
-    public void implementation(Interface iface, Implementation implementation) {
+    public void multiple(Interface iface, Implementation implementation) {
         barfIfExists(iface);
         barfIfNotImplOfIface(iface, implementation);
         web.put(iface, implementation);

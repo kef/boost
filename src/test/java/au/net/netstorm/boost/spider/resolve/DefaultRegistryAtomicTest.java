@@ -28,7 +28,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     }
 
     public void testMultiple() {
-        expect.oneCall(registryMaster, VOID, "implementation", sportInterface, footballImplementation);
+        expect.oneCall(registryMaster, VOID, "multiple", sportInterface, footballImplementation);
         subject.multiple(sport, football);
     }
 
