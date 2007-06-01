@@ -78,7 +78,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance aNewer(Interface iface) {
-        Newer newer = (Newer) newerAssembler.assemble(iface);
+        Newer newer = newerAssembler.assemble(iface);
         return new DefaultBaseReference(newer);
     }
 }
