@@ -23,6 +23,12 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         subject = new DefaultFlavouredMapEngine();
     }
 
+    public void testUnflavoured() {
+        subject.put(milkshakeUnflavoured, value);
+        Object result = subject.get(milkshakeUnflavoured);
+        assertEquals(value, result);
+    }
+
     public void testUnflavouredFirst() {
         subject.put(milkshakeUnflavoured, value);
         // FIX BREADCRUMB 1977 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM Reinstate.
