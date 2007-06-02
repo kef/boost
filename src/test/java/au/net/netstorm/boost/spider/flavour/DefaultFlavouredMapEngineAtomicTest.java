@@ -112,6 +112,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
             subject.put(flavoured, reason);
             fail();
         } catch (FlavourMapException expected) {
+            check(reason, expected);
         }
     }
 
