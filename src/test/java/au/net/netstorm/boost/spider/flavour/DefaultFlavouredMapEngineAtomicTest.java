@@ -86,7 +86,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         put(icecreamChocolate, value);
         put(icecreamStrawberry, value);
         checkPutFails(icecreamChocolate, FLAVOUR_ALREADY_EXISTS);
-//        checkGetFails(icecreamUnflavoured, "Flavour type already registered");
+        checkPutFails(icecreamUnflavoured, FLAVOUR_ALREADY_EXISTS);
         // FIX 1977 Complete.
     }
 
