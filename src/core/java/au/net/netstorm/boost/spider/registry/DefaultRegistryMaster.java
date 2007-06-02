@@ -9,6 +9,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// FIX BREADCRUMB 1977 HHHHHHHHHHHHHHHHHHHHHH Stitch in FlavouredMap.
+
 // DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final Map web = new HashMap();

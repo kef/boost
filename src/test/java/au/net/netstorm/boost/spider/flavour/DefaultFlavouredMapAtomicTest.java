@@ -5,11 +5,6 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX BREADCRUMB 1977 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ Complete.
-
-// FIX 1977 Drive up InterfaceFlavour composite.
-
-// FIX BREADCRUMB 1977 KKKKKKKKKKKKKKKKKKKKKKKKKKKKK Back here when the FlavouredMapEngine is complete.
 public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     FlavouredMap subject;
     FlavouredMapEngine engine;
