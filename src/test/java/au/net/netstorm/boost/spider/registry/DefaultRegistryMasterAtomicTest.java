@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -10,7 +11,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
+public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
     private static final Interface ANIMAL = new DefaultInterface(Animal.class);
     private static final Interface SPORT = new DefaultInterface(Sport.class);
     private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);
@@ -24,10 +25,11 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
     private static final ResolvedInstance COCO_POPS_INSTANCE = new DefaultBaseReference(COCO_POPS);
     private static final ResolvedInstance MATRYOSKA_INSTANCE = new DefaultBaseReference(Matryoshka.class);
-    private static final Flavour DODGY = new DefaultFlavour("dodgy"); // FIX 1977 Fix this to use real flavours.
-    private final RegistryMaster subject = new DefaultRegistryMaster();
+    RegistryMaster subject;
+    Flavour flavour;
 
-    {
+    public void setupSubjects() {
+        subject = new DefaultRegistryMaster();
         multiple(ANIMAL, MAMMAL_IMPL);
         multiple(VEHICLE, CAR_IMPL);
         instance(SPORT, FOOTBALL_INSTANCE);
@@ -71,14 +73,14 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
 
     public void testNotInstance() {
         try {
-            subject.getInstance(ANIMAL, DODGY);
+            subject.getInstance(ANIMAL, flavour);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testNotImplementation() {
         try {
-            subject.getImplementation(BREAKFAST_CEREAL, DODGY);
+            subject.getImplementation(BREAKFAST_CEREAL, flavour);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
@@ -94,22 +96,22 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {
-        boolean result = subject.hasImplementation(iface, DODGY);
+        boolean result = subject.hasImplementation(iface, flavour);
         assertEquals(expected, result);
     }
 
     private void checkHasInstance(Interface iface, boolean expected) {
-        boolean result = subject.hasInstance(iface, DODGY);
+        boolean result = subject.hasInstance(iface, flavour);
         assertEquals(expected, result);
     }
 
     private void checkGetInstance(Interface iface, ResolvedInstance expect) {
-        ResolvedInstance result = subject.getInstance(iface, DODGY);
+        ResolvedInstance result = subject.getInstance(iface, flavour);
         assertEquals(expect, result);
     }
 
     private void checkGetImplementation(Interface iface, Implementation expected) {
-        Implementation result = subject.getImplementation(iface, DODGY);
+        Implementation result = subject.getImplementation(iface, flavour);
         checkEquals(expected, result);
     }
 
@@ -118,10 +120,10 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     private void instance(Interface iface, ResolvedInstance instance) {
-        subject.instance(iface, instance, DODGY);
+        subject.instance(iface, instance, flavour);
     }
 
     private void multiple(Interface iface, Implementation impl) {
-        subject.multiple(iface, impl, DODGY);
+        subject.multiple(iface, impl, flavour);
     }
 }
