@@ -10,20 +10,19 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // OK NCSS {
 public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
-    private static final String NO_MATCHING_TYPE = "No matching type";
-    private static final String NO_MATCHING_FLAVOUR = "No matching flavour";
     private static final String UNFLAVOURED_CANNOT_BE_SPECIFIED_WITH_FLAVOURS = "Unflavoured cannot be resolved when flavours exist";
     private static final String UNFLAVOURED_TYPE_ALREADY_REGISTERED = "Unflavoured type already registered";
     private static final String FLAVOUR_ALREADY_EXISTS = "Flavour already exists";
-    FlavouredMapEngine subject;
+    private static final String NO_MATCHING_FLAVOUR = "No matching flavour";
+    private static final String NO_MATCHING_TYPE = "No matching type";
     Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface icecream = new DefaultInterface(IceCream.class);
     Interface chips = new DefaultInterface(Chips.class);
     Interface pie = new DefaultInterface(Pie.class);
+    Flavour unflavoured = Flavour.UNFLAVOURED;
     Flavour chocolate = new DefaultFlavour("chocolate");
     Flavour vanilla = new DefaultFlavour("vanilla");
     Flavour strawberry = new DefaultFlavour("strawberry");
-    Flavour unflavoured = Flavour.UNFLAVOURED;
     FlavouredInterface milkshakeChocolate = mix(milkshake, chocolate);
     FlavouredInterface milkshakeVanilla = mix(milkshake, vanilla);
     FlavouredInterface milkshakeUnflavoured = mix(milkshake, unflavoured);
@@ -34,6 +33,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     FlavouredInterface chipsUnflavoured = mix(chips, unflavoured);
     FlavouredInterface pieStrawberry = mix(pie, strawberry);
     Object value, value1, value2, value3, value4, value5;
+    FlavouredMapEngine subject;
 
     // FIX 1977 Test empty failure.
 
@@ -87,10 +87,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         put(icecreamStrawberry, value);
         checkPutFails(icecreamChocolate, FLAVOUR_ALREADY_EXISTS);
         checkPutFails(icecreamUnflavoured, FLAVOUR_ALREADY_EXISTS);
-        // FIX 1977 Complete.
     }
-
-    // FIX 1977 PutWithFlavourInMap.
 
     private void put(FlavouredInterface flavour, Object value) {
         subject.put(flavour, value);
@@ -129,4 +126,4 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         return new DefaultFlavouredInterface(iface, flavour);
     }
 }
-// } OK NCSS - Some nice juicy mixes.
+// } OK NCSS - Some nice juicy mixes.  Gotta love it.
