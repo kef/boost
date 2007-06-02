@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.primordial.BoostException;
+import au.net.netstorm.boost.primordial.BoooostException;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
-    BoostException subject;
+    BoooostException subject;
     Interface marker;
     Implementation impl;
 

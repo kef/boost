@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.spider.flavour;
 
-import au.net.netstorm.boost.primordial.BoostException;
+import au.net.netstorm.boost.primordial.BoooostException;
 
-// FIX 1977 Rename BoostException to BoooostException.
-public final class FlavourMapException extends RuntimeException implements BoostException {
+public final class FlavourMapException extends RuntimeException implements BoooostException {
     private final FlavouredInterface flavour;
     private final String reason;
 

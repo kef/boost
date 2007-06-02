@@ -9,8 +9,8 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
-    private static final Class FRUITY = Fruity.class;
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
+    private static final Class FRUITY = Fruity.class;
     Resolver subject;
     ResolverEngine resolverEngine;
     ResolvedInstance resolvedInstance;
@@ -22,7 +22,6 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase impleme
     }
 
     public void testResolve() {
-        // FIX 1977 Should be real flavour.
         expect.oneCall(resolverEngine, resolvedInstance, "resolve", fruity, UNFLAVOURED);
         expect.oneCall(resolvedInstance, resolved, "getRef");
         Object result = subject.resolve(FRUITY);

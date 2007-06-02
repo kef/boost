@@ -9,7 +9,7 @@ public final class PrimordialExceptionAtomicTest extends BoooostCase {
     private final ClassTestChecker classer = new DefaultClassTestChecker();
 
     public void testException() {
-        BoostException ex = new PrimordialException(MSG);
+        BoooostException ex = new PrimordialException(MSG);
         String result = ex.getMessage();
         assertEquals(MSG, result);
     }

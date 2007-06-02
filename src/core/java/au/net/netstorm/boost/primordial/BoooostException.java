@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.primordial;
 
-public interface BoostException {
+public interface BoooostException {
     String getMessage();
 }

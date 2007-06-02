@@ -13,12 +13,8 @@ public final class DefaultResolver implements Resolver {
         this.engine = engine;
     }
 
-    // FIX 1977 Consider whether we need to resolve flavours.  Probably.
-    // FIX 1977 YES we do!!!
-
     public Object resolve(Class type) {
         Interface iface = new DefaultInterface(type);
-        // FIX BREADCRUMB 1977 Get real flavour.
         ResolvedInstance resolved = engine.resolve(iface, UNFLAVOURED);
         return resolved.getRef();
     }

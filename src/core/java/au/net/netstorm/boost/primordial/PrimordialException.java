@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.primordial;
 
-public class PrimordialException extends RuntimeException implements BoostException {
+public class PrimordialException extends RuntimeException implements BoooostException {
     public PrimordialException(String string) {
         super(string);
     }
