@@ -1,14 +1,15 @@
 package au.net.netstorm.boost.demo.spider.flavour;
 
 import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
+import au.net.netstorm.boost.spider.core.GraphUtil;
 
+// FIX 1977 Separate package for newers?
 // FIX 1977 Remove GoodCitizen.
 
 // FIX 1977 Acceptance test for this CARD.
-public final class FlavourDemoTest extends ResolverDemooooTest {
-    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
+    private final GraphUtil grapher = new DefaultGraphUtil();
 
     // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
     {
@@ -20,13 +21,13 @@ public final class FlavourDemoTest extends ResolverDemooooTest {
 
     public void testFlavours() {
         Party party = (Party) resolver.resolve(Party.class);
-        checkField(party, Madras.class, "mild");
-        checkField(party, Vindaloo.class, "hot");
-        checkField(party, PrawnMalai.class, "stevesFavourite");
+        checkField(Madras.class, party, "mild");
+        checkField(Vindaloo.class, party, "hot");
+        checkField(PrawnMalai.class, party, "stevesFavourite");
     }
 
-    private void checkField(Party party, Class expected, String field) {
-        Object value = fielder.getInstance(party, field);
+    private void checkField(Class expected, Party party, String field) {
+        Object value = grapher.get(party, field);
         Class cls = value.getClass();
         assertEquals(true, expected.isAssignableFrom(cls));
     }
