@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -28,6 +29,6 @@ public final class DefaultFieldResolver implements FieldResolver {
     private Flavour getFlavour(Field field) {
         // FIX BREADCRUMB 1977 RRRRRRRRRRRRRRRRRRRRRRRRRRRR Over here.
         // FIX 1977 We need a real flavour right?
-        return Flavour.UNFLAVOURED;
+        return new DefaultFlavour("happyChap");
     }
 }
