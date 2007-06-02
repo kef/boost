@@ -4,5 +4,5 @@ package au.net.netstorm.boost.spider.flavour;
 interface FlavouredMapEngine {
     void put(FlavouredInterface flavoured, Object value);
 
-    Object get(FlavouredInterface milkshakeUnflavoured);
+    Object get(FlavouredInterface flavoured);
 }

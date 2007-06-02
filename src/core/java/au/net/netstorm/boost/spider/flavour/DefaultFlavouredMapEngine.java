@@ -1,13 +1,16 @@
 package au.net.netstorm.boost.spider.flavour;
 
+import java.util.HashMap;
+import java.util.Map;
+
 final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
-    private Object value;
+    private Map map = new HashMap();
 
     public void put(FlavouredInterface flavoured, Object value) {
-        this.value = value;
+        map.put(flavoured, value);
     }
 
-    public Object get(FlavouredInterface milkshakeUnflavoured) {
-        return value;
+    public Object get(FlavouredInterface flavoured) {
+        return map.get(flavoured);
     }
 }
