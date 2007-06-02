@@ -13,6 +13,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     private static final String NO_MATCHING_TYPE = "No matching type";
     private static final String NO_MATCHING_FLAVOUR = "No matching flavour";
     private static final String UNFLAVOURED_CANNOT_BE_SPECIFIED_WITH_FLAVOURS = "Unflavoured cannot be resolved when flavours exist";
+    private static final String UNFLAVOURED_TYPE_ALREADY_REGISTERED = "Unflavoured type already registered";
     FlavouredMapEngine subject;
     Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface icecream = new DefaultInterface(IceCream.class);
@@ -61,7 +62,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGet(pieStrawberry, value5);
     }
 
-    public void testUnflavouredInMap() {
+    public void testGetWithUnflavouredInMap() {
         put(milkshakeUnflavoured, value);
         checkGet(milkshakeUnflavoured, value);
         checkGet(milkshakeChocolate, value);
@@ -71,7 +72,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
     }
 
-    public void testFlavouredInMap() {
+    public void testGetWithFlavouredInMap() {
         put(icecreamChocolate, value);
         checkGet(icecreamChocolate, value);
         checkGetFails(icecreamStrawberry, NO_MATCHING_FLAVOUR);
@@ -79,6 +80,13 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGetFails(icecreamVanilla, NO_MATCHING_FLAVOUR);
         checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
         checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
+    }
+
+    public void testPutWithUnflavouredInMap() {
+        put(milkshakeUnflavoured, value);
+        // FIX 1977 Reinstate.
+//        checkPutFails(milkshakeUnflavoured, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
+//        checkPutFails(milkshakeChocolate, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
     }
 
     private void put(FlavouredInterface flavour, Object value) {
@@ -99,6 +107,10 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
             boolean ends = msg.startsWith(reason);
             assertEquals("Message should have started with: \"" + reason + ".\"  Full message was \"" + msg + "\".", true, ends);
         }
+    }
+
+    private void checkPutFails(FlavouredInterface flavoured, String reason) {
+//        subject.put(flavoured, reason);
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {
