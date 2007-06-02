@@ -13,6 +13,8 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
 
     public void put(FlavouredInterface flavour, Object value) {
         Interface iface = flavour.getIface();
+        boolean flavoured = isFlavoured(flavour);
+        checkNoUnflavouredExists(flavour, iface);
         ifaces.add(iface);
         map.put(flavour, value);
     }
@@ -29,6 +31,11 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private void checkInterfaceExists(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
         if (!ifaces.contains(iface)) fail(flavour, "No matching type");
+    }
+
+    private void checkNoUnflavouredExists(FlavouredInterface flavour, Interface iface) {
+        FlavouredInterface unflavoured = toUnflavoured(flavour);
+        if (map.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
     }
 
     private FlavouredInterface toUnflavoured(FlavouredInterface flavour) {

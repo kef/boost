@@ -84,10 +84,11 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
 
     public void testPutWithUnflavouredInMap() {
         put(milkshakeUnflavoured, value);
-        // FIX 1977 Reinstate.
-//        checkPutFails(milkshakeUnflavoured, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
-//        checkPutFails(milkshakeChocolate, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
+        checkPutFails(milkshakeUnflavoured, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
+        checkPutFails(milkshakeChocolate, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
     }
+
+    // FIX 1977 PutWithFlavourInMap.
 
     private void put(FlavouredInterface flavour, Object value) {
         subject.put(flavour, value);
