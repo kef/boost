@@ -16,12 +16,12 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final ProviderEngine provider;
     private final FinderEngine finder;
-    private final NewerAssembler newerAssembler;
+    private final NewerAssembler newer;
 
-    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newerAssembler) {
+    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newer) {
         this.provider = provider;
         this.finder = finder;
-        this.newerAssembler = newerAssembler;
+        this.newer = newer;
     }
 
     public ResolvedInstance resolve(Interface iface, Flavour flavour) {
@@ -52,7 +52,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance nuNewer(Interface iface) {
-        Newer newer = newerAssembler.assemble(iface);
+        Newer newer = this.newer.assemble(iface);
         return new DefaultBaseReference(newer);
     }
 }
