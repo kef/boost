@@ -34,7 +34,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         subject = new DefaultFlavouredMapEngine();
     }
 
-    public void testMain() {
+    public void testMainFlow() {
         subject.put(milkshakeUnflavoured, value1);
         subject.put(icecreamChocolate, value2);
         subject.put(icecreamStrawberry, value3);
