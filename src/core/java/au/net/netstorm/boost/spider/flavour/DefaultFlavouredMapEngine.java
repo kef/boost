@@ -17,12 +17,24 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         if (value != null) return value;
         FlavouredInterface unflavoured = toUnflavoured(flavour);
         Object o = map.get(unflavoured);
-        if (o == null) throw new FlavourMapException(flavour, "No matching type");  // FIX 1977 Fix dodgy message.
+        if (o == null) return failGet(flavour);
         return o;
     }
 
     private FlavouredInterface toUnflavoured(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
         return new DefaultFlavouredInterface(iface, UNFLAVOURED);
+    }
+
+/*
+    private boolean isFlavoured(FlavouredInterface flavour) {
+        Flavour actual = flavour.getFlavour();
+        return !actual.equals(UNFLAVOURED);
+    }
+*/
+
+    private Object failGet(FlavouredInterface flavour) {
+        String msg = false ? "No matching flavour" : "No matching type";
+        throw new FlavourMapException(flavour, msg);  // FIX 1977 Fix dodgy message.
     }
 }
