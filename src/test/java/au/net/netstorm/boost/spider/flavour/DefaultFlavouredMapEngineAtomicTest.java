@@ -103,14 +103,22 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
             subject.get(flavoured);
             fail();
         } catch (FlavourMapException expected) {
-            String msg = expected.getMessage();
-            boolean ends = msg.startsWith(reason);
-            assertEquals("Message should have started with: \"" + reason + ".\"  Full message was \"" + msg + "\".", true, ends);
+            check(reason, expected);
         }
     }
 
     private void checkPutFails(FlavouredInterface flavoured, String reason) {
-//        subject.put(flavoured, reason);
+        try {
+            subject.put(flavoured, reason);
+            fail();
+        } catch (FlavourMapException expected) {
+        }
+    }
+
+    private void check(String expected, FlavourMapException ex) {
+        String msg = ex.getMessage();
+        boolean ends = msg.startsWith(expected);
+        assertEquals("Message should have started with: \"" + ex + ".\"  Full message was \"" + msg + "\".", true, ends);
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {
