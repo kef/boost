@@ -30,7 +30,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
 
     // FIX 1977 Rules:
     // FIX 1977   get(unflavoured) - Must be unflavoured in map.
-    // FIX 1977   get(flavoured) - Must be matching flavour or unflavoured.
+    // FIX 1977   get(flavoured) - Must be exact matching flavour or unflavoured.
     // FIX 1977   put(unflavoured) - Must be nothing in the map.
     // FIX 1977   put(flavoured) - Must be no unflavoured in the map.
     // FIX 1977 Test empty failure.
@@ -44,14 +44,19 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     // OK NCSS {
     public void testMainFlow() {
         subject.put(milkshakeUnflavoured, value1);
-        subject.put(icecreamChocolate, value2);
-        subject.put(icecreamStrawberry, value3);
-        subject.put(chipsUnflavoured, value4);
+        subject.put(chipsUnflavoured, value2);
+        subject.put(icecreamChocolate, value3);
+        subject.put(icecreamStrawberry, value4);
         subject.put(pieStrawberry, value5);
         checkGet(value1, milkshakeUnflavoured);
-        checkGet(value2, icecreamChocolate);
-        checkGet(value3, icecreamStrawberry);
-        checkGet(value4, chipsUnflavoured);
+        // FIX BREADCRUMB 1977 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Instate these next.
+/*
+        checkGet(value1, milkshakeChocolate);
+        checkGet(value1, milkshakeVanilla);
+*/
+        checkGet(value2, chipsUnflavoured);
+        checkGet(value3, icecreamChocolate);
+        checkGet(value4, icecreamStrawberry);
         checkGet(value5, pieStrawberry);
     }
     // } OK NCSS - A juicy scenario :-) 
