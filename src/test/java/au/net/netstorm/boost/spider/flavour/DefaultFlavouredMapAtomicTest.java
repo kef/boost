@@ -5,8 +5,10 @@ import au.net.netstorm.boost.test.cases.BoooostCase;
 // FIX BREADCRUMB 1977 JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ Complete.
 
 // FIX 1977 Drive up InterfaceFlavour composite.
-public final class DefaultFlavourMapAtomicTest extends BoooostCase {
-    FlavourMap subject;
+
+// FIX BREADCRUMB 1977 KKKKKKKKKKKKKKKKKKKKKKKKKKKKK Back here when the FlavouredMapEngine is complete.
+public final class DefaultFlavouredMapAtomicTest extends BoooostCase {
+    FlavouredMap subject;
 
     public void testFlavoured() {
         // FIX 1977 Complete.  Delegate after having composed InterfaceFlavour delegate.
