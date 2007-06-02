@@ -8,13 +8,14 @@ import au.net.netstorm.boost.util.type.Interface;
 
 final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
-    private Map map = new HashMap();
-    private Set ifaces = new HashSet();
+    private final Map map = new HashMap();
+    private final Set ifaces = new HashSet();
 
     public void put(FlavouredInterface flavour, Object value) {
         Interface iface = flavour.getIface();
         FlavouredInterface unflavoured = toUnflavoured(flavour);
         if (map.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
+        if (map.containsKey(flavour)) fail(flavour, "Flavour already exists");
         ifaces.add(iface);
         map.put(flavour, value);
     }

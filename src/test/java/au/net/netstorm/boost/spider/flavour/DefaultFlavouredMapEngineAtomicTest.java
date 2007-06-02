@@ -14,6 +14,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     private static final String NO_MATCHING_FLAVOUR = "No matching flavour";
     private static final String UNFLAVOURED_CANNOT_BE_SPECIFIED_WITH_FLAVOURS = "Unflavoured cannot be resolved when flavours exist";
     private static final String UNFLAVOURED_TYPE_ALREADY_REGISTERED = "Unflavoured type already registered";
+    private static final String FLAVOUR_ALREADY_EXISTS = "Flavour already exists";
     FlavouredMapEngine subject;
     Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface icecream = new DefaultInterface(IceCream.class);
@@ -84,7 +85,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     public void testPutWithFlavouredInMap() {
         put(icecreamChocolate, value);
         put(icecreamStrawberry, value);
-//        checkPutFails(icecreamChocolate, "Flavour already exists");
+        checkPutFails(icecreamChocolate, FLAVOUR_ALREADY_EXISTS);
 //        checkGetFails(icecreamUnflavoured, "Flavour type already registered");
         // FIX 1977 Complete.
     }
