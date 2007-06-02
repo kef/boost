@@ -4,13 +4,13 @@ import au.net.netstorm.boost.primordial.BoostException;
 
 // FIX 1977 Rename BoostException to BoooostException.
 public final class FlavouredMapException extends RuntimeException implements BoostException {
-    private final FlavouredInterface flavoured;
+    private final FlavouredInterface flavour;
 
-    public FlavouredMapException(FlavouredInterface flavoured) {
-        this.flavoured = flavoured;
+    public FlavouredMapException(FlavouredInterface flavour) {
+        this.flavour = flavour;
     }
 
     public String getMessage() {
-        return "Failed to add flavoured interface " + flavoured;
+        return "Failed to add flavoured interface " + flavour;
     }
 }

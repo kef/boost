@@ -23,7 +23,6 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     FlavouredInterface icecreamChocolate = mix(icecream, chocolate);
     FlavouredInterface icecreamVanilla = mix(icecream, vanilla);
     FlavouredInterface icecreamStrawberry = mix(icecream, strawberry);
-    FlavouredInterface icecreamUnflavoured = mix(icecream, unflavoured);
     FlavouredInterface chipsUnflavoured = mix(chips, unflavoured);
     FlavouredInterface pieStrawberry = mix(pie, strawberry);
     Object value, value1, value2, value3, value4, value5;
@@ -49,7 +48,6 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         subject.put(icecreamStrawberry, value4);
         subject.put(pieStrawberry, value5);
         checkGet(value1, milkshakeUnflavoured);
-        // FIX BREADCRUMB 1977 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Instate these next.
         checkGet(value1, milkshakeChocolate);
         checkGet(value1, milkshakeVanilla);
         checkGet(value2, chipsUnflavoured);
@@ -59,20 +57,23 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     }
     // } OK NCSS - A juicy scenario :-) 
 
+    public void testNothingMatches() {
+        subject.put(milkshakeUnflavoured, value);
+        checkGetFails(chipsUnflavoured);
+        checkGetFails(pieStrawberry);
+        checkGetFails(icecreamStrawberry);
+    }
+
     private void checkGet(Object expected, FlavouredInterface key) {
         Object result = subject.get(key);
         assertEquals(expected, result);
     }
 
-    public void testUnflavoured() {
-        subject.put(milkshakeUnflavoured, value);
-        // FIX BREADCRUMB 1977 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM Reinstate.
-/*
+    private void checkGetFails(FlavouredInterface flavoured) {
         try {
-            subject.put(milkshakeChocolate, value);
+            subject.get(flavoured);
             fail();
         } catch (FlavouredMapException expected) { }
-*/
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {

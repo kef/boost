@@ -8,19 +8,21 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
     private Map map = new HashMap();
 
-    public void put(FlavouredInterface flavoured, Object value) {
-        map.put(flavoured, value);
+    public void put(FlavouredInterface flavour, Object value) {
+        map.put(flavour, value);
     }
 
-    public Object get(FlavouredInterface flavoured) {
-        Object value = map.get(flavoured);
+    public Object get(FlavouredInterface flavour) {
+        Object value = map.get(flavour);
         if (value != null) return value;
-        FlavouredInterface unflavoured = toUnflavoured(flavoured);
-        return map.get(unflavoured);
+        FlavouredInterface unflavoured = toUnflavoured(flavour);
+        Object o = map.get(unflavoured);
+        if (o == null) throw new FlavouredMapException(flavour);
+        return o;
     }
 
-    private FlavouredInterface toUnflavoured(FlavouredInterface flavoured) {
-        Interface iface = flavoured.getIface();
+    private FlavouredInterface toUnflavoured(FlavouredInterface flavour) {
+        Interface iface = flavour.getIface();
         return new DefaultFlavouredInterface(iface, UNFLAVOURED);
     }
 }
