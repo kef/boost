@@ -8,8 +8,10 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 public final class FlavourDemoTest extends ResolverDemooooTest {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
+    // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate all here.
     {
-        // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate.
+
+        // FIX BREADCRUMB 1977 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP Reinstate with "mild".
 //        registry.multiple(Curry.class, Madras.class, "mild");
         registry.multiple(Curry.class, Madras.class);
 //        registry.multiple(Curry.class, Vindaloo.class, "hot");
