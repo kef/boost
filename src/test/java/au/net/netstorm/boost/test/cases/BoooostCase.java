@@ -78,7 +78,7 @@ public class BoooostCase extends TestCase {
     }
 
     private static void suffer() {
-        throw new UnsupportedOperationException("Use assertEquals(true|false, expected) ... assertTrue/assertFalse precludes refactoring opportunities (_x_)");
+        throw new UnsupportedOperationException("A proud message from the BOOST factory of happiness ... Use assertEquals(true|false, expected) ... assertTrue/assertFalse precludes refactoring opportunities (_x_)");
     }
 }
-// } OK GenericIllegalRegexp|LineLength - Abusing others is fine if they are doing the wrong thing ;-)
+// } OK GenericIllegalRegexp|LineLength - Chiding others is fine if they are doing the wrong thing ;-)

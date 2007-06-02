@@ -10,7 +10,6 @@ public final class FlavourMapExceptionAtomicTest extends InteractionTestCase imp
     FlavouredInterface flavoured;
     String reason;
 
-    // FIX 1977 Delete comment.
     public void setupSubjects() {
         subject = new FlavourMapException(flavoured, reason);
     }

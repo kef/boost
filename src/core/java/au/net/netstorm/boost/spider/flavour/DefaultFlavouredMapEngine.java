@@ -17,7 +17,7 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         if (value != null) return value;
         FlavouredInterface unflavoured = toUnflavoured(flavour);
         Object o = map.get(unflavoured);
-        if (o == null) throw new FlavourMapException(flavour, "FOO");  // FIX 1977 Fix dodgy message.
+        if (o == null) throw new FlavourMapException(flavour, "No matching type");  // FIX 1977 Fix dodgy message.
         return o;
     }
 

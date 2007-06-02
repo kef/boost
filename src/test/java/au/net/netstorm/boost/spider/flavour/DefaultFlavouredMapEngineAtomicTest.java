@@ -10,6 +10,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // OK NCSS {
 public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
+    private static final String NO_MATCHING_TYPE = "No matching type";
     FlavouredMapEngine subject;
     Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface icecream = new DefaultInterface(IceCream.class);
@@ -63,19 +64,19 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGet(milkshakeUnflavoured, value);
         checkGet(milkshakeChocolate, value);
         checkGet(milkshakeVanilla, value);
-        checkGetFails(icecreamStrawberry);
-        checkGetFails(chipsUnflavoured);
-        checkGetFails(pieStrawberry);
+        checkGetFails(icecreamStrawberry, NO_MATCHING_TYPE);
+        checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
+        checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
     }
 
     public void testFlavouredInMap() {
         put(icecreamChocolate, value);
         checkGet(icecreamChocolate, value);
-        checkGetFails(icecreamStrawberry);
-        checkGetFails(icecreamUnflavoured);
-        checkGetFails(icecreamVanilla);
-        checkGetFails(pieStrawberry);
-        checkGetFails(chipsUnflavoured);
+        checkGetFails(icecreamStrawberry, NO_MATCHING_TYPE);
+        checkGetFails(icecreamUnflavoured, NO_MATCHING_TYPE);
+        checkGetFails(icecreamVanilla, NO_MATCHING_TYPE);
+        checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
+        checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
     }
 
     private void checkGet(FlavouredInterface key, Object expected) {
@@ -83,11 +84,15 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         assertEquals(expected, result);
     }
 
-    private void checkGetFails(FlavouredInterface flavoured) {
+    private void checkGetFails(FlavouredInterface flavoured, String reason) {
         try {
             subject.get(flavoured);
             fail();
-        } catch (FlavourMapException expected) { }
+        } catch (FlavourMapException expected) {
+            String msg = expected.getMessage();
+            boolean ends = msg.endsWith(reason + ".");
+            assertEquals("Message should have been: \"" + reason + ".\", but was \"" + msg + "\".", true, ends);
+        }
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {
