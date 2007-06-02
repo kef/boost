@@ -113,8 +113,8 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     }
 
     public void testHasImplementation() {
-        checkHasImplementation(ANIMAL, true);
         checkHasImplementation(SPORT, false);
+        checkHasImplementation(ANIMAL, true);
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {
