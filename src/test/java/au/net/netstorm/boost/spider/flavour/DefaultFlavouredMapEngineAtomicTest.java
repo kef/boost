@@ -28,6 +28,11 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     FlavouredInterface pieStrawberry = mix(pie, strawberry);
     Object value, value1, value2, value3, value4, value5;
 
+    // FIX 1977 Rules:
+    // FIX 1977   get(unflavoured) - Must be unflavoured in map.
+    // FIX 1977   get(flavoured) - Must be matching flavour or unflavoured.
+    // FIX 1977   put(unflavoured) - Must be nothing in the map.
+    // FIX 1977   put(flavoured) - Must be no unflavoured in the map.
     // FIX 1977 Test empty failure.
     // FIX 1977 Complete.
     // FIX 1977 Check barfs on null value.
