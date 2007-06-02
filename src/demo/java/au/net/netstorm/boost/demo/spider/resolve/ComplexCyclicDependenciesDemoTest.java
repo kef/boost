@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-// FIX 1971 Consider a single object referencing itself.
 public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest {
 
     {

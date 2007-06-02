@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
+// FIX 1977 Build test utility for obtaining field paths (ie. "ball.bike.chain").
+
+// FIX 1977 Convert all existing object graph tests to use this technique.
 public final class SimpleNonCyclicDependenciesDemoTest extends ResolverDemooooTest {
     {
         registry.multiple(Bicycle.class, BmxBicycle.class);
