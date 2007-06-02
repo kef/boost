@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolver implements Resolver {
+    private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
     private final ResolverEngine engine;
 
     public DefaultResolver(ResolverEngine engine) {
@@ -17,8 +18,7 @@ public final class DefaultResolver implements Resolver {
     public Object resolve(Class type) {
         Interface iface = new DefaultInterface(type);
         // FIX BREADCRUMB 1977 Get real flavour.
-        Flavour flavour = null;
-        ResolvedInstance resolved = engine.resolve(iface, flavour);
+        ResolvedInstance resolved = engine.resolve(iface, UNFLAVOURED);
         return resolved.getRef();
     }
 }

@@ -1,9 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
-import java.util.Map;
 import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -17,7 +15,6 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private static final Interface SPORT = new DefaultInterface(Sport.class);
     private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);
     private static final Interface BREAKFAST_CEREAL = new DefaultInterface(BreakfastCereal.class);
-    private static final Interface NON_EXISTENT = new DefaultInterface(Map.class);
     private static final Interface MATRYOSHKA = new DefaultInterface(Matryoshka.class);
     private static final Implementation MAMMAL_IMPL = new DefaultImplementation(Mammal.class);
     private static final Implementation CROCODILE_IMPL = new DefaultImplementation(Crocodile.class);
@@ -45,20 +42,6 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     public void testGetInstance() {
         checkGetInstance(SPORT, FOOTBALL_INSTANCE);
         checkGetInstance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
-    }
-
-    public void testDuplicateInstance() {
-        try {
-            instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
-            fail();
-        } catch (AlreadyRegisteredException expected) { }
-    }
-
-    public void testDuplicateImplementation() {
-        try {
-            multiple(ANIMAL, CROCODILE_IMPL);
-            fail();
-        } catch (AlreadyRegisteredException expected) {}
     }
 
     public void testImplImplementsInterfaceFails() {
@@ -100,13 +83,6 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
         } catch (WrongRegistrationTypeException expected) { }
     }
 
-    public void testInstanceDoesNotExist() {
-        try {
-            subject.getInstance(NON_EXISTENT, DODGY);
-            fail();
-        } catch (UnresolvedDependencyException expected) { }
-    }
-
     public void testHasInstance() {
         checkHasInstance(SPORT, true);
         checkHasInstance(ANIMAL, false);
@@ -130,13 +106,6 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     private void checkGetInstance(Interface iface, ResolvedInstance expect) {
         ResolvedInstance result = subject.getInstance(iface, DODGY);
         assertEquals(expect, result);
-    }
-
-    public void testCannotGetImplementation() {
-        try {
-            subject.getImplementation(NON_EXISTENT, DODGY);
-            fail();
-        } catch (UnresolvedDependencyException expected) { }
     }
 
     private void checkGetImplementation(Interface iface, Implementation expected) {

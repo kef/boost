@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.spider.registry;
 
-import java.util.HashMap;
-import java.util.Map;
+import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMap;
+import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.inject.resolver.core.AlreadyRegisteredException;
+import au.net.netstorm.boost.spider.flavour.FlavouredMap;
+import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
@@ -13,37 +14,36 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
-    private final Map web = new HashMap();
+    private final FlavouredMapEngine engine = new DefaultFlavouredMapEngine();
+    private final FlavouredMap web = new DefaultFlavouredMap(engine);
 
     public void multiple(Interface iface, Implementation implementation, Flavour flavour) {
-        barfIfExists(iface);
         barfIfNotImplOfIface(iface, implementation);
-        web.put(iface, implementation);
+        web.put(iface, flavour, implementation);
     }
 
     public void instance(Interface iface, ResolvedInstance instance, Flavour flavour) {
         barfIfInstanceIsClass(instance);
         barfIfNotImplOfIface(iface, instance);
-        barfIfExists(iface);
-        web.put(iface, instance);
+        web.put(iface, flavour, instance);
     }
 
     public Implementation getImplementation(Interface iface, Flavour flavour) {
         if (hasInstance(iface, flavour)) throw new WrongRegistrationTypeException(iface);
-        return (Implementation) get(iface);
+        return (Implementation) get(iface, flavour);
     }
 
     public ResolvedInstance getInstance(Interface iface, Flavour flavour) {
         if (hasImplementation(iface, flavour)) throw new WrongRegistrationTypeException(iface);
-        return (ResolvedInstance) get(iface);
+        return (ResolvedInstance) get(iface, flavour);
     }
 
     public boolean hasImplementation(Interface iface, Flavour flavour) {
-        return has(iface, Implementation.class);
+        return has(iface, flavour, Implementation.class);
     }
 
     public boolean hasInstance(Interface iface, Flavour flavour) {
-        return has(iface, ResolvedInstance.class);
+        return has(iface, flavour, ResolvedInstance.class);
     }
 
     private void barfIfNotImplOfIface(Interface iface, ResolvedInstance instance) {
@@ -64,25 +64,21 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         }
     }
 
-    private Object get(Interface iface) {
-        Object value = web.get(iface);
+    private Object get(Interface iface, Flavour flavour) {
+        Object value = web.get(iface, flavour);
         barfIfNull(value, iface);
         return value;
     }
 
-    private boolean has(Interface iface, Class type) {
-        return checkRegister(iface, type);
+    private boolean has(Interface iface, Flavour flavour, Class type) {
+        return checkRegister(iface, flavour, type);
     }
 
-    private boolean checkRegister(Interface iface, Class type) {
-        Object ref = web.get(iface);
+    private boolean checkRegister(Interface iface, Flavour flavour, Class type) {
+        Object ref = web.get(iface, flavour);
         if (ref == null) return false;
         Class cls = ref.getClass();
         return type.isAssignableFrom(cls);
-    }
-
-    private void barfIfExists(Interface iface) {
-        if (web.get(iface) != null) throw new AlreadyRegisteredException(iface);
     }
 
     private void barfIfNull(Object ref, Interface iface) {

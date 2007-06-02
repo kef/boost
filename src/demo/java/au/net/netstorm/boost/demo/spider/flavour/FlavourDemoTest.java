@@ -10,7 +10,8 @@ public final class FlavourDemoTest extends ResolverDemooooTest {
 
     {
         // FIX BREADCRUMB 1977 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Reinstate.
-        registry.multiple(Curry.class, Madras.class, "mild");
+//        registry.multiple(Curry.class, Madras.class, "mild");
+        registry.multiple(Curry.class, Madras.class);
 //        registry.multiple(Curry.class, Vindaloo.class, "hot");
 //        registry.multiple(Curry.class, PrawnMalai.class, "stevesFavourite");
         registry.multiple(Party.class, DefaultParty.class);

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import au.net.netstorm.boost.util.type.Interface;
 
-final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
+public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
     private final Map flavours = new HashMap();
     private final Set ifaces = new HashSet();
