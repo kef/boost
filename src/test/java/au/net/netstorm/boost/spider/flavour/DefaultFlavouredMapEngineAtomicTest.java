@@ -8,6 +8,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 // OK NCSS {
 public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
+    private static final String COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN = "Come on, ya have to give me somethin' man.  Anything but a null";
     private static final String UNFLAVOURED_CANNOT_BE_SPECIFIED_WITH_FLAVOURS = "Unflavoured cannot be resolved when flavours exist";
     private static final String UNFLAVOURED_TYPE_ALREADY_REGISTERED = "Unflavoured type already registered";
     private static final String FLAVOUR_ALREADY_EXISTS = "Flavour already exists";
@@ -85,8 +86,8 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkPutFails(icecreamUnflavoured, FLAVOUR_ALREADY_EXISTS);
     }
 
-    public void testFailsIfNothingInMap() {
-        put(milkshakeUnflavoured, value);
+    public void testFailsWithNullValue() {
+        checkPutFails(milkshakeUnflavoured, null, COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN);
     }
 
     private void put(FlavouredInterface flavour, Object value) {
@@ -108,8 +109,12 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     }
 
     private void checkPutFails(FlavouredInterface flavoured, String reason) {
+        checkPutFails(flavoured, value, reason);
+    }
+
+    private void checkPutFails(FlavouredInterface flavoured, Object value, String reason) {
         try {
-            subject.put(flavoured, reason);
+            subject.put(flavoured, value);
             fail();
         } catch (FlavourMapException expected) {
             check(reason, expected);
@@ -119,7 +124,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     private void check(String expected, FlavourMapException ex) {
         String msg = ex.getMessage();
         boolean ends = msg.startsWith(expected);
-        assertEquals("Message should have started with: \"" + ex + ".\"  Full message was \"" + msg + "\".", true, ends);
+        assertEquals("Message should have started with: \"" + expected + ".\"  Full message was \"" + msg + "\".", true, ends);
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {

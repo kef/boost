@@ -12,7 +12,7 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private final Set ifaces = new HashSet();
 
     public void put(FlavouredInterface flavour, Object value) {
-        // FIX BREADCRUMB 1977 YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY Bang null.
+        if (value == null) fail(flavour, "Come on, ya have to give me somethin' man.  Anything but a null");
         Interface iface = flavour.getIface();
         validate(flavour, iface);
         flavours.put(flavour, value);
@@ -34,7 +34,7 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         if (isFlavoured(flavour)) return;
         if (ifaces.contains(iface)) fail(flavour, "Flavour already exists");
     }
-    // } OK CyclomaticComplexity - This is pretty damn clean.  Go for it if you can!
+    // } OK CyclomaticComplexity - This was a touch cookie and is pretty damn clean.  Go for it if you can!
 
     private Object explode(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
