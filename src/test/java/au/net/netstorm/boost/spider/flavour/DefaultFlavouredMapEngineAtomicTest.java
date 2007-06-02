@@ -16,15 +16,22 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     FlavouredInterface milkshakeChocolate = mix(milkshake, chocolate);
     FlavouredInterface milkshakeVanilla = mix(milkshake, vanilla);
     FlavouredInterface milkshakeUnflavoured = mix(milkshake, unflavoured);
-    Object value1;
+    Object value;
     // FIX 1977 Complete.
 
     public void setupSubjects() {
         subject = new DefaultFlavouredMapEngine();
     }
 
-    public void testUnflavoured() {
-        subject.put(milkshakeUnflavoured, value1);
+    public void testUnflavouredFirst() {
+        subject.put(milkshakeUnflavoured, value);
+        // FIX BREADCRUMB 1977 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM Reinstate.
+/*
+        try {
+            subject.put(milkshakeChocolate, value);
+            fail();
+        } catch (FlavouredMapException expected) { }
+*/
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {

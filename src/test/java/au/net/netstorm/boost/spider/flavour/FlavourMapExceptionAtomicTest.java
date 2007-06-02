@@ -1,13 +1,25 @@
-package au.net.netstorm.boost.spider.core;
+package au.net.netstorm.boost.spider.flavour;
 
 import au.net.netstorm.boost.primordial.BoostException;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 
-public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class FlavourMapExceptionAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+    BoostException subject;
+    FlavouredInterface flavoured;
+
+    // FIX 1977 Delete comment.
+    public void setupSubjects() {
+        subject = new FlavouredMapException(flavoured);
+    }
+
+    public void testException() {
+        String result = subject.getMessage();
+        assertEquals("Failed to add flavoured interface " + flavoured, result);
+    }
+
+/*
     BoostException subject;
     Interface marker;
     Implementation impl;
@@ -20,4 +32,5 @@ public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase
         String result = subject.getMessage();
         assertEquals("I know you want to be my darling,... \nbut you're not a " + marker + " -> " + impl, result);
     }
+*/
 }
