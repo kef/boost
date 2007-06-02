@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.registry;
+package au.net.netstorm.boost.spider.xxx;
 
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.util.type.DefaultInterface;
