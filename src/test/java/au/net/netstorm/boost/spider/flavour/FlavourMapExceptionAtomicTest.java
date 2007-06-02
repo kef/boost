@@ -16,6 +16,6 @@ public final class FlavourMapExceptionAtomicTest extends InteractionTestCase imp
 
     public void testException() {
         String result = subject.getMessage();
-        assertEquals("Failed to add flavoured interface " + flavoured + ".  " + reason + ".", result);
+        assertEquals(reason + ": " + flavoured, result);
     }
 }

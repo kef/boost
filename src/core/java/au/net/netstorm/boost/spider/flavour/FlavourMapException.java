@@ -13,6 +13,6 @@ public final class FlavourMapException extends RuntimeException implements Boost
     }
 
     public String getMessage() {
-        return "Failed to add flavoured interface " + flavour + ".  " + reason + ".";
+        return reason + ": " + flavour;
     }
 }
