@@ -18,19 +18,4 @@ public final class FlavourMapExceptionAtomicTest extends InteractionTestCase imp
         String result = subject.getMessage();
         assertEquals("Failed to add flavoured interface " + flavoured, result);
     }
-
-/*
-    BoostException subject;
-    Interface marker;
-    Implementation impl;
-
-    public void setupSubjects() {
-        subject = new IllegalCitizenException(marker, impl);
-    }
-
-    public void testException() {
-        String result = subject.getMessage();
-        assertEquals("I know you want to be my darling,... \nbut you're not a " + marker + " -> " + impl, result);
-    }
-*/
 }
