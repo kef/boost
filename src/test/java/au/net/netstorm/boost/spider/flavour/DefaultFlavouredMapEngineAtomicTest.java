@@ -84,6 +84,8 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     public void testPutWithFlavouredInMap() {
         put(icecreamChocolate, value);
         put(icecreamStrawberry, value);
+//        checkPutFails(icecreamChocolate, "Flavour already exists");
+//        checkGetFails(icecreamUnflavoured, "Flavour type already registered");
         // FIX 1977 Complete.
     }
 
