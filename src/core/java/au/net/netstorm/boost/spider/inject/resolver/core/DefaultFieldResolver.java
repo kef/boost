@@ -2,7 +2,7 @@ package au.net.netstorm.boost.spider.inject.resolver.core;
 
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.resolve.ResolverEngine;
+import au.net.netstorm.boost.spider.registry.ResolverEngine;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;

@@ -3,7 +3,7 @@ package au.net.netstorm.boost.spider.inject.resolver.core;
 import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.spider.resolve.ResolverEngine;
+import au.net.netstorm.boost.spider.registry.ResolverEngine;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
