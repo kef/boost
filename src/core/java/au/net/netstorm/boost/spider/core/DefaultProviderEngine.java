@@ -44,6 +44,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
         // FIX 1971 Test drive this check up.
         // FIX 1977 Put in a proxy.
+        // FIX 1977 Consider removing try/finally block around spider.
         resolvedThings.put(impl, unresolved);
         injector.inject(unresolved);
         resolvedThings.remove(impl);

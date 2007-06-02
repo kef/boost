@@ -60,17 +60,6 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
         } catch (WrongInterfaceRegistrationException expected) { }
     }
 
-    public void testClassInstanceFails() {
-        try {
-            instance(MATRYOSHKA, MATRYOSKA_INSTANCE);
-            fail();
-        } catch (WrongInstanceTypeException expected) {
-            String actualMessage = MATRYOSKA_INSTANCE.getRef() + " is a class and cannot be registered as an instance.";
-            String expectedMessage = expected.getMessage();
-            assertEquals(expectedMessage, actualMessage);
-        }
-    }
-
     public void testNotInstance() {
         try {
             subject.getInstance(ANIMAL, flavour);

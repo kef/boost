@@ -12,6 +12,7 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private final Set ifaces = new HashSet();
 
     public void put(FlavouredInterface flavour, Object value) {
+        // FIX BREADCRUMB 1977 YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY Bang null.
         Interface iface = flavour.getIface();
         validate(flavour, iface);
         flavours.put(flavour, value);

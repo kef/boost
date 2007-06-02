@@ -10,9 +10,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-// FIX BREADCRUMB 1977 HHHHHHHHHHHHHHHHHHHHHH Stitch in FlavouredMap.
-
-// DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
     // FIX 1977 Pass in a flavoured map.  Construct in spider area.
     private final FlavouredMapEngine engine = new DefaultFlavouredMapEngine();
@@ -24,7 +21,6 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public void instance(Interface iface, ResolvedInstance instance, Flavour flavour) {
-        barfIfInstanceIsClass(instance);
         barfIfNotImplOfIface(iface, instance);
         web.put(iface, flavour, instance);
     }
@@ -40,11 +36,11 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public boolean hasImplementation(Interface iface, Flavour flavour) {
-        return has(iface, flavour, Implementation.class);
+        return ofType(Implementation.class, iface, flavour);
     }
 
     public boolean hasInstance(Interface iface, Flavour flavour) {
-        return has(iface, flavour, ResolvedInstance.class);
+        return ofType(ResolvedInstance.class, iface, flavour);
     }
 
     private void barfIfNotImplOfIface(Interface iface, ResolvedInstance instance) {
@@ -58,32 +54,13 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         if (!impl.is(iface)) throw new WrongInterfaceRegistrationException(impl, iface);
     }
 
-    private void barfIfInstanceIsClass(ResolvedInstance instance) {
-        Object ref = instance.getRef();
-        if (ref instanceof Class) {
-            throw new WrongInstanceTypeException(ref + " is a class and cannot be registered as an instance.");
-        }
-    }
-
     private Object get(Interface iface, Flavour flavour) {
+        return web.get(iface, flavour);
+    }
+
+    private boolean ofType(Class type, Interface iface, Flavour flavour) {
         Object value = web.get(iface, flavour);
-        barfIfNull(value, iface);
-        return value;
-    }
-
-    private boolean has(Interface iface, Flavour flavour, Class type) {
-        return checkRegister(iface, flavour, type);
-    }
-
-    private boolean checkRegister(Interface iface, Flavour flavour, Class type) {
-        Object ref = web.get(iface, flavour);
-        if (ref == null) return false;
-        Class cls = ref.getClass();
-        return type.isAssignableFrom(cls);
-    }
-
-    private void barfIfNull(Object ref, Interface iface) {
-        if (ref == null) throw new UnresolvedDependencyException(iface);
+        Class valueClass = value.getClass();
+        return type.isAssignableFrom(valueClass);
     }
 }
-// } DEBT DataAbstractionCoupling
