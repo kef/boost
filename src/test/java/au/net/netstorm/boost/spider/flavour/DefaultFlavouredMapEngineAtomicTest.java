@@ -79,6 +79,10 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
     }
 
+    private void put(FlavouredInterface flavour, Object value) {
+        subject.put(flavour, value);
+    }
+
     private void checkGet(FlavouredInterface key, Object expected) {
         Object result = subject.get(key);
         assertEquals(expected, result);
@@ -97,11 +101,6 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {
         return new DefaultFlavouredInterface(iface, flavour);
-    }
-
-    // } OK NCSS - A juicy scenario :-)
-    private void put(FlavouredInterface flavour, Object value) {
-        subject.put(flavour, value);
     }
 }
 // } OK NCSS - Some nice juicy mixes.
