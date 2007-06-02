@@ -33,9 +33,7 @@ public final class DefaultRegistryMasterAtomicTest extends BoooostCase {
     {
         multiple(ANIMAL, MAMMAL_IMPL);
         multiple(VEHICLE, CAR_IMPL);
-        Interface iface = SPORT;
-        ResolvedInstance instance = FOOTBALL_INSTANCE;
-        instance(iface, instance);
+        instance(SPORT, FOOTBALL_INSTANCE);
         instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
     }
 
