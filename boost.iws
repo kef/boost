@@ -17,73 +17,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/ResolveDemoTest.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/ResolveDemoTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/RegistryMaster.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/CocoPops.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/CocoPops.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationExceptionAtomicTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Sport.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Sport.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/Resolver.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/Resolver.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/ResolverEngine.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngineAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngineAtomicTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/Fruity.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/ResolverEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/ResolverEngine.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/KseniaSpoo.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/KseniaSpoo.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/Resolver.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/Spider.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/Spider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngine.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/CocoPops.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Vehicle.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Vehicle.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/NoArgJim.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/DefaultResolver.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/DefaultResolverAtomicTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultFieldResolver.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultFieldResolver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/UnresolvedDependencyException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/UnresolvedDependencyException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeException.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultRegistryAtomicTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Vehicle.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Carnivore.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistry.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongInstanceTypeException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongInstanceTypeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/UnresolvedDependencyException.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.ipr" afterPath="$PROJECT_DIR$/boost.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/BreakfastCereal.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/BreakfastCereal.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/RegistryEngine.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongInstanceTypeException.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/FinderEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/FinderEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngineAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngineAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Football.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Football.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Mammal.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultRegistryAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultRegistryAtomicTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/BreakfastCereal.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/UnresolvedDependencyExceptionAtomicTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Sport.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Animal.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Animal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistryMaster.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistryMaster.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/CruisyMole.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/CruisyMole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/RegistryMaster.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/RegistryMaster.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistryMaster.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Car.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Car.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistry.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationException.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultRegistryMasterAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultRegistryMasterAtomicTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultRegistryMasterAtomicTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeExceptionAtomicTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/FinderEngine.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Carnivore.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Carnivore.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Football.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeExceptionAtomicTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Matryoshka.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationExceptionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Mammal.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Mammal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Matryoshka.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Matryoshka.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Crocodile.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/KseniaSpoo.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/Jim.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/Jim.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngine.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/Fruity.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/Fruity.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/Jim.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/UnresolvedDependencyExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/UnresolvedDependencyExceptionAtomicTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Animal.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/CruisyMole.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/Spoo.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/Spoo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/DefaultResolverAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/DefaultResolverAtomicTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/Spoo.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/ResolverDemooooTest.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/ResolverDemooooTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Crocodile.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Crocodile.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/Car.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/RegistryEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/RegistryEngine.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultFieldResolverAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultFieldResolverAtomicTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/NoArgJim.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/resolve/NoArgJim.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngineAtomicTest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolver.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolver.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
   </component>
@@ -219,9 +185,9 @@
         </entry>
       </file>
       <file leaf-file-name="DefaultResolverEngine.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngine.java">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="19" selection-start="647" selection-end="647" vertical-scroll-proportion="0.17394367">
+            <state line="41" column="58" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.54859155">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -270,78 +236,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spider" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="xxx" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spider" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
     </subPane>
@@ -1042,7 +936,7 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23058543" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283683" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33197278" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33175355" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -1084,7 +978,7 @@
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
     <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
     <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ERROR_OCCURED" value="false" />
+    <option name="ERROR_OCCURED" value="true" />
     <option name="ACTIVE_VCS_NAME" value="svn" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
@@ -1217,9 +1111,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/xxx/DefaultResolverEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="19" selection-start="647" selection-end="647" vertical-scroll-proportion="0.17394367">
+        <state line="41" column="58" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.54859155">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
