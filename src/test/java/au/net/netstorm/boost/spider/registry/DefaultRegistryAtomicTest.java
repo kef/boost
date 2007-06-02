@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.resolve;
+package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;

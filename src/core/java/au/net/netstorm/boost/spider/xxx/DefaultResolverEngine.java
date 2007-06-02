@@ -4,7 +4,7 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
-import au.net.netstorm.boost.spider.resolve.FinderEngine;
+import au.net.netstorm.boost.spider.registry.FinderEngine;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;

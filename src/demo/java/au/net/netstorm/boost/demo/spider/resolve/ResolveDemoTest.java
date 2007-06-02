@@ -5,7 +5,7 @@ import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.demo.spider.core.SpiderAssembler;
 import au.net.netstorm.boost.spider.core.GoodCitizen;
 import au.net.netstorm.boost.spider.core.Provider;
-import au.net.netstorm.boost.spider.resolve.Registry;
+import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class ResolveDemoTest extends BoooostCase {

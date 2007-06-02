@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.resolve;
+package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.test.cases.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;

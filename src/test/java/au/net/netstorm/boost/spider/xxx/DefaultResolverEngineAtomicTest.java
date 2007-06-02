@@ -5,7 +5,7 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
-import au.net.netstorm.boost.spider.resolve.RegistryMaster;
+import au.net.netstorm.boost.spider.registry.RegistryMaster;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;

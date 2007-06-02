@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.resolve;
+package au.net.netstorm.boost.spider.registry;
 
 import java.util.Random;
 import au.net.netstorm.boost.primordial.BoostException;

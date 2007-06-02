@@ -15,7 +15,7 @@
  (o)_--"      ""                "--_, "-_,__--/
  ""---___-"
  */
-package au.net.netstorm.boost.spider.resolve;
+package au.net.netstorm.boost.spider.registry;
 
 final class Mammal implements Animal {
 }
