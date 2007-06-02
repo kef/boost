@@ -50,10 +50,8 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         subject.put(pieStrawberry, value5);
         checkGet(value1, milkshakeUnflavoured);
         // FIX BREADCRUMB 1977 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Instate these next.
-/*
         checkGet(value1, milkshakeChocolate);
         checkGet(value1, milkshakeVanilla);
-*/
         checkGet(value2, chipsUnflavoured);
         checkGet(value3, icecreamChocolate);
         checkGet(value4, icecreamStrawberry);
