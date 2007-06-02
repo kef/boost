@@ -25,7 +25,7 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         return explode(flavour);
     }
 
-    // DEBT CyclomaticComplexity {
+    // OK CyclomaticComplexity {
     private void validate(FlavouredInterface flavour, Interface iface) {
         FlavouredInterface unflavoured = toUnflavoured(flavour);
         if (flavours.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
@@ -33,7 +33,7 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         if (isFlavoured(flavour)) return;
         if (ifaces.contains(iface)) fail(flavour, "Flavour already exists");
     }
-    // } DEBT CyclomaticComplexity
+    // } OK CyclomaticComplexity - This is pretty damn clean.  Go for it if you can!
 
     private Object explode(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
