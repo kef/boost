@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-// FIX 1977 Even simpler...  An object referencing itself.  Implement as separate test case.
 public final class SimpleCyclicDependenciesDemoTest extends ResolverDemooooTest {
     {
         registry.multiple(Ball.class, DefaultBall.class);
