@@ -34,11 +34,6 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         if (!ifaces.contains(iface)) fail(flavour, "No matching type");
     }
 
-    private void checkNoUnflavouredExists(FlavouredInterface flavour, Interface iface) {
-        FlavouredInterface unflavoured = toUnflavoured(flavour);
-        if (map.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
-    }
-
     private FlavouredInterface toUnflavoured(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
         return new DefaultFlavouredInterface(iface, UNFLAVOURED);
