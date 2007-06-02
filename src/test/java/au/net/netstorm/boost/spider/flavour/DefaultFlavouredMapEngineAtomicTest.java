@@ -24,6 +24,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     Object value;
     Object value1;
     Object value2;
+    Object value3;
 
     // FIX 1977 Test empty failure.
     // FIX 1977 Complete.
@@ -36,8 +37,10 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     public void testMain() {
         subject.put(milkshakeUnflavoured, value1);
         subject.put(icecreamChocolate, value2);
+        subject.put(icecreamStrawberry, value3);
         checkGet(value1, milkshakeUnflavoured);
-        // FIX 1977 Check choc icecream.
+        checkGet(value2, icecreamChocolate);
+        checkGet(value3, icecreamStrawberry);
     }
 
     private void checkGet(Object expected, FlavouredInterface key) {
