@@ -1,6 +1,10 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
+import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
+import au.net.netstorm.boost.spider.core.GraphUtil;
+
 public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest {
+    private final GraphUtil grapher = new DefaultGraphUtil();
 
     {
         registry.multiple(Teacher.class, DefaultTeacher.class);
@@ -13,6 +17,9 @@ public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest
         Teacher teacher1 = resolveTeacher();
         Teacher teacher2 = resolveTeacher();
         assertNotEquals(teacher1, teacher2);
+        // FIX 1977 Little experiment.  Use and tidy.
+        Object result = grapher.get(teacher1, "student.homework.teacher");
+        assertNotSame(teacher1, result);
     }
 
     private Teacher resolveTeacher() {
