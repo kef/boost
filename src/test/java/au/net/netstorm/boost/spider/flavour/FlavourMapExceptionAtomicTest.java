@@ -8,14 +8,15 @@ import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 public final class FlavourMapExceptionAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     BoostException subject;
     FlavouredInterface flavoured;
+    String reason;
 
     // FIX 1977 Delete comment.
     public void setupSubjects() {
-        subject = new FlavouredMapException(flavoured);
+        subject = new FlavourMapException(flavoured, reason);
     }
 
     public void testException() {
         String result = subject.getMessage();
-        assertEquals("Failed to add flavoured interface " + flavoured, result);
+        assertEquals("Failed to add flavoured interface " + flavoured + ".  " + reason + ".", result);
     }
 }

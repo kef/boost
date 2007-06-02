@@ -87,7 +87,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         try {
             subject.get(flavoured);
             fail();
-        } catch (FlavouredMapException expected) { }
+        } catch (FlavourMapException expected) { }
     }
 
     private FlavouredInterface mix(Interface iface, Flavour flavour) {
