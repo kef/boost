@@ -6,8 +6,6 @@ import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX BREADCRUMB 1977 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL Finish this.
-
 // OK NCSS {
 public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
     private static final String UNFLAVOURED_CANNOT_BE_SPECIFIED_WITH_FLAVOURS = "Unflavoured cannot be resolved when flavours exist";
@@ -34,8 +32,6 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     FlavouredInterface pieStrawberry = mix(pie, strawberry);
     Object value, value1, value2, value3, value4, value5;
     FlavouredMapEngine subject;
-
-    // FIX 1977 Test empty failure.
 
     public void setupSubjects() {
         subject = new DefaultFlavouredMapEngine();
@@ -87,6 +83,10 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         put(icecreamStrawberry, value);
         checkPutFails(icecreamChocolate, FLAVOUR_ALREADY_EXISTS);
         checkPutFails(icecreamUnflavoured, FLAVOUR_ALREADY_EXISTS);
+    }
+
+    public void testFailsIfNothingInMap() {
+        put(milkshakeUnflavoured, value);
     }
 
     private void put(FlavouredInterface flavour, Object value) {

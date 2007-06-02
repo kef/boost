@@ -6,9 +6,6 @@ import java.util.Map;
 import java.util.Set;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX BREADCRUMB 1977 RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR Remove checkstylers...
-
-// DEBT NCSS|CyclomaticComplexity {
 final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
     private final Map flavours = new HashMap();
@@ -16,22 +13,32 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
 
     public void put(FlavouredInterface flavour, Object value) {
         Interface iface = flavour.getIface();
-        FlavouredInterface unflavoured = toUnflavoured(flavour);
-        if (flavours.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
-        if (flavours.containsKey(flavour)) fail(flavour, "Flavour already exists");
-        boolean flavoured = isFlavoured(flavour);
-        if (!flavoured && ifaces.contains(iface)) fail(flavour, "Flavour already exists");
+        validate(flavour, iface);
         flavours.put(flavour, value);
         ifaces.add(iface);
     }
 
     public Object get(FlavouredInterface flavour) {
+        FlavouredInterface unflavoured = toUnflavoured(flavour);
+        if (flavours.containsKey(flavour)) return flavours.get(flavour);
+        if (flavours.containsKey(unflavoured)) return flavours.get(unflavoured);
+        return explode(flavour);
+    }
+
+    // DEBT CyclomaticComplexity {
+    private void validate(FlavouredInterface flavour, Interface iface) {
+        FlavouredInterface unflavoured = toUnflavoured(flavour);
+        if (flavours.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
+        if (flavours.containsKey(flavour)) fail(flavour, "Flavour already exists");
+        if (isFlavoured(flavour)) return;
+        if (ifaces.contains(iface)) fail(flavour, "Flavour already exists");
+    }
+    // } DEBT CyclomaticComplexity
+
+    private Object explode(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
         if (!ifaces.contains(iface)) fail(flavour, "No matching type");
-        if (flavours.containsKey(flavour)) return flavours.get(flavour);
         if (!isFlavoured(flavour)) fail(flavour, "Unflavoured cannot be resolved when flavours exist");
-        FlavouredInterface unflavoured = toUnflavoured(flavour);
-        if (flavours.containsKey(unflavoured)) return flavours.get(unflavoured);
         throw new FlavourMapException(flavour, "No matching flavour");
     }
 
@@ -49,4 +56,3 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         throw new FlavourMapException(flavour, msg);
     }
 }
-// } DEBT NCSS|CyclomaticComplexity
