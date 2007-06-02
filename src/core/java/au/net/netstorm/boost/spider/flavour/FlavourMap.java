@@ -1,6 +1,5 @@
-package au.net.netstorm.boost.demo.spider.flavour;
+package au.net.netstorm.boost.spider.flavour;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface FlavourMap {
