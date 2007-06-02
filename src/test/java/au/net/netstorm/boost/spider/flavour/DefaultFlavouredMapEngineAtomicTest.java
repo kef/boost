@@ -34,14 +34,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     FlavouredInterface pieStrawberry = mix(pie, strawberry);
     Object value, value1, value2, value3, value4, value5;
 
-    // FIX 1977 Rules:
-    // FIX 1977   get(unflavoured) - Must be unflavoured in map.
-    // FIX 1977   get(flavoured) - Must be exact matching flavour or unflavoured.
-    // FIX 1977   put(unflavoured) - Must be nothing in the map.
-    // FIX 1977   put(flavoured) - Must be no unflavoured in the map.
     // FIX 1977 Test empty failure.
-    // FIX 1977 Complete.
-    // FIX 1977 Check barfs on null value.
 
     public void setupSubjects() {
         subject = new DefaultFlavouredMapEngine();
@@ -86,6 +79,12 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         put(milkshakeUnflavoured, value);
         checkPutFails(milkshakeUnflavoured, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
         checkPutFails(milkshakeChocolate, UNFLAVOURED_TYPE_ALREADY_REGISTERED);
+    }
+
+    public void testPutWithFlavouredInMap() {
+        put(icecreamChocolate, value);
+        put(icecreamStrawberry, value);
+        // FIX 1977 Complete.
     }
 
     // FIX 1977 PutWithFlavourInMap.

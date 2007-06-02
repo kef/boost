@@ -13,8 +13,8 @@ final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
 
     public void put(FlavouredInterface flavour, Object value) {
         Interface iface = flavour.getIface();
-        boolean flavoured = isFlavoured(flavour);
-        checkNoUnflavouredExists(flavour, iface);
+        FlavouredInterface unflavoured = toUnflavoured(flavour);
+        if (map.containsKey(unflavoured)) fail(flavour, "Unflavoured type already registered");
         ifaces.add(iface);
         map.put(flavour, value);
     }
