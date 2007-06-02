@@ -14,6 +14,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultRegistryMaster implements RegistryMaster {
+    // FIX 1977 Pass in a flavoured map.  Construct in spider area.
     private final FlavouredMapEngine engine = new DefaultFlavouredMapEngine();
     private final FlavouredMap web = new DefaultFlavouredMap(engine);
 

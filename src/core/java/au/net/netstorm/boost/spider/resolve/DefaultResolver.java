@@ -14,6 +14,7 @@ public final class DefaultResolver implements Resolver {
     }
 
     // FIX 1977 Consider whether we need to resolve flavours.  Probably.
+    // FIX 1977 YES we do!!!
 
     public Object resolve(Class type) {
         Interface iface = new DefaultInterface(type);

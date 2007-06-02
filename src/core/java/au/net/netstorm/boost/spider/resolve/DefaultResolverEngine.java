@@ -29,14 +29,14 @@ public final class DefaultResolverEngine implements ResolverEngine {
         return getImplementation(iface, flavour);
     }
 
-    public ResolvedInstance resolve(Implementation impl, Flavour flavour) {
-        // FIX 1936 Modify provider to take no args.  Newer proxies use the arg'ed versions.
-        return provider.provide(impl, NO_PARAMS);
-    }
-
     private ResolvedInstance getImplementation(Interface iface, Flavour flavour) {
         Implementation impl = finder.getImplementation(iface, flavour);
-        return resolve(impl, flavour);
+        return resolve(impl);
+    }
+
+    private ResolvedInstance resolve(Implementation impl) {
+        // FIX 1936 Modify provider to take no args.  Newer proxies use the arg'ed versions.
+        return provider.provide(impl, NO_PARAMS);
     }
 
     // FIX 1977 Look closely at the Newer stuff.  Does it belong here or in a delegate?

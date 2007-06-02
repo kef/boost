@@ -26,6 +26,7 @@ public final class DefaultFieldResolver implements FieldResolver {
     }
 
     private Flavour getFlavour(Field field) {
+        // FIX BREADCRUMB 1977 RRRRRRRRRRRRRRRRRRRRRRRRRRRR Over here.
         // FIX 1977 We need a real flavour right?
         return Flavour.UNFLAVOURED;
     }
