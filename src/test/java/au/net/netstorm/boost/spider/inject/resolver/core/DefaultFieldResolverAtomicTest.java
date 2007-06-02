@@ -16,6 +16,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultFieldResolverAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
     EdgeClass classer = new DefaultEdgeClass();
     Interface happyChap = new DefaultInterface(HappyChap.class);
+    Interface beerInHisTummy = new DefaultInterface(BeerInHisTummy.class);
     FieldResolver subject;
     ResolverEngine resolver;
     ResolvedInstance resolved;
@@ -25,18 +26,18 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
     }
 
     public void testResolve() {
-        // FIX 1977 Triangulate.
-        checkResolve("happyChap");
+        checkResolve("happyChap", happyChap);
+        checkResolve("beerInHisTummy", beerInHisTummy);
     }
 
-    private void checkResolve(String fieldName) {
+    private void checkResolve(String fieldName, Interface iface) {
         Flavour flavour = flavour(fieldName);
         Field field = field(fieldName);
-        checkResolve(flavour, field);
+        checkResolve(iface, flavour, field);
     }
 
-    private void checkResolve(Flavour flavour, Field field) {
-        expect.oneCall(resolver, resolved, "resolve", happyChap, flavour);
+    private void checkResolve(Interface iface, Flavour flavour, Field field) {
+        expect.oneCall(resolver, resolved, "resolve", iface, flavour);
         ResolvedInstance result = subject.resolve(field);
         assertEquals(resolved, result);
     }

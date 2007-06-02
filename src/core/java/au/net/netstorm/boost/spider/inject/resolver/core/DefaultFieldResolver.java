@@ -17,7 +17,7 @@ public final class DefaultFieldResolver implements FieldResolver {
 
     public ResolvedInstance resolve(Field field) {
         Interface iface = getInterface(field);
-        Flavour flavour = getFlavour(field);
+        Flavour flavour = performTheMagicMove(field);
         return resolver.resolve(iface, flavour);
     }
 
@@ -26,9 +26,8 @@ public final class DefaultFieldResolver implements FieldResolver {
         return new DefaultInterface(type);
     }
 
-    private Flavour getFlavour(Field field) {
-        // FIX BREADCRUMB 1977 RRRRRRRRRRRRRRRRRRRRRRRRRRRR Over here.
-        // FIX 1977 We need a real flavour right?
-        return new DefaultFlavour("happyChap");
+    private Flavour performTheMagicMove(Field field) {
+        String fieldName = field.getName();
+        return new DefaultFlavour(fieldName);
     }
 }
