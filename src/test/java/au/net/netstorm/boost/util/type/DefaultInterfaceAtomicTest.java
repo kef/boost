@@ -22,6 +22,12 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
         assertEquals(Jester.class, actual);
     }
 
+    public void testHashCode() {
+        int actual = jester.hashCode();
+        int expected = Jester.class.hashCode();
+        assertEquals(expected, actual);
+    }
+
     public void testTypeIsNotInterface() {
         try {
             new DefaultInterface(NOT_AN_INTERFACE);
