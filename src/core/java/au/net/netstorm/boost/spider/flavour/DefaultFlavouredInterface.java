@@ -21,6 +21,10 @@ public final class DefaultFlavouredInterface extends Primordial implements Flavo
         return flavour;
     }
 
+    public int hashCode() {
+        return iface.hashCode();
+    }
+
     private void validate() {
         if (iface == null) throw new IllegalArgumentException();
         if (flavour == null) throw new IllegalArgumentException();
