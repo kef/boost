@@ -1,17 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.demo.spider.core.DefaultSpiderAssembler;
-import au.net.netstorm.boost.demo.spider.core.Spider;
-import au.net.netstorm.boost.demo.spider.core.SpiderAssembler;
-import au.net.netstorm.boost.spider.core.Provider;
-import au.net.netstorm.boost.spider.registry.Registry;
-import au.net.netstorm.boost.test.cases.BoooostCase;
-
-public final class ResolveDemoTest extends BoooostCase {
-    private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler();
-    private final Spider spider = spiderAssembler.assemble();
-    private final Provider provider = spider;
-    private final Registry registry = spider;
+public final class ResolveDemoTest extends ResolverDemooooTest {
 
     {
         registry.multiple(TheDude.class, JeffBridges.class);

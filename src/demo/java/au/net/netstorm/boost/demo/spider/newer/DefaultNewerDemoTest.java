@@ -3,11 +3,17 @@ package au.net.netstorm.boost.demo.spider.newer;
 import au.net.netstorm.boost.demo.spider.core.DefaultSpiderAssembler;
 import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.demo.spider.core.SpiderAssembler;
+import au.net.netstorm.boost.spider.registry.DefaultRegistry;
+import au.net.netstorm.boost.spider.registry.DefaultRegistryMaster;
+import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.registry.RegistryMaster;
 import junit.framework.TestCase;
 
 public final class DefaultNewerDemoTest extends TestCase {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
-    private final Spider spider = assembler.assemble();
+    private final RegistryMaster registryMaster = new DefaultRegistryMaster();
+    private final Spider spider = assembler.assemble(registryMaster);
+    public final Registry registry = new DefaultRegistry(registryMaster);
 
     public void testResolveNewer() {
         NewHeadJob newHeadJob = (NewHeadJob) spider.resolve(NewHeadJob.class);
@@ -17,7 +23,7 @@ public final class DefaultNewerDemoTest extends TestCase {
     }
 
     public void testRecursiveNewerInjection() {
-        spider.multiple(Rob.class, DefaultRob.class);
+        registry.multiple(Rob.class, DefaultRob.class);
         Rob rob = (Rob) spider.resolve(Rob.class);
         Bob bob = rob.getBob();
         checkNewersRecurse(bob);
