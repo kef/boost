@@ -38,8 +38,12 @@ public final class DefaultResolvedThings implements ResolvedThings {
     private Map get() {
         Map map = (Map) LOCAL_MON.get();
         if (map != null) return map;
-        Map map1 = new HashMap();
-        LOCAL_MON.set(map1);
+        return nuMap();
+    }
+
+    private Map nuMap() {
+        Map map = new HashMap();
+        LOCAL_MON.set(map);
         return get();
     }
 }
