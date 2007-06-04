@@ -9,13 +9,9 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 public final class DefaultResolvedThings implements ResolvedThings {
     private static final ThreadLocal LOCAL_MON = new ThreadLocal();
 
-    {
-        clear();
-    }
-
     public void clear() {
-        Map map = new HashMap();
-        LOCAL_MON.set(map);
+        Map map = get();
+        map.clear();
     }
 
     public boolean exists(Implementation impl) {
@@ -40,6 +36,10 @@ public final class DefaultResolvedThings implements ResolvedThings {
     }
 
     private Map get() {
-        return (Map) LOCAL_MON.get();
+        Map map = (Map) LOCAL_MON.get();
+        if (map != null) return map;
+        Map map1 = new HashMap();
+        LOCAL_MON.set(map1);
+        return get();
     }
 }
