@@ -22,11 +22,13 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
         assertEquals(Jester.class, actual);
     }
 
-    public void testHashCode() {
+/*  Steve you were right, love greg.
+    public void testFastHashCode() {
         int actual = jester.hashCode();
         int expected = Jester.class.hashCode();
         assertEquals(expected, actual);
     }
+*/
 
     public void testTypeIsNotInterface() {
         try {

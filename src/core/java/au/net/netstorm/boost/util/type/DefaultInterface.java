@@ -27,7 +27,9 @@ public final class DefaultInterface extends Primordial implements Interface {
             throw new IllegalArgumentException("Not interface " + type);
     }
 
+/*
     public int hashCode() {
         return type.hashCode();
     }
+*/
 }
