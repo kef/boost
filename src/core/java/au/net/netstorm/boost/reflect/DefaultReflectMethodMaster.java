@@ -22,9 +22,7 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         Class cls = ref.getClass();
         Method[] methods = cls.getDeclaredMethods();
         List actualMethodNames = new ArrayList();
-        for (int i = 0; i < methods.length; i++) {
-            addPublicMethods(methods[i], actualMethodNames);
-        }
+        for (int i = 0; i < methods.length; i++) addPublicMethods(methods[i], actualMethodNames);
         return actualMethodNames;
     }
 
@@ -43,19 +41,14 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
     private Method doGetMethod(Class cls, MethodSpec targetMethod) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
-            Method sourceMethod = methods[i];
-            if (methodsMatch(sourceMethod, targetMethod)) {
-                return sourceMethod;
-            }
+            if (methodsMatch(methods[i], targetMethod)) return methods[i];
         }
         throw new NoSuchMethodError(targetMethod.toString());
     }
 
     private boolean methodsMatch(Method sourceMethod, MethodSpec targetMethod) {
         String name = targetMethod.getName();
-        if (!methodNamesMatch(sourceMethod, name)) {
-            return false;
-        }
+        if (!methodNamesMatch(sourceMethod, name)) return false;
         Class[] params = targetMethod.getParams();
         return paramsMatch(sourceMethod, params);
     }
