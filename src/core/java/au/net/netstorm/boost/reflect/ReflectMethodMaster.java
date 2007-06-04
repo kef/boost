@@ -5,4 +5,6 @@ import au.net.netstorm.boost.util.introspect.MethodSpec;
 
 public interface ReflectMethodMaster {
     Method getMethod(Class cls, MethodSpec method);
+
+    String[] getPublicMethodNames(Object ref);
 }

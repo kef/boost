@@ -26,6 +26,8 @@ public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
     private static final MethodSpec METHOD_CHURCH = new DefaultMethodSpec(CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
     private static final MethodSpec METHOD_FRIDAY = new DefaultMethodSpec(FRIDAY_METHOD_NAME, NO_PARAMETERS);
     private static final MethodSpec METHOD_CRAPOLA = new DefaultMethodSpec(CRAPOLA_METHOD_NAME, NO_PARAMETERS);
+    private static final String[] CHEESE_METHODS = {"getWheels", "getWings", "getSpeed"};
+    private final RattysSwissCheese rattysSwissCheese = new DefaultRattysSwissCheese();
     private final ReflectMaster master = new DefaultReflectMaster();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
 
@@ -51,6 +53,15 @@ public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
     public void testNullsIllegal() {
         checkNullsIllegal(null, METHOD_CHURCH);
         checkNullsIllegal(String.class, null);
+    }
+
+    public void testGetPublicMethodNames() {
+        checkGetPublicMethodNames(rattysSwissCheese, CHEESE_METHODS);
+    }
+
+    private void checkGetPublicMethodNames(Object ref, String[] expected) {
+        String[] actual = master.getPublicMethodNames(ref);
+        assertEquals(expected, actual);
     }
 
     private void checkGetMethod(Class cls, MethodSpec method) {

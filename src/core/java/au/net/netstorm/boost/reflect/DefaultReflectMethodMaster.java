@@ -1,6 +1,9 @@
 package au.net.netstorm.boost.reflect;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 
 class DefaultReflectMethodMaster implements ReflectMethodMaster {
@@ -8,6 +11,33 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         checkNotNull(cls);
         checkNotNull(method);
         return doGetMethod(cls, method);
+    }
+
+    public String[] getPublicMethodNames(Object ref) {
+        List publicNames = extractPublicMethods(ref);
+        return (String[]) publicNames.toArray(new String[]{});
+    }
+
+    private List extractPublicMethods(Object ref) {
+        Class cls = ref.getClass();
+        Method[] methods = cls.getDeclaredMethods();
+        List actualMethodNames = new ArrayList();
+        for (int i = 0; i < methods.length; i++) {
+            addPublicMethods(methods[i], actualMethodNames);
+        }
+        return actualMethodNames;
+    }
+
+    private void addPublicMethods(Method method, List actualMethodNames) {
+        if (isPublic(method)) {
+            String name = method.getName();
+            actualMethodNames.add(name);
+        }
+    }
+
+    private boolean isPublic(Method method) {
+        int modifiers = method.getModifiers();
+        return Modifier.isPublic(modifiers);
     }
 
     private Method doGetMethod(Class cls, MethodSpec targetMethod) {
