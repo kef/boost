@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.spider.core.GoodCitizen;
-
-final class BigLebowski implements Movie, GoodCitizen {
+final class BigLebowski implements Movie {
     private final TheDude theDude;
 
     public BigLebowski(TheDude theDude) {

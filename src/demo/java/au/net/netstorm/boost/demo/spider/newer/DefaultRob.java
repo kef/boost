@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.spider.core.GoodCitizen;
-
-final class DefaultRob implements Rob, GoodCitizen {
+final class DefaultRob implements Rob {
     NewDefaultBob newDefaultBob;
 
     public Bob getBob() {

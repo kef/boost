@@ -25,7 +25,6 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     InjectorEngine injector;
     Object[] parameters = {"Hi", "There"};
     Implementation providezMoi;
-    Interface citizenMarker;
     BaseReference unresolved;
     Object rawRef;
     ResolvedInstance wrapped;
@@ -35,7 +34,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     ResolvedThings resolvedThings = new DefaultResolvedThings();
 
     public void setupSubjects() {
-        subject = new DefaultProviderEngine(citizenMarker, onionizer, injector, instantiator);
+        subject = new DefaultProviderEngine(onionizer, injector, instantiator);
     }
 
     public void testProvider() {
@@ -45,7 +44,6 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void checkProvider(boolean initialise) {
         resolvedThings.clear();
-        expect.oneCall(providezMoi, true, "is", citizenMarker);
         expect.oneCall(instantiator, unresolved, "instantiate", providezMoi, parameters);
         expect.oneCall(injector, VOID, "inject", unresolved);
         expect.oneCall(onionizer, wrapped, "onionise", unresolved);
@@ -59,14 +57,6 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
         if (!initialise) return;
         expect.oneCall(unresolved, initialisable, "getRef");
         expect.oneCall(initialisable, VOID, "initialise");
-    }
-
-    public void testNotMarker() {
-        expect.oneCall(providezMoi, false, "is", citizenMarker);
-        try {
-            subject.provide(providezMoi, parameters);
-            fail();
-        } catch (IllegalCitizenException expected) { }
     }
 
     // FIX BREADCRUMB 1757 Reinstate?

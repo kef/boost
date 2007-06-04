@@ -14,14 +14,12 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface INITIALISABLE = new DefaultInterface(Initialisable.class);
     private final ResolvedThings resolvedThings = new DefaultResolvedThings();
-    private Interface marker;
     private Onionizer onionizer;
     private Instantiator instantiator;
     private InjectorEngine injector;
 
     // OK LineLength {
-    public DefaultProviderEngine(Interface marker, Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
-        this.marker = marker;
+    public DefaultProviderEngine(Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
         this.onionizer = onionizer;
         this.injector = injector;
         this.instantiator = instantiator;
@@ -32,7 +30,6 @@ public final class DefaultProviderEngine implements ProviderEngine {
     // FIX 1977 Object[] should be ConstructorParameter[].
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        if (!impl.is(marker)) throw new IllegalCitizenException(marker, impl);
         // FIX 1971 Test drive this check up.
         if (resolvedThings.exists(impl)) return resolvedThings.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);

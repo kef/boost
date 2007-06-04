@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.spider.core.GoodCitizen;
-
-public final class GlitzyHollywood implements GoodCitizen, Hollywood {
+public final class GlitzyHollywood implements Hollywood {
     private Celebrity celebrity;
     private Actor actor;
     private Movie movie;

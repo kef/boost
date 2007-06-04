@@ -50,11 +50,6 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final ProxyFactory proxyFactory = assembleProxyFactory();
-    private final Interface citizen;
-
-    public DefaultSpiderAssembler(Class citizen) {
-        this.citizen = new DefaultInterface(citizen);
-    }
 
     public Spider assemble() {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
@@ -110,7 +105,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
         Onionizer onionizer = new BermudaOnionizer();
-        return new DefaultProviderEngine(citizen, onionizer, injector, instantiator);
+        return new DefaultProviderEngine(onionizer, injector, instantiator);
     }
     /*
                   _.._

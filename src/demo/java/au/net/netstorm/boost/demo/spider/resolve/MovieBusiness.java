@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.spider.core.GoodCitizen;
-
-public final class MovieBusiness implements GoodCitizen, Business {
+public final class MovieBusiness implements Business {
     private Actor actor;
     private Celebrity celebrity;
 

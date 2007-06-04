@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.spider.core.GoodCitizen;
-
-final class RegalCinema implements Cinema, GoodCitizen {
+final class RegalCinema implements Cinema {
     private Movie movie;
 
     public RegalCinema() {

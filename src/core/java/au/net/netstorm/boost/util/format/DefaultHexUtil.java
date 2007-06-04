@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.util.format;
 
-import au.net.netstorm.boost.spider.core.GoodCitizen;
-
-public final class DefaultHexUtil implements HexUtil, GoodCitizen {
+public final class DefaultHexUtil implements HexUtil {
     private static final String HEXCHAR = "0123456789ABCDEF";
     private static final int MASK = 0x0f;
 

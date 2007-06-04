@@ -5,7 +5,6 @@ import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 
 // FIX 1977 Separate package for newers?
-// FIX 1977 Remove GoodCitizen.
 
 // FIX 1977 Acceptance test for this CARD.
 public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
