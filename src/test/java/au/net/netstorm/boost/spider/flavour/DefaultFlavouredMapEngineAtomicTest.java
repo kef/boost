@@ -55,6 +55,9 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
 
     public void testExistence() {
         checkExists(false, milkshakeUnflavoured);
+        checkExists(false, milkshakeChocolate);
+        put(milkshakeUnflavoured, value);
+        checkExists(true, milkshakeUnflavoured);
         // FIX 51915 Complete.
     }
 

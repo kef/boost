@@ -27,7 +27,8 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     }
 
     public boolean exists(FlavouredInterface flavour) {
-        return false;
+        Interface iface = flavour.getIface();
+        return ifaces.contains(iface);
     }
 
     // OK CyclomaticComplexity {
