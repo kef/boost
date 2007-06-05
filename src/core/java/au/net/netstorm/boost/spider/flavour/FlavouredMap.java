@@ -6,4 +6,6 @@ public interface FlavouredMap {
     void put(Interface iface, Flavour flavour, Object thing);
 
     Object get(Interface iface, Flavour flavour);
+
+    boolean exists(Interface iface, Flavour flavour);
 }

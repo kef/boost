@@ -12,6 +12,7 @@ public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase imp
     Interface iface;
     Flavour flavour;
     Object value;
+    Boolean exists;
 
     public void setupSubjects() {
         flavoured = new DefaultFlavouredInterface(iface, flavour);
@@ -27,5 +28,12 @@ public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase imp
     public void testPut() {
         expect.oneCall(engine, VOID, "put", flavoured, value);
         subject.put(iface, flavour, value);
+    }
+
+    public void testExists() {
+        expect.oneCall(engine, exists, "exists", flavoured);
+        boolean result = subject.exists(iface, flavour);
+        // FIX BREADCRUMB 1977 AAAAA Push into BoooostCase.
+        assertEquals(exists.booleanValue(), result);
     }
 }

@@ -19,6 +19,11 @@ public final class DefaultFlavouredMap implements FlavouredMap {
         return engine.get(flavoured);
     }
 
+    public boolean exists(Interface iface, Flavour flavour) {
+        FlavouredInterface flavoured = flavoured(iface, flavour);
+        return engine.exists(flavoured);
+    }
+
     private FlavouredInterface flavoured(Interface iface, Flavour flavour) {
         return new DefaultFlavouredInterface(iface, flavour);
     }
