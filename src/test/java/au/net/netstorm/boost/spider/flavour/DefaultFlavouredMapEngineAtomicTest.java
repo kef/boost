@@ -62,7 +62,6 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkExists(false, icecreamChocolate);
         checkExists(false, icecreamUnflavoured);
     }
-    // FIX 1977 How about test existence flavoured?
 
     public void testExistenceWithFlavouredInMap() {
         put(milkshakeChocolate, value);
