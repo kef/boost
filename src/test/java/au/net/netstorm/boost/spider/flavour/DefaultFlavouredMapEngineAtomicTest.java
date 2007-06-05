@@ -93,6 +93,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
 
     private void checkExists(boolean expected, FlavouredInterface flavour) {
         boolean result = subject.exists(flavour);
+        assertEquals(expected, result);
         // FIX 1977 Complete.
     }
 
