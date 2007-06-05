@@ -38,7 +38,7 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         if (isFlavoured(flavour)) return;
         if (ifaces.contains(iface)) fail(flavour, "Flavour already exists");
     }
-    // } OK CyclomaticComplexity - This was a touch cookie and is pretty damn clean.  Go for it if you can!
+    // } OK CyclomaticComplexity - This was a tough cookie and is pretty damn clean.  Go for it if you can!
 
     private Object explode(FlavouredInterface flavour) {
         Interface iface = flavour.getIface();
