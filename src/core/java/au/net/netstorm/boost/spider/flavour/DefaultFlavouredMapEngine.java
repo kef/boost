@@ -20,17 +20,20 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     }
 
     public Object get(FlavouredInterface flavour) {
-        FlavouredInterface unflavoured = toUnflavoured(flavour);
-        if (flavours.containsKey(unflavoured)) return flavours.get(unflavoured);
-        if (flavours.containsKey(flavour)) return flavours.get(flavour);
-        return explode(flavour);
+        Object result = nullGet(flavour);
+        if (result == null) explode(flavour);
+        return result;
     }
 
     public boolean exists(FlavouredInterface flavour) {
+        return nullGet(flavour) != null;
+    }
+
+    public Object nullGet(FlavouredInterface flavour) {
         FlavouredInterface unflavoured = toUnflavoured(flavour);
-        if (flavours.containsKey(unflavoured)) return true;
-        if (flavours.containsKey(flavour)) return true;
-        return false;
+        if (flavours.containsKey(unflavoured)) return flavours.get(unflavoured);
+        if (flavours.containsKey(flavour)) return flavours.get(flavour);
+        return null;
     }
 
     // OK CyclomaticComplexity {
