@@ -67,7 +67,7 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
     public void testExistenceWithFlavouredInMap() {
         put(milkshakeChocolate, value);
         checkExists(true, milkshakeChocolate);
-//        checkExists(false, milkshakeUnflavoured);
+        checkExists(false, milkshakeUnflavoured);
     }
 
     public void testGetWithFlavouredInMap() {
