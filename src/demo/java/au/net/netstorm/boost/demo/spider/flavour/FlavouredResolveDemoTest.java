@@ -10,7 +10,7 @@ import au.net.netstorm.boost.spider.core.GraphUtil;
 public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
     private final GraphUtil grapher = new DefaultGraphUtil();
 
-    // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
+    // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
     {
         registry.multiple(Curry.class, Madras.class, "mild");
         registry.multiple(Curry.class, Vindaloo.class, "hot");
