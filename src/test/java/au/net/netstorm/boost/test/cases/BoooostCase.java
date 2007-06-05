@@ -61,6 +61,18 @@ public class BoooostCase extends TestCase {
         assertEquals(false, v1 == v2);
     }
 
+    // Boxing should do this for us.
+
+    public final void assertEquals(Boolean expected, boolean actual) {
+        assertEquals(expected, Boolean.valueOf(actual));
+    }
+
+    public final void assertEquals(Integer expected, int actual) {
+        assertEquals(expected, Integer.valueOf(actual));
+    }
+
+    // Don't use these variants.
+
     public static final void assertTrue(boolean expected) {
         suffer();
     }

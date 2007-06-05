@@ -33,7 +33,6 @@ public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase imp
     public void testExists() {
         expect.oneCall(engine, exists, "exists", flavoured);
         boolean result = subject.exists(iface, flavour);
-        // FIX BREADCRUMB 1977 AAAAA Push into BoooostCase.
-        assertEquals(exists.booleanValue(), result);
+        assertEquals(exists, result);
     }
 }
