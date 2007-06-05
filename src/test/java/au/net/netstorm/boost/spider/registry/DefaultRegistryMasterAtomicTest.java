@@ -46,6 +46,18 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
         checkGetInstance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
     }
 
+    public void testHasInstance() {
+        checkHasInstance(SPORT, true);
+        checkHasInstance(ANIMAL, false);
+        checkHasInstance(MATRYOSHKA, false);
+    }
+
+    public void testHasImplementation() {
+        checkHasImplementation(SPORT, false);
+        checkHasImplementation(ANIMAL, true);
+        checkHasImplementation(MATRYOSHKA, false);
+    }
+
     public void testImplImplementsInterfaceFails() {
         try {
             multiple(MATRYOSHKA, CROCODILE_IMPL);
@@ -72,19 +84,6 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
             subject.getImplementation(BREAKFAST_CEREAL, flavour);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
-    }
-
-    public void testHasInstance() {
-        checkHasInstance(SPORT, true);
-        checkHasInstance(ANIMAL, false);
-//        checkHasInstance(MATRYOSHKA, false);
-    }
-
-    public void testHasImplementation() {
-        checkHasImplementation(SPORT, false);
-        checkHasImplementation(ANIMAL, true);
-        // FIX 1977 Reinstate.
-//        checkHasImplementation(MATRYOSHKA, false);
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {

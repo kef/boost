@@ -59,6 +59,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private boolean ofType(Class type, Interface iface, Flavour flavour) {
+        if (!web.exists(iface, flavour)) return false;
         Object value = web.get(iface, flavour);
         Class valueClass = value.getClass();
         return type.isAssignableFrom(valueClass);
