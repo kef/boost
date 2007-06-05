@@ -26,6 +26,10 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         return explode(flavour);
     }
 
+    public boolean exists(FlavouredInterface flavour) {
+        return false;
+    }
+
     // OK CyclomaticComplexity {
     private void validate(FlavouredInterface flavour, Interface iface) {
         FlavouredInterface unflavoured = toUnflavoured(flavour);

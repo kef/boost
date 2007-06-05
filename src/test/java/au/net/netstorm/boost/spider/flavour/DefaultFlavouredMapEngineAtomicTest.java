@@ -53,6 +53,11 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGet(pieStrawberry, value5);
     }
 
+    public void testExistence() {
+        checkExists(false, milkshakeUnflavoured);
+        // FIX 51915 Complete.
+    }
+
     public void testGetWithUnflavouredInMap() {
         put(milkshakeUnflavoured, value);
         checkGet(milkshakeUnflavoured, value);
@@ -84,6 +89,11 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         put(icecreamStrawberry, value);
         checkPutFails(icecreamChocolate, FLAVOUR_ALREADY_EXISTS);
         checkPutFails(icecreamUnflavoured, FLAVOUR_ALREADY_EXISTS);
+    }
+
+    private void checkExists(boolean expected, FlavouredInterface flavour) {
+        boolean result = subject.exists(flavour);
+        // FIX 1977 Complete.
     }
 
     public void testFailsWithNullValue() {
