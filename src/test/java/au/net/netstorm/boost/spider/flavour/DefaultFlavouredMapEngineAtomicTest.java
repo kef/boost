@@ -62,17 +62,12 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkExists(false, icecreamChocolate);
         checkExists(false, icecreamUnflavoured);
     }
-
     // FIX 1977 How about test existence flavoured?
 
-    public void testGetWithUnflavouredInMap() {
-        put(milkshakeUnflavoured, value);
-        checkGet(milkshakeUnflavoured, value);
-        checkGet(milkshakeChocolate, value);
-        checkGet(milkshakeVanilla, value);
-        checkGetFails(icecreamStrawberry, NO_MATCHING_TYPE);
-        checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
-        checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
+    public void testExistenceWithFlavouredInMap() {
+        put(milkshakeChocolate, value);
+        checkExists(true, milkshakeChocolate);
+//        checkExists(false, milkshakeUnflavoured);
     }
 
     public void testGetWithFlavouredInMap() {
@@ -83,6 +78,16 @@ public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCa
         checkGetFails(icecreamVanilla, NO_MATCHING_FLAVOUR);
         checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
         checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
+    }
+
+    public void testGetWithUnflavouredInMap() {
+        put(milkshakeUnflavoured, value);
+        checkGet(milkshakeUnflavoured, value);
+        checkGet(milkshakeChocolate, value);
+        checkGet(milkshakeVanilla, value);
+        checkGetFails(icecreamStrawberry, NO_MATCHING_TYPE);
+        checkGetFails(chipsUnflavoured, NO_MATCHING_TYPE);
+        checkGetFails(pieStrawberry, NO_MATCHING_TYPE);
     }
 
     public void testPutWithUnflavouredInMap() {
