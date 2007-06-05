@@ -19,6 +19,7 @@ public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
         ifaces.add(iface);
     }
 
+    // FIX 1977 Steve want two symmetric maps (flavoured, unflavoured).
     public Object get(FlavouredInterface flavour) {
         Object result = nullGet(flavour);
         if (result == null) explode(flavour);
