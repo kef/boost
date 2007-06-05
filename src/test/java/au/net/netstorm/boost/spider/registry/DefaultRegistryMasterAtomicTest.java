@@ -77,11 +77,14 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     public void testHasInstance() {
         checkHasInstance(SPORT, true);
         checkHasInstance(ANIMAL, false);
+//        checkHasInstance(MATRYOSHKA, false);
     }
 
     public void testHasImplementation() {
         checkHasImplementation(SPORT, false);
         checkHasImplementation(ANIMAL, true);
+        // FIX 1977 Reinstate.
+//        checkHasImplementation(MATRYOSHKA, false);
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {
