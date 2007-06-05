@@ -15,6 +15,7 @@ public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
         registry.multiple(Curry.class, Madras.class, "mild");
         registry.multiple(Curry.class, Vindaloo.class, "hot");
         registry.multiple(Curry.class, PrawnMalai.class, "stevesFavourite");
+        registry.multiple(Beer.class, TigerBeer.class);
         registry.multiple(Party.class, RockinParty.class);
     }
 

@@ -4,4 +4,5 @@ public final class RockinParty implements Party {
     Curry hot;
     Curry mild;
     Curry stevesFavourite;
+    Beer schooner;
 }
