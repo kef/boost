@@ -24,6 +24,7 @@ public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
         checkField(Madras.class, party, "mild");
         checkField(Vindaloo.class, party, "hot");
         checkField(PrawnMalai.class, party, "stevesFavourite");
+        checkField(Tiger.class, party, "schooner");
     }
 
     private void checkField(Class expected, Party party, String field) {
