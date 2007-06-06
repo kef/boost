@@ -13,9 +13,9 @@ public final class DefaultAssertTestChecker implements AssertTestChecker {
     public void checkBagEquals(Object[] o1, Object[] o2) {
         basicCheck(o1, o2);
         boolean[] used = usedFlags(o1);
-        for (int i = 0; i < o1.length; i++) {
-            Object ref = o1[i];
-            if (!find(used, o2, ref)) Assert.fail("Not in bag " + ref);
+        for (int i = 0; i < o2.length; i++) {
+            Object ref = o2[i];
+            if (!find(used, o1, ref)) Assert.fail("Not in bag " + ref);
         }
     }
 
