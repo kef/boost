@@ -33,6 +33,7 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     RegistryMaster subject;
     Flavour flavour;
 
+    // FIX 1977 Consider making this an atomic test.  At the moment it is not.
     public void setupSubjects() {
         subject = new DefaultRegistryMaster(flavouredMap);
         multiple(ANIMAL, MAMMAL_IMPL);
