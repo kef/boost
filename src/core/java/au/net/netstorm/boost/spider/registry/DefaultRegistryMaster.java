@@ -1,19 +1,18 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMap;
-import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
-import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistryMaster implements RegistryMaster {
-    // FIX 1977 Pass in a flavoured map.  Construct in spider area.
-    private final FlavouredMapEngine engine = new DefaultFlavouredMapEngine();
-    private final FlavouredMap web = new DefaultFlavouredMap(engine);
+    private final FlavouredMap web;
+
+    public DefaultRegistryMaster(FlavouredMap web) {
+        this.web = web;
+    }
 
     public void multiple(Interface iface, Implementation implementation, Flavour flavour) {
         barfIfNotImplOfIface(iface, implementation);

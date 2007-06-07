@@ -1,6 +1,10 @@
 package au.net.netstorm.boost.spider.registry;
 
+import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMap;
+import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
+import au.net.netstorm.boost.spider.flavour.FlavouredMap;
+import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
@@ -24,12 +28,13 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     private static final BreakfastCereal COCO_POPS = new CocoPops();
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
     private static final ResolvedInstance COCO_POPS_INSTANCE = new DefaultBaseReference(COCO_POPS);
-    private static final ResolvedInstance MATRYOSKA_INSTANCE = new DefaultBaseReference(Matryoshka.class);
+    FlavouredMapEngine mapEngine = new DefaultFlavouredMapEngine();
+    FlavouredMap flavouredMap = new DefaultFlavouredMap(mapEngine);
     RegistryMaster subject;
     Flavour flavour;
 
     public void setupSubjects() {
-        subject = new DefaultRegistryMaster();
+        subject = new DefaultRegistryMaster(flavouredMap);
         multiple(ANIMAL, MAMMAL_IMPL);
         multiple(VEHICLE, CAR_IMPL);
         instance(SPORT, FOOTBALL_INSTANCE);
