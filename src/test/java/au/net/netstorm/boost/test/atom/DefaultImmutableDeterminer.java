@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.atom;
 
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 import au.net.netstorm.boost.util.type.Immutable;
@@ -11,6 +12,7 @@ public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
     {
         registered.add(String.class);
         registered.add(Class.class);
+        registered.add(Method.class);
     }
 
     public boolean isImmutable(Class cls) {
