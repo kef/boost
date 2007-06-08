@@ -6,11 +6,15 @@ public final class DefaultFlavour extends Primordial implements Flavour {
     private final String value;
 
     public DefaultFlavour(String value) {
-        if (value == null) throw new IllegalArgumentException();
+        validate(value);
         this.value = value;
     }
 
     public String getValue() {
         return value;
+    }
+
+    private void validate(String value) {
+        if (value == null) throw new IllegalArgumentException();
     }
 }
