@@ -79,7 +79,9 @@
     <fileset id="simian.sulley.code" dir="${src.dir}" includes="**/kickstart/sulley/**/*.java"/>
 
 
-    <path id="edge.compile.classpath"/>
+    <path id="edge.compile.classpath">
+        <path refid="base64.classpath"/>
+    </path>
 
     <path id="core.compile.classpath">
         <path location="${edge.class.dir}"/>
@@ -132,6 +134,12 @@
 
     <path id="simian.class.path">
         <fileset dir="${lib.dir}/simian">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="base64.classpath">
+        <fileset dir="${lib.dir}/base64">
             <include name="**/*.jar"/>
         </fileset>
     </path>
