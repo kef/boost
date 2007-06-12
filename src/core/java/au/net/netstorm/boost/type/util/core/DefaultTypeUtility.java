@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.type.util.core;
 
+import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import au.net.netstorm.boost.type.strong.DefaultIntegerHolder;
-import au.net.netstorm.boost.type.strong.IntegerHolder;
 
 public final class DefaultTypeUtility implements TypeUtility {
     public int[] toIntArray(List integerList) {
@@ -33,15 +32,6 @@ public final class DefaultTypeUtility implements TypeUtility {
         return new int[]{intValue};
     }
 
-    public IntegerHolder[] toIntHolderArray(int[] ints) {
-        int length = ints.length;
-        IntegerHolder[] intHolder = new DefaultIntegerHolder[length];
-        for (int i = 0; i < length; i++) {
-            intHolder[i] = new DefaultIntegerHolder(ints[i]);
-        }
-        return intHolder;
-    }
-
     public String toString(byte[] bytes) {
         int intValue = toInt(bytes);
         return String.valueOf(intValue);
@@ -64,6 +54,16 @@ public final class DefaultTypeUtility implements TypeUtility {
         if ("true".equals(value)) return true;
         if ("on".equals(value)) return true;
         return false;
+    }
+
+    public Object[] mergeArrays(Object[] array1, Object[] array2) {
+        Class arrayClass = array1.getClass();
+        Class componentClass = arrayClass.getComponentType();
+        int mergedArrayLength = array1.length + array2.length;
+        Object[] merged = (Object[]) Array.newInstance(componentClass, mergedArrayLength);
+        System.arraycopy(array1, 0, merged, 0, array1.length);
+        System.arraycopy(array2, 0, merged, array1.length, array2.length);
+        return merged;
     }
 
     private int toInt(byte[] bytes) {

@@ -18,7 +18,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/runtime/commons-codec-1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/base64/commons-codec-1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

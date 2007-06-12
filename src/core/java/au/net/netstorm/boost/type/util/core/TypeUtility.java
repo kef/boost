@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.type.util.core;
 
 import java.util.List;
-import au.net.netstorm.boost.type.strong.IntegerHolder;
 
 public interface TypeUtility {
     int[] toIntArray(List integerList);
@@ -9,8 +8,6 @@ public interface TypeUtility {
     int[] toIntArray(String[] strings);
 
     int[] toIntArray(String string);
-
-    IntegerHolder[] toIntHolderArray(int[] ints);
 
     String toString(byte[] bytes);
 
@@ -21,4 +18,6 @@ public interface TypeUtility {
     boolean arrayContainsDuplicates(Object[] array);
 
     boolean toBoolean(String value);
+
+    Object[] mergeArrays(Object[] array1, Object[] array2);
 }

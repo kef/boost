@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.test.automock.HasSubjects;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.type.strong.DefaultIntegerHolder;
 import au.net.netstorm.boost.type.strong.DefaultStringHolder;
-import au.net.netstorm.boost.type.strong.IntegerHolder;
 import au.net.netstorm.boost.type.strong.StringHolder;
 
 public final class DefaultTypeUtilityAtomicTest extends InteractionTestCase implements HasSubjects {
@@ -23,11 +21,6 @@ public final class DefaultTypeUtilityAtomicTest extends InteractionTestCase impl
     private static final int[] INTS_1 = new int[]{1};
     private static final int[] INTS_2 = new int[]{2, 1};
     private static final List ARRAY_LIST = new ArrayList();
-    private static final IntegerHolder INT_HOLDER_1 = new DefaultIntegerHolder(1);
-    private static final IntegerHolder INT_HOLDER_2 = new DefaultIntegerHolder(2);
-    private static final IntegerHolder[] INT_HOLDERS_0 = new IntegerHolder[]{};
-    private static final IntegerHolder[] INT_HOLDERS_1 = new IntegerHolder[]{INT_HOLDER_1};
-    private static final IntegerHolder[] INT_HOLDERS_2 = new IntegerHolder[]{INT_HOLDER_2, INT_HOLDER_1};
     private static final int INT_VALUE = 12;
     private static final String INT_VALUE_AS_STRING = String.valueOf(INT_VALUE);
     private static final byte[] POSITIVE_INT_BYTES = new byte[]{127, -128, -128, -128};
@@ -66,12 +59,6 @@ public final class DefaultTypeUtilityAtomicTest extends InteractionTestCase impl
         assertEquals(INTS_2, result);
     }
 
-    public void testIntsToIntHolders() {
-        checkIntsToIntHolders(INTS_0, INT_HOLDERS_0);
-        checkIntsToIntHolders(INTS_1, INT_HOLDERS_1);
-        checkIntsToIntHolders(INTS_2, INT_HOLDERS_2);
-    }
-
     public void testBytesToString() {
         checkBytesToString(POSITIVE_INT_BYTES, POSITIVE_INT_STRING);
         checkBytesToString(NEGATIVE_INT_BYTES, NEGATIVE_INT_STRING);
@@ -100,6 +87,14 @@ public final class DefaultTypeUtilityAtomicTest extends InteractionTestCase impl
         checkToBoolean(false, someString);
     }
 
+    public void testMerge() {
+        String[] array1 = {"one", "two"};
+        String[] array2 = {"three", "four"};
+        String[] expected = {"one", "two", "three", "four"};
+        String[] actual = (String[]) subject.mergeArrays(array1, array2);
+        assertEquals(expected, actual);
+    }
+
     private void checkToBoolean(boolean expected, String value) {
         boolean actual = subject.toBoolean(value);
         assertEquals(expected, actual);
@@ -119,11 +114,6 @@ public final class DefaultTypeUtilityAtomicTest extends InteractionTestCase impl
     private void checkBytesToString(byte[] bytes, String expected) {
         String actual = subject.toString(bytes);
         assertEquals(expected, actual);
-    }
-
-    private void checkIntsToIntHolders(int[] ints, IntegerHolder[] expected) {
-        IntegerHolder[] integerHolders = subject.toIntHolderArray(ints);
-        assertEquals(expected, integerHolders);
     }
 
     private void checkStringsToInts(int[] expected, String[] strings) {
