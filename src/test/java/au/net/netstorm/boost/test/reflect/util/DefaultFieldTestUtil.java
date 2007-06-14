@@ -56,7 +56,7 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
     public void setPublicInstance(Object ref, String fieldName, Object value) {
         Class cls = ref.getClass();
         Field field = edgeClass.getField(cls, fieldName);
-        setField(ref, field, value);
+        trySetField(ref, field, value);
     }
 
     public void setPublicInstance(Object ref, FieldValueSpec fieldValue) {
@@ -76,12 +76,17 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
 
     private void setField(Class cls, Object f, String fieldName, Object fieldValue) {
         Field field = get(cls, fieldName);
-        setField(f, field, fieldValue);
+        trySetField(f, field, fieldValue);
     }
 
-    private void setField(Object ref, Field field, Object value) {
+    private void trySetField(Object ref, Field field, Object value) {
         field.setAccessible(true);
-        edgeField.set(field, ref, value);
+        try {
+            edgeField.set(field, ref, value);
+        } catch (IllegalArgumentException e) {
+            String fieldName = field.getName();
+            throw new IllegalArgumentException("Unable to set the value of: " + fieldName, e);
+        }
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {
