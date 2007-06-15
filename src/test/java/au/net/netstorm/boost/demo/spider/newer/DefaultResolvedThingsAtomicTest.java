@@ -1,19 +1,19 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
+public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
     ResolvedThings subject;
     Implementation impl;
     BaseReference expected;
     Implementation doesNotExist;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultResolvedThings();
     }
 

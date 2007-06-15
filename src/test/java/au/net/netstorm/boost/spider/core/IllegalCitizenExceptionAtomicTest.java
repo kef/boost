@@ -1,18 +1,18 @@
 package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.primordial.BoooostException;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class IllegalCitizenExceptionAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     BoooostException subject;
     Interface marker;
     Implementation impl;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new IllegalCitizenException(marker, impl);
     }
 

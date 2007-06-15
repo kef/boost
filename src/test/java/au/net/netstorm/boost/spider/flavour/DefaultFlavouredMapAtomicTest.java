@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.spider.flavour;
 
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     FlavouredMap subject;
     FlavouredMapEngine engine;
     FlavouredInterface flavoured;
@@ -14,7 +14,7 @@ public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase imp
     Object value;
     Boolean exists;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         flavoured = new DefaultFlavouredInterface(iface, flavour);
         subject = new DefaultFlavouredMap(engine);
     }

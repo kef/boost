@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultProviderAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultProviderAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     Object[] noParams = {};
     Provider subject;
     ProviderEngine engine;
@@ -15,7 +15,7 @@ public final class DefaultProviderAtomicTest extends InteractionTestCase impleme
     Object ref;
     Implementation implementation = new DefaultImplementation(SmoothRock.class);
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultProvider(engine);
     }
 

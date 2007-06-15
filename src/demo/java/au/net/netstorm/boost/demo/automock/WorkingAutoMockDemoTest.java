@@ -2,11 +2,11 @@ package au.net.netstorm.boost.demo.automock;
 
 import java.util.List;
 import java.util.Map;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     TestSubject subject;
     Map map;
     DelegateSubject delegate;
@@ -14,7 +14,7 @@ public final class WorkingAutoMockDemoTest extends InteractionTestCase implement
     List list1;
     List[] lists;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         lists = new List[]{list1, list2};
         subject = new WorkingTestSubject(delegate);
     }
@@ -44,11 +44,11 @@ public final class WorkingAutoMockDemoTest extends InteractionTestCase implement
     }
 
     public void testArray() {
-        setupArrayExpectations();
+        setUpArrayExpectations();
         subject.executePut(map, lists);
     }
 
-    private void setupArrayExpectations() {
+    private void setUpArrayExpectations() {
         expect.oneCall(map, VOID, "put", "streetfighter", lists);
         Integer dummySize = new Integer(2);
         for (int i = 0; i < lists.length; i++) {

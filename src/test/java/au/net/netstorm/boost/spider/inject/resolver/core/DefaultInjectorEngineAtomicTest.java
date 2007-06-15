@@ -7,13 +7,13 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     InjectorEngine subject;
     EdgeClass classer = new DefaultEdgeClass();
     EdgeField edgeFielder = new DefaultEdgeField();
@@ -30,7 +30,7 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
     Field fieldRock = field("rock");
     Field[] fields = {fieldJuicy, fieldRock};
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultInjectorEngine(fieldFinder, fieldResolver);
         overrideFields();
     }

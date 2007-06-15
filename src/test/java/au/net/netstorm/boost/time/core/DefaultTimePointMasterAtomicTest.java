@@ -2,18 +2,18 @@ package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
 import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     TimePointMaster subject;
     EdgeSystem system;
     private static final long NOW = 1L;
     private static final long MILLIS_1 = 12L;
     private static final long MILLIS_2 = 9L;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultTimePointMaster();
     }
 

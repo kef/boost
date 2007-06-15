@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import au.net.netstorm.boost.primordial.BoooostException;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-public final class ScrunchExceptionAtomicTest extends InteractionTestCase implements HasSubjects {
+public final class ScrunchExceptionAtomicTest extends InteractionTestCase implements HasFixtures {
     BoooostException subject;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new ScrunchException();
     }
 

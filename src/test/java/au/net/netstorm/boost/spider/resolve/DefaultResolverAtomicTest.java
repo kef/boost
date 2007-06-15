@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolverAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultResolverAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
     private static final Class FRUITY = Fruity.class;
     Resolver subject;
@@ -17,7 +17,7 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase impleme
     Interface fruity = new DefaultInterface(FRUITY);
     Object resolved = this;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultResolver(resolverEngine);
     }
 

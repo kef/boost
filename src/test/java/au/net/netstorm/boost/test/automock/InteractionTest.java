@@ -53,7 +53,7 @@ public final class InteractionTest implements JUnitLifecycle {
     }
 
     private void doSetupSubject() {
-        if (hasMarker(HasSubjects.class)) ((HasSubjects) testCase).setupSubjects();
+        if (hasMarker(HasFixtures.class)) ((HasFixtures) testCase).setUpFixtures();
     }
 
     private void doInjectAutoMocks() {

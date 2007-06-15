@@ -3,13 +3,13 @@ package au.net.netstorm.boost.spider.inject.newer.core;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     InvocationHandler subject;
     ProviderEngine provider;
     Implementation impl;
@@ -18,7 +18,7 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
     Object[] methodParams = new Object[]{};
     Object newedObject;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new NewerInvocationHandler(provider, impl);
     }
 

@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.demo.automock;
 
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     TestSubject subject;
     DelegateSubject delegate;
     String[] strings1;
@@ -14,7 +14,7 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase im
     Simian[] monkeys;
     Simian[] apes;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new AnotherWorkingTestSubject(delegate);
     }
 

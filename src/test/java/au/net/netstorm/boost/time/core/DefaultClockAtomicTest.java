@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.time.core;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-public final class DefaultClockAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultClockAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     Clock subject;
     TimePointMaster timeLord;
     TimePoint expected;
@@ -15,7 +15,7 @@ public final class DefaultClockAtomicTest extends InteractionTestCase implements
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     Long millis;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultClock();
         inject(subject);
     }

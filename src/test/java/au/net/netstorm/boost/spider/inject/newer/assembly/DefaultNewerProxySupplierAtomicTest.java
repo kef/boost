@@ -5,7 +5,7 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerInvocationHandler;
 import au.net.netstorm.boost.spider.inject.newer.core.NewerProxySupplier;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
@@ -14,7 +14,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     private static final Implementation NEWER_INVOCATION_HANDLER = new DefaultImplementation(NewerInvocationHandler.class);
     NewerProxySupplier subject;
     Interface newerInterface;
@@ -26,7 +26,7 @@ public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCa
     Instantiator instantiator;
     UnresolvedInstance unresolved;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
     }
 

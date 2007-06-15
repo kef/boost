@@ -4,11 +4,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
+public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
     UnknownKnotException throwable = new UnknownKnotException();
     EdgeClass classer = new DefaultEdgeClass();
     Method tieMethod = getTieMethod();
@@ -20,7 +20,7 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
     Object irrelevant;
     TryFinally tryfinally;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         params = new Object[]{knot};
         subject = new DefaultTryFinallyHandler(apron, tryfinally);
     }

@@ -5,7 +5,7 @@ import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -15,7 +15,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasSubjects {
+public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
     private static final Interface ANIMAL = new DefaultInterface(Animal.class);
     private static final Interface SPORT = new DefaultInterface(Sport.class);
     private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);
@@ -33,7 +33,7 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     RegistryMaster subject;
     Flavour flavour;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultRegistryMaster(flavouredMap);
         multiple(ANIMAL, MAMMAL_IMPL);
         multiple(VEHICLE, CAR_IMPL);

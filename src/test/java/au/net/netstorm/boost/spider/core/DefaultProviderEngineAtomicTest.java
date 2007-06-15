@@ -7,7 +7,7 @@ import au.net.netstorm.boost.spider.gaijin.Gaijinator;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.BaseReference;
@@ -17,7 +17,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     ProviderEngine subject;
     Onionizer onionizer;
     Instantiator instantiator;
@@ -33,7 +33,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     Interface initMarker = new DefaultInterface(Initialisable.class);
     ResolvedThings resolvedThings = new DefaultResolvedThings();
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultProviderEngine(onionizer, injector, instantiator);
     }
 

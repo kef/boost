@@ -1,16 +1,16 @@
 package au.net.netstorm.boost.spider.flavour;
 
 import au.net.netstorm.boost.primordial.BoooostException;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class FlavourMapExceptionAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class FlavourMapExceptionAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     BoooostException subject;
     FlavouredInterface flavoured;
     String reason;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new FlavourMapException(flavoured, reason);
     }
 

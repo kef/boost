@@ -6,14 +6,14 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.flavour.DefaultFlavour;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.test.automock.HasSubjects;
+import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultFieldResolverAtomicTest extends InteractionTestCase implements HasSubjects, UsesAutoMocks {
+public final class DefaultFieldResolverAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     EdgeClass classer = new DefaultEdgeClass();
     Interface happyChap = new DefaultInterface(HappyChap.class);
     Interface beerInHisTummy = new DefaultInterface(BeerInHisTummy.class);
@@ -21,7 +21,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
     ResolverEngine resolver;
     ResolvedInstance resolved;
 
-    public void setupSubjects() {
+    public void setUpFixtures() {
         subject = new DefaultFieldResolver(resolver);
     }
 
