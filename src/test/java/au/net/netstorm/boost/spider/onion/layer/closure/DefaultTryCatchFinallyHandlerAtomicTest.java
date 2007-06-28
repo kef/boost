@@ -22,21 +22,21 @@ public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTe
 
     public void setUpFixtures() {
         params = new Object[]{knot};
-        subject = new DefaultTryFinallyHandler(apron, tryfinally);
+        subject = new DefaultTryCatchFinallyHandler(apron, tryfinally);
     }
 
     public void testNormal() throws Throwable {
-        expect.oneCall(tryfinally, VOID, "in");
+        expect.oneCall(tryfinally, VOID, "theCore");
         expect.oneCall(apron, result, "tie", knot);
-        expect.oneCall(tryfinally, VOID, "out");
+        expect.oneCall(tryfinally, VOID, "theFinally");
         Object actual = subject.invoke(irrelevant, tieMethod, params);
         assertEquals(result, actual);
     }
 
     public void testException() throws Throwable {
-        expect.oneCall(tryfinally, VOID, "in");
+        expect.oneCall(tryfinally, VOID, "theCore");
         expect.oneCall(apron, throwable, "tie", knot);
-        expect.oneCall(tryfinally, VOID, "out");
+        expect.oneCall(tryfinally, VOID, "theFinally");
         try {
             subject.invoke(irrelevant, tieMethod, params);
             fail();

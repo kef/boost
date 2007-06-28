@@ -24,7 +24,7 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyHandler;
+import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHandler;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
@@ -58,7 +58,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private Spider threadLocal(Spider spider) {
         TryCatchFinally trier = new SpiderTryCatchFinally(RESOLVED_THINGS);
-        InvocationHandler handler = new DefaultTryFinallyHandler(spider, trier);
+        InvocationHandler handler = new DefaultTryCatchFinallyHandler(spider, trier);
         return (Spider) proxyFactory.newProxy(SPIDER_TYPE, handler);
     }
 
