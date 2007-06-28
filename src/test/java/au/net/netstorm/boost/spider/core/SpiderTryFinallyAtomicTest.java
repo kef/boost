@@ -16,11 +16,11 @@ public final class SpiderTryFinallyAtomicTest extends InteractionTestCase implem
 
     public void testIn() {
         expect.oneCall(resolvedThings, VOID, "clear");
-        subject.in();
+        subject.theCore();
     }
 
     public void testOut() {
         expect.oneCall(resolvedThings, VOID, "clear");
-        subject.out();
+        subject.theFinally();
     }
 }

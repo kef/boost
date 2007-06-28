@@ -10,11 +10,11 @@ public final class SpiderTryCatchFinally implements TryCatchFinally {
         this.resolvedThings = resolvedThings;
     }
 
-    public void in() {
+    public void theCore() {
         resolvedThings.clear();
     }
 
-    public void out() {
+    public void theFinally() {
         resolvedThings.clear();
     }
 }

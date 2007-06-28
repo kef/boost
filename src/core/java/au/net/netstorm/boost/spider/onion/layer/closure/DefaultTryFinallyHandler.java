@@ -13,10 +13,10 @@ public final class DefaultTryFinallyHandler implements TryFinallyHandler {
 
     public Object invoke(Object object, Method method, Object[] parameters) throws Throwable {
         try {
-            trier.in();
+            trier.theCore();
             return method.invoke(delegate, parameters);
         } finally {
-            trier.out();
+            trier.theFinally();
         }
     }
 }
