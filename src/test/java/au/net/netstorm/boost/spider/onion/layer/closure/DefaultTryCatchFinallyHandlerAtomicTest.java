@@ -8,7 +8,7 @@ import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
-public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
+public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
     UnknownKnotException throwable = new UnknownKnotException();
     EdgeClass classer = new DefaultEdgeClass();
     Method tieMethod = getTieMethod();
@@ -18,7 +18,7 @@ public final class DefaultTryFinallyHandlerAtomicTest extends InteractionTestCas
     Object[] params;
     Integer result;
     Object irrelevant;
-    TryFinally tryfinally;
+    TryCatchFinally tryfinally;
 
     public void setUpFixtures() {
         params = new Object[]{knot};

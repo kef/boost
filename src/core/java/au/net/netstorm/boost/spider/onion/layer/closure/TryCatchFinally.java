@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
-public interface TryFinally {
+public interface TryCatchFinally {
     void in();
 
     void out();

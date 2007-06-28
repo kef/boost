@@ -4,19 +4,19 @@ import java.lang.reflect.Method;
 
 public final class DefaultTryFinallyHandler implements TryFinallyHandler {
     private final Object delegate;
-    private final TryFinally tryFinally;
+    private final TryCatchFinally trier;
 
-    public DefaultTryFinallyHandler(Object delegate, TryFinally tryFinally) {
+    public DefaultTryFinallyHandler(Object delegate, TryCatchFinally trier) {
         this.delegate = delegate;
-        this.tryFinally = tryFinally;
+        this.trier = trier;
     }
 
     public Object invoke(Object object, Method method, Object[] parameters) throws Throwable {
         try {
-            tryFinally.in();
+            trier.in();
             return method.invoke(delegate, parameters);
         } finally {
-            tryFinally.out();
+            trier.out();
         }
     }
 }
