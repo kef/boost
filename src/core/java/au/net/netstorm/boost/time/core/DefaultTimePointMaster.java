@@ -4,6 +4,8 @@ import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
 
 // FIX SC507 Make instance.
 public final class DefaultTimePointMaster implements TimePointMaster {
+    public static final long MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
+
     public TimePoint next(TimePoint time) {
         return relative(time, +Duration.QUANTUM.millis);
     }

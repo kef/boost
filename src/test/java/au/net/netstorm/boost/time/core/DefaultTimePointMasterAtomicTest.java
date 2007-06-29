@@ -43,12 +43,6 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
         checkGet(MILLIS_2);
     }
 
-    private void checkGet(long millis) {
-        TimePoint timePoint = subject.get(millis);
-        long actual = timePoint.getMillis();
-        assertEquals(millis, actual);
-    }
-
     public void testPreviousInvalid() {
         try {
             subject.previous(DefaultTimePoint.EPOCH);
@@ -63,6 +57,17 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
             fail();
         } catch (IllegalArgumentException ex) {
         }
+    }
+
+    public void testMillisInADay() {
+        long expected = 1000 * 60 * 60 * 24;
+        assertEquals(expected, DefaultTimePointMaster.MILLIS_IN_A_DAY);
+    }
+
+    private void checkGet(long millis) {
+        TimePoint timePoint = subject.get(millis);
+        long actual = timePoint.getMillis();
+        assertEquals(millis, actual);
     }
 
     private static final TimeFactory TIME_FACTORY = new DefaultTimeFactory();
