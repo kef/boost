@@ -17,5 +17,6 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
     }
 
     public void rethrow(Throwable t) {
+        throw (Error) t;
     }
 }

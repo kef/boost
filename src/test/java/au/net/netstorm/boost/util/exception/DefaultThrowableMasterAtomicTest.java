@@ -25,7 +25,16 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
     }
 
     public void testRethrow() {
-        subject.rethrow(THROWABLE_1);
+        // FIX 9999 RuntimeException
+        // FIX 9999 CheckedException
+        // FIX 9999 Error
+        Throwable exception = ERROR_2;
+        try {
+            subject.rethrow(exception);
+            fail();
+        } catch (Throwable caught) {
+            assertSame(exception, caught);
+        }
     }
 
     private void isChecked(boolean expected, Throwable throwable) {
