@@ -24,6 +24,10 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
         isChecked(false, ERROR_2);
     }
 
+    public void testRethrow() {
+        subject.rethrow(THROWABLE_1);
+    }
+
     private void isChecked(boolean expected, Throwable throwable) {
         boolean result = subject.isChecked(throwable);
         assertEquals(expected, result);
