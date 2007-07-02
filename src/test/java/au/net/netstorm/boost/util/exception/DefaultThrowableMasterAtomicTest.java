@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.exception;
 
+import java.lang.reflect.UndeclaredThrowableException;
 import au.net.netstorm.boost.test.cases.BoooostCase;
 
 public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
@@ -29,6 +30,14 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
         // FIX 9999 CheckedException
         // FIX 9999 Error
         checkRethrows(ERROR_2);
+        checkRethrows(RUNTIME_1);
+        Throwable exception = EXCEPTION_1;
+        try {
+            subject.rethrow(exception);
+        } catch (UndeclaredThrowableException caught) {
+            Throwable actual = caught.getUndeclaredThrowable();
+            assertSame(exception, actual);
+        }
     }
 
     private void checkRethrows(Throwable t) {
