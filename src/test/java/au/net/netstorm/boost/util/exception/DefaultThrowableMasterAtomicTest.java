@@ -28,12 +28,15 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
         // FIX 9999 RuntimeException
         // FIX 9999 CheckedException
         // FIX 9999 Error
-        Throwable exception = ERROR_2;
+        checkRethrows(ERROR_2);
+    }
+
+    private void checkRethrows(Throwable t) {
         try {
-            subject.rethrow(exception);
+            subject.rethrow(t);
             fail();
         } catch (Throwable caught) {
-            assertSame(exception, caught);
+            assertSame(t, caught);
         }
     }
 
