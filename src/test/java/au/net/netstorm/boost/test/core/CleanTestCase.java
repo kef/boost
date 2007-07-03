@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.cases;
+package au.net.netstorm.boost.test.core;
 
 public abstract class CleanTestCase extends BoooostCase {
 

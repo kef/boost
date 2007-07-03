@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.field;
 
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.test.matcher.Matcher;
 
 public final class DefaultFieldSelector implements FieldSelector {
     public BoostField[] select(BoostField[] fields, Matcher matcher) {

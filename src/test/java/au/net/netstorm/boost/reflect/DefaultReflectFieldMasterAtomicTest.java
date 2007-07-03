@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 

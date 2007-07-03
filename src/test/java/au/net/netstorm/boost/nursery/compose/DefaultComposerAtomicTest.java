@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.compose;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.type;
 
 import java.io.Serializable;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public class ImmutableAtomicTest extends BoooostCase {
     public void testIsSerializable() {

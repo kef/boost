@@ -1,14 +1,19 @@
 package au.net.netstorm.boost.test.automock;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.DefaultFieldSelector;
 import au.net.netstorm.boost.test.field.FieldBuilder;
 import au.net.netstorm.boost.test.field.FieldSelector;
-import au.net.netstorm.boost.test.field.Matcher;
 import au.net.netstorm.boost.test.inject.DefaultSubjectInjector;
 import au.net.netstorm.boost.test.inject.SubjectInjector;
+import au.net.netstorm.boost.test.matcher.DummyArrayMatcher;
+import au.net.netstorm.boost.test.matcher.DummyMatcher;
+import au.net.netstorm.boost.test.matcher.Matcher;
+import au.net.netstorm.boost.test.matcher.MockableMatcher;
+import au.net.netstorm.boost.test.random.DefaultRandomizer;
+import au.net.netstorm.boost.test.random.Randomizer;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.MockObjectTestCase;

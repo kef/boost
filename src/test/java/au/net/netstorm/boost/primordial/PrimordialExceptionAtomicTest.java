@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.primordial;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 

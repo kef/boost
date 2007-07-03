@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.instance;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultInstanceProviderAtomicTest extends BoooostCase {
-//    private static final Integer INTEGER_23 = new Integer(23);
+    //    private static final Integer INTEGER_23 = new Integer(23);
     //    private static final Integer INTEGER_32 = new Integer(32);
     //    private static final Object POINT_23_32 = new Point(23, 32);
     //    private static final Class INTEGER_CLASS = Integer.class;

@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.type;
 
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultInterfaceUtilAtomicTest extends BoooostCase {
     private final InterfaceUtil subject = new DefaultInterfaceUtil();

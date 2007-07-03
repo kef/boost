@@ -5,7 +5,7 @@ import java.util.List;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldFinder;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.type;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class NoNewerInterfaceExceptionAtomicTest extends BoooostCase {
     private static final Class CLASS = Yabby.class;

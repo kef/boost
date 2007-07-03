@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 // FIX SC511 This belongs in "edge".
 

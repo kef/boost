@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.format;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultHexUtilAtomicTest extends BoooostCase {
     private static final String HEX_STRING1 = "0123456789ABCDEFFEDCBA9876543210";

@@ -1,7 +1,6 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.matcher;
 
 import au.net.netstorm.boost.test.field.BoostField;
-import au.net.netstorm.boost.test.field.Matcher;
 
 public final class DummyMatcher implements Matcher {
     private final Matcher common = new CommonMatcher();

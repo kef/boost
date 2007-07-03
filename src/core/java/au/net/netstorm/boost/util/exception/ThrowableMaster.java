@@ -4,4 +4,6 @@ public interface ThrowableMaster {
     void rethrow(Throwable t);
 
     boolean isChecked(Throwable t);
+
+    String getTrace(Throwable t);
 }

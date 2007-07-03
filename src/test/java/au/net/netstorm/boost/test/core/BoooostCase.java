@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.cases;
+package au.net.netstorm.boost.test.core;
 
 import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
 import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;

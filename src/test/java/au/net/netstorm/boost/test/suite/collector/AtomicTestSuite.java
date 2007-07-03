@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.suite.collector;
 
 import au.net.netstorm.boost.test.aggregator.DefaultTestAggregator;
 import au.net.netstorm.boost.test.aggregator.TestAggregator;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import junit.framework.Test;
 
 public class AtomicTestSuite extends BoooostCase {

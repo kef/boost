@@ -4,7 +4,7 @@ import java.lang.reflect.Proxy;
 import java.rmi.Remote;
 import java.security.PrivateKey;
 import java.util.Collection;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 

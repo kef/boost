@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.core;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class StartTimeAtomicTest extends BoooostCase {
     public void testNullInvalidInConstructor() {

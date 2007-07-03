@@ -4,7 +4,7 @@ import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.test.aggregator.RegexPattern;
 import au.net.netstorm.boost.test.aggregator.TestClassLocator;
 import au.net.netstorm.boost.test.aggregator.TestRegexPattern;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.array.ArrayOperator;
 import au.net.netstorm.boost.util.array.DefaultArrayOperator;
 

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 

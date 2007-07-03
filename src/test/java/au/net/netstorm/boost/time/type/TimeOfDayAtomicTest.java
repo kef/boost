@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class TimeOfDayAtomicTest extends BoooostCase {
     public static final HourOfDay AN_HOUR = new HourOfDay(3);

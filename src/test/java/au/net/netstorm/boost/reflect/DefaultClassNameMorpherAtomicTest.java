@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultClassNameMorpherAtomicTest extends BoooostCase {
     private ClassMorpher morpher = new DefaultClassMorpher();

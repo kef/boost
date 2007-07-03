@@ -2,7 +2,7 @@ package au.net.netstorm.boost.util.io;
 
 import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
 import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultStreamConverterAtomicTest extends BoooostCase {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];

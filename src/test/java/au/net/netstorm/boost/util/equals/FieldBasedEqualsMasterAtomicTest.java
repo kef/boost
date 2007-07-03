@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.equals;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;// NOTE: Careful when refactoring due to heavy use of equals!
+import au.net.netstorm.boost.test.core.BoooostCase;// NOTE: Careful when refactoring due to heavy use of equals!
 
 // DEBT ClassDataAbstractionCoupling {
 

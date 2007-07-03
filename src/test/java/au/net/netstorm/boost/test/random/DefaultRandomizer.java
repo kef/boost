@@ -1,8 +1,6 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.random;
 
 import au.net.netstorm.boost.test.field.BoostField;
-import au.net.netstorm.boost.test.random.EverythingRandomProvider;
-import au.net.netstorm.boost.test.random.RandomProvider;
 
 public final class DefaultRandomizer implements Randomizer {
     private RandomProvider randomProvider = new EverythingRandomProvider();

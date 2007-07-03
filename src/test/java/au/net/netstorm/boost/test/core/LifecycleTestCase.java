@@ -1,10 +1,12 @@
-package au.net.netstorm.boost.test.lifecycle;
+package au.net.netstorm.boost.test.core;
 
 import au.net.netstorm.boost.test.automock.MockExpectations;
-import au.net.netstorm.boost.test.cases.CleanTestCase;
 import au.net.netstorm.boost.test.exception.DefaultExceptionSupport;
 import au.net.netstorm.boost.test.exception.ExceptionSupport;
 import au.net.netstorm.boost.test.exception.ExceptionSupportProvider;
+import au.net.netstorm.boost.test.lifecycle.DefaultLifecycleTestRunner;
+import au.net.netstorm.boost.test.lifecycle.LifecycleTestRunner;
+import au.net.netstorm.boost.test.lifecycle.TestLifecycleProvider;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements TestLifecycleProvider, ExceptionSupportProvider {
     protected final LifecycleTestRunner runner;

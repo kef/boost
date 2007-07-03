@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.random;
 
 import au.net.netstorm.boost.test.field.BoostField;
 

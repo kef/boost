@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.test.cases.BoooostCase;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 // FIX SC600 BREADCRUMB Rename DataDemoTest to DataDemoTestCase.  Rename to DataAtomScenarioTest.
 
