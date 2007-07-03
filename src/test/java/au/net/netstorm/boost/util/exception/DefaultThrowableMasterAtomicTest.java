@@ -26,21 +26,17 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
     }
 
     public void testRethrow() {
-        // FIX 9999 RuntimeException
-        // FIX 9999 CheckedException
-        // FIX 9999 Error
-        checkRethrows(ERROR_2);
-        checkRethrows(RUNTIME_1);
-        Throwable exception = EXCEPTION_1;
-        try {
-            subject.rethrow(exception);
-        } catch (UndeclaredThrowableException caught) {
-            Throwable actual = caught.getUndeclaredThrowable();
-            assertSame(exception, actual);
-        }
+        checkThrowsWrapped(EXCEPTION_1);
+        checkThrowsOriginal(RUNTIME_1);
+        checkThrowsOriginal(ERROR_2);
     }
 
-    private void checkRethrows(Throwable t) {
+    private void isChecked(boolean expected, Throwable throwable) {
+        boolean result = subject.isChecked(throwable);
+        assertEquals(expected, result);
+    }
+
+    private void checkThrowsOriginal(Throwable t) {
         try {
             subject.rethrow(t);
             fail();
@@ -49,8 +45,12 @@ public final class DefaultThrowableMasterAtomicTest extends BoooostCase {
         }
     }
 
-    private void isChecked(boolean expected, Throwable throwable) {
-        boolean result = subject.isChecked(throwable);
-        assertEquals(expected, result);
+    private void checkThrowsWrapped(Throwable exception) {
+        try {
+            subject.rethrow(exception);
+        } catch (UndeclaredThrowableException caught) {
+            Throwable actual = caught.getUndeclaredThrowable();
+            assertSame(exception, actual);
+        }
     }
 }

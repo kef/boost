@@ -3,9 +3,9 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.cases.BoooostCase;
-import au.net.netstorm.boost.test.cases.JUnitLifecycle;
+import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
-public final class InteractionTest implements JUnitLifecycle {
+public final class InteractionTest implements TestLifecycle {
     private final AutoMockTest autoMockTest;
     private final BoooostCase testCase;
 

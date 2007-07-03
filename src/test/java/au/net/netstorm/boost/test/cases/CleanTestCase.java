@@ -1,12 +1,10 @@
-package au.net.netstorm.boost.test.automock;
-
-import au.net.netstorm.boost.test.cases.BoooostCase;
+package au.net.netstorm.boost.test.cases;
 
 public abstract class CleanTestCase extends BoooostCase {
 
     public abstract void runBare() throws Throwable;
 
-    protected final void runTest() throws Throwable {
+    public final void runTest() throws Throwable {
         super.runTest();
     }
 
