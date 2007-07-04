@@ -7,7 +7,7 @@ public final class EverythingRandomProvider implements RandomProvider {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private RandomProvider concretes = new ConcreteRandomProvider();
     private RandomProvider arrays = new ArrayRandomProvider(this);
-    private RandomProvider interfaces = new InterfaceRandomProvider();
+    private RandomProvider interfaces = new InterfaceRandomProvider(this);
 
     // OK CyclomaticComplexity {
     public Object get(Class type) {

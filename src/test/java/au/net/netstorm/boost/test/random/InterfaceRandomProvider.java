@@ -1,17 +1,24 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.test.automock.DefaultMockProvider;
-import au.net.netstorm.boost.test.automock.MockProvider;
-import org.jmock.Mock;
-import org.jmock.MockObjectTestCase;
+import java.lang.reflect.InvocationHandler;
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
+import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class InterfaceRandomProvider implements RandomProvider {
-    private MockObjectTestCase jMock = new MockObjectTestCase() {
-    };
-    private MockProvider provider = new DefaultMockProvider(jMock);
+    private ProxySupplier delegate = new DefaultProxySupplier();
+    private ProxyFactory proxyFactory = new DefaultProxyFactory(delegate);
+    private InvocationHandler handler;
+
+    public InterfaceRandomProvider(RandomProvider randomProvider) {
+        handler = new RandomInterfaceInvocationHandler(randomProvider);
+    }
 
     public Object get(Class type) {
-        Mock mock = provider.mock(type);
-        return mock.proxy();
+        Interface iface = new DefaultInterface(type);
+        return proxyFactory.newProxy(iface, handler);
     }
 }
