@@ -11,14 +11,15 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class InterfaceRandomProvider implements RandomProvider {
     private ProxySupplier delegate = new DefaultProxySupplier();
     private ProxyFactory proxyFactory = new DefaultProxyFactory(delegate);
-    private InvocationHandler handler;
+    private final RandomProvider randomProvider;
 
     public InterfaceRandomProvider(RandomProvider randomProvider) {
-        handler = new RandomInterfaceInvocationHandler(randomProvider);
+        this.randomProvider = randomProvider;
     }
 
     public Object get(Class type) {
         Interface iface = new DefaultInterface(type);
+        InvocationHandler handler = new RandomInterfaceInvocationHandler(randomProvider);
         return proxyFactory.newProxy(iface, handler);
     }
 }
