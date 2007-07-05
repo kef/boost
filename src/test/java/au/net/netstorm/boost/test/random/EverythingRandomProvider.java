@@ -18,17 +18,13 @@ public final class EverythingRandomProvider implements RandomProvider {
 
     // OK CyclomaticComplexity {
     public Object provide(Class type) {
-        if (isInterface(type)) return randomInterface(type);
         if (isPrimitive(type)) return randomPrimitiveType(type);
         if (isArray(type)) return randomArray(type);
+        if (isInterface(type)) return randomInterface(type);
         return randomSupportedConcrete(type);
     }
 
     // } OK CyclomaticComplexity
-
-    private boolean isInterface(Class type) {
-        return type.isInterface();
-    }
 
     private boolean isPrimitive(Class type) {
         return primitiveBoxer.isPrimitive(type);
@@ -38,8 +34,8 @@ public final class EverythingRandomProvider implements RandomProvider {
         return type.isArray();
     }
 
-    private Object randomInterface(Class type) {
-        return interfaces.provide(type);
+    private boolean isInterface(Class type) {
+        return type.isInterface();
     }
 
     private Object randomPrimitiveType(Class type) {
@@ -47,11 +43,15 @@ public final class EverythingRandomProvider implements RandomProvider {
         return concretes.provide(boxed);
     }
 
-    private Object randomSupportedConcrete(Class type) {
-        return concretes.provide(type);
-    }
-
     private Object randomArray(Class type) {
         return arrays.provide(type);
+    }
+
+    private Object randomInterface(Class type) {
+        return interfaces.provide(type);
+    }
+
+    private Object randomSupportedConcrete(Class type) {
+        return concretes.provide(type);
     }
 }
