@@ -6,8 +6,10 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.specific.RegistersSpecifics;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 
-public final class RandomProviderDemoTest extends InteractionTestCase implements RegistersSpecifics {
+// FIX 2076 Tidy this up.
 
+// FIX 2076 Looks like it is not a random provider test any more.
+public final class RandomProviderDemoTest extends InteractionTestCase implements RegistersSpecifics {
     FunkyData funkyDataDummy;
     HappyDay anotherHappyDayDummy;
 
