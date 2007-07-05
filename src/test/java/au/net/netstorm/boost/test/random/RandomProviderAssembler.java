@@ -1,6 +1,9 @@
 package au.net.netstorm.boost.test.random;
 
+import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+
 public interface RandomProviderAssembler {
-    // FIX 2076 SpecificProviderRegistry in here.
     RandomProvider everything();
+
+    RandomProvider everything(SpecificProviderRegistry registry);
 }

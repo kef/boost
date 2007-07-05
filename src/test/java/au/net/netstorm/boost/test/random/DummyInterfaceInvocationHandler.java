@@ -8,14 +8,14 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 
-final class RandomInterfaceInvocationHandler implements InvocationHandler {
+final class DummyInterfaceInvocationHandler implements InvocationHandler {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Map priorCalls = new HashMap();
     private final Class proxiedType;
     private final RandomProvider random;
     private final SpecificProviderRegistry specific;
 
-    public RandomInterfaceInvocationHandler(Class proxiedType, RandomProvider randomProvider, SpecificProviderRegistry specificProviders) {
+    public DummyInterfaceInvocationHandler(Class proxiedType, RandomProvider randomProvider, SpecificProviderRegistry specificProviders) {
         this.proxiedType = proxiedType;
         this.random = randomProvider;
         this.specific = specificProviders;
@@ -43,6 +43,7 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
 
     private Object provide(Method method) {
         Class type = method.getReturnType();
+        // FIX BREADCRUMB 2076 Move this switch into the InterfaceRandomProvider.
         boolean isSpecific = specific.canProvide(type);
         return isSpecific ? specific.provide(type) : random.provide(type);
     }

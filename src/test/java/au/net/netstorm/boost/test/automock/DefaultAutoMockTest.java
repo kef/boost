@@ -12,8 +12,9 @@ import au.net.netstorm.boost.test.matcher.DummyMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.matcher.MockableMatcher;
 import au.net.netstorm.boost.test.random.BoostFieldRandomizer;
-import au.net.netstorm.boost.test.random.EverythingRandomProvider;
+import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.RandomProvider;
+import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.random.Randomizer;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -22,6 +23,7 @@ import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultAutoMockTest implements AutoMockTest {
+    private final RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final FieldSelector selector = new DefaultFieldSelector();
@@ -39,7 +41,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
 
     public DefaultAutoMockTest(InteractionTestCase testCase, SpecificProviderRegistry specifics) {
         this.testCase = testCase;
-        RandomProvider randomProvider = new EverythingRandomProvider(specifics);
+        RandomProvider randomProvider = providerAssembler.everything(specifics);
         randomizer = new BoostFieldRandomizer(randomProvider);
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         fields = getAllFields();

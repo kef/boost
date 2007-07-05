@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
-
 public final class EverythingRandomProvider implements RandomProvider {
     private final RandomProvider arrays = new ArrayRandomProvider(this);
     private final RandomProvider primitives = new PrimitiveProvider();
@@ -10,8 +8,8 @@ public final class EverythingRandomProvider implements RandomProvider {
 
     // FIX 2076 Remove SpecificProviderRegistry.  Moves into RandomInterfaceInvocationHandler.
     // FIX 2076 Pull any specif stuff.  This is just random.
-    public EverythingRandomProvider(SpecificProviderRegistry specifics) {
-        interfaces = new InterfaceRandomProvider(this, specifics);
+    public EverythingRandomProvider(RandomProvider interfaces) {
+        this.interfaces = interfaces;
     }
 
     // OK CyclomaticComplexity {

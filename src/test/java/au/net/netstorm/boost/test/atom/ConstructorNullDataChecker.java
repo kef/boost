@@ -5,19 +5,18 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
-import au.net.netstorm.boost.test.random.EverythingRandomProvider;
+import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.test.random.RandomProvider;
-import au.net.netstorm.boost.test.specific.DefaultSpecificProviderRegistry;
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 public final class ConstructorNullDataChecker implements DataChecker {
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private SpecificProviderRegistry specifics = new DefaultSpecificProviderRegistry();
-    private RandomProvider randomProvider = new EverythingRandomProvider(specifics);
+    private RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
+    private RandomProvider randomProvider = providerAssembler.everything();
     private FieldRandomizer fieldUtil = new DefaultFieldRandomizer(randomProvider);
     private ExceptionUtil exceptionUtil = new DefaultExceptionUtil();
     private ClassMaster classMaster = new DefaultClassMaster();
