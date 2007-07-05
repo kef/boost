@@ -16,7 +16,7 @@ public final class DefaultFieldRandomizer implements FieldRandomizer {
         Class[] types = fielder.getTypes(fields);
         Object[] result = new Object[types.length];
         for (int i = 0; i < types.length; i++) {
-            result[i] = randomProvider.get(types[i]);
+            result[i] = randomProvider.provide(types[i]);
         }
         return result;
     }

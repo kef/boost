@@ -12,7 +12,7 @@ public final class ConcreteRandomProvider implements RandomProvider {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Class[] randomClasses = {LovelyInterface.class, Random.class, Serializable.class};
 
-    public Object get(Class type) {
+    public Object provide(Class type) {
         Object result = doGetRandom(type);
         if (result != null) return result;
         throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +

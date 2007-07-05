@@ -17,7 +17,7 @@ public final class BoostFieldRandomizer implements Randomizer {
 
     private void randomize(BoostField field) {
         Class cls = field.getType();
-        Object random = randomProvider.get(cls);
+        Object random = randomProvider.provide(cls);
         field.set(random);
     }
 }

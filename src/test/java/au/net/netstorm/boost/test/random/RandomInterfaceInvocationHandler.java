@@ -43,8 +43,8 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
 
     private Object provide(Method method) {
         Class type = method.getReturnType();
-        boolean specific = this.specific.contains(type);
-        return specific ? this.specific.get(type) : random.get(type);
+        boolean isSpecific = specific.canProvide(type);
+        return isSpecific ? specific.provide(type) : random.provide(type);
     }
 
     private boolean isToString(Method method) {
@@ -60,7 +60,7 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
     }
 
     private Object doToString() {
-        Object niceShortRandom = random.get(Integer.class);
+        Object niceShortRandom = random.provide(Integer.class);
         return "Dummy proxy for <" + proxiedType + " (" + niceShortRandom + ")>";
     }
 

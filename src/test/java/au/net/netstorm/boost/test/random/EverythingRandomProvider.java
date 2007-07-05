@@ -17,7 +17,7 @@ public final class EverythingRandomProvider implements RandomProvider {
     }
 
     // OK CyclomaticComplexity {
-    public Object get(Class type) {
+    public Object provide(Class type) {
         if (isInterface(type)) return randomInterface(type);
         if (isPrimitive(type)) return randomPrimitiveType(type);
         if (isArray(type)) return randomArray(type);
@@ -39,19 +39,19 @@ public final class EverythingRandomProvider implements RandomProvider {
     }
 
     private Object randomInterface(Class type) {
-        return interfaces.get(type);
+        return interfaces.provide(type);
     }
 
     private Object randomPrimitiveType(Class type) {
         Class boxed = primitiveBoxer.getBoxed(type);
-        return concretes.get(boxed);
+        return concretes.provide(boxed);
     }
 
     private Object randomSupportedConcrete(Class type) {
-        return concretes.get(type);
+        return concretes.provide(type);
     }
 
     private Object randomArray(Class type) {
-        return arrays.get(type);
+        return arrays.provide(type);
     }
 }

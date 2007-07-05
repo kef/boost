@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.random;
 
-public interface RandomProvider {
-    // FIX BREADCRUMB 2076 Use spider provider.
-    Object get(Class type);
+import au.net.netstorm.boost.spider.core.Provider;
+
+public interface RandomProvider extends Provider {
+    Object provide(Class type);
 }

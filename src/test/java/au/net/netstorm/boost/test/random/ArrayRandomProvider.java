@@ -9,7 +9,7 @@ public final class ArrayRandomProvider implements RandomProvider {
         this.randomProvider = randomProvider;
     }
 
-    public Object get(Class type) {
+    public Object provide(Class type) {
         Class componentType = type.getComponentType();
         int size = randomSize();
         Object array = Array.newInstance(componentType, size);
@@ -19,13 +19,13 @@ public final class ArrayRandomProvider implements RandomProvider {
 
     private void populate(int size, Class componentType, Object array) {
         for (int i = 0; i < size; i++) {
-            Object instance = randomProvider.get(componentType);
+            Object instance = randomProvider.provide(componentType);
             Array.set(array, i, instance);
         }
     }
 
     private int randomSize() {
-        Boolean on = (Boolean) randomProvider.get(Boolean.class);
+        Boolean on = (Boolean) randomProvider.provide(Boolean.class);
         return on ? 2 : 3;
     }
 }
