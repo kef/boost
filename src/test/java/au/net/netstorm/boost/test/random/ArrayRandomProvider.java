@@ -17,6 +17,10 @@ public final class ArrayRandomProvider implements RandomProvider {
         return array;
     }
 
+    public boolean canProvide(Class type) {
+        return type.isArray();
+    }
+
     private void populate(int size, Class componentType, Object array) {
         for (int i = 0; i < size; i++) {
             Object instance = randomProvider.provide(componentType);

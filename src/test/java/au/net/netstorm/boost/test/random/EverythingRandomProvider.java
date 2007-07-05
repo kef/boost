@@ -1,13 +1,11 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
-import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 
 public final class EverythingRandomProvider implements RandomProvider {
-    private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private final RandomProvider concretes = new ConcreteRandomProvider();
     private final RandomProvider arrays = new ArrayRandomProvider(this);
+    private final RandomProvider primitives = new PrimitiveProvider();
+    private final RandomProvider concretes = new ConcreteRandomProvider();
     private final RandomProvider interfaces;
 
     // FIX 2076 Remove SpecificProviderRegistry.  Moves into RandomInterfaceInvocationHandler.
@@ -18,40 +16,27 @@ public final class EverythingRandomProvider implements RandomProvider {
 
     // OK CyclomaticComplexity {
     public Object provide(Class type) {
-        if (isPrimitive(type)) return randomPrimitiveType(type);
-        if (isArray(type)) return randomArray(type);
-        if (isInterface(type)) return randomInterface(type);
-        return randomSupportedConcrete(type);
+        if (isPrimitive(type)) return primitives.provide(type);
+        if (isArray(type)) return arrays.provide(type);
+        if (isInterface(type)) return interfaces.provide(type);
+        return concretes.provide(type);
     }
 
     // } OK CyclomaticComplexity
 
+    public boolean canProvide(Class type) {
+        return true;
+    }
+
     private boolean isPrimitive(Class type) {
-        return primitiveBoxer.isPrimitive(type);
+        return primitives.canProvide(type);
     }
 
     private boolean isArray(Class type) {
-        return type.isArray();
+        return arrays.canProvide(type);
     }
 
     private boolean isInterface(Class type) {
-        return type.isInterface();
-    }
-
-    private Object randomPrimitiveType(Class type) {
-        Class boxed = primitiveBoxer.getBoxed(type);
-        return concretes.provide(boxed);
-    }
-
-    private Object randomArray(Class type) {
-        return arrays.provide(type);
-    }
-
-    private Object randomInterface(Class type) {
-        return interfaces.provide(type);
-    }
-
-    private Object randomSupportedConcrete(Class type) {
-        return concretes.provide(type);
+        return interfaces.canProvide(type);
     }
 }

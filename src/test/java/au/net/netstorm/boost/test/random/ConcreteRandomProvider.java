@@ -19,6 +19,10 @@ public final class ConcreteRandomProvider implements RandomProvider {
                 "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
     }
 
+    public boolean canProvide(Class type) {
+        return doGetRandom(type) != null;
+    }
+
     private Object doGetRandom(Class type) {
         if (type == Boolean.class) return randomBoolean();
         if (type == Integer.class) return randomInteger();

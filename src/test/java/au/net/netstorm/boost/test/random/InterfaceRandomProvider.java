@@ -20,6 +20,10 @@ public final class InterfaceRandomProvider implements RandomProvider {
         this.specificProviders = specificProviders;
     }
 
+    public boolean canProvide(Class type) {
+        return type.isInterface();
+    }
+
     public Object provide(Class type) {
         Interface iface = new DefaultInterface(type);
         InvocationHandler handler = new RandomInterfaceInvocationHandler(type, randomProvider, specificProviders);
