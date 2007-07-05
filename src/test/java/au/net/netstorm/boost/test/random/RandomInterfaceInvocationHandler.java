@@ -52,33 +52,16 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
     }
 
     private boolean isToString(Method method) {
-        // FIX BREADCRUMB 2076 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Attempt to use the actual method as a comparison.
-//        proxiedType.
-        return isMethodWithNoParams(method, "toString");
+        return same(method, "toString", new Class[]{});
     }
 
     private boolean isEquals(Method method) {
-        if (!method.getName().equals("equals"))
-            return false;
-        return hasOneParameterOfTypeObject(method);
+        return same(method, "equals", new Class[]{Object.class});
     }
 
-    private boolean isMethodWithNoParams(Method method, String methodName) {
-        if (!method.getName().equals(methodName))
-            return false;
-        return hasNoParameter(method);
-    }
-
-    private boolean hasOneParameterOfTypeObject(Method method) {
-        Class[] parameterTypes = method.getParameterTypes();
-        if (parameterTypes.length != 1)
-            return false;
-        Class parameterType = parameterTypes[0];
-        return parameterType.equals(Object.class);
-    }
-
-    private boolean hasNoParameter(Method method) {
-        return method.getParameterTypes().length == 0;
+    private boolean same(Method method, String methodName, Class[] parameterTypes) {
+        Method toString = classer.getMethod(Object.class, methodName, parameterTypes);
+        return method.equals(toString);
     }
 
     private Object doEquals(Object object, Object otherObject) {
