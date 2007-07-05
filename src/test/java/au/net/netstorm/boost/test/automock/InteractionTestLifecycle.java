@@ -14,6 +14,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
 
     public InteractionTestLifecycle(InteractionTestCase testCase) {
         this.testCase = testCase;
+        // FIX 2076 Rename.  No longer does just mocks.
         autoMockTest = new DefaultAutoMockTest(testCase, specifics);
     }
 

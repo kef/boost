@@ -4,55 +4,63 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 
 final class RandomInterfaceInvocationHandler implements InvocationHandler {
+    private final EdgeClass classer = new DefaultEdgeClass();
+    private final Map priorCalls = new HashMap();
     private final Class proxiedType;
     private final RandomProvider randomProvider;
-    private final Map results = new HashMap();
+    private final SpecificProviderRegistry specificProviders;
 
     // FIX 2076 Add in SpecificProviderRegistry here.
-    public RandomInterfaceInvocationHandler(Class proxiedType, RandomProvider randomProvider) {
+    public RandomInterfaceInvocationHandler(Class proxiedType, RandomProvider randomProvider, SpecificProviderRegistry specificProviders) {
         this.proxiedType = proxiedType;
         this.randomProvider = randomProvider;
+        this.specificProviders = specificProviders;
     }
 
-    public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
-        Invocation invocation = new Invocation(object, method, objects);
-        Object result = results.get(invocation);
-        if (result != null) return result;
-        return createAndRecordResult(invocation);
+    public Object invoke(Object ref, Method method, Object[] params) throws Throwable {
+        // FIX 2076 Invocation still an appropriate name????
+        Invocation invocation = new Invocation(method, params);
+        return invoke(ref, invocation);
     }
 
-    private Object createAndRecordResult(Invocation invocation) {
-        Object result = createResult(invocation);
-        results.put(invocation, result);
+    private Object invoke(Object ref, Invocation invocation) {
+        if (priorCalls.containsKey(invocation)) return priorCalls.get(invocation);
+        Object result = provide(ref, invocation);
+        priorCalls.put(invocation, result);
         return result;
     }
 
-    private Object createResult(Invocation invocation) {
+    private Object provide(Object ref, Invocation invocation) {
         Method method = invocation.getMethod();
         Object[] params = invocation.getParams();
-        Object invoked = invocation.getInvoked();
-        if (isEqualsMethod(method))
-            return doEquals(invoked, params[0]);
-        if (isToStringMethod(method))
+        if (isEquals(method))
+            return doEquals(ref, params[0]);
+        if (isToString(method))
             return doToString();
-        return createRandomResult(method);
+        return provide(method);
     }
 
-    private Object createRandomResult(Method method) {
+    private Object provide(Method method) {
         Class returnType = method.getReturnType();
-        return randomProvider.get(returnType);
+        boolean specific = specificProviders.contains(returnType);
+        return specific ? specificProviders.get(returnType) : randomProvider.get(returnType);
     }
 
-    private boolean isEqualsMethod(Method method) {
+    private boolean isToString(Method method) {
+        // FIX BREADCRUMB 2076 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Attempt to use the actual method as a comparison.
+//        proxiedType.
+        return isMethodWithNoParams(method, "toString");
+    }
+
+    private boolean isEquals(Method method) {
         if (!method.getName().equals("equals"))
             return false;
         return hasOneParameterOfTypeObject(method);
-    }
-
-    private boolean isToStringMethod(Method method) {
-        return isMethodWithNoParams(method, "toString");
     }
 
     private boolean isMethodWithNoParams(Method method, String methodName) {

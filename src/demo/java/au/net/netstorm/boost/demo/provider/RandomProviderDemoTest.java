@@ -43,7 +43,6 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
         String funkyDataToString2 = funkyDataDummy.toString();
         assertEquals(true, funkyDataToString1.contains(funkyDataClassName));
         assertEquals(funkyDataToString1, funkyDataToString2);
-        System.out.println("funkyDataToString2 = " + funkyDataToString2);
     }
 
     private void checkHashCodeAndEquals() {
@@ -86,6 +85,5 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
         assertNotNull(happiness1);
         assertNotNull(happiness2);
         assertEquals(happiness1, happiness2);
-        System.out.println("happiness2 = " + happiness2);
     }
 }
