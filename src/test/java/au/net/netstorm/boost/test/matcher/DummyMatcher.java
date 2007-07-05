@@ -7,7 +7,16 @@ public final class DummyMatcher implements Matcher {
 
     public boolean matches(BoostField field) {
         if (!common.matches(field)) return false;
+        if (isDummy(field)) return true;
         if (field.isInterface()) return false;
         return !field.isArray();
+    }
+
+    private boolean isDummy(BoostField field) {
+        return field.isInterface() && isDummyField(field);
+    }
+
+    private boolean isDummyField(BoostField field) {
+        return field.getName().endsWith("Dummy");
     }
 }

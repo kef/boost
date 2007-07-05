@@ -1,5 +1,9 @@
 package au.net.netstorm.boost.demo.provider;
 
-public interface HappyDay {
+import au.net.netstorm.boost.util.type.Data;
+
+public interface HappyDay extends Data {
     long getTimeMillis();
+
+    Happiness getHappiness();
 }

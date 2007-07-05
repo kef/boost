@@ -19,7 +19,7 @@ public final class InterfaceRandomProvider implements RandomProvider {
 
     public Object get(Class type) {
         Interface iface = new DefaultInterface(type);
-        InvocationHandler handler = new RandomInterfaceInvocationHandler(randomProvider);
+        InvocationHandler handler = new RandomInterfaceInvocationHandler(type, randomProvider);
         return proxyFactory.newProxy(iface, handler);
     }
 }

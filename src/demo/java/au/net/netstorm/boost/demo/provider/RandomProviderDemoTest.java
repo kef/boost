@@ -1,16 +1,61 @@
 package au.net.netstorm.boost.demo.provider;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
-import au.net.netstorm.boost.test.random.EverythingRandomProvider;
-import au.net.netstorm.boost.test.random.RandomProvider;
+import java.util.HashSet;
+import java.util.Set;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.specific.RegistersSpecifics;
+import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 
-public final class RandomProviderDemoTest extends BoooostCase {
-    private final RandomProvider randomProvider = new EverythingRandomProvider();
+public final class RandomProviderDemoTest extends InteractionTestCase implements RegistersSpecifics {
+
+    FunkyData funkyDataDummy;
+    HappyDay anotherHappyDayDummy;
 
     public void testInterfaceProvider() {
-        FunkyData funkyData = (FunkyData) randomProvider.get(FunkyData.class);
-        Righteous righteous = checkRighteous(funkyData);
+        checkEqualsHashCodeAndToString();
+        checkParamsAffectReturnedObject();
+        assertEquals(funkyDataDummy, funkyDataDummy);
+        Righteous righteous = checkRighteous(funkyDataDummy);
         checkHappyDays(righteous);
+    }
+
+    public void registerSpecifics(SpecificProviderRegistry specifics) {
+        HappinessProvider happinessProvider = new HappinessProvider();
+        specifics.add(Happiness.class, happinessProvider);
+    }
+
+    private void checkParamsAffectReturnedObject() {
+        String funkyString1 = funkyDataDummy.getFunkyString("String1");
+        String funkyString2 = funkyDataDummy.getFunkyString("String2");
+        String funkyString3 = funkyDataDummy.getFunkyString("String2");
+        assertNotEquals(funkyString1, funkyString2);
+        assertEquals(funkyString2, funkyString3);
+    }
+
+    private void checkEqualsHashCodeAndToString() {
+        checkHashCodeAndEquals();
+        checkToString();
+    }
+
+    private void checkToString() {
+        String funkyDataClassName = FunkyData.class.getName();
+        String funkyDataToString1 = funkyDataDummy.toString();
+        String funkyDataToString2 = funkyDataDummy.toString();
+        assertEquals(true, funkyDataToString1.contains(funkyDataClassName));
+        assertEquals(funkyDataToString1, funkyDataToString2);
+        System.out.println("funkyDataToString2 = " + funkyDataToString2);
+    }
+
+    private void checkHashCodeAndEquals() {
+        Set set = new HashSet();
+        set.add(funkyDataDummy);
+        assertEquals(true, set.contains(funkyDataDummy));
+    }
+
+    private Righteous checkRighteous(FunkyData funkyData) {
+        Righteous righteous = funkyData.getRighteous();
+        assertNotNull(righteous);
+        return righteous;
     }
 
     private void checkHappyDays(Righteous righteous) {
@@ -21,12 +66,6 @@ public final class RandomProviderDemoTest extends BoooostCase {
         }
     }
 
-    private Righteous checkRighteous(FunkyData funkyData) {
-        Righteous righteous = funkyData.getRighteous();
-        assertNotNull(righteous);
-        return righteous;
-    }
-
     private void checkHappyDay(HappyDay happyDay) {
         long time1 = happyDay.getTimeMillis();
         long time2 = happyDay.getTimeMillis();
@@ -35,9 +74,18 @@ public final class RandomProviderDemoTest extends BoooostCase {
     }
 
     private void checkHappyDaysDifferent(HappyDay existingHappyDay) {
-        HappyDay anotherHappyDay = (HappyDay) randomProvider.get(HappyDay.class);
         long time1 = existingHappyDay.getTimeMillis();
-        long time2 = anotherHappyDay.getTimeMillis();
+        long time2 = anotherHappyDayDummy.getTimeMillis();
         assertNotEquals(time1, time2);
+        checkHappiness(existingHappyDay);
+    }
+
+    private void checkHappiness(HappyDay happyDay) {
+        Happiness happiness1 = happyDay.getHappiness();
+        Happiness happiness2 = happyDay.getHappiness();
+        assertNotNull(happiness1);
+        assertNotNull(happiness2);
+        assertEquals(happiness1, happiness2);
+        System.out.println("happiness2 = " + happiness2);
     }
 }
