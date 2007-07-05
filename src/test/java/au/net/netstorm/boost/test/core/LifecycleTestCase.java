@@ -9,6 +9,7 @@ import au.net.netstorm.boost.test.lifecycle.LifecycleTestRunner;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycleProvider;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements TestLifecycleProvider, ExceptionSupportProvider {
+    // FIX 2076 Does this need to be available to subclasses?
     protected final LifecycleTestRunner runner;
     public MockExpectations expect;
 
