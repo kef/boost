@@ -6,8 +6,7 @@ public final class EverythingRandomProvider implements RandomProvider {
     private final RandomProvider concretes = new ConcreteRandomProvider();
     private final RandomProvider interfaces;
 
-    // FIX 2076 Remove SpecificProviderRegistry.  Moves into RandomInterfaceInvocationHandler.
-    // FIX 2076 Pull any specif stuff.  This is just random.
+    // FIX 2076 Pass in as array of providers.
     public EverythingRandomProvider(RandomProvider interfaces) {
         this.interfaces = interfaces;
     }
