@@ -11,6 +11,7 @@ import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 // FIX 2076 Looks like it is not a random provider test any more.
 public final class RandomProviderDemoTest extends InteractionTestCase implements RegistersSpecifics {
     FunkyData funkyDataDummy;
+    FunkyData anotherFunkyDataDummy;
     HappyDay anotherHappyDayDummy;
 
     public void testInterfaceProvider() {
@@ -43,8 +44,10 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
         String funkyDataClassName = FunkyData.class.getName();
         String funkyDataToString1 = funkyDataDummy.toString();
         String funkyDataToString2 = funkyDataDummy.toString();
+        String funkyDataToString3 = anotherFunkyDataDummy.toString();
         assertEquals(true, funkyDataToString1.contains(funkyDataClassName));
         assertEquals(funkyDataToString1, funkyDataToString2);
+        assertNotEquals(funkyDataToString1, funkyDataToString3);
     }
 
     private void checkHashCodeAndEquals() {
