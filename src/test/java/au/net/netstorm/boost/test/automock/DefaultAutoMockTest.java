@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.DefaultFieldSelector;
@@ -37,9 +38,9 @@ public final class DefaultAutoMockTest implements AutoMockTest {
     private final Randomizer randomizer;
     private final AutoMocker autoMocker;
     private final BoostField[] fields;
-    private final InteractionTestCase testCase;
+    private final LifecycleTestCase testCase;
 
-    public DefaultAutoMockTest(InteractionTestCase testCase, SpecificProviderRegistry specifics) {
+    public DefaultAutoMockTest(LifecycleTestCase testCase, SpecificProviderRegistry specifics) {
         this.testCase = testCase;
         RandomProvider randomProvider = providerAssembler.everything(specifics);
         randomizer = new BoostFieldRandomizer(randomProvider);

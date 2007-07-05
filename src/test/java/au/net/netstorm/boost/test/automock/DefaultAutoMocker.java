@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashMap;
 import java.util.Map;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -12,10 +13,10 @@ class DefaultAutoMocker implements AutoMocker {
     private static final String MSG = "Mock does not exist for provided proxy.  Make sure to implement ";
     private final Map mocks = new HashMap();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final InteractionTestCase testCase;
+    private final LifecycleTestCase testCase;
     private final MockProvider mockProvider;
 
-    public DefaultAutoMocker(InteractionTestCase testCase, MockProvider mockProvider) {
+    public DefaultAutoMocker(LifecycleTestCase testCase, MockProvider mockProvider) {
         this.testCase = testCase;
         this.mockProvider = mockProvider;
     }
