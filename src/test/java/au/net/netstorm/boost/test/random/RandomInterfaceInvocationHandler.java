@@ -12,18 +12,16 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Map priorCalls = new HashMap();
     private final Class proxiedType;
-    private final RandomProvider randomProvider;
-    private final SpecificProviderRegistry specificProviders;
+    private final RandomProvider random;
+    private final SpecificProviderRegistry specific;
 
-    // FIX 2076 Add in SpecificProviderRegistry here.
     public RandomInterfaceInvocationHandler(Class proxiedType, RandomProvider randomProvider, SpecificProviderRegistry specificProviders) {
         this.proxiedType = proxiedType;
-        this.randomProvider = randomProvider;
-        this.specificProviders = specificProviders;
+        this.random = randomProvider;
+        this.specific = specificProviders;
     }
 
     public Object invoke(Object ref, Method method, Object[] params) throws Throwable {
-        // FIX 2076 Invocation still an appropriate name????
         Invocation invocation = new Invocation(method, params);
         return invoke(ref, invocation);
     }
@@ -38,17 +36,15 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
     private Object provide(Object ref, Invocation invocation) {
         Method method = invocation.getMethod();
         Object[] params = invocation.getParams();
-        if (isEquals(method))
-            return doEquals(ref, params[0]);
-        if (isToString(method))
-            return doToString();
+        if (isEquals(method)) return doEquals(ref, params[0]);
+        if (isToString(method)) return doToString();
         return provide(method);
     }
 
     private Object provide(Method method) {
-        Class returnType = method.getReturnType();
-        boolean specific = specificProviders.contains(returnType);
-        return specific ? specificProviders.get(returnType) : randomProvider.get(returnType);
+        Class type = method.getReturnType();
+        boolean specific = this.specific.contains(type);
+        return specific ? this.specific.get(type) : random.get(type);
     }
 
     private boolean isToString(Method method) {
@@ -59,17 +55,17 @@ final class RandomInterfaceInvocationHandler implements InvocationHandler {
         return same(method, "equals", new Class[]{Object.class});
     }
 
-    private boolean same(Method method, String methodName, Class[] parameterTypes) {
-        Method toString = classer.getMethod(Object.class, methodName, parameterTypes);
-        return method.equals(toString);
-    }
-
-    private Object doEquals(Object object, Object otherObject) {
-        return Boolean.valueOf(object == otherObject);
+    private Object doEquals(Object o1, Object o2) {
+        return Boolean.valueOf(o1 == o2);
     }
 
     private Object doToString() {
-        Object randomInt = randomProvider.get(Integer.class);
-        return "Dummy proxy for <" + proxiedType + " (" + randomInt + ")>";
+        Object niceShortRandom = random.get(Integer.class);
+        return "Dummy proxy for <" + proxiedType + " (" + niceShortRandom + ")>";
+    }
+
+    private boolean same(Method method, String methodName, Class[] parameterTypes) {
+        Method toString = classer.getMethod(Object.class, methodName, parameterTypes);
+        return method.equals(toString);
     }
 }
