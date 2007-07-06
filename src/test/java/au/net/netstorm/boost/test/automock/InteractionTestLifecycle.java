@@ -4,8 +4,8 @@ import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.specific.DefaultSpecificProviderRegistry;
-import au.net.netstorm.boost.test.specific.RegistersSpecifics;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.specific.UsesSpecifics;
 
 public final class InteractionTestLifecycle implements TestLifecycle {
     private final SpecificProviderRegistry specifics = new DefaultSpecificProviderRegistry();
@@ -42,7 +42,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doRegisterSpecificProviders() {
-        if (hasMarker(RegistersSpecifics.class)) ((RegistersSpecifics) testCase).registerSpecifics(specifics);
+        if (hasMarker(UsesSpecifics.class)) ((UsesSpecifics) testCase).registerSpecifics(specifics);
     }
 
     private void doInjectSubject() {

@@ -3,13 +3,13 @@ package au.net.netstorm.boost.demo.provider;
 import java.util.HashSet;
 import java.util.Set;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.specific.RegistersSpecifics;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.specific.UsesSpecifics;
 
 // FIX 2076 Tidy this up.
 
 // FIX 2076 Looks like it is not a random provider test any more.
-public final class RandomProviderDemoTest extends InteractionTestCase implements RegistersSpecifics {
+public final class RandomProviderDemoTest extends InteractionTestCase implements UsesSpecifics {
     FunkyData funkyDataDummy;
     FunkyData anotherFunkyDataDummy;
     HappyDay anotherHappyDayDummy;
