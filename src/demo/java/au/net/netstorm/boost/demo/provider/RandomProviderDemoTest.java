@@ -28,11 +28,10 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
     }
 
     // FIX 2076 Remove or use.
-    public void testXxx() {
-        // FIX BREADCRUMB 2076 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF Here.
-        // FIX 2076 Reintroduce.
+    public void testRepeatedEqualsDoesNotInfiniteLoop() {
         funkyDataDummy.equals(anotherFunkyDataDummy);
-//        funkyDataDummy.equals(anotherFunkyDataDummy);
+        funkyDataDummy.equals(anotherFunkyDataDummy);
+        funkyDataDummy.equals(funkyDataDummy);
     }
 
     private void checkParamsAffectReturnedObject() {

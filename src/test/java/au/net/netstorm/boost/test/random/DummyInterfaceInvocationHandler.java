@@ -26,17 +26,19 @@ final class DummyInterfaceInvocationHandler implements InvocationHandler {
         return invoke(ref, invocation);
     }
 
+    // FIX 2076 Tidy up.
     private Object invoke(Object ref, Invocation invocation) {
+        Method method = invocation.getMethod();
+        Object[] params = invocation.getParams();
         if (priorCalls.containsKey(invocation)) return priorCalls.get(invocation);
-        Object result = provide(ref, invocation);
+        if (isEquals(method)) return doEquals(ref, params[0]);
+        Object result = xxx(method);
         priorCalls.put(invocation, result);
         return result;
     }
 
-    private Object provide(Object ref, Invocation invocation) {
-        Method method = invocation.getMethod();
-        Object[] params = invocation.getParams();
-        if (isEquals(method)) return doEquals(ref, params[0]);
+    // FIX 2076 Rename.
+    private Object xxx(Method method) {
         if (isToString(method)) return doToString();
         return provide(method);
     }
