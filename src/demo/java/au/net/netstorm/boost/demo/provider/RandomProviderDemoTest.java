@@ -27,6 +27,14 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
         specifics.add(Happiness.class, happinessProvider);
     }
 
+    // FIX 2076 Remove or use.
+    public void testXxx() {
+        // FIX BREADCRUMB 2076 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF Here.
+        // FIX 2076 Reintroduce.
+        funkyDataDummy.equals(anotherFunkyDataDummy);
+//        funkyDataDummy.equals(anotherFunkyDataDummy);
+    }
+
     private void checkParamsAffectReturnedObject() {
         String funkyString1 = funkyDataDummy.getFunkyString("String1");
         String funkyString2 = funkyDataDummy.getFunkyString("String2");
@@ -53,7 +61,8 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
     private void checkHashCodeAndEquals() {
         Set set = new HashSet();
         set.add(funkyDataDummy);
-        assertEquals(true, set.contains(funkyDataDummy));
+        boolean actual = set.contains(funkyDataDummy);
+        assertEquals(true, actual);
     }
 
     private Righteous checkRighteous(FunkyData funkyData) {
