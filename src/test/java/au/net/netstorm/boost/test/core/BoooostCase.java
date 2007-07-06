@@ -2,6 +2,8 @@ package au.net.netstorm.boost.test.core;
 
 import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
 import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
+import au.net.netstorm.boost.util.equals.DefaultInterfaceEqualsChecker;
+import au.net.netstorm.boost.util.equals.InterfaceEqualsChecker;
 import junit.framework.TestCase;
 
 // SUGGEST Remove the need for this altogether.
@@ -16,6 +18,7 @@ import junit.framework.TestCase;
 // OK GenericIllegalRegexp|LineLength {
 public class BoooostCase extends TestCase {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
+    private final InterfaceEqualsChecker interfaceEquals = new DefaultInterfaceEqualsChecker();
 
     protected void setUp() throws Exception {
         super.setUp();
@@ -31,6 +34,11 @@ public class BoooostCase extends TestCase {
     }
 
     protected void geardown() {
+    }
+
+    // FIX 2076 Does this really belong.
+    public final void assertInterfaceEquals(Object expected, Object actual) {
+        interfaceEquals.checkEquals(expected, actual);
     }
 
     public final void assertEquals(Object[] expected, Object[] actual) {

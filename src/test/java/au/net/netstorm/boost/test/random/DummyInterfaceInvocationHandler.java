@@ -58,6 +58,7 @@ final class DummyInterfaceInvocationHandler implements InvocationHandler {
         return same(method, "equals", new Class[]{Object.class});
     }
 
+    // FIX 2076 Use interface equals here????
     private Object doEquals(Object o1, Object o2) {
         return Boolean.valueOf(o1 == o2);
     }
