@@ -41,7 +41,6 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
         return cls.getDeclaredMethods();
     }
 
-    // FIX BREADCRUMB 2076 ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ Use this in DIEC.
     public Method[] getAllPublicInstance(Class cls) {
         Set result = getAllAsSet(cls);
         keepPublicInstance(result);

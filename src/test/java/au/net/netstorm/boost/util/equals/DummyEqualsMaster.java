@@ -24,13 +24,16 @@ public final class DummyEqualsMaster implements EqualsMaster {
         return compareByEquals(o1, o2);
     }
 
-    private boolean isDummy(Object o1, Object o2) {
-        if (isDummyProxy(o1)) return true;
-        return isDummyProxy(o2);
-    }
+    // FIX BREADCRUMB 2076 UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU Implement ArrayEqualsMaster and stitch in.
+    // FIX BREADCRUMB 2076 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT Export.
 
     private boolean compareByEquals(Object o1, Object o2) {
         return o1.equals(o2);
+    }
+
+    private boolean isDummy(Object o1, Object o2) {
+        if (isDummyProxy(o1)) return true;
+        return isDummyProxy(o2);
     }
 
     // FIX 2076 CLASS-------------------- Move this out.
