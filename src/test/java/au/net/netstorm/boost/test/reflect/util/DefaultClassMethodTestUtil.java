@@ -5,23 +5,21 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import au.net.netstorm.boost.primordial.Primordial;
-import junit.framework.Assert;
 
+// SUGGEST: Move into production.
 public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
-    private final Set inherited = new HashSet();
+    private final Set exclusions = new HashSet();
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
 
     {
-        inherited.add("toString");
-        inherited.add("hashCode");
-        inherited.add("equals");
+        init();
     }
 
     public Method[] getAll(Class cls) {
-        return guardGetAll(cls);
+        return cls.getDeclaredMethods();
     }
 
+    // FIX BREADCRUMB 2076 ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ Use this in DIEC.
     public Method[] getAllPublicInstance(Class cls) {
         Set result = getAllAsSet(cls);
         keepPublicInstance(result);
@@ -42,17 +40,9 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     }
 
     private Set getAllAsSet(Class cls) {
-        Method[] all = guardGetAll(cls);
+        Method[] all = cls.getDeclaredMethods();
         List list = Arrays.asList(all);
         return new HashSet(list);
-    }
-
-    private Method[] guardGetAll(Class cls) {
-        Class superclass = cls.getSuperclass();
-        if (!superclass.equals(Primordial.class)) {
-            Assert.fail("Currently we only support Primordial as a superclass.  You requested " + superclass);
-        }
-        return cls.getDeclaredMethods();
     }
 
     private void keepPublicInstance(Set set) {
@@ -77,12 +67,34 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
 
     private void keepNonInherited(Set set, Method method) {
         String name = method.getName();
-        if (inherited.contains(name)) {
+        if (exclusions.contains(name)) {
             set.remove(method);
         }
     }
 
     private Method[] methods(Set set) {
         return (Method[]) set.toArray(new Method[]{});
+    }
+
+    private void init() {
+        exlusionsForObject();
+        exclusionsForProxy();
+    }
+
+    private void exclusionsForProxy() {
+        exclusions.add("newProxyInstance");
+        exclusions.add("getProxyClass");
+        exclusions.add("getInvocationHandler");
+        exclusions.add("isProxyClass");
+    }
+
+    private void exlusionsForObject() {
+        exclusions.add("toString");
+        exclusions.add("hashCode");
+        exclusions.add("equals");
+        exclusions.add("getClass");
+        exclusions.add("wait");
+        exclusions.add("notify");
+        exclusions.add("notifyAll");
     }
 }
