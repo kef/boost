@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.util.equals;
 
-public interface InterfaceEqualsChecker {
+public interface DummyEqualsChecker {
     void checkEquals(Object expected, Object actual);
 }

@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.util.equals;
 
+import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 // FIX 2076 Should not be in demo package
 public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTestCase implements Initialisable {
-    DefaultInterfaceEqualsChecker subject = new DefaultInterfaceEqualsChecker();
+    DefaultDummyEqualsChecker subject = new DefaultDummyEqualsChecker();
     // FIX BREADCRUMB 2076 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS Do not use FunkyData, create own test fixture.
     String string;
     Fin fin;
@@ -15,15 +16,15 @@ public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTe
     Rocket rocketData1;
     Rocket rocketData2;
 
+    public void initialise() {
+        rocketData1 = new EstesRocket(finDummy, noseDummy);
+        rocketData2 = new EstesRocket(finDummy, noseDummy);
+    }
+
     // FIX 2076 Rename.
     public void testXxx() {
         subject.checkNotEquals(rocketDummy, rocketData1);
         subject.checkEquals(rocketData2, rocketData1);
-    }
-
-    public void initialise() {
-        rocketData1 = new EstesRocket(finDummy, noseDummy);
-        rocketData2 = new EstesRocket(finDummy, noseDummy);
     }
 
     public String getValue() {
@@ -31,7 +32,7 @@ public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTe
     }
 
     // FIX 2076 Move out into separate test fixture.
-    public static class EstesRocket implements Rocket {
+    public static class EstesRocket extends Primordial implements Rocket {
         private Fin fins;
         private Nose nose;
 

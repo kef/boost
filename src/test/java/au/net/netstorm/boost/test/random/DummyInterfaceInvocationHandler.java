@@ -8,7 +8,7 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 
-final class DummyInterfaceInvocationHandler implements InvocationHandler {
+public final class DummyInterfaceInvocationHandler implements InvocationHandler {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Map priorCalls = new HashMap();
     private final Class proxiedType;
