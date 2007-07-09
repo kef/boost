@@ -54,7 +54,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
 
     public void injectAutoMocks() {
         injectDummies(fields);
-        injectMocks(fields);
+        injectInterfaces(fields);
         injectArrays(fields);
     }
 
@@ -76,7 +76,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
         randomizer.randomize(dummyFields);
     }
 
-    private void injectMocks(BoostField[] fields) {
+    private void injectInterfaces(BoostField[] fields) {
         BoostField[] mockFields = selector.select(fields, mockMatcher);
         autoMocker.mock(mockFields);
     }
