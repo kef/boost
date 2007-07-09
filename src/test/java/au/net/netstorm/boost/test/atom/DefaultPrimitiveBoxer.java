@@ -26,7 +26,7 @@ public final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
     }
 
     public boolean isPrimitive(Class candidate) {
-        return get(candidate) != null;
+        return candidate.isPrimitive();
     }
 
     public boolean isBoxed(Class candidate) {

@@ -9,6 +9,7 @@ import au.net.netstorm.boost.test.field.FieldSelector;
 import au.net.netstorm.boost.test.inject.DefaultSubjectInjector;
 import au.net.netstorm.boost.test.inject.SubjectInjector;
 import au.net.netstorm.boost.test.matcher.ArrayMatcher;
+import au.net.netstorm.boost.test.matcher.ConcreteMatcher;
 import au.net.netstorm.boost.test.matcher.DummyMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.matcher.MockableMatcher;
@@ -31,6 +32,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
     private final Matcher dummyArrayMatcher = new ArrayMatcher();
+    private final Matcher concreteMatcher = new ConcreteMatcher();
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldValidator validator = new DefaultFieldValidator();
@@ -54,8 +56,9 @@ public final class DefaultAutoMockTest implements AutoMockTest {
 
     public void injectAutoMocks() {
         injectDummies(fields);
-        injectInterfaces(fields);
+        injectMocks(fields);
         injectArrays(fields);
+        injectConcretes(fields);
     }
 
     public void injectSubject() {
@@ -76,7 +79,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
         randomizer.randomize(dummyFields);
     }
 
-    private void injectInterfaces(BoostField[] fields) {
+    private void injectMocks(BoostField[] fields) {
         BoostField[] mockFields = selector.select(fields, mockMatcher);
         autoMocker.mock(mockFields);
     }
@@ -84,6 +87,11 @@ public final class DefaultAutoMockTest implements AutoMockTest {
     private void injectArrays(BoostField[] fields) {
         BoostField[] arrays = selector.select(fields, dummyArrayMatcher);
         randomizer.randomize(arrays);
+    }
+
+    private void injectConcretes(BoostField[] fields) {
+        BoostField[] concreteFields = selector.select(fields, concreteMatcher);
+        randomizer.randomize(concreteFields);
     }
 
     private BoostField[] getAllFields() {

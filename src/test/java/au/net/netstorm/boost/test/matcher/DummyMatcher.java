@@ -8,12 +8,11 @@ public final class DummyMatcher implements Matcher {
     public boolean matches(BoostField field) {
         if (!common.matches(field)) return false;
         if (isDummy(field)) return true;
-        if (field.isInterface()) return false;
-        return !field.isArray();
+        return false;
     }
 
     private boolean isDummy(BoostField field) {
-        return field.isInterface() && isDummyField(field);
+        return isDummyField(field);
     }
 
     private boolean isDummyField(BoostField field) {
