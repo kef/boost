@@ -13,10 +13,11 @@ public final class EverythingRandomProvider implements RandomProvider {
 
     // OK CyclomaticComplexity {
     public Object provide(Class type) {
+        if (isInterface(type)) return interfaces.provide(type);
         if (isPrimitive(type)) return primitives.provide(type);
         if (isArray(type)) return arrays.provide(type);
-        if (isInterface(type)) return interfaces.provide(type);
-        return concretes.provide(type);
+        if (isConcrete(type)) return concretes.provide(type);
+        throw new IllegalStateException("Cannot provide type: " + type);
     }
 
     // } OK CyclomaticComplexity
@@ -35,5 +36,9 @@ public final class EverythingRandomProvider implements RandomProvider {
 
     private boolean isInterface(Class type) {
         return interfaces.canProvide(type);
+    }
+
+    private boolean isConcrete(Class type) {
+        return concretes.canProvide(type);
     }
 }

@@ -5,7 +5,7 @@ import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 // FIX 2076 Should not be in demo package
-public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTestCase implements Initialisable {
+public final class DummyEqualsCheckerAtomicTest extends InteractionTestCase implements Initialisable {
     DefaultDummyEqualsChecker subject = new DefaultDummyEqualsChecker();
     // FIX BREADCRUMB 2076 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS Do not use FunkyData, create own test fixture.
     String string;

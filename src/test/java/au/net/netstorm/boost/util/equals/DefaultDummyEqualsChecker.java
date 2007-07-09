@@ -20,23 +20,30 @@ public final class DefaultDummyEqualsChecker implements DummyEqualsChecker {
     ClassMethodTestUtil methoder = new DefaultClassMethodTestUtil();
     EdgeMethod edgeMethod = new DefaultEdgeMethod();
 
+    // FIX 2076 Create a DefaultEqualsMaster.
     // FIX 2076 Exciting, informative message.
-    // FIX 2076 Needs to support real/proxies passed in in any order.
     // FIX 2076 CLASS--------------------
     public void checkEquals(Object o1, Object o2) {
-        boolean equal = compare(o1, o2);
+        boolean equal = equals(o1, o2);
         Assert.assertTrue("Not equal!", equal);
     }
 
+    // FIX 2076 Exciting, informative message.
     public void checkNotEquals(Object o1, Object o2) {
-        boolean equal = compare(o1, o2);
+        boolean equal = equals(o1, o2);
         Assert.assertTrue("Equal!", !equal);
     }
 
-    private boolean compare(Object o1, Object o2) {
-        if (isDummyProxy(o1)) return compareByMethods(o1, o2);
-        if (isDummyProxy(o2)) return compareByMethods(o1, o2);
+    // FIX BREADCRUMB ZZZZZZZZZZZZZZZZZZZZZZZZZZZ 2076 This is an equals master.
+    // FIX 2076 CLASS--------------------
+    private boolean equals(Object o1, Object o2) {
+        if (isDummy(o1, o2)) return compareByMethods(o1, o2);
         return compareByEquals(o1, o2);
+    }
+
+    private boolean isDummy(Object o1, Object o2) {
+        if (isDummyProxy(o1)) return true;
+        return isDummyProxy(o2);
     }
 
     private boolean compareByEquals(Object o1, Object o2) {
@@ -61,7 +68,7 @@ public final class DefaultDummyEqualsChecker implements DummyEqualsChecker {
     private boolean compareMethods(Method method1, Object o1, Method method2, Object o2) {
         Object result1 = edgeMethod.invoke(method1, o1, null);
         Object result2 = edgeMethod.invoke(method2, o2, null);
-        return compare(result1, result2);
+        return equals(result1, result2);
     }
 
     // FIX 2076 CLASS--------------------
