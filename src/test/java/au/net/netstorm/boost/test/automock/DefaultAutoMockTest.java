@@ -8,7 +8,7 @@ import au.net.netstorm.boost.test.field.FieldBuilder;
 import au.net.netstorm.boost.test.field.FieldSelector;
 import au.net.netstorm.boost.test.inject.DefaultSubjectInjector;
 import au.net.netstorm.boost.test.inject.SubjectInjector;
-import au.net.netstorm.boost.test.matcher.DummyArrayMatcher;
+import au.net.netstorm.boost.test.matcher.ArrayMatcher;
 import au.net.netstorm.boost.test.matcher.DummyMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.matcher.MockableMatcher;
@@ -30,7 +30,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
     private final FieldSelector selector = new DefaultFieldSelector();
     private final Matcher mockMatcher = new MockableMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
-    private final Matcher dummyArrayMatcher = new DummyArrayMatcher();
+    private final Matcher dummyArrayMatcher = new ArrayMatcher();
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldValidator validator = new DefaultFieldValidator();
@@ -55,7 +55,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
     public void injectAutoMocks() {
         injectDummies(fields);
         injectMocks(fields);
-        injectDummyArrays(fields);
+        injectArrays(fields);
     }
 
     public void injectSubject() {
@@ -71,17 +71,17 @@ public final class DefaultAutoMockTest implements AutoMockTest {
         mocker.verify();
     }
 
-    private void injectMocks(BoostField[] fields) {
-        BoostField[] mockFields = selector.select(fields, mockMatcher);
-        autoMocker.mock(mockFields);
-    }
-
     private void injectDummies(BoostField[] fields) {
         BoostField[] dummyFields = selector.select(fields, dummyMatcher);
         randomizer.randomize(dummyFields);
     }
 
-    private void injectDummyArrays(BoostField[] fields) {
+    private void injectMocks(BoostField[] fields) {
+        BoostField[] mockFields = selector.select(fields, mockMatcher);
+        autoMocker.mock(mockFields);
+    }
+
+    private void injectArrays(BoostField[] fields) {
         BoostField[] arrays = selector.select(fields, dummyArrayMatcher);
         randomizer.randomize(arrays);
     }
