@@ -52,6 +52,7 @@ public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsCheck
         return false;
     }
 
+    // FIX BREADCRUMB 2076 XXXXXXXXXXXXXXXXXXXXXXXXXXX Move into separate class.
     // Stop from invoking equals() on the proxy or wait() on Object
     private boolean isSupportedMethod(Method expMethod) {
         if (expMethod.getDeclaringClass() == Object.class) return false;

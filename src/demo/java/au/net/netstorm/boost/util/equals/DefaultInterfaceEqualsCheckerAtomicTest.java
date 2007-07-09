@@ -7,6 +7,7 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 // FIX 2076 Should not be in demo package
 public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTestCase implements Initialisable {
+    // FIX BREADCRUMB 2076 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS Do not use FunkyData, create own test fixture.
     FunkyData funkyDataDummy;
     String string;
     Righteous righteousDummy;
@@ -14,6 +15,7 @@ public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTe
     FunkyData myFunkyData2;
     DefaultInterfaceEqualsChecker subject = new DefaultInterfaceEqualsChecker();
 
+    // FIX 2076 Rename.
     public void testXxx() {
         righteousDummy.getHappyDays();
         subject.checkNotEquals(funkyDataDummy, myFunkyData);
