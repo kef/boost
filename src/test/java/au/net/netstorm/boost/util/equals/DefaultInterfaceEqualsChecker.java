@@ -18,6 +18,7 @@ public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsCheck
     ClassMethodTestUtil methoder = new DefaultClassMethodTestUtil();
     EdgeMethod edgeMethod = new DefaultEdgeMethod();
 
+    // FIX 2076 Needs to support real/proxies passed in in any order.
     public void checkEquals(Object expected, Object actual) {
         Assert.assertTrue("Not equal!", compare(expected, actual));
     }
@@ -26,32 +27,32 @@ public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsCheck
         Assert.assertTrue("Equal!", !compare(expected, actual));
     }
 
-    private boolean compare(Object expected, Object actual) {
-        Class expectedClass = expected.getClass();
-        Method[] methods = methoder.getAllNotInheritedPublicInstance(expectedClass);
+    private boolean compare(Object proxy, Object real) {
+        Class cls = proxy.getClass();
+        Method[] methods = methoder.getAllNotInheritedPublicInstance(cls);
         for (int i = 0; i < methods.length; i++) {
-            Method expMethod = methods[i];
-            if (compareMethodsIfSupported(expMethod, actual, expected)) return false;
+            if (compareMethods(methods[i], proxy, real)) return false;
         }
         return true;
     }
 
-    private boolean compareMethodsIfSupported(Method method, Object actual, Object expected) {
-        Method actMethod = getMatchingMethod(actual, method);
-        return (compareMethodResults(method, expected, actMethod, actual));
+    private boolean compareMethods(Method proxyMethod, Object proxy, Object real) {
+        Method realMethod = getMatchingMethod(real, proxyMethod);
+        return compareMethods(proxyMethod, proxy, realMethod, real);
     }
 
-    private boolean compareMethodResults(Method expMethod, Object expected, Method actMethod, Object actual) {
-        Object expectedResult = edgeMethod.invoke(expMethod, expected, null);
-        Object actualResult = edgeMethod.invoke(actMethod, actual, null);
-        if (isProxy(expectedResult)) {
-            if (!compare(expectedResult, actualResult)) return true;
+    private boolean compareMethods(Method proxyMethod, Object proxy, Method realMethod, Object real) {
+        Object proxyResult = edgeMethod.invoke(proxyMethod, proxy, null);
+        Object realResult = edgeMethod.invoke(realMethod, real, null);
+        if (isProxy(proxyResult)) {
+            if (!compare(proxyResult, realResult)) return true;
         } else {
-            if (!expectedResult.equals(actualResult)) return true;
+            if (!proxyResult.equals(realResult)) return true;
         }
         return false;
     }
 
+    // FIX 2076 Move this out.
     private Method getMatchingMethod(Object actual, Method expMethod) {
         Class[] params = expMethod.getParameterTypes();
         String name = expMethod.getName();
