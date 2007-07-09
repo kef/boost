@@ -3,9 +3,9 @@ package au.net.netstorm.boost.util.format;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultHexUtilAtomicTest extends BoooostCase {
-    private static final String HEX_STRING1 = "0123456789ABCDEFFEDCBA9876543210";
+    private static final String HEX_STRING1 = "0123456789abcdeffedcba9876543210";
     private static final String HEX_STRING2 = "00000000";
-    private static final String HEX_STRING3 = "FFFFFFFFFF";
+    private static final String HEX_STRING3 = "ffffffffff";
     private static final String INVALID_HEX_STRING = "12abGXWTY";
     private static final String INVALID_HEX_CHAR_EXCEPTION = "Invalid hex character: G";
     // DEBT LineLength {

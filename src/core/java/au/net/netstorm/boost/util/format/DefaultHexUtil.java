@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.format;
 
 public final class DefaultHexUtil implements HexUtil {
-    private static final String HEXCHAR = "0123456789ABCDEF";
+    private static final String HEXCHAR = "0123456789abcdef";
     private static final int MASK = 0x0f;
 
     public byte[] toBytes(String hex) {
