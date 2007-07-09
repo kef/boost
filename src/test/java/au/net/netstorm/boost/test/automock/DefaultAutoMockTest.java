@@ -11,8 +11,8 @@ import au.net.netstorm.boost.test.inject.SubjectInjector;
 import au.net.netstorm.boost.test.matcher.ArrayMatcher;
 import au.net.netstorm.boost.test.matcher.ConcreteMatcher;
 import au.net.netstorm.boost.test.matcher.DummyMatcher;
+import au.net.netstorm.boost.test.matcher.InterfaceMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
-import au.net.netstorm.boost.test.matcher.MockableMatcher;
 import au.net.netstorm.boost.test.random.BoostFieldRandomizer;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.RandomProvider;
@@ -24,14 +24,16 @@ import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
+
+// FIX 2076 Rename to TestFieldInjector
 public final class DefaultAutoMockTest implements AutoMockTest {
     private final RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final FieldSelector selector = new DefaultFieldSelector();
-    private final Matcher mockMatcher = new MockableMatcher();
+    private final Matcher interfaceMatcher = new InterfaceMatcher();
     private final Matcher dummyMatcher = new DummyMatcher();
-    private final Matcher dummyArrayMatcher = new ArrayMatcher();
+    private final Matcher arrayMatcher = new ArrayMatcher();
     private final Matcher concreteMatcher = new ConcreteMatcher();
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
@@ -56,7 +58,7 @@ public final class DefaultAutoMockTest implements AutoMockTest {
 
     public void injectAutoMocks() {
         injectDummies(fields);
-        injectMocks(fields);
+        injectInterfaces(fields);
         injectArrays(fields);
         injectConcretes(fields);
     }
@@ -79,13 +81,13 @@ public final class DefaultAutoMockTest implements AutoMockTest {
         randomizer.randomize(dummyFields);
     }
 
-    private void injectMocks(BoostField[] fields) {
-        BoostField[] mockFields = selector.select(fields, mockMatcher);
+    private void injectInterfaces(BoostField[] fields) {
+        BoostField[] mockFields = selector.select(fields, interfaceMatcher);
         autoMocker.mock(mockFields);
     }
 
     private void injectArrays(BoostField[] fields) {
-        BoostField[] arrays = selector.select(fields, dummyArrayMatcher);
+        BoostField[] arrays = selector.select(fields, arrayMatcher);
         randomizer.randomize(arrays);
     }
 
