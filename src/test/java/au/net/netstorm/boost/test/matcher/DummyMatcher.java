@@ -17,6 +17,7 @@ public final class DummyMatcher implements Matcher {
     }
 
     private boolean isDummyField(BoostField field) {
-        return field.getName().endsWith("Dummy");
+        String name = field.getName();
+        return name.endsWith("Dummy");
     }
 }
