@@ -20,7 +20,8 @@ public final class DummyEqualsMaster implements EqualsMaster {
     EdgeMethod edgeMethod = new DefaultEdgeMethod();
 
     public boolean equals(Object o1, Object o2) {
-        if (isDummy(o1, o2)) return compareByMethods(o1, o2);
+        if (areDummies(o1, o2)) return compareByMethods(o1, o2);
+        if (areArrays(o1, o2)) return compareArrays((Object[]) o1, (Object[]) o2);
         return compareByEquals(o1, o2);
     }
 
@@ -31,7 +32,7 @@ public final class DummyEqualsMaster implements EqualsMaster {
         return o1.equals(o2);
     }
 
-    private boolean isDummy(Object o1, Object o2) {
+    private boolean areDummies(Object o1, Object o2) {
         if (isDummyProxy(o1)) return true;
         return isDummyProxy(o2);
     }
@@ -73,5 +74,20 @@ public final class DummyEqualsMaster implements EqualsMaster {
         if (!Proxy.class.isAssignableFrom(expectedResult.getClass())) return false;
         InvocationHandler handler = Proxy.getInvocationHandler(expectedResult);
         return DummyInterfaceInvocationHandler.class.isAssignableFrom(handler.getClass());
+    }
+
+    // FIX 2076 CLASS-------------------- Move this out.
+
+    private boolean areArrays(Object o1, Object o2) {
+        Class class1 = o1.getClass();
+        Class class2 = o2.getClass();
+        return (class1.isArray() && class2.isArray());
+    }
+
+    private boolean compareArrays(Object[] o1, Object[] o2) {
+        for (int i = 0; i < o1.length; i++) {
+            if (!equals(o1[i], o2[i])) return false;
+        }
+        return true;
     }
 }
