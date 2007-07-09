@@ -1,51 +1,51 @@
 package au.net.netstorm.boost.util.equals;
 
-import au.net.netstorm.boost.demo.provider.FunkyData;
-import au.net.netstorm.boost.demo.provider.Righteous;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 // FIX 2076 Should not be in demo package
 public final class DefaultInterfaceEqualsCheckerAtomicTest extends InteractionTestCase implements Initialisable {
-    // FIX BREADCRUMB 2076 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS Do not use FunkyData, create own test fixture.
-    FunkyData funkyDataDummy;
-    String string;
-    Righteous righteousDummy;
-    FunkyData myFunkyData;
-    FunkyData myFunkyData2;
     DefaultInterfaceEqualsChecker subject = new DefaultInterfaceEqualsChecker();
+    // FIX BREADCRUMB 2076 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS Do not use FunkyData, create own test fixture.
+    String string;
+    Fin fin;
+    Fin finDummy;
+    Nose noseDummy;
+    Rocket rocketDummy;
+    Rocket rocketData1;
+    Rocket rocketData2;
 
     // FIX 2076 Rename.
     public void testXxx() {
-        righteousDummy.getHappyDays();
-        subject.checkNotEquals(funkyDataDummy, myFunkyData);
-        subject.checkEquals(myFunkyData2, myFunkyData);
+        subject.checkNotEquals(rocketDummy, rocketData1);
+        subject.checkEquals(rocketData2, rocketData1);
     }
 
     public void initialise() {
-        myFunkyData = new MyFunkyData(righteousDummy, string);
-        myFunkyData2 = new MyFunkyData(righteousDummy, string);
+        rocketData1 = new EstesRocket(finDummy, noseDummy);
+        rocketData2 = new EstesRocket(finDummy, noseDummy);
     }
 
     public String getValue() {
         throw new UnsupportedOperationException();
     }
 
-    public static class MyFunkyData implements FunkyData {
-        private Righteous righteous;
-        private String string;
+    // FIX 2076 Move out into separate test fixture.
+    public static class EstesRocket implements Rocket {
+        private Fin fins;
+        private Nose nose;
 
-        public MyFunkyData(Righteous righteous, String string) {
-            this.righteous = righteous;
-            this.string = string;
+        public EstesRocket(Fin fins, Nose nose) {
+            this.fins = fins;
+            this.nose = nose;
         }
 
-        public Righteous getRighteous() {
-            return righteous;
+        public Fin getFin() {
+            return fins;
         }
 
-        public String getFunkyString(String string) {
-            return this.string;
+        public Nose getNose() {
+            return nose;
         }
     }
 }

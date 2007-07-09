@@ -15,6 +15,28 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
         init();
     }
 
+    private void init() {
+        exlusionsForObject();
+        exclusionsForProxy();
+    }
+
+    private void exlusionsForObject() {
+        exclusions.add("toString");
+        exclusions.add("hashCode");
+        exclusions.add("equals");
+        exclusions.add("getClass");
+        exclusions.add("wait");
+        exclusions.add("notify");
+        exclusions.add("notifyAll");
+    }
+
+    private void exclusionsForProxy() {
+        exclusions.add("newProxyInstance");
+        exclusions.add("getProxyClass");
+        exclusions.add("getInvocationHandler");
+        exclusions.add("isProxyClass");
+    }
+
     public Method[] getAll(Class cls) {
         return cls.getDeclaredMethods();
     }
@@ -74,27 +96,5 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
 
     private Method[] methods(Set set) {
         return (Method[]) set.toArray(new Method[]{});
-    }
-
-    private void init() {
-        exlusionsForObject();
-        exclusionsForProxy();
-    }
-
-    private void exclusionsForProxy() {
-        exclusions.add("newProxyInstance");
-        exclusions.add("getProxyClass");
-        exclusions.add("getInvocationHandler");
-        exclusions.add("isProxyClass");
-    }
-
-    private void exlusionsForObject() {
-        exclusions.add("toString");
-        exclusions.add("hashCode");
-        exclusions.add("equals");
-        exclusions.add("getClass");
-        exclusions.add("wait");
-        exclusions.add("notify");
-        exclusions.add("notifyAll");
     }
 }

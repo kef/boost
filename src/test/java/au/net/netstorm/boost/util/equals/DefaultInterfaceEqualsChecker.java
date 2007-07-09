@@ -6,6 +6,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
 import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.test.reflect.util.ClassMethodTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultClassMethodTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultMethodSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 import junit.framework.Assert;
@@ -13,6 +15,7 @@ import junit.framework.Assert;
 // FIX 2076 Delete me or not...
 public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsChecker {
     ReflectMaster reflector = new DefaultReflectMaster();
+    ClassMethodTestUtil methoder = new DefaultClassMethodTestUtil();
     EdgeMethod edgeMethod = new DefaultEdgeMethod();
 
     public void checkEquals(Object expected, Object actual) {
@@ -25,7 +28,7 @@ public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsCheck
 
     private boolean compare(Object expected, Object actual) {
         Class expectedClass = expected.getClass();
-        Method[] methods = expectedClass.getMethods();
+        Method[] methods = methoder.getAllNotInheritedPublicInstance(expectedClass);
         for (int i = 0; i < methods.length; i++) {
             Method expMethod = methods[i];
             if (compareMethodsIfSupported(expMethod, actual, expected)) return false;
@@ -33,12 +36,9 @@ public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsCheck
         return true;
     }
 
-    private boolean compareMethodsIfSupported(Method expMethod, Object actual, Object expected) {
-        if (isSupportedMethod(expMethod)) {
-            Method actMethod = getMatchingMethod(actual, expMethod);
-            if (compareMethodResults(expMethod, expected, actMethod, actual)) return true;
-        }
-        return false;
+    private boolean compareMethodsIfSupported(Method method, Object actual, Object expected) {
+        Method actMethod = getMatchingMethod(actual, method);
+        return (compareMethodResults(method, expected, actMethod, actual));
     }
 
     private boolean compareMethodResults(Method expMethod, Object expected, Method actMethod, Object actual) {
@@ -50,14 +50,6 @@ public final class DefaultInterfaceEqualsChecker implements InterfaceEqualsCheck
             if (!expectedResult.equals(actualResult)) return true;
         }
         return false;
-    }
-
-    // FIX BREADCRUMB 2076 XXXXXXXXXXXXXXXXXXXXXXXXXXX Move into separate class.
-    // Stop from invoking equals() on the proxy or wait() on Object
-    private boolean isSupportedMethod(Method expMethod) {
-        if (expMethod.getDeclaringClass() == Object.class) return false;
-        Class[] types = expMethod.getParameterTypes();
-        return types == null || types.length == 0;
     }
 
     private Method getMatchingMethod(Object actual, Method expMethod) {
