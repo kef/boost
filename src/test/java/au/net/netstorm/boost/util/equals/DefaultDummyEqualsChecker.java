@@ -2,6 +2,7 @@ package au.net.netstorm.boost.util.equals;
 
 import junit.framework.Assert;
 
+// FIX 2076 Use or lose.
 public final class DefaultDummyEqualsChecker implements DummyEqualsChecker {
     DummyEqualsMaster equaler = new DummyEqualsMaster();
 

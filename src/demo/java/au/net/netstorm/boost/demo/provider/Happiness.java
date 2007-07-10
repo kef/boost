@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.provider;
 
-public interface Happiness {
+import au.net.netstorm.boost.util.type.Data;
+
+public interface Happiness extends Data {
     public String toString();
 }
 

@@ -44,3 +44,4 @@ public final class DefaultHexUtil implements HexUtil {
         return HEXCHAR.charAt((b >> shift) & MASK);
     }
 }
+

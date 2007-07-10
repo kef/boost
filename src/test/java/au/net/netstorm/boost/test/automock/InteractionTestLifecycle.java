@@ -3,19 +3,16 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
-import au.net.netstorm.boost.test.specific.DefaultSpecificProviderRegistry;
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 import au.net.netstorm.boost.test.specific.UsesSpecifics;
 
 public final class InteractionTestLifecycle implements TestLifecycle {
-    private final SpecificProviderRegistry specifics = new DefaultSpecificProviderRegistry();
     private final AutoMockTest autoMockTest;
     private final InteractionTestCase testCase;
 
     public InteractionTestLifecycle(InteractionTestCase testCase) {
         this.testCase = testCase;
         // FIX 2076 Rename.  No longer does just mocks.
-        autoMockTest = new DefaultAutoMockTest(testCase, specifics);
+        autoMockTest = new DefaultAutoMockTest(testCase, testCase.getSpecifics());
     }
 
     public void pre() {
@@ -42,7 +39,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doRegisterSpecificProviders() {
-        if (hasMarker(UsesSpecifics.class)) ((UsesSpecifics) testCase).registerSpecifics(specifics);
+        if (hasMarker(UsesSpecifics.class)) ((UsesSpecifics) testCase).registerSpecifics(testCase.getSpecifics());
     }
 
     private void doInjectSubject() {

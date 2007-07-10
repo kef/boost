@@ -4,6 +4,7 @@ import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;
 
+// FIX 2076 Update or delete this. Automocking is not dummying now, real classes are used.
 public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
     TestSubject subject;
     DelegateSubject delegate;
@@ -35,7 +36,6 @@ public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase im
 
     public void testInterfaces() {
         assertNotEquals(monkeys, apes);
-        // FIX BREADCRUMB 37874 Here we are.
-//        assertEquals(monkeys[0].equals(monkeys[0]));
+        assertEquals(true, monkeys[0].equals(monkeys[0]));
     }
 }

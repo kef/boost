@@ -2,29 +2,29 @@ package au.net.netstorm.boost.demo.data;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
-import junit.framework.TestCase;
 
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
-public final class DataAtomDemoTest extends TestCase {
-    private static final FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
-    private static final FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
-    private static final FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
-    private static final FieldSpec PRIMITIVE_ARRAY_PROPERTY = new DefaultFieldSpec("bytes", byte[].class);
-    private static final FieldSpec ARRAY_OF_ARRAYS_PROPERTY = new DefaultFieldSpec("floaters", float[][].class);
-    private static final FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
-    private static final FieldSpec NON_DATA_PROPERTY = new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
-    private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
-    private static final FieldSpec[] SINGLE_PRIMITIVE_PROPERTY = {PRIMITIVE_PROPERTY};
-    private static final FieldSpec[] SINGLE_ARRAY_PROPERTY = {ARRAY_PROPERTY};
-    private static final FieldSpec[] SINGLE_PRIMITIVE_ARRAY_PROPERTY = { PRIMITIVE_ARRAY_PROPERTY };
-    private static final FieldSpec[] SINGLE_ARRAY_OF_ARRAYS_PROPERTY = {ARRAY_OF_ARRAYS_PROPERTY};
-    private static final FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
-    private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
-    private static final String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
-    private AtomTestChecker checker = new DataAtomTestChecker();
+public final class DataAtomDemoTest extends InteractionTestCase {
+    FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
+    FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
+    FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
+    FieldSpec PRIMITIVE_ARRAY_PROPERTY = new DefaultFieldSpec("bytes", byte[].class);
+    FieldSpec ARRAY_OF_ARRAYS_PROPERTY = new DefaultFieldSpec("floaters", float[][].class);
+    FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
+    FieldSpec NON_DATA_PROPERTY = new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
+    FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
+    FieldSpec[] SINGLE_PRIMITIVE_PROPERTY = {PRIMITIVE_PROPERTY};
+    FieldSpec[] SINGLE_ARRAY_PROPERTY = {ARRAY_PROPERTY};
+    FieldSpec[] SINGLE_PRIMITIVE_ARRAY_PROPERTY = {PRIMITIVE_ARRAY_PROPERTY};
+    FieldSpec[] SINGLE_ARRAY_OF_ARRAYS_PROPERTY = {ARRAY_OF_ARRAYS_PROPERTY};
+    FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
+    FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
+    String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
+    AtomTestChecker checker = new DataAtomTestChecker(specifics);
 
     // SUGGEST Odd message when the class is not public.
     // SUGGEST Test utility should force data object to implement interface (?).
@@ -36,7 +36,7 @@ public final class DataAtomDemoTest extends TestCase {
         checkGood(PrimitiveBasicData.class, SINGLE_PRIMITIVE_PROPERTY);
         checkGood(BasicNonFinalFieldsData.class, SINGLE_STRING_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
-        checkGood(DefaultBasicInterfaceData.class, SINGLE_STRING_PROPERTY);
+        checkGood(DefaultBasicInterface.class, SINGLE_STRING_PROPERTY);
         checkGood(NestedInterfacedData.class, COMPLEX_PROPERTIES);
     }
 

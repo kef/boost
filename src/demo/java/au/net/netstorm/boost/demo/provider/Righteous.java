@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.demo.provider;
 
-public interface Righteous {
+import au.net.netstorm.boost.util.type.Data;
+
+public interface Righteous extends Data {
     HappyDay[] getHappyDays();
 }

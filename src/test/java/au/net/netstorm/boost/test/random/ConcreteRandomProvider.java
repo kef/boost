@@ -2,6 +2,8 @@ package au.net.netstorm.boost.test.random;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
@@ -10,7 +12,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 public final class ConcreteRandomProvider implements RandomProvider {
     private final Random random = new Random();
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Class[] randomClasses = {LovelyInterface.class, Random.class, Serializable.class};
+    private final Class[] randomClasses = {ArrayList.class, List.class, Random.class, Serializable.class};
 
     public Object provide(Class type) {
         Object result = doGetRandom(type);
@@ -80,7 +82,7 @@ public final class ConcreteRandomProvider implements RandomProvider {
     }
 
     private Class randomClass() {
-        int i = Math.abs(randomInteger()) % 3;
+        int i = Math.abs(randomInteger()) % 4;
         return randomClasses[i];
     }
 
