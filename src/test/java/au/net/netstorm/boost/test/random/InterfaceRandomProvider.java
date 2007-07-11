@@ -9,9 +9,8 @@ import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
 import au.net.netstorm.boost.util.type.Data;
-// FIX 2076 Refactor.
 
-// FIX 2076 Delete associated handler/proxy as part of switch to creating data types.
+// FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements RandomProvider {
     private final RandomProvider randomProvider;
     private final SpecificProviderRegistry specificProviders;
