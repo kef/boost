@@ -52,7 +52,7 @@ public final class InterfaceRandomProvider implements Provider {
         // FIX 2076 Use ClassMaster?
         if (constructors.length != 1) {
             // FIX 2076 Strongly typed exception with message.
-            throw new IllegalStateException("There should only be one constuctor for " + implClass);
+            throw new IllegalStateException("There should be exactly one public constuctor for " + implClass);
         }
         return createRandomInstance(constructors[0]);
     }

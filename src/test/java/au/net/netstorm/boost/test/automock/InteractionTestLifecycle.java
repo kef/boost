@@ -3,15 +3,18 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
+import au.net.netstorm.boost.test.specific.Targetted;
 import au.net.netstorm.boost.test.specific.UsesSpecifics;
 
 public final class InteractionTestLifecycle implements TestLifecycle {
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
+    private final Targetted specifics;
 
-    public InteractionTestLifecycle(InteractionTestCase testCase) {
+    public InteractionTestLifecycle(InteractionTestCase testCase, Targetted specifics) {
         this.testCase = testCase;
-        testFieldInjector = new DefaultTestFieldInjector(testCase, testCase.getSpecifics());
+        this.specifics = specifics;
+        testFieldInjector = new DefaultTestFieldInjector(testCase, specifics);
     }
 
     public void pre() {
@@ -38,7 +41,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doRegisterSpecificProviders() {
-        if (hasMarker(UsesSpecifics.class)) ((UsesSpecifics) testCase).registerSpecifics(testCase.getSpecifics());
+        if (hasMarker(UsesSpecifics.class)) ((UsesSpecifics) testCase).registerSpecifics(specifics);
     }
 
     private void doInjectSubject() {

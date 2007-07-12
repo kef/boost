@@ -10,7 +10,11 @@ import au.net.netstorm.boost.test.lifecycle.TestLifecycleProvider;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DefaultTargetted;
+import au.net.netstorm.boost.test.specific.ImplementationSpecificProvider;
+import au.net.netstorm.boost.test.specific.InterfaceSpecificProvider;
 import au.net.netstorm.boost.test.specific.Targetted;
+import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements TestLifecycleProvider, ExceptionSupportProvider {
     // FIX 2076 Try not to make this available to subclasses
@@ -25,18 +29,21 @@ public abstract class LifecycleTestCase extends CleanTestCase implements TestLif
         RandomProviderAssembler assembler = new DefaultRandomProviderAssembler();
         random = assembler.everything(specifics);
         runner = new DefaultLifecycleTestRunner(this);
+        // FIX 2076 Remove from here.  TestLifecycles should delegate out to get this.
+        initSpecifics();
     }
 
     public final void runBare() throws Throwable {
         runner.run();
     }
 
-    // FIX 2076 Rename when name of Targetted is sorted. If specifics remains public do we need this?
-    public Targetted getSpecifics() {
-        return specifics;
-    }
-
     public ExceptionSupport exceptionSupport() {
         return new DefaultExceptionSupport();
+    }
+
+    // FIX 2076 Delegate.
+    private void initSpecifics() {
+        specifics.add(Interface.class, new InterfaceSpecificProvider());
+        specifics.add(Implementation.class, new ImplementationSpecificProvider());
     }
 }
