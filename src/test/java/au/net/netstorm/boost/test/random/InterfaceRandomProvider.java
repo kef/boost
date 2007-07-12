@@ -8,6 +8,8 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.specific.Targetted;
 import au.net.netstorm.boost.util.type.Data;
+import org.jmock.Mock;
+import org.jmock.MockObjectTestCase;
 
 // FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements Provider {
@@ -22,29 +24,28 @@ public final class InterfaceRandomProvider implements Provider {
     }
 
     public boolean canProvide(Class type) {
-        if (!type.isInterface()) return false;
-        return canCreateImplementation(type);
+        return type.isInterface();
     }
 
     public Object provide(Class type) {
-        return getImplementation(type);
-    }
-
-    private boolean canCreateImplementation(Class type) {
-        boolean hasSpecific = specificProviders.canProvide(type);
-        boolean isData = Data.class.isAssignableFrom(type);
-        boolean hasImpl = hasImpl(type);
-        return hasSpecific || (isData && hasImpl);
-    }
-
-    private Object getImplementation(Class type) {
         // FIX 2076 Strongly typed exception with message.
         if (!canProvide(type)) throw new IllegalStateException("Cannot provide instance of type " + type);
-        if (specificProviders.canProvide(type)) return specificProviders.provide(type);
-        return createDefaultInstance(type);
+        if (isSpecific(type)) return specific(type);
+        if (isData(type)) return data(type);
+        return mock(type);
     }
 
-    private Object createDefaultInstance(Class type) {
+    // FIX BREADCRUMB 2076 Tidy up below.
+
+    private Object mock(Class type) {
+        // FIX 2076 We're totally missing the verify action.  WHICH IS IMPORTANT!!!!!!!!!!!!!.
+        MockObjectTestCase mocker = new MockObjectTestCase() {
+        };
+        Mock mock = mocker.mock(type);
+        return mock.proxy();
+    }
+
+    private Object data(Class type) {
         String defaultClassName = createImplName(type);
         Class implClass = loadImpl(defaultClassName, type);
         Constructor[] constructors = implClass.getConstructors();
@@ -81,7 +82,8 @@ public final class InterfaceRandomProvider implements Provider {
     }
 
     // FIX 2076 This belongs in a utility.
-    private boolean hasImpl(Class type) {
+    private boolean isData(Class type) {
+        if (!Data.class.isAssignableFrom(type)) return false;
         String implName = createImplName(type);
         try {
             Class.forName(implName);
@@ -89,5 +91,13 @@ public final class InterfaceRandomProvider implements Provider {
         } catch (ClassNotFoundException e) {
             return false;
         }
+    }
+
+    private boolean isSpecific(Class type) {
+        return specificProviders.canProvide(type);
+    }
+
+    private Object specific(Class type) {
+        return specificProviders.provide(type);
     }
 }
