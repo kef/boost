@@ -6,17 +6,17 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.core.Provider;
-import au.net.netstorm.boost.test.specific.Specifics;
+import au.net.netstorm.boost.test.specific.Targetted;
 import au.net.netstorm.boost.util.type.Data;
 
 // FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements Provider {
     private final Provider randomProvider;
-    private final Specifics specificProviders;
+    private final Targetted specificProviders;
     private final ClassMaster classMaster = new DefaultClassMaster();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
-    public InterfaceRandomProvider(Provider randomProvider, Specifics specificProviders) {
+    public InterfaceRandomProvider(Provider randomProvider, Targetted specificProviders) {
         this.randomProvider = randomProvider;
         this.specificProviders = specificProviders;
     }
@@ -59,6 +59,7 @@ public final class InterfaceRandomProvider implements Provider {
     private String createImplName(Class type) {
         String packageName = classMaster.getPackageName(type);
         String className = classMaster.getShortName(type);
+        // FIX 2076 Change to " + Data".
         return packageName + ".Default" + className;
     }
 

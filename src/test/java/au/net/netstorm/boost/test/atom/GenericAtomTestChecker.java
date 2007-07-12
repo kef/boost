@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.test.specific.Specifics;
+import au.net.netstorm.boost.test.specific.Targetted;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 // SUGGEST Think about how to incorporate a test with a marker interface which uses field
@@ -14,10 +14,10 @@ public final class GenericAtomTestChecker implements AtomTestChecker {
     private DataChecker triangulationChecker;
     private DataChecker constructorNullChecker;
 
-    public GenericAtomTestChecker(AtomConfiguration config, Specifics specifics) {
+    public GenericAtomTestChecker(AtomConfiguration config, Targetted targetted) {
         this.config = config;
-        triangulationChecker = new PropertyTriangulationDataChecker(specifics);
-        constructorNullChecker = new ConstructorNullDataChecker(specifics);
+        triangulationChecker = new PropertyTriangulationDataChecker(targetted);
+        constructorNullChecker = new ConstructorNullDataChecker(targetted);
     }
 
     public void checkAtom(Class cls, FieldSpec[] fields) {

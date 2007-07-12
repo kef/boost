@@ -7,21 +7,22 @@ import au.net.netstorm.boost.test.exception.ExceptionSupportProvider;
 import au.net.netstorm.boost.test.lifecycle.DefaultLifecycleTestRunner;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTestRunner;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycleProvider;
-import au.net.netstorm.boost.test.random.DefaultSpecificProviderAssembler;
-import au.net.netstorm.boost.test.random.SpecificProviderAssembler;
-import au.net.netstorm.boost.test.specific.DefaultSpecifics;
-import au.net.netstorm.boost.test.specific.Specifics;
+import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
+import au.net.netstorm.boost.test.random.RandomProviderAssembler;
+import au.net.netstorm.boost.test.specific.DefaultTargetted;
+import au.net.netstorm.boost.test.specific.Targetted;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements TestLifecycleProvider, ExceptionSupportProvider {
     // FIX 2076 Try not to make this available to subclasses
-    public final Specifics specifics = new DefaultSpecifics();
+    // FIX 2076 Sort out why the name does not match the interface.
+    public final Targetted specifics = new DefaultTargetted();
     // FIX 2076 Which of these should be available to sub-classes.
-    public final Provider random;
+    public final Provider random; // FIX 2076 Getter for this?
     public MockExpectations expect;
     private final LifecycleTestRunner runner;
 
     public LifecycleTestCase() {
-        SpecificProviderAssembler assembler = new DefaultSpecificProviderAssembler();
+        RandomProviderAssembler assembler = new DefaultRandomProviderAssembler();
         random = assembler.everything(specifics);
         runner = new DefaultLifecycleTestRunner(this);
     }
@@ -30,7 +31,8 @@ public abstract class LifecycleTestCase extends CleanTestCase implements TestLif
         runner.run();
     }
 
-    public Specifics getSpecifics() {
+    // FIX 2076 Rename when name of Targetted is sorted. If specifics remains public do we need this?
+    public Targetted getSpecifics() {
         return specifics;
     }
 

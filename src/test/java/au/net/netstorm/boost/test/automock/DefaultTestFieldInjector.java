@@ -15,17 +15,17 @@ import au.net.netstorm.boost.test.matcher.DummyMatcher;
 import au.net.netstorm.boost.test.matcher.InterfaceMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.random.BoostFieldRandomizer;
-import au.net.netstorm.boost.test.random.DefaultSpecificProviderAssembler;
+import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
+import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.random.Randomizer;
-import au.net.netstorm.boost.test.random.SpecificProviderAssembler;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.test.specific.Specifics;
+import au.net.netstorm.boost.test.specific.Targetted;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultTestFieldInjector implements TestFieldInjector {
-    private final SpecificProviderAssembler providerAssembler = new DefaultSpecificProviderAssembler();
+    private final RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final FieldSelector selector = new DefaultFieldSelector();
@@ -42,9 +42,9 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final BoostField[] fields;
     private final LifecycleTestCase testCase;
 
-    public DefaultTestFieldInjector(LifecycleTestCase testCase, Specifics specifics) {
+    public DefaultTestFieldInjector(LifecycleTestCase testCase, Targetted targetted) {
         this.testCase = testCase;
-        Provider randomProvider = providerAssembler.everything(specifics);
+        Provider randomProvider = providerAssembler.everything(targetted);
         randomizer = new BoostFieldRandomizer(randomProvider);
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         fields = getAllFields();
