@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.test.specific.SpecificProvider;
+import au.net.netstorm.boost.test.specific.TargettedProvider;
 
-public class NonImmuableInterfaceProvider implements SpecificProvider {
+public class NonImmuableInterfaceProvider implements TargettedProvider {
     public Object get() {
         return new NonImmutableInterface() {
         };

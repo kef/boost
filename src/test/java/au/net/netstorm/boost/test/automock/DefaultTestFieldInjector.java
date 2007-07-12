@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.DefaultFieldSelector;
@@ -14,20 +15,17 @@ import au.net.netstorm.boost.test.matcher.DummyMatcher;
 import au.net.netstorm.boost.test.matcher.InterfaceMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.random.BoostFieldRandomizer;
-import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
-import au.net.netstorm.boost.test.random.RandomProvider;
-import au.net.netstorm.boost.test.random.RandomProviderAssembler;
+import au.net.netstorm.boost.test.random.DefaultSpecificProviderAssembler;
 import au.net.netstorm.boost.test.random.Randomizer;
+import au.net.netstorm.boost.test.random.SpecificProviderAssembler;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.specific.Specifics;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
-
-// FIX 2076 Rename to TestFieldInjector
-public final class DefaultAutoMockTest implements AutoMockTest {
-    private final RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
+public final class DefaultTestFieldInjector implements TestFieldInjector {
+    private final SpecificProviderAssembler providerAssembler = new DefaultSpecificProviderAssembler();
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final FieldSelector selector = new DefaultFieldSelector();
@@ -44,9 +42,9 @@ public final class DefaultAutoMockTest implements AutoMockTest {
     private final BoostField[] fields;
     private final LifecycleTestCase testCase;
 
-    public DefaultAutoMockTest(LifecycleTestCase testCase, SpecificProviderRegistry specifics) {
+    public DefaultTestFieldInjector(LifecycleTestCase testCase, Specifics specifics) {
         this.testCase = testCase;
-        RandomProvider randomProvider = providerAssembler.everything(specifics);
+        Provider randomProvider = providerAssembler.everything(specifics);
         randomizer = new BoostFieldRandomizer(randomProvider);
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         fields = getAllFields();

@@ -19,7 +19,7 @@ public abstract class InteractionTestCase extends LifecycleTestCase implements U
 
     // FIX 2076 Delegate.
     private void initSpecifics() {
-        specifics.add(Interface.class, new InterfaceSpecificProvider(random));
-        specifics.add(Implementation.class, new ImplementationSpecificProvider(random));
+        specifics.add(Interface.class, new InterfaceSpecificProvider());
+        specifics.add(Implementation.class, new ImplementationSpecificProvider());
     }
 }

@@ -1,24 +1,22 @@
 package au.net.netstorm.boost.test.random;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.core.Provider;
+import au.net.netstorm.boost.test.specific.Specifics;
 import au.net.netstorm.boost.util.type.Data;
 
 // FIX 2076 Drive this out
-public final class InterfaceRandomProvider implements RandomProvider {
-    private final RandomProvider randomProvider;
-    private final SpecificProviderRegistry specificProviders;
+public final class InterfaceRandomProvider implements Provider {
+    private final Provider randomProvider;
+    private final Specifics specificProviders;
     private final ClassMaster classMaster = new DefaultClassMaster();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
-    private EdgeClass edgeClass = new DefaultEdgeClass();
 
-    public InterfaceRandomProvider(RandomProvider randomProvider, SpecificProviderRegistry specificProviders) {
+    public InterfaceRandomProvider(Provider randomProvider, Specifics specificProviders) {
         this.randomProvider = randomProvider;
         this.specificProviders = specificProviders;
     }

@@ -6,13 +6,12 @@ import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.specific.UsesSpecifics;
 
 public final class InteractionTestLifecycle implements TestLifecycle {
-    private final AutoMockTest autoMockTest;
+    private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
 
     public InteractionTestLifecycle(InteractionTestCase testCase) {
         this.testCase = testCase;
-        // FIX 2076 Rename.  No longer does just mocks.
-        autoMockTest = new DefaultAutoMockTest(testCase, testCase.getSpecifics());
+        testFieldInjector = new DefaultTestFieldInjector(testCase, testCase.getSpecifics());
     }
 
     public void pre() {
@@ -27,7 +26,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
 
     public void post() {
         // Hook in from jMock.  Needed for jMock to actually verify.
-        autoMockTest.verify();
+        testFieldInjector.verify();
     }
 
     public void cleanup() {
@@ -35,7 +34,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doValidate() {
-        autoMockTest.validate();
+        testFieldInjector.validate();
     }
 
     private void doRegisterSpecificProviders() {
@@ -43,11 +42,11 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doInjectSubject() {
-        if (hasMarker(InjectableSubject.class)) autoMockTest.injectSubject();
+        if (hasMarker(InjectableSubject.class)) testFieldInjector.injectSubject();
     }
 
     private void doSetExpectField() {
-        if (hasMarker(UsesExpectations.class)) autoMockTest.setExpectField();
+        if (hasMarker(UsesExpectations.class)) testFieldInjector.setExpectField();
     }
 
     private void doDestroy() {
@@ -63,7 +62,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doInjectAutoMocks() {
-        if (hasMarker(UsesAutoMocks.class)) autoMockTest.injectAutoMocks();
+        if (hasMarker(UsesAutoMocks.class)) testFieldInjector.injectAutoMocks();
     }
 
     private boolean hasMarker(Class marker) {

@@ -1,21 +1,21 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
-import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
+import au.net.netstorm.boost.test.random.DefaultSpecificProviderAssembler;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
-import au.net.netstorm.boost.test.random.RandomProvider;
-import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.random.SpecificProviderAssembler;
+import au.net.netstorm.boost.test.specific.Specifics;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class PropertyTriangulationDataChecker implements DataChecker {
     private TriangulationChecker nonArrayChecker = new NonArrayPropertyTriangulationChecker();
     private TriangulationChecker arrayChecker = new ArrayPropertyTriangulationChecker();
-    private RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
+    private SpecificProviderAssembler providerAssembler = new DefaultSpecificProviderAssembler();
     private FieldRandomizer fieldUtil;
 
-    public PropertyTriangulationDataChecker(SpecificProviderRegistry specifics) {
-        RandomProvider randomProvider = providerAssembler.everything(specifics);
+    public PropertyTriangulationDataChecker(Specifics specifics) {
+        Provider randomProvider = providerAssembler.everything(specifics);
         fieldUtil = new DefaultFieldRandomizer(randomProvider);
     }
 

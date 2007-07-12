@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
-public interface AutoMockTest {
+public interface TestFieldInjector {
     void injectSubject();
 
     void setExpectField();

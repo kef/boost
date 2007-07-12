@@ -4,7 +4,7 @@ import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.LooseDataAtomTestChecker;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.specific.SpecificProvider;
+import au.net.netstorm.boost.test.specific.TargettedProvider;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
@@ -26,7 +26,7 @@ public final class LooseDataAtomDemoTest extends InteractionTestCase implements 
     }
 
     public void initialise() {
-        SpecificProvider provider = new NonImmuableInterfaceProvider();
+        TargettedProvider provider = new NonImmuableInterfaceProvider();
         specifics.add(NonImmutableInterface.class, provider);
     }
 }

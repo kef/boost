@@ -1,20 +1,14 @@
 package au.net.netstorm.boost.test.specific;
 
-import au.net.netstorm.boost.spider.core.Provider;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
-public class InterfaceSpecificProvider implements SpecificProvider {
-    private Provider random;
-
-    public InterfaceSpecificProvider(Provider random) {
-        this.random = random;
-    }
+// FIX 2076 What does this do.
+public class InterfaceSpecificProvider implements TargettedProvider {
 
     public Object get() {
-        Class iFace = (Class) random.provide(Class.class);
-        while (!iFace.isInterface()) {
-            iFace = (Class) random.provide(Class.class);
-        }
-        return new DefaultInterface(iFace);
+        return new DefaultInterface(RandomInterface.class);
+    }
+
+    private static interface RandomInterface {
     }
 }

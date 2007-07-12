@@ -3,10 +3,10 @@ package au.net.netstorm.boost.test.specific;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultSpecificProviderRegistry implements SpecificProviderRegistry {
+public class DefaultSpecifics implements Specifics {
     private final Map types = new HashMap();
 
-    public void add(Class type, SpecificProvider provider) {
+    public void add(Class type, TargettedProvider provider) {
         types.put(type, provider);
     }
 
@@ -16,7 +16,7 @@ public class DefaultSpecificProviderRegistry implements SpecificProviderRegistry
 
     public Object provide(Class type) {
         popIfNotSupported(type);
-        SpecificProvider provider = (SpecificProvider) types.get(type);
+        TargettedProvider provider = (TargettedProvider) types.get(type);
         return provider.get();
     }
 

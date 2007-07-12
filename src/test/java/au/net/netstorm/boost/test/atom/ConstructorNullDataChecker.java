@@ -2,14 +2,14 @@ package au.net.netstorm.boost.test.atom;
 
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
-import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
+import au.net.netstorm.boost.test.random.DefaultSpecificProviderAssembler;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
-import au.net.netstorm.boost.test.random.RandomProvider;
-import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.SpecificProviderRegistry;
+import au.net.netstorm.boost.test.random.SpecificProviderAssembler;
+import au.net.netstorm.boost.test.specific.Specifics;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
@@ -21,9 +21,9 @@ public final class ConstructorNullDataChecker implements DataChecker {
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
     private FieldRandomizer fieldUtil;
 
-    public ConstructorNullDataChecker(SpecificProviderRegistry specifics) {
-        RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
-        RandomProvider randomProvider = providerAssembler.everything(specifics);
+    public ConstructorNullDataChecker(Specifics specifics) {
+        SpecificProviderAssembler providerAssembler = new DefaultSpecificProviderAssembler();
+        Provider randomProvider = providerAssembler.everything(specifics);
         fieldUtil = new DefaultFieldRandomizer(randomProvider);
     }
 
