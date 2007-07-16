@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.provider;
 
-import au.net.netstorm.boost.primordial.PrimordialException;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
@@ -20,6 +19,6 @@ public final class NotProvidedExceptionAtomicTest extends InteractionTestCase im
     }
 
     public void testStructure() {
-        classer.checkSubclassOf(NotProvidedException.class, PrimordialException.class);
+        classer.checkSubclassOf(NotProvidedException.class, ProviderException.class);
     }
 }

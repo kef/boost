@@ -5,6 +5,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.ProviderException;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
@@ -52,8 +53,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
         Constructor[] constructors = implClass.getConstructors();
         // FIX 2076 Use ClassMaster?
         if (constructors.length != 1) {
-            // FIX 2076 Strongly typed exception with message.
-            throw new IllegalStateException("There should be exactly one public constuctor for " + implClass);
+            throw new ProviderException("There should be exactly one public constuctor" + implClass);
         }
         return createRandomInstance(constructors[0]);
     }
@@ -69,7 +69,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
         try {
             return Class.forName(defaultClassName);
         } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Cannot load default implementation for " + type, e);
+            throw new ProviderException("Cannot load default implementation for " + type, e);
         }
     }
 

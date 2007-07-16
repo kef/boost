@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.provider;
 
-import au.net.netstorm.boost.primordial.PrimordialException;
-
-public final class NotProvidedException extends PrimordialException {
+public final class NotProvidedException extends ProviderException {
 
     public NotProvidedException(Class type) {
         super("Could not provide type: " + type);

@@ -1,17 +1,20 @@
 package au.net.netstorm.boost.primordial;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 
-public final class PrimordialExceptionAtomicTest extends BoooostCase {
-    private static final String MSG = "some massage";
-    private final ClassTestChecker classer = new DefaultClassTestChecker();
+public final class PrimordialExceptionAtomicTest extends InteractionTestCase {
+    ClassTestChecker classer = new DefaultClassTestChecker();
+    String message;
+    Throwable cause;
 
     public void testException() {
-        BoooostException ex = new PrimordialException(MSG);
-        String result = ex.getMessage();
-        assertEquals(MSG, result);
+        PrimordialException ex = new PrimordialException(message);
+        PrimordialException ex2 = new PrimordialException(message, cause);
+        assertEquals(message, ex.getMessage());
+        assertEquals(message, ex2.getMessage());
+        assertEquals(cause, ex2.getCause());
     }
 
     public void testStructure() {
