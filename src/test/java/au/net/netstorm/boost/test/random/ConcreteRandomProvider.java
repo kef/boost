@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.SpecificProvider;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
@@ -16,10 +17,8 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     private final Class[] randomClasses = {ArrayList.class, List.class, Random.class, Serializable.class};
 
     public Object provide(Class type) {
-        Object result = doGetRandom(type);
-        if (result != null) return result;
-        throw new UnsupportedOperationException("Hmm.  I cannot provide an instance of '" + type + "'.  " +
-                "Might be worth edgifying (hiding behind an interface) this type or talking to the boosters!");
+        if (!canProvide(type)) throw new NotProvidedException(type);
+        return doGetRandom(type);
     }
 
     public boolean canProvide(Class type) {

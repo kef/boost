@@ -1,23 +1,31 @@
 package au.net.netstorm.boost.demo.provider;
 
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.ProvidesData;
 
-// FIX 2076 Rename to InterfaceProviderDemoTest and use to drive out InterfaceRandomProvider...
-public final class RandomProviderDemoTest extends InteractionTestCase implements Initialisable, ProvidesData {
-    FunkyData funkyDataDummy;
+// FIX 2076 Use to drive out InterfaceRandomProvider...
+public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Initialisable, ProvidesData {
 
-    public void testInterfaceProvider() {
-        assertNotNull(funkyDataDummy);
-        String funkyString = funkyDataDummy.getFunkyString();
-        assertNotNull(funkyString);
-        checkRighteous();
+    Provider interfaceProvider;
+
+    public InterfaceRandomProviderDemoTest() {
+        this.interfaceProvider = new InterfaceRandomProvider(random, data);
     }
 
-    private void checkRighteous() {
-        Righteous righteous = funkyDataDummy.getRighteous();
+    public void testInterfaceProvider() {
+        FunkyData funkyData = (FunkyData) interfaceProvider.provide(FunkyData.class);
+        assertNotNull(funkyData);
+        String funkyString = funkyData.getFunkyString();
+        assertNotNull(funkyString);
+        checkRighteous(funkyData);
+    }
+
+    private void checkRighteous(FunkyData funkyData) {
+        Righteous righteous = funkyData.getRighteous();
         assertNotNull(righteous);
         HappyDay[] happyDays = righteous.getHappyDays();
         checkHappyDays(happyDays);

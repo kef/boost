@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.random;
 
 import java.lang.reflect.Array;
+import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
 
@@ -12,6 +13,7 @@ public final class ArrayRandomProvider implements SpecificProvider {
     }
 
     public Object provide(Class type) {
+        if (!canProvide(type)) throw new NotProvidedException(type);
         Class componentType = type.getComponentType();
         int size = randomSize();
         Object array = Array.newInstance(componentType, size);

@@ -12,8 +12,6 @@ public final class WorkingAutoMockDemoTest extends InteractionTestCase implement
     DelegateSubject delegate;
     List list2;
     List list1;
-    // FIX 2076 How do we stop arrays being populated with dummies? In this case the below line will pop as an
-    // implementation of list won't be found. Should we enable mocks to be returned by the InterfaceRandomProvider? 
     List[] lists = new List[0];
 
     public void setUpFixtures() {

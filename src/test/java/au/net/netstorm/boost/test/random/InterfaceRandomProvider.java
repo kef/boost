@@ -3,6 +3,7 @@ package au.net.netstorm.boost.test.random;
 import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.reflect.ClassMaster;
@@ -29,8 +30,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     }
 
     public Object provide(Class type) {
-        // FIX 2076 Strongly typed exception with message.
-        if (!canProvide(type)) throw new IllegalStateException("Cannot provide instance of type " + type);
+        if (!canProvide(type)) throw new NotProvidedException(type);
         if (isSpecific(type)) return specific(type);
         if (isData(type)) return data(type);
         return mock(type);

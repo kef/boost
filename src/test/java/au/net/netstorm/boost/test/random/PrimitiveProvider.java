@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.random;
 
+import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
@@ -10,6 +11,7 @@ public final class PrimitiveProvider implements SpecificProvider {
     private final Provider concretes = new ConcreteRandomProvider();
 
     public Object provide(Class type) {
+        if (!canProvide(type)) throw new NotProvidedException(type);
         return randomPrimitiveType(type);
     }
 

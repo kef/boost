@@ -2,6 +2,7 @@ package au.net.netstorm.boost.test.specific;
 
 import java.util.HashMap;
 import java.util.Map;
+import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
 public class DefaultDataProviders implements DataProviders {
@@ -29,7 +30,7 @@ public class DefaultDataProviders implements DataProviders {
 
     private void popIfNotSupported(Class type) {
         if (!canProvide(type)) {
-            throw new IllegalArgumentException(type + " not supported!");
+            throw new NotProvidedException(type);
         }
     }
 }
