@@ -9,7 +9,7 @@ import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.Targetted;
+import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
@@ -21,9 +21,9 @@ public final class ConstructorNullDataChecker implements DataChecker {
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
     private FieldRandomizer fieldUtil;
 
-    public ConstructorNullDataChecker(Targetted targetted) {
+    public ConstructorNullDataChecker(DataProviders dataProviders) {
         RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
-        Provider randomProvider = providerAssembler.everything(targetted);
+        Provider randomProvider = providerAssembler.everything(dataProviders);
         fieldUtil = new DefaultFieldRandomizer(randomProvider);
     }
 

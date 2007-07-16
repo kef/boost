@@ -5,7 +5,7 @@ import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.Targetted;
+import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class PropertyTriangulationDataChecker implements DataChecker {
@@ -14,8 +14,8 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     private RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
     private FieldRandomizer fieldUtil;
 
-    public PropertyTriangulationDataChecker(Targetted targetted) {
-        Provider randomProvider = providerAssembler.everything(targetted);
+    public PropertyTriangulationDataChecker(DataProviders dataProviders) {
+        Provider randomProvider = providerAssembler.everything(dataProviders);
         fieldUtil = new DefaultFieldRandomizer(randomProvider);
     }
 

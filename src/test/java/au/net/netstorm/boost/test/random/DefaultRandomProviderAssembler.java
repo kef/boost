@@ -6,7 +6,7 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLa
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.core.SpecificProvider;
-import au.net.netstorm.boost.test.specific.Targetted;
+import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -18,7 +18,7 @@ public final class DefaultRandomProviderAssembler implements RandomProviderAssem
     private ProxyFactory proxyFactory = assembleProxyFactory();
     private PassThroughLayer passThrough = new DefaultPassThroughLayer();
 
-    public Provider everything(Targetted registry) {
+    public Provider everything(DataProviders registry) {
         SpecificProvider passthrough = (SpecificProvider) proxyFactory.newProxy(RANDOM_PROVIDER, passThrough);
         EverythingRandomProvider result = new EverythingRandomProvider(passthrough);
         Provider interfaces = new InterfaceRandomProvider(result, registry);

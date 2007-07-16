@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
-public class DefaultTargetted implements Targetted {
+public class DefaultDataProviders implements DataProviders {
     private final Map types = new HashMap();
 
-    public void add(Class type, TargettedProvider provider) {
+    public void add(Class type, DataProvider provider) {
         constrain(type);
         types.put(type, provider);
     }
@@ -18,7 +18,7 @@ public class DefaultTargetted implements Targetted {
 
     public Object provide(Class type) {
         popIfNotSupported(type);
-        TargettedProvider provider = (TargettedProvider) types.get(type);
+        DataProvider provider = (DataProvider) types.get(type);
         return provider.get();
     }
 

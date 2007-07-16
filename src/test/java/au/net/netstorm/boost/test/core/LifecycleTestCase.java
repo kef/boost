@@ -9,17 +9,17 @@ import au.net.netstorm.boost.test.lifecycle.LifecycleTestRunner;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycleProvider;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.DefaultTargetted;
+import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.DefaultDataProviders;
 import au.net.netstorm.boost.test.specific.ImplementationSpecificProvider;
 import au.net.netstorm.boost.test.specific.InterfaceSpecificProvider;
-import au.net.netstorm.boost.test.specific.Targetted;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements TestLifecycleProvider, ExceptionSupportProvider {
     // FIX 2076 Try not to make this available to subclasses
     // FIX 2076 Sort out why the name does not match the interface.
-    public final Targetted specifics = new DefaultTargetted();
+    public final DataProviders specifics = new DefaultDataProviders();
     // FIX 2076 Which of these should be available to sub-classes.
     public final Provider random; // FIX 2076 Getter for this?
     public MockExpectations expect;

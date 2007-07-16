@@ -7,7 +7,7 @@ import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.core.SpecificProvider;
-import au.net.netstorm.boost.test.specific.Targetted;
+import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.type.Data;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
@@ -15,11 +15,11 @@ import org.jmock.MockObjectTestCase;
 // FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements SpecificProvider {
     private final Provider randomProvider;
-    private final Targetted specificProviders;
+    private final DataProviders specificProviders;
     private final ClassMaster classMaster = new DefaultClassMaster();
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
-    public InterfaceRandomProvider(Provider randomProvider, Targetted specificProviders) {
+    public InterfaceRandomProvider(Provider randomProvider, DataProviders specificProviders) {
         this.randomProvider = randomProvider;
         this.specificProviders = specificProviders;
     }

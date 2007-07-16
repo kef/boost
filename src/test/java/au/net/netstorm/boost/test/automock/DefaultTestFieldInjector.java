@@ -20,7 +20,7 @@ import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.random.Randomizer;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.test.specific.Targetted;
+import au.net.netstorm.boost.test.specific.DataProviders;
 import org.jmock.MockObjectTestCase;
 
 // DEBT DataAbstractionCoupling {
@@ -42,9 +42,9 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final BoostField[] fields;
     private final LifecycleTestCase testCase;
 
-    public DefaultTestFieldInjector(LifecycleTestCase testCase, Targetted targetted) {
+    public DefaultTestFieldInjector(LifecycleTestCase testCase, DataProviders dataProviders) {
         this.testCase = testCase;
-        Provider randomProvider = providerAssembler.everything(targetted);
+        Provider randomProvider = providerAssembler.everything(dataProviders);
         randomizer = new BoostFieldRandomizer(randomProvider);
         autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         fields = getAllFields();
