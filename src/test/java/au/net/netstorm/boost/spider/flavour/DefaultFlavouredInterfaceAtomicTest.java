@@ -3,12 +3,12 @@ package au.net.netstorm.boost.spider.flavour;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultFlavouredInterfaceAtomicTest extends InteractionTestCase implements UsesAutoMocks {
+public final class DefaultFlavouredInterfaceAtomicTest extends InteractionTestCase implements LazyFields {
     AtomTestChecker checker = new DataAtomTestChecker(data);
     FieldSpec f1 = new DefaultFieldSpec("iface", Interface.class);
     FieldSpec f2 = new DefaultFieldSpec("flavour", Flavour.class);

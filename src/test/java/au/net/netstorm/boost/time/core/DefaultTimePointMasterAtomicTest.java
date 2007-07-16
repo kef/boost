@@ -4,9 +4,9 @@ import java.util.Date;
 import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 
-public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
+public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TimePointMaster subject;
     EdgeSystem system;
     private static final long NOW = 1L;

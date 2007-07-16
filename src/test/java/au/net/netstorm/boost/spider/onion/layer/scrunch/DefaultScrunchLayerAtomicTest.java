@@ -4,9 +4,9 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 
-public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
+public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ScrunchLayer subject;
     Layer next;
     Object returned;

@@ -3,9 +3,9 @@ package au.net.netstorm.boost.spider.flavour;
 import au.net.netstorm.boost.primordial.BoooostException;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 
-public final class FlavourMapExceptionAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
+public final class FlavourMapExceptionAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     BoooostException subject;
     FlavouredInterface flavoured;
     String reason;

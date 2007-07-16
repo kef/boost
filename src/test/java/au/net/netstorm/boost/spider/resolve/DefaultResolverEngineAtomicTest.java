@@ -8,7 +8,7 @@ import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.RegistryMaster;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
+public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ResolverEngine subject;
     ProviderEngine provider;
     RegistryMaster registryMaster;

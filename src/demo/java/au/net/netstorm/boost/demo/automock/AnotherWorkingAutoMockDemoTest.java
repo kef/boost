@@ -2,10 +2,10 @@ package au.net.netstorm.boost.demo.automock;
 
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 
 // FIX 2076 Update or delete this. Automocking is not dummying now, real classes are used.
-public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
+public final class AnotherWorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
     DelegateSubject delegate;
     String[] strings1;

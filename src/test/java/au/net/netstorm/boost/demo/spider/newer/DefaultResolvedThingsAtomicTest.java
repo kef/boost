@@ -2,12 +2,12 @@ package au.net.netstorm.boost.demo.spider.newer;
 
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
+public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     ResolvedThings subject;
     Implementation impl;
     BaseReference expected;

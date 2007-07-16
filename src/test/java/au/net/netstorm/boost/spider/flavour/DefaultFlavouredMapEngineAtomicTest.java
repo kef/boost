@@ -2,12 +2,12 @@ package au.net.netstorm.boost.spider.flavour;
 
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // OK NCSS {
-public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
+public final class DefaultFlavouredMapEngineAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     private static final String COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN = "Come on, ya have to give me somethin' man.  Anything but a null";
     private static final String UNFLAVOURED_CANNOT_BE_SPECIFIED_WITH_FLAVOURS = "Unflavoured cannot be resolved when flavours exist";
     private static final String UNFLAVOURED_TYPE_ALREADY_REGISTERED = "Unflavoured type already registered";

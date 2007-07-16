@@ -5,7 +5,7 @@ public interface TestFieldInjector {
 
     void setExpectField();
 
-    void injectAutoMocks();
+    void injectLazyFields();
 
     void validate();
 

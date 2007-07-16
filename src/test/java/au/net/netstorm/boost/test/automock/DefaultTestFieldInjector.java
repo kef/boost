@@ -54,7 +54,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         validator.validate(fields);
     }
 
-    public void injectAutoMocks() {
+    public void injectLazyFields() {
         injectDummies(fields);
         injectInterfaces(fields);
         injectArrays(fields);

@@ -21,7 +21,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     public void pre() {
         doValidate();
         doRegisterDataProviders();
-        doInjectAutoMocks();
+        doInjectLazyFields();
         doInitialise();
         doSetupSubject();
         doInjectSubject();
@@ -67,8 +67,8 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         if (hasMarker(HasFixtures.class)) ((HasFixtures) testCase).setUpFixtures();
     }
 
-    private void doInjectAutoMocks() {
-        if (hasMarker(UsesAutoMocks.class)) testFieldInjector.injectAutoMocks();
+    private void doInjectLazyFields() {
+        if (hasMarker(LazyFields.class)) testFieldInjector.injectLazyFields();
     }
 
     private boolean hasMarker(Class marker) {

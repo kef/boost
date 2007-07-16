@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 
-public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, UsesAutoMocks {
+public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
     Map map;
     DelegateSubject delegate;

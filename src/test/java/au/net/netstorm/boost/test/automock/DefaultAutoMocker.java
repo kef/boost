@@ -24,7 +24,7 @@ class DefaultAutoMocker implements AutoMocker {
     public Mock get(Object proxy) {
         Mock mock = (Mock) mocks.get(proxy);
         if (mock != null) return mock;
-        throw new IllegalStateException(MSG + UsesAutoMocks.class);
+        throw new IllegalStateException(MSG + LazyFields.class);
     }
 
     public void mock(BoostField[] fields) {

@@ -7,7 +7,7 @@ import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -15,7 +15,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
+public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     private static final Interface ANIMAL = new DefaultInterface(Animal.class);
     private static final Interface SPORT = new DefaultInterface(Sport.class);
     private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);

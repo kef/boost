@@ -6,9 +6,9 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.UsesAutoMocks;
+import au.net.netstorm.boost.test.automock.LazyFields;
 
-public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTestCase implements UsesAutoMocks, HasFixtures {
+public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     UnknownKnotException throwable = new UnknownKnotException();
     EdgeClass classer = new DefaultEdgeClass();
     Method tieMethod = getTieMethod();
