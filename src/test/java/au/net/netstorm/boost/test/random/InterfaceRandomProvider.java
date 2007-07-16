@@ -6,13 +6,14 @@ import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.core.Provider;
+import au.net.netstorm.boost.test.core.SpecificProvider;
 import au.net.netstorm.boost.test.specific.Targetted;
 import au.net.netstorm.boost.util.type.Data;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
 
 // FIX 2076 Drive this out
-public final class InterfaceRandomProvider implements Provider {
+public final class InterfaceRandomProvider implements SpecificProvider {
     private final Provider randomProvider;
     private final Targetted specificProviders;
     private final ClassMaster classMaster = new DefaultClassMaster();
