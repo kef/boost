@@ -16,7 +16,7 @@ public final class DummyMatcher implements Matcher {
     }
 
     private boolean isDummyField(BoostField field) {
-        // FIX 2076 Would this be better?
+        // FIX 2076 Make a card for this.
         //return Data.class.isAssignableFrom(field.getType());
         String name = field.getName();
         return name.endsWith("Dummy");

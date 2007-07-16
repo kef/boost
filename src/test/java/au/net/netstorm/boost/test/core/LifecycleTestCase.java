@@ -14,12 +14,10 @@ import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.DefaultDataProviders;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements TestLifecycleProvider, ExceptionSupportProvider {
-    // FIX 2076 Try not to make this available to subclasses
+    private final LifecycleTestRunner runner;
     public final DataProviders data = new DefaultDataProviders();
-    // FIX 2076 Which of these should be available to sub-classes.
     public final Provider random;
     public MockExpectations expect;
-    private final LifecycleTestRunner runner;
 
     public LifecycleTestCase() {
         RandomProviderAssembler assembler = new DefaultRandomProviderAssembler();
