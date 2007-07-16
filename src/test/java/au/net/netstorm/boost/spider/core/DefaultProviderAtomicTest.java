@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.UsesAutoMocks;

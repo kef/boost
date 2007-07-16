@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultNewerFieldAtomicTest extends InteractionTestCase {
-    DataAtomTestChecker checker = new DataAtomTestChecker(specifics);
+    DataAtomTestChecker checker = new DataAtomTestChecker(data);
     FieldSpec f1 = new DefaultFieldSpec("newerInterface", Interface.class);
     FieldSpec f2 = new DefaultFieldSpec("classToNu", Implementation.class);
     FieldSpec f3 = new DefaultFieldSpec("fieldName", String.class);

@@ -3,23 +3,24 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
+import au.net.netstorm.boost.test.specific.BoostDataProviders;
 import au.net.netstorm.boost.test.specific.DataProviders;
-import au.net.netstorm.boost.test.specific.UsesSpecifics;
+import au.net.netstorm.boost.test.specific.ProvidesData;
 
 public final class InteractionTestLifecycle implements TestLifecycle {
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
-    private final DataProviders specifics;
+    private final DataProviders data;
 
-    public InteractionTestLifecycle(InteractionTestCase testCase, DataProviders specifics) {
+    public InteractionTestLifecycle(InteractionTestCase testCase, DataProviders data) {
         this.testCase = testCase;
-        this.specifics = specifics;
-        testFieldInjector = new DefaultTestFieldInjector(testCase, specifics);
+        this.data = data;
+        testFieldInjector = new DefaultTestFieldInjector(testCase, data);
     }
 
     public void pre() {
         doValidate();
-        doRegisterSpecificProviders();
+        doRegisterDataProviders();
         doInjectAutoMocks();
         doInitialise();
         doSetupSubject();
@@ -40,8 +41,10 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         testFieldInjector.validate();
     }
 
-    private void doRegisterSpecificProviders() {
-        if (hasMarker(UsesSpecifics.class)) ((UsesSpecifics) testCase).registerSpecifics(specifics);
+    private void doRegisterDataProviders() {
+        ProvidesData baseProviders = new BoostDataProviders();
+        baseProviders.register(data);
+        if (hasMarker(ProvidesData.class)) ((ProvidesData) testCase).register(data);
     }
 
     private void doInjectSubject() {

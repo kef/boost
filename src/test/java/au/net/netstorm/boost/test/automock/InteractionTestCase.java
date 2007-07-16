@@ -5,6 +5,6 @@ import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
 public abstract class InteractionTestCase extends LifecycleTestCase implements UsesExpectations, UsesAutoMocks {
     public TestLifecycle testLifecycle() {
-        return new InteractionTestLifecycle(this, specifics);
+        return new InteractionTestLifecycle(this, data);
     }
 }

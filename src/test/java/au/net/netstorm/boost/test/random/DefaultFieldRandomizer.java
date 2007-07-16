@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.test.core.Provider;
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;

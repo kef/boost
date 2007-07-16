@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.test.core.Provider;
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.test.field.BoostField;
 
 public final class BoostFieldRandomizer implements Randomizer {

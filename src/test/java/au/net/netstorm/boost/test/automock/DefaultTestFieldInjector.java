@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.DefaultFieldSelector;

@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFlavouredInterfaceAtomicTest extends InteractionTestCase implements UsesAutoMocks {
-    AtomTestChecker checker = new DataAtomTestChecker(specifics);
+    AtomTestChecker checker = new DataAtomTestChecker(data);
     FieldSpec f1 = new DefaultFieldSpec("iface", Interface.class);
     FieldSpec f2 = new DefaultFieldSpec("flavour", Flavour.class);
     FieldSpec[] fields = {f1, f2};

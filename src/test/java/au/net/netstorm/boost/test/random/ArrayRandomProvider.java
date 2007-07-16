@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.test.random;
 
 import java.lang.reflect.Array;
-import au.net.netstorm.boost.test.core.Provider;
-import au.net.netstorm.boost.test.core.SpecificProvider;
+import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.SpecificProvider;
 
 public final class ArrayRandomProvider implements SpecificProvider {
     private final Provider randomProvider;

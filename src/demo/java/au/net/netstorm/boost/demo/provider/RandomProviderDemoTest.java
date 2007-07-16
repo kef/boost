@@ -3,10 +3,10 @@ package au.net.netstorm.boost.demo.provider;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.specific.DataProviders;
-import au.net.netstorm.boost.test.specific.UsesSpecifics;
+import au.net.netstorm.boost.test.specific.ProvidesData;
 
 // FIX 2076 Rename to InterfaceProviderDemoTest and use to drive out InterfaceRandomProvider...
-public final class RandomProviderDemoTest extends InteractionTestCase implements Initialisable, UsesSpecifics {
+public final class RandomProviderDemoTest extends InteractionTestCase implements Initialisable, ProvidesData {
     FunkyData funkyDataDummy;
 
     public void testInterfaceProvider() {
@@ -40,7 +40,7 @@ public final class RandomProviderDemoTest extends InteractionTestCase implements
     public void initialise() {
     }
 
-    public void registerSpecifics(DataProviders dataProviders) {
+    public void register(DataProviders dataProviders) {
         HappinessProvider happinessProvider = new HappinessProvider();
         dataProviders.add(Happiness.class, happinessProvider);
     }

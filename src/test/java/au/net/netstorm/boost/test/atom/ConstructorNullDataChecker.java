@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.test.core.Provider;
 import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;

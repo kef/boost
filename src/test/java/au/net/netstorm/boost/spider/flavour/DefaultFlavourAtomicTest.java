@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 public final class DefaultFlavourAtomicTest extends InteractionTestCase {
     FieldSpec property = new DefaultFieldSpec("value", String.class);
     FieldSpec[] fields = {property};
-    AtomTestChecker checker = new DataAtomTestChecker(specifics);
+    AtomTestChecker checker = new DataAtomTestChecker(data);
 
     public void testAtom() {
         checker.checkAtom(DefaultFlavour.class, fields);

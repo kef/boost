@@ -12,7 +12,7 @@ public final class LooseDataAtomDemoTest extends InteractionTestCase {
             new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
-    AtomTestChecker checker = new LooseDataAtomTestChecker(specifics);
+    AtomTestChecker checker = new LooseDataAtomTestChecker(data);
 
     public void testGoodAtoms() {
         checkGoodAtom(NullsAreIllegalData.class, SINGLE_STRING_PROPERTY);

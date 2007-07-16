@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.test.core.Provider;
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.FieldRandomizer;

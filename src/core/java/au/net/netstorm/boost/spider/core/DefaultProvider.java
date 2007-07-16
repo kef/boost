@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.matcher;
 
-import au.net.netstorm.boost.test.core.SpecificProvider;
+import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.random.ConcreteRandomProvider;
 

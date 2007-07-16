@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.test.core.SpecificProvider;
+import au.net.netstorm.boost.provider.SpecificProvider;
 
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
 public final class ConcreteRandomProvider implements SpecificProvider {

@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.test.random;
 
+import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.test.atom.DefaultPrimitiveBoxer;
 import au.net.netstorm.boost.test.atom.PrimitiveBoxer;
-import au.net.netstorm.boost.test.core.Provider;
-import au.net.netstorm.boost.test.core.SpecificProvider;
 
 public final class PrimitiveProvider implements SpecificProvider {
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();

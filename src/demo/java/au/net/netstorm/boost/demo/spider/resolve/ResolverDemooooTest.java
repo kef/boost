@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.spider.resolve;
 import au.net.netstorm.boost.demo.spider.core.DefaultSpiderAssembler;
 import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.demo.spider.core.SpiderAssembler;
-import au.net.netstorm.boost.spider.core.Provider;
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMap;
 import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;

@@ -2,10 +2,10 @@ package au.net.netstorm.boost.test.random;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
-import au.net.netstorm.boost.test.core.Provider;
-import au.net.netstorm.boost.test.core.SpecificProvider;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;

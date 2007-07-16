@@ -8,7 +8,7 @@ public class DefaultMethodSpecAtomicTest extends InteractionTestCase {
     FieldSpec f1 = new DefaultFieldSpec("name", String.class);
     FieldSpec f2 = new DefaultFieldSpec("params", Class[].class);
     FieldSpec[] fields = {f1, f2};
-    AtomTestChecker checker = new DataAtomTestChecker(specifics);
+    AtomTestChecker checker = new DataAtomTestChecker(data);
 
     public void testIsDataObject() {
         checker.checkAtom(DefaultMethodSpec.class, fields);
