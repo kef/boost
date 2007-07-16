@@ -3,13 +3,13 @@ package au.net.netstorm.boost.test.specific;
 import java.util.HashMap;
 import java.util.Map;
 import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.provider.ProviderException;
 
 public class DefaultDataProviders implements DataProviders {
     private final Map types = new HashMap();
 
     public void add(Class type, DataProvider provider) {
-        constrain(type);
+        ensureInterface(type);
         types.put(type, provider);
     }
 
@@ -23,9 +23,9 @@ public class DefaultDataProviders implements DataProviders {
         return provider.get();
     }
 
-    private void constrain(Class type) {
-        // FIX 2076 nice message
-        new DefaultInterface(type);
+    private void ensureInterface(Class type) {
+        if (!type.isInterface())
+            throw new ProviderException("Can only register against interfaces: " + type);
     }
 
     private void popIfNotSupported(Class type) {

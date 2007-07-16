@@ -32,7 +32,6 @@ public final class ArrayRandomProvider implements SpecificProvider {
         }
     }
 
-    // FIX 2076 Allow zero length here
     private int randomSize() {
         Boolean on = (Boolean) randomProvider.provide(Boolean.class);
         return on ? 0 : 2;
