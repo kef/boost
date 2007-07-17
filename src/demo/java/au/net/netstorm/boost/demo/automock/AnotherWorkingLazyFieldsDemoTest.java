@@ -29,12 +29,12 @@ public final class AnotherWorkingLazyFieldsDemoTest extends InteractionTestCase 
     }
 
     public void testArrays() {
-        if (strings1.length > 0) assertEquals(true, strings1[0] != null);
+        assertEquals(true, strings1[0] != null);
         assertNotEquals(strings1, strings2);
     }
 
     public void testInterfaces() {
         assertNotEquals(monkeys, apes);
-        if (monkeys.length > 0) assertEquals(true, monkeys[0].equals(monkeys[0]));
+        assertEquals(true, monkeys[0].equals(monkeys[0]));
     }
 }

@@ -60,10 +60,8 @@ final class ArrayPropertyTriangulationChecker implements TriangulationChecker {
     }
 
     private void munge(Object parameters) {
-        if (Array.getLength(parameters) > 0) {
-            Object value = Array.get(parameters, 1);
-            Array.set(parameters, 0, value);
-        }
+        Object value = Array.get(parameters, 1);
+        Array.set(parameters, 0, value);
     }
 
     private Object invoke(Object instance, FieldSpec candidate) {
