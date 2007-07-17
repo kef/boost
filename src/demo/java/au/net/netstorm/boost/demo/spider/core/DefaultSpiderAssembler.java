@@ -3,8 +3,6 @@ package au.net.netstorm.boost.demo.spider.core;
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
 import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
-import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
@@ -14,7 +12,9 @@ import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultNewerAssembler;
+import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
+import au.net.netstorm.boost.spider.inject.newer.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.spider.inject.resolver.core.DefaultInjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
@@ -33,7 +33,6 @@ import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
@@ -44,7 +43,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final ResolvedThings RESOLVED_THINGS = new DefaultResolvedThings();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
-    private final ProxyFactory proxyFactory = assembleProxyFactory();
+    private ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
+    private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
     public Spider assemble(FinderEngine finderEngine) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
@@ -75,11 +75,6 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private DefaultResolverEngine assembleResolver(ProviderEngine passThroughProvider, FinderEngine finder) {
         NewerAssembler newerAssembler = new DefaultNewerAssembler(passThroughProvider);
         return new DefaultResolverEngine(passThroughProvider, finder, newerAssembler);
-    }
-
-    private ProxyFactory assembleProxyFactory() {
-        ProxySupplier proxySupplier = new DefaultProxySupplier();
-        return new DefaultProxyFactory(proxySupplier);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
