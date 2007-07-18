@@ -3,6 +3,8 @@ package au.net.netstorm.boost.demo.spider.newer;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -11,10 +13,12 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
     ResolvedThings subject;
     Implementation impl;
     BaseReference expected;
-    Implementation doesNotExist;
+    Implementation doesNotExistDummy;
+    FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void setUpFixtures() {
         subject = new DefaultResolvedThings();
+        fielder.setInstance(doesNotExistDummy, "impl", String.class);
     }
 
     public void testExists() {
@@ -30,7 +34,7 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
     public void testPutFailure() {
         subject.put(impl, expected);
         try {
-            subject.get(doesNotExist);
+            subject.get(doesNotExistDummy);
             fail();
         } catch (IllegalStateException expected) { }
     }

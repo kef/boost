@@ -3,12 +3,15 @@ package au.net.netstorm.boost.spider.registry;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final FlavouredMap web;
+    TypeMaster master = new DefaultTypeMaster();
 
     public DefaultRegistryMaster(FlavouredMap web) {
         this.web = web;
@@ -50,7 +53,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     private void barfIfNotImplOfIface(Interface iface, Implementation impl) {
-        if (!impl.is(iface)) throw new WrongInterfaceRegistrationException(impl, iface);
+        if (!master.implementz(impl, iface)) throw new WrongInterfaceRegistrationException(impl, iface);
     }
 
     private Object get(Interface iface, Flavour flavour) {

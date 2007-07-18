@@ -12,6 +12,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
+import au.net.netstorm.boost.reflect.ClassMaster;
+import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
@@ -26,6 +28,7 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
     private final ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private final NullMaster nullMaster = new DefaultNullMaster();
     private final InstanceProvider instanceProvider;
+    private ClassMaster classer = new DefaultClassMaster();
 
     public DefaultParameterCheckerTestUtil(InstanceProvider instanceProvider) {
         nullMaster.check(instanceProvider);
@@ -197,14 +200,26 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
     }
 
     private void failMethod(int currentParameter, Method method, String badParamTypeName) {
-        String paramTypeClassName = method.getParameterTypes()[currentParameter].getSimpleName();
-        String methodName = method.getDeclaringClass().getSimpleName() + "." + method.getName();
+        Class[] parameterTypes = method.getParameterTypes();
+        String declaringClassName = shortName(method);
+        String paramTypeClassName = shortName(parameterTypes[currentParameter]);
+        String methodName = declaringClassName + "." + method.getName();
         fail(currentParameter, methodName, paramTypeClassName, badParamTypeName);
     }
 
+    private String shortName(Method method) {
+        Class declaringClass = method.getDeclaringClass();
+        return shortName(declaringClass);
+    }
+
+    private String shortName(Class aClass) {
+        return classer.getShortName(aClass);
+    }
+
     private void failConstructor(int currentParameter, Constructor constructor, String badParamTypeName) {
-        String paramTypeClassName = constructor.getParameterTypes()[currentParameter].getSimpleName();
-        String methodName = constructor.getDeclaringClass().getSimpleName();
+        Class[] parameterTypes = constructor.getParameterTypes();
+        String paramTypeClassName = shortName(parameterTypes[currentParameter]);
+        String methodName = shortName(constructor.getDeclaringClass());
         fail(currentParameter, methodName, paramTypeClassName, badParamTypeName);
     }
 
@@ -221,7 +236,7 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
             paramValues[indexOfParamToMakeBad] = badValue;
         } else {
             throw new RuntimeException("Expected value '" + badValue + "' to be of type " +
-                    paramTypes[indexOfParamToMakeBad].getSimpleName());
+                    shortName(paramTypes[indexOfParamToMakeBad]));
         }
     }
 

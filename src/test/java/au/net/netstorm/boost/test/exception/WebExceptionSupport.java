@@ -7,6 +7,7 @@ import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
 public final class WebExceptionSupport implements ExceptionSupport {
     private static final ThrowableMaster THROWABLE_MASTER = new DefaultThrowableMaster();
+    private static final int NOT_FOUND = -1;
 
     public RuntimeException translate(RuntimeException e) {
         String trace = THROWABLE_MASTER.getTrace(e);
@@ -16,7 +17,8 @@ public final class WebExceptionSupport implements ExceptionSupport {
     }
 
     private boolean contains(String trace, Class cls) {
-        return trace.contains(cls.getName());
+        String className = cls.getName();
+        return trace.indexOf(className) != NOT_FOUND;
     }
 
     private RuntimeException suggestWeb(RuntimeException e) {

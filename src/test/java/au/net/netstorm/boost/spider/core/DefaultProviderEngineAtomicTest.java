@@ -8,8 +8,11 @@ import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.test.automock.HasFixtures;
+import au.net.netstorm.boost.test.automock.InjectableSubject;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -17,14 +20,14 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields, InjectableSubject {
     ProviderEngine subject;
     Onionizer onionizer;
     Instantiator instantiator;
     Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     InjectorEngine injector;
     Object[] parameters = {"Hi", "There"};
-    Implementation providezMoi;
+    Implementation providezMoiDummy;
     BaseReference unresolved;
     Object rawRef;
     ResolvedInstance wrapped;
@@ -32,6 +35,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
     Interface initMarker = new DefaultInterface(Initialisable.class);
     ResolvedThings resolvedThings = new DefaultResolvedThings();
+    FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void setUpFixtures() {
         subject = new DefaultProviderEngine(onionizer, injector, instantiator);
@@ -44,17 +48,16 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void checkProvider(boolean initialise) {
         resolvedThings.clear();
-        expect.oneCall(instantiator, unresolved, "instantiate", providezMoi, parameters);
+        expect.oneCall(instantiator, unresolved, "instantiate", providezMoiDummy, parameters);
         expect.oneCall(injector, VOID, "inject", unresolved);
         expect.oneCall(onionizer, wrapped, "onionise", unresolved);
-        optionalInit(initialise);
-        ResolvedInstance result = subject.provide(providezMoi, parameters);
+        if (initialise) expectInitialise();
+        ResolvedInstance result = subject.provide(providezMoiDummy, parameters);
         assertEquals(wrapped, result);
     }
 
-    private void optionalInit(boolean initialise) {
-        expect.oneCall(providezMoi, initialise, "is", initMarker);
-        if (!initialise) return;
+    private void expectInitialise() {
+        fielder.setInstance(providezMoiDummy, "impl", InitialisableImpl.class);
         expect.oneCall(unresolved, initialisable, "getRef");
         expect.oneCall(initialisable, VOID, "initialise");
     }
@@ -64,4 +67,9 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 //        expect.oneCall(gaijinator, rawRef, "instantiate", type, NO_PARAMS);
 //        subject.provide(Barbarian.class, NO_PARAMS);
 //    }
+
+    private static class InitialisableImpl implements Initialisable {
+        public void initialise() {
+        }
+    }
 }

@@ -28,7 +28,7 @@ public final class DefaultClockAtomicTest extends InteractionTestCase implements
 
     public void testGetTime() {
         expect.oneCall(timeLord, expected, "get", millis);
-        TimePoint actual = subject.getTime(millis);
+        TimePoint actual = subject.getTime(millis.longValue());
         assertEquals(expected, actual);
     }
 

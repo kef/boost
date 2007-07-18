@@ -9,13 +9,16 @@ public final class NotProvidedExceptionAtomicTest extends InteractionTestCase im
     ClassTestChecker classer = new DefaultClassTestChecker();
     NotProvidedException subject;
     Class aClass;
+    private static final int NOT_FOUND = -1;
 
     public void setUpFixtures() {
         subject = new NotProvidedException(aClass);
     }
 
     public void testMessage() {
-        assertEquals(true, subject.getMessage().contains(aClass.toString()));
+        String message = subject.getMessage();
+        String classString = aClass.toString();
+        assertEquals(true, message.indexOf(classString) != NOT_FOUND);
     }
 
     public void testStructure() {

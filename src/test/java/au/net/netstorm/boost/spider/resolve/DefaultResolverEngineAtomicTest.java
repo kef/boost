@@ -36,7 +36,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(registryMaster, false, "hasInstance", jim, flavour);
+        expect.oneCall(registryMaster, Boolean.FALSE, "hasInstance", jim, flavour);
         expect.oneCall(registryMaster, jimImpl, "getImplementation", jim, flavour);
         expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
         ResolvedInstance result = subject.resolve(jim, flavour);
@@ -44,7 +44,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(registryMaster, true, "hasInstance", spoo, flavour);
+        expect.oneCall(registryMaster, Boolean.TRUE, "hasInstance", spoo, flavour);
         expect.oneCall(registryMaster, spooInstance, "getInstance", spoo, flavour);
         ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);

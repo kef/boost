@@ -15,11 +15,6 @@ public final class DefaultInterface extends Primordial implements Interface {
         return type;
     }
 
-    public boolean is(Interface iface) {
-        Class cls = iface.getType();
-        return cls.isAssignableFrom(type);
-    }
-
     private void validate() {
         if (type == null)
             throw new IllegalArgumentException();

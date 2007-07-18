@@ -4,10 +4,13 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.reflect.ClassMaster;
+import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import junit.framework.Assert;
 
 public final class DefaultEdgeConstructorChecker implements EdgeChecker {
     private static final List CONSTRUCTOR_MODIFIER_EXCEPTIONS = new ArrayList();
+    private ClassMaster classer = new DefaultClassMaster();
 
     public void check(Class edgeClass) {
         Constructor edgeConstructor = checkAndGetSingleConstructor(edgeClass);
@@ -28,7 +31,7 @@ public final class DefaultEdgeConstructorChecker implements EdgeChecker {
     private void checkPackagePrivate(Constructor constructor, Class edgeClass) {
         int modifiers = constructor.getModifiers();
         boolean packagePrivate = isPackagePrivate(modifiers);
-        String simpleName = edgeClass.getSimpleName();
+        String simpleName = classer.getShortName(edgeClass);
         Assert.assertTrue(simpleName + " does not contain a package private constructor.", packagePrivate);
     }
 

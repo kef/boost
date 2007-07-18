@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.Destroyable;
 import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
@@ -11,10 +12,12 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
     private final DataProviders data;
+    private final Provider random;
 
-    public InteractionTestLifecycle(InteractionTestCase testCase, DataProviders data) {
+    public InteractionTestLifecycle(InteractionTestCase testCase, DataProviders data, Provider random) {
         this.testCase = testCase;
         this.data = data;
+        this.random = random;
         testFieldInjector = new DefaultTestFieldInjector(testCase, data);
     }
 
@@ -42,7 +45,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doRegisterDataProviders() {
-        ProvidesData baseProviders = new BoostDataProviders();
+        ProvidesData baseProviders = new BoostDataProviders(random);
         baseProviders.register(data);
         if (hasMarker(ProvidesData.class)) ((ProvidesData) testCase).register(data);
     }
@@ -68,7 +71,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doInjectLazyFields() {
-        if (hasMarker(LazyFields.class)) testFieldInjector.injectLazyFields();
+        if (hasMarker(LazyFields.class)) testFieldInjector.inject();
     }
 
     private boolean hasMarker(Class marker) {

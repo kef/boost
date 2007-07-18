@@ -6,17 +6,20 @@ import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.TypeMaster;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface INITIALISABLE = new DefaultInterface(Initialisable.class);
     private final ResolvedThings resolvedThings = new DefaultResolvedThings();
-    private Onionizer onionizer;
-    private Instantiator instantiator;
-    private InjectorEngine injector;
+    private final TypeMaster implMaster = new DefaultTypeMaster();
+    private final Onionizer onionizer;
+    private final Instantiator instantiator;
+    private final InjectorEngine injector;
 
     // OK LineLength {
     public DefaultProviderEngine(Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
@@ -33,7 +36,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
         // FIX 1971 Test drive this check up.
         if (resolvedThings.exists(impl)) return resolvedThings.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
-        if (impl.is(INITIALISABLE)) init(resolved);
+        if (implMaster.implementz(impl, INITIALISABLE)) init(resolved);
         return onionizer.onionise(resolved);
     }
 

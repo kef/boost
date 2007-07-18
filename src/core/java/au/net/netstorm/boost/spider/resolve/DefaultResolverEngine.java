@@ -7,13 +7,16 @@ import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.FinderEngine;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultResolverEngine implements ResolverEngine {
     private static final Object[] NO_PARAMS = {};
     private static final Interface NEWER = new DefaultInterface(Newer.class);
+    private final TypeMaster typeMaster = new DefaultTypeMaster();
     private final ProviderEngine provider;
     private final FinderEngine finder;
     private final NewerAssembler newer;
@@ -42,13 +45,17 @@ public final class DefaultResolverEngine implements ResolverEngine {
     // FIX 1977 Look closely at the Newer stuff.  Does it belong here or in a delegate?
     private ResolvedInstance getInstance(Interface iface, Flavour flavour) {
         // Suggest What about onionising the instance?
-        if (iface.is(NEWER)) return nuNewer(iface);
+        if (isNewer(iface)) return nuNewer(iface);
         return finder.getInstance(iface, flavour);
     }
 
     private boolean hasInstance(Interface iface, Flavour flavour) {
-        if (iface.is(NEWER)) return true;
+        if (isNewer(iface)) return true;
         return finder.hasInstance(iface, flavour);
+    }
+
+    private boolean isNewer(Interface iface) {
+        return typeMaster.extendz(iface, NEWER);
     }
 
     private ResolvedInstance nuNewer(Interface iface) {

@@ -11,6 +11,7 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     private final Interface jester = new DefaultInterface(Jester.class);
     private final Interface soldier = new DefaultInterface(Soldier.class);
     private final Interface clown = new DefaultInterface(Clown.class);
+    private final TypeMaster typeMaster = new DefaultTypeMaster();
 
     public void testIsA() {
         checkIsA(true, clown);
@@ -53,7 +54,7 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     }
 
     private void checkIsA(boolean expected, Interface iface) {
-        boolean result = jester.is(iface);
+        boolean result = typeMaster.extendz(jester, iface);
         assertEquals(expected, result);
     }
 }

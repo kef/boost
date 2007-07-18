@@ -9,21 +9,22 @@ import au.net.netstorm.boost.provider.ProviderException;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.test.automock.AutoMocker;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.type.Data;
-import org.jmock.Mock;
-import org.jmock.MockObjectTestCase;
 
 // FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements SpecificProvider {
     private final Provider randomProvider;
     private final DataProviders specificProviders;
     private final ClassMaster classMaster = new DefaultClassMaster();
-    private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
+    private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
+    private final AutoMocker mocker;
 
-    public InterfaceRandomProvider(Provider randomProvider, DataProviders specificProviders) {
+    public InterfaceRandomProvider(Provider randomProvider, DataProviders specificProviders, AutoMocker mocker) {
         this.randomProvider = randomProvider;
         this.specificProviders = specificProviders;
+        this.mocker = mocker;
     }
 
     public boolean canProvide(Class type) {
@@ -40,11 +41,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     // FIX BREADCRUMB 2076 Tidy up below.
 
     private Object mock(Class type) {
-        // FIX 2076 We're totally missing the verify action.  WHICH IS IMPORTANT!!!!!!!!!!!!!.
-        MockObjectTestCase mocker = new MockObjectTestCase() {
-        };
-        Mock mock = mocker.mock(type);
-        return mock.proxy();
+        return mocker.mock(type);
     }
 
     private Object data(Class type) {

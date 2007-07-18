@@ -32,7 +32,7 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
     }
 
     public void testNow() {
-        expect.oneCall(system, NOW, "currentTimeMillis");
+        expect.oneCall(system, new Long(NOW), "currentTimeMillis");
         TimePoint expected = new DefaultTimePoint(NOW);
         TimePoint actual = subject.now(system);
         assertEquals(expected, actual);

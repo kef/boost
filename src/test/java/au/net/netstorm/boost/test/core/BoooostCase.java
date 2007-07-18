@@ -68,7 +68,7 @@ public class BoooostCase extends TestCase {
     }
 
     public final void assertEquals(Integer expected, int actual) {
-        assertEquals(expected, Integer.valueOf(actual));
+        assertEquals(expected, new Integer(actual));
     }
 
     // Don't use these variants.

@@ -9,9 +9,7 @@ import au.net.netstorm.boost.test.field.FieldBuilder;
 import au.net.netstorm.boost.test.field.FieldSelector;
 import au.net.netstorm.boost.test.inject.DefaultSubjectInjector;
 import au.net.netstorm.boost.test.inject.SubjectInjector;
-import au.net.netstorm.boost.test.matcher.ArrayMatcher;
-import au.net.netstorm.boost.test.matcher.ConcreteMatcher;
-import au.net.netstorm.boost.test.matcher.DummyMatcher;
+import au.net.netstorm.boost.test.matcher.CommonMatcher;
 import au.net.netstorm.boost.test.matcher.InterfaceMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.random.BoostFieldRandomizer;
@@ -29,24 +27,24 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final FieldSelector selector = new DefaultFieldSelector();
-    private final Matcher interfaceMatcher = new InterfaceMatcher();
-    private final Matcher dummyMatcher = new DummyMatcher();
-    private final Matcher arrayMatcher = new ArrayMatcher();
-    private final Matcher concreteMatcher = new ConcreteMatcher();
+    // FIX 2076 rename to injectable field matcher
+    private final Matcher commonMatcher = new CommonMatcher();
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldValidator validator = new DefaultFieldValidator();
     private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
     private final Randomizer randomizer;
-    private final AutoMocker autoMocker;
     private final BoostField[] fields;
+    // FIX 2076 Get rid of this as part of card to make all Data objects dummies
     private final LifecycleTestCase testCase;
+    private AutoMocker autoMocker;
+    private Matcher mockMatcher = new InterfaceMatcher();
 
     public DefaultTestFieldInjector(LifecycleTestCase testCase, DataProviders dataProviders) {
         this.testCase = testCase;
-        Provider randomProvider = providerAssembler.everything(dataProviders);
+        autoMocker = new DefaultAutoMocker(mockProvider);
+        Provider randomProvider = providerAssembler.everything(dataProviders, autoMocker);
         randomizer = new BoostFieldRandomizer(randomProvider);
-        autoMocker = new DefaultAutoMocker(testCase, mockProvider);
         fields = getAllFields();
     }
 
@@ -54,11 +52,8 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         validator.validate(fields);
     }
 
-    public void injectLazyFields() {
-        injectDummies(fields);
-        injectInterfaces(fields);
-        injectArrays(fields);
-        injectConcretes(fields);
+    public void inject() {
+        injectFields(fields);
     }
 
     public void injectSubject() {
@@ -74,24 +69,16 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         mocker.verify();
     }
 
-    private void injectDummies(BoostField[] fields) {
-        BoostField[] dummyFields = selector.select(fields, dummyMatcher);
-        randomizer.randomize(dummyFields);
+    private void injectFields(BoostField[] fields) {
+        injectMocks(fields);
+        BoostField[] injectables = selector.select(fields, commonMatcher);
+        randomizer.randomize(injectables);
     }
 
-    private void injectInterfaces(BoostField[] fields) {
-        BoostField[] mockFields = selector.select(fields, interfaceMatcher);
-        autoMocker.mock(mockFields);
-    }
-
-    private void injectArrays(BoostField[] fields) {
-        BoostField[] arrays = selector.select(fields, arrayMatcher);
-        randomizer.randomize(arrays);
-    }
-
-    private void injectConcretes(BoostField[] fields) {
-        BoostField[] concreteFields = selector.select(fields, concreteMatcher);
-        randomizer.randomize(concreteFields);
+    // FIX 2076 Get rid of this as part of card to make all Data objects dummies
+    private void injectMocks(BoostField[] fields) {
+        BoostField[] mockables = selector.select(fields, mockMatcher);
+        autoMocker.mock(mockables, testCase);
     }
 
     private BoostField[] getAllFields() {

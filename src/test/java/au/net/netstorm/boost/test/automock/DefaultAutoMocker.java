@@ -9,45 +9,49 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import org.jmock.Mock;
 
 // SUGGEST Make sure no production code (core, edge or test) is using the nursery, outside of the nursery of course.
-class DefaultAutoMocker implements AutoMocker {
+public class DefaultAutoMocker implements AutoMocker {
     private static final String MSG = "Mock does not exist for provided proxy.  Make sure to implement ";
     private final Map mocks = new HashMap();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
-    private final LifecycleTestCase testCase;
     private final MockProvider mockProvider;
 
-    public DefaultAutoMocker(LifecycleTestCase testCase, MockProvider mockProvider) {
-        this.testCase = testCase;
+    public DefaultAutoMocker(MockProvider mockProvider) {
         this.mockProvider = mockProvider;
     }
 
     public Mock get(Object proxy) {
         Mock mock = (Mock) mocks.get(proxy);
         if (mock != null) return mock;
-        throw new IllegalStateException(MSG + LazyFields.class);
+        throw new IllegalStateException(MSG + LazyFields.class + "\nProxy: " + proxy);
     }
 
-    public void mock(BoostField[] fields) {
+    public Object mock(Class type) {
+        return createMock(type);
+    }
+
+    // FIX 2076 Get rid of this as part of card to make all Data objects dummies
+    public void mock(BoostField[] fields, LifecycleTestCase testCase) {
         for (int i = 0; i < fields.length; i++) {
-            createMock(fields[i]);
+            BoostField field = fields[i];
+            setMockOnTest(field, testCase);
         }
     }
 
-    private void createMock(BoostField field) {
+    private void setMockOnTest(BoostField field, LifecycleTestCase testCase) {
         Class type = field.getType();
         String name = field.getName();
-        Object proxy = createMock(type, name);
-        setField(name, proxy);
+        Object mock = mock(type);
+        setField(name, mock, testCase);
     }
 
-    private Object createMock(Class cls, String name) {
-        Mock mock = mockProvider.mock(cls, name);
+    private Object createMock(Class type) {
+        Mock mock = mockProvider.mock(type);
         Object proxy = mock.proxy();
         mocks.put(proxy, mock);
         return proxy;
     }
 
-    private void setField(String name, Object proxy) {
+    private void setField(String name, Object proxy, LifecycleTestCase testCase) {
         fielder.setInstance(testCase, name, proxy);
     }
 }

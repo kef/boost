@@ -2,18 +2,26 @@ package au.net.netstorm.boost.demo.provider;
 
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.Initialisable;
+import au.net.netstorm.boost.test.automock.AutoMocker;
+import au.net.netstorm.boost.test.automock.DefaultAutoMocker;
+import au.net.netstorm.boost.test.automock.DefaultMockObjectTestCase;
+import au.net.netstorm.boost.test.automock.DefaultMockProvider;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.MockProvider;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.ProvidesData;
+import org.jmock.MockObjectTestCase;
 
 // FIX 2076 Use to drive out InterfaceRandomProvider...
 public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Initialisable, ProvidesData {
-
+    MockObjectTestCase mockObjectTestCase = new DefaultMockObjectTestCase();
+    MockProvider mockProvider = new DefaultMockProvider(mockObjectTestCase);
+    AutoMocker mocker = new DefaultAutoMocker(mockProvider);
     Provider interfaceProvider;
 
     public InterfaceRandomProviderDemoTest() {
-        this.interfaceProvider = new InterfaceRandomProvider(random, data);
+        this.interfaceProvider = new InterfaceRandomProvider(random, data, mocker);
     }
 
     public void testInterfaceProvider() {

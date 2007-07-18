@@ -13,7 +13,7 @@ final class ArrayNotTheSameIllegalData extends Primordial implements Data {
 
     public Integer[] getIntegers() {
         Integer[] result = (Integer[]) integers.clone();
-        result[0] = Integer.valueOf(42);
+        result[0] = new Integer(42);
         return result;
     }
 

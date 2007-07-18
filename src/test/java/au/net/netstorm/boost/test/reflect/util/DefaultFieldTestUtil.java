@@ -85,8 +85,14 @@ public class DefaultFieldTestUtil implements FieldTestUtil {
             edgeField.set(field, ref, value);
         } catch (IllegalArgumentException e) {
             String fieldName = field.getName();
-            throw new IllegalArgumentException("Unable to set the value of: " + fieldName, e);
+            throw wrapException(fieldName, e);
         }
+    }
+
+    private IllegalArgumentException wrapException(String fieldName, IllegalArgumentException e) {
+        IllegalArgumentException illegalArgumentException = new IllegalArgumentException("Unable to set the value of: " + fieldName);
+        illegalArgumentException.initCause(e);
+        return illegalArgumentException;
     }
 
     private Object getFieldValue(Class cls, Object ref, String fieldName) {

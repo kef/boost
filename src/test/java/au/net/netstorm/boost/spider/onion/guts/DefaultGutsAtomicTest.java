@@ -32,12 +32,12 @@ public final class DefaultGutsAtomicTest extends InteractionTestCase implements 
 
     private void add() {
         Object result = subject.invoke(add, args);
-        assertEquals(true, result);
+        assertEquals(Boolean.TRUE, result);
     }
 
     private void size() {
         Object result = subject.invoke(size, noargs);
-        assertEquals(2, result);
+        assertEquals(new Integer(2), result);
     }
 
     private void toarray() {
