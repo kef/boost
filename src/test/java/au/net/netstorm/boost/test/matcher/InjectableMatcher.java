@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.matcher;
 import au.net.netstorm.boost.test.field.BoostField;
 
 // OK NCSS|CyclomaticComplexity|ReturnCount {
-public final class CommonMatcher implements Matcher {
+public final class InjectableMatcher implements Matcher {
     public boolean matches(BoostField field) {
         if (field.isStatic()) return false;
         if (field.isFinal()) return false;

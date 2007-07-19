@@ -9,9 +9,9 @@ import au.net.netstorm.boost.test.field.FieldBuilder;
 import au.net.netstorm.boost.test.field.FieldSelector;
 import au.net.netstorm.boost.test.inject.DefaultSubjectInjector;
 import au.net.netstorm.boost.test.inject.SubjectInjector;
-import au.net.netstorm.boost.test.matcher.CommonMatcher;
-import au.net.netstorm.boost.test.matcher.InterfaceMatcher;
+import au.net.netstorm.boost.test.matcher.InjectableMatcher;
 import au.net.netstorm.boost.test.matcher.Matcher;
+import au.net.netstorm.boost.test.matcher.MockMatcher;
 import au.net.netstorm.boost.test.random.BoostFieldRandomizer;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
@@ -27,18 +27,16 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final MockObjectTestCase mocker = new DefaultMockObjectTestCase();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final FieldSelector selector = new DefaultFieldSelector();
-    // FIX 2076 rename to injectable field matcher
-    private final Matcher commonMatcher = new CommonMatcher();
+    private final Matcher injectableMatcher = new InjectableMatcher();
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
     private final MockProvider mockProvider = new DefaultMockProvider(mocker);
     private final FieldValidator validator = new DefaultFieldValidator();
     private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
     private final Randomizer randomizer;
     private final BoostField[] fields;
-    // FIX 2076 Get rid of this as part of card to make all Data objects dummies
     private final LifecycleTestCase testCase;
     private AutoMocker autoMocker;
-    private Matcher mockMatcher = new InterfaceMatcher();
+    private Matcher mockMatcher = new MockMatcher();
 
     public DefaultTestFieldInjector(LifecycleTestCase testCase, DataProviders dataProviders) {
         this.testCase = testCase;
@@ -71,11 +69,11 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
 
     private void injectFields(BoostField[] fields) {
         injectMocks(fields);
-        BoostField[] injectables = selector.select(fields, commonMatcher);
+        BoostField[] injectables = selector.select(fields, injectableMatcher);
         randomizer.randomize(injectables);
     }
 
-    // FIX 2076 Get rid of this as part of card to make all Data objects dummies
+    // FIX 2076 CARD Make all Data objects dummies - get rid of this.
     private void injectMocks(BoostField[] fields) {
         BoostField[] mockables = selector.select(fields, mockMatcher);
         autoMocker.mock(mockables, testCase);

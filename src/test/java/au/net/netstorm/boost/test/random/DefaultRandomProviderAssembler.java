@@ -32,11 +32,12 @@ public final class DefaultRandomProviderAssembler implements RandomProviderAssem
         return assemble(providers, mocker);
     }
 
-    // FIX 2076 This is 'orrible - is there a better way to do this? Are all these classes necessary?
     private AutoMocker createAutoMocker() {
+        // FIX 2076 CARD Make all Data objects dummies - clean this up, not nice to have
+        // field checkers using different MockObjectTestCase to tests. Not nice to have
+        // MockObjectTestCase (jmock) in so many places.
         MockObjectTestCase mockTestCase = new DefaultMockObjectTestCase();
         MockProvider mockProvider = new DefaultMockProvider(mockTestCase);
-        // FIX 2076 Get rid of this as part of card to make all Data objects dummies
         return new DefaultAutoMocker(mockProvider);
     }
 

@@ -1,29 +1,33 @@
 package au.net.netstorm.boost.test.random;
 
-import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.provider.ProviderException;
 import au.net.netstorm.boost.provider.SpecificProvider;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.reflect.DefaultInstantiatorWithProvider;
+import au.net.netstorm.boost.reflect.InstantiatorWithProvider;
 import au.net.netstorm.boost.test.automock.AutoMocker;
 import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.DefaultTypeMaster;
+import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.TypeMaster;
 
 // FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements SpecificProvider {
+    private static final Interface DATA = new DefaultInterface(Data.class);
+    private final InstantiatorWithProvider instantiator = new DefaultInstantiatorWithProvider();
+    private final au.net.netstorm.boost.util.impl.ImplMaster implMaster = new DefaultImplMaster();
+    private final TypeMaster typeMaster = new DefaultTypeMaster();
+    private final DataProviders dataProviders;
     private final Provider randomProvider;
-    private final DataProviders specificProviders;
-    private final ClassMaster classMaster = new DefaultClassMaster();
-    private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private final AutoMocker mocker;
 
-    public InterfaceRandomProvider(Provider randomProvider, DataProviders specificProviders, AutoMocker mocker) {
+    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, AutoMocker mocker) {
         this.randomProvider = randomProvider;
-        this.specificProviders = specificProviders;
+        this.dataProviders = dataProviders;
         this.mocker = mocker;
     }
 
@@ -32,70 +36,37 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     }
 
     public Object provide(Class type) {
-        if (!canProvide(type)) throw new NotProvidedException(type);
-        if (isSpecific(type)) return specific(type);
-        if (isData(type)) return data(type);
+        Interface iface = popIfNotInterface(type);
+        if (isProvided(type)) return providedImpl(type);
+        if (isDataWithImpl(iface)) return defaultImpl(iface);
         return mock(type);
     }
 
-    // FIX BREADCRUMB 2076 Tidy up below.
+    private Interface popIfNotInterface(Class type) {
+        if (!canProvide(type)) throw new NotProvidedException(type);
+        return new DefaultInterface(type);
+    }
+
+    private boolean isProvided(Class type) {
+        return dataProviders.canProvide(type);
+    }
+
+    private Object providedImpl(Class type) {
+        return dataProviders.provide(type);
+    }
+
+    private boolean isDataWithImpl(Interface iFace) {
+        if (!typeMaster.extendz(iFace, DATA)) return false;
+        return implMaster.hasDefaultImpl(iFace);
+    }
+
+    private Object defaultImpl(Interface type) {
+        Implementation impl = implMaster.defaultImpl(type);
+        Class implClass = impl.getImpl();
+        return instantiator.createInstance(implClass, randomProvider);
+    }
 
     private Object mock(Class type) {
         return mocker.mock(type);
-    }
-
-    private Object data(Class type) {
-        String defaultClassName = createImplName(type);
-        Class implClass = loadImpl(defaultClassName, type);
-        Constructor[] constructors = implClass.getConstructors();
-        // FIX 2076 Use ClassMaster?
-        if (constructors.length != 1) {
-            throw new ProviderException("There should be exactly one public constuctor" + implClass);
-        }
-        return createRandomInstance(constructors[0]);
-    }
-
-    private String createImplName(Class type) {
-        String packageName = classMaster.getPackageName(type);
-        String className = classMaster.getShortName(type);
-        // FIX 2076 Change to " + Data".
-        return packageName + ".Default" + className;
-    }
-
-    private Class loadImpl(String defaultClassName, Class type) {
-        try {
-            return Class.forName(defaultClassName);
-        } catch (ClassNotFoundException e) {
-            throw new ProviderException("Cannot load default implementation for " + type, e);
-        }
-    }
-
-    private Object createRandomInstance(Constructor constructor) {
-        Class[] paramTypes = constructor.getParameterTypes();
-        Object[] params = new Object[paramTypes.length];
-        for (int i = 0; i < paramTypes.length; i++) {
-            params[i] = randomProvider.provide(paramTypes[i]);
-        }
-        return edgeConstructor.newInstance(constructor, params);
-    }
-
-    // FIX 2076 This belongs in a utility.
-    private boolean isData(Class type) {
-        if (!Data.class.isAssignableFrom(type)) return false;
-        String implName = createImplName(type);
-        try {
-            Class.forName(implName);
-            return true;
-        } catch (ClassNotFoundException e) {
-            return false;
-        }
-    }
-
-    private boolean isSpecific(Class type) {
-        return specificProviders.canProvide(type);
-    }
-
-    private Object specific(Class type) {
-        return specificProviders.provide(type);
     }
 }

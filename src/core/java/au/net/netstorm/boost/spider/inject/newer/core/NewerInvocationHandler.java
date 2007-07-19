@@ -15,7 +15,7 @@ public final class NewerInvocationHandler implements InvocationHandler {
         this.impl = impl;
     }
 
-    // FIX 2076 Pop if method.getName() is not "nu".
+    // SUGGEST Pop if method.getName() is not "nu".
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
         ResolvedInstance instance = provider.provide(impl, params);
         return instance.getRef();

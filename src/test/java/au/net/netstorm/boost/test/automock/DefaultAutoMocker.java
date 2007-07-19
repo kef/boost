@@ -29,7 +29,7 @@ public class DefaultAutoMocker implements AutoMocker {
         return createMock(type);
     }
 
-    // FIX 2076 Get rid of this as part of card to make all Data objects dummies
+    // FIX 2076 CARD Make all Data objects dummies - get rid of this.
     public void mock(BoostField[] fields, LifecycleTestCase testCase) {
         for (int i = 0; i < fields.length; i++) {
             BoostField field = fields[i];
