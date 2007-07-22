@@ -17,7 +17,7 @@ public final class DefaultArrayOperatorAtomicTest extends BoooostCase {
     }
 
     public void testPlus() {
-        byte[] actual = subject.plus(foo, bar);
+        byte[] actual = subject.add(foo, bar);
         assertEquals(foobar, actual);
     }
 }

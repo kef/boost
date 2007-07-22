@@ -15,7 +15,7 @@ public final class DefaultArrayOperator implements ArrayOperator {
         return result.toArray(type);
     }
 
-    public byte[] plus(byte[] array1, byte[] array2) {
+    public byte[] add(byte[] array1, byte[] array2) {
         int length1 = array1.length;
         int length2 = array2.length;
         byte[] concatenation = new byte[length1 + length2];
