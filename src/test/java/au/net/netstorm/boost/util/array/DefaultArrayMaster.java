@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 public final class DefaultArrayMaster implements ArrayMaster {
-    public Object[] minus(Object[] superSetArray, Object[] subSetArray) {
-        Set result = convertToSet(superSetArray);
-        Set subSet = convertToSet(subSetArray);
+    public Object[] minus(Object[] minuend, Object[] subtrahend) {
+        Set result = set(minuend);
+        Set subSet = set(subtrahend);
         result.removeAll(subSet);
-        Object[] type = determineElementType(superSetArray);
+        Object[] type = type(minuend);
         return result.toArray(type);
     }
 
@@ -24,12 +24,12 @@ public final class DefaultArrayMaster implements ArrayMaster {
         return concatenation;
     }
 
-    private Set convertToSet(Object[] array) {
+    private Set set(Object[] array) {
         List list = Arrays.asList(array);
         return new HashSet(list);
     }
 
-    private Object[] determineElementType(Object[] array) {
+    private Object[] type(Object[] array) {
         Class arrayClass = array.getClass();
         Class componentType = arrayClass.getComponentType();
         return (Object[]) Array.newInstance(componentType, 0);
