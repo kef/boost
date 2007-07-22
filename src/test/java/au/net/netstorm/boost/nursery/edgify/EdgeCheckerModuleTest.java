@@ -5,12 +5,12 @@ import au.net.netstorm.boost.test.aggregator.RegexPattern;
 import au.net.netstorm.boost.test.aggregator.TestClassLocator;
 import au.net.netstorm.boost.test.aggregator.TestRegexPattern;
 import au.net.netstorm.boost.test.core.BoooostCase;
-import au.net.netstorm.boost.util.array.ArrayOperator;
-import au.net.netstorm.boost.util.array.DefaultArrayOperator;
+import au.net.netstorm.boost.util.array.ArrayMaster;
+import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 
 // OK ClassDataAbstractionCoupling {
 public final class EdgeCheckerModuleTest extends BoooostCase {
-    private final ArrayOperator array = new DefaultArrayOperator();
+    private final ArrayMaster array = new DefaultArrayMaster();
     private final TestClassLocator classLocator = new TestClassLocator();
     private final EdgeChecker constructorChecker = new DefaultEdgeConstructorChecker();
     private final EdgeChecker fieldChecker = new DefaultEdgeFieldChecker();

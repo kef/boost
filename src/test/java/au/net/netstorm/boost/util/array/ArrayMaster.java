@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.array;
 
-public interface ArrayOperator {
+public interface ArrayMaster {
     Object[] minus(Object[] minuend, Object[] subtrahend);
 
     // FIX DEBT Move to a primitive helper area.

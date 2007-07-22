@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public final class DefaultArrayOperator implements ArrayOperator {
+public final class DefaultArrayMaster implements ArrayMaster {
     public Object[] minus(Object[] superSetArray, Object[] subSetArray) {
         Set result = convertToSet(superSetArray);
         Set subSet = convertToSet(subSetArray);
