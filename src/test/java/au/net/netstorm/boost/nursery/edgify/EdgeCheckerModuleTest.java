@@ -17,7 +17,7 @@ public final class EdgeCheckerModuleTest extends BoooostCase {
     private final EdgeChecker classChecker = new DefaultEdgeClassChecker();
     private final EdgeChecker edgifierChecker = new DefaultEdgeEdgifierChecker();
     private final EdgeChecker parameterChecker = new DefaultEdgeParameterChecker();
-    private final EdgeChecker packageChecker = new DefaultEdgePackageChecker("com.rsa.keymanager.edge.");
+    private final EdgeChecker packageChecker = new DefaultEdgePackageChecker("com.whatever.");
     private Class[] edgeClasses;
 
     protected void gearup() {

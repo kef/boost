@@ -6,12 +6,13 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 // FIX 33398 Use ClassMaster for some of these private methods.  Add getPackage to ClassMaster.
 public final class DefaultEdgifierHorizon implements EdgifierHorizon {
     private static final String DOT = ".";
-    private static final String EDGE_PACKAGE_PREFIX = "com.rsa.keymanager.edge.";
     private static final String EDGE_INTERFACE_PREFIX = "";
     private static final String EDGE_CLASS_NAME_PREFIX = "Default" + EDGE_INTERFACE_PREFIX;
     private EdgeClass classer = new DefaultEdgeClass();
+    private final String prefix;
 
-    DefaultEdgifierHorizon() {
+    DefaultEdgifierHorizon(String prefix) {
+        this.prefix = prefix;
     }
 
     public Class toReal(Class edgeClass) {
@@ -25,13 +26,13 @@ public final class DefaultEdgifierHorizon implements EdgifierHorizon {
     public Class toEdge(Class realClass) {
         String pkgName = getPackage(realClass);
         String shortName = getShortName(realClass);
-        String edgeName = EDGE_PACKAGE_PREFIX + pkgName + DOT + EDGE_CLASS_NAME_PREFIX + shortName;
+        String edgeName = prefix + pkgName + DOT + EDGE_CLASS_NAME_PREFIX + shortName;
         return classer.forName(edgeName);
     }
 
     private String stripEdgePackage(Class edgeClass) {
         String pkgName = getPackage(edgeClass);
-        return stripOffPrefix(pkgName, EDGE_PACKAGE_PREFIX, edgeClass);
+        return stripOffPrefix(pkgName, prefix, edgeClass);
     }
 
     private String stripOffPrefix(String packageName, String prefix, Class edgeClass) {

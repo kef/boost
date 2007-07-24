@@ -14,11 +14,15 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 
 public final class DefaultEdgifier implements Edgifier {
     private static final Class[] NO_ARGS = {};
-    private final EdgifierHorizon edgifierHorizon = new DefaultEdgifierHorizon();
+    private final EdgifierHorizon edgifierHorizon;
     private final ReflectMaster reflector = new DefaultReflectMaster();
     private final EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
     private final EdgeClass edgeClasser = new DefaultEdgeClass();
     private final EdgeMethod edgeMethod = new DefaultEdgeMethod();
+
+    public DefaultEdgifier(String prefix) {
+        edgifierHorizon = new DefaultEdgifierHorizon(prefix);
+    }
 
     // SUGGEST Is passing in the class here is redundant???
     public Object edgify(Object real, Class realClass) {
