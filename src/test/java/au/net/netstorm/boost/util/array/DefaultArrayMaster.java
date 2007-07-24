@@ -11,11 +11,17 @@ public final class DefaultArrayMaster implements ArrayMaster {
         Set result = set(minuend);
         Set subSet = set(subtrahend);
         result.removeAll(subSet);
-        Object[] type = type(minuend);
-        return result.toArray(type);
+        return toArray(result, minuend);
     }
 
-    public byte[] add(byte[] array1, byte[] array2) {
+    public Object[] plus(Object[] array1, Object[] array2) {
+        Set result = set(array1);
+        Set set = set(array2);
+        result.addAll(set);
+        return toArray(result, array1);
+    }
+
+    public byte[] plus(byte[] array1, byte[] array2) {
         int length1 = array1.length;
         int length2 = array2.length;
         byte[] concatenation = new byte[length1 + length2];
@@ -27,6 +33,11 @@ public final class DefaultArrayMaster implements ArrayMaster {
     private Set set(Object[] array) {
         List list = Arrays.asList(array);
         return new HashSet(list);
+    }
+
+    private Object[] toArray(Set set, Object[] typedArray) {
+        Object[] type = type(typedArray);
+        return set.toArray(type);
     }
 
     private Object[] type(Object[] array) {
