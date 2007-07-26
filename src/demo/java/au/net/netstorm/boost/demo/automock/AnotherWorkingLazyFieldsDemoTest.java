@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.automock.LazyFields;
 
 public final class AnotherWorkingLazyFieldsDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
-    DelegateSubject delegate;
+    DelegateSubject delegateMock;
     String[] strings1;
     String[] strings2;
     Integer integer1;
@@ -15,11 +15,11 @@ public final class AnotherWorkingLazyFieldsDemoTest extends InteractionTestCase 
     Simian[] apes;
 
     public void setUpFixtures() {
-        subject = new AnotherWorkingTestSubject(delegate);
+        subject = new AnotherWorkingTestSubject(delegateMock);
     }
 
     public void testMultipleCalls() {
-        expect.manyCalls(delegate, VOID, "operate", "foo");
+        expect.manyCalls(delegateMock, VOID, "operate", "foo");
         subject.executeGet(null);
         subject.executeGet(null);
     }

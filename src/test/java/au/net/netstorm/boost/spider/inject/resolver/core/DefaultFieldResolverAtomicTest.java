@@ -18,11 +18,11 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
     Interface happyChap = new DefaultInterface(HappyChap.class);
     Interface beerInHisTummy = new DefaultInterface(BeerInHisTummy.class);
     FieldResolver subject;
-    ResolverEngine resolver;
+    ResolverEngine resolverMock;
     ResolvedInstance resolved;
 
     public void setUpFixtures() {
-        subject = new DefaultFieldResolver(resolver);
+        subject = new DefaultFieldResolver(resolverMock);
     }
 
     public void testResolve() {
@@ -37,7 +37,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
     }
 
     private void checkResolve(Interface iface, Flavour flavour, Field field) {
-        expect.oneCall(resolver, resolved, "resolve", iface, flavour);
+        expect.oneCall(resolverMock, resolved, "resolve", iface, flavour);
         ResolvedInstance result = subject.resolve(field);
         assertEquals(resolved, result);
     }

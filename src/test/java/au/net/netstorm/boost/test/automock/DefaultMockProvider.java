@@ -2,7 +2,6 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.Random;
 import org.jmock.Mock;
-import org.jmock.MockObjectTestCase;
 
 public final class DefaultMockProvider implements MockProvider {
     private Random random = new Random();

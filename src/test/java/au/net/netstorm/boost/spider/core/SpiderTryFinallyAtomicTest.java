@@ -8,19 +8,19 @@ import au.net.netstorm.boost.test.automock.LazyFields;
 
 public final class SpiderTryFinallyAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     TryCatchFinally subject;
-    ResolvedThings resolvedThings;
+    ResolvedThings resolvedThingsMock;
 
     public void setUpFixtures() {
-        subject = new SpiderTryCatchFinally(resolvedThings);
+        subject = new SpiderTryCatchFinally(resolvedThingsMock);
     }
 
     public void testIn() {
-        expect.oneCall(resolvedThings, VOID, "clear");
+        expect.oneCall(resolvedThingsMock, VOID, "clear");
         subject.theCore();
     }
 
     public void testOut() {
-        expect.oneCall(resolvedThings, VOID, "clear");
+        expect.oneCall(resolvedThingsMock, VOID, "clear");
         subject.theFinally();
     }
 }

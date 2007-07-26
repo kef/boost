@@ -8,17 +8,17 @@ import au.net.netstorm.boost.test.automock.LazyFields;
 
 public final class DefaultScrunchLayerAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ScrunchLayer subject;
-    Layer next;
+    Layer nextMock;
     Object returned;
     Method method;
     Object[] parameters;
 
     public void setUpFixtures() {
-        subject = new DefaultScrunchLayer(next);
+        subject = new DefaultScrunchLayer(nextMock);
     }
 
     public void testUsable() {
-        expect.oneCall(next, returned, "invoke", method, parameters);
+        expect.oneCall(nextMock, returned, "invoke", method, parameters);
         Object result = subject.invoke(method, parameters);
         assertEquals(returned, result);
     }

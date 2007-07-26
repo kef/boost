@@ -22,23 +22,23 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields, InjectableSubject {
     ProviderEngine subject;
-    Onionizer onionizer;
-    Instantiator instantiator;
+    Onionizer onionizerMock;
+    Instantiator instantiatorMock;
     Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
-    InjectorEngine injector;
+    InjectorEngine injectorMock;
     Object[] parameters = {"Hi", "There"};
     Implementation providezMoiDummy;
-    BaseReference unresolved;
+    BaseReference unresolvedMock;
     Object rawRef;
     ResolvedInstance wrapped;
-    Initialisable initialisable;
+    Initialisable initialisableMock;
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
     Interface initMarker = new DefaultInterface(Initialisable.class);
     ResolvedThings resolvedThings = new DefaultResolvedThings();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void setUpFixtures() {
-        subject = new DefaultProviderEngine(onionizer, injector, instantiator);
+        subject = new DefaultProviderEngine(onionizerMock, injectorMock, instantiatorMock);
     }
 
     public void testProvider() {
@@ -48,9 +48,9 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void checkProvider(boolean initialise) {
         resolvedThings.clear();
-        expect.oneCall(instantiator, unresolved, "instantiate", providezMoiDummy, parameters);
-        expect.oneCall(injector, VOID, "inject", unresolved);
-        expect.oneCall(onionizer, wrapped, "onionise", unresolved);
+        expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoiDummy, parameters);
+        expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
+        expect.oneCall(onionizerMock, wrapped, "onionise", unresolvedMock);
         if (initialise) expectInitialise();
         ResolvedInstance result = subject.provide(providezMoiDummy, parameters);
         assertEquals(wrapped, result);
@@ -58,8 +58,8 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void expectInitialise() {
         fielder.setInstance(providezMoiDummy, "impl", InitialisableImpl.class);
-        expect.oneCall(unresolved, initialisable, "getRef");
-        expect.oneCall(initialisable, VOID, "initialise");
+        expect.oneCall(unresolvedMock, initialisableMock, "getRef");
+        expect.oneCall(initialisableMock, VOID, "initialise");
     }
 
     // FIX BREADCRUMB 1757 Reinstate?

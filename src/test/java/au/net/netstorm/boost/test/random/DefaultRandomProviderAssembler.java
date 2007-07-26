@@ -10,12 +10,12 @@ import au.net.netstorm.boost.test.automock.AutoMocker;
 import au.net.netstorm.boost.test.automock.DefaultAutoMocker;
 import au.net.netstorm.boost.test.automock.DefaultMockObjectTestCase;
 import au.net.netstorm.boost.test.automock.DefaultMockProvider;
+import au.net.netstorm.boost.test.automock.MockObjectTestCase;
 import au.net.netstorm.boost.test.automock.MockProvider;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-import org.jmock.MockObjectTestCase;
 
 public final class DefaultRandomProviderAssembler implements RandomProviderAssembler {
     private static final Interface RANDOM_PROVIDER = new DefaultInterface(SpecificProvider.class);
@@ -33,9 +33,7 @@ public final class DefaultRandomProviderAssembler implements RandomProviderAssem
     }
 
     private AutoMocker createAutoMocker() {
-        // FIX 2076 CARD Make all Data objects dummies - clean this up, not nice to have
-        // field checkers using different MockObjectTestCase to tests. Not nice to have
-        // MockObjectTestCase (jmock) in so many places.
+        // FIX 2076 CARD Get field checkers using same MockObjectTestCase to tests.
         MockObjectTestCase mockTestCase = new DefaultMockObjectTestCase();
         MockProvider mockProvider = new DefaultMockProvider(mockTestCase);
         return new DefaultAutoMocker(mockProvider);

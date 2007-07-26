@@ -9,7 +9,7 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 public final class DefaultClockAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     Clock subject;
-    TimePointMaster timeLord;
+    TimePointMaster timeLordMock;
     TimePoint expected;
     EdgeSystem system;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
@@ -21,19 +21,19 @@ public final class DefaultClockAtomicTest extends InteractionTestCase implements
     }
 
     public void testSubject() {
-        expect.oneCall(timeLord, expected, "now", system);
+        expect.oneCall(timeLordMock, expected, "now", system);
         TimePoint actual = subject.now();
         assertEquals(expected, actual);
     }
 
     public void testGetTime() {
-        expect.oneCall(timeLord, expected, "get", millis);
+        expect.oneCall(timeLordMock, expected, "get", millis);
         TimePoint actual = subject.getTime(millis.longValue());
         assertEquals(expected, actual);
     }
 
     private void inject(Object ref) {
         fielder.setInstance(ref, "system", system);
-        fielder.setInstance(ref, "drWho", timeLord);
+        fielder.setInstance(ref, "drWho", timeLordMock);
     }
 }

@@ -12,7 +12,7 @@ public final class TimePointProvider implements DataProvider {
     }
 
     public Data get() {
-        // FIX 2076 CARD Range support in boost required here
+        // FIX 2076 CARD Range support in boost required here. How to define ranges?
         long time = ((Long) random.provide(Long.class)).longValue();
         long positive = time < 0 ? -time : time;
         return new DefaultTimePoint(positive);

@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
 import org.jmock.Mock;
-import org.jmock.MockObjectTestCase;
 import org.jmock.builder.ArgumentsMatchBuilder;
 import org.jmock.builder.MatchBuilder;
 import org.jmock.builder.NameMatchBuilder;

@@ -14,29 +14,29 @@ public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTe
     Method tieMethod = getTieMethod();
     TryFinallyHandler subject;
     Knot knot;
-    Apron apron;
+    Apron apronMock;
     Object[] params;
     Integer result;
     Object irrelevant;
-    TryCatchFinally tryfinally;
+    TryCatchFinally tryfinallyMock;
 
     public void setUpFixtures() {
         params = new Object[]{knot};
-        subject = new DefaultTryCatchFinallyHandler(apron, tryfinally);
+        subject = new DefaultTryCatchFinallyHandler(apronMock, tryfinallyMock);
     }
 
     public void testNormal() throws Throwable {
-        expect.oneCall(tryfinally, VOID, "theCore");
-        expect.oneCall(apron, result, "tie", knot);
-        expect.oneCall(tryfinally, VOID, "theFinally");
+        expect.oneCall(tryfinallyMock, VOID, "theCore");
+        expect.oneCall(apronMock, result, "tie", knot);
+        expect.oneCall(tryfinallyMock, VOID, "theFinally");
         Object actual = subject.invoke(irrelevant, tieMethod, params);
         assertEquals(result, actual);
     }
 
     public void testException() throws Throwable {
-        expect.oneCall(tryfinally, VOID, "theCore");
-        expect.oneCall(apron, throwable, "tie", knot);
-        expect.oneCall(tryfinally, VOID, "theFinally");
+        expect.oneCall(tryfinallyMock, VOID, "theCore");
+        expect.oneCall(apronMock, throwable, "tie", knot);
+        expect.oneCall(tryfinallyMock, VOID, "theFinally");
         try {
             subject.invoke(irrelevant, tieMethod, params);
             fail();

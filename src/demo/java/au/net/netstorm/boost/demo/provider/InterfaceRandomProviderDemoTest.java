@@ -9,11 +9,11 @@ import au.net.netstorm.boost.test.automock.DefaultAutoMocker;
 import au.net.netstorm.boost.test.automock.DefaultMockObjectTestCase;
 import au.net.netstorm.boost.test.automock.DefaultMockProvider;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.automock.MockObjectTestCase;
 import au.net.netstorm.boost.test.automock.MockProvider;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.ProvidesData;
-import org.jmock.MockObjectTestCase;
 
 public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Initialisable, ProvidesData {
     MockObjectTestCase mockObjectTestCase = new DefaultMockObjectTestCase();

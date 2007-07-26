@@ -8,48 +8,45 @@ import au.net.netstorm.boost.test.automock.LazyFields;
 
 public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
-    Map map;
-    DelegateSubject delegate;
-    List list2;
-    List list1;
-    List[] lists = new List[0];
+    Map mapMock;
+    DelegateSubject delegateMock;
+    List[] lists;
 
     public void setUpFixtures() {
-        lists = new List[]{list1, list2};
-        subject = new WorkingTestSubject(delegate);
+        subject = new WorkingTestSubject(delegateMock);
     }
 
     public void testInteraction() {
         String value = "Masters of Doom";
-        expect.oneCall(map, value, "get", "quake");
-        expect.oneCall(delegate, VOID, "operate", value);
-        subject.executeGet(map);
+        expect.oneCall(mapMock, value, "get", "quake");
+        expect.oneCall(delegateMock, VOID, "operate", value);
+        subject.executeGet(mapMock);
     }
 
     public void testNullValue() {
         String value = null;
-        expect.oneCall(map, value, "get", "quake");
-        expect.oneCall(delegate, VOID, "operate", value);
-        subject.executeGet(map);
+        expect.oneCall(mapMock, value, "get", "quake");
+        expect.oneCall(delegateMock, VOID, "operate", value);
+        subject.executeGet(mapMock);
     }
 
     public void testExceptions() {
         String value = "bad value";
-        expect.oneCall(map, value, "get", "quake");
-        expect.oneCall(delegate, new IllegalStateException(), "operate", value);
+        expect.oneCall(mapMock, value, "get", "quake");
+        expect.oneCall(delegateMock, new IllegalStateException(), "operate", value);
         try {
-            subject.executeGet(map);
+            subject.executeGet(mapMock);
             fail();
         } catch (IllegalArgumentException e) { }
     }
 
     public void testArray() {
         setUpArrayExpectations();
-        subject.executePut(map, lists);
+        subject.executePut(mapMock, lists);
     }
 
     private void setUpArrayExpectations() {
-        expect.oneCall(map, VOID, "put", "streetfighter", lists);
+        expect.oneCall(mapMock, VOID, "put", "streetfighter", lists);
         Integer dummySize = new Integer(2);
         for (int i = 0; i < lists.length; i++) {
             expect.oneCall(lists[i], dummySize, "size");

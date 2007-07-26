@@ -12,18 +12,18 @@ public final class DefaultResolverAtomicTest extends InteractionTestCase impleme
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
     private static final Class FRUITY = Fruity.class;
     Resolver subject;
-    ResolverEngine resolverEngine;
-    ResolvedInstance resolvedInstance;
+    ResolverEngine resolverEngineMock;
+    ResolvedInstance resolvedInstanceMock;
     Interface fruity = new DefaultInterface(FRUITY);
     Object resolved = this;
 
     public void setUpFixtures() {
-        subject = new DefaultResolver(resolverEngine);
+        subject = new DefaultResolver(resolverEngineMock);
     }
 
     public void testResolve() {
-        expect.oneCall(resolverEngine, resolvedInstance, "resolve", fruity, UNFLAVOURED);
-        expect.oneCall(resolvedInstance, resolved, "getRef");
+        expect.oneCall(resolverEngineMock, resolvedInstanceMock, "resolve", fruity, UNFLAVOURED);
+        expect.oneCall(resolvedInstanceMock, resolved, "getRef");
         Object result = subject.resolve(FRUITY);
         assertEquals(resolved, result);
     }

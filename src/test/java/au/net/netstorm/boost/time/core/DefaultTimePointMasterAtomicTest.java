@@ -8,7 +8,7 @@ import au.net.netstorm.boost.test.automock.LazyFields;
 
 public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TimePointMaster subject;
-    EdgeSystem system;
+    EdgeSystem systemMock;
     private static final long NOW = 1L;
     private static final long MILLIS_1 = 12L;
     private static final long MILLIS_2 = 9L;
@@ -32,9 +32,9 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
     }
 
     public void testNow() {
-        expect.oneCall(system, new Long(NOW), "currentTimeMillis");
+        expect.oneCall(systemMock, new Long(NOW), "currentTimeMillis");
         TimePoint expected = new DefaultTimePoint(NOW);
-        TimePoint actual = subject.now(system);
+        TimePoint actual = subject.now(systemMock);
         assertEquals(expected, actual);
     }
 

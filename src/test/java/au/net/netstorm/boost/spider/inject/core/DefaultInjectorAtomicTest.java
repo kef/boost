@@ -9,16 +9,16 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 public final class DefaultInjectorAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     Injector subject;
     Object ref;
-    InjectorEngine engine;
+    InjectorEngine engineMock;
     UnresolvedInstance unresolved;
 
     public void setUpFixtures() {
         unresolved = new DefaultBaseReference(ref);
-        subject = new DefaultInjector(engine);
+        subject = new DefaultInjector(engineMock);
     }
 
     public void testInjector() {
-        expect.oneCall(engine, VOID, "inject", unresolved);
+        expect.oneCall(engineMock, VOID, "inject", unresolved);
         subject.inject(ref);
     }
 }

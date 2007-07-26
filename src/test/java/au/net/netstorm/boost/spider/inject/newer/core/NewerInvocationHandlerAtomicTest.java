@@ -11,21 +11,21 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     InvocationHandler subject;
-    ProviderEngine provider;
+    ProviderEngine providerMock;
     Implementation impl;
     Object proxyObject;
-    ResolvedInstance newedInstance;
+    ResolvedInstance newedInstanceMock;
     Object[] methodParams = new Object[]{};
     Object newedObject;
 
     public void setUpFixtures() {
-        subject = new NewerInvocationHandler(provider, impl);
+        subject = new NewerInvocationHandler(providerMock, impl);
     }
 
     public void testInvokeCreate() throws Throwable {
         Method method = Object.class.getMethod("wait", (Class[]) null);
-        expect.oneCall(provider, newedInstance, "provide", impl, methodParams);
-        expect.oneCall(newedInstance, newedObject, "getRef");
+        expect.oneCall(providerMock, newedInstanceMock, "provide", impl, methodParams);
+        expect.oneCall(newedInstanceMock, newedObject, "getRef");
         Object actualObject = subject.invoke(proxyObject, method, methodParams);
         assertSame(newedObject, actualObject);
     }

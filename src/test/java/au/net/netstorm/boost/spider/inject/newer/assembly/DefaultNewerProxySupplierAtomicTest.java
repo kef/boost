@@ -19,22 +19,22 @@ public final class DefaultNewerProxySupplierAtomicTest extends InteractionTestCa
     NewerProxySupplier subject;
     Interface newerInterface;
     Implementation instanceImplementation;
-    ProxyFactory proxyFactory;
+    ProxyFactory proxyFactoryMock;
     Object newerProxy = new Object();
     ProviderEngine provider;
     InvocationHandler invocationHandler;
-    Instantiator instantiator;
-    UnresolvedInstance unresolved;
+    Instantiator instantiatorMock;
+    UnresolvedInstance unresolvedMock;
 
     public void setUpFixtures() {
-        subject = new DefaultNewerProxySupplier(proxyFactory, provider, instantiator);
+        subject = new DefaultNewerProxySupplier(proxyFactoryMock, provider, instantiatorMock);
     }
 
     public void testCreate() {
         Object[] parameters = new Object[]{provider, instanceImplementation};
-        expect.oneCall(instantiator, unresolved, "instantiate", NEWER_INVOCATION_HANDLER, parameters);
-        expect.oneCall(unresolved, invocationHandler, "getRef");
-        expect.oneCall(proxyFactory, newerProxy, "newProxy", newerInterface, invocationHandler);
+        expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", NEWER_INVOCATION_HANDLER, parameters);
+        expect.oneCall(unresolvedMock, invocationHandler, "getRef");
+        expect.oneCall(proxyFactoryMock, newerProxy, "newProxy", newerInterface, invocationHandler);
         Object actual = subject.nu(newerInterface, instanceImplementation);
         assertSame(newerProxy, actual);
     }

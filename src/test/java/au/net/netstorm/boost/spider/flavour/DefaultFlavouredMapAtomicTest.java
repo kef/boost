@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     FlavouredMap subject;
-    FlavouredMapEngine engine;
+    FlavouredMapEngine engineMock;
     FlavouredInterface flavoured;
     Interface iface;
     Flavour flavour;
@@ -16,22 +16,22 @@ public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase imp
 
     public void setUpFixtures() {
         flavoured = new DefaultFlavouredInterface(iface, flavour);
-        subject = new DefaultFlavouredMap(engine);
+        subject = new DefaultFlavouredMap(engineMock);
     }
 
     public void testGet() {
-        expect.oneCall(engine, value, "get", flavoured);
+        expect.oneCall(engineMock, value, "get", flavoured);
         Object result = subject.get(iface, flavour);
         assertEquals(value, result);
     }
 
     public void testPut() {
-        expect.oneCall(engine, VOID, "put", flavoured, value);
+        expect.oneCall(engineMock, VOID, "put", flavoured, value);
         subject.put(iface, flavour, value);
     }
 
     public void testExists() {
-        expect.oneCall(engine, exists, "exists", flavoured);
+        expect.oneCall(engineMock, exists, "exists", flavoured);
         boolean result = subject.exists(iface, flavour);
         assertEquals(exists, result);
     }

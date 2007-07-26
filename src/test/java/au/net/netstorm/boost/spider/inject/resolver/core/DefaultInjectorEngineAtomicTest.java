@@ -17,34 +17,34 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
     InjectorEngine subject;
     EdgeClass classer = new DefaultEdgeClass();
     EdgeField edgeFielder = new DefaultEdgeField();
-    EdgeField fielder;
-    ResolvableFieldFinder fieldFinder;
-    FieldResolver fieldResolver;
+    EdgeField fielderMock;
+    ResolvableFieldFinder fieldFinderMock;
+    FieldResolver fieldResolverMock;
     JuicyRock juicy = new JuicyRock();
-    UnresolvedInstance unresolved;
-    ResolvedInstance lazyBastard;
-    ResolvedInstance moley;
-    Juicy juicyRef;
+    UnresolvedInstance unresolvedMock;
+    ResolvedInstance lazyBastardMock;
+    ResolvedInstance moleyMock;
+    Juicy juicyRefMock;
     Rock rockRef;
     Field fieldJuicy = field("juicy");
     Field fieldRock = field("rock");
     Field[] fields = {fieldJuicy, fieldRock};
 
     public void setUpFixtures() {
-        subject = new DefaultInjectorEngine(fieldFinder, fieldResolver);
+        subject = new DefaultInjectorEngine(fieldFinderMock, fieldResolverMock);
         overrideFields();
     }
 
     public void testInjector() {
-        expect.oneCall(unresolved, juicy, "getRef");
-        expect.oneCall(fieldFinder, fields, "find", juicy);
-        expect.oneCall(fieldResolver, lazyBastard, "resolve", fieldJuicy);
-        expect.oneCall(fieldResolver, moley, "resolve", fieldRock);
-        expect.oneCall(lazyBastard, juicyRef, "getRef");
-        expect.oneCall(moley, rockRef, "getRef");
-        expect.oneCall(fielder, VOID, "set", fieldJuicy, juicy, juicyRef);
-        expect.oneCall(fielder, VOID, "set", fieldRock, juicy, rockRef);
-        subject.inject(unresolved);
+        expect.oneCall(unresolvedMock, juicy, "getRef");
+        expect.oneCall(fieldFinderMock, fields, "find", juicy);
+        expect.oneCall(fieldResolverMock, lazyBastardMock, "resolve", fieldJuicy);
+        expect.oneCall(fieldResolverMock, moleyMock, "resolve", fieldRock);
+        expect.oneCall(lazyBastardMock, juicyRefMock, "getRef");
+        expect.oneCall(moleyMock, rockRef, "getRef");
+        expect.oneCall(fielderMock, VOID, "set", fieldJuicy, juicy, juicyRefMock);
+        expect.oneCall(fielderMock, VOID, "set", fieldRock, juicy, rockRef);
+        subject.inject(unresolvedMock);
     }
 
     private Field field(String name) {
@@ -56,6 +56,6 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
         Class cls = subject.getClass();
         Field field = classer.getDeclaredField(cls, "fielder");
         field.setAccessible(true);
-        edgeFielder.set(field, subject, fielder);
+        edgeFielder.set(field, subject, fielderMock);
     }
 }

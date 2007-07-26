@@ -2,7 +2,6 @@ package au.net.netstorm.boost.test.automock;
 
 import java.util.HashMap;
 import java.util.Map;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -26,32 +25,20 @@ public class DefaultAutoMocker implements AutoMocker {
     }
 
     public Object mock(Class type) {
-        return createMock(type);
+        Mock mock = mockProvider.mock(type);
+        return proxyAndRecord(mock);
     }
 
-    // FIX 2076 CARD Make all Data objects dummies - get rid of this.
-    public void mock(BoostField[] fields, LifecycleTestCase testCase) {
-        for (int i = 0; i < fields.length; i++) {
-            BoostField field = fields[i];
-            setMockOnTest(field, testCase);
-        }
-    }
-
-    private void setMockOnTest(BoostField field, LifecycleTestCase testCase) {
+    public Object mock(BoostField field) {
         Class type = field.getType();
         String name = field.getName();
-        Object mock = mock(type);
-        setField(name, mock, testCase);
+        Mock mock = mockProvider.mock(type, name);
+        return proxyAndRecord(mock);
     }
 
-    private Object createMock(Class type) {
-        Mock mock = mockProvider.mock(type);
+    private Object proxyAndRecord(Mock mock) {
         Object proxy = mock.proxy();
         mocks.put(proxy, mock);
         return proxy;
-    }
-
-    private void setField(String name, Object proxy, LifecycleTestCase testCase) {
-        fielder.setInstance(testCase, name, proxy);
     }
 }

@@ -18,11 +18,11 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ResolverEngine subject;
-    ProviderEngine provider;
-    RegistryMaster registryMaster;
-    NewerAssembler newerAssembler;
+    ProviderEngine providerMock;
+    RegistryMaster registryMasterMock;
+    NewerAssembler newerAssemblerMock;
     ResolvedInstance jimResolvedInstance;
-    Newer newerImpl;
+    Newer newerImplMock;
     Flavour flavour;
     Interface jim = iface(Jim.class);
     Interface spoo = iface(Spoo.class);
@@ -32,27 +32,27 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Object[] noparams = {};
 
     public void setUpFixtures() {
-        subject = new DefaultResolverEngine(provider, registryMaster, newerAssembler);
+        subject = new DefaultResolverEngine(providerMock, registryMasterMock, newerAssemblerMock);
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(registryMaster, Boolean.FALSE, "hasInstance", jim, flavour);
-        expect.oneCall(registryMaster, jimImpl, "getImplementation", jim, flavour);
-        expect.oneCall(provider, jimResolvedInstance, "provide", jimImpl, noparams);
+        expect.oneCall(registryMasterMock, Boolean.FALSE, "hasInstance", jim, flavour);
+        expect.oneCall(registryMasterMock, jimImpl, "getImplementation", jim, flavour);
+        expect.oneCall(providerMock, jimResolvedInstance, "provide", jimImpl, noparams);
         ResolvedInstance result = subject.resolve(jim, flavour);
         assertEquals(jimResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(registryMaster, Boolean.TRUE, "hasInstance", spoo, flavour);
-        expect.oneCall(registryMaster, spooInstance, "getInstance", spoo, flavour);
+        expect.oneCall(registryMasterMock, Boolean.TRUE, "hasInstance", spoo, flavour);
+        expect.oneCall(registryMasterMock, spooInstance, "getInstance", spoo, flavour);
         ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);
     }
 
     public void testResolveNewer() {
-        expect.oneCall(newerAssembler, newerImpl, "assemble", newer);
-        ResolvedInstance expected = new DefaultBaseReference(newerImpl);
+        expect.oneCall(newerAssemblerMock, newerImplMock, "assemble", newer);
+        ResolvedInstance expected = new DefaultBaseReference(newerImplMock);
         ResolvedInstance actual = subject.resolve(newer, flavour);
         assertEquals(expected, actual);
     }
