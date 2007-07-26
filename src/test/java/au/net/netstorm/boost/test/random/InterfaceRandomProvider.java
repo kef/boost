@@ -15,7 +15,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-// FIX 2076 Drive this out
 public final class InterfaceRandomProvider implements SpecificProvider {
     private static final Interface DATA = new DefaultInterface(Data.class);
     private final InstantiatorWithProvider instantiator = new DefaultInstantiatorWithProvider();
