@@ -21,7 +21,6 @@ public final class DefaultFieldValidator implements FieldValidator {
         if (field.isPrimitive()) bangPrimitives(field);
         if (field.isPublic()) troglodyte(field);
         if (field.isProtected()) troglodyte(field);
-        if (field.isPrivate()) troglodyte(field);
         if (field.isFinal()) bangFinals(field);
     }
 
@@ -42,7 +41,7 @@ public final class DefaultFieldValidator implements FieldValidator {
     }
 
     private void troglodyte(BoostField field) {
-        kaboom("Troglodyte ... make me package private.", field);
+        kaboom("Troglodyte ... make me package private or private.", field);
     }
 
     private void kaboom(String s, BoostField field) {

@@ -32,8 +32,19 @@ public final class DefaultSubjectInjector implements SubjectInjector {
         for (int i = 0; i < subjectFields.length; i++) {
             Field subjectField = subjectFields[i];
             String subjectFieldName = subjectField.getName();
-            if (testFields.contains(subjectFieldName)) injector.inject(testCase, subject, subjectFieldName);
+            injectField(testFields, subjectFieldName, testCase, subject);
+            // FIX 2076 Test me
+            injectMockField(subjectFieldName, testFields, testCase, subject);
         }
+    }
+
+    private void injectField(List testFields, String subjectFieldName, BoooostCase testCase, Object subject) {
+        if (testFields.contains(subjectFieldName)) injector.inject(testCase, subject, subjectFieldName);
+    }
+
+    private void injectMockField(String subjectFieldName, List testFields, BoooostCase testCase, Object subject) {
+        String testFieldName = subjectFieldName + "Mock";
+        if (testFields.contains(testFieldName)) injector.inject(testCase, subject, testFieldName, subjectFieldName);
     }
 
     // FIX DEBT Stinky.  Need a getField or fieldExists().
