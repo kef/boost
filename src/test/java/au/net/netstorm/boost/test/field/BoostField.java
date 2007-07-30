@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.field;
 
+import java.lang.reflect.Field;
+
 public interface BoostField {
     Object get();
 
@@ -30,4 +32,6 @@ public interface BoostField {
     boolean prefix(String s);
 
     boolean is(String s);
+
+    Field getField();
 }

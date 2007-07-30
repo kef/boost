@@ -56,6 +56,10 @@ public final class DefaultMockObjectTestCase implements MockObjectTestCase {
         return delegate.eq(ref);
     }
 
+    public Object newDummy(Class dummyType, String name) {
+        return delegate.newDummy(dummyType, name);
+    }
+
     // Don't want to expose subclass.
     private class MyMockObjectTestCase extends org.jmock.MockObjectTestCase {
     }

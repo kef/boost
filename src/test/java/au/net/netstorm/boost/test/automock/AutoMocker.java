@@ -9,4 +9,6 @@ public interface AutoMocker {
     Object mock(Class type);
 
     Object mock(BoostField field);
+
+    Object dummy(BoostField field);
 }

@@ -27,7 +27,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     InjectorEngine injectorMock;
     Object[] parameters = {"Hi", "There"};
-    Implementation providezMoiDummy;
+    Implementation providezMoi;
     BaseReference unresolvedMock;
     Object rawRef;
     ResolvedInstance wrapped;
@@ -48,16 +48,16 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void checkProvider(boolean initialise) {
         resolvedThings.clear();
-        expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoiDummy, parameters);
+        expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
         expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
         expect.oneCall(onionizerMock, wrapped, "onionise", unresolvedMock);
         if (initialise) expectInitialise();
-        ResolvedInstance result = subject.provide(providezMoiDummy, parameters);
+        ResolvedInstance result = subject.provide(providezMoi, parameters);
         assertEquals(wrapped, result);
     }
 
     private void expectInitialise() {
-        fielder.setInstance(providezMoiDummy, "impl", InitialisableImpl.class);
+        fielder.setInstance(providezMoi, "impl", InitialisableImpl.class);
         expect.oneCall(unresolvedMock, initialisableMock, "getRef");
         expect.oneCall(initialisableMock, VOID, "initialise");
     }

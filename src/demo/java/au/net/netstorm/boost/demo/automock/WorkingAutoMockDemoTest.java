@@ -1,19 +1,36 @@
 package au.net.netstorm.boost.demo.automock;
 
+import java.lang.reflect.Proxy;
 import java.util.List;
 import java.util.Map;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import org.jmock.util.NotImplementedException;
 
 public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
     Map mapMock;
     DelegateSubject delegateMock;
     List[] lists;
+    List listDummy;
+    SomeData someDataMock;
+    SomeData someData;
 
     public void setUpFixtures() {
         subject = new WorkingTestSubject(delegateMock);
+    }
+
+    public void testMockOverridesDataStubs() {
+        assertEquals(true, Proxy.isProxyClass(someDataMock.getClass()));
+        assertEquals(DefaultSomeData.class, someData.getClass());
+    }
+
+    public void testDummyInjection() {
+        try {
+            listDummy.size();
+            fail();
+        } catch (NotImplementedException expected) {}
     }
 
     public void testInteraction() {

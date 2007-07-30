@@ -13,12 +13,12 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
     ResolvedThings subject;
     Implementation impl;
     BaseReference expected;
-    Implementation doesNotExistDummy;
+    Implementation doesNotExist;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void setUpFixtures() {
         subject = new DefaultResolvedThings();
-        fielder.setInstance(doesNotExistDummy, "impl", String.class);
+        fielder.setInstance(doesNotExist, "impl", String.class);
     }
 
     public void testExists() {
@@ -34,7 +34,7 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
     public void testPutFailure() {
         subject.put(impl, expected);
         try {
-            subject.get(doesNotExistDummy);
+            subject.get(doesNotExist);
             fail();
         } catch (IllegalStateException expected) { }
     }

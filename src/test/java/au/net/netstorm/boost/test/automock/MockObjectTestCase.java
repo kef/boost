@@ -29,4 +29,6 @@ public interface MockObjectTestCase {
     void verify();
 
     Constraint eq(Object ref);
+
+    Object newDummy(Class dummyType, String name);
 }

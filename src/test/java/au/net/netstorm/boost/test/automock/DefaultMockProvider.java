@@ -19,6 +19,10 @@ public final class DefaultMockProvider implements MockProvider {
         return jMock.mock(mockType, role + "(" + random() + ")");
     }
 
+    public Object dummy(Class dummyType, String name) {
+        return jMock.newDummy(dummyType, name);
+    }
+
     private int random() {
         return random.nextInt();
     }

@@ -85,4 +85,8 @@ final class DefaultBoostField implements BoostField {
     public Class getType() {
         return field.getType();
     }
+
+    public Field getField() {
+        return field;
+    }
 }

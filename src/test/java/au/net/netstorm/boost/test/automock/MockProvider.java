@@ -6,4 +6,6 @@ public interface MockProvider {
     Mock mock(Class mockType);
 
     Mock mock(Class mockType, String role);
+
+    Object dummy(Class dummyType, String name);
 }
