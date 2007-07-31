@@ -2,29 +2,35 @@ package au.net.netstorm.boost.demo.provider;
 
 import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.provider.NotProvidedException;
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.spider.core.Initialisable;
-import au.net.netstorm.boost.test.automock.AutoMocker;
-import au.net.netstorm.boost.test.automock.DefaultAutoMocker;
-import au.net.netstorm.boost.test.automock.DefaultMockObjectTestCase;
-import au.net.netstorm.boost.test.automock.DefaultMockProvider;
+import au.net.netstorm.boost.test.automock.DefaultMockSupport;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.MockObjectTestCase;
-import au.net.netstorm.boost.test.automock.MockProvider;
+import au.net.netstorm.boost.test.automock.MockSupport;
+import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
+import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
-import au.net.netstorm.boost.test.specific.ProvidesData;
+import au.net.netstorm.boost.test.specific.DefaultDataProviders;
 
-public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Initialisable, ProvidesData {
-    MockObjectTestCase mockObjectTestCase = new DefaultMockObjectTestCase();
-    MockProvider mockProvider = new DefaultMockProvider(mockObjectTestCase);
-    AutoMocker mocker = new DefaultAutoMocker(mockProvider);
-    SpecificProvider interfaceProvider;
-    Class iFace = HappyDay.class;
-    Class impl = DefaultHappyDay.class;
+public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Initialisable {
+    private MockSupport mocks = new DefaultMockSupport();
+    private Class iFace = HappyDay.class;
+    private Class impl = DefaultHappyDay.class;
+    private DataProviders dataProviders = new DefaultDataProviders();
+    private Provider random;
+    private SpecificProvider interfaceProvider;
+
+    public InterfaceRandomProviderDemoTest() {
+        RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
+        random = providerAssembler.everything(dataProviders, mocks);
+        interfaceProvider = new InterfaceRandomProvider(random, dataProviders, mocks);
+    }
 
     public void initialise() {
-        interfaceProvider = new InterfaceRandomProvider(random, data, mocker);
+        HappinessProvider happinessProvider = new HappinessProvider();
+        dataProviders.add(Happiness.class, happinessProvider);
     }
 
     public void testCanProvide() {
@@ -46,7 +52,7 @@ public final class InterfaceRandomProviderDemoTest extends InteractionTestCase i
         Object object = interfaceProvider.provide(HasNoDefaultImpl.class);
         assertEquals(true, Proxy.isProxyClass(object.getClass()));
         // Check mock came from mocker
-        mocker.get(object);
+        mocks.mockForProxy(object);
     }
 
     public void testProvidesDefaultImplementations() {
@@ -82,10 +88,5 @@ public final class InterfaceRandomProviderDemoTest extends InteractionTestCase i
         assertEquals(true, happyDay instanceof DefaultHappyDay);
         long timeMillis = happyDay.getTimeMillis();
         assertEquals(true, timeMillis != 0);
-    }
-
-    public void register(DataProviders dataProviders) {
-        HappinessProvider happinessProvider = new HappinessProvider();
-        dataProviders.add(Happiness.class, happinessProvider);
     }
 }

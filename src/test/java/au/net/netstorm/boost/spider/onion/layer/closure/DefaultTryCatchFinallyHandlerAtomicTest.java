@@ -7,6 +7,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 
 public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     UnknownKnotException throwable = new UnknownKnotException();
@@ -26,17 +27,17 @@ public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTe
     }
 
     public void testNormal() throws Throwable {
-        expect.oneCall(tryfinallyMock, VOID, "theCore");
+        expect.oneCall(tryfinallyMock, MockExpectations.VOID, "theCore");
         expect.oneCall(apronMock, result, "tie", knot);
-        expect.oneCall(tryfinallyMock, VOID, "theFinally");
+        expect.oneCall(tryfinallyMock, MockExpectations.VOID, "theFinally");
         Object actual = subject.invoke(irrelevant, tieMethod, params);
         assertEquals(result, actual);
     }
 
     public void testException() throws Throwable {
-        expect.oneCall(tryfinallyMock, VOID, "theCore");
+        expect.oneCall(tryfinallyMock, MockExpectations.VOID, "theCore");
         expect.oneCall(apronMock, throwable, "tie", knot);
-        expect.oneCall(tryfinallyMock, VOID, "theFinally");
+        expect.oneCall(tryfinallyMock, MockExpectations.VOID, "theFinally");
         try {
             subject.invoke(irrelevant, tieMethod, params);
             fail();

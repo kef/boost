@@ -11,6 +11,7 @@ import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InjectableSubject;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
@@ -49,7 +50,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     private void checkProvider(boolean initialise) {
         resolvedThings.clear();
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
-        expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
+        expect.oneCall(injectorMock, MockExpectations.VOID, "inject", unresolvedMock);
         expect.oneCall(onionizerMock, wrapped, "onionise", unresolvedMock);
         if (initialise) expectInitialise();
         ResolvedInstance result = subject.provide(providezMoi, parameters);
@@ -59,7 +60,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     private void expectInitialise() {
         fielder.setInstance(providezMoi, "impl", InitialisableImpl.class);
         expect.oneCall(unresolvedMock, initialisableMock, "getRef");
-        expect.oneCall(initialisableMock, VOID, "initialise");
+        expect.oneCall(initialisableMock, MockExpectations.VOID, "initialise");
     }
 
     // FIX BREADCRUMB 1757 Reinstate?

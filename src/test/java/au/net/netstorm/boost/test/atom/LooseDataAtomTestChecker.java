@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.atom;
 
-import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.LooseData;
 
@@ -11,8 +11,8 @@ public final class LooseDataAtomTestChecker implements AtomTestChecker {
     private AtomConfiguration config = new DefaultAtomConfiguration(LooseData.class);
     private AtomTestChecker checker;
 
-    public LooseDataAtomTestChecker(DataProviders dataProviders) {
-        checker = new GenericAtomTestChecker(config, dataProviders);
+    public LooseDataAtomTestChecker(Provider random) {
+        checker = new GenericAtomTestChecker(config, random);
     }
 
     public void checkAtom(Class cls, FieldSpec[] fields) {

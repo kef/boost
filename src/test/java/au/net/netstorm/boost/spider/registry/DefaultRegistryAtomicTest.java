@@ -5,6 +5,7 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -53,10 +54,10 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     }
 
     private void setUpInstance(Flavour flavour) {
-        expect.oneCall(registryMasterMock, VOID, "instance", cerealInterface, resolvedCocoPops, flavour);
+        expect.oneCall(registryMasterMock, MockExpectations.VOID, "instance", cerealInterface, resolvedCocoPops, flavour);
     }
 
     private void setUpMultiple(Flavour flavour) {
-        expect.oneCall(registryMasterMock, VOID, "multiple", sportInterface, footballImplementation, flavour);
+        expect.oneCall(registryMasterMock, MockExpectations.VOID, "multiple", sportInterface, footballImplementation, flavour);
     }
 }

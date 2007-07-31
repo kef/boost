@@ -5,10 +5,10 @@ import org.jmock.core.Constraint;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 
-public interface MockObjectTestCase {
-    Mock mock(Class mockedType);
+public interface MockSupport {
+    Object mock(Class mockedType);
 
-    Mock mock(Class mockedType, String roleName);
+    Object mock(Class mockedType, String roleName);
 
     Stub returnValue(Object o);
 
@@ -30,5 +30,7 @@ public interface MockObjectTestCase {
 
     Constraint eq(Object ref);
 
-    Object newDummy(Class dummyType, String name);
+    Object dummy(Class dummyType, String name);
+
+    Mock mockForProxy(Object proxy);
 }

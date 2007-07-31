@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 public final class DefaultMockMethodSpecAtomicTest extends InteractionTestCase {
-    AtomTestChecker checker = new LooseDataAtomTestChecker(data);
+    AtomTestChecker checker = new LooseDataAtomTestChecker(random);
     FieldSpec returnValue = new DefaultFieldSpec("returnValue", Object.class);
     FieldSpec methodName = new DefaultFieldSpec("methodName", String.class);
     FieldSpec parameters = new DefaultFieldSpec("parameters", Object[].class);

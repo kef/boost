@@ -1,13 +1,11 @@
 package au.net.netstorm.boost.test.automock;
 
 // OK ParameterNumber|LineLength {
-final class DefaultMockExpectations implements MockExpectations {
+public final class DefaultMockExpectations implements MockExpectations {
     private MockExpectationEngine delegate;
 
-    // Make sure to follow the pattern here and keep things consistent.
-
-    public DefaultMockExpectations(MockExpectationEngine delegate) {
-        this.delegate = delegate;
+    public DefaultMockExpectations(MockSupport mocks) {
+        delegate = new DefaultMockExpectationEngine(mocks);
     }
 
     public void oneCall(Object ref, Object returnValue, String methodName) {

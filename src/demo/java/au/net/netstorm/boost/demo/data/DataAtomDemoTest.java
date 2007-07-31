@@ -24,7 +24,7 @@ public final class DataAtomDemoTest extends InteractionTestCase {
     FieldSpec[] COMPLEX_PROPERTIES = {STRING_PROPERTY, BASIC_PROPERTY};
     FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
-    AtomTestChecker checker = new DataAtomTestChecker(data);
+    AtomTestChecker checker = new DataAtomTestChecker(random);
 
     // SUGGEST Odd message when the class is not public.
     // SUGGEST Test utility should force data object to implement interface (?).

@@ -3,6 +3,7 @@ package au.net.netstorm.boost.demo.automock;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 
 public final class AnotherWorkingLazyFieldsDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
@@ -19,7 +20,7 @@ public final class AnotherWorkingLazyFieldsDemoTest extends InteractionTestCase 
     }
 
     public void testMultipleCalls() {
-        expect.manyCalls(delegateMock, VOID, "operate", "foo");
+        expect.manyCalls(delegateMock, MockExpectations.VOID, "operate", "foo");
         subject.executeGet(null);
         subject.executeGet(null);
     }

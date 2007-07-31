@@ -9,7 +9,7 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFlavouredInterfaceAtomicTest extends InteractionTestCase implements LazyFields {
-    AtomTestChecker checker = new DataAtomTestChecker(data);
+    AtomTestChecker checker = new DataAtomTestChecker(random);
     FieldSpec f1 = new DefaultFieldSpec("iface", Interface.class);
     FieldSpec f2 = new DefaultFieldSpec("flavour", Flavour.class);
     FieldSpec[] fields = {f1, f2};

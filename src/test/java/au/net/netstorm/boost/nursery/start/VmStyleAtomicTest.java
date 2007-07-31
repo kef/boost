@@ -10,7 +10,7 @@ public class VmStyleAtomicTest extends InteractionTestCase {
     public static final VmStyle VM_STYLE_PINK_FLOYD = new VmStyle("Pink Floyd");
     public static final VmStyle VM_STYLE_ELO = new VmStyle("Electric Light Orchestra");
     public static final VmStyle VM_STYLE_YES = new VmStyle("YES");
-    AtomTestChecker checker = new DataAtomTestChecker(data);
+    AtomTestChecker checker = new DataAtomTestChecker(random);
     FieldSpec f1 = new DefaultFieldSpec("style", String.class);
     FieldSpec[] fields = {f1};
 

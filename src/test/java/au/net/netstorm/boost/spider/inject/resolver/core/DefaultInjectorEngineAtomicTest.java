@@ -10,6 +10,7 @@ import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
@@ -42,8 +43,8 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
         expect.oneCall(fieldResolverMock, moleyMock, "resolve", fieldRock);
         expect.oneCall(lazyBastardMock, juicyRefMock, "getRef");
         expect.oneCall(moleyMock, rockRef, "getRef");
-        expect.oneCall(fielderMock, VOID, "set", fieldJuicy, juicy, juicyRefMock);
-        expect.oneCall(fielderMock, VOID, "set", fieldRock, juicy, rockRef);
+        expect.oneCall(fielderMock, MockExpectations.VOID, "set", fieldJuicy, juicy, juicyRefMock);
+        expect.oneCall(fielderMock, MockExpectations.VOID, "set", fieldRock, juicy, rockRef);
         subject.inject(unresolvedMock);
     }
 

@@ -5,7 +5,7 @@ import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.reflect.DefaultInstantiatorWithProvider;
 import au.net.netstorm.boost.reflect.InstantiatorWithProvider;
-import au.net.netstorm.boost.test.automock.AutoMocker;
+import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.util.type.Data;
@@ -22,12 +22,12 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     private final TypeMaster typeMaster = new DefaultTypeMaster();
     private final DataProviders dataProviders;
     private final Provider randomProvider;
-    private final AutoMocker mocker;
+    private final MockSupport mocks;
 
-    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, AutoMocker mocker) {
+    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, MockSupport mocks) {
         this.randomProvider = randomProvider;
         this.dataProviders = dataProviders;
-        this.mocker = mocker;
+        this.mocks = mocks;
     }
 
     public boolean canProvide(Class type) {
@@ -66,6 +66,6 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     }
 
     private Object mock(Class type) {
-        return mocker.mock(type);
+        return mocks.mock(type);
     }
 }

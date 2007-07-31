@@ -1,19 +1,37 @@
 package au.net.netstorm.boost.test.automock;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 import org.jmock.Mock;
 import org.jmock.core.Constraint;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 
-public final class DefaultMockObjectTestCase implements MockObjectTestCase {
+public final class DefaultMockSupport implements MockSupport {
     private final MyMockObjectTestCase delegate = new MyMockObjectTestCase();
+    private final Map mocks = new HashMap();
+    private final Random random = new Random();
 
-    public Mock mock(Class mockedType) {
-        return delegate.mock(mockedType);
+    public Object mock(Class mockedType) {
+        Mock mock = delegate.mock(mockedType);
+        return proxyAndRecord(mock);
     }
 
-    public Mock mock(Class mockedType, String roleName) {
-        return delegate.mock(mockedType, roleName);
+    public Object mock(Class mockedType, String roleName) {
+        String randomName = roleName + "(" + random() + ")";
+        Mock mock = delegate.mock(mockedType, randomName);
+        return proxyAndRecord(mock);
+    }
+
+    public Object dummy(Class dummyType, String name) {
+        return delegate.newDummy(dummyType, name);
+    }
+
+    public Mock mockForProxy(Object proxy) {
+        Mock mock = (Mock) mocks.get(proxy);
+        if (mock != null) return mock;
+        throw new IllegalStateException("No mock exists for " + proxy);
     }
 
     public Stub returnValue(Object o) {
@@ -56,8 +74,14 @@ public final class DefaultMockObjectTestCase implements MockObjectTestCase {
         return delegate.eq(ref);
     }
 
-    public Object newDummy(Class dummyType, String name) {
-        return delegate.newDummy(dummyType, name);
+    private int random() {
+        return random.nextInt();
+    }
+
+    private Object proxyAndRecord(Mock mock) {
+        Object proxy = mock.proxy();
+        mocks.put(proxy, mock);
+        return proxy;
     }
 
     // Don't want to expose subclass.

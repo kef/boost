@@ -9,13 +9,11 @@ import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
 
 final class DefaultMockExpectationEngine implements MockExpectationEngine {
-    private static final Object VOID = UsesExpectations.VOID;
-    private final AutoMocker autoMocker;
-    private final MockObjectTestCase jMock;
+    private static final Object VOID = MockExpectations.VOID;
+    private final MockSupport mocks;
 
-    public DefaultMockExpectationEngine(AutoMocker autoMocker, MockObjectTestCase jMock) {
-        this.autoMocker = autoMocker;
-        this.jMock = jMock;
+    public DefaultMockExpectationEngine(MockSupport mocks) {
+        this.mocks = mocks;
     }
 
     public void oneCall(Object ref, MockMethodSpec spec) {
@@ -64,27 +62,27 @@ final class DefaultMockExpectationEngine implements MockExpectationEngine {
     }
 
     private Mock getMock(Object ref) {
-        return autoMocker.get(ref);
+        return mocks.mockForProxy(ref);
     }
 
     private Stub throwException(Throwable throwable) {
-        return jMock.throwException(throwable);
+        return mocks.throwException(throwable);
     }
 
     private InvocationMatcher one() {
-        return jMock.once();
+        return mocks.once();
     }
 
     private InvocationMatcher many() {
-        return jMock.atLeastOnce();
+        return mocks.atLeastOnce();
     }
 
     private Stub returnValue(Object ref) {
-        return jMock.returnValue(ref);
+        return mocks.returnValue(ref);
     }
 
     private Constraint eq(Object ref) {
-        return jMock.eq(ref);
+        return mocks.eq(ref);
     }
 
     private void checkNotNull(Object ref) {

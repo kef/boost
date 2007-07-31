@@ -2,6 +2,8 @@ package au.net.netstorm.boost.test.automock;
 
 // OK ParameterNumber|LineLength {
 public interface MockExpectations {
+    Object VOID = "void";
+
     void oneCall(Object ref, Object returnValue, String methodName);
 
     void oneCall(Object ref, Object returnValue, String methodName, Object parameter1);

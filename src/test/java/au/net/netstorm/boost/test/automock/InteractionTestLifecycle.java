@@ -11,14 +11,15 @@ import au.net.netstorm.boost.test.specific.ProvidesData;
 public final class InteractionTestLifecycle implements TestLifecycle {
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
-    private final DataProviders data;
-    private final Provider random;
+    private Provider random;
+    private DataProviders dataProviders;
 
-    public InteractionTestLifecycle(InteractionTestCase testCase, DataProviders data, Provider random) {
+    public InteractionTestLifecycle(InteractionTestCase testCase, InteractionTestState state) {
         this.testCase = testCase;
-        this.data = data;
-        this.random = random;
-        testFieldInjector = new DefaultTestFieldInjector(testCase, data);
+        random = state.getRandom();
+        dataProviders = state.getDataProviders();
+        MockSupport mocks = state.getMockSupport();
+        testFieldInjector = new DefaultTestFieldInjector(testCase, mocks, random);
     }
 
     public void pre() {
@@ -28,7 +29,6 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         doInitialise();
         doSetupSubject();
         doInjectSubject();
-        doSetExpectField();
     }
 
     public void post() {
@@ -46,16 +46,12 @@ public final class InteractionTestLifecycle implements TestLifecycle {
 
     private void doRegisterDataProviders() {
         ProvidesData baseProviders = new BoostDataProviders(random);
-        baseProviders.register(data);
-        if (hasMarker(ProvidesData.class)) ((ProvidesData) testCase).register(data);
+        baseProviders.register(dataProviders);
+        if (hasMarker(ProvidesData.class)) ((ProvidesData) testCase).register(dataProviders);
     }
 
     private void doInjectSubject() {
         if (hasMarker(InjectableSubject.class)) testFieldInjector.injectSubject();
-    }
-
-    private void doSetExpectField() {
-        if (hasMarker(UsesExpectations.class)) testFieldInjector.setExpectField();
     }
 
     private void doDestroy() {
