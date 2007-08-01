@@ -37,7 +37,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     public Object provide(Class type) {
         Interface iface = popIfNotInterface(type);
         if (isProvided(type)) return providedImpl(type);
-        if (isDataWithImpl(iface)) return defaultImpl(iface);
+        if (isData(iface)) return defaultImpl(iface);
         return mock(type);
     }
 
@@ -54,12 +54,12 @@ public final class InterfaceRandomProvider implements SpecificProvider {
         return dataProviders.provide(type);
     }
 
-    private boolean isDataWithImpl(Interface iFace) {
-        if (!typeMaster.extendz(iFace, DATA)) return false;
-        return implMaster.hasDefaultImpl(iFace);
+    private boolean isData(Interface iFace) {
+        return typeMaster.extendz(iFace, DATA);
     }
 
     private Object defaultImpl(Interface type) {
+        if (!implMaster.hasDefaultImpl(type)) throw new ImplementationNotFoundException(type);
         Implementation impl = implMaster.defaultImpl(type);
         Class implClass = impl.getImpl();
         return instantiator.createInstance(implClass, randomProvider);

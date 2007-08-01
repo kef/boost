@@ -17,7 +17,9 @@ public final class DefaultStreamConverter implements StreamConverter {
         byte[] buf = new byte[BUFFER_SIZE];
         while (true) {
             int count = stream.read(buf);
-            // SUGGEST Change this unbounded loop to <= 0... 
+            // SUGGEST Change this unbounded loop to <= 0...
+            // SUGGEST: Pass in a content length.
+            // SUGGEST: Use read(buf, offset, len).
             if (count == -1) break;
             result = append(result, count, buf);
         }
