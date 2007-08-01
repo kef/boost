@@ -20,7 +20,6 @@ import au.net.netstorm.boost.test.random.Randomizer;
 public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final FieldSelector selector = new TestFieldSelector();
     private final SubjectInjector subjectInjector = new DefaultSubjectInjector();
-    private final FieldValidator validator = new DefaultFieldValidator();
     private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
     private final Matcher randomMatcher = new RandomMatcher();
     private final Matcher mockMatcher = new MockMatcher();
@@ -35,11 +34,6 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         this.mocks = mocks;
         randomizer = new BoostFieldRandomizer(random);
         autoMocker = new DefaultAutoMocker(mocks);
-    }
-
-    public void validate() {
-        BoostField[] fields = getAllFields();
-        validator.validate(fields);
     }
 
     public void inject() {

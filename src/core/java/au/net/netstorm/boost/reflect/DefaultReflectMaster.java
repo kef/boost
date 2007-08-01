@@ -23,6 +23,10 @@ public final class DefaultReflectMaster implements ReflectMaster {
         return methodMaster.getPublicMethodNames(ref);
     }
 
+    public Method[] getPublicMethods(Object ref) {
+        return methodMaster.getPublicMethods(ref);
+    }
+
     public FieldValueSpec[] getInstanceFields(Object ref) {
         return fieldMaster.getInstanceFields(ref);
     }

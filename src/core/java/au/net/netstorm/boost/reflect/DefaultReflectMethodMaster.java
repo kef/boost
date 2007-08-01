@@ -14,22 +14,32 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
     }
 
     public String[] getPublicMethodNames(Object ref) {
-        List publicNames = extractPublicMethods(ref);
-        return (String[]) publicNames.toArray(new String[]{});
+        Method[] publics = getPublicMethods(ref);
+        String[] names = new String[publics.length];
+        for (int i = 0; i < publics.length; i++) {
+            names[i] = publics[i].getName();
+        }
+        return names;
     }
 
-    private List extractPublicMethods(Object ref) {
+    public Method[] getPublicMethods(Object ref) {
         Class cls = ref.getClass();
-        Method[] methods = cls.getDeclaredMethods();
-        List actualMethodNames = new ArrayList();
-        for (int i = 0; i < methods.length; i++) addPublicMethods(methods[i], actualMethodNames);
-        return actualMethodNames;
+        List publicMethods = getPublicMethodList(cls);
+        return (Method[]) publicMethods.toArray(new Method[0]);
     }
 
-    private void addPublicMethods(Method method, List actualMethodNames) {
+    private List getPublicMethodList(Class cls) {
+        Method[] methods = cls.getDeclaredMethods();
+        List publicMethods = new ArrayList();
+        for (int i = 0; i < methods.length; i++) {
+            addIfPublic(methods[i], publicMethods);
+        }
+        return publicMethods;
+    }
+
+    private void addIfPublic(Method method, List publicMethods) {
         if (isPublic(method)) {
-            String name = method.getName();
-            actualMethodNames.add(name);
+            publicMethods.add(method);
         }
     }
 

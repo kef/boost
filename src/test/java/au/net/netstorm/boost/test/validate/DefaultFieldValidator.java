@@ -1,17 +1,26 @@
-package au.net.netstorm.boost.test.automock;
+package au.net.netstorm.boost.test.validate;
 
 import au.net.netstorm.boost.test.field.BoostField;
+import au.net.netstorm.boost.test.field.BoostFieldBuilder;
+import au.net.netstorm.boost.test.field.FieldBuilder;
 
 // OK CyclomaticComplexity|NCSS {
-public final class DefaultFieldValidator implements FieldValidator {
+public final class DefaultFieldValidator implements Validator {
 
-    public void validate(BoostField[] fields) {
+    private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
+
+    public void validate(Object ref) {
+        BoostField[] fields = fieldBuilder.build(ref);
+        validateFields(fields);
+    }
+
+    private void validateFields(BoostField[] fields) {
         for (int i = 0; i < fields.length; i++) {
-            validate(fields[i]);
+            validateField(fields[i]);
         }
     }
 
-    private void validate(BoostField field) {
+    private void validateField(BoostField field) {
         if (isStatic(field)) staticChecks(field);
         else instanceChecks(field);
     }
@@ -46,7 +55,7 @@ public final class DefaultFieldValidator implements FieldValidator {
 
     private void kaboom(String s, BoostField field) {
         String name = field.getName();
-        throw new InteractionTestException(s + " : " + name);
+        throw new ValidationException(s + " : " + name);
     }
 }
 // } OK CyclomaticComplexity|NCSS

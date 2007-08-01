@@ -7,4 +7,6 @@ public interface ReflectMethodMaster {
     Method getMethod(Class cls, MethodSpec method);
 
     String[] getPublicMethodNames(Object ref);
+
+    Method[] getPublicMethods(Object ref);
 }

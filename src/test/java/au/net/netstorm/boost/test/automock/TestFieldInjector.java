@@ -5,7 +5,5 @@ public interface TestFieldInjector {
 
     void inject();
 
-    void validate();
-
     void verify();
 }

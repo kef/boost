@@ -7,12 +7,15 @@ import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.specific.BoostDataProviders;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.ProvidesData;
+import au.net.netstorm.boost.test.validate.TestClassValidator;
+import au.net.netstorm.boost.test.validate.Validator;
 
 public final class InteractionTestLifecycle implements TestLifecycle {
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
-    private Provider random;
-    private DataProviders dataProviders;
+    private final Provider random;
+    private final DataProviders dataProviders;
+    private final Validator validator = new TestClassValidator();
 
     public InteractionTestLifecycle(InteractionTestCase testCase, InteractionTestState state) {
         this.testCase = testCase;
@@ -41,7 +44,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doValidate() {
-        testFieldInjector.validate();
+        validator.validate(testCase);
     }
 
     private void doRegisterDataProviders() {
