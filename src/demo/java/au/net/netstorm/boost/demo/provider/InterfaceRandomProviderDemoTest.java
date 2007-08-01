@@ -9,6 +9,7 @@ import au.net.netstorm.boost.test.automock.DefaultMockSupport;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
+import au.net.netstorm.boost.test.random.ImplementationNotFoundException;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
@@ -44,12 +45,19 @@ public final class InterfaceRandomProviderDemoTest extends InteractionTestCase i
         } catch (NotProvidedException expected) {}
     }
 
+    public void testPopsWhenNoImplExistsForData() {
+        try {
+            interfaceProvider.provide(HasNoDefaultImpl.class);
+            fail();
+        } catch (ImplementationNotFoundException actual) {}
+    }
+
     public void testUsesProvidedImplementations() {
         checkImpl(Happiness.class, DefaultHappiness.class);
     }
 
     public void testProvidesMocksForNonDataClasses() {
-        Object object = interfaceProvider.provide(HasNoDefaultImpl.class);
+        Object object = interfaceProvider.provide(Grumpiness.class);
         assertEquals(true, Proxy.isProxyClass(object.getClass()));
         // Check mock came from mocker
         mocks.mockForProxy(object);
