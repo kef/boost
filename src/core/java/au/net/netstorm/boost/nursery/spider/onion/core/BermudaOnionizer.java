@@ -18,10 +18,8 @@ public final class BermudaOnionizer implements Onionizer {
         return new DefaultBaseReference(proxy);
     }
 
-    // DEBT GenericIllegalRegexp {
+    // FIX BREADCRUMB 1887 AAAAAAAAAAAAAAAAAAAAAAAAAAA Here.  Put in proxy for every thing.
     private Object proxy(Object ref) {
-        System.out.println("ref = " + ref);
         return ref;
     }
-    // } DEBT GenericIllegalRegexp
 }

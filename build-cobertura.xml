@@ -36,7 +36,6 @@
                 <fileset dir="${classes.dir}/@{code.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
-                    <!-- FIX DEBT Test drive this monkey up. -->
                     <exclude name="**/nursery/**"/>
                 </fileset>
             </cobertura-instrument>
