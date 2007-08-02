@@ -55,20 +55,4 @@ public final class DefaultProviderEngine implements ProviderEngine {
         Constructable constructable = (Constructable) resolved.getRef();
         constructable.constructor();
     }
-
-    // FIX 1757 Remove when done.
-    // FIX BREADCRUMB 1757 !!!!!!!! We probably want to onionise the Gaijins.
-    // FIX 1757 Pebble provider should remain pure.  Front-end.
-    // FIX 1757 We need a gaijin provider for Set/HashSet.
-    // FIX 1757 When you see the HashSet must have a single constructor ... remember Pebble as a marker interface.
-
-/*
-    if (gaijin(type)) {
-        return gaijiniator.instantiate(type, parameters);
-    } else {
-        Object ref = instantiator.instantiate(type, parameters);
-        injector.inject(ref); // FIX 1757 Pass in type (later).
-        return onion.onionise(ref);
-    }
-*/
 }
