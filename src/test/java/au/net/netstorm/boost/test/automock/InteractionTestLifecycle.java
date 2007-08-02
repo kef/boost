@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.core.Destroyable;
-import au.net.netstorm.boost.spider.core.Initialisable;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.specific.BoostDataProviders;
 import au.net.netstorm.boost.test.specific.DataProviders;
@@ -62,7 +62,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doInitialise() {
-        if (hasMarker(Initialisable.class)) ((Initialisable) testCase).initialise();
+        if (hasMarker(Constructable.class)) ((Constructable) testCase).constructor();
     }
 
     private void doSetupSubject() {

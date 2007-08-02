@@ -4,7 +4,7 @@ import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
-import au.net.netstorm.boost.spider.core.Initialisable;
+import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.test.automock.DefaultMockSupport;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockSupport;
@@ -15,7 +15,7 @@ import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.DefaultDataProviders;
 
-public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Initialisable {
+public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Constructable {
     private MockSupport mocks = new DefaultMockSupport();
     private Class iFace = HappyDay.class;
     private Class impl = DefaultHappyDay.class;
@@ -29,7 +29,7 @@ public final class InterfaceRandomProviderDemoTest extends InteractionTestCase i
         interfaceProvider = new InterfaceRandomProvider(random, dataProviders, mocks);
     }
 
-    public void initialise() {
+    public void constructor() {
         HappinessProvider happinessProvider = new HappinessProvider();
         dataProviders.add(Happiness.class, happinessProvider);
     }

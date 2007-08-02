@@ -14,7 +14,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultProviderEngine implements ProviderEngine {
-    private static final Interface INITIALISABLE = new DefaultInterface(Initialisable.class);
+    private static final Interface INITIALISABLE = new DefaultInterface(Constructable.class);
     private final ResolvedThings resolvedThings = new DefaultResolvedThings();
     private final TypeMaster implMaster = new DefaultTypeMaster();
     private final Onionizer onionizer;
@@ -52,8 +52,8 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     private void init(ResolvedInstance resolved) {
-        Initialisable initialisable = (Initialisable) resolved.getRef();
-        initialisable.initialise();
+        Constructable constructable = (Constructable) resolved.getRef();
+        constructable.constructor();
     }
 
     // FIX 1757 Remove when done.

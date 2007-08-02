@@ -32,9 +32,9 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     BaseReference unresolvedMock;
     Object rawRef;
     ResolvedInstance wrapped;
-    Initialisable initialisableMock;
+    Constructable constructableMock;
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
-    Interface initMarker = new DefaultInterface(Initialisable.class);
+    Interface initMarker = new DefaultInterface(Constructable.class);
     ResolvedThings resolvedThings = new DefaultResolvedThings();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
 
@@ -58,9 +58,9 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     }
 
     private void expectInitialise() {
-        fielder.setInstance(providezMoi, "impl", InitialisableImpl.class);
-        expect.oneCall(unresolvedMock, initialisableMock, "getRef");
-        expect.oneCall(initialisableMock, MockExpectations.VOID, "initialise");
+        fielder.setInstance(providezMoi, "impl", ConstructableImpl.class);
+        expect.oneCall(unresolvedMock, constructableMock, "getRef");
+        expect.oneCall(constructableMock, MockExpectations.VOID, "constructor");
     }
 
     // FIX BREADCRUMB 1757 Reinstate?
@@ -69,8 +69,8 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 //        subject.provide(Barbarian.class, NO_PARAMS);
 //    }
 
-    private static class InitialisableImpl implements Initialisable {
-        public void initialise() {
+    private static class ConstructableImpl implements Constructable {
+        public void constructor() {
         }
     }
 }
