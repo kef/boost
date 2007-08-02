@@ -27,6 +27,10 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
         checkType(actual, Byte[].class);
     }
 
+    public void testContains() {
+        boolean actual = subject.contains(bigFoo, bigFoo[2]);
+    }
+
     private void checkType(Object[] actual, Class type) {
         Class arrayType = actual.getClass();
         boolean matches = type.isAssignableFrom(arrayType);

@@ -7,4 +7,6 @@ public interface ArrayMaster {
 
     // FIX DEBT Move to a primitive helper area.
     byte[] plus(byte[] array1, byte[] array2);
+
+    boolean contains(Object[] array, Object o);
 }

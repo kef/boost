@@ -32,6 +32,11 @@ public final class DefaultArrayMaster implements ArrayMaster {
         return concatenation;
     }
 
+    public boolean contains(Object[] array, Object o) {
+        List result = list(array);
+        return result.contains(o);
+    }
+
     private Set set(Object[] array) {
         List list = list(array);
         return new HashSet(list);
