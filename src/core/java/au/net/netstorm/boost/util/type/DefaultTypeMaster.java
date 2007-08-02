@@ -3,14 +3,14 @@ package au.net.netstorm.boost.util.type;
 public final class DefaultTypeMaster implements TypeMaster {
 
     public boolean implementz(Implementation impl, Interface iface) {
-        Class aClass = impl.getImpl();
+        Class cls = impl.getImpl();
         Class iFace = iface.getType();
-        return iFace.isAssignableFrom(aClass);
+        return iFace.isAssignableFrom(cls);
     }
 
-    public boolean extendz(Interface iFace, Interface superIface) {
+    public boolean extendz(Interface iface, Interface superIface) {
         Class superClass = superIface.getType();
-        Class cls = iFace.getType();
+        Class cls = iface.getType();
         return superClass.isAssignableFrom(cls);
     }
 
