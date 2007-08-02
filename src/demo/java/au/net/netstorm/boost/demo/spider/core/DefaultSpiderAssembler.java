@@ -3,6 +3,7 @@ package au.net.netstorm.boost.demo.spider.core;
 import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
 import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
+import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
@@ -22,7 +23,6 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableField
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHandler;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
@@ -46,6 +46,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
+    // FIX 1887 Remove the need to pass in the finder engine.
     public Spider assemble(FinderEngine finderEngine) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, finderEngine);
