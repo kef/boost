@@ -9,6 +9,7 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
     private static final Class IMPL_CLASS = ArrayList.class;
     TypeMaster subject = new DefaultTypeMaster();
     Interface listIFace = new DefaultInterface(List.class);
+    // FIX 1887 No NESTED interfaces.
     Interface otherIface = new DefaultInterface(MyInterface.class);
     Implementation impl = new DefaultImplementation(IMPL_CLASS);
     Interface superIface = new DefaultInterface(Collection.class);
