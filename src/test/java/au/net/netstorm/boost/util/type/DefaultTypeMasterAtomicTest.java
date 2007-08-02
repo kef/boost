@@ -26,6 +26,8 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
         assertEquals(false, actual);
     }
 
+    // FIX BREADCRUMB 1887 Check getAllInterfaces.
+    // FIX BREADCRUMB 1887 BBBBBBBBBBBBBBBBBBBBB Rename getInterfaces to getDeclaredInterfaces.
     public void testExtendz() {
         boolean actual = subject.extendz(listIFace, superIface);
         assertEquals(true, actual);
