@@ -11,13 +11,25 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     Byte[] bigFoo = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC};
     ArrayMaster subject = new DefaultArrayMaster();
 
-    public void testMinus() {
+    public void testMinusBytes() {
         Object[] actual = subject.minus(bigfoobar, bigBar);
         assertBagEquals(bigFoo, actual);
     }
 
-    public void testPlus() {
+    public void testPlusBytes() {
         byte[] actual = subject.plus(foo, bar);
         assertEquals(foobar, actual);
+    }
+
+    public void testPlus() {
+        Object[] actual = subject.plus(bigFoo, bigBar);
+        assertEquals(bigfoobar, actual);
+        checkType(actual, Byte[].class);
+    }
+
+    private void checkType(Object[] actual, Class type) {
+        Class arrayType = actual.getClass();
+        boolean matches = type.isAssignableFrom(arrayType);
+        assertEquals(true, matches);
     }
 }

@@ -1,7 +1,9 @@
 package au.net.netstorm.boost.util.array;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,8 +17,8 @@ public final class DefaultArrayMaster implements ArrayMaster {
     }
 
     public Object[] plus(Object[] array1, Object[] array2) {
-        Set result = set(array1);
-        Set set = set(array2);
+        List result = list(array1);
+        List set = list(array2);
         result.addAll(set);
         return toArray(result, array1);
     }
@@ -31,13 +33,18 @@ public final class DefaultArrayMaster implements ArrayMaster {
     }
 
     private Set set(Object[] array) {
-        List list = Arrays.asList(array);
+        List list = list(array);
         return new HashSet(list);
     }
 
-    private Object[] toArray(Set set, Object[] typedArray) {
-        Object[] type = type(typedArray);
-        return set.toArray(type);
+    private List list(Object[] array) {
+        List immutable = Arrays.asList(array);
+        return new ArrayList(immutable);
+    }
+
+    private Object[] toArray(Collection collection, Object[] array) {
+        Object[] type = type(array);
+        return collection.toArray(type);
     }
 
     private Object[] type(Object[] array) {
