@@ -30,9 +30,12 @@ public final class DefaultTypeMaster implements TypeMaster {
         return toInterfaces(set);
     }
 
-    // FIX BREADCRUMB 1887 Impl me.
     public Interface[] interfaces(Implementation impl) {
-        return null;
+        Class cls = impl.getImpl();
+        Class[] ifaces = cls.getInterfaces();
+        Set set = new HashSet();
+        interfaces(set, ifaces);
+        return toInterfaces(set);
     }
 
     private void interfaces(Set set, Class[] ifaces) {
