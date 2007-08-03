@@ -24,6 +24,10 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
         checkExtends(true, lollyIface, edibleIface);
     }
 
+    public void testInterfaces() {
+//        subject.interfaces(lollyIface);
+    }
+
     public void testDeclaredInterfaces() {
         Interface[] actual = subject.declaredInterfaces(lollyImpl);
         Interface[] expected = {lollyIface};

@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.util.type;
 
-interface Lolly extends Edible {
+interface Lolly extends Edible, Tasty {
 }
