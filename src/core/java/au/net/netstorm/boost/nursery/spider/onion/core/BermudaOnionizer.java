@@ -21,11 +21,11 @@ public final class BermudaOnionizer implements Onionizer {
     private final TypeMaster typer = new DefaultTypeMaster();
 
     public ResolvedInstance onionise(Implementation impl, ResolvedInstance resolved) {
-        return resolved;
 //        Object ref = resolved.getRef();
 //        Interface[] ifaces = typer.interfaces(impl);
 //        InvocationHandler handler = null;
 //        Object proxy = factory.newProxy(ifaces, handler);
 //        // FIX BREADCRUMB 1887 AAAAAAAAAAAAAAAAAAAA Return the proxy here.
+        return resolved;
     }
 }
