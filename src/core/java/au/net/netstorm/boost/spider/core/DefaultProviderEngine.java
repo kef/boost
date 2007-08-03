@@ -37,7 +37,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
         if (resolvedThings.exists(impl)) return resolvedThings.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (implMaster.implementz(impl, INITIALISABLE)) init(resolved);
-        return onionizer.onionise(resolved);
+        return onionizer.onionise(impl, resolved);
     }
 
     private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {

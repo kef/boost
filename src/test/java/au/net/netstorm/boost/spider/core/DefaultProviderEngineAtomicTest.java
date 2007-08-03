@@ -3,7 +3,6 @@ package au.net.netstorm.boost.spider.core;
 import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
 import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.spider.gaijin.Barbarian;
-import au.net.netstorm.boost.spider.gaijin.Gaijinator;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
@@ -25,7 +24,6 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     ProviderEngine subject;
     Onionizer onionizerMock;
     Instantiator instantiatorMock;
-    Gaijinator gaijinator; // FIX 1757 Drive up a DefaultGaijinator.
     InjectorEngine injectorMock;
     Object[] parameters = {"Hi", "There"};
     Implementation providezMoi;
@@ -51,7 +49,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
         resolvedThings.clear();
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
         expect.oneCall(injectorMock, MockExpectations.VOID, "inject", unresolvedMock);
-        expect.oneCall(onionizerMock, wrapped, "onionise", unresolvedMock);
+        expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);
         if (initialise) expectInitialise();
         ResolvedInstance result = subject.provide(providezMoi, parameters);
         assertEquals(wrapped, result);
@@ -63,12 +61,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
         expect.oneCall(constructableMock, MockExpectations.VOID, "constructor");
     }
 
-    // FIX BREADCRUMB 1757 Reinstate?
-//    public void testGaijinProvider() {
-//        expect.oneCall(gaijinator, rawRef, "instantiate", type, NO_PARAMS);
-//        subject.provide(Barbarian.class, NO_PARAMS);
-//    }
-
+    // FIX 1887 Remove all inner classes.
     private static class ConstructableImpl implements Constructable {
         public void constructor() {
         }
