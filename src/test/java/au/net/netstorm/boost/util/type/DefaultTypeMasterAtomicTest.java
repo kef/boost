@@ -12,34 +12,32 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
     Interface edibleIface = new DefaultInterface(Edible.class);
     Implementation lollyImpl = new DefaultImplementation(LOLLY_CLASS);
 
-    public void testImplementz() {
-        check(lollyImpl, lollyIface, true);
-    }
-
-    public void testNotImplementz() {
-        check(lollyImpl, celeryIface, false);
-    }
-
-    public void testNotExtendz() {
-        boolean actual = subject.extendz(lollyIface, celeryIface);
-        assertEquals(false, actual);
+    public void testImplements() {
+        checkImplements(lollyImpl, lollyIface, true);
+        checkImplements(lollyImpl, edibleIface, true);
+        checkImplements(lollyImpl, celeryIface, false);
     }
 
     // FIX BREADCRUMB 1887 Check getAllInterfaces.
     // FIX BREADCRUMB 1887 BBBBBBBBBBBBBBBBBBBBB Rename getInterfaces to getDeclaredInterfaces.
-    public void testExtendz() {
-        boolean actual = subject.extendz(lollyIface, edibleIface);
-        assertEquals(true, actual);
+    public void testExtends() {
+        checkExtends(false, lollyIface, celeryIface);
+        checkExtends(true, lollyIface, edibleIface);
+    }
+
+    private void checkExtends(boolean expected, Interface sub, Interface supa) {
+        boolean actual = subject.extendz(sub, supa);
+        assertEquals(expected, actual);
+    }
+
+    private void checkImplements(Implementation implementation, Interface iFace, boolean expected) {
+        boolean actual = subject.implementz(implementation, iFace);
+        assertEquals(expected, actual);
     }
 
     public void testGetTypes() {
         Interface[] actual = subject.getInterfaces(lollyImpl);
         Interface[] expected = buildInterfaces(LOLLY_CLASS);
-        assertEquals(expected, actual);
-    }
-
-    private void check(Implementation implementation, Interface iFace, boolean expected) {
-        boolean actual = subject.implementz(implementation, iFace);
         assertEquals(expected, actual);
     }
 

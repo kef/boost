@@ -5,5 +5,5 @@ public interface TypeMaster {
 
     Interface[] getInterfaces(Implementation impl);
 
-    boolean extendz(Interface iFace, Interface otherIface);
+    boolean extendz(Interface sub, Interface supa);
 }
