@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.automock;
 
 import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.test.core.CleanTestCase;
 import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.test.field.BoostFieldBuilder;
 import au.net.netstorm.boost.test.field.FieldBuilder;
@@ -26,10 +26,10 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final Matcher dummyMatcher = new DummyMatcher();
     private final MockSupport mocks;
     private final Randomizer randomizer;
-    private final BoooostCase testCase;
+    private final CleanTestCase testCase;
     private final AutoMocker autoMocker;
 
-    public DefaultTestFieldInjector(BoooostCase testCase, MockSupport mocks, Provider random) {
+    public DefaultTestFieldInjector(CleanTestCase testCase, MockSupport mocks, Provider random) {
         this.testCase = testCase;
         this.mocks = mocks;
         randomizer = new BoostFieldRandomizer(random);
