@@ -8,6 +8,8 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
     Interface lollyIface = new DefaultInterface(Lolly.class);
     Interface celeryIface = new DefaultInterface(Celery.class);
     Interface edibleIface = new DefaultInterface(Edible.class);
+    Interface tastyIface = new DefaultInterface(Tasty.class);
+    Interface thingIface = new DefaultInterface(Thing.class);
     Implementation lollyImpl = new DefaultImplementation(lollyClass);
 
     // FIX BREADCRUMB 1887 Check getAllInterfaces.
@@ -26,6 +28,8 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
 
     public void testInterfaces() {
         Interface[] actual = subject.interfaces(lollyIface);
+        Interface[] expected = {lollyIface, edibleIface, tastyIface, thingIface};
+        assertBagEquals(expected, actual);
     }
 
     public void testDeclaredInterfaces() {
