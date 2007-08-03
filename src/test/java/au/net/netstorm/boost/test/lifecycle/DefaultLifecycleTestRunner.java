@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.test.lifecycle;
 
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.exception.ExceptionSupport;
 
 public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
-    private final LifecycleTestCase testCase;
+    private final LifecycleTest testCase;
 
-    public DefaultLifecycleTestRunner(LifecycleTestCase testCase) {
+    public DefaultLifecycleTestRunner(LifecycleTest testCase) {
         this.testCase = testCase;
     }
 
