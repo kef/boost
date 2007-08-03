@@ -6,4 +6,6 @@ public interface TypeMaster {
     Interface[] declaredInterfaces(Implementation impl);
 
     boolean extendz(Interface sub, Interface supa);
+
+    Interface[] interfaces(Interface iface);
 }

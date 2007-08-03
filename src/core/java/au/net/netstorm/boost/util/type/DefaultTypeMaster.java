@@ -14,6 +14,11 @@ public final class DefaultTypeMaster implements TypeMaster {
         return superClass.isAssignableFrom(cls);
     }
 
+    // FIX BREADCRUMB 1887 Impl me.
+    public Interface[] interfaces(Interface iface) {
+        return null;
+    }
+
     public Interface[] declaredInterfaces(Implementation impl) {
         Class implClass = impl.getImpl();
         Class[] ifaces = implClass.getInterfaces();
