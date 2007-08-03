@@ -1,21 +1,19 @@
 package au.net.netstorm.boost.util.type;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
-    private static final Class IMPL_CLASS = ArrayList.class;
+    private static final Class IMPL_CLASS = TestClass.class;
     TypeMaster subject = new DefaultTypeMaster();
-    Interface listIFace = new DefaultInterface(List.class);
-    // FIX 1887 No NESTED interfaces.
-    Interface otherIface = new DefaultInterface(MyInterface.class);
+    Interface iface = new DefaultInterface(TestInterface.class);
+    Interface otherIface = new DefaultInterface(TestAltInterface.class);
     Implementation impl = new DefaultImplementation(IMPL_CLASS);
-    Interface superIface = new DefaultInterface(Collection.class);
+    Interface superIface = new DefaultInterface(TestSuperInterface.class);
 
     public void testImplementz() {
-        check(impl, listIFace, true);
+        check(impl, iface, true);
     }
 
     public void testNotImplementz() {
@@ -23,14 +21,14 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
     }
 
     public void testNotExtendz() {
-        boolean actual = subject.extendz(listIFace, otherIface);
+        boolean actual = subject.extendz(iface, otherIface);
         assertEquals(false, actual);
     }
 
     // FIX BREADCRUMB 1887 Check getAllInterfaces.
     // FIX BREADCRUMB 1887 BBBBBBBBBBBBBBBBBBBBB Rename getInterfaces to getDeclaredInterfaces.
     public void testExtendz() {
-        boolean actual = subject.extendz(listIFace, superIface);
+        boolean actual = subject.extendz(iface, superIface);
         assertEquals(true, actual);
     }
 
@@ -54,8 +52,4 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
         }
         return (Interface[]) result.toArray(new Interface[]{});
     }
-
-    private static interface MyInterface {
-    }
-//    private static class MyClass{}
 }
