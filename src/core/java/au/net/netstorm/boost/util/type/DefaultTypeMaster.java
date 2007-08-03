@@ -14,7 +14,7 @@ public final class DefaultTypeMaster implements TypeMaster {
         return superClass.isAssignableFrom(cls);
     }
 
-    public Interface[] getInterfaces(Implementation impl) {
+    public Interface[] interfaces(Implementation impl) {
         Class implClass = impl.getImpl();
         Class[] ifaces = implClass.getInterfaces();
         return convertToInterfaces(ifaces);
