@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// FIX 1887 We need this ... I think.
+
 // SUGGEST: Move into production.
 public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     private final Set exclusions = new HashSet();
@@ -18,23 +20,6 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     private void init() {
         exlusionsForObject();
         exclusionsForProxy();
-    }
-
-    private void exlusionsForObject() {
-        exclusions.add("toString");
-        exclusions.add("hashCode");
-        exclusions.add("equals");
-        exclusions.add("getClass");
-        exclusions.add("wait");
-        exclusions.add("notify");
-        exclusions.add("notifyAll");
-    }
-
-    private void exclusionsForProxy() {
-        exclusions.add("newProxyInstance");
-        exclusions.add("getProxyClass");
-        exclusions.add("getInvocationHandler");
-        exclusions.add("isProxyClass");
     }
 
     public Method[] getAll(Class cls) {
@@ -95,5 +80,22 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
 
     private Method[] methods(Set set) {
         return (Method[]) set.toArray(new Method[]{});
+    }
+
+    private void exclusionsForProxy() {
+        exclusions.add("newProxyInstance");
+        exclusions.add("getProxyClass");
+        exclusions.add("getInvocationHandler");
+        exclusions.add("isProxyClass");
+    }
+
+    private void exlusionsForObject() {
+        exclusions.add("toString");
+        exclusions.add("hashCode");
+        exclusions.add("equals");
+        exclusions.add("getClass");
+        exclusions.add("wait");
+        exclusions.add("notify");
+        exclusions.add("notifyAll");
     }
 }
