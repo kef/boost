@@ -5,36 +5,36 @@ import java.util.List;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
-    private static final Class IMPL_CLASS = TestClass.class;
+    private static final Class LOLLY_CLASS = JuicyLolly.class;
     TypeMaster subject = new DefaultTypeMaster();
-    Interface iface = new DefaultInterface(TestInterface.class);
-    Interface otherIface = new DefaultInterface(TestAltInterface.class);
-    Implementation impl = new DefaultImplementation(IMPL_CLASS);
-    Interface superIface = new DefaultInterface(TestSuperInterface.class);
+    Interface lollyIface = new DefaultInterface(Lolly.class);
+    Interface celeryIface = new DefaultInterface(Celery.class);
+    Interface edibleIface = new DefaultInterface(Edible.class);
+    Implementation lollyImpl = new DefaultImplementation(LOLLY_CLASS);
 
     public void testImplementz() {
-        check(impl, iface, true);
+        check(lollyImpl, lollyIface, true);
     }
 
     public void testNotImplementz() {
-        check(impl, otherIface, false);
+        check(lollyImpl, celeryIface, false);
     }
 
     public void testNotExtendz() {
-        boolean actual = subject.extendz(iface, otherIface);
+        boolean actual = subject.extendz(lollyIface, celeryIface);
         assertEquals(false, actual);
     }
 
     // FIX BREADCRUMB 1887 Check getAllInterfaces.
     // FIX BREADCRUMB 1887 BBBBBBBBBBBBBBBBBBBBB Rename getInterfaces to getDeclaredInterfaces.
     public void testExtendz() {
-        boolean actual = subject.extendz(iface, superIface);
+        boolean actual = subject.extendz(lollyIface, edibleIface);
         assertEquals(true, actual);
     }
 
     public void testGetTypes() {
-        Interface[] actual = subject.getInterfaces(impl);
-        Interface[] expected = buildInterfaces(IMPL_CLASS);
+        Interface[] actual = subject.getInterfaces(lollyImpl);
+        Interface[] expected = buildInterfaces(LOLLY_CLASS);
         assertEquals(expected, actual);
     }
 

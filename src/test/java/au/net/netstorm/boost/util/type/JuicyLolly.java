@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.util.type;
 
-interface TestAltInterface {
+final class JuicyLolly implements Lolly {
 }
