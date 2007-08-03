@@ -14,7 +14,6 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
     Interface desirableIface = new DefaultInterface(Desirable.class);
     Implementation lollyImpl = new DefaultImplementation(lollyClass);
 
-    // FIX 1887 Ensure interface is symmetric and clean.
     public void testImplements() {
         checkImplements(lollyImpl, lollyIface, true);
         checkImplements(lollyImpl, edibleIface, true);
