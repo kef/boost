@@ -8,4 +8,6 @@ public interface TypeMaster {
     boolean extendz(Interface sub, Interface supa);
 
     Interface[] interfaces(Interface iface);
+
+    Interface[] interfaces(Implementation impl);
 }

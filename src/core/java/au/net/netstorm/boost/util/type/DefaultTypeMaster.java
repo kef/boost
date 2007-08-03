@@ -17,11 +17,22 @@ public final class DefaultTypeMaster implements TypeMaster {
         return superClass.isAssignableFrom(cls);
     }
 
+    public Interface[] declaredInterfaces(Implementation impl) {
+        Class implClass = impl.getImpl();
+        Class[] ifaces = implClass.getInterfaces();
+        return toInterfaces(ifaces);
+    }
+
     public Interface[] interfaces(Interface iface) {
         Class cls = iface.getType();
         Set set = new HashSet();
         interfaces(set, cls);
         return toInterfaces(set);
+    }
+
+    // FIX BREADCRUMB 1887 Impl me.
+    public Interface[] interfaces(Implementation impl) {
+        return null;
     }
 
     private void interfaces(Set set, Class[] ifaces) {
@@ -35,12 +46,6 @@ public final class DefaultTypeMaster implements TypeMaster {
         set.add(iface);
         Class[] ifaces = iface.getInterfaces();
         interfaces(set, ifaces);
-    }
-
-    public Interface[] declaredInterfaces(Implementation impl) {
-        Class implClass = impl.getImpl();
-        Class[] ifaces = implClass.getInterfaces();
-        return toInterfaces(ifaces);
     }
 
     private Interface[] toInterfaces(Set set) {
