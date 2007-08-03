@@ -3,26 +3,17 @@ package au.net.netstorm.boost.test.atom;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class DefaultPropertyNameProvider implements PropertyNameProvider {
+    private final Captialiser captialiser = new DefaultCaptialiser();
+
     public String getPropertyMethodName(FieldSpec field) {
         String beanName = field.getName();
         Class beanType = field.getType();
-        String upper = upperFirstLetter(beanName);
-        String remainder = getRemainder(beanName);
-        return prefix(beanType) + upper + remainder;
+        String capitalised = captialiser.captialise(beanName);
+        return prefix(beanType) + capitalised;
     }
 
     private String prefix(Class beanType) {
         return isBoolean(beanType) ? "is" : "get";
-    }
-
-    private String upperFirstLetter(String beanName) {
-        String firstLetter = beanName.substring(0, 1);
-        return firstLetter.toUpperCase();
-    }
-
-    private String getRemainder(String beanName) {
-        int endIndex = beanName.length();
-        return beanName.substring(1, endIndex);
     }
 
     private boolean isBoolean(Class beanType) {
