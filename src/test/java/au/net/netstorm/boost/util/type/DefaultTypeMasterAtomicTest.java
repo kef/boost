@@ -14,9 +14,7 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
     Interface desirableIface = new DefaultInterface(Desirable.class);
     Implementation lollyImpl = new DefaultImplementation(lollyClass);
 
-    // FIX BREADCRUMB 1887 Check getAllInterfaces.
-    // FIX BREADCRUMB 1887 BBBBBBBBBBBBBBBBBBBBB Rename getInterfaces to getDeclaredInterfaces.
-
+    // FIX 1887 Ensure interface is symmetric and clean.
     public void testImplements() {
         checkImplements(lollyImpl, lollyIface, true);
         checkImplements(lollyImpl, edibleIface, true);
@@ -34,17 +32,22 @@ public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
         assertBagEquals(expected, actual);
     }
 
-    // FIX 1887 Rename.
-    public void testXxx() {
+    public void testImplementationInterfaces() {
         Interface[] actual = subject.interfaces(lollyImpl);
         Interface[] expected = {lollyIface, edibleIface, tastyIface, thingIface, juicyIface, desirableIface};
         assertBagEquals(expected, actual);
     }
 
     public void testDeclaredInterfaces() {
+        Interface[] actual = subject.declaredInterfaces(lollyIface);
+        Interface[] expected = {edibleIface, tastyIface};
+        assertBagEquals(expected, actual);
+    }
+
+    public void testDeclaredImplementationInterfaces() {
         Interface[] actual = subject.declaredInterfaces(lollyImpl);
         Interface[] expected = {lollyIface, juicyIface};
-        assertEquals(expected, actual);
+        assertBagEquals(expected, actual);
     }
 
     private void checkExtends(boolean expected, Interface sub, Interface supa) {

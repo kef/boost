@@ -19,8 +19,7 @@ public final class DefaultTypeMaster implements TypeMaster {
 
     public Interface[] declaredInterfaces(Implementation impl) {
         Class implClass = impl.getImpl();
-        Class[] ifaces = implClass.getInterfaces();
-        return toInterfaces(ifaces);
+        return declaredInterfaces(implClass);
     }
 
     public Interface[] interfaces(Interface iface) {
@@ -36,6 +35,16 @@ public final class DefaultTypeMaster implements TypeMaster {
         Set set = new HashSet();
         interfaces(set, ifaces);
         return toInterfaces(set);
+    }
+
+    public Interface[] declaredInterfaces(Interface iface) {
+        Class cls = iface.getType();
+        return declaredInterfaces(cls);
+    }
+
+    private Interface[] declaredInterfaces(Class cls) {
+        Class[] ifaces = cls.getInterfaces();
+        return toInterfaces(ifaces);
     }
 
     private void interfaces(Set set, Class[] ifaces) {
