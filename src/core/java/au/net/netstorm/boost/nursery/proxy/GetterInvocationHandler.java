@@ -11,6 +11,7 @@ import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 1887 Find out why this exists.
 public class GetterInvocationHandler extends Primordial implements InvocationHandler {
     private final Interface iFace;
     private final FieldValueSpec[] fields;

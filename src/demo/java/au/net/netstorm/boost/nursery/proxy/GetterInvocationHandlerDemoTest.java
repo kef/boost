@@ -10,6 +10,9 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 1887 Tests used to run in under 0.5s.  This bumps them up to 8.  Scary.
+
+// FIX 1887 Remove, but understand first.
 public class GetterInvocationHandlerDemoTest extends InteractionTestCase implements HasFixtures {
     Integer expectedLegs = null;
     String expectedName = null;
