@@ -12,7 +12,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultNewerProxySupplier implements NewerProxySupplier {
-    private static final Implementation HANDLER = new DefaultImplementation(NewerInvocationHandler.class);
+    private static final Implementation NEWER_HANDLER = new DefaultImplementation(NewerInvocationHandler.class);
     private ProxyFactory proxyFactory;
     private Instantiator instantiator;
     private ProviderEngine provider;
@@ -30,7 +30,7 @@ public final class DefaultNewerProxySupplier implements NewerProxySupplier {
 
     private InvocationHandler newHandler(Implementation instanceImplementation) {
         Object[] parameters = {provider, instanceImplementation};
-        UnresolvedInstance instantiated = instantiator.instantiate(HANDLER, parameters);
+        UnresolvedInstance instantiated = instantiator.instantiate(NEWER_HANDLER, parameters);
         return (InvocationHandler) instantiated.getRef();
     }
 }
