@@ -21,13 +21,11 @@ public final class DefaultProviderEngine implements ProviderEngine {
     private final Instantiator instantiator;
     private final InjectorEngine injector;
 
-    // OK LineLength {
     public DefaultProviderEngine(Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
         this.onionizer = onionizer;
         this.injector = injector;
         this.instantiator = instantiator;
     }
-    // } OK LineLength 
 
     // SUGGEST: Strongly type Object[] as Dependencies?
     // FIX 1977 Object[] should be ConstructorParameter[].
