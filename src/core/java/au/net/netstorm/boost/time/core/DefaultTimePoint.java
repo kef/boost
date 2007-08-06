@@ -1,11 +1,9 @@
 package au.net.netstorm.boost.time.core;
 
-import au.net.netstorm.boost.primordial.Primordial;
-
 // FIX 1914 Rename to Millis.  Consider introducing Seconds class.
 
 // FIX SC502 Should be "immutable", not "Data".
-public final class DefaultTimePoint extends Primordial implements TimePoint {
+public final class DefaultTimePoint implements TimePoint {
     private static final long EPOCH_MILLIS = 0L;
     private static final long EPOCH_ARGMAGEDDON = Long.MAX_VALUE;
     public static final TimePoint EPOCH = new DefaultTimePoint(EPOCH_MILLIS);
