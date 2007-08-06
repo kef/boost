@@ -12,6 +12,7 @@ public final class SingleRecursiveDependencyDemoTest extends ResolverDemooooTest
         checkSame(recursion, selfRef);
     }
 
+    // FIX 1887 Consider making BoooostCase onion aware.  See how imports go.
     private void checkSame(Recursion recursion, Object selfRef) {
         Object pRecursion = peeler.peel(recursion);
         Object pSelfRef = peeler.peel(selfRef);

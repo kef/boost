@@ -26,7 +26,6 @@ public class ResolverDemooooTest extends BoooostCase {
     private final FlavouredMap web = new DefaultFlavouredMap(engine);
     private final RegistryMaster registryMaster = new DefaultRegistryMaster(web);
     private final Spider spider = spiderAssembler.assemble(registryMaster);
-    // FIX 1887 Remove once in BooostCase.
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
     public final Registry registry = new DefaultRegistry(registryMaster);
