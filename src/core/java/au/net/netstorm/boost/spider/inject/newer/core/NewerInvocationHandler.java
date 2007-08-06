@@ -17,7 +17,14 @@ public final class NewerInvocationHandler implements InvocationHandler {
 
     // SUGGEST Pop if method.getName() is not "nu".
     public Object invoke(Object object, Method method, Object[] params) throws Throwable {
+        check(method);
         ResolvedInstance instance = provider.provide(impl, params);
         return instance.getRef();
+    }
+
+    private void check(Method method) {
+        String name = method.getName();
+        if (name.equals("nu")) return;
+        throw new IllegalStateException("We only support nu(...) methods");
     }
 }
