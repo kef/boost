@@ -22,7 +22,7 @@ public final class SimpleCyclicDependenciesDemoTest extends ResolverDemooooTest 
     }
 
     private void checkSet(Object ref, String fieldName) {
-        Object value = fielder.getInstance(ref, fieldName);
+        Object value = grapher.get(ref, fieldName);
         assertNotNull(value);
     }
 }

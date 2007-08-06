@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-interface Job {
+public interface Job {
     String sayHi();
 }

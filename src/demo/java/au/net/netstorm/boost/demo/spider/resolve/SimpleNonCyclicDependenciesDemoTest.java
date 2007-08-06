@@ -11,8 +11,8 @@ public final class SimpleNonCyclicDependenciesDemoTest extends ResolverDemooooTe
 
     public void testDifferentWheels() {
         Bicycle bicycle = (Bicycle) resolver.resolve(Bicycle.class);
-        Object o1 = fielder.getInstance(bicycle, "front");
-        Object o2 = fielder.getInstance(bicycle, "rear");
+        Object o1 = grapher.get(bicycle, "front");
+        Object o2 = grapher.get(bicycle, "rear");
         assertNotEquals(o1, o2);
     }
 

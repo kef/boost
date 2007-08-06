@@ -2,9 +2,13 @@ package au.net.netstorm.boost.nursery.spider.onion.core;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 public final class OnionHandler implements InvocationHandler {
     //    private final EdgeClass classer = new DefaultEdgeClass();
+    private final EdgeClass classer = new DefaultEdgeClass();
+    private final Method peel = classer.getMethod(OnionSkin.class, "real", new Class[]{});
     private final Object real;
 
     public OnionHandler(Object real) {
@@ -13,6 +17,7 @@ public final class OnionHandler implements InvocationHandler {
 
     // FIX 1887 Complete this.
     public Object invoke(Object ref, Method method, Object[] params) throws Throwable {
+        if (method.equals(peel)) return real;
         method.setAccessible(true);
         return method.invoke(real, params);
     }

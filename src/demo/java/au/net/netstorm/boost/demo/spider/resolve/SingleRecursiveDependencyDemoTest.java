@@ -8,7 +8,13 @@ public final class SingleRecursiveDependencyDemoTest extends ResolverDemooooTest
 
     public void testRecursive() {
         Recursion recursion = (Recursion) resolver.resolve(Recursion.class);
-        Object selfRef = fielder.getInstance(recursion, "self");
-        assertSame(recursion, selfRef);
+        Object selfRef = grapher.get(recursion, "self");
+        checkSame(recursion, selfRef);
+    }
+
+    private void checkSame(Recursion recursion, Object selfRef) {
+        Object pRecursion = peeler.peel(recursion);
+        Object pSelfRef = peeler.peel(selfRef);
+        assertSame(pRecursion, pSelfRef);
     }
 }

@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-interface Bob {
+public interface Bob {
     NewHeadJob getNewHeadJob();
 }

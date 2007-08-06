@@ -48,7 +48,8 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {
         assertNotNull(theDude);
-        assertEquals(true, theDude instanceof JeffBridges);
+        Object pTheDude = peeler.peel(theDude);
+        assertEquals(true, pTheDude instanceof JeffBridges);
         Quote quote = theDude.getQuote();
         assertNotNull(quote);
     }

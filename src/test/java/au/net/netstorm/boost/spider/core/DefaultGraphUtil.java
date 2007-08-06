@@ -1,39 +1,32 @@
 package au.net.netstorm.boost.spider.core;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
-import au.net.netstorm.boost.test.atom.Captialiser;
-import au.net.netstorm.boost.test.atom.DefaultCaptialiser;
+import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
+import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 // FIX BREADCRUMB 1977 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Stitch into existing tests for graphs.
 public final class DefaultGraphUtil implements GraphUtil {
-    private final Captialiser captialiser = new DefaultCaptialiser();
-    private final EdgeClass classer = new DefaultEdgeClass();
-    private final EdgeMethod methoder = new DefaultEdgeMethod();
-    private Class[] noargs = {};
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private final Peeler peeler = new DefaultPeeler();
 
     public Object get(Object ref, String chain) {
         String[] links = toLinks(chain);
-        return get(ref, links, 0);
+        Object o = get(ref, links, 0);
+        return peeler.peel(o);
     }
 
     private Object get(Object ref, String[] links, int i) {
         if (i == links.length) return ref;
-        Object field = method(ref, links[i]);
+        Object field = field(ref, links[i]);
         return get(field, links, i + 1);
     }
 
-    private Object method(Object ref, String property) {
-        Class type = ref.getClass();
-        String upper = captialiser.captialise(property);
-        String name = "get" + upper;
-        Method method = classer.getMethod(type, name, noargs);
-        return methoder.invoke(method, ref, noargs);
+    private Object field(Object ref, String property) {
+        Object peeled = peeler.peel(ref);
+        return fielder.getInstance(peeled, property);
     }
 
     private String[] toLinks(String chain) {
