@@ -4,7 +4,7 @@ public final class DefaultPeeler implements Peeler {
 
     public Object peel(Object ref) {
         if (!peelable(ref)) return ref;
-        return ((OnionSkin) ref).real();
+        return ((OnionSkin) ref).core();
     }
 
     public boolean peelable(Object ref) {
