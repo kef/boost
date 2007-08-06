@@ -17,8 +17,13 @@ public class IndentingToStringMaster implements ToStringMaster {
     private final ReflectMaster reflect = new DefaultReflectMaster();
 
     public String getString(Object ref) {
-        String[] strings = formatFields(ref);
-        boolean extended = useExtended(strings);
+        FieldValueSpec[] fields = reflect.getInstanceFields(ref);
+        return formatFields(ref, fields);
+    }
+
+    public String formatFields(Object ref, FieldValueSpec[] fields) {
+        boolean extended = useExtended(fields);
+        String[] strings = extended ? formatMultipleFields(fields) : formatSingleField(fields[0]);
         return getClassName(ref, extended) + layoutFields(strings);
     }
 
@@ -41,12 +46,6 @@ public class IndentingToStringMaster implements ToStringMaster {
             }
         }
         return result;
-    }
-
-    private String[] formatFields(Object ref) {
-        FieldValueSpec[] fields = reflect.getInstanceFields(ref);
-        boolean extended = useExtended(fields);
-        return extended ? formatMultipleFields(fields) : formatSingleField(fields[0]);
     }
 
     private String[] formatMultipleFields(FieldValueSpec[] fields) {

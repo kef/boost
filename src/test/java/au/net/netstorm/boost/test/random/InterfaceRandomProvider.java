@@ -8,6 +8,7 @@ import au.net.netstorm.boost.reflect.InstantiatorWithProvider;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.util.impl.DefaultImplMaster;
+import au.net.netstorm.boost.util.impl.ImplMaster;
 import au.net.netstorm.boost.util.type.Data;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
@@ -18,7 +19,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class InterfaceRandomProvider implements SpecificProvider {
     private static final Interface DATA = new DefaultInterface(Data.class);
     private final InstantiatorWithProvider instantiator = new DefaultInstantiatorWithProvider();
-    private final au.net.netstorm.boost.util.impl.ImplMaster implMaster = new DefaultImplMaster();
+    private final ImplMaster implMaster = new DefaultImplMaster();
     private final TypeMaster typeMaster = new DefaultTypeMaster();
     private final DataProviders dataProviders;
     private final Provider randomProvider;
