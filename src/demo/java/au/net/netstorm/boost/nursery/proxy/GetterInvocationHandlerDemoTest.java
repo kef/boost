@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
-import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
@@ -10,14 +9,12 @@ import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 1887 Tests used to run in under 0.5s.  This bumps them up to 8.  Scary.
-
-// FIX 1887 Remove, but understand first.
 public class GetterInvocationHandlerDemoTest extends InteractionTestCase implements HasFixtures {
-    Integer expectedLegs = null;
-    String expectedName = null;
     private Centipede critter1;
     private Centipede critter2;
+    String expectedName = null;
+    Integer expectedLegs = null;
+    RealCentipede realCritter = new RealCentipede("dollar", 1000);
 
     public void setUpFixtures() {
         critter1 = proxy();
@@ -38,9 +35,10 @@ public class GetterInvocationHandlerDemoTest extends InteractionTestCase impleme
     }
 
     public void testPerformance() {
-        int numLoops = 10000000;
+        int numLoops = 10000;
         loop(numLoops, critter1);
-        loop(numLoops, new RealCentipede());
+        loop(numLoops, realCritter);
+        System.out.println("critter1 = " + critter1);
     }
 
     private void loop(int numLoops, Centipede centipede) {
@@ -52,36 +50,21 @@ public class GetterInvocationHandlerDemoTest extends InteractionTestCase impleme
     }
 
     private Centipede proxy() {
-        ClassLoader classLoader = getClass().getClassLoader();
-        Class[] proxyClasses = new Class[]{Centipede.class};
-        Interface iFace = new DefaultInterface(Centipede.class);
-        InvocationHandler handler = handler(iFace);
-        return (Centipede) Proxy.newProxyInstance(classLoader, proxyClasses, handler);
-    }
-
-    private InvocationHandler handler(Interface iFace) {
         FieldValueSpec nameField = new DefaultFieldValueSpec("name", expectedName);
         FieldValueSpec legsField = new DefaultFieldValueSpec("numLegs", expectedLegs);
         FieldValueSpec[] fields = new FieldValueSpec[]{nameField, legsField};
+        return createProxy(Centipede.class, fields);
+    }
+
+    private Centipede createProxy(Class type, FieldValueSpec[] fields) {
+        InvocationHandler handler = createHandler(type, fields);
+        ClassLoader classLoader = getClass().getClassLoader();
+        Class[] proxyClasses = new Class[]{type};
+        return (Centipede) Proxy.newProxyInstance(classLoader, proxyClasses, handler);
+    }
+
+    private InvocationHandler createHandler(Class type, FieldValueSpec[] fields) {
+        Interface iFace = new DefaultInterface(type);
         return new GetterInvocationHandler(iFace, fields);
-    }
-
-    public interface Centipede {
-        int getNumLegs();
-
-        String getName();
-    }
-
-    public class RealCentipede extends Primordial implements Centipede {
-        private final String name = "Fred";
-        private final int numLegs = 1000;
-
-        public int getNumLegs() {
-            return numLegs;
-        }
-
-        public String getName() {
-            return name;
-        }
     }
 }
