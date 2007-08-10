@@ -32,6 +32,8 @@ public final class BermudaOnionizer implements Onionizer {
 
     // FIX 1887 Tidy.
     public ResolvedInstance onionise(Implementation impl, ResolvedInstance resolved) {
+        // FIX 1887 Re-instate 
+        if (true) return resolved;
         Object ref = resolved.getRef();
         if (exemption(impl)) return resolved;
         return onionise(impl, ref);
