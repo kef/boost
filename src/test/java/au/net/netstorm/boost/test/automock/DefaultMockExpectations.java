@@ -38,8 +38,18 @@ public final class DefaultMockExpectations implements MockExpectations {
         oneCall(ref, returnValue, methodName, parameters);
     }
 
+    public void oneCall(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6) {
+        Object[] parameters = {parameter1, parameter2, parameter3, parameter4, parameter5, parameter6};
+        oneCall(ref, returnValue, methodName, parameters);
+    }
+
     public void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5) {
         Object[] parameters = {parameter1, parameter2, parameter3, parameter4, parameter5};
+        oneCall(ref, throwable, methodName, parameters);
+    }
+
+    public void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6) {
+        Object[] parameters = {parameter1, parameter2, parameter3, parameter4, parameter5, parameter6};
         oneCall(ref, throwable, methodName, parameters);
     }
 
@@ -70,6 +80,11 @@ public final class DefaultMockExpectations implements MockExpectations {
 
     public void manyCalls(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5) {
         Object[] parameters = {parameter1, parameter2, parameter3, parameter4, parameter5};
+        canCall(ref, returnValue, methodName, parameters);
+    }
+
+    public void manyCalls(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6) {
+        Object[] parameters = {parameter1, parameter2, parameter3, parameter4, parameter5, parameter6};
         canCall(ref, returnValue, methodName, parameters);
     }
 
