@@ -10,6 +10,7 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
         registry.multiple(Movie.class, BigLebowski.class);
         registry.multiple(Cinema.class, RegalCinema.class);
         registry.instance(Actor.class, peter);
+        // FIX 2081 Morph into BritneySpears.class.
         registry.instance(Celebrity.class, new BritneySpears());
         registry.multiple(Hollywood.class, GlitzyHollywood.class);
         registry.multiple(Business.class, MovieBusiness.class);
@@ -45,7 +46,9 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
     private void checkSameActor(Hollywood hollywood, Business business) {
         Actor hollywoodActor = hollywood.getActor();
         Actor movieActor = business.getActor();
+        assertNotNull(movieActor);
         assertSame(hollywoodActor, movieActor);
+        assertEquals(peter, hollywoodActor);
     }
 
     private void checkTheDudeIsReallyJeff(TheDude theDude) {

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public interface Runner {
+interface Runner {
     Ball getBall();
 
     int getAge();

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public interface Hollywood {
+interface Hollywood {
     Movie getMovie();
 
     Celebrity getCelebrity();

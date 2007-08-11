@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public interface Business {
+interface Business {
     Celebrity getCelebrity();
 
     Actor getActor();

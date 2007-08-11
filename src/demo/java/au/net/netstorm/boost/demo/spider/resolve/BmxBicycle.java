@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class BmxBicycle implements Bicycle {
+import au.net.netstorm.boost.primordial.Primordial;
+
+final class BmxBicycle extends Primordial implements Bicycle {
     Wheel rear;
     Wheel front;
 }

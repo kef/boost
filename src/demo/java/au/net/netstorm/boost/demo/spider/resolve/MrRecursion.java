@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class MrRecursion implements Recursion {
+import au.net.netstorm.boost.primordial.Primordial;
+
+final class MrRecursion extends Primordial implements Recursion {
     Recursion self;
 }

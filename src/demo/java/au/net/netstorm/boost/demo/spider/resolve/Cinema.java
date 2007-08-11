@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public interface Cinema {
+interface Cinema {
     Movie getMovie();
 }

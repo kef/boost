@@ -1,11 +1,9 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-final class BigLebowski implements Movie {
-    private final TheDude theDude;
+import au.net.netstorm.boost.primordial.Primordial;
 
-    public BigLebowski(TheDude theDude) {
-        this.theDude = theDude;
-    }
+final class BigLebowski extends Primordial implements Movie {
+    TheDude theDude;
 
     public TheDude getTheDude() {
         return theDude;

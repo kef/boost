@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class DefaultStudent implements Student {
+import au.net.netstorm.boost.primordial.Primordial;
+
+final class DefaultStudent extends Primordial implements Student {
     Homework homework;
     Exam exam;
 }

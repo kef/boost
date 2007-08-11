@@ -38,7 +38,7 @@ public class GetterInvocationHandlerDemoTest extends InteractionTestCase impleme
         int numLoops = 10000;
         loop(numLoops, critter1);
         loop(numLoops, realCritter);
-        System.out.println("critter1 = " + critter1);
+//        System.out.println("critter1 = " + critter1);
     }
 
     private void loop(int numLoops, Centipede centipede) {

@@ -1,9 +1,11 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class GlitzyHollywood implements Hollywood {
-    private Celebrity celebrity;
-    private Actor actor;
-    private Movie movie;
+import au.net.netstorm.boost.primordial.Primordial;
+
+final class GlitzyHollywood extends Primordial implements Hollywood {
+    Celebrity celebrity;
+    Actor actor;
+    Movie movie;
 
     public Movie getMovie() {
         return movie;

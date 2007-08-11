@@ -1,4 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class PeterSellers implements Actor {
+import au.net.netstorm.boost.primordial.Primordial;
+
+final class PeterSellers extends Primordial implements Actor {
 }
