@@ -4,9 +4,9 @@ import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 
 public final class DefaultNewerDemoTest extends ResolverDemooooTest {
     public void testResolveNewer() {
-        NewHeadJob newHeadJob = (NewHeadJob) resolver.resolve(NewHeadJob.class);
-        assertNotNull(newHeadJob);
-        Job job = newHeadJob.nu();
+        NewTopJob newTopJob = (NewTopJob) resolver.resolve(NewTopJob.class);
+        assertNotNull(newTopJob);
+        Job job = newTopJob.nu();
         job.sayHi();
     }
 
@@ -18,7 +18,7 @@ public final class DefaultNewerDemoTest extends ResolverDemooooTest {
     }
 
     private void checkNewersRecurse(Bob bob) {
-        NewHeadJob newJobNewer = bob.getNewHeadJob();
+        NewTopJob newJobNewer = bob.getNewTopJob();
         checkCreatedRecursively(newJobNewer);
     }
 
