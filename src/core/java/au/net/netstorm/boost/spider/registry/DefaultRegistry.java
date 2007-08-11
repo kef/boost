@@ -10,11 +10,13 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
-    private final RegistryEngine registryEngine;
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
+    private final InstanceMaster instancer;
+    private final BlueprintMaster blueprinter;
 
-    public DefaultRegistry(RegistryEngine spinnerEngine) {
-        this.registryEngine = spinnerEngine;
+    public DefaultRegistry(BlueprintMaster blueprinter, InstanceMaster instancer) {
+        this.instancer = instancer;
+        this.blueprinter = blueprinter;
     }
 
     public void multiple(Class iface, Class impl) {
@@ -49,13 +51,13 @@ public final class DefaultRegistry implements Registry {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
         Blueprint blueprint = new DefaultBlueprint(Stamp.MULTIPLE, implementation);
-        registryEngine.blueprint(inyerface, blueprint, tastyFlavour);
+        blueprinter.blueprint(inyerface, blueprint, tastyFlavour);
     }
 
     private void instance(Class iface, Object ref, Flavour tastyFlavour) {
         Interface inyerface = new DefaultInterface(iface);
         ResolvedInstance instance = new DefaultBaseReference(ref);
-        registryEngine.instance(inyerface, instance, tastyFlavour);
+        instancer.instance(inyerface, instance, tastyFlavour);
     }
 
     private Flavour flavour(String flavour) {

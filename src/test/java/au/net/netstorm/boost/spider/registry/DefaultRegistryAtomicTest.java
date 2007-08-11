@@ -23,14 +23,15 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     Interface cerealInterface = new DefaultInterface(cereal);
     Blueprint footballBlueprint = blueprint(football);
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
-    RegistryMaster registryMasterMock;
     Flavour unflavoured = Flavour.UNFLAVOURED;
     String stringFlavour;
     Flavour flavour;
+    BlueprintMaster blueprinterMock;
+    InstanceMaster instancerMock;
 
     public void setUpFixtures() {
         flavour = new DefaultFlavour(stringFlavour);
-        subject = new DefaultRegistry(registryMasterMock);
+        subject = new DefaultRegistry(blueprinterMock, instancerMock);
     }
 
     public void testMultipleUnflavoured() {
@@ -54,11 +55,11 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase impleme
     }
 
     private void setUpInstance(Flavour flavour) {
-        expect.oneCall(registryMasterMock, MockExpectations.VOID, "instance", cerealInterface, resolvedCocoPops, flavour);
+        expect.oneCall(instancerMock, MockExpectations.VOID, "instance", cerealInterface, resolvedCocoPops, flavour);
     }
 
     private void setUpMultiple(Flavour flavour) {
-        expect.oneCall(registryMasterMock, MockExpectations.VOID, "blueprint", sportInterface, footballBlueprint, flavour);
+        expect.oneCall(blueprinterMock, MockExpectations.VOID, "blueprint", sportInterface, footballBlueprint, flavour);
     }
 
     private Blueprint blueprint(Class football) {

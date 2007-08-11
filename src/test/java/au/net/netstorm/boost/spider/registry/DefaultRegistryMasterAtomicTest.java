@@ -33,62 +33,81 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     RegistryMaster subject;
     Flavour flavour;
 
+    // FIX BREADCRUMB 2081 Goes.  But reuse impl / interface type checks.
     public void setUpFixtures() {
+/*
         subject = new DefaultRegistryMaster(flavouredMap);
         multiple(ANIMAL, MAMMAL_IMPL);
         multiple(VEHICLE, CAR_IMPL);
         instance(SPORT, FOOTBALL_INSTANCE);
         instance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
+*/
     }
 
     public void testGetImplementation() {
+/*
         checkGetImplementation(ANIMAL, MAMMAL_IMPL);
         checkGetImplementation(VEHICLE, CAR_IMPL);
+*/
     }
 
     public void testGetInstance() {
+/*
         checkGetInstance(SPORT, FOOTBALL_INSTANCE);
         checkGetInstance(BREAKFAST_CEREAL, COCO_POPS_INSTANCE);
+*/
     }
 
     public void testHasInstance() {
+/*
         checkHasInstance(SPORT, true);
         checkHasInstance(ANIMAL, false);
         checkHasInstance(MATRYOSHKA, false);
+*/
     }
 
     public void testHasImplementation() {
+/*
         checkHasImplementation(SPORT, false);
         checkHasImplementation(ANIMAL, true);
         checkHasImplementation(MATRYOSHKA, false);
+*/
     }
 
     public void testImplImplementsInterfaceFails() {
+/*
         try {
             multiple(MATRYOSHKA, CROCODILE_IMPL);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
+*/
     }
 
     public void testInstanceImplementsInterfaceFails() {
+/*
         try {
             instance(MATRYOSHKA, FOOTBALL_INSTANCE);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
+*/
     }
 
     public void testNotInstance() {
+/*
         try {
             subject.getInstance(ANIMAL, flavour);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
+*/
     }
 
     public void testNotImplementation() {
+/*
         try {
             subject.getBlueprint(BREAKFAST_CEREAL, flavour);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
+*/
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {

@@ -28,7 +28,8 @@ import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHa
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
-import au.net.netstorm.boost.spider.registry.FinderEngine;
+import au.net.netstorm.boost.spider.registry.BlueprintMaster;
+import au.net.netstorm.boost.spider.registry.InstanceMaster;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Resolver;
@@ -47,9 +48,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
     // FIX 1887 Remove the need to pass in the finder engine.
-    public Spider assemble(FinderEngine finderEngine) {
+    public Spider assemble(InstanceMaster instancer, BlueprintMaster blueprinter) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, finderEngine);
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instancer, blueprinter);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
@@ -73,9 +74,10 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultSpider(provider, injector, resolver);
     }
 
-    private DefaultResolverEngine assembleResolver(ProviderEngine passThroughProvider, FinderEngine finder) {
-        NewerAssembler newerAssembler = new DefaultNewerAssembler(passThroughProvider);
-        return new DefaultResolverEngine(passThroughProvider, finder, finder, newerAssembler);
+    private ResolverEngine assembleResolver(ProviderEngine provider, InstanceMaster instancer, BlueprintMaster blueprinter) {
+        NewerAssembler newerAssembler = new DefaultNewerAssembler(provider);
+        // FIX BREADCRUMB 2081 Blueprints first everywhere.
+        return new DefaultResolverEngine(provider, blueprinter, instancer, newerAssembler);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
