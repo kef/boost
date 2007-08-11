@@ -9,7 +9,6 @@ public interface Blueprints {
     // FIX 2081 Create an architect class which stores blueprints.
     // FIX 2081 Split instance vs implementation.
 
-    // FIX BREADCRUMB 2081 CCCCCCCCCCCCCCCCCCCCCCCCCCCC Drive up blueprint.
     // FIX BREADCRUMB 2081 BBBBBBBBBBBBBBBBBBBBBBBBB Make this return a blue print.
 
     Implementation getImplementation(Interface iface, Flavour flavour);
