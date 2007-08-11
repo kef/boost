@@ -20,6 +20,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// SUGGEST: Moving constructor call logic out of here into a delegate will make the test a LOT simpler.
 public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields, InjectableSubject {
     Object[] noParams = {};
     ProviderEngine subject;
@@ -53,7 +54,8 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void doCheck(boolean construct) {
         expectations(construct, noParams);
-        subject.provide(providezMoi);
+        ResolvedInstance result = subject.provide(providezMoi);
+        assertEquals(wrapped, result);
     }
 
     private void checkProvider(boolean construct, Object[] parameters) {
