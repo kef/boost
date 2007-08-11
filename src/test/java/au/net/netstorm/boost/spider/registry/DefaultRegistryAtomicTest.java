@@ -32,7 +32,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Instances instancesMock;
     Registry subject;
 
-    // FIX 2081 Add single tests.
     public void setUpFixtures() {
         flavoured = new DefaultFlavour(stringFlavour);
         subject = new DefaultRegistry(blueprintsMock, instancesMock);
@@ -69,7 +68,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     }
 
     private void setUpInstance(Flavour flavour) {
-        // FIX 2081 VOID into interface.
         expect.oneCall(instancesMock, VOID, "put", cerealInterface, flavour, resolvedCocoPops);
     }
 
