@@ -46,7 +46,7 @@ public class GetterInvocationHandlerDemoTest extends InteractionTestCase impleme
         for (int i = 0; i < numLoops; i++) {
             centipede.getName();
         }
-        System.out.println("Time for " + numLoops + " loops = " + (System.currentTimeMillis() - start));
+//        System.out.println("Time for " + numLoops + " loops = " + (System.currentTimeMillis() - start));
     }
 
     private Centipede proxy() {

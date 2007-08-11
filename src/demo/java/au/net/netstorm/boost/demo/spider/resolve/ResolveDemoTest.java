@@ -2,12 +2,14 @@ package au.net.netstorm.boost.demo.spider.resolve;
 
 public final class ResolveDemoTest extends ResolverDemooooTest {
 
+    private PeterSellers peter = new PeterSellers();
+
     {
         registry.multiple(TheDude.class, JeffBridges.class);
         registry.multiple(Quote.class, ClassicQuote.class);
         registry.multiple(Movie.class, BigLebowski.class);
         registry.multiple(Cinema.class, RegalCinema.class);
-        registry.instance(Actor.class, new PeterSellers());
+        registry.instance(Actor.class, peter);
         registry.instance(Celebrity.class, new BritneySpears());
         registry.multiple(Hollywood.class, GlitzyHollywood.class);
         registry.multiple(Business.class, MovieBusiness.class);
