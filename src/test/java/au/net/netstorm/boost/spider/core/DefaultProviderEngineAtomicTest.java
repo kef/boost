@@ -62,6 +62,12 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
         assertEquals(wrapped, result);
     }
 
+    private void expectConstruct() {
+        fielder.setInstance(providezMoi, "impl", ConstructableImpl.class);
+        expect.oneCall(unresolvedMock, constructableMock, "getRef");
+        expect.oneCall(constructableMock, MockExpectations.VOID, "constructor");
+    }
+
     private void expectations(boolean construct, Object[] parameters) {
         resolvedThings.clear();
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
@@ -70,12 +76,8 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
         if (construct) expectConstruct();
     }
 
-    private void expectConstruct() {
-        fielder.setInstance(providezMoi, "impl", ConstructableImpl.class);
-        expect.oneCall(unresolvedMock, constructableMock, "getRef");
-        expect.oneCall(constructableMock, MockExpectations.VOID, "constructor");
-    }
-
+    // FIX BREADCRUMB 2081 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.
+    // FIX 2081 Move this out.
     // FIX 1887 Remove all inner classes.
     private static class ConstructableImpl implements Constructable {
         public void constructor() {
