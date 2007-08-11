@@ -6,8 +6,9 @@ import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
-import au.net.netstorm.boost.spider.registry.FinderEngine;
+import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
@@ -22,7 +23,8 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ResolverEngine subject;
     ProviderEngine providerMock;
-    FinderEngine finderEngineMock;
+    Blueprints blueprintsMock;
+    Instances instancesMock;
     NewerAssembler newerAssemblerMock;
     ResolvedInstance jimResolvedInstance;
     Newer newerImplMock;
@@ -36,20 +38,20 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Object[] noparams = {};
 
     public void setUpFixtures() {
-        subject = new DefaultResolverEngine(providerMock, finderEngineMock, newerAssemblerMock);
+        subject = new DefaultResolverEngine(providerMock, blueprintsMock, instancesMock, newerAssemblerMock);
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(finderEngineMock, false, "hasInstance", jim, flavour);
-        expect.oneCall(finderEngineMock, jimBlueprint, "getBlueprint", jim, flavour);
+        expect.oneCall(instancesMock, false, "hasInstance", jim, flavour);
+        expect.oneCall(blueprintsMock, jimBlueprint, "getBlueprint", jim, flavour);
         expect.oneCall(providerMock, jimResolvedInstance, "provide", impl, noparams);
         ResolvedInstance result = subject.resolve(jim, flavour);
         assertEquals(jimResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(finderEngineMock, true, "hasInstance", spoo, flavour);
-        expect.oneCall(finderEngineMock, spooInstance, "getInstance", spoo, flavour);
+        expect.oneCall(instancesMock, true, "hasInstance", spoo, flavour);
+        expect.oneCall(instancesMock, spooInstance, "getInstance", spoo, flavour);
         ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);
     }

@@ -5,7 +5,8 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.FinderEngine;
+import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
@@ -19,12 +20,18 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ProviderEngine provider;
-    private final FinderEngine finder;
+    private final Blueprints blueprints;
+    private final Instances instances;
     private final NewerAssembler newer;
 
-    public DefaultResolverEngine(ProviderEngine provider, FinderEngine finder, NewerAssembler newer) {
+    public DefaultResolverEngine(
+            ProviderEngine provider,
+            Blueprints blueprints,
+            Instances instances,
+            NewerAssembler newer) {
         this.provider = provider;
-        this.finder = finder;
+        this.blueprints = blueprints;
+        this.instances = instances;
         this.newer = newer;
     }
 
@@ -34,7 +41,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance getImplementation(Interface iface, Flavour flavour) {
-        Blueprint blueprint = finder.getBlueprint(iface, flavour);
+        Blueprint blueprint = blueprints.getBlueprint(iface, flavour);
         Implementation impl = blueprint.getImplementation();
         return resolve(impl);
     }
@@ -50,12 +57,12 @@ public final class DefaultResolverEngine implements ResolverEngine {
         // FIX 2081 Onionise on the put.
         // Suggest What about onionising the instance?
         if (isNewer(iface)) return nuNewer(iface);
-        return finder.getInstance(iface, flavour);
+        return instances.getInstance(iface, flavour);
     }
 
     private boolean hasInstance(Interface iface, Flavour flavour) {
         if (isNewer(iface)) return true;
-        return finder.hasInstance(iface, flavour);
+        return instances.hasInstance(iface, flavour);
     }
 
     private boolean isNewer(Interface iface) {

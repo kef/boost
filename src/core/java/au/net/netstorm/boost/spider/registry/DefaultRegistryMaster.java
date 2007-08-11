@@ -9,6 +9,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
+// FIX 2081 Split into map for instances and map for blueprints.
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final FlavouredMap web;
     TypeMaster master = new DefaultTypeMaster();

@@ -43,7 +43,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final ResolvedThings RESOLVED_THINGS = new DefaultResolvedThings();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
-    private ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
+    private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
     // FIX 1887 Remove the need to pass in the finder engine.
@@ -75,7 +75,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private DefaultResolverEngine assembleResolver(ProviderEngine passThroughProvider, FinderEngine finder) {
         NewerAssembler newerAssembler = new DefaultNewerAssembler(passThroughProvider);
-        return new DefaultResolverEngine(passThroughProvider, finder, newerAssembler);
+        return new DefaultResolverEngine(passThroughProvider, finder, finder, newerAssembler);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
