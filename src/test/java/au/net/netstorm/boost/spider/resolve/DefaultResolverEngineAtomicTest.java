@@ -21,6 +21,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+    private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     ResolverEngine subject;
     ProviderEngine providerMock;
     Blueprints blueprintsMock;
@@ -64,7 +65,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
 
     private Blueprint blueprint(Class cls) {
         Implementation impl = new DefaultImplementation(cls);
-        return new DefaultBlueprint(Stamp.MULTIPLE, impl);
+        return new DefaultBlueprint(MULTIPLE, impl);
     }
 
     private Interface iface(Class cls) {

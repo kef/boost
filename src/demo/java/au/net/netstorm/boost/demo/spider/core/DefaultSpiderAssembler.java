@@ -76,7 +76,6 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private ResolverEngine assembleResolver(ProviderEngine provider, Instances instancer, Blueprints blueprints) {
         NewerAssembler newerAssembler = new DefaultNewerAssembler(provider);
-        // FIX BREADCRUMB 2081 Blueprints first everywhere.
         return new DefaultResolverEngine(provider, blueprints, instancer, newerAssembler);
     }
 
