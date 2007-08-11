@@ -63,7 +63,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return (Spider) proxyFactory.newProxy(SPIDER_TYPE, handler);
     }
 
-    private Spider buildSpider(ProviderEngine providerEngine,
+    private Spider buildSpider(
+            ProviderEngine providerEngine,
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine
     ) {
@@ -73,7 +74,10 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultSpider(provider, injector, resolver);
     }
 
-    private ResolverEngine assembleResolver(ProviderEngine provider, Instances instancer, Blueprints blueprints) {
+    private ResolverEngine assembleResolver(
+            ProviderEngine provider,
+            Instances instancer,
+            Blueprints blueprints) {
         NewerAssembler newerAssembler = new DefaultNewerAssembler(provider);
         return new DefaultResolverEngine(provider, blueprints, instancer, newerAssembler);
     }
