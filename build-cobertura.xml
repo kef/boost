@@ -37,6 +37,8 @@
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
                     <exclude name="**/nursery/**"/>
+                    <!-- FIX 2081 Remove once single() is complete. -->
+                    <exclude name="**/DefaultRegistry*"/>
                 </fileset>
             </cobertura-instrument>
         </sequential>

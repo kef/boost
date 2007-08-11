@@ -21,6 +21,11 @@ public final class DefaultRegistry implements Registry {
         multiple(iface, impl, UNFLAVOURED);
     }
 
+    public void single(Class iface, Class impl) {
+        // FIX 2081 Call single ON registry engine!!!
+        multiple(iface, impl, UNFLAVOURED);
+    }
+
     public void instance(Class iface, Object ref) {
         instance(iface, ref, UNFLAVOURED);
     }
@@ -33,6 +38,11 @@ public final class DefaultRegistry implements Registry {
     public void multiple(Class iface, Class impl, String flavour) {
         Flavour tastyFlavour = flavour(flavour);
         multiple(iface, impl, tastyFlavour);
+    }
+
+    public void single(Class iface, Class impl, String flavour) {
+        // FIX 2081 Call single ON registry engine!!!
+        multiple(iface, impl, flavour);
     }
 
     private void multiple(Class iface, Class impl, Flavour tastyFlavour) {
