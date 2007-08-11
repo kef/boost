@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
+// SUGGEST: This test could and should be a lot simpler.  Check out BlueprintDemoTest.
 public final class ResolveDemoTest extends ResolverDemooooTest {
     private PeterSellers peter = new PeterSellers();
 

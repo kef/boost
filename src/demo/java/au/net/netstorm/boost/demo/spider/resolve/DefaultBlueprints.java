@@ -11,8 +11,6 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
 // FIX 2081 Move into core and TDD.
-
-// FIX 2081 Fail if blueprint does not implement iface.
 public final class DefaultBlueprints implements Blueprints {
     private TypeMaster typer = new DefaultTypeMaster();
     private final FlavouredMap map;
