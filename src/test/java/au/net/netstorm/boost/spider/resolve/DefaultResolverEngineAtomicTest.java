@@ -40,8 +40,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testNoResolvedInstance() {
-        // FIX 2081 Use "false" instead of Boolean.FALSE.
-        expect.oneCall(finderEngineMock, Boolean.FALSE, "hasInstance", jim, flavour);
+        expect.oneCall(finderEngineMock, false, "hasInstance", jim, flavour);
         expect.oneCall(finderEngineMock, jimBlueprint, "getImplementation", jim, flavour);
         expect.oneCall(providerMock, jimResolvedInstance, "provide", impl, noparams);
         ResolvedInstance result = subject.resolve(jim, flavour);
@@ -49,7 +48,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(finderEngineMock, Boolean.TRUE, "hasInstance", spoo, flavour);
+        expect.oneCall(finderEngineMock, true, "hasInstance", spoo, flavour);
         expect.oneCall(finderEngineMock, spooInstance, "getInstance", spoo, flavour);
         ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);
