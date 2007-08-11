@@ -116,8 +116,7 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     }
 
     private void multiple(Interface iface, Blueprint blueprint) {
-        Implementation impl = blueprint.getImplementation();
-        subject.multiple(iface, impl, flavour);
+        subject.blueprint(iface, blueprint, flavour);
     }
 
     private static Blueprint blueprint(Class type) {

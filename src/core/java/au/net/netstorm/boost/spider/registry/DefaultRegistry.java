@@ -48,7 +48,8 @@ public final class DefaultRegistry implements Registry {
     private void multiple(Class iface, Class impl, Flavour tastyFlavour) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        registryEngine.multiple(inyerface, implementation, tastyFlavour);
+        Blueprint blueprint = new DefaultBlueprint(Stamp.MULTIPLE, implementation);
+        registryEngine.blueprint(inyerface, blueprint, tastyFlavour);
     }
 
     private void instance(Class iface, Object ref, Flavour tastyFlavour) {

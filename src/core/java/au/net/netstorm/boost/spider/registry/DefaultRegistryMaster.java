@@ -9,6 +9,8 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
+// FIX BREADCRUMB 2081 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH Split into 2.
+
 // FIX 2081 Split into map for instances and map for blueprints.
 public final class DefaultRegistryMaster implements RegistryMaster {
     private final FlavouredMap web;
@@ -18,9 +20,8 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         this.web = web;
     }
 
-    public void multiple(Interface iface, Implementation implementation, Flavour flavour) {
-        barfIfNotImplOfIface(iface, implementation);
-        Blueprint blueprint = new DefaultBlueprint(Stamp.MULTIPLE, implementation);
+    public void blueprint(Interface iface, Blueprint blueprint, Flavour flavour) {
+        barfIfNotImplOfIface(iface, blueprint);
         web.put(iface, flavour, blueprint);
     }
 
@@ -45,6 +46,11 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public boolean hasInstance(Interface iface, Flavour flavour) {
         return ofType(ResolvedInstance.class, iface, flavour);
+    }
+
+    private void barfIfNotImplOfIface(Interface iface, Blueprint blueprint) {
+        Implementation impl = blueprint.getImplementation();
+        barfIfNotImplOfIface(iface, impl);
     }
 
     private void barfIfNotImplOfIface(Interface iface, ResolvedInstance instance) {
