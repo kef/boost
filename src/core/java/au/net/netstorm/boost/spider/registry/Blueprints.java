@@ -1,0 +1,18 @@
+package au.net.netstorm.boost.spider.registry;
+
+import au.net.netstorm.boost.spider.flavour.Flavour;
+import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
+
+public interface Blueprints {
+    // FIX 2081 Make this return a BluePrint (Implementation and SINGLE|MULTIPLE)
+    // FIX 2081 Create an architect class which stores blueprints.
+    // FIX 2081 Split instance vs implementation.
+
+    // FIX BREADCRUMB 2081 CCCCCCCCCCCCCCCCCCCCCCCCCCCC Drive up blueprint.
+    // FIX BREADCRUMB 2081 Drive up stamp.
+
+    Implementation getImplementation(Interface iface, Flavour flavour);
+
+    boolean hasImplementation(Interface iface, Flavour flavour);
+}

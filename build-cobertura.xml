@@ -39,6 +39,8 @@
                     <exclude name="**/nursery/**"/>
                     <!-- FIX 2081 Remove once single() is complete. -->
                     <exclude name="**/DefaultRegistry*"/>
+                    <!-- FIX 2081 And when we work out how to TDD enums. -->
+                    <exclude name="**/registry/DefaultStamp*"/>
                 </fileset>
             </cobertura-instrument>
         </sequential>
