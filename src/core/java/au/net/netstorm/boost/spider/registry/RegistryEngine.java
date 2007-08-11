@@ -5,6 +5,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// FIX 2081 Add instance(Interface iface, Implementation implementation, Flavour flavour).
 public interface RegistryEngine {
     void multiple(Interface iface, Implementation implementation, Flavour flavour);
 
