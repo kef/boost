@@ -10,7 +10,7 @@ public interface Blueprints {
     // FIX 2081 Split instance vs implementation.
 
     // FIX BREADCRUMB 2081 CCCCCCCCCCCCCCCCCCCCCCCCCCCC Drive up blueprint.
-    // FIX BREADCRUMB 2081 Drive up stamp.
+    // FIX BREADCRUMB 2081 BBBBBBBBBBBBBBBBBBBBBBBBB Make this return a blue print.
 
     Implementation getImplementation(Interface iface, Flavour flavour);
 
