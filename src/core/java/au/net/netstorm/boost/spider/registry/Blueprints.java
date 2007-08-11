@@ -10,7 +10,7 @@ public interface Blueprints {
 
     // FIX BREADCRUMB 2081 BBBBBBBBBBBBBBBBBBBBBBBBB Make this return a blue print.
 
-    Blueprint getImplementation(Interface iface, Flavour flavour);
+    Blueprint getBlueprint(Interface iface, Flavour flavour);
 
-    boolean hasImplementation(Interface iface, Flavour flavour);
+    boolean hasBlueprint(Interface iface, Flavour flavour);
 }

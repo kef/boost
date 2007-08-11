@@ -34,7 +34,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance getImplementation(Interface iface, Flavour flavour) {
-        Blueprint blueprint = finder.getImplementation(iface, flavour);
+        Blueprint blueprint = finder.getBlueprint(iface, flavour);
         Implementation impl = blueprint.getImplementation();
         return resolve(impl);
     }

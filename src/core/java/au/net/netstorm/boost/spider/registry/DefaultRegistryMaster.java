@@ -28,17 +28,17 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         web.put(iface, flavour, instance);
     }
 
-    public Blueprint getImplementation(Interface iface, Flavour flavour) {
+    public Blueprint getBlueprint(Interface iface, Flavour flavour) {
         if (hasInstance(iface, flavour)) throw new WrongRegistrationTypeException(iface);
         return (Blueprint) get(iface, flavour);
     }
 
     public ResolvedInstance getInstance(Interface iface, Flavour flavour) {
-        if (hasImplementation(iface, flavour)) throw new WrongRegistrationTypeException(iface);
+        if (hasBlueprint(iface, flavour)) throw new WrongRegistrationTypeException(iface);
         return (ResolvedInstance) get(iface, flavour);
     }
 
-    public boolean hasImplementation(Interface iface, Flavour flavour) {
+    public boolean hasBlueprint(Interface iface, Flavour flavour) {
         return ofType(Blueprint.class, iface, flavour);
     }
 

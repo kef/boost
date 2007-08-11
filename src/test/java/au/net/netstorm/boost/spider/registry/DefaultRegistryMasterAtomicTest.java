@@ -86,13 +86,13 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
 
     public void testNotImplementation() {
         try {
-            subject.getImplementation(BREAKFAST_CEREAL, flavour);
+            subject.getBlueprint(BREAKFAST_CEREAL, flavour);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     private void checkHasImplementation(Interface iface, boolean expected) {
-        boolean result = subject.hasImplementation(iface, flavour);
+        boolean result = subject.hasBlueprint(iface, flavour);
         assertEquals(expected, result);
     }
 
@@ -107,7 +107,7 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     }
 
     private void checkGetImplementation(Interface iface, Blueprint expected) {
-        Blueprint result = subject.getImplementation(iface, flavour);
+        Blueprint result = subject.getBlueprint(iface, flavour);
         assertEquals(expected, result);
     }
 
