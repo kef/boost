@@ -13,6 +13,9 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// FIX 2081 Delete this once we've fully tested the Instances/Blueprints.
+
+// FIX 2081 Remove any unused test fixtures.
 public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     private static final Interface ANIMAL = new DefaultInterface(Animal.class);
     private static final Interface SPORT = new DefaultInterface(Sport.class);
@@ -20,7 +23,7 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     private static final Interface BREAKFAST_CEREAL = new DefaultInterface(BreakfastCereal.class);
     private static final Interface MATRYOSHKA = new DefaultInterface(Matryoshka.class);
 //    private static final Blueprint MAMMAL_IMPL = blueprint(Mammal.class);
-//    private static final Blueprint CROCODILE_IMPL = blueprint(Crocodile.class);
+    //    private static final Blueprint CROCODILE_IMPL = blueprint(Crocodile.class);
     //    private static final Blueprint CAR_IMPL = blueprint(Car.class);
     private static final Sport FOOTBALL = new Football();
     private static final BreakfastCereal COCO_POPS = new CocoPops();

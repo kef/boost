@@ -9,6 +9,7 @@ import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.DefaultDataProviders;
 
 public abstract class InteractionTestCase extends LifecycleTestCase implements LazyFields {
+    public static final Object VOID = MockExpectations.VOID;
     private final MockSupport mocks = new DefaultMockSupport();
     private final DataProviders data = new DefaultDataProviders();
     public final Provider random = createRandom();

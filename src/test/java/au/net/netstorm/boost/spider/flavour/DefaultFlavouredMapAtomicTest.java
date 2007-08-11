@@ -3,7 +3,6 @@ package au.net.netstorm.boost.spider.flavour;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
@@ -27,7 +26,7 @@ public final class DefaultFlavouredMapAtomicTest extends InteractionTestCase imp
     }
 
     public void testPut() {
-        expect.oneCall(engineMock, MockExpectations.VOID, "put", flavoured, value);
+        expect.oneCall(engineMock, VOID, "put", flavoured, value);
         subject.put(iface, flavour, value);
     }
 

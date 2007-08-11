@@ -6,7 +6,6 @@ import java.util.Map;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import org.jmock.util.NotImplementedException;
 
 public final class WorkingAutoMockDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
@@ -37,14 +36,14 @@ public final class WorkingAutoMockDemoTest extends InteractionTestCase implement
     public void testInteraction() {
         String value = "Masters of Doom";
         expect.oneCall(mapMock, value, "get", "quake");
-        expect.oneCall(delegateMock, MockExpectations.VOID, "operate", value);
+        expect.oneCall(delegateMock, VOID, "operate", value);
         subject.executeGet(mapMock);
     }
 
     public void testNullValue() {
         String value = null;
         expect.oneCall(mapMock, value, "get", "quake");
-        expect.oneCall(delegateMock, MockExpectations.VOID, "operate", value);
+        expect.oneCall(delegateMock, VOID, "operate", value);
         subject.executeGet(mapMock);
     }
 
@@ -64,7 +63,7 @@ public final class WorkingAutoMockDemoTest extends InteractionTestCase implement
     }
 
     private void setUpArrayExpectations() {
-        expect.oneCall(mapMock, MockExpectations.VOID, "put", "streetfighter", lists);
+        expect.oneCall(mapMock, VOID, "put", "streetfighter", lists);
         Integer dummySize = new Integer(2);
         for (int i = 0; i < lists.length; i++) {
             expect.oneCall(lists[i], dummySize, "size");

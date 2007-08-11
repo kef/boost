@@ -5,7 +5,6 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -70,16 +69,16 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     }
 
     private void setUpInstance(Flavour flavour) {
-        // FIX 2081 MockExpectations.VOID into interface.
-        expect.oneCall(instancesMock, MockExpectations.VOID, "put", cerealInterface, flavour, resolvedCocoPops);
+        // FIX 2081 VOID into interface.
+        expect.oneCall(instancesMock, VOID, "put", cerealInterface, flavour, resolvedCocoPops);
     }
 
     private void setUpMultiple(Flavour flavour) {
-        expect.oneCall(blueprintsMock, MockExpectations.VOID, "put", sportInterface, flavour, multipleFootballBlueprint);
+        expect.oneCall(blueprintsMock, VOID, "put", sportInterface, flavour, multipleFootballBlueprint);
     }
 
     private void setUpSingle(Flavour flavour) {
-        expect.oneCall(blueprintsMock, MockExpectations.VOID, "put", sportInterface, flavour, singleFootballBlueprint);
+        expect.oneCall(blueprintsMock, VOID, "put", sportInterface, flavour, singleFootballBlueprint);
     }
 
     private Blueprint blueprint(Stamp stamp, Class football) {

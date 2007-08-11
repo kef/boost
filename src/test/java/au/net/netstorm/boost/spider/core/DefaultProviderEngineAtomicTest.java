@@ -10,7 +10,6 @@ import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InjectableSubject;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
-import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
@@ -67,13 +66,13 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     private void expectConstruct() {
         fielder.setInstance(providezMoi, "impl", NeedsConstructorChange.class);
         expect.oneCall(unresolvedMock, constructableMock, "getRef");
-        expect.oneCall(constructableMock, MockExpectations.VOID, "constructor");
+        expect.oneCall(constructableMock, VOID, "constructor");
     }
 
     private void expectations(boolean construct, Object[] parameters) {
         resolvedThings.clear();
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
-        expect.oneCall(injectorMock, MockExpectations.VOID, "inject", unresolvedMock);
+        expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
         expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);
         if (construct) expectConstruct();
     }
