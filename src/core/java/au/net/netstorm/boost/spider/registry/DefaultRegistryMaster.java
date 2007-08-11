@@ -19,7 +19,8 @@ public final class DefaultRegistryMaster implements RegistryMaster {
 
     public void multiple(Interface iface, Implementation implementation, Flavour flavour) {
         barfIfNotImplOfIface(iface, implementation);
-        web.put(iface, flavour, implementation);
+        Blueprint blueprint = new DefaultBlueprint(Stamp.MULTIPLE, implementation);
+        web.put(iface, flavour, blueprint);
     }
 
     public void instance(Interface iface, ResolvedInstance instance, Flavour flavour) {
@@ -27,9 +28,9 @@ public final class DefaultRegistryMaster implements RegistryMaster {
         web.put(iface, flavour, instance);
     }
 
-    public Implementation getImplementation(Interface iface, Flavour flavour) {
+    public Blueprint getImplementation(Interface iface, Flavour flavour) {
         if (hasInstance(iface, flavour)) throw new WrongRegistrationTypeException(iface);
-        return (Implementation) get(iface, flavour);
+        return (Blueprint) get(iface, flavour);
     }
 
     public ResolvedInstance getInstance(Interface iface, Flavour flavour) {
@@ -38,7 +39,7 @@ public final class DefaultRegistryMaster implements RegistryMaster {
     }
 
     public boolean hasImplementation(Interface iface, Flavour flavour) {
-        return ofType(Implementation.class, iface, flavour);
+        return ofType(Blueprint.class, iface, flavour);
     }
 
     public boolean hasInstance(Interface iface, Flavour flavour) {

@@ -5,7 +5,10 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
-import au.net.netstorm.boost.spider.registry.RegistryMaster;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
+import au.net.netstorm.boost.spider.registry.FinderEngine;
+import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
@@ -19,7 +22,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ResolverEngine subject;
     ProviderEngine providerMock;
-    RegistryMaster registryMasterMock;
+    FinderEngine finderEngineMock;
     NewerAssembler newerAssemblerMock;
     ResolvedInstance jimResolvedInstance;
     Newer newerImplMock;
@@ -27,25 +30,27 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Interface jim = iface(Jim.class);
     Interface spoo = iface(Spoo.class);
     Interface newer = iface(NewDefaultTestDummy.class);
-    Implementation jimImpl = impl(NoArgJim.class);
+    Blueprint jimBlueprint = blueprint(NoArgJim.class);
+    Implementation impl = jimBlueprint.getImplementation();
     ResolvedInstance spooInstance;
     Object[] noparams = {};
 
     public void setUpFixtures() {
-        subject = new DefaultResolverEngine(providerMock, registryMasterMock, newerAssemblerMock);
+        subject = new DefaultResolverEngine(providerMock, finderEngineMock, newerAssemblerMock);
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(registryMasterMock, Boolean.FALSE, "hasInstance", jim, flavour);
-        expect.oneCall(registryMasterMock, jimImpl, "getImplementation", jim, flavour);
-        expect.oneCall(providerMock, jimResolvedInstance, "provide", jimImpl, noparams);
+        // FIX 2081 Use "false" instead of Boolean.FALSE.
+        expect.oneCall(finderEngineMock, Boolean.FALSE, "hasInstance", jim, flavour);
+        expect.oneCall(finderEngineMock, jimBlueprint, "getImplementation", jim, flavour);
+        expect.oneCall(providerMock, jimResolvedInstance, "provide", impl, noparams);
         ResolvedInstance result = subject.resolve(jim, flavour);
         assertEquals(jimResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(registryMasterMock, Boolean.TRUE, "hasInstance", spoo, flavour);
-        expect.oneCall(registryMasterMock, spooInstance, "getInstance", spoo, flavour);
+        expect.oneCall(finderEngineMock, Boolean.TRUE, "hasInstance", spoo, flavour);
+        expect.oneCall(finderEngineMock, spooInstance, "getInstance", spoo, flavour);
         ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);
     }
@@ -57,8 +62,9 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
         assertEquals(expected, actual);
     }
 
-    private Implementation impl(Class cls) {
-        return new DefaultImplementation(cls);
+    private Blueprint blueprint(Class cls) {
+        Implementation impl = new DefaultImplementation(cls);
+        return new DefaultBlueprint(Stamp.MULTIPLE, impl);
     }
 
     private Interface iface(Class cls) {

@@ -4,6 +4,7 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.inject.newer.core.Newer;
+import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.FinderEngine;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -33,11 +34,13 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance getImplementation(Interface iface, Flavour flavour) {
-        Implementation impl = finder.getImplementation(iface, flavour);
+        Blueprint blueprint = finder.getImplementation(iface, flavour);
+        Implementation impl = blueprint.getImplementation();
         return resolve(impl);
     }
 
     private ResolvedInstance resolve(Implementation impl) {
+        // FIX BREADCRUMB 2081 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG Remove NO_PARAMS.
         // FIX 1936 Modify provider to take no args.  Newer proxies use the arg'ed versions.
         return provider.provide(impl, NO_PARAMS);
     }

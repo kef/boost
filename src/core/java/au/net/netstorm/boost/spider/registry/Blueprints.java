@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface Blueprints {
@@ -11,7 +10,7 @@ public interface Blueprints {
 
     // FIX BREADCRUMB 2081 BBBBBBBBBBBBBBBBBBBBBBBBB Make this return a blue print.
 
-    Implementation getImplementation(Interface iface, Flavour flavour);
+    Blueprint getImplementation(Interface iface, Flavour flavour);
 
     boolean hasImplementation(Interface iface, Flavour flavour);
 }

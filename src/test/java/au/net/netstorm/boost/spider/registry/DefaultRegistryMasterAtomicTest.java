@@ -21,9 +21,9 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);
     private static final Interface BREAKFAST_CEREAL = new DefaultInterface(BreakfastCereal.class);
     private static final Interface MATRYOSHKA = new DefaultInterface(Matryoshka.class);
-    private static final Implementation MAMMAL_IMPL = new DefaultImplementation(Mammal.class);
-    private static final Implementation CROCODILE_IMPL = new DefaultImplementation(Crocodile.class);
-    private static final Implementation CAR_IMPL = new DefaultImplementation(Car.class);
+    private static final Blueprint MAMMAL_IMPL = blueprint(Mammal.class);
+    private static final Blueprint CROCODILE_IMPL = blueprint(Crocodile.class);
+    private static final Blueprint CAR_IMPL = blueprint(Car.class);
     private static final Sport FOOTBALL = new Football();
     private static final BreakfastCereal COCO_POPS = new CocoPops();
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
@@ -106,12 +106,8 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
         assertEquals(expect, result);
     }
 
-    private void checkGetImplementation(Interface iface, Implementation expected) {
-        Implementation result = subject.getImplementation(iface, flavour);
-        checkEquals(expected, result);
-    }
-
-    private void checkEquals(Implementation expected, Implementation result) {
+    private void checkGetImplementation(Interface iface, Blueprint expected) {
+        Blueprint result = subject.getImplementation(iface, flavour);
         assertEquals(expected, result);
     }
 
@@ -119,7 +115,13 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
         subject.instance(iface, instance, flavour);
     }
 
-    private void multiple(Interface iface, Implementation impl) {
+    private void multiple(Interface iface, Blueprint blueprint) {
+        Implementation impl = blueprint.getImplementation();
         subject.multiple(iface, impl, flavour);
+    }
+
+    private static Blueprint blueprint(Class type) {
+        Implementation impl = new DefaultImplementation(type);
+        return new DefaultBlueprint(Stamp.MULTIPLE, impl);
     }
 }
