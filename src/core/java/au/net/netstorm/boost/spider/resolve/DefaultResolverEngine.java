@@ -44,6 +44,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     // FIX 1977 Look closely at the Newer stuff.  Does it belong here or in a delegate?
     private ResolvedInstance getInstance(Interface iface, Flavour flavour) {
+        // FIX 2081 Onionise on the put.
         // Suggest What about onionising the instance?
         if (isNewer(iface)) return nuNewer(iface);
         return finder.getInstance(iface, flavour);

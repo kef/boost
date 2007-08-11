@@ -13,10 +13,14 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
+// SUGGEST: Strongly type Object[] as Resolved[] in provide(...).
+
+// SUGGEST: try/finally around resolved things put/remove.  Consider using try/finally proxy.
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
-    private final ResolvedThings resolvedThings = new DefaultResolvedThings();
-    private final TypeMaster implMaster = new DefaultTypeMaster();
+    private static final Object[] NO_PARAMS = {};
+    private final ResolvedThings resolved = new DefaultResolvedThings();
+    private final TypeMaster typer = new DefaultTypeMaster();
     private final Onionizer onionizer;
     private final Instantiator instantiator;
     private final InjectorEngine injector;
@@ -27,29 +31,26 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
-    // SUGGEST: Strongly type Object[] as Dependencies?
-    // FIX 1977 Object[] should be ConstructorParameter[].
+    public ResolvedInstance provide(Implementation impl) {
+        return provide(impl, NO_PARAMS);
+    }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        // FIX 1971 Test drive this check up.
-        if (resolvedThings.exists(impl)) return resolvedThings.get(impl);
+        if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
-        if (implMaster.implementz(impl, CONSTRUCTABLE)) init(resolved);
+        if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
         return onionizer.onionise(impl, resolved);
     }
 
     private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
-        // FIX 1971 Test drive this check up.
-        // FIX 1977 Put in a proxy.
-        // FIX 1977 Consider removing try/finally block around spider.
-        resolvedThings.put(impl, unresolved);
+        resolved.put(impl, unresolved);
         injector.inject(unresolved);
-        resolvedThings.remove(impl);
+        resolved.remove(impl);
         return (ResolvedInstance) unresolved;
     }
 
-    private void init(ResolvedInstance resolved) {
+    private void construct(ResolvedInstance resolved) {
         Constructable constructable = (Constructable) resolved.getRef();
         constructable.constructor();
     }

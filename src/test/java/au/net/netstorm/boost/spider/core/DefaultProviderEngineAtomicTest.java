@@ -21,6 +21,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields, InjectableSubject {
+    Object[] noParams = {};
     ProviderEngine subject;
     Onionizer onionizerMock;
     Instantiator instantiatorMock;
@@ -45,17 +46,31 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
         checkProvider(true);
     }
 
-    private void checkProvider(boolean initialise) {
-        resolvedThings.clear();
-        expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
-        expect.oneCall(injectorMock, MockExpectations.VOID, "inject", unresolvedMock);
-        expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);
-        if (initialise) expectInitialise();
+    private void checkProvider(boolean construct) {
+        checkProvider(construct, parameters);
+        doCheck(construct);
+    }
+
+    private void doCheck(boolean construct) {
+        expectations(construct, noParams);
+        subject.provide(providezMoi);
+    }
+
+    private void checkProvider(boolean construct, Object[] parameters) {
+        expectations(construct, parameters);
         ResolvedInstance result = subject.provide(providezMoi, parameters);
         assertEquals(wrapped, result);
     }
 
-    private void expectInitialise() {
+    private void expectations(boolean construct, Object[] parameters) {
+        resolvedThings.clear();
+        expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
+        expect.oneCall(injectorMock, MockExpectations.VOID, "inject", unresolvedMock);
+        expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);
+        if (construct) expectConstruct();
+    }
+
+    private void expectConstruct() {
         fielder.setInstance(providezMoi, "impl", ConstructableImpl.class);
         expect.oneCall(unresolvedMock, constructableMock, "getRef");
         expect.oneCall(constructableMock, MockExpectations.VOID, "constructor");
