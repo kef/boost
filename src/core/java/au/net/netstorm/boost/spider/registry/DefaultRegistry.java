@@ -11,53 +11,65 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;
-    private final InstanceMaster instancer;
-    private final BlueprintMaster blueprinter;
+    private static final Stamp MULTIPLE = Stamp.MULTIPLE;
+    private static final Stamp SINGLE = Stamp.SINGLE;
+    private final Instances instances;
+    private final Blueprints blueprints;
 
-    public DefaultRegistry(BlueprintMaster blueprinter, InstanceMaster instancer) {
-        this.instancer = instancer;
-        this.blueprinter = blueprinter;
+    public DefaultRegistry(Blueprints blueprints, Instances instances) {
+        this.blueprints = blueprints;
+        this.instances = instances;
     }
 
     public void multiple(Class iface, Class impl) {
-        multiple(iface, impl, UNFLAVOURED);
+        blueprint(iface, UNFLAVOURED, impl, MULTIPLE);
     }
 
     public void single(Class iface, Class impl) {
-        // FIX 2081 Call single ON registry engine!!!
-        multiple(iface, impl, UNFLAVOURED);
+        blueprint(iface, UNFLAVOURED, impl, SINGLE);
     }
 
     public void instance(Class iface, Object ref) {
-        instance(iface, ref, UNFLAVOURED);
-    }
-
-    public void instance(Class iface, Object ref, String flavour) {
-        Flavour tastyFlavour = flavour(flavour);
-        instance(iface, ref, tastyFlavour);
+        instance(iface, UNFLAVOURED, ref);
     }
 
     public void multiple(Class iface, Class impl, String flavour) {
-        Flavour tastyFlavour = flavour(flavour);
-        multiple(iface, impl, tastyFlavour);
+        blueprint(iface, flavour, impl, MULTIPLE);
     }
 
     public void single(Class iface, Class impl, String flavour) {
-        // FIX 2081 Call single ON registry engine!!!
-        multiple(iface, impl, flavour);
+        blueprint(iface, flavour, impl, SINGLE);
     }
 
-    private void multiple(Class iface, Class impl, Flavour tastyFlavour) {
-        Interface inyerface = new DefaultInterface(iface);
+    public void instance(Class iface, Object ref, String flavour) {
+        instance(iface, flavour, ref);
+    }
+
+    private void blueprint(Class iface, String flavour, Class impl, Stamp stamp) {
+        Flavour tasty = flavour(flavour);
+        blueprint(iface, tasty, impl, stamp);
+    }
+
+    private void blueprint(Class iface, Flavour flavour, Class impl, Stamp stamp) {
+        Interface inyerface = iface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        Blueprint blueprint = new DefaultBlueprint(Stamp.MULTIPLE, implementation);
-        blueprinter.blueprint(inyerface, blueprint, tastyFlavour);
+        Blueprint blueprint = new DefaultBlueprint(stamp, implementation);
+        blueprints.put(inyerface, flavour, blueprint);
     }
 
-    private void instance(Class iface, Object ref, Flavour tastyFlavour) {
-        Interface inyerface = new DefaultInterface(iface);
+    private void instance(Class iface, String flavour, Object ref) {
+        Flavour tasty = flavour(flavour);
+        instance(iface, tasty, ref);
+    }
+
+    private void instance(Class iface, Flavour flavour, Object ref) {
+        Interface inyerface = iface(iface);
         ResolvedInstance instance = new DefaultBaseReference(ref);
-        instancer.instance(inyerface, instance, tastyFlavour);
+        instances.put(inyerface, flavour, instance);
+    }
+
+    private Interface iface(Class iface) {
+        return new DefaultInterface(iface);
     }
 
     private Flavour flavour(String flavour) {

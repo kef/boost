@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class SingleInstanceBlueprintDemoTest extends ResolverDemooooTest {
+public final class BlueprintDemoTest extends ResolverDemooooTest {
 
     {
         registry.multiple(Town.class, Weipa.class);
@@ -16,7 +16,7 @@ public final class SingleInstanceBlueprintDemoTest extends ResolverDemooooTest {
         FlyingDoctor d2 = getDoctor(t2);
         assertNotNull(d1);
         // FIX 2081 Reinstate as acceptance test.
-//        assertEquals(d1, d2);
+        assertEquals(true, d1 == d2);
     }
 
     private FlyingDoctor getDoctor(Town t1) {

@@ -35,23 +35,22 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Blueprint jimBlueprint = blueprint(NoArgJim.class);
     Implementation impl = jimBlueprint.getImplementation();
     ResolvedInstance spooInstance;
-    Object[] noparams = {};
 
     public void setUpFixtures() {
         subject = new DefaultResolverEngine(providerMock, blueprintsMock, instancesMock, newerAssemblerMock);
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(instancesMock, false, "hasInstance", jim, flavour);
-        expect.oneCall(blueprintsMock, jimBlueprint, "getBlueprint", jim, flavour);
-        expect.oneCall(providerMock, jimResolvedInstance, "provide", impl, noparams);
+        expect.oneCall(instancesMock, false, "exists", jim, flavour);
+        expect.oneCall(blueprintsMock, jimBlueprint, "get", jim, flavour);
+        expect.oneCall(providerMock, jimResolvedInstance, "provide", impl);
         ResolvedInstance result = subject.resolve(jim, flavour);
         assertEquals(jimResolvedInstance, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(instancesMock, true, "hasInstance", spoo, flavour);
-        expect.oneCall(instancesMock, spooInstance, "getInstance", spoo, flavour);
+        expect.oneCall(instancesMock, true, "exists", spoo, flavour);
+        expect.oneCall(instancesMock, spooInstance, "get", spoo, flavour);
         ResolvedInstance result = subject.resolve(spoo, flavour);
         assertEquals(spooInstance, result);
     }

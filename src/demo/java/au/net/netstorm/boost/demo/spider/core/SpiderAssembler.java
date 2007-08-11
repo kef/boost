@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.spider.registry.BlueprintMaster;
-import au.net.netstorm.boost.spider.registry.InstanceMaster;
+import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.Instances;
 
 public interface SpiderAssembler {
-    Spider assemble(InstanceMaster instancer, BlueprintMaster blueprinter);
+    Spider assemble(Instances instancer, Blueprints blueprinter);
 }

@@ -12,9 +12,9 @@ import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMap;
 import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
-import au.net.netstorm.boost.spider.registry.BlueprintMaster;
+import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultRegistry;
-import au.net.netstorm.boost.spider.registry.InstanceMaster;
+import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.test.core.BoooostCase;
@@ -25,14 +25,14 @@ public class ResolverDemooooTest extends BoooostCase {
     // FIX 2081 Move instance master and blueprint master construction into assembler.
     private FlavouredMapEngine instanceEngine = new DefaultFlavouredMapEngine();
     private FlavouredMap instanceFlavours = new DefaultFlavouredMap(instanceEngine);
-    private final InstanceMaster instancer = new DefaultInstanceMaster(instanceFlavours);
+    private final Instances instances = new DefaultInstances(instanceFlavours);
     private FlavouredMapEngine blueprintEngine = new DefaultFlavouredMapEngine();
     private FlavouredMap blueprintFlavours = new DefaultFlavouredMap(blueprintEngine);
-    private final BlueprintMaster blueprinter = new DefaultBlueprintMaster(blueprintFlavours);
-    private final Spider spider = spiderAssembler.assemble(instancer, blueprinter);
+    private final Blueprints blueprints = new DefaultBlueprints(blueprintFlavours);
+    private final Spider spider = spiderAssembler.assemble(instances, blueprints);
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
-    public final Registry registry = new DefaultRegistry(blueprinter, instancer);
+    public final Registry registry = new DefaultRegistry(blueprints, instances);
     public final Resolver resolver = spider;
     public final Provider provider = spider;
 }

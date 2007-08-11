@@ -5,7 +5,10 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public interface Instances {
-    ResolvedInstance getInstance(Interface iface, Flavour flavour);
+    // FIX 2081 reorg sig (iface, flavour, instance)
+    void put(Interface iface, Flavour flavour, ResolvedInstance instance);
 
-    boolean hasInstance(Interface iface, Flavour flavour);
+    ResolvedInstance get(Interface iface, Flavour flavour);
+
+    boolean exists(Interface iface, Flavour flavour);
 }

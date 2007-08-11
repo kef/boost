@@ -9,9 +9,7 @@ import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
@@ -21,16 +19,16 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
     private static final Interface VEHICLE = new DefaultInterface(Vehicle.class);
     private static final Interface BREAKFAST_CEREAL = new DefaultInterface(BreakfastCereal.class);
     private static final Interface MATRYOSHKA = new DefaultInterface(Matryoshka.class);
-    private static final Blueprint MAMMAL_IMPL = blueprint(Mammal.class);
-    private static final Blueprint CROCODILE_IMPL = blueprint(Crocodile.class);
-    private static final Blueprint CAR_IMPL = blueprint(Car.class);
+//    private static final Blueprint MAMMAL_IMPL = blueprint(Mammal.class);
+//    private static final Blueprint CROCODILE_IMPL = blueprint(Crocodile.class);
+    //    private static final Blueprint CAR_IMPL = blueprint(Car.class);
     private static final Sport FOOTBALL = new Football();
     private static final BreakfastCereal COCO_POPS = new CocoPops();
     private static final ResolvedInstance FOOTBALL_INSTANCE = new DefaultBaseReference(FOOTBALL);
     private static final ResolvedInstance COCO_POPS_INSTANCE = new DefaultBaseReference(COCO_POPS);
     FlavouredMapEngine mapEngine = new DefaultFlavouredMapEngine();
     FlavouredMap flavouredMap = new DefaultFlavouredMap(mapEngine);
-    RegistryMaster subject;
+    //    RegistryMaster subject;
     Flavour flavour;
 
     // FIX BREADCRUMB 2081 Goes.  But reuse impl / interface type checks.
@@ -110,36 +108,38 @@ public final class DefaultRegistryMasterAtomicTest extends InteractionTestCase i
 */
     }
 
+/*
     private void checkHasImplementation(Interface iface, boolean expected) {
-        boolean result = subject.hasBlueprint(iface, flavour);
+        boolean result = subject.exists(iface, flavour);
         assertEquals(expected, result);
     }
 
     private void checkHasInstance(Interface iface, boolean expected) {
-        boolean result = subject.hasInstance(iface, flavour);
+        boolean result = subject.exists(iface, flavour);
         assertEquals(expected, result);
     }
 
     private void checkGetInstance(Interface iface, ResolvedInstance expect) {
-        ResolvedInstance result = subject.getInstance(iface, flavour);
+        ResolvedInstance result = subject.get(iface, flavour);
         assertEquals(expect, result);
     }
 
     private void checkGetImplementation(Interface iface, Blueprint expected) {
-        Blueprint result = subject.getBlueprint(iface, flavour);
+        Blueprint result = subject.get(iface, flavour);
         assertEquals(expected, result);
     }
 
     private void instance(Interface iface, ResolvedInstance instance) {
-        subject.instance(iface, instance, flavour);
+        subject.put(iface, flavour, instance);
     }
 
     private void multiple(Interface iface, Blueprint blueprint) {
-        subject.blueprint(iface, blueprint, flavour);
+        subject.put(iface, flavour, blueprint);
     }
 
     private static Blueprint blueprint(Class type) {
         Implementation impl = new DefaultImplementation(type);
         return new DefaultBlueprint(Stamp.MULTIPLE, impl);
     }
+*/
 }
