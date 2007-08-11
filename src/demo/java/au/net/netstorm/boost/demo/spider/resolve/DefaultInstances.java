@@ -4,16 +4,12 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.WrongRegistrationTypeException;
-import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.TypeMaster;
 
 // FIX 2081 Move into core and TDD.
 
-// FIX 2081 Fail if instance does not implement iface.
 public final class DefaultInstances implements Instances {
-    private final TypeMaster typer = new DefaultTypeMaster();
     private final FlavouredMap map;
 
     public DefaultInstances(FlavouredMap map) {
