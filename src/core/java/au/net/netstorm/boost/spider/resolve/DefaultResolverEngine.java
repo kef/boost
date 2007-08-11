@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultResolverEngine implements ResolverEngine {
     private static final Object[] NO_PARAMS = {};
     private static final Interface NEWER = new DefaultInterface(Newer.class);
-    private final TypeMaster typeMaster = new DefaultTypeMaster();
+    private final TypeMaster typer = new DefaultTypeMaster();
     private final ProviderEngine provider;
     private final FinderEngine finder;
     private final NewerAssembler newer;
@@ -56,7 +56,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private boolean isNewer(Interface iface) {
-        return typeMaster.extendz(iface, NEWER);
+        return typer.extendz(iface, NEWER);
     }
 
     private ResolvedInstance nuNewer(Interface iface) {
