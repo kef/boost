@@ -19,16 +19,17 @@ import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
-// Named "Demoooo" because we love "oooo"s.  Kidding right.  SO WE DON'T GET RUN AS A TEST :-)
+// SUGGEST:k Move instance master and blueprint master construction into assemblers.
+
+// Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.
 public class ResolverDemooooTest extends BoooostCase {
-    public final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler();
-    // FIX 2081 Move instance master and blueprint master construction into assembler.
-    private FlavouredMapEngine instanceEngine = new DefaultFlavouredMapEngine();
-    private FlavouredMap instanceFlavours = new DefaultFlavouredMap(instanceEngine);
+    private final FlavouredMapEngine instanceEngine = new DefaultFlavouredMapEngine();
+    private final FlavouredMap instanceFlavours = new DefaultFlavouredMap(instanceEngine);
     private final Instances instances = new DefaultInstances(instanceFlavours);
-    private FlavouredMapEngine blueprintEngine = new DefaultFlavouredMapEngine();
-    private FlavouredMap blueprintFlavours = new DefaultFlavouredMap(blueprintEngine);
+    private final FlavouredMapEngine blueprintEngine = new DefaultFlavouredMapEngine();
+    private final FlavouredMap blueprintFlavours = new DefaultFlavouredMap(blueprintEngine);
     private final Blueprints blueprints = new DefaultBlueprints(blueprintFlavours);
+    private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler();
     private final Spider spider = spiderAssembler.assemble(instances, blueprints);
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();

@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
 public final class ResolveDemoTest extends ResolverDemooooTest {
-
     private PeterSellers peter = new PeterSellers();
 
     {
@@ -10,8 +9,7 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
         registry.multiple(Movie.class, BigLebowski.class);
         registry.multiple(Cinema.class, RegalCinema.class);
         registry.instance(Actor.class, peter);
-        // FIX 2081 Morph into BritneySpears.class.
-        registry.instance(Celebrity.class, new BritneySpears());
+        registry.single(Celebrity.class, BritneySpears.class);
         registry.multiple(Hollywood.class, GlitzyHollywood.class);
         registry.multiple(Business.class, MovieBusiness.class);
     }
