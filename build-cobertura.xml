@@ -37,8 +37,6 @@
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
                     <exclude name="**/nursery/**"/>
-                    <!-- FIX 2081 And when we work out how to TDD enums. -->
-                    <exclude name="**/registry/DefaultStamp*"/>
                 </fileset>
             </cobertura-instrument>
         </sequential>
