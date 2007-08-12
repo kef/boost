@@ -11,15 +11,15 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultBlueprintsAtomicTest extends InteractionTestCase implements HasFixtures {
-    FlavouredMap flavouredMapMock;
-    Boolean exists;
-    Flavour flavour;
-    Blueprints subject;
-    Implementation impl;
-    TypeMaster typerMock;
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);
     Blueprint blueprint = blueprint(Tyrannosaurus.class);
+    FlavouredMap flavouredMapMock;
+    Boolean exists;
+    Flavour flavour;
+    Implementation impl;
+    TypeMaster typerMock;
+    Blueprints subject;
 
     public void setUpFixtures() {
         subject = new DefaultBlueprints(flavouredMapMock);
@@ -27,7 +27,8 @@ public final class DefaultBlueprintsAtomicTest extends InteractionTestCase imple
 
     public void testExists() {
         expect.oneCall(flavouredMapMock, exists, "exists", iface, flavour);
-        subject.exists(iface, flavour);
+        boolean actual = subject.exists(iface, flavour);
+        assertEquals(exists, actual);
     }
 
     public void testGet() {

@@ -14,6 +14,7 @@ import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
+import au.net.netstorm.boost.spider.registry.DefaultInstances;
 import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;

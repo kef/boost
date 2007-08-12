@@ -1,9 +1,7 @@
-package au.net.netstorm.boost.demo.spider.resolve;
+package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
-import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.WrongRegistrationTypeException;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
@@ -33,6 +31,7 @@ public final class DefaultInstances implements Instances {
         Object ref = instance.getRef();
         Class type = iface.getType();
         Class cls = ref.getClass();
-        if (!type.isAssignableFrom(cls)) throw new WrongRegistrationTypeException(iface);
+        if (type.isAssignableFrom(cls)) return;
+        throw new WrongRegistrationTypeException(iface);
     }
 }

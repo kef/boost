@@ -35,8 +35,8 @@
                 <formatter type="xml" tofile="${simian.report.dir}/simian-@{code.type}.xml"/>
                 <formatter type="plain"/>
             </simian>
-            <style in="${simian.report.dir}/simian-@{code.type}.xml" out="${simian.report.dir}/simian-@{code.type}.html"
-                   style="${simian.config.dir}/simian.xsl"/>
+            <xslt in="${simian.report.dir}/simian-@{code.type}.xml" out="${simian.report.dir}/simian-@{code.type}.html"
+                  style="${simian.config.dir}/simian.xsl"/>
         </sequential>
     </macrodef>
 

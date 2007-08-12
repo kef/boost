@@ -28,9 +28,9 @@
                 <formatter type="xml" tofile="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"/>
                 <fileset refid="checkstyle.@{code.type}.code"/>
             </checkstyle>
-            <style in="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"
-                   out="${checkstyle.report.dir}/checkstyle-@{code.type}.html"
-                   style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
+            <xslt in="${checkstyle.report.dir}/checkstyle-@{code.type}.xml"
+                  out="${checkstyle.report.dir}/checkstyle-@{code.type}.html"
+                  style="${checkstyle.config.dir}/checkstyle-noframes-sorted.xsl"/>
         </sequential>
     </macrodef>
 
