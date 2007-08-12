@@ -12,8 +12,6 @@ public final class DefaultStampAtomicTest extends InteractionTestCase {
     ClassTestChecker classer = new DefaultClassTestChecker();
     String value;
 
-    // FIX 2081 Ensure extends Primordial.
-    // FIX 2081 Test barfs on nulls.
     public void testValue() {
         Stamp stamp = new DefaultStamp(value);
         Object actual = fielder.getInstance(stamp, "value");
