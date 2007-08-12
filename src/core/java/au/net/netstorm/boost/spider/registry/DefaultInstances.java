@@ -5,8 +5,6 @@ import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-// FIX 2081 Move into core and TDD.
-
 public final class DefaultInstances implements Instances {
     private final FlavouredMap map;
 
