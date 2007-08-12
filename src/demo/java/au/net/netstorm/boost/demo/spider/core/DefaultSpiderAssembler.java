@@ -47,7 +47,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
-    public Spider assemble(Instances instances, Blueprints blueprints) {
+    public Spider assemble(Blueprints blueprints, Instances instances) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, blueprints);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);

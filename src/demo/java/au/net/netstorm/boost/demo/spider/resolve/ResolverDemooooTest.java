@@ -31,7 +31,7 @@ public class ResolverDemooooTest extends BoooostCase {
     private final FlavouredMap blueprintFlavours = new DefaultFlavouredMap(blueprintEngine);
     private final Blueprints blueprints = new DefaultBlueprints(blueprintFlavours);
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler();
-    private final Spider spider = spiderAssembler.assemble(instances, blueprints);
+    private final Spider spider = spiderAssembler.assemble(blueprints, instances);
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
     public final Registry registry = new DefaultRegistry(blueprints, instances);
