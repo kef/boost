@@ -7,6 +7,7 @@ public final class DefaultStamp extends Primordial implements Stamp {
 
     DefaultStamp(String value) {
         this.value = value;
-        if (value == null) throw new IllegalArgumentException();
+        if (value == null)
+            throw new IllegalArgumentException();
     }
 }

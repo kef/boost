@@ -23,4 +23,11 @@ public final class DefaultStampAtomicTest extends InteractionTestCase {
     public void testCharacteristics() {
         classer.checkSubclassOf(DefaultStamp.class, Primordial.class);
     }
+
+    public void testNullIntolerant() {
+        try {
+            new DefaultStamp(null);
+            fail();
+        } catch (IllegalArgumentException expected) { }
+    }
 }
