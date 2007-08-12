@@ -20,7 +20,7 @@ import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
-// SUGGEST:k Move instance master and blueprint master construction into assemblers.
+// SUGGEST: Move instances and blueprints construction into assemblers.
 
 // Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.
 public class ResolverDemooooTest extends BoooostCase {
