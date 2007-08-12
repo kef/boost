@@ -39,10 +39,10 @@ public final class DefaultResolverEngine implements ResolverEngine {
     public ResolvedInstance resolve(Interface iface, Flavour flavour) {
         if (isNewer(iface)) return nuNewer(iface);
         if (instances.exists(iface, flavour)) return instances.get(iface, flavour);
-        return getImplementation(iface, flavour);
+        return implementation(iface, flavour);
     }
 
-    private ResolvedInstance getImplementation(Interface iface, Flavour flavour) {
+    private ResolvedInstance implementation(Interface iface, Flavour flavour) {
         Blueprint blueprint = blueprints.get(iface, flavour);
         return resolve(iface, flavour, blueprint);
     }
