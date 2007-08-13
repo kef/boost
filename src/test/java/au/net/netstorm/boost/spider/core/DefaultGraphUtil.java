@@ -7,7 +7,6 @@ import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-// FIX BREADCRUMB 1977 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Stitch into existing tests for graphs.
 public final class DefaultGraphUtil implements GraphUtil {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final Peeler peeler = new DefaultPeeler();

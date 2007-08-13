@@ -2,9 +2,6 @@ package au.net.netstorm.boost.demo.spider.flavour;
 
 import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 
-// FIX 1977 Separate package for newers?
-
-// FIX 1977 Acceptance test for this CARD.
 public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
 
     // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
