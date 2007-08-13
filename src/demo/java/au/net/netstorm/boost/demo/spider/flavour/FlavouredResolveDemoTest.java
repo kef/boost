@@ -28,6 +28,7 @@ public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
     private void checkField(Class expected, Party party, String field) {
         Object value = grapher.get(party, field);
         Class cls = value.getClass();
-        assertEquals(true, expected.isAssignableFrom(cls));
+        boolean is = expected.isAssignableFrom(cls);
+        assertEquals(true, is);
     }
 }

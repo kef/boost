@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.inject.newer.assembly.ProxyFactoryAssembler;
+import au.net.netstorm.boost.spider.newer.assembly.DefaultProxyFactoryAssembler;
+import au.net.netstorm.boost.spider.newer.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;

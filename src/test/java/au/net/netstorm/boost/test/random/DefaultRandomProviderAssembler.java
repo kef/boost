@@ -2,8 +2,8 @@ package au.net.netstorm.boost.test.random;
 
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
-import au.net.netstorm.boost.spider.inject.newer.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.inject.newer.assembly.ProxyFactoryAssembler;
+import au.net.netstorm.boost.spider.newer.assembly.DefaultProxyFactoryAssembler;
+import au.net.netstorm.boost.spider.newer.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.test.automock.MockSupport;

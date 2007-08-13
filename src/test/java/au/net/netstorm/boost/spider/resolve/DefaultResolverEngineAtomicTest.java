@@ -2,9 +2,9 @@ package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.inject.newer.assembly.NewDefaultTestDummy;
-import au.net.netstorm.boost.spider.inject.newer.assembly.NewerAssembler;
-import au.net.netstorm.boost.spider.inject.newer.core.Newer;
+import au.net.netstorm.boost.spider.newer.assembly.NewDefaultTestDummy;
+import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
+import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
