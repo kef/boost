@@ -44,12 +44,13 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance implementation(Interface iface, Flavour flavour) {
         Blueprint blueprint = blueprints.get(iface, flavour);
-        return resolve(iface, flavour, blueprint);
+        return resolve(iface, blueprint);
     }
 
-    private ResolvedInstance resolve(Interface iface, Flavour flavour, Blueprint blueprint) {
+    private ResolvedInstance resolve(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         ResolvedInstance result = provider.provide(impl);
+        Flavour flavour = blueprint.getFlavour();
         if (isSingle(blueprint)) instances.put(iface, flavour, result);
         return result;
     }

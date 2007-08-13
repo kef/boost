@@ -22,8 +22,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     CocoPops cocoPops = new CocoPops();
     Interface sportInterface = new DefaultInterface(sport);
     Interface cerealInterface = new DefaultInterface(cereal);
-    Blueprint multipleFootballBlueprint = blueprint(MULTIPLE, football);
-    Blueprint singleFootballBlueprint = blueprint(SINGLE, football);
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     Flavour unflavoured = Flavour.UNFLAVOURED;
     String stringFlavour;
@@ -72,15 +70,17 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     }
 
     private void setUpMultiple(Flavour flavour) {
+        Blueprint multipleFootballBlueprint = blueprint(MULTIPLE, football, flavour);
         expect.oneCall(blueprintsMock, VOID, "put", sportInterface, flavour, multipleFootballBlueprint);
     }
 
     private void setUpSingle(Flavour flavour) {
+        Blueprint singleFootballBlueprint = blueprint(SINGLE, football, flavour);
         expect.oneCall(blueprintsMock, VOID, "put", sportInterface, flavour, singleFootballBlueprint);
     }
 
-    private Blueprint blueprint(Stamp stamp, Class football) {
+    private Blueprint blueprint(Stamp stamp, Class football, Flavour flavour) {
         Implementation impl = new DefaultImplementation(football);
-        return new DefaultBlueprint(stamp, impl);
+        return new DefaultBlueprint(stamp, impl, flavour);
     }
 }

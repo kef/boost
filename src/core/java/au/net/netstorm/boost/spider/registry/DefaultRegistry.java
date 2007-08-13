@@ -53,7 +53,7 @@ public final class DefaultRegistry implements Registry {
     private void blueprint(Class iface, Flavour flavour, Class impl, Stamp stamp) {
         Interface inyerface = iface(iface);
         Implementation implementation = new DefaultImplementation(impl);
-        Blueprint blueprint = new DefaultBlueprint(stamp, implementation);
+        Blueprint blueprint = new DefaultBlueprint(stamp, implementation, flavour);
         blueprints.put(inyerface, flavour, blueprint);
     }
 

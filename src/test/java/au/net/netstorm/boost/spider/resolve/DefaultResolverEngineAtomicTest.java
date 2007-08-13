@@ -33,12 +33,14 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Interface jim = iface(Jim.class);
     Interface spoo = iface(Spoo.class);
     Interface newer = iface(NewDefaultTestDummy.class);
-    Blueprint jimBlueprint = blueprint(NoArgJim.class);
-    Implementation impl = jimBlueprint.getImplementation();
+    Blueprint jimBlueprint;
+    Implementation impl;
     ResolvedInstance spooInstance;
 
     public void setUpFixtures() {
         subject = new DefaultResolverEngine(providerMock, blueprintsMock, instancesMock, newerAssemblerMock);
+        jimBlueprint = blueprint(NoArgJim.class, flavour);
+        impl = jimBlueprint.getImplementation();
     }
 
     public void testNoResolvedInstance() {
@@ -63,9 +65,9 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
         assertEquals(expected, actual);
     }
 
-    private Blueprint blueprint(Class cls) {
+    private Blueprint blueprint(Class cls, Flavour flavour) {
         Implementation impl = new DefaultImplementation(cls);
-        return new DefaultBlueprint(MULTIPLE, impl);
+        return new DefaultBlueprint(MULTIPLE, impl, flavour);
     }
 
     private Interface iface(Class cls) {

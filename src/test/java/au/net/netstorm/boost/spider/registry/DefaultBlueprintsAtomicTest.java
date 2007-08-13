@@ -13,7 +13,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultBlueprintsAtomicTest extends InteractionTestCase implements HasFixtures {
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);
-    Blueprint blueprint = blueprint(Tyrannosaurus.class);
+    Blueprint blueprint;
     FlavouredMap flavouredMapMock;
     Boolean exists;
     Flavour flavour;
@@ -23,6 +23,7 @@ public final class DefaultBlueprintsAtomicTest extends InteractionTestCase imple
 
     public void setUpFixtures() {
         subject = new DefaultBlueprints(flavouredMapMock);
+        blueprint = blueprint(Tyrannosaurus.class, flavour);
     }
 
     public void testExists() {
@@ -53,8 +54,8 @@ public final class DefaultBlueprintsAtomicTest extends InteractionTestCase imple
         return new DefaultInterface(cls);
     }
 
-    private Blueprint blueprint(Class cls) {
+    private Blueprint blueprint(Class cls, Flavour flavour) {
         Implementation impl = new DefaultImplementation(cls);
-        return new DefaultBlueprint(Stamp.MULTIPLE, impl);
+        return new DefaultBlueprint(Stamp.MULTIPLE, impl, flavour);
     }
 }
