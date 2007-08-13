@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.lifecycle;
 
+import java.io.PrintStream;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 
 public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
@@ -34,7 +35,9 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         try {
             lifecycle.cleanup();
         } catch (Throwable t) {
-            System.err.println("Oopsy daisy ");
+            PrintStream err = System.err;
+            err.print("Oopsy daisy, we've alreay barfed ... ");
+            t.printStackTrace(err);
         }
     }
     // } OK GenericIllegalRegexp
