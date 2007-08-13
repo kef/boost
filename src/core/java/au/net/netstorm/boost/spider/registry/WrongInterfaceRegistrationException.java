@@ -5,7 +5,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class WrongInterfaceRegistrationException extends RuntimeException implements BoooostException {
-    public WrongInterfaceRegistrationException(Implementation implementation, Interface iface) {
-        super(implementation.getClass() + " does not implement " + iface.getType());
+    public WrongInterfaceRegistrationException(Implementation impl, Interface iface) {
+        super(impl + " does not implement " + iface);
     }
 }

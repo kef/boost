@@ -10,15 +10,13 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class WrongInterfaceRegistrationExceptionAtomicTest extends InteractionTestCase implements HasFixtures {
-    BoooostException subject;
     Implementation impl = new DefaultImplementation(Random.class);
     Interface iface = new DefaultInterface(CharSequence.class);
+    BoooostException subject;
 
     public void testMessage() {
         String actual = subject.getMessage();
-        Class implClassName = impl.getClass();
-        Class ifaceName = iface.getType();
-        String expected = implClassName + " does not implement " + ifaceName;
+        String expected = impl + " does not implement " + iface;
         assertEquals(expected, actual);
     }
 
