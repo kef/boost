@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.lifecycle;
 
-import au.net.netstorm.boost.test.exception.ExceptionSupport;
+import au.net.netstorm.boost.test.exception.ThrowableSupport;
 
 public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     private final LifecycleTest testCase;
@@ -11,17 +11,31 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
 
     public void run() throws Throwable {
         TestLifecycle lifecycle = testCase.testLifecycle();
-        ExceptionSupport exceptionSupport = testCase.exceptionSupport();
+        ThrowableSupport throwableSupport = testCase.throwableSupport();
         try {
             lifecycle.pre();
             testCase.runTest();
             lifecycle.post();
         }
-        catch (RuntimeException e) {
-            throw exceptionSupport.translate(e);
+        catch (Throwable t) {
+            throw throwableSupport.translate(t);
         }
         finally {
-            lifecycle.cleanup();
+            cleanup(lifecycle);
         }
     }
+
+    private void cleanup(TestLifecycle lifecycle) {
+        tryCleanup(lifecycle);
+    }
+
+    // OK GenericIllegalRegexp {
+    private void tryCleanup(TestLifecycle lifecycle) {
+        try {
+            lifecycle.cleanup();
+        } catch (Throwable t) {
+            System.err.println("Oopsy daisy ");
+        }
+    }
+    // } OK GenericIllegalRegexp
 }
