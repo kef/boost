@@ -28,7 +28,7 @@ import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHa
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
-import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.GreenPrints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
@@ -48,9 +48,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
-    public Spider assemble(Blueprints blueprints, Instances instances) {
+    public Spider assemble(GreenPrints greenprints, Instances instances) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, blueprints);
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, greenprints);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
@@ -78,9 +78,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private ResolverEngine assembleResolver(
             ProviderEngine provider,
             Instances instancer,
-            Blueprints blueprints) {
+            GreenPrints greenprints) {
         NewerAssembler newerAssembler = new DefaultNewerAssembler(provider);
-        return new DefaultResolverEngine(provider, blueprints, instancer, newerAssembler);
+        return new DefaultResolverEngine(provider, greenprints, instancer, newerAssembler);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
