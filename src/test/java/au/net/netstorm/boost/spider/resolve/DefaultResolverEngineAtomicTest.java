@@ -6,8 +6,8 @@ import au.net.netstorm.boost.spider.newer.assembly.NewDefaultTestDummy;
 import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
+import au.net.netstorm.boost.spider.registry.GreenPrints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.test.automock.HasFixtures;
@@ -24,7 +24,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     ResolverEngine subject;
     ProviderEngine providerMock;
-    Blueprints blueprintsMock;
+    GreenPrints greenprintsMock;
     Instances instancesMock;
     NewerAssembler newerAssemblerMock;
     ResolvedInstance jimResolvedInstance;
@@ -38,14 +38,14 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     ResolvedInstance spooInstance;
 
     public void setUpFixtures() {
-        subject = new DefaultResolverEngine(providerMock, blueprintsMock, instancesMock, newerAssemblerMock);
+        subject = new DefaultResolverEngine(providerMock, greenprintsMock, instancesMock, newerAssemblerMock);
         jimBlueprint = blueprint(NoArgJim.class, flavour);
         impl = jimBlueprint.getImplementation();
     }
 
     public void testNoResolvedInstance() {
         expect.oneCall(instancesMock, false, "exists", jim, flavour);
-        expect.oneCall(blueprintsMock, jimBlueprint, "get", jim, flavour);
+        expect.oneCall(greenprintsMock, jimBlueprint, "get", jim, flavour);
         expect.oneCall(providerMock, jimResolvedInstance, "provide", impl);
         ResolvedInstance result = subject.resolve(jim, flavour);
         assertEquals(jimResolvedInstance, result);

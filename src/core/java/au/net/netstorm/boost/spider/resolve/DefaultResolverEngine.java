@@ -5,7 +5,7 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.GreenPrints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -21,17 +21,17 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ProviderEngine provider;
-    private final Blueprints blueprints;
+    private final GreenPrints greenprints;
     private final Instances instances;
     private final NewerAssembler newer;
 
     public DefaultResolverEngine(
             ProviderEngine provider,
-            Blueprints blueprints,
+            GreenPrints greenprints,
             Instances instances,
             NewerAssembler newer) {
         this.provider = provider;
-        this.blueprints = blueprints;
+        this.greenprints = greenprints;
         this.instances = instances;
         this.newer = newer;
     }
@@ -43,7 +43,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance implementation(Interface iface, Flavour flavour) {
-        Blueprint blueprint = blueprints.get(iface, flavour);
+        Blueprint blueprint = greenprints.get(iface, flavour);
         return resolve(iface, blueprint);
     }
 
