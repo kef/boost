@@ -4,6 +4,8 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 1914 Lowercase the "P".
-public interface RedPrints {
-    void put(Interface iface, Flavour flavour, Blueprint blueprint);
+public interface GreenPrintsMonkey {
+    Blueprint get(Interface iface, Flavour flavour);
+
+    boolean exists(Interface iface, Flavour flavour);
 }
