@@ -21,10 +21,8 @@ final class ConstructorDataChecker implements DataChecker {
     }
 
     private void checkSingleConstructor(Class cls) {
-        Constructor[] constructors = cls.getConstructors();
-        if (constructors.length == 1) {
-            return;
-        }
+        Constructor[] constructors = cls.getDeclaredConstructors();
+        if (constructors.length == 1) return;
         fail(cls, "must have a single constructor which has a parameter for each property.");
     }
 
