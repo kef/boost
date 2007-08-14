@@ -28,7 +28,7 @@ import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHa
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
-import au.net.netstorm.boost.spider.registry.GreenPrintsMonkey;
+import au.net.netstorm.boost.spider.registry.Greenprints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
@@ -48,7 +48,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
-    public Spider assemble(GreenPrintsMonkey greenprints, Instances instances) {
+    public Spider assemble(Greenprints greenprints, Instances instances) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, greenprints);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
@@ -78,7 +78,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private ResolverEngine assembleResolver(
             ProviderEngine provider,
             Instances instancer,
-            GreenPrintsMonkey greenprints) {
+            Greenprints greenprints) {
         NewerAssembler newerAssembler = new DefaultNewerAssembler(provider);
         return new DefaultResolverEngine(provider, greenprints, instancer, newerAssembler);
     }

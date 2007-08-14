@@ -7,7 +7,7 @@ import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
-import au.net.netstorm.boost.spider.registry.GreenPrintsMonkey;
+import au.net.netstorm.boost.spider.registry.Greenprints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.test.automock.HasFixtures;
@@ -24,7 +24,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     ResolverEngine subject;
     ProviderEngine providerMock;
-    GreenPrintsMonkey greenprintsMock;
+    Greenprints greenprintsMock;
     Instances instancesMock;
     NewerAssembler newerAssemblerMock;
     ResolvedInstance jimResolvedInstance;

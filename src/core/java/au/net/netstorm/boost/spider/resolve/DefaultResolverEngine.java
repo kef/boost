@@ -5,7 +5,7 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.GreenPrintsMonkey;
+import au.net.netstorm.boost.spider.registry.Greenprints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -21,13 +21,13 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ProviderEngine provider;
-    private final GreenPrintsMonkey greenprints;
+    private final Greenprints greenprints;
     private final Instances instances;
     private final NewerAssembler newer;
 
     public DefaultResolverEngine(
             ProviderEngine provider,
-            GreenPrintsMonkey greenprints,
+            Greenprints greenprints,
             Instances instances,
             NewerAssembler newer) {
         this.provider = provider;
