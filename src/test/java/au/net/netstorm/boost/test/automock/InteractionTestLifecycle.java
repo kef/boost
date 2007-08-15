@@ -39,7 +39,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         testFieldInjector.verify();
     }
 
-    public void cleanup() {
+    public void cleanup(boolean successful) {
         doDestroy();
     }
 

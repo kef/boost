@@ -13,27 +13,33 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     public void run() throws Throwable {
         TestLifecycle lifecycle = testCase.testLifecycle();
         ThrowableSupport throwableSupport = testCase.throwableSupport();
+        boolean successful = true;
         try {
-            lifecycle.pre();
-            testCase.runTest();
-            lifecycle.post();
+            run(lifecycle);
         }
         catch (Throwable t) {
+            successful = false;
             throw throwableSupport.translate(t);
         }
         finally {
-            cleanup(lifecycle);
+            cleanup(lifecycle, successful);
         }
     }
 
-    private void cleanup(TestLifecycle lifecycle) {
-        tryCleanup(lifecycle);
+    private void run(TestLifecycle lifecycle) throws Throwable {
+        lifecycle.pre();
+        testCase.runTest();
+        lifecycle.post();
+    }
+
+    private void cleanup(TestLifecycle lifecycle, boolean successful) {
+        tryCleanup(lifecycle, successful);
     }
 
     // OK GenericIllegalRegexp {
-    private void tryCleanup(TestLifecycle lifecycle) {
+    private void tryCleanup(TestLifecycle lifecycle, boolean successful) {
         try {
-            lifecycle.cleanup();
+            lifecycle.cleanup(successful);
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've alreay barfed ... ");

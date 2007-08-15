@@ -5,5 +5,5 @@ public interface TestLifecycle {
 
     void post();
 
-    void cleanup();
+    void cleanup(boolean successful);
 }
