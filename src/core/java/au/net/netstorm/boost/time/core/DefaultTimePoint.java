@@ -5,9 +5,9 @@ package au.net.netstorm.boost.time.core;
 // FIX SC502 Should be "immutable", not "Data".
 public final class DefaultTimePoint implements TimePoint {
     private static final long EPOCH_MILLIS = 0L;
-    private static final long EPOCH_ARGMAGEDDON = Long.MAX_VALUE;
+    private static final long EPOCH_ARMAGEDDON = Long.MAX_VALUE;
     public static final TimePoint EPOCH = new DefaultTimePoint(EPOCH_MILLIS);
-    public static final TimePoint ARMAGGEDON = new DefaultTimePoint(EPOCH_ARGMAGEDDON);
+    public static final TimePoint ARMAGEDDON = new DefaultTimePoint(EPOCH_ARMAGEDDON);
     private final long millis;
 
     public DefaultTimePoint(long millis) {

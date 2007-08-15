@@ -17,7 +17,7 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
     }
 
     public void testArmaggedon() {
-        assertEquals(Long.MAX_VALUE, DefaultTimePoint.ARMAGGEDON.getMillis());
+        assertEquals(Long.MAX_VALUE, DefaultTimePoint.ARMAGEDDON.getMillis());
     }
 
     public void testInvalidTimePoints() {

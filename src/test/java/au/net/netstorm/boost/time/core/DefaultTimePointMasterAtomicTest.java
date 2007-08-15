@@ -53,7 +53,7 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
 
     public void testNextInvalid() {
         try {
-            subject.next(DefaultTimePoint.ARMAGGEDON);
+            subject.next(DefaultTimePoint.ARMAGEDDON);
             fail();
         } catch (IllegalArgumentException ex) {
         }

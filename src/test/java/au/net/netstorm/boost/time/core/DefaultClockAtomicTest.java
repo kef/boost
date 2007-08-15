@@ -26,12 +26,6 @@ public final class DefaultClockAtomicTest extends InteractionTestCase implements
         assertEquals(expected, actual);
     }
 
-    public void testGetTime() {
-        expect.oneCall(timeLordMock, expected, "get", millis);
-        TimePoint actual = subject.getTime(millis.longValue());
-        assertEquals(expected, actual);
-    }
-
     private void inject(Object ref) {
         fielder.setInstance(ref, "system", system);
         fielder.setInstance(ref, "drWho", timeLordMock);

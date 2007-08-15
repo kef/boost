@@ -9,8 +9,4 @@ public final class DefaultClock implements Clock {
     public TimePoint now() {
         return drWho.now(system);
     }
-
-    public TimePoint getTime(long millis) {
-        return drWho.get(millis);
-    }
 }
