@@ -4,17 +4,17 @@ import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultGreenprints implements Greenprints {
+    private final Greenprints[] layers;
+
     public DefaultGreenprints(Greenprints[] layers) {
-        // FIX 1914 Complete this.
+        this.layers = layers;
     }
 
     public Blueprint get(Interface iface, Flavour flavour) {
-        // FIX 1914 Complete.
-        return null;
+        return layers[0].get(iface, flavour);
     }
 
     public boolean exists(Interface iface, Flavour flavour) {
-        // FIX 1914 Complete.
-        return true;
+        return layers[0].exists(iface, flavour);
     }
 }
