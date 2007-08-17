@@ -11,6 +11,7 @@ public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCa
     Greenprints top;
     Greenprints middle;
     Greenprints bottom;
+    Greenprints none;
     Interface iface;
     Flavour flavour;
     Blueprint blueprint;
@@ -21,6 +22,7 @@ public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCa
         top = prints(live, dud, dud);
         middle = prints(dud, live, live);
         bottom = prints(dud, dud, live);
+        none = prints(dud, dud, dud);
     }
 
     public void testLayers() {
@@ -29,17 +31,27 @@ public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCa
         checkLayer(bottom);
     }
 
+    public void testNone() {
+        checkExists(false, none);
+        try {
+            none.get(iface, flavour);
+            fail();
+        } catch (NonExistentBlueprintException expected) { }
+    }
+
     private void checkLayer(Greenprints layer) {
-        checkExists(layer);
+        checkExists(true, layer);
         checkBlueprint(layer);
     }
 
     private void checkBlueprint(Greenprints layer) {
-        assertEquals(blueprint, layer.get(iface, flavour));
+        Blueprint actual = layer.get(iface, flavour);
+        assertEquals(blueprint, actual);
     }
 
-    private void checkExists(Greenprints layer) {
-        assertEquals(true, layer.exists(iface, flavour));
+    private void checkExists(boolean expected, Greenprints layer) {
+        boolean actual = layer.exists(iface, flavour);
+        assertEquals(expected, actual);
     }
 
     private MockGreenprints mock(Blueprint blueprint, boolean exists) {

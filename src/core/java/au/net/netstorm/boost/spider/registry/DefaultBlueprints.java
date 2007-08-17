@@ -21,6 +21,9 @@ public final class DefaultBlueprints implements Blueprints {
     }
 
     public Blueprint get(Interface iface, Flavour flavour) {
+        // FIX 1914 TDD Pop if does not exist.
+        // FIX 1914 Same with DefaultInstances.
+//        if (!exists(iface, flavour)) throw new NonExistentBlueprintException(iface, flavour);
         return (Blueprint) map.get(iface, flavour);
     }
 

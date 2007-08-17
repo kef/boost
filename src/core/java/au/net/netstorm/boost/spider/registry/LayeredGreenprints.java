@@ -14,8 +14,7 @@ public final class LayeredGreenprints implements Greenprints {
         for (int i = 0; i < layers.length; i++) {
             if (layers[i].exists(iface, flavour)) return layers[i].get(iface, flavour);
         }
-        // FIX 1914 Sort this crap out.
-        return null;
+        throw new NonExistentBlueprintException(iface, flavour);
     }
 
     public boolean exists(Interface iface, Flavour flavour) {
