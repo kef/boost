@@ -50,12 +50,13 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private ResolvedInstance resolve(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         ResolvedInstance result = provider.provide(impl);
+        // FIX 1914 Need a test to force this flavour to be used and not the one passed into resolve!!!
         Flavour flavour = blueprint.getFlavour();
-        if (isSingle(blueprint)) instances.put(iface, flavour, result);
+        if (single(blueprint)) instances.put(iface, flavour, result);
         return result;
     }
 
-    private boolean isSingle(Blueprint blueprint) {
+    private boolean single(Blueprint blueprint) {
         Stamp stamp = blueprint.getStamp();
         return stamp == Stamp.SINGLE;
     }
