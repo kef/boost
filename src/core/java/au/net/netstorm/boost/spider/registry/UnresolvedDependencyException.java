@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Interface;
+import java.lang.reflect.Field;
 
 public final class UnresolvedDependencyException extends RuntimeException {
-    public UnresolvedDependencyException(Interface iface) {
-        super("Such bugs and goblins in my life. \nI cannot resolve " + iface);
+
+    public UnresolvedDependencyException(Field field, Throwable cause) {
+        super("Cannot resolve '" + field + "'.", cause);
     }
 }

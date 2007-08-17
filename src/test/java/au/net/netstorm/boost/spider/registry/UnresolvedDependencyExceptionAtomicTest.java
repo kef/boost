@@ -1,16 +1,21 @@
 package au.net.netstorm.boost.spider.registry;
 
+import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.core.BoooostCase;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class UnresolvedDependencyExceptionAtomicTest extends BoooostCase {
-    private static final Interface INTERFACE = new DefaultInterface(Animal.class);
+    private Field field;
+    private Throwable cause;
 
-    public void testException() {
-        RuntimeException exception = new UnresolvedDependencyException(INTERFACE);
-        String message = exception.getMessage();
-        String expected = "Such bugs and goblins in my life. \nI cannot resolve " + INTERFACE;
-        assertEquals(expected, message);
+    public void testConstructor() {
+        RuntimeException exception = new UnresolvedDependencyException(field, cause);
+        String message = "Cannot resolve '" + field + "'.";
+        checkMessage(exception, message);
+        assertEquals(cause, exception.getCause());
+    }
+
+    private void checkMessage(RuntimeException exception2, String expected2) {
+        String message2 = exception2.getMessage();
+        assertEquals(expected2, message2);
     }
 }
