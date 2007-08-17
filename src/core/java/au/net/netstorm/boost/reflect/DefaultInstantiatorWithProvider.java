@@ -20,6 +20,7 @@ public final class DefaultInstantiatorWithProvider implements InstantiatorWithPr
         for (int i = 0; i < paramTypes.length; i++) {
             params[i] = provider.provide(paramTypes[i]);
         }
+        constructor.setAccessible(true);
         return edger.newInstance(constructor, params);
     }
 }
