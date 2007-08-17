@@ -11,21 +11,17 @@ public final class LayeredGreenprints implements Greenprints {
     }
 
     public Blueprint get(Interface iface, Flavour flavour) {
-        // FIX 1914 Check none exist at all.
-        int i = index(iface, flavour);
-        return layers[i].get(iface, flavour);
+        for (int i = 0; i < layers.length; i++) {
+            if (layers[i].exists(iface, flavour)) return layers[i].get(iface, flavour);
+        }
+        // FIX 1914 Sort this crap out.
+        return null;
     }
 
     public boolean exists(Interface iface, Flavour flavour) {
-        int i = index(iface, flavour);
-        if (i != -1) return layers[i].exists(iface, flavour);
-        return false;
-    }
-
-    private int index(Interface iface, Flavour flavour) {
         for (int i = 0; i < layers.length; i++) {
-            if (layers[i].exists(iface, flavour)) return i;
+            if (layers[i].exists(iface, flavour)) return true;
         }
-        return -1;
+        return false;
     }
 }
