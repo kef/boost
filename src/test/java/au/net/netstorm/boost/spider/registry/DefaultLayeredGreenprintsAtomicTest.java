@@ -3,48 +3,51 @@ package au.net.netstorm.boost.spider.registry;
 import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.util.array.ArrayMaster;
-import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCase implements HasFixtures {
-    ArrayMaster arrays = new DefaultArrayMaster();
-    Greenprints topMock;
-    Greenprints middleMock;
-    Greenprints bottomMock;
-    Greenprints[] layers;
-    Greenprints subject;
+    Greenprints live;
+    Greenprints dud;
+    Greenprints top;
+    Greenprints middle;
+    Greenprints bottom;
     Interface iface;
     Flavour flavour;
     Blueprint blueprint;
 
     public void setUpFixtures() {
-        layers = new Greenprints[]{topMock, middleMock, bottomMock};
-        subject = new LayeredGreenprints(layers);
+        live = mock(this.blueprint, true);
+        dud = mock(null, false);
+        top = prints(live, dud, dud);
+        middle = prints(dud, live, live);
+        bottom = prints(dud, dud, live);
     }
 
-    public void testTop() {
-        expects(true, topMock);
-        checkLayer();
+    public void testLayers() {
+        checkLayer(top);
+        checkLayer(middle);
+        checkLayer(bottom);
     }
 
-    private void checkLayer() {
-        checkExists(true);
-        checkGet();
+    private void checkLayer(Greenprints layer) {
+        checkExists(layer);
+        checkBlueprint(layer);
     }
 
-    private void checkGet() {
-        Blueprint actual = subject.get(iface, flavour);
-        assertEquals(blueprint, actual);
+    private void checkBlueprint(Greenprints layer) {
+        assertEquals(blueprint, layer.get(iface, flavour));
     }
 
-    private void checkExists(boolean expected) {
-        boolean actual = subject.exists(iface, flavour);
-        assertEquals(expected, actual);
+    private void checkExists(Greenprints layer) {
+        assertEquals(true, layer.exists(iface, flavour));
     }
 
-    private void expects(boolean exists, Greenprints layer) {
-        expect.manyCalls(layer, exists, "exists", iface, flavour);
-        if (exists) expect.oneCall(layer, blueprint, "get", iface, flavour);
+    private MockGreenprints mock(Blueprint blueprint, boolean exists) {
+        return new MockGreenprints(blueprint, exists, iface, flavour);
+    }
+
+    private Greenprints prints(Greenprints g1, Greenprints g2, Greenprints g3) {
+        Greenprints[] prints = {g1, g2, g3};
+        return new LayeredGreenprints(prints);
     }
 }
