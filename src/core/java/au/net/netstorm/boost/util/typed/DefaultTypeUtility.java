@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+// FIX DEBT Bit of a trollop.  Knock on the head.
 public final class DefaultTypeUtility implements TypeUtility {
     public int[] convert(List list) {
         Object[] integers = list.toArray();

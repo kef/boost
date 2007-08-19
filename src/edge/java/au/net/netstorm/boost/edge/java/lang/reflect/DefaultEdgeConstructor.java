@@ -4,28 +4,29 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.edge.IllegalEdgeConstructorArgumentException;
 
+// FIX DEBT We don't do logic in edges.
 public final class DefaultEdgeConstructor implements EdgeConstructor {
-    private final String newLine = System.getProperty("line.separator");
+    private final String linefeed = System.getProperty("line.separator");
 
-    public Object newInstance(Constructor constructor, Object[] initArgs) {
+    public Object newInstance(Constructor constructor, Object[] args) {
         try {
-            return constructor.newInstance(initArgs);
+            return constructor.newInstance(args);
         } catch (Exception e) {
-            String errorString = createErrorString(constructor, initArgs);
+            String error = error(constructor, args);
             if (e instanceof IllegalArgumentException)
-                throw new IllegalEdgeConstructorArgumentException(errorString, e);
-            throw new EdgeException(errorString, e);
+                throw new IllegalEdgeConstructorArgumentException(error, e);
+            throw new EdgeException(error, e);
         }
     }
 
-    private String createErrorString(Constructor constructor, Object[] initArgs) {
-        String errorString = constructor + newLine;
-        if (initArgs != null) {
-            for (int i = 0; i < initArgs.length; i++) {
-                errorString += initArgs[i] + newLine;
+    private String error(Constructor constructor, Object[] args) {
+        String result = constructor + linefeed;
+        if (args != null) {
+            for (int i = 0; i < args.length; i++) {
+                result += args[i] + linefeed;
             }
         }
-        return errorString;
+        return result;
     }
 }
 
