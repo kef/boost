@@ -42,7 +42,8 @@ public final class DefaultTimeSpec extends Primordial implements TimeSpec {
         if (type.equals(ABSOLUTE)) return relative == null;
         if (type.equals(RELATIVE)) return absolute == null;
         if (absolute != null) return false;
-        return relative != null;
+        if (relative != null) return false;
+        return true;
     }
 
     private void ensure(TimeType type) {
@@ -51,12 +52,12 @@ public final class DefaultTimeSpec extends Primordial implements TimeSpec {
 
     // FIX 1914 Specific exception.
     private void explode() {
-        throw new IllegalStateException("Values of absolute/relative " + absolute + "/" + relative + " do not match " + type);
+        throw new IllegalStateException("Values of absolute/relative " + absolute + "/" + relative + " do not match " + type + ".");
     }
 
     // FIX 1914 Specific exception.
     private void pop(TimeType type) {
-        throw new IllegalStateException("Time specification is not " + type);
+        throw new IllegalStateException("Time specification is not " + type + ".");
     }
 }
 // } DEBT LineLength
