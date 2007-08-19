@@ -1,9 +1,11 @@
 package au.net.netstorm.boost.nursery.time;
 
+import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.time.core.Duration;
 import au.net.netstorm.boost.time.core.TimePoint;
 
-public final class DefaultTimeSpec implements TimeSpec {
+// DEBT LineLength {
+public final class DefaultTimeSpec extends Primordial implements TimeSpec {
     private static final TimeType ABSOLUTE = TimeType.ABSOLUTE;
     private static final TimeType RELATIVE = TimeType.RELATIVE;
     private final TimePoint absolute;
@@ -47,11 +49,14 @@ public final class DefaultTimeSpec implements TimeSpec {
         if (!this.type.equals(type)) pop(type);
     }
 
+    // FIX 1914 Specific exception.
     private void explode() {
         throw new IllegalStateException("Values of absolute/relative " + absolute + "/" + relative + " do not match " + type);
     }
 
+    // FIX 1914 Specific exception.
     private void pop(TimeType type) {
         throw new IllegalStateException("Time specification is not " + type);
     }
 }
+// } DEBT LineLength

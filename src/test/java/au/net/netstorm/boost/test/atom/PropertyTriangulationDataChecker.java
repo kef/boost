@@ -8,10 +8,10 @@ import au.net.netstorm.boost.util.introspect.FieldSpec;
 final class PropertyTriangulationDataChecker implements DataChecker {
     private final TriangulationChecker nonArrayChecker = new NonArrayPropertyTriangulationChecker();
     private final TriangulationChecker arrayChecker = new ArrayPropertyTriangulationChecker();
-    private final FieldRandomizer fieldUtil;
+    private final FieldRandomizer randomizer;
 
     public PropertyTriangulationDataChecker(Provider random) {
-        fieldUtil = new DefaultFieldRandomizer(random);
+        randomizer = new DefaultFieldRandomizer(random);
     }
 
     public void check(Class cls, FieldSpec[] fields) {
@@ -21,7 +21,7 @@ final class PropertyTriangulationDataChecker implements DataChecker {
     }
 
     private void check(Class cls, FieldSpec[] fields, int position) {
-        Object[] instances = fieldUtil.getInstances(fields);
+        Object[] instances = randomizer.getInstances(fields);
         Object parameter = instances[position];
         FieldSpec candidate = fields[position];
         if (isArray(candidate)) arrayCheck(cls, instances, candidate, parameter);

@@ -36,14 +36,14 @@ public final class GenericAtomTestChecker implements AtomTestChecker {
 
     private void checkBehaviour(Class cls, FieldSpec[] fields) {
         checkTriangulationOnProperties(cls, fields);
-        checkConstructorRefusesNulls(cls, fields);
+        checkConstructorMayRefuseNulls(cls, fields);
     }
 
     private void checkTriangulationOnProperties(Class cls, FieldSpec[] fields) {
         triangulationChecker.check(cls, fields);
     }
 
-    private void checkConstructorRefusesNulls(Class cls, FieldSpec[] fields) {
+    private void checkConstructorMayRefuseNulls(Class cls, FieldSpec[] fields) {
         if (config.checkNulls()) constructorNullChecker.check(cls, fields);
     }
 }
