@@ -1,68 +1,68 @@
 package au.net.netstorm.boost.util.typed;
 
 public final class DefaultTypedMap implements TypedMap {
-    private final TypedMapRead typedMapRead;
-    private final TypedMapWrite typedMapWrite;
-    TypeUtility typeUtility;
+    private final TypedMapRead read;
+    private final TypedMapWrite write;
+    TypeUtility utility;
 
-    public DefaultTypedMap(TypedMapRead typedMapRead, TypedMapWrite typedMapWrite) {
-        this.typedMapRead = typedMapRead;
-        this.typedMapWrite = typedMapWrite;
+    public DefaultTypedMap(TypedMapRead read, TypedMapWrite write) {
+        this.read = read;
+        this.write = write;
     }
 
     public String getString(String key) {
-        return typedMapRead.getString(key);
+        return read.getString(key);
     }
 
     public int getInt(String key) {
-        return typedMapRead.getInt(key);
+        return read.getInt(key);
     }
 
     public long getLong(String key) {
-        return typedMapRead.getLong(key);
+        return read.getLong(key);
     }
 
     public boolean getBoolean(String key) {
-        return typedMapRead.getBoolean(key);
+        return read.getBoolean(key);
     }
 
     public byte[] getBytes(String key) {
-        return typedMapRead.getBytes(key);
+        return read.getBytes(key);
     }
 
     public String[] getStrings(String key) {
-        return typedMapRead.getStrings(key);
+        return read.getStrings(key);
     }
 
     public int[] getInts(String key) {
-        return typedMapRead.getInts(key);
+        return read.getInts(key);
     }
 
     public boolean exists(String key) {
-        return typedMapRead.exists(key);
+        return read.exists(key);
     }
 
-    public void put(String key, String stringValue) {
-        typedMapWrite.put(key, stringValue);
+    public void put(String key, String value) {
+        write.put(key, value);
     }
 
-    public void put(String key, int intValue) {
-        typedMapWrite.put(key, intValue);
+    public void put(String key, int value) {
+        write.put(key, value);
     }
 
-    public void put(String key, boolean booleanValue) {
-        typedMapWrite.put(key, booleanValue);
+    public void put(String key, boolean value) {
+        write.put(key, value);
     }
 
-    public void put(String key, long longValue) {
-        typedMapWrite.put(key, longValue);
+    public void put(String key, long value) {
+        write.put(key, value);
     }
 
-    public void put(String key, byte[] bytesValue) {
-        typedMapWrite.put(key, bytesValue);
+    public void put(String key, byte[] value) {
+        write.put(key, value);
     }
 
-    public void put(String key, int[] intsValue) {
-        typedMapWrite.put(key, intsValue);
+    public void put(String key, int[] value) {
+        write.put(key, value);
     }
 }

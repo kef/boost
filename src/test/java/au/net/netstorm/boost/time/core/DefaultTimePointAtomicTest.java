@@ -2,6 +2,7 @@ package au.net.netstorm.boost.time.core;
 
 import au.net.netstorm.boost.test.core.BoooostCase;
 
+// FIX 8888 De-train wreck.
 public final class DefaultTimePointAtomicTest extends BoooostCase {
     private static final Object NULL = null;
     private TimePoint a;

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public final class DefaultTypeUtility implements TypeUtility {
-    public int[] convert(List integerList) {
-        Object[] integers = integerList.toArray();
+    public int[] convert(List list) {
+        Object[] integers = list.toArray();
         int[] result = new int[integers.length];
         for (int i = 0; i < integers.length; i++) {
             Object integer = integers[i];
@@ -27,8 +27,8 @@ public final class DefaultTypeUtility implements TypeUtility {
         return result;
     }
 
-    public int[] convert(String str) {
-        int intValue = Integer.parseInt(str);
+    public int[] convert(String string) {
+        int intValue = Integer.parseInt(string);
         return new int[]{intValue};
     }
 
@@ -56,13 +56,13 @@ public final class DefaultTypeUtility implements TypeUtility {
         return false;
     }
 
-    public Object[] merge(Object[] array1, Object[] array2) {
-        Class arrayClass = array1.getClass();
+    public Object[] merge(Object[] a1, Object[] a2) {
+        Class arrayClass = a1.getClass();
         Class componentClass = arrayClass.getComponentType();
-        int mergedArrayLength = array1.length + array2.length;
+        int mergedArrayLength = a1.length + a2.length;
         Object[] merged = (Object[]) Array.newInstance(componentClass, mergedArrayLength);
-        System.arraycopy(array1, 0, merged, 0, array1.length);
-        System.arraycopy(array2, 0, merged, array1.length, array2.length);
+        System.arraycopy(a1, 0, merged, 0, a1.length);
+        System.arraycopy(a2, 0, merged, a1.length, a2.length);
         return merged;
     }
 

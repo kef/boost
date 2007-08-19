@@ -1,27 +1,27 @@
 package au.net.netstorm.boost.util.typed;
 
 public final class BoomTypedMapWrite implements TypedMapWrite {
-    public void put(String key, String stringValue) {
+    public void put(String key, String value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, boolean booleanValue) {
+    public void put(String key, boolean value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, int intValue) {
+    public void put(String key, int value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, byte[] bytesValue) {
+    public void put(String key, byte[] value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, long longValue) {
+    public void put(String key, long value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, int[] intsValue) {
+    public void put(String key, int[] value) {
         throw new UnsupportedOperationException();
     }
 }
