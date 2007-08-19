@@ -14,7 +14,7 @@ public final class DefaultTimeSpec implements TimeSpec {
         this.absolute = absolute;
         this.relative = relative;
         this.type = type;
-        if (!ok()) explode();
+        validate();
     }
 
     public TimePoint getAbsolute() {
@@ -29,6 +29,11 @@ public final class DefaultTimeSpec implements TimeSpec {
 
     public TimeType getType() {
         return type;
+    }
+
+    private void validate() {
+        if (type == null) throw new IllegalArgumentException();
+        if (!ok()) explode();
     }
 
     private boolean ok() {
