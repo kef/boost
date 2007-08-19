@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.time.core.Duration;
 import au.net.netstorm.boost.time.core.TimePoint;
 
 // DEBT LineLength {
@@ -9,10 +8,10 @@ public final class DefaultTimeSpec extends Primordial implements TimeSpec {
     private static final TimeType ABSOLUTE = TimeType.ABSOLUTE;
     private static final TimeType RELATIVE = TimeType.RELATIVE;
     private final TimePoint absolute;
-    private final Duration relative;
+    private final Relative relative;
     private final TimeType type;
 
-    public DefaultTimeSpec(TimePoint absolute, Duration relative, TimeType type) {
+    DefaultTimeSpec(TimePoint absolute, Relative relative, TimeType type) {
         this.absolute = absolute;
         this.relative = relative;
         this.type = type;
@@ -24,7 +23,7 @@ public final class DefaultTimeSpec extends Primordial implements TimeSpec {
         return absolute;
     }
 
-    public Duration getRelative() {
+    public Relative getRelative() {
         ensure(RELATIVE);
         return relative;
     }
@@ -38,13 +37,14 @@ public final class DefaultTimeSpec extends Primordial implements TimeSpec {
         if (!ok()) explode();
     }
 
+    // OK CyclomaticComplexity|ReturnCount {
     private boolean ok() {
         if (type.equals(ABSOLUTE)) return relative == null;
         if (type.equals(RELATIVE)) return absolute == null;
         if (absolute != null) return false;
         if (relative != null) return false;
         return true;
-    }
+    } // } OK CyclomaticComplexity|ReturnCount
 
     private void ensure(TimeType type) {
         if (!this.type.equals(type)) pop(type);
