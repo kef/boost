@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.time;
 import au.net.netstorm.boost.time.core.TimePoint;
 
 public final class DefaultStartEndFactory implements StartEndFactory {
-    private final TimeSpecFactory times = new DefaultTimeSpecFactory();
+    private final TimeSpecConstructor times = new DefaultTimeSpecConstructor();
 
     public StartEnd nu(TimePoint start, TimePoint end) {
         TimeSpec s = times.nu(start);

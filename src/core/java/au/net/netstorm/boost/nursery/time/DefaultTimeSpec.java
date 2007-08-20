@@ -4,9 +4,10 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.time.core.TimePoint;
 
 // DEBT LineLength {
-public final class DefaultTimeSpec extends Primordial implements TimeSpec {
+final class DefaultTimeSpec extends Primordial implements TimeSpec {
     private static final TimeType ABSOLUTE = TimeType.ABSOLUTE;
     private static final TimeType RELATIVE = TimeType.RELATIVE;
+    private static final TimeType NONE = TimeType.NONE;
     private final TimePoint absolute;
     private final Relative relative;
     private final TimeType type;
@@ -41,9 +42,8 @@ public final class DefaultTimeSpec extends Primordial implements TimeSpec {
     private boolean ok() {
         if (type.equals(ABSOLUTE)) return relative == null;
         if (type.equals(RELATIVE)) return absolute == null;
-        if (absolute != null) return false;
-        if (relative != null) return false;
-        return true;
+        if (type.equals(NONE)) return absolute == null && relative == null;
+        return false;
     } // } OK CyclomaticComplexity|ReturnCount
 
     private void ensure(TimeType type) {

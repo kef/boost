@@ -16,5 +16,4 @@ public interface StartEndFactory {
     StartEnd nu(Relative start);
 
     StartEnd nu();
-    // FIX 1914 Complete.
 }
