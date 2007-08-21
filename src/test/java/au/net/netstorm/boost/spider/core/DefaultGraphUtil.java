@@ -30,7 +30,7 @@ public final class DefaultGraphUtil implements GraphUtil {
         if (i == links.length) return;
         Object value = field(ref, links[i]);
         if (i != links.length - 1) set(value, links, instance, i + 1);
-        fielder.setInstance(ref, links[i], instance);
+        else fielder.setInstance(ref, links[i], instance);
     }
 
     private Object field(Object ref, String property) {
