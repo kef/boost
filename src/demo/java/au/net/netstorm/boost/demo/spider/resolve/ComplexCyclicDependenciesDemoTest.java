@@ -18,7 +18,8 @@ public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest
         Teacher teacher2 = resolveTeacher();
         assertNotEquals(teacher1, teacher2);
         Object result = grapher.get(teacher1, "student.homework.teacher");
-        assertNotSame(teacher1, result);
+        assertEquals(DefaultTeacher.class, result.getClass());
+        assertSame(teacher1, result);
     }
 
     private Teacher resolveTeacher() {
