@@ -59,11 +59,6 @@ public final class DefaultTimePointMasterAtomicTest extends InteractionTestCase 
         }
     }
 
-    public void testMillisInADay() {
-        long expected = 1000 * 60 * 60 * 24;
-        assertEquals(expected, DefaultTimePointMaster.MILLIS_IN_A_DAY);
-    }
-
     private void checkGet(long millis) {
         TimePoint timePoint = subject.get(millis);
         long actual = timePoint.getMillis();
