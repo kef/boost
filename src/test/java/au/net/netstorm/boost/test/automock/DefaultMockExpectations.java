@@ -53,6 +53,11 @@ public final class DefaultMockExpectations implements MockExpectations {
         oneCall(ref, throwable, methodName, parameters);
     }
 
+    public void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6, Object parameter7) {
+        Object[] parameters = {parameter1, parameter2, parameter3, parameter4, parameter5, parameter6, parameter7};
+        oneCall(ref, throwable, methodName, parameters);
+    }
+
     public void manyCalls(Object ref, Object returnValue, String methodName) {
         Object[] parameters = {};
         canCall(ref, returnValue, methodName, parameters);
