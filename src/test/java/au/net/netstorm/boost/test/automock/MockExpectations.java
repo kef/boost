@@ -18,6 +18,8 @@ public interface MockExpectations {
 
     void oneCall(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6);
 
+    void oneCall(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6, Object parameter7);
+
     void oneCall(Object ref, Throwable throwable, String methodName);
 
     void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1);
@@ -29,6 +31,8 @@ public interface MockExpectations {
     void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5);
 
     void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6);
+
+    void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6, Object parameter7);
 
     void manyCalls(Object ref, Object returnValue, String methodName);
 
@@ -44,6 +48,6 @@ public interface MockExpectations {
 
     void manyCalls(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6);
 
-    void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6, Object parameter7);
+    void manyCalls(Object ref, Object returnValue, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6, Object parameter7);
 }
 // } OK ParameterNumber|LineLength - We are providing flattened array support ... like jMock.
