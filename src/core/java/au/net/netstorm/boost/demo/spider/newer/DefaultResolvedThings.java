@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -30,6 +30,10 @@ public final class DefaultResolvedThings implements ResolvedThings {
         map.put(impl, ref);
     }
 
+    public String toString() {
+        return "" + get();
+    }
+
     public void remove(Implementation impl) {
         Map map = get();
         map.remove(impl);
@@ -42,7 +46,7 @@ public final class DefaultResolvedThings implements ResolvedThings {
     }
 
     private Map nuMap() {
-        Map map = new HashMap();
+        Map map = new LinkedHashMap();
         LOCAL_MON.set(map);
         return get();
     }

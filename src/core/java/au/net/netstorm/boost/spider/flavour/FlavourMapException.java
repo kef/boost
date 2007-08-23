@@ -1,8 +1,11 @@
 package au.net.netstorm.boost.spider.flavour;
 
+import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.primordial.BoooostException;
 
 public final class FlavourMapException extends RuntimeException implements BoooostException {
+    private final ResolvedThings things = new DefaultResolvedThings();
     private final FlavouredInterface flavour;
     private final String reason;
 
@@ -12,6 +15,6 @@ public final class FlavourMapException extends RuntimeException implements Boooo
     }
 
     public String getMessage() {
-        return reason + ": " + flavour;
+        return reason + ": " + flavour + " : " + things;
     }
 }
