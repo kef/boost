@@ -16,7 +16,6 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-// SUGGEST: Onionise the put.
 public final class DefaultResolverEngine implements ResolverEngine {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final TypeMaster typer = new DefaultTypeMaster();
