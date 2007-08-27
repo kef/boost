@@ -49,7 +49,6 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private ResolvedInstance resolve(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         ResolvedInstance result = provider.provide(impl);
-        // FIX 1914 Need a test to force this flavour to be used and not the one passed into resolve!!!
         Flavour flavour = blueprint.getFlavour();
         // FIX 1914 Break this mongrel down AND TDD.
         if (!instances.exists(iface, flavour) && single(blueprint)) instances.put(iface, flavour, result);
