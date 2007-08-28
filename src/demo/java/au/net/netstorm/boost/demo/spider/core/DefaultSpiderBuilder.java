@@ -4,6 +4,7 @@ import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMap;
 import au.net.netstorm.boost.spider.flavour.DefaultFlavouredMapEngine;
 import au.net.netstorm.boost.spider.flavour.FlavouredMap;
 import au.net.netstorm.boost.spider.flavour.FlavouredMapEngine;
+import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.spider.registry.DefaultInstances;
@@ -27,9 +28,14 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Instances instances = nuInstances();
         Spider spider = assembler.assemble(layered, instances);
         Registry registry = new DefaultRegistry(explicit, instances);
+        preregister(spider, registry);
+        return spider;
+    }
+
+    private void preregister(Spider spider, Registry registry) {
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
-        return spider;
+        registry.instance(Injector.class, spider);
     }
 
     private Instances nuInstances() {
