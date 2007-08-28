@@ -25,7 +25,7 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
         try {
             return edgeConstructor.newInstance(constructor, parameters);
         } catch (IllegalArgumentException e) {
-            throw new InstantiationException("Unable to construct a " + impl.getImpl(), e);
+            throw new InstantiationException("Unable to construct a " + impl, e);
         }
     }
 }
