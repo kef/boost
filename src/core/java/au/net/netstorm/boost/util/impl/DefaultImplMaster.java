@@ -14,8 +14,8 @@ public final class DefaultImplMaster implements ImplMaster {
     private ClassMaster master = new DefaultClassMaster();
 
     public Implementation defaultImpl(Interface iface) {
-        String defaultClassName = defaultImplName(iface);
-        Class impl = classer.forName(defaultClassName);
+        String name = defaultImplName(iface);
+        Class impl = classer.forName(name);
         return new DefaultImplementation(impl);
     }
 
@@ -29,8 +29,8 @@ public final class DefaultImplMaster implements ImplMaster {
     }
 
     private String defaultImplName(Interface iFace) {
-        String packageName = master.getPackageName(iFace);
-        String className = master.getShortName(iFace);
-        return packageName + ".Default" + className;
+        String pkg = master.getPackageName(iFace);
+        String cls = master.getShortName(iFace);
+        return pkg + ".Default" + cls;
     }
 }
