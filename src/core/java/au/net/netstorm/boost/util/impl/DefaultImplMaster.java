@@ -10,18 +10,18 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplMaster implements ImplMaster {
-    private EdgeClass edgeClass = new DefaultEdgeClass();
-    private ClassMaster classMaster = new DefaultClassMaster();
+    private EdgeClass classer = new DefaultEdgeClass();
+    private ClassMaster master = new DefaultClassMaster();
 
-    public Implementation defaultImpl(Interface iFace) {
-        String defaultClassName = defaultImplName(iFace);
-        Class impl = edgeClass.forName(defaultClassName);
+    public Implementation defaultImpl(Interface iface) {
+        String defaultClassName = defaultImplName(iface);
+        Class impl = classer.forName(defaultClassName);
         return new DefaultImplementation(impl);
     }
 
-    public boolean hasDefaultImpl(Interface iFace) {
+    public boolean hasDefaultImpl(Interface iface) {
         try {
-            defaultImpl(iFace);
+            defaultImpl(iface);
             return true;
         } catch (EdgeException e) {
             return false;
@@ -29,8 +29,8 @@ public final class DefaultImplMaster implements ImplMaster {
     }
 
     private String defaultImplName(Interface iFace) {
-        String packageName = classMaster.getPackageName(iFace);
-        String className = classMaster.getShortName(iFace);
+        String packageName = master.getPackageName(iFace);
+        String className = master.getShortName(iFace);
         return packageName + ".Default" + className;
     }
 }
