@@ -16,12 +16,12 @@ public final class LazyGreenprints implements Greenprints {
     private final ImplMaster impler = new DefaultImplMaster();
 
     public Blueprint get(Interface iface, Flavour flavour) {
-        Implementation impl = impler.defaultImpl(iface);
+        Implementation impl = impler.impl(iface);
         return blueprint(impl);
     }
 
     public boolean exists(Interface iface, Flavour flavour) {
-        return impler.hasDefaultImpl(iface);
+        return impler.hasImpl(iface);
     }
 
     private Blueprint blueprint(Implementation impl) {

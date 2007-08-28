@@ -12,16 +12,16 @@ public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
 
     public void testHasDefaultImpl() {
         Interface sunshine = new DefaultInterface(Sunshine.class);
-        assertEquals(true, subject.hasDefaultImpl(sunshine));
+        assertEquals(true, subject.hasImpl(sunshine));
         Implementation expected = new DefaultImplementation(DefaultSunshine.class);
-        assertEquals(expected, subject.defaultImpl(sunshine));
+        assertEquals(expected, subject.impl(sunshine));
     }
 
     public void testDoesNotHaveDefaultImpl() {
         Interface moonlight = new DefaultInterface(Moonlight.class);
-        assertEquals(false, subject.hasDefaultImpl(moonlight));
+        assertEquals(false, subject.hasImpl(moonlight));
         try {
-            subject.defaultImpl(moonlight);
+            subject.impl(moonlight);
             fail();
         } catch (EdgeException expected) {}
     }

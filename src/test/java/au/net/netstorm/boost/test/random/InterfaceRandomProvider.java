@@ -60,8 +60,8 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     }
 
     private Object defaultImpl(Interface type) {
-        if (!implMaster.hasDefaultImpl(type)) throw new ImplementationNotFoundException(type);
-        Implementation impl = implMaster.defaultImpl(type);
+        if (!implMaster.hasImpl(type)) throw new ImplementationNotFoundException(type);
+        Implementation impl = implMaster.impl(type);
         Class implClass = impl.getImpl();
         return instantiator.createInstance(implClass, randomProvider);
     }
