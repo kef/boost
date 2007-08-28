@@ -12,4 +12,8 @@ public final class BasicImplMapper implements ImplMapper {
         String cls = master.getShortName(iface);
         return pkg + ".Default" + cls;
     }
+
+    public boolean can(Interface iface) {
+        return true;
+    }
 }

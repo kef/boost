@@ -4,4 +4,6 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public interface ImplMapper {
     String map(Interface iface);
+
+    boolean can(Interface iface);
 }

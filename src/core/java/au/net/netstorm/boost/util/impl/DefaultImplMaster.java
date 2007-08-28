@@ -8,25 +8,49 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplMaster implements ImplMaster {
-    private EdgeClass classer = new DefaultEdgeClass();
-    private ImplMapper mapper = new BasicImplMapper();
+    private final EdgeClass classer = new DefaultEdgeClass();
+    private final ImplMapper[] mappers;
 
-    public Implementation impl(Interface iface) {
-        String name = defaultImplName(iface);
-        Class impl = classer.forName(name);
-        return new DefaultImplementation(impl);
+    public DefaultImplMaster(ImplMapper[] mappers) {
+        this.mappers = mappers;
+    }
+
+    public Implementation impl(Interface type) {
+        // FIX 65590 Split.
+        // FIX 1914 Tidy this rubbish up.  Specific exception!!!        
+        Implementation impl = getImpl(type);
+        if (impl == null) throw new IllegalStateException("No implementation for " + type);
+        return impl;
     }
 
     public boolean hasImpl(Interface iface) {
+        return getImpl(iface) != null;
+    }
+
+    private Implementation getImpl(Interface iface) {
+        for (int i = 0; i < mappers.length; i++) {
+            Implementation impl = impl(mappers[i], iface);
+            if (impl != null) return impl;
+        }
+        return null;
+    }
+
+    private Implementation impl(ImplMapper mapper, Interface iface) {
+        if (!mapper.can(iface)) return null;
+        return load(mapper, iface);
+    }
+
+    private Implementation load(ImplMapper mapper, Interface iface) {
+        String name = mapper.map(iface);
         try {
-            impl(iface);
-            return true;
+            return load(name);
         } catch (EdgeException e) {
-            return false;
+            return null;
         }
     }
 
-    private String defaultImplName(Interface iface) {
-        return mapper.map(iface);
+    private Implementation load(String name) {
+        Class impl = classer.forName(name);
+        return new DefaultImplementation(impl);
     }
 }

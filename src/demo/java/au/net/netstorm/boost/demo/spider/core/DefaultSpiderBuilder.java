@@ -14,15 +14,23 @@ import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.LayeredGreenprints;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
+import au.net.netstorm.boost.util.impl.BasicImplMapper;
+import au.net.netstorm.boost.util.impl.DefaultImplMaster;
+import au.net.netstorm.boost.util.impl.ImplMapper;
+import au.net.netstorm.boost.util.impl.ImplMaster;
 
 // FIX 1914 Move these out of here.  Web, LazyGreens, SpiderBuilder.
 public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
 
     public Spider build() {
-        // FIX 57384 Remove the following code ???
+        ImplMapper[] mappers = mappers();
+        return build(mappers);
+    }
+
+    public Spider build(ImplMapper[] implMappers) {
+        Greenprints lazy = greenprints(implMappers);
         Blueprints explicit = nuBlueprints();
-        Greenprints lazy = new LazyGreenprints();
         Greenprints[] layers = {explicit, lazy};
         Greenprints layered = new LayeredGreenprints(layers);
         Instances instances = nuInstances();
@@ -30,6 +38,16 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Registry registry = new DefaultRegistry(explicit, instances);
         preregister(spider, registry);
         return spider;
+    }
+
+    private Greenprints greenprints(ImplMapper[] implMappers) {
+        ImplMaster impler = new DefaultImplMaster(implMappers);
+        return new LazyGreenprints(impler);
+    }
+
+    private ImplMapper[] mappers() {
+        ImplMapper mapper = new BasicImplMapper();
+        return new ImplMapper[]{mapper};
     }
 
     private void preregister(Spider spider, Registry registry) {

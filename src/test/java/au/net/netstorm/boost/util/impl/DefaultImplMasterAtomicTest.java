@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.util.impl;
 
-import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -8,7 +7,10 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
-    ImplMaster subject = new DefaultImplMaster();
+    // FIX 1914 Dupe.  See InterfaceRandomProvider.
+    ImplMapper mapper = new BasicImplMapper();
+    ImplMapper[] mappers = {mapper};
+    ImplMaster subject = new DefaultImplMaster(mappers);
 
     public void testHasDefaultImpl() {
         Interface sunshine = new DefaultInterface(Sunshine.class);
@@ -23,6 +25,7 @@ public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
         try {
             subject.impl(moonlight);
             fail();
-        } catch (EdgeException expected) {}
+            // FIX 1914 Strong type exception.
+        } catch (IllegalStateException expected) {}
     }
 }
