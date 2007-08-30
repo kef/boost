@@ -11,6 +11,9 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     Byte[] bigFoo = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC};
     String[] duplicates = {"Lockyer", "Lewis", "Langer", "Lazarus", "Lewis"};
     String[] noDuplicates = {"Lockyer", "Lewis", "Langer", "Lazarus"};
+    String[] left = {"1", "2", "3", "4", "5", "6"};
+    String[] middle = {"11", "9", "7", "5"};
+    String[] right = {"7", "8", "9", "10", "11", "12"};
     ArrayMaster subject = new DefaultArrayMaster();
     private String[] noStrings = new String[]{};
 
@@ -38,6 +41,17 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
         checkHasDuplicates(noStrings, false);
         checkHasDuplicates(duplicates, true);
         checkHasDuplicates(noDuplicates, false);
+    }
+
+    public void testIntersects() {
+        checkIntersects(left, middle, true);
+        checkIntersects(left, right, false);
+        checkIntersects(middle, right, true);
+    }
+
+    private void checkIntersects(Object[] o1, Object[] o2, boolean expected) {
+        boolean actual = subject.intersects(o1, o2);
+        assertEquals(expected, actual);
     }
 
     private void checkHasDuplicates(Object[] input, boolean expected) {

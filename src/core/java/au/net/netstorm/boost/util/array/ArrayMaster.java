@@ -11,4 +11,6 @@ public interface ArrayMaster {
     boolean contains(Object[] array, Object o);
 
     boolean hasDuplicates(Object[] array);
+
+    boolean intersects(Object[] o1, Object[] o2);
 }

@@ -46,6 +46,13 @@ public final class DefaultArrayMaster implements ArrayMaster {
         return false;
     }
 
+    public boolean intersects(Object[] o1, Object[] o2) {
+        for (int i = 0; i < o1.length; i++) {
+            if (contains(o2, o1[i])) return true;
+        }
+        return false;
+    }
+
     private Set set(Object[] array) {
         List list = list(array);
         return new HashSet(list);
