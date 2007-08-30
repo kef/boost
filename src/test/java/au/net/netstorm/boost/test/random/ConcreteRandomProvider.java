@@ -1,21 +1,21 @@
 package au.net.netstorm.boost.test.random;
 
-import java.io.Serializable;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.SpecificProvider;
 
+// FIX DEBT SPLIT THIS CLASS!!!
+
 // OK JavaNCSS|CyclomaticComplexity|ReturnCount {
 public final class ConcreteRandomProvider implements SpecificProvider {
     private final Random random = new Random();
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Class[] randomClasses = {ArrayList.class, List.class, Random.class, Serializable.class};
+    // FIX 1914 Use actual test fixtures here.  Not well known classes.
+    private final Class[] randomClasses = {Bandaid.class, Lollipop.class, Scrunch.class};
 
     public Object provide(Class type) {
         if (!canProvide(type)) throw new NotProvidedException(type);
@@ -44,7 +44,9 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     }
 
     private Date randomDate() {
-        return new Date(Math.abs(randomLong().longValue()));
+        long longone = randomLong().longValue();
+        long abs = Math.abs(longone);
+        return new Date(abs);
     }
 
     private String randomString() {
@@ -89,7 +91,8 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     }
 
     private Class randomClass() {
-        int i = Math.abs(randomInteger().intValue()) % randomClasses.length;
+        int integer = randomInteger().intValue();
+        int i = Math.abs(integer) % randomClasses.length;
         return randomClasses[i];
     }
 
