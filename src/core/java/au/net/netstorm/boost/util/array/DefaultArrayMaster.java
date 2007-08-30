@@ -37,6 +37,15 @@ public final class DefaultArrayMaster implements ArrayMaster {
         return result.contains(o);
     }
 
+    public boolean hasDuplicates(Object[] array) {
+        List output = new ArrayList();
+        for (int i = 0; i < array.length; i++) {
+            if (output.contains(array[i])) return true;
+            output.add(array[i]);
+        }
+        return false;
+    }
+
     private Set set(Object[] array) {
         List list = list(array);
         return new HashSet(list);

@@ -9,4 +9,6 @@ public interface ArrayMaster {
     byte[] plus(byte[] array1, byte[] array2);
 
     boolean contains(Object[] array, Object o);
+
+    boolean hasDuplicates(Object[] array);
 }
