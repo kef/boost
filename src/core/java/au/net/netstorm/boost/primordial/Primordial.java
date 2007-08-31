@@ -6,8 +6,8 @@ import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 
 public class Primordial {
-    private EqualsMaster equalsMaster = new FieldBasedEqualsMaster();
-    private ToStringMaster toStringMaster = new IndentingToStringMaster();
+    private static EqualsMaster equalsMaster = new FieldBasedEqualsMaster();
+    private static ToStringMaster toStringMaster = new IndentingToStringMaster();
 
     public int hashCode() {
         return 42;

@@ -20,13 +20,22 @@ import au.net.netstorm.boost.util.tostring.ToStringMaster;
 public final class PrimordialAtomicTest extends BoooostCase {
     private final ModifierTestChecker modifier = new DefaultModifierTestChecker();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private ToStringMaster origToString;
+    private EqualsMaster origEquals;
+
+    {
+        origEquals = (EqualsMaster) fielder.getStatic(Primordial.class, "equalsMaster");
+        origToString = (ToStringMaster) fielder.getStatic(Primordial.class, "toStringMaster");
+    }
 
     public void testNotAbstract() {
         modifier.checkConcrete(Primordial.class);
     }
 
     public void testHashCode() {
-        assertEquals(42, new Primordial().hashCode());
+        Primordial primordial = new Primordial();
+        int actual = primordial.hashCode();
+        assertEquals(42, actual);
     }
 
     public void testEqualsMaster() {
@@ -46,11 +55,13 @@ public final class PrimordialAtomicTest extends BoooostCase {
         String expected = "An honest man finally reaped what he had sown, and a farmer in Ohio has just repaid his loan.";
         MockToStringMaster mockToString = createMockToString(expected);
         Primordial primordial = createPrimordialWithToString(mockToString);
-        assertEquals(expected, primordial.toString());
+        String actual = primordial.toString();
+        assertEquals(expected, actual);
+        revertToString();
     }
 
     private void checkField(Class type, String fieldName) {
-        Object fieldValue = fielder.getInstance(new Primordial(), fieldName);
+        Object fieldValue = fielder.getStatic(Primordial.class, fieldName);
         assertNotNull(fieldValue);
         assertEquals(type, fieldValue.getClass());
     }
@@ -59,6 +70,7 @@ public final class PrimordialAtomicTest extends BoooostCase {
         MockEqualsMaster mockEquals = createMockEquals(expected);
         Primordial primordial = createPrimordialEquals(mockEquals);
         checkEquals(expected, primordial, mockEquals);
+        revertEquals();
     }
 
     private void checkEquals(boolean expected, Primordial primordial, MockEqualsMaster mockEquals) {
@@ -82,18 +94,25 @@ public final class PrimordialAtomicTest extends BoooostCase {
     }
 
     private Primordial createPrimordialEquals(EqualsMaster master) {
-        return createPrimordialWithField(master, "equalsMaster");
+        return createPrimordialWithStaticField(master, "equalsMaster");
     }
 
     private Primordial createPrimordialWithToString(ToStringMaster master) {
-        return createPrimordialWithField(master, "toStringMaster");
+        return createPrimordialWithStaticField(master, "toStringMaster");
     }
 
-    private Primordial createPrimordialWithField(Object master, String fieldName) {
-        Primordial primordial = new Primordial();
+    private Primordial createPrimordialWithStaticField(Object master, String fieldName) {
         FieldValueSpec fieldValue = new DefaultFieldValueSpec(fieldName, master);
-        fielder.setInstance(primordial, fieldValue);
-        return primordial;
+        fielder.setStatic(Primordial.class, fieldValue);
+        return new Primordial();
+    }
+
+    private void revertEquals() {
+        fielder.setStatic(Primordial.class, "equalsMaster", origEquals);
+    }
+
+    private void revertToString() {
+        fielder.setStatic(Primordial.class, "toStringMaster", origToString);
     }
 }
 // } DEBT ClassDataAbstractionCoupling
