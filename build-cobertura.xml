@@ -5,22 +5,17 @@
     <property name="quality.atomic.coverage.branch" value="100"/>
     <property name="quality.atomic.coverage.line" value="100"/>
 
-    <path id="cobertura.classpath">
-        <fileset dir="${lib.dir}/cobertura">
-            <include name="**/*.jar"/>
-        </fileset>
-    </path>
-
-    <target name="instrument">
+    <target name="instrument_cobertura">
         <macro_cobertura_instrument code.type="core" test.type="atomic"/>
     </target>
 
-    <target name="report_coverage">
+    <target name="report_cobertura">
         <macro_cobertura_report code.type="core" test.type="atomic"/>
     </target>
 
-    <target name="check_coverage">
-        <macro_cobertura_check code.type="core" test.type="atomic" branch.limit="${quality.atomic.coverage.branch}"
+    <target name="check_cobertura">
+        <macro_cobertura_check code.type="core" test.type="atomic"
+                               branch.limit="${quality.atomic.coverage.branch}"
                                line.limit="${quality.atomic.coverage.line}"/>
     </target>
 
@@ -30,9 +25,8 @@
         <attribute name="code.type"/>
         <attribute name="test.type"/>
         <sequential>
-            <mkdir dir="${instrumented.dir}/@{code.type}"/>
-            <cobertura-instrument todir="${instrumented.dir}/@{code.type}/@{test.type}"
-                                  datafile="${coverage.dir}/@{test.type}_coverage.ser">
+            <cobertura-instrument todir="${cobertura.class.dir}"
+                                  datafile="${cobertura.dir}/@{test.type}_coverage.ser">
                 <fileset dir="${classes.dir}/@{code.type}">
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
@@ -46,9 +40,9 @@
         <attribute name="code.type"/>
         <attribute name="test.type"/>
         <sequential>
-            <mkdir dir="${coverage.reports.dir}/@{code.type}/@{test.type}"/>
-            <cobertura-report destdir="${coverage.reports.dir}/@{code.type}/@{test.type}"
-                              datafile="${coverage.dir}/@{test.type}_coverage.ser">
+            <mkdir dir="${cobertura.reports.dir}/@{code.type}/@{test.type}"/>
+            <cobertura-report destdir="${cobertura.reports.dir}/@{code.type}/@{test.type}"
+                              datafile="${cobertura.dir}/@{test.type}_coverage.ser">
                 <fileset dir="${@{code.type}.src.dir}" includes="**/*.java"/>
             </cobertura-report>
         </sequential>
@@ -62,7 +56,7 @@
         <sequential>
             <cobertura-check totalbranchrate="@{branch.limit}" totallinerate="@{line.limit}"
                              failureproperty="coverage.@{code.type}.failed" haltonfailure="true"
-                             datafile="${coverage.dir}/@{test.type}_coverage.ser"/>
+                             datafile="${cobertura.dir}/@{test.type}_coverage.ser"/>
         </sequential>
     </macrodef>
 </project>

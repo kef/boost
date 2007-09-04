@@ -3,11 +3,11 @@
 <!-- Convention: Aggregating targets no prefix.  Internal targets "-" prefix.  Worker targets "_" prefix. -->
 <project name="boost" default="all" basedir=".">
     <import file="build-includes.xml"/>
-
-    <target name="all" depends="clean, artifacts, compile, instrument, -run, -report, -check, jar"/>
+    <target name="all"
+            depends="clean, artifacts, instrument_clover, compile, instrument_cobertura, -run, -report, -check, jar"/>
     <target name="quality" depends="run_checkstyle, run_simian, check_checkstyle, check_simian"/>
-
     <target name="-run" depends="run_tests, run_checkstyle, run_simian"/>
-    <target name="-report" depends="report_tests, report_coverage"/>
-    <target name="-check" depends="check_tests, check_coverage, check_checkstyle, check_simian"/>
+    <!-- FIX 2121 Add report_clover here and get report_cobertura to not run if using clover -->
+    <target name="-report" depends="report_tests, report_cobertura"/>
+    <target name="-check" depends="check_tests, check_cobertura, check_checkstyle, check_simian"/>
 </project>

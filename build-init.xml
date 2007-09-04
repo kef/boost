@@ -8,11 +8,13 @@
     <property name="lib.dir" location="lib"/>
     <property name="src.dir" location="src"/>
     <property name="classes.dir" location="${build.dir}/classes"/>
-    <property name="coverage.dir" location="${build.dir}/coverage"/>
-    <property name="instrumented.dir" location="${coverage.dir}/instrumented"/>
+    <property name="cobertura.dir" location="${build.dir}/cobertura"/>
+    <property name="clover.dir" location="${build.dir}/clover"/>
     <property name="artifacts.dir" location="${build.dir}/artifacts"/>
     <property name="reports.dir" location="${artifacts.dir}/reports"/>
     <property name="coverage.reports.dir" location="${reports.dir}/coverage"/>
+    <property name="cobertura.reports.dir" location="${coverage.reports.dir}/cobertura"/>
+    <property name="clover.reports.dir" location="${coverage.reports.dir}/clover"/>
     <property name="jars.dir" location="${artifacts.dir}/jars"/>
     <property name="test.report.dir" location="${reports.dir}/test"/>
     <property name="test.xml.report.dir" location="${test.report.dir}/xml"/>
@@ -33,7 +35,13 @@
     <property name="core.class.dir" location="${classes.dir}/core"/>
     <property name="test.class.dir" location="${classes.dir}/test"/>
     <property name="demo.class.dir" location="${classes.dir}/demo"/>
-    <property name="core.instrumented.dir" location="${instrumented.dir}/core"/>
+    <property name="cobertura.class.dir" location="${cobertura.dir}/classes"/>
+    <property name="clover.src.dir" location="${clover.dir}/src"/>
+    <property name="clover.class.dir" location="${clover.dir}/classes"/>
+
+    <!--<property name="coverage.type" value="clover"/>-->
+    <property name="coverage.type" value="cobertura"/>
+
 
     <tstamp>
         <format property="build.date" pattern="yyyyMMdd HH:mm:ss"/>
@@ -99,13 +107,40 @@
         <path location="${test.class.dir}"/>
     </path>
 
+    <path id="clover.compile.classpath">
+        <path refid="core.compile.classpath"/>
+        <path refid="clover.classpath"/>
+    </path>
+
+    <path id="cobertura.classpath">
+        <fileset dir="${lib.dir}/cobertura">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="clover.classpath">
+        <fileset dir="${lib.dir}/clover">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="clover.instrumented.classpath">
+        <path location="${clover.class.dir}"/>
+        <path refid="clover.classpath"/>
+    </path>
+
+    <path id="cobertura.instrumented.classpath">
+        <path location="${cobertura.class.dir}"/>
+        <path refid="cobertura.classpath"/>
+    </path>
+
     <path id="atomic.test.classpath">
         <path location="${edge.class.dir}"/>
-        <!-- FIX SC600 Does it make sense to have the atomic on the end? -->
-        <path location="${core.instrumented.dir}/atomic"/>
+        <path refid="${coverage.type}.instrumented.classpath"/>
+        <path location="${cobertura.class.dir}"/>
+        <path location="${clover.class.dir}"/>
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
-        <path refid="cobertura.classpath"/>
         <path refid="jmock.classpath"/>
     </path>
 

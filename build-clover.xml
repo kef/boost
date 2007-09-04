@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="boost-clover" default="ignore" basedir=".">
+
+    <!-- FIX 70397 Wire in to main build as replacement for build-cobertura ... or lose. -->
+    <import file="build-init.xml"/>
+
+    <taskdef resource="cloverlib.xml" classpathref="clover.classpath"/>
+
+    <macrodef name="macro_report_clover">
+        <attribute name="code.type"/>
+        <attribute name="test.type"/>
+        <sequential>
+            <clover-html-report outdir="${clover.reports.dir}/@{code.type}/@{test.type}/clover_html"
+                                testresultsdir="${test.report.dir}/@{test.type}/xml"
+                                title="Boost me Baby"
+                                initstring="${clover.dir}/@{test.type}_coverage"
+                                failureProperty="coverage.@{code.type}.failed"
+                                haltOnFailure="true">
+            </clover-html-report>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="macro_instrument_clover">
+        <attribute name="code.type"/>
+        <attribute name="test.type"/>
+        <sequential>
+            <clover-instr destdir="${clover.src.dir}" initstring="${clover.dir}/@{test.type}_coverage">
+                <fileset dir="${@{code.type}.src.dir}">
+                    <include name="**/*.java"/>
+                    <exclude name="**/*Old*"/>
+                    <exclude name="**/nursery/**"/>
+                </fileset>
+            </clover-instr>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="macro_check_clover">
+        <attribute name="test.type"/>
+        <sequential>
+            <clover-check target="100%" initstring="${clover.dir}/@{test.type}_coverage"/>
+        </sequential>
+    </macrodef>
+
+    <target name="report_clover">
+        <macro_report_clover code.type="core" test.type="atomic"/>
+    </target>
+
+    <target name="instrument_clover">
+        <macro_instrument_clover code.type="core" test.type="atomic"/>
+    </target>
+
+    <target name="check_clover">
+        <macro_check_clover test.type="atomic"/>
+    </target>
+
+</project>

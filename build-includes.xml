@@ -4,9 +4,10 @@
     <import file="build-artifacts.xml"/>
     <import file="build-checkstyle.xml"/>
     <import file="build-cobertura.xml"/>
+    <import file="build-clover.xml"/>
     <import file="build-compile.xml"/>
     <import file="build-junit.xml"/>
     <import file="build-package.xml"/>
-    <import file="build-tests.xml"/>
     <import file="build-simian.xml"/>
+    <import file="build-tests.xml"/>
 </project>

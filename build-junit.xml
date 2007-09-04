@@ -14,7 +14,7 @@
             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
                 <sysproperty key="net.sourceforge.cobertura.datafile"
-                             file="${coverage.dir}/@{test.type}_coverage.ser"/>
+                             file="${cobertura.dir}/@{test.type}_coverage.ser"/>
                 <classpath refid="@{classpath.refid}"/>
                 <formatter type="xml"/>
                 <formatter type="plain"/>
