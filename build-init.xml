@@ -37,7 +37,7 @@
     <property name="clover.src.dir" location="${clover.dir}/src"/>
     <property name="clover.class.dir" location="${clover.dir}/classes"/>
 
-    <!-- Coverage Config cobertura/clover-->
+    <!-- Coverage Config cobertura/clover -->
     <property name="coverage.type" value="cobertura"/>
     <property name="min.coverage" value="100"/>
 
