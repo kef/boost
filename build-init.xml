@@ -2,7 +2,6 @@
 <project name="boost-init" default="ignore" basedir=".">
     <!-- SUGGEST Split into more files? -->
     <property name="label" value="build-dev"/>
-
     <property name="build.dir" location="build"/>
     <property name="config.dir" location="config"/>
     <property name="lib.dir" location="lib"/>
@@ -23,7 +22,6 @@
     <property name="checkstyle.cache.dir" location="${build.dir}/checkstyle-cache"/>
     <property name="simian.config.dir" location="${config.dir}/simian"/>
     <property name="artifacts.template.dir" location="${config.dir}/artifacts"/>
-
     <property name="simian.report.dir" location="${reports.dir}/simian"/>
     <property name="build.config.dir" location="${config.dir}/build"/>
     <!-- SUGGEST Remove the superfluous java indirection -->
@@ -39,9 +37,9 @@
     <property name="clover.src.dir" location="${clover.dir}/src"/>
     <property name="clover.class.dir" location="${clover.dir}/classes"/>
 
-    <!--<property name="coverage.type" value="clover"/>-->
+    <!-- Coverage Config cobertura/clover-->
     <property name="coverage.type" value="cobertura"/>
-
+    <property name="min.coverage" value="100"/>
 
     <tstamp>
         <format property="build.date" pattern="yyyyMMdd HH:mm:ss"/>
@@ -49,7 +47,6 @@
 
     <fileset id="atomic.tests" dir="${test.src.dir}" includes="**/*AtomicTest.java"/>
     <fileset id="demo.tests" dir="${demo.src.dir}" includes="**/*DemoTest.java"/>
-
 
     <patternset id="code.pattern">
         <include name="**/*.java"/>
@@ -85,7 +82,6 @@
     <fileset id="simian.rah.code" dir="${src.dir}" includes="**/kickstart/rah/**/*.java"/>
     <fileset id="simian.scream.code" dir="${src.dir}" includes="**/kickstart/scream/**/*.java"/>
     <fileset id="simian.sulley.code" dir="${src.dir}" includes="**/kickstart/sulley/**/*.java"/>
-
 
     <path id="edge.compile.classpath">
         <path refid="base64.classpath"/>

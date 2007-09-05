@@ -18,6 +18,7 @@
             <filterset>
                 <filter token="BUILD_DATE" value="${build.date}"/>
                 <filter token="BUILD_LABEL" value="${label}"/>
+                <filter token="coverage.type" value="${coverage.type}"/>
             </filterset>
         </copy>
     </target>

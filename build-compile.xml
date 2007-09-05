@@ -7,7 +7,6 @@
         <macro_compile version="1.4" src.type="core"/>
         <macro_compile version="1.5" src.type="test"/>
         <macro_compile version="1.5" src.type="demo"/>
-        <macro_compile version="1.4" src.type="clover"/>
     </target>
 
     <macrodef name="macro_compile">

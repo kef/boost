@@ -2,21 +2,25 @@
 <project name="boost-cobertura" default="ignore" basedir=".">
     <import file="build-init.xml"/>
 
-    <property name="quality.atomic.coverage.branch" value="100"/>
-    <property name="quality.atomic.coverage.line" value="100"/>
+    <property name="atomic.branch.coverage" value="${min.coverage}"/>
+    <property name="atomic.line.coverage" value="${min.coverage}"/>
 
-    <target name="instrument_cobertura">
+    <condition property="cobertura.on" value="true">
+        <equals arg1="${coverage.type}" arg2="cobertura"/>
+    </condition>
+
+    <target name="instrument_cobertura" if="cobertura.on">
         <macro_cobertura_instrument code.type="core" test.type="atomic"/>
     </target>
 
-    <target name="report_cobertura">
+    <target name="report_cobertura" if="cobertura.on">
         <macro_cobertura_report code.type="core" test.type="atomic"/>
     </target>
 
-    <target name="check_cobertura">
+    <target name="check_cobertura" if="cobertura.on">
         <macro_cobertura_check code.type="core" test.type="atomic"
-                               branch.limit="${quality.atomic.coverage.branch}"
-                               line.limit="${quality.atomic.coverage.line}"/>
+                               branch.limit="${atomic.branch.coverage}"
+                               line.limit="${atomic.line.coverage}"/>
     </target>
 
     <taskdef resource="tasks.properties" classpathref="cobertura.classpath"/>

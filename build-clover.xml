@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="boost-clover" default="ignore" basedir=".">
-
-    <!-- FIX 70397 Wire in to main build as replacement for build-cobertura ... or lose. -->
     <import file="build-init.xml"/>
+    <import file="build-compile.xml"/>
+
+    <condition property="clover.on" value="true">
+        <equals arg1="${coverage.type}" arg2="clover"/>
+    </condition>
+
+    <target name="instrument_clover" if="clover.on">
+        <macro_instrument_clover code.type="core" test.type="atomic"/>
+    </target>
+
+    <target name="compile_clover" if="clover.on">
+        <macro_compile version="1.4" src.type="clover"/>
+    </target>
+
+    <target name="report_clover" if="clover.on">
+        <macro_report_clover code.type="core" test.type="atomic"/>
+    </target>
+
+    <target name="check_clover" if="clover.on">
+        <macro_check_clover code.type="core" test.type="atomic"/>
+    </target>
 
     <taskdef resource="cloverlib.xml" classpathref="clover.classpath"/>
-
-    <macrodef name="macro_report_clover">
-        <attribute name="code.type"/>
-        <attribute name="test.type"/>
-        <sequential>
-            <clover-html-report outdir="${clover.reports.dir}/@{code.type}/@{test.type}/clover_html"
-                                testresultsdir="${test.report.dir}/@{test.type}/xml"
-                                title="Boost me Baby"
-                                initstring="${clover.dir}/@{test.type}_coverage"
-                                failureProperty="coverage.@{code.type}.failed"
-                                haltOnFailure="true">
-            </clover-html-report>
-        </sequential>
-    </macrodef>
 
     <macrodef name="macro_instrument_clover">
         <attribute name="code.type"/>
@@ -34,23 +39,26 @@
         </sequential>
     </macrodef>
 
-    <macrodef name="macro_check_clover">
+    <macrodef name="macro_report_clover">
+        <attribute name="code.type"/>
         <attribute name="test.type"/>
         <sequential>
-            <clover-check target="100%" initstring="${clover.dir}/@{test.type}_coverage"/>
+            <clover-html-report outdir="${clover.reports.dir}/@{code.type}/@{test.type}"
+                                testresultsdir="${test.report.dir}/@{test.type}/xml"
+                                title="Boost me Baby"
+                                initstring="${clover.dir}/@{test.type}_coverage">
+            </clover-html-report>
         </sequential>
     </macrodef>
 
-    <target name="report_clover">
-        <macro_report_clover code.type="core" test.type="atomic"/>
-    </target>
-
-    <target name="instrument_clover">
-        <macro_instrument_clover code.type="core" test.type="atomic"/>
-    </target>
-
-    <target name="check_clover">
-        <macro_check_clover test.type="atomic"/>
-    </target>
+    <macrodef name="macro_check_clover">
+        <attribute name="test.type"/>
+        <attribute name="code.type"/>
+        <sequential>
+            <clover-check target="${min.coverage}%" initstring="${clover.dir}/@{test.type}_coverage"
+                          failureProperty="coverage.@{code.type}.failed"
+                          haltOnFailure="true"/>
+        </sequential>
+    </macrodef>
 
 </project>
