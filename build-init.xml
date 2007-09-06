@@ -135,8 +135,6 @@
     <path id="atomic.test.classpath">
         <path location="${edge.class.dir}"/>
         <path refid="${coverage.type}.instrumented.classpath"/>
-        <path location="${cobertura.class.dir}"/>
-        <path location="${clover.class.dir}"/>
         <path location="${core.class.dir}"/>
         <path location="${test.class.dir}"/>
         <path refid="jmock.classpath"/>
