@@ -105,7 +105,9 @@
 
     <path id="clover.compile.classpath">
         <path refid="core.compile.classpath"/>
+        <path refid="test.compile.classpath"/>
         <path refid="clover.classpath"/>
+        <path location="${test.class.dir}"/>
     </path>
 
     <path id="cobertura.classpath">
