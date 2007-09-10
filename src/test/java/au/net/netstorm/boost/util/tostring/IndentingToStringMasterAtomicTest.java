@@ -48,7 +48,7 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String nullFieldResult() {
-        return "null";
+        return "NULL";
     }
 
     private String multipleNestedFieldResult() {

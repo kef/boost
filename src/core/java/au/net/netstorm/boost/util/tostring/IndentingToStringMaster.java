@@ -69,7 +69,7 @@ public class IndentingToStringMaster implements ToStringMaster {
 
     private String fieldValue(FieldValueSpec fieldValue) {
         Object value = fieldValue.getValue();
-        if (value == null) return "null";
+        if (value == null) return "NULL";
         return isArray(value) ? arrayValue(value) : value.toString();
     }
 
