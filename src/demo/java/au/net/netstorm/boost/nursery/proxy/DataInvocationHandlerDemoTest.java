@@ -28,7 +28,7 @@ public class DataInvocationHandlerDemoTest extends InteractionTestCase implement
         critter2 = proxy(nameSpec, legsSpec);
     }
 
-    // FIX DATA Get this working
+    // FIX DATAPROXY 2130 Get this working
 //    public void testMissingFieldsThrowsException() {
 //        FieldValueSpec[] fields = new FieldValueSpec[0];
 //        checkThrowsWithMessage(Centipede.class, fields, "No field supplied for method ");
@@ -40,14 +40,14 @@ public class DataInvocationHandlerDemoTest extends InteractionTestCase implement
         checkThrowsWithMessage(Centipede.class, fields, "Number of methods(2) and fields(3) differ");
     }
 
-    // FIX DATA Get this working
+    // FIX DATAPROXY 2130 Get this working
 //    public void testWrongTypeThrowsException() {
 //        FieldValueSpec wrong = new DefaultFieldValueSpec(NUM_LEGS, "should be an int");
 //        FieldValueSpec[] fields = {wrong, nameSpec};
 //        checkThrowsWithMessage(Centipede.class, fields, "No field supplied for method ");
 //    }
 
-    // FIX DATA Get this working
+    // FIX DATAPROXY 2130 Get this working
 //    public void testPrimitives() {
 //        FieldValueSpec[] fields = {new DefaultFieldValueSpec("someInt", new Integer(1))};
 //        checkThrowsWithMessage(PrimativeTestInterface.class, fields, "Primitive return types not supported");
@@ -60,7 +60,7 @@ public class DataInvocationHandlerDemoTest extends InteractionTestCase implement
         assertEquals(expectedName, actualName);
     }
 
-    // FIX DATA Get this working
+    // FIX DATAPROXY 2130 Get this working
 //    public void testObjectStuff() {
 //        assertEquals(critter1.hashCode(), critter2.hashCode());
 //        assertEquals(critter1, critter2);
