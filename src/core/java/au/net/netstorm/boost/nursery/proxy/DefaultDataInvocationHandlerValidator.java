@@ -65,7 +65,7 @@ public class DefaultDataInvocationHandlerValidator implements DataInvocationHand
     private void sameNumber(Method[] methods, FieldValueSpec[] fields) {
         int numMethods = methods.length;
         int numFields = fields.length;
-        if (numMethods != numFields)
-            throw new IllegalArgumentException("Number of methods(" + numMethods + ") and fields(" + numFields + ") differ");
+        if (numMethods != numFields) throw new IllegalArgumentException("Number of methods(" + numMethods
+                + ") and fields(" + numFields + ") differ");
     }
 }
