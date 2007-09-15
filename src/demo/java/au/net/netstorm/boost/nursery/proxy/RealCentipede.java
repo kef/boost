@@ -4,18 +4,18 @@ import au.net.netstorm.boost.primordial.Primordial;
 
 public class RealCentipede extends Primordial implements Centipede {
     private final String name;
-    private final int numLegs;
+    private final Integer numLegs;
 
     public RealCentipede(String name, int numLegs) {
         this.name = name;
         this.numLegs = numLegs;
     }
 
-    public int getNumLegs() {
+    public Integer numLegs() {
         return numLegs;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 }

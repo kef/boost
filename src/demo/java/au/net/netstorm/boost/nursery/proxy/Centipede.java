@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-public interface Centipede {
-    int getNumLegs();
-
-    String getName();
+public interface Centipede extends HasLegs {
+    String name();
 }
