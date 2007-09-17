@@ -19,6 +19,8 @@ import au.net.netstorm.boost.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.util.impl.ImplMapper;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 
+// SUGGEST: More work needed on this interface.
+
 // FIX 1914 Move these out of here.  Web, LazyGreens, SpiderBuilder.
 public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
