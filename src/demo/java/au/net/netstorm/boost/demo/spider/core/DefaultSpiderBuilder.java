@@ -12,6 +12,7 @@ import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Greenprints;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.LayeredGreenprints;
+import au.net.netstorm.boost.spider.registry.Redprints;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.util.impl.BasicImplMapper;
@@ -39,9 +40,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     // FIX 1887 Expose this.  Make public.
-    private Spider build(Blueprints redprints, Greenprints layers) {
+    private Spider build(Redprints redprints, Greenprints greenprints) {
         Instances instances = nuInstances();
-        Spider spider = assembler.assemble(layers, instances);
+        Spider spider = assembler.assemble(greenprints, instances);
         Registry registry = new DefaultRegistry(redprints, instances);
         preregister(spider, registry);
         return spider;
