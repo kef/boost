@@ -31,6 +31,7 @@ public class ResolverDemooooTest extends BoooostCase {
     private final FlavouredMapEngine blueprintEngine = new DefaultFlavouredMapEngine();
     private final FlavouredMap blueprintFlavours = new DefaultFlavouredMap(blueprintEngine);
     private final Blueprints blueprints = new DefaultBlueprints(blueprintFlavours);
+    // FIX 1887 Use the spider builder, not the assembler.
     private final SpiderAssembler spiderAssembler = new DefaultSpiderAssembler();
     private final Spider spider = spiderAssembler.assemble(blueprints, instances);
     public final Peeler peeler = new DefaultPeeler();
