@@ -35,9 +35,14 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Blueprints explicit = nuBlueprints();
         Greenprints[] layers = {explicit, lazy};
         Greenprints layered = new LayeredGreenprints(layers);
+        return build(explicit, layered);
+    }
+
+    // FIX 1887 Expose this.  Make public.
+    private Spider build(Blueprints redprints, Greenprints layers) {
         Instances instances = nuInstances();
-        Spider spider = assembler.assemble(layered, instances);
-        Registry registry = new DefaultRegistry(explicit, instances);
+        Spider spider = assembler.assemble(layers, instances);
+        Registry registry = new DefaultRegistry(redprints, instances);
         preregister(spider, registry);
         return spider;
     }
