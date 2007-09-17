@@ -26,13 +26,13 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Flavour unflavoured = Flavour.UNFLAVOURED;
     String stringFlavour;
     Flavour flavoured;
-    Blueprints blueprintsMock;
+    Redprints redprintsMock;
     Instances instancesMock;
     Registry subject;
 
     public void setUpFixtures() {
         flavoured = new DefaultFlavour(stringFlavour);
-        subject = new DefaultRegistry(blueprintsMock, instancesMock);
+        subject = new DefaultRegistry(redprintsMock, instancesMock);
     }
 
     public void testMultipleUnflavoured() {
@@ -71,12 +71,12 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
 
     private void setUpMultiple(Flavour flavour) {
         Blueprint multipleFootballBlueprint = blueprint(MULTIPLE, football, flavour);
-        expect.oneCall(blueprintsMock, VOID, "put", sportInterface, flavour, multipleFootballBlueprint);
+        expect.oneCall(redprintsMock, VOID, "put", sportInterface, flavour, multipleFootballBlueprint);
     }
 
     private void setUpSingle(Flavour flavour) {
         Blueprint singleFootballBlueprint = blueprint(SINGLE, football, flavour);
-        expect.oneCall(blueprintsMock, VOID, "put", sportInterface, flavour, singleFootballBlueprint);
+        expect.oneCall(redprintsMock, VOID, "put", sportInterface, flavour, singleFootballBlueprint);
     }
 
     private Blueprint blueprint(Stamp stamp, Class football, Flavour flavour) {

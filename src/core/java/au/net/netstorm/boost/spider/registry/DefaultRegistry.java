@@ -14,10 +14,10 @@ public final class DefaultRegistry implements Registry {
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;
     private final Instances instances;
-    private final Blueprints blueprints;
+    private final Redprints redprints;
 
-    public DefaultRegistry(Blueprints blueprints, Instances instances) {
-        this.blueprints = blueprints;
+    public DefaultRegistry(Redprints redprints, Instances instances) {
+        this.redprints = redprints;
         this.instances = instances;
     }
 
@@ -54,7 +54,7 @@ public final class DefaultRegistry implements Registry {
         Interface inyerface = iface(iface);
         Implementation implementation = new DefaultImplementation(impl);
         Blueprint blueprint = new DefaultBlueprint(stamp, implementation, flavour);
-        blueprints.put(inyerface, flavour, blueprint);
+        redprints.put(inyerface, flavour, blueprint);
     }
 
     private void instance(Class iface, String flavour, Object ref) {
