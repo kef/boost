@@ -34,6 +34,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     public Spider build(ImplMapper[] implMappers) {
         Greenprints lazy = greenprints(implMappers);
         Blueprints explicit = nuBlueprints();
+        // FIX 1887 Create and incorporate "newer" greenprint.
         Greenprints[] layers = {explicit, lazy};
         Greenprints layered = new LayeredGreenprints(layers);
         return build(explicit, layered);

@@ -36,6 +36,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     public ResolvedInstance resolve(Interface iface, Flavour flavour) {
+        // FIX 1887 Remove newer code.  Migrate to "newer" greenprint.
         if (isNewer(iface)) return nuNewer(iface);
         if (instances.exists(iface, flavour)) return instances.get(iface, flavour);
         return implementation(iface, flavour);
