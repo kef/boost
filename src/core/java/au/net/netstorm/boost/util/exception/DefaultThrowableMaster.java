@@ -27,4 +27,9 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         t.printStackTrace(writer);
         return stringWriter.toString();
     }
+
+    // FIX 60023 Complete me.
+    public Throwable root(Throwable t) {
+        return null;
+    }
 }

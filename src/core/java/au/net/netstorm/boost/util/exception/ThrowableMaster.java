@@ -6,4 +6,6 @@ public interface ThrowableMaster {
     boolean isChecked(Throwable t);
 
     String getTrace(Throwable t);
+
+    Throwable root(Throwable t);
 }
