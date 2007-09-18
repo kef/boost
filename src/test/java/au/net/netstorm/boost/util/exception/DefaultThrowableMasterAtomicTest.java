@@ -43,7 +43,7 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
             throw new IllegalStateException(":-)");
         } catch (IllegalStateException e) {
             Throwable result = subject.root(e);
-            // FIX 60023 Check that the result is what we expect.
+            assertEquals(e, result);
         }
     }
 

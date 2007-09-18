@@ -30,6 +30,6 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
 
     // FIX 60023 Complete me.
     public Throwable root(Throwable t) {
-        return null;
+        return t;
     }
 }
