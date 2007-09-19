@@ -43,10 +43,10 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         // FIX 1887 What to do here?
         Throwable ise = new IllegalStateException();
         Throwable ute = new UndeclaredThrowableException(ise);
-        // FIX 1887 Reinstate the UTE.
         Throwable ite = new InvocationTargetException(ute);
         checkReal(ise, ise);
         checkReal(ise, ute);
+        checkReal(ise, ite);
     }
 
     private void checkReal(Throwable expected, Throwable actual) {

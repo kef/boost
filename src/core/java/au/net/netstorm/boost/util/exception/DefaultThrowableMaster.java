@@ -32,6 +32,6 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
     public Throwable real(Throwable t) {
         Throwable cause = t.getCause();
         if (cause == null) return t;
-        return cause;
+        return real(cause);
     }
 }
