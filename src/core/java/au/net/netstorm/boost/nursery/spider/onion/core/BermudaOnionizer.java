@@ -19,9 +19,11 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 // FIX 1887 Use the Onion interface to mark the front door proxy.
 // FIX 1887 Create a utility to determine whether an object reference is an onion or not.
 
-// SUGGEST: Do some proxy magic in here ;)
-
 // FIX 1887 Complete.
+
+// FIX 1887 Remove this when done.
+
+// DEBT ClassDataAbstractionCoupling {
 public final class BermudaOnionizer implements Onionizer {
     private static final Interface DATA = new DefaultInterface(Data.class);
     private static final Interface ONION_SKIN = new DefaultInterface(OnionSkin.class);
@@ -29,13 +31,15 @@ public final class BermudaOnionizer implements Onionizer {
     private final ProxyFactory factory = assembler.assemble();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ArrayMaster arrays = new DefaultArrayMaster();
+    private final LordOfTheRings lord = new DefaultLordOfTheRings();
 
     // FIX 1887 Tidy.
     public ResolvedInstance onionise(Implementation impl, ResolvedInstance resolved) {
-        // FIX 1887 Re-instate 
+        // FIX BREADCRUMB 1887 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Return here.
         if (true) return resolved;
         Object ref = resolved.getRef();
         if (exemption(impl)) return resolved;
+        if (!lord.ringed(impl)) return resolved;
         return onionise(impl, ref);
     }
 
@@ -56,3 +60,4 @@ public final class BermudaOnionizer implements Onionizer {
         return typer.implementz(impl, DATA);
     }
 }
+// } DEBT ClassDataAbstractionCoupling
