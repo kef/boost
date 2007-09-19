@@ -38,13 +38,11 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         assertEquals(expectedTrace, actualTrace);
     }
 
+    // FIX 60023 Complete me.
     public void testRoot() {
-        try {
-            throw new IllegalStateException(":-)");
-        } catch (IllegalStateException e) {
-            Throwable result = subject.root(e);
-            assertEquals(e, result);
-        }
+        IllegalStateException exception = new IllegalStateException(":-)");
+        Throwable result = subject.root(exception);
+        assertEquals(exception, result);
     }
 
     private void isChecked(boolean expected, Throwable throwable) {
