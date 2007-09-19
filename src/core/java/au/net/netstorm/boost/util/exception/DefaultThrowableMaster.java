@@ -29,7 +29,11 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
     }
 
     public Throwable real(Throwable t) {
-        // FIX 1887 Complete.
+//        if (t == null) return null;
+//        if (InvocationTargetException.class.isAssignableFrom(t.getClass())) {
+//            return t.getCause();
+//        }
+//        return t;
         return t;
     }
 }

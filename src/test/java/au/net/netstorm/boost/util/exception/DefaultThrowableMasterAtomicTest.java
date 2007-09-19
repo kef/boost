@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.exception;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
@@ -39,11 +40,17 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
     }
 
     public void testReal() {
-        // FIX 1887 Complete.
-        Throwable t = null;
-        Throwable actual = subject.real(t);
-        Throwable expected = null;
-        assertEquals(expected, actual);
+        // FIX 1887 What to do here?
+        Throwable ise = new IllegalStateException();
+        Throwable ute = new UndeclaredThrowableException(ise);
+        Throwable ite = new InvocationTargetException(ute);
+        checkReal(ise, ise);
+//        checkReal(ise, ite);
+    }
+
+    private void checkReal(Throwable expected, Throwable actual) {
+        Throwable cause = subject.real(actual);
+        assertEquals(expected, cause);
     }
 
     private void isChecked(boolean expected, Throwable throwable) {
