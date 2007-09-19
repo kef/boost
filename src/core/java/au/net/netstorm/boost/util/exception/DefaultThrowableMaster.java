@@ -28,12 +28,10 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return stringWriter.toString();
     }
 
+    // FIX 1887 ITEs are different.  It's about getTargetException().
     public Throwable real(Throwable t) {
-//        if (t == null) return null;
-//        if (InvocationTargetException.class.isAssignableFrom(t.getClass())) {
-//            return t.getCause();
-//        }
-//        return t;
-        return t;
+        Throwable cause = t.getCause();
+        if (cause == null) return t;
+        return cause;
     }
 }
