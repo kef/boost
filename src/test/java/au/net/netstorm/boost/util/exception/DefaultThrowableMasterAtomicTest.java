@@ -32,21 +32,22 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         checkThrowsOriginal(ERROR_2);
     }
 
-    public void testGetStackTrace() {
+    public void testTrace() {
         TestThrowable throwable = new TestThrowable(expectedTrace);
-        String actualTrace = subject.getTrace(throwable);
+        String actualTrace = subject.trace(throwable);
         assertEquals(expectedTrace, actualTrace);
     }
 
-    // FIX 60023 Complete me.
-    public void testRoot() {
-        IllegalStateException exception = new IllegalStateException(":-)");
-        Throwable result = subject.root(exception);
-        assertEquals(exception, result);
+    public void testReal() {
+        // FIX 1887 Complete.
+        Throwable t = null;
+        Throwable actual = subject.real(t);
+        Throwable expected = null;
+        assertEquals(expected, actual);
     }
 
     private void isChecked(boolean expected, Throwable throwable) {
-        boolean result = subject.isChecked(throwable);
+        boolean result = subject.checked(throwable);
         assertEquals(expected, result);
     }
 

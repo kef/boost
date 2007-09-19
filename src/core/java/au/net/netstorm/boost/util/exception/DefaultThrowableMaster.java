@@ -14,22 +14,22 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         throw new UndeclaredThrowableException(t);
     }
 
-    public boolean isChecked(Throwable t) {
+    public boolean checked(Throwable t) {
         if (t instanceof RuntimeException) return false;
         if (t instanceof Error) return false;
         return true;
     }
 
     // SUGGEST: Does this really belong.
-    public String getTrace(Throwable t) {
+    public String trace(Throwable t) {
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         t.printStackTrace(writer);
         return stringWriter.toString();
     }
 
-    // FIX 60023 Complete me.
-    public Throwable root(Throwable t) {
+    public Throwable real(Throwable t) {
+        // FIX 1887 Complete.
         return t;
     }
 }

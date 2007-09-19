@@ -3,9 +3,9 @@ package au.net.netstorm.boost.util.exception;
 public interface ThrowableMaster {
     void rethrow(Throwable t);
 
-    boolean isChecked(Throwable t);
+    boolean checked(Throwable t);
 
-    String getTrace(Throwable t);
+    String trace(Throwable t);
 
-    Throwable root(Throwable t);
+    Throwable real(Throwable t);
 }

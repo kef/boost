@@ -10,7 +10,7 @@ public final class WebThrowableSupport implements ThrowableSupport {
     private static final int NOT_FOUND = -1;
 
     public Throwable translate(Throwable t) {
-        String trace = THROWABLE_MASTER.getTrace(t);
+        String trace = THROWABLE_MASTER.trace(t);
         if (contains(trace, UnresolvedDependencyException.class)) return suggestWeb(t);
         if (contains(trace, FlavourMapException.class)) return suggestWeb(t);
         return t;
