@@ -28,6 +28,8 @@ public interface MockExpectations {
 
     void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3);
 
+    void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4);
+
     void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5);
 
     void oneCall(Object ref, Throwable throwable, String methodName, Object parameter1, Object parameter2, Object parameter3, Object parameter4, Object parameter5, Object parameter6);

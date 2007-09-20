@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.exception;
 
-import au.net.netstorm.boost.spider.flavour.FlavourMapException;
+import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.util.exception.ThrowableMaster;
@@ -12,7 +12,7 @@ public final class WebThrowableSupport implements ThrowableSupport {
     public Throwable translate(Throwable t) {
         String trace = THROWABLE_MASTER.trace(t);
         if (contains(trace, UnresolvedDependencyException.class)) return suggestWeb(t);
-        if (contains(trace, FlavourMapException.class)) return suggestWeb(t);
+        if (contains(trace, InterfaceMapException.class)) return suggestWeb(t);
         return t;
     }
 

@@ -1,28 +1,27 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.flavour.FlavouredMap;
+import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultInstances implements Instances {
-    private final FlavouredMap map;
+    private final InterfaceMap map;
 
-    public DefaultInstances(FlavouredMap map) {
+    public DefaultInstances(InterfaceMap map) {
         this.map = map;
     }
 
-    public void put(Interface iface, Flavour flavour, ResolvedInstance instance) {
+    public void put(Interface iface, ResolvedInstance instance) {
         check(iface, instance);
-        map.put(iface, flavour, instance);
+        map.put(iface, instance);
     }
 
-    public ResolvedInstance get(Interface iface, Flavour flavour) {
-        return (ResolvedInstance) map.get(iface, flavour);
+    public ResolvedInstance get(Interface iface) {
+        return (ResolvedInstance) map.get(iface);
     }
 
-    public boolean exists(Interface iface, Flavour flavour) {
-        return map.exists(iface, flavour);
+    public boolean exists(Interface iface) {
+        return map.exists(iface);
     }
 
     private void check(Interface iface, ResolvedInstance instance) {

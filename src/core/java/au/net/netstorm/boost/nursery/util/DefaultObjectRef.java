@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.nursery.util;
 
-public final class DefaultObjectRef implements ObjectRef {
+import au.net.netstorm.boost.primordial.Primordial;
+
+public final class DefaultObjectRef extends Primordial implements ObjectRef {
     private final Object obj;
 
     public DefaultObjectRef(Object obj) {

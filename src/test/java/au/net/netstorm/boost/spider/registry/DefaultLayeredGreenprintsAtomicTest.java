@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.Interface;
@@ -13,7 +12,6 @@ public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCa
     Greenprints bottom;
     Greenprints none;
     Interface iface;
-    Flavour flavour;
     Blueprint blueprint;
 
     public void setUpFixtures() {
@@ -34,7 +32,7 @@ public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCa
     public void testNone() {
         checkExists(false, none);
         try {
-            none.get(iface, flavour);
+            none.get(iface);
             fail();
         } catch (NonExistentBlueprintException expected) { }
     }
@@ -45,17 +43,17 @@ public final class DefaultLayeredGreenprintsAtomicTest extends InteractionTestCa
     }
 
     private void checkBlueprint(Greenprints layer) {
-        Blueprint actual = layer.get(iface, flavour);
+        Blueprint actual = layer.get(iface);
         assertEquals(blueprint, actual);
     }
 
     private void checkExists(boolean expected, Greenprints layer) {
-        boolean actual = layer.exists(iface, flavour);
+        boolean actual = layer.exists(iface);
         assertEquals(expected, actual);
     }
 
     private MockGreenprints mock(Blueprint blueprint, boolean exists) {
-        return new MockGreenprints(blueprint, exists, iface, flavour);
+        return new MockGreenprints(blueprint, exists, iface);
     }
 
     private Greenprints prints(Greenprints g1, Greenprints g2, Greenprints g3) {

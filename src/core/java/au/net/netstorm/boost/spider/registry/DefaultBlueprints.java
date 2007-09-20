@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.flavour.FlavouredMap;
+import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
@@ -9,26 +8,23 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultBlueprints implements Blueprints {
     private TypeMaster typer = new DefaultTypeMaster();
-    private final FlavouredMap map;
+    private final InterfaceMap map;
 
-    public DefaultBlueprints(FlavouredMap map) {
+    public DefaultBlueprints(InterfaceMap map) {
         this.map = map;
     }
 
-    public void put(Interface iface, Flavour flavour, Blueprint blueprint) {
+    public void put(Interface iface, Blueprint blueprint) {
         check(iface, blueprint);
-        map.put(iface, flavour, blueprint);
+        map.put(iface, blueprint);
     }
 
-    public Blueprint get(Interface iface, Flavour flavour) {
-        // FIX 1914 TDD Pop if does not exist.
-        // FIX 1914 Same with DefaultInstances.
-//        if (!exists(iface, flavour)) throw new NonExistentBlueprintException(iface, flavour);
-        return (Blueprint) map.get(iface, flavour);
+    public Blueprint get(Interface iface) {
+        return (Blueprint) map.get(iface);
     }
 
-    public boolean exists(Interface iface, Flavour flavour) {
-        return map.exists(iface, flavour);
+    public boolean exists(Interface iface) {
+        return map.exists(iface);
     }
 
     private void check(Interface iface, Blueprint blueprint) {

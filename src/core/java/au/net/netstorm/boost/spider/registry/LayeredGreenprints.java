@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class LayeredGreenprints implements Greenprints {
@@ -10,16 +9,16 @@ public final class LayeredGreenprints implements Greenprints {
         this.layers = layers;
     }
 
-    public Blueprint get(Interface iface, Flavour flavour) {
+    public Blueprint get(Interface iface) {
         for (int i = 0; i < layers.length; i++) {
-            if (layers[i].exists(iface, flavour)) return layers[i].get(iface, flavour);
+            if (layers[i].exists(iface)) return layers[i].get(iface);
         }
-        throw new NonExistentBlueprintException(iface, flavour);
+        throw new NonExistentBlueprintException(iface);
     }
 
-    public boolean exists(Interface iface, Flavour flavour) {
+    public boolean exists(Interface iface) {
         for (int i = 0; i < layers.length; i++) {
-            if (layers[i].exists(iface, flavour)) return true;
+            if (layers[i].exists(iface)) return true;
         }
         return false;
     }

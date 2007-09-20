@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.flavour.FlavouredMap;
+import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -15,9 +14,8 @@ public final class DefaultInstancesAtomicTest extends InteractionTestCase implem
     Tree jacaranda = new Jacaranda();
     ResolvedInstance dinosaur = ref(tyrannosaurus);
     ResolvedInstance tree = ref(jacaranda);
-    FlavouredMap mapMock;
+    InterfaceMap mapMock;
     Boolean exists;
-    Flavour flavour;
     Instances subject;
 
     public void setUpFixtures() {
@@ -25,27 +23,27 @@ public final class DefaultInstancesAtomicTest extends InteractionTestCase implem
     }
 
     public void testGet() {
-        expect.oneCall(mapMock, dinosaur, "get", iface, flavour);
-        ResolvedInstance actual = subject.get(iface, flavour);
+        expect.oneCall(mapMock, dinosaur, "get", iface);
+        ResolvedInstance actual = subject.get(iface);
         assertEquals(dinosaur, actual);
     }
 
-    public void testExists() {
-        expect.oneCall(mapMock, exists, "exists", iface, flavour);
-        boolean actual = subject.exists(iface, flavour);
+    public void testExistence() {
+        expect.oneCall(mapMock, exists, "exists", iface);
+        boolean actual = subject.exists(iface);
         assertEquals(exists, actual);
     }
 
     public void testIllegalPut() {
         try {
-            subject.put(iface, flavour, tree);
+            subject.put(iface, tree);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testPut() {
-        expect.oneCall(mapMock, VOID, "put", iface, flavour, dinosaur);
-        subject.put(iface, flavour, dinosaur);
+        expect.oneCall(mapMock, VOID, "put", iface, dinosaur);
+        subject.put(iface, dinosaur);
     }
 
     private Interface iface(Class cls) {

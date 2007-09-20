@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.Flavour;
-import au.net.netstorm.boost.spider.flavour.FlavouredMap;
+import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -14,38 +13,37 @@ public final class DefaultBlueprintsAtomicTest extends InteractionTestCase imple
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);
     Blueprint blueprint;
-    FlavouredMap flavouredMapMock;
+    InterfaceMap mapMock;
     Boolean exists;
-    Flavour flavour;
     Implementation impl;
     TypeMaster typerMock;
     Blueprints subject;
 
     public void setUpFixtures() {
-        subject = new DefaultBlueprints(flavouredMapMock);
-        blueprint = blueprint(Tyrannosaurus.class, flavour);
+        subject = new DefaultBlueprints(mapMock);
+        blueprint = blueprint(Tyrannosaurus.class);
     }
 
     public void testExists() {
-        expect.oneCall(flavouredMapMock, exists, "exists", iface, flavour);
-        boolean actual = subject.exists(iface, flavour);
+        expect.oneCall(mapMock, exists, "exists", iface);
+        boolean actual = subject.exists(iface);
         assertEquals(exists, actual);
     }
 
     public void testGet() {
-        expect.oneCall(flavouredMapMock, blueprint, "get", iface, flavour);
-        Blueprint actual = subject.get(iface, flavour);
+        expect.oneCall(mapMock, blueprint, "get", iface);
+        Blueprint actual = subject.get(iface);
         assertEquals(blueprint, actual);
     }
 
     public void testPut() {
-        expect.oneCall(flavouredMapMock, VOID, "put", iface, flavour, blueprint);
-        subject.put(iface, flavour, blueprint);
+        expect.oneCall(mapMock, VOID, "put", iface, blueprint);
+        subject.put(iface, blueprint);
     }
 
     public void testIllegalPut() {
         try {
-            subject.put(dodgy, flavour, blueprint);
+            subject.put(dodgy, blueprint);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
     }
@@ -54,8 +52,8 @@ public final class DefaultBlueprintsAtomicTest extends InteractionTestCase imple
         return new DefaultInterface(cls);
     }
 
-    private Blueprint blueprint(Class cls, Flavour flavour) {
+    private Blueprint blueprint(Class cls) {
         Implementation impl = new DefaultImplementation(cls);
-        return new DefaultBlueprint(Stamp.MULTIPLE, impl, flavour);
+        return new DefaultBlueprint(Stamp.MULTIPLE, impl);
     }
 }

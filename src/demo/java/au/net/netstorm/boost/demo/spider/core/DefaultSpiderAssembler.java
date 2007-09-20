@@ -28,8 +28,12 @@ import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHa
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
+import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Greenprints;
+import au.net.netstorm.boost.spider.registry.GreenprintsFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Resolver;
@@ -48,9 +52,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
-    public Spider assemble(Greenprints greenprints, Instances instances) {
+    public Spider assemble(Greenprints greenprints, Instances instances, Factories factories) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, greenprints);
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, greenprints, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
@@ -77,10 +81,27 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private ResolverEngine assembleResolver(
             ProviderEngine provider,
-            Instances instancer,
-            Greenprints greenprints) {
-        NewerAssembler newerAssembler = new DefaultNewerAssembler(provider);
-        return new DefaultResolverEngine(provider, greenprints, instancer, newerAssembler);
+            Instances instances,
+            Greenprints greenprints,
+            Factories factories) {
+        setUpFactories(provider, greenprints, factories);
+        return new DefaultResolverEngine(instances, factories, provider);
+    }
+
+    private void setUpFactories(ProviderEngine provider, Greenprints layered, Factories factories) {
+        greenprints(factories, layered);
+        newer(factories, provider);
+    }
+
+    private void greenprints(Factories factories, Greenprints layered) {
+        Factory greenprints = new GreenprintsFactory(layered);
+        factories.add(greenprints);
+    }
+
+    private void newer(Factories factories, ProviderEngine provider) {
+        NewerAssembler newer = new DefaultNewerAssembler(provider);
+        Factory newerFactory = new NewerFactory(newer);
+        factories.add(newerFactory);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {

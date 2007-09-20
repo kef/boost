@@ -7,9 +7,5 @@ public interface Registry {
 
     void instance(Class iface, Object ref);
 
-    void multiple(Class iface, Class impl, String flavour);
-
-    void single(Class iface, Class impl, String flavour);
-
-    void instance(Class iface, Object ref, String flavour);
+    void factory(Factory factory);
 }

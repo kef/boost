@@ -6,5 +6,5 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public interface ProviderEngine {
     ResolvedInstance provide(Implementation implementation);
 
-    ResolvedInstance provide(Implementation implementation, Object[] resolved);
+    ResolvedInstance provide(Implementation implementation, Object[] params);
 }
