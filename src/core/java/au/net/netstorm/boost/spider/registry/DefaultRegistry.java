@@ -34,6 +34,7 @@ public final class DefaultRegistry implements Registry {
         instances.put(inyerface, instance);
     }
 
+    // FIX 2145 Push out as Class.
     public void factory(Factory factory) {
         factories.add(factory);
     }
