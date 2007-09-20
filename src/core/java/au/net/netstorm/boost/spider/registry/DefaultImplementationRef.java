@@ -3,6 +3,7 @@ package au.net.netstorm.boost.spider.registry;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Implementation;
 
+// FIX 2145 Revisit this.  Can we just use Implementation.
 public final class DefaultImplementationRef extends Primordial implements ImplementationRef {
     private final Implementation impl;
 
