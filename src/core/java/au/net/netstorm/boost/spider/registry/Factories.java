@@ -1,12 +1,9 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public interface Factories {
-    // FIX 2145 Remove dupe with "factory" interface.
-    ResolvedInstance get(Interface iface, ImplementationRef host, ProviderEngine provider, Instances instances);
+    Factory find(Interface iface);
 
     void add(Factory factory);
 }

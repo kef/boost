@@ -3,6 +3,7 @@ package au.net.netstorm.boost.spider.resolve;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.ImplementationRef;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.test.automock.HasFixtures;
@@ -23,6 +24,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Factories factoriesMock;
     Blueprint jimBlueprint;
     ResolverEngine subject;
+    Factory factoryMock;
 
     public void setUpFixtures() {
         subject = new DefaultResolverEngine(instancesMock, factoriesMock, providerMock);
@@ -30,7 +32,8 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
 
     public void testNoResolvedInstance() {
         expect.oneCall(instancesMock, false, "exists", jim);
-        expect.oneCall(factoriesMock, spooInstance, "get", jim, hostDummy, providerMock, instancesMock);
+        expect.oneCall(factoriesMock, factoryMock, "find", jim);
+        expect.oneCall(factoryMock, spooInstance, "get", jim, hostDummy, providerMock, instancesMock);
         ResolvedInstance result = subject.resolve(jim, hostDummy);
         assertEquals(jimResolvedInstance, result);
     }

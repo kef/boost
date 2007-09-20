@@ -37,9 +37,8 @@ public final class DefaultFactoriesAtomicTest extends InteractionTestCase implem
 
     private void checkGetSucceeds() {
         setUpFactories(true);
-        expect.oneCall(factoryMock, resolvedInstanceDummy, "get", ifaceDummy, hostDummy, providerDummy, instancesDummy);
-        ResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerDummy, instancesDummy);
-        assertEquals(resolvedInstanceDummy, actual);
+        Factory actual = subject.find(ifaceDummy);
+        assertEquals(factoryMock, actual);
     }
 
     private void setUpFactories(boolean canHandle) {
@@ -49,7 +48,7 @@ public final class DefaultFactoriesAtomicTest extends InteractionTestCase implem
 
     private void checkException() {
         try {
-            subject.get(ifaceDummy, hostDummy, providerDummy, instancesDummy);
+            subject.find(ifaceDummy);
             fail();
         } catch (CannotProvideException expected) { }
     }
