@@ -36,7 +36,10 @@
                     <exclude name="**/nursery/**"/>
                 </fileset>
                 <fileset dir="${test.src.dir}">
-                    <include name="**/*Test.java"/>
+                    <include name="**/*.java"/>
+                </fileset>
+                <fileset dir="${demo.src.dir}">
+                    <include name="**/*.java"/>
                 </fileset>
             </clover-instr>
         </sequential>

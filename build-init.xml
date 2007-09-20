@@ -125,6 +125,7 @@
     <path id="clover.instrumented.classpath">
         <path location="${clover.class.dir}"/>
         <path refid="clover.classpath"/>
+        <path refid="junit.classpath"/>
     </path>
 
     <path id="cobertura.instrumented.classpath">

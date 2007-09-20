@@ -39,14 +39,9 @@ public final class ConcreteRandomProvider implements SpecificProvider {
         if (type == Method.class) return randomMethod();
         if (type == Character.class) return randomCharacter();
         if (type == Throwable.class) return randomThrowable();
+        if (type == RuntimeException.class) return randomRuntimeException();
         if (type == Date.class) return randomDate();
         return null;
-    }
-
-    private Date randomDate() {
-        long longone = randomLong().longValue();
-        long abs = Math.abs(longone);
-        return new Date(abs);
     }
 
     private String randomString() {
@@ -107,6 +102,17 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     private Throwable randomThrowable() {
         String message = randomString();
         return new Throwable(message);
+    }
+
+    private RuntimeException randomRuntimeException() {
+        String message = randomString();
+        return new RuntimeException(message);
+    }
+
+    private Date randomDate() {
+        long longone = randomLong().longValue();
+        long abs = Math.abs(longone);
+        return new Date(abs);
     }
 } // } OK JavaNCSS|CyclomaticComplexity|ReturnCount
 
