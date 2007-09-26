@@ -52,6 +52,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
+    // SUGGEST: Move the creation/registration of the factories up one level.  Use the registry.
     public Spider assemble(Greenprints greenprints, Instances instances, Factories factories) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, greenprints, factories);
