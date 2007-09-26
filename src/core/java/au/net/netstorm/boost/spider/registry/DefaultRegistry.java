@@ -56,6 +56,7 @@ public final class DefaultRegistry implements Registry {
     private void checkIsFactory(Class cls) {
         Implementation impl = new DefaultImplementation(cls);
         Interface iface = new DefaultInterface(Factory.class);
+        // FIX 2145 Use the DoesNotImplementFactoryException.
         if (!isFactory(impl, iface)) throw new IllegalArgumentException();
     }
 
