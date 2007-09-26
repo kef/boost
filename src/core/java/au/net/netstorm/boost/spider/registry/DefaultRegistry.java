@@ -48,13 +48,20 @@ public final class DefaultRegistry implements Registry {
     }
 
     public void factory(Class cls) {
-        // FIX 74285 Check that the class passed in implements "Factory".
-        Implementation impl = new DefaultImplementation(cls);
-        Interface iface = new DefaultInterface(Factory.class);
-        typer.implementz(impl, iface);
+        checkIsFactory(cls);
         Factory factory = (Factory) classer.newInstance(cls);
         injector.inject(factory);
         factories.add(factory);
+    }
+
+    private void checkIsFactory(Class cls) {
+        Implementation impl = new DefaultImplementation(cls);
+        Interface iface = new DefaultInterface(Factory.class);
+        if (!isFactory(impl, iface)) throw new IllegalArgumentException();
+    }
+
+    private boolean isFactory(Implementation impl, Interface iface) {
+        return typer.implementz(impl, iface);
     }
 
     private void blueprint(Class iface, Class impl, Stamp stamp) {

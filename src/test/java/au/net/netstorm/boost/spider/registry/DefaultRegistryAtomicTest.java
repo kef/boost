@@ -63,15 +63,26 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
         subject.factory(factoryDummy);
     }
 
-    // FIX BREADCRUMB 74285 Complete me.
-    public void testFactoryByClass() {
-        Implementation impl = new DefaultImplementation(soapFactory);
-        Interface iface = new DefaultInterface(Factory.class);
-        expect.oneCall(typerMock, true, "implementz", impl, iface);
+    public void testFactoryByClassSucceeds() {
+        setUpFactoryCheck(true);
         expect.oneCall(classerMock, factoryDummy, "newInstance", soapFactory);
         expect.oneCall(injectorMock, VOID, "inject", factoryDummy);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
         subject.factory(soapFactory);
+    }
+
+    public void testFactoryByClassFails() {
+        setUpFactoryCheck(false);
+        try {
+            subject.factory(soapFactory);
+            fail();
+        } catch (IllegalArgumentException expected) { }
+    }
+
+    private void setUpFactoryCheck(boolean isFactory) {
+        Implementation impl = new DefaultImplementation(soapFactory);
+        Interface iface = new DefaultInterface(Factory.class);
+        expect.oneCall(typerMock, isFactory, "implementz", impl, iface);
     }
 
     private void setUpInstance() {
