@@ -60,6 +60,7 @@ public final class DefaultRegistry implements Registry {
         if (!isFactory(impl, iface)) throw new IllegalArgumentException();
     }
 
+    // FIX 2145 Create a factory builder.
     private Factory buildFactory(Class cls) {
         Factory factory = (Factory) classer.newInstance(cls);
         injector.inject(factory);
