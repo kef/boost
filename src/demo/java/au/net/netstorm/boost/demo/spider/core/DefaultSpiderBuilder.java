@@ -49,7 +49,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private void preregister(Blueprints explicit, Instances instances, Factories factories, Spider spider) {
-        Registry registry = new DefaultRegistry(explicit, instances, factories);
+        Registry registry = new DefaultRegistry(explicit, instances, factories, spider);
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);

@@ -6,6 +6,7 @@ import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
@@ -19,7 +20,7 @@ public final class NewerFactory implements Factory {
         this.newer = newer;
     }
 
-    public ResolvedInstance get(Interface iface, ImplementationRef host, ProviderEngine provider, Instances instances) {
+    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider, Instances instances) {
         ResolvedInstance newerInstance = nuNewer(iface);
         instances.put(iface, newerInstance);
         return newerInstance;

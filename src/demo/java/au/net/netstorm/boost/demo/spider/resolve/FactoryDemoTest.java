@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.spider.resolve;
 public final class FactoryDemoTest extends ResolverDemooooTest {
 
     {
-        registry.factory(new MemorabiliaFactory());
+        registry.factory(MemorabiliaFactory.class);
         registry.single(OjSimpson.class, JailedOjSimpson.class);
     }
 

@@ -4,8 +4,6 @@ import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
-import au.net.netstorm.boost.spider.registry.DefaultImplementationRef;
-import au.net.netstorm.boost.spider.registry.ImplementationRef;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.test.automock.HasFixtures;
@@ -23,10 +21,10 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
     EdgeClass classer = new DefaultEdgeClass();
     Interface happyChap = new DefaultInterface(HappyChap.class);
     Interface beerInHisTummy = new DefaultInterface(BeerInHisTummy.class);
-    FieldResolver subject;
     ResolverEngine resolverMock;
     ResolvedInstance resolved;
-    ImplementationRef host;
+    FieldResolver subject;
+    Implementation host;
 
     public void setUpFixtures() {
         subject = new DefaultFieldResolver(resolverMock);
@@ -61,8 +59,7 @@ public final class DefaultFieldResolverAtomicTest extends InteractionTestCase im
 
     private void setupHost(Field field) {
         Class hostClass = field.getDeclaringClass();
-        Implementation hostImpl = new DefaultImplementation(hostClass);
-        host = new DefaultImplementationRef(hostImpl);
+        host = new DefaultImplementation(hostClass);
     }
 
     private void setupThrowsExpectations() {

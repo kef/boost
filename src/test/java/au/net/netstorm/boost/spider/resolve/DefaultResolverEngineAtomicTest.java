@@ -4,12 +4,12 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
-import au.net.netstorm.boost.spider.registry.ImplementationRef;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
@@ -18,7 +18,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     Interface spoo = iface(Spoo.class);
     Interface jim = iface(Jim.class);
     ResolvedInstance spooInstance;
-    ImplementationRef hostDummy;
+    Implementation hostDummy;
     ProviderEngine providerMock;
     Instances instancesMock;
     Factories factoriesMock;

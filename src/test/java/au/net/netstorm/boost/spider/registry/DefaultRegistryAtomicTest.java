@@ -1,8 +1,12 @@
 package au.net.netstorm.boost.spider.registry;
 
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -14,21 +18,26 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
         implements HasFixtures, LazyFields {
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;
-    Class sport = Sport.class;
+    Class soapFactory = SoapFactory.class;
     Class cereal = BreakfastCereal.class;
     Class football = Football.class;
-    CocoPops cocoPops = new CocoPops();
+    Class sport = Sport.class;
+    FieldTestUtil fielder = new DefaultFieldTestUtil();
     Interface sportInterface = new DefaultInterface(sport);
     Interface cerealInterface = new DefaultInterface(cereal);
+    CocoPops cocoPops = new CocoPops();
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
+    EdgeClass classerMock;
+    Injector injectorMock;
     Factory factoryDummy;
     Registry subject;
 
     public void setUpFixtures() {
-        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock);
+        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, injectorMock);
+        fielder.setInstance(subject, "classer", classerMock);
     }
 
     public void testMultiple() {
@@ -46,9 +55,16 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
         subject.instance(cereal, cocoPops);
     }
 
-    public void testFactory() {
+    public void testFactoryByRef() {
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
         subject.factory(factoryDummy);
+    }
+
+    public void testFactoryByClass() {
+        expect.oneCall(classerMock, factoryDummy, "newInstance", soapFactory);
+        expect.oneCall(injectorMock, VOID, "inject", factoryDummy);
+        expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
+        subject.factory(soapFactory);
     }
 
     private void setUpInstance() {

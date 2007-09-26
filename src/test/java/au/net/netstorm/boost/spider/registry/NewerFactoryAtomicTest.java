@@ -8,6 +8,7 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
@@ -16,7 +17,7 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
     private static final Interface NEW_TED = new DefaultInterface(NewTed.class);
     ResolvedInstance newerInstance;
     ProviderEngine providerDummy;
-    ImplementationRef hostDummy;
+    Implementation hostDummy;
     NewerAssembler newerMock;
     Instances instancesMock;
     NewerFactory subject;

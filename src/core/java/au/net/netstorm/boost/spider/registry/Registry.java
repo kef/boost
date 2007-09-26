@@ -8,4 +8,6 @@ public interface Registry {
     void instance(Class iface, Object ref);
 
     void factory(Factory factory);
+
+    void factory(Class cls);
 }

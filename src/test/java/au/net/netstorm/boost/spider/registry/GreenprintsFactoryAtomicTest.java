@@ -45,7 +45,7 @@ public final class GreenprintsFactoryAtomicTest extends InteractionTestCase impl
     }
 
     private void checkGetSucceeds() {
-        ResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock, instancesMock);
+        ResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock, instancesMock);
         assertEquals(instanceMock, actual);
     }
 }

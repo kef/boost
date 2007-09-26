@@ -13,7 +13,7 @@ public final class GreenprintsFactory implements Factory {
         this.greenprints = greenprints;
     }
 
-    public ResolvedInstance get(Interface iface, ImplementationRef host, ProviderEngine provider, Instances instances) {
+    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider, Instances instances) {
         Blueprint blueprint = greenprints.get(iface);
         Implementation impl = blueprint.getImplementation();
         ResolvedInstance result = provider.provide(impl);

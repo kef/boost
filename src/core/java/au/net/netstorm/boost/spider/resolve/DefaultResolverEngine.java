@@ -3,8 +3,8 @@ package au.net.netstorm.boost.spider.resolve;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
-import au.net.netstorm.boost.spider.registry.ImplementationRef;
 import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
@@ -19,12 +19,12 @@ public final class DefaultResolverEngine implements ResolverEngine {
         this.provider = provider;
     }
 
-    public ResolvedInstance resolve(Interface iface, ImplementationRef host) {
+    public ResolvedInstance resolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
         return manufacture(iface, host);
     }
 
-    private ResolvedInstance manufacture(Interface iface, ImplementationRef host) {
+    private ResolvedInstance manufacture(Interface iface, Implementation host) {
         Factory factory = factories.find(iface);
         return factory.get(iface, host, provider, instances);
     }
