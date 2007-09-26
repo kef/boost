@@ -49,8 +49,7 @@ public final class DefaultRegistry implements Registry {
 
     public void factory(Class cls) {
         checkIsFactory(cls);
-        Factory factory = (Factory) classer.newInstance(cls);
-        injector.inject(factory);
+        Factory factory = buildFactory(cls);
         factories.add(factory);
     }
 
@@ -58,6 +57,12 @@ public final class DefaultRegistry implements Registry {
         Implementation impl = new DefaultImplementation(cls);
         Interface iface = new DefaultInterface(Factory.class);
         if (!isFactory(impl, iface)) throw new IllegalArgumentException();
+    }
+
+    private Factory buildFactory(Class cls) {
+        Factory factory = (Factory) classer.newInstance(cls);
+        injector.inject(factory);
+        return factory;
     }
 
     private boolean isFactory(Implementation impl, Interface iface) {
