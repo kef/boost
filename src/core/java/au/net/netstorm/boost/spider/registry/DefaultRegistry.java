@@ -18,7 +18,6 @@ public final class DefaultRegistry implements Registry {
     private final Factories factories;
     private final Injector injector;
     private final Blueprints blueprints;
-    // FIX 74285 Remove the need for this.
 
     public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Injector injector) {
         this.blueprints = blueprints;
