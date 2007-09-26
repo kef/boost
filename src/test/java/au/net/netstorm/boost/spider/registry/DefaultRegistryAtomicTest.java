@@ -13,6 +13,7 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultRegistryAtomicTest extends InteractionTestCase
         implements HasFixtures, LazyFields {
@@ -32,12 +33,14 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Factories factoriesMock;
     EdgeClass classerMock;
     Injector injectorMock;
+    TypeMaster typerMock;
     Factory factoryDummy;
     Registry subject;
 
     public void setUpFixtures() {
         subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, injectorMock);
         fielder.setInstance(subject, "classer", classerMock);
+        fielder.setInstance(subject, "typer", typerMock);
     }
 
     public void testMultiple() {
@@ -60,7 +63,11 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
         subject.factory(factoryDummy);
     }
 
+    // FIX BREADCRUMB 74285 Complete me.
     public void testFactoryByClass() {
+        Implementation impl = new DefaultImplementation(soapFactory);
+        Interface iface = new DefaultInterface(Factory.class);
+        expect.oneCall(typerMock, true, "implementz", impl, iface);
         expect.oneCall(classerMock, factoryDummy, "newInstance", soapFactory);
         expect.oneCall(injectorMock, VOID, "inject", factoryDummy);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
