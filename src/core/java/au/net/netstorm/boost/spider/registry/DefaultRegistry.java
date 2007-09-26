@@ -17,16 +17,16 @@ public final class DefaultRegistry implements Registry {
     private static final Stamp SINGLE = Stamp.SINGLE;
     private final TypeMaster typer = new DefaultTypeMaster();
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Instances instances;
-    private final Factories factories;
     private final Injector injector;
     private final Blueprints blueprints;
+    private final Instances instances;
+    private final Factories factories;
 
-    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Injector injector) {
+    public DefaultRegistry(Injector injector, Blueprints blueprints, Instances instances, Factories factories) {
+        this.injector = injector;
         this.blueprints = blueprints;
         this.instances = instances;
         this.factories = factories;
-        this.injector = injector;
     }
 
     public void multiple(Class iface, Class impl) {

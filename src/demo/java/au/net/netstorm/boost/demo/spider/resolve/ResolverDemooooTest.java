@@ -31,7 +31,7 @@ public class ResolverDemooooTest extends BoooostCase {
     private final Spider spider = spiderAssembler.assemble(blueprints, instances, factories);
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
-    public final Registry registry = new DefaultRegistry(blueprints, instances, factories, spider);
+    public final Registry registry = new DefaultRegistry(spider, blueprints, instances, factories);
     public final Resolver resolver = spider;
     public final Provider provider = spider;
 }

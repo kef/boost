@@ -38,7 +38,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Registry subject;
 
     public void setUpFixtures() {
-        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, injectorMock);
+        subject = new DefaultRegistry(injectorMock, blueprintsMock, instancesMock, factoriesMock);
         fielder.setInstance(subject, "classer", classerMock);
         fielder.setInstance(subject, "typer", typerMock);
     }
