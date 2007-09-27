@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
@@ -33,14 +32,12 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Instances instancesMock;
     Factories factoriesMock;
     EdgeClass classerMock;
-    Injector injectorMock;
     TypeMaster typerMock;
     Factory factoryDummy;
     Registry subject;
 
     public void setUpFixtures() {
-        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, injectorMock);
-        fielder.setInstance(subject, "builder", builderMock);
+        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, builderMock);
     }
 
     public void testMultiple() {

@@ -12,9 +12,11 @@ import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.spider.registry.DefaultFactories;
+import au.net.netstorm.boost.spider.registry.DefaultFactoryBuilder;
 import au.net.netstorm.boost.spider.registry.DefaultInstances;
 import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.FactoryBuilder;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
@@ -31,7 +33,8 @@ public class ResolverDemooooTest extends BoooostCase {
     private final Spider spider = spiderAssembler.assemble(blueprints, instances, factories);
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
-    public final Registry registry = new DefaultRegistry(blueprints, instances, factories, spider);
+    private final FactoryBuilder builder = new DefaultFactoryBuilder(spider);
+    public final Registry registry = new DefaultRegistry(blueprints, instances, factories, builder);
     public final Resolver resolver = spider;
     public final Provider provider = spider;
 }

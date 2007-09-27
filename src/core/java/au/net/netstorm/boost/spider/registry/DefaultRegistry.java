@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -16,12 +15,12 @@ public final class DefaultRegistry implements Registry {
     private final Instances instances;
     private final Factories factories;
 
-    // FIX 2145 Is there a better way to get the factory builder in here??
-    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Injector injector) {
-        this.builder = new DefaultFactoryBuilder(injector);
+    // SUGGEST: Split registry into two, where Factory stuff has its own interface.
+    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, FactoryBuilder builder) {
         this.blueprints = blueprints;
         this.instances = instances;
         this.factories = factories;
+        this.builder = builder;
     }
 
     public void multiple(Class iface, Class impl) {

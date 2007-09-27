@@ -21,7 +21,7 @@ public final class DefaultFactoryBuilder implements FactoryBuilder {
 
     public Factory build(Class cls) {
         checkIsFactory(cls);
-        return buildFactory(cls, injector);
+        return buildFactory(cls);
     }
 
     private void checkIsFactory(Class cls) {
@@ -30,7 +30,7 @@ public final class DefaultFactoryBuilder implements FactoryBuilder {
         if (!isFactory(impl, iface)) throw new DoesNotImplementFactoryException(cls, iface);
     }
 
-    private Factory buildFactory(Class cls, Injector injector) {
+    private Factory buildFactory(Class cls) {
         Factory factory = (Factory) classer.newInstance(cls);
         injector.inject(factory);
         return factory;
