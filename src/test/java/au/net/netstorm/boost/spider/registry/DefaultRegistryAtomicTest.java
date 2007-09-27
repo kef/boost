@@ -28,6 +28,7 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Interface cerealInterface = new DefaultInterface(cereal);
     CocoPops cocoPops = new CocoPops();
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
+    FactoryBuilder builderMock;
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
@@ -38,9 +39,8 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Registry subject;
 
     public void setUpFixtures() {
-        subject = new DefaultRegistry(injectorMock, blueprintsMock, instancesMock, factoriesMock);
-        fielder.setInstance(subject, "classer", classerMock);
-        fielder.setInstance(subject, "typer", typerMock);
+        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, injectorMock);
+        fielder.setInstance(subject, "builder", builderMock);
     }
 
     public void testMultiple() {
@@ -64,25 +64,19 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     }
 
     public void testFactoryByClassSucceeds() {
-        setUpFactoryCheck(true);
-        expect.oneCall(classerMock, factoryDummy, "newInstance", soapFactory);
-        expect.oneCall(injectorMock, VOID, "inject", factoryDummy);
+        expect.oneCall(builderMock, factoryDummy, "build", soapFactory);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
         subject.factory(soapFactory);
     }
 
     public void testFactoryByClassFails() {
-        setUpFactoryCheck(false);
+        Interface marker = new DefaultInterface(Factory.class);
+        DoesNotImplementFactoryException boom = new DoesNotImplementFactoryException(soapFactory, marker);
+        expect.oneCall(builderMock, boom, "build", soapFactory);
         try {
             subject.factory(soapFactory);
             fail();
-        } catch (IllegalArgumentException expected) { }
-    }
-
-    private void setUpFactoryCheck(boolean isFactory) {
-        Implementation impl = new DefaultImplementation(soapFactory);
-        Interface iface = new DefaultInterface(Factory.class);
-        expect.oneCall(typerMock, isFactory, "implementz", impl, iface);
+        } catch (DoesNotImplementFactoryException expected) { }
     }
 
     private void setUpInstance() {
