@@ -6,7 +6,6 @@ import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.matcher.TestFieldMatcher;
 
 public final class TestFieldSelector implements FieldSelector {
-
     private final Matcher testMatcher = new TestFieldMatcher();
 
     public BoostField[] select(BoostField[] fields, Matcher matcher) {
