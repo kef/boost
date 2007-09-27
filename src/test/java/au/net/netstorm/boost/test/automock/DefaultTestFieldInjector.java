@@ -30,7 +30,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         this.testCase = testCase;
         this.mocks = mocks;
         autoMocker = new DefaultAutoMocker(mocks);
-        randomer = new DefaultRandomsInjector(random);
+        randomer = new RandomsInjector(random);
     }
 
     public void inject() {
