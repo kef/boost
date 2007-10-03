@@ -52,13 +52,15 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
     public void testBestMessage() {
         checkBestMessage(DEFAULT_MESSAGE, null, null);
         checkBestMessage("Root message", null, "Root message");
-        checkBestMessage("Root message", "Top message", "Root message");
+        checkBestMessage("Top message", "Top message", "Root message");
         checkBestMessage("Top message", "Top message", null);
     }
 
     private void checkBestMessage(String expected, String topMessage, String rootMessage) {
         Throwable e1 = new Exception(rootMessage, null);
-        Throwable e2 = new Exception(topMessage, e1);
+        Throwable ute = new UndeclaredThrowableException(e1);
+        Throwable ite = new InvocationTargetException(ute);
+        Throwable e2 = new Exception(topMessage, ite);
         String best = subject.bestMessage(DEFAULT_MESSAGE, e2);
         assertEquals(expected, best);
     }

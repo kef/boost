@@ -2,6 +2,7 @@ package au.net.netstorm.boost.util.exception;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 
 public final class DefaultThrowableMaster implements ThrowableMaster {
@@ -34,16 +35,20 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return real(cause);
     }
 
-    public String bestMessage(String defMessage, Throwable t) {
-        String newMessage = tryCurrentMessage(defMessage, t);
+    public String bestMessage(String message, Throwable t) {
+        String current = t.getMessage();
         Throwable cause = t.getCause();
-        if (cause == null) return newMessage;
-        return bestMessage(newMessage, cause);
+        String bestMessage = currentIfNotNull(current, message);
+        if (cause == null) return bestMessage;
+        if (noise(t) || current == null) return bestMessage(bestMessage, cause);
+        return bestMessage;
     }
 
-    private String tryCurrentMessage(String oldMessage, Throwable t) {
-        String message = t.getMessage();
-        if (message != null) return message;
-        return oldMessage;
+    private boolean noise(Throwable t) {
+        return t instanceof UndeclaredThrowableException || t instanceof InvocationTargetException;
+    }
+
+    private String currentIfNotNull(String current, String oldMessage) {
+        return current == null ? oldMessage : current;
     }
 }

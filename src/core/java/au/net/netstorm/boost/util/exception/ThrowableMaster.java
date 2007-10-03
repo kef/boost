@@ -9,5 +9,5 @@ public interface ThrowableMaster {
 
     Throwable real(Throwable t);
 
-    String bestMessage(String defMessage, Throwable t);
+    String bestMessage(String message, Throwable t);
 }
