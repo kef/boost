@@ -15,6 +15,7 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
     private static final Throwable ERROR_2 = new InternalError();
     ThrowableMaster subject = new DefaultThrowableMaster();
     String expectedTrace;
+    private static final String DEFAULT_MESSAGE = "Default message";
 
     public void testChecked() {
         isChecked(true, EXCEPTION_1);
@@ -46,6 +47,20 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         checkReal(ise, ise);
         checkReal(ise, ute);
         checkReal(ise, ite);
+    }
+
+    public void testBestMessage() {
+        checkBestMessage(DEFAULT_MESSAGE, null, null);
+        checkBestMessage("Root message", null, "Root message");
+        checkBestMessage("Root message", "Top message", "Root message");
+        checkBestMessage("Top message", "Top message", null);
+    }
+
+    private void checkBestMessage(String expected, String topMessage, String rootMessage) {
+        Throwable e1 = new Exception(rootMessage, null);
+        Throwable e2 = new Exception(topMessage, e1);
+        String best = subject.bestMessage(DEFAULT_MESSAGE, e2);
+        assertEquals(expected, best);
     }
 
     private void checkReal(Throwable expected, Throwable actual) {

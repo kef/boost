@@ -8,4 +8,6 @@ public interface ThrowableMaster {
     String trace(Throwable t);
 
     Throwable real(Throwable t);
+
+    String bestMessage(String defMessage, Throwable t);
 }

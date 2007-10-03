@@ -33,4 +33,17 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         if (cause == null) return t;
         return real(cause);
     }
+
+    public String bestMessage(String defMessage, Throwable t) {
+        String newMessage = tryCurrentMessage(defMessage, t);
+        Throwable cause = t.getCause();
+        if (cause == null) return newMessage;
+        return bestMessage(newMessage, cause);
+    }
+
+    private String tryCurrentMessage(String oldMessage, Throwable t) {
+        String message = t.getMessage();
+        if (message != null) return message;
+        return oldMessage;
+    }
 }
