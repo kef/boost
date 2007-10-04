@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import au.net.netstorm.boost.edge.EdgeException;
 
 final class DefaultExceptionUtil implements ExceptionUtil {
+
+    // FIX 60023 use ThrowableMaster here? Can we get rid of this class?
     public boolean threw(Throwable throwable, Class contains) {
         if (throwable instanceof EdgeException) {
             return deEdgify((EdgeException) throwable, contains);
