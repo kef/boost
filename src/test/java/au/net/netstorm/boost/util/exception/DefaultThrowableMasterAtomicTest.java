@@ -70,7 +70,7 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         Throwable e1 = new Exception(rootMessage, null);
         Throwable ite = makeInvocationTarget(e1);
         Throwable e2 = new Exception(topMessage, ite);
-        String best = subject.bestMessage(DEFAULT_MESSAGE, e2);
+        String best = subject.realMessage(DEFAULT_MESSAGE, e2);
         assertEquals(expected, best);
     }
 

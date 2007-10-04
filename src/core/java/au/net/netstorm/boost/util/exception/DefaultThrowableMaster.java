@@ -36,13 +36,13 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return rootCause(cause);
     }
 
-    public String bestMessage(String defaultMsg, Throwable t) {
+    public String realMessage(String defaultMsg, Throwable t) {
         Throwable real = realCause(t);
         String currentMsg = real.getMessage();
         Throwable cause = real.getCause();
         String bestMsg = (currentMsg == null ? defaultMsg : currentMsg);
         if (cause == null) return bestMsg;
-        if (currentMsg == null) return bestMessage(bestMsg, cause);
+        if (currentMsg == null) return realMessage(bestMsg, cause);
         return bestMsg;
     }
 

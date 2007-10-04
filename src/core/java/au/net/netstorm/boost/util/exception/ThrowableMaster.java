@@ -9,7 +9,7 @@ public interface ThrowableMaster {
 
     Throwable rootCause(Throwable t);
 
-    String bestMessage(String defaultMsg, Throwable t);
+    String realMessage(String defaultMsg, Throwable t);
 
     Throwable realCause(Throwable t);
 }
