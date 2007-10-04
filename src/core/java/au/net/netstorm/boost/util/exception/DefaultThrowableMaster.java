@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
+import au.net.netstorm.boost.edge.EdgeException;
 
 public final class DefaultThrowableMaster implements ThrowableMaster {
 
@@ -52,6 +53,8 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
     }
 
     private boolean noise(Throwable t) {
-        return t instanceof UndeclaredThrowableException || t instanceof InvocationTargetException;
+        return t instanceof UndeclaredThrowableException ||
+                t instanceof InvocationTargetException ||
+                t instanceof EdgeException;
     }
 }

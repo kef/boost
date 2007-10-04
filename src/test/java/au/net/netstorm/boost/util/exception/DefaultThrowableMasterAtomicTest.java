@@ -2,6 +2,7 @@ package au.net.netstorm.boost.util.exception;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
+import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase {
@@ -75,7 +76,8 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
 
     private Throwable makeInvocationTarget(Throwable expected) {
         Throwable ute = new UndeclaredThrowableException(expected);
-        return new InvocationTargetException(ute);
+        InvocationTargetException ite = new InvocationTargetException(ute);
+        return new EdgeException(ite);
     }
 
     private void checkReal(Throwable expected, Throwable actual) {
