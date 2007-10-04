@@ -40,7 +40,7 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         assertEquals(expectedTrace, actualTrace);
     }
 
-    public void testReal() {
+    public void testRootCause() {
         Throwable ise = new IllegalStateException();
         Throwable ute = new UndeclaredThrowableException(ise);
         Throwable ite = new InvocationTargetException(ute);
@@ -56,17 +56,30 @@ public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase 
         checkBestMessage("Top message", "Top message", null);
     }
 
+    public void testRealCause() {
+        Throwable expected = new Exception();
+        Throwable ite = makeInvocationTarget(expected);
+        Throwable actual = subject.realCause(ite);
+        assertEquals(expected, actual);
+        actual = subject.realCause(expected);
+        assertEquals(expected, actual);
+    }
+
     private void checkBestMessage(String expected, String topMessage, String rootMessage) {
         Throwable e1 = new Exception(rootMessage, null);
-        Throwable ute = new UndeclaredThrowableException(e1);
-        Throwable ite = new InvocationTargetException(ute);
+        Throwable ite = makeInvocationTarget(e1);
         Throwable e2 = new Exception(topMessage, ite);
         String best = subject.bestMessage(DEFAULT_MESSAGE, e2);
         assertEquals(expected, best);
     }
 
+    private Throwable makeInvocationTarget(Throwable expected) {
+        Throwable ute = new UndeclaredThrowableException(expected);
+        return new InvocationTargetException(ute);
+    }
+
     private void checkReal(Throwable expected, Throwable actual) {
-        Throwable cause = subject.real(actual);
+        Throwable cause = subject.rootCause(actual);
         assertEquals(expected, cause);
     }
 

@@ -29,26 +29,29 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return stringWriter.toString();
     }
 
-    public Throwable real(Throwable t) {
+    public Throwable rootCause(Throwable t) {
         Throwable cause = t.getCause();
         if (cause == null) return t;
-        return real(cause);
+        return rootCause(cause);
     }
 
-    public String bestMessage(String message, Throwable t) {
-        String current = t.getMessage();
+    public String bestMessage(String defaultMsg, Throwable t) {
+        Throwable real = realCause(t);
+        String currentMsg = real.getMessage();
+        Throwable cause = real.getCause();
+        String bestMsg = (currentMsg == null ? defaultMsg : currentMsg);
+        if (cause == null) return bestMsg;
+        if (currentMsg == null) return bestMessage(bestMsg, cause);
+        return bestMsg;
+    }
+
+    public Throwable realCause(Throwable t) {
+        if (!noise(t)) return t;
         Throwable cause = t.getCause();
-        String bestMessage = currentIfNotNull(current, message);
-        if (cause == null) return bestMessage;
-        if (noise(t) || current == null) return bestMessage(bestMessage, cause);
-        return bestMessage;
+        return realCause(cause);
     }
 
     private boolean noise(Throwable t) {
         return t instanceof UndeclaredThrowableException || t instanceof InvocationTargetException;
-    }
-
-    private String currentIfNotNull(String current, String oldMessage) {
-        return current == null ? oldMessage : current;
     }
 }

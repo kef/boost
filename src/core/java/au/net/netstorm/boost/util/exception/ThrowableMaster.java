@@ -7,7 +7,9 @@ public interface ThrowableMaster {
 
     String trace(Throwable t);
 
-    Throwable real(Throwable t);
+    Throwable rootCause(Throwable t);
 
-    String bestMessage(String message, Throwable t);
+    String bestMessage(String defaultMsg, Throwable t);
+
+    Throwable realCause(Throwable t);
 }
