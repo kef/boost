@@ -7,15 +7,17 @@ import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
+import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
+import au.net.netstorm.boost.util.exception.ThrowableMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 public final class ConstructorNullDataChecker implements DataChecker {
     private InstanceHelper instanceHelper = new DefaultInstanceHelper();
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
-    private ExceptionUtil exceptionUtil = new DefaultExceptionUtil();
     private ClassMaster classMaster = new DefaultClassMaster();
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
+    private ThrowableMaster thrower = new DefaultThrowableMaster();
     private FieldRandomizer fieldUtil;
 
     public ConstructorNullDataChecker(Provider random) {
@@ -50,7 +52,8 @@ public final class ConstructorNullDataChecker implements DataChecker {
     }
 
     private void checkBumpedNull(Throwable throwable, Class type, int i) {
-        if (exceptionUtil.threw(throwable, IllegalArgumentException.class)) return;
+        Throwable real = thrower.realCause(throwable);
+        if (real instanceof IllegalArgumentException) return;
         fail(type, i);
     }
 
