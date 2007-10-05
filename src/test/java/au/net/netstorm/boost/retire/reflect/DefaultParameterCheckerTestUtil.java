@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.retire.reflect;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,6 +15,8 @@ import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
+import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
+import au.net.netstorm.boost.util.exception.ThrowableMaster;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
@@ -27,6 +28,7 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
     private final AssertException assertException = new DefaultAssertException();
     private final ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private final NullMaster nullMaster = new DefaultNullMaster();
+    private ThrowableMaster thrower = new DefaultThrowableMaster();
     private final InstanceProvider instanceProvider;
     private ClassMaster classer = new DefaultClassMaster();
 
@@ -147,13 +149,9 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
         return paramValues;
     }
 
-    // FIX 60023 use ThrowableMaster here
     private void handleException(EdgeException e) {
-        Throwable cause = e.getCause();
-        if (cause instanceof InvocationTargetException) {
-            Throwable realCause = cause.getCause();
-            rethrowException(realCause);
-        }
+        Throwable real = thrower.realCause(e);
+        thrower.rethrow(real);
     }
 
     private void checkFailsWithInvalidValues(Constructor constructor, int currentParameter, Object[] paramValues,
@@ -238,14 +236,6 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
         } else {
             throw new RuntimeException("Expected value '" + badValue + "' to be of type " +
                     shortName(paramTypes[indexOfParamToMakeBad]));
-        }
-    }
-
-    private void rethrowException(Throwable realCause) {
-        if (realCause instanceof IllegalArgumentException) {
-            throw (IllegalArgumentException) realCause;
-        } else {
-            throw new RuntimeException(realCause);
         }
     }
 }
