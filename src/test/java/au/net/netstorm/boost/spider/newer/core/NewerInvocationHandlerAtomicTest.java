@@ -12,13 +12,13 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+    private static final Object[] NO_PARAMS = new Object[0];
     EdgeClass classer = new DefaultEdgeClass();
     InvocationHandler subject;
     ProviderEngine providerMock;
     Implementation impl;
     Object proxyObject;
     ResolvedInstance newedInstanceMock;
-    Object[] methodParams = new Object[]{};
     Object newedObject;
 
     public void setUpFixtures() {
@@ -26,24 +26,31 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
     }
 
     public void testInvokeNu() throws Throwable {
-        Method method = method("nu");
-        expect.oneCall(providerMock, newedInstanceMock, "provide", impl, methodParams);
-        expect.oneCall(newedInstanceMock, newedObject, "getRef");
-        Object actualObject = subject.invoke(proxyObject, method, methodParams);
-        assertSame(newedObject, actualObject);
+        checkInvokeWithNoParameters();
     }
 
     public void testInvokeOtherMethod() throws Throwable {
         Method method = method("bogus");
         try {
-            subject.invoke(proxyObject, method, methodParams);
+            subject.invoke(proxyObject, method, NO_PARAMS);
             fail();
         } catch (IllegalStateException expected) { }
+    }
+
+    private void checkInvokeWithNoParameters() throws Throwable {
+        check(NO_PARAMS);
+        check(null);
+    }
+
+    private void check(Object[] params) throws Throwable {
+        Method method = method("nu");
+        expect.oneCall(providerMock, newedInstanceMock, "provide", impl, NO_PARAMS);
+        expect.oneCall(newedInstanceMock, newedObject, "getRef");
+        Object actualObject = subject.invoke(proxyObject, method, params);
+        assertSame(newedObject, actualObject);
     }
 
     private Method method(String name) {
         return classer.getMethod(NewVanillaCoke.class, name, null);
     }
-
-    // FIX 1887 Test path where method is not "nu".
 }

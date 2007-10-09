@@ -10,6 +10,10 @@ public final class InstantiationException extends SpiderException {
         this.message = message;
     }
 
+    public InstantiationException(String message) {
+        this.message = message;
+    }
+
     protected String getReason() {
         return message;
     }

@@ -14,11 +14,36 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
     public UnresolvedInstance instantiate(Implementation impl, Object[] parameters) {
+        Constructor constructor = getConstructor(impl, parameters);
+        Object ref = tryInstantiate(constructor, parameters, impl);
+        return new DefaultBaseReference(ref);
+    }
+
+    private Constructor getConstructor(Implementation impl, Object[] parameters) {
+        Constructor constructor = prepareConstructor(impl);
+        checkArgs(impl, constructor, parameters);
+        return constructor;
+    }
+
+    private Constructor prepareConstructor(Implementation impl) {
         Class cls = impl.getImpl();
         Constructor constructor = reflectMaster.getConstructor(cls);
         constructor.setAccessible(true);
-        Object ref = tryInstantiate(constructor, parameters, impl);
-        return new DefaultBaseReference(ref);
+        return constructor;
+    }
+
+    private void checkArgs(Implementation impl, Constructor constructor, Object[] parameters) {
+        Class[] expectedParams = constructor.getParameterTypes();
+        checkArgs(impl, expectedParams.length, parameters.length);
+    }
+
+    private void checkArgs(Implementation impl, int expected, int supplied) {
+        if (expected != supplied) boom(impl, expected, supplied);
+    }
+
+    private void boom(Implementation impl, int expected, int supplied) {
+        String message = "Expected " + expected + " parameters, given " + supplied + " in constructor for " + impl;
+        throw new InstantiationException(message);
     }
 
     private Object tryInstantiate(Constructor constructor, Object[] parameters, Implementation impl) {
