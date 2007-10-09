@@ -2,6 +2,7 @@ package au.net.netstorm.boost.demo.spider.newer;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
@@ -31,7 +32,9 @@ public final class DefaultResolvedThings implements ResolvedThings {
     }
 
     public String toString() {
-        return "" + get();
+        Map map = get();
+        Set keys = map.keySet();
+        return "" + keys;
     }
 
     public void remove(Implementation impl) {
