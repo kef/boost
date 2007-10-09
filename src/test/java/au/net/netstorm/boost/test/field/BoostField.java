@@ -29,6 +29,8 @@ public interface BoostField {
 
     boolean isPrivate();
 
+    boolean isSynthetic();
+
     boolean prefix(String s);
 
     boolean is(String s);

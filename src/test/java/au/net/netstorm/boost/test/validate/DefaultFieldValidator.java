@@ -21,12 +21,13 @@ public final class DefaultFieldValidator implements Validator {
     }
 
     private void validateField(BoostField field) {
+        if (field.isSynthetic()) return;
         if (isStatic(field)) staticChecks(field);
         else instanceChecks(field);
     }
 
     private void instanceChecks(BoostField field) {
-        // FIX 1676 bangPrimitives if array.getComponentType() is a primitive. 
+        // FIX 1676 bangPrimitives if array.getComponentType() is a primitive.
         if (field.isPrimitive()) bangPrimitives(field);
         if (field.isPublic()) troglodyte(field);
         if (field.isProtected()) troglodyte(field);

@@ -68,6 +68,10 @@ final class DefaultBoostField implements BoostField {
         return modifier.isPrivate(field);
     }
 
+    public boolean isSynthetic() {
+        return field.isSynthetic();
+    }
+
     public boolean prefix(String s) {
         String name = getName();
         return name.startsWith(s);
