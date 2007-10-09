@@ -28,8 +28,8 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     }
 
     private void checkArgs(Implementation impl, Constructor constructor, Object[] parameters) {
-        Class[] expectedParams = constructor.getParameterTypes();
-        checkArgs(impl, expectedParams.length, parameters.length);
+        Class[] paramTypes = constructor.getParameterTypes();
+        checkArgs(impl, paramTypes.length, parameters.length);
     }
 
     private void checkArgs(Implementation impl, int expected, int supplied) {
