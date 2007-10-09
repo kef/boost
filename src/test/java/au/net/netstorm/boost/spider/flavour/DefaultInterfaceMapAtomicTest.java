@@ -90,6 +90,8 @@ public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase imp
         String msg = ex.getMessage();
         boolean ends = msg.startsWith(expected);
         assertEquals("Message should have started with: \"" + expected + ".\"  Full message was \"" + msg + "\".", true, ends);
+        boolean resolvedThings = msg.endsWith("{}");
+        assertEquals(true, resolvedThings);
     }
 }
 // } OK NCSS - Some nice juicy mixes.  Gotta love it.

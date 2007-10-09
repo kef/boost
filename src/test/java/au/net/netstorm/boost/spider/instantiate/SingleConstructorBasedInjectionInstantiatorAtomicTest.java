@@ -29,7 +29,7 @@ public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends
     }
 
     private String makeFailureMessage() {
-        return "Unable to construct a " + TEST_IMPLEMENTATION.getImpl();
+        return "Unable to construct a " + TEST_IMPLEMENTATION.getImpl() + " : {}";
     }
 
     private void checkInstantiate(String parameter) {

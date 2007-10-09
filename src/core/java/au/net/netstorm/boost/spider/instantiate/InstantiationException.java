@@ -1,8 +1,16 @@
 package au.net.netstorm.boost.spider.instantiate;
 
-public final class InstantiationException extends RuntimeException {
+import au.net.netstorm.boost.spider.core.SpiderException;
+
+public final class InstantiationException extends SpiderException {
+    private final String message;
 
     public InstantiationException(String message, Throwable cause) {
-        super(message, cause);
+        super(cause);
+        this.message = message;
+    }
+
+    protected String getReason() {
+        return message;
     }
 }
