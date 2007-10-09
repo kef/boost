@@ -16,8 +16,7 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     public UnresolvedInstance instantiate(Implementation impl, Object[] parameters) {
         Constructor constructor = getConstructor(impl);
         checkArgs(impl, constructor, parameters);
-        Object ref = tryInstantiate(constructor, parameters, impl);
-        return new DefaultBaseReference(ref);
+        return instantiate(constructor, parameters, impl);
     }
 
     private Constructor getConstructor(Implementation impl) {
@@ -39,6 +38,11 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     private void boom(Implementation impl, int expected, int supplied) {
         String message = "Expected " + expected + " parameters, given " + supplied + " in constructor for " + impl;
         throw new InstantiationException(message);
+    }
+
+    private UnresolvedInstance instantiate(Constructor constructor, Object[] parameters, Implementation impl) {
+        Object ref = tryInstantiate(constructor, parameters, impl);
+        return new DefaultBaseReference(ref);
     }
 
     private Object tryInstantiate(Constructor constructor, Object[] parameters, Implementation impl) {
