@@ -14,18 +14,13 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     private EdgeConstructor edgeConstructor = new DefaultEdgeConstructor();
 
     public UnresolvedInstance instantiate(Implementation impl, Object[] parameters) {
-        Constructor constructor = getConstructor(impl, parameters);
+        Constructor constructor = getConstructor(impl);
+        checkArgs(impl, constructor, parameters);
         Object ref = tryInstantiate(constructor, parameters, impl);
         return new DefaultBaseReference(ref);
     }
 
-    private Constructor getConstructor(Implementation impl, Object[] parameters) {
-        Constructor constructor = prepareConstructor(impl);
-        checkArgs(impl, constructor, parameters);
-        return constructor;
-    }
-
-    private Constructor prepareConstructor(Implementation impl) {
+    private Constructor getConstructor(Implementation impl) {
         Class cls = impl.getImpl();
         Constructor constructor = reflectMaster.getConstructor(cls);
         constructor.setAccessible(true);
