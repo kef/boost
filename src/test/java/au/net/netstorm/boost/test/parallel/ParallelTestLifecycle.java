@@ -14,6 +14,7 @@ public class ParallelTestLifecycle implements TestLifecycle {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ParallelTestCase test;
     private Integer threads = 0;
+    ParallelRunner runner;
     Clock clock;
 
     public ParallelTestLifecycle(ParallelTestCase test) {
