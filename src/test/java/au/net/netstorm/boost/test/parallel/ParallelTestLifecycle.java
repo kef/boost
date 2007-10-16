@@ -11,8 +11,9 @@ import au.net.netstorm.boost.time.core.TimePoint;
 public class ParallelTestLifecycle implements TestLifecycle {
     private static final Class TIMING_MARKER = TestTiming.class;
     private static final String THREADS = "threads";
-    FieldTestUtil fielder = new DefaultFieldTestUtil();
-    ParallelTestCase test;
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+    private final ParallelTestCase test;
+    private Integer threads = 0;
     Clock clock;
 
     public ParallelTestLifecycle(ParallelTestCase test) {
@@ -25,7 +26,7 @@ public class ParallelTestLifecycle implements TestLifecycle {
     }
 
     public void run() throws Throwable {
-        // FIX 2000 Run a ParallelRunner.run();
+        // FIX 2000 Run a ParallelRunner.run(threads);
     }
 
     public void post() {
@@ -40,8 +41,9 @@ public class ParallelTestLifecycle implements TestLifecycle {
     }
 
     private void doThreading() {
-        Object threads = fielder.getInstance(test, THREADS);
-        validate(threads);
+        Object ref = fielder.getInstance(test, THREADS);
+        validate(ref);
+        threads = (Integer) ref;
     }
 
     private void validate(Object threads) {
