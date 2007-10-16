@@ -10,6 +10,8 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     private final Marker marker = new DefaultMarker();
     private final LifecycleTest testCase;
     private ThrowableSupport throwableSupport;
+    // FIX 2000 Use or lose.
+    private TimingSupport timingSupport;
     private TestLifecycle lifecycle;
     private long start;
 
@@ -18,8 +20,17 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     }
 
     public void run() throws Throwable {
+        init();
+        runit();
+    }
+
+    private void init() {
         lifecycle = testCase.testLifecycle();
         throwableSupport = testCase.throwableSupport();
+        timingSupport = testCase.timingSupport();
+    }
+
+    private void runit() throws Throwable {
         boolean successful = true;
         try {
             runMe();

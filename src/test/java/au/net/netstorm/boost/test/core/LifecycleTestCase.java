@@ -3,8 +3,10 @@ package au.net.netstorm.boost.test.core;
 import au.net.netstorm.boost.test.exception.DefaultThrowableSupport;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.lifecycle.DefaultLifecycleTestRunner;
+import au.net.netstorm.boost.test.lifecycle.DefaultTimingSupport;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTestRunner;
+import au.net.netstorm.boost.test.lifecycle.TimingSupport;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements LifecycleTest {
     private final LifecycleTestRunner runner;
@@ -19,5 +21,9 @@ public abstract class LifecycleTestCase extends CleanTestCase implements Lifecyc
 
     public ThrowableSupport throwableSupport() {
         return new DefaultThrowableSupport();
+    }
+
+    public TimingSupport timingSupport() {
+        return new DefaultTimingSupport();
     }
 }

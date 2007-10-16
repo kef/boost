@@ -6,5 +6,6 @@ import au.net.netstorm.boost.test.exception.ThrowableSupportProvider;
 public interface LifecycleTest extends
         RunnableTest,
         TestLifecycleProvider,
-        ThrowableSupportProvider {
+        ThrowableSupportProvider,
+        TimingSupportProvider {
 }
