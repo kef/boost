@@ -5,11 +5,15 @@ import au.net.netstorm.boost.test.core.Timed;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.marker.DefaultMarker;
 import au.net.netstorm.boost.test.marker.Marker;
+import au.net.netstorm.boost.test.parallel.ParallelSupport;
+import au.net.netstorm.boost.test.timing.TimingSupport;
 
 public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     private final Marker marker = new DefaultMarker();
     private final LifecycleTest testCase;
     private ThrowableSupport throwableSupport;
+    // FIX 2000 Use or snooze.
+    private ParallelSupport parallelSupport;
     // FIX 2000 Use or lose.
     private TimingSupport timingSupport;
     private TestLifecycle lifecycle;
@@ -28,6 +32,7 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         lifecycle = testCase.testLifecycle();
         throwableSupport = testCase.throwableSupport();
         timingSupport = testCase.timingSupport();
+        parallelSupport = testCase.parallelSupport();
     }
 
     private void runit() throws Throwable {
