@@ -48,13 +48,8 @@ public class ParallelTestLifecycle implements TestLifecycle {
     private void validate(Object threads) {
         if (threads == null)
             throw new IllegalStateException("A field \"" + THREADS + "\" of type Integer must be set!");
-        if (!(threads instanceof Integer)) boom(threads);
-    }
-
-    // FIX 2000 boom nicely.
-    private void boom(Object threads) {
-        Class cls = threads.getClass();
-        throw new IllegalStateException("Field \" " + THREADS + "\" of type " + cls + " must be Integer.");
+        if (!(threads instanceof Integer))
+            throw new IllegalStateException("Field \" " + THREADS + "\" must be an Integer.");
     }
 
     private boolean hasMarker(Class marker) {
