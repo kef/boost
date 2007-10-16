@@ -22,18 +22,18 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         throwableSupport = testCase.throwableSupport();
         boolean successful = true;
         try {
-            run(lifecycle);
+            runMe();
         }
         catch (Throwable t) {
             successful = false;
             throw throwableSupport.translate(t);
         }
         finally {
-            cleanup(lifecycle, successful);
+            cleanup(successful);
         }
     }
 
-    private void run(TestLifecycle lifecycle) throws Throwable {
+    private void runMe() throws Throwable {
         lifecycle.pre();
         startClock();
         lifecycle.run();
@@ -51,6 +51,7 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         if (!isTimed()) return;
         long end = time();
         long duration = end - start;
+        // FIX 2000 Complete.
 //        callSomething(classname, methodname, duration);
     }
 
@@ -62,7 +63,7 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         return marker.is(testCase, Timed.class);
     }
 
-    private void cleanup(TestLifecycle lifecycle, boolean successful) {
+    private void cleanup(boolean successful) {
         tryCleanup(lifecycle, successful);
     }
 
