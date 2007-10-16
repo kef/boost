@@ -24,6 +24,10 @@ public class ParallelTestLifecycle implements TestLifecycle {
         doThreading();
     }
 
+    public void run() throws Throwable {
+        // FIX 2000 Run a ParallelRunner.run();
+    }
+
     public void post() {
         doTiming();
     }
@@ -38,7 +42,6 @@ public class ParallelTestLifecycle implements TestLifecycle {
     private void doThreading() {
         Object threads = fielder.getInstance(test, THREADS);
         validate(threads);
-        // FIX 2000 Finish me.
     }
 
     private void validate(Object threads) {

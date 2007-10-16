@@ -28,7 +28,7 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
 
     private void run(TestLifecycle lifecycle) throws Throwable {
         lifecycle.pre();
-        testCase.runTest();
+        lifecycle.run();
         lifecycle.post();
     }
 
