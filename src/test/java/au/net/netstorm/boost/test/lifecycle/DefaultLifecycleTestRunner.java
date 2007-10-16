@@ -63,7 +63,9 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         long end = time();
         long duration = end - start;
         // FIX 2000 Complete.
-//        callSomething(classname, methodname, duration);
+        String method = testCase.getName();
+        Class cls = testCase.getClass();
+//        callSomething(cls, method, duration);
     }
 
     private long time() {
