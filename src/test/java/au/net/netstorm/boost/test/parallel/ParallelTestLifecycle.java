@@ -9,6 +9,7 @@ import au.net.netstorm.boost.time.core.TimePoint;
 
 // FIX 2000 Use or Lose.
 public class ParallelTestLifecycle implements TestLifecycle {
+    private static final Class TIMING_MARKER = TestTiming.class;
     private static final String THREADS = "threads";
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     ParallelTestCase test;
@@ -31,7 +32,7 @@ public class ParallelTestLifecycle implements TestLifecycle {
     }
 
     private void doTiming() {
-        if (hasMarker(TestTiming.class)) timer();
+        if (hasMarker(TIMING_MARKER)) timer();
     }
 
     private void doThreading() {
