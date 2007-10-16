@@ -28,11 +28,6 @@ public class ParallelTestLifecycle implements TestLifecycle {
     }
 
     public void cleanup(boolean successful) {
-        doNothing();
-    }
-
-    private void doNothing() {
-        // FIX 2000 Do we or do we not want to do nothing??
     }
 
     private void doTiming() {
@@ -46,10 +41,18 @@ public class ParallelTestLifecycle implements TestLifecycle {
     }
 
     private void validate(Object threads) {
-        if (threads == null)
-            throw new IllegalStateException("A field \"" + THREADS + "\" of type Integer must be set!");
+        checkThreadsIsAvailable(threads);
+        checkThreadsIsInteger(threads);
+    }
+
+    private void checkThreadsIsInteger(Object threads) {
         if (!(threads instanceof Integer))
             throw new IllegalStateException("Field \" " + THREADS + "\" must be an Integer.");
+    }
+
+    private void checkThreadsIsAvailable(Object threads) {
+        if (threads == null)
+            throw new IllegalStateException("A field \"" + THREADS + "\" of type Integer must be set!");
     }
 
     private boolean hasMarker(Class marker) {
