@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.test.core;
 
-public interface TestTiming {
+public interface Timed {
 }
