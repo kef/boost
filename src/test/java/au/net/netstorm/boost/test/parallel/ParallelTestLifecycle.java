@@ -46,16 +46,6 @@ public class ParallelTestLifecycle implements TestLifecycle {
         checkThreadsIsInteger(threads);
     }
 
-    private void checkThreadsIsInteger(Object threads) {
-        if (!(threads instanceof Integer))
-            throw new IllegalStateException("Field \" " + THREADS + "\" must be an Integer.");
-    }
-
-    private void checkThreadsIsAvailable(Object threads) {
-        if (threads == null)
-            throw new IllegalStateException("A field \"" + THREADS + "\" of type Integer must be set!");
-    }
-
     private boolean hasMarker(Class marker) {
         Class cls = test.getClass();
         return marker.isAssignableFrom(cls);
@@ -64,5 +54,15 @@ public class ParallelTestLifecycle implements TestLifecycle {
     private void timer() {
         TimePoint now = clock.now();
         // FIX 2000 Log timing information right here.
+    }
+
+    private void checkThreadsIsAvailable(Object threads) {
+        if (threads == null)
+            throw new IllegalStateException("A field \"" + THREADS + "\" of type Integer must be set!");
+    }
+
+    private void checkThreadsIsInteger(Object threads) {
+        if (!(threads instanceof Integer))
+            throw new IllegalStateException("Field \" " + THREADS + "\" must be an Integer.");
     }
 }
