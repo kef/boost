@@ -8,4 +8,6 @@ public interface TimeFactory {
     TimeRange createRange(long start, long endExclusive);
 
     TimePoint createTime(Date timeDate);
+
+    TimeRange createRange(TimePoint start, TimePoint end);
 }

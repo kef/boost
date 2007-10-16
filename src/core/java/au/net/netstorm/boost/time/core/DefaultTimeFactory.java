@@ -18,7 +18,7 @@ public final class DefaultTimeFactory implements TimeFactory {
         return new DefaultTimePoint(timeDate.getTime());
     }
 
-    private TimeRange createRange(TimePoint start, TimePoint end) {
+    public TimeRange createRange(TimePoint start, TimePoint end) {
         StartTime startTime = new StartTime(start);
         EndTime endTime = new EndTime(end);
         Duration duration = master.duration(startTime, endTime);
