@@ -9,14 +9,17 @@ import au.net.netstorm.boost.test.marker.Marker;
 public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     private final Marker marker = new DefaultMarker();
     private final LifecycleTest testCase;
+    private ThrowableSupport throwableSupport;
+    private TestLifecycle lifecycle;
+    private long start;
 
     public DefaultLifecycleTestRunner(LifecycleTest testCase) {
         this.testCase = testCase;
     }
 
     public void run() throws Throwable {
-        TestLifecycle lifecycle = testCase.testLifecycle();
-        ThrowableSupport throwableSupport = testCase.throwableSupport();
+        lifecycle = testCase.testLifecycle();
+        throwableSupport = testCase.throwableSupport();
         boolean successful = true;
         try {
             run(lifecycle);
@@ -38,20 +41,25 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
         lifecycle.post();
     }
 
-    private void stopClock() {
-        if (isTimed()) time();
+    private void startClock() {
+        // FIX 2000 Use Clock.
+        start = time();
     }
 
-    private void startClock() {
-        if (isTimed()) time();
+    // FIX 2000 Move stop/start clock stuff out of here.
+    private void stopClock() {
+        if (!isTimed()) return;
+        long end = time();
+        long duration = end - start;
+//        callSomething(classname, methodname, duration);
+    }
+
+    private long time() {
+        return System.currentTimeMillis();
     }
 
     private boolean isTimed() {
         return marker.is(testCase, Timed.class);
-    }
-
-    private void time() {
-        // FIX 2000 Complete me.
     }
 
     private void cleanup(TestLifecycle lifecycle, boolean successful) {
