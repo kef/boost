@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.parallel;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.time.core.Clock;
 
 // FIX 2000 Use or Lose.
 public class ParallelTestLifecycle implements TestLifecycle {
@@ -12,7 +11,6 @@ public class ParallelTestLifecycle implements TestLifecycle {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ParallelTestCase test;
     private Integer threads = 0;
-    Clock clock;
 
     public ParallelTestLifecycle(ParallelTestCase test) {
         this.test = test;

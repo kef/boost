@@ -59,13 +59,19 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
 
     // FIX 2000 Move stop/start clock stuff out of here.
     private void stopClock() {
-        if (!isTimed()) return;
-        long end = time();
-        long duration = end - start;
-        // FIX 2000 Complete.
+        if (isTimed()) doTiming();
+    }
+
+    private void doTiming() {
+        long duration = getDuration();
         String method = testCase.getName();
         Class cls = testCase.getClass();
-//        callSomething(cls, method, duration);
+        timingSupport.time(cls, method, duration);
+    }
+
+    private long getDuration() {
+        long end = time();
+        return end - start;
     }
 
     private long time() {
