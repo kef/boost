@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.test.reflect.util;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import junit.framework.Assert;
@@ -11,6 +13,11 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
         Method method = getMethod(invokee, methodName);
         return invoke(invokee, method, parameters);
+    }
+
+    public Method[] getTestMethods(Class cls) {
+        Method[] all = cls.getDeclaredMethods();
+        return findTestMethods(all);
     }
 
     public Class getThrowsType(Method method) {
@@ -37,6 +44,20 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     private Object invoke(Object invokee, Method method, Object[] parameters) {
         method.setAccessible(true);
         return edgeMethod.invoke(method, invokee, parameters);
+    }
+
+    private Method[] findTestMethods(Method[] all) {
+        List result = new ArrayList();
+        for (int i = 0; i < all.length; i++) {
+            Method method = all[i];
+            if (isTest(method)) result.add(method);
+        }
+        return (Method[]) result.toArray(new Method[]{});
+    }
+
+    private boolean isTest(Method method) {
+        String name = method.getName();
+        return name.startsWith("test");
     }
 
     private boolean matches(Method method, String methodName) {

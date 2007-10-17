@@ -1,17 +1,18 @@
 package au.net.netstorm.boost.test.parallel;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
+import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
+import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 
 // FIX 2000 Use or Lose.
 public class DefaultParallelRunner implements ParallelRunner {
     private static final Object[] NO_PARAMETERS = new Object[]{};
+    private final MethodTestUtil util = new DefaultMethodTestUtil();
     private final EdgeMethod methoder = new DefaultEdgeMethod();
     private final EdgeClass classer = new DefaultEdgeClass();
 
@@ -19,25 +20,13 @@ public class DefaultParallelRunner implements ParallelRunner {
         // FIX 2000 Make this bad boy multi-threaded.
         Class cls = test.getClass();
         Object[] refs = getObjects(cls);
-        Method[] methods = getTestMethods(cls);
+        Method[] methods = util.getTestMethods(cls);
         execute(refs, methods);
     }
 
     private Object[] getObjects(Class cls) {
         Object ref = classer.newInstance(cls);
         return new Object[]{ref};
-    }
-
-    // FIX 2000 Extract to another class?
-    private Method[] getTestMethods(Class cls) {
-        List result = new ArrayList();
-        Method[] all = cls.getDeclaredMethods();
-        for (int i = 0; i < all.length; i++) {
-            Method method = all[i];
-            String name = method.getName();
-            if (name.startsWith("test")) result.add(method);
-        }
-        return (Method[]) result.toArray(new Method[]{});
     }
 
     private void execute(Object[] refs, Method[] methods) {
