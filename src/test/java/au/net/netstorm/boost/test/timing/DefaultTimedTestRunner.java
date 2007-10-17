@@ -27,7 +27,11 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
     }
 
     private void runit(LifecycleTest test) throws Throwable {
-        parallise(test);
+        if (isParallel(test)) doMultiThreaded(test);
+        else doSingleThreaded(test);
+    }
+
+    private void doSingleThreaded(LifecycleTest test) throws Throwable {
         lifecycle.pre();
         startClock();
         lifecycle.run();
@@ -35,8 +39,7 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
         lifecycle.post();
     }
 
-    private void parallise(LifecycleTest test) {
-        if (!isParallel(test)) return;
+    private void doMultiThreaded(LifecycleTest test) {
         int threads = parallel.threads(test);
     }
 
