@@ -41,6 +41,7 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
 
     private void doMultiThreaded(LifecycleTest test) {
         int threads = parallel.threads(test);
+        // FIX 2000 Continue here...!!!
     }
 
     // FIX 2000 Remove this gumf.
