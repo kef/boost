@@ -39,63 +39,9 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
         lifecycle.post();
     }
 
-    private void doMultiThreaded(LifecycleTest test) {
-        int threads = parallel.threads(test);
-        // FIX 2000 Continue here...!!!
+    private void doMultiThreaded(LifecycleTest test) throws Throwable {
+        parallel.run(test);
     }
-
-    // FIX 2000 Remove this gumf.
-//    private void startYourEngines() {
-//        for (int i = 0; i < clients.length; i++) {
-//            removeSslOverhead(i);
-//            RunnableClient runnableClient = new RunnableClient(clients[i]);
-//            Thread t = new Thread(runnableClient);
-//            t.start();
-//        }
-//    }
-//
-//    private void go() throws InterruptedException {
-//        synchronized (lock) {
-//            lock.notifyAll();
-//            while (!done()) {
-//                lock.wait(100L);
-//            }
-//        }
-//    }
-//
-//    private boolean done() {
-//        return clientCount <= 1;
-//    }
-//
-//    private void removeSslOverhead(int i) {
-//        clients[i].ping();
-//    }
-//
-//    class RunnableClient implements Runnable {
-//        private CrowApi client;
-//
-//        RunnableClient(CrowApi client) {
-//            this.client = client;
-//        }
-//
-//        public void run() {
-//            hangAbout();
-//            timer.timeIt(new Block() {
-//                public void execute() {
-//                    client.getKeyByClass(TEMPORAL_CLASS);
-//                }
-//            }, "Temporal getKeyByClass", DURATION);
-//            clientCount--;
-//        }
-//
-//        private void hangAbout() {
-//            synchronized (lock) {
-//                try {
-//                    lock.wait();
-//                } catch (InterruptedException e) {}
-//            }
-//        }
-//    }
 
     private boolean isParallel(LifecycleTest test) {
         return marker.is(test, Parallel.class);

@@ -6,9 +6,15 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
 public class DefaultParallelSupport implements ParallelSupport {
     private static final String THREADS = "threads";
+    private final ParallelRunner runner = new DefaultParallelRunner();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
-    public int threads(LifecycleTest test) {
+    public void run(LifecycleTest test) throws Throwable {
+        int threads = threads(test);
+        runner.run(test, threads);
+    }
+
+    private int threads(LifecycleTest test) {
         Object ref = fielder.getInstance(test, THREADS);
         validate(ref);
         return (Integer) ref;
