@@ -16,8 +16,7 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     }
 
     public Method[] getTestMethods(Class cls) {
-        Method[] all = cls.getDeclaredMethods();
-        return findTestMethods(all);
+        return findMethods(cls, "^test.*");
     }
 
     public Class getThrowsType(Method method) {
@@ -29,16 +28,9 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
 
     private Method getMethod(Object instance, String methodName) {
         Class type = instance.getClass();
-        return getMethod(type, methodName);
-    }
-
-    private Method getMethod(Class type, String methodName) {
-        Method[] methods = type.getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            Method method = methods[i];
-            if (matches(method, methodName)) return method;
-        }
-        throw new IllegalStateException("No method " + methodName + " on " + type);
+        Method[] result = findMethods(type, "^" + methodName + "$");
+        if (result.length == 0) throw new IllegalStateException("No method " + methodName + " on " + type);
+        return result[0];
     }
 
     private Object invoke(Object invokee, Method method, Object[] parameters) {
@@ -46,23 +38,19 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
         return edgeMethod.invoke(method, invokee, parameters);
     }
 
-    private Method[] findTestMethods(Method[] all) {
+    private Method[] findMethods(Class cls, String regex) {
+        Method[] methods = cls.getMethods();
         List result = new ArrayList();
-        for (int i = 0; i < all.length; i++) {
-            Method method = all[i];
-            if (isTest(method)) result.add(method);
+        for (int i = 0; i < methods.length; i++) {
+            Method method = methods[i];
+            if (matches(method, regex)) result.add(method);
         }
         return (Method[]) result.toArray(new Method[]{});
     }
 
-    private boolean isTest(Method method) {
+    private boolean matches(Method method, String regex) {
         String name = method.getName();
-        return name.startsWith("test");
-    }
-
-    private boolean matches(Method method, String methodName) {
-        String name = method.getName();
-        return name.equals(methodName);
+        return name.matches(regex);
     }
 
     private void fail(String msg) {
