@@ -3,32 +3,31 @@ package au.net.netstorm.boost.test.parallel;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
 // FIX 2000 Use or Lose.
 public class DefaultParallelRunner implements ParallelRunner {
     private final EdgeClass classer = new DefaultEdgeClass();
 
-    public void run(LifecycleTest test, int threadCount, TestLifecycle lifecycle) throws Throwable {
-        Thread[] threads = getThreads(test, threadCount, lifecycle);
+    public void run(LifecycleTest test, int threadCount) throws Throwable {
+        Thread[] threads = getThreads(test, threadCount);
         execute(threads);
     }
 
-    private Thread[] getThreads(LifecycleTest test, int count, TestLifecycle lifecycle) {
+    private Thread[] getThreads(LifecycleTest test, int count) {
         Class cls = test.getClass();
         String name = test.getName();
-        return createThreads(count, cls, name, lifecycle);
+        return createThreads(count, cls, name);
     }
 
-    private Thread[] createThreads(int count, Class cls, String name, TestLifecycle lifecycle) {
+    private Thread[] createThreads(int count, Class cls, String name) {
         Thread[] result = new Thread[count];
-        for (int i = 0; i < count; i++) result[i] = createThread(cls, name, lifecycle);
+        for (int i = 0; i < count; i++) result[i] = createThread(cls, name);
         return result;
     }
 
-    private Thread createThread(Class cls, String name, TestLifecycle lifecycle) {
+    private Thread createThread(Class cls, String name) {
         LifecycleTest test = (LifecycleTest) classer.newInstance(cls);
-        Runnable runnable = new DefaultThreadRunner(test, name, lifecycle);
+        Runnable runnable = new DefaultThreadRunner(test, name);
         return new Thread(runnable);
     }
 
@@ -42,7 +41,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         for (int i = 0; i < threads.length; i++) threads[i].start();
     }
 
-    private void join(Thread[] started) throws InterruptedException {
-        for (int i = 0; i < started.length; i++) started[i].join();
+    private void join(Thread[] threads) throws InterruptedException {
+        for (int i = 0; i < threads.length; i++) threads[i].join();
     }
 }

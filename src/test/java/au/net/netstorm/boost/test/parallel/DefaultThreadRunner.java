@@ -12,18 +12,23 @@ public class DefaultThreadRunner implements ThreadRunner {
     private final String methodName;
     private TestLifecycle lifecycle;
 
-    public DefaultThreadRunner(LifecycleTest test, String methodName, TestLifecycle lifecycle) {
+    public DefaultThreadRunner(LifecycleTest test, String methodName) {
         this.test = test;
         this.methodName = methodName;
-        this.lifecycle = lifecycle;
+        this.lifecycle = test.testLifecycle();
     }
 
     // FIX 2000 Hook timing into here somehow.
     public void run() {
-        // FIX 2000 I don't think this lifecycle thing will work as it is associated with the original test
-        // FIX 2000 and not the spawned test.
-        lifecycle.pre();
-        util.invoke(test, methodName, NO_PARAMETERS);
-        lifecycle.post();
+        // FIX 2000 This looks awfully like LifecycleTestRunner.
+        boolean successful = false;
+        try {
+            lifecycle.pre();
+            util.invoke(test, methodName, NO_PARAMETERS);
+            lifecycle.post();
+            successful = true;
+        } finally {
+            lifecycle.cleanup(successful);
+        }
     }
 }
