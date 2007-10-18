@@ -18,6 +18,7 @@ public class DefaultThreadRunner implements ThreadRunner {
         this.lifecycle = lifecycle;
     }
 
+    // FIX 2000 Hook timing into here somehow.
     public void run() {
         lifecycle.pre();
         util.invoke(test, methodName, NO_PARAMETERS);
