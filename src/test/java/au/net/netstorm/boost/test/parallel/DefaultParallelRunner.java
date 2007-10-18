@@ -1,43 +1,38 @@
 package au.net.netstorm.boost.test.parallel;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 
 // FIX 2000 Use or Lose.
 public class DefaultParallelRunner implements ParallelRunner {
-    private static final Class[] NO_PARAMETERS = new Class[]{};
-    private final EdgeMethod methoder = new DefaultEdgeMethod();
     private final EdgeClass classer = new DefaultEdgeClass();
 
-    public void run(LifecycleTest test, int threads) throws Throwable {
+    public void run(LifecycleTest test, int threadCount) throws Throwable {
         // FIX 2000 Make this bad boy multi-threaded.
-        Class cls = test.getClass();
-        Object[] refs = getObjects(cls);
-        execute(test, refs);
+        Thread[] threads = getThreads(test, threadCount);
+        execute(threads);
     }
 
-    private Object[] getObjects(Class cls) {
+    // FIX 2000 Tidy this up.
+    private Thread[] getThreads(LifecycleTest test, int count) {
+        Thread[] result = new Thread[count];
+        Class cls = test.getClass();
+        String name = test.getName();
+        for (int i = 0; i < count; i++) result[i] = createThread(cls, name);
+        return result;
+    }
+
+    private Thread createThread(Class cls, String name) {
         Object ref = classer.newInstance(cls);
-        return new Object[]{ref};
+        Runnable runnable = new DefaultThreadRunner(ref, name);
+        return new Thread(runnable);
     }
 
-    private void execute(LifecycleTest test, Object[] refs) {
-        for (int i = 0; i < refs.length; i++) runTest(test, refs[i]);
-    }
-
-    private void runTest(LifecycleTest test, Object ref) {
-        Method method = getTestMethod(test);
-        methoder.invoke(method, ref, NO_PARAMETERS);
-    }
-
-    private Method getTestMethod(LifecycleTest test) {
-        String testName = test.getName();
-        Class cls = test.getClass();
-        return classer.getMethod(cls, testName, NO_PARAMETERS);
+    private void execute(Thread[] threads) {
+        for (int i = 0; i < threads.length; i++) {
+            threads[i].start();
+        }
     }
 
     // FIX 2000 Remove this gumf.
