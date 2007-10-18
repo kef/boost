@@ -26,6 +26,7 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
         else doSingleThreaded(test, lifecycle);
     }
 
+    // FIX 2000 Move this out to another class!!!!!!!!!!!!!!!!
     private void doSingleThreaded(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
         lifecycle.pre();
         timer.startClock();
