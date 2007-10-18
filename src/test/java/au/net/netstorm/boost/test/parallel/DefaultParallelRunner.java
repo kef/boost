@@ -6,13 +6,10 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
-import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 
 // FIX 2000 Use or Lose.
 public class DefaultParallelRunner implements ParallelRunner {
-    private static final Object[] NO_PARAMETERS = new Object[]{};
-    private final MethodTestUtil util = new DefaultMethodTestUtil();
+    private static final Class[] NO_PARAMETERS = new Class[]{};
     private final EdgeMethod methoder = new DefaultEdgeMethod();
     private final EdgeClass classer = new DefaultEdgeClass();
 
@@ -20,8 +17,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         // FIX 2000 Make this bad boy multi-threaded.
         Class cls = test.getClass();
         Object[] refs = getObjects(cls);
-        Method[] methods = util.getTestMethods(cls);
-        execute(refs, methods);
+        execute(test, refs);
     }
 
     private Object[] getObjects(Class cls) {
@@ -29,16 +25,19 @@ public class DefaultParallelRunner implements ParallelRunner {
         return new Object[]{ref};
     }
 
-    private void execute(Object[] refs, Method[] methods) {
-        for (int i = 0; i < refs.length; i++) {
-            runTest(refs[i], methods);
-        }
+    private void execute(LifecycleTest test, Object[] refs) {
+        for (int i = 0; i < refs.length; i++) runTest(test, refs[i]);
     }
 
-    private void runTest(Object ref, Method[] methods) {
-        for (int i = 0; i < methods.length; i++) {
-            methoder.invoke(methods[i], ref, NO_PARAMETERS);
-        }
+    private void runTest(LifecycleTest test, Object ref) {
+        Method method = getTestMethod(test);
+        methoder.invoke(method, ref, NO_PARAMETERS);
+    }
+
+    private Method getTestMethod(LifecycleTest test) {
+        String testName = test.getName();
+        Class cls = test.getClass();
+        return classer.getMethod(cls, testName, NO_PARAMETERS);
     }
 
     // FIX 2000 Remove this gumf.
