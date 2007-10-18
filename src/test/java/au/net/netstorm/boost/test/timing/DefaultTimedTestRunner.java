@@ -34,7 +34,7 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
     private void doSingleThreaded(LifecycleTest test) throws Throwable {
         lifecycle.pre();
         startClock();
-        lifecycle.run();
+        test.runTest();
         stopClock(test);
         lifecycle.post();
     }

@@ -34,10 +34,6 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         doInjectSubject();
     }
 
-    public void run() throws Throwable {
-        testCase.runTest();
-    }
-
     public void post() {
         // Hook in from jMock.  Needed for jMock to actually verify.
         testFieldInjector.verify();
