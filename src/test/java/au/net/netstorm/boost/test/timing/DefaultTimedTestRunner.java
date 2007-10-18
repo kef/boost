@@ -15,13 +15,14 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
     private TimingSupport timing;
     private long start;
 
-    public void run(LifecycleTest test) throws Throwable {
-        init(test);
+    // FIX 2000 Yucky poo, you're passing in the test lifecycle.
+    public void run(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
+        init(test, lifecycle);
         runit(test);
     }
 
-    private void init(LifecycleTest test) {
-        lifecycle = test.testLifecycle();
+    private void init(LifecycleTest test, TestLifecycle lifecycle) {
+        this.lifecycle = lifecycle;
         timing = test.timingSupport();
         parallel = test.parallelSupport();
     }

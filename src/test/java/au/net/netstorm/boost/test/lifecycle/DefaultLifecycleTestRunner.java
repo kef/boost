@@ -28,7 +28,7 @@ public final class DefaultLifecycleTestRunner implements LifecycleTestRunner {
     private void runit() throws Throwable {
         boolean successful = true;
         try {
-            runner.run(testCase);
+            runner.run(testCase, lifecycle);
         }
         catch (Throwable t) {
             successful = false;
