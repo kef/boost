@@ -26,8 +26,8 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     private Thread createThread(Class cls, String name) {
-        Object ref = classer.newInstance(cls);
-        Runnable runnable = new DefaultThreadRunner(ref, name);
+        LifecycleTest test = (LifecycleTest) classer.newInstance(cls);
+        Runnable runnable = new DefaultThreadRunner(test, name);
         return new Thread(runnable);
     }
 
