@@ -1,15 +1,27 @@
 package au.net.netstorm.boost.test.parallel;
 
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
+import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.test.timing.DefaultTimer;
+import au.net.netstorm.boost.test.timing.Timer;
 
 public class DefaultParallelSupport implements ParallelSupport {
     private static final String THREADS = "threads";
+    private final Timer timer = new DefaultTimer();
     private final ParallelRunner runner = new DefaultParallelRunner();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
-    public void run(LifecycleTest test) throws Throwable {
+    public void single(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
+        lifecycle.pre();
+        timer.startClock();
+        test.runTest();
+        timer.stopClock(test);
+        lifecycle.post();
+    }
+
+    public void multi(LifecycleTest test) throws Throwable {
         int threads = threads(test);
         runner.run(test, threads);
     }

@@ -8,7 +8,6 @@ import au.net.netstorm.boost.test.parallel.Parallel;
 import au.net.netstorm.boost.test.parallel.ParallelSupport;
 
 public class DefaultTimedTestRunner implements TimedTestRunner {
-    private final Timer timer = new DefaultTimer();
     private final Marker marker = new DefaultMarker();
     private ParallelSupport parallel;
 
@@ -22,21 +21,17 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
     }
 
     private void runit(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
+        // FIX 2000 Pass lifecycle through to the multi-threaded case.
         if (isParallel(test)) doMultiThreaded(test);
         else doSingleThreaded(test, lifecycle);
     }
 
-    // FIX 2000 Move this out to another class!!!!!!!!!!!!!!!!
     private void doSingleThreaded(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
-        lifecycle.pre();
-        timer.startClock();
-        test.runTest();
-        timer.stopClock(test);
-        lifecycle.post();
+        parallel.single(test, lifecycle);
     }
 
     private void doMultiThreaded(LifecycleTest test) throws Throwable {
-        parallel.run(test);
+        parallel.multi(test);
     }
 
     private boolean isParallel(LifecycleTest test) {
