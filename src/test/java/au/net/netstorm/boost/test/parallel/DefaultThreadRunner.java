@@ -20,6 +20,8 @@ public class DefaultThreadRunner implements ThreadRunner {
 
     // FIX 2000 Hook timing into here somehow.
     public void run() {
+        // FIX 2000 I don't think this lifecycle thing will work as it is associated with the original test
+        // FIX 2000 and not the spawned test.
         lifecycle.pre();
         util.invoke(test, methodName, NO_PARAMETERS);
         lifecycle.post();
