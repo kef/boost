@@ -8,7 +8,8 @@ public final class SimpleParallelDemoTest extends InteractionTestCase implements
 
     // FIX 2000 Delete me.
     public void testDeleteMe() {
-        print("found it!");
+        print("found it {");
+        print("}");
     }
 
     // FIX 2000 Don't hit this method.  And Delete when done.
@@ -21,10 +22,10 @@ public final class SimpleParallelDemoTest extends InteractionTestCase implements
     }
 
     public void testPoo() {
-        String msg = "poo poo";
-        print(msg);
+        print("poo poo");
     }
 
     private void print(String msg) {
+        // Print something out to see this in action.
     }
 }
