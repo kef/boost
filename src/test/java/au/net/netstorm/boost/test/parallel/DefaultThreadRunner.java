@@ -12,10 +12,10 @@ public class DefaultThreadRunner implements ThreadRunner {
     private final String methodName;
     private TestLifecycle lifecycle;
 
-    public DefaultThreadRunner(LifecycleTest test, String methodName) {
+    public DefaultThreadRunner(LifecycleTest test, String methodName, TestLifecycle lifecycle) {
         this.test = test;
         this.methodName = methodName;
-        this.lifecycle = test.testLifecycle();
+        this.lifecycle = lifecycle;
     }
 
     public void run() {

@@ -10,29 +10,26 @@ import au.net.netstorm.boost.test.parallel.ParallelSupport;
 
 public class DefaultTimedTestRunner implements TimedTestRunner {
     private final Marker marker = new DefaultMarker();
-    private TestLifecycle lifecycle;
     private ParallelSupport parallel;
     private TimingSupport timing;
     private long start;
 
-    // FIX 2000 Yucky poo, you're passing in the test lifecycle.
     public void run(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
-        init(test, lifecycle);
-        runit(test);
+        init(test);
+        runit(test, lifecycle);
     }
 
-    private void init(LifecycleTest test, TestLifecycle lifecycle) {
-        this.lifecycle = lifecycle;
+    private void init(LifecycleTest test) {
         timing = test.timingSupport();
         parallel = test.parallelSupport();
     }
 
-    private void runit(LifecycleTest test) throws Throwable {
-        if (isParallel(test)) doMultiThreaded(test);
-        else doSingleThreaded(test);
+    private void runit(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
+        if (isParallel(test)) doMultiThreaded(test, lifecycle);
+        else doSingleThreaded(test, lifecycle);
     }
 
-    private void doSingleThreaded(LifecycleTest test) throws Throwable {
+    private void doSingleThreaded(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
         lifecycle.pre();
         startClock();
         test.runTest();
@@ -40,8 +37,8 @@ public class DefaultTimedTestRunner implements TimedTestRunner {
         lifecycle.post();
     }
 
-    private void doMultiThreaded(LifecycleTest test) throws Throwable {
-        parallel.run(test);
+    private void doMultiThreaded(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
+        parallel.run(test, lifecycle);
     }
 
     private boolean isParallel(LifecycleTest test) {
