@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.test.timing;
 
 public interface TimingSupport {
-    void time(Class cls, String method, long duration, long end);
+    void time(Class cls, String method, long start, long end);
 }
