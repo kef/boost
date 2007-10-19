@@ -23,9 +23,7 @@ public class DefaultThreadRunner implements ThreadRunner {
         this.lifecycle = test.testLifecycle();
     }
 
-    // FIX 2000 Hook timing into here somehow.
     public void run() {
-        // FIX 2000 This looks awfully like LifecycleTestRunner.
         boolean successful = false;
         try {
             runTest();
