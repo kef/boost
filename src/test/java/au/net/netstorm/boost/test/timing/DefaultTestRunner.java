@@ -20,7 +20,6 @@ public class DefaultTestRunner implements TestRunner {
     }
 
     private void runit(LifecycleTest test) throws Throwable {
-        // FIX 2000 Pass lifecycle through to the multi-threaded case.
         if (isParallel(test)) doMultiThreaded(test);
         else doSingleThreaded(test);
     }
