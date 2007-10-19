@@ -13,7 +13,7 @@ public class DefaultTestEngine implements TestEngine {
     private static final Object[] NO_PARAMETERS = {};
     private final MethodTestUtil util = new DefaultMethodTestUtil();
     private final Timer timer = new DefaultTimer();
-    private boolean noExceptions = false;
+    private boolean successful = false;
 
     public void runTest(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
         pre(lifecycle);
@@ -33,7 +33,7 @@ public class DefaultTestEngine implements TestEngine {
     private void post(LifecycleTest test, TestLifecycle lifecycle) {
         timer.stopClock(test);
         lifecycle.post();
-        noExceptions = true;
+        successful = true;
     }
 
     public void error(LifecycleTest test, Throwable t) {
@@ -46,7 +46,7 @@ public class DefaultTestEngine implements TestEngine {
     // OK GenericIllegalRegexp {
     public void tryCleanup(TestLifecycle lifecycle) {
         try {
-            lifecycle.cleanup(noExceptions);
+            lifecycle.cleanup(successful);
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've alreay barfed ... ");
