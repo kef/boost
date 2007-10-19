@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.marker.Marker;
 import au.net.netstorm.boost.test.parallel.Parallel;
 import au.net.netstorm.boost.test.parallel.ParallelSupport;
 
-public class DefaultTimedTestRunner implements TimedTestRunner {
+public class DefaultTestRunner implements TestRunner {
     private final Marker marker = new DefaultMarker();
     private ParallelSupport parallel;
 

@@ -5,13 +5,13 @@ import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.parallel.DefaultParallelSupport;
 import au.net.netstorm.boost.test.parallel.ParallelSupport;
-import au.net.netstorm.boost.test.timing.DefaultTimedTestRunner;
+import au.net.netstorm.boost.test.timing.DefaultTestRunner;
 import au.net.netstorm.boost.test.timing.DefaultTimingSupport;
-import au.net.netstorm.boost.test.timing.TimedTestRunner;
+import au.net.netstorm.boost.test.timing.TestRunner;
 import au.net.netstorm.boost.test.timing.TimingSupport;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements LifecycleTest {
-    private final TimedTestRunner runner = new DefaultTimedTestRunner();
+    private final TestRunner runner = new DefaultTestRunner();
 
     public final void runBare() throws Throwable {
         runner.run(this);
