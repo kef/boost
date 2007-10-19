@@ -16,6 +16,12 @@ public class DefaultThreadRunner implements ThreadRunner {
     }
 
     public void run() {
-        engine.run(test, lifecycle, methodName);
+        try {
+            engine.runTest(test, lifecycle, methodName);
+        } catch (Throwable t) {
+            engine.error(test, t);
+        } finally {
+            engine.tryCleanup(lifecycle);
+        }
     }
 }

@@ -13,29 +13,30 @@ public class DefaultTestEngine implements TestEngine {
     private static final Object[] NO_PARAMETERS = {};
     private final MethodTestUtil util = new DefaultMethodTestUtil();
     private final Timer timer = new DefaultTimer();
+    private boolean noExceptions = false;
 
-    public void run(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
-        boolean successful = false;
-        try {
-            runTest(test, lifecycle, methodName);
-            successful = true;
-        } catch (Throwable t) {
-            successful = false;
-            error(test, t);
-        } finally {
-            tryCleanup(lifecycle, successful);
-        }
+    public void runTest(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
+        pre(lifecycle);
+        run(test, methodName);
+        post(test, lifecycle);
     }
 
-    private void runTest(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
+    private void pre(TestLifecycle lifecycle) {
         lifecycle.pre();
         timer.startClock();
-        util.invoke(test, methodName, NO_PARAMETERS);
-        timer.stopClock(test);
-        lifecycle.post();
     }
 
-    private void error(LifecycleTest test, Throwable t) {
+    private void run(LifecycleTest test, String methodName) {
+        util.invoke(test, methodName, NO_PARAMETERS);
+    }
+
+    private void post(LifecycleTest test, TestLifecycle lifecycle) {
+        timer.stopClock(test);
+        lifecycle.post();
+        noExceptions = true;
+    }
+
+    public void error(LifecycleTest test, Throwable t) {
         ThrowableSupport throwableSupport = test.throwableSupport();
         Throwable throwable = throwableSupport.translate(t);
         // FIX 2000 Is this how we want to handle throwable?
@@ -43,9 +44,9 @@ public class DefaultTestEngine implements TestEngine {
     }
 
     // OK GenericIllegalRegexp {
-    private void tryCleanup(TestLifecycle lifecycle, boolean successful) {
+    public void tryCleanup(TestLifecycle lifecycle) {
         try {
-            lifecycle.cleanup(successful);
+            lifecycle.cleanup(noExceptions);
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've alreay barfed ... ");
