@@ -10,7 +10,7 @@ public class DefaultThreadRunner implements ThreadRunner {
     private final TestLifecycle lifecycle;
     private final LifecycleTest test;
     private final String methodName;
-    public static List exceptions = new ArrayList();
+    static List exceptions = new ArrayList();
 
     public DefaultThreadRunner(LifecycleTest test, String methodName) {
         this.test = test;

@@ -18,14 +18,9 @@ public class DefaultParallelRunner implements ParallelRunner {
         checkExceptions();
     }
 
-    // FIX 2000 Tidy up.  Better solution to catch threaded exceptions?
     private void checkExceptions() throws Throwable {
         List exceptions = DefaultThreadRunner.exceptions;
-        if (exceptions.size() > 0) {
-            Throwable exception = (Throwable) exceptions.get(0);
-            exceptions.clear();
-            throw new Throwable(exception);
-        }
+        if (hasExceptions(exceptions)) rethrow(exceptions);
     }
 
     private Thread[] getThreads(LifecycleTest test, int count) {
@@ -58,5 +53,15 @@ public class DefaultParallelRunner implements ParallelRunner {
 
     private void join(Thread[] threads) throws InterruptedException {
         for (int i = 0; i < threads.length; i++) threads[i].join();
+    }
+
+    private void rethrow(List exceptions) throws Throwable {
+        Throwable exception = (Throwable) exceptions.get(0);
+        exceptions.clear();
+        throw new Throwable(exception);
+    }
+
+    private boolean hasExceptions(List exceptions) {
+        return exceptions.size() > 0;
     }
 }
