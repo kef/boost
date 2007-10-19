@@ -19,6 +19,7 @@ public class DefaultTestEngine implements TestEngine {
         pre(lifecycle);
         run(test, methodName);
         post(test, lifecycle);
+        successful = true;
     }
 
     private void pre(TestLifecycle lifecycle) {
@@ -33,7 +34,6 @@ public class DefaultTestEngine implements TestEngine {
     private void post(LifecycleTest test, TestLifecycle lifecycle) {
         timer.stopClock(test);
         lifecycle.post();
-        successful = true;
     }
 
     public void error(LifecycleTest test, Throwable t) {
