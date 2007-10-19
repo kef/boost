@@ -20,16 +20,8 @@ public class DefaultTestRunner implements TestRunner {
     }
 
     private void runit(LifecycleTest test) throws Throwable {
-        if (isParallel(test)) doMultiThreaded(test);
-        else doSingleThreaded(test);
-    }
-
-    private void doSingleThreaded(LifecycleTest test) throws Throwable {
-        thread.single(test);
-    }
-
-    private void doMultiThreaded(LifecycleTest test) throws Throwable {
-        thread.multi(test);
+        if (isParallel(test)) thread.multi(test);
+        else thread.single(test);
     }
 
     private boolean isParallel(LifecycleTest test) {
