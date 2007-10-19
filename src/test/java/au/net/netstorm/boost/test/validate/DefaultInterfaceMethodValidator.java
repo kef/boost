@@ -11,13 +11,14 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 
 public final class DefaultInterfaceMethodValidator implements InterfaceMethodValidator {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();
+    private static final MethodMatcher[] EMPTY = new MethodMatcher[]{};
 
     public void validate(Object ref) {
-        validate(ref, new MethodMatcher[0]);
+        validate(ref, EMPTY);
     }
 
     public void validate(Object ref, MethodMatcher allowed) {
-        MethodMatcher[] matchers = new MethodMatcher[]{allowed};
+        MethodMatcher[] matchers = {allowed};
         validate(ref, matchers);
     }
 
@@ -25,7 +26,7 @@ public final class DefaultInterfaceMethodValidator implements InterfaceMethodVal
         Class[] ifaces = ref.getClass().getInterfaces();
         Map interfaceMethods = interfaceSignatures(ifaces);
         Map objectMethods = implementationSignatures(ref);
-        removeImpelmented(interfaceMethods, objectMethods);
+        removeImplemented(interfaceMethods, objectMethods);
         checkLeftoversAllowed(objectMethods, allowed);
     }
 
@@ -47,18 +48,21 @@ public final class DefaultInterfaceMethodValidator implements InterfaceMethodVal
     private Map implementationSignatures(Method[] methods) {
         Map signatureMap = new HashMap();
         for (int i = 0; i < methods.length; i++) {
-            Method method = methods[i];
-            MethodSignature signature = new DefaultMethodSignature(method);
-            signatureMap.put(signature, method);
+            implementationSignatures(signatureMap, methods[i]);
         }
         return signatureMap;
     }
 
-    private void removeImpelmented(Map interfaceMethods, Map objectMethods) {
+    private void implementationSignatures(Map signatureMap, Method method) {
+        MethodSignature signature = new DefaultMethodSignature(method);
+        signatureMap.put(signature, method);
+    }
+
+    private void removeImplemented(Map interfaceMethods, Map objectMethods) {
         Set signatures = interfaceMethods.keySet();
-        for (Iterator iterator = signatures.iterator(); iterator.hasNext();) {
-            Object iFaceSignature = iterator.next();
-            objectMethods.remove(iFaceSignature);
+        Object[] things = signatures.toArray(new Object[]{});
+        for (int i = 0; i < things.length; i++) {
+            objectMethods.remove(things[i]);
         }
     }
 
