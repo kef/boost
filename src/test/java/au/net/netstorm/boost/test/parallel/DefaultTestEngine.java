@@ -36,11 +36,9 @@ public class DefaultTestEngine implements TestEngine {
         lifecycle.post();
     }
 
-    public void error(LifecycleTest test, Throwable t) {
+    public Throwable error(LifecycleTest test, Throwable t) {
         ThrowableSupport throwableSupport = test.throwableSupport();
-        Throwable throwable = throwableSupport.translate(t);
-        // FIX 2000 Is this how we want to handle throwable?
-        throw new IllegalStateException(throwable);
+        return throwableSupport.translate(t);
     }
 
     // OK GenericIllegalRegexp {

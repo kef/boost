@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 public interface TestEngine {
     void runTest(LifecycleTest test, TestLifecycle lifecycle, String methodName);
 
-    void error(LifecycleTest test, Throwable t);// OK GenericIllegalRegexp {
+    Throwable error(LifecycleTest test, Throwable t);// OK GenericIllegalRegexp {
 
     void tryCleanup(TestLifecycle lifecycle);
 }

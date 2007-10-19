@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.parallel;
 
+import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
@@ -10,6 +11,21 @@ public class DefaultParallelRunner implements ParallelRunner {
     public void run(LifecycleTest test, int threadCount) throws Throwable {
         Thread[] threads = getThreads(test, threadCount);
         execute(threads);
+    }
+
+    private void execute(Thread[] threads) throws Throwable {
+        doExecute(threads);
+        checkExceptions();
+    }
+
+    // FIX 2000 Tidy up.  Better solution to catch threaded exceptions?
+    private void checkExceptions() throws Throwable {
+        List exceptions = DefaultThreadRunner.exceptions;
+        if (exceptions.size() > 0) {
+            Throwable exception = (Throwable) exceptions.get(0);
+            exceptions.clear();
+            throw new Throwable(exception);
+        }
     }
 
     private Thread[] getThreads(LifecycleTest test, int count) {
@@ -31,7 +47,7 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     // FIX 2000 Remove InterruptedException.  Use stateless edge.
-    private void execute(Thread[] threads) throws InterruptedException {
+    private void doExecute(Thread[] threads) throws InterruptedException {
         start(threads);
         join(threads);
     }

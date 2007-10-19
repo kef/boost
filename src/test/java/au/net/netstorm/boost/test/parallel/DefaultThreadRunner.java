@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.parallel;
 
+import java.util.ArrayList;
+import java.util.List;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
@@ -8,6 +10,7 @@ public class DefaultThreadRunner implements ThreadRunner {
     private final TestLifecycle lifecycle;
     private final LifecycleTest test;
     private final String methodName;
+    public static List exceptions = new ArrayList();
 
     public DefaultThreadRunner(LifecycleTest test, String methodName) {
         this.test = test;
@@ -19,7 +22,8 @@ public class DefaultThreadRunner implements ThreadRunner {
         try {
             engine.runTest(test, lifecycle, methodName);
         } catch (Throwable t) {
-            engine.error(test, t);
+            Throwable throwable = engine.error(test, t);
+            exceptions.add(throwable);
         } finally {
             engine.tryCleanup(lifecycle);
         }
