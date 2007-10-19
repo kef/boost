@@ -14,7 +14,6 @@ public class DefaultTimer implements Timer {
         start = time();
     }
 
-    // FIX 2000 Move stop/start clock stuff out of here.
     public void stopClock(LifecycleTest test) {
         if (isTimed(test)) doTiming(test);
     }
