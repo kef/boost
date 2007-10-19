@@ -13,9 +13,9 @@ public class DefaultThreadRunner implements ThreadRunner {
     private static final Object[] NO_PARAMETERS = {};
     private final MethodTestUtil util = new DefaultMethodTestUtil();
     private final Timer timer = new DefaultTimer();
+    private final TestLifecycle lifecycle;
     private final LifecycleTest test;
     private final String methodName;
-    private final TestLifecycle lifecycle;
 
     public DefaultThreadRunner(LifecycleTest test, String methodName) {
         this.test = test;
