@@ -1,8 +1,7 @@
-package au.net.netstorm.boost.test.timing;
+package au.net.netstorm.boost.test.parallel;
 
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 
-// FIX 2000 Re-package?
 public interface TestRunner {
     void run(LifecycleTest test) throws Throwable;
 }

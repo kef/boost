@@ -4,7 +4,6 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 
-// FIX 2000 Use or Lose.
 public class DefaultParallelRunner implements ParallelRunner {
     private final EdgeClass classer = new DefaultEdgeClass();
 
