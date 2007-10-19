@@ -4,7 +4,7 @@ import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-public class DefaultParallelSupport implements ParallelSupport {
+public class DefaultThreadSupport implements ThreadSupport {
     private static final String THREADS = "threads";
     private final ParallelRunner parallel = new DefaultParallelRunner();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();

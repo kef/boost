@@ -4,11 +4,11 @@ import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.marker.DefaultMarker;
 import au.net.netstorm.boost.test.marker.Marker;
 import au.net.netstorm.boost.test.parallel.Parallel;
-import au.net.netstorm.boost.test.parallel.ParallelSupport;
+import au.net.netstorm.boost.test.parallel.ThreadSupport;
 
 public class DefaultTestRunner implements TestRunner {
     private final Marker marker = new DefaultMarker();
-    private ParallelSupport parallel;
+    private ThreadSupport thread;
 
     public void run(LifecycleTest test) throws Throwable {
         init(test);
@@ -16,7 +16,7 @@ public class DefaultTestRunner implements TestRunner {
     }
 
     private void init(LifecycleTest test) {
-        parallel = test.parallelSupport();
+        thread = test.threadSupport();
     }
 
     private void runit(LifecycleTest test) throws Throwable {
@@ -25,11 +25,11 @@ public class DefaultTestRunner implements TestRunner {
     }
 
     private void doSingleThreaded(LifecycleTest test) throws Throwable {
-        parallel.single(test);
+        thread.single(test);
     }
 
     private void doMultiThreaded(LifecycleTest test) throws Throwable {
-        parallel.multi(test);
+        thread.multi(test);
     }
 
     private boolean isParallel(LifecycleTest test) {
