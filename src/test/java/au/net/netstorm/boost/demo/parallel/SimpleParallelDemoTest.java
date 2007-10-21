@@ -1,26 +1,23 @@
 package au.net.netstorm.boost.demo.parallel;
 
+import au.net.netstorm.boost.test.automock.HasFixtures;
+import au.net.netstorm.boost.test.automock.InjectableSubject;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.core.Timed;
+import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.test.parallel.Parallel;
 
-public final class SimpleParallelDemoTest extends InteractionTestCase implements Parallel, Timed {
+public final class SimpleParallelDemoTest extends InteractionTestCase implements Parallel, InjectableSubject, LazyFields, HasFixtures {
+    RailwayTrack subject;
     Integer threads = 5;
 
-    // FIX 2000 Delete me.
-    public void testDeleteMe() {
-        print("found it");
+    public void setUpFixtures() {
+        subject = new DefaultRailwayTrack();
     }
 
-    public void testFoo1() {
-        print("go us!");
-    }
-
-    public void testPoo() {
-        print("poo poo");
-    }
-
-    private void print(String msg) {
-        // Print something out to see this in action.
+    // FIX 2000 Complete me!!!!!!!!!!!!
+    public void testParallelisation() {
+//        Train train = subject.getTrain();
+//        boolean empty = train == null;
+//        assertEquals(false, empty);
     }
 }

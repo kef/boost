@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public final class DefaultModifierTestUtil implements ModifierTestUtil {
+
     public boolean isPublic(Member member) {
         int modifiers = getModifiers(member);
         return Modifier.isPublic(modifiers);
@@ -70,11 +71,16 @@ public final class DefaultModifierTestUtil implements ModifierTestUtil {
     }
 
     public boolean isSynchronized(Class cls) {
-        Method[] methods = cls.getMethods();
+        Method[] methods = cls.getDeclaredMethods();
         for (int i = 0; i < methods.length; i++) {
-            if (!isSynchronized(methods[i])) return false;
+            if (isPublicAndNotSynchronized(methods[i])) return false;
         }
         return true;
+    }
+
+    private boolean isPublicAndNotSynchronized(Method method) {
+        int modifiers = method.getModifiers();
+        return isPublic(modifiers) && !isSynchronized(method);
     }
 
     private boolean isPublic(int modifiers) {

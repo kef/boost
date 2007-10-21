@@ -11,7 +11,9 @@ import au.net.netstorm.boost.test.automock.InjectableSubject;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -21,24 +23,31 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // SUGGEST: Moving constructor call logic out of here into a delegate will make the test a LOT simpler.
 public final class DefaultProviderEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields, InjectableSubject {
-    Object[] noParams = {};
-    ProviderEngine subject;
-    Onionizer onionizerMock;
-    Instantiator instantiatorMock;
-    InjectorEngine injectorMock;
-    Object[] parameters = {"Hi", "There"};
-    Implementation providezMoi;
-    BaseReference unresolvedMock;
-    Object rawRef;
-    ResolvedInstance wrapped;
-    Constructable constructableMock;
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
     Interface initMarker = new DefaultInterface(Constructable.class);
+    ModifierTestUtil modifierTestUtil = new DefaultModifierTestUtil();
     ResolvedThings resolvedThings = new DefaultResolvedThings();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
+    Object[] parameters = {"Hi", "There"};
+    Constructable constructableMock;
+    Instantiator instantiatorMock;
+    BaseReference unresolvedMock;
+    InjectorEngine injectorMock;
+    Implementation providezMoi;
+    ResolvedInstance wrapped;
+    Onionizer onionizerMock;
+    ProviderEngine subject;
+    Object[] noParams = {};
+    Object rawRef;
 
     public void setUpFixtures() {
         subject = new DefaultProviderEngine(onionizerMock, injectorMock, instantiatorMock);
+    }
+
+    public void testSynchronized() {
+        Class cls = subject.getClass();
+        boolean actual = modifierTestUtil.isSynchronized(cls);
+        assertEquals(true, actual);
     }
 
     public void testProvider() {

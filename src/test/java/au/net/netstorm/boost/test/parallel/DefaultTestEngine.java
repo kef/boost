@@ -47,7 +47,7 @@ public class DefaultTestEngine implements TestEngine {
             lifecycle.cleanup(successful);
         } catch (Throwable t) {
             PrintStream err = System.err;
-            err.print("Oopsy daisy, we've alreay barfed ... ");
+            err.print("Oopsy daisy, we've barfed during test lifecycle cleanup... ");
             t.printStackTrace(err);
         }
     }
