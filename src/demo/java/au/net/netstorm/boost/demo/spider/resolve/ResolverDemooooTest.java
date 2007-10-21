@@ -20,12 +20,12 @@ import au.net.netstorm.boost.spider.registry.FactoryBuilder;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 // SUGGEST: Move instances and blueprints construction into assemblers.
 
 // Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.
-public class ResolverDemooooTest extends BoooostCase {
+public class ResolverDemooooTest extends InteractionTestCase {
     private final Instances instances = new DefaultInstances(new DefaultInterfaceMap());
     private final Blueprints blueprints = new DefaultBlueprints(new DefaultInterfaceMap());
     private final Factories factories = new DefaultFactories();

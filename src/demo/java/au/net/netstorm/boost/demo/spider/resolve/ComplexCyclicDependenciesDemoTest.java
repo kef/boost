@@ -4,7 +4,7 @@ import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 
 public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest {
-    private final GraphUtil grapher = new DefaultGraphUtil();
+    GraphUtil grapher = new DefaultGraphUtil();
 
     {
         registry.multiple(Teacher.class, DefaultTeacher.class);

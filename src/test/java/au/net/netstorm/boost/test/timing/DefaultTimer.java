@@ -14,20 +14,19 @@ public class DefaultTimer implements Timer {
         start = time();
     }
 
-    public void stopClock(LifecycleTest test) {
-        if (isTimed(test)) doTiming(test);
+    public void stopClock(LifecycleTest test, String methodName) {
+        if (isTimed(test)) doTiming(test, methodName);
     }
 
-    private void doTiming(LifecycleTest test) {
+    private void doTiming(LifecycleTest test, String methodName) {
         long end = time();
-        timeOut(test, end);
+        timeOut(test, methodName, end);
     }
 
-    private void timeOut(LifecycleTest test, long end) {
-        String method = test.getName();
+    private void timeOut(LifecycleTest test, String methodName, long end) {
         Class cls = test.getClass();
         TimingSupport timing = test.timingSupport();
-        timing.time(cls, method, start, end);
+        timing.time(cls, methodName, start, end);
     }
 
     private long time() {

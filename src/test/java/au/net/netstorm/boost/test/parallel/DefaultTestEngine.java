@@ -18,7 +18,7 @@ public class DefaultTestEngine implements TestEngine {
     public void runTest(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
         pre(lifecycle);
         run(test, methodName);
-        post(test, lifecycle);
+        post(test, lifecycle, methodName);
         successful = true;
     }
 
@@ -31,8 +31,8 @@ public class DefaultTestEngine implements TestEngine {
         util.invoke(test, methodName, NO_PARAMETERS);
     }
 
-    private void post(LifecycleTest test, TestLifecycle lifecycle) {
-        timer.stopClock(test);
+    private void post(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
+        timer.stopClock(test, methodName);
         lifecycle.post();
     }
 
