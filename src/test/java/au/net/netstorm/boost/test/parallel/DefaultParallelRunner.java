@@ -4,17 +4,18 @@ import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
+import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
 public class DefaultParallelRunner implements ParallelRunner {
     private final EdgeClass classer = new DefaultEdgeClass();
 
     public void run(LifecycleTest test, int threadCount) throws Throwable {
         Thread[] threads = getThreads(test, threadCount);
-        execute(threads);
+        execute(test, threads);
     }
 
-    private void execute(Thread[] threads) throws Throwable {
-        doExecute(threads);
+    private void execute(LifecycleTest test, Thread[] threads) throws Throwable {
+        doExecute(test, threads);
         checkExceptions();
     }
 
@@ -37,14 +38,26 @@ public class DefaultParallelRunner implements ParallelRunner {
 
     private Thread createThread(Class cls, String name) {
         LifecycleTest test = (LifecycleTest) classer.newInstance(cls);
+        // FIX 2000 Rename to DefaultRunnableTest.
         Runnable runnable = new DefaultThreadRunner(test, name);
         return new Thread(runnable);
     }
 
     // FIX 2000 Remove InterruptedException.  Use stateless edge.
-    private void doExecute(Thread[] threads) throws InterruptedException {
+    private void doExecute(LifecycleTest test, Thread[] threads) throws InterruptedException {
+        TestLifecycle lifecycle = test.testLifecycle();
+        pre(lifecycle);
         start(threads);
         join(threads);
+        post(lifecycle);
+    }
+
+    private void pre(TestLifecycle lifecycle) {
+        lifecycle.classPre();
+    }
+
+    private void post(TestLifecycle lifecycle) {
+        lifecycle.classPost();
     }
 
     private void start(Thread[] threads) {
