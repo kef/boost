@@ -25,4 +25,11 @@ public final class DefaultInterface extends Primordial implements Interface {
     public int hashCode() {
         return type.hashCode();
     }
+
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Interface)) return false;
+        Interface iface = (Interface) obj;
+        Class cls = iface.getType();
+        return type.equals(cls);
+    }
 }
