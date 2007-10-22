@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.test.lifecycle;
 
 public interface TestLifecycle {
-    void pre();
+    void testPre();
 
-    void post();
+    void testPost();
 
     void cleanup(boolean successful);
 }

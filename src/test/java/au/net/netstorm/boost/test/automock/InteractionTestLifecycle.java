@@ -25,7 +25,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         testFieldInjector = new DefaultTestFieldInjector(testCase, mocks, random);
     }
 
-    public void pre() {
+    public void testPre() {
         doValidate();
         doRegisterDataProviders();
         doInjectLazyFields();
@@ -34,7 +34,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         doInjectSubject();
     }
 
-    public void post() {
+    public void testPost() {
         // Hook in from jMock.  Needed for jMock to actually verify.
         testFieldInjector.verify();
     }

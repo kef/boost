@@ -23,7 +23,7 @@ public class DefaultTestEngine implements TestEngine {
     }
 
     private void pre(TestLifecycle lifecycle) {
-        lifecycle.pre();
+        lifecycle.testPre();
         timer.startClock();
     }
 
@@ -33,7 +33,7 @@ public class DefaultTestEngine implements TestEngine {
 
     private void post(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
         timer.stopClock(test, methodName);
-        lifecycle.post();
+        lifecycle.testPost();
     }
 
     public Throwable error(LifecycleTest test, Throwable t) {
