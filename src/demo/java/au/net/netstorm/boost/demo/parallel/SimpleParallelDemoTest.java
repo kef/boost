@@ -12,6 +12,11 @@ public final class SimpleParallelDemoTest extends ParallelTest implements Parall
         checkTrain(train);
     }
 
+    public void testIsMultiThreaded() {
+        int count = DefaultRailwayTrack.trainCount;
+        assertEquals(threads, count);
+    }
+
     private Train getTrain() {
         RailwayTrack track = (RailwayTrack) resolver.resolve(RailwayTrack.class);
         return track.getTrain();
