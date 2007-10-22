@@ -10,7 +10,7 @@ public final class BasicImplMapper implements ImplMapper {
     public String map(Interface iface) {
         String pkg = master.getPackageName(iface);
         String cls = master.getShortName(iface);
-        return pkg + ".Default" + cls;
+        return pkg + "." + "Default" + cls;
     }
 
     public boolean can(Interface iface) {
