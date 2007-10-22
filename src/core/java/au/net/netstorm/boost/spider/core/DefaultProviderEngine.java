@@ -31,12 +31,12 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
-    public ResolvedInstance provide(Implementation impl) {
+    public synchronized ResolvedInstance provide(Implementation impl) {
         return provide(impl, NO_PARAMS);
     }
 
     // FIX 2000 Both these synchronized methods need to be test driven.
-    public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+    public synchronized ResolvedInstance provide(Implementation impl, Object[] parameters) {
         if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
