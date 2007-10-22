@@ -60,6 +60,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         lifecycle.classPost();
     }
 
+    // FIX 2000 Kick off threads at same time.
     private void start(Thread[] threads) {
         for (int i = 0; i < threads.length; i++) threads[i].start();
     }
