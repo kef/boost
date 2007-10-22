@@ -1,4 +1,4 @@
 package au.net.netstorm.boost.demo.parallel;
 
-public class ChooChooTrain implements Train {
+public class DefaultTrain implements Train {
 }

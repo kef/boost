@@ -1,15 +1,11 @@
 package au.net.netstorm.boost.demo.parallel;
 
-import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
+import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.test.parallel.Parallel;
 
-public final class SimpleParallelDemoTest extends ResolverDemooooTest implements Parallel {
+public final class SimpleParallelDemoTest extends ParallelTest implements Parallel {
+    private Spider resolver = getSpider();
     Integer threads = 5;
-
-    {
-        registry.single(RailwayTrack.class, DefaultRailwayTrack.class);
-        registry.single(Train.class, ChooChooTrain.class);
-    }
 
     public void testResolveWithMultipleThreads() {
         Train train = getTrain();
