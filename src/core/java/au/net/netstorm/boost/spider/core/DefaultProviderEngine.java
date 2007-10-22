@@ -35,7 +35,6 @@ public final class DefaultProviderEngine implements ProviderEngine {
         return provide(impl, NO_PARAMS);
     }
 
-    // FIX 2000 Both these synchronized methods need to be test driven.
     public synchronized ResolvedInstance provide(Implementation impl, Object[] parameters) {
         if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
