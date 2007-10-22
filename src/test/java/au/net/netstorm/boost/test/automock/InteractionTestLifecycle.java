@@ -26,12 +26,18 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     }
 
     public void classPre() {
+        doNothing();
     }
 
     public void classPost() {
+        doNothing();
     }
 
-    public void testPre() {
+    public void classCleanup(boolean successful) {
+        doNothing();
+    }
+
+    public void threadPre() {
         doValidate();
         doRegisterDataProviders();
         doInjectLazyFields();
@@ -40,12 +46,12 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         doInjectSubject();
     }
 
-    public void testPost() {
+    public void threadPost() {
         // Hook in from jMock.  Needed for jMock to actually verify.
         testFieldInjector.verify();
     }
 
-    public void cleanup(boolean successful) {
+    public void threadCleanup(boolean successful) {
         doDestroy();
     }
 
@@ -82,5 +88,8 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     private boolean hasMarker(Class marker) {
         Class cls = testCase.getClass();
         return marker.isAssignableFrom(cls);
+    }
+
+    private void doNothing() {
     }
 }

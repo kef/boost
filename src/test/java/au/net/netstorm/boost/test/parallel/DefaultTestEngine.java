@@ -23,7 +23,7 @@ public class DefaultTestEngine implements TestEngine {
     }
 
     private void pre(TestLifecycle lifecycle) {
-        lifecycle.testPre();
+        lifecycle.threadPre();
         timer.startClock();
     }
 
@@ -33,7 +33,7 @@ public class DefaultTestEngine implements TestEngine {
 
     private void post(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
         timer.stopClock(test, methodName);
-        lifecycle.testPost();
+        lifecycle.threadPost();
     }
 
     public Throwable error(LifecycleTest test, Throwable t) {
@@ -44,7 +44,7 @@ public class DefaultTestEngine implements TestEngine {
     // OK GenericIllegalRegexp {
     public void tryCleanup(TestLifecycle lifecycle) {
         try {
-            lifecycle.cleanup(successful);
+            lifecycle.threadCleanup(successful);
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've barfed during test lifecycle cleanup... ");

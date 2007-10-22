@@ -15,8 +15,17 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     private void execute(LifecycleTest test, Thread[] threads) throws Throwable {
-        doExecute(test, threads);
-        checkExceptions();
+        TestLifecycle lifecycle = test.testLifecycle();
+        boolean successful = true;
+        try {
+            doExecute(lifecycle, threads);
+            checkExceptions();
+        } catch (Throwable t) {
+            successful = false;
+            throw t;
+        } finally {
+            cleanup(lifecycle, successful);
+        }
     }
 
     private void checkExceptions() throws Throwable {
@@ -44,8 +53,7 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     // FIX 2000 Remove InterruptedException.  Use stateless edge.
-    private void doExecute(LifecycleTest test, Thread[] threads) throws InterruptedException {
-        TestLifecycle lifecycle = test.testLifecycle();
+    private void doExecute(TestLifecycle lifecycle, Thread[] threads) throws InterruptedException {
         pre(lifecycle);
         start(threads);
         join(threads);
@@ -58,6 +66,10 @@ public class DefaultParallelRunner implements ParallelRunner {
 
     private void post(TestLifecycle lifecycle) {
         lifecycle.classPost();
+    }
+
+    private void cleanup(TestLifecycle lifecycle, boolean successful) {
+        lifecycle.classCleanup(successful);
     }
 
     // FIX 2000 Kick off threads at same time.

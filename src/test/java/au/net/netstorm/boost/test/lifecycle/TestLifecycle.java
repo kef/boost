@@ -5,9 +5,11 @@ public interface TestLifecycle {
 
     void classPost();
 
-    void testPre();
+    void classCleanup(boolean successful);
 
-    void testPost();
+    void threadPre();
 
-    void cleanup(boolean successful);
+    void threadPost();
+
+    void threadCleanup(boolean successful);
 }
