@@ -25,6 +25,12 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         testFieldInjector = new DefaultTestFieldInjector(testCase, mocks, random);
     }
 
+    public void classPre() {
+    }
+
+    public void classPost() {
+    }
+
     public void testPre() {
         doValidate();
         doRegisterDataProviders();
