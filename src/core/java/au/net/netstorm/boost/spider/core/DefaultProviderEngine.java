@@ -17,6 +17,7 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 // SUGGEST: try/finally around resolved things put/remove.  Consider using try/finally proxy.
 public final class DefaultProviderEngine implements ProviderEngine {
+    private static final Object LOCK = GodLock.LOCK;
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private static final Object[] NO_PARAMS = {};
     private final ResolvedThings resolved = new DefaultResolvedThings();
@@ -31,11 +32,15 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
-    public synchronized ResolvedInstance provide(Implementation impl) {
-        return provide(impl, NO_PARAMS);
+    public ResolvedInstance provide(Implementation impl) {
+        synchronized (LOCK) { return doProvide(impl, NO_PARAMS); }
     }
 
-    public synchronized ResolvedInstance provide(Implementation impl, Object[] parameters) {
+    public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+        synchronized (LOCK) { return doProvide(impl, parameters); }
+    }
+
+    private ResolvedInstance doProvide(Implementation impl, Object[] parameters) {
         if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
