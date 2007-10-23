@@ -37,6 +37,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+        // SUGGEST Need failing test when this is removed.
         synchronized (LOCK) { return doProvide(impl, parameters); }
     }
 
