@@ -30,4 +30,6 @@ public interface LogNice {
     void error(Throwable t);
 
     void error(Object o, Throwable t);
+
+    boolean debugEnabled();
 }
