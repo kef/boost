@@ -33,7 +33,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl) {
-        synchronized (LOCK) { return doProvide(impl, NO_PARAMS); }
+        return doProvide(impl, NO_PARAMS);
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
