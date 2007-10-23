@@ -1,11 +1,14 @@
 package au.net.netstorm.boost.demo.parallel;
 
 public class DefaultRailwayTrack implements RailwayTrack {
+    public static final Object LOCK = new Object();
     public static int trainCount = 0;
     Train train;
 
     public Train getTrain() {
-        trainCount++;
+        synchronized (LOCK) {
+            trainCount++;
+        }
         return train;
     }
 }
