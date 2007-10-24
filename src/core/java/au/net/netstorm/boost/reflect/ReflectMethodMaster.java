@@ -9,4 +9,6 @@ public interface ReflectMethodMaster {
     String[] getPublicMethodNames(Object ref);
 
     Method[] getPublicMethods(Object ref);
+
+    Method getExactMethod(Class cls, MethodSpec method);
 }

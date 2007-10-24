@@ -7,10 +7,17 @@ import java.util.List;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
 
 class DefaultReflectMethodMaster implements ReflectMethodMaster {
+
     public Method getMethod(Class cls, MethodSpec method) {
         checkNotNull(cls);
         checkNotNull(method);
-        return doGetMethod(cls, method);
+        return doGetMethod(cls, method, false);
+    }
+
+    public Method getExactMethod(Class cls, MethodSpec method) {
+        checkNotNull(cls);
+        checkNotNull(method);
+        return doGetMethod(cls, method, true);
     }
 
     public String[] getPublicMethodNames(Object ref) {
@@ -48,19 +55,19 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         return Modifier.isPublic(modifiers);
     }
 
-    private Method doGetMethod(Class cls, MethodSpec targetMethod) {
+    private Method doGetMethod(Class cls, MethodSpec targetMethod, boolean exact) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
-            if (methodsMatch(methods[i], targetMethod)) return methods[i];
+            if (methodsMatch(exact, methods[i], targetMethod)) return methods[i];
         }
         throw new NoSuchMethodError(targetMethod.toString());
     }
 
-    private boolean methodsMatch(Method sourceMethod, MethodSpec targetMethod) {
+    private boolean methodsMatch(boolean exact, Method sourceMethod, MethodSpec targetMethod) {
         String name = targetMethod.getName();
         if (!methodNamesMatch(sourceMethod, name)) return false;
         Class[] params = targetMethod.getParams();
-        return paramsMatch(sourceMethod, params);
+        return paramsMatch(exact, sourceMethod, params);
     }
 
     private boolean methodNamesMatch(Method sourceMethod, String targetMethodName) {
@@ -68,22 +75,35 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         return methodName.equals(targetMethodName);
     }
 
-    private boolean paramsMatch(Method sourceMethod, Class[] parameterTypes) {
+    private boolean paramsMatch(boolean exact, Method sourceMethod, Class[] parameterTypes) {
         Class[] params = sourceMethod.getParameterTypes();
         if (parameterTypes.length != params.length) {
             return false;
         }
         for (int i = 0; i < params.length; i++) {
-            if (!paramMatches(params[i], parameterTypes[i])) {
+            if (!paramMatches(exact, params[i], parameterTypes[i])) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean paramMatches(Class sourceParam, Class targetParam) {
+    private boolean paramMatches(boolean exact, Class sourceParam, Class targetParam) {
+        if (isWrapperOf(targetParam, sourceParam)) return true;
+        if (exact) return sourceParam == targetParam;
         return sourceParam.isAssignableFrom(targetParam);
     }
+
+    // OK NCSS|CyclomaticComplexity|ReturnCount {
+    private boolean isWrapperOf(Class wrapper, Class primitive) {
+        if (primitive == boolean.class && wrapper == Boolean.class) return true;
+        if (primitive == short.class && wrapper == Short.class) return true;
+        if (primitive == int.class && wrapper == Integer.class) return true;
+        if (primitive == long.class && wrapper == Long.class) return true;
+        if (primitive == double.class && wrapper == Double.class) return true;
+        return primitive == float.class && wrapper == Float.class;
+    }
+    // } OK NCSS|CyclomaticComplexity|ReturnCount
 
     private void checkNotNull(Object param) {
         if (param == null) {

@@ -19,6 +19,10 @@ public final class DefaultReflectMaster implements ReflectMaster {
         return methodMaster.getMethod(cls, method);
     }
 
+    public Method getExactMethod(Class cls, MethodSpec method) {
+        return methodMaster.getExactMethod(cls, method);
+    }
+
     public String[] getPublicMethodNames(Object ref) {
         return methodMaster.getPublicMethodNames(ref);
     }
