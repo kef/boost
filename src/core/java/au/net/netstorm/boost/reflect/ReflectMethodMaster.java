@@ -10,5 +10,5 @@ public interface ReflectMethodMaster {
 
     Method[] getPublicMethods(Object ref);
 
-    Method getExactMethod(Class cls, MethodSpec method);
+    Method getMethodWithExactParams(Class cls, MethodSpec method);
 }

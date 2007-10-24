@@ -9,15 +9,11 @@ import au.net.netstorm.boost.util.introspect.MethodSpec;
 class DefaultReflectMethodMaster implements ReflectMethodMaster {
 
     public Method getMethod(Class cls, MethodSpec method) {
-        checkNotNull(cls);
-        checkNotNull(method);
-        return doGetMethod(cls, method, false);
+        return getMethod(false, cls, method);
     }
 
-    public Method getExactMethod(Class cls, MethodSpec method) {
-        checkNotNull(cls);
-        checkNotNull(method);
-        return doGetMethod(cls, method, true);
+    public Method getMethodWithExactParams(Class cls, MethodSpec method) {
+        return getMethod(true, cls, method);
     }
 
     public String[] getPublicMethodNames(Object ref) {
@@ -33,6 +29,12 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         Class cls = ref.getClass();
         List publicMethods = getPublicMethodList(cls);
         return (Method[]) publicMethods.toArray(new Method[0]);
+    }
+
+    private Method getMethod(boolean exact, Class cls, MethodSpec method) {
+        checkNotNull(cls);
+        checkNotNull(method);
+        return doGetMethod(exact, cls, method);
     }
 
     private List getPublicMethodList(Class cls) {
@@ -55,7 +57,7 @@ class DefaultReflectMethodMaster implements ReflectMethodMaster {
         return Modifier.isPublic(modifiers);
     }
 
-    private Method doGetMethod(Class cls, MethodSpec targetMethod, boolean exact) {
+    private Method doGetMethod(boolean exact, Class cls, MethodSpec targetMethod) {
         Method[] methods = cls.getMethods();
         for (int i = 0; i < methods.length; i++) {
             if (methodsMatch(exact, methods[i], targetMethod)) return methods[i];

@@ -19,6 +19,7 @@ public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
     private static final Class[] NO_PARAMETERS = {};
     private static final Class[] CHURCH_PARAMETER_TYPES = {String.class, Map.class};
     private static final Class[] MORE_PARAMETER_TYPES = {String.class, Map.class, List.class};
+    private static final Class[] SUBTYPE_PAREMETER_TYPES = new Class[]{String.class, WeakHashMap.class};
     private static final Class[] LESS_PARAMETER_TYPES = {String.class};
     private static final Class[] DIFFERENT_PARAMETER_TYPE = {String.class, Set.class};
     private static final Class INTERFACE_ONE = TestSubjects.TestInterfaceOne.class;
@@ -30,22 +31,24 @@ public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
     private final RattysSwissCheese rattysSwissCheese = new DefaultRattysSwissCheese();
     private final ReflectMaster master = new DefaultReflectMaster();
     private final EdgeClass edgeClass = new DefaultEdgeClass();
+    private static final boolean NOT_EXACT = false;
+    private static final boolean EXACT = true;
 
     public void testGetMethodBasic() {
-        checkGetMethod(INTERFACE_ONE, METHOD_CHURCH);
-        checkGetMethod(INTERFACE_ONE, METHOD_FRIDAY);
-        checkGetMethod(INTERFACE_TWO, METHOD_CRAPOLA);
+        checkWithSameParamTypes(INTERFACE_ONE, METHOD_CHURCH);
+        checkWithSameParamTypes(INTERFACE_ONE, METHOD_FRIDAY);
+        checkWithSameParamTypes(INTERFACE_TWO, METHOD_CRAPOLA);
     }
 
     public void testNoMatchingMethod() {
-        checkNoMatchingMethod(LESS_PARAMETER_TYPES);
-        checkNoMatchingMethod(MORE_PARAMETER_TYPES);
-        checkNoMatchingMethod(DIFFERENT_PARAMETER_TYPE);
+        checkNoMatchingMethod(NOT_EXACT, LESS_PARAMETER_TYPES);
+        checkNoMatchingMethod(NOT_EXACT, MORE_PARAMETER_TYPES);
+        checkNoMatchingMethod(NOT_EXACT, DIFFERENT_PARAMETER_TYPE);
+        checkNoMatchingMethod(EXACT, SUBTYPE_PAREMETER_TYPES);
     }
 
     public void testGetMethodWithSubtypeParam() {
-        Class[] params = new Class[]{String.class, WeakHashMap.class};
-        Method result = master.getMethod(INTERFACE_ONE, new DefaultMethodSpec(CHURCH_METHOD_NAME, params));
+        Method result = master.getMethod(INTERFACE_ONE, new DefaultMethodSpec(CHURCH_METHOD_NAME, SUBTYPE_PAREMETER_TYPES));
         Method expected = getMethod(INTERFACE_ONE, CHURCH_METHOD_NAME, CHURCH_PARAMETER_TYPES);
         assertEquals(expected, result);
     }
@@ -59,16 +62,22 @@ public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
         checkGetPublicMethodNames(rattysSwissCheese, CHEESE_METHODS);
     }
 
+    private void checkWithSameParamTypes(Class iface, MethodSpec methodSpec) {
+        checkGetMethod(NOT_EXACT, iface, methodSpec);
+        checkGetMethod(EXACT, iface, methodSpec);
+    }
+
     private void checkGetPublicMethodNames(Object ref, String[] expected) {
         String[] actual = master.getPublicMethodNames(ref);
         assertEquals(expected, actual);
     }
 
-    private void checkGetMethod(Class cls, MethodSpec method) {
+    private void checkGetMethod(boolean exact, Class cls, MethodSpec method) {
         String name = method.getName();
         Class[] params = method.getParams();
         Method expected = getMethod(cls, name, params);
-        assertEquals(expected, master.getMethod(cls, method));
+        if (exact) assertEquals(expected, master.getMethodWithExactParams(cls, method));
+        else assertEquals(expected, master.getMethod(cls, method));
     }
 
     private void checkNullsIllegal(Class cls, MethodSpec method) {
@@ -79,10 +88,11 @@ public class DefaultReflectMethodMasterAtomicTest extends BoooostCase {
         }
     }
 
-    private void checkNoMatchingMethod(Class[] parameterTypes) {
+    private void checkNoMatchingMethod(boolean exact, Class[] parameterTypes) {
         MethodSpec methodSpec = new DefaultMethodSpec(CHURCH_METHOD_NAME, parameterTypes);
         try {
-            master.getMethod(INTERFACE_ONE, methodSpec);
+            if (exact) master.getMethodWithExactParams(INTERFACE_ONE, methodSpec);
+            else master.getMethod(INTERFACE_ONE, methodSpec);
             fail();
         } catch (NoSuchMethodError expected) {
         }

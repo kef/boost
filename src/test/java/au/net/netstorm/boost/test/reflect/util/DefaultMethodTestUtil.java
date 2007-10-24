@@ -14,7 +14,12 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
     private final ReflectMaster reflector = new DefaultReflectMaster();
 
     public Object invoke(Object invokee, String methodName, Object[] parameters) {
-        Method method = getMethod(invokee, methodName, parameters);
+        Method method = getMethod(false, invokee, methodName, parameters);
+        return invoke(invokee, method, parameters);
+    }
+
+    public Object invokeExact(Object invokee, String methodName, Object[] parameters) {
+        Method method = getMethod(true, invokee, methodName, parameters);
         return invoke(invokee, method, parameters);
     }
 
@@ -25,11 +30,12 @@ public class DefaultMethodTestUtil implements MethodTestUtil {
         return exceptions[0];
     }
 
-    private Method getMethod(Object instance, String methodName, Object[] parameters) {
+    private Method getMethod(boolean exact, Object instance, String methodName, Object[] parameters) {
         Class type = instance.getClass();
         Class[] paramTypes = convertToTypes(parameters);
         MethodSpec spec = new DefaultMethodSpec(methodName, paramTypes);
-        return reflector.getExactMethod(type, spec);
+        if (exact) return reflector.getMethodWithExactParams(type, spec);
+        else return reflector.getMethod(type, spec);
     }
 
     private Class[] convertToTypes(Object[] parameters) {
