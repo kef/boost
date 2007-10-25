@@ -33,15 +33,17 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl) {
-        return doProvide(impl, NO_PARAMS);
+        return provide(impl, NO_PARAMS);
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+        if (resolved.exists(impl)) return resolved.get(impl);
         // SUGGEST Need failing test when this is removed.
-        synchronized (LOCK) { return doProvide(impl, parameters); }
+        synchronized (LOCK) { return createResolved(impl, parameters); }
     }
 
-    private ResolvedInstance doProvide(Implementation impl, Object[] parameters) {
+    private ResolvedInstance createResolved(Implementation impl, Object[] parameters) {
+        // race condition check
         if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
