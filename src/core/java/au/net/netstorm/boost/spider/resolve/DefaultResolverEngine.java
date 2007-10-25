@@ -22,12 +22,17 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     public ResolvedInstance resolve(Interface iface, Implementation host) {
+        if (resolved(iface)) return instances.get(iface);
         synchronized (LOCK) { return doResolve(iface, host); }
     }
 
     private ResolvedInstance doResolve(Interface iface, Implementation host) {
-        if (instances.exists(iface)) return instances.get(iface);
+        if (resolved(iface)) return instances.get(iface);
         return manufacture(iface, host);
+    }
+
+    private boolean resolved(Interface iface) {
+        return instances.exists(iface);
     }
 
     private ResolvedInstance manufacture(Interface iface, Implementation host) {

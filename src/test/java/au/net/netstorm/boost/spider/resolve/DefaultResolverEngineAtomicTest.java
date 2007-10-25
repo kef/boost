@@ -15,9 +15,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ResolvedInstance jimResolvedInstance;
-    Interface spoo = iface(Spoo.class);
     Interface jim = iface(Jim.class);
-    ResolvedInstance spooInstance;
     Implementation hostDummy;
     ProviderEngine providerMock;
     Instances instancesMock;
@@ -31,18 +29,33 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(instancesMock, false, "exists", jim);
+        expectExists(false);
+        expectExists(false);
         expect.oneCall(factoriesMock, factoryMock, "find", jim);
-        expect.oneCall(factoryMock, spooInstance, "get", jim, hostDummy, providerMock, instancesMock);
+        expect.oneCall(factoryMock, jimResolvedInstance, "get", jim, hostDummy, providerMock, instancesMock);
         ResolvedInstance result = subject.resolve(jim, hostDummy);
         assertEquals(jimResolvedInstance, result);
     }
 
+    public void testThreadRace() {
+        expectExists(true);
+        expectExists(false);
+        checkInstancesGet();
+    }
+
     public void testResolvedInstance() {
-        expect.oneCall(instancesMock, true, "exists", spoo);
-        expect.oneCall(instancesMock, spooInstance, "get", spoo);
-        ResolvedInstance result = subject.resolve(spoo, hostDummy);
-        assertEquals(spooInstance, result);
+        expectExists(true);
+        checkInstancesGet();
+    }
+
+    private void checkInstancesGet() {
+        expect.oneCall(instancesMock, jimResolvedInstance, "get", jim);
+        ResolvedInstance result = subject.resolve(jim, hostDummy);
+        assertEquals(jimResolvedInstance, result);
+    }
+
+    private void expectExists(boolean exists) {
+        expect.oneCall(instancesMock, exists, "exists", jim);
     }
 
     private Interface iface(Class cls) {

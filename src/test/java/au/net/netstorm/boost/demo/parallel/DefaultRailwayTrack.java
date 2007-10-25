@@ -9,6 +9,9 @@ public class DefaultRailwayTrack implements RailwayTrack {
         synchronized (LOCK) {
             trainCount++;
         }
+        try {
+            Thread.sleep(1L);
+        } catch (InterruptedException e) { }
         return train;
     }
 }
