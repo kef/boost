@@ -6,7 +6,7 @@ import au.net.netstorm.boost.test.core.BoooostCase;
 public final class MonthSpecAtomicTest extends BoooostCase {
     // FIX SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.
     // FIX SC507 Internal static per class is probably fine.
-    public static final MonthSpec JANUARY_2000 = new MonthSpec(2180, 0);
+    public static final MonthSpec JANUARY_2000 = new MonthSpec(2000, 0);
     public static final MonthSpec DECEMBER_1999 = new MonthSpec(1999, 11);
     private static final int EQUAL_TO = 0;
     private static final int LESS_THAN = -1;
