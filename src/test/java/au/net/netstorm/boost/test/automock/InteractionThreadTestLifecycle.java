@@ -3,21 +3,21 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.core.Destroyable;
-import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
+import au.net.netstorm.boost.test.lifecycle.ThreadTestLifecycle;
 import au.net.netstorm.boost.test.specific.BoostDataProviders;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.ProvidesData;
 import au.net.netstorm.boost.test.validate.TestClassValidator;
 import au.net.netstorm.boost.test.validate.Validator;
 
-public final class InteractionTestLifecycle implements TestLifecycle {
+public class InteractionThreadTestLifecycle implements ThreadTestLifecycle {
+    private final Provider random;
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
-    private final Provider random;
     private final DataProviders dataProviders;
     private final Validator validator = new TestClassValidator();
 
-    public InteractionTestLifecycle(InteractionTestCase testCase, InteractionTestState state) {
+    public InteractionThreadTestLifecycle(InteractionTestCase testCase, InteractionTestState state) {
         this.testCase = testCase;
         random = state.getRandom();
         dataProviders = state.getDataProviders();
@@ -25,19 +25,7 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         testFieldInjector = new DefaultTestFieldInjector(testCase, mocks, random);
     }
 
-    public void classPre() {
-        doNothing();
-    }
-
-    public void classPost() {
-        doNothing();
-    }
-
-    public void classCleanup(boolean successful) {
-        doNothing();
-    }
-
-    public void threadPre() {
+    public void pre() {
         doValidate();
         doRegisterDataProviders();
         doInjectLazyFields();
@@ -46,12 +34,12 @@ public final class InteractionTestLifecycle implements TestLifecycle {
         doInjectSubject();
     }
 
-    public void threadPost() {
+    public void post() {
         // Hook in from jMock.  Needed for jMock to actually verify.
         testFieldInjector.verify();
     }
 
-    public void threadCleanup(boolean successful) {
+    public void cleanup(boolean successful) {
         doDestroy();
     }
 
@@ -88,8 +76,5 @@ public final class InteractionTestLifecycle implements TestLifecycle {
     private boolean hasMarker(Class marker) {
         Class cls = testCase.getClass();
         return marker.isAssignableFrom(cls);
-    }
-
-    private void doNothing() {
     }
 }

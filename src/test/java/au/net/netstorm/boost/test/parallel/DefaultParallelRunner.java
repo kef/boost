@@ -3,6 +3,7 @@ package au.net.netstorm.boost.test.parallel;
 import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.test.lifecycle.ClassTestLifecycle;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
@@ -15,16 +16,16 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     private void execute(LifecycleTest test, Thread[] threads) throws Throwable {
-        TestLifecycle lifecycle = test.testLifecycle();
+        ClassTestLifecycle classLifecycle = test.classTestLifecycle();
         boolean successful = true;
         try {
-            doExecute(lifecycle, threads);
+            doExecute(classLifecycle, threads);
             checkExceptions();
         } catch (Throwable t) {
             successful = false;
             throw t;
         } finally {
-            cleanup(lifecycle, successful);
+            cleanup(classLifecycle, successful);
         }
     }
 
@@ -52,23 +53,23 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     // FIX 2000 Remove InterruptedException.  Use stateless edge.
-    private void doExecute(TestLifecycle lifecycle, Thread[] threads) throws InterruptedException {
-        pre(lifecycle);
+    private void doExecute(ClassTestLifecycle classLifecycle, Thread[] threads) throws InterruptedException {
+        pre(classLifecycle);
         start(threads);
         join(threads);
-        post(lifecycle);
+        post(classLifecycle);
     }
 
     private void pre(TestLifecycle lifecycle) {
-        lifecycle.classPre();
+        lifecycle.pre();
     }
 
     private void post(TestLifecycle lifecycle) {
-        lifecycle.classPost();
+        lifecycle.post();
     }
 
     private void cleanup(TestLifecycle lifecycle, boolean successful) {
-        lifecycle.classCleanup(successful);
+        lifecycle.cleanup(successful);
     }
 
     // FIX 2000 Kick off threads at same time.

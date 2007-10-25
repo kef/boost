@@ -4,15 +4,9 @@ package au.net.netstorm.boost.test.lifecycle;
 
 // FIX 2000 More than that it looks like one interface used twice.
 public interface TestLifecycle {
-    void classPre();
+    void pre();
 
-    void classPost();
+    void post();
 
-    void classCleanup(boolean successful);
-
-    void threadPre();
-
-    void threadPost();
-
-    void threadCleanup(boolean successful);
+    void cleanup(boolean successful);
 }

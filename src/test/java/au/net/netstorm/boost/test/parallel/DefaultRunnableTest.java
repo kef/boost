@@ -3,11 +3,11 @@ package au.net.netstorm.boost.test.parallel;
 import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
+import au.net.netstorm.boost.test.lifecycle.ThreadTestLifecycle;
 
 public class DefaultRunnableTest implements ThreadRunner {
     private final TestEngine engine = new DefaultTestEngine();
-    private final TestLifecycle lifecycle;
+    private final ThreadTestLifecycle lifecycle;
     private final LifecycleTest test;
     private final String methodName;
     static List exceptions = new ArrayList();
@@ -15,7 +15,7 @@ public class DefaultRunnableTest implements ThreadRunner {
     public DefaultRunnableTest(LifecycleTest test, String methodName) {
         this.test = test;
         this.methodName = methodName;
-        this.lifecycle = test.testLifecycle();
+        this.lifecycle = test.threadTestLifecycle();
     }
 
     public void run() {
