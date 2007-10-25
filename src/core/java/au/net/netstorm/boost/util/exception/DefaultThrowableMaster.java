@@ -22,7 +22,7 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return true;
     }
 
-    // SUGGEST: Does this really belong.
+    // SUGGEST: Does this really belong?
     public String trace(Throwable t) {
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
