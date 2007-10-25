@@ -53,8 +53,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         return new Thread(runnable);
     }
 
-    // FIX 2180 Remove InterruptedException.  Use stateless edge.
-    private void doExecute(MethodTestLifecycle methodLifecycle, Thread[] threads) throws InterruptedException {
+    private void doExecute(MethodTestLifecycle methodLifecycle, Thread[] threads) {
         pre(methodLifecycle);
         start(threads);
         join(threads);
@@ -78,7 +77,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         for (int i = 0; i < threads.length; i++) threader.start(threads[i]);
     }
 
-    private void join(Thread[] threads) throws InterruptedException {
+    private void join(Thread[] threads) {
         for (int i = 0; i < threads.length; i++) threader.join(threads[i]);
     }
 

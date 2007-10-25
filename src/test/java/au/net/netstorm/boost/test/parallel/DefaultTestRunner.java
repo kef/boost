@@ -22,8 +22,6 @@ public class DefaultTestRunner implements TestRunner {
         else thread.single(test);
     }
 
-    // FIX 2180 Maybe 'Parallel' should have a 'getThreadCount()'
-    //          which can be used here and passed into ThreadSupport.multi().
     private boolean isParallel(LifecycleTest test) {
         return marker.is(test, Parallel.class);
     }
