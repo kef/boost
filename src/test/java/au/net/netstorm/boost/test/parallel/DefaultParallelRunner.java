@@ -17,13 +17,11 @@ public class DefaultParallelRunner implements ParallelRunner {
 
     private void execute(LifecycleTest test, Thread[] threads) throws Throwable {
         ClassTestLifecycle classLifecycle = test.classTestLifecycle();
-        boolean successful = true;
+        boolean successful = false;
         try {
             doExecute(classLifecycle, threads);
             checkExceptions();
-        } catch (Throwable t) {
-            successful = false;
-            throw t;
+            successful = true;
         } finally {
             cleanup(classLifecycle, successful);
         }
