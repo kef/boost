@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
@@ -40,8 +39,7 @@ public final class DefaultTryCatchFinallyHandlerAtomicTest extends InteractionTe
         try {
             subject.invoke(irrelevant, tieMethod, params);
             fail();
-        } catch (InvocationTargetException expected) {
-            Throwable actual = expected.getTargetException();
+        } catch (Exception actual) {
             assertEquals(throwable, actual);
         }
     }

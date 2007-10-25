@@ -1,8 +1,11 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
 import java.lang.reflect.Method;
+import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
+import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
 public final class DefaultTryCatchFinallyHandler implements TryFinallyHandler {
+    private final ThrowableMaster tosser = new DefaultThrowableMaster();
     private final Object delegate;
     private final TryCatchFinally trier;
 
@@ -15,7 +18,12 @@ public final class DefaultTryCatchFinallyHandler implements TryFinallyHandler {
         try {
             trier.theCore();
             return method.invoke(delegate, parameters);
-        } finally {
+        }
+        catch (Throwable t) {
+            Throwable real = tosser.realCause(t);
+            return tosser.rethrow(real);
+        }
+        finally {
             trier.theFinally();
         }
     }

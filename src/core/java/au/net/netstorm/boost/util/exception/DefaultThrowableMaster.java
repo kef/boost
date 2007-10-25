@@ -8,7 +8,7 @@ import au.net.netstorm.boost.edge.EdgeException;
 
 public final class DefaultThrowableMaster implements ThrowableMaster {
 
-    public void rethrow(Throwable t) {
+    public Object rethrow(Throwable t) {
         if (t instanceof Error)
             throw (Error) t;
         if (t instanceof RuntimeException)
