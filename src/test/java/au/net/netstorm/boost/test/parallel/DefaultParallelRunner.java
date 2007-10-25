@@ -29,7 +29,7 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     private void checkExceptions() throws Throwable {
-        List exceptions = DefaultThreadRunner.exceptions;
+        List exceptions = DefaultRunnableTest.exceptions;
         if (hasExceptions(exceptions)) rethrow(exceptions);
     }
 
@@ -47,8 +47,7 @@ public class DefaultParallelRunner implements ParallelRunner {
 
     private Thread createThread(Class cls, String name) {
         LifecycleTest test = (LifecycleTest) classer.newInstance(cls);
-        // FIX 2000 Rename to DefaultRunnableTest.
-        Runnable runnable = new DefaultThreadRunner(test, name);
+        Runnable runnable = new DefaultRunnableTest(test, name);
         return new Thread(runnable);
     }
 
