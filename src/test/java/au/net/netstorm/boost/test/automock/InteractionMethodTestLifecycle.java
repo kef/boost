@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.test.automock;
 
-import au.net.netstorm.boost.test.lifecycle.ClassTestLifecycle;
+import au.net.netstorm.boost.test.lifecycle.MethodTestLifecycle;
 
-public final class InteractionClassTestLifecycle implements ClassTestLifecycle {
+public final class InteractionMethodTestLifecycle implements MethodTestLifecycle {
     public void pre() {
         doNothing();
     }

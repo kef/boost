@@ -3,8 +3,8 @@ package au.net.netstorm.boost.test.parallel;
 import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.test.lifecycle.ClassTestLifecycle;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
+import au.net.netstorm.boost.test.lifecycle.MethodTestLifecycle;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
 public class DefaultParallelRunner implements ParallelRunner {
@@ -16,14 +16,14 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     private void execute(LifecycleTest test, Thread[] threads) throws Throwable {
-        ClassTestLifecycle classLifecycle = test.classTestLifecycle();
+        MethodTestLifecycle methodLifecycle = test.classTestLifecycle();
         boolean successful = false;
         try {
-            doExecute(classLifecycle, threads);
+            doExecute(methodLifecycle, threads);
             checkExceptions();
             successful = true;
         } finally {
-            cleanup(classLifecycle, successful);
+            cleanup(methodLifecycle, successful);
         }
     }
 
@@ -51,11 +51,11 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     // FIX 2000 Remove InterruptedException.  Use stateless edge.
-    private void doExecute(ClassTestLifecycle classLifecycle, Thread[] threads) throws InterruptedException {
-        pre(classLifecycle);
+    private void doExecute(MethodTestLifecycle methodLifecycle, Thread[] threads) throws InterruptedException {
+        pre(methodLifecycle);
         start(threads);
         join(threads);
-        post(classLifecycle);
+        post(methodLifecycle);
     }
 
     private void pre(TestLifecycle lifecycle) {
