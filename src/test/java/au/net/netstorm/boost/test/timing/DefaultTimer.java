@@ -10,7 +10,7 @@ public class DefaultTimer implements Timer {
     private long start;
 
     public void startClock() {
-        // FIX 2000 Use Clock.
+        // SUGGEST Use Clock.
         start = time();
     }
 
