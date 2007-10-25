@@ -1,11 +1,9 @@
 package au.net.netstorm.boost.demo.parallel;
 
-import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.test.core.Timed;
 import au.net.netstorm.boost.test.parallel.Parallel;
 
 public final class SimpleParallelDemoTest extends ParallelTest implements Parallel, Timed {
-    private Spider resolver = getSpider();
     Integer threads = 5;
 
     public void testResolveWithMultipleThreads() {

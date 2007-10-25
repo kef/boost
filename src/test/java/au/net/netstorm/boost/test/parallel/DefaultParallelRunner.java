@@ -50,7 +50,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         return new Thread(runnable);
     }
 
-    // FIX 2000 Remove InterruptedException.  Use stateless edge.
+    // FIX 2180 Remove InterruptedException.  Use stateless edge.
     private void doExecute(MethodTestLifecycle methodLifecycle, Thread[] threads) throws InterruptedException {
         pre(methodLifecycle);
         start(threads);
@@ -70,7 +70,7 @@ public class DefaultParallelRunner implements ParallelRunner {
         lifecycle.cleanup(successful);
     }
 
-    // FIX 2000 Kick off threads at same time.
+    // FIX 2180 Kick off threads at same time.
     private void start(Thread[] threads) {
         for (int i = 0; i < threads.length; i++) threads[i].start();
     }
