@@ -1,8 +1,12 @@
 package au.net.netstorm.boost.test.timing;
 
-// FIX 2000 Use or Lose.
 public class DefaultTimingSupport implements TimingSupport {
+
+    // FIX 2000 Is this what we want to do as the default timing log?
+    // OK GenericIllegalRegexp {
     public void time(Class cls, String method, long start, long end) {
-        // FIX 2000 Complete me.
+        TimingDetails details = new DefaultTimingDetails(cls, method, start, end);
+        System.out.println(details);
     }
+    // } OK GenericIllegalRegexp
 }
