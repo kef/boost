@@ -19,7 +19,7 @@ public abstract class InteractionTestCase extends LifecycleTestCase implements L
     public final MockExpectations expect = new DefaultMockExpectations(mocks);
     public final AtomTestChecker atom = new DataAtomTestChecker(random);
 
-    public MethodTestLifecycle classTestLifecycle() {
+    public MethodTestLifecycle methodTestLifecycle() {
         return new InteractionMethodTestLifecycle();
     }
 

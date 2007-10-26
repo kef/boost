@@ -19,7 +19,7 @@ public class DefaultParallelRunner implements ParallelRunner {
     }
 
     private void execute(LifecycleTest test, Thread[] threads) throws Throwable {
-        MethodTestLifecycle methodLifecycle = test.classTestLifecycle();
+        MethodTestLifecycle methodLifecycle = test.methodTestLifecycle();
         boolean successful = false;
         try {
             doExecute(methodLifecycle, threads);
