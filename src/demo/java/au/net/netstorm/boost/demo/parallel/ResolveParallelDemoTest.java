@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.demo.parallel;
 
 import au.net.netstorm.boost.test.core.Timed;
-import au.net.netstorm.boost.test.parallel.Parallel;
 
-public final class SimpleParallelDemoTest extends ParallelTest implements Parallel, Timed {
+public final class ResolveParallelDemoTest extends ParallelTest implements Timed {
     Integer threads = 5;
 
     public void testResolveWithMultipleThreads() {
