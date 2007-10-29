@@ -37,16 +37,14 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+        // SUGGEST Need failing test when this is set to 'true'.
         return provideSync(impl, parameters, false);
     }
 
     private ResolvedInstance provideSync(Implementation impl, Object[] parameters, boolean isLocked) {
         if (resolved.exists(impl)) return resolved.get(impl);
-        if (!isLocked) {
-            // SUGGEST Need failing test when this is removed.
-            synchronized (LOCK) { return provideSync(impl, parameters, true); }
-        }
-        return createResolved(impl, parameters);
+        if (isLocked) return createResolved(impl, parameters);
+        synchronized (LOCK) { return provideSync(impl, parameters, true); }
     }
 
     private ResolvedInstance createResolved(Implementation impl, Object[] parameters) {
