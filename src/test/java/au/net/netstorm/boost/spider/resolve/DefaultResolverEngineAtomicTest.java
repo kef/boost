@@ -8,13 +8,15 @@ import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
-    // FIX BREADCRUMB 2183 Check for synchronisation.
+    ClassTestChecker testChecker = new DefaultClassTestChecker();
     ResolvedInstance jimResolvedInstance;
     Interface spoo = iface(Spoo.class);
     Interface jim = iface(Jim.class);
@@ -29,6 +31,10 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
 
     public void setUpFixtures() {
         subject = new DefaultResolverEngine(instancesMock, factoriesMock, providerMock);
+    }
+
+    public void testCheckSynchronization() {
+        testChecker.checkSynchronized(DefaultResolverEngine.class);
     }
 
     public void testNoResolvedInstance() {
