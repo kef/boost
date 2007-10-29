@@ -23,11 +23,15 @@ public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
     }
 
     private void doExecute(LifecycleTest test, TestLifecycle lifecycle) {
-        Thread[] threads = creator.create(test);
         lifecycle.pre();
+        runThreads(test);
+        lifecycle.post();
+    }
+
+    private void runThreads(LifecycleTest test) {
+        Thread[] threads = creator.create(test);
         start(threads);
         join(threads);
-        lifecycle.post();
     }
 
     private void start(Thread[] threads) {
