@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.lifecycle;
 
 public interface TestLifecycleProvider {
-    MethodTestLifecycle methodTestLifecycle();
+    TestLifecycle testLifecycle();
 
     ThreadTestLifecycle threadTestLifecycle();
 }

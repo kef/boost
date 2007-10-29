@@ -5,9 +5,11 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 
 public class DefaultTestThreadCreator implements TestThreadCreator {
+    private final ThreadCount counter = new DefaultThreadCount();
     private final EdgeClass classer = new DefaultEdgeClass();
 
-    public Thread[] create(LifecycleTest test, int count) {
+    public Thread[] create(LifecycleTest test) {
+        int count = counter.threads(test);
         Class cls = test.getClass();
         String name = test.getName();
         return createThreads(count, cls, name);
