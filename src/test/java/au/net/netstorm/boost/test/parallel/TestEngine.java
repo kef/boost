@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.test.parallel;
 
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.lifecycle.ThreadTestLifecycle;
 
 public interface TestEngine {
@@ -9,5 +8,5 @@ public interface TestEngine {
 
     Throwable error(LifecycleTest test, Throwable t);// OK GenericIllegalRegexp {
 
-    void tryCleanup(TestLifecycle lifecycle);
+    void tryCleanup(ThreadTestLifecycle lifecycle);
 }

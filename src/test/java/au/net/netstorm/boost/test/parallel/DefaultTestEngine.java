@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.parallel;
 import java.io.PrintStream;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.lifecycle.ThreadTestLifecycle;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
@@ -23,18 +22,9 @@ public class DefaultTestEngine implements TestEngine {
         successful = true;
     }
 
-    private void pre(TestLifecycle lifecycle) {
+    private void pre(ThreadTestLifecycle lifecycle) {
         lifecycle.pre();
         timer.startClock();
-    }
-
-    private void run(LifecycleTest test, String methodName) {
-        util.invoke(test, methodName, NO_PARAMETERS);
-    }
-
-    private void post(LifecycleTest test, TestLifecycle lifecycle, String methodName) {
-        timer.stopClock(test, methodName);
-        lifecycle.post();
     }
 
     public Throwable error(LifecycleTest test, Throwable t) {
@@ -42,8 +32,17 @@ public class DefaultTestEngine implements TestEngine {
         return throwableSupport.translate(t);
     }
 
+    private void run(LifecycleTest test, String methodName) {
+        util.invoke(test, methodName, NO_PARAMETERS);
+    }
+
+    private void post(LifecycleTest test, ThreadTestLifecycle lifecycle, String methodName) {
+        timer.stopClock(test, methodName);
+        lifecycle.post();
+    }
+
     // OK GenericIllegalRegexp {
-    public void tryCleanup(TestLifecycle lifecycle) {
+    public void tryCleanup(ThreadTestLifecycle lifecycle) {
         try {
             lifecycle.cleanup(successful);
         } catch (Throwable t) {
