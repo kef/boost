@@ -37,14 +37,19 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+        return provideSync(impl, parameters, false);
+    }
+
+    private ResolvedInstance provideSync(Implementation impl, Object[] parameters, boolean isLocked) {
         if (resolved.exists(impl)) return resolved.get(impl);
-        // SUGGEST Need failing test when this is removed.
-        synchronized (LOCK) { return createResolved(impl, parameters); }
+        if (!isLocked) {
+            // SUGGEST Need failing test when this is removed.
+            synchronized (LOCK) { return provideSync(impl, parameters, true); }
+        }
+        return createResolved(impl, parameters);
     }
 
     private ResolvedInstance createResolved(Implementation impl, Object[] parameters) {
-        // race condition check
-        if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
         return onionizer.onionise(impl, resolved);
