@@ -33,14 +33,10 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl) {
-        synchronized (LOCK) { return doProvide(impl, NO_PARAMS); }
+        return provide(impl, NO_PARAMS);
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        synchronized (LOCK) { return doProvide(impl, parameters); }
-    }
-
-    private ResolvedInstance doProvide(Implementation impl, Object[] parameters) {
         if (resolved.exists(impl)) return resolved.get(impl);
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
