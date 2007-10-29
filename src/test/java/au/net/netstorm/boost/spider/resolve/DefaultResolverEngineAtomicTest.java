@@ -14,6 +14,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+    // FIX BREADCRUMB 2183 Check for synchronisation.
     ResolvedInstance jimResolvedInstance;
     Interface spoo = iface(Spoo.class);
     Interface jim = iface(Jim.class);

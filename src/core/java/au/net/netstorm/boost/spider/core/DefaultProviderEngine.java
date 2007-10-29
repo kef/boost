@@ -17,7 +17,6 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 // SUGGEST: try/finally around resolved things put/remove.  Consider using try/finally proxy.
 public final class DefaultProviderEngine implements ProviderEngine {
-    private static final Object LOCK = GodLock.LOCK;
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private static final Object[] NO_PARAMS = {};
     private final ResolvedThings resolved = new DefaultResolvedThings();
