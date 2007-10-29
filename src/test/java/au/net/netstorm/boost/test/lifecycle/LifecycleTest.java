@@ -10,6 +10,7 @@ public interface LifecycleTest extends
         RunnableTest,
         NamedTest,
         TestLifecycleProvider,
+// FIX 2183 Aggregate into support methods.
         ThrowableSupportProvider,
         TimingSupportProvider,
         ParallelSupportProvider {
