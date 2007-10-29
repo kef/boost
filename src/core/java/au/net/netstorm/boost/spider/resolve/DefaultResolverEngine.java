@@ -21,14 +21,15 @@ public final class DefaultResolverEngine implements ResolverEngine {
         this.provider = provider;
     }
 
+    // FIX 2183 Sort out synchronisation.
+    // FIX 2183 Do we really need a lock on ProviderEngine.
     public ResolvedInstance resolve(Interface iface, Implementation host) {
-        return resolveSync(iface, host, false);
+        synchronized (LOCK) { return doResolve(iface, host); }
     }
 
-    private ResolvedInstance resolveSync(Interface iface, Implementation host, boolean isLocked) {
+    private ResolvedInstance doResolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
-        if (isLocked) return manufacture(iface, host);
-        synchronized (LOCK) { return resolveSync(iface, host, true); }
+        return manufacture(iface, host);
     }
 
     private ResolvedInstance manufacture(Interface iface, Implementation host) {

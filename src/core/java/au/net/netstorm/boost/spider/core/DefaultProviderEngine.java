@@ -33,21 +33,15 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl) {
-        return provide(impl, NO_PARAMS);
+        synchronized (LOCK) { return doProvide(impl, NO_PARAMS); }
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        // SUGGEST Need failing test when this is set to 'true'.
-        return provideSync(impl, parameters, false);
+        synchronized (LOCK) { return doProvide(impl, parameters); }
     }
 
-    private ResolvedInstance provideSync(Implementation impl, Object[] parameters, boolean isLocked) {
+    private ResolvedInstance doProvide(Implementation impl, Object[] parameters) {
         if (resolved.exists(impl)) return resolved.get(impl);
-        if (isLocked) return createResolved(impl, parameters);
-        synchronized (LOCK) { return provideSync(impl, parameters, true); }
-    }
-
-    private ResolvedInstance createResolved(Implementation impl, Object[] parameters) {
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
         return onionizer.onionise(impl, resolved);
