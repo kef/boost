@@ -10,6 +10,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngine implements ResolverEngine {
+    // FIX 2183 This is no longer needed.
     private static final Object LOCK = GodLock.LOCK;
     private final Instances instances;
     private final Factories factories;

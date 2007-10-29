@@ -3,12 +3,15 @@ package au.net.netstorm.boost.spider.registry;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultInstancesAtomicTest extends InteractionTestCase implements HasFixtures {
+    ClassTestChecker checker = new DefaultClassTestChecker();
     Interface iface = iface(Dinosaur.class);
     Dinosaur tyrannosaurus = new Tyrannosaurus();
     Tree jacaranda = new Jacaranda();
@@ -20,6 +23,10 @@ public final class DefaultInstancesAtomicTest extends InteractionTestCase implem
 
     public void setUpFixtures() {
         subject = new DefaultInstances(mapMock);
+    }
+
+    public void testSynchronized() {
+        checker.checkSynchronized(DefaultInstances.class);
     }
 
     public void testGet() {

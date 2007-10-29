@@ -11,16 +11,16 @@ public final class DefaultInstances implements Instances {
         this.map = map;
     }
 
-    public void put(Interface iface, ResolvedInstance instance) {
+    public synchronized void put(Interface iface, ResolvedInstance instance) {
         check(iface, instance);
         map.put(iface, instance);
     }
 
-    public ResolvedInstance get(Interface iface) {
+    public synchronized ResolvedInstance get(Interface iface) {
         return (ResolvedInstance) map.get(iface);
     }
 
-    public boolean exists(Interface iface) {
+    public synchronized boolean exists(Interface iface) {
         return map.exists(iface);
     }
 
