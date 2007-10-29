@@ -27,10 +27,8 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance resolveSync(Interface iface, Implementation host, boolean isLocked) {
         if (instances.exists(iface)) return instances.get(iface);
-        if (!isLocked) {
-            synchronized (LOCK) { return resolveSync(iface, host, true); }
-        }
-        return manufacture(iface, host);
+        if (isLocked) return manufacture(iface, host);
+        synchronized (LOCK) { return resolveSync(iface, host, true); }
     }
 
     private ResolvedInstance manufacture(Interface iface, Implementation host) {
