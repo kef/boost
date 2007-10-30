@@ -10,8 +10,10 @@ import au.net.netstorm.boost.spider.registry.DefaultFactoryBuilder;
 import au.net.netstorm.boost.spider.registry.DefaultInstances;
 import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.FactoryBuilder;
 import au.net.netstorm.boost.spider.registry.Greenprints;
+import au.net.netstorm.boost.spider.registry.GreenprintsFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.LayeredGreenprints;
 import au.net.netstorm.boost.spider.registry.Registry;
@@ -22,6 +24,7 @@ import au.net.netstorm.boost.util.impl.ImplMapper;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 
 // FIX 2215 Sort out builder/assembler discrepancy.
+// FIX 2215 Refactor.  Too messy.
 
 // FIX 1914 Move these out of here.  Web, LazyGreens, SpiderBuilder.
 public final class DefaultSpiderBuilder implements SpiderBuilder {
@@ -38,7 +41,8 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Greenprints layered = nuGreenprints(explicit, lazy);
         Instances instances = nuInstances();
         Factories factories = nuFactories();
-        return buildSpider(layered, instances, factories, explicit);
+        greenprints(factories, layered);
+        return buildSpider(instances, factories, explicit);
     }
 
     private Greenprints nuGreenprints(Blueprints explicit, Greenprints lazy) {
@@ -46,8 +50,13 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new LayeredGreenprints(layers);
     }
 
-    private Spider buildSpider(Greenprints layered, Instances instances, Factories factories, Blueprints explicit) {
-        Spider spider = assembler.assemble(layered, instances, factories);
+    private void greenprints(Factories factories, Greenprints greenprints) {
+        Factory factory = new GreenprintsFactory(greenprints);
+        factories.add(factory);
+    }
+
+    private Spider buildSpider(Instances instances, Factories factories, Blueprints explicit) {
+        Spider spider = assembler.assemble(instances, factories);
         preregister(explicit, instances, factories, spider);
         return spider;
     }

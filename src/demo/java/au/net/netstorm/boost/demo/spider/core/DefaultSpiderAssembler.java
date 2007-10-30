@@ -30,8 +30,6 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLa
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
-import au.net.netstorm.boost.spider.registry.Greenprints;
-import au.net.netstorm.boost.spider.registry.GreenprintsFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
@@ -53,9 +51,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
 
     // SUGGEST: Move the creation/registration of the factories up one level.  Use the registry.
-    public Spider assemble(Greenprints greenprints, Instances instances, Factories factories) {
+    public Spider assemble(Instances instances, Factories factories) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, greenprints, factories);
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
@@ -83,27 +81,16 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private ResolverEngine assembleResolver(
             ProviderEngine provider,
             Instances instances,
-            Greenprints greenprints,
             Factories factories) {
-        setUpFactories(provider, greenprints, factories);
-        return new DefaultResolverEngine(instances, factories, provider);
-    }
-
-    private void setUpFactories(ProviderEngine provider, Greenprints greenprints, Factories factories) {
-        greenprints(factories, greenprints);
+        // FIX 2215 Move from here.  Does not belong.
         newer(factories, provider);
-    }
-
-    // FIX 2215 Remove greenprints from here.  Push out into builder.
-    private void greenprints(Factories factories, Greenprints greenprints) {
-        Factory factory = new GreenprintsFactory(greenprints);
-        factories.add(factory);
+        return new DefaultResolverEngine(instances, factories, provider);
     }
 
     private void newer(Factories factories, ProviderEngine provider) {
         NewerAssembler newer = new DefaultNewerAssembler(provider);
-        Factory newerFactory = new NewerFactory(newer);
-        factories.add(newerFactory);
+        Factory factory = new NewerFactory(newer);
+        factories.add(factory);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
