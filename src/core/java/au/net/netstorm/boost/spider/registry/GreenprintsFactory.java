@@ -29,6 +29,7 @@ public final class GreenprintsFactory implements Factory {
     // FIX 2215 Stinky.  We want to push instances totally out of the factory.
     private void maintainInstance(Interface iface, Instances instances, Blueprint blueprint, ResolvedInstance result) {
         if (!single(blueprint)) return;
+        // DEBT: This is a hack to reduce probability of threading issues.
         if (instances.exists(iface)) return;
         instances.put(iface, result);
     }
