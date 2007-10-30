@@ -94,6 +94,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         newer(factories, provider);
     }
 
+    // FIX 2215 Remove greenprints from here.  Push out into builder.
     private void greenprints(Factories factories, Greenprints greenprints) {
         Factory factory = new GreenprintsFactory(greenprints);
         factories.add(factory);
