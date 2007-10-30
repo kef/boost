@@ -89,14 +89,14 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultResolverEngine(instances, factories, provider);
     }
 
-    private void setUpFactories(ProviderEngine provider, Greenprints layered, Factories factories) {
-        greenprints(factories, layered);
+    private void setUpFactories(ProviderEngine provider, Greenprints greenprints, Factories factories) {
+        greenprints(factories, greenprints);
         newer(factories, provider);
     }
 
-    private void greenprints(Factories factories, Greenprints layered) {
-        Factory greenprints = new GreenprintsFactory(layered);
-        factories.add(greenprints);
+    private void greenprints(Factories factories, Greenprints greenprints) {
+        Factory factory = new GreenprintsFactory(greenprints);
+        factories.add(factory);
     }
 
     private void newer(Factories factories, ProviderEngine provider) {

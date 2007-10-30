@@ -13,6 +13,7 @@ public final class GreenprintsFactory implements Factory {
         this.greenprints = greenprints;
     }
 
+    // FIX 2215 Should we return an object like BlueObject which has the reference and a SINGLE/MULTIPLE.
     public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider, Instances instances) {
         Blueprint blueprint = greenprints.get(iface);
         Implementation impl = blueprint.getImplementation();
@@ -25,6 +26,7 @@ public final class GreenprintsFactory implements Factory {
         return greenprints.exists(iface);
     }
 
+    // FIX 2215 Stinky.  We want to push instances totally out of the factory.
     private void maintainInstance(Interface iface, Instances instances, Blueprint blueprint, ResolvedInstance result) {
         if (!single(blueprint)) return;
         if (instances.exists(iface)) return;
