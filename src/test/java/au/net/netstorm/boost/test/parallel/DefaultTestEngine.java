@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.parallel;
 import java.io.PrintStream;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.lifecycle.ThreadTestLifecycle;
+import au.net.netstorm.boost.test.lifecycle.TestThreadLifecycle;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import au.net.netstorm.boost.test.timing.DefaultTimer;
@@ -15,15 +15,15 @@ public class DefaultTestEngine implements TestEngine {
     private final Timer timer = new DefaultTimer();
     private boolean successful = false;
 
-    public void runTest(LifecycleTest test, ThreadTestLifecycle lifecycle, String methodName) {
-        pre(lifecycle);
+    public void runTest(LifecycleTest test, TestThreadLifecycle threadLifecycle, String methodName) {
+        pre(threadLifecycle);
         run(test, methodName);
-        post(test, lifecycle, methodName);
+        post(test, threadLifecycle, methodName);
         successful = true;
     }
 
-    private void pre(ThreadTestLifecycle lifecycle) {
-        lifecycle.pre();
+    private void pre(TestThreadLifecycle threadLifecycle) {
+        threadLifecycle.pre();
         timer.startClock();
     }
 
@@ -36,15 +36,15 @@ public class DefaultTestEngine implements TestEngine {
         util.invoke(test, methodName, NO_PARAMETERS);
     }
 
-    private void post(LifecycleTest test, ThreadTestLifecycle lifecycle, String methodName) {
+    private void post(LifecycleTest test, TestThreadLifecycle threadLifecycle, String methodName) {
         timer.stopClock(test, methodName);
-        lifecycle.post();
+        threadLifecycle.post();
     }
 
     // OK GenericIllegalRegexp {
-    public void tryCleanup(ThreadTestLifecycle lifecycle) {
+    public void tryCleanup(TestThreadLifecycle threadLifecycle) {
         try {
-            lifecycle.cleanup(successful);
+            threadLifecycle.cleanup(successful);
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've barfed during test lifecycle cleanup... ");

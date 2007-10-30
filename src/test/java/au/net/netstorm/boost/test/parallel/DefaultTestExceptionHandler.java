@@ -14,6 +14,7 @@ public class DefaultTestExceptionHandler implements TestExceptionHandler {
     }
 
     private void rethrow(List exceptions) throws Throwable {
+        // SUGGEST: log out all exceptions
         Throwable exception = (Throwable) exceptions.get(0);
         exceptions.clear();
         throw new Throwable(exception);

@@ -7,8 +7,8 @@ import au.net.netstorm.boost.test.parallel.DefaultTestLifecycleRunner;
 import au.net.netstorm.boost.test.parallel.DefaultThreadCount;
 import au.net.netstorm.boost.test.parallel.TestLifecycleRunner;
 import au.net.netstorm.boost.test.parallel.ThreadCount;
-import au.net.netstorm.boost.test.timing.DefaultTimingSupport;
-import au.net.netstorm.boost.test.timing.TimingSupport;
+import au.net.netstorm.boost.test.timing.DefaultTimingHandler;
+import au.net.netstorm.boost.test.timing.TimingHandler;
 
 public abstract class LifecycleTestCase extends CleanTestCase implements LifecycleTest {
     private final TestLifecycleRunner runner = new DefaultTestLifecycleRunner();
@@ -21,8 +21,8 @@ public abstract class LifecycleTestCase extends CleanTestCase implements Lifecyc
         return new DefaultThrowableSupport();
     }
 
-    public TimingSupport timingSupport() {
-        return new DefaultTimingSupport();
+    public TimingHandler timingHandler() {
+        return new DefaultTimingHandler();
     }
 
     public ThreadCount threadSupport() {

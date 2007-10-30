@@ -5,7 +5,7 @@ import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
-import au.net.netstorm.boost.test.lifecycle.ThreadTestLifecycle;
+import au.net.netstorm.boost.test.lifecycle.TestThreadLifecycle;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
@@ -23,9 +23,9 @@ public abstract class InteractionTestCase extends LifecycleTestCase implements L
         return new InteractionTestLifecycle();
     }
 
-    public ThreadTestLifecycle threadTestLifecycle() {
+    public TestThreadLifecycle threadLifecycle() {
         InteractionTestState state = new DefaultInteractionTestState(mocks, providers, random);
-        return new InteractionThreadTestLifecycle(this, state);
+        return new InteractionTestThreadLifecycle(this, state);
     }
 
     private Provider createRandom() {

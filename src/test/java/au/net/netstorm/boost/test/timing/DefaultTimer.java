@@ -25,8 +25,9 @@ public class DefaultTimer implements Timer {
 
     private void timeOut(LifecycleTest test, String methodName, long end) {
         Class cls = test.getClass();
-        TimingSupport timing = test.timingSupport();
-        timing.time(cls, methodName, start, end);
+        TimingHandler handler = test.timingHandler();
+        TimingDetails details = new DefaultTimingDetails(cls, methodName, start, end);
+        handler.time(details);
     }
 
     private long time() {
