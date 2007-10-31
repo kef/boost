@@ -8,6 +8,7 @@ import au.net.netstorm.boost.util.impl.ImplMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 2215 Delete me.
 public final class ImplicitBlueprintsRead implements BlueprintsRead {
     private static final Stamp SINGLE = Stamp.SINGLE;
     private final ImplMaster impler;

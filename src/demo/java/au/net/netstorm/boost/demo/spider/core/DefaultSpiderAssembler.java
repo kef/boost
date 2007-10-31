@@ -41,6 +41,8 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // SUGGEST: No need to return everything, just register the relevant parts as part of construction ;)
+
+// FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
     private static final Interface SPIDER_TYPE = new DefaultInterface(Spider.class);
