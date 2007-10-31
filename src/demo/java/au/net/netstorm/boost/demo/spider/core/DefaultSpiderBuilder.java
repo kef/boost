@@ -45,6 +45,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     // FIX BREADCRUMB 2215 Keep going.
     private void greenprints(Factories factories, Instances instances, Greenprints explicit, Greenprints implicit) {
+        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
         greenprint(factories, instances, implicit);
         greenprint(factories, instances, explicit);
     }
