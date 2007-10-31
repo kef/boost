@@ -59,8 +59,8 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         factories.add(factory);
     }
 
-    private void explicit(Factories factories, Instances instances, BlueprintsRead blueprintsRead) {
-        Factory factory = new BlueprintedFactory(blueprintsRead, instances);
+    private void explicit(Factories factories, Instances instances, BlueprintsRead blueprints) {
+        Factory factory = new BlueprintedFactory(blueprints, instances);
         factories.add(factory);
     }
 
