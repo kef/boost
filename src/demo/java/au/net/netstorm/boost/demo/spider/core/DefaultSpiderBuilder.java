@@ -15,7 +15,6 @@ import au.net.netstorm.boost.spider.registry.FactoryBuilder;
 import au.net.netstorm.boost.spider.registry.Greenprints;
 import au.net.netstorm.boost.spider.registry.GreenprintsFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.LayeredGreenprints;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.util.impl.BasicImplMapper;
@@ -38,19 +37,19 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     public Spider build(ImplMapper[] implMappers) {
         Greenprints implicit = implicit(implMappers);
         Blueprints explicit = explicit();
-        Greenprints greenprints = layered(explicit, implicit);
         Instances instances = nuInstances();
         Factories factories = nuFactories();
-        greenprints(factories, greenprints, instances);
+        greenprints(factories, instances, explicit, implicit);
         return buildSpider(instances, factories, explicit);
     }
 
-    private Greenprints layered(Greenprints top, Greenprints bottom) {
-        Greenprints[] layers = {top, bottom};
-        return new LayeredGreenprints(layers);
+    // FIX BREADCRUMB 2215 Keep going.
+    private void greenprints(Factories factories, Instances instances, Greenprints explicit, Greenprints implicit) {
+        greenprint(factories, instances, implicit);
+        greenprint(factories, instances, explicit);
     }
 
-    private void greenprints(Factories factories, Greenprints greenprints, Instances instances) {
+    private void greenprint(Factories factories, Instances instances, Greenprints greenprints) {
         Factory factory = new GreenprintsFactory(greenprints, instances);
         factories.add(factory);
     }
