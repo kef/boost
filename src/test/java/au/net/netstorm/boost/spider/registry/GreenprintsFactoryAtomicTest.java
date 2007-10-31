@@ -40,7 +40,6 @@ public final class GreenprintsFactoryAtomicTest extends InteractionTestCase impl
         expect.oneCall(blueprintMock, implDummy, "getImplementation");
         expect.oneCall(providerMock, instanceMock, "provide", implDummy);
         expect.oneCall(blueprintMock, Stamp.SINGLE, "getStamp");
-        expect.oneCall(instancesMock, false, "exists", ifaceDummy);
         expect.oneCall(instancesMock, VOID, "put", ifaceDummy, instanceMock);
     }
 
