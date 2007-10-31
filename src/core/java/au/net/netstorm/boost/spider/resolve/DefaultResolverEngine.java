@@ -26,6 +26,6 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance manufacture(Interface iface, Implementation host) {
         Factory factory = factories.find(iface);
-        return factory.get(iface, host, provider, instances);
+        return factory.get(iface, host, provider);
     }
 }

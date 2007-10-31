@@ -40,7 +40,7 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     public void testNoResolvedInstance() {
         expect.oneCall(instancesMock, false, "exists", jim);
         expect.oneCall(factoriesMock, factoryMock, "find", jim);
-        expect.oneCall(factoryMock, spooInstance, "get", jim, hostDummy, providerMock, instancesMock);
+        expect.oneCall(factoryMock, spooInstance, "get", jim, hostDummy, providerMock);
         ResolvedInstance result = subject.resolve(jim, hostDummy);
         assertEquals(jimResolvedInstance, result);
     }

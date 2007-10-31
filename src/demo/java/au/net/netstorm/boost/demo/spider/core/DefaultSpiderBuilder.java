@@ -41,7 +41,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Greenprints layered = nuGreenprints(explicit, lazy);
         Instances instances = nuInstances();
         Factories factories = nuFactories();
-        greenprints(factories, layered);
+        greenprints(factories, layered, instances);
         return buildSpider(instances, factories, explicit);
     }
 
@@ -50,8 +50,8 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new LayeredGreenprints(layers);
     }
 
-    private void greenprints(Factories factories, Greenprints greenprints) {
-        Factory factory = new GreenprintsFactory(greenprints);
+    private void greenprints(Factories factories, Greenprints greenprints, Instances instances) {
+        Factory factory = new GreenprintsFactory(greenprints, instances);
         factories.add(factory);
     }
 

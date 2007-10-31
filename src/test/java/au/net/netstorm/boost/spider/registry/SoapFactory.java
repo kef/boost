@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class SoapFactory implements Factory {
 
-    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider, Instances instances) {
+    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         throw new UnsupportedOperationException();
     }
 

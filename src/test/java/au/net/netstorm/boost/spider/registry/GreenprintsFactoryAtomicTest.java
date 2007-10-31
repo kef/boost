@@ -21,7 +21,7 @@ public final class GreenprintsFactoryAtomicTest extends InteractionTestCase impl
     Boolean exists;
 
     public void setUpFixtures() {
-        subject = new GreenprintsFactory(greenprintsMock);
+        subject = new GreenprintsFactory(greenprintsMock, instancesMock);
     }
 
     public void testCanHandle() {
@@ -44,7 +44,7 @@ public final class GreenprintsFactoryAtomicTest extends InteractionTestCase impl
     }
 
     private void checkGetSucceeds() {
-        ResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock, instancesMock);
+        ResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock);
         assertEquals(instanceMock, actual);
     }
 }

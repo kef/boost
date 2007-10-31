@@ -24,14 +24,14 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
     Newer refMock;
 
     public void setUpFixtures() {
-        subject = new NewerFactory(newerMock);
+        subject = new NewerFactory(newerMock, instancesMock);
         newerInstance = new DefaultBaseReference(refMock);
     }
 
     public void testGet() {
         expect.oneCall(newerMock, refMock, "assemble", NEW_TED);
         expect.oneCall(instancesMock, VOID, "put", NEW_TED, newerInstance);
-        ResolvedInstance actual = subject.get(NEW_TED, hostDummy, providerDummy, instancesMock);
+        ResolvedInstance actual = subject.get(NEW_TED, hostDummy, providerDummy);
         assertEquals(newerInstance, actual);
     }
 

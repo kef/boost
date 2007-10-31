@@ -6,7 +6,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public interface Factory {
-    ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider, Instances instances);
+    ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider);
 
     boolean canHandle(Interface iface);
 }

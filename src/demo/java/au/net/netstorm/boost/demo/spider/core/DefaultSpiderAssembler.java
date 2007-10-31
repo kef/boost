@@ -83,13 +83,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
             Instances instances,
             Factories factories) {
         // FIX 2215 Move from here.  Does not belong.
-        newer(factories, provider);
+        newer(factories, provider, instances);
         return new DefaultResolverEngine(instances, factories, provider);
     }
 
-    private void newer(Factories factories, ProviderEngine provider) {
+    private void newer(Factories factories, ProviderEngine provider, Instances instances) {
         NewerAssembler newer = new DefaultNewerAssembler(provider);
-        Factory factory = new NewerFactory(newer);
+        Factory factory = new NewerFactory(newer, instances);
         factories.add(factory);
     }
 

@@ -7,18 +7,21 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX 1914 This feels bad. Centralise operations on Instances somehow.
 public final class GreenprintsFactory implements Factory {
-    private Greenprints greenprints;
+    private final Greenprints greenprints;
+    private final Instances instances;
 
-    public GreenprintsFactory(Greenprints greenprints) {
+    public GreenprintsFactory(Greenprints greenprints, Instances instances) {
         this.greenprints = greenprints;
+        this.instances = instances;
     }
 
     // FIX 2215 Should we return an object like BlueObject which has the reference and a SINGLE/MULTIPLE.
-    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider, Instances instances) {
+    // FIX 2215 Probably not.
+    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Blueprint blueprint = greenprints.get(iface);
         Implementation impl = blueprint.getImplementation();
         ResolvedInstance result = provider.provide(impl);
-        register(iface, instances, blueprint, result);
+        register(iface, blueprint, result);
         return result;
     }
 
@@ -26,8 +29,7 @@ public final class GreenprintsFactory implements Factory {
         return greenprints.exists(iface);
     }
 
-    // FIX 2215 Stinky.  We want to push instances totally out of the factory.
-    private void register(Interface iface, Instances instances, Blueprint blueprint, ResolvedInstance result) {
+    private void register(Interface iface, Blueprint blueprint, ResolvedInstance result) {
         if (!single(blueprint)) return;
         instances.put(iface, result);
     }
