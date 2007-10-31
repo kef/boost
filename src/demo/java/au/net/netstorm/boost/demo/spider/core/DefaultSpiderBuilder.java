@@ -39,24 +39,24 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     public Spider build(ImplMapper[] implMappers) {
-        Blueprints explicit = explicit();
+        Blueprints blueprints = nuBlueprints();
         Instances instances = nuInstances();
         Factories factories = nuFactories();
-        addFactories(factories, instances, explicit, implMappers);
-        return buildSpider(instances, factories, explicit);
+        addFactories(factories, instances, blueprints, implMappers);
+        return buildSpider(instances, factories, blueprints);
     }
 
     // FIX BREADCRUMB 2215 Keep going.
     private void addFactories(Factories factories, Instances instances, BlueprintsRead blueprints, ImplMapper[] implMappers) {
-        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?`
+        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
         implicit(factories, instances, implMappers);
         explicit(factories, instances, blueprints);
     }
 
     private void implicit(Factories factories, Instances instances, ImplMapper[] implMappers) {
         ImplMaster impler = new DefaultImplMaster(implMappers);
-        ImplicitFactory implicitFactory = new ImplicitFactory(impler, instances);
-        factories.add(implicitFactory);
+        ImplicitFactory factory = new ImplicitFactory(impler, instances);
+        factories.add(factory);
     }
 
     private void explicit(Factories factories, Instances instances, BlueprintsRead blueprintsRead) {
@@ -92,7 +92,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new DefaultInstances(map);
     }
 
-    private Blueprints explicit() {
+    private Blueprints nuBlueprints() {
         InterfaceMap map = nuMap();
         return new DefaultBlueprints(map);
     }
