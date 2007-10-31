@@ -8,11 +8,11 @@ import au.net.netstorm.boost.util.impl.ImplMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class LazyGreenprints implements Greenprints {
+public final class ImplicitGreenprints implements Greenprints {
     private static final Stamp SINGLE = Stamp.SINGLE;
     private final ImplMaster impler;
 
-    public LazyGreenprints(ImplMaster impler) {
+    public ImplicitGreenprints(ImplMaster impler) {
         this.impler = impler;
     }
 

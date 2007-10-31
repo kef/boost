@@ -36,17 +36,17 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     public Spider build(ImplMapper[] implMappers) {
-        Greenprints lazy = greenprints(implMappers);
-        Blueprints explicit = nuBlueprints();
-        Greenprints layered = nuGreenprints(explicit, lazy);
+        Greenprints implicit = implicit(implMappers);
+        Blueprints explicit = explicit();
+        Greenprints greenprints = layered(explicit, implicit);
         Instances instances = nuInstances();
         Factories factories = nuFactories();
-        greenprints(factories, layered, instances);
+        greenprints(factories, greenprints, instances);
         return buildSpider(instances, factories, explicit);
     }
 
-    private Greenprints nuGreenprints(Blueprints explicit, Greenprints lazy) {
-        Greenprints[] layers = {explicit, lazy};
+    private Greenprints layered(Greenprints top, Greenprints bottom) {
+        Greenprints[] layers = {top, bottom};
         return new LayeredGreenprints(layers);
     }
 
@@ -73,9 +73,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new DefaultFactories();
     }
 
-    private Greenprints greenprints(ImplMapper[] implMappers) {
+    private Greenprints implicit(ImplMapper[] implMappers) {
         ImplMaster impler = new DefaultImplMaster(implMappers);
-        return new LazyGreenprints(impler);
+        return new ImplicitGreenprints(impler);
     }
 
     private ImplMapper[] mappers() {
@@ -88,7 +88,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new DefaultInstances(map);
     }
 
-    private Blueprints nuBlueprints() {
+    private Blueprints explicit() {
         InterfaceMap map = nuMap();
         return new DefaultBlueprints(map);
     }
