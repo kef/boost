@@ -3,7 +3,9 @@ package au.net.netstorm.boost.demo.spider.core;
 import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.spider.inject.core.Injector;
+import au.net.netstorm.boost.spider.registry.BlueprintedFactory;
 import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.BlueprintsRead;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.spider.registry.DefaultFactories;
 import au.net.netstorm.boost.spider.registry.DefaultFactoryBuilder;
@@ -12,8 +14,6 @@ import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.FactoryBuilder;
-import au.net.netstorm.boost.spider.registry.Greenprints;
-import au.net.netstorm.boost.spider.registry.GreenprintsFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
@@ -35,7 +35,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     public Spider build(ImplMapper[] implMappers) {
-        Greenprints implicit = implicit(implMappers);
+        BlueprintsRead implicit = implicit(implMappers);
         Blueprints explicit = explicit();
         Instances instances = nuInstances();
         Factories factories = nuFactories();
@@ -44,14 +44,14 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     // FIX BREADCRUMB 2215 Keep going.
-    private void greenprints(Factories factories, Instances instances, Greenprints explicit, Greenprints implicit) {
-        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
+    private void greenprints(Factories factories, Instances instances, BlueprintsRead explicit, BlueprintsRead implicit) {
+        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?`
         greenprint(factories, instances, implicit);
         greenprint(factories, instances, explicit);
     }
 
-    private void greenprint(Factories factories, Instances instances, Greenprints greenprints) {
-        Factory factory = new GreenprintsFactory(greenprints, instances);
+    private void greenprint(Factories factories, Instances instances, BlueprintsRead blueprintsRead) {
+        Factory factory = new BlueprintedFactory(blueprintsRead, instances);
         factories.add(factory);
     }
 
@@ -73,9 +73,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new DefaultFactories();
     }
 
-    private Greenprints implicit(ImplMapper[] implMappers) {
+    private BlueprintsRead implicit(ImplMapper[] implMappers) {
         ImplMaster impler = new DefaultImplMaster(implMappers);
-        return new ImplicitGreenprints(impler);
+        return new ImplicitBlueprintsRead(impler);
     }
 
     private ImplMapper[] mappers() {

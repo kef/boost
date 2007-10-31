@@ -1,18 +1,18 @@
 package au.net.netstorm.boost.demo.spider.core;
 
 import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.BlueprintsRead;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
-import au.net.netstorm.boost.spider.registry.Greenprints;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class ImplicitGreenprints implements Greenprints {
+public final class ImplicitBlueprintsRead implements BlueprintsRead {
     private static final Stamp SINGLE = Stamp.SINGLE;
     private final ImplMaster impler;
 
-    public ImplicitGreenprints(ImplMaster impler) {
+    public ImplicitBlueprintsRead(ImplMaster impler) {
         this.impler = impler;
     }
 
