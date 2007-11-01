@@ -25,7 +25,6 @@ public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
         try {
             subject.impl(moonlight);
             fail();
-            // FIX 1914 Strong type exception.
-        } catch (IllegalStateException expected) {}
+        } catch (NoImplementationException expected) {}
     }
 }

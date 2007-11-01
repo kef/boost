@@ -17,9 +17,8 @@ public final class DefaultImplMaster implements ImplMaster {
 
     public Implementation impl(Interface type) {
         // FIX 65590 Split.
-        // FIX 1914 Tidy this rubbish up.  Specific exception!!!        
         Implementation impl = getImpl(type);
-        if (impl == null) throw new IllegalStateException("No implementation for " + type);
+        if (impl == null) boom(type);
         return impl;
     }
 
@@ -52,5 +51,9 @@ public final class DefaultImplMaster implements ImplMaster {
     private Implementation load(String name) {
         Class impl = classer.forName(name);
         return new DefaultImplementation(impl);
+    }
+
+    private void boom(Interface type) {
+        throw new NoImplementationException(type);
     }
 }
