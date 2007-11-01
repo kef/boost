@@ -10,19 +10,17 @@ public class DefaultRunnableTest implements Runnable {
     private final TestEngine engine = new DefaultTestEngine();
     private final TestThreadLifecycle threadLifecycle;
     private final LifecycleTest test;
-    private final String methodName;
     // FIX 81612 this is dodgy - collect from all instances at end of tests, do above fix first.
     static List exceptions = new ArrayList();
 
-    public DefaultRunnableTest(LifecycleTest test, String methodName) {
+    public DefaultRunnableTest(LifecycleTest test) {
         this.test = test;
-        this.methodName = methodName;
         this.threadLifecycle = test.threadLifecycle();
     }
 
     public void run() {
         try {
-            engine.runTest(test, threadLifecycle, methodName);
+            engine.runTest(test, threadLifecycle);
         } catch (Throwable t) {
             Throwable throwable = engine.error(test, t);
             exceptions.add(throwable);

@@ -27,20 +27,26 @@ public class DefaultTestThreadEngine implements TestThreadEngine {
 
     private Thread[] create(LifecycleTest test) {
         int count = counter.threads(test);
-        Class cls = test.getClass();
-        String name = test.getName();
-        return createThreads(count, cls, name);
+        return createThreads(count, test);
     }
 
-    private Thread[] createThreads(int count, Class cls, String name) {
+    private Thread[] createThreads(int count, LifecycleTest prototype) {
         Thread[] result = new Thread[count];
-        for (int i = 0; i < count; i++) result[i] = createThread(cls, name);
+        for (int i = 0; i < count; i++) result[i] = createThread(prototype);
         return result;
     }
 
-    private Thread createThread(Class cls, String name) {
-        LifecycleTest test = (LifecycleTest) classer.newInstance(cls);
-        Runnable runnable = new DefaultRunnableTest(test, name);
+    private Thread createThread(LifecycleTest prototype) {
+        LifecycleTest test = clone(prototype);
+        Runnable runnable = new DefaultRunnableTest(test);
         return new Thread(runnable);
+    }
+
+    private LifecycleTest clone(LifecycleTest prototype) {
+        Class cls = prototype.getClass();
+        LifecycleTest test = (LifecycleTest) classer.newInstance(cls);
+        String name = prototype.getName();
+        test.setName(name);
+        return test;
     }
 }

@@ -6,25 +6,21 @@ import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.lifecycle.TestThreadLifecycle;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
-import au.net.netstorm.boost.test.timing.DefaultTimer;
-import au.net.netstorm.boost.test.timing.Timer;
 
 public class DefaultTestEngine implements TestEngine {
     private static final Object[] NO_PARAMETERS = {};
     private final MethodTestUtil util = new DefaultMethodTestUtil();
-    private final Timer timer = new DefaultTimer();
     private boolean successful = false;
 
-    public void runTest(LifecycleTest test, TestThreadLifecycle threadLifecycle, String methodName) {
+    public void runTest(LifecycleTest test, TestThreadLifecycle threadLifecycle) {
         pre(threadLifecycle);
-        run(test, methodName);
-        post(test, threadLifecycle, methodName);
+        run(test);
+        post(threadLifecycle);
         successful = true;
     }
 
     private void pre(TestThreadLifecycle threadLifecycle) {
         threadLifecycle.pre();
-        timer.startClock();
     }
 
     public Throwable error(LifecycleTest test, Throwable t) {
@@ -32,12 +28,12 @@ public class DefaultTestEngine implements TestEngine {
         return throwableSupport.translate(t);
     }
 
-    private void run(LifecycleTest test, String methodName) {
+    private void run(LifecycleTest test) {
+        String methodName = test.getName();
         util.invoke(test, methodName, NO_PARAMETERS);
     }
 
-    private void post(LifecycleTest test, TestThreadLifecycle threadLifecycle, String methodName) {
-        timer.stopClock(test, methodName);
+    private void post(TestThreadLifecycle threadLifecycle) {
         threadLifecycle.post();
     }
 
