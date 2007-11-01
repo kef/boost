@@ -18,6 +18,8 @@ public final class ImplicitFactory implements Factory {
     public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Implementation impl = impler.impl(iface);
         ResolvedInstance instance = provider.provide(impl);
+        // FIX 2215 Hideous hack! Instances can appear AFTER DefaultResolverEngine has established non-existence!
+        if (instances.exists(iface)) return instance;
         instances.put(iface, instance);
         return instance;
     }

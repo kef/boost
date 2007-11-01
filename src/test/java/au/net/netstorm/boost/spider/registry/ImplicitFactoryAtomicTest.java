@@ -33,6 +33,7 @@ public final class ImplicitFactoryAtomicTest extends InteractionTestCase impleme
     public void testGet() {
         expect.oneCall(implerMock, implDummy, "impl", ifaceDummy);
         expect.oneCall(providerMock, instanceDummy, "provide", implDummy);
+        expect.oneCall(instancesMock, false, "exists", ifaceDummy);
         expect.oneCall(instancesMock, VOID, "put", ifaceDummy, instanceDummy);
         ResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
         assertEquals(instanceDummy, actual);
