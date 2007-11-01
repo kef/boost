@@ -41,16 +41,16 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     public Spider build(ImplMapper[] implMappers) {
         Blueprints blueprints = nuBlueprints();
         Instances instances = nuInstances();
-        Factories factories = nuFactories();
-        addFactories(factories, instances, blueprints, implMappers);
+        Factories factories = factories(instances, blueprints, implMappers);
         return buildSpider(instances, factories, blueprints);
     }
 
-    // FIX BREADCRUMB 2215 Keep going.
-    private void addFactories(Factories factories, Instances instances, BlueprintsRead blueprints, ImplMapper[] implMappers) {
+    private Factories factories(Instances instances, Blueprints blueprints, ImplMapper[] implMappers) {
+        Factories factories = nuFactories();
         // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
         implicit(factories, instances, implMappers);
         explicit(factories, instances, blueprints);
+        return factories;
     }
 
     private void implicit(Factories factories, Instances instances, ImplMapper[] implMappers) {
@@ -64,15 +64,15 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         factories.add(factory);
     }
 
-    private Spider buildSpider(Instances instances, Factories factories, Blueprints explicit) {
+    private Spider buildSpider(Instances instances, Factories factories, Blueprints blueprints) {
         Spider spider = assembler.assemble(instances, factories);
-        preregister(explicit, instances, factories, spider);
+        preregister(spider, instances, blueprints, factories);
         return spider;
     }
 
-    private void preregister(Blueprints explicit, Instances instances, Factories factories, Spider spider) {
+    private void preregister(Spider spider, Instances instances, Blueprints blueprints, Factories factories) {
         FactoryBuilder builder = new DefaultFactoryBuilder(spider);
-        Registry registry = new DefaultRegistry(explicit, instances, factories, builder);
+        Registry registry = new DefaultRegistry(blueprints, instances, factories, builder);
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
