@@ -23,6 +23,7 @@ public final class DefaultFieldResolver implements FieldResolver {
             Implementation host = getHost(field);
             return resolver.resolve(iface, host);
         } catch (InterfaceMapException e) {
+            // FIX 2215 Should list ResolvedThings in this exception, not IME?
             throw new UnresolvedDependencyException(field, e);
         }
     }
