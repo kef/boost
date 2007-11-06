@@ -40,26 +40,26 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     public Spider build(ImplMapper[] implMappers) {
         Blueprints blueprints = nuBlueprints();
+        Factories factories = factories(blueprints, implMappers);
         Instances instances = nuInstances();
-        Factories factories = factories(instances, blueprints, implMappers);
         return buildSpider(instances, factories, blueprints);
     }
 
-    private Factories factories(Instances instances, Blueprints blueprints, ImplMapper[] implMappers) {
+    private Factories factories(Blueprints blueprints, ImplMapper[] implMappers) {
         Factories factories = nuFactories();
         // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
-        implicit(factories, instances, implMappers);
-        explicit(factories, instances, blueprints);
+        implicit(factories, implMappers);
+        explicit(factories, blueprints);
         return factories;
     }
 
-    private void implicit(Factories factories, Instances instances, ImplMapper[] implMappers) {
+    private void implicit(Factories factories, ImplMapper[] implMappers) {
         ImplMaster impler = new DefaultImplMaster(implMappers);
         ImplicitFactory factory = new ImplicitFactory(impler);
         factories.add(factory);
     }
 
-    private void explicit(Factories factories, Instances instances, BlueprintsRead blueprints) {
+    private void explicit(Factories factories, BlueprintsRead blueprints) {
         Factory factory = new BlueprintedFactory(blueprints);
         factories.add(factory);
     }

@@ -85,11 +85,12 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
             Instances instances,
             Factories factories) {
         // FIX 2215 Move from here.  Does not belong.
-        newer(factories, provider, instances);
+        newer(factories, provider);
         return new DefaultResolverEngine(instances, factories, provider);
     }
 
-    private void newer(Factories factories, ProviderEngine provider, Instances instances) {
+    // FIX 2215 Why does this need the provider?  It is passed to get().
+    private void newer(Factories factories, ProviderEngine provider) {
         NewerAssembler newer = new DefaultNewerAssembler(provider);
         Factory factory = new NewerFactory(newer);
         factories.add(factory);
