@@ -19,9 +19,7 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableField
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.spider.newer.assembly.DefaultNewerAssembler;
 import au.net.netstorm.boost.spider.newer.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHandler;
@@ -29,9 +27,7 @@ import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.registry.Factories;
-import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Resolver;
@@ -84,16 +80,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
             ProviderEngine provider,
             Instances instances,
             Factories factories) {
-        // FIX 2215 Move from here.  Does not belong.
-        newer(factories);
         return new DefaultResolverEngine(instances, factories, provider);
-    }
-
-    // FIX 2215 Why does this need the provider?  It is passed to get().
-    private void newer(Factories factories) {
-        NewerAssembler newer = new DefaultNewerAssembler();
-        Factory factory = new NewerFactory(newer);
-        factories.add(factory);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {

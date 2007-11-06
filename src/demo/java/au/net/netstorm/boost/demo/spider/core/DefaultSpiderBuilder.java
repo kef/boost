@@ -3,6 +3,8 @@ package au.net.netstorm.boost.demo.spider.core;
 import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.spider.inject.core.Injector;
+import au.net.netstorm.boost.spider.newer.assembly.DefaultNewerAssembler;
+import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.registry.BlueprintedFactory;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.BlueprintsRead;
@@ -16,6 +18,7 @@ import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.FactoryBuilder;
 import au.net.netstorm.boost.spider.registry.ImplicitFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.util.impl.BasicImplMapper;
@@ -50,6 +53,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
         implicit(factories, implMappers);
         explicit(factories, blueprints);
+        newer(factories);
         return factories;
     }
 
@@ -61,6 +65,12 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     private void explicit(Factories factories, BlueprintsRead blueprints) {
         Factory factory = new BlueprintedFactory(blueprints);
+        factories.add(factory);
+    }
+
+    private void newer(Factories factories) {
+        NewerAssembler newer = new DefaultNewerAssembler();
+        Factory factory = new NewerFactory(newer);
         factories.add(factory);
     }
 
