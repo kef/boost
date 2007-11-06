@@ -21,7 +21,7 @@ public final class NewerFactory implements Factory {
     }
 
     public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
-        ResolvedInstance newerInstance = nuNewer(iface);
+        ResolvedInstance newerInstance = nuNewer(iface, provider);
         return new DefaultStampedResolvedInstance(newerInstance, Stamp.SINGLE);
     }
 
@@ -29,8 +29,8 @@ public final class NewerFactory implements Factory {
         return typer.extendz(iface, NEWER);
     }
 
-    private ResolvedInstance nuNewer(Interface iface) {
-        Newer ref = newer.assemble(iface);
+    private ResolvedInstance nuNewer(Interface iface, ProviderEngine provider) {
+        Newer ref = newer.assemble(iface, provider);
         return new DefaultBaseReference(ref);
     }
 }

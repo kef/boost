@@ -11,13 +11,8 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultNewerAssembler implements NewerAssembler {
     private final ClassToNuAssembler classToNuAssembler = new DefaultClassToNuAssembler();
     private final NewerProxySupplierAssembler newerSupplierAssembler = new DefaultNewerProxySupplierAssembler();
-    private final ProviderEngine provider;
 
-    public DefaultNewerAssembler(ProviderEngine provider) {
-        this.provider = provider;
-    }
-
-    public Newer assemble(Interface type) {
+    public Newer assemble(Interface type, ProviderEngine provider) {
         Class newerClass = type.getType();
         Implementation classToNu = classToNuAssembler.assemble(newerClass);
         NewerProxySupplier newerProxySupplier = newerSupplierAssembler.assemble(provider);

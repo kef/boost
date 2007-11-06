@@ -11,13 +11,13 @@ public final class DefaultNewerAssemblerAtomicTest extends InteractionTestCase i
     ProviderEngine provider;
 
     public void testAssemble() {
-        Object result = subject.assemble(new DefaultInterface(NewDefaultTestDummy.class));
+        Object result = subject.assemble(new DefaultInterface(NewDefaultTestDummy.class), provider);
         assertEquals(true, result instanceof NewDefaultTestDummy);
     }
 
     public void testAssembleFailsForNonNewers() {
         try {
-            subject.assemble(new DefaultInterface(CharSequence.class));
+            subject.assemble(new DefaultInterface(CharSequence.class), provider);
             fail();
         } catch (EdgeException result) {
             String expectedMessage = "There is no such field called \"CLASS_TO_NU\" in class java.lang.CharSequence";
@@ -27,6 +27,6 @@ public final class DefaultNewerAssemblerAtomicTest extends InteractionTestCase i
     }
 
     public void setUpFixtures() {
-        subject = new DefaultNewerAssembler(provider);
+        subject = new DefaultNewerAssembler();
     }
 }

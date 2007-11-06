@@ -30,7 +30,7 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
     }
 
     public void testGet() {
-        expect.oneCall(newerMock, refMock, "assemble", NEW_TED);
+        expect.oneCall(newerMock, refMock, "assemble", NEW_TED, providerDummy);
         StampedResolvedInstance actual = subject.get(NEW_TED, hostDummy, providerDummy);
         assertEquals(stamped, actual);
     }
