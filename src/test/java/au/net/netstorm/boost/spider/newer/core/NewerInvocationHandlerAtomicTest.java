@@ -8,11 +8,14 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     private static final Object[] NO_PARAMS = new Object[0];
+    private Interface iface = new DefaultInterface(Coke.class);
     EdgeClass classer = new DefaultEdgeClass();
     InvocationHandler subject;
     ProviderEngine providerMock;
@@ -44,7 +47,7 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
 
     private void check(Object[] params) throws Throwable {
         Method method = method("nu");
-        expect.oneCall(providerMock, newedInstanceMock, "provide", impl, NO_PARAMS);
+        expect.oneCall(providerMock, newedInstanceMock, "provide", iface, impl, NO_PARAMS);
         expect.oneCall(newedInstanceMock, newedObject, "getRef");
         Object actualObject = subject.invoke(proxyObject, method, params);
         assertSame(newedObject, actualObject);

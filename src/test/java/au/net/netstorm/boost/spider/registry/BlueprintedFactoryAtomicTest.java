@@ -40,7 +40,7 @@ public final class BlueprintedFactoryAtomicTest extends InteractionTestCase impl
     private void setUpExpectations() {
         expect.oneCall(blueprintsReadMock, blueprintMock, "get", ifaceDummy);
         expect.oneCall(blueprintMock, implDummy, "getImplementation");
-        expect.oneCall(providerMock, instanceMock, "provide", implDummy);
+        expect.oneCall(providerMock, instanceMock, "provide", ifaceDummy, implDummy);
         expect.oneCall(blueprintMock, stampDummy, "getStamp");
     }
 

@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public interface ResolvedThings {
     void clear();
 
-    boolean exists(Implementation impl);
+    boolean exists(Interface iface);
 
-    ResolvedInstance get(Implementation impl);
+    ResolvedInstance get(Interface iface);
 
-    void put(Implementation impl, UnresolvedInstance ref);
+    void put(Interface iface, UnresolvedInstance ref);
 
-    void remove(Implementation impl);
+    void remove(Interface iface);
 }

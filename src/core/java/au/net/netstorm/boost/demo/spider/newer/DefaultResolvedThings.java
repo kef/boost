@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.spider.newer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
@@ -15,20 +15,20 @@ public final class DefaultResolvedThings implements ResolvedThings {
         map.clear();
     }
 
-    public boolean exists(Implementation impl) {
+    public boolean exists(Interface iface) {
         Map map = get();
-        return map.containsKey(impl);
+        return map.containsKey(iface);
     }
 
-    public ResolvedInstance get(Implementation impl) {
-        if (!exists(impl)) throw new IllegalStateException("Naff off you trollop.");
+    public ResolvedInstance get(Interface iface) {
+        if (!exists(iface)) throw new IllegalStateException("Naff off you trollop.");
         Map map = get();
-        return (ResolvedInstance) map.get(impl);
+        return (ResolvedInstance) map.get(iface);
     }
 
-    public void put(Implementation impl, UnresolvedInstance ref) {
+    public void put(Interface iface, UnresolvedInstance ref) {
         Map map = get();
-        map.put(impl, ref);
+        map.put(iface, ref);
     }
 
     public String toString() {
@@ -37,9 +37,9 @@ public final class DefaultResolvedThings implements ResolvedThings {
         return "" + keys;
     }
 
-    public void remove(Implementation impl) {
+    public void remove(Interface iface) {
         Map map = get();
-        map.remove(impl);
+        map.remove(iface);
     }
 
     private Map get() {

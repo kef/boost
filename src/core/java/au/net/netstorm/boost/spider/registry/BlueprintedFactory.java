@@ -17,7 +17,7 @@ public final class BlueprintedFactory implements Factory {
     // FIX 2215 Probably not.
     public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Blueprint blueprint = blueprintsRead.get(iface);
-        ResolvedInstance instance = provide(provider, blueprint);
+        ResolvedInstance instance = provide(iface, provider, blueprint);
         return stamp(blueprint, instance);
     }
 
@@ -25,9 +25,9 @@ public final class BlueprintedFactory implements Factory {
         return blueprintsRead.exists(iface);
     }
 
-    private ResolvedInstance provide(ProviderEngine provider, Blueprint blueprint) {
+    private ResolvedInstance provide(Interface iface, ProviderEngine provider, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
-        return provider.provide(impl);
+        return provider.provide(iface, impl);
     }
 
     private StampedResolvedInstance stamp(Blueprint blueprint, ResolvedInstance result) {

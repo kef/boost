@@ -19,7 +19,7 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private static final Object[] NO_PARAMS = {};
-    private final ResolvedThings resolved = new DefaultResolvedThings();
+    private final ResolvedThings inProgress = new DefaultResolvedThings();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final Onionizer onionizer;
     private final Instantiator instantiator;
@@ -31,22 +31,23 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
-    public ResolvedInstance provide(Implementation impl) {
-        return provide(impl, NO_PARAMS);
+    public ResolvedInstance provide(Interface iface, Implementation impl) {
+        return provide(iface, impl, NO_PARAMS);
     }
 
-    public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        if (resolved.exists(impl)) return resolved.get(impl);
-        ResolvedInstance resolved = getResolvedInstance(impl, parameters);
+    // FIX 2215 Interface iface has been recently added.  Is this the right direction?
+    // FIX 2215 Perhaps we should revert to just Implementation and do the inProgress.put() some other way.
+    public ResolvedInstance provide(Interface iface, Implementation impl, Object[] parameters) {
+        ResolvedInstance resolved = getResolvedInstance(iface, impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
         return onionizer.onionise(impl, resolved);
     }
 
-    private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
+    private ResolvedInstance getResolvedInstance(Interface iface, Implementation impl, Object[] parameters) {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
-        resolved.put(impl, unresolved);
+        inProgress.put(iface, unresolved);
         injector.inject(unresolved);
-        resolved.remove(impl);
+        inProgress.remove(iface);
         return (ResolvedInstance) unresolved;
     }
 

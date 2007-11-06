@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
@@ -14,6 +16,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private final Instances instances;
     private final Factories factories;
     private final ProviderEngine provider;
+    private final ResolvedThings inProgress = new DefaultResolvedThings();
 
     public DefaultResolverEngine(Instances instances, Factories factories, ProviderEngine provider) {
         this.instances = instances;
@@ -23,6 +26,8 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public synchronized ResolvedInstance resolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
+        // FIX 2215 Moved here from ProviderEngine.  Is the right place yet?
+        if (inProgress.exists(iface)) return inProgress.get(iface);
         return manufacture(iface, host);
     }
 
@@ -40,12 +45,11 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private ResolvedInstance maintainInstances(Interface iface, StampedResolvedInstance stamped) {
         ResolvedInstance instance = stamped.getInstance();
         Stamp stamp = stamped.getStamp();
-        if (stamp == Stamp.SINGLE) put(iface, instance);
+        put(iface, instance, stamp);
         return instance;
     }
 
-    // FIX 2215 Horrible hack!  Push this into the Provider Engine.
-    private void put(Interface iface, ResolvedInstance instance) {
-        if (!instances.exists(iface)) instances.put(iface, instance);
+    private void put(Interface iface, ResolvedInstance instance, Stamp stamp) {
+        if (stamp == Stamp.SINGLE) instances.put(iface, instance);
     }
 }

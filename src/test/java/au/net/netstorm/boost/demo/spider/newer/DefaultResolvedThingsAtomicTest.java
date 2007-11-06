@@ -6,33 +6,33 @@ import au.net.netstorm.boost.test.automock.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
-import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     ResolvedThings subject;
-    Implementation impl;
+    Interface iface;
     BaseReference expected;
-    Implementation doesNotExist;
+    Interface doesNotExist;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void setUpFixtures() {
         subject = new DefaultResolvedThings();
-        fielder.setInstance(doesNotExist, "impl", String.class);
+        fielder.setInstance(doesNotExist, "type", String.class);
     }
 
     public void testExists() {
-        checkExists(impl, false);
-        checkPut(impl, expected);
-        checkExists(impl, true);
+        checkExists(iface, false);
+        checkPut(iface, expected);
+        checkExists(iface, true);
     }
 
     public void testPutSuccess() {
-        checkPut(impl, expected);
+        checkPut(iface, expected);
     }
 
     public void testPutFailure() {
-        subject.put(impl, expected);
+        subject.put(iface, expected);
         try {
             subject.get(doesNotExist);
             fail();
@@ -40,19 +40,19 @@ public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase i
     }
 
     public void testRemove() {
-        subject.put(impl, expected);
-        subject.remove(impl);
-        checkExists(impl, false);
+        subject.put(iface, expected);
+        subject.remove(iface);
+        checkExists(iface, false);
     }
 
-    private void checkExists(Implementation myimpl, boolean myexpected) {
+    private void checkExists(Interface myimpl, boolean myexpected) {
         boolean actual = subject.exists(myimpl);
         assertEquals(myexpected, actual);
     }
 
-    private void checkPut(Implementation implementation, BaseReference baseReference) {
+    private void checkPut(Interface implementation, BaseReference baseReference) {
         subject.put(implementation, baseReference);
-        ResolvedInstance actual = subject.get(impl);
+        ResolvedInstance actual = subject.get(iface);
         assertEquals(expected, actual);
     }
 }

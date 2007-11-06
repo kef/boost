@@ -7,6 +7,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolver implements Resolver {
+    private static final Implementation NO_IMPL = new DefaultImplementation(NoContext.class);
     private final ResolverEngine engine;
 
     public DefaultResolver(ResolverEngine engine) {
@@ -15,8 +16,7 @@ public final class DefaultResolver implements Resolver {
 
     public Object resolve(Class type) {
         Interface iface = new DefaultInterface(type);
-        Implementation impl = new DefaultImplementation(NoContext.class);
-        ResolvedInstance resolved = engine.resolve(iface, impl);
+        ResolvedInstance resolved = engine.resolve(iface, NO_IMPL);
         return resolved.getRef();
     }
 }

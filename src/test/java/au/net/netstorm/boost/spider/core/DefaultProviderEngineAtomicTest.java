@@ -39,6 +39,7 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     ProviderEngine subject;
     Object[] noParams = {};
     Object rawRef;
+    Interface ifaceDummy;
 
     public void setUpFixtures() {
         subject = new DefaultProviderEngine(onionizerMock, injectorMock, instantiatorMock);
@@ -56,13 +57,13 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
 
     private void check(boolean construct) {
         expectations(construct, noParams);
-        ResolvedInstance result = subject.provide(providezMoi);
+        ResolvedInstance result = subject.provide(ifaceDummy, providezMoi);
         assertEquals(wrapped, result);
     }
 
     private void check(boolean construct, Object[] parameters) {
         expectations(construct, parameters);
-        ResolvedInstance result = subject.provide(providezMoi, parameters);
+        ResolvedInstance result = subject.provide(ifaceDummy, providezMoi, parameters);
         assertEquals(wrapped, result);
     }
 
