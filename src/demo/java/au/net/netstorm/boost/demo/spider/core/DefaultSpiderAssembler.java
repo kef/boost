@@ -91,7 +91,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private void newer(Factories factories, ProviderEngine provider, Instances instances) {
         NewerAssembler newer = new DefaultNewerAssembler(provider);
-        Factory factory = new NewerFactory(newer, instances);
+        Factory factory = new NewerFactory(newer);
         factories.add(factory);
     }
 

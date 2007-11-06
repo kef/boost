@@ -15,17 +15,14 @@ public final class NewerFactory implements Factory {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final TypeMaster typer = new DefaultTypeMaster();
     private final NewerAssembler newer;
-    private final Instances instances;
 
-    public NewerFactory(NewerAssembler newer, Instances instances) {
+    public NewerFactory(NewerAssembler newer) {
         this.newer = newer;
-        this.instances = instances;
     }
 
-    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
+    public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         ResolvedInstance newerInstance = nuNewer(iface);
-        instances.put(iface, newerInstance);
-        return newerInstance;
+        return new DefaultStampedResolvedInstance(newerInstance, Stamp.SINGLE);
     }
 
     public boolean canHandle(Interface iface) {

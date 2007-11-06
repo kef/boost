@@ -8,20 +8,15 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class ImplicitFactory implements Factory {
     private final ImplMaster impler;
-    private final Instances instances;
 
-    public ImplicitFactory(ImplMaster impler, Instances instances) {
+    public ImplicitFactory(ImplMaster impler) {
         this.impler = impler;
-        this.instances = instances;
     }
 
-    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
+    public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Implementation impl = impler.impl(iface);
         ResolvedInstance instance = provider.provide(impl);
-        // FIX 2215 Hideous hack! Instances can appear AFTER DefaultResolverEngine has established non-existence!
-        if (instances.exists(iface)) return instance;
-        instances.put(iface, instance);
-        return instance;
+        return new DefaultStampedResolvedInstance(instance, Stamp.SINGLE);
     }
 
     public boolean canHandle(Interface iface) {

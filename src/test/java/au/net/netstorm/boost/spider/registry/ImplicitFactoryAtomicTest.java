@@ -10,9 +10,9 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class ImplicitFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+    private StampedResolvedInstance stamped;
     ImplicitFactory subject;
     ImplMaster implerMock;
-    Instances instancesMock;
     Interface ifaceDummy;
     Boolean canHandle;
     Implementation hostDummy;
@@ -21,7 +21,8 @@ public final class ImplicitFactoryAtomicTest extends InteractionTestCase impleme
     ResolvedInstance instanceDummy;
 
     public void setUpFixtures() {
-        subject = new ImplicitFactory(implerMock, instancesMock);
+        subject = new ImplicitFactory(implerMock);
+        stamped = new DefaultStampedResolvedInstance(instanceDummy, Stamp.SINGLE);
     }
 
     public void testCanHandle() {
@@ -33,9 +34,7 @@ public final class ImplicitFactoryAtomicTest extends InteractionTestCase impleme
     public void testGet() {
         expect.oneCall(implerMock, implDummy, "impl", ifaceDummy);
         expect.oneCall(providerMock, instanceDummy, "provide", implDummy);
-        expect.oneCall(instancesMock, false, "exists", ifaceDummy);
-        expect.oneCall(instancesMock, VOID, "put", ifaceDummy, instanceDummy);
-        ResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
-        assertEquals(instanceDummy, actual);
+        StampedResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
+        assertEquals(stamped, actual);
     }
 }

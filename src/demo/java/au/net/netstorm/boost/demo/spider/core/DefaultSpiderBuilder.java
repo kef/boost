@@ -55,12 +55,12 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     private void implicit(Factories factories, Instances instances, ImplMapper[] implMappers) {
         ImplMaster impler = new DefaultImplMaster(implMappers);
-        ImplicitFactory factory = new ImplicitFactory(impler, instances);
+        ImplicitFactory factory = new ImplicitFactory(impler);
         factories.add(factory);
     }
 
     private void explicit(Factories factories, Instances instances, BlueprintsRead blueprints) {
-        Factory factory = new BlueprintedFactory(blueprints, instances);
+        Factory factory = new BlueprintedFactory(blueprints);
         factories.add(factory);
     }
 

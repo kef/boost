@@ -9,19 +9,21 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class BlueprintedFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+    private StampedResolvedInstance stamped;
     ResolvedInstance instanceMock;
     ImplementationRef hostDummy;
     ProviderEngine providerMock;
     BlueprintsRead blueprintsReadMock;
     BlueprintedFactory subject;
     Implementation implDummy;
-    Instances instancesMock;
     Blueprint blueprintMock;
     Interface ifaceDummy;
     Boolean exists;
+    Stamp stampDummy;
 
     public void setUpFixtures() {
-        subject = new BlueprintedFactory(blueprintsReadMock, instancesMock);
+        subject = new BlueprintedFactory(blueprintsReadMock);
+        stamped = new DefaultStampedResolvedInstance(instanceMock, stampDummy);
     }
 
     public void testCanHandle() {
@@ -39,12 +41,11 @@ public final class BlueprintedFactoryAtomicTest extends InteractionTestCase impl
         expect.oneCall(blueprintsReadMock, blueprintMock, "get", ifaceDummy);
         expect.oneCall(blueprintMock, implDummy, "getImplementation");
         expect.oneCall(providerMock, instanceMock, "provide", implDummy);
-        expect.oneCall(blueprintMock, Stamp.SINGLE, "getStamp");
-        expect.oneCall(instancesMock, VOID, "put", ifaceDummy, instanceMock);
+        expect.oneCall(blueprintMock, stampDummy, "getStamp");
     }
 
     private void checkGetSucceeds() {
-        ResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock);
-        assertEquals(instanceMock, actual);
+        StampedResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock);
+        assertEquals(stamped, actual);
     }
 }
