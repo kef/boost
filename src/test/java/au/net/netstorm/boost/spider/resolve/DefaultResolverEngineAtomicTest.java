@@ -18,19 +18,16 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
-    // FIX 2215 Remove spoo fixtures...use jim instead.
     ClassTestChecker testChecker = new DefaultClassTestChecker();
-    ResolvedInstance jimResolvedInstanceDummy;
-    Interface spoo = iface(Spoo.class);
-    Interface jim = iface(Jim.class);
-    ResolvedInstance spooInstance;
+    Interface iface = new DefaultInterface(Jim.class);
     StampedResolvedInstance stampedInstanceMock;
-    Implementation hostDummy;
+    ResolvedInstance resolvedInstanceDummy;
     ProviderEngine providerMock;
+    Implementation hostDummy;
     Instances instancesMock;
     Factories factoriesMock;
-    Blueprint jimBlueprint;
     ResolverEngine subject;
+    Blueprint blueprint;
     Factory factoryMock;
     // FIX 2215 Need a test for Stamp.MULTIPLE also.
     Stamp stamp = Stamp.SINGLE;
@@ -44,24 +41,20 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(instancesMock, false, "exists", jim);
-        expect.oneCall(factoriesMock, factoryMock, "find", jim);
-        expect.oneCall(factoryMock, stampedInstanceMock, "get", jim, hostDummy, providerMock);
-        expect.oneCall(stampedInstanceMock, jimResolvedInstanceDummy, "getInstance");
+        expect.oneCall(instancesMock, false, "exists", iface);
+        expect.oneCall(factoriesMock, factoryMock, "find", iface);
+        expect.oneCall(factoryMock, stampedInstanceMock, "get", iface, hostDummy, providerMock);
+        expect.oneCall(stampedInstanceMock, resolvedInstanceDummy, "getInstance");
         expect.oneCall(stampedInstanceMock, stamp, "getStamp");
-        expect.oneCall(instancesMock, VOID, "put", jim, jimResolvedInstanceDummy);
-        ResolvedInstance result = subject.resolve(jim, hostDummy);
-        assertEquals(jimResolvedInstanceDummy, result);
+        expect.oneCall(instancesMock, VOID, "put", iface, resolvedInstanceDummy);
+        ResolvedInstance result = subject.resolve(iface, hostDummy);
+        assertEquals(resolvedInstanceDummy, result);
     }
 
     public void testResolvedInstance() {
-        expect.oneCall(instancesMock, true, "exists", spoo);
-        expect.oneCall(instancesMock, spooInstance, "get", spoo);
-        ResolvedInstance result = subject.resolve(spoo, hostDummy);
-        assertEquals(spooInstance, result);
-    }
-
-    private Interface iface(Class cls) {
-        return new DefaultInterface(cls);
+        expect.oneCall(instancesMock, true, "exists", iface);
+        expect.oneCall(instancesMock, resolvedInstanceDummy, "get", iface);
+        ResolvedInstance result = subject.resolve(iface, hostDummy);
+        assertEquals(resolvedInstanceDummy, result);
     }
 }
