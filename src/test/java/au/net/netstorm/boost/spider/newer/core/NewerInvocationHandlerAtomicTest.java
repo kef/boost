@@ -34,8 +34,19 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
 
     public void testInvokeOtherMethod() throws Throwable {
         Method method = method("bogus");
+        checkFails(method, NO_PARAMS);
+    }
+
+    public void testInvokeBadNu() throws Throwable {
+        Class[] types = {Integer.class};
+        Method method = method("nu", types);
+        Object[] args = {new Integer(1)};
+        checkFails(method, args);
+    }
+
+    private void checkFails(Method method, Object[] args) throws Throwable {
         try {
-            subject.invoke(proxyObject, method, NO_PARAMS);
+            subject.invoke(proxyObject, method, args);
             fail();
         } catch (IllegalStateException expected) { }
     }
@@ -54,6 +65,10 @@ public final class NewerInvocationHandlerAtomicTest extends InteractionTestCase 
     }
 
     private Method method(String name) {
-        return classer.getMethod(NewVanillaCoke.class, name, null);
+        return method(name, null);
+    }
+
+    private Method method(String name, Class[] parameterTypes) {
+        return classer.getMethod(NewVanillaCoke.class, name, parameterTypes);
     }
 }

@@ -6,4 +6,6 @@ public interface NewVanillaCoke {
     Coke nu();
 
     void bogus();
+
+    VanillaCoke nu(Integer badReturnType);
 }
