@@ -31,6 +31,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
+    // FIX 2215 iface is here to link iface, impl, and instantiation together.
     public ResolvedInstance provide(Interface iface, Implementation impl) {
         return provide(iface, impl, NO_PARAMS);
     }
