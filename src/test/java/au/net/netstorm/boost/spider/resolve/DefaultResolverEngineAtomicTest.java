@@ -29,8 +29,6 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     ResolverEngine subject;
     Blueprint blueprint;
     Factory factoryMock;
-    // FIX 2215 Need a test for Stamp.MULTIPLE also.
-    Stamp stamp = Stamp.SINGLE;
 
     public void setUpFixtures() {
         subject = new DefaultResolverEngine(instancesMock, factoriesMock, providerMock);
@@ -41,14 +39,8 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testNoResolvedInstance() {
-        expect.oneCall(instancesMock, false, "exists", iface);
-        expect.oneCall(factoriesMock, factoryMock, "find", iface);
-        expect.oneCall(factoryMock, stampedInstanceMock, "get", iface, hostDummy, providerMock);
-        expect.oneCall(stampedInstanceMock, resolvedInstanceDummy, "getInstance");
-        expect.oneCall(stampedInstanceMock, stamp, "getStamp");
-        expect.oneCall(instancesMock, VOID, "put", iface, resolvedInstanceDummy);
-        ResolvedInstance result = subject.resolve(iface, hostDummy);
-        assertEquals(resolvedInstanceDummy, result);
+        checkNoResolvedInstance(Stamp.SINGLE, true);
+        checkNoResolvedInstance(Stamp.MULTIPLE, false);
     }
 
     public void testResolvedInstance() {
@@ -56,5 +48,20 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
         expect.oneCall(instancesMock, resolvedInstanceDummy, "get", iface);
         ResolvedInstance result = subject.resolve(iface, hostDummy);
         assertEquals(resolvedInstanceDummy, result);
+    }
+
+    private void checkNoResolvedInstance(Stamp stamp, boolean expectInstancePut) {
+        setupNoResolvedExpectations(stamp, expectInstancePut);
+        ResolvedInstance result = subject.resolve(iface, hostDummy);
+        assertEquals(resolvedInstanceDummy, result);
+    }
+
+    private void setupNoResolvedExpectations(Stamp stamp, boolean expectInstancePut) {
+        expect.oneCall(instancesMock, false, "exists", iface);
+        expect.oneCall(factoriesMock, factoryMock, "find", iface);
+        expect.oneCall(factoryMock, stampedInstanceMock, "get", iface, hostDummy, providerMock);
+        expect.oneCall(stampedInstanceMock, resolvedInstanceDummy, "getInstance");
+        expect.oneCall(stampedInstanceMock, stamp, "getStamp");
+        if (expectInstancePut) expect.oneCall(instancesMock, VOID, "put", iface, resolvedInstanceDummy);
     }
 }
