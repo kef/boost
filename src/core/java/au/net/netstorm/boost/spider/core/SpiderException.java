@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
-import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.primordial.BoooostException;
 
 public abstract class SpiderException extends RuntimeException implements BoooostException {
@@ -21,7 +21,7 @@ public abstract class SpiderException extends RuntimeException implements Boooos
     }
 
     private String things() {
-        ResolvedThings things = new DefaultResolvedThings();
+        PartialInstances things = new DefaultPartialInstances();
         return things.toString();
     }
 

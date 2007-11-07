@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
 
 public final class SpiderTryCatchFinally implements TryCatchFinally {
-    ResolvedThings resolved;
+    PartialInstances resolved;
 
-    public SpiderTryCatchFinally(ResolvedThings resolved) {
+    public SpiderTryCatchFinally(PartialInstances resolved) {
         this.resolved = resolved;
     }
 

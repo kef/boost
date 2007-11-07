@@ -7,7 +7,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public final class DefaultResolvedThings implements ResolvedThings {
+public final class DefaultPartialInstances implements PartialInstances {
     private static final ThreadLocal LOCAL_MON = new ThreadLocal();
 
     public void clear() {

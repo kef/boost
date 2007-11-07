@@ -41,7 +41,12 @@ public final class NewerInvocationHandler implements InvocationHandler {
 
     private void check(Method method) {
         String name = method.getName();
-        if (name.equals("nu")) return;
-        throw new IllegalStateException("We only support nu(...) methods");
+        checkFalse(name.equals("nu"), "We only support nu(...) methods");
+        Class cls = method.getReturnType();
+        checkFalse(cls.isInterface(), "nu() methods must return an interface");
+    }
+
+    private void checkFalse(boolean bool, String msg) {
+        if (!bool) throw new IllegalStateException(msg);
     }
 }

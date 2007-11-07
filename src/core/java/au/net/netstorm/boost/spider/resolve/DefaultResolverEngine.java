@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.resolve;
 
-import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
-import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
@@ -17,7 +17,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private final Instances instances;
     private final Factories factories;
     private final ProviderEngine provider;
-    private final ResolvedThings inProgress = new DefaultResolvedThings();
+    private final PartialInstances inProgress = new DefaultPartialInstances();
 
     public DefaultResolverEngine(Instances instances, Factories factories, ProviderEngine provider) {
         this.instances = instances;

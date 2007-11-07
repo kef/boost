@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
-public interface ResolvedThings {
+public interface PartialInstances {
     void clear();
 
     boolean exists(Interface iface);

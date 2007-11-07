@@ -9,15 +9,15 @@ import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolvedThingsAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
-    ResolvedThings subject;
+public final class DefaultPartialInstancesAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
+    PartialInstances subject;
     Interface iface;
     BaseReference expected;
     Interface doesNotExist;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     public void setUpFixtures() {
-        subject = new DefaultResolvedThings();
+        subject = new DefaultPartialInstances();
         fielder.setInstance(doesNotExist, "type", String.class);
     }
 

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.spider.core;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
-import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.spider.core.DefaultProvider;
@@ -42,7 +42,7 @@ import au.net.netstorm.boost.util.type.Interface;
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
     private static final Interface SPIDER_TYPE = new DefaultInterface(Spider.class);
-    private static final ResolvedThings RESOLVED_THINGS = new DefaultResolvedThings();
+    private static final PartialInstances PARTIAL_INSTANCES = new DefaultPartialInstances();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
     private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
@@ -60,7 +60,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     }
 
     private Spider threadLocal(Spider spider) {
-        TryCatchFinally trier = new SpiderTryCatchFinally(RESOLVED_THINGS);
+        TryCatchFinally trier = new SpiderTryCatchFinally(PARTIAL_INSTANCES);
         InvocationHandler handler = new DefaultTryCatchFinallyHandler(spider, trier);
         return (Spider) proxyFactory.newProxy(SPIDER_TYPE, handler);
     }

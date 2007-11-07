@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.demo.spider.newer.DefaultResolvedThings;
-import au.net.netstorm.boost.demo.spider.newer.ResolvedThings;
+import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
@@ -19,7 +19,7 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private static final Object[] NO_PARAMS = {};
-    private final ResolvedThings inProgress = new DefaultResolvedThings();
+    private final PartialInstances inProgress = new DefaultPartialInstances();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final Onionizer onionizer;
     private final Instantiator instantiator;
