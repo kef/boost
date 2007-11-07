@@ -25,6 +25,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
         this.provider = provider;
     }
 
+    // FIX 2215 Test around synchronized.  Is there one?  Do we need it.
     public synchronized ResolvedInstance resolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
         // FIX 2215 Moved here from ProviderEngine.  Is the right place yet?
