@@ -12,7 +12,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultPartialInstancesAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     PartialInstances subject;
     Interface iface;
-    BaseReference expected;
+    BaseReference instance;
     Interface doesNotExist;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
 
@@ -23,24 +23,34 @@ public final class DefaultPartialInstancesAtomicTest extends InteractionTestCase
 
     public void testExists() {
         checkExists(iface, false);
-        checkPut(iface, expected);
+        checkPut(iface, instance);
         checkExists(iface, true);
     }
 
     public void testPutSuccess() {
-        checkPut(iface, expected);
+        checkPut(iface, instance);
     }
 
-    public void testPutFailure() {
-        subject.put(iface, expected);
+    public void testGetFailure() {
+        subject.put(iface, instance);
         try {
             subject.get(doesNotExist);
             fail();
         } catch (IllegalStateException expected) { }
     }
 
+    public void testPutFailure() {
+        subject.put(iface, instance);
+        try {
+            subject.put(iface, instance);
+            fail();
+        }
+        catch (IllegalStateException expected) {
+        }
+    }
+
     public void testRemove() {
-        subject.put(iface, expected);
+        subject.put(iface, instance);
         subject.remove(iface);
         checkExists(iface, false);
     }
@@ -53,6 +63,6 @@ public final class DefaultPartialInstancesAtomicTest extends InteractionTestCase
     private void checkPut(Interface implementation, BaseReference baseReference) {
         subject.put(implementation, baseReference);
         ResolvedInstance actual = subject.get(iface);
-        assertEquals(expected, actual);
+        assertEquals(instance, actual);
     }
 }

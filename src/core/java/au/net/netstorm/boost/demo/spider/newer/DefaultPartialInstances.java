@@ -21,12 +21,13 @@ public final class DefaultPartialInstances implements PartialInstances {
     }
 
     public ResolvedInstance get(Interface iface) {
-        if (!exists(iface)) throw new IllegalStateException("Naff off you trollop.");
+        if (!exists(iface)) throw new IllegalStateException(iface + " not found");
         Map map = get();
         return (ResolvedInstance) map.get(iface);
     }
 
     public void put(Interface iface, UnresolvedInstance ref) {
+        if (exists(iface)) throw new IllegalStateException("Duplicate insertion of " + iface);
         Map map = get();
         map.put(iface, ref);
     }
