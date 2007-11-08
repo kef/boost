@@ -13,8 +13,8 @@ public final class BlueprintedFactory implements Factory {
         this.blueprintsRead = blueprintsRead;
     }
 
-    // FIX 2215 Should we return an object like BlueObject which has the reference and a SINGLE/MULTIPLE.
-    // FIX 2215 Probably not.
+    // FIX 2215 Either: StampedResolvedInstance should merge with ResolvedInstance,
+    // FIX 2215 or: Factories should return recipies instead of building anything themselves.
     public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Blueprint blueprint = blueprintsRead.get(iface);
         ResolvedInstance instance = provide(iface, provider, blueprint);
