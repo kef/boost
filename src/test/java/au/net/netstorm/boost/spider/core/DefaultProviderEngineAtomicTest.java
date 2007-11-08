@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
@@ -26,7 +24,6 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     Implementation gaijin = new DefaultImplementation(Barbarian.class);
     Interface initMarker = new DefaultInterface(Constructable.class);
     ModifierTestUtil modifierTestUtil = new DefaultModifierTestUtil();
-    PartialInstances partialInstances = new DefaultPartialInstances();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     Object[] parameters = {"Hi", "There"};
     Constructable constructableMock;
@@ -74,9 +71,8 @@ public final class DefaultProviderEngineAtomicTest extends InteractionTestCase i
     }
 
     private void expectations(boolean construct, Object[] parameters) {
-        partialInstances.clear();
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
-        expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
+        expect.oneCall(injectorMock, VOID, "inject", ifaceDummy, unresolvedMock);
         expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);
         if (construct) expectConstruct();
     }

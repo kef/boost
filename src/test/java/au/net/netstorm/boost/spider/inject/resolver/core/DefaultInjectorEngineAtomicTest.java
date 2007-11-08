@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
@@ -10,6 +12,7 @@ import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
@@ -29,6 +32,8 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
     Field fieldJuicy = field("juicy");
     Field fieldRock = field("rock");
     Field[] fields = {fieldJuicy, fieldRock};
+    PartialInstances partialInstances = new DefaultPartialInstances();
+    Interface ifaceMock;
 
     public void setUpFixtures() {
         subject = new DefaultInjectorEngine(fieldFinderMock, fieldResolverMock);
@@ -36,6 +41,7 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
     }
 
     public void testInjector() {
+        partialInstances.clear();
         expect.oneCall(unresolvedMock, juicy, "getRef");
         expect.oneCall(fieldFinderMock, fields, "find", juicy);
         expect.oneCall(fieldResolverMock, lazyBastardMock, "resolve", fieldJuicy);
@@ -44,7 +50,7 @@ public final class DefaultInjectorEngineAtomicTest extends InteractionTestCase i
         expect.oneCall(moleyMock, rockRef, "getRef");
         expect.oneCall(fielderMock, VOID, "set", fieldJuicy, juicy, juicyRefMock);
         expect.oneCall(fielderMock, VOID, "set", fieldRock, juicy, rockRef);
-        subject.inject(unresolvedMock);
+        subject.inject(ifaceMock, unresolvedMock);
     }
 
     private Field field(String name) {
