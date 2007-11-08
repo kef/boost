@@ -12,4 +12,8 @@ public final class SpiderMan implements Factory {
     public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         throw new UnsupportedOperationException();
     }
+
+    public boolean isSingle(Interface iface) {
+        throw new UnsupportedOperationException();
+    }
 }

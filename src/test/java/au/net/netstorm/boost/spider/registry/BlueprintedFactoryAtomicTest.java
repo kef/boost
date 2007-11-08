@@ -20,6 +20,7 @@ public final class BlueprintedFactoryAtomicTest extends InteractionTestCase impl
     Interface ifaceDummy;
     Boolean exists;
     Stamp stampDummy;
+    Boolean isSingleton;
 
     public void setUpFixtures() {
         subject = new BlueprintedFactory(blueprintsReadMock);
@@ -35,6 +36,18 @@ public final class BlueprintedFactoryAtomicTest extends InteractionTestCase impl
     public void testGetSucceeds() {
         setUpExpectations();
         checkGetSucceeds();
+    }
+
+    public void testIsSingle() {
+        checkIsSingle(Stamp.MULTIPLE, false);
+        checkIsSingle(Stamp.SINGLE, true);
+    }
+
+    private void checkIsSingle(Stamp stamp, boolean expected) {
+        expect.oneCall(blueprintsReadMock, blueprintMock, "get", ifaceDummy);
+        expect.oneCall(blueprintMock, stamp, "getStamp");
+        boolean actual = subject.isSingle(ifaceDummy);
+        assertEquals(expected, actual);
     }
 
     private void setUpExpectations() {

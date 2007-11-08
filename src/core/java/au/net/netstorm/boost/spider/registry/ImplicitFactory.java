@@ -22,4 +22,8 @@ public final class ImplicitFactory implements Factory {
     public boolean canHandle(Interface iface) {
         return impler.hasImpl(iface);
     }
+
+    public boolean isSingle(Interface iface) {
+        return true;
+    }
 }

@@ -8,4 +8,6 @@ public interface Factory {
     StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider);
 
     boolean canHandle(Interface iface);
+
+    boolean isSingle(Interface iface);
 }

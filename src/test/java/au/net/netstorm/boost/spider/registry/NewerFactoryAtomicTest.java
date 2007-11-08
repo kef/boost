@@ -40,6 +40,11 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
         checkCanHandle(TED, false);
     }
 
+    public void testIsSingle() {
+        boolean actual = subject.isSingle(NEW_TED);
+        assertEquals(true, actual);
+    }
+
     private void checkCanHandle(Interface iface, boolean expected) {
         boolean actual = subject.canHandle(iface);
         assertEquals(expected, actual);

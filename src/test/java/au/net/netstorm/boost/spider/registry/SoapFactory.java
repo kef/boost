@@ -13,4 +13,8 @@ public final class SoapFactory implements Factory {
     public boolean canHandle(Interface iface) {
         throw new UnsupportedOperationException();
     }
+
+    public boolean isSingle(Interface iface) {
+        throw new UnsupportedOperationException();
+    }
 }

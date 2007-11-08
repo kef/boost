@@ -29,6 +29,10 @@ public final class NewerFactory implements Factory {
         return typer.extendz(iface, NEWER);
     }
 
+    public boolean isSingle(Interface iface) {
+        return true;
+    }
+
     private ResolvedInstance nuNewer(Interface iface, ProviderEngine provider) {
         Newer ref = newer.assemble(iface, provider);
         return new DefaultBaseReference(ref);

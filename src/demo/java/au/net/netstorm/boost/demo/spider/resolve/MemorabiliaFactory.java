@@ -24,4 +24,8 @@ public final class MemorabiliaFactory implements Factory {
     public boolean canHandle(Interface iface) {
         return MEMORABILIA.equals(iface);
     }
+
+    public boolean isSingle(Interface iface) {
+        return false;
+    }
 }

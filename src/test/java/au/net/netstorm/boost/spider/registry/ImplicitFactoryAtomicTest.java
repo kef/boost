@@ -37,4 +37,9 @@ public final class ImplicitFactoryAtomicTest extends InteractionTestCase impleme
         StampedResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
         assertEquals(stamped, actual);
     }
+
+    public void testIsSingle() {
+        boolean actual = subject.isSingle(ifaceDummy);
+        assertEquals(true, actual);
+    }
 }
