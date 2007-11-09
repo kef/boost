@@ -6,7 +6,6 @@ import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
-import au.net.netstorm.boost.spider.registry.StampedResolvedInstance;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
@@ -20,7 +19,6 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     ClassTestChecker testChecker = new DefaultClassTestChecker();
     Interface iface = new DefaultInterface(Jim.class);
-    StampedResolvedInstance stampedInstanceMock;
     ResolvedInstance resolvedInstanceDummy;
     ProviderEngine providerMock;
     Implementation hostDummy;
@@ -59,9 +57,9 @@ public final class DefaultResolverEngineAtomicTest extends InteractionTestCase i
     private void setupNoResolvedExpectations(Stamp stamp, boolean expectInstancePut) {
         expect.oneCall(instancesMock, false, "exists", iface);
         expect.oneCall(factoriesMock, factoryMock, "find", iface);
-        expect.oneCall(factoryMock, stampedInstanceMock, "get", iface, hostDummy, providerMock);
-        expect.oneCall(stampedInstanceMock, resolvedInstanceDummy, "getInstance");
-        expect.oneCall(stampedInstanceMock, stamp, "getStamp");
+        expect.oneCall(factoryMock, resolvedInstanceDummy, "get", iface, hostDummy, providerMock);
+        boolean isSingle = stamp == Stamp.SINGLE;
+        expect.oneCall(factoryMock, isSingle, "isSingle", iface);
         if (expectInstancePut) expect.oneCall(instancesMock, VOID, "put", iface, resolvedInstanceDummy);
     }
 }

@@ -15,7 +15,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class NewerFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     private static final Interface TED = new DefaultInterface(Ted.class);
     private static final Interface NEW_TED = new DefaultInterface(NewTed.class);
-    private StampedResolvedInstance stamped;
+    // FIX 2215 Should this be 'Dummy'.
     ResolvedInstance instance;
     ProviderEngine providerDummy;
     Implementation hostDummy;
@@ -26,13 +26,12 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
     public void setUpFixtures() {
         subject = new NewerFactory(newerMock);
         instance = new DefaultBaseReference(refMock);
-        stamped = new DefaultStampedResolvedInstance(instance, Stamp.SINGLE);
     }
 
     public void testGet() {
         expect.oneCall(newerMock, refMock, "assemble", NEW_TED, providerDummy);
-        StampedResolvedInstance actual = subject.get(NEW_TED, hostDummy, providerDummy);
-        assertEquals(stamped, actual);
+        ResolvedInstance actual = subject.get(NEW_TED, hostDummy, providerDummy);
+        assertEquals(instance, actual);
     }
 
     public void testCanHandle() {

@@ -9,7 +9,6 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class BlueprintedFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
-    private StampedResolvedInstance stamped;
     ResolvedInstance instanceMock;
     ImplementationRef hostDummy;
     ProviderEngine providerMock;
@@ -24,7 +23,6 @@ public final class BlueprintedFactoryAtomicTest extends InteractionTestCase impl
 
     public void setUpFixtures() {
         subject = new BlueprintedFactory(blueprintsReadMock);
-        stamped = new DefaultStampedResolvedInstance(instanceMock, stampDummy);
     }
 
     public void testCanHandle() {
@@ -54,11 +52,10 @@ public final class BlueprintedFactoryAtomicTest extends InteractionTestCase impl
         expect.oneCall(blueprintsReadMock, blueprintMock, "get", ifaceDummy);
         expect.oneCall(blueprintMock, implDummy, "getImplementation");
         expect.oneCall(providerMock, instanceMock, "provide", ifaceDummy, implDummy);
-        expect.oneCall(blueprintMock, stampDummy, "getStamp");
     }
 
     private void checkGetSucceeds() {
-        StampedResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock);
-        assertEquals(stamped, actual);
+        ResolvedInstance actual = subject.get(ifaceDummy, implDummy, providerMock);
+        assertEquals(instanceMock, actual);
     }
 }

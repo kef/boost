@@ -10,7 +10,6 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class ImplicitFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
-    private StampedResolvedInstance stamped;
     ImplicitFactory subject;
     ImplMaster implerMock;
     Interface ifaceDummy;
@@ -22,7 +21,6 @@ public final class ImplicitFactoryAtomicTest extends InteractionTestCase impleme
 
     public void setUpFixtures() {
         subject = new ImplicitFactory(implerMock);
-        stamped = new DefaultStampedResolvedInstance(instanceDummy, Stamp.SINGLE);
     }
 
     public void testCanHandle() {
@@ -34,8 +32,8 @@ public final class ImplicitFactoryAtomicTest extends InteractionTestCase impleme
     public void testGet() {
         expect.oneCall(implerMock, implDummy, "impl", ifaceDummy);
         expect.oneCall(providerMock, instanceDummy, "provide", ifaceDummy, implDummy);
-        StampedResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
-        assertEquals(stamped, actual);
+        ResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
+        assertEquals(instanceDummy, actual);
     }
 
     public void testIsSingle() {

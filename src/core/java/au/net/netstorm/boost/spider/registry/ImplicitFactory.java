@@ -13,10 +13,9 @@ public final class ImplicitFactory implements Factory {
         this.impler = impler;
     }
 
-    public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
+    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Implementation impl = impler.impl(iface);
-        ResolvedInstance instance = provider.provide(iface, impl);
-        return new DefaultStampedResolvedInstance(instance, Stamp.SINGLE);
+        return provider.provide(iface, impl);
     }
 
     public boolean canHandle(Interface iface) {

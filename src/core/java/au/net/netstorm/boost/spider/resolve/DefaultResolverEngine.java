@@ -6,8 +6,6 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.Stamp;
-import au.net.netstorm.boost.spider.registry.StampedResolvedInstance;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -33,24 +31,10 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance manufacture(Interface iface, Implementation host) {
-        StampedResolvedInstance stamped = create(iface, host);
-        return maintainInstances(iface, stamped);
-    }
-
-    private StampedResolvedInstance create(Interface iface, Implementation host) {
         Factory factory = factories.find(iface);
-        return factory.get(iface, host, provider);
-    }
-
-    // FIX 2215 Keep refactoring here.
-    private ResolvedInstance maintainInstances(Interface iface, StampedResolvedInstance stamped) {
-        ResolvedInstance instance = stamped.getInstance();
-        Stamp stamp = stamped.getStamp();
-        put(iface, instance, stamp);
+        ResolvedInstance instance = factory.get(iface, host, provider);
+        boolean isSingle = factory.isSingle(iface);
+        if (isSingle) instances.put(iface, instance);
         return instance;
-    }
-
-    private void put(Interface iface, ResolvedInstance instance, Stamp stamp) {
-        if (stamp == Stamp.SINGLE) instances.put(iface, instance);
     }
 }

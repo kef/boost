@@ -20,9 +20,8 @@ public final class NewerFactory implements Factory {
         this.newer = newer;
     }
 
-    public StampedResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
-        ResolvedInstance newerInstance = nuNewer(iface, provider);
-        return new DefaultStampedResolvedInstance(newerInstance, Stamp.SINGLE);
+    public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
+        return nuNewer(iface, provider);
     }
 
     public boolean canHandle(Interface iface) {
