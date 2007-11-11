@@ -5,7 +5,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-// FIX 1914 This feels bad. Centralise operations on Instances somehow.
 public final class BlueprintedFactory implements Factory {
     private static final Stamp SINGLE = Stamp.SINGLE;
     private final BlueprintsRead blueprintsRead;
@@ -14,8 +13,6 @@ public final class BlueprintedFactory implements Factory {
         this.blueprintsRead = blueprintsRead;
     }
 
-    // FIX 2215 Either: StampedResolvedInstance should merge with ResolvedInstance,
-    // FIX 2215 or: Factories should return recipies instead of building anything themselves.
     public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         Blueprint blueprint = getBlueprint(iface);
         return provide(iface, provider, blueprint);
