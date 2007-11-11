@@ -15,7 +15,6 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class NewerFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     private static final Interface TED = new DefaultInterface(Ted.class);
     private static final Interface NEW_TED = new DefaultInterface(NewTed.class);
-    // FIX 2215 Should this be 'Dummy'.
     ResolvedInstance instance;
     ProviderEngine providerDummy;
     Implementation hostDummy;
