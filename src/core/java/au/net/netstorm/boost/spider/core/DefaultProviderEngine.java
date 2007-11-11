@@ -12,8 +12,6 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 // SUGGEST: Strongly type Object[] as Resolved[] in provide(...).
-
-// SUGGEST: try/finally around resolved things put/remove.  Consider using try/finally proxy.
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private static final Object[] NO_PARAMS = {};
