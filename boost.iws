@@ -30,15 +30,22 @@
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/DefaultBase64.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/Base64.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/codec" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/base64/commons-codec-1.2.jar" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string/DefaultStringConverterAtomicTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string/DefaultAsciiStringConverterAtomicTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.ipr" afterPath="$PROJECT_DIR$/boost.ipr" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/Base64.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iml" afterPath="$PROJECT_DIR$/boost.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/AsciiStringConverter.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/DefaultBase64.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/DefaultAsciiStringConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/AsciiBytes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/StringConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/DefaultStringConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/type/DefaultAsciiBytesAtomicTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultAsciiBytes.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
   </component>
@@ -161,64 +168,99 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="boost.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/boost.iml">
+      <file leaf-file-name="DefaultStringConverter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/DefaultStringConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="10" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.39344263">
+            <state line="13" column="18" selection-start="464" selection-end="464" vertical-scroll-proportion="0.24123712">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultEdgeSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeSystem.java">
+      <file leaf-file-name="DefaultStringConverterAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string/DefaultStringConverterAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="53" selection-start="100" selection-end="100" vertical-scroll-proportion="0.039344262">
+            <state line="21" column="36" selection-start="789" selection-end="789" vertical-scroll-proportion="0.38969073">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringConverter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/StringConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="17" selection-start="61" selection-end="61" vertical-scroll-proportion="0.037113402">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EdgeSystem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/EdgeSystem.java">
+      <file leaf-file-name="DefaultAsciiBytes.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultAsciiBytes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
+            <state line="16" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="0.29690722">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Base64.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/Base64.java">
+      <file leaf-file-name="DefaultAsciiBytesAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/type/DefaultAsciiBytesAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="12" selection-start="81" selection-end="81" vertical-scroll-proportion="0.039344262">
+            <state line="13" column="27" selection-start="582" selection-end="582" vertical-scroll-proportion="0.24123712">
+              <folding>
+                <marker date="1195111759000" expanded="true" signature="49:284" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataAtomTestChecker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/atom/DataAtomTestChecker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="19" selection-start="211" selection-end="211" vertical-scroll-proportion="0.074226804">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultBase64.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/DefaultBase64.java">
+      <file leaf-file-name="AsciiBytes.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/AsciiBytes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.039344262">
+            <state line="2" column="41" selection-start="83" selection-end="83" vertical-scroll-proportion="0.037113402">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EdgeInputStream.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/io/EdgeInputStream.java">
+      <file leaf-file-name="DefaultAsciiStringConverter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/DefaultAsciiStringConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="62" selection-end="62" vertical-scroll-proportion="0.039344262">
-              <folding />
+            <state line="11" column="0" selection-start="429" selection-end="429" vertical-scroll-proportion="0.2041237">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultEdgeInputStream.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/io/DefaultEdgeInputStream.java">
+      <file leaf-file-name="DefaultAsciiStringConverterAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string/DefaultAsciiStringConverterAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="336" selection-end="336" vertical-scroll-proportion="0.15737705">
+            <state line="29" column="34" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.53814435">
+              <folding>
+                <marker date="1195111759000" expanded="true" signature="51:276" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsciiStringConverter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/AsciiStringConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="17" selection-start="113" selection-end="113" vertical-scroll-proportion="0.074226804">
               <folding />
             </state>
           </provider>
@@ -302,7 +344,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="exception" />
+          <option name="myItemId" value="type" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -320,7 +362,51 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="nursery" />
+          <option name="myItemId" value="util" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="string" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="test" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="test" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="atom" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -339,28 +425,6 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="edge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="edge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="org.apache.commons.codec.binary" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -424,7 +488,173 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/lib" />
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core/java/au/net/netstorm/boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/core/java/au/net/netstorm/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -466,9 +696,13 @@
       <recent name="" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="au.net.netstorm.boost.util.string" />
+      <recent name="au.net.netstorm.boost.util.type" />
+      <recent name="au.net.netstorm.boost.util.codec" />
       <recent name="au.net.netstorm.boost.edge.org.apache.commons.codec.binary" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="au.net.netstorm.boost.util.string" />
       <recent name="au.net.netstorm.boost.nursery.pebble.create" />
       <recent name="au.net.netstorm.boost" />
     </key>
@@ -653,14 +887,14 @@
       </UpdatedFiles>
     </UpdateInfo>
   </component>
-  <component name="RunManager" selected="JUnit.AllTestSuite">
-    <tempConfiguration default="false" name="AllTestSuite" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <pattern value="au.net.netstorm.boost.test.suite.collector.*" />
+  <component name="RunManager" selected="JUnit.DefaultAsciiBytesAtomicTest">
+    <tempConfiguration default="false" name="DefaultAsciiBytesAtomicTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <pattern value="au.net.netstorm.boost.util.type.*" />
       <module name="boost" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="au.net.netstorm.boost.test.suite.collector" />
-      <option name="MAIN_CLASS_NAME" value="au.net.netstorm.boost.test.suite.collector.AllTestSuite" />
+      <option name="PACKAGE_NAME" value="au.net.netstorm.boost.util.type" />
+      <option name="MAIN_CLASS_NAME" value="au.net.netstorm.boost.util.type.DefaultAsciiBytesAtomicTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -965,6 +1199,7 @@
       <are-modules-shown value="false" />
       <flatten-packages value="false" />
       <is-autoscroll-to-source value="true" />
+      <todo-filter name="84397" />
     </todo-panel>
     <todo-panel id="default-changelist">
       <are-packages-shown value="false" />
@@ -975,16 +1210,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1574" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29248476" order="6" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29221228" order="6" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22969745" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736045" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33011717" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33011717" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -992,7 +1227,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24840765" order="1" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" order="10" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3705962" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3700896" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998407" order="0" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
@@ -1119,107 +1354,115 @@
     <option name="myLastEditedConfigurable" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/LifecycleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="7" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/parallel/DefaultTestLifecycleRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="47" selection-start="800" selection-end="800" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="24" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestLifecycle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/exception/ThrowableMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimeHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="172" selection-end="172" vertical-scroll-proportion="0.051391862">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cobertura/oro/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0385439">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/boost.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="10" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.39344263">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="53" selection-start="100" selection-end="100" vertical-scroll-proportion="0.039344262">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/EdgeSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="53" selection-start="100" selection-end="100" vertical-scroll-proportion="0.025695931">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/io/EdgeInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="62" selection-end="62" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="17" selection-start="62" selection-end="62" vertical-scroll-proportion="0.025695931">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/io/DefaultEdgeInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="336" selection-end="336" vertical-scroll-proportion="0.15737705">
+        <state line="10" column="19" selection-start="336" selection-end="336" vertical-scroll-proportion="0.102783725">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/Base64.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/StringConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="81" selection-end="81" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="17" selection-start="61" selection-end="61" vertical-scroll-proportion="0.037113402">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/org/apache/commons/codec/binary/DefaultBase64.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/AsciiStringConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="82" selection-end="82" vertical-scroll-proportion="0.039344262">
+        <state line="4" column="17" selection-start="113" selection-end="113" vertical-scroll-proportion="0.074226804">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/EdgeSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="146" selection-end="146" vertical-scroll-proportion="0.08993576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-init.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="2668" selection-end="2668" vertical-scroll-proportion="0.21666667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/DefaultStringConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="18" selection-start="464" selection-end="464" vertical-scroll-proportion="0.24123712">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string/DefaultStringConverterAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="36" selection-start="789" selection-end="789" vertical-scroll-proportion="0.38969073">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/string/DefaultAsciiStringConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="429" selection-end="429" vertical-scroll-proportion="0.2041237">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/AsciiBytes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="41" selection-start="83" selection-end="83" vertical-scroll-proportion="0.037113402">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/string/DefaultAsciiStringConverterAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="34" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.53814435">
+          <folding>
+            <marker date="1195111759000" expanded="true" signature="51:276" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/atom/DataAtomTestChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="19" selection-start="211" selection-end="211" vertical-scroll-proportion="0.074226804">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/type/DefaultAsciiBytesAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="27" selection-start="582" selection-end="582" vertical-scroll-proportion="0.24123712">
+          <folding>
+            <marker date="1195111759000" expanded="true" signature="49:284" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultAsciiBytes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="0.29690722">
           <folding />
         </state>
       </provider>
