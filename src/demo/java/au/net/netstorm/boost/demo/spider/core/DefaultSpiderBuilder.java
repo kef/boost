@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.spider.core;
 
+import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.spider.inject.core.Injector;
@@ -86,6 +87,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
+        registry.instance(Nu.class, spider);
     }
 
     private Factories nuFactories() {

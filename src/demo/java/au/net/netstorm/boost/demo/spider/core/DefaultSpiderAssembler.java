@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
-import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.spider.core.DefaultProvider;
+import au.net.netstorm.boost.nursery.spider.provider.DefaultNu;
+import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.core.SpiderTryCatchFinally;
@@ -70,10 +70,10 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine
     ) {
-        Provider provider = new DefaultProvider(providerEngine);
+        Nu nu = new DefaultNu(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        return new DefaultSpider(provider, injector, resolver);
+        return new DefaultSpider(nu, injector, resolver);
     }
 
     private ResolverEngine assembleResolver(

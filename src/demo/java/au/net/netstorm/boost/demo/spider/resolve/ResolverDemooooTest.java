@@ -5,7 +5,7 @@ import au.net.netstorm.boost.demo.spider.core.Spider;
 import au.net.netstorm.boost.demo.spider.core.SpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
 import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 import au.net.netstorm.boost.spider.registry.Registry;
@@ -20,5 +20,5 @@ public class ResolverDemooooTest extends InteractionTestCase {
     public final GraphUtil grapher = new DefaultGraphUtil();
     public final Registry registry = (Registry) spider.resolve(Registry.class);
     public final Resolver resolver = spider;
-    public final Provider provider = spider;
+    public final Nu nu = spider;
 }

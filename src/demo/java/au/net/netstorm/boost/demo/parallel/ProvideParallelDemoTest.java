@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.parallel;
 
+// SUGGEST: Delete the hell out of this.
 public class ProvideParallelDemoTest extends ParallelTest {
     Integer threads = 10;
 
@@ -9,7 +10,7 @@ public class ProvideParallelDemoTest extends ParallelTest {
     }
 
     private Blobs resolve() {
-        LavaLamp lamp = (LavaLamp) provider.provide(DefaultLavaLamp.class);
+        LavaLamp lamp = (LavaLamp) nu.nu(DefaultLavaLamp.class);
         return lamp.getBlobs();
     }
 

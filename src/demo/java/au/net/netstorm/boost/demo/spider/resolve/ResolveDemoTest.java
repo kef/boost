@@ -16,18 +16,18 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
     }
 
     public void testNoArgProvide() {
-        TheDude theDude = (TheDude) provider.provide(JeffBridges.class);
+        TheDude theDude = nu.nu(JeffBridges.class);
         checkTheDudeIsReallyJeff(theDude);
     }
 
     public void testProvide() {
-        Cinema regalCinema = (Cinema) provider.provide(RegalCinema.class);
+        Cinema regalCinema = nu.nu(RegalCinema.class);
         assertNotNull(regalCinema);
     }
 
     public void testProvideSingleton() {
-        Hollywood hollywood = (Hollywood) provide(GlitzyHollywood.class);
-        Business business = (Business) provide(MovieBusiness.class);
+        Hollywood hollywood = (Hollywood) nu(GlitzyHollywood.class);
+        Business business = (Business) nu(MovieBusiness.class);
         checkSameInternals(hollywood, business);
     }
 
@@ -58,10 +58,9 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
         assertNotNull(quote);
     }
 
-    private Object provide(Class impl) {
-        Object ref = provider.provide(impl);
+    private Object nu(Class impl) {
+        Object ref = nu.nu(impl);
         assertNotNull(ref);
         return ref;
     }
 }
- 
