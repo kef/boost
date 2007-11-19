@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.util.type;
 
-public interface Implementation extends Data {
-    Class getImpl();
+public interface Implementation<T> extends Data {
+    Class<T> getImpl();
 }

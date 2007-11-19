@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface ImplMaster {
-    Implementation impl(Interface type);
+    <T, U extends T> Implementation<U> impl(Interface<T> type);
 
-    boolean hasImpl(Interface iFace);
+    boolean hasImpl(Interface<?> iFace);
 }
