@@ -16,6 +16,12 @@ public final class DefaultImplMaster implements ImplMaster {
         this.mappers = mappers;
     }
 
+    public <T, U extends T> Class<U> impl(Class<T> iface) {
+        Interface<T> type = new DefaultInterface(iface);
+        Implementation<U> implementation = impl(type);
+        return implementation.getImpl();
+    }
+
     public <T, U extends T> Implementation<U> impl(Interface<T> type) {
         // FIX 65590 Split.
         Implementation<U> impl = getImpl(type);
@@ -25,12 +31,6 @@ public final class DefaultImplMaster implements ImplMaster {
 
     public boolean hasImpl(Interface<?> iface) {
         return getImpl(iface) != null;
-    }
-
-    public <T, U extends T> Class<U> implForIface(Class<T> iface) {
-        Interface<T> type = new DefaultInterface(iface);
-        Implementation<U> implementation = impl(type);
-        return implementation.getImpl();
     }
 
     private Implementation getImpl(Interface iface) {

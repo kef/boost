@@ -27,4 +27,16 @@ public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
             fail();
         } catch (NoImplementationException expected) {}
     }
+
+    public void testHasClassImpl() {
+        Class<DefaultSunshine> sunshine = subject.impl(Sunshine.class);
+        assertEquals(true, sunshine != null);
+    }
+
+    public void testDoesNotHaveClassImpl() {
+        try {
+            Class<Moonlight> x = subject.impl(Moonlight.class);
+            fail();
+        } catch (NoImplementationException expected) { }
+    }
 }
