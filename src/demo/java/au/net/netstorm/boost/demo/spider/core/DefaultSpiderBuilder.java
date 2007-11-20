@@ -37,6 +37,7 @@ import au.net.netstorm.boost.util.impl.ImplMaster;
 public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
 
+    // FIX 2215 Move this out of here into a "default" builder (ha ha).
     public Spider build() {
         ImplMapper[] mappers = mappers();
         return build(mappers);
