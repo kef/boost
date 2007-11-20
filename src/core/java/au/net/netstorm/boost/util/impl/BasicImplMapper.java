@@ -5,12 +5,17 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class BasicImplMapper implements ImplMapper {
-    private ClassMaster master = new DefaultClassMaster();
+    private final ClassMaster master = new DefaultClassMaster();
+    private final String prefix;
+
+    public BasicImplMapper(String prefix) {
+        this.prefix = prefix;
+    }
 
     public String map(Interface iface) {
         String pkg = master.getPackageName(iface);
         String cls = master.getShortName(iface);
-        return pkg + "." + "Default" + cls;
+        return pkg + "." + prefix + cls;
     }
 
     public boolean can(Interface iface) {

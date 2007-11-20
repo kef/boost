@@ -22,7 +22,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     private static final Interface DATA = new DefaultInterface(Data.class);
     private final InstantiatorWithProvider instantiator = new DefaultInstantiatorWithProvider();
     // FIX 1914 Tidy this long winded mapper thread to get to impl master.
-    private ImplMapper mapper = new BasicImplMapper();
+    private ImplMapper mapper = new BasicImplMapper("Default");
     private ImplMapper[] mappers = {mapper};
     private final ImplMaster implMaster = new DefaultImplMaster(mappers);
     private final TypeMaster typeMaster = new DefaultTypeMaster();

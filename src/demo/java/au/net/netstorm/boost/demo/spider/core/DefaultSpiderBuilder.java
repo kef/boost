@@ -95,7 +95,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private ImplMapper[] mappers() {
-        ImplMapper mapper = new BasicImplMapper();
+        ImplMapper mapper = new BasicImplMapper("Default");
         return new ImplMapper[]{mapper};
     }
 
