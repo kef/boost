@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.random;
 
 import java.lang.reflect.Method;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
@@ -38,6 +39,7 @@ public final class ConcreteRandomProvider implements SpecificProvider {
         if (type == Object.class) return randomObject();
         if (type == Method.class) return randomMethod();
         if (type == Character.class) return randomCharacter();
+        if (type == BigInteger.class) return randomBigInteger();
         if (type == Throwable.class) return randomThrowable();
         if (type == RuntimeException.class) return randomRuntimeException();
         if (type == Date.class) return randomDate();
@@ -83,6 +85,11 @@ public final class ConcreteRandomProvider implements SpecificProvider {
         byte[] bytes = new byte[1];
         random.nextBytes(bytes);
         return new Byte(bytes[0]);
+    }
+
+    private BigInteger randomBigInteger() {
+        long l = random.nextLong();
+        return BigInteger.valueOf(l);
     }
 
     private Class randomClass() {
