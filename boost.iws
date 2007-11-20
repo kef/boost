@@ -32,9 +32,8 @@
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/BasicImplMapper.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/BasicImplMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/InterfaceRandomProvider.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/InterfaceRandomProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/DefaultImplMasterAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/DefaultImplMasterAtomicTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/SpiderBuilder.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/SpiderBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMaster.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMaster.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
   </component>
@@ -157,64 +156,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BasicImplMapper.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/BasicImplMapper.java">
+      <file leaf-file-name="SpiderBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/SpiderBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="33" selection-start="613" selection-end="613" vertical-scroll-proportion="0.29508197">
+            <state line="7" column="34" selection-start="189" selection-end="189" vertical-scroll-proportion="0.13770492">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultImplMasterAtomicTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/DefaultImplMasterAtomicTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="52" selection-start="512" selection-end="512" vertical-scroll-proportion="0.11803278">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InterfaceRandomProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/InterfaceRandomProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="60" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.15737705">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultSpiderBuilder.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DefaultSpiderBuilder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="56" selection-start="4240" selection-end="4240" vertical-scroll-proportion="1.0590163">
+            <state line="74" column="50" selection-start="3324" selection-end="3324" vertical-scroll-proportion="0.5868853">
               <folding>
-                <marker date="1195597424000" expanded="false" signature="56:78" placeholder="..." />
-                <marker date="1195597424000" expanded="true" signature="4039:4061" placeholder="{...}" />
-                <marker date="1195597424000" expanded="true" signature="4099:4145" placeholder="{...}" />
-                <marker date="1195597424000" expanded="true" signature="4182:4290" placeholder="{...}" />
-                <marker date="1195597424000" expanded="true" signature="4328:4413" placeholder="{...}" />
-                <marker date="1195597424000" expanded="true" signature="4453:4539" placeholder="{...}" />
-                <marker date="1195597424000" expanded="true" signature="4574:4623" placeholder="{...}" />
+                <marker date="1195599616000" expanded="false" signature="56:78" placeholder="..." />
+                <marker date="1195599616000" expanded="true" signature="4075:4097" placeholder="{...}" />
+                <marker date="1195599616000" expanded="true" signature="4135:4181" placeholder="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultImplMaster.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/DefaultImplMaster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="452" selection-end="452" vertical-scroll-proportion="0.078688525">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultSunshine.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/DefaultSunshine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="55" selection-end="55" vertical-scroll-proportion="0.039344262">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -469,6 +428,28 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="resolve" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="spider" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="newer" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
@@ -542,6 +523,10 @@
           <option name="myItemId" value="spider" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="resolve" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -566,6 +551,28 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="newer" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="demo" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="spider" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -1264,13 +1271,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Greg Davis is out of vaseline." />
+    <option name="LAST_COMMIT_MESSAGE" value="extracted prefix as a constructor arg to basic impl mapper" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1285,6 +1292,7 @@
     <MESSAGE value="Removed Flavours and added registry factory abilities." />
     <MESSAGE value="Paul Brunckhorst did this shit!!!" />
     <MESSAGE value="Greg Davis is out of vaseline." />
+    <MESSAGE value="extracted prefix as a constructor arg to basic impl mapper" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1375,34 +1383,6 @@
     <option name="multicastPort" value="3274" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/DefaultBob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="69" selection-end="69" vertical-scroll-proportion="0.039173014">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="17" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="31" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/ProviderEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="17" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0">
@@ -1447,53 +1427,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/DefaultImplMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="452" selection-end="452" vertical-scroll-proportion="0.078688525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="56" selection-start="4240" selection-end="4240" vertical-scroll-proportion="1.0590163">
-          <folding>
-            <marker date="1195597424000" expanded="false" signature="56:78" placeholder="..." />
-            <marker date="1195597424000" expanded="true" signature="4039:4061" placeholder="{...}" />
-            <marker date="1195597424000" expanded="true" signature="4099:4145" placeholder="{...}" />
-            <marker date="1195597424000" expanded="true" signature="4182:4290" placeholder="{...}" />
-            <marker date="1195597424000" expanded="true" signature="4328:4413" placeholder="{...}" />
-            <marker date="1195597424000" expanded="true" signature="4453:4539" placeholder="{...}" />
-            <marker date="1195597424000" expanded="true" signature="4574:4623" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/InterfaceRandomProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="60" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.15737705">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/DefaultImplMasterAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="52" selection-start="512" selection-end="512" vertical-scroll-proportion="0.11803278">
+        <state line="10" column="52" selection-start="512" selection-end="512" vertical-scroll-proportion="0.11751904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="62" selection-start="293" selection-end="293" vertical-scroll-proportion="0.13710555">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/ResolverDemooooTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="53" selection-start="964" selection-end="964" vertical-scroll-proportion="0.13710555">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/spider/resolve/CyclicDependancyResolutionDemoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="23" selection-start="542" selection-end="542" vertical-scroll-proportion="0.2546246">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/DefaultSunshine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="55" selection-end="55" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="13" selection-start="55" selection-end="55" vertical-scroll-proportion="0.039173014">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/BasicImplMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="33" selection-start="613" selection-end="613" vertical-scroll-proportion="0.29508197">
+        <state line="6" column="28" selection-start="228" selection-end="228" vertical-scroll-proportion="0.07834603">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/DefaultImplMaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="11" selection-start="608" selection-end="608" vertical-scroll-proportion="0.15669206">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/InterfaceRandomProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="60" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.15669206">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/SpiderBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="34" selection-start="189" selection-end="189" vertical-scroll-proportion="0.13770492">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="50" selection-start="3324" selection-end="3324" vertical-scroll-proportion="0.5868853">
+          <folding>
+            <marker date="1195599616000" expanded="false" signature="56:78" placeholder="..." />
+            <marker date="1195599616000" expanded="true" signature="4075:4097" placeholder="{...}" />
+            <marker date="1195599616000" expanded="true" signature="4135:4181" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -40,27 +40,27 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     // FIX 2215 Move this out of here into a "default" builder (ha ha).
     public Spider build() {
         ImplMapper[] mappers = mappers();
-        return build(mappers);
+        ImplMaster impler = new DefaultImplMaster(mappers);
+        return build(impler);
     }
 
-    public Spider build(ImplMapper[] implMappers) {
+    public Spider build(ImplMaster impler) {
         Blueprints blueprints = nuBlueprints();
-        Factories factories = factories(blueprints, implMappers);
+        Factories factories = factories(blueprints, impler);
         Instances instances = nuInstances();
         return buildSpider(instances, factories, blueprints);
     }
 
-    private Factories factories(Blueprints blueprints, ImplMapper[] implMappers) {
+    private Factories factories(Blueprints blueprints, ImplMaster impler) {
         Factories factories = nuFactories();
         // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
-        implicit(factories, implMappers);
+        implicit(factories, impler);
         explicit(factories, blueprints);
         newer(factories);
         return factories;
     }
 
-    private void implicit(Factories factories, ImplMapper[] implMappers) {
-        ImplMaster impler = new DefaultImplMaster(implMappers);
+    private void implicit(Factories factories, ImplMaster impler) {
         ImplicitFactory factory = new ImplicitFactory(impler);
         factories.add(factory);
     }
@@ -95,11 +95,6 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new DefaultFactories();
     }
 
-    private ImplMapper[] mappers() {
-        ImplMapper mapper = new BasicImplMapper("Default");
-        return new ImplMapper[]{mapper};
-    }
-
     private Instances nuInstances() {
         InterfaceMap map = nuMap();
         return new DefaultInstances(map);
@@ -112,5 +107,10 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     private InterfaceMap nuMap() {
         return new DefaultInterfaceMap();
+    }
+
+    private ImplMapper[] mappers() {
+        ImplMapper mapper = new BasicImplMapper("Default");
+        return new ImplMapper[]{mapper};
     }
 }

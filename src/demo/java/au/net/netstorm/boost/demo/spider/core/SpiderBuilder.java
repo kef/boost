@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.util.impl.ImplMapper;
+import au.net.netstorm.boost.util.impl.ImplMaster;
 
 public interface SpiderBuilder {
     Spider build();
 
-    Spider build(ImplMapper[] implMappers);
+    Spider build(ImplMaster master);
 }
