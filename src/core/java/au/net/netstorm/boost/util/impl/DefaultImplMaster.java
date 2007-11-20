@@ -4,6 +4,7 @@ import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -15,15 +16,21 @@ public final class DefaultImplMaster implements ImplMaster {
         this.mappers = mappers;
     }
 
-    public Implementation impl(Interface type) {
+    public <T, U extends T> Implementation<U> impl(Interface<T> type) {
         // FIX 65590 Split.
-        Implementation impl = getImpl(type);
+        Implementation<U> impl = getImpl(type);
         if (impl == null) boom(type);
         return impl;
     }
 
-    public boolean hasImpl(Interface iface) {
+    public boolean hasImpl(Interface<?> iface) {
         return getImpl(iface) != null;
+    }
+
+    public <T, U extends T> Class<U> implForIface(Class<T> iface) {
+        Interface<T> type = new DefaultInterface(iface);
+        Implementation<U> implementation = impl(type);
+        return implementation.getImpl();
     }
 
     private Implementation getImpl(Interface iface) {
