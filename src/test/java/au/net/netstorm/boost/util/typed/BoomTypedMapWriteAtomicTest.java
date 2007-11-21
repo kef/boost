@@ -3,7 +3,7 @@ package au.net.netstorm.boost.util.typed;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
-// FIX BREADCRUMB 8888 Tidy 
+// FIX BREADCRUMB 8888 Tidy
 public final class BoomTypedMapWriteAtomicTest extends InteractionTestCase implements HasFixtures {
     TypedMapWrite subject;
     String key;
@@ -12,7 +12,7 @@ public final class BoomTypedMapWriteAtomicTest extends InteractionTestCase imple
     Boolean booleanValue;
     Long longValue;
     byte[] bytes;
-    int[] ints;
+    Integer[] ints;
 
     public void setUpFixtures() {
         subject = new BoomTypedMapWrite();
@@ -60,4 +60,3 @@ public final class BoomTypedMapWriteAtomicTest extends InteractionTestCase imple
         } catch (UnsupportedOperationException expected) { }
     }
 }
-    

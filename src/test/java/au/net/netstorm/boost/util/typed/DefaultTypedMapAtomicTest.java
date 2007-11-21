@@ -15,7 +15,7 @@ public final class DefaultTypedMapAtomicTest extends InteractionTestCase impleme
     Integer intValue;
     TypedMap subject;
     byte[] byteArray;
-    int[] intArray;
+    Integer[] intArray;
     List arrayList;
     Long longValue;
     String key;
@@ -31,17 +31,15 @@ public final class DefaultTypedMapAtomicTest extends InteractionTestCase impleme
     }
 
     public void testGetInt() {
-        int expected = intValue.intValue();
-        expect.oneCall(typedMapReadMock, expected, "getInt", key);
-        int actual = subject.getInt(key);
-        assertEquals(expected, actual);
+        expect.oneCall(typedMapReadMock, intValue, "getInt", key);
+        Integer actual = subject.getInt(key);
+        assertEquals(intValue, actual);
     }
 
     public void testGetLong() {
-        long expected = longValue.longValue();
-        expect.oneCall(typedMapReadMock, expected, "getLong", key);
-        long actual = subject.getLong(key);
-        assertEquals(expected, actual);
+        expect.oneCall(typedMapReadMock, longValue, "getLong", key);
+        Long actual = subject.getLong(key);
+        assertEquals(longValue, actual);
     }
 
     public void testGetBytes() {
@@ -52,20 +50,19 @@ public final class DefaultTypedMapAtomicTest extends InteractionTestCase impleme
 
     public void testGetBoolean() {
         expect.oneCall(typedMapReadMock, booleanValue, "getBoolean", key);
-        boolean actual = subject.getBoolean(key);
+        Boolean actual = subject.getBoolean(key);
         assertEquals(booleanValue, actual);
     }
 
     public void testExists() {
-        boolean expected = booleanValue.booleanValue();
-        expect.oneCall(typedMapReadMock, expected, "exists", key);
-        boolean actual = subject.exists(key);
-        assertEquals(expected, actual);
+        expect.oneCall(typedMapReadMock, booleanValue, "exists", key);
+        Boolean actual = subject.exists(key);
+        assertEquals(booleanValue, actual);
     }
 
     public void testGetInts() {
         expect.oneCall(typedMapReadMock, intArray, "getInts", key);
-        int[] actual = subject.getInts(key);
+        Integer[] actual = subject.getInts(key);
         assertEquals(intArray, actual);
     }
 

@@ -5,11 +5,11 @@ public final class BoomTypedMapWrite implements TypedMapWrite {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, boolean value) {
+    public void put(String key, Boolean value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, int value) {
+    public void put(String key, Integer value) {
         throw new UnsupportedOperationException();
     }
 
@@ -17,11 +17,11 @@ public final class BoomTypedMapWrite implements TypedMapWrite {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, long value) {
+    public void put(String key, Long value) {
         throw new UnsupportedOperationException();
     }
 
-    public void put(String key, int[] value) {
+    public void put(String key, Integer[] value) {
         throw new UnsupportedOperationException();
     }
 }

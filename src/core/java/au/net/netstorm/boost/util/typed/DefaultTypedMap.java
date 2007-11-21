@@ -14,15 +14,15 @@ public final class DefaultTypedMap implements TypedMap {
         return read.getString(key);
     }
 
-    public int getInt(String key) {
+    public Integer getInt(String key) {
         return read.getInt(key);
     }
 
-    public long getLong(String key) {
+    public Long getLong(String key) {
         return read.getLong(key);
     }
 
-    public boolean getBoolean(String key) {
+    public Boolean getBoolean(String key) {
         return read.getBoolean(key);
     }
 
@@ -34,7 +34,7 @@ public final class DefaultTypedMap implements TypedMap {
         return read.getStrings(key);
     }
 
-    public int[] getInts(String key) {
+    public Integer[] getInts(String key) {
         return read.getInts(key);
     }
 
@@ -46,15 +46,15 @@ public final class DefaultTypedMap implements TypedMap {
         write.put(key, value);
     }
 
-    public void put(String key, int value) {
+    public void put(String key, Integer value) {
         write.put(key, value);
     }
 
-    public void put(String key, boolean value) {
+    public void put(String key, Boolean value) {
         write.put(key, value);
     }
 
-    public void put(String key, long value) {
+    public void put(String key, Long value) {
         write.put(key, value);
     }
 
@@ -62,7 +62,7 @@ public final class DefaultTypedMap implements TypedMap {
         write.put(key, value);
     }
 
-    public void put(String key, int[] value) {
+    public void put(String key, Integer[] value) {
         write.put(key, value);
     }
 }
