@@ -80,8 +80,7 @@ public class IndentingToStringMaster implements ToStringMaster {
     private String arrayToString(Object array) {
         String result = BLANK;
         for (int i = 0; i < Array.getLength(array); i++) {
-            result += Array.get(array, i)
-                    .toString() + COMMA;
+            result += Array.get(array, i) + COMMA;
         }
         return removeLastChar(result);
     }

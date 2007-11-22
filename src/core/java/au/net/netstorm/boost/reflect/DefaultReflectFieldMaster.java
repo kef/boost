@@ -20,8 +20,8 @@ final class DefaultReflectFieldMaster implements ReflectFieldMaster {
 
     private FieldValueSpec[] instanceFields(Field[] fields, Object ref) {
         List list = new ArrayList();
-        for (int i = 0; i < fields.length; i++) {
-            addInstanceFields(list, fields[i], ref);
+        for (Field field : fields) {
+            addInstanceFields(list, field, ref);
         }
         return (FieldValueSpec[]) list.toArray(new FieldValueSpec[]{});
     }
