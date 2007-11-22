@@ -14,7 +14,8 @@ final class DefaultReflectFieldMaster implements ReflectFieldMaster {
 
     public FieldValueSpec[] getInstanceFields(Object ref) {
         Class cls = ref.getClass();
-        return instanceFields(cls.getDeclaredFields(), ref);
+        Field[] declared = cls.getDeclaredFields();
+        return instanceFields(declared, ref);
     }
 
     private FieldValueSpec[] instanceFields(Field[] fields, Object ref) {
