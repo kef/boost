@@ -8,7 +8,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
     // FIX 1914 Dupe.  See InterfaceRandomProvider.
-    ImplMapper mapper = new BasicImplMapper("Default");
+    ImplMapper mapper = new DefaultImplMapper("Default");
     ImplMapper[] mappers = {mapper};
     ImplMaster subject = new DefaultImplMaster(mappers);
 

@@ -22,7 +22,7 @@ import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.util.impl.BasicImplMapper;
+import au.net.netstorm.boost.util.impl.DefaultImplMapper;
 import au.net.netstorm.boost.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.util.impl.ImplMapper;
 import au.net.netstorm.boost.util.impl.ImplMaster;
@@ -110,7 +110,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private ImplMapper[] mappers() {
-        ImplMapper mapper = new BasicImplMapper("Default");
+        ImplMapper mapper = new DefaultImplMapper("Default");
         return new ImplMapper[]{mapper};
     }
 }
