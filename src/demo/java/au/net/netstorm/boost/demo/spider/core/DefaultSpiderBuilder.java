@@ -22,9 +22,6 @@ import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.util.impl.DefaultImplMapper;
-import au.net.netstorm.boost.util.impl.DefaultImplMaster;
-import au.net.netstorm.boost.util.impl.ImplMapper;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 
 // FIX 2215 Sort out builder/assembler discrepancy.
@@ -36,13 +33,6 @@ import au.net.netstorm.boost.util.impl.ImplMaster;
 
 public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
-
-    // FIX 2215 Move this out of here into a "default" builder (ha ha).
-    public Spider build() {
-        ImplMapper[] mappers = mappers();
-        ImplMaster impler = new DefaultImplMaster(mappers);
-        return build(impler);
-    }
 
     public Spider build(ImplMaster impler) {
         Blueprints blueprints = nuBlueprints();
@@ -107,10 +97,5 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     private InterfaceMap nuMap() {
         return new DefaultInterfaceMap();
-    }
-
-    private ImplMapper[] mappers() {
-        ImplMapper mapper = new DefaultImplMapper("Default");
-        return new ImplMapper[]{mapper};
     }
 }

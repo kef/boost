@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.demo.spider.core.DefaultSpiderBuilder;
+import au.net.netstorm.boost.demo.spider.core.BoostSpiderBuilder;
+import au.net.netstorm.boost.demo.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.demo.spider.core.Spider;
-import au.net.netstorm.boost.demo.spider.core.SpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
 import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
 import au.net.netstorm.boost.provider.Nu;
@@ -14,7 +14,7 @@ import au.net.netstorm.boost.test.automock.InteractionTestCase;
 
 // Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.
 public class ResolverDemooooTest extends InteractionTestCase {
-    private final SpiderBuilder spiderBuilder = new DefaultSpiderBuilder();
+    private final BoostSpiderBuilder spiderBuilder = new DefaultBoostSpiderBuilder();
     private final Spider spider = spiderBuilder.build();
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
