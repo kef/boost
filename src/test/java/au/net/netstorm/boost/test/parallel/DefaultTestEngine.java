@@ -3,7 +3,7 @@ package au.net.netstorm.boost.test.parallel;
 import java.io.PrintStream;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
-import au.net.netstorm.boost.test.lifecycle.TestThreadLifecycle;
+import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 
@@ -12,15 +12,15 @@ public class DefaultTestEngine implements TestEngine {
     private final MethodTestUtil util = new DefaultMethodTestUtil();
     private boolean successful = false;
 
-    public void runTest(LifecycleTest test, TestThreadLifecycle threadLifecycle) {
-        pre(threadLifecycle);
+    public void runTest(LifecycleTest test, TestLifecycle lifecycle) {
+        pre(lifecycle);
         run(test);
-        post(threadLifecycle);
+        post(lifecycle);
         successful = true;
     }
 
-    private void pre(TestThreadLifecycle threadLifecycle) {
-        threadLifecycle.pre();
+    private void pre(TestLifecycle lifecycle) {
+        lifecycle.pre();
     }
 
     public Throwable error(LifecycleTest test, Throwable t) {
@@ -33,14 +33,14 @@ public class DefaultTestEngine implements TestEngine {
         util.invoke(test, methodName, NO_PARAMETERS);
     }
 
-    private void post(TestThreadLifecycle threadLifecycle) {
-        threadLifecycle.post();
+    private void post(TestLifecycle lifecycle) {
+        lifecycle.post();
     }
 
     // OK GenericIllegalRegexp {
-    public void tryCleanup(TestThreadLifecycle threadLifecycle) {
+    public void tryCleanup(TestLifecycle lifecycle) {
         try {
-            threadLifecycle.cleanup(successful);
+            lifecycle.cleanup(successful);
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've barfed during test lifecycle cleanup... ");
