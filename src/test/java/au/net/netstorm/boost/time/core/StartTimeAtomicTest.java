@@ -20,7 +20,7 @@ public final class StartTimeAtomicTest extends BoooostCase {
         assertEquals(false, start.equals(null));
         assertEquals(false, start.equals(void.class));
         assertNotEquals(start, new StartTime(TIME_499));
-        assertEquals(start, new StartTime(new DefaultTimePoint(500)));
+        assertEquals(start, new StartTime(new DefaultTimePoint(500L)));
     }
 
     public void testHashCode() {
@@ -38,8 +38,8 @@ public final class StartTimeAtomicTest extends BoooostCase {
         assertEquals(hash, start.hashCode());
     }
 
-    private static final TimePoint TIME_500 = new DefaultTimePoint(500);
-    private static final TimePoint TIME_499 = new DefaultTimePoint(499);
+    private static final TimePoint TIME_500 = new DefaultTimePoint(500L);
+    private static final TimePoint TIME_499 = new DefaultTimePoint(499L);
     private static final TimePoint TIME_0X7FFFFFFF00000001 = new DefaultTimePoint(0x7FFFFFFF00000001L);
 }
 

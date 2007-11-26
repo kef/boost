@@ -15,8 +15,8 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
     private TimePoint b;
 
     protected void gearup() {
-        a = new DefaultTimePoint(0);
-        b = new DefaultTimePoint(1);
+        a = new DefaultTimePoint(0L);
+        b = new DefaultTimePoint(1L);
     }
 
     public void testEpoch() {
@@ -42,7 +42,7 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
     }
 
     public void testEquality() {
-        TimePoint time = new DefaultTimePoint(1);
+        TimePoint time = new DefaultTimePoint(1L);
         assertEquals(false, time.equals(NULL));
         assertEquals(false, time.equals(void.class));
         assertNotEquals(time, a);
@@ -51,7 +51,7 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
 
     public void testHashCode() {
         assertHashCode(0, a);
-        assertHashCode(500, new DefaultTimePoint(500));
+        assertHashCode(500, new DefaultTimePoint(500L));
         assertHashCode(1, new DefaultTimePoint(0x7FFFFFFF00000001L));
     }
 

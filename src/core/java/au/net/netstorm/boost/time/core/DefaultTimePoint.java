@@ -8,7 +8,7 @@ public final class DefaultTimePoint implements TimePoint {
     public static final TimePoint ARMAGEDDON = new DefaultTimePoint(EPOCH_ARMAGEDDON);
     private final Long millis;
 
-    public DefaultTimePoint(long millis) {
+    public DefaultTimePoint(Long millis) {
         this.millis = millis;
         validate();
     }

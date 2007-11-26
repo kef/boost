@@ -40,8 +40,8 @@ public final class EndTimeAtomicTest extends BoooostCase {
         assertEquals(hash, end.hashCode());
     }
 
-    private static final TimePoint TIME_500 = new DefaultTimePoint(500);
-    private static final TimePoint TIME_499 = new DefaultTimePoint(499);
+    private static final TimePoint TIME_500 = new DefaultTimePoint(500L);
+    private static final TimePoint TIME_499 = new DefaultTimePoint(499L);
     private static final TimePoint TIME_0X7FFFFFFF00000001 = new DefaultTimePoint(0x7FFFFFFF00000001L);
 }
 
