@@ -18,6 +18,7 @@ public final class DefaultPartialInstancesAtomicTest extends InteractionTestCase
 
     public void setUpFixtures() {
         subject = new DefaultPartialInstances();
+        subject.clear();
         fielder.setInstance(doesNotExist, "type", String.class);
     }
 
