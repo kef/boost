@@ -15,6 +15,7 @@ public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
     }
 
     private List runTest(LifecycleTest test) {
+        // FIX (Nov 27, 2007) TESTING 83271 Change this to 'Errors'.
         List exceptions = new ArrayList();
         TestLifecycle lifecycle = test.lifecycle();
         try {
