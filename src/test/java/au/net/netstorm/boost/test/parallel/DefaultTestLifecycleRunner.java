@@ -5,7 +5,6 @@ import au.net.netstorm.boost.test.lifecycle.TestUberLifecycle;
 
 public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
     private final TestExceptionHandler handler = new DefaultTestExceptionHandler();
-    private final TestThreadEngine engine = new DefaultTestThreadEngine();
 
     public void run(LifecycleTest test) throws Throwable {
         TestUberLifecycle lifecycle = test.uberLifecycle();
@@ -21,7 +20,8 @@ public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
 
     private void doExecute(LifecycleTest test, TestUberLifecycle lifecycle) {
         lifecycle.pre();
-        engine.start(test);
+        Runnable runnable = new DefaultRunnableTest(test);
+        runnable.run();
         lifecycle.post();
     }
 }
