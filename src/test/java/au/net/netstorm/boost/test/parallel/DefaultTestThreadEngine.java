@@ -8,7 +8,6 @@ import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 
 // FIX (Nov 26, 2007) TESTING 83271 Delete this.
 public class DefaultTestThreadEngine implements TestThreadEngine {
-    private final ThreadCount counter = new DefaultThreadCount();
     private final EdgeClass classer = new DefaultEdgeClass();
     private final EdgeThread threader = new DefaultEdgeThread();
 
@@ -27,8 +26,8 @@ public class DefaultTestThreadEngine implements TestThreadEngine {
     }
 
     private Thread[] create(LifecycleTest test) {
-        int count = counter.threads(test);
-        return createThreads(count, test);
+        // FIX (Nov 26, 2007) TESTING 83271 Pick up deletion from here.
+        return createThreads(1, test);
     }
 
     private Thread[] createThreads(int count, LifecycleTest prototype) {
