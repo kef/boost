@@ -1,6 +1,12 @@
 package au.net.netstorm.boost.time.core;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import static java.lang.Long.MAX_VALUE;
+import static java.lang.Long.MIN_VALUE;
 import au.net.netstorm.boost.test.core.BoooostCase;
+import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
+import static au.net.netstorm.boost.time.core.DefaultTimePoint.EPOCH;
 
 // FIX 8888 De-train wreck.
 public final class DefaultTimePointAtomicTest extends BoooostCase {
@@ -14,23 +20,25 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
     }
 
     public void testEpoch() {
-        assertEquals(0L, DefaultTimePoint.EPOCH.getMillis());
+        Long millis = EPOCH.getMillis();
+        assertEquals(0L, millis.longValue());
     }
 
     public void testArmaggedon() {
-        assertEquals(Long.MAX_VALUE, DefaultTimePoint.ARMAGEDDON.getMillis());
+        Long millis = ARMAGEDDON.getMillis();
+        assertEquals(MAX_VALUE, millis.longValue());
     }
 
     public void testInvalidTimePoints() {
-        assertInvalidTimePoints(DefaultTimePoint.EPOCH.getMillis() - 1);
-        assertInvalidTimePoints(Long.MIN_VALUE);
+        assertInvalidTimePoints(EPOCH.getMillis() - 1);
+        assertInvalidTimePoints(MIN_VALUE);
     }
 
     public void testValidTimePoints() {
-        assertValidTimePoints(DefaultTimePoint.EPOCH.getMillis());
-        assertValidTimePoints(DefaultTimePoint.EPOCH.getMillis() + 1);
-        assertValidTimePoints(DefaultTimePoint.EPOCH.getMillis() + 100);
-        assertValidTimePoints(Long.MAX_VALUE);
+        assertValidTimePoints(EPOCH.getMillis());
+        assertValidTimePoints(EPOCH.getMillis() + 1);
+        assertValidTimePoints(EPOCH.getMillis() + 100);
+        assertValidTimePoints(MAX_VALUE);
     }
 
     public void testEquality() {
@@ -55,15 +63,15 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
     }
 
     public void testBefore() {
-        assertEquals(true, a.before(b));
-        assertEquals(false, b.before(a));
-        assertEquals(false, b.before(b));
+        assertEquals(TRUE, a.before(b));
+        assertEquals(FALSE, b.before(a));
+        assertEquals(FALSE, b.before(b));
     }
 
     public void testAfter() {
-        assertEquals(false, a.after(b));
-        assertEquals(true, b.after(a));
-        assertEquals(false, a.after(a));
+        assertEquals(FALSE, a.after(b));
+        assertEquals(TRUE, b.after(a));
+        assertEquals(FALSE, a.after(a));
     }
 
     private void checkCompareChecksType(TimePoint a) {
@@ -94,7 +102,9 @@ public final class DefaultTimePointAtomicTest extends BoooostCase {
         assertEquals(hash, time.hashCode());
     }
 
-    private void assertValidTimePoints(long length) {
-        assertEquals(length, new DefaultTimePoint(length).getMillis());
+    private void assertValidTimePoints(Long length) {
+        TimePoint timePoint = new DefaultTimePoint(length);
+        Long millis = timePoint.getMillis();
+        assertEquals(length, millis);
     }
 }

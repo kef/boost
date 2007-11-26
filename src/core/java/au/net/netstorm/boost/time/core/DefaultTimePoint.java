@@ -2,27 +2,27 @@ package au.net.netstorm.boost.time.core;
 
 // FIX SC502 Should be "immutable", not "Data".
 public final class DefaultTimePoint implements TimePoint {
-    private static final long EPOCH_MILLIS = 0L;
-    private static final long EPOCH_ARMAGEDDON = Long.MAX_VALUE;
+    private static final Long EPOCH_MILLIS = 0L;
+    private static final Long EPOCH_ARMAGEDDON = Long.MAX_VALUE;
     public static final TimePoint EPOCH = new DefaultTimePoint(EPOCH_MILLIS);
     public static final TimePoint ARMAGEDDON = new DefaultTimePoint(EPOCH_ARMAGEDDON);
-    private final long millis;
+    private final Long millis;
 
     public DefaultTimePoint(long millis) {
         this.millis = millis;
         validate();
     }
 
-    public long getMillis() {
+    public Long getMillis() {
         return millis;
     }
 
     // FIX 51915 Move these two dodgy boys into TimeMaster or TimeRangeMaster.
-    public boolean before(TimePoint timePoint) {
+    public Boolean before(TimePoint timePoint) {
         return compareTo(timePoint) < 0;
     }
 
-    public boolean after(TimePoint timePoint) {
+    public Boolean after(TimePoint timePoint) {
         return compareTo(timePoint) > 0;
     }
 
@@ -32,16 +32,16 @@ public final class DefaultTimePoint implements TimePoint {
 
     public boolean equals(Object o) {
         if (!(o instanceof DefaultTimePoint)) return false;
-        return equals((TimePoint) o);
+        return millis.equals(((DefaultTimePoint) o).millis);
     }
 
     public int hashCode() {
-        return (int) millis;
+        return millis.intValue();
     }
 
     public int compareTo(Object o) {
         TimePoint timePoint = (TimePoint) o;
-        long millis = timePoint.getMillis();
+        Long millis = timePoint.getMillis();
         if (this.millis < millis) return -1;
         if (this.millis > millis) return 1;
         return 0;
@@ -50,10 +50,6 @@ public final class DefaultTimePoint implements TimePoint {
     private void validate() {
         if (millis < EPOCH_MILLIS) throw new IllegalArgumentException(
                 "The specified time (time=" + millis + ") cannot be less than the epoch (EPOCH=" + EPOCH + ").");
-    }
-
-    private boolean equals(TimePoint time) {
-        return time.getMillis() == millis;
     }
 
     /*

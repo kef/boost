@@ -4,9 +4,9 @@ import java.io.Serializable;
 import au.net.netstorm.boost.util.type.Data;
 
 public interface TimePoint extends Data, Serializable, Comparable {
-    long getMillis();
+    Long getMillis();
 
-    boolean before(TimePoint b);
+    Boolean before(TimePoint b);
 
-    boolean after(TimePoint b);
+    Boolean after(TimePoint b);
 }
