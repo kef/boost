@@ -1,14 +1,11 @@
 package au.net.netstorm.boost.util.io;
 
-import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
-import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultStreamConverterAtomicTest extends BoooostCase {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
     private static final byte[] BYTE_ARRAY_1 = bytes("The bravery of being out of range.");
     private static final byte[] BYTE_ARRAY_2 = bytes("You deafen the canyon.");
-    private final AssertTestChecker asserter = new DefaultAssertTestChecker();
     private final StreamConverter converter = new DefaultStreamConverter();
 
     public void testWrites() {
@@ -27,7 +24,7 @@ public final class DefaultStreamConverterAtomicTest extends BoooostCase {
         MockEdgeInputStream stream = new MockEdgeInputStream();
         stream.init(bytes);
         byte[] result = converter.read(stream);
-        asserter.checkEquals(bytes, result);
+        assertEquals(bytes, result);
     }
 
     private void checkToStream(byte[] bytes) {

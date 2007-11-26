@@ -4,6 +4,10 @@ import junit.framework.Assert;
 
 public final class DefaultAssertTestChecker implements AssertTestChecker {
 
+    public void fail(String message) {
+        Assert.fail(message);
+    }
+
     // SUGGEST Refactor duplication, if possible.
     public void checkEquals(Object[] o1, Object[] o2) {
         basicCheck(o1, o2);

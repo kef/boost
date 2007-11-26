@@ -10,4 +10,6 @@ public interface AssertTestChecker {
     void checkNotEquals(byte[] value1, byte[] value2);
 
     void checkBagEquals(Object[] o1, Object[] o2);
+
+    void fail(String message);
 }

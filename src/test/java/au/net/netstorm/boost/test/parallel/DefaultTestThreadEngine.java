@@ -6,6 +6,7 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeThread;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 
+// FIX (Nov 26, 2007) TESTING 83271 Delete this.
 public class DefaultTestThreadEngine implements TestThreadEngine {
     private final ThreadCount counter = new DefaultThreadCount();
     private final EdgeClass classer = new DefaultEdgeClass();
