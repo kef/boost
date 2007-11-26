@@ -4,8 +4,7 @@ import java.util.List;
 
 public class DefaultTestExceptionHandler implements TestExceptionHandler {
 
-    public void checkExceptions() throws Throwable {
-        List exceptions = DefaultRunnableTest.exceptions;
+    public void checkExceptions(List exceptions) throws Throwable {
         if (hasExceptions(exceptions)) rethrow(exceptions);
     }
 
