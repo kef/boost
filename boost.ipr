@@ -533,5 +533,8 @@
       </SOURCES>
     </library>
   </component>
+  <UsedPathMacros>
+    <macro name="TEMPLATE" />
+  </UsedPathMacros>
 </project>
 
