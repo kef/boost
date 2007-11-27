@@ -5,9 +5,9 @@ import au.net.netstorm.boost.util.type.Data;
 
 final class ConstructorParameterCountMismatchData extends Primordial implements Data {
     private final String guitar;
-    private final boolean goodPlayer;
+    private final Boolean goodPlayer;
 
-    public ConstructorParameterCountMismatchData(String guitar, boolean goodPlayer) {
+    public ConstructorParameterCountMismatchData(String guitar, Boolean goodPlayer) {
         this.guitar = guitar;
         this.goodPlayer = goodPlayer;
     }
@@ -16,7 +16,7 @@ final class ConstructorParameterCountMismatchData extends Primordial implements 
         return guitar;
     }
 
-    public boolean isGoodPlayer() {
+    public Boolean isGoodPlayer() {
         return goodPlayer;
     }
 }

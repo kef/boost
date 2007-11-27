@@ -3,15 +3,15 @@ package au.net.netstorm.boost.demo.provider;
 import au.net.netstorm.boost.primordial.Primordial;
 
 public final class DefaultHappyDay extends Primordial implements HappyDay {
-    private long timeMillis;
+    private Long timeMillis;
     private Happiness happiness;
 
-    public DefaultHappyDay(long timeMillis, Happiness happiness) {
+    public DefaultHappyDay(Long timeMillis, Happiness happiness) {
         this.timeMillis = timeMillis;
         this.happiness = happiness;
     }
 
-    public long getTimeMillis() {
+    public Long getTimeMillis() {
         return timeMillis;
     }
 

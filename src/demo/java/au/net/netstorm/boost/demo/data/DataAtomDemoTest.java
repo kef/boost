@@ -10,14 +10,13 @@ import junit.framework.AssertionFailedError;
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
 public final class DataAtomDemoTest extends InteractionTestCase {
     FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
-    FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", boolean.class);
+    FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", Boolean.class);
     FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
     FieldSpec PRIMITIVE_ARRAY_PROPERTY = new DefaultFieldSpec("bytes", byte[].class);
-    FieldSpec ARRAY_OF_ARRAYS_PROPERTY = new DefaultFieldSpec("floaters", float[][].class);
+    FieldSpec ARRAY_OF_ARRAYS_PROPERTY = new DefaultFieldSpec("byters", byte[][].class);
     FieldSpec BASIC_PROPERTY = new DefaultFieldSpec("basic", BasicInterface.class);
     FieldSpec NON_DATA_PROPERTY = new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
     FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
-    FieldSpec[] SINGLE_PRIMITIVE_PROPERTY = {PRIMITIVE_PROPERTY};
     FieldSpec[] SINGLE_ARRAY_PROPERTY = {ARRAY_PROPERTY};
     FieldSpec[] SINGLE_PRIMITIVE_ARRAY_PROPERTY = {PRIMITIVE_ARRAY_PROPERTY};
     FieldSpec[] SINGLE_ARRAY_OF_ARRAYS_PROPERTY = {ARRAY_OF_ARRAYS_PROPERTY};
@@ -33,7 +32,6 @@ public final class DataAtomDemoTest extends InteractionTestCase {
         checkGood(BasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(BasicArrayData.class, SINGLE_ARRAY_PROPERTY);
         checkGood(PrimitiveArrayData.class, SINGLE_PRIMITIVE_ARRAY_PROPERTY);
-        checkGood(PrimitiveBasicData.class, SINGLE_PRIMITIVE_PROPERTY);
         checkGood(BasicNonFinalFieldsData.class, SINGLE_STRING_PROPERTY);
         checkGood(ManyPrivateMethodsBasicData.class, SINGLE_STRING_PROPERTY);
         checkGood(DefaultBasicInterface.class, SINGLE_STRING_PROPERTY);
@@ -61,7 +59,7 @@ public final class DataAtomDemoTest extends InteractionTestCase {
         checkBad(NoArrayCopyOnAccessIllegalData.class, SINGLE_ARRAY_PROPERTY, "Array was not copied on access.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
         checkBad(NoArrayCopyOnCreateIllegalData.class, SINGLE_ARRAY_PROPERTY, "Array was not copied on create.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
         checkBad(ArrayNotTheSameIllegalData.class, SINGLE_ARRAY_PROPERTY, "Elements of array not the same.  Arrays must be copied on create and on each access.  Try using arrayRef.clone().");
-        checkBad(ArrayOfArraysIllegalData.class, SINGLE_ARRAY_OF_ARRAYS_PROPERTY, "float(array of arrays) is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
+        checkBad(ArrayOfArraysIllegalData.class, SINGLE_ARRAY_OF_ARRAYS_PROPERTY, "byte(array of arrays) is not immutable.  All properties must be immutable.  This means they either implement Immutable/Data or are known immutable types.");
     }
 
     private void checkGood(Class cls, FieldSpec[] fields) {

@@ -4,13 +4,13 @@ import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
 
 final class ArrayOfArraysIllegalData extends Primordial implements Data {
-    private final float[][] floaters;
+    private final byte[][] byters;
 
-    public ArrayOfArraysIllegalData(float[][] floaters) {
-        this.floaters = floaters;
+    public ArrayOfArraysIllegalData(byte[][] byters) {
+        this.byters = byters;
     }
 
-    public float[][] getFloaters() {
-        return floaters;
+    public byte[][] getByters() {
+        return byters;
     }
 }

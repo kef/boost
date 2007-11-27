@@ -3,14 +3,14 @@ package au.net.netstorm.boost.nursery.time;
 import au.net.netstorm.boost.primordial.Primordial;
 
 public final class DefaultRelative extends Primordial implements Relative {
-    private final long offset;
+    private final Long offset;
 
-    public DefaultRelative(long offset) {
+    public DefaultRelative(Long offset) {
         this.offset = offset;
         if (offset < 0) throw new IllegalStateException("Offset " + offset + " cannot be less than ZERO");
     }
 
-    public long getOffset() {
+    public Long getOffset() {
         return offset;
     }
 }
