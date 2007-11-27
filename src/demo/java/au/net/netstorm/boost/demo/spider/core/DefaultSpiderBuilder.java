@@ -35,10 +35,21 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
 
     public Spider build(ImplMaster impler) {
+        Spider spider = doBuild(impler);
+        preregister(spider, impler);
+        return spider;
+    }
+
+    private Spider doBuild(ImplMaster impler) {
         Blueprints blueprints = nuBlueprints();
         Factories factories = factories(blueprints, impler);
         Instances instances = nuInstances();
         return buildSpider(instances, factories, blueprints);
+    }
+
+    private void preregister(Spider spider, ImplMaster impler) {
+        Registry registry = (Registry) spider.resolve(Registry.class);
+        registry.instance(ImplMaster.class, impler);
     }
 
     private Factories factories(Blueprints blueprints, ImplMaster impler) {

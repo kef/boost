@@ -34,8 +34,8 @@ public final class DefaultImplMaster implements ImplMaster {
     }
 
     private Implementation getImpl(Interface iface) {
-        for (int i = 0; i < mappers.length; i++) {
-            Implementation impl = impl(mappers[i], iface);
+        for (ImplMapper mapper : mappers) {
+            Implementation impl = impl(mapper, iface);
             if (impl != null) return impl;
         }
         return null;
