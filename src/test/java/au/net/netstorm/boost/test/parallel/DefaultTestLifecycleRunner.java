@@ -1,31 +1,41 @@
 package au.net.netstorm.boost.test.parallel;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintStream;
+import au.net.netstorm.boost.test.exception.ThrowableSupport;
 import au.net.netstorm.boost.test.lifecycle.LifecycleTest;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 
 public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
-    private final TestExceptionHandler handler = new DefaultTestExceptionHandler();
-    private final TestEngine engine = new DefaultTestEngine();
 
     public void run(LifecycleTest test) throws Throwable {
-        List exceptions = runTest(test);
-        handler.checkExceptions(exceptions);
+        TestLifecycle lifecycle = test.lifecycle();
+        boolean successful = false;
+        try {
+            runTest(test, lifecycle);
+            successful = true;
+        } catch (Throwable t) {
+            ThrowableSupport throwableSupport = test.throwableSupport();
+            throw throwableSupport.translate(t);
+        } finally {
+            tryCleanup(lifecycle, successful);
+        }
     }
 
-    private List runTest(LifecycleTest test) {
-        // FIX (Nov 27, 2007) TESTING 83271 Change this to Throwable Array?
-        List exceptions = new ArrayList();
-        TestLifecycle lifecycle = test.lifecycle();
-        try {
-            engine.runTest(test, lifecycle);
-        } catch (Throwable t) {
-            Throwable throwable = engine.error(test, t);
-            exceptions.add(throwable);
-        } finally {
-            engine.tryCleanup(lifecycle);
-        }
-        return exceptions;
+    public void runTest(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
+        lifecycle.pre();
+        test.runTest();
+        lifecycle.post();
     }
+
+    // OK GenericIllegalRegexp {
+    public void tryCleanup(TestLifecycle lifecycle, boolean successful) {
+        try {
+            lifecycle.cleanup(successful);
+        } catch (Throwable t) {
+            PrintStream err = System.err;
+            err.print("Oopsy daisy, we've barfed during test lifecycle cleanup... ");
+            t.printStackTrace(err);
+        }
+    }
+    // } OK GenericIllegalRegexp
 }
