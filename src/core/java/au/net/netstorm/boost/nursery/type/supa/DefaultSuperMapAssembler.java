@@ -1,21 +1,20 @@
 package au.net.netstorm.boost.nursery.type.supa;
 
+import au.net.netstorm.boost.nursery.type.holder.DefaultHolderMap;
 import au.net.netstorm.boost.nursery.type.holder.HolderMap;
-import au.net.netstorm.boost.nursery.type.holder.NewDefaultHolderMap;
+import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.util.typed.BoomTypedMapWrite;
-import au.net.netstorm.boost.util.typed.NewDefaultTypedMap;
+import au.net.netstorm.boost.util.typed.DefaultTypedMap;
 import au.net.netstorm.boost.util.typed.TypedMap;
 import au.net.netstorm.boost.util.typed.TypedMapRead;
 import au.net.netstorm.boost.util.typed.TypedMapWrite;
 
 public final class DefaultSuperMapAssembler implements SuperMapAssembler {
-    NewDefaultTypedMap newDefaultTypedMap;
-    NewDefaultHolderMap newDefaultHolderMap;
-    NewDefaultSuperMap newDefaultSuperMap;
+    Nu nu;
 
     public SuperMap assemble(TypedMapRead read) {
         TypedMapWrite write = new BoomTypedMapWrite();
-        TypedMap readwrite = newDefaultTypedMap.nu(read, write);
+        TypedMap readwrite = nu.nu(DefaultTypedMap.class, read, write);
         return assemble(readwrite);
     }
 
@@ -24,7 +23,7 @@ public final class DefaultSuperMapAssembler implements SuperMapAssembler {
     }
 
     public SuperMap assemble(TypedMap typed) {
-        HolderMap holder = newDefaultHolderMap.nu(typed);
-        return newDefaultSuperMap.nu(typed, holder);
+        HolderMap holder = nu.nu(DefaultHolderMap.class, typed);
+        return nu.nu(DefaultSuperMap.class, typed, holder);
     }
 }
