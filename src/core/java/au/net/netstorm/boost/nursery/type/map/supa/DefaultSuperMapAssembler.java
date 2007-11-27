@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.nursery.type.supa;
+package au.net.netstorm.boost.nursery.type.map.supa;
 
-import au.net.netstorm.boost.nursery.type.holder.DefaultHolderMap;
-import au.net.netstorm.boost.nursery.type.holder.HolderMap;
+import au.net.netstorm.boost.nursery.type.map.holder.DefaultHolderMap;
+import au.net.netstorm.boost.nursery.type.map.holder.HolderMap;
 import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.util.typed.BoomTypedMapWrite;
 import au.net.netstorm.boost.util.typed.DefaultTypedMap;

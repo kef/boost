@@ -1,9 +1,9 @@
-package au.net.netstorm.boost.nursery.type.holder;
+package au.net.netstorm.boost.nursery.type.map.holder;
 
-import au.net.netstorm.boost.nursery.type.StringHolder;
+import au.net.netstorm.boost.nursery.type.primitive.StringHolder;
 import au.net.netstorm.boost.provider.Nu;
 
-public class DefaultStringHolderUtil implements StringHolderUtil {
+public class DefaultStringHolderUtility implements StringHolderUtility {
     Nu nu;
 
     public <T extends StringHolder> T replaceAll(T holder, String regex, String replacement) {

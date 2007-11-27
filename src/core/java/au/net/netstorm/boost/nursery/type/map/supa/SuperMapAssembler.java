@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.type.supa;
+package au.net.netstorm.boost.nursery.type.map.supa;
 
 import au.net.netstorm.boost.util.typed.TypedMap;
 import au.net.netstorm.boost.util.typed.TypedMapRead;

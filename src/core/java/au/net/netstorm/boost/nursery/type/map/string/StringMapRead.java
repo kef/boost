@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.type.string;
+package au.net.netstorm.boost.nursery.type.map.string;
 
 import au.net.netstorm.boost.util.typed.KeyExists;
 

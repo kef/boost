@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.type;
+package au.net.netstorm.boost.nursery.type.core;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.equals.ArraysEqualsMaster;

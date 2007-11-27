@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.type;
+package au.net.netstorm.boost.nursery.type.core;
 
 import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.util.impl.ImplMaster;
