@@ -19,8 +19,7 @@ public abstract class InteractionTestCase extends LifecycleTestCase implements L
     public final AtomTestChecker atom = new DataAtomTestChecker(random);
 
     public TestLifecycle lifecycle() {
-        InteractionTestState state = new DefaultInteractionTestState(mocks, providers, random);
-        return new InteractionTestLifecycle(this, state);
+        return new InteractionTestLifecycle(this, mocks, providers, random);
     }
 
     private Provider createRandom() {

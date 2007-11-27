@@ -17,11 +17,13 @@ public class InteractionTestLifecycle implements TestLifecycle {
     private final DataProviders dataProviders;
     private final Validator validator = new TestClassValidator();
 
-    public InteractionTestLifecycle(InteractionTestCase testCase, InteractionTestState state) {
+    public InteractionTestLifecycle(InteractionTestCase testCase,
+            MockSupport mocks,
+            DataProviders dataProviders,
+            Provider random) {
         this.testCase = testCase;
-        random = state.getRandom();
-        dataProviders = state.getDataProviders();
-        MockSupport mocks = state.getMockSupport();
+        this.random = random;
+        this.dataProviders = dataProviders;
         testFieldInjector = new DefaultTestFieldInjector(testCase, mocks, random);
     }
 
