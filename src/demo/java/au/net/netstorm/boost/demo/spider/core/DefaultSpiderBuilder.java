@@ -40,9 +40,17 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     private Spider doBuild(ImplMaster impler) {
         Blueprints blueprints = nuBlueprints();
-        Factories factories = factories(blueprints, impler);
+        Factories factories = nuFactories();
         Instances instances = nuInstances();
-        return buildSpider(instances, factories, blueprints);
+        Spider spider = assembler.assemble(instances, factories);
+        Registry registry = createRegistry(blueprints, factories, instances, spider);
+        preregister(registry, spider, blueprints, impler);
+        return spider;
+    }
+
+    private Registry createRegistry(Blueprints blueprints, Factories factories, Instances instances, Spider spider) {
+        FactoryBuilder builder = new DefaultFactoryBuilder(spider);
+        return new DefaultRegistry(blueprints, instances, factories, builder);
     }
 
     private void preregister(Spider spider, ImplMaster impler) {
@@ -50,34 +58,21 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.instance(ImplMaster.class, impler);
     }
 
-    private Factories factories(Blueprints blueprints, ImplMaster impler) {
-        Factories factories = nuFactories();
-        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
-        // FIX (Nov 28, 2007) IOC 2215 Move more of these into pre-register?
-        implicit(factories, impler);
-        return factories;
-    }
-
-    private void implicit(Factories factories, ImplMaster impler) {
-        ImplicitFactory factory = new ImplicitFactory(impler);
-        factories.add(factory);
-    }
-
-    private Spider buildSpider(Instances instances, Factories factories, Blueprints blueprints) {
-        Spider spider = assembler.assemble(instances, factories);
-        preregister(spider, instances, blueprints, factories);
-        return spider;
-    }
-
-    private void preregister(Spider spider, Instances instances, Blueprints blueprints, Factories factories) {
-        FactoryBuilder builder = new DefaultFactoryBuilder(spider);
-        Registry registry = new DefaultRegistry(blueprints, instances, factories, builder);
-        blueprintedFactory(registry, blueprints);
-        registry.factory(NewerFactory.class);
+    private void preregister(Registry registry, Spider spider, Blueprints blueprints, ImplMaster impler) {
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
         registry.instance(Nu.class, spider);
+        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be first registered, last called?
+        // FIX (Nov 28, 2007) IOC 2215 Can we register the impliers and blueprints in the spider and inject all factories?
+        implicitFactory(registry, impler);
+        blueprintedFactory(registry, blueprints);
+        registry.factory(NewerFactory.class);
+    }
+
+    private void implicitFactory(Registry factories, ImplMaster impler) {
+        ImplicitFactory factory = new ImplicitFactory(impler);
+        factories.factory(factory);
     }
 
     private void blueprintedFactory(Registry registry, BlueprintsRead blueprints) {
