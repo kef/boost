@@ -50,9 +50,9 @@ public class InteractionTestLifecycle implements TestLifecycle {
     }
 
     private void doRegisterDataProviders() {
-        ProvidesData baseProviders = new BoostDataProviders(random);
-        baseProviders.register(dataProviders);
-        if (hasMarker(ProvidesData.class)) ((ProvidesData) testCase).register(dataProviders);
+        ProvidesData baseProviders = new BoostDataProviders();
+        baseProviders.register(dataProviders, random);
+        if (hasMarker(ProvidesData.class)) ((ProvidesData) testCase).register(dataProviders, random);
     }
 
     private void doInjectSubject() {
