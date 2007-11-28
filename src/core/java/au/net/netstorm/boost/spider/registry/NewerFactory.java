@@ -12,8 +12,8 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class NewerFactory implements Factory {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
-    TypeMaster typer;
     NewerAssembler assembler;
+    TypeMaster typer;
 
     public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         return nuNewer(iface, provider);
