@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.type.core;
 
-import au.net.netstorm.boost.provider.Nu;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 
 public class DefaultTypes implements Types {

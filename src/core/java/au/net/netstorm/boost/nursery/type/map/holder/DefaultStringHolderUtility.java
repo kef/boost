@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.type.map.holder;
 
 import au.net.netstorm.boost.nursery.type.primitive.StringHolder;
-import au.net.netstorm.boost.provider.Nu;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public class DefaultStringHolderUtility implements StringHolderUtility {
     Nu nu;

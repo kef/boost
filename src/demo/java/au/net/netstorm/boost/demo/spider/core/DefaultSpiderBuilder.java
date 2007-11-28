@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.provider.Nu;
 import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.spider.inject.core.Injector;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.newer.assembly.DefaultNewerAssembler;
 import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.registry.BlueprintedFactory;
