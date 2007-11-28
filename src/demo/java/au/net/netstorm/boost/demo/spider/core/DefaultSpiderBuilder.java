@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
-import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.registry.BlueprintedFactory;
@@ -37,9 +35,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private Spider doBuild(ImplMaster impler) {
-        Blueprints blueprints = nuBlueprints();
-        Factories factories = nuFactories();
-        Instances instances = nuInstances();
+        Blueprints blueprints = new DefaultBlueprints();
+        Factories factories = new DefaultFactories();
+        Instances instances = new DefaultInstances();
         Spider spider = assembler.assemble(instances, factories);
         Registry registry = createRegistry(blueprints, factories, instances, spider);
         preregister(registry, spider, blueprints, impler);
@@ -68,30 +66,12 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private void implicitFactory(Registry registry, ImplMaster impler) {
-        ImplicitFactory factory = new ImplicitFactory(impler);
+        Factory factory = new ImplicitFactory(impler);
         registry.factory(factory);
     }
 
     private void blueprintedFactory(Registry registry, BlueprintsRead blueprints) {
         Factory factory = new BlueprintedFactory(blueprints);
         registry.factory(factory);
-    }
-
-    private Factories nuFactories() {
-        return new DefaultFactories();
-    }
-
-    private Instances nuInstances() {
-        InterfaceMap map = nuMap();
-        return new DefaultInstances(map);
-    }
-
-    private Blueprints nuBlueprints() {
-        InterfaceMap map = nuMap();
-        return new DefaultBlueprints(map);
-    }
-
-    private InterfaceMap nuMap() {
-        return new DefaultInterfaceMap();
     }
 }

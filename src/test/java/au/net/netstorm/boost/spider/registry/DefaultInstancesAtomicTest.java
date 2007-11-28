@@ -5,12 +5,15 @@ import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultInstancesAtomicTest extends InteractionTestCase implements HasFixtures {
+    FieldTestUtil fielder = new DefaultFieldTestUtil();
     ClassTestChecker checker = new DefaultClassTestChecker();
     Interface iface = iface(Dinosaur.class);
     Dinosaur tyrannosaurus = new Tyrannosaurus();
@@ -22,7 +25,8 @@ public final class DefaultInstancesAtomicTest extends InteractionTestCase implem
     Instances subject;
 
     public void setUpFixtures() {
-        subject = new DefaultInstances(mapMock);
+        subject = new DefaultInstances();
+        fielder.setInstance(subject, "map", mapMock);
     }
 
     public void testSynchronized() {

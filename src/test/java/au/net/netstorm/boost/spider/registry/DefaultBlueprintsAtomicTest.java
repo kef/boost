@@ -3,6 +3,8 @@ package au.net.netstorm.boost.spider.registry;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -10,6 +12,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultBlueprintsAtomicTest extends InteractionTestCase implements HasFixtures {
+    FieldTestUtil fielder = new DefaultFieldTestUtil();
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);
     Blueprint blueprint;
@@ -20,7 +23,8 @@ public final class DefaultBlueprintsAtomicTest extends InteractionTestCase imple
     Blueprints subject;
 
     public void setUpFixtures() {
-        subject = new DefaultBlueprints(mapMock);
+        subject = new DefaultBlueprints();
+        fielder.setInstance(subject, "map", mapMock);
         blueprint = blueprint(Tyrannosaurus.class);
     }
 
