@@ -67,9 +67,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.factory(NewerFactory.class);
     }
 
-    private void implicitFactory(Registry factories, ImplMaster impler) {
+    private void implicitFactory(Registry registry, ImplMaster impler) {
         ImplicitFactory factory = new ImplicitFactory(impler);
-        factories.factory(factory);
+        registry.factory(factory);
     }
 
     private void blueprintedFactory(Registry registry, BlueprintsRead blueprints) {
