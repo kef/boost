@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.spider.registry;
 
 public interface Registry {
-    void multiple(Class iface, Class impl);
+    <T, U extends T> void multiple(Class<T> iface, Class<U> impl);
 
-    void single(Class iface, Class impl);
+    <T, U extends T> void single(Class<T> iface, Class<U> impl);
 
-    void instance(Class iface, Object ref);
+    <T, U extends T> void instance(Class<T> iface, U ref);
 
     void factory(Factory factory);
 
-    void factory(Class cls);
+    <T extends Factory> void factory(Class<T> cls);
 }

@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
@@ -16,6 +17,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultRegistryAtomicTest extends InteractionTestCase
         implements HasFixtures, LazyFields {
+    private static final Object[] NO_ARGS = new Object[0];
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;
     Class soapFactory = SoapFactory.class;
@@ -27,7 +29,6 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     Interface cerealInterface = new DefaultInterface(cereal);
     CocoPops cocoPops = new CocoPops();
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
-    FactoryBuilder builderMock;
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
@@ -35,9 +36,10 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     TypeMaster typerMock;
     Factory factoryDummy;
     Registry subject;
+    Nu nuMock;
 
     public void setUpFixtures() {
-        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, builderMock);
+        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, nuMock);
     }
 
     public void testMultiple() {
@@ -61,19 +63,9 @@ public final class DefaultRegistryAtomicTest extends InteractionTestCase
     }
 
     public void testFactoryByClassSucceeds() {
-        expect.oneCall(builderMock, factoryDummy, "build", soapFactory);
+        expect.oneCall(nuMock, factoryDummy, "nu", soapFactory, NO_ARGS);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
         subject.factory(soapFactory);
-    }
-
-    public void testFactoryByClassFails() {
-        Interface marker = new DefaultInterface(Factory.class);
-        DoesNotImplementFactoryException boom = new DoesNotImplementFactoryException(soapFactory, marker);
-        expect.oneCall(builderMock, boom, "build", soapFactory);
-        try {
-            subject.factory(soapFactory);
-            fail();
-        } catch (DoesNotImplementFactoryException expected) { }
     }
 
     private void setUpInstance() {

@@ -9,12 +9,10 @@ import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.BlueprintsRead;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.spider.registry.DefaultFactories;
-import au.net.netstorm.boost.spider.registry.DefaultFactoryBuilder;
 import au.net.netstorm.boost.spider.registry.DefaultInstances;
 import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
-import au.net.netstorm.boost.spider.registry.FactoryBuilder;
 import au.net.netstorm.boost.spider.registry.ImplicitFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.NewerFactory;
@@ -49,8 +47,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private Registry createRegistry(Blueprints blueprints, Factories factories, Instances instances, Spider spider) {
-        FactoryBuilder builder = new DefaultFactoryBuilder(spider);
-        return new DefaultRegistry(blueprints, instances, factories, builder);
+        return new DefaultRegistry(blueprints, instances, factories, spider);
     }
 
     private void preregister(Spider spider, ImplMaster impler) {
