@@ -6,6 +6,8 @@ import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.test.automock.HasFixtures;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
@@ -15,6 +17,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 public final class NewerFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
     private static final Interface TED = new DefaultInterface(Ted.class);
     private static final Interface NEW_TED = new DefaultInterface(NewTed.class);
+    private FieldTestUtil instancer = new DefaultFieldTestUtil();
     ResolvedInstance instance;
     ProviderEngine providerDummy;
     Implementation hostDummy;
@@ -23,7 +26,8 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
     Newer refMock;
 
     public void setUpFixtures() {
-        subject = new NewerFactory(assemblerMock);
+        subject = new NewerFactory();
+        instancer.setInstance(subject, "assembler", assemblerMock);
         instance = new DefaultBaseReference(refMock);
     }
 

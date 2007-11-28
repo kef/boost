@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.newer.assembly.DefaultNewerAssembler;
 import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -14,11 +15,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class NewerFactory implements Factory {
     private static final Interface NEWER = new DefaultInterface(Newer.class);
     private final TypeMaster typer = new DefaultTypeMaster();
-    private final NewerAssembler assembler;
-
-    public NewerFactory(NewerAssembler assembler) {
-        this.assembler = assembler;
-    }
+    private final NewerAssembler assembler = new DefaultNewerAssembler();
 
     public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         return nuNewer(iface, provider);

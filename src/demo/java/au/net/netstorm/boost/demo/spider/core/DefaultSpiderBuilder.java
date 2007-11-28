@@ -4,8 +4,6 @@ import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.Nu;
-import au.net.netstorm.boost.spider.newer.assembly.DefaultNewerAssembler;
-import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.registry.BlueprintedFactory;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.BlueprintsRead;
@@ -72,8 +70,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private void newer(Factories factories) {
-        NewerAssembler newer = new DefaultNewerAssembler();
-        Factory factory = new NewerFactory(newer);
+        Factory factory = new NewerFactory();
         factories.add(factory);
     }
 
