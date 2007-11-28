@@ -7,7 +7,7 @@ import au.net.netstorm.boost.test.lifecycle.TestLifecycle;
 import au.net.netstorm.boost.test.specific.BoostDataProviders;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.ProvidesData;
-import au.net.netstorm.boost.test.validate.TestClassValidator;
+import au.net.netstorm.boost.test.validate.DefaultTestClassValidator;
 import au.net.netstorm.boost.test.validate.Validator;
 
 public class InteractionTestLifecycle implements TestLifecycle {
@@ -15,7 +15,7 @@ public class InteractionTestLifecycle implements TestLifecycle {
     private final TestFieldInjector testFieldInjector;
     private final InteractionTestCase testCase;
     private final DataProviders dataProviders;
-    private final Validator validator = new TestClassValidator();
+    private final Validator validator = new DefaultTestClassValidator();
 
     public InteractionTestLifecycle(InteractionTestCase testCase,
             MockSupport mocks,
