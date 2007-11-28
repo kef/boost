@@ -18,17 +18,17 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
     ResolvedInstance instance;
     ProviderEngine providerDummy;
     Implementation hostDummy;
-    NewerAssembler newerMock;
+    NewerAssembler assemblerMock;
     NewerFactory subject;
     Newer refMock;
 
     public void setUpFixtures() {
-        subject = new NewerFactory(newerMock);
+        subject = new NewerFactory(assemblerMock);
         instance = new DefaultBaseReference(refMock);
     }
 
     public void testGet() {
-        expect.oneCall(newerMock, refMock, "assemble", NEW_TED, providerDummy);
+        expect.oneCall(assemblerMock, refMock, "assemble", NEW_TED, providerDummy);
         ResolvedInstance actual = subject.get(NEW_TED, hostDummy, providerDummy);
         assertEquals(instance, actual);
     }
