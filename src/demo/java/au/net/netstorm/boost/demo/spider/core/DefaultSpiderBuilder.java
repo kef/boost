@@ -55,17 +55,11 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be last?
         // FIX (Nov 28, 2007) IOC 2215 Move more of these into pre-register?
         implicit(factories, impler);
-        explicit(factories, blueprints);
         return factories;
     }
 
     private void implicit(Factories factories, ImplMaster impler) {
         ImplicitFactory factory = new ImplicitFactory(impler);
-        factories.add(factory);
-    }
-
-    private void explicit(Factories factories, BlueprintsRead blueprints) {
-        Factory factory = new BlueprintedFactory(blueprints);
         factories.add(factory);
     }
 
@@ -78,11 +72,17 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     private void preregister(Spider spider, Instances instances, Blueprints blueprints, Factories factories) {
         FactoryBuilder builder = new DefaultFactoryBuilder(spider);
         Registry registry = new DefaultRegistry(blueprints, instances, factories, builder);
+        blueprintedFactory(registry, blueprints);
         registry.factory(NewerFactory.class);
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
         registry.instance(Nu.class, spider);
+    }
+
+    private void blueprintedFactory(Registry registry, BlueprintsRead blueprints) {
+        Factory factory = new BlueprintedFactory(blueprints);
+        registry.factory(factory);
     }
 
     private Factories nuFactories() {
