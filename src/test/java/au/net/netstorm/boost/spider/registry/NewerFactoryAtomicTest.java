@@ -4,20 +4,21 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.newer.assembly.NewerAssembler;
 import au.net.netstorm.boost.spider.newer.core.Newer;
 import au.net.netstorm.boost.test.automock.HasFixtures;
+import au.net.netstorm.boost.test.automock.InjectableSubject;
 import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.LazyFields;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.TypeMaster;
 
-public final class NewerFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+public final class NewerFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields, InjectableSubject {
     private static final Interface TED = new DefaultInterface(Ted.class);
     private static final Interface NEW_TED = new DefaultInterface(NewTed.class);
-    private FieldTestUtil instancer = new DefaultFieldTestUtil();
+    TypeMaster typer = new DefaultTypeMaster();
     ResolvedInstance instance;
     ProviderEngine providerDummy;
     Implementation hostDummy;
@@ -27,7 +28,6 @@ public final class NewerFactoryAtomicTest extends InteractionTestCase implements
 
     public void setUpFixtures() {
         subject = new NewerFactory();
-        instancer.setInstance(subject, "assembler", assemblerMock);
         instance = new DefaultBaseReference(refMock);
     }
 
