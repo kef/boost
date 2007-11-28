@@ -14,7 +14,7 @@ import junit.framework.TestCase;
  */
 // FIX 1524 Rename to DoNotUseMeTestCase.
 // OK GenericIllegalRegexp|LineLength {
-public class BoooostCase extends TestCase {
+public class BoooostCase extends TestCase implements Test {
     private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
 
     protected void setUp() throws Exception {
