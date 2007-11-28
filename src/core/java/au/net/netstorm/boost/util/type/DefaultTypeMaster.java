@@ -48,8 +48,7 @@ public final class DefaultTypeMaster implements TypeMaster {
     }
 
     private void interfaces(Set set, Class[] ifaces) {
-        for (int i = 0; i < ifaces.length; i++) {
-            Class iface = ifaces[i];
+        for (Class iface : ifaces) {
             interfaces(set, iface);
         }
     }

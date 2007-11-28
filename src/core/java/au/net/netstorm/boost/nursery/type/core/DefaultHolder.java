@@ -7,6 +7,9 @@ import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
+import au.net.netstorm.boost.util.type.DefaultMarker;
+import au.net.netstorm.boost.util.type.Marker;
+import au.net.netstorm.boost.util.type.Sensitive;
 
 // FIX 2233 Pull out array cloning and delegate - alternatively DefaultArrayHolder<T>?
 // FIX (Nov 21, 2007) 2233 Needs testing.
@@ -15,6 +18,7 @@ import au.net.netstorm.boost.util.tostring.ToStringMaster;
 public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
     private static final ArraysEqualsMaster ARRAYS_EQUALS = new DefaultArraysEqualsMaster();
     private static final ToStringMaster TO_STRING_MASTER = new IndentingToStringMaster();
+    private static final Marker MARKER = new DefaultMarker();
     private final T value;
 
     public DefaultHolder(T value) {
@@ -57,6 +61,8 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
     }
 
     public final String toString() {
+        // FIX (Nov 29, 2007) 2233 Change sensitive string to a hash of value
+        if (MARKER.is(this, Sensitive.class)) return "My ass hurts! Ouch!";
         FieldValueSpec field = new DefaultFieldValueSpec("value", value);
         FieldValueSpec[] fields = {field};
         return TO_STRING_MASTER.formatFields(this, fields);
