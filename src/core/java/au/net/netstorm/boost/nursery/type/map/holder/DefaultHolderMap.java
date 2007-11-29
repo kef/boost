@@ -59,7 +59,7 @@ public final class DefaultHolderMap implements au.net.netstorm.boost.nursery.typ
     }
 
     public void put(String key, StringHolder stringHolder) {
-        String value = "" + stringHolder;
+        String value = stringHolder.getValue();
         map.put(key, value);
     }
 
