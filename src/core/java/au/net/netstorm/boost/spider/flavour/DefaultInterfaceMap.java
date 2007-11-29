@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultInterfaceMap implements InterfaceMap {
     private final Map ifaces = new HashMap();
+    private final Overrides overrides = new DefaultOverrides();
 
     public void put(Interface iface, Object value) {
         if (value == null) fail(iface, "Come on, ya have to give me somethin' man.  Anything but a null");
@@ -28,6 +29,7 @@ public final class DefaultInterfaceMap implements InterfaceMap {
     }
 
     private void validate(Interface iface) {
+        if (overrides.allowed()) return;
         if (ifaces.containsKey(iface)) fail(iface, "Interface already exists");
     }
 
