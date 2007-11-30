@@ -512,19 +512,8 @@
     </LanguageOptions>
   </component>
   <component name="libraryTable">
-    <library name="junit">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/" />
-      </SOURCES>
-    </library>
     <library name="jmock">
       <CLASSES>
-        <root url="file://$PROJECT_DIR$/lib/jmock" />
         <root url="jar://$PROJECT_DIR$/lib/jmock/jmock-1.1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -532,6 +521,18 @@
         <root url="jar://$PROJECT_DIR$/lib/jmock/jmock-1.1.0-src.jar!/" />
       </SOURCES>
     </library>
+    <library name="junit">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/" />
+      </SOURCES>
+    </library>
   </component>
+  <UsedPathMacros>
+    <macro name="TEMPLATE" />
+  </UsedPathMacros>
 </project>
 
