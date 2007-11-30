@@ -73,7 +73,6 @@ public class DataInvocationHandlerDemoTest extends InteractionTestCase implement
         // FIX DATAPROXY 2130 Is this an appropriate ratio? (NOTE: 3x doesn't pass on geekscape.)
         // FIX DATAPROXY 2130 This looks like bullshit.  (4x doesn't work all the time here either.)
         // FIX DATAPROXY 2130 This looks like bullshit.  Not working on our crap build boxes
-
         //assertEquals(true, proxyTime < 5 * realTime);
     }
 
