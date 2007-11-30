@@ -11,6 +11,7 @@ import au.net.netstorm.boost.util.type.Interface;
 // OK NCSS {
 public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
     private static final String COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN = "Come on, ya have to give me somethin' man.  Anything but a null";
+    AllowOverrides overrides = new DefaultAllowOverrides();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface icecream = new DefaultInterface(IceCream.class);
@@ -18,11 +19,9 @@ public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase imp
     Interface pie = new DefaultInterface(Pie.class);
     Object value, value1, value2, value3, value4;
     InterfaceMap subject;
-    Overrides overridesMock;
 
     public void setUpFixtures() {
         subject = new DefaultInterfaceMap();
-        fielder.setInstance(subject, "overrides", overridesMock);
     }
 
     public void testMainFlow() {
@@ -49,11 +48,15 @@ public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase imp
 
     public void testPutOverrides() {
         put(milkshake, value);
-        put(milkshake, value, true);
+        putWithOverride(milkshake, value);
     }
 
     public void testGetFails() {
         checkGetFails(milkshake, "No matching interface");
+    }
+
+    public void testFailsWithNullValue() {
+        checkPutFails(milkshake, null, COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN);
     }
 
     private void checkExists(boolean expected, Interface iface) {
@@ -61,17 +64,16 @@ public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase imp
         assertEquals(expected, result);
     }
 
-    public void testFailsWithNullValue() {
-        checkPutFails(milkshake, null, COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN);
-    }
-
     private void put(Interface iface, Object value) {
-        put(iface, value, false);
+        subject.put(iface, value);
     }
 
-    private void put(Interface iface, Object value, boolean overrides) {
-        expect.oneCall(overridesMock, overrides, "allowed");
-        subject.put(iface, value);
+    private void putWithOverride(final Interface iface, final Object value) {
+        overrides.withOverride(new Runnable() {
+            public void run() {
+                subject.put(iface, value);
+            }
+        });
     }
 
     private void checkGet(Interface key, Object expected) {
@@ -89,7 +91,6 @@ public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase imp
     }
 
     private void checkPutFails(Interface iface, String reason) {
-        expect.oneCall(overridesMock, false, "allowed");
         checkPutFails(iface, value, reason);
     }
 

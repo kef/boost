@@ -1,8 +1,13 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
+import au.net.netstorm.boost.spider.flavour.AllowOverrides;
+import au.net.netstorm.boost.spider.flavour.DefaultAllowOverrides;
+
 // SUGGEST: This test could and should be a lot simpler.  Check out BlueprintDemoTest.
 public final class ResolveDemoTest extends ResolverDemooooTest {
+    private AllowOverrides overrides = new DefaultAllowOverrides();
     private PeterSellers peter = new PeterSellers();
+    private KeiraKnightley keira = new KeiraKnightley();
 
     {
         registry.multiple(TheDude.class, JeffBridges.class);
@@ -29,6 +34,30 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
         Hollywood hollywood = (Hollywood) nu(GlitzyHollywood.class);
         Business business = (Business) nu(MovieBusiness.class);
         checkSameInternals(hollywood, business);
+    }
+
+    public void testOverrides() {
+        overrideRegistry();
+        checkOverriden();
+    }
+
+    private void checkOverriden() {
+        TheDude dude = (TheDude) resolver.resolve(TheDude.class);
+        assertEquals(BennyHill.class, dude.getClass());
+        Actor actor = (Actor) resolver.resolve(Actor.class);
+        assertEquals(keira, actor);
+        Celebrity celeb = (Celebrity) resolver.resolve(Celebrity.class);
+        assertEquals(ChristinaAguilera.class, celeb.getClass());
+    }
+
+    private void overrideRegistry() {
+        overrides.withOverride(new Runnable() {
+            public void run() {
+                registry.multiple(TheDude.class, BennyHill.class);
+                registry.instance(Actor.class, keira);
+                registry.single(Celebrity.class, ChristinaAguilera.class);
+            }
+        });
     }
 
     private void checkSameInternals(Hollywood hollywood, Business business) {
