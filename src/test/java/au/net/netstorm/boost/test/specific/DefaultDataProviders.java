@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.test.specific;
 
-import java.util.HashMap;
-import java.util.Map;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.ProviderException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DefaultDataProviders extends Primordial implements DataProviders {
     private final Map types = new HashMap();
@@ -18,10 +19,10 @@ public class DefaultDataProviders extends Primordial implements DataProviders {
         return types.containsKey(type);
     }
 
-    public Object provide(Class type) {
+    public <T> T provide(Class<T> type) {
         popIfNotSupported(type);
         DataProvider provider = (DataProvider) types.get(type);
-        return provider.get();
+        return (T) provider.get();
     }
 
     private void ensureInterface(Class type) {

@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.test.random;
 
-import java.lang.reflect.Method;
-import java.math.BigInteger;
-import java.util.Date;
-import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.SpecificProvider;
+
+import java.lang.reflect.Method;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.Random;
 
 // FIX DEBT SPLIT THIS CLASS!!!
 
@@ -18,9 +19,9 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     // FIX 1914 Use actual test fixtures here.  Not well known classes.
     private final Class[] randomClasses = {Bandaid.class, Lollipop.class, Scrunch.class};
 
-    public Object provide(Class type) {
+    public <T> T provide(Class<T> type) {
         if (!canProvide(type)) throw new NotProvidedException(type);
-        return doGetRandom(type);
+        return (T) doGetRandom(type);
     }
 
     public boolean canProvide(Class type) {

@@ -10,7 +10,7 @@ public final class PrimitiveProvider implements SpecificProvider {
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private final Provider concretes = new ConcreteRandomProvider();
 
-    public Object provide(Class type) {
+    public <T> T provide(Class<T> type) {
         if (!canProvide(type)) throw new NotProvidedException(type);
         return randomPrimitiveType(type);
     }
@@ -19,8 +19,8 @@ public final class PrimitiveProvider implements SpecificProvider {
         return primitiveBoxer.isPrimitive(type);
     }
 
-    private Object randomPrimitiveType(Class type) {
-        Class boxed = primitiveBoxer.getBoxed(type);
+    private <T> T randomPrimitiveType(Class<T> type) {
+        Class<T> boxed = primitiveBoxer.getBoxed(type);
         return concretes.provide(boxed);
     }
 }

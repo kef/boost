@@ -40,10 +40,10 @@ public final class InterfaceRandomProvider implements SpecificProvider {
         return type.isInterface();
     }
 
-    public Object provide(Class type) {
+    public <T> T provide(Class<T> type) {
         Interface iface = popIfNotInterface(type);
         if (isProvided(type)) return providedImpl(type);
-        if (isData(iface)) return defaultImpl(iface);
+        if (isData(iface)) return (T) defaultImpl(iface);
         return mock(type);
     }
 
@@ -56,7 +56,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
         return dataProviders.canProvide(type);
     }
 
-    private Object providedImpl(Class type) {
+    private <T> T providedImpl(Class<T> type) {
         return dataProviders.provide(type);
     }
 
@@ -71,7 +71,7 @@ public final class InterfaceRandomProvider implements SpecificProvider {
         return instantiator.createInstance(implClass, randomProvider);
     }
 
-    private Object mock(Class type) {
-        return mocks.mock(type);
+    private <T> T mock(Class<T> type) {
+        return (T) mocks.mock(type);
     }
 }

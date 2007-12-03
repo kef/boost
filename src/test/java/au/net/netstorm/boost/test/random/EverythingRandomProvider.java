@@ -14,7 +14,7 @@ public final class EverythingRandomProvider implements Provider {
     }
 
     // OK CyclomaticComplexity {
-    public Object provide(Class type) {
+    public <T> T provide(Class<T> type) {
         if (isInterface(type)) return interfaces.provide(type);
         if (isPrimitive(type)) return primitives.provide(type);
         if (isArray(type)) return arrays.provide(type);

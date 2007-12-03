@@ -13,7 +13,7 @@ public final class TimePointProvider implements DataProvider {
 
     public Data get() {
         // FIX 64166 Range support required here.
-        long time = ((Long) random.provide(Long.class)).longValue();
+        long time = random.provide(Long.class);
         long positive = time < 0 ? -time : time;
         return new DefaultTimePoint(positive);
     }

@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.test.random;
 
-import java.lang.reflect.Array;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
+
+import java.lang.reflect.Array;
 
 public final class ArrayRandomProvider implements SpecificProvider {
     private final Provider randomProvider;
@@ -12,11 +13,11 @@ public final class ArrayRandomProvider implements SpecificProvider {
         this.randomProvider = randomProvider;
     }
 
-    public Object provide(Class type) {
+    public <T> T provide(Class<T> type) {
         if (!canProvide(type)) throw new NotProvidedException(type);
         Class componentType = type.getComponentType();
         int size = randomSize();
-        Object array = Array.newInstance(componentType, size);
+        T array = (T) Array.newInstance(componentType, size);
         populate(size, componentType, array);
         return array;
     }
@@ -33,7 +34,7 @@ public final class ArrayRandomProvider implements SpecificProvider {
     }
 
     private int randomSize() {
-        Boolean on = (Boolean) randomProvider.provide(Boolean.class);
+        Boolean on = randomProvider.provide(Boolean.class);
         return on.booleanValue() ? 2 : 3;
     }
 }

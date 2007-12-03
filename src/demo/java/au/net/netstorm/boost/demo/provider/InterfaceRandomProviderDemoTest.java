@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.demo.provider;
 
-import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
@@ -14,6 +13,8 @@ import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.DefaultDataProviders;
+
+import java.lang.reflect.Proxy;
 
 public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Constructable {
     private MockSupport mocks = new DefaultMockSupport();
@@ -74,7 +75,7 @@ public final class InterfaceRandomProviderDemoTest extends InteractionTestCase i
     }
 
     public void testRecursionOfProvision() {
-        FunkyData funkyData = (FunkyData) interfaceProvider.provide(FunkyData.class);
+        FunkyData funkyData = interfaceProvider.provide(FunkyData.class);
         String funkyString = funkyData.getFunkyString();
         assertNotNull(funkyString);
         checkRighteous(funkyData);
