@@ -342,7 +342,7 @@
     <Base>
       <setting name="state" value="1" />
     </Base>
-    <LanguageOptions name="$TEMPLATE$">
+    <LanguageOptions name="$PROJECT_DIR$">
       <option name="templateOptions">
         <value>
           <option name="block" value="true" />
@@ -531,8 +531,5 @@
       </SOURCES>
     </library>
   </component>
-  <UsedPathMacros>
-    <macro name="TEMPLATE" />
-  </UsedPathMacros>
 </project>
 

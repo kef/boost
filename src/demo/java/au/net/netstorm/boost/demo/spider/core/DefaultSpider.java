@@ -24,7 +24,7 @@ public final class DefaultSpider implements Spider {
         injector.inject(ref);
     }
 
-    public Object resolve(Class type) {
+    public <T> T resolve(Class<T> type) {
         return resolver.resolve(type);
     }
 }

@@ -4,7 +4,7 @@ import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 
 public final class DefaultNewerDemoTest extends ResolverDemooooTest {
     public void testResolveNewer() {
-        NewTopJob newTopJob = (NewTopJob) resolver.resolve(NewTopJob.class);
+        NewTopJob newTopJob = resolver.resolve(NewTopJob.class);
         assertNotNull(newTopJob);
         Job job = newTopJob.nu();
         job.sayHi();
@@ -12,7 +12,7 @@ public final class DefaultNewerDemoTest extends ResolverDemooooTest {
 
     public void testRecursiveNewerInjection() {
         registry.multiple(Rob.class, DefaultRob.class);
-        Rob rob = (Rob) resolver.resolve(Rob.class);
+        Rob rob = resolver.resolve(Rob.class);
         Bob bob = rob.getBob();
         checkNewersRecurse(bob);
     }

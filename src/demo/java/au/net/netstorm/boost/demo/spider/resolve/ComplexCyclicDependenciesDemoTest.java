@@ -23,6 +23,6 @@ public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest
     }
 
     private Teacher resolveTeacher() {
-        return (Teacher) resolver.resolve(Teacher.class);
+        return resolver.resolve(Teacher.class);
     }
 }

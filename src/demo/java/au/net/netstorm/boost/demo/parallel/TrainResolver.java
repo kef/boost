@@ -23,7 +23,7 @@ class TrainResolver implements Runnable {
     }
 
     private Train getTrain() {
-        Railyard track = (Railyard) spider.resolve(Railyard.class);
+        Railyard track = spider.resolve(Railyard.class);
         return track.getTrain();
     }
 }

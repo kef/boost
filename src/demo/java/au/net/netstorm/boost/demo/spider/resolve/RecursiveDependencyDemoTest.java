@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
 public final class RecursiveDependencyDemoTest extends ResolverDemooooTest {
-
     {
         registry.multiple(Recursion.class, MrRecursion.class);
     }
 
     public void testRecursive() {
-        Recursion recursion = (Recursion) resolver.resolve(Recursion.class);
+        Recursion recursion = resolver.resolve(Recursion.class);
         Object selfRef = grapher.get(recursion, "self");
         checkSame(recursion, selfRef);
     }

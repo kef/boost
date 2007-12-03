@@ -18,7 +18,7 @@ public class ResolverDemooooTest extends InteractionTestCase {
     private final Spider spider = spiderBuilder.build();
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
-    public final Registry registry = (Registry) spider.resolve(Registry.class);
+    public final Registry registry = spider.resolve(Registry.class);
     public final Resolver resolver = spider;
     public final Nu nu = spider;
 }

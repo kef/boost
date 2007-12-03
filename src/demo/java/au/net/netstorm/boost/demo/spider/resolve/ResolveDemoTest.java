@@ -42,11 +42,11 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
     }
 
     private void checkOverriden() {
-        TheDude dude = (TheDude) resolver.resolve(TheDude.class);
+        TheDude dude = resolver.resolve(TheDude.class);
         assertEquals(BennyHill.class, dude.getClass());
-        Actor actor = (Actor) resolver.resolve(Actor.class);
+        Actor actor = resolver.resolve(Actor.class);
         assertEquals(keira, actor);
-        Celebrity celeb = (Celebrity) resolver.resolve(Celebrity.class);
+        Celebrity celeb = resolver.resolve(Celebrity.class);
         assertEquals(ChristinaAguilera.class, celeb.getClass());
     }
 

@@ -12,12 +12,12 @@ public final class SimpleCyclicDependenciesDemoTest extends ResolverDemooooTest 
     }
 
     private void checkResolveBall() {
-        Ball ball = (Ball) resolver.resolve(Ball.class);
+        Ball ball = resolver.resolve(Ball.class);
         checkSet(ball, "runner");
     }
 
     private void checkResolveRunner() {
-        Runner runner = (Runner) resolver.resolve(Runner.class);
+        Runner runner = resolver.resolve(Runner.class);
         checkSet(runner, "ball");
     }
 

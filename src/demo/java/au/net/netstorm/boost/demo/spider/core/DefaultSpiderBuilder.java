@@ -49,7 +49,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     }
 
     private void preregister(Spider spider, ImplMaster impler) {
-        Registry registry = (Registry) spider.resolve(Registry.class);
+        Registry registry = spider.resolve(Registry.class);
         registry.instance(ImplMaster.class, impler);
     }
 
