@@ -8,9 +8,9 @@ import junit.framework.Test;
 // FIX SC600 Rename "build" area to "gen".
 public class DemoTestSuite extends BoooostCase {
     private static final Class CLASS_IN_TEST_TREE = DemoTestSuite.class;
-    private static final TestAggregator AGGREGATOR = new DefaultTestAggregator(DemoTestSuite.CLASS_IN_TEST_TREE);
+    private static final TestAggregator AGGREGATOR = new DefaultTestAggregator(CLASS_IN_TEST_TREE);
 
     public static Test suite() {
-        return DemoTestSuite.AGGREGATOR.aggregate("Demo", ".*DemoTest");
+        return AGGREGATOR.aggregate("Demo", ".*DemoTest");
     }
 }
