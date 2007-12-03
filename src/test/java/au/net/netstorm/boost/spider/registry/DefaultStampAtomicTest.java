@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 
-public final class DefaultStampAtomicTest extends InteractionTestCase {
+public final class DefaultStampAtomicTest extends LifecycleTestCase implements LazyFields {
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     ClassTestChecker classer = new DefaultClassTestChecker();
     String value;

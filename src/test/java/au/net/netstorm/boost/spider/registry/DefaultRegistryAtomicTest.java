@@ -2,9 +2,9 @@ package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.instantiate.Nu;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
@@ -15,8 +15,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-public final class DefaultRegistryAtomicTest extends InteractionTestCase
-        implements HasFixtures, LazyFields {
+public final class DefaultRegistryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final Object[] NO_ARGS = new Object[0];
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;

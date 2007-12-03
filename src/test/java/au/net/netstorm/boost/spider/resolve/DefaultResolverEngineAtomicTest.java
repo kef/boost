@@ -6,9 +6,9 @@ import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultResolverEngineAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     ClassTestChecker testChecker = new DefaultClassTestChecker();
     Interface iface = new DefaultInterface(Jim.class);
     ResolvedInstance resolvedInstanceDummy;

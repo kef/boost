@@ -7,9 +7,9 @@ import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.test.automock.DefaultTestFieldInjector;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.automock.TestFieldInjector;
+import au.net.netstorm.boost.test.marker.ProvidesData;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
-import au.net.netstorm.boost.test.specific.ProvidesData;
 
 public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     RandomProviderAssembler assembler;

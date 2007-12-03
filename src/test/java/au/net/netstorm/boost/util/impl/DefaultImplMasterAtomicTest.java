@@ -1,12 +1,13 @@
 package au.net.netstorm.boost.util.impl;
 
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DefaultImplMasterAtomicTest extends InteractionTestCase {
+public final class DefaultImplMasterAtomicTest extends LifecycleTestCase implements LazyFields {
     // FIX 1914 Dupe.  See InterfaceRandomProvider.
     ImplMapper mapper = new DefaultImplMapper("Default");
     ImplMapper[] mappers = {mapper};

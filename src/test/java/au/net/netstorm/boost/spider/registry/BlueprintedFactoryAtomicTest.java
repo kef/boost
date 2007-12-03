@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class BlueprintedFactoryAtomicTest extends InteractionTestCase implements HasFixtures, LazyFields {
+public final class BlueprintedFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     ResolvedInstance instanceMock;
     ImplementationRef hostDummy;
     ProviderEngine providerMock;

@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.demo.spider.newer;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-public final class DefaultPartialInstancesAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
+public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     PartialInstances subject;
     Interface iface;
     BaseReference instance;

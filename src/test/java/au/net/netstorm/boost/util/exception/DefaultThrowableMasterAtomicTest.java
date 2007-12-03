@@ -3,9 +3,10 @@ package au.net.netstorm.boost.util.exception;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultThrowableMasterAtomicTest extends InteractionTestCase {
+public final class DefaultThrowableMasterAtomicTest extends LifecycleTestCase implements LazyFields {
     private static final Throwable EXCEPTION_1 = new Exception();
     private static final Throwable EXCEPTION_2 = new ClassNotFoundException();
     private static final Throwable THROWABLE_1 = new Throwable();

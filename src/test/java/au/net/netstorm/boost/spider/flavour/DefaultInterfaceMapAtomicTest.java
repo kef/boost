@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.spider.flavour;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // OK NCSS {
-public final class DefaultInterfaceMapAtomicTest extends InteractionTestCase implements LazyFields, HasFixtures {
+public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     private static final String COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN = "Come on, ya have to give me somethin' man.  Anything but a null";
     AllowOverrides overrides = new DefaultAllowOverrides();
     FieldTestUtil fielder = new DefaultFieldTestUtil();

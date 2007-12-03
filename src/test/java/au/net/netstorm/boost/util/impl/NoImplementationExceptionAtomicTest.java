@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.util.impl;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class NoImplementationExceptionAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class NoImplementationExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     NoImplementationException subject;
     Interface iface;
 

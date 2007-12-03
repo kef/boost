@@ -2,11 +2,12 @@ package au.net.netstorm.boost.spider.newer.assembly;
 
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 
-public final class DefaultNewerAssemblerAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class DefaultNewerAssemblerAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     NewerAssembler subject;
     ProviderEngine provider;
 

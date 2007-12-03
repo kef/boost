@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.test.validate;
 
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class InterfaceMethodValidatorDemoTest extends InteractionTestCase implements ExtendsAnInterface {
+public final class InterfaceMethodValidatorDemoTest extends LifecycleTestCase implements ExtendsAnInterface, LazyFields {
     InterfaceMethodValidator subject = new DefaultInterfaceMethodValidator();
     MethodMatcher testMethods = new TestMethodMatcher();
 

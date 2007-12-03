@@ -10,10 +10,11 @@ import au.net.netstorm.boost.spider.core.GraphUtil;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
 // Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.
-public class ResolverDemooooTest extends InteractionTestCase {
+public class ResolverDemooooTest extends LifecycleTestCase implements LazyFields {
     private final BoostSpiderBuilder spiderBuilder = new DefaultBoostSpiderBuilder();
     private final Spider spider = spiderBuilder.build();
     public final Peeler peeler = new DefaultPeeler();

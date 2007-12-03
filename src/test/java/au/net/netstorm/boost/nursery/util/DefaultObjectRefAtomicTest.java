@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.nursery.util;
 
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultObjectRefAtomicTest extends InteractionTestCase {
+public final class DefaultObjectRefAtomicTest extends LifecycleTestCase implements LazyFields {
     Object obj;
 
     public void testNull() {

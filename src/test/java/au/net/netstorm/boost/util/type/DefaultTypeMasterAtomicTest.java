@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.util.type;
 
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultTypeMasterAtomicTest extends InteractionTestCase {
+public final class DefaultTypeMasterAtomicTest extends LifecycleTestCase implements LazyFields {
     TypeMaster subject = new DefaultTypeMaster();
     Class lollyClass = JuicyLolly.class;
     Interface lollyIface = new DefaultInterface(Lolly.class);

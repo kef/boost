@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.util.string;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InjectableSubject;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.InjectableSubject;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.AsciiBytes;
 
-public final class DefaultAsciiStringConverterAtomicTest extends InteractionTestCase implements HasFixtures, InjectableSubject {
+public final class DefaultAsciiStringConverterAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, LazyFields {
     private static final String ASCII_ENCODING = "US-ASCII";
     private byte[] bytes;
     AsciiStringConverter subject;

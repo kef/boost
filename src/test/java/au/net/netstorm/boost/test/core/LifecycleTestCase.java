@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.test.core;
 
-import au.net.netstorm.boost.demo.spider.core.DefaultSpiderBuilder;
 import au.net.netstorm.boost.demo.spider.core.Spider;
-import au.net.netstorm.boost.demo.spider.core.SpiderBuilder;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.test.automock.DefaultMockExpectations;
 import au.net.netstorm.boost.test.automock.MockExpectations;
@@ -10,14 +8,12 @@ import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.lifecycle.BoostTestLifecycleBlocks;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycleBlocks;
 import au.net.netstorm.boost.test.lifecycle.TestLifecycleRunner;
+import au.net.netstorm.boost.test.marker.ProvidesData;
 import au.net.netstorm.boost.test.specific.BoostDataProviders;
-import au.net.netstorm.boost.test.specific.ProvidesData;
-import au.net.netstorm.boost.util.impl.DefaultImplMapper;
-import au.net.netstorm.boost.util.impl.DefaultImplMaster;
-import au.net.netstorm.boost.util.impl.ImplMapper;
-import au.net.netstorm.boost.util.impl.ImplMaster;
+import au.net.netstorm.boost.test.spider.DefaultTestSpiderBuilder;
+import au.net.netstorm.boost.test.spider.TestSpiderBuilder;
 
-public abstract class LifecycleTestCase extends CleanTestCase {
+public class LifecycleTestCase extends CleanTestCase {
     public static final Object VOID = MockExpectations.VOID;
     private final TestLifecycleRunner runner;
     public final MockExpectations expect;
@@ -38,9 +34,8 @@ public abstract class LifecycleTestCase extends CleanTestCase {
     }
 
     public Spider getSpider() {
-        SpiderBuilder builder = new DefaultSpiderBuilder();
-        ImplMaster master = getMapper();
-        return builder.build(master);
+        TestSpiderBuilder builder = new DefaultTestSpiderBuilder();
+        return builder.build();
     }
 
     public void framework(Registry registry) {
@@ -57,11 +52,5 @@ public abstract class LifecycleTestCase extends CleanTestCase {
     private void bootstrap() {
         TestLifecycleBootstrap bootstrap = spider.resolve(TestLifecycleBootstrap.class);
         bootstrap.bootstrap();
-    }
-
-    private ImplMaster getMapper() {
-        ImplMapper a1 = new DefaultImplMapper("Default");
-        ImplMapper[] mappers = {a1};
-        return new DefaultImplMaster(mappers);
     }
 }

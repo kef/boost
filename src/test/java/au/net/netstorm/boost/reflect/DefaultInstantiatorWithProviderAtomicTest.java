@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.reflect;
 
 import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultInstantiatorWithProviderAtomicTest extends InteractionTestCase {
+public final class DefaultInstantiatorWithProviderAtomicTest extends LifecycleTestCase implements LazyFields {
 
     InstantiatorWithProvider subject = new DefaultInstantiatorWithProvider();
     Provider providerMock;

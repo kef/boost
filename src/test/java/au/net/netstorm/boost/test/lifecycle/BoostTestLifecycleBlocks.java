@@ -5,6 +5,7 @@ public class BoostTestLifecycleBlocks implements TestLifecycleBlocks {
             ValidateTest.class,
             DataRegisterer.class,
             InjectLazyFields.class,
+            CallOverlaysWeb.class,
             InjectTest.class,
             CallSetupFixtures.class,
             InjectSubject.class

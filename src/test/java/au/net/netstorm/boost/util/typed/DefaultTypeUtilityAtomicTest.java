@@ -2,11 +2,12 @@ package au.net.netstorm.boost.util.typed;
 
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
 // FIX BREADCRUMB 8888 Tidy
-public final class DefaultTypeUtilityAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String STRING_1 = "monkey";
     private static final String STRING_2 = "bonobo";
     private static final String STRING_3 = "bonobo";

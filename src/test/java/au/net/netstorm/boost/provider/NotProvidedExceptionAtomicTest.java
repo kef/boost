@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.provider;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 
-public final class NotProvidedExceptionAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class NotProvidedExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     ClassTestChecker classer = new DefaultClassTestChecker();
     NotProvidedException subject;
     Class aClass;

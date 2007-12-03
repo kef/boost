@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.flavour.InterfaceMap;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -11,7 +12,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-public final class DefaultBlueprintsAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);

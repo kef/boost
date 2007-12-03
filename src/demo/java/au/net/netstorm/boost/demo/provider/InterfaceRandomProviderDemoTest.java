@@ -6,8 +6,9 @@ import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.test.automock.DefaultMockSupport;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
 import au.net.netstorm.boost.test.automock.MockSupport;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.ImplementationNotFoundException;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
@@ -15,7 +16,7 @@ import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.DefaultDataProviders;
 
-public final class InterfaceRandomProviderDemoTest extends InteractionTestCase implements Constructable {
+public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase implements Constructable, LazyFields {
     private MockSupport mocks = new DefaultMockSupport();
     private Class iFace = HappyDay.class;
     private Class impl = DefaultHappyDay.class;

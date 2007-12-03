@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.demo.automock;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
-import au.net.netstorm.boost.test.automock.LazyFields;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class AnotherWorkingLazyFieldsDemoTest extends InteractionTestCase implements HasFixtures, LazyFields {
+public final class AnotherWorkingLazyFieldsDemoTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     TestSubject subject;
     DelegateSubject delegateMock;
     String[] strings1;

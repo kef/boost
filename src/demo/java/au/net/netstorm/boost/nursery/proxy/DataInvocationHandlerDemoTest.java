@@ -2,14 +2,15 @@ package au.net.netstorm.boost.nursery.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-public class DataInvocationHandlerDemoTest extends InteractionTestCase implements HasFixtures {
+public class DataInvocationHandlerDemoTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String NUM_LEGS = "numLegs";
     private static final String NAME = "name";
     private Centipede critter1;

@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.util.typed;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
 // FIX BREADCRUMB 8888 Tidy
-public final class BoomTypedMapWriteAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class BoomTypedMapWriteAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     TypedMapWrite subject;
     String key;
     String stringValue;

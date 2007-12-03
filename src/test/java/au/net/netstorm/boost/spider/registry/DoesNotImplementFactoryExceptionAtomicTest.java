@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.Interface;
 
-public final class DoesNotImplementFactoryExceptionAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class DoesNotImplementFactoryExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     DoesNotImplementFactoryException subject;
     Interface marker;
     Class cls;

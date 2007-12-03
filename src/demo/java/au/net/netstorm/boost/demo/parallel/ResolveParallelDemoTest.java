@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.demo.parallel;
 
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.parallel.DefaultThreadRunner;
 import au.net.netstorm.boost.test.parallel.Errors;
 import au.net.netstorm.boost.test.parallel.ThreadRunner;
 
-public final class ResolveParallelDemoTest extends InteractionTestCase {
+public final class ResolveParallelDemoTest extends LifecycleTestCase implements LazyFields {
     private static final Integer NUM_THREADS = 2;
     ThreadRunner runner = new DefaultThreadRunner();
 

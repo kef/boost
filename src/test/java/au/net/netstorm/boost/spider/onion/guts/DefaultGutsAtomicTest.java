@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.test.automock.HasFixtures;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.HasFixtures;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultGutsAtomicTest extends InteractionTestCase implements HasFixtures {
+public final class DefaultGutsAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     EdgeClass classer = new DefaultEdgeClass();
     Guts subject;
     List guts = new ArrayList();

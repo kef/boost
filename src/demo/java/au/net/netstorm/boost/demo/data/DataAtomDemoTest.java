@@ -1,14 +1,15 @@
 package au.net.netstorm.boost.demo.data;
 
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
-import au.net.netstorm.boost.test.automock.InteractionTestCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.InjectableTest;
+import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
 
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
-public final class DataAtomDemoTest extends InteractionTestCase implements InjectableTest {
+public final class DataAtomDemoTest extends LifecycleTestCase implements InjectableTest, LazyFields {
     FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
     FieldSpec PRIMITIVE_PROPERTY = new DefaultFieldSpec("goodPlayer", Boolean.class);
     FieldSpec ARRAY_PROPERTY = new DefaultFieldSpec("integers", Integer[].class);
