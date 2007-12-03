@@ -1,6 +1,9 @@
 package au.net.netstorm.boost.nursery.edgify;
 
+import java.io.File;
 import au.net.netstorm.boost.edge.EdgeException;
+import au.net.netstorm.boost.test.aggregator.DefaultFileSystemLocator;
+import au.net.netstorm.boost.test.aggregator.FileSystemLocator;
 import au.net.netstorm.boost.test.aggregator.RegexPattern;
 import au.net.netstorm.boost.test.aggregator.TestClassLocator;
 import au.net.netstorm.boost.test.aggregator.TestRegexPattern;
@@ -10,6 +13,7 @@ import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 
 // OK ClassDataAbstractionCoupling {
 public final class EdgeCheckerModuleTest extends BoooostCase {
+    private final FileSystemLocator fileLocator = new DefaultFileSystemLocator();
     private final ArrayMaster array = new DefaultArrayMaster();
     private final TestClassLocator classLocator = new TestClassLocator();
     private final EdgeChecker constructorChecker = new DefaultEdgeConstructorChecker();
@@ -47,7 +51,8 @@ public final class EdgeCheckerModuleTest extends BoooostCase {
 
     private Class[] getClasses(String regex) {
         RegexPattern pattern = new TestRegexPattern(regex);
-        return classLocator.locate(EdgeException.class, pattern);
+        File root = fileLocator.locate(EdgeException.class);
+        return classLocator.locate(root, pattern);
     }
 }
 // } OK ClassDataAbstractionCoupling

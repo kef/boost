@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.test.aggregator;
 
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,16 +11,9 @@ import java.util.List;
 public final class TestClassNameLocator implements ClassNameLocator {
     private final Comparator comparator = new TestFileComparator();
 
-    public JavaClass[] locate(Class starter, RegexPattern pattern) {
-        File root = getRoot(starter);
+    public JavaClass[] locate(File root, RegexPattern pattern) {
         File[] files = sortedDeepLocate(root, pattern);
         return toClassNames(root, files);
-    }
-
-    private File getRoot(Class starter) {
-        URL resource = starter.getResource("/");
-        String testRoot = resource.getFile();
-        return new File(testRoot);
     }
 
     private File[] sortedDeepLocate(File root, RegexPattern pattern) {

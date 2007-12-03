@@ -1,24 +1,25 @@
 package au.net.netstorm.boost.test.aggregator;
 
+import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 public final class FileSystemTestAggregator implements TestAggregator {
-    private final ClassLocator classLocator = new TestClassLocator();
-    private Class starter;
+    private final ClassLocator locator = new TestClassLocator();
+    private File root;
 
-    public FileSystemTestAggregator(Class starter) {
-        this.starter = starter;
+    public FileSystemTestAggregator(File root) {
+        this.root = root;
     }
 
     public Test aggregate(String suiteName, String regex) {
-        Class[] matches = findMatches(regex, starter);
+        Class[] matches = matches(regex);
         return buildSuite(suiteName, matches);
     }
 
-    private Class[] findMatches(String regex, Class starter) {
+    private Class[] matches(String regex) {
         RegexPattern expression = new TestRegexPattern(regex);
-        return classLocator.locate(starter, expression);
+        return locator.locate(root, expression);
     }
 
     private Test buildSuite(String suiteName, Class[] classes) {

@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.test.aggregator;
 
+import java.io.File;
+
 public interface ClassLocator {
-    Class[] locate(Class starter, RegexPattern pattern);
+    Class[] locate(File root, RegexPattern pattern);
 }
