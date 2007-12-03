@@ -31,5 +31,4 @@ final class DefaultSameHelper implements SameHelper {
         Class cls = value.getClass();
         return primitiveBoxer.isBoxed(cls);
     }
-
 }

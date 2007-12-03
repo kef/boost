@@ -42,7 +42,7 @@ public final class MonthOfYear {
                 "Invalid month (month=" + value + ").  Month must be between 0 and " + (MONTHS_IN_YEAR - 1) + ".");
     }
 
-// DEBT CyclomaticComplexity {
+    // DEBT CyclomaticComplexity {
     private int maxDays() {
         if (value == 1) return 29;
         if (value == 3 || value == 5 || value == 8 || value == 10) return 30;

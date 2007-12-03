@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.test.lifecycle;
 
 public interface TestLifecycleRunner {
-    void run(LifecycleTest test) throws Throwable;
+    void run() throws Throwable;
 }

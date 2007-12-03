@@ -8,9 +8,11 @@ class TestSubjects {
 
         Integer getSmeetOthEchuRchontIme(String frankyfurter, Map beanTypes);
     }
+
     interface TestInterfaceTwo {
         void justSomeOldMethod();
     }
+
     static final class TestOneInstanceFieldObject {
         private String value = "PAIR OR QUAD";
 
@@ -18,6 +20,7 @@ class TestSubjects {
             this.value = value;
         }
     }
+
     static final class TestOnePrimitiveInstanceFieldObject {
         private final int value;
 
@@ -25,14 +28,17 @@ class TestSubjects {
             this.value = i;
         }
     }
+
     static final class TestOneConstructor {
         public TestOneConstructor() {
         }
     }
+
     static final class TestOnePrivateConstructor {
         private TestOnePrivateConstructor() {
         }
     }
+
     static final class TestTwoConstructors {
         private TestTwoConstructors() {
         }
@@ -40,6 +46,7 @@ class TestSubjects {
         private TestTwoConstructors(String aString) {
         }
     }
+
     static final class TestThreeConstructors {
         private TestThreeConstructors() {
         }
@@ -50,8 +57,10 @@ class TestSubjects {
         private TestThreeConstructors(int anInt) {
         }
     }
+
     static final class TestZeroInstanceFieldsObject {
     }
+
     static final class TestZeroInstanceOneStaticFieldsObject {
         private static final String STATIC_FIELD_1 = "YO MAMA";
     }

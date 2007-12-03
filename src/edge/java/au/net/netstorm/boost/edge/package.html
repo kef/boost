@@ -1,43 +1,45 @@
 <p>
 
     Edge classes are very thin. There are written to achieve the following:
-    <ul>
-        <li>Wrap the JDK APIs in interfaces.</li>
-        <li>Map any checked exceptions to unchecked exceptions.</li>
-    </ul>
-    Any logic inside edge classes is frowned upon. We experimented with mapping every checked
-    exception to an equivalent unchecked exception but analysis of handling has indicated wrapping
-    every checked exception in a single runtime edge exception.
+<ul>
+    <li>Wrap the JDK APIs in interfaces.</li>
+    <li>Map any checked exceptions to unchecked exceptions.</li>
+</ul>
+Any logic inside edge classes is frowned upon. We experimented with mapping every checked
+exception to an equivalent unchecked exception but analysis of handling has indicated wrapping
+every checked exception in a single runtime edge exception.
 </p>
 <p>
     Current design decisions:
-    <ul>
-        <li>Add methods and classes on demand only.</li>
-        <li>Do not perform any null checking.</li>
-        <li>All classes are final.</li>
-        <li>Edge classes are not object oriented.</li>
-        <li>The edge method matches the original method with the addition of a first parameter - the object to
-            operate on.</li>
-        <li>No static keywords anywhere.</li>
-        <li>All checked exceptions are mapped to an EdgeException.</li>
-        <li>Edge interface is "Edge"classname.</li>
-        <li>Edge implementation is "DefaultEdge"classname.</li>
-        <li>Edge implementations have a single public no-arg constructor which is not seen.</li>
-        <li>We allow duplication where implied by the APIs being edged.</li>
-    </ul>
+<ul>
+    <li>Add methods and classes on demand only.</li>
+    <li>Do not perform any null checking.</li>
+    <li>All classes are final.</li>
+    <li>Edge classes are not object oriented.</li>
+    <li>The edge method matches the original method with the addition of a first parameter - the object to
+        operate on.
+    </li>
+    <li>No static keywords anywhere.</li>
+    <li>All checked exceptions are mapped to an EdgeException.</li>
+    <li>Edge interface is "Edge"classname.</li>
+    <li>Edge implementation is "DefaultEdge"classname.</li>
+    <li>Edge implementations have a single public no-arg constructor which is not seen.</li>
+    <li>We allow duplication where implied by the APIs being edged.</li>
+</ul>
 </p>
 <p>
     Outstanding questions/issues include:
-    <ul>
-        <li>What sort of Primordial object should edge implementations extend?</li>
-    </ul>
+<ul>
+    <li>What sort of Primordial object should edge implementations extend?</li>
+</ul>
 </p>
 <p>
     Tried:
-    <ul>
-        <li>Attempted to make the edge classes object oriented. This overly compicated the edge classes. It
-            also forced clients to pass Edge* classes around everywhere. We also had to implement methods which
-            do not throw exceptions, although this is a good thing for mocking.</li>
-    </ul>
+<ul>
+    <li>Attempted to make the edge classes object oriented. This overly compicated the edge classes. It
+        also forced clients to pass Edge* classes around everywhere. We also had to implement methods which
+        do not throw exceptions, although this is a good thing for mocking.
+    </li>
+</ul>
 </p>
 

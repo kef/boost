@@ -2,25 +2,27 @@ package au.net.netstorm.boost.test.lifecycle;
 
 import java.io.PrintStream;
 import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.test.core.Test;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 
 public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
+    ThrowableSupport throwableSupport;
+    TestLifecycleBlocks lifecycle;
+    Test test;
     Nu nu;
 
-    public void run(LifecycleTest test) throws Throwable {
-        TestLifecycleBlocks lifecycle = test.lifecycle();
+    public void run() throws Throwable {
         TestLifecycleBlockRunner blockRunner = nu.nu(DefaultTestLifecycleBlockRunner.class, lifecycle);
         try {
-            runTest(test, blockRunner);
+            runTest(blockRunner);
         } catch (Throwable t) {
-            ThrowableSupport throwableSupport = test.throwableSupport();
             throw throwableSupport.translate(t);
         } finally {
             tryCleanup(blockRunner);
         }
     }
 
-    public void runTest(LifecycleTest test, TestLifecycleBlockRunner blockRunner) throws Throwable {
+    public void runTest(TestLifecycleBlockRunner blockRunner) throws Throwable {
         blockRunner.pre();
         test.runTest();
         blockRunner.post();

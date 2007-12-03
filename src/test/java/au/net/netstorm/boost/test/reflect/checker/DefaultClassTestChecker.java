@@ -10,6 +10,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 // FIX SC600 reorder these.
+
 // FIX SC600 remove dupe.
 public final class DefaultClassTestChecker implements ClassTestChecker {
     private static final String[] EXCLUSIONS = {"hashCode", "getClass", "equals", "toString", "wait", "notify", "notifyAll"};

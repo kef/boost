@@ -42,6 +42,4 @@ public final class GenericAtomStructureChecker implements AtomStructureChecker {
     private void checkPropertiesImmutable(Class cls, FieldSpec[] fields) {
         if (config.checkImmutable()) immutabilityChecker.check(cls, fields);
     }
-
-
 }

@@ -2,11 +2,11 @@ package au.net.netstorm.boost.time.core;
 
 public final class DefaultTimeRangeMaster implements TimeRangeMaster {
     public TimeRange shorten(TimeRange range, Duration amount) {
-        return bump(range, - amount.millis);
+        return bump(range, -amount.millis);
     }
 
     public TimeRange lengthen(TimeRange range, Duration amount) {
-        return bump(range, + amount.millis);
+        return bump(range, +amount.millis);
     }
 
     public Duration duration(StartTime start, EndTime end) {

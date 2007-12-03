@@ -3,6 +3,7 @@ package au.net.netstorm.boost.time.core;
 import java.io.Serializable;
 
 // FIX SC507 They will be serializable once they become immutable.
+
 // FIX SC507 Make these guys immutable.
 public final class EndTime implements Serializable {
     public final TimePoint point;
@@ -14,7 +15,7 @@ public final class EndTime implements Serializable {
 
     public boolean equals(Object o) {
         if (o == null) return false;
-        if (! (o instanceof EndTime)) return false;
+        if (!(o instanceof EndTime)) return false;
         return equals((EndTime) o);
     }
 

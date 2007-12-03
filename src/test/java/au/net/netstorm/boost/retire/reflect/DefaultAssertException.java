@@ -49,6 +49,7 @@ public final class DefaultAssertException implements AssertException {
     // SUGGEST Too big.
 
     // DEBT JavaNCSS {
+
     private Throwable getCauseAtDepth(Throwable wrapperException, int depth) {
         Throwable cause = wrapperException.getCause();
         boolean maxedOut = cause == wrapperException;

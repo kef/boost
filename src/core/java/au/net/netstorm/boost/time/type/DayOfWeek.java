@@ -14,7 +14,7 @@ public final class DayOfWeek {
 
     public boolean equals(Object o) {
         if (o == null) return false;
-        if (! (o instanceof DayOfWeek)) return false;
+        if (!(o instanceof DayOfWeek)) return false;
         return ((DayOfWeek) o).value == value;
     }
 
@@ -22,7 +22,7 @@ public final class DayOfWeek {
         return 100;
     }
 
-// DEBT CyclomaticComplexity|JavaNCSS|ReturnCount {
+    // DEBT CyclomaticComplexity|JavaNCSS|ReturnCount {
     public String toString() {
         if (value == Calendar.SUNDAY) return "SUNDAY";
         if (value == Calendar.MONDAY) return "MONDAY";
@@ -40,7 +40,9 @@ public final class DayOfWeek {
     }
 
     // FIX SC507 Move this into "edge" and reference.
-// DEBT CyclomaticComplexity|JavaNCSS {
+
+    // DEBT CyclomaticComplexity|JavaNCSS {
+
     static void jdkCalendarCheck() {
         // Sanity check.  The logic of this class is based on assumption of the following.
         if (Calendar.SUNDAY != 1) throw new IllegalStateException(

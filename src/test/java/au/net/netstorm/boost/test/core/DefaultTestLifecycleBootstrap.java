@@ -9,9 +9,11 @@ import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.automock.TestFieldInjector;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
 import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.ProvidesData;
 
 public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     RandomProviderAssembler assembler;
+    ProvidesData registerer;
     DataProviders data;
     Registry registry;
     MockSupport mocks;
@@ -20,8 +22,13 @@ public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     public void bootstrap() {
         Provider random = assembler.everything(data, mocks);
         registry.instance(Provider.class, random);
+        registerProviders(random);
         registerAtomChecker(registry, random);
         registerFieldInjector(registry, random);
+    }
+
+    private void registerProviders(Provider random) {
+        registerer.register(data, random);
     }
 
     private void registerAtomChecker(Registry registry, Provider random) {

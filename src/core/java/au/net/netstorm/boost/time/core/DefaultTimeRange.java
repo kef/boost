@@ -31,7 +31,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
 
     public boolean equals(Object o) {
         if (o == null) return false;
-        if (! (o instanceof TimeRange)) return false;
+        if (!(o instanceof TimeRange)) return false;
         return equals((TimeRange) o);
     }
 
@@ -55,7 +55,7 @@ public final class DefaultTimeRange implements TimeRange, Serializable {
     }
 
     private boolean equals(TimeRange range) {
-        if (! range.start().equals(start)) return false;
+        if (!range.start().equals(start)) return false;
         return range.duration().equals(duration);
     }
 }

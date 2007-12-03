@@ -13,7 +13,7 @@ public final class StartTime implements Serializable {
 
     public boolean equals(Object o) {
         if (o == null) return false;
-        if (! (o instanceof StartTime)) return false;
+        if (!(o instanceof StartTime)) return false;
         return equals((StartTime) o);
     }
 

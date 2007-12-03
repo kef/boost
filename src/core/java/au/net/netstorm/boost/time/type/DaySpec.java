@@ -12,7 +12,7 @@ public final class DaySpec extends Primordial implements Comparable {
         validate();
     }
 
-// DEBT JavaNCSS {
+    // DEBT JavaNCSS {
     public int compareTo(Object o) {
         if (!getClass().isAssignableFrom(o.getClass())) throw new IllegalArgumentException(
                 "Cannot perform a comparison with a " + o.getClass() + ".");
