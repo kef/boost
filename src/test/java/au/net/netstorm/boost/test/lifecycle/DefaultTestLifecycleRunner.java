@@ -1,34 +1,35 @@
 package au.net.netstorm.boost.test.lifecycle;
 
 import java.io.PrintStream;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.test.exception.ThrowableSupport;
 
 public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
+    Nu nu;
 
     public void run(LifecycleTest test) throws Throwable {
-        TestLifecycle lifecycle = test.lifecycle();
-        boolean successful = false;
+        Class<? extends TestLifecycleBlocks> cls = test.lifecycle();
+        TestLifecycleBlockRunner blockRunner = nu.nu(DefaultTestLifecycleBlockRunner.class, cls);
         try {
-            runTest(test, lifecycle);
-            successful = true;
+            runTest(test, blockRunner);
         } catch (Throwable t) {
             ThrowableSupport throwableSupport = test.throwableSupport();
             throw throwableSupport.translate(t);
         } finally {
-            tryCleanup(lifecycle, successful);
+            tryCleanup(blockRunner);
         }
     }
 
-    public void runTest(LifecycleTest test, TestLifecycle lifecycle) throws Throwable {
-        lifecycle.pre();
+    public void runTest(LifecycleTest test, TestLifecycleBlockRunner blockRunner) throws Throwable {
+        blockRunner.pre();
         test.runTest();
-        lifecycle.post();
+        blockRunner.post();
     }
 
     // OK GenericIllegalRegexp {
-    public void tryCleanup(TestLifecycle lifecycle, boolean successful) {
+    public void tryCleanup(TestLifecycleBlockRunner blockRunner) {
         try {
-            lifecycle.cleanup(successful);
+            blockRunner.cleanup();
         } catch (Throwable t) {
             PrintStream err = System.err;
             err.print("Oopsy daisy, we've barfed during test lifecycle cleanup... ");

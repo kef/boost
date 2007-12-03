@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.test.specific;
 
+import java.util.HashMap;
+import java.util.Map;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.ProviderException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class DefaultDataProviders extends Primordial implements DataProviders {
     private final Map types = new HashMap();
