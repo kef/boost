@@ -29,48 +29,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleRunner.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleRunner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycle.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/Spider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/BoostTestLifecycleBlocks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/LifecycleTestCase.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/LifecycleTestCase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/ValidateTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/InterfaceRandomProviderDemoTest.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/InterfaceRandomProviderDemoTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/SpiderAssembler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/start/VmStyleAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/start/VmStyleAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/TestLifecycleBootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/type/DefaultAsciiBytesAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/type/DefaultAsciiBytesAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DestroyTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/InjectSubject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/specific/DefaultDataProviders.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/specific/DefaultDataProviders.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/field/DefaultNewerFieldAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/field/DefaultNewerFieldAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/InjectTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/LooseDataAtomDemoTest.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/LooseDataAtomDemoTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/SpiderBuilder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/introspect/DefaultMethodSpecAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/introspect/DefaultMethodSpecAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/InjectLazyFields.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/marker/InjectableTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestLifecycle.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/DataAtomDemoTest.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/DataAtomDemoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/ConcreteRandomProvider.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/ConcreteRandomProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/introspect/DefaultFieldSpecAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/introspect/DefaultFieldSpecAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultBlueprintAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultBlueprintAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DataRegisterer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultStampedResolvedInstanceAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultStampedResolvedInstanceAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/ArrayRandomProvider.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/random/ArrayRandomProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/time/DefaultStartEndAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/time/DefaultStartEndAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockMethodSpecAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockMethodSpecAtomicTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/VerifyExpectations.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/CallSetupFixtures.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/DefaultTestLifecycleBootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/LifecycleTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/LifecycleTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestCase.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestCase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/time/DefaultTimePeriodAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/time/DefaultTimePeriodAtomicTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleBlockRunner.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycleBlockRunner.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycleBlocks.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycleBlock.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
   </component>
@@ -196,7 +159,7 @@
       <file leaf-file-name="LifecycleTestCase.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/LifecycleTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="58" selection-start="2636" selection-end="2636" vertical-scroll-proportion="1.1384951">
+            <state line="58" column="58" selection-start="2636" selection-end="2636" vertical-scroll-proportion="1.1409836">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -207,7 +170,7 @@
       <file leaf-file-name="DefaultMockExpectations.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockExpectations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="19" selection-start="100" selection-end="100" vertical-scroll-proportion="0.05986696">
+            <state line="3" column="19" selection-start="100" selection-end="100" vertical-scroll-proportion="0.06">
               <folding />
             </state>
           </provider>
@@ -216,7 +179,7 @@
       <file leaf-file-name="DefaultThrowableSupport.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/exception/DefaultThrowableSupport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.03925845">
+            <state line="2" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.039344262">
               <folding />
             </state>
           </provider>
@@ -225,7 +188,7 @@
       <file leaf-file-name="DefaultTestLifecycleBootstrap.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/DefaultTestLifecycleBootstrap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0785169">
+            <state line="12" column="13" selection-start="586" selection-end="586" vertical-scroll-proportion="0.078688525">
               <folding />
             </state>
           </provider>
@@ -234,7 +197,7 @@
       <file leaf-file-name="DefaultSpiderBuilder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="37" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.8015267">
+            <state line="48" column="37" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.8032787">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -245,7 +208,7 @@
       <file leaf-file-name="DefaultSpiderAssembler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="29" selection-start="5768" selection-end="5768" vertical-scroll-proportion="1.2333697">
+            <state line="106" column="29" selection-start="5768" selection-end="5768" vertical-scroll-proportion="1.2360656">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -256,7 +219,7 @@
       <file leaf-file-name="DefaultSpider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.098146126">
+            <state line="7" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.09836066">
               <folding />
             </state>
           </provider>
@@ -265,7 +228,7 @@
       <file leaf-file-name="DefaultTestLifecycleRunner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0785169">
+            <state line="6" column="13" selection-start="203" selection-end="203" vertical-scroll-proportion="0.078688525">
               <folding />
             </state>
           </provider>
@@ -274,7 +237,7 @@
       <file leaf-file-name="InteractionTestCase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="64" selection-start="223" selection-end="223" vertical-scroll-proportion="0.098146126">
+            <state line="5" column="64" selection-start="223" selection-end="223" vertical-scroll-proportion="0.09836066">
               <folding />
             </state>
           </provider>
@@ -283,7 +246,7 @@
       <file leaf-file-name="DefaultTestLifecycleBlockRunner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleBlockRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0785169">
+            <state line="5" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.078688525">
               <folding />
             </state>
           </provider>
@@ -292,7 +255,7 @@
       <file leaf-file-name="BoostTestLifecycleBlocks.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/BoostTestLifecycleBlocks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="13" selection-start="334" selection-end="334" vertical-scroll-proportion="0.17666303">
+            <state line="9" column="13" selection-start="334" selection-end="334" vertical-scroll-proportion="0.17704917">
               <folding>
                 <marker date="1196661562000" expanded="true" signature="543:570" placeholder="{...}" />
                 <marker date="1196661562000" expanded="true" signature="601:629" placeholder="{...}" />
@@ -305,7 +268,7 @@
       <file leaf-file-name="InjectTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/InjectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="62" selection-start="465" selection-end="465" vertical-scroll-proportion="0.19629225">
+            <state line="13" column="62" selection-start="465" selection-end="465" vertical-scroll-proportion="0.19672132">
               <folding />
             </state>
           </provider>
@@ -314,7 +277,7 @@
       <file leaf-file-name="DefaultInjector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/core/DefaultInjector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="16" selection-start="579" selection-end="579" vertical-scroll-proportion="0.2355507">
+            <state line="15" column="16" selection-start="579" selection-end="579" vertical-scroll-proportion="0.23606557">
               <folding />
             </state>
           </provider>
@@ -323,7 +286,7 @@
       <file leaf-file-name="TestLifecycleBlock.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycleBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.03925845">
+            <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
               <folding />
             </state>
           </provider>
@@ -332,7 +295,7 @@
       <file leaf-file-name="LooseDataAtomDemoTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/LooseDataAtomDemoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="19" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.33369684">
+            <state line="17" column="19" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.33442622">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -343,7 +306,7 @@
       <file leaf-file-name="Spider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="20" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0785169">
+            <state line="6" column="20" selection-start="234" selection-end="234" vertical-scroll-proportion="0.078688525">
               <folding />
             </state>
           </provider>
@@ -352,7 +315,7 @@
       <file leaf-file-name="DefaultNewerDemoTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/DefaultNewerDemoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0785169">
+            <state line="4" column="13" selection-start="134" selection-end="134" vertical-scroll-proportion="0.078688525">
               <folding />
             </state>
           </provider>
@@ -361,7 +324,7 @@
       <file leaf-file-name="RecursiveDependencyDemoTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/RecursiveDependencyDemoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="60" selection-start="112" selection-end="112" vertical-scroll-proportion="0.03925845">
+            <state line="2" column="60" selection-start="112" selection-end="112" vertical-scroll-proportion="0.039344262">
               <folding />
             </state>
           </provider>
@@ -370,7 +333,7 @@
       <file leaf-file-name="TestLifecycle.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.03925845">
+            <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
               <folding />
             </state>
           </provider>
@@ -379,7 +342,7 @@
       <file leaf-file-name="LifecycleTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/LifecycleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0785169">
+            <state line="5" column="17" selection-start="180" selection-end="180" vertical-scroll-proportion="0.078688525">
               <folding />
             </state>
           </provider>
@@ -2381,14 +2344,14 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1468949" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736045" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33011717" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33011717" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24840765" order="1" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287388" order="10" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287388" order="10" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3700896" order="13" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998407" order="0" />
@@ -2533,7 +2496,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/LooseDataAtomDemoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="19" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.33369684">
+        <state line="17" column="19" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.33442622">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2542,7 +2505,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="29" selection-start="5768" selection-end="5768" vertical-scroll-proportion="1.2333697">
+        <state line="106" column="29" selection-start="5768" selection-end="5768" vertical-scroll-proportion="1.2360656">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2551,49 +2514,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.098146126">
+        <state line="7" column="19" selection-start="316" selection-end="316" vertical-scroll-proportion="0.09836066">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.03925845">
+        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/TestLifecycleBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.03925845">
+        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/core/DefaultInjector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="579" selection-end="579" vertical-scroll-proportion="0.2355507">
+        <state line="15" column="16" selection-start="579" selection-end="579" vertical-scroll-proportion="0.23606557">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/InjectTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="62" selection-start="465" selection-end="465" vertical-scroll-proportion="0.19629225">
+        <state line="13" column="62" selection-start="465" selection-end="465" vertical-scroll-proportion="0.19672132">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/InteractionTestCase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="64" selection-start="223" selection-end="223" vertical-scroll-proportion="0.098146126">
+        <state line="5" column="64" selection-start="223" selection-end="223" vertical-scroll-proportion="0.09836066">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/BoostTestLifecycleBlocks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="334" selection-end="334" vertical-scroll-proportion="0.17666303">
+        <state line="9" column="13" selection-start="334" selection-end="334" vertical-scroll-proportion="0.17704917">
           <folding>
             <marker date="1196661562000" expanded="true" signature="543:570" placeholder="{...}" />
             <marker date="1196661562000" expanded="true" signature="601:629" placeholder="{...}" />
@@ -2604,42 +2567,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/exception/DefaultThrowableSupport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.03925845">
+        <state line="2" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.039344262">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleBlockRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0785169">
+        <state line="5" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.078688525">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0785169">
+        <state line="6" column="13" selection-start="203" selection-end="203" vertical-scroll-proportion="0.078688525">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockExpectations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="19" selection-start="100" selection-end="100" vertical-scroll-proportion="0.05986696">
+        <state line="3" column="19" selection-start="100" selection-end="100" vertical-scroll-proportion="0.06">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/DefaultTestLifecycleBootstrap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0785169">
+        <state line="12" column="13" selection-start="586" selection-end="586" vertical-scroll-proportion="0.078688525">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/LifecycleTestCase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="58" selection-start="2636" selection-end="2636" vertical-scroll-proportion="1.1384951">
+        <state line="58" column="58" selection-start="2636" selection-end="2636" vertical-scroll-proportion="1.1409836">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
