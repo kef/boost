@@ -24,9 +24,7 @@ public final class FileSystemTestAggregator implements TestAggregator {
 
     private Test buildSuite(String suiteName, Class[] classes) {
         TestSuite result = new TestSuite(suiteName);
-        for (int i = 0; i < classes.length; i++) {
-            result.addTestSuite(classes[i]);
-        }
+        for (Class cls : classes) result.addTestSuite(cls);
         return result;
     }
 }
