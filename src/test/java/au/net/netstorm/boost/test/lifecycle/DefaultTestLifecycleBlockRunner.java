@@ -1,33 +1,27 @@
 package au.net.netstorm.boost.test.lifecycle;
 
-import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
-public class DefaultTestLifecycleBlockRunner implements TestLifecycleBlockRunner, Constructable {
-    private final Class<? extends TestLifecycleBlocks> lifecycleClass;
-    private TestLifecycleBlocks blocks;
+public class DefaultTestLifecycleBlockRunner implements TestLifecycleBlockRunner {
+    private final TestLifecycleBlocks lifecycle;
     Nu nu;
 
-    public DefaultTestLifecycleBlockRunner(Class<? extends TestLifecycleBlocks> lifecycleClass) {
-        this.lifecycleClass = lifecycleClass;
-    }
-
-    public void constructor() {
-        blocks = nu.nu(lifecycleClass);
+    public DefaultTestLifecycleBlockRunner(TestLifecycleBlocks lifecycle) {
+        this.lifecycle = lifecycle;
     }
 
     public void pre() {
-        Class[] pre = blocks.getPre();
+        Class[] pre = lifecycle.getPre();
         execute(pre);
     }
 
     public void post() {
-        Class[] post = blocks.getPost();
+        Class[] post = lifecycle.getPost();
         execute(post);
     }
 
     public void cleanup() {
-        Class[] cleanup = blocks.getCleanup();
+        Class[] cleanup = lifecycle.getCleanup();
         execute(cleanup);
     }
 

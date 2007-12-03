@@ -8,8 +8,8 @@ public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
     Nu nu;
 
     public void run(LifecycleTest test) throws Throwable {
-        Class<? extends TestLifecycleBlocks> cls = test.lifecycle();
-        TestLifecycleBlockRunner blockRunner = nu.nu(DefaultTestLifecycleBlockRunner.class, cls);
+        TestLifecycleBlocks lifecycle = test.lifecycle();
+        TestLifecycleBlockRunner blockRunner = nu.nu(DefaultTestLifecycleBlockRunner.class, lifecycle);
         try {
             runTest(test, blockRunner);
         } catch (Throwable t) {

@@ -35,8 +35,8 @@ public abstract class LifecycleTestCase extends CleanTestCase implements Lifecyc
         runner.run(this);
     }
 
-    public Class<? extends TestLifecycleBlocks> lifecycle() {
-        return BoostTestLifecycleBlocks.class;
+    public TestLifecycleBlocks lifecycle() {
+        return new BoostTestLifecycleBlocks();
     }
 
     public Spider getSpider() {
