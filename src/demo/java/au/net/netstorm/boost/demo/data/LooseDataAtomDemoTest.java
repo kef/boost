@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.LooseDataAtomTestChecker;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
@@ -16,7 +16,7 @@ public final class LooseDataAtomDemoTest extends LifecycleTestCase implements Ha
             new DefaultFieldSpec("nonImmutable", NonImmutableInterface.class);
     private static final FieldSpec[] SINGLE_STRING_PROPERTY = {STRING_PROPERTY};
     private static final FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
-    Provider random;
+    Random random;
     AtomTestChecker checker;
 
     public void setUpFixtures() {

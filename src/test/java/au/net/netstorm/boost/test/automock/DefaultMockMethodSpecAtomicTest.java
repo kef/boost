@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.LooseDataAtomTestChecker;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
@@ -16,7 +16,7 @@ public final class DefaultMockMethodSpecAtomicTest extends LifecycleTestCase imp
     FieldSpec parameters = new DefaultFieldSpec("parameters", Object[].class);
     FieldSpec[] fields = {returnValue, methodName, parameters};
     AtomTestChecker checker;
-    Provider random;
+    Random random;
 
     public void setUpFixtures() {
         checker = new LooseDataAtomTestChecker(random);

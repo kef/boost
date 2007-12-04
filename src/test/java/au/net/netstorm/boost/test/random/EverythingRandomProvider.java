@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.test.random;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.provider.SpecificProvider;
 
-public final class EverythingRandomProvider implements Provider {
+public final class EverythingRandomProvider implements Random {
     private final SpecificProvider arrays = new ArrayRandomProvider(this);
     private final SpecificProvider primitives = new PrimitiveProvider();
     private final SpecificProvider concretes = new ConcreteRandomProvider();

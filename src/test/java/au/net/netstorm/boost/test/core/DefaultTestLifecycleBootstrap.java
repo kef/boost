@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.test.core;
 
 import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
@@ -20,8 +21,8 @@ public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     Test test;
 
     public void bootstrap() {
-        Provider random = assembler.everything(data, mocks);
-        registry.instance(Provider.class, random);
+        Random random = assembler.everything(data, mocks);
+        registry.instance(Random.class, random);
         registerProviders(random);
         registerAtomChecker(registry, random);
         registerFieldInjector(registry, random);

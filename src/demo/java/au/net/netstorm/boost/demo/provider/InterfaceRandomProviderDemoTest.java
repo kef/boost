@@ -2,7 +2,7 @@ package au.net.netstorm.boost.demo.provider;
 
 import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.test.automock.DefaultMockSupport;
@@ -21,7 +21,7 @@ public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase imp
     private Class iFace = HappyDay.class;
     private Class impl = DefaultHappyDay.class;
     private DataProviders dataProviders = new DefaultDataProviders();
-    private Provider random;
+    private Random random;
     private SpecificProvider interfaceProvider;
 
     public InterfaceRandomProviderDemoTest() {
