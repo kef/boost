@@ -33,6 +33,7 @@ public class LifecycleTestCase extends CleanTestCase {
         runner.run();
     }
 
+    // SUGGEST (Dec 4, 2007): Put public methods on interface?
     public Spider getSpider() {
         TestSpiderBuilder builder = new DefaultTestSpiderBuilder();
         return builder.build();
