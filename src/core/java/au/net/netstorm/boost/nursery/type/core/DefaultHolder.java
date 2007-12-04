@@ -13,6 +13,7 @@ import au.net.netstorm.boost.util.type.Sensitive;
 
 // FIX 2233 Pull out array cloning and delegate - alternatively DefaultArrayHolder<T>?
 // FIX (Nov 21, 2007) 2233 Needs testing.
+// FIX (Nov 21, 2007) 2233 Move out of nursery
 
 // OK GenericIllegalRegexp {
 public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
