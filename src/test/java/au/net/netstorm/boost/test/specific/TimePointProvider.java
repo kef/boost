@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.test.specific;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.time.core.DefaultTimePoint;
 import au.net.netstorm.boost.util.type.Data;
 
 public final class TimePointProvider implements DataProvider {
-    private final Provider random;
+    private final Random random;
 
-    public TimePointProvider(Provider random) {
+    public TimePointProvider(Random random) {
         this.random = random;
     }
 

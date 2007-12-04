@@ -28,7 +28,7 @@ public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
         registerFieldInjector(registry, random);
     }
 
-    private void registerProviders(Provider random) {
+    private void registerProviders(Random random) {
         registerer.register(data, random);
     }
 
