@@ -1,16 +1,19 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.test.aggregator.DefaultTestAggregator;
-import au.net.netstorm.boost.test.aggregator.TestAggregator;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import junit.framework.Test;
 
+import java.io.File;
+
 // FIX SC600 Rename "build" area to "gen".
 public class DemoTestSuite extends BoooostCase {
-    private static final Class CLASS_IN_TEST_TREE = DemoTestSuite.class;
-    private static final TestAggregator AGGREGATOR = new DefaultTestAggregator(CLASS_IN_TEST_TREE);
+    private static final TestSuiteHelper HELPER = new DefaultTestSuiteHelper("Demo", DemoTestSuite.class);
 
     public static Test suite() {
-        return AGGREGATOR.aggregate("Demo", ".*DemoTest");
+        return HELPER.suite();
+    }
+
+    public static Test suite(File root) {
+        return HELPER.suite(root);
     }
 }
