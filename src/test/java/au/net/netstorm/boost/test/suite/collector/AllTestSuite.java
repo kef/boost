@@ -6,6 +6,7 @@ import junit.framework.TestSuite;
 
 import java.io.File;
 
+// FIX (Dec 5, 2007) CORE SPLIT 87471 Is there any way to clean this up?
 public class AllTestSuite extends BoooostCase {
     public static Test suite() {
         TestSuite suite = nuSuite();
