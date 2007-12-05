@@ -26,6 +26,8 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
     ResolvedInstance resolved;
     FieldResolver subject;
     Implementation host;
+    Exception ime = new InterfaceMapException(happyChap, "reason");
+    Exception cpe = new CannotProvideException(happyChap);
 
     public void setUpFixtures() {
         subject = new DefaultFieldResolver(resolverMock);
@@ -36,14 +38,9 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
         checkResolve(BEER_IN_HIS_TUMMY, beerInHisTummy);
     }
 
-    public void testWrapsInterfaceMapExceptionOnResolveFail() {
-        Exception exception = new InterfaceMapException(happyChap, "reason");
-        expectException(exception);
-    }
-
-    public void testWrapsConnotProvideExceptionOnResolveFail() {
-        Exception exception = new CannotProvideException(happyChap);
-        expectException(exception);
+    public void testWrapsException() {
+        expectException(ime);
+        expectException(cpe);
     }
 
     private void expectException(Exception exception) {
