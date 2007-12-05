@@ -63,7 +63,7 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
 
     public final String toString() {
         // FIX (Nov 29, 2007) 2233 Change sensitive string to a hash of value
-        if (MARKER.is(this, Sensitive.class)) return "My ass hurts! Ouch!";
+        if (MARKER.is(this, Sensitive.class)) return "Ouch!";
         FieldValueSpec field = new DefaultFieldValueSpec("value", value);
         FieldValueSpec[] fields = {field};
         return TO_STRING_MASTER.formatFields(this, fields);
