@@ -23,7 +23,7 @@ public class DefaultExpectations implements Expectations {
         mocks.manyCalls(ref, returnValue, methodName, parameters);
     }
 
-    public <T> void nu(T obj, Class<T> impl, Object... params) {
+    public <T> void nu(T obj, Class<? extends T> impl, Object... params) {
         nus.nu(obj, impl, params, params);
     }
 }
