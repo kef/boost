@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.spider.newer;
+package au.net.netstorm.boost.demo.spider.instance;
 
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;

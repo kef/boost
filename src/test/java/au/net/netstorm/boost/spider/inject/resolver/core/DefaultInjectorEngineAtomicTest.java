@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
+import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;

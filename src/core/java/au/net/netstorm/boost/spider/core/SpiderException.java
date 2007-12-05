@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
+import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.primordial.BoooostException;
 
 public abstract class SpiderException extends RuntimeException implements BoooostException {

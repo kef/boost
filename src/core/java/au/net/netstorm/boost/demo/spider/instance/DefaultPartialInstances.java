@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.spider.newer;
+package au.net.netstorm.boost.demo.spider.instance;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

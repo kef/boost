@@ -13,7 +13,6 @@ import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.ImplicitFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.NewerFactory;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.util.impl.ImplMaster;
@@ -64,7 +63,6 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         // FIX (Nov 28, 2007) IOC 2215 all factories?
         implicitFactory(registry, impler);
         blueprintedFactory(registry, blueprints);
-        registry.factory(NewerFactory.class);
     }
 
     private void implicitFactory(Registry registry, ImplMaster impler) {

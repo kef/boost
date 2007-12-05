@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.spider.core;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.demo.spider.newer.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.newer.PartialInstances;
+import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
+import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
