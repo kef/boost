@@ -8,4 +8,6 @@ public interface MethodTestUtil {
     Object invokeExact(Object invokee, String methodName, Object[] parameters);
 
     Class getThrowsType(Method method);
+
+    Object invoke(Class cls, String methodName, Object[] parameters);
 }
