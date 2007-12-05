@@ -19,13 +19,13 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     private static final Object[] NO_ARGS = new Object[0];
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;
-    Class soapFactory = SoapFactory.class;
-    Class cereal = BreakfastCereal.class;
-    Class football = Football.class;
-    Class sport = Sport.class;
+    Class soapFactoryClass = SoapFactory.class;
+    Class cerealClass = BreakfastCereal.class;
+    Class footballClass = Football.class;
+    Class sportClass = Sport.class;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
-    Interface sportInterface = new DefaultInterface(sport);
-    Interface cerealInterface = new DefaultInterface(cereal);
+    Interface sportInterface = new DefaultInterface(sportClass);
+    Interface cerealInterface = new DefaultInterface(cerealClass);
     CocoPops cocoPops = new CocoPops();
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     Blueprints blueprintsMock;
@@ -43,17 +43,17 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
 
     public void testMultiple() {
         setUpMultiple();
-        subject.multiple(sport, football);
+        subject.multiple(sportClass, footballClass);
     }
 
     public void testSingle() {
         setUpSingle();
-        subject.single(sport, football);
+        subject.single(sportClass, footballClass);
     }
 
     public void testInstance() {
         setUpInstance();
-        subject.instance(cereal, cocoPops);
+        subject.instance(cerealClass, cocoPops);
     }
 
     public void testFactoryByRef() {
@@ -61,11 +61,10 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
         subject.factory(factoryDummy);
     }
 
-    // FIX (Dec 6, 2007) IOC 85875 Convert to the new expectations
     public void testFactoryByClassSucceeds() {
-        expect.oneCall(nuMock, factoryDummy, "nu", soapFactory, NO_ARGS);
+        expect.nu(factoryDummy, soapFactoryClass, NO_ARGS);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
-        subject.factory(soapFactory);
+        subject.factory(soapFactoryClass);
     }
 
     private void setUpInstance() {
@@ -73,12 +72,12 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     private void setUpMultiple() {
-        Blueprint multipleFootballBlueprint = blueprint(MULTIPLE, football);
+        Blueprint multipleFootballBlueprint = blueprint(MULTIPLE, footballClass);
         expect.oneCall(blueprintsMock, VOID, "put", sportInterface, multipleFootballBlueprint);
     }
 
     private void setUpSingle() {
-        Blueprint singleFootballBlueprint = blueprint(SINGLE, football);
+        Blueprint singleFootballBlueprint = blueprint(SINGLE, footballClass);
         expect.oneCall(blueprintsMock, VOID, "put", sportInterface, singleFootballBlueprint);
     }
 
