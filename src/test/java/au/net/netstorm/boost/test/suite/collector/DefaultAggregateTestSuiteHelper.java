@@ -1,19 +1,18 @@
 package au.net.netstorm.boost.test.suite.collector;
 
+import java.io.File;
 import au.net.netstorm.boost.test.aggregator.DefaultFileSystemLocator;
 import au.net.netstorm.boost.test.aggregator.DefaultTestAggregator;
 import au.net.netstorm.boost.test.aggregator.FileSystemLocator;
 import au.net.netstorm.boost.test.aggregator.TestAggregator;
 import junit.framework.Test;
 
-import java.io.File;
-
-public class DefaultTestSuiteHelper implements TestSuiteHelper {
+public class DefaultAggregateTestSuiteHelper implements AggregateTestSuiteHelper {
     private final FileSystemLocator locator = new DefaultFileSystemLocator();
     private final String testType;
     private final Class classInTree;
 
-    public DefaultTestSuiteHelper(String testType, Class classInTree) {
+    public DefaultAggregateTestSuiteHelper(String testType, Class classInTree) {
         this.testType = testType;
         this.classInTree = classInTree;
     }
