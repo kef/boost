@@ -61,6 +61,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
         subject.factory(factoryDummy);
     }
 
+    // FIX (Dec 6, 2007) IOC 85875 Convert to the new expectations
     public void testFactoryByClassSucceeds() {
         expect.oneCall(nuMock, factoryDummy, "nu", soapFactory, NO_ARGS);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
