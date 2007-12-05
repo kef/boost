@@ -20,8 +20,4 @@ public final class DefaultMockExpectations implements MockExpectations {
         MockMethodSpec spec = new DefaultMockMethodSpec(returnValue, methodName, parameters);
         delegate.manyCalls(ref, spec);
     }
-
-    public void nu(Object ref, Object returnValue, Class impl, Object... params) {
-        oneCall(ref, returnValue, "nu", impl, params);
-    }
 }

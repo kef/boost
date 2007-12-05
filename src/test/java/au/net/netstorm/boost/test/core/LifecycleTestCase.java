@@ -16,16 +16,17 @@ import au.net.netstorm.boost.test.spider.TestSpiderBuilder;
 public class LifecycleTestCase extends CleanTestCase {
     public static final Object VOID = MockExpectations.VOID;
     private final TestLifecycleRunner runner;
-    public final MockExpectations expect;
-    private final MockSupport mocks;
+    public final Expectations expect;
     public final Spider spider;
 
     protected LifecycleTestCase() {
         spider = getSpider();
         setupRegistry();
         bootstrap();
-        mocks = spider.resolve(MockSupport.class);
-        expect = spider.nu(DefaultMockExpectations.class, mocks);
+        MockSupport mocks = spider.resolve(MockSupport.class);
+        MockExpectations mockExpectations = spider.nu(DefaultMockExpectations.class, mocks);
+        NuExpectations nuExpectations = spider.nu(DefaultNuExpectations.class, mockExpectations);
+        expect = spider.nu(DefaultExpectations.class, mockExpectations, nuExpectations);
         runner = spider.resolve(TestLifecycleRunner.class);
     }
 

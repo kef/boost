@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
+import au.net.netstorm.boost.spider.registry.CannotProvideException;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
@@ -35,10 +36,20 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
         checkResolve(BEER_IN_HIS_TUMMY, beerInHisTummy);
     }
 
-    public void testWrapsExceptionOnResolveFail() {
+    public void testWrapsInterfaceMapExceptionOnResolveFail() {
+        Exception exception = new InterfaceMapException(happyChap, "reason");
+        expectException(exception);
+    }
+
+    public void testWrapsConnotProvideExceptionOnResolveFail() {
+        Exception exception = new CannotProvideException(happyChap);
+        expectException(exception);
+    }
+
+    private void expectException(Exception exception) {
         Field field = field(HAPPY_CHAP);
         setupHost(field);
-        setupThrowsExpectations();
+        expect.oneCall(resolverMock, exception, "resolve", happyChap, host);
         try {
             subject.resolve(field);
             fail();
@@ -47,10 +58,6 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
 
     private void checkResolve(String fieldName, Interface iface) {
         Field field = field(fieldName);
-        checkResolve(iface, field);
-    }
-
-    private void checkResolve(Interface iface, Field field) {
         setupHost(field);
         expect.oneCall(resolverMock, resolved, "resolve", iface, host);
         ResolvedInstance result = subject.resolve(field);
@@ -60,15 +67,6 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
     private void setupHost(Field field) {
         Class hostClass = field.getDeclaringClass();
         host = new DefaultImplementation(hostClass);
-    }
-
-    private void setupThrowsExpectations() {
-        InterfaceMapException interfaceMapException = makeException();
-        expect.oneCall(resolverMock, interfaceMapException, "resolve", happyChap, host);
-    }
-
-    private InterfaceMapException makeException() {
-        return new InterfaceMapException(happyChap, "reason");
     }
 
     private Field field(String name) {
