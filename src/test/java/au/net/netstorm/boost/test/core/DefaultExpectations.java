@@ -24,6 +24,6 @@ public class DefaultExpectations implements Expectations {
     }
 
     public <T> void nu(T obj, Class<? extends T> impl, Object... params) {
-        nus.nu(obj, impl, params, params);
+        nus.nu(obj, impl, params);
     }
 }
