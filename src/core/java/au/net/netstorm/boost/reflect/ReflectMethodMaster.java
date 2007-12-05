@@ -10,5 +10,6 @@ public interface ReflectMethodMaster {
 
     Method[] getPublicMethods(Object ref);
 
+    // SUGGEST (Dec 5, 2007): Big and long.  Like mine but not as pretty.
     Method getMethodWithExactParams(Class cls, MethodSpec method);
 }
