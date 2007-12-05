@@ -28,63 +28,11 @@
     <option name="USER" value="" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/DefaultBob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/DefaultBob.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/newer/DefaultPartialInstancesAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstancesAtomicTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/Bob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/Bob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/core/SpiderTryFinallyAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/core/SpiderTryFinallyAtomicTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/DefaultRob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/DefaultRob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/field/DefaultClassToNuAssembler.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderAssembler.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/assembly/NewerProxySupplierAssembler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/NewDefaultBob.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/newer" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/field/Fred.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/assembly/DefaultNewerAssembler.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/NewDefaultBob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/NewDefaultBob.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/NewerFactory.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/TopJob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/TopJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/SpiderTryCatchFinally.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/SpiderTryCatchFinally.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/NewTed.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/DefaultNewerDemoTest.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/DefaultNewerDemoTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/assembly/DefaultNewerProxySupplier.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/field/NewTedImpl.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/field/NewTedImpl.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/DefaultBob.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/NewTopJob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/NewTopJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/assembly/NewDefaultTestDummy.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/assembly/NewDefaultTestDummy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultInjectorEngine.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultInjectorEngine.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/field/ClassToNuAssembler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/assembly/NewerAssembler.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultInjectorEngineAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/inject/resolver/core/DefaultInjectorEngineAtomicTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/Job.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/core/Newer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/assembly/DefaultNewerProxySupplierAssembler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/newer/core/NewerProxySupplier.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstances.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstances.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/DefaultRob.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/TopJob.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/Bob.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/newer/DefaultPartialInstances.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstances.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstancesAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstancesAtomicTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/assembly/DefaultNewerProxySupplierAtomicTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/DefaultNewerDemoTest.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/Job.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/Job.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/newer" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/instance" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/Rob.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/PartialInstances.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/PartialInstances.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/assembly/DefaultNewerAssemblerAtomicTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/SpiderException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/SpiderException.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/NewerFactoryAtomicTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/NewTopJob.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/newer/field/NewDefaultNed.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/newer/Rob.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/instance/Rob.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/newer/PartialInstances.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/PartialInstances.java" />
-    </list>
+    <list default="true" name="Default" comment="" />
     <list name="Rejected commit: Default" comment="" />
+    <list name="merde" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
+    </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="Commander">
@@ -208,16 +156,8 @@
       <file leaf-file-name="LifecycleTestCase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/LifecycleTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="5" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.35409835">
-              <folding>
-                <marker date="1196819395000" expanded="false" signature="49:780" placeholder="..." />
-                <marker date="1196819395000" expanded="true" signature="1090:1350" placeholder="{...}" />
-                <marker date="1196819395000" expanded="true" signature="1401:1430" placeholder="{...}" />
-                <marker date="1196819395000" expanded="true" signature="1525:1632" placeholder="{...}" />
-                <marker date="1196819395000" expanded="true" signature="1679:1841" placeholder="{...}" />
-                <marker date="1196819395000" expanded="true" signature="1876:2017" placeholder="{...}" />
-                <marker date="1196819395000" expanded="true" signature="2048:2175" placeholder="{...}" />
-              </folding>
+            <state line="29" column="5" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.23126338">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -225,7 +165,7 @@
       <file leaf-file-name="CleanTestCase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/CleanTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="0.47213113">
+            <state line="24" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="0.3083512">
               <folding />
             </state>
           </provider>
@@ -234,7 +174,7 @@
       <file leaf-file-name="DefaultTestLifecycleBlockRunner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleBlockRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="13" selection-start="113" selection-end="113" vertical-scroll-proportion="0.078688525">
+            <state line="4" column="13" selection-start="113" selection-end="113" vertical-scroll-proportion="0.051391862">
               <folding />
             </state>
           </provider>
@@ -243,7 +183,7 @@
       <file leaf-file-name="BoooostCase.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/BoooostCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="39" selection-start="520" selection-end="520" vertical-scroll-proportion="0.02">
+            <state line="15" column="39" selection-start="520" selection-end="520" vertical-scroll-proportion="0.012987013">
               <folding />
             </state>
           </provider>
@@ -252,7 +192,7 @@
       <file leaf-file-name="NoImplementationExceptionAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/NoImplementationExceptionAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="257" selection-end="257" vertical-scroll-proportion="0.05901639">
+            <state line="6" column="0" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0385439">
               <folding />
             </state>
           </provider>
@@ -261,7 +201,7 @@
       <file leaf-file-name="Nu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.039344262">
+            <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.025695931">
               <folding />
             </state>
           </provider>
@@ -270,7 +210,7 @@
       <file leaf-file-name="DefaultNu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="463" selection-end="463" vertical-scroll-proportion="0.078688525">
+            <state line="10" column="19" selection-start="463" selection-end="463" vertical-scroll-proportion="0.051391862">
               <folding />
             </state>
           </provider>
@@ -279,7 +219,7 @@
       <file leaf-file-name="Shu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/Shu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="13" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
+            <state line="2" column="13" selection-start="64" selection-end="64" vertical-scroll-proportion="0.025695931">
               <folding />
             </state>
           </provider>
@@ -288,7 +228,7 @@
       <file leaf-file-name="Tongue.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/Tongue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.039344262">
+            <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.025695931">
               <folding />
             </state>
           </provider>
@@ -297,7 +237,7 @@
       <file leaf-file-name="DefaultNuAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/DefaultNuAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.53114754">
+            <state line="37" column="0" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.34689507">
               <folding />
             </state>
           </provider>
@@ -306,10 +246,8 @@
       <file leaf-file-name="SpiderTryFinallyAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/core/SpiderTryFinallyAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="508" selection-end="508" vertical-scroll-proportion="0.19672132">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="10" column="19" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0770878">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -317,16 +255,52 @@
       <file leaf-file-name="DefaultPartialInstances.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstances.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="28" selection-start="661" selection-end="661" vertical-scroll-proportion="0.33442622">
+            <state line="22" column="28" selection-start="661" selection-end="661" vertical-scroll-proportion="0.21841542">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultPartialInstancesAtomicTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DefaultPartialInstancesAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstancesAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.43278688">
+            <state line="29" column="0" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.28265524">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultMockExpectations.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockExpectations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="61" selection-start="107" selection-end="107" vertical-scroll-proportion="0.025695931">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build-compile.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build-compile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.4173913">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultMockMethodSpec.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockMethodSpec.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="12" selection-start="111" selection-end="111" vertical-scroll-proportion="0.051391862">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MockExpectations.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/MockExpectations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="69" selection-start="519" selection-end="519" vertical-scroll-proportion="0.1541756">
               <folding />
             </state>
           </provider>
@@ -335,7 +309,7 @@
       <file leaf-file-name="DefaultResolverEngine.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="25" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.5508197">
+            <state line="36" column="25" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.35974303">
               <folding />
             </state>
           </provider>
@@ -344,7 +318,7 @@
       <file leaf-file-name="DefaultSpiderBuilder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="0" selection-start="3065" selection-end="3065" vertical-scroll-proportion="0.9836066">
+            <state line="65" column="0" selection-start="3065" selection-end="3065" vertical-scroll-proportion="0.6423983">
               <folding />
             </state>
           </provider>
@@ -353,7 +327,7 @@
       <file leaf-file-name="Factory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Factory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="285" selection-end="285" vertical-scroll-proportion="0.078688525">
+            <state line="7" column="17" selection-start="285" selection-end="285" vertical-scroll-proportion="0.051391862">
               <folding />
             </state>
           </provider>
@@ -438,6 +412,28 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="impl" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="test" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="validate" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -2144,7 +2140,7 @@
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <showStructure PackagesPane="false" Scope="false" Favorites="false" ProjectPane="false" />
+      <showStructure ProjectPane="false" Scope="false" PackagesPane="false" Favorites="false" />
       <autoscrollToSource />
       <autoscrollFromSource PackagesPane="true" ProjectPane="true" />
       <sortByType />
@@ -2153,13 +2149,33 @@
   <component name="PropertiesComponent">
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="RunManagerConfig.compileBeforeRunning" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="326" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="402" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="35" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="382" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="321" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="1196" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="426" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="RunManagerConfig.compileBeforeRunning" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="351" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="1121" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="322" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -2182,7 +2198,7 @@
     </key>
   </component>
   <component name="RestoreUpdateTree">
-    <UpdateInfo date="12/5/07 11:50 AM" ActionInfo="_Update">
+    <UpdateInfo date="12/5/07 3:13 PM" ActionInfo="_Update">
       <UpdatedFiles>
         <FILE-GROUP>
           <option name="myUpdateName" value="Updated from server" />
@@ -2196,15 +2212,11 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/aggregator/DefaultTestAggregator.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/LifecycleTestCase.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AtomicTestSuite.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/DemoTestSuite.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/DefaultHolder.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/Types.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/DefaultTypes.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/Holder.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/reflect/ReflectMethodMaster.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/DefaultHolder.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AllTestSuite.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AtomicTestSuite.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/DemoTestSuite.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -2212,9 +2224,10 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/TestSuiteHelper.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/DefaultTestSuiteHelper.java</PATH>
-            <PATH vcs="svn" revision="2936">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/primitive/LongHolder.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/AggregateTestSuiteHelper.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/TestSuiteBuilder.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/DefaultAggregateTestSuiteHelper.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/DefaultTestSuiteBuilder.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -2222,6 +2235,8 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="true" />
             <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/TestSuiteHelper.java</PATH>
+            <PATH vcs="svn" revision="2941">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/suite/collector/DefaultTestSuiteHelper.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -2284,28 +2299,12 @@
     </UpdateInfo>
   </component>
   <component name="RunManager" selected="JUnit.AllTestSuite">
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <module name="" />
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
@@ -2327,12 +2326,28 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <module name="" />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration default="false" name="AllTestSuite" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <pattern value="au.net.netstorm.boost.test.suite.collector.*" />
@@ -2605,15 +2620,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="22" width="2560" height="1574" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29221228" order="6" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14649682" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14609873" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32736045" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33011717" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33011717" order="8" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
@@ -2655,7 +2670,7 @@
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="DSA" />
+    <option name="LAST_COMMIT_MESSAGE" value="IOC - Replace newers with nu.nu()" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -2674,6 +2689,7 @@
     <MESSAGE value="extracted prefix as a constructor arg to basic impl mapper" />
     <MESSAGE value="Story:  IOC - Refactor SpiderHome." />
     <MESSAGE value="DSA" />
+    <MESSAGE value="IOC - Replace newers with nu.nu()" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -2764,109 +2780,107 @@
     <option name="multicastPort" value="3274" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/CleanTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="0.47213113">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/lifecycle/DefaultTestLifecycleBlockRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="113" selection-end="113" vertical-scroll-proportion="0.078688525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/core/BoooostCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="39" selection-start="520" selection-end="520" vertical-scroll-proportion="0.02">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/util/impl/NoImplementationExceptionAtomicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="257" selection-end="257" vertical-scroll-proportion="0.05901639">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Factory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="285" selection-end="285" vertical-scroll-proportion="0.078688525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="0" selection-start="3065" selection-end="3065" vertical-scroll-proportion="0.9836066">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.025695931">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="463" selection-end="463" vertical-scroll-proportion="0.078688525">
+        <state line="10" column="19" selection-start="463" selection-end="463" vertical-scroll-proportion="0.051391862">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/Shu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="64" selection-end="64" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="13" selection-start="64" selection-end="64" vertical-scroll-proportion="0.025695931">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/Tongue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.039344262">
+        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.025695931">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/DefaultNuAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.53114754">
+        <state line="37" column="0" selection-start="1542" selection-end="1542" vertical-scroll-proportion="0.34689507">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/core/SpiderTryFinallyAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="508" selection-end="508" vertical-scroll-proportion="0.19672132">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="25" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.5508197">
+        <state line="10" column="19" selection-start="508" selection-end="508" vertical-scroll-proportion="0.0770878">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstances.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="28" selection-start="661" selection-end="661" vertical-scroll-proportion="0.33442622">
+        <state line="22" column="28" selection-start="661" selection-end="661" vertical-scroll-proportion="0.21841542">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/instance/DefaultPartialInstancesAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.43278688">
+        <state line="29" column="0" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.28265524">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockMethodSpec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="12" selection-start="111" selection-end="111" vertical-scroll-proportion="0.051391862">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="25" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.35974303">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpiderBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="0" selection-start="3065" selection-end="3065" vertical-scroll-proportion="0.6423983">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Factory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="285" selection-end="285" vertical-scroll-proportion="0.051391862">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/DefaultMockExpectations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="61" selection-start="107" selection-end="107" vertical-scroll-proportion="0.025695931">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-compile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.4173913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/test/automock/MockExpectations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="69" selection-start="519" selection-end="519" vertical-scroll-proportion="0.1541756">
           <folding />
         </state>
       </provider>
