@@ -1,11 +1,8 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import java.lang.reflect.InvocationHandler;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
-import au.net.netstorm.boost.spider.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.core.SpiderTryCatchFinally;
@@ -32,9 +29,13 @@ import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactoryAssembler;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactoryAssembler;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
+
+import java.lang.reflect.InvocationHandler;
 
 // SUGGEST: No need to return everything, just register the relevant parts as part of construction ;)
 

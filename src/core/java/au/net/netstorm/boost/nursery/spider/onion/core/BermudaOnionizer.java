@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
-import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.spider.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactoryAssembler;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactoryAssembler;
 import au.net.netstorm.boost.util.type.Data;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -15,6 +14,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
+
+import java.lang.reflect.InvocationHandler;
 
 // FIX 1887 Use the Onion interface to mark the front door proxy.
 // FIX 1887 Create a utility to determine whether an object reference is an onion or not.

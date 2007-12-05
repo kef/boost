@@ -3,13 +3,13 @@ package au.net.netstorm.boost.test.random;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.provider.SpecificProvider;
-import au.net.netstorm.boost.spider.assembly.DefaultProxyFactoryAssembler;
-import au.net.netstorm.boost.spider.assembly.ProxyFactoryAssembler;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactoryAssembler;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.proxy.ProxyFactoryAssembler;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 

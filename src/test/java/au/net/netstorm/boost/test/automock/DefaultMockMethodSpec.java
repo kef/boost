@@ -10,7 +10,7 @@ final class DefaultMockMethodSpec extends Primordial implements MockMethodSpec {
     public DefaultMockMethodSpec(Object returnValue, String methodName, Object[] parameters) {
         this.returnValue = returnValue;
         this.methodName = methodName;
-        this.parameters = (Object[]) parameters.clone();
+        this.parameters = parameters.clone();
     }
 
     public Object getReturnValue() {
@@ -22,6 +22,6 @@ final class DefaultMockMethodSpec extends Primordial implements MockMethodSpec {
     }
 
     public Object[] getParameters() {
-        return (Object[]) parameters.clone();
+        return parameters.clone();
     }
 }
