@@ -10,6 +10,7 @@ import junit.framework.Test;
 public class DefaultAggregateTestSuiteHelper implements AggregateTestSuiteHelper {
     private final FileSystemLocator locator = new DefaultFileSystemLocator();
     private final String testType;
+    // FIX (Dec 5, 2007) CORE SPLIT 87471 Experiment with an arbitrary classInTree.
     private final Class classInTree;
 
     public DefaultAggregateTestSuiteHelper(String testType, Class classInTree) {
