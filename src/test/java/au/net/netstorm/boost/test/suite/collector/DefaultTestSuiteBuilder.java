@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import java.io.File;
 import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import junit.framework.TestSuite;
+
+import java.io.File;
 
 public class DefaultTestSuiteBuilder implements TestSuiteBuilder {
     private static final Object[] NO_ARGS = {};
@@ -11,6 +12,7 @@ public class DefaultTestSuiteBuilder implements TestSuiteBuilder {
     private final String name;
     MethodTestUtil methoder = new DefaultMethodTestUtil();
 
+    // FIX (Dec 6, 2007)   87471 Class<T extends BoostTests> 
     public DefaultTestSuiteBuilder(String name, Class... suites) {
         this.name = name;
         this.suites = suites;
