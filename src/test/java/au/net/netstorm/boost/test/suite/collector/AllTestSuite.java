@@ -12,6 +12,7 @@ public class AllTestSuite extends BoooostCase {
         return COMPOSITES.suite();
     }
 
+    // FIX (Dec 6, 2007) BREADCRUMB CORE SPLIT 87471 CCCCCCCCCCCCCCCCCC Introduce BoostSuite for this.
     public static Test suite(File root) {
         return COMPOSITES.suite(root);
     }
