@@ -11,7 +11,7 @@ import java.io.File;
 public class FileBasedTestSuites implements TestSuites {
     private final FileSystemLocator locator = new DefaultFileSystemLocator();
     private final String testType;
-    // FIX (Dec 5, 2007) CORE SPLIT 87471 Experiment with an arbitrary classInTree.
+    // SUGGEST (Dec 7, 2007): 819257 Experiment with an arbitrary classInTree.
     private final Class classInTree;
 
     public FileBasedTestSuites(String testType, Class classInTree) {

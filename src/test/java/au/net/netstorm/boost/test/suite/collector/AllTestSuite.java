@@ -13,8 +13,6 @@ public class AllTestSuite implements BoostSuite {
         return COMPOSITES.suite();
     }
 
-    // FIX (Dec 6, 2007) BREADCRUMB CORE SPLIT 87471 CCCCCCCCCCCCCCCCCC Introduce BoostSuite for this.
-    // FIX (Dec 6, 2007) CORE SPLIT 87471 And do it everywhere.
     public TestSuites suites() {
         return COMPOSITES;
     }

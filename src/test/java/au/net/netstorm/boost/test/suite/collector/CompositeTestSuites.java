@@ -14,8 +14,6 @@ public class CompositeTestSuites implements TestSuites {
     private final Class[] suites;
     private final String name;
 
-
-    // FIX (Dec 6, 2007) CORE SPLIT 87471 Genericise.
     public CompositeTestSuites(String name, Class... suites) {
         this.name = name;
         this.suites = suites;
@@ -38,7 +36,7 @@ public class CompositeTestSuites implements TestSuites {
         suite.addTest(test);
     }
 
-    private <T extends BoostSuite> void suite(TestSuite result, Class<T> suiteCls, File root) {
+    private void suite(TestSuite result, Class suiteCls, File root) {
         TestSuites suites = suitor.suite(suiteCls);
         Test test = suites.suite(name, root);
         result.addTest(test);
