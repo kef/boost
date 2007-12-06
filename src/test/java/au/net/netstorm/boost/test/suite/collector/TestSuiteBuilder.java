@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import junit.framework.TestSuite;
+import junit.framework.Test;
 
 import java.io.File;
 
 public interface TestSuiteBuilder {
-    TestSuite suite();
+    Test suite();
 
-    TestSuite suite(File root);
+    Test suite(File root);
 }
