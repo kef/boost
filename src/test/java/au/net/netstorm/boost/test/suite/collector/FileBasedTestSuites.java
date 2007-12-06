@@ -19,7 +19,7 @@ public class FileBasedTestSuites implements TestSuites {
         this.classInTree = classInTree;
     }
 
-    public Test suite(File root) {
+    public Test suite(String name, File root) {
         TestAggregator aggregator = new DefaultTestAggregator(root);
         String pattern = ".*" + testType + "Test";
         return aggregator.aggregate(testType, pattern);
@@ -27,6 +27,6 @@ public class FileBasedTestSuites implements TestSuites {
 
     public Test suite() {
         File root = locator.locate(classInTree);
-        return suite(root);
+        return suite(testType, root);
     }
 }

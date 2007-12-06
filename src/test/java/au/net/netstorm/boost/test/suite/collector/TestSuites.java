@@ -7,5 +7,5 @@ import java.io.File;
 public interface TestSuites {
     Test suite();
 
-    Test suite(File root);
+    Test suite(String name, File root);
 }

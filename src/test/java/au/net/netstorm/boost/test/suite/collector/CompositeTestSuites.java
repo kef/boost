@@ -27,7 +27,7 @@ public class CompositeTestSuites implements TestSuites {
         return result;
     }
 
-    public TestSuite suite(File root) {
+    public TestSuite suite(String name, File root) {
         TestSuite result = new TestSuite(name);
         for (Class cls : suites) suite(result, cls, root);
         return result;
@@ -40,7 +40,7 @@ public class CompositeTestSuites implements TestSuites {
 
     private <T extends BoostSuite> void suite(TestSuite result, Class<T> suiteCls, File root) {
         TestSuites suites = suitor.suite(suiteCls);
-        Test test = suites.suite(root);
+        Test test = suites.suite(name, root);
         result.addTest(test);
     }
 }
