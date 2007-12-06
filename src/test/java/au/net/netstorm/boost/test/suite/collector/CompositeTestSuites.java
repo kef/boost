@@ -1,37 +1,45 @@
 package au.net.netstorm.boost.test.suite.collector;
 
+import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
+import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import java.io.File;
 
 public class CompositeTestSuites implements TestSuites {
+    private static final Object[] NO_ARGS = {};
+    TestSuiteMaster suitor = new DefaultTestSuiteMaster();
+    MethodTestUtil methoder = new DefaultMethodTestUtil();
     private final Class[] suites;
     private final String name;
-    TestSuiteMaster suitor = new DefaultTestSuiteMaster();
 
-    // FIX (Dec 6, 2007)   87471 Class<T extends BoostTests>
+
     public CompositeTestSuites(String name, Class... suites) {
         this.name = name;
         this.suites = suites;
     }
 
     public TestSuite suite() {
-        return doSuite();
-    }
-
-    public TestSuite suite(File root) {
-        return doSuite(root);
-    }
-
-    private TestSuite doSuite(Object... args) {
         TestSuite result = new TestSuite(name);
-        for (Class cls : suites) addSuite(result, cls, args);
+        for (Class suite : suites) suite(result, suite);
         return result;
     }
 
-    private void addSuite(TestSuite result, Class suiteCls, Object... args) {
-        Test suite = suitor.suite(suiteCls, args);
-        result.addTest(suite);
+    public TestSuite suite(File root) {
+        TestSuite result = new TestSuite(name);
+        for (Class cls : suites) suite(result, cls, root);
+        return result;
+    }
+
+    private void suite(TestSuite suite, Class suiteCls) {
+        Test test = (Test) methoder.invoke(suiteCls, "suite", NO_ARGS);
+        suite.addTest(test);
+    }
+
+    private <T extends BoostSuite> void suite(TestSuite result, Class<T> suiteCls, File root) {
+        TestSuites suites = suitor.suite(suiteCls);
+        Test test = suites.suite(root);
+        result.addTest(test);
     }
 }

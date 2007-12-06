@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.test.reflect.util.DefaultMethodTestUtil;
-import au.net.netstorm.boost.test.reflect.util.MethodTestUtil;
-import junit.framework.Test;
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 public class DefaultTestSuiteMaster implements TestSuiteMaster {
-    MethodTestUtil methoder = new DefaultMethodTestUtil();
+    EdgeClass classer = new DefaultEdgeClass();
 
-    public Test suite(Class suiteCls, Object... args) {
-        return (Test) methoder.invoke(suiteCls, "suite", args);
+    public <T extends BoostSuite> TestSuites suite(Class<T> suiteCls) {
+        System.out.println("suiteCls = " + suiteCls);
+        BoostSuite booster = (BoostSuite) classer.newInstance(suiteCls);
+        return booster.suites();
     }
 }

@@ -1,19 +1,16 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
 import junit.framework.Test;
 
-import java.io.File;
-
 // FIX SC600 Rename "build" area to "gen".
-public class DemoTestSuite extends BoooostCase {
-    private static final TestSuites HELPER = new FileBasedTestSuites("Demo", DemoTestSuite.class);
+public class DemoTestSuite implements BoostSuite {
+    private static final TestSuites SUITES = new FileBasedTestSuites("Demo", DemoTestSuite.class);
 
     public static Test suite() {
-        return HELPER.suite();
+        return SUITES.suite();
     }
 
-    public static Test suite(File root) {
-        return HELPER.suite(root);
+    public TestSuites suites() {
+        return SUITES;
     }
 }
