@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.automock;
 
-// FIX (Dec 5, 2007) IOC 85875 Merge with MockExpectationsEngine.
+// FIX (Dec 5, 2007) IOC 88878 Merge with MockExpectationsEngine.
 public interface MockExpectations {
     Object VOID = "void";
 
