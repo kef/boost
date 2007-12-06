@@ -1,7 +1,9 @@
 package au.net.netstorm.boost.test.core;
 
+import au.net.netstorm.boost.nursery.type.core.Holder;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.util.type.Data;
 
 public class DefaultTypesExpectations implements TypesExpectations {
     private final MockExpectations expect;
@@ -12,7 +14,12 @@ public class DefaultTypesExpectations implements TypesExpectations {
         this.expect = expect;
     }
 
-    public <T> void types(T obj, Class<? extends T> impl, Object... params) {
+    public <T extends Holder> void types(T obj, Class<T> impl, Object param) {
+        Object types = fielder.getInstance(test, "typesMock");
+        expect.oneCall(types, obj, "nu", impl, param);
+    }
+
+    public <T extends Data> void types(T obj, Class<T> impl, Object... params) {
         Object types = fielder.getInstance(test, "typesMock");
         expect.oneCall(types, obj, "nu", impl, params);
     }
