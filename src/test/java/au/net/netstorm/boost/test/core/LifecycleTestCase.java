@@ -26,7 +26,8 @@ public class LifecycleTestCase extends CleanTestCase {
         MockSupport mocks = spider.resolve(MockSupport.class);
         MockExpectations mockExpectations = spider.nu(DefaultMockExpectations.class, mocks);
         NuExpectations nuExpectations = spider.nu(DefaultNuExpectations.class, mockExpectations);
-        expect = spider.nu(DefaultExpectations.class, mockExpectations, nuExpectations);
+        TypesExpectations typesExpectations = spider.nu(DefaultTypesExpectations.class, mockExpectations);
+        expect = spider.nu(DefaultExpectations.class, mockExpectations, nuExpectations, typesExpectations);
         runner = spider.resolve(TestLifecycleRunner.class);
     }
 
