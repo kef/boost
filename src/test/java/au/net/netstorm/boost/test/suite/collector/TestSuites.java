@@ -4,7 +4,7 @@ import junit.framework.Test;
 
 import java.io.File;
 
-public interface TestSuiteBuilder {
+public interface TestSuites {
     Test suite();
 
     Test suite(File root);

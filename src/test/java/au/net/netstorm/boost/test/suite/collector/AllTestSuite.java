@@ -6,13 +6,13 @@ import junit.framework.Test;
 import java.io.File;
 
 public class AllTestSuite extends BoooostCase {
-    private static final TestSuiteBuilder BUILDER = new DefaultTestSuiteBuilder("The Whole Box and Dice", AtomicTestSuite.class, DemoTestSuite.class);
+    private static final TestSuites COMPOSITES = new CompositeTestSuites("The Whole Box and Dice", AtomicTestSuite.class, DemoTestSuite.class);
 
     public static Test suite() {
-        return BUILDER.suite();
+        return COMPOSITES.suite();
     }
 
     public static Test suite(File root) {
-        return BUILDER.suite(root);
+        return COMPOSITES.suite(root);
     }
 }

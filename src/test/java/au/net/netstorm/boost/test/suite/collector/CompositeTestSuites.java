@@ -5,13 +5,13 @@ import junit.framework.TestSuite;
 
 import java.io.File;
 
-public class DefaultTestSuiteBuilder implements TestSuiteBuilder {
+public class CompositeTestSuites implements TestSuites {
     private final Class[] suites;
     private final String name;
     TestSuiteMaster suitor = new DefaultTestSuiteMaster();
 
     // FIX (Dec 6, 2007)   87471 Class<T extends BoostTests>
-    public DefaultTestSuiteBuilder(String name, Class... suites) {
+    public CompositeTestSuites(String name, Class... suites) {
         this.name = name;
         this.suites = suites;
     }

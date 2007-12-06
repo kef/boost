@@ -1,19 +1,20 @@
 package au.net.netstorm.boost.test.suite.collector;
 
-import java.io.File;
 import au.net.netstorm.boost.test.aggregator.DefaultFileSystemLocator;
 import au.net.netstorm.boost.test.aggregator.DefaultTestAggregator;
 import au.net.netstorm.boost.test.aggregator.FileSystemLocator;
 import au.net.netstorm.boost.test.aggregator.TestAggregator;
 import junit.framework.Test;
 
-public class DefaultAggregateTestSuiteHelper implements AggregateTestSuiteHelper {
+import java.io.File;
+
+public class FileBasedTestSuites implements TestSuites {
     private final FileSystemLocator locator = new DefaultFileSystemLocator();
     private final String testType;
     // FIX (Dec 5, 2007) CORE SPLIT 87471 Experiment with an arbitrary classInTree.
     private final Class classInTree;
 
-    public DefaultAggregateTestSuiteHelper(String testType, Class classInTree) {
+    public FileBasedTestSuites(String testType, Class classInTree) {
         this.testType = testType;
         this.classInTree = classInTree;
     }
