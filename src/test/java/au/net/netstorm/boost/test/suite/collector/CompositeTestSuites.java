@@ -21,8 +21,7 @@ public class CompositeTestSuites implements TestSuites {
     }
 
     public TestSuite suite(File root) {
-        Object[] args = {root};
-        return doSuite(args);
+        return doSuite(root);
     }
 
     private TestSuite doSuite(Object... args) {
