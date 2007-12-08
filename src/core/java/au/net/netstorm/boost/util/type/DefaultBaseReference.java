@@ -2,15 +2,15 @@ package au.net.netstorm.boost.util.type;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-public final class DefaultBaseReference extends Primordial implements BaseReference {
-    private final Object ref;
+public final class DefaultBaseReference<T> extends Primordial implements BaseReference {
+    private final T ref;
 
-    public DefaultBaseReference(Object ref) {
+    public DefaultBaseReference(T ref) {
         this.ref = ref;
         validate();
     }
 
-    public Object getRef() {
+    public T getRef() {
         return ref;
     }
 

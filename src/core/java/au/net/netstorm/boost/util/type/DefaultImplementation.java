@@ -2,15 +2,15 @@ package au.net.netstorm.boost.util.type;
 
 import au.net.netstorm.boost.primordial.Primordial;
 
-public final class DefaultImplementation extends Primordial implements Implementation {
-    private final Class impl;
+public final class DefaultImplementation<T> extends Primordial implements Implementation<T> {
+    private final Class<T> impl;
 
-    public DefaultImplementation(Class impl) {
+    public DefaultImplementation(Class<T> impl) {
         this.impl = impl;
         validate();
     }
 
-    public Class getImpl() {
+    public Class<T> getImpl() {
         return impl;
     }
 
