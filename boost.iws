@@ -31,16 +31,8 @@
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultImplementation.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultImplementation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultBaseReference.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultBaseReference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/Reference.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/Reference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.ipr" afterPath="$PROJECT_DIR$/boost.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/UnresolvedInstance.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/UnresolvedInstance.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iml" afterPath="$PROJECT_DIR$/boost.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/ResolvedInstance.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/ResolvedInstance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultInterface.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
     <list name="merde" comment="" />
@@ -167,88 +159,7 @@
       <file leaf-file-name="DefaultNu.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="87" selection-start="769" selection-end="769" vertical-scroll-proportion="0.48137537">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultBoostSpiderBuilder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultBoostSpiderBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="25" selection-start="565" selection-end="565" vertical-scroll-proportion="0.40114614">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultEdgeClass.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="21" selection-start="281" selection-end="281" vertical-scroll-proportion="0.1833811">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultClassMorpher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/reflect/DefaultClassMorpher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="55" selection-start="213" selection-end="213" vertical-scroll-proportion="0.16045845">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InterfaceUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/InterfaceUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="59" selection-end="59" vertical-scroll-proportion="0.08022922">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImplMapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="17" selection-start="110" selection-end="110" vertical-scroll-proportion="0.16045845">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImplMaster.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMaster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="165" selection-end="165" vertical-scroll-proportion="0.16045845">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultProviderEngine.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/DefaultProviderEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="20" selection-start="1487" selection-end="1487" vertical-scroll-proportion="0.51862466">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProviderEngine.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/ProviderEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="4" selection-start="394" selection-end="394" vertical-scroll-proportion="0.3209169">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultNuAtomicTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/DefaultNuAtomicTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="19" selection-start="689" selection-end="689" vertical-scroll-proportion="0.16045845">
+            <state line="10" column="41" selection-start="485" selection-end="485" vertical-scroll-proportion="0.13895781">
               <folding />
             </state>
           </provider>
@@ -257,88 +168,16 @@
       <file leaf-file-name="DefaultSpider.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="21" selection-start="433" selection-end="433" vertical-scroll-proportion="0.1833811">
+            <state line="18" column="37" selection-start="656" selection-end="656" vertical-scroll-proportion="0.55583125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Resolver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/Resolver.java">
+      <file leaf-file-name="Nu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.08022922">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Injector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/core/Injector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.08022922">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResolvedInstance.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/ResolvedInstance.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="56" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08022922">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultBaseReference.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultBaseReference.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="76" selection-start="171" selection-end="171" vertical-scroll-proportion="0.16045845">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseReference.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/BaseReference.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="11" selection-start="92" selection-end="92" vertical-scroll-proportion="0.12034384">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UnresolvedInstance.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/UnresolvedInstance.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="58" selection-start="100" selection-end="100" vertical-scroll-proportion="0.08022922">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultInterface.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="18" selection-start="397" selection-end="397" vertical-scroll-proportion="0.52149">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultImplementation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultImplementation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="18" selection-start="344" selection-end="344" vertical-scroll-proportion="0.48137537">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reference.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/Reference.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="59" selection-end="59" vertical-scroll-proportion="0.08022922">
+            <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.06947891">
               <folding />
             </state>
           </provider>
@@ -2503,7 +2342,7 @@
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.270073" order="0" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" order="2" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3693009" order="13" x="1373" y="941" width="1187" height="663" />
@@ -2644,114 +2483,114 @@
     <option name="multicastPort" value="3274" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="18" selection-start="397" selection-end="397" vertical-scroll-proportion="0.52149">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/ResolvedInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="56" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08022922">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/UnresolvedInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="58" selection-start="100" selection-end="100" vertical-scroll-proportion="0.08022922">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/DefaultProviderEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="20" selection-start="1487" selection-end="1487" vertical-scroll-proportion="0.51862466">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/ProviderEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="394" selection-end="394" vertical-scroll-proportion="0.3209169">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="17" selection-start="110" selection-end="110" vertical-scroll-proportion="0.16045845">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/InterfaceUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="59" selection-end="59" vertical-scroll-proportion="0.08022922">
+        <state line="2" column="17" selection-start="59" selection-end="59" vertical-scroll-proportion="0.086687304">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/reflect/DefaultClassMorpher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="55" selection-start="213" selection-end="213" vertical-scroll-proportion="0.16045845">
+        <state line="5" column="55" selection-start="213" selection-end="213" vertical-scroll-proportion="0.16422288">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/edge/java/lang/DefaultEdgeClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="21" selection-start="281" selection-end="281" vertical-scroll-proportion="0.1833811">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/impl/ImplMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="165" selection-end="165" vertical-scroll-proportion="0.16045845">
+        <state line="9" column="21" selection-start="281" selection-end="281" vertical-scroll-proportion="0.18768328">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/core/DefaultBoostSpiderBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="25" selection-start="565" selection-end="565" vertical-scroll-proportion="0.40114614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="87" selection-start="769" selection-end="769" vertical-scroll-proportion="0.48137537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/core/Injector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.08022922">
+        <state line="13" column="25" selection-start="565" selection-end="565" vertical-scroll-proportion="0.41055718">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/DefaultNuAtomicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="689" selection-end="689" vertical-scroll-proportion="0.16045845">
+        <state line="36" column="5" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.99182564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="41" selection-start="485" selection-end="485" vertical-scroll-proportion="0.13895781">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/BaseReference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="11" selection-start="92" selection-end="92" vertical-scroll-proportion="0.11444142">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/ResolvedInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="56" selection-start="98" selection-end="98" vertical-scroll-proportion="0.07629428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultImplementation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="11" selection-start="234" selection-end="234" vertical-scroll-proportion="0.25454545">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="18" selection-start="397" selection-end="397" vertical-scroll-proportion="0.47272727">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/UnresolvedInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="58" selection-start="100" selection-end="100" vertical-scroll-proportion="0.07272727">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/core/Injector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.07272727">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/Resolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.08022922">
+        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.06947891">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.06947891">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/ProviderEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="4" selection-start="394" selection-end="394" vertical-scroll-proportion="0.30517712">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="21" selection-start="433" selection-end="433" vertical-scroll-proportion="0.1833811">
+        <state line="18" column="37" selection-start="656" selection-end="656" vertical-scroll-proportion="0.55583125">
           <folding />
         </state>
       </provider>

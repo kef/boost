@@ -15,11 +15,10 @@ public final class DefaultNu implements Nu {
         this.engine = engine;
     }
 
-    public <T, U extends T> T nu(Class<U> impl, Object... params) {
-        // FIX BREADCRUMB - NoInterface hurts me... Can't make ProviderEngine type safe
-        Interface<NoInterface> iface = new DefaultInterface<NoInterface>(NoInterface.class);
-        Implementation<U> implementation = new DefaultImplementation<U>(impl);
-        ResolvedInstance<T> resolved = engine.provide(iface, implementation, params);
-        return resolved.getRef();
+    public <T> T nu(Class<? extends T> impl, Object... params) {
+        Interface iface = new DefaultInterface(NoInterface.class);
+        Implementation implementation = new DefaultImplementation(impl);
+        ResolvedInstance resolved = engine.provide(iface, implementation, params);
+        return (T) resolved.getRef();
     }
 }
