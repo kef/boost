@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.instantiate.Nu;
+import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
+import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
@@ -9,8 +11,6 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
-    private static final Stamp MULTIPLE = Stamp.MULTIPLE;
-    private static final Stamp SINGLE = Stamp.SINGLE;
     private final Blueprints blueprints;
     private final Instances instances;
     private final Factories factories;
