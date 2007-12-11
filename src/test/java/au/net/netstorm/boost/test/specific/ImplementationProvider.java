@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.test.specific;
 
-import au.net.netstorm.boost.util.type.Data;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.Implementation;
 
-public class ImplementationProvider implements DataProvider {
-
-    public Data get() {
+public class ImplementationProvider implements DataProvider<Implementation> {
+    public Implementation get() {
         return new DefaultImplementation(RandomClass.class);
     }
 
