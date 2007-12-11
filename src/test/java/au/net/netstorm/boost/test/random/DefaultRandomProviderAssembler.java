@@ -7,6 +7,7 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLa
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.EnumDataProviders;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactoryAssembler;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactoryAssembler;
@@ -19,14 +20,14 @@ public final class DefaultRandomProviderAssembler implements RandomProviderAssem
     private ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
     private PassThroughLayer passThrough = new DefaultPassThroughLayer();
 
-    public Random everything(DataProviders providers, MockSupport mocks) {
-        return assemble(providers, mocks);
+    public Random everything(DataProviders dataProviders, EnumDataProviders enumProviders, MockSupport mocks) {
+        return assemble(dataProviders, enumProviders, mocks);
     }
 
-    private Random assemble(DataProviders providers, MockSupport mocks) {
+    private Random assemble(DataProviders dataProviders, EnumDataProviders enumProviders, MockSupport mocks) {
         SpecificProvider passthrough = (SpecificProvider) proxyFactory.newProxy(RANDOM_PROVIDER, passThrough);
         EverythingRandomProvider result = new EverythingRandomProvider(passthrough);
-        Provider interfaces = new InterfaceRandomProvider(result, providers, mocks);
+        Provider interfaces = new InterfaceRandomProvider(result, dataProviders, enumProviders, mocks);
         passThrough.setDelegate(interfaces);
         return result;
     }

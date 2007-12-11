@@ -6,4 +6,6 @@ public interface HappyDay extends Data {
     Long getTimeMillis();
 
     Happiness getHappiness();
+
+    FancyPants getFancyPants();
 }

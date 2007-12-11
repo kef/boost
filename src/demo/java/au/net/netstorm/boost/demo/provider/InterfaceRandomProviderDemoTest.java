@@ -1,38 +1,44 @@
 package au.net.netstorm.boost.demo.provider;
 
-import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.provider.SpecificProvider;
-import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.test.automock.DefaultMockSupport;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.LazyFields;
+import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.ImplementationNotFoundException;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.DataProviders;
-import au.net.netstorm.boost.test.specific.DefaultDataProviders;
+import au.net.netstorm.boost.test.specific.DataDataProviders;
+import au.net.netstorm.boost.test.specific.DefaultDataDataProviders;
+import au.net.netstorm.boost.test.specific.DefaultEnumDataProviders;
+import au.net.netstorm.boost.test.specific.EnumDataProviders;
 
-public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase implements Constructable, LazyFields {
+import java.lang.reflect.Proxy;
+
+public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase implements HasFixtures {
     private MockSupport mocks = new DefaultMockSupport();
     private Class iFace = HappyDay.class;
     private Class impl = DefaultHappyDay.class;
-    private DataProviders dataProviders = new DefaultDataProviders();
-    private Random random;
+    private DataDataProviders dataProviders = new DefaultDataDataProviders();
+    private EnumDataProviders enumProviders = new DefaultEnumDataProviders();
     private SpecificProvider interfaceProvider;
+    private Random random;
 
-    public InterfaceRandomProviderDemoTest() {
+    public void setUpFixtures() {
+        setUpDataProviders();
         RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
-        random = providerAssembler.everything(dataProviders, mocks);
-        interfaceProvider = new InterfaceRandomProvider(random, dataProviders, mocks);
+        random = providerAssembler.everything(dataProviders, enumProviders, mocks);
+        interfaceProvider = new InterfaceRandomProvider(random, dataProviders, enumProviders, mocks);
     }
 
-    public void constructor() {
+    private void setUpDataProviders() {
         HappinessProvider happinessProvider = new HappinessProvider();
         dataProviders.add(Happiness.class, happinessProvider);
+        FancyPantsProvider fancyPantsProvider = new FancyPantsProvider();
+        enumProviders.add(FancyPants.class, fancyPantsProvider);
     }
 
     public void testCanProvide() {
@@ -88,8 +94,8 @@ public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase imp
     }
 
     private void checkHappyDays(HappyDay[] happyDays) {
-        for (int i = 0; i < happyDays.length; i++) {
-            checkHappyDay(happyDays[i]);
+        for (HappyDay happyDay : happyDays) {
+            checkHappyDay(happyDay);
         }
     }
 

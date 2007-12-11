@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
@@ -10,6 +9,8 @@ import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
+
+import java.lang.reflect.Field;
 
 public final class DefaultInjectorEngine implements InjectorEngine {
     private final EdgeField fielder = new DefaultEdgeField();
@@ -26,8 +27,7 @@ public final class DefaultInjectorEngine implements InjectorEngine {
         inProgress.put(iface, unresolved);
         try {
             doInject(unresolved);
-        }
-        finally {
+        } finally {
             inProgress.remove(iface);
         }
     }
@@ -35,8 +35,8 @@ public final class DefaultInjectorEngine implements InjectorEngine {
     private void doInject(UnresolvedInstance unresolved) {
         Object ref = unresolved.getRef();
         Field[] fields = fieldFinder.find(ref);
-        for (int i = 0; i < fields.length; i++) {
-            inject(ref, fields[i]);
+        for (Field field : fields) {
+            inject(ref, field);
         }
     }
 

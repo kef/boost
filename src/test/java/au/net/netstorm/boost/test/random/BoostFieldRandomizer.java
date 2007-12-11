@@ -11,8 +11,8 @@ public final class BoostFieldRandomizer implements Randomizer {
     }
 
     public void randomize(BoostField[] fields) {
-        for (int i = 0; i < fields.length; i++) {
-            randomize(fields[i]);
+        for (BoostField field : fields) {
+            randomize(field);
         }
     }
 

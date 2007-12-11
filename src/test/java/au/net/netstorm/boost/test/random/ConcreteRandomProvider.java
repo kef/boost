@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.test.random;
 
-import java.lang.reflect.Method;
-import java.math.BigInteger;
-import java.util.Date;
-import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.SpecificProvider;
+
+import java.lang.reflect.Method;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.Random;
 
 // FIX DEBT SPLIT THIS CLASS!!!
 
@@ -51,40 +52,34 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     }
 
     private Boolean randomBoolean() {
-        boolean bool = random.nextBoolean();
-        return Boolean.valueOf(bool);
+        return random.nextBoolean();
     }
 
     private Integer randomInteger() {
-        int i = random.nextInt();
-        return new Integer(i);
+        return random.nextInt();
     }
 
     private Long randomLong() {
-        long l = random.nextLong();
-        return new Long(l);
+        return random.nextLong();
     }
 
     private Character randomCharacter() {
         Byte b = randomByte();
-        char value = (char) b.byteValue();
-        return new Character(value);
+        return (char) b.byteValue();
     }
 
     private Float randomFloat() {
-        float f = random.nextFloat();
-        return new Float(f);
+        return random.nextFloat();
     }
 
     private Double randomDouble() {
-        double d = random.nextDouble();
-        return new Double(d);
+        return random.nextDouble();
     }
 
     private Byte randomByte() {
         byte[] bytes = new byte[1];
         random.nextBytes(bytes);
-        return new Byte(bytes[0]);
+        return bytes[0];
     }
 
     private BigInteger randomBigInteger() {
@@ -93,7 +88,7 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     }
 
     private Class randomClass() {
-        int integer = randomInteger().intValue();
+        int integer = randomInteger();
         int i = Math.abs(integer) % randomClasses.length;
         return randomClasses[i];
     }
@@ -117,7 +112,7 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     }
 
     private Date randomDate() {
-        long longone = randomLong().longValue();
+        long longone = randomLong();
         long abs = Math.abs(longone);
         return new Date(abs);
     }

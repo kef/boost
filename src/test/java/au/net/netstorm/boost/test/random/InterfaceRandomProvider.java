@@ -7,6 +7,7 @@ import au.net.netstorm.boost.reflect.DefaultInstantiatorWithProvider;
 import au.net.netstorm.boost.reflect.InstantiatorWithProvider;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.EnumDataProviders;
 import au.net.netstorm.boost.util.impl.DefaultImplMapper;
 import au.net.netstorm.boost.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.util.impl.ImplMapper;
@@ -26,23 +27,27 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     private ImplMapper[] mappers = {mapper};
     private final ImplMaster implMaster = new DefaultImplMaster(mappers);
     private final TypeMaster typeMaster = new DefaultTypeMaster();
+    private final EnumDataProviders enumProviders;
     private final DataProviders dataProviders;
     private final Provider randomProvider;
     private final MockSupport mocks;
 
-    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, MockSupport mocks) {
+    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, EnumDataProviders enumProviders, MockSupport mocks) {
         this.randomProvider = randomProvider;
         this.dataProviders = dataProviders;
+        this.enumProviders = enumProviders;
         this.mocks = mocks;
     }
 
-    public boolean canProvide(Class type) {
-        return type.isInterface();
+    public boolean canProvide(Class<?> type) {
+        if (type.isInterface()) return true;
+        if (type.isEnum()) return true;
+        return false;
     }
 
     public <T> T provide(Class<T> type) {
-        Interface iface = popIfNotInterface(type);
         if (isProvided(type)) return providedImpl(type);
+        Interface iface = popIfNotInterface(type);
         if (isData(iface)) return (T) defaultImpl(iface);
         return mock(type);
     }
@@ -53,11 +58,15 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     }
 
     private boolean isProvided(Class type) {
-        return dataProviders.canProvide(type);
+        if (dataProviders.canProvide(type)) return true;
+        if (enumProviders.canProvide(type)) return true;
+        return false;
     }
 
     private <T> T providedImpl(Class<T> type) {
-        return dataProviders.provide(type);
+        if (dataProviders.canProvide(type)) return dataProviders.provide(type);
+        if (enumProviders.canProvide(type)) return enumProviders.provide(type);
+        throw new IllegalArgumentException("" + type);
     }
 
     private boolean isData(Interface iFace) {

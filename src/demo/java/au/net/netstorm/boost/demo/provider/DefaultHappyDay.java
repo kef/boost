@@ -5,10 +5,12 @@ import au.net.netstorm.boost.primordial.Primordial;
 public final class DefaultHappyDay extends Primordial implements HappyDay {
     private Long timeMillis;
     private Happiness happiness;
+    private FancyPants fancyPants;
 
-    public DefaultHappyDay(Long timeMillis, Happiness happiness) {
+    public DefaultHappyDay(Long timeMillis, Happiness happiness, FancyPants fancyPants) {
         this.timeMillis = timeMillis;
         this.happiness = happiness;
+        this.fancyPants = fancyPants;
     }
 
     public Long getTimeMillis() {
@@ -17,5 +19,9 @@ public final class DefaultHappyDay extends Primordial implements HappyDay {
 
     public Happiness getHappiness() {
         return happiness;
+    }
+
+    public FancyPants getFancyPants() {
+        return fancyPants;
     }
 }
