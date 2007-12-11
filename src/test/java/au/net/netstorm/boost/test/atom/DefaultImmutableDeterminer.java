@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.util.type.Immutable;
+
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
-import au.net.netstorm.boost.util.type.Immutable;
 
 public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
     private final Set registered = new HashSet();
@@ -15,17 +16,18 @@ public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
         registered.add(Method.class);
     }
 
+    // DEBT CyclomaticComplexity|ReturnCount {
     public boolean isImmutable(Class cls) {
-        if (implementsImmutable(cls)) {
-            return true;
-        }
-        if (isPrimitive(cls)) {
-            return true;
-        }
-        if (isBoxedPrimitive(cls)) {
-            return true;
-        }
+        if (implementsImmutable(cls)) return true;
+        if (isPrimitive(cls)) return true;
+        if (isBoxedPrimitive(cls)) return true;
+        if (isEnum(cls)) return true;
         return isRegistered(cls);
+    }
+    // } DEBT CyclomaticComplexity|ReturnCount
+
+    private boolean isEnum(Class cls) {
+        return cls.isEnum();
     }
 
     private boolean isBoxedPrimitive(Class cls) {

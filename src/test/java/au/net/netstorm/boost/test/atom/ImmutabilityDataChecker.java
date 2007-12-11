@@ -10,8 +10,7 @@ final class ImmutabilityDataChecker implements DataChecker {
     private ClassMaster clsMaster = new DefaultClassMaster();
 
     public void check(Class cls, FieldSpec[] fields) {
-        for (int i = 0; i < fields.length; i++) {
-            FieldSpec field = fields[i];
+        for (FieldSpec field : fields) {
             checkImmutable(field);
         }
     }
