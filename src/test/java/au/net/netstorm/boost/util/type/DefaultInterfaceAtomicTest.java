@@ -11,6 +11,7 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     private final Interface jester = new DefaultInterface(Jester.class);
     private final Interface soldier = new DefaultInterface(Soldier.class);
     private final Interface clown = new DefaultInterface(Clown.class);
+    private final Interface mumbles = new DefaultInterface(Mumbles.class);
     private final TypeMaster typeMaster = new DefaultTypeMaster();
 
     public void testIsA() {
@@ -19,8 +20,8 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     }
 
     public void testType() {
-        Class actual = jester.getType();
-        assertEquals(Jester.class, actual);
+        checkType(jester, Jester.class);
+        checkType(mumbles, Mumbles.class);
     }
 
     public void testFastHashCode() {
@@ -44,6 +45,11 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
 
     public void testPrimordial() {
         classer.checkSubclassOf(DefaultInterface.class, Primordial.class);
+    }
+
+    private void checkType(Interface iface, Class expected) {
+        Class actual = iface.getType();
+        assertEquals(expected, actual);
     }
 
     private void checkFastHashCode(Interface type) {
