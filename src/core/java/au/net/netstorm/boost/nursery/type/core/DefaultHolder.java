@@ -24,7 +24,6 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
 
     public DefaultHolder(T value) {
         // FIX (Nov 23, 2007) 2233 Atomically test null.
-        // FIX (Nov 23, 2007) 2233 Atomically test null.
         if (value == null) throw new IllegalArgumentException();
         this.value = cloneIfArray(value);
     }
