@@ -20,6 +20,7 @@ public final class DefaultRandomProviderAssembler implements RandomProviderAssem
     private ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
     private PassThroughLayer passThrough = new DefaultPassThroughLayer();
 
+    // FIX (Dec 17, 2007) CORE SPLIT 84836 Can DataProviders and EnumProvider be merged?
     public Random everything(DataProviders data, EnumProvider enums, MockSupport mocks) {
         return assemble(data, enums, mocks);
     }
