@@ -7,7 +7,7 @@ import au.net.netstorm.boost.reflect.DefaultInstantiatorWithProvider;
 import au.net.netstorm.boost.reflect.InstantiatorWithProvider;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
-import au.net.netstorm.boost.test.specific.EnumDataProviders;
+import au.net.netstorm.boost.test.specific.EnumProvider;
 import au.net.netstorm.boost.util.impl.DefaultImplMapper;
 import au.net.netstorm.boost.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.util.impl.ImplMapper;
@@ -27,12 +27,12 @@ public final class InterfaceRandomProvider implements SpecificProvider {
     private ImplMapper[] mappers = {mapper};
     private final ImplMaster implMaster = new DefaultImplMaster(mappers);
     private final TypeMaster typeMaster = new DefaultTypeMaster();
-    private final EnumDataProviders enumProviders;
+    private final EnumProvider enumProviders;
     private final DataProviders dataProviders;
     private final Provider randomProvider;
     private final MockSupport mocks;
 
-    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, EnumDataProviders enumProviders, MockSupport mocks) {
+    public InterfaceRandomProvider(Provider randomProvider, DataProviders dataProviders, EnumProvider enumProviders, MockSupport mocks) {
         this.randomProvider = randomProvider;
         this.dataProviders = dataProviders;
         this.enumProviders = enumProviders;

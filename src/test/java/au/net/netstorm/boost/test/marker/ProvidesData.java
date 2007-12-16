@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.test.marker;
 
 import au.net.netstorm.boost.provider.Random;
-import au.net.netstorm.boost.test.specific.DataDataProviders;
-import au.net.netstorm.boost.test.specific.EnumDataProviders;
+import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.EnumProvider;
 
 public interface ProvidesData {
-    void register(DataDataProviders dataProviders, EnumDataProviders enumProviders, Random random);
+    void register(DataProviders dataProviders, EnumProvider enumProviders, Random random);
 }

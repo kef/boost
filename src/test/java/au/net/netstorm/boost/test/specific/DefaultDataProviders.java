@@ -7,12 +7,12 @@ import au.net.netstorm.boost.util.type.Data;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultDataDataProviders extends Primordial implements DataDataProviders {
+public class DefaultDataProviders extends Primordial implements DataProviders {
     private final Map<Class<? extends Data>, DataProvider<? extends Data>> datas = new HashMap<Class<? extends Data>, DataProvider<? extends Data>>();
 
-    public void add(Class<? extends Data> type, DataProvider<? extends Data> dataProvider) {
+    public <T extends Data> void add(Class<T> type, DataProvider provider) {
         ensureInterface(type);
-        datas.put(type, dataProvider);
+        datas.put(type, provider);
     }
 
     public boolean canProvide(Class<?> type) {

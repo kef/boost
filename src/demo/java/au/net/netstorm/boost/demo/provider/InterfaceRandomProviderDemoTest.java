@@ -11,10 +11,10 @@ import au.net.netstorm.boost.test.random.DefaultRandomProviderAssembler;
 import au.net.netstorm.boost.test.random.ImplementationNotFoundException;
 import au.net.netstorm.boost.test.random.InterfaceRandomProvider;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.DataDataProviders;
-import au.net.netstorm.boost.test.specific.DefaultDataDataProviders;
-import au.net.netstorm.boost.test.specific.DefaultEnumDataProviders;
-import au.net.netstorm.boost.test.specific.EnumDataProviders;
+import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.DefaultDataProviders;
+import au.net.netstorm.boost.test.specific.DefaultEnumProvider;
+import au.net.netstorm.boost.test.specific.EnumProvider;
 
 import java.lang.reflect.Proxy;
 
@@ -22,23 +22,22 @@ public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase imp
     private MockSupport mocks = new DefaultMockSupport();
     private Class iFace = HappyDay.class;
     private Class impl = DefaultHappyDay.class;
-    private DataDataProviders dataProviders = new DefaultDataDataProviders();
-    private EnumDataProviders enumProviders = new DefaultEnumDataProviders();
+    private DataProviders data = new DefaultDataProviders();
+    private EnumProvider enums = new DefaultEnumProvider();
     private SpecificProvider interfaceProvider;
     private Random random;
 
     public void setUpFixtures() {
         setUpDataProviders();
         RandomProviderAssembler providerAssembler = new DefaultRandomProviderAssembler();
-        random = providerAssembler.everything(dataProviders, enumProviders, mocks);
-        interfaceProvider = new InterfaceRandomProvider(random, dataProviders, enumProviders, mocks);
+        random = providerAssembler.everything(data, enums, mocks);
+        interfaceProvider = new InterfaceRandomProvider(random, data, enums, mocks);
     }
 
     private void setUpDataProviders() {
         HappinessProvider happinessProvider = new HappinessProvider();
-        dataProviders.add(Happiness.class, happinessProvider);
-        FancyPantsProvider fancyPantsProvider = new FancyPantsProvider();
-        enumProviders.add(FancyPants.class, fancyPantsProvider);
+        data.add(Happiness.class, happinessProvider);
+        enums.add(FancyPants.class);
     }
 
     public void testCanProvide() {

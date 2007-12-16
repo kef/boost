@@ -10,14 +10,14 @@ import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.automock.TestFieldInjector;
 import au.net.netstorm.boost.test.marker.ProvidesData;
 import au.net.netstorm.boost.test.random.RandomProviderAssembler;
-import au.net.netstorm.boost.test.specific.DataDataProviders;
-import au.net.netstorm.boost.test.specific.EnumDataProviders;
+import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.EnumProvider;
 
 public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     RandomProviderAssembler assembler;
     ProvidesData registerer;
-    DataDataProviders data;
-    EnumDataProviders enums;
+    DataProviders data;
+    EnumProvider enums;
     Registry registry;
     MockSupport mocks;
     Test test;

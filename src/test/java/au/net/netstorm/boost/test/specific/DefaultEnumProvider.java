@@ -5,11 +5,12 @@ import au.net.netstorm.boost.primordial.Primordial;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultEnumDataProviders extends Primordial implements EnumDataProviders {
+public class DefaultEnumProvider extends Primordial implements EnumProvider {
     private final Map<Class<? extends Enum>, DataProvider<? extends Enum>> enums = new HashMap<Class<? extends Enum>, DataProvider<? extends Enum>>();
 
-    public void add(Class<? extends Enum> type, DataProvider<? extends Enum> dataProvider) {
-        enums.put(type, dataProvider);
+    public <T extends Enum> void add(Class<T> type) {
+        DataProvider<T> provider = new RandomEnumProvider<T>(type);
+        enums.put(type, provider);
     }
 
     public boolean canProvide(Class<?> type) {

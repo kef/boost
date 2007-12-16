@@ -3,13 +3,13 @@ package au.net.netstorm.boost.test.lifecycle;
 import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.test.core.Test;
 import au.net.netstorm.boost.test.marker.ProvidesData;
-import au.net.netstorm.boost.test.specific.DataDataProviders;
-import au.net.netstorm.boost.test.specific.EnumDataProviders;
+import au.net.netstorm.boost.test.specific.DataProviders;
+import au.net.netstorm.boost.test.specific.EnumProvider;
 import au.net.netstorm.boost.util.type.Marker;
 
 public final class DataRegisterer implements TestLifecycleBlock {
-    DataDataProviders data;
-    EnumDataProviders enums;
+    DataProviders data;
+    EnumProvider enums;
     Random random;
     Test test;
     Marker marker;
