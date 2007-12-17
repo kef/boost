@@ -1,36 +1,37 @@
 package au.net.netstorm.boost.util.typed;
 
-import java.util.ArrayList;
-import java.util.List;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // FIX BREADCRUMB 8888 Tidy
 public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String STRING_1 = "monkey";
     private static final String STRING_2 = "bonobo";
     private static final String STRING_3 = "bonobo";
-    private static final Object[] ARRAY_WITH_DUPLICATES = {STRING_1, STRING_2, STRING_3};
-    private static final Object[] ARRAY_NO_DUPLICATES = {STRING_1, STRING_2};
+    private static final String[] ARRAY_WITH_DUPLICATES = {STRING_1, STRING_2, STRING_3};
+    private static final String[] ARRAY_NO_DUPLICATES = {STRING_1, STRING_2};
     private static final String[] STRINGS_0 = {};
     private static final String[] STRINGS_1 = {"1"};
     private static final String[] STRINGS_2 = {"2", "1"};
     private static final String STRING = "10";
-    private static final int[] INTS_0 = {};
-    private static final int[] INTS_1 = {1};
-    private static final int[] INTS_2 = {2, 1};
+    private static final Integer[] INTS_0 = {};
+    private static final Integer[] INTS_1 = {1};
+    private static final Integer[] INTS_2 = {2, 1};
     private static final List ARRAY_LIST = new ArrayList();
-    private static final int INT_VALUE = 12;
+    private static final Integer INT_VALUE = 12;
     private static final String INT_VALUE_AS_STRING = String.valueOf(INT_VALUE);
     private static final byte[] POSITIVE_INT_BYTES = {127, -128, -128, -128};
     private static final byte[] NEGATIVE_INT_BYTES = {-127, -128, -128, -128};
     private static final String POSITIVE_INT_STRING = "2139127936";
     private static final String NEGATIVE_INT_STRING = "-2122284928";
-    private static final long BIG_INTEGER = (long) Integer.MAX_VALUE + 1;
-    private static final String BIG_INTEGER_STRING = BIG_INTEGER + "";
+    private static final Long BIG_INTEGER = (long) Integer.MAX_VALUE + 1;
+    private static final String BIG_INTEGER_STRING = "" + BIG_INTEGER;
     private static final String LONG_VALUE_AS_STRING = "" + Long.MAX_VALUE;
-    private static final long LONG_VALUE = Long.MAX_VALUE;
+    private static final Long LONG_VALUE = Long.MAX_VALUE;
     String someString;
     TypeUtility subject;
 
@@ -50,12 +51,12 @@ public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implem
     }
 
     public void testStringToInts() {
-        int[] result = subject.convert(STRING);
-        assertEquals(new int[]{10}, result);
+        Integer[] result = subject.convert(STRING);
+        assertEquals(new Integer[]{10}, result);
     }
 
     public void testArrayListToInts() {
-        int[] result = subject.convert(ARRAY_LIST);
+        Integer[] result = subject.convert(ARRAY_LIST);
         assertEquals(INTS_2, result);
     }
 
@@ -70,7 +71,7 @@ public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implem
     }
 
     public void testStringToLong() {
-        long actual = subject.toLong(LONG_VALUE_AS_STRING);
+        Long actual = subject.toLong(LONG_VALUE_AS_STRING);
         assertEquals(LONG_VALUE, actual);
     }
 
@@ -91,7 +92,7 @@ public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implem
         String[] array1 = {"one", "two"};
         String[] array2 = {"three", "four"};
         String[] expected = {"one", "two", "three", "four"};
-        String[] actual = (String[]) subject.merge(array1, array2);
+        String[] actual = subject.concat(array1, array2);
         assertEquals(expected, actual);
     }
 
@@ -116,8 +117,8 @@ public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implem
         assertEquals(expected, actual);
     }
 
-    private void checkStringsToInts(int[] expected, String[] strings) {
-        int[] result = subject.convert(strings);
+    private void checkStringsToInts(Integer[] expected, String[] strings) {
+        Integer[] result = subject.convert(strings);
         assertEquals(expected, result);
     }
 }

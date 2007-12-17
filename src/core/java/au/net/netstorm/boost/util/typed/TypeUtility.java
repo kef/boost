@@ -3,23 +3,23 @@ package au.net.netstorm.boost.util.typed;
 import java.util.List;
 
 public interface TypeUtility {
-    int[] convert(List list);
+    Integer[] convert(List<String> list);
 
-    int[] convert(String[] strings);
+    Integer[] convert(String[] strings);
 
-    int[] convert(String string);
+    Integer[] convert(String string);
 
     String toString(byte[] bytes);
 
-    int toInt(String value);
+    Integer toInt(byte[] bytes);
 
-    long toLong(String value);
+    Integer toInt(String value);
 
-    boolean hasDuplicates(Object[] array);
+    Long toLong(String value);
 
-    boolean toBoolean(String value);
+    Boolean toBoolean(String value);
 
-    Object[] merge(Object[] a1, Object[] a2);
+    Boolean hasDuplicates(Object[] array);
 
-    int toInt(byte[] bytes);
+    <T> T[] concat(T[] a1, T[] a2);
 }
