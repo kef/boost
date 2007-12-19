@@ -19,6 +19,7 @@ public class DefaultEnumProvider extends Primordial implements EnumProvider {
 
     public <T> T provide(Class<T> type) {
         DataProvider<? extends Enum> provider = enums.get(type);
-        return (T) provider.get();
+        Enum anEnum = provider.get();
+        return type.cast(anEnum);
     }
 }

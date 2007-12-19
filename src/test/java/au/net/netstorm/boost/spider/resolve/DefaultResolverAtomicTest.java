@@ -11,11 +11,10 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final Implementation NO_CONTEXT = new DefaultImplementation(NoContext.class);
-    private static final Class FRUITY = Fruity.class;
-    Interface fruity = new DefaultInterface(FRUITY);
+    Interface fruity = new DefaultInterface(Fruity.class);
     ResolvedInstance resolvedInstanceMock;
     ResolverEngine resolverEngineMock;
-    Object resolved = this;
+    Fruity resolvedDummy;
     Resolver subject;
 
     public void setUpFixtures() {
@@ -24,8 +23,8 @@ public final class DefaultResolverAtomicTest extends LifecycleTestCase implement
 
     public void testResolve() {
         expect.oneCall(resolverEngineMock, resolvedInstanceMock, "resolve", fruity, NO_CONTEXT);
-        expect.oneCall(resolvedInstanceMock, resolved, "getRef");
-        Object result = subject.resolve(FRUITY);
-        assertEquals(resolved, result);
+        expect.oneCall(resolvedInstanceMock, resolvedDummy, "getRef");
+        Fruity result = subject.resolve(Fruity.class);
+        assertEquals(resolvedDummy, result);
     }
 }

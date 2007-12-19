@@ -21,7 +21,8 @@ public final class ConcreteRandomProvider implements SpecificProvider {
 
     public <T> T provide(Class<T> type) {
         if (!canProvide(type)) throw new NotProvidedException(type);
-        return (T) doGetRandom(type);
+        Object result = doGetRandom(type);
+        return type.cast(result);
     }
 
     public boolean canProvide(Class type) {

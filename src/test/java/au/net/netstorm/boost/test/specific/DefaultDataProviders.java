@@ -21,7 +21,8 @@ public class DefaultDataProviders extends Primordial implements DataProviders {
 
     public <T> T provide(Class<T> type) {
         DataProvider<? extends Data> provider = datas.get(type);
-        return (T) provider.get();
+        Data data = provider.get();
+        return type.cast(data);
     }
 
     private void ensureInterface(Class type) {

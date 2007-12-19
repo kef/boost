@@ -17,6 +17,7 @@ public final class DefaultResolver implements Resolver {
     public <T> T resolve(Class<T> type) {
         Interface iface = new DefaultInterface(type);
         ResolvedInstance resolved = engine.resolve(iface, NO_IMPL);
-        return (T) resolved.getRef();
+        Object o = resolved.getRef();
+        return type.cast(o);
     }
 }

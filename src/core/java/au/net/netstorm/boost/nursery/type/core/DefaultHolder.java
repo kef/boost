@@ -33,14 +33,10 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
     }
 
     private T cloneIfArray(T value) {
-        Class<?> cls = value.getClass();
-        if (cls.isArray()) return cloneArray(value);
-        return value;
-    }
-
-    private <T> T cloneArray(T ref) {
-        // SUGGEST (Nov 23, 2007): Avoid adding more.
-        return (T) ((byte[]) ref).clone();
+        Class<T> cls = (Class<T>) value.getClass();
+        if (!cls.isArray()) return value;
+        byte[] bytes = ((byte[]) value).clone();
+        return cls.cast(bytes);
     }
 
     // FIX (Nov 22, 2007) 2233 Ensure tests make these final.
