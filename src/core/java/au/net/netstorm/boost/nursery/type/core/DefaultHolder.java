@@ -32,16 +32,8 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
         return cloneIfArray(value);
     }
 
-    private T cloneIfArray(T value) {
-        Class<T> cls = (Class<T>) value.getClass();
-        if (!cls.isArray()) return value;
-        byte[] bytes = ((byte[]) value).clone();
-        return cls.cast(bytes);
-    }
-
     // FIX (Nov 22, 2007) 2233 Ensure tests make these final.
     // FIX (Nov 21, 2007) 2233 Equals/HashCode were just hacked.
-
     public final boolean equals(Object o) {
         if (!(o instanceof Holder)) return false;
         Holder other = (Holder) o;
@@ -51,7 +43,7 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
         return value.equals(otherValue);
     }
 
-    // FIX (Nov 21, 2007) 2233 Test and insure these are final.
+    // FIX (Nov 21, 2007) 2233 Test and ensure these are final.
     public final int hashCode() {
         return value.hashCode();
     }
@@ -62,6 +54,22 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
         FieldValueSpec field = new DefaultFieldValueSpec("value", value);
         FieldValueSpec[] fields = {field};
         return TO_STRING_MASTER.formatFields(this, fields);
+    }
+
+    private T cloneIfArray(T value) {
+        Class<?> cls = value.getClass();
+        if (!cls.isArray()) return value;
+        return cloneArray(value);
+    }
+
+    private T cloneArray(T value) {
+        if (value instanceof byte[]) return cloneBytes(value);
+        throw new IllegalArgumentException();
+    }
+
+    private T cloneBytes(T value) {
+        byte[] bytes = (byte[]) value;
+        return (T) bytes.clone();
     }
 }
 // } OK GenericIllegalRegexp
