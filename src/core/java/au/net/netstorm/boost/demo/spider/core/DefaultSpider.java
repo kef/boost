@@ -16,7 +16,7 @@ public final class DefaultSpider implements Spider {
         this.resolver = resolver;
     }
 
-    public <T> T nu(Class<? extends T> impl, Object... params) {
+    public <T> T nu(Class<T> impl, Object... params) {
         return nu.nu(impl, params);
     }
 

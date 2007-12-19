@@ -15,10 +15,11 @@ public final class DefaultNu implements Nu {
         this.engine = engine;
     }
 
-    public <T> T nu(Class<? extends T> impl, Object... params) {
+    public <T> T nu(Class<T> impl, Object... params) {
         Interface iface = new DefaultInterface(NoInterface.class);
         Implementation implementation = new DefaultImplementation(impl);
         ResolvedInstance resolved = engine.provide(iface, implementation, params);
-        return (T) resolved.getRef();
+        Object ref = resolved.getRef();
+        return impl.cast(ref);
     }
 }
