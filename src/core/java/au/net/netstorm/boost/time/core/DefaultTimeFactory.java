@@ -5,17 +5,26 @@ import java.util.Date;
 public final class DefaultTimeFactory implements TimeFactory {
     private final TimeRangeMaster master = new DefaultTimeRangeMaster();
 
+    public TimePoint createTime(Date date) {
+        if (date == null) throw new IllegalArgumentException("Cannot create a time from a NULL date.");
+        long millis = date.getTime();
+        return createTime(millis);
+    }
+
+    public TimePoint createTime(long millis) {
+        return new DefaultTimePoint(millis);
+    }
+
     public TimeRange createRange(Date startDate, Date endDate) {
-        return createRange(createTime(startDate), createTime(endDate));
+        TimePoint start = createTime(startDate);
+        TimePoint end = createTime(endDate);
+        return createRange(start, end);
     }
 
-    public TimeRange createRange(long start, long endExclusive) {
-        return createRange(new DefaultTimePoint(start), new DefaultTimePoint(endExclusive));
-    }
-
-    public TimePoint createTime(Date timeDate) {
-        if (timeDate == null) throw new IllegalArgumentException("Cannot create a time from a NULL date.");
-        return new DefaultTimePoint(timeDate.getTime());
+    public TimeRange createRange(long startMillis, long endMillis) {
+        TimePoint start = new DefaultTimePoint(startMillis);
+        TimePoint end = new DefaultTimePoint(endMillis);
+        return createRange(start, end);
     }
 
     public TimeRange createRange(TimePoint start, TimePoint end) {

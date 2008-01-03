@@ -3,11 +3,13 @@ package au.net.netstorm.boost.time.core;
 import java.util.Date;
 
 public interface TimeFactory {
+    TimePoint createTime(Date date);
+
+    TimePoint createTime(long millis);
+
     TimeRange createRange(Date startDate, Date endDate);
 
-    TimeRange createRange(long start, long endExclusive);
-
-    TimePoint createTime(Date timeDate);
+    TimeRange createRange(long startMillis, long endMillis);
 
     TimeRange createRange(TimePoint start, TimePoint end);
 }
