@@ -8,13 +8,15 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+// FIX 2237 This probably goes when flavours are reinstated.
+
 // OK NCSS {
 public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     private static final String COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN = "Come on, ya have to give me somethin' man.  Anything but a null";
     AllowOverrides overrides = new DefaultAllowOverrides();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
-    Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface icecream = new DefaultInterface(IceCream.class);
+    Interface milkshake = new DefaultInterface(Milkshake.class);
     Interface chips = new DefaultInterface(Chips.class);
     Interface pie = new DefaultInterface(Pie.class);
     Object value, value1, value2, value3, value4;
