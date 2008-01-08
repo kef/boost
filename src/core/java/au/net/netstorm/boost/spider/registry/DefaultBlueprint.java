@@ -3,14 +3,16 @@ package au.net.netstorm.boost.spider.registry;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Implementation;
 
+// FIX 93259 Reinstate null intolerance.
 public final class DefaultBlueprint extends Primordial implements Blueprint {
     private final Stamp stamp;
     private final Implementation implementation;
+    private final Object[] parameters;
 
-    public DefaultBlueprint(Stamp stamp, Implementation implementation) {
+    public DefaultBlueprint(Stamp stamp, Implementation implementation, Object[] parameters) {
         this.stamp = stamp;
         this.implementation = implementation;
-        validate();
+        this.parameters = parameters.clone();
     }
 
     public Stamp getStamp() {
@@ -21,8 +23,7 @@ public final class DefaultBlueprint extends Primordial implements Blueprint {
         return implementation;
     }
 
-    private void validate() {
-        if (stamp == null) throw new IllegalArgumentException();
-        if (implementation == null) throw new IllegalArgumentException();
+    public Object[] getParameters() {
+        return parameters.clone();
     }
 }

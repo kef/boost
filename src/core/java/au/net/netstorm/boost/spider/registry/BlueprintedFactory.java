@@ -18,6 +18,10 @@ public final class BlueprintedFactory implements Factory {
         return provide(iface, provider, blueprint);
     }
 
+    public Blueprint get(Interface iface, Implementation host) {
+        return getBlueprint(iface);
+    }
+
     public boolean canHandle(Interface iface) {
         return blueprintsRead.exists(iface);
     }

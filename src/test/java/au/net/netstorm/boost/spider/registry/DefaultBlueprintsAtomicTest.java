@@ -13,6 +13,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
+    private static final Object[] NO_PARAMS = {};
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);
@@ -59,6 +60,6 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
 
     private Blueprint blueprint(Class cls) {
         Implementation impl = new DefaultImplementation(cls);
-        return new DefaultBlueprint(Stamp.MULTIPLE, impl);
+        return new DefaultBlueprint(Stamp.MULTIPLE, impl, NO_PARAMS);
     }
 }

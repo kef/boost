@@ -27,6 +27,9 @@ public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase imp
     ResolverEngine subject;
     Blueprint blueprint;
     Factory factoryMock;
+    Blueprint blueprintMock;
+    Implementation implementationDummy;
+    Object[] parametersDummy;
 
     public void setUpFixtures() {
         subject = new DefaultResolverEngine(instancesMock, factoriesMock, providerMock);
@@ -57,9 +60,11 @@ public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase imp
     private void setupNoResolvedExpectations(Stamp stamp, boolean expectInstancePut) {
         expect.oneCall(instancesMock, false, "exists", iface);
         expect.oneCall(factoriesMock, factoryMock, "find", iface);
-        expect.oneCall(factoryMock, resolvedInstanceDummy, "get", iface, hostDummy, providerMock);
-        boolean isSingle = stamp == Stamp.SINGLE;
-        expect.oneCall(factoryMock, isSingle, "isSingle", iface);
+        expect.oneCall(factoryMock, blueprintMock, "get", iface, hostDummy);
+        expect.oneCall(blueprintMock, stamp, "getStamp");
+        expect.oneCall(blueprintMock, implementationDummy, "getImplementation");
+        expect.oneCall(blueprintMock, parametersDummy, "getParameters");
+        expect.oneCall(providerMock, resolvedInstanceDummy, "provide", iface, implementationDummy, parametersDummy);
         if (expectInstancePut) expect.oneCall(instancesMock, VOID, "put", iface, resolvedInstanceDummy);
     }
 }

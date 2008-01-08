@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultRegistryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
-    private static final Object[] NO_ARGS = new Object[0];
+    private static final Object[] NO_ARGS = {};
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;
     Class soapFactoryClass = SoapFactory.class;
@@ -83,6 +83,6 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
 
     private Blueprint blueprint(Stamp stamp, Class football) {
         Implementation impl = new DefaultImplementation(football);
-        return new DefaultBlueprint(stamp, impl);
+        return new DefaultBlueprint(stamp, impl, NO_ARGS);
     }
 }

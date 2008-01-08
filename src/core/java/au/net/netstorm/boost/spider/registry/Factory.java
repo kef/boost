@@ -6,7 +6,10 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public interface Factory {
+    // FIX 93259 Remove (obsolete).
     ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider);
+
+    Blueprint get(Interface iface, Implementation host);
 
     boolean canHandle(Interface iface);
 

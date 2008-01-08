@@ -6,6 +6,9 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class SoapFactory implements Factory {
+    public Blueprint get(Interface iface, Implementation host) {
+        throw new UnsupportedOperationException();
+    }
 
     public ResolvedInstance get(Interface iface, Implementation host, ProviderEngine provider) {
         throw new UnsupportedOperationException();

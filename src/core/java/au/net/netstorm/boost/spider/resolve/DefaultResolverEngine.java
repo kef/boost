@@ -6,6 +6,8 @@ import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -49,9 +51,25 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance manufacture(Interface iface, Implementation host) {
         Factory factory = factories.find(iface);
-        ResolvedInstance instance = factory.get(iface, host, provider);
-        boolean isSingle = factory.isSingle(iface);
-        if (isSingle) instances.put(iface, instance);
+        Blueprint blueprint = factory.get(iface, host);
+        return manufacture(iface, blueprint);
+    }
+
+    private ResolvedInstance manufacture(Interface iface, Blueprint blueprint) {
+        Implementation impl = blueprint.getImplementation();
+        Object[] params = blueprint.getParameters();
+        return manufacture(iface, impl, params, blueprint);
+    }
+
+    private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Blueprint blueprint) {
+        ResolvedInstance instance = provider.provide(iface, impl, params);
+        store(blueprint, iface, instance);
         return instance;
+    }
+
+    private void store(Blueprint blueprint, Interface iface, ResolvedInstance instance) {
+        Stamp stamp = blueprint.getStamp();
+        boolean isSingle = stamp.equals(Stamp.SINGLE);
+        if (isSingle) instances.put(iface, instance);
     }
 }
