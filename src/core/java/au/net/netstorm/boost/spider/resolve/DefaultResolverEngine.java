@@ -43,31 +43,35 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public synchronized ResolvedInstance resolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
-        return manufacture(iface, host);
+        return get(iface, host);
     }
 
-    private ResolvedInstance manufacture(Interface iface, Implementation host) {
+    private ResolvedInstance get(Interface iface, Implementation host) {
         Factory factory = factories.find(iface);
         Blueprint blueprint = factory.get(iface, host);
-        return manufacture(iface, blueprint);
+        return get(iface, blueprint);
     }
 
-    private ResolvedInstance manufacture(Interface iface, Blueprint blueprint) {
+    private ResolvedInstance get(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
+        Object[] params = blueprint.getParameters();
+        Stamp stamp = blueprint.getStamp();
+        return get(iface, impl, params, stamp);
+    }
+
+    private ResolvedInstance get(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
         // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
         if (inProgress.exists(impl)) return inProgress.get(impl);
-        Object[] params = blueprint.getParameters();
-        return manufacture(iface, impl, params, blueprint);
+        return manufacture(iface, impl, params, stamp);
     }
 
-    private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Blueprint blueprint) {
+    private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
         ResolvedInstance instance = provider.provide(impl, params);
-        store(blueprint, iface, instance);
+        store(iface, instance, stamp);
         return instance;
     }
 
-    private void store(Blueprint blueprint, Interface iface, ResolvedInstance instance) {
-        Stamp stamp = blueprint.getStamp();
+    private void store(Interface iface, ResolvedInstance instance, Stamp stamp) {
         boolean isSingle = stamp.equals(Stamp.SINGLE);
         if (isSingle) instances.put(iface, instance);
     }
