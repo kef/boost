@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import java.lang.reflect.Field;
-import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
+import au.net.netstorm.boost.spider.flavour.MapException;
 import au.net.netstorm.boost.spider.registry.CannotProvideException;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
@@ -10,6 +9,8 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+
+import java.lang.reflect.Field;
 
 public final class DefaultFieldResolver implements FieldResolver {
     private final ResolverEngine resolver;
@@ -23,7 +24,7 @@ public final class DefaultFieldResolver implements FieldResolver {
             Interface iface = getInterface(field);
             Implementation host = getHost(field);
             return resolver.resolve(host, iface);
-        } catch (InterfaceMapException e) {
+        } catch (MapException e) {
             // FIX 2215 Should list ResolvedThings in this exception, not IME?
             throw new UnresolvedDependencyException(field, e);
         } catch (CannotProvideException e) {

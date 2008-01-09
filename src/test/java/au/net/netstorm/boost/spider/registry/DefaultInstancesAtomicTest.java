@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.InterfaceMap;
+import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
@@ -21,7 +21,7 @@ public final class DefaultInstancesAtomicTest extends LifecycleTestCase implemen
     Tree jacaranda = new Jacaranda();
     ResolvedInstance dinosaur = ref(tyrannosaurus);
     ResolvedInstance tree = ref(jacaranda);
-    InterfaceMap mapMock;
+    NiceMap mapMock;
     Boolean exists;
     Instances subject;
 

@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.DefaultInterfaceMap;
-import au.net.netstorm.boost.spider.flavour.InterfaceMap;
+import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
+import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultInstances implements Instances {
-    private final InterfaceMap map = new DefaultInterfaceMap();
+    private final NiceMap map = new DefaultNiceMap();
 
     public synchronized void put(Interface iface, ResolvedInstance instance) {
         check(iface, instance);

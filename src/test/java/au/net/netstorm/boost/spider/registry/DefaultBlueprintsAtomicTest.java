@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.InterfaceMap;
+import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
@@ -18,7 +18,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Interface iface = iface(Dinosaur.class);
     Interface dodgy = iface(Tree.class);
     Blueprint blueprint;
-    InterfaceMap mapMock;
+    NiceMap mapMock;
     Boolean exists;
     Implementation impl;
     TypeMaster typerMock;

@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
+import au.net.netstorm.boost.spider.flavour.MapException;
 import au.net.netstorm.boost.spider.registry.CannotProvideException;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
@@ -16,6 +15,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+import java.lang.reflect.Field;
+
 public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String HAPPY_CHAP = "happyChap";
     private static final String BEER_IN_HIS_TUMMY = "beerInHisTummy";
@@ -26,7 +27,7 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
     ResolvedInstance resolved;
     FieldResolver subject;
     Implementation host;
-    Exception ime = new InterfaceMapException(happyChap, "reason");
+    Exception ime = new MapException(happyChap, "reason");
     Exception cpe = new CannotProvideException(happyChap);
 
     public void setUpFixtures() {

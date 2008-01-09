@@ -11,7 +11,7 @@ import au.net.netstorm.boost.util.type.Interface;
 // FIX 2237 This probably goes when flavours are reinstated.
 
 // OK NCSS {
-public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
+public final class DefaultNiceMapAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     private static final String COME_ON_YA_HAVE_TO_GIVE_ME_SOMETHIN_MAN = "Come on, ya have to give me somethin' man.  Anything but a null";
     AllowOverrides overrides = new DefaultAllowOverrides();
     FieldTestUtil fielder = new DefaultFieldTestUtil();
@@ -20,10 +20,10 @@ public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase imple
     Interface chips = new DefaultInterface(Chips.class);
     Interface pie = new DefaultInterface(Pie.class);
     Object value, value1, value2, value3, value4;
-    InterfaceMap subject;
+    NiceMap subject;
 
     public void setUpFixtures() {
-        subject = new DefaultInterfaceMap();
+        subject = new DefaultNiceMap();
     }
 
     public void testMainFlow() {
@@ -45,7 +45,7 @@ public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase imple
 
     public void testPutFails() {
         put(milkshake, value);
-        checkPutFails(milkshake, "Interface already exists");
+        checkPutFails(milkshake, "Key already exists");
     }
 
     public void testPutOverrides() {
@@ -54,7 +54,7 @@ public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase imple
     }
 
     public void testGetFails() {
-        checkGetFails(milkshake, "No matching interface");
+        checkGetFails(milkshake, "No matching key");
     }
 
     public void testFailsWithNullValue() {
@@ -87,7 +87,7 @@ public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase imple
         try {
             subject.get(iface);
             fail();
-        } catch (InterfaceMapException expected) {
+        } catch (MapException expected) {
             check(reason, expected);
         }
     }
@@ -100,12 +100,12 @@ public final class DefaultInterfaceMapAtomicTest extends LifecycleTestCase imple
         try {
             subject.put(iface, value);
             fail();
-        } catch (InterfaceMapException expected) {
+        } catch (MapException expected) {
             check(reason, expected);
         }
     }
 
-    private void check(String expected, InterfaceMapException ex) {
+    private void check(String expected, MapException ex) {
         String msg = ex.getMessage();
         boolean ends = msg.startsWith(expected);
         assertEquals("Message should have started with: \"" + expected + ".\"  Full message was \"" + msg + "\".", true, ends);
