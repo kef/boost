@@ -11,6 +11,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
+    private static final Class NO_HOST = Object.class;
     private static final Object[] NO_PARAMS = {};
     private final Blueprints blueprints;
     private final Instances instances;
@@ -26,11 +27,15 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T, U extends T> void multiple(Class<T> iface, Class<U> impl) {
-        blueprint(iface, impl, MULTIPLE);
+        blueprint(NO_HOST, iface, impl, MULTIPLE);
     }
 
     public <T, U extends T> void single(Class<T> iface, Class<U> impl) {
-        blueprint(iface, impl, SINGLE);
+        blueprint(NO_HOST, iface, impl, SINGLE);
+    }
+
+    public <T, U extends T> void single(Class<?> host, Class<T> iface, Class<U> impl) {
+        blueprint(host, iface, impl, SINGLE);
     }
 
     public <T, U extends T> void instance(Class<T> iface, U ref) {
@@ -48,11 +53,12 @@ public final class DefaultRegistry implements Registry {
         factories.add(factory);
     }
 
-    private void blueprint(Class iface, Class impl, Stamp stamp) {
-        Interface inyerface = iface(iface);
-        Implementation implementation = new DefaultImplementation(impl);
-        Blueprint blueprint = new DefaultBlueprint(stamp, implementation, NO_PARAMS);
-        blueprints.put(inyerface, blueprint);
+    private void blueprint(Class host, Class iface, Class impl, Stamp stamp) {
+        Interface sIface = iface(iface);
+        Implementation sImpl = new DefaultImplementation(impl);
+        Implementation sHost = new DefaultImplementation(host);
+        Blueprint blueprint = new DefaultBlueprint(stamp, sImpl, NO_PARAMS);
+        blueprints.put(sHost, sIface, blueprint);
     }
 
     private Interface iface(Class iface) {

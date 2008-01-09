@@ -12,7 +12,7 @@ public final class DefaultBlueprints implements Blueprints {
     private TypeMaster typer = new DefaultTypeMaster();
     private final InterfaceMap map = new DefaultInterfaceMap();
 
-    public void put(Interface iface, Blueprint blueprint) {
+    public void put(Implementation host, Interface iface, Blueprint blueprint) {
         check(iface, blueprint);
         map.put(iface, blueprint);
     }

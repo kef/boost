@@ -19,13 +19,16 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     private static final Object[] NO_ARGS = {};
     private static final Stamp MULTIPLE = Stamp.MULTIPLE;
     private static final Stamp SINGLE = Stamp.SINGLE;
+    private static final Implementation NO_HOST = new DefaultImplementation(Object.class);
     Class soapFactoryClass = SoapFactory.class;
     Class cerealClass = BreakfastCereal.class;
     Class footballClass = Football.class;
     Class sportClass = Sport.class;
+    Class footballStadiumClass = FootballStadium.class;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     Interface sportInterface = new DefaultInterface(sportClass);
     Interface cerealInterface = new DefaultInterface(cerealClass);
+    Implementation footballStadiumInterface = new DefaultImplementation(footballStadiumClass);
     CocoPops cocoPops = new CocoPops();
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     Blueprints blueprintsMock;
@@ -37,6 +40,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     Registry subject;
     Nu nuMock;
 
+    // FIX ()   2237 Incorporate hosts for multiple (definitely) and instances (maybe)???
     public void setUpFixtures() {
         subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, nuMock);
     }
@@ -47,8 +51,15 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     public void testSingle() {
-        setUpSingle();
+        Blueprint blueprint = blueprint(SINGLE, footballClass);
+        expect.oneCall(blueprintsMock, VOID, "put", NO_HOST, sportInterface, blueprint);
         subject.single(sportClass, footballClass);
+    }
+
+    public void testHostedSingle() {
+        Blueprint blueprint = blueprint(SINGLE, footballClass);
+        expect.oneCall(blueprintsMock, VOID, "put", footballStadiumInterface, sportInterface, blueprint);
+        subject.single(footballStadiumClass, sportClass, footballClass);
     }
 
     public void testInstance() {
@@ -73,12 +84,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
 
     private void setUpMultiple() {
         Blueprint multipleFootballBlueprint = blueprint(MULTIPLE, footballClass);
-        expect.oneCall(blueprintsMock, VOID, "put", sportInterface, multipleFootballBlueprint);
-    }
-
-    private void setUpSingle() {
-        Blueprint singleFootballBlueprint = blueprint(SINGLE, footballClass);
-        expect.oneCall(blueprintsMock, VOID, "put", sportInterface, singleFootballBlueprint);
+        expect.oneCall(blueprintsMock, VOID, "put", NO_HOST, sportInterface, multipleFootballBlueprint);
     }
 
     private Blueprint blueprint(Stamp stamp, Class football) {

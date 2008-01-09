@@ -23,6 +23,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Implementation impl;
     TypeMaster typerMock;
     Blueprints subject;
+    Implementation hostDummy;
 
     public void setUpFixtures() {
         subject = new DefaultBlueprints();
@@ -44,12 +45,12 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
 
     public void testPut() {
         expect.oneCall(mapMock, VOID, "put", iface, blueprint);
-        subject.put(iface, blueprint);
+        subject.put(hostDummy, iface, blueprint);
     }
 
     public void testIllegalPut() {
         try {
-            subject.put(dodgy, blueprint);
+            subject.put(hostDummy, dodgy, blueprint);
             fail();
         } catch (WrongInterfaceRegistrationException expected) { }
     }
