@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.spider.flavour;
 
+import au.net.netstorm.boost.util.type.Interface;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFlavouredMapEngine implements FlavouredMapEngine {
     private static final Flavour UNFLAVOURED = Flavour.UNFLAVOURED;

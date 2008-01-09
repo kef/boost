@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.demo.automock;
 
-import java.util.Map;
 import org.jmock.Mock;
 import org.jmock.MockObjectTestCase;
+
+import java.util.Map;
 
 public final class WorkingMockDemoTest extends MockObjectTestCase {
     private Mock mockMap;

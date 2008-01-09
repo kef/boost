@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.util.exception.ThrowableMaster;
+
+import java.lang.reflect.Method;
 
 public final class DefaultTryCatchFinallyHandler implements TryFinallyHandler {
     private final ThrowableMaster tosser = new DefaultThrowableMaster();

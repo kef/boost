@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -16,23 +14,14 @@ public final class DefaultInjectorEngine implements InjectorEngine {
     private final EdgeField fielder = new DefaultEdgeField();
     private final ResolvableFieldFinder fieldFinder;
     private final FieldResolver fieldResolver;
-    private final PartialInstances inProgress = new DefaultPartialInstances();
 
     public DefaultInjectorEngine(ResolvableFieldFinder fieldFinder, FieldResolver fieldResolver) {
         this.fieldFinder = fieldFinder;
         this.fieldResolver = fieldResolver;
     }
 
+    // FIX 2237 Remove iface parameter.
     public void inject(Interface iface, UnresolvedInstance unresolved) {
-        inProgress.put(iface, unresolved);
-        try {
-            doInject(unresolved);
-        } finally {
-            inProgress.remove(iface);
-        }
-    }
-
-    private void doInject(UnresolvedInstance unresolved) {
         Object ref = unresolved.getRef();
         Field[] fields = fieldFinder.find(ref);
         for (Field field : fields) {

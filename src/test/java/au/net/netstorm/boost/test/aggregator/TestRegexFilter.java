@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.test.aggregator;
 
+import au.net.netstorm.boost.primordial.Primordial;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import au.net.netstorm.boost.primordial.Primordial;
 
 final class TestRegexFilter extends Primordial implements FileFilter {
     private final Pattern pattern;

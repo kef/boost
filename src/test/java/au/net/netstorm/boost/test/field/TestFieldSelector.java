@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.test.field;
 
-import java.util.ArrayList;
-import java.util.List;
 import au.net.netstorm.boost.test.matcher.Matcher;
 import au.net.netstorm.boost.test.matcher.TestFieldMatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class TestFieldSelector implements FieldSelector {
     private final Matcher testMatcher = new TestFieldMatcher();

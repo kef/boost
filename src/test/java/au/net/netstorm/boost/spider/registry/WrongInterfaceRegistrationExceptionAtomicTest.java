@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import java.util.Random;
 import au.net.netstorm.boost.primordial.BoooostException;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
@@ -9,6 +8,8 @@ import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
+
+import java.util.Random;
 
 public final class WrongInterfaceRegistrationExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     Implementation impl = new DefaultImplementation(Random.class);

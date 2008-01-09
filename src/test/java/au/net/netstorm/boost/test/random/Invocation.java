@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.test.random;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Data;
+
+import java.lang.reflect.Method;
 
 public class Invocation extends Primordial implements Data {
     private final Method method;

@@ -1,12 +1,13 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 class PropertyMethodStructureChecker implements DataChecker {
     private static final Class[] NO_PARAMETERS = {};

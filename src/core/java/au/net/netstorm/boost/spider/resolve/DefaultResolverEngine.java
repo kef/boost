@@ -3,10 +3,10 @@ package au.net.netstorm.boost.spider.resolve;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
@@ -57,7 +57,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
         Implementation impl = blueprint.getImplementation();
         // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
         // FIX 2237 Change from iface to impl in inProgress.
-        if (inProgress.exists(iface)) return inProgress.get(iface);
+        if (inProgress.exists(impl)) return inProgress.get(impl);
         Object[] params = blueprint.getParameters();
         return manufacture(iface, impl, params, blueprint);
     }

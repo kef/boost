@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
@@ -15,6 +14,8 @@ import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
+
+import java.lang.reflect.Field;
 
 public final class DefaultInjectorEngineAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     InjectorEngine subject;

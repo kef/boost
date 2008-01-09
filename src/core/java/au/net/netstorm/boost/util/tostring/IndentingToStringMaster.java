@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.util.tostring;
 
-import java.lang.reflect.Array;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
@@ -8,6 +7,8 @@ import au.net.netstorm.boost.reflect.ReflectMaster;
 import au.net.netstorm.boost.util.indent.DefaultIndenterMaster;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.separator.Separator;
+
+import java.lang.reflect.Array;
 
 public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";

@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public interface PartialInstances {
     void clear();
 
-    boolean exists(Interface iface);
+    boolean exists(Implementation impl);
 
-    ResolvedInstance get(Interface iface);
+    ResolvedInstance get(Implementation impl);
 
-    void put(Interface iface, UnresolvedInstance ref);
+    void put(Implementation impl, UnresolvedInstance ref);
 
-    void remove(Interface iface);
+    void remove(Implementation impl);
 }

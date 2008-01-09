@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.test.inject;
 
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 public final class DefaultFieldNameFinder implements FieldNameFinder {
     private final EdgeClass classer = new DefaultEdgeClass();

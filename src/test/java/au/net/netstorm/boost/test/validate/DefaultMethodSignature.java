@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.test.validate;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.primordial.Primordial;
+
+import java.lang.reflect.Method;
 
 class DefaultMethodSignature extends Primordial implements MethodSignature {
     private final Class[] params;

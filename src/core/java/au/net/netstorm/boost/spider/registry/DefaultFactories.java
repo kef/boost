@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.spider.registry;
 
+import au.net.netstorm.boost.util.type.Interface;
+
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultFactories implements Factories {
     private final List factories = new ArrayList();

@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
-import java.lang.reflect.Member;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import junit.framework.Assert;
+
+import java.lang.reflect.Member;
 
 public final class DefaultModifierTestChecker implements ModifierTestChecker {
     private final ClassMaster classMaster = new DefaultClassMaster();

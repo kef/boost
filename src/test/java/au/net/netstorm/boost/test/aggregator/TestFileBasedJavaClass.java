@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.test.aggregator;
 
-import java.io.File;
 import au.net.netstorm.boost.primordial.Primordial;
+
+import java.io.File;
 
 final class TestFileBasedJavaClass extends Primordial implements JavaClass {
     private final String fullyQualifiedClassPath;

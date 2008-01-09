@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.util.io;
 
-import java.io.Serializable;
 import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
 import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
 import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
 import junit.framework.Assert;
+
+import java.io.Serializable;
 
 final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
     private final transient AssertTestChecker asserter = new DefaultAssertTestChecker();

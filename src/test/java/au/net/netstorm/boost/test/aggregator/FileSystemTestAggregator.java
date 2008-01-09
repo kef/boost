@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.test.aggregator;
 
-import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
+import java.io.File;
 
 public final class FileSystemTestAggregator implements TestAggregator {
     private final ClassLocator locator = new TestClassLocator();

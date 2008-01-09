@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.test.reflect.util;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+
+import java.lang.reflect.Field;
 
 public interface FieldTestUtil {
     Field get(Class cls, String fieldName);

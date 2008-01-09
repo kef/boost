@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.reflect.DefaultReflectMaster;
@@ -9,6 +8,8 @@ import au.net.netstorm.boost.test.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Constructor;
 
 final class ConstructorDataChecker implements DataChecker {
     private ReflectMaster reflectMaster = new DefaultReflectMaster();

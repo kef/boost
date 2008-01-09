@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.util.nullo;
 
-import java.io.Serializable;
 import au.net.netstorm.boost.util.array.ArrayFlattener;
 import au.net.netstorm.boost.util.array.DefaultArrayFlattener;
+
+import java.io.Serializable;
 
 // FIX SC502 Where is this used?
 

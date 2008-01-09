@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
+import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.util.type.UnresolvedInstance;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultPartialInstances implements PartialInstances {
     private static final ThreadLocal LOCAL_MON = new ThreadLocal();
@@ -15,21 +16,21 @@ public final class DefaultPartialInstances implements PartialInstances {
         map.clear();
     }
 
-    public boolean exists(Interface iface) {
+    public boolean exists(Implementation impl) {
         Map map = get();
-        return map.containsKey(iface);
+        return map.containsKey(impl);
     }
 
-    public ResolvedInstance get(Interface iface) {
-        if (!exists(iface)) throw new IllegalStateException(iface + " not found");
+    public ResolvedInstance get(Implementation impl) {
+        if (!exists(impl)) throw new IllegalStateException(impl + " not found");
         Map map = get();
-        return (ResolvedInstance) map.get(iface);
+        return (ResolvedInstance) map.get(impl);
     }
 
-    public void put(Interface iface, UnresolvedInstance ref) {
-        if (exists(iface)) throw new IllegalStateException("Duplicate insertion of " + iface);
+    public void put(Implementation impl, UnresolvedInstance ref) {
+        if (exists(impl)) throw new IllegalStateException("Duplicate insertion of " + impl);
         Map map = get();
-        map.put(iface, ref);
+        map.put(impl, ref);
     }
 
     public String toString() {
@@ -38,9 +39,9 @@ public final class DefaultPartialInstances implements PartialInstances {
         return "" + keys;
     }
 
-    public void remove(Interface iface) {
+    public void remove(Implementation impl) {
         Map map = get();
-        map.remove(iface);
+        map.remove(impl);
     }
 
     private Map get() {

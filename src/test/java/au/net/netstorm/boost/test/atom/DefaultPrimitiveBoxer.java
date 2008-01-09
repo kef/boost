@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.test.atom;
 
+import junit.framework.Assert;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import junit.framework.Assert;
 
 public final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
     private final Map map = new HashMap();

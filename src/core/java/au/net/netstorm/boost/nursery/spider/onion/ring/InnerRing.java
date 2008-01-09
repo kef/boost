@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.nursery.spider.onion.ring;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
+
+import java.lang.reflect.Method;
 
 public final class InnerRing implements Ring {
     private static final EdgeMethod METHODER = new DefaultEdgeMethod();

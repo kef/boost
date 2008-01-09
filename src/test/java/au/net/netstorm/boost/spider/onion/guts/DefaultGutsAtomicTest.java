@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.spider.onion.guts;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class DefaultGutsAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     EdgeClass classer = new DefaultEdgeClass();

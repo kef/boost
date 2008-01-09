@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.spider.registry;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.test.core.BoooostCase;
+
+import java.lang.reflect.Field;
 
 public final class UnresolvedDependencyExceptionAtomicTest extends BoooostCase {
     private Field field;

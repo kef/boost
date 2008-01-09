@@ -6,34 +6,34 @@ import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
-    PartialInstances subject;
-    Interface iface;
-    BaseReference instance;
-    Interface doesNotExist;
     FieldTestUtil fielder = new DefaultFieldTestUtil();
+    PartialInstances subject;
+    Implementation impl;
+    BaseReference instance;
+    Implementation doesNotExist;
 
     public void setUpFixtures() {
         subject = new DefaultPartialInstances();
         subject.clear();
-        fielder.setInstance(doesNotExist, "type", String.class);
+        fielder.setInstance(doesNotExist, "impl", String.class);
     }
 
     public void testExists() {
-        checkExists(iface, false);
-        checkPut(iface, instance);
-        checkExists(iface, true);
+        checkExists(impl, false);
+        checkPut(impl, instance);
+        checkExists(impl, true);
     }
 
     public void testPutSuccess() {
-        checkPut(iface, instance);
+        checkPut(impl, instance);
     }
 
     public void testGetFailure() {
-        subject.put(iface, instance);
+        subject.put(impl, instance);
         try {
             subject.get(doesNotExist);
             fail();
@@ -41,9 +41,9 @@ public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase i
     }
 
     public void testPutFailure() {
-        subject.put(iface, instance);
+        subject.put(impl, instance);
         try {
-            subject.put(iface, instance);
+            subject.put(impl, instance);
             fail();
         }
         catch (IllegalStateException expected) {
@@ -51,19 +51,19 @@ public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase i
     }
 
     public void testRemove() {
-        subject.put(iface, instance);
-        subject.remove(iface);
-        checkExists(iface, false);
+        subject.put(impl, instance);
+        subject.remove(impl);
+        checkExists(impl, false);
     }
 
-    private void checkExists(Interface myimpl, boolean myexpected) {
+    private void checkExists(Implementation myimpl, boolean myexpected) {
         boolean actual = subject.exists(myimpl);
         assertEquals(myexpected, actual);
     }
 
-    private void checkPut(Interface implementation, BaseReference baseReference) {
+    private void checkPut(Implementation implementation, BaseReference baseReference) {
         subject.put(implementation, baseReference);
-        ResolvedInstance actual = subject.get(iface);
+        ResolvedInstance actual = subject.get(impl);
         assertEquals(instance, actual);
     }
 }

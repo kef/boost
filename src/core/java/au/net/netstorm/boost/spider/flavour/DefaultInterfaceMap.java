@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.spider.flavour;
 
+import au.net.netstorm.boost.util.type.Interface;
+
 import java.util.HashMap;
 import java.util.Map;
-import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 2237 Move any non-flavoured stuff out of the package and clean.
 public final class DefaultInterfaceMap implements InterfaceMap {

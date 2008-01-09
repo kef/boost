@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.time.type;
 
-import java.util.Calendar;
 import au.net.netstorm.boost.test.core.BoooostCase;
+
+import java.util.Calendar;
 
 public final class DaySpecAtomicTest extends BoooostCase {
     public void testValidDays() {
@@ -70,7 +71,6 @@ public final class DaySpecAtomicTest extends BoooostCase {
         assertEquals(status, spec.compareTo(toSpec));
     }
 // } DEBT ParameterNumber
-
     private static final MonthSpec APRIL_2004 = new MonthSpec(2004, Calendar.APRIL);
     private static final MonthSpec MAY_2004 = new MonthSpec(2004, Calendar.MAY);
     private static final MonthSpec DECEMBER_2004 = new MonthSpec(2004, Calendar.DECEMBER);

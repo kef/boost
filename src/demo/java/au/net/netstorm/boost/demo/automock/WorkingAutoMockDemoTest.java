@@ -1,12 +1,13 @@
 package au.net.netstorm.boost.demo.automock;
 
-import java.lang.reflect.Proxy;
-import java.util.List;
-import java.util.Map;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 import org.jmock.util.NotImplementedException;
+
+import java.lang.reflect.Proxy;
+import java.util.List;
+import java.util.Map;
 
 public final class WorkingAutoMockDemoTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     TestSubject subject;

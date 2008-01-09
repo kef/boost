@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
@@ -15,6 +14,8 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
+
+import java.lang.reflect.Field;
 
 public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String HAPPY_CHAP = "happyChap";

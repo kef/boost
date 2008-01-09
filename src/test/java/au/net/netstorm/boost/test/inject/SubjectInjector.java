@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.test.inject;
 
-import java.lang.reflect.Field;
-import java.util.List;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldFinder;
@@ -10,6 +8,9 @@ import au.net.netstorm.boost.test.field.FieldSuffix;
 import au.net.netstorm.boost.test.field.MockFieldSuffix;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 public final class SubjectInjector implements Injector {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();

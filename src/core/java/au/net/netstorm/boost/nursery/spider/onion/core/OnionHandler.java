@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 public final class OnionHandler implements InvocationHandler {
     // FIX 1887 Move the peeler setup out of here into place where it is done once.

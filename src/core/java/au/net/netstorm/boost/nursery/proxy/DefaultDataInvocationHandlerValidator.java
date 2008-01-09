@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.type.Interface;
 
-public class DefaultDataInvocationHandlerValidator implements DataInvocationHandlerValidator {
+import java.lang.reflect.Method;
 
+public class DefaultDataInvocationHandlerValidator implements DataInvocationHandlerValidator {
     public void check(FieldValueSpec[] fields, Interface iFace) {
         Method[] methods = iFace.getType().getMethods();
         for (int i = 0; i < methods.length; i++) {

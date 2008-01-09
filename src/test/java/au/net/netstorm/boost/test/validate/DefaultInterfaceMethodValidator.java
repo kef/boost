@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.test.validate;
 
+import au.net.netstorm.boost.reflect.DefaultReflectMaster;
+import au.net.netstorm.boost.reflect.ReflectMaster;
+
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
 
 public final class DefaultInterfaceMethodValidator implements InterfaceMethodValidator {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();

@@ -1,12 +1,13 @@
 package au.net.netstorm.boost.test.atom;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.test.reflect.util.ClassMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassMethodTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
+
+import java.lang.reflect.Method;
 
 final class ClassMethodStructureDataChecker implements DataChecker {
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();

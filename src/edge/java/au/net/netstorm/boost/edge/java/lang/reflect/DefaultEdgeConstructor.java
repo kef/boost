@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.edge.java.lang.reflect;
 
-import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.edge.IllegalEdgeConstructorArgumentException;
+
+import java.lang.reflect.Constructor;
 
 // FIX DEBT We don't do logic in edges.
 public final class DefaultEdgeConstructor implements EdgeConstructor {

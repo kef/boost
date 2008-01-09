@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.test.validate;
 
-import java.lang.reflect.Method;
 import junit.framework.TestCase;
+
+import java.lang.reflect.Method;
 
 public final class TestMethodMatcher implements MethodMatcher {
     public boolean matches(Method method) {

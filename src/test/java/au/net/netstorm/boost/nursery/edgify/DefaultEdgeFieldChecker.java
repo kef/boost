@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.nursery.edgify;
 
+import junit.framework.Assert;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-import junit.framework.Assert;
 
 public final class DefaultEdgeFieldChecker implements EdgeChecker {
     private static final String EDGE_DELEGATE_NAME = "delegate";

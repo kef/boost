@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.test.aggregator;
 
-import java.io.File;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+
+import java.io.File;
 
 public final class TestClassLocator implements ClassLocator {
     private final ClassNameLocator locator = new TestClassNameLocator();

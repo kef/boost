@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.edge.java.lang;
 
+import au.net.netstorm.boost.edge.EdgeException;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import au.net.netstorm.boost.edge.EdgeException;
 
 public final class DefaultEdgeClass implements EdgeClass {
-
     public Class forName(String className) {
         try {
             return Class.forName(className);

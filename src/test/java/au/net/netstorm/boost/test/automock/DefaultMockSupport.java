@@ -1,12 +1,13 @@
 package au.net.netstorm.boost.test.automock;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 import org.jmock.Mock;
 import org.jmock.core.Constraint;
 import org.jmock.core.InvocationMatcher;
 import org.jmock.core.Stub;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public final class DefaultMockSupport implements MockSupport {
     private final MyMockObjectTestCase delegate = new MyMockObjectTestCase();

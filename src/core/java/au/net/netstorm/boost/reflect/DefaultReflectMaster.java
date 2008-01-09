@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.reflect;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 import au.net.netstorm.boost.util.introspect.MethodSpec;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 // SUGGEST Use "composer" when it is ready.
 public final class DefaultReflectMaster implements ReflectMaster {
