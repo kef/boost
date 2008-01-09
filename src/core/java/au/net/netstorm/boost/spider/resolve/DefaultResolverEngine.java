@@ -44,7 +44,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public synchronized ResolvedInstance resolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
-        // FIX 2215 Moved here from ProviderEngine.  Is the right place yet?
+        // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
         if (inProgress.exists(iface)) return inProgress.get(iface);
         return manufacture(iface, host);
     }
