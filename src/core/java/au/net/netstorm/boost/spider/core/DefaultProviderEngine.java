@@ -16,7 +16,6 @@ import au.net.netstorm.boost.util.type.UnresolvedInstance;
 // SUGGEST: Strongly type Object[] as Resolved[] in provide(...).
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
-    private static final Object[] NO_PARAMS = {};
     private final PartialInstances inProgress = new DefaultPartialInstances();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final Onionizer onionizer;
@@ -27,12 +26,6 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.onionizer = onionizer;
         this.injector = injector;
         this.instantiator = instantiator;
-    }
-
-    // FIX 2215 iface is here to link iface, impl, and instantiation together.
-    // FIX 2237 Should be able to remove this method soon.
-    public ResolvedInstance provide(Interface iface, Implementation impl) {
-        return provide(impl, NO_PARAMS);
     }
 
     // FIX 2215 Interface iface has been recently added.  Is this the right direction?
