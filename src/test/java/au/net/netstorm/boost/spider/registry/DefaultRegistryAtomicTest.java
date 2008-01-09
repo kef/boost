@@ -2,6 +2,8 @@ package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.instantiate.Nu;
+import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
+import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
@@ -17,9 +19,8 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class DefaultRegistryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final Object[] NO_ARGS = {};
-    private static final Stamp MULTIPLE = Stamp.MULTIPLE;
-    private static final Stamp SINGLE = Stamp.SINGLE;
     private static final Implementation NO_HOST = new DefaultImplementation(Object.class);
+    private static final Object[] NO_PARAMS = {};
     Class soapFactoryClass = SoapFactory.class;
     Class cerealClass = BreakfastCereal.class;
     Class footballClass = Football.class;
@@ -30,7 +31,9 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     Interface cerealInterface = new DefaultInterface(cerealClass);
     Implementation footballStadiumInterface = new DefaultImplementation(footballStadiumClass);
     CocoPops cocoPops = new CocoPops();
+    Implementation cocoPopsImplementation = new DefaultImplementation(CocoPops.class);
     ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
+    Blueprint blueprint = new DefaultBlueprint(SINGLE, cocoPopsImplementation, NO_PARAMS);
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
@@ -79,7 +82,9 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     private void setUpInstance() {
-        expect.oneCall(instancesMock, VOID, "put", cerealInterface, resolvedCocoPops);
+        expect.oneCall(blueprintsMock, VOID, "put", NO_HOST, cerealInterface, blueprint);
+        expect.oneCall(instancesMock, false, "exists", cocoPopsImplementation);
+        expect.oneCall(instancesMock, VOID, "put", cocoPopsImplementation, resolvedCocoPops);
     }
 
     private void setUpMultiple() {

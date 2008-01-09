@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public interface Instances {
-    void put(Interface iface, ResolvedInstance instance);
+    void put(Implementation iface, ResolvedInstance instance);
 
-    ResolvedInstance get(Interface iface);
+    ResolvedInstance get(Implementation impl);
 
-    boolean exists(Interface iface);
+    boolean exists(Implementation impl);
 }

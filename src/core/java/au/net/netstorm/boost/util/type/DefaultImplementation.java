@@ -21,4 +21,18 @@ public final class DefaultImplementation<T> extends Primordial implements Implem
             throw new IllegalArgumentException(failMessage);
         }
     }
+
+    // FIX () BREADCRUMB   2237 REMOVE THIS FUCKER.  IT WAS COPY AND PASTED IN!!!!!!!!!!!
+    public int hashCode() {
+        return impl.hashCode();
+    }
+
+    // FIX () BREADCRUMB   2237 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    // FIX () BREADCRUMB   2237 REMOVE THIS FUCKER.  IT WAS COPY AND PASTED IN!!!!!!!!!!!
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Implementation)) return false;
+        Implementation implementation = (Implementation) obj;
+        Class cls = implementation.getImpl();
+        return impl.equals(cls);
+    }
 }

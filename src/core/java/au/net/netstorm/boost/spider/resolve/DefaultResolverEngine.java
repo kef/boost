@@ -13,6 +13,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX 2215 Some notes on the result of a spike...!!!!!!!!!!!!!!!!!!!!!!!!!!
+// FIX ()   2237 Talk to PWL and extract relevant/good bits.
 
 /*
    PWL 12 Nov, 07
@@ -30,10 +31,10 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
    NOTE: I reserve the right to change my mind at a moments notice.
 */
 public final class DefaultResolverEngine implements ResolverEngine {
+    private final PartialInstances inProgress = new DefaultPartialInstances();
     private final Instances instances;
     private final Factories factories;
     private final ProviderEngine provider;
-    private final PartialInstances inProgress = new DefaultPartialInstances();
 
     public DefaultResolverEngine(Instances instances, Factories factories, ProviderEngine provider) {
         this.instances = instances;
@@ -43,37 +44,36 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public synchronized ResolvedInstance resolve(Implementation host, Interface iface) {
         // FIX () BREADCRUMB   2237 BBBBBBBBBBBBBBB Move to after inProgress and use impl instead of iface.
-        if (instances.exists(iface)) return instances.get(iface);
         return get(host, iface);
     }
 
     private ResolvedInstance get(Implementation host, Interface iface) {
         Factory factory = factories.find(iface);
         Blueprint blueprint = factory.get(host, iface);
-        return get(iface, blueprint);
+        return get(blueprint);
     }
 
-    private ResolvedInstance get(Interface iface, Blueprint blueprint) {
+    private ResolvedInstance get(Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         Object[] params = blueprint.getParameters();
         Stamp stamp = blueprint.getStamp();
-        return get(iface, impl, params, stamp);
+        return get(impl, params, stamp);
     }
 
-    private ResolvedInstance get(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
-        // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
+    private ResolvedInstance get(Implementation impl, Object[] params, Stamp stamp) {
         if (inProgress.exists(impl)) return inProgress.get(impl);
-        return manufacture(iface, impl, params, stamp);
+        if (instances.exists(impl)) return instances.get(impl);
+        return manufacture(impl, params, stamp);
     }
 
-    private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
+    private ResolvedInstance manufacture(Implementation impl, Object[] params, Stamp stamp) {
         ResolvedInstance instance = provider.provide(impl, params);
-        store(iface, instance, stamp);
+        store(impl, instance, stamp);
         return instance;
     }
 
-    private void store(Interface iface, ResolvedInstance instance, Stamp stamp) {
+    private void store(Implementation impl, ResolvedInstance instance, Stamp stamp) {
         boolean isSingle = stamp.equals(Stamp.SINGLE);
-        if (isSingle) instances.put(iface, instance);
+        if (isSingle) instances.put(impl, instance);
     }
 }

@@ -39,9 +39,13 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T, U extends T> void instance(Class<T> iface, U ref) {
-        Interface inyerface = iface(iface);
+        // FIX ()   2237 Tidy?
+        Class cls = ref.getClass();
+        blueprint(NO_HOST, iface, cls, SINGLE);
+        Implementation impl = new DefaultImplementation(cls);
         ResolvedInstance instance = new DefaultBaseReference(ref);
-        instances.put(inyerface, instance);
+        // FIX ()   2237 Triangulator.
+        if (!instances.exists(impl)) instances.put(impl, instance);
     }
 
     public void factory(Factory factory) {

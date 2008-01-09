@@ -4,10 +4,10 @@ import au.net.netstorm.boost.primordial.BoooostException;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.util.type.Implementation;
 
 public final class WrongRegistrationTypeExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
-    Interface type;
+    Implementation type;
     BoooostException subject;
 
     public void setUpFixtures() {
