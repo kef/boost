@@ -10,7 +10,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 // FIX (Nov 28, 2007) IOC 2215 There feels like a lot of dupe here with DefaultInstances.
 public final class DefaultBlueprints implements Blueprints {
     private final InterfaceMap map = new DefaultInterfaceMap();
-    private TypeMaster typer = new DefaultTypeMaster();
+    private final TypeMaster typer = new DefaultTypeMaster();
 
     // FIX ()   2237 Use host.
     public void put(Implementation host, Interface iface, Blueprint blueprint) {
