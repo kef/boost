@@ -64,7 +64,7 @@ public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase imp
         expect.oneCall(blueprintMock, stamp, "getStamp");
         expect.oneCall(blueprintMock, implementationDummy, "getImplementation");
         expect.oneCall(blueprintMock, parametersDummy, "getParameters");
-        expect.oneCall(providerMock, resolvedInstanceDummy, "provide", iface, implementationDummy, parametersDummy);
+        expect.oneCall(providerMock, resolvedInstanceDummy, "provide", implementationDummy, parametersDummy);
         if (expectInstancePut) expect.oneCall(instancesMock, VOID, "put", iface, resolvedInstanceDummy);
     }
 }

@@ -21,7 +21,7 @@ public final class DefaultInjectorEngine implements InjectorEngine {
     }
 
     // FIX 2237 Remove iface parameter.
-    public void inject(Interface iface, UnresolvedInstance unresolved) {
+    public void inject(UnresolvedInstance unresolved) {
         Object ref = unresolved.getRef();
         Field[] fields = fieldFinder.find(ref);
         for (Field field : fields) {

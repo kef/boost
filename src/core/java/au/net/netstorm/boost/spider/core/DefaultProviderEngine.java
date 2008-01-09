@@ -32,28 +32,28 @@ public final class DefaultProviderEngine implements ProviderEngine {
     // FIX 2215 iface is here to link iface, impl, and instantiation together.
     // FIX 2237 Should be able to remove this method soon.
     public ResolvedInstance provide(Interface iface, Implementation impl) {
-        return provide(iface, impl, NO_PARAMS);
+        return provide(impl, NO_PARAMS);
     }
 
     // FIX 2215 Interface iface has been recently added.  Is this the right direction?
     // FIX 2215 Perhaps we should revert to just Implementation and do the inProgress.put() some other way.
     // FIX 2237 Should be able to remove iface parameter soon.
-    public ResolvedInstance provide(Interface iface, Implementation impl, Object[] parameters) {
-        ResolvedInstance resolved = getResolvedInstance(iface, impl, parameters);
+    public ResolvedInstance provide(Implementation impl, Object[] parameters) {
+        ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
         return onionizer.onionise(impl, resolved);
     }
 
-    private ResolvedInstance getResolvedInstance(Interface iface, Implementation impl, Object[] parameters) {
+    private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
         UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
-        inject(impl, unresolved, iface);
+        inject(impl, unresolved);
         return (ResolvedInstance) unresolved;
     }
 
-    private void inject(Implementation impl, UnresolvedInstance unresolved, Interface iface) {
+    private void inject(Implementation impl, UnresolvedInstance unresolved) {
         try {
             inProgress.put(impl, unresolved);
-            injector.inject(iface, unresolved);
+            injector.inject(unresolved);
         } finally {
             inProgress.remove(impl);
         }

@@ -34,7 +34,6 @@ public final class DefaultInjectorEngineAtomicTest extends LifecycleTestCase imp
     Field fieldRock = field("rock");
     Field[] fields = {fieldJuicy, fieldRock};
     PartialInstances partialInstances = new DefaultPartialInstances();
-    Interface ifaceMock;
 
     public void setUpFixtures() {
         subject = new DefaultInjectorEngine(fieldFinderMock, fieldResolverMock);
@@ -47,7 +46,7 @@ public final class DefaultInjectorEngineAtomicTest extends LifecycleTestCase imp
         expect.oneCall(fieldFinderMock, fields, "find", juicy);
         setupFieldResolve(lazyBastardMock, fieldJuicy, juicyRef);
         setupFieldResolve(moleyMock, fieldRock, rockRef);
-        subject.inject(ifaceMock, unresolvedMock);
+        subject.inject(unresolvedMock);
     }
 
     private void setupFieldResolve(ResolvedInstance resolvedInstance, Field field, Object ref) {

@@ -33,10 +33,10 @@ public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase imp
     Implementation providezMoi;
     ResolvedInstance wrapped;
     Onionizer onionizerMock;
+    Implementation implDummy;
     ProviderEngine subject;
     Object[] noParams = {};
     Object rawRef;
-    Interface ifaceDummy;
 
     public void setUpFixtures() {
         subject = new DefaultProviderEngine(onionizerMock, injectorMock, instantiatorMock);
@@ -49,18 +49,11 @@ public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase imp
 
     private void checkProvider(boolean construct) {
         check(construct, parameters);
-        check(construct);
-    }
-
-    private void check(boolean construct) {
-        expectations(construct, noParams);
-        ResolvedInstance result = subject.provide(ifaceDummy, providezMoi);
-        assertEquals(wrapped, result);
     }
 
     private void check(boolean construct, Object[] parameters) {
         expectations(construct, parameters);
-        ResolvedInstance result = subject.provide(ifaceDummy, providezMoi, parameters);
+        ResolvedInstance result = subject.provide(providezMoi, parameters);
         assertEquals(wrapped, result);
     }
 
@@ -72,7 +65,7 @@ public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase imp
 
     private void expectations(boolean construct, Object[] parameters) {
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
-        expect.oneCall(injectorMock, VOID, "inject", ifaceDummy, unresolvedMock);
+        expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
         expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);
         if (construct) expectConstruct();
     }

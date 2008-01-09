@@ -9,7 +9,6 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultInjectorAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
-    private static final Interface NO_CONTEXT = new DefaultInterface(NoContextInterface.class);
     Injector subject;
     Object ref;
     InjectorEngine engineMock;
@@ -21,7 +20,7 @@ public final class DefaultInjectorAtomicTest extends LifecycleTestCase implement
     }
 
     public void testInjector() {
-        expect.oneCall(engineMock, VOID, "inject", NO_CONTEXT, unresolved);
+        expect.oneCall(engineMock, VOID, "inject", unresolved);
         subject.inject(ref);
     }
 }

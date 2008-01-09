@@ -63,7 +63,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Blueprint blueprint) {
-        ResolvedInstance instance = provider.provide(iface, impl, params);
+        ResolvedInstance instance = provider.provide(impl, params);
         store(blueprint, iface, instance);
         return instance;
     }

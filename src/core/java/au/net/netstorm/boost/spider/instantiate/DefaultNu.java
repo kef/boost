@@ -18,7 +18,7 @@ public final class DefaultNu implements Nu {
     public <T> T nu(Class<T> impl, Object... params) {
         Interface iface = new DefaultInterface(NoInterface.class);
         Implementation implementation = new DefaultImplementation(impl);
-        ResolvedInstance resolved = engine.provide(iface, implementation, params);
+        ResolvedInstance resolved = engine.provide(implementation, params);
         Object ref = resolved.getRef();
         return impl.cast(ref);
     }

@@ -4,5 +4,5 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public interface InjectorEngine {
-    void inject(Interface iface, UnresolvedInstance unresolved);
+    void inject(UnresolvedInstance unresolved);
 }

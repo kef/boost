@@ -18,7 +18,6 @@ public final class DefaultNuAtomicTest extends LifecycleTestCase implements HasF
     private Object[] params;
     private Shu shu;
     Implementation impl = new DefaultImplementation(SHU);
-    Interface iface = new DefaultInterface(NoInterface.class);
     ProviderEngine engineMock;
     Tongue tongueDummy;
     Nu subject;
@@ -31,7 +30,7 @@ public final class DefaultNuAtomicTest extends LifecycleTestCase implements HasF
     }
 
     public void testNu() {
-        expect.oneCall(engineMock, resolvedInstance, "provide", iface, impl, params);
+        expect.oneCall(engineMock, resolvedInstance, "provide", impl, params);
         Object actual = subject.nu(SHU, tongueDummy);
         assertEquals(actual, shu);
     }

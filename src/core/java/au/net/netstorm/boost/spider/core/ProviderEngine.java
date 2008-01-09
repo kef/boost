@@ -8,7 +8,5 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX NOW THIS IS A NuEngine not a ProviderEngine now DefaultProvider is
 public interface ProviderEngine {
-    ResolvedInstance provide(Interface iface, Implementation implementation);
-
-    ResolvedInstance provide(Interface iface, Implementation implementation, Object[] params);
+    ResolvedInstance provide(Implementation implementation, Object[] params);
 }
