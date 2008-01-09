@@ -28,8 +28,6 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
-    // FIX 2215 Interface iface has been recently added.  Is this the right direction?
-    // FIX 2215 Perhaps we should revert to just Implementation and do the inProgress.put() some other way.
     // FIX 2237 Should be able to remove iface parameter soon.
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
