@@ -1,15 +1,12 @@
 package au.net.netstorm.boost.spider.instantiate;
 
-import au.net.netstorm.boost.spider.core.NoInterface;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultNuAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {

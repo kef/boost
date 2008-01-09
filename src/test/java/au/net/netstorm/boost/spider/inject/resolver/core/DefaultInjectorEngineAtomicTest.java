@@ -11,7 +11,6 @@ import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 

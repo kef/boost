@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.spider.inject.core;
 
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultInjector implements Injector {

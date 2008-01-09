@@ -4,7 +4,6 @@ import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;
 

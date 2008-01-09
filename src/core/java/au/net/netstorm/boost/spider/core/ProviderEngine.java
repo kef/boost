@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // SUGGEST: SM and others are not comfortable with iface being passed in.
