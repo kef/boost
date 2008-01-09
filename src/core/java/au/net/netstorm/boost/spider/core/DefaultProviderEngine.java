@@ -28,7 +28,6 @@ public final class DefaultProviderEngine implements ProviderEngine {
         this.instantiator = instantiator;
     }
 
-    // FIX 2237 Should be able to remove iface parameter soon.
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
         ResolvedInstance resolved = getResolvedInstance(impl, parameters);
         if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
