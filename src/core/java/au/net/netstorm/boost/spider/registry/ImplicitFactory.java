@@ -13,7 +13,7 @@ public final class ImplicitFactory implements Factory {
         this.impler = impler;
     }
 
-    public Blueprint get(Interface iface, Implementation host) {
+    public Blueprint get(Implementation host, Interface iface) {
         Implementation impl = impler.impl(iface);
         return new DefaultBlueprint(SINGLE, impl, NO_PARAMS);
     }

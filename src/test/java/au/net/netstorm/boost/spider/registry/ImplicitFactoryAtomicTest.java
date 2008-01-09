@@ -29,7 +29,7 @@ public final class ImplicitFactoryAtomicTest extends LifecycleTestCase implement
     public void testGet() {
         expect.oneCall(implerMock, implDummy, "impl", ifaceDummy);
         Blueprint expected = new DefaultBlueprint(Stamp.SINGLE, implDummy, NO_PARAMS);
-        Blueprint actual = subject.get(ifaceDummy, hostDummy);
+        Blueprint actual = subject.get(hostDummy, ifaceDummy);
         assertEquals(expected, actual);
     }
 }

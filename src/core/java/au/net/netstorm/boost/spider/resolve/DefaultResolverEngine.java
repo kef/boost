@@ -41,14 +41,14 @@ public final class DefaultResolverEngine implements ResolverEngine {
         this.provider = provider;
     }
 
-    public synchronized ResolvedInstance resolve(Interface iface, Implementation host) {
+    public synchronized ResolvedInstance resolve(Implementation host, Interface iface) {
         if (instances.exists(iface)) return instances.get(iface);
-        return get(iface, host);
+        return get(host, iface);
     }
 
-    private ResolvedInstance get(Interface iface, Implementation host) {
+    private ResolvedInstance get(Implementation host, Interface iface) {
         Factory factory = factories.find(iface);
-        Blueprint blueprint = factory.get(iface, host);
+        Blueprint blueprint = factory.get(host, iface);
         return get(iface, blueprint);
     }
 

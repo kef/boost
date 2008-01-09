@@ -10,8 +10,8 @@ public final class BlueprintedFactory implements Factory {
         this.blueprintsRead = blueprintsRead;
     }
 
-    public Blueprint get(Interface iface, Implementation host) {
-        return blueprintsRead.get(iface);
+    public Blueprint get(Implementation host, Interface iface) {
+        return blueprintsRead.get(host, iface);
     }
 
     public boolean canHandle(Interface iface) {

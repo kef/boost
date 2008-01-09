@@ -47,20 +47,20 @@ public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase imp
     public void testResolvedInstance() {
         expect.oneCall(instancesMock, true, "exists", iface);
         expect.oneCall(instancesMock, resolvedInstanceDummy, "get", iface);
-        ResolvedInstance result = subject.resolve(iface, hostDummy);
+        ResolvedInstance result = subject.resolve(hostDummy, iface);
         assertEquals(resolvedInstanceDummy, result);
     }
 
     private void checkNoResolvedInstance(Stamp stamp, boolean expectInstancePut) {
         setupNoResolvedExpectations(stamp, expectInstancePut);
-        ResolvedInstance result = subject.resolve(iface, hostDummy);
+        ResolvedInstance result = subject.resolve(hostDummy, iface);
         assertEquals(resolvedInstanceDummy, result);
     }
 
     private void setupNoResolvedExpectations(Stamp stamp, boolean expectInstancePut) {
         expect.oneCall(instancesMock, false, "exists", iface);
         expect.oneCall(factoriesMock, factoryMock, "find", iface);
-        expect.oneCall(factoryMock, blueprintMock, "get", iface, hostDummy);
+        expect.oneCall(factoryMock, blueprintMock, "get", hostDummy, iface);
         expect.oneCall(blueprintMock, stamp, "getStamp");
         expect.oneCall(blueprintMock, implementationDummy, "getImplementation");
         expect.oneCall(blueprintMock, parametersDummy, "getParameters");

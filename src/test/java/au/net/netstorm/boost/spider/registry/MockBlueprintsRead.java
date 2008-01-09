@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class MockBlueprintsRead extends BoooostCase implements BlueprintsRead {
@@ -14,7 +15,7 @@ public final class MockBlueprintsRead extends BoooostCase implements BlueprintsR
         this.iface = iface;
     }
 
-    public Blueprint get(Interface iface) {
+    public Blueprint get(Implementation host, Interface iface) {
         check(iface);
         return blueprint;
     }

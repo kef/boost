@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
+import java.lang.reflect.Field;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.spider.flavour.InterfaceMapException;
@@ -14,8 +15,6 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
-
-import java.lang.reflect.Field;
 
 public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String HAPPY_CHAP = "happyChap";
@@ -47,7 +46,7 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
     private void expectException(Exception exception) {
         Field field = field(HAPPY_CHAP);
         setupHost(field);
-        expect.oneCall(resolverMock, exception, "resolve", happyChap, host);
+        expect.oneCall(resolverMock, exception, "resolve", host, happyChap);
         try {
             subject.resolve(field);
             fail();
@@ -57,7 +56,7 @@ public final class DefaultFieldResolverAtomicTest extends LifecycleTestCase impl
     private void checkResolve(String fieldName, Interface iface) {
         Field field = field(fieldName);
         setupHost(field);
-        expect.oneCall(resolverMock, resolved, "resolve", iface, host);
+        expect.oneCall(resolverMock, resolved, "resolve", host, iface);
         ResolvedInstance result = subject.resolve(field);
         assertEquals(resolved, result);
     }

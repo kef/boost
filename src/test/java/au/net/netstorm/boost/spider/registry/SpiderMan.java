@@ -8,7 +8,7 @@ public final class SpiderMan implements Factory {
         throw new UnsupportedOperationException();
     }
 
-    public Blueprint get(Interface iface, Implementation host) {
+    public Blueprint get(Implementation host, Interface iface) {
         throw new UnsupportedOperationException();
     }
 }

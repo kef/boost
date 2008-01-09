@@ -13,7 +13,7 @@ public final class MemorabiliaFactory implements Factory {
     private static final Interface MEMORABILIA = new DefaultInterface(Memorabilia.class);
     private static final Implementation STOLEN = new DefaultImplementation(StolenMemorabilia.class);
 
-    public Blueprint get(Interface iface, Implementation host) {
+    public Blueprint get(Implementation host, Interface iface) {
         Class cls = host.getImpl();
         Object[] args = {cls};
         return new DefaultBlueprint(MULTIPLE, STOLEN, args);

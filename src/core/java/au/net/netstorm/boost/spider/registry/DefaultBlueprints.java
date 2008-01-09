@@ -12,15 +12,18 @@ public final class DefaultBlueprints implements Blueprints {
     private final InterfaceMap map = new DefaultInterfaceMap();
     private TypeMaster typer = new DefaultTypeMaster();
 
+    // FIX ()   2237 Use host.
     public void put(Implementation host, Interface iface, Blueprint blueprint) {
         check(iface, blueprint);
         map.put(iface, blueprint);
     }
 
-    public Blueprint get(Interface iface) {
+    // FIX ()   2237 Use host.
+    public Blueprint get(Implementation host, Interface iface) {
         return (Blueprint) map.get(iface);
     }
 
+    // FIX ()   2237 Use host.
     public boolean exists(Interface iface) {
         return map.exists(iface);
     }

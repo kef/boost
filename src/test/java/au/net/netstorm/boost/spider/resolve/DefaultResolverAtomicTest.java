@@ -22,7 +22,7 @@ public final class DefaultResolverAtomicTest extends LifecycleTestCase implement
     }
 
     public void testResolve() {
-        expect.oneCall(resolverEngineMock, resolvedInstanceMock, "resolve", fruity, NO_CONTEXT);
+        expect.oneCall(resolverEngineMock, resolvedInstanceMock, "resolve", NO_CONTEXT, fruity);
         expect.oneCall(resolvedInstanceMock, resolvedDummy, "getRef");
         Fruity result = subject.resolve(Fruity.class);
         assertEquals(resolvedDummy, result);

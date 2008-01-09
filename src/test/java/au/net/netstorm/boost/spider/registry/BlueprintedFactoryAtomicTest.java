@@ -28,8 +28,8 @@ public final class BlueprintedFactoryAtomicTest extends LifecycleTestCase implem
     }
 
     public void testGet() {
-        expect.oneCall(blueprintsReadMock, blueprintDummy, "get", ifaceDummy);
-        Blueprint actual = subject.get(ifaceDummy, implDummy);
+        expect.oneCall(blueprintsReadMock, blueprintDummy, "get", implDummy, ifaceDummy);
+        Blueprint actual = subject.get(implDummy, ifaceDummy);
         assertEquals(blueprintDummy, actual);
     }
 }

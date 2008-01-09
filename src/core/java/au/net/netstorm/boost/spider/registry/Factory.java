@@ -4,7 +4,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 public interface Factory {
-    Blueprint get(Interface iface, Implementation host);
+    Blueprint get(Implementation host, Interface iface);
 
     boolean canHandle(Interface iface);
 }

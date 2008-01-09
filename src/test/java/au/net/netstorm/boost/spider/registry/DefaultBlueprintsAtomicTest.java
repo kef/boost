@@ -39,7 +39,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
 
     public void testGet() {
         expect.oneCall(mapMock, blueprint, "get", iface);
-        Blueprint actual = subject.get(iface);
+        Blueprint actual = subject.get(hostDummy, iface);
         assertEquals(blueprint, actual);
     }
 
