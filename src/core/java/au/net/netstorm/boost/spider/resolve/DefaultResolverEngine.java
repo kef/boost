@@ -42,6 +42,7 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     public synchronized ResolvedInstance resolve(Implementation host, Interface iface) {
+        // FIX () BREADCRUMB   2237 BBBBBBBBBBBBBBB Move to after inProgress and use impl instead of iface.
         if (instances.exists(iface)) return instances.get(iface);
         return get(host, iface);
     }
