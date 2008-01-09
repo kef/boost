@@ -8,6 +8,8 @@ public interface Registry {
 
     <T, U extends T> void single(Class<?> host, Class<T> iface, Class<U> impl);
 
+    <T, U extends T> void single(Class<?> host, Class<T> iface, String name, Class<U> impl);
+
     <T, U extends T> void instance(Class<T> iface, U ref);
 
     <T extends Factory> void factory(Class<T> cls);

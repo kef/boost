@@ -38,6 +38,10 @@ public final class DefaultRegistry implements Registry {
         blueprint(host, iface, impl, SINGLE);
     }
 
+    public <T, U extends T> void single(Class<?> host, Class<T> iface, String name, Class<U> impl) {
+        // FIX ()   2237 Complete.
+    }
+
     public <T, U extends T> void instance(Class<T> iface, U ref) {
         // FIX ()   2237 Tidy?
         Class cls = ref.getClass();

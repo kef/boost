@@ -41,6 +41,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     TypeMaster typerMock;
     Factory factoryDummy;
     Registry subject;
+    String name;
     Nu nuMock;
 
     // FIX ()   2237 Incorporate hosts for multiple (definitely) and instances (maybe)???
@@ -63,6 +64,11 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
         Blueprint blueprint = blueprint(SINGLE, footballClass);
         expect.oneCall(blueprintsMock, VOID, "put", footballStadiumInterface, sportInterface, blueprint);
         subject.single(footballStadiumClass, sportClass, footballClass);
+    }
+
+    public void testFullSingle() {
+        // FIX ()   2237 This is not a test ... complete.
+        subject.single(footballStadiumClass, sportClass, name, footballClass);
     }
 
     public void testInstance() {
