@@ -14,6 +14,8 @@ public final class BlueprintedFactory implements Factory {
         return blueprintsRead.get(host, iface);
     }
 
+    // FIX ()   2237 Add host.  Or remove from above method.
+    // FIX () BREADCRUMB   2237 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     public boolean canHandle(Interface iface) {
         return blueprintsRead.exists(iface);
     }
