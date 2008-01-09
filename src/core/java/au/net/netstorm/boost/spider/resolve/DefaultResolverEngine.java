@@ -44,8 +44,6 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     public synchronized ResolvedInstance resolve(Interface iface, Implementation host) {
         if (instances.exists(iface)) return instances.get(iface);
-        // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
-        if (inProgress.exists(iface)) return inProgress.get(iface);
         return manufacture(iface, host);
     }
 
@@ -57,6 +55,9 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance manufacture(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
+        // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
+        // FIX 2237 Change from iface to impl in inProgress.
+        if (inProgress.exists(iface)) return inProgress.get(iface);
         Object[] params = blueprint.getParameters();
         return manufacture(iface, impl, params, blueprint);
     }
