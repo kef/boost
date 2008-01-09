@@ -1,23 +1,20 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class ImplicitFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
+    private static final Object[] NO_PARAMS = {};
     ImplicitFactory subject;
     ImplMaster implerMock;
     Interface ifaceDummy;
     Boolean canHandle;
     Implementation hostDummy;
-    ProviderEngine providerMock;
     Implementation implDummy;
-    ResolvedInstance instanceDummy;
 
     public void setUpFixtures() {
         subject = new ImplicitFactory(implerMock);
@@ -31,13 +28,8 @@ public final class ImplicitFactoryAtomicTest extends LifecycleTestCase implement
 
     public void testGet() {
         expect.oneCall(implerMock, implDummy, "impl", ifaceDummy);
-        expect.oneCall(providerMock, instanceDummy, "provide", ifaceDummy, implDummy);
-        ResolvedInstance actual = subject.get(ifaceDummy, hostDummy, providerMock);
-        assertEquals(instanceDummy, actual);
-    }
-
-    public void testIsSingle() {
-        boolean actual = subject.isSingle(ifaceDummy);
-        assertEquals(true, actual);
+        Blueprint expected = new DefaultBlueprint(Stamp.SINGLE, implDummy, NO_PARAMS);
+        Blueprint actual = subject.get(ifaceDummy, hostDummy);
+        assertEquals(expected, actual);
     }
 }
