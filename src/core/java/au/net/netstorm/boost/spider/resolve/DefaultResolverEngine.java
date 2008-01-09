@@ -30,7 +30,6 @@ import au.net.netstorm.boost.util.type.ResolvedInstance;
    NOTE: I reserve the right to change my mind at a moments notice.
 */
 public final class DefaultResolverEngine implements ResolverEngine {
-    // FIX 2215 Call this singles?
     private final Instances instances;
     private final Factories factories;
     private final ProviderEngine provider;
