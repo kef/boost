@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
+// FIX () BREADCRUMB   2237 Write a test which fails for register(host, iface, impl).
 public final class BlueprintDemoTest extends ResolverDemooooTest {
     {
         registry.multiple(Town.class, Weipa.class);
