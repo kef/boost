@@ -14,6 +14,7 @@ final class DefaultLinkage extends Primordial implements Linkage {
         this.host = host;
         this.iface = iface;
         this.name = name;
+        validate(iface);
     }
 
     // FIX () BREADCRUMB   2237 SSSSSSSSSSSSSSSSSSSSSSSS hashCode/equals for our map.
@@ -41,5 +42,9 @@ final class DefaultLinkage extends Primordial implements Linkage {
 
     private void check(Object ref, String s) {
         if (ref == null) throw new IllegalStateException("No " + s + "specified");
+    }
+
+    private void validate(Interface iface) {
+        if (iface == null) throw new IllegalStateException("No nulls.");
     }
 }

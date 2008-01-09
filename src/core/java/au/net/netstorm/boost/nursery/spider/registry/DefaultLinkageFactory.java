@@ -5,14 +5,14 @@ import au.net.netstorm.boost.util.type.Interface;
 
 public class DefaultLinkageFactory implements LinkageFactory {
     public Linkage nu(Interface iface) {
-        return new DefaultLinkage(null, iface, null);
+        return nu(null, iface, null);
     }
 
     public Linkage nu(Implementation host, Interface iface) {
-        throw new UnsupportedOperationException();
+        return nu(host, iface, null);
     }
 
     public Linkage nu(Implementation host, Interface iface, String name) {
-        throw new UnsupportedOperationException();
+        return new DefaultLinkage(host, iface, name);
     }
 }
