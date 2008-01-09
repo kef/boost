@@ -56,7 +56,6 @@ public final class DefaultResolverEngine implements ResolverEngine {
     private ResolvedInstance manufacture(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         // FIX 2237 Moved here from ProviderEngine.  Is the right place yet?
-        // FIX 2237 Change from iface to impl in inProgress.
         if (inProgress.exists(impl)) return inProgress.get(impl);
         Object[] params = blueprint.getParameters();
         return manufacture(iface, impl, params, blueprint);
