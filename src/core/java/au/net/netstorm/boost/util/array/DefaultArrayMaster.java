@@ -9,16 +9,16 @@ import java.util.List;
 import java.util.Set;
 
 public final class DefaultArrayMaster implements ArrayMaster {
-    public Object[] minus(Object[] minuend, Object[] subtrahend) {
-        Set result = set(minuend);
-        Set subSet = set(subtrahend);
+    public <T> T[] minus(T[] minuend, T[] subtrahend) {
+        Set<T> result = set(minuend);
+        Set<T> subSet = set(subtrahend);
         result.removeAll(subSet);
         return toArray(result, minuend);
     }
 
-    public Object[] plus(Object[] array1, Object[] array2) {
-        List result = list(array1);
-        List set = list(array2);
+    public <T> T[] plus(T[] array1, T[] array2) {
+        List<T> result = list(array1);
+        List<T> set = list(array2);
         result.addAll(set);
         return toArray(result, array1);
     }
@@ -39,16 +39,21 @@ public final class DefaultArrayMaster implements ArrayMaster {
 
     public boolean hasDuplicates(Object[] array) {
         List output = new ArrayList();
-        for (int i = 0; i < array.length; i++) {
-            if (output.contains(array[i])) return true;
-            output.add(array[i]);
+        for (Object obj : array) {
+            if (output.contains(obj)) return true;
+            output.add(obj);
         }
         return false;
     }
 
+    public <T> T[] removeDuplicates(T[] array) {
+        Set<T> set = set(array);
+        return toArray(set, array);
+    }
+
     public boolean intersects(Object[] o1, Object[] o2) {
-        for (int i = 0; i < o1.length; i++) {
-            if (contains(o2, o1[i])) return true;
+        for (Object obj : o1) {
+            if (contains(o2, obj)) return true;
         }
         return false;
     }
@@ -63,14 +68,14 @@ public final class DefaultArrayMaster implements ArrayMaster {
         return new ArrayList(immutable);
     }
 
-    private Object[] toArray(Collection collection, Object[] array) {
-        Object[] type = type(array);
+    private <T> T[] toArray(Collection<T> collection, T[] array) {
+        T[] type = type(array);
         return collection.toArray(type);
     }
 
-    private Object[] type(Object[] array) {
+    private <T> T[] type(T[] array) {
         Class arrayClass = array.getClass();
         Class componentType = arrayClass.getComponentType();
-        return (Object[]) Array.newInstance(componentType, 0);
+        return (T[]) Array.newInstance(componentType, 0);
     }
 }

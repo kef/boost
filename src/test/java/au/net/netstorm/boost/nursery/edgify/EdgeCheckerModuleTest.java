@@ -30,9 +30,9 @@ public final class EdgeCheckerModuleTest extends BoooostCase {
         Class[] endingWithSupplier = getClasses(".*Supplier");
         Class[] endingWithConverter = getClasses(".*Converter");
         Class[] endingWithChecker = getClasses(".*Checker");
-        Class[] excludingSuppliers = (Class[]) array.minus(startingWithEdge, endingWithSupplier);
-        Class[] excludingCheckers = (Class[]) array.minus(excludingSuppliers, endingWithChecker);
-        edgeClasses = (Class[]) array.minus(excludingCheckers, endingWithConverter);
+        Class[] excludingSuppliers = array.minus(startingWithEdge, endingWithSupplier);
+        Class[] excludingCheckers = array.minus(excludingSuppliers, endingWithChecker);
+        edgeClasses = array.minus(excludingCheckers, endingWithConverter);
     }
 
     public void testEdgeStructure() {

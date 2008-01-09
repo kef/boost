@@ -18,7 +18,7 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     private String[] noStrings = new String[]{};
 
     public void testMinusBytes() {
-        Object[] actual = subject.minus(bigfoobar, bigBar);
+        Byte[] actual = subject.minus(bigfoobar, bigBar);
         assertBagEquals(bigFoo, actual);
     }
 
@@ -28,19 +28,25 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     }
 
     public void testPlus() {
-        Object[] actual = subject.plus(bigFoo, bigBar);
+        Byte[] actual = subject.plus(bigFoo, bigBar);
         assertEquals(bigfoobar, actual);
         checkType(actual, Byte[].class);
     }
 
     public void testContains() {
         boolean actual = subject.contains(bigFoo, bigFoo[2]);
+        assertEquals(true, actual);
     }
 
     public void testHasDuplicates() {
         checkHasDuplicates(noStrings, false);
         checkHasDuplicates(duplicates, true);
         checkHasDuplicates(noDuplicates, false);
+    }
+
+    public void testRemoveDuplicates() {
+        String[] actual = subject.removeDuplicates(duplicates);
+        assertBagEquals(noDuplicates, actual);
     }
 
     public void testIntersects() {

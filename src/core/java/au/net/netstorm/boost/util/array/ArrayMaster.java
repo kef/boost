@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.array;
 
 public interface ArrayMaster {
-    Object[] minus(Object[] minuend, Object[] subtrahend);
+    <T> T[] minus(T[] minuend, T[] subtrahend);
 
-    Object[] plus(Object[] array1, Object[] array2);
+    <T> T[] plus(T[] array1, T[] array2);
 
     // FIX DEBT Move to a primitive helper area.
     byte[] plus(byte[] array1, byte[] array2);
@@ -11,6 +11,8 @@ public interface ArrayMaster {
     boolean contains(Object[] array, Object o);
 
     boolean hasDuplicates(Object[] array);
+
+    <T> T[] removeDuplicates(T[] array);
 
     boolean intersects(Object[] o1, Object[] o2);
 }

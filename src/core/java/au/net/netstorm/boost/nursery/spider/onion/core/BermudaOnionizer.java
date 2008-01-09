@@ -54,7 +54,7 @@ public final class BermudaOnionizer implements Onionizer {
     private Interface[] interfaces(Implementation impl) {
         Interface[] ifaces = typer.interfaces(impl);
         Interface[] onion = {ONION_SKIN};
-        return (Interface[]) arrays.plus(ifaces, onion);
+        return arrays.plus(ifaces, onion);
     }
 
     private boolean exemption(Implementation impl) {
