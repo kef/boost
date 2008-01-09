@@ -11,6 +11,7 @@ import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
+    // FIX ()   2237 Remove.  Use linkages.
     private static final Class NO_HOST = Object.class;
     private static final Object[] NO_PARAMS = {};
     private final Blueprints blueprints;
@@ -31,6 +32,7 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T, U extends T> void single(Class<T> iface, Class<U> impl) {
+        // FIX () BREADCRUMB   2237 RRRRRRRRRRRRRRRRRRRRRRRRRRRR Coalesce into linkages
         blueprint(NO_HOST, iface, impl, SINGLE);
     }
 
