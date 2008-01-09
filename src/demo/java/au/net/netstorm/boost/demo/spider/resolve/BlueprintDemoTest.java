@@ -5,6 +5,9 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
     {
         registry.multiple(Town.class, Weipa.class);
         registry.single(FlyingDoctor.class, FnqFlyingDoctor.class);
+        // FIX ()   2237 Reinstate.
+//        registry.multiple(AirField.class, BrisbaneAirField.class);
+//        registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
     }
 
     public void testSingle() {
@@ -14,6 +17,18 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
         FlyingDoctor d1 = getDoctor(t1);
         FlyingDoctor d2 = getDoctor(t2);
         checkSame(d1, d2);
+    }
+
+    // FIX ()   2237 Reinstate.
+//    public void testHostedSingle() {
+//        AirField af1 = resolver.resolve(AirField.class);
+//        FlyingDoctor doctor = getDoctor(af1);
+//        Class actual = doctor.getClass();
+//        assertEquals(CoastalFlyingDoctor.class, actual);
+//    }
+
+    private FlyingDoctor getDoctor(AirField af1) {
+        return (FlyingDoctor) grapher.get(af1, "doctor");
     }
 
     private Town resolveTown() {
