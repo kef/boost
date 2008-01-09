@@ -23,7 +23,7 @@ public final class DefaultBlueprints implements Blueprints {
         return (Blueprint) map.get(iface);
     }
 
-    // FIX ()   2237 Use host.
+    // FIX ()   2237 Use host??????  Check callers.
     public boolean exists(Interface iface) {
         return map.exists(iface);
     }
