@@ -8,6 +8,8 @@ import java.util.Map;
 // FIX 2237 Move any non-flavoured stuff out of the package and clean.
 
 // FIX ()   2237 Rename to NiceMap.
+
+// FIX () BREADCRUMB   2237 CCCCCCCCCCCCCCCCCCCCCCC Generify.
 public final class DefaultInterfaceMap implements InterfaceMap {
     private final Map ifaces = new HashMap();
     // Leave in for test framework to tweak
