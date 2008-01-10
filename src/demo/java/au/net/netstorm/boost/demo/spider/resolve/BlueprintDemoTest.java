@@ -5,8 +5,8 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
     {
         registry.multiple(Town.class, Weipa.class);
         registry.single(FlyingDoctor.class, FnqFlyingDoctor.class);
-        // FIX ()   2237 Reinstate.
 // FIX () BREADCRUMB   2237 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Back here.
+        // FIX ()   2237 Reinstate.
         registry.multiple(AirField.class, BrisbaneAirField.class);
 //        registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
         // FIX ()   2237 Test.
