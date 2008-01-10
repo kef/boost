@@ -27,16 +27,12 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
         assertEquals(CoastalFlyingDoctor.class, actual);
     }
 
-    private FlyingDoctor getDoctor(AirField af1) {
-        return (FlyingDoctor) grapher.get(af1, "doctor");
-    }
-
     private Town resolveTown() {
         return resolver.resolve(Town.class);
     }
 
-    private FlyingDoctor getDoctor(Town t1) {
-        return (FlyingDoctor) grapher.get(t1, "doctor");
+    private FlyingDoctor getDoctor(Object ref) {
+        return (FlyingDoctor) grapher.get(ref, "doctor");
     }
 
     private void checkSame(Object o1, Object o2) {
