@@ -9,6 +9,8 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
 // FIX () BREADCRUMB   2237 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Back here.
         registry.multiple(AirField.class, BrisbaneAirField.class);
 //        registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
+        // FIX ()   2237 Test.
+//        registry.single(BrisbaneAirField.class,  FlyingDoctor.class,  "jack", CoastalFlyingDoctor.class);
     }
 
     public void testSingle() {
