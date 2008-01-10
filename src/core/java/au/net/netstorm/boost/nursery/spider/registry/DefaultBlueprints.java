@@ -9,8 +9,8 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-// FIX () FRED 12345 Move out of nursery.
 public final class DefaultBlueprints implements Blueprints {
+    // FIX () FRED 12345 Move out of nursery.
     private final TypeMaster typer = new DefaultTypeMaster();
     private final NiceMap map = new DefaultNiceMap();
 
