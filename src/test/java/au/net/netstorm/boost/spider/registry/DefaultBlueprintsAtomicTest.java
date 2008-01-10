@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
+import au.net.netstorm.boost.nursery.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
@@ -12,7 +13,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final Object[] NO_PARAMS = {};
     FieldTestUtil fielder = new DefaultFieldTestUtil();
-//    Interface iface = iface(Dinosaur.class);
+    //    Interface iface = iface(Dinosaur.class);
     //    Interface dodgy = iface(Tree.class);
     Blueprint blueprint;
     NiceMap mapMock;

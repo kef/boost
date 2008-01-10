@@ -1,17 +1,18 @@
-package au.net.netstorm.boost.spider.registry;
+package au.net.netstorm.boost.nursery.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.Linkage;
-import au.net.netstorm.boost.nursery.spider.registry.WrongRegistrationException;
 import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
+// FIX () FRED 12345 Move out of nursery.
 public final class DefaultBlueprints implements Blueprints {
-    private final NiceMap map = new DefaultNiceMap();
     private final TypeMaster typer = new DefaultTypeMaster();
+    private final NiceMap map = new DefaultNiceMap();
 
     // FIX ()   2237 Use host.
     public void put(Linkage linkage, Blueprint blueprint) {
