@@ -17,7 +17,6 @@ public final class DiamondDemoTest extends ResolverDemooooTest {
     }
 
     public void testTwoInstances() {
-        // FIX ()   2237 Here is the yummy bit.
         check(t1, t2);
     }
 

@@ -17,7 +17,6 @@ final class DefaultLinkage extends Primordial implements Linkage {
         validate(iface);
     }
 
-    // FIX () BREADCRUMB   2237 SSSSSSSSSSSSSSSSSSSSSSSS hashCode/equals for our map.
     public Implementation getHost() {
         check(host, "host");
         return host;
