@@ -5,8 +5,8 @@ import au.net.netstorm.boost.spider.core.GraphUtil;
 
 public final class DiamondDemoTest extends ResolverDemooooTest {
     GraphUtil grapher = new DefaultGraphUtil();
-    Tomato t1 = new JuicyTomato();
-    Tomato t2 = new JuicyTomato();
+    Tomato t1 = new JuicyTomato("Tomato 1");
+    Tomato t2 = new JuicyTomato("Tomato 2");
 
     {
         registry.single(Fridge.class, HealthyFridge.class);
@@ -18,7 +18,7 @@ public final class DiamondDemoTest extends ResolverDemooooTest {
 
     public void testTwoInstances() {
         // FIX ()   2237 Here is the yummy bit.
-//        check(t1, t2);
+        check(t1, t2);
     }
 
     private void check(Tomato tomato1, Tomato tomato2) {

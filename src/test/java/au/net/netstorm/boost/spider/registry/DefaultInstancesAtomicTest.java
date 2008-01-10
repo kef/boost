@@ -11,11 +11,13 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultInstancesAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     ClassTestChecker checker = new DefaultClassTestChecker();
+    Interface iface;
     Implementation impl = impl(Tyrannosaurus.class);
     Dinosaur tyrannosaurus = new Tyrannosaurus();
     Tree jacaranda = new Jacaranda();
@@ -36,26 +38,26 @@ public final class DefaultInstancesAtomicTest extends LifecycleTestCase implemen
 
     public void testGet() {
         expect.oneCall(mapMock, dinosaur, "get", impl);
-        ResolvedInstance actual = subject.get(impl);
+        ResolvedInstance actual = subject.get(iface, impl);
         assertEquals(dinosaur, actual);
     }
 
     public void testExistence() {
         expect.oneCall(mapMock, exists, "exists", impl);
-        boolean actual = subject.exists(impl);
+        boolean actual = subject.exists(iface, impl);
         assertEquals(exists, actual);
     }
 
     public void testIllegalPut() {
         try {
-            subject.put(impl, tree);
+            subject.put(iface, impl, tree);
             fail();
         } catch (WrongRegistrationTypeException expected) { }
     }
 
     public void testPut() {
         expect.oneCall(mapMock, VOID, "put", impl, dinosaur);
-        subject.put(impl, dinosaur);
+        subject.put(iface, impl, dinosaur);
     }
 
     private Implementation impl(Class cls) {

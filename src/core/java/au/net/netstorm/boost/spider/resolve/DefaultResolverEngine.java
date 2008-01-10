@@ -10,6 +10,7 @@ import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX 2215 Some notes on the result of a spike...!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -46,30 +47,31 @@ public final class DefaultResolverEngine implements ResolverEngine {
         // FIX () BREADCRUMB   2237 BBBBBBBBBBBBBBB Move to after inProgress and use impl instead of iface.
         Factory factory = factories.find(linkage);
         Blueprint blueprint = factory.get(linkage);
-        return get(blueprint);
+        Interface iface = linkage.getIface();
+        return get(iface, blueprint);
     }
 
-    private ResolvedInstance get(Blueprint blueprint) {
+    private ResolvedInstance get(Interface iface, Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         Object[] params = blueprint.getParameters();
         Stamp stamp = blueprint.getStamp();
-        return get(impl, params, stamp);
+        return get(iface, impl, params, stamp);
     }
 
-    private ResolvedInstance get(Implementation impl, Object[] params, Stamp stamp) {
+    private ResolvedInstance get(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
         if (inProgress.exists(impl)) return inProgress.get(impl);
-        if (instances.exists(impl)) return instances.get(impl);
-        return manufacture(impl, params, stamp);
+        if (instances.exists(iface, impl)) return instances.get(iface, impl);
+        return manufacture(iface, impl, params, stamp);
     }
 
-    private ResolvedInstance manufacture(Implementation impl, Object[] params, Stamp stamp) {
+    private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
         ResolvedInstance instance = provider.provide(impl, params);
-        store(impl, instance, stamp);
+        store(iface, impl, instance, stamp);
         return instance;
     }
 
-    private void store(Implementation impl, ResolvedInstance instance, Stamp stamp) {
+    private void store(Interface iface, Implementation impl, ResolvedInstance instance, Stamp stamp) {
         boolean isSingle = stamp.equals(Stamp.SINGLE);
-        if (isSingle) instances.put(impl, instance);
+        if (isSingle) instances.put(iface, impl, instance);
     }
 }

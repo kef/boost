@@ -16,7 +16,9 @@ import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
@@ -62,8 +64,10 @@ public final class DefaultRegistry implements Registry {
         blueprint(linkage, cls, SINGLE);
         Implementation impl = new DefaultImplementation(cls);
         ResolvedInstance instance = new DefaultBaseReference(ref);
+        // FIX ()   2237 Make this a bit nicer.
+        Interface sIface = new DefaultInterface(iface);
         // FIX ()   2237 Triangulator.
-        if (!instances.exists(impl)) instances.put(impl, instance);
+        if (!instances.exists(sIface, impl)) instances.put(sIface, impl, instance);
     }
 
     public void factory(Factory factory) {
