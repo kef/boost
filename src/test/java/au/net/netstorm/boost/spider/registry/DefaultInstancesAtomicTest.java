@@ -14,6 +14,9 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class DefaultInstancesAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     ClassTestChecker checker = new DefaultClassTestChecker();
@@ -26,10 +29,12 @@ public final class DefaultInstancesAtomicTest extends LifecycleTestCase implemen
     NiceMap mapMock;
     Boolean exists;
     Instances subject;
+    List key;
 
     public void setUpFixtures() {
         subject = new DefaultInstances();
         fielder.setInstance(subject, "map", mapMock);
+        key = key();
     }
 
     public void testSynchronized() {
@@ -37,13 +42,13 @@ public final class DefaultInstancesAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testGet() {
-        expect.oneCall(mapMock, dinosaur, "get", impl);
+        expect.oneCall(mapMock, dinosaur, "get", key);
         ResolvedInstance actual = subject.get(iface, impl);
         assertEquals(dinosaur, actual);
     }
 
     public void testExistence() {
-        expect.oneCall(mapMock, exists, "exists", impl);
+        expect.oneCall(mapMock, exists, "exists", key);
         boolean actual = subject.exists(iface, impl);
         assertEquals(exists, actual);
     }
@@ -56,8 +61,15 @@ public final class DefaultInstancesAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testPut() {
-        expect.oneCall(mapMock, VOID, "put", impl, dinosaur);
+        expect.oneCall(mapMock, VOID, "put", key, dinosaur);
         subject.put(iface, impl, dinosaur);
+    }
+
+    private List key() {
+        List key = new ArrayList();
+        key.add(iface);
+        key.add(impl);
+        return key;
     }
 
     private Implementation impl(Class cls) {
