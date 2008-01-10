@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.spider.inject.resolver.core;
 
+import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageFactory;
+import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
+import au.net.netstorm.boost.nursery.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.nursery.spider.registry.CannotProvideException;
-import au.net.netstorm.boost.nursery.spider.registry.DefaultLinkageFactory;
-import au.net.netstorm.boost.nursery.spider.registry.Linkage;
-import au.net.netstorm.boost.nursery.spider.registry.LinkageFactory;
 import au.net.netstorm.boost.spider.flavour.MapException;
 import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;

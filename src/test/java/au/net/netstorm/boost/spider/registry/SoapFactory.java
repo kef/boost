@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.Linkage;
+import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
 
 public final class SoapFactory implements Factory {
     public Blueprint get(Linkage linkage) {

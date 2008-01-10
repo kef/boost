@@ -2,7 +2,7 @@ package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
-import au.net.netstorm.boost.nursery.spider.registry.Linkage;
+import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Factories;

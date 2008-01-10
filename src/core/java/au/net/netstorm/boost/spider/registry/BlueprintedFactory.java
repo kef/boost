@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.Linkage;
+import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
 
 // FIX ()   2237 Factory looks exactly like BlueprintRead.  Rationalise by deleting this.
 public final class BlueprintedFactory implements Factory {

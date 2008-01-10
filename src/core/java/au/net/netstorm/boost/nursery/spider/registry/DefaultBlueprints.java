@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
+import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.spider.registry.Blueprint;

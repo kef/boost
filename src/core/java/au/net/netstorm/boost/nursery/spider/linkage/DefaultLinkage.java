@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.spider.registry;
+package au.net.netstorm.boost.nursery.spider.linkage;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Implementation;
