@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
 public interface Registry {
-    // FIX ()   2237 Add specific host for all methods?
+    // FIX ()   2237 Add specific host, name for all methods?
     <T, U extends T> void multiple(Class<T> iface, Class<U> impl);
 
     <T, U extends T> void single(Class<T> iface, Class<U> impl);

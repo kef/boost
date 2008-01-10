@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.spider.resolve;
 
-import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.spider.registry.DefaultLinkageFactory;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
+import au.net.netstorm.boost.nursery.spider.registry.LinkageFactory;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolver implements Resolver {
-    private static final Implementation NO_IMPL = new DefaultImplementation(NoContext.class);
+    private final LinkageFactory linkages = new DefaultLinkageFactory();
     private final ResolverEngine engine;
 
     public DefaultResolver(ResolverEngine engine) {
@@ -15,8 +14,8 @@ public final class DefaultResolver implements Resolver {
     }
 
     public <T> T resolve(Class<T> type) {
-        Interface iface = new DefaultInterface(type);
-        ResolvedInstance resolved = engine.resolve(NO_IMPL, iface);
+        Linkage linkage = linkages.nu(type);
+        ResolvedInstance resolved = engine.resolve(linkage);
         Object o = resolved.getRef();
         return type.cast(o);
     }

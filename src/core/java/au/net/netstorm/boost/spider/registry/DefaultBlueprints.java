@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
+import au.net.netstorm.boost.nursery.spider.registry.WrongRegistrationException;
 import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
@@ -12,23 +14,24 @@ public final class DefaultBlueprints implements Blueprints {
     private final TypeMaster typer = new DefaultTypeMaster();
 
     // FIX ()   2237 Use host.
-    public void put(Implementation host, Interface iface, Blueprint blueprint) {
-        check(iface, blueprint);
-        map.put(iface, blueprint);
+    public void put(Linkage linkage, Blueprint blueprint) {
+        check(linkage, blueprint);
+        map.put(linkage, blueprint);
     }
 
     // FIX ()   2237 Use host.
-    public Blueprint get(Implementation host, Interface iface) {
-        return (Blueprint) map.get(iface);
+    public Blueprint get(Linkage linkage) {
+        return (Blueprint) map.get(linkage);
     }
 
     // FIX ()   2237 Use host??????  Check callers.
-    public boolean exists(Interface iface) {
-        return map.exists(iface);
+    public boolean exists(Linkage linkage) {
+        return map.exists(linkage);
     }
 
-    private void check(Interface iface, Blueprint blueprint) {
+    private void check(Linkage linkage, Blueprint blueprint) {
+        Interface iface = linkage.getIface();
         Implementation impl = blueprint.getImplementation();
-        if (!typer.implementz(impl, iface)) throw new WrongInterfaceRegistrationException(impl, iface);
+        if (!typer.implementz(impl, iface)) throw new WrongRegistrationException(impl, linkage);
     }
 }

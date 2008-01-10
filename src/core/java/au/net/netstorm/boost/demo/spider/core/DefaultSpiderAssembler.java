@@ -2,6 +2,7 @@ package au.net.netstorm.boost.demo.spider.core;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
+import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
@@ -9,7 +10,6 @@ import au.net.netstorm.boost.spider.core.SpiderTryCatchFinally;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
-import au.net.netstorm.boost.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.spider.inject.resolver.core.DefaultInjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldFinder;

@@ -2,6 +2,7 @@ package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Factories;
@@ -9,7 +10,6 @@ import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX 2215 Some notes on the result of a spike...!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -42,14 +42,10 @@ public final class DefaultResolverEngine implements ResolverEngine {
         this.provider = provider;
     }
 
-    public synchronized ResolvedInstance resolve(Implementation host, Interface iface) {
+    public synchronized ResolvedInstance resolve(Linkage linkage) {
         // FIX () BREADCRUMB   2237 BBBBBBBBBBBBBBB Move to after inProgress and use impl instead of iface.
-        return get(host, iface);
-    }
-
-    private ResolvedInstance get(Implementation host, Interface iface) {
-        Factory factory = factories.find(iface);
-        Blueprint blueprint = factory.get(host, iface);
+        Factory factory = factories.find(linkage);
+        Blueprint blueprint = factory.get(linkage);
         return get(blueprint);
     }
 

@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
 
 public interface Factories {
-    Factory find(Interface iface);
+    Factory find(Linkage linkage);
 
     void add(Factory factory);
 }

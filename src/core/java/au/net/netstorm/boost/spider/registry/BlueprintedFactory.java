@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
 
+// FIX ()   2237 Factory looks exactly like BlueprintRead.  Rationalise by deleting this.
 public final class BlueprintedFactory implements Factory {
     private final BlueprintsRead blueprintsRead;
 
@@ -10,14 +10,14 @@ public final class BlueprintedFactory implements Factory {
         this.blueprintsRead = blueprintsRead;
     }
 
-    public Blueprint get(Implementation host, Interface iface) {
-        return blueprintsRead.get(host, iface);
+    public Blueprint get(Linkage linkage) {
+        return blueprintsRead.get(linkage);
     }
 
     // FIX ()   2237 Add host.  Or remove from above method.
     // FIX ()   2237 Actually, don't add host here, but keep it in get().
     // FIX () BREADCRUMB   2237 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    public boolean canHandle(Interface iface) {
-        return blueprintsRead.exists(iface);
+    public boolean canHandle(Linkage linkage) {
+        return blueprintsRead.exists(linkage);
     }
 }

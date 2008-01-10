@@ -1,14 +1,13 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
 
 public final class SoapFactory implements Factory {
-    public Blueprint get(Implementation host, Interface iface) {
+    public Blueprint get(Linkage linkage) {
         throw new UnsupportedOperationException();
     }
 
-    public boolean canHandle(Interface iface) {
+    public boolean canHandle(Linkage linkage) {
         throw new UnsupportedOperationException();
     }
 }

@@ -1,19 +1,24 @@
-package au.net.netstorm.boost.spider.registry;
+package au.net.netstorm.boost.nursery.spider.registry;
 
 import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
+import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.Factory;
+import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.registry.Stamp;
 import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultRegistry implements Registry {
-    // FIX ()   2237 Remove.  Use linkages.
-    private static final Class NO_HOST = Object.class;
     private static final Object[] NO_PARAMS = {};
+    private final LinkageFactory linkages = new DefaultLinkageFactory();
     private final Blueprints blueprints;
     private final Instances instances;
     private final Factories factories;
@@ -28,26 +33,31 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T, U extends T> void multiple(Class<T> iface, Class<U> impl) {
-        blueprint(NO_HOST, iface, impl, MULTIPLE);
+        Linkage linkage = linkages.nu(iface);
+        blueprint(linkage, impl, MULTIPLE);
     }
 
     public <T, U extends T> void single(Class<T> iface, Class<U> impl) {
+        Linkage linkage = linkages.nu(iface);
         // FIX () BREADCRUMB   2237 RRRRRRRRRRRRRRRRRRRRRRRRRRRR Coalesce into linkages
-        blueprint(NO_HOST, iface, impl, SINGLE);
+        blueprint(linkage, impl, SINGLE);
     }
 
     public <T, U extends T> void single(Class<?> host, Class<T> iface, Class<U> impl) {
-        blueprint(host, iface, impl, SINGLE);
+        Linkage linkage = linkages.nu(host, iface);
+        blueprint(linkage, impl, SINGLE);
     }
 
     public <T, U extends T> void single(Class<?> host, Class<T> iface, String name, Class<U> impl) {
+//        Linkage linkage = linkages.nu(host, iface, name);
         // FIX ()   2237 Complete.
     }
 
     public <T, U extends T> void instance(Class<T> iface, U ref) {
         // FIX ()   2237 Tidy?
         Class cls = ref.getClass();
-        blueprint(NO_HOST, iface, cls, SINGLE);
+        Linkage linkage = linkages.nu(iface);
+        blueprint(linkage, cls, SINGLE);
         Implementation impl = new DefaultImplementation(cls);
         ResolvedInstance instance = new DefaultBaseReference(ref);
         // FIX ()   2237 Triangulator.
@@ -63,15 +73,9 @@ public final class DefaultRegistry implements Registry {
         factories.add(factory);
     }
 
-    private void blueprint(Class host, Class iface, Class impl, Stamp stamp) {
-        Interface sIface = iface(iface);
+    private void blueprint(Linkage linkage, Class impl, Stamp stamp) {
         Implementation sImpl = new DefaultImplementation(impl);
-        Implementation sHost = new DefaultImplementation(host);
         Blueprint blueprint = new DefaultBlueprint(stamp, sImpl, NO_PARAMS);
-        blueprints.put(sHost, sIface, blueprint);
-    }
-
-    private Interface iface(Class iface) {
-        return new DefaultInterface(iface);
+        blueprints.put(linkage, blueprint);
     }
 }

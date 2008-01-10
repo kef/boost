@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
 
 public interface Factory {
-    Blueprint get(Implementation host, Interface iface);
+    Blueprint get(Linkage linkage);
 
-    boolean canHandle(Interface iface);
+    boolean canHandle(Linkage linkage);
 }

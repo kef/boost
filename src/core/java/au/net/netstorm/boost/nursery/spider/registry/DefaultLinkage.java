@@ -41,10 +41,20 @@ final class DefaultLinkage extends Primordial implements Linkage {
     }
 
     private void check(Object ref, String s) {
-        if (ref == null) throw new IllegalStateException("No " + s + "specified");
+        if (ref == null) throw new IllegalStateException("No " + s + " specified");
     }
 
     private void validate(Interface iface) {
         if (iface == null) throw new IllegalStateException("No nulls.");
+    }
+
+    public int hashCode() {
+        return iface.hashCode();
+    }
+
+    public boolean equals(Object obj) {
+        Linkage other = (Linkage) obj;
+        Interface otherIface = other.getIface();
+        return iface.equals(otherIface);
     }
 }

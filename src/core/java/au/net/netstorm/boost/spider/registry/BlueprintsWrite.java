@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.nursery.spider.registry.Linkage;
 
 public interface BlueprintsWrite {
-    void put(Implementation host, Interface iface, Blueprint blueprint);
+    void put(Linkage linkage, Blueprint blueprint);
 }
