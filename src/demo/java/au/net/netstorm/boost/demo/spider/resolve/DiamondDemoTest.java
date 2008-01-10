@@ -5,22 +5,31 @@ import au.net.netstorm.boost.spider.core.GraphUtil;
 
 public final class DiamondDemoTest extends ResolverDemooooTest {
     GraphUtil grapher = new DefaultGraphUtil();
-    Tomato tomato = new JuicyTomato();
+    Tomato t1 = new JuicyTomato();
+    Tomato t2 = new JuicyTomato();
 
     {
-        registry.instance(Fruit.class, tomato);
-        registry.instance(Vegetable.class, tomato);
         registry.single(Fridge.class, HealthyFridge.class);
     }
 
-    public void testMultipleInterfacesOneImplementation() {
-        Fridge fridge = resolver.resolve(Fridge.class);
-        check(fridge, "fruit");
-        check(fridge, "vegetable");
+    public void testOneInstance() {
+        check(t1, t1);
     }
 
-    private void check(Fridge fridge, String name) {
-        Object fruit = grapher.get(fridge, name);
-        assertEquals(tomato, fruit);
+    public void testTwoInstances() {
+//        check(t1, t2);
+    }
+
+    private void check(Tomato tomato1, Tomato tomato2) {
+        registry.instance(Fruit.class, tomato1);
+        registry.instance(Vegetable.class, tomato2);
+        Fridge fridge = resolver.resolve(Fridge.class);
+        check(fridge, tomato1, "fruit");
+        check(fridge, tomato2, "vegetable");
+    }
+
+    private void check(Fridge fridge, Tomato tomato, String name) {
+        Edible edible = (Edible) grapher.get(fridge, name);
+        assertEquals(tomato, edible);
     }
 }

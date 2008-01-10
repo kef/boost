@@ -1,4 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-class JuicyTomato implements Tomato {
+import au.net.netstorm.boost.primordial.Primordial;
+
+class JuicyTomato extends Primordial implements Tomato {
 }
