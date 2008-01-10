@@ -35,8 +35,8 @@ public final class DefaultBlueprints implements Blueprints {
 
     // FIX ()   2237 Use host??????  Check callers.
     public boolean exists(Linkage linkage) {
-        Linkage narrowest = widest(linkage);
-        return map.exists(narrowest);
+        Linkage widest = widest(linkage);
+        return map.exists(widest);
     }
 
     private Linkage widest(Linkage linkage) {
