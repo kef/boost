@@ -25,23 +25,23 @@ public final class DefaultBlueprints implements Blueprints {
     }
 
     // FIX ()   2237 Use host.
+    // FIX ()   2237 Make this neater and faster.
     public Blueprint get(Linkage linkage) {
-        Linkage widest = widest(linkage);
-        // 1. Get most specific.
-        // 2. Get with name(*).
-        // 3. Get with host(*), name(*).
-        return (Blueprint) map.get(widest);
+        Linkage[] linkages = widener.widen(linkage);
+        for (Linkage link : linkages) {
+            if (map.exists(link)) return (Blueprint) map.get(link);
+        }
+        throw new IllegalStateException();
     }
 
     // FIX ()   2237 Use host??????  Check callers.
+    // FIX ()   2237 Make this neater and faster.
     public boolean exists(Linkage linkage) {
-        Linkage widest = widest(linkage);
-        return map.exists(widest);
-    }
-
-    private Linkage widest(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);
-        return linkages[linkages.length - 1];
+        for (Linkage link : linkages) {
+            if (map.exists(link)) return true;
+        }
+        return false;
     }
 
     private void check(Linkage linkage, Blueprint blueprint) {
