@@ -8,7 +8,7 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
 // FIX () BREADCRUMB   2237 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ Back here.
         // FIX ()   2237 Reinstate.
         registry.multiple(AirField.class, BrisbaneAirField.class);
-//        registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
+        registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
         // FIX ()   2237 Test.
 //        registry.single(BrisbaneAirField.class,  FlyingDoctor.class,  "jack", CoastalFlyingDoctor.class);
     }
@@ -23,12 +23,14 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
     }
 
     // FIX ()   2237 Reinstate.
-//    public void testHostedSingle() {
-//        AirField af1 = resolver.resolve(AirField.class);
-//        FlyingDoctor doctor = getDoctor(af1);
-//        Class actual = doctor.getClass();
-//        assertEquals(CoastalFlyingDoctor.class, actual);
-//    }
+/*
+    public void testHostedSingle() {
+        AirField af1 = resolver.resolve(AirField.class);
+        FlyingDoctor doctor = getDoctor(af1);
+        Class actual = doctor.getClass();
+        assertEquals(CoastalFlyingDoctor.class, actual);
+    }
+*/
 
     private FlyingDoctor getDoctor(AirField af1) {
         return (FlyingDoctor) grapher.get(af1, "doctor");

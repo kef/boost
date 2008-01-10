@@ -47,16 +47,4 @@ final class DefaultLinkage extends Primordial implements Linkage {
     private void validate(Interface iface) {
         if (iface == null) throw new IllegalStateException("No nulls.");
     }
-
-    // FIX ()   2237 Change these.
-    public int hashCode() {
-        return iface.hashCode();
-    }
-
-    // FIX ()   2237 Change these.
-    public boolean equals(Object obj) {
-        Linkage other = (Linkage) obj;
-        Interface otherIface = other.getIface();
-        return iface.equals(otherIface);
-    }
 }

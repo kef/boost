@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
+import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageWidener;
 import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
+import au.net.netstorm.boost.nursery.spider.linkage.LinkageWidener;
 import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
 import au.net.netstorm.boost.spider.registry.Blueprint;
@@ -14,6 +16,7 @@ public final class DefaultBlueprints implements Blueprints {
     // FIX () FRED 12345 Move out of nursery.
     private final TypeMaster typer = new DefaultTypeMaster();
     private final NiceMap map = new DefaultNiceMap();
+    private final LinkageWidener widener = new DefaultLinkageWidener();
 
     // FIX ()   2237 Use host.
     public void put(Linkage linkage, Blueprint blueprint) {
@@ -23,16 +26,22 @@ public final class DefaultBlueprints implements Blueprints {
 
     // FIX ()   2237 Use host.
     public Blueprint get(Linkage linkage) {
-        if (map.exists(linkage)) return (Blueprint) map.get(linkage);
+        Linkage widest = widest(linkage);
         // 1. Get most specific.
         // 2. Get with name(*).
         // 3. Get with host(*), name(*).
-        return (Blueprint) map.get(linkage);
+        return (Blueprint) map.get(widest);
     }
 
     // FIX ()   2237 Use host??????  Check callers.
     public boolean exists(Linkage linkage) {
-        return map.exists(linkage);
+        Linkage narrowest = widest(linkage);
+        return map.exists(narrowest);
+    }
+
+    private Linkage widest(Linkage linkage) {
+        Linkage[] linkages = widener.widen(linkage);
+        return linkages[linkages.length - 1];
     }
 
     private void check(Linkage linkage, Blueprint blueprint) {
