@@ -39,7 +39,6 @@ public final class DefaultRegistry implements Registry {
 
     public <T, U extends T> void single(Class<T> iface, Class<U> impl) {
         Linkage linkage = linkages.nu(iface);
-        // FIX () BREADCRUMB   2237 RRRRRRRRRRRRRRRRRRRRRRRRRRRR Coalesce into linkages
         blueprint(linkage, impl, SINGLE);
     }
 
