@@ -17,4 +17,9 @@ public final class DefaultLinkageWildcard implements LinkageWildcard {
         String name = linkage.getName();
         return linkages.nu(null, iface, name);
     }
+
+    public Linkage both(Linkage linkage) {
+        Interface iface = linkage.getIface();
+        return linkages.nu(null, iface, null);
+    }
 }

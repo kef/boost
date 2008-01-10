@@ -58,7 +58,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
         registry.instance(Nu.class, spider);
-        // FIX BREADCRUMB 2215 How do we enforce ordering?  High cost factories should be first registered, last called?
+        // FIX BREADCRUMB 2237 How do we enforce ordering?  High cost factories should be first registered, last called?
         // FIX (Nov 28, 2007) IOC 2215 Can we register the impliers and blueprints in the spider and inject
         // FIX (Nov 28, 2007) IOC 2215 all factories?
         implicitFactory(registry, impler);
