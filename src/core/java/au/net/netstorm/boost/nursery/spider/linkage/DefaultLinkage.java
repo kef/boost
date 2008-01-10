@@ -5,8 +5,6 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
 // FIX ()   2237 Move out of "nursery".
-
-// FIX ()   2237 This needs a hash().
 final class DefaultLinkage extends Primordial implements Linkage {
     private final Implementation host;
     private final Interface iface;
@@ -42,11 +40,23 @@ final class DefaultLinkage extends Primordial implements Linkage {
         return name != null;
     }
 
+    public int hashCode() {
+        int result = 0;
+        result = hash(result, host);
+        result = hash(result, iface);
+        result = hash(result, name);
+        return result;
+    }
+
     private void check(Object ref, String s) {
         if (ref == null) throw new IllegalStateException("No " + s + " specified");
     }
 
     private void validate(Interface iface) {
         if (iface == null) throw new IllegalStateException("No nulls.");
+    }
+
+    private int hash(int result, Object ref) {
+        return 31 * result + (ref != null ? ref.hashCode() : 0);
     }
 }
