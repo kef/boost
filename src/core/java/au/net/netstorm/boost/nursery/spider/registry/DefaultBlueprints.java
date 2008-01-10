@@ -22,6 +22,7 @@ public final class DefaultBlueprints implements Blueprints {
 
     // FIX ()   2237 Use host.
     public Blueprint get(Linkage linkage) {
+        if (map.exists(linkage)) return (Blueprint) map.get(linkage);
         // 1. Get most specific.
         // 2. Get with name(*).
         // 3. Get with host(*), name(*).
