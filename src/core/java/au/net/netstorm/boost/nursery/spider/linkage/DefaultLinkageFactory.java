@@ -26,7 +26,19 @@ public class DefaultLinkageFactory implements LinkageFactory {
     public Linkage nu(Class host, Class iface, String name) {
         Implementation h = host(host);
         Interface i = new DefaultInterface(iface);
-        return new DefaultLinkage(h, i, name);
+        return nu(h, i, name);
+    }
+
+    public Linkage nu(Interface iface) {
+        return nu(null, iface, null);
+    }
+
+    public Linkage nu(Implementation host, Interface iface) {
+        return nu(host, iface, null);
+    }
+
+    public Linkage nu(Implementation host, Interface impl, String name) {
+        return new DefaultLinkage(host, impl, name);
     }
 
     private Implementation host(Class host) {
