@@ -14,9 +14,6 @@ public final class BlueprintedFactory implements Factory {
         return blueprintsRead.get(linkage);
     }
 
-    // FIX ()   2237 Add host.  Or remove from above method.
-    // FIX ()   2237 Actually, don't add host here, but keep it in get().
-    // FIX () BREADCRUMB   2237 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     public boolean canHandle(Linkage linkage) {
         return blueprintsRead.exists(linkage);
     }
