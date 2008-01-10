@@ -18,13 +18,11 @@ public final class DefaultBlueprints implements Blueprints {
     private final NiceMap map = new DefaultNiceMap();
     private final LinkageWidener widener = new DefaultLinkageWidener();
 
-    // FIX ()   2237 Use host.
     public void put(Linkage linkage, Blueprint blueprint) {
         check(linkage, blueprint);
         map.put(linkage, blueprint);
     }
 
-    // FIX ()   2237 Use host.
     // FIX ()   2237 Make this neater and faster.
     public Blueprint get(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);
@@ -34,7 +32,6 @@ public final class DefaultBlueprints implements Blueprints {
         throw new IllegalStateException();
     }
 
-    // FIX ()   2237 Use host??????  Check callers.
     // FIX ()   2237 Make this neater and faster.
     public boolean exists(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);

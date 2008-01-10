@@ -26,7 +26,6 @@ public final class DefaultResolverEngine implements ResolverEngine {
     }
 
     public synchronized ResolvedInstance resolve(Linkage linkage) {
-        // FIX () BREADCRUMB   2237 BBBBBBBBBBBBBBB Move to after inProgress and use impl instead of iface.
         Factory factory = factories.find(linkage);
         Blueprint blueprint = factory.get(linkage);
         Interface iface = linkage.getIface();
