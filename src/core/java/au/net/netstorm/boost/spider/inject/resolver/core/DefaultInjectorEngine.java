@@ -23,6 +23,10 @@ public final class DefaultInjectorEngine implements InjectorEngine {
     public void inject(UnresolvedInstance unresolved) {
         Object ref = unresolved.getRef();
         Field[] fields = fieldFinder.find(ref);
+        inject(ref, fields);
+    }
+
+    private void inject(Object ref, Field[] fields) {
         for (Field field : fields) {
             inject(ref, field);
         }
