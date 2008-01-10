@@ -41,11 +41,7 @@ final class DefaultLinkage extends Primordial implements Linkage {
     }
 
     public int hashCode() {
-        int result = 0;
-        result = hash(result, host);
-        result = hash(result, iface);
-        result = hash(result, name);
-        return result;
+        return iface.hashCode();
     }
 
     private void check(Object ref, String s) {
@@ -54,9 +50,5 @@ final class DefaultLinkage extends Primordial implements Linkage {
 
     private void validate(Interface iface) {
         if (iface == null) throw new IllegalStateException("No nulls.");
-    }
-
-    private int hash(int result, Object ref) {
-        return 31 * result + (ref != null ? ref.hashCode() : 0);
     }
 }
