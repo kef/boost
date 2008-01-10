@@ -17,6 +17,7 @@ public final class DiamondDemoTest extends ResolverDemooooTest {
     }
 
     public void testTwoInstances() {
+        // FIX ()   2237 Here is the yummy bit.
 //        check(t1, t2);
     }
 
@@ -30,6 +31,6 @@ public final class DiamondDemoTest extends ResolverDemooooTest {
 
     private void check(Fridge fridge, Tomato tomato, String name) {
         Edible edible = (Edible) grapher.get(fridge, name);
-        assertEquals(tomato, edible);
+        assertSame(tomato, edible);
     }
 }
