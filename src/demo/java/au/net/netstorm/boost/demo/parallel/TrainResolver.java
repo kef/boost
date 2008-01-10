@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.parallel;
 
-import au.net.netstorm.boost.demo.spider.core.BoostSpiderBuilder;
-import au.net.netstorm.boost.demo.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.demo.spider.core.Spider;
+import au.net.netstorm.boost.nursery.spider.core.BoostSpiderBuilder;
+import au.net.netstorm.boost.nursery.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
 class TrainResolver implements Runnable {

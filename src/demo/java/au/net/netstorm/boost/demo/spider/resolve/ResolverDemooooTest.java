@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.demo.spider.core.BoostSpiderBuilder;
-import au.net.netstorm.boost.demo.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.demo.spider.core.Spider;
+import au.net.netstorm.boost.nursery.spider.core.BoostSpiderBuilder;
+import au.net.netstorm.boost.nursery.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
 import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
 import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
