@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.util.proxy;
 
 import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -12,8 +14,13 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private static final Interface TYPE_2 = new DefaultInterface(Map.class);
     private static final Interface[] TYPES = {TYPE_1, TYPE_2};
     private final MockProxySupplier mockEdgeProxyFactory = new MockProxySupplier();
-    private final ProxyFactory factory = new DefaultProxyFactory(mockEdgeProxyFactory);
+    private final ProxyFactory factory = new DefaultProxyFactory();
     private final InvocationHandler handler = new MockInvocationHandler();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
+
+    {
+        fielder.setInstance(factory, "delegate", mockEdgeProxyFactory);
+    }
 
     public void testSingleType() {
         checkSingleType(TYPE_1);

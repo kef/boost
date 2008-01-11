@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.splitter;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
-import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
@@ -15,7 +13,7 @@ import java.util.List;
 public final class DefaultOneToMany implements OneToMany, InvocationHandler {
     private final Interface type;
     private final List many = new ArrayList();
-    private final ProxyFactory proxyFactory = buildFactory();
+    private final ProxyFactory proxyFactory = new DefaultProxyFactory();
 
     public DefaultOneToMany(Interface type) {
         noNulls(type);
@@ -55,12 +53,5 @@ public final class DefaultOneToMany implements OneToMany, InvocationHandler {
         if (ref == null) {
             throw new IllegalArgumentException();
         }
-    }
-
-    // FIX SC600 This is not tested.  It never really was.  It has been flushed out in SC521.
-    private ProxyFactory buildFactory() {
-        // FIX SC600 Use Factory which knows about how to do this.
-        ProxySupplier edge = new DefaultProxySupplier();
-        return new DefaultProxyFactory(edge);
     }
 }

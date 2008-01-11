@@ -29,9 +29,8 @@ import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactoryAssembler;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactoryAssembler;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
@@ -48,8 +47,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final PartialInstances PARTIAL_INSTANCES = new DefaultPartialInstances();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
-    private final ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
-    private final ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
+    private final ProxyFactory proxyFactory = new DefaultProxyFactory();
 
     // SUGGEST: Move the creation/registration of the factories up one level.  Use the registry.
     public Spider assemble(Instances instances, Factories factories) {

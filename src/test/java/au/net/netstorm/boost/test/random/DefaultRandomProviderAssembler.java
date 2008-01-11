@@ -8,16 +8,14 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.test.automock.MockSupport;
 import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.EnumProvider;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactoryAssembler;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactoryAssembler;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRandomProviderAssembler implements RandomProviderAssembler {
     private static final Interface RANDOM_PROVIDER = new DefaultInterface(SpecificProvider.class);
-    private ProxyFactoryAssembler proxyFactoryAssembler = new DefaultProxyFactoryAssembler();
-    private ProxyFactory proxyFactory = proxyFactoryAssembler.assemble();
+    private ProxyFactory proxyFactory = new DefaultProxyFactory();
     private PassThroughLayer passThrough = new DefaultPassThroughLayer();
 
     // FIX (Dec 17, 2007) CORE SPLIT 84836 Can DataProviders and EnumProvider be merged?

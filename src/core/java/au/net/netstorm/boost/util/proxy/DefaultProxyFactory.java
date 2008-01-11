@@ -1,16 +1,13 @@
 package au.net.netstorm.boost.util.proxy;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.util.type.Interface;
 
 import java.lang.reflect.InvocationHandler;
 
 public final class DefaultProxyFactory implements ProxyFactory {
-    private final ProxySupplier delegate;
-
-    public DefaultProxyFactory(ProxySupplier delegate) {
-        this.delegate = delegate;
-    }
+    private final ProxySupplier delegate = new DefaultProxySupplier();
 
     public Object newProxy(Interface type, InvocationHandler handler) {
         Interface[] types = {type};
