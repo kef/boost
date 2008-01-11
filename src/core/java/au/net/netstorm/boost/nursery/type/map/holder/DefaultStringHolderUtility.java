@@ -6,10 +6,10 @@ import au.net.netstorm.boost.spider.instantiate.Nu;
 public class DefaultStringHolderUtility implements StringHolderUtility {
     Nu nu;
 
-    public <T extends StringHolder> StringHolder replaceAll(T holder, String regex, String replacement) {
+    public <T extends StringHolder> T replaceAll(T holder, String regex, String replacement) {
         String s = holder.getValue();
         String result = s.replaceAll(regex, replacement);
-        Class<? extends StringHolder> holderClass = holder.getClass();
+        Class<T> holderClass = (Class<T>) holder.getClass();
         return nu.nu(holderClass, result);
     }
 }
