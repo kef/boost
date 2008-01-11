@@ -58,16 +58,9 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T, U extends T> void instance(Class<T> iface, U ref) {
-        // FIX ()   2237 Tidy?
         Class cls = ref.getClass();
-        Linkage linkage = linkages.nu(iface);
-        blueprint(linkage, cls, SINGLE);
-        Implementation impl = new DefaultImplementation(cls);
-        ResolvedInstance instance = new DefaultBaseReference(ref);
-        // FIX ()   2237 Make this a bit nicer.
-        Interface sIface = new DefaultInterface(iface);
-        // FIX ()   2237 Triangulator.
-        instances.put(sIface, impl, instance);
+        blueprint(iface, cls);
+        instance(iface, cls, ref);
     }
 
     public void factory(Factory factory) {
@@ -77,6 +70,19 @@ public final class DefaultRegistry implements Registry {
     public <T extends Factory> void factory(Class<T> cls) {
         Factory factory = nu.nu(cls);
         factories.add(factory);
+    }
+
+    private <T, U extends T> void instance(Class<T> iface, Class<U> cls, U ref) {
+        Interface inyerface = new DefaultInterface(iface);
+        Implementation impl = new DefaultImplementation(cls);
+        ResolvedInstance instance = new DefaultBaseReference(ref);
+        // FIX ()   2237 Triangulator.
+        instances.put(inyerface, impl, instance);
+    }
+
+    private void blueprint(Class iface, Class cls) {
+        Linkage linkage = linkages.nu(iface);
+        blueprint(linkage, cls, SINGLE);
     }
 
     private void blueprint(Linkage linkage, Class impl, Stamp stamp) {
