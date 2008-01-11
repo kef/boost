@@ -67,7 +67,7 @@ public final class DefaultRegistry implements Registry {
         // FIX ()   2237 Make this a bit nicer.
         Interface sIface = new DefaultInterface(iface);
         // FIX ()   2237 Triangulator.
-        if (!instances.exists(sIface, impl)) instances.put(sIface, impl, instance);
+        instances.put(sIface, impl, instance);
     }
 
     public void factory(Factory factory) {
