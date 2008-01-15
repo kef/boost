@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.spider.linkage;
 
+import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
+import au.net.netstorm.boost.spider.linkage.Linkage;
+import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 

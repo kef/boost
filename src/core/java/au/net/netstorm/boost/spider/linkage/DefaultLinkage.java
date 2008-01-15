@@ -1,10 +1,9 @@
-package au.net.netstorm.boost.nursery.spider.linkage;
+package au.net.netstorm.boost.spider.linkage;
 
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX ()   2237 Move out of "nursery".
 final class DefaultLinkage extends Primordial implements Linkage {
     private final Implementation host;
     private final Interface iface;

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
 import au.net.netstorm.boost.primordial.BoooostException;
+import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.util.type.Implementation;
 
 public final class WrongRegistrationException extends RuntimeException implements BoooostException {

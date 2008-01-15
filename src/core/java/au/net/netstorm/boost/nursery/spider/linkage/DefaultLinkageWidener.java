@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.spider.linkage;
 
+import au.net.netstorm.boost.spider.linkage.Linkage;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
+import au.net.netstorm.boost.spider.linkage.Linkage;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.util.impl.ImplMaster;
 import au.net.netstorm.boost.util.type.Implementation;

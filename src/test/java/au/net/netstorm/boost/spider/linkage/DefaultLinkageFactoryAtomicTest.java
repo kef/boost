@@ -1,5 +1,7 @@
-package au.net.netstorm.boost.nursery.spider.linkage;
+package au.net.netstorm.boost.spider.linkage;
 
+import au.net.netstorm.boost.nursery.spider.linkage.Monkey;
+import au.net.netstorm.boost.nursery.spider.linkage.Zoo;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.InjectableTest;
 import au.net.netstorm.boost.test.marker.LazyFields;
@@ -81,7 +83,7 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
     }
 
     private void checkNuIfaceName(Linkage expected) {
-        Linkage actual = subject.nu(null, iface, name);
+        Linkage actual = subject.nu(null, Monkey.class, name);
         assertEquals(expected, actual);
     }
 

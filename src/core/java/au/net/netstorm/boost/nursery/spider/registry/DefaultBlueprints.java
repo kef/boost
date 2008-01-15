@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
 import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageWidener;
-import au.net.netstorm.boost.nursery.spider.linkage.Linkage;
 import au.net.netstorm.boost.nursery.spider.linkage.LinkageWidener;
 import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
+import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;

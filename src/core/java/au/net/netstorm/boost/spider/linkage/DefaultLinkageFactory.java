@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.spider.linkage;
+package au.net.netstorm.boost.spider.linkage;
 
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
