@@ -7,8 +7,10 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     byte[] bar = {(byte) 0xDD, (byte) 0xEE, (byte) 0xFF};
     byte[] foobar = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC, (byte) 0xDD, (byte) 0xEE, (byte) 0xFF};
     Byte[] bigfoobar = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC, (byte) 0xDD, (byte) 0xEE, (byte) 0xFF};
+    Byte[] bigfoobaz = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC, (byte) 0xFE};
     Byte[] bigBar = {(byte) 0xDD, (byte) 0xEE, (byte) 0xFF};
     Byte[] bigFoo = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC};
+    Byte baz = (byte) 0xFE;
     String[] duplicates = {"Lockyer", "Lewis", "Langer", "Lazarus", "Lewis"};
     String[] noDuplicates = {"Lockyer", "Lewis", "Langer", "Lazarus"};
     String[] left = {"1", "2", "3", "4", "5", "6"};
@@ -30,6 +32,12 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     public void testPlus() {
         Byte[] actual = subject.plus(bigFoo, bigBar);
         assertEquals(bigfoobar, actual);
+        checkType(actual, Byte[].class);
+    }
+
+    public void testPlusSingleElement() {
+        Byte[] actual = subject.plus(bigFoo, baz);
+        assertEquals(bigfoobaz, actual);
         checkType(actual, Byte[].class);
     }
 

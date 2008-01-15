@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Set;
 
 public final class DefaultArrayMaster implements ArrayMaster {
-    public <T> T[] minus(T[] minuend, T[] subtrahend) {
+    public <T> T[] minus(T[] minuend, T... subtrahend) {
         Set<T> result = set(minuend);
         Set<T> subSet = set(subtrahend);
         result.removeAll(subSet);
         return toArray(result, minuend);
     }
 
-    public <T> T[] plus(T[] array1, T[] array2) {
+    public <T> T[] plus(T[] array1, T... array2) {
         List<T> result = list(array1);
         List<T> set = list(array2);
         result.addAll(set);

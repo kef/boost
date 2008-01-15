@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.array;
 
 public interface ArrayMaster {
-    <T> T[] minus(T[] minuend, T[] subtrahend);
+    <T> T[] minus(T[] minuend, T... subtrahend);
 
-    <T> T[] plus(T[] array1, T[] array2);
+    <T> T[] plus(T[] array1, T... array2);
 
     // FIX DEBT Move to a primitive helper area.
     byte[] plus(byte[] array1, byte[] array2);
