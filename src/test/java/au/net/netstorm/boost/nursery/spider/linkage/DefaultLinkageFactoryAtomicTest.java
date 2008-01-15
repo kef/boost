@@ -20,7 +20,7 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
     String name;
 
     public void testNuField() {
-        DefaultLinkage expected = new DefaultLinkage(host, iface, FIELD_NAME);
+        Linkage expected = new DefaultLinkage(host, iface, FIELD_NAME);
         Field field = fielder.get(Zoo.class, FIELD_NAME);
         Linkage actual = subject.nu(field);
         assertEquals(expected, actual);
@@ -45,7 +45,7 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
     }
 
     public void testNuIfaceName() {
-        DefaultLinkage expected = new DefaultLinkage(null, iface, name);
+        Linkage expected = new DefaultLinkage(null, iface, name);
         checkNuIfaceName(expected);
         checkNuIfaceNameStrong(expected);
     }
@@ -80,12 +80,12 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
         assertEquals(expected, actual);
     }
 
-    private void checkNuIfaceName(DefaultLinkage expected) {
+    private void checkNuIfaceName(Linkage expected) {
         Linkage actual = subject.nu(null, iface, name);
         assertEquals(expected, actual);
     }
 
-    private void checkNuIfaceNameStrong(DefaultLinkage expected) {
+    private void checkNuIfaceNameStrong(Linkage expected) {
         Linkage actual = subject.nu(null, iface, name);
         assertEquals(expected, actual);
     }
