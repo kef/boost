@@ -8,11 +8,15 @@ public final class DefaultLinkageWidener implements LinkageWidener {
 
     public Linkage[] widen(Linkage linkage) {
         List result = new ArrayList();
+        widen(linkage, result);
+        return (Linkage[]) result.toArray(new Linkage[]{});
+    }
+
+    private void widen(Linkage linkage, List result) {
         widest(linkage, result);
         widenName(linkage, result);
         widenHost(linkage, result);
         widenBoth(linkage, result);
-        return (Linkage[]) result.toArray(new Linkage[]{});
     }
 
     private void widest(Linkage linkage, List result) {

@@ -23,7 +23,6 @@ public final class DefaultBlueprints implements Blueprints {
         map.put(linkage, blueprint);
     }
 
-    // FIX ()   2237 Make this neater and faster.
     public Blueprint get(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);
         for (Linkage link : linkages) {
@@ -32,7 +31,6 @@ public final class DefaultBlueprints implements Blueprints {
         throw new IllegalStateException();
     }
 
-    // FIX ()   2237 Make this neater and faster.
     public boolean exists(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);
         for (Linkage link : linkages) {
