@@ -1,8 +1,7 @@
-package au.net.netstorm.boost.nursery.spider.registry;
+package au.net.netstorm.boost.spider.registry;
 
+import au.net.netstorm.boost.nursery.spider.registry.CannotProvideException;
 import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.spider.registry.Factories;
-import au.net.netstorm.boost.spider.registry.Factory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,32 +1,20 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.DefaultFactories;
-import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.nursery.spider.registry.CannotProvideException;
+import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultFactoriesAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
-    ResolvedInstance resolvedInstanceDummy;
-    ProviderEngine providerDummy;
-    ImplementationRef hostDummy;
-    Instances instancesDummy;
-    Interface ifaceDummy;
-    Factory factoryMock;
     Factories subject;
+    Factory factoryMock;
+    Linkage linkageDummy;
 
     public void setUpFixtures() {
         subject = new DefaultFactories();
     }
 
-    public void testReinstate() {
-        // FIX ()   2237 Reinstate.
-    }
-
-    // FIX ()   2237 Reinstate.
-/*
     public void testGet() {
         checkGetFailsNoFactories();
         checkGetHasFactories();
@@ -44,20 +32,19 @@ public final class DefaultFactoriesAtomicTest extends LifecycleTestCase implemen
 
     private void checkGetSucceeds() {
         setUpFactories(true);
-        Factory actual = subject.find(linkage);
+        Factory actual = subject.find(linkageDummy);
         assertEquals(factoryMock, actual);
     }
 
     private void setUpFactories(boolean canHandle) {
         subject.add(factoryMock);
-        expect.oneCall(factoryMock, canHandle, "canHandle", ifaceDummy);
+        expect.oneCall(factoryMock, canHandle, "canHandle", linkageDummy);
     }
 
     private void checkException() {
         try {
-            subject.find(linkage);
+            subject.find(linkageDummy);
             fail();
         } catch (CannotProvideException expected) { }
     }
-*/
 }
