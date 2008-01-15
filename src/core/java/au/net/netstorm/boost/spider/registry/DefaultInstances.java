@@ -28,12 +28,11 @@ public final class DefaultInstances implements Instances {
         return map.exists(key);
     }
 
-    // FIX ()   2237 Do this a better way.
     private List getKey(Interface iface, Implementation impl) {
-        List list = new ArrayList();
-        list.add(iface);
-        list.add(impl);
-        return list;
+        List tuple = new ArrayList();
+        tuple.add(iface);
+        tuple.add(impl);
+        return tuple;
     }
 
     private void check(Implementation impl, ResolvedInstance instance) {
