@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.nursery.spider.linkage.Monkey;
-import au.net.netstorm.boost.nursery.spider.linkage.Zoo;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.InjectableTest;
 import au.net.netstorm.boost.test.marker.LazyFields;
