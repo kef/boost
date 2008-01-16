@@ -10,12 +10,15 @@ public class DefaultTypes implements Types {
     Nu nu;
 
     public <T extends Holder> T nu(Class<T> iface, Object value) {
-        Class<? extends T> impl = impler.impl(iface);
-        return nu.nu(impl, value);
+        return doNu(iface, value);
     }
 
     public <T extends Data> T nu(Class<T> iface, Object... values) {
+        return doNu(iface, values);
+    }
+
+    private <T> T doNu(Class<T> iface, Object... value) {
         Class<? extends T> impl = impler.impl(iface);
-        return nu.nu(impl, values);
+        return nu.nu(impl, value);
     }
 }
