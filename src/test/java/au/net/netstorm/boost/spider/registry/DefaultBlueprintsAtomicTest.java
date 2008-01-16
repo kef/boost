@@ -34,24 +34,6 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
         blueprint = blueprint(Tyrannosaurus.class);
     }
 
-    // FIX 2237 Reinstate.
-/*
-    public void testExists() {
-        expect.oneCall(mapMock, exists, "exists", iface);
-        boolean actual = subject.exists(iface);
-        assertEquals(exists, actual);
-    }
-*/
-
-    // FIX 2237 Reinstate.
-/*
-    public void testGet() {
-        expect.oneCall(mapMock, blueprint, "get", iface);
-        Blueprint actual = subject.get(hostDummy, iface);
-        assertEquals(blueprint, actual);
-    }
-*/
-
     public void testPut() {
         Linkage linkage = linkageFactory.nu(iface);
         subject.put(linkage, blueprint);
@@ -64,6 +46,22 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
             fail();
         } catch (WrongRegistrationException expected) { }
     }
+
+    // FIX 2237 Complete.
+    public void testExists() {
+        Linkage linkage = linkageFactory.nu(iface);
+        boolean actual = subject.exists(linkage);
+        assertEquals(false, actual);
+    }
+
+    // FIX 2237 Reinstate.
+/*
+    public void testGet() {
+        expect.oneCall(mapMock, blueprint, "get", iface);
+        Blueprint actual = subject.get(hostDummy, iface);
+        assertEquals(blueprint, actual);
+    }
+*/
 
     private Interface iface(Class cls) {
         return new DefaultInterface(cls);
