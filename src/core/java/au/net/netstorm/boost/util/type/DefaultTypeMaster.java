@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class DefaultTypeMaster implements TypeMaster {
+    private final InterfaceUtil util = new DefaultInterfaceUtil();
 
     public boolean implementz(Implementation impl, Interface iface) {
         Class cls = impl.getImpl();
@@ -44,7 +45,7 @@ public final class DefaultTypeMaster implements TypeMaster {
 
     private Interface[] declaredInterfaces(Class cls) {
         Class[] ifaces = cls.getInterfaces();
-        return toInterfaces(ifaces);
+        return util.interfaces(ifaces);
     }
 
     private void interfaces(Set set, Class[] ifaces) {
@@ -61,14 +62,6 @@ public final class DefaultTypeMaster implements TypeMaster {
 
     private Interface[] toInterfaces(Set set) {
         Class[] result = (Class[]) set.toArray(new Class[]{});
-        return toInterfaces(result);
-    }
-
-    private Interface[] toInterfaces(Class[] ifaces) {
-        Interface[] result = new Interface[ifaces.length];
-        for (int i = 0; i < ifaces.length; i++) {
-            result[i] = new DefaultInterface(ifaces[i]);
-        }
-        return result;
+        return util.interfaces(result);
     }
 }

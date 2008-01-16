@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 public class DefaultDataInvocationHandlerValidator implements DataInvocationHandlerValidator {
     public void check(FieldValueSpec[] fields, Interface iFace) {
         Method[] methods = iFace.getType().getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            valid(methods[i], fields);
+        for (Method method : methods) {
+            valid(method, fields);
         }
         sameNumber(methods, fields);
     }
@@ -37,8 +37,8 @@ public class DefaultDataInvocationHandlerValidator implements DataInvocationHand
     }
 
     private void hasField(Method method, FieldValueSpec[] fields) {
-        for (int j = 0; j < fields.length; j++) {
-            if (equal(fields[j], method)) return;
+        for (FieldValueSpec field : fields) {
+            if (equal(field, method)) return;
         }
         throw new IllegalArgumentException("No field for method " + method);
     }
