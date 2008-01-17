@@ -43,13 +43,11 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T, U extends T> void single(Class<T> iface, Class<U> impl) {
-        Linkage linkage = linkages.nu(iface);
-        blueprint(linkage, impl, SINGLE);
+        blueprint(iface, impl);
     }
 
     public <T, U extends T> void single(Class<?> host, Class<T> iface, Class<U> impl) {
-        Linkage linkage = linkages.nu(host, iface);
-        blueprint(linkage, impl, SINGLE);
+        blueprint(host, iface, impl);
     }
 
     public <T, U extends T> void single(Class<?> host, Class<T> iface, String name, Class<U> impl) {
@@ -60,8 +58,17 @@ public final class DefaultRegistry implements Registry {
     public <T, U extends T> void instance(Class<T> iface, U ref) {
         Class cls = ref.getClass();
         blueprint(iface, cls);
-        instance(iface, cls, ref);
+        addInstance(iface, cls, ref);
     }
+
+    // SUGGEST: Add host specific instance() as follows:
+/*
+    public <T, U extends T> void instance(Class<?> host, Class<T> iface, U ref) {
+        Class cls = ref.getClass();
+        blueprint(host, iface, cls);
+        addInstance(iface, cls, ref);
+    }
+*/
 
     public void factory(Factory factory) {
         factories.add(factory);
@@ -72,7 +79,7 @@ public final class DefaultRegistry implements Registry {
         factories.add(factory);
     }
 
-    private <T, U extends T> void instance(Class<T> iface, Class<U> cls, U ref) {
+    private <T, U extends T> void addInstance(Class<T> iface, Class<U> cls, U ref) {
         Interface inyerface = new DefaultInterface(iface);
         Implementation impl = new DefaultImplementation(cls);
         ResolvedInstance instance = new DefaultBaseReference(ref);
@@ -80,9 +87,14 @@ public final class DefaultRegistry implements Registry {
         instances.put(inyerface, impl, instance);
     }
 
-    private void blueprint(Class iface, Class cls) {
+    private <T> void blueprint(Class<?> host, Class<T> iface, Class<? extends T> impl) {
+        Linkage linkage = linkages.nu(host, iface);
+        blueprint(linkage, impl, SINGLE);
+    }
+
+    private <T> void blueprint(Class<T> iface, Class<? extends T> impl) {
         Linkage linkage = linkages.nu(iface);
-        blueprint(linkage, cls, SINGLE);
+        blueprint(linkage, impl, SINGLE);
     }
 
     private void blueprint(Linkage linkage, Class impl, Stamp stamp) {

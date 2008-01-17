@@ -11,19 +11,27 @@ public final class DefaultLinkageWildcard implements LinkageWildcard {
     LinkageFactory linkages = new DefaultLinkageFactory();
 
     public Linkage name(Linkage linkage) {
-        Implementation host = linkage.hosted() ? linkage.getHost() : null;
+        Implementation host = nullGetHost(linkage);
         Interface iface = linkage.getIface();
         return linkages.nu(host, iface, null);
     }
 
     public Linkage host(Linkage linkage) {
         Interface iface = linkage.getIface();
-        String name = linkage.named() ? linkage.getName() : null;
+        String name = nullGetName(linkage);
         return linkages.nu(null, iface, name);
     }
 
     public Linkage both(Linkage linkage) {
         Interface iface = linkage.getIface();
         return linkages.nu(null, iface, null);
+    }
+
+    private Implementation nullGetHost(Linkage linkage) {
+        return linkage.hosted() ? linkage.getHost() : null;
+    }
+
+    private String nullGetName(Linkage linkage) {
+        return linkage.named() ? linkage.getName() : null;
     }
 }
