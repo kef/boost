@@ -16,6 +16,7 @@ public final class DefaultProxifier implements Proxifier {
     Types types;
     Nu nu;
 
+    // FIX 2248 Push ProxySpec out.
     public <T> T closure(T ref) {
         Class<InvocationHandler>[] classes = spec.get();
         return (T) closure(ref, classes);
