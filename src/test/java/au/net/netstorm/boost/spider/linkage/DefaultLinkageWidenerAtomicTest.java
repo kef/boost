@@ -26,6 +26,7 @@ public final class DefaultLinkageWidenerAtomicTest extends BoooostCase {
         Linkage linkage = linkageFactory.nu(host, iface);
         Linkage[] linkages = subject.widen(linkage);
         assertEquals(2, linkages.length);
+        assertEquals(linkage, linkages[0]);
         // FIX ()  93260 complete.
     }
 
@@ -33,6 +34,14 @@ public final class DefaultLinkageWidenerAtomicTest extends BoooostCase {
         Linkage linkage = linkageFactory.nu(null, iface, name);
         Linkage[] linkages = subject.widen(linkage);
         assertEquals(2, linkages.length);
+        assertEquals(linkage, linkages[0]);
+        // FIX ()  93260 complete.
+    }
+
+    public void testEverything() {
+        Linkage linkage = linkageFactory.nu(host, iface, name);
+        Linkage[] linkages = subject.widen(linkage);
+        assertEquals(4, linkages.length);
         assertEquals(linkage, linkages[0]);
         // FIX ()  93260 complete.
     }
