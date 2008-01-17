@@ -8,44 +8,39 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX ()  93260 Refactor!
 public final class DefaultLinkageWidenerAtomicTest extends BoooostCase {
     LinkageWidener subject = new DefaultLinkageWidener();
     LinkageFactory linkageFactory = new DefaultLinkageFactory();
     Interface iface = new DefaultInterface(Monkey.class);
     Implementation host = new DefaultImplementation(Zoo.class);
-    String name = "aName";
+    String name = "someName";
     Linkage linkageIface = linkageFactory.nu(iface);
     Linkage linkageHostIface = linkageFactory.nu(host, iface);
     Linkage linkageIfaceName = linkageFactory.nu(null, iface, name);
     Linkage linkageAll = linkageFactory.nu(host, iface, name);
+    Linkage[] expectedIface = {linkageIface};
+    Linkage[] expectedHostIface = {linkageHostIface, linkageIface};
+    Linkage[] expectedIfaceName = {linkageIfaceName, linkageIface};
+    Linkage[] expectedAll = {linkageAll, linkageHostIface, linkageIfaceName, linkageIface};
 
     public void testIface() {
-        Linkage[] linkages = subject.widen(linkageIface);
-        assertEquals(1, linkages.length);
-        assertEquals(linkageIface, linkages[0]);
+        check(expectedIface, linkageIface);
     }
 
     public void testHostIface() {
-        Linkage[] linkages = subject.widen(linkageHostIface);
-        assertEquals(2, linkages.length);
-        assertEquals(linkageHostIface, linkages[0]);
-        assertEquals(linkageIface, linkages[1]);
+        check(expectedHostIface, linkageHostIface);
     }
 
     public void testIfaceName() {
-        Linkage[] linkages = subject.widen(linkageIfaceName);
-        assertEquals(2, linkages.length);
-        assertEquals(linkageIfaceName, linkages[0]);
-        assertEquals(linkageIface, linkages[1]);
+        check(expectedIfaceName, linkageIfaceName);
     }
 
     public void testEverything() {
-        Linkage[] linkages = subject.widen(linkageAll);
-        assertEquals(4, linkages.length);
-        assertEquals(linkageAll, linkages[0]);
-        assertEquals(linkageHostIface, linkages[1]);
-        assertEquals(linkageIfaceName, linkages[2]);
-        assertEquals(linkageIface, linkages[3]);
+        check(expectedAll, linkageAll);
+    }
+
+    private void check(Linkage[] expected, Linkage linkage) {
+        Linkage[] actual = subject.widen(linkage);
+        assertEquals(expected, actual);
     }
 }
