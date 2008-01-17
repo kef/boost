@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.chain.Chain;
-import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRegistryChainer implements RegistryChainer {
     public void chain(Registry registry, Chain chain) {
@@ -24,7 +24,7 @@ public final class DefaultRegistryChainer implements RegistryChainer {
         }
     }
 
-    // FIX 93685 Move into boost.  Coalesce with InterfaceUtil and possibly TypeMaster?
+    // FIX 2248 Coalesce with InterfaceUtil and possibly TypeMaster?
     private Class[] classes(Implementation[] impls) {
         Class[] result = new Class[impls.length];
         for (int i = 0; i < impls.length; i++) {
