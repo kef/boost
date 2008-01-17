@@ -35,6 +35,7 @@ public final class DefaultProxifier implements Proxifier {
         return proxies.newProxy(types, closure);
     }
 
+    // FIX ()  2248 Dupe.  Slam into TypeMaster.
     private Interface[] ifaces(Object ref) {
         Class cls = ref.getClass();
         Implementation impl = types.nu(Implementation.class, cls);
