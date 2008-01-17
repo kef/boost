@@ -13,6 +13,8 @@ public final class DefaultLinkageWidenerAtomicTest extends BoooostCase {
 
     public void test() {
         Linkage linkage = linkageFactory.nu(iface);
-        subject.widen(linkage);
+        Linkage[] linkages = subject.widen(linkage);
+        assertEquals(1, linkages.length);
+        assertEquals(linkage, linkages[0]);
     }
 }
