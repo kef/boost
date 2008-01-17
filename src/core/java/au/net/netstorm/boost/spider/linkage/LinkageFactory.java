@@ -18,5 +18,5 @@ public interface LinkageFactory {
 
     Linkage nu(Implementation host, Interface iface);
 
-    Linkage nu(Implementation host, Interface impl, String name);
+    Linkage nu(Implementation host, Interface iface, String name);
 }

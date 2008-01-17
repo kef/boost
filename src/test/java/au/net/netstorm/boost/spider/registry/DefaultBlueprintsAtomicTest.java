@@ -19,7 +19,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase implements HasFixtures {
     private static final Object[] NO_PARAMS = {};
     FieldTestUtil fielder = new DefaultFieldTestUtil();
-    Interface iface1 = iface(Dinosaur.class);
+    Interface dinosaurIface = iface(Dinosaur.class);
     Interface iface2 = iface(Fish.class);
     Interface dodgy = iface(Tree.class);
     LinkageFactory linkageFactory = new DefaultLinkageFactory();
@@ -29,6 +29,14 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     TypeMaster typerMock;
     Blueprints subject;
     Implementation hostDummy;
+    Implementation host;
+    Linkage[] linkages = {
+//            linkageFactory.nu(host, iface1, "aName"),
+//            linkageFactory.nu(host, dinosaurIface),
+            // FIX () 2237 check that null host is actually used...
+//            linkageFactory.nu(null, iface1, "aName"),
+            linkageFactory.nu(dinosaurIface)
+    };
 
     public void setUpFixtures() {
         subject = new DefaultBlueprints();
@@ -36,7 +44,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     }
 
     public void testPut() {
-        Linkage linkage = linkageFactory.nu(iface1);
+        Linkage linkage = linkageFactory.nu(dinosaurIface);
         subject.put(linkage, blueprint);
     }
 
@@ -50,12 +58,13 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
 
     // FIX 2237 Complete.  Exists must work for all widenings of the linkage.
     public void testExists() {
-        checkExists(false);
-        checkExists(true);
+        for (Linkage linkage : linkages) {
+            checkExists(false, linkage);
+            checkExists(true, linkage);
+        }
     }
 
-    private void checkExists(boolean exists) {
-        Linkage linkage = linkageFactory.nu(iface1);
+    private void checkExists(boolean exists, Linkage linkage) {
         if (exists) subject.put(linkage, blueprint);
         boolean actual = subject.exists(linkage);
         assertEquals(exists, actual);

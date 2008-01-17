@@ -37,8 +37,8 @@ public class DefaultLinkageFactory implements LinkageFactory {
         return nu(host, iface, null);
     }
 
-    public Linkage nu(Implementation host, Interface impl, String name) {
-        return new DefaultLinkage(host, impl, name);
+    public Linkage nu(Implementation host, Interface iface, String name) {
+        return new DefaultLinkage(host, iface, name);
     }
 
     private Implementation host(Class host) {

@@ -12,8 +12,9 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
+// FIX 2237 Move out of nursery.
 public final class DefaultBlueprints implements Blueprints {
-    // FIX () FRED 12345 Move out of nursery.
+    private static final Linkage NO_LINKAGE = null;
     private final TypeMaster typer = new DefaultTypeMaster();
     private final NiceMap map = new DefaultNiceMap();
     private final LinkageWidener widener = new DefaultLinkageWidener();
@@ -24,19 +25,22 @@ public final class DefaultBlueprints implements Blueprints {
     }
 
     public Blueprint get(Linkage linkage) {
-        Linkage[] linkages = widener.widen(linkage);
-        for (Linkage link : linkages) {
-            if (map.exists(link)) return (Blueprint) map.get(link);
-        }
-        throw new IllegalStateException();
+        Linkage link = nullGet(linkage);
+        if (link == NO_LINKAGE) throw new IllegalStateException();
+        return (Blueprint) map.get(link);
     }
 
     public boolean exists(Linkage linkage) {
+        Linkage link = nullGet(linkage);
+        return (link != NO_LINKAGE);
+    }
+
+    private Linkage nullGet(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);
         for (Linkage link : linkages) {
-            if (map.exists(link)) return true;
+            if (map.exists(link)) return link;
         }
-        return false;
+        return NO_LINKAGE;
     }
 
     private void check(Linkage linkage, Blueprint blueprint) {
