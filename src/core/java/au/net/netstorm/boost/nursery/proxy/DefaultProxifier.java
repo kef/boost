@@ -12,12 +12,10 @@ import java.lang.reflect.InvocationHandler;
 public final class DefaultProxifier implements Proxifier {
     TypeMaster typeMaster;
     ProxyFactory proxies;
-    ProxySpec spec;
     Types types;
     Nu nu;
 
-    // FIX 2248 Push ProxySpec out.
-    public <T> T closure(T ref) {
+    public <T> T closure(T ref, ProxySpec spec) {
         Class<InvocationHandler>[] classes = spec.get();
         return (T) closure(ref, classes);
     }
@@ -25,8 +23,8 @@ public final class DefaultProxifier implements Proxifier {
     // FIX 2248 Looks dodgy.
     private Object closure(Object ref, Class<InvocationHandler>... classes) {
         Object closed = ref;
-        for (Class cls : classes) {
-            closed = proxy(closed, cls);
+        for (int i = classes.length - 1; i >= 0; i--) {
+            closed = proxy(closed, classes[i]);
         }
         return closed;
     }
