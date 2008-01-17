@@ -16,12 +16,15 @@ public final class DefaultProxifier implements Proxifier {
     Nu nu;
 
     public <T> T closure(T ref, ProxySpec spec) {
-        Class<InvocationHandler>[] classes = spec.get();
-        return (T) closure(ref, classes);
+        Class<InvocationHandler>[] closures = spec.get();
+        return (T) enclose(ref, closures);
     }
 
-    // FIX 2248 Looks dodgy.
-    private Object closure(Object ref, Class<InvocationHandler>... classes) {
+    public <T> T closure(T ref, Class<? extends InvocationHandler>... closures) {
+        return (T) enclose(ref, closures);
+    }
+
+    private Object enclose(Object ref, Class<? extends InvocationHandler>... classes) {
         Object closed = ref;
         for (int i = classes.length - 1; i >= 0; i--) {
             closed = proxy(closed, classes[i]);
@@ -29,7 +32,7 @@ public final class DefaultProxifier implements Proxifier {
         return closed;
     }
 
-    private Object proxy(Object ref, Class<InvocationHandler> cls) {
+    private Object proxy(Object ref, Class<? extends InvocationHandler> cls) {
         Interface[] types = ifaces(ref);
         InvocationHandler closure = nu.nu(cls, ref);
         return proxies.newProxy(types, closure);
