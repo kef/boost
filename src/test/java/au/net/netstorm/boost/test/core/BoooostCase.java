@@ -37,6 +37,8 @@ public class BoooostCase extends TestCase {
         assertTestChecker.checkEquals(expected, actual);
     }
 
+    // FIX 2237 This name sucks.  Rename so the prefix is "assertEquals".
+    // FIX 2237 Maybe "assertEqualsUnordered".  Then autocomplete works better for the usual case.
     public final void assertBagEquals(Object[] expected, Object[] actual) {
         assertTestChecker.checkBagEquals(expected, actual);
     }

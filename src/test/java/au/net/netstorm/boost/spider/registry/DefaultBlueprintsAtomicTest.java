@@ -19,7 +19,8 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase implements HasFixtures {
     private static final Object[] NO_PARAMS = {};
     FieldTestUtil fielder = new DefaultFieldTestUtil();
-    Interface iface = iface(Dinosaur.class);
+    Interface iface1 = iface(Dinosaur.class);
+    Interface iface2 = iface(Fish.class);
     Interface dodgy = iface(Tree.class);
     LinkageFactory linkageFactory = new DefaultLinkageFactory();
     Blueprint blueprint;
@@ -35,7 +36,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     }
 
     public void testPut() {
-        Linkage linkage = linkageFactory.nu(iface);
+        Linkage linkage = linkageFactory.nu(iface1);
         subject.put(linkage, blueprint);
     }
 
@@ -47,11 +48,17 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
         } catch (WrongRegistrationException expected) { }
     }
 
-    // FIX 2237 Complete.
+    // FIX 2237 Complete.  Exists must work for all widenings of the linkage.
     public void testExists() {
-        Linkage linkage = linkageFactory.nu(iface);
+        checkExists(false);
+        checkExists(true);
+    }
+
+    private void checkExists(boolean exists) {
+        Linkage linkage = linkageFactory.nu(iface1);
+        if (exists) subject.put(linkage, blueprint);
         boolean actual = subject.exists(linkage);
-        assertEquals(false, actual);
+        assertEquals(exists, actual);
     }
 
     // FIX 2237 Reinstate.
