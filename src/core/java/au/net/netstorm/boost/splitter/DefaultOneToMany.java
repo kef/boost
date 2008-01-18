@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.splitter;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Closure;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,23 +28,15 @@ public final class DefaultOneToMany implements OneToMany, Closure {
         return proxyFactory.newProxy(type, this);
     }
 
-    public synchronized Object invoke(Object proxyRef, Method method, Object[] parameters) throws Throwable {
+    public synchronized Object invoke(Method method, Object[] args) {
         Object[] listeners = many.toArray(new Object[]{});
-        invoke(listeners, method, parameters);
+        invoke(listeners, method, args);
         return null;
     }
 
-    private void invoke(Object[] listeners, Method method, Object[] parameters) throws Throwable {
-        for (int i = 0; i < listeners.length; i++) {
-            invoke(method, listeners, i, parameters);
-        }
-    }
-
-    private void invoke(Method method, Object[] listeners, int i, Object[] parameters) throws Throwable {
-        try {
-            method.invoke(listeners[i], parameters);
-        } catch (InvocationTargetException e) {
-            throw e.getTargetException();
+    private void invoke(Object[] listeners, Method method, Object[] parameters) {
+        for (Object listener : listeners) {
+            method.invoke(listener, parameters);
         }
     }
 

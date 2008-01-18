@@ -6,7 +6,7 @@ import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldRes
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.spider.core.SpiderTryCatchFinally;
+import au.net.netstorm.boost.spider.core.SpiderTryFinally;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -19,9 +19,9 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyClosure;
-import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
-import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinallyClosure;
+import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyClosure;
+import au.net.netstorm.boost.spider.onion.layer.closure.TryFinally;
+import au.net.netstorm.boost.spider.onion.layer.closure.TryFinallyClosure;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.registry.Factories;
@@ -60,8 +60,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     }
 
     private Spider threadLocal(Spider spider) {
-        TryCatchFinally trier = new SpiderTryCatchFinally(PARTIAL_INSTANCES);
-        TryCatchFinallyClosure closure = new DefaultTryCatchFinallyClosure(spider, trier);
+        TryFinally trier = new SpiderTryFinally(PARTIAL_INSTANCES);
+        TryFinallyClosure closure = new DefaultTryFinallyClosure(spider, trier);
         return (Spider) proxyFactory.newProxy(SPIDER_TYPE, closure);
     }
 

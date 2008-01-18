@@ -2,9 +2,10 @@ package au.net.netstorm.boost.spider.onion.layer.passthrough;
 
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.edge.java.lang.reflect.Method;
+import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,8 +25,13 @@ public final class DefaultPassThroughLayerAtomicTest extends BoooostCase {
         map.put(key, value);
         PassThroughLayer layer = new DefaultPassThroughLayer();
         layer.setDelegate(map);
-        Method getMethod = edgeClass.getMethod(Map.class, "get", PARAMETER_TYPES);
-        Object actual = layer.invoke(map, getMethod, parameters);
+        Method method = getMethod();
+        Object actual = layer.invoke(method, parameters);
         assertEquals(value, actual);
+    }
+
+    private Method getMethod() {
+        java.lang.reflect.Method method = edgeClass.getMethod(Map.class, "get", PARAMETER_TYPES);
+        return new DefaultMethod(method);
     }
 }

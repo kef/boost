@@ -5,6 +5,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.onion.core.Closure;
 import au.net.netstorm.boost.util.type.Interface;
 
+import java.lang.reflect.InvocationHandler;
+
 public final class DefaultProxyFactory implements ProxyFactory {
     private final ProxySupplier delegate = new DefaultProxySupplier();
 
@@ -16,7 +18,8 @@ public final class DefaultProxyFactory implements ProxyFactory {
     public Object newProxy(Interface[] types, Closure closure) {
         ClassLoader classloader = getClassLoader();
         Class[] ifaces = toClasses(types);
-        return delegate.getProxy(classloader, ifaces, closure);
+        InvocationHandler handler = new ClosureInvocationHandler(closure);
+        return delegate.getProxy(classloader, ifaces, handler);
     }
 
     private Class[] toClasses(Interface[] types) {

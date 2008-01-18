@@ -23,11 +23,11 @@ public final class DefaultOneToManyAtomicTest extends BoooostCase {
     private static final Interface INTERFACE_TWO = new DefaultInterface(TestInterfaceTwo.class);
     private static final Interface INTERFACE_THREE = new DefaultInterface(TestInterfaceThree.class);
     private static final String STRING = "Hello";
-    private static final Integer INTEGER = new Integer(7);
+    private static final Integer INTEGER = 7;
     private static final Object[] NO_PARAMETERS = {};
     private static final Object[] METHOD_ONE_PARAMETERS = {STRING};
     private static final Object[] METHOD_TWO_PARAMETERS = {INTEGER, INTEGER};
-    private static final CloneNotSupportedException AN_EXCEPTION = new CloneNotSupportedException();
+    private static final NumberFormatException AN_EXCEPTION = new NumberFormatException();
     private final MethodTestUtil methods = new DefaultMethodTestUtil();
     private final ClassTestChecker clsChecker = new DefaultClassTestChecker();
     private final List mockListeners = new ArrayList();
@@ -81,11 +81,11 @@ public final class DefaultOneToManyAtomicTest extends BoooostCase {
         performAndCheckCalls(type, methodName, parameters);
     }
 
-    private void checkException(CloneNotSupportedException expected, TestInterfaceThree one) {
+    private void checkException(Exception expected, TestInterfaceThree one) {
         try {
             one.barf();
             fail();
-        } catch (CloneNotSupportedException e) {
+        } catch (NumberFormatException e) {
             assertSame(expected, e);
         }
     }

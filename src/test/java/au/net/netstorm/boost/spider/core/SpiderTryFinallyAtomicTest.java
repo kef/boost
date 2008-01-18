@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
-import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
+import au.net.netstorm.boost.spider.onion.layer.closure.TryFinally;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 
 public final class SpiderTryFinallyAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
-    TryCatchFinally subject;
+    TryFinally subject;
     PartialInstances partialInstancesMock;
 
     public void setUpFixtures() {
-        subject = new SpiderTryCatchFinally(partialInstancesMock);
+        subject = new SpiderTryFinally(partialInstancesMock);
     }
 
     public void testIn() {

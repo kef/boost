@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.onion.core;
 
-import java.lang.reflect.InvocationHandler;
+import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 
-public interface Closure extends InvocationHandler {
+public interface Closure {
+    Object invoke(Method method, Object[] args);
 }

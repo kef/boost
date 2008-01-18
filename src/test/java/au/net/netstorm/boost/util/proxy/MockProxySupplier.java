@@ -35,13 +35,13 @@ final class MockProxySupplier extends Assert implements ProxySupplier {
         Class[] types = toClasses(ifaces);
         assertSame(loader, this.loader);
         asserter.checkEquals(types, this.types);
-        assertSame(handler, this.handler);
+        assertEquals(handler, this.handler);
     }
 
     private Class[] toClasses(Interface[] types) {
         List result = new ArrayList();
-        for (int i = 0; i < types.length; i++) {
-            Class cls = types[i].getType();
+        for (Interface type : types) {
+            Class cls = type.getType();
             result.add(cls);
         }
         return (Class[]) result.toArray(new Class[]{});

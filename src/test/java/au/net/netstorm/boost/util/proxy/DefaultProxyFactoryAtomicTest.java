@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.proxy;
 
+import au.net.netstorm.boost.nursery.compose.MockClosure;
 import au.net.netstorm.boost.spider.onion.core.Closure;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
@@ -7,19 +8,20 @@ import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
+import java.lang.reflect.InvocationHandler;
 import java.util.Map;
 
 public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private static final Interface TYPE_1 = new DefaultInterface(CharSequence.class);
     private static final Interface TYPE_2 = new DefaultInterface(Map.class);
     private static final Interface[] TYPES = {TYPE_1, TYPE_2};
-    private final MockProxySupplier mockEdgeProxyFactory = new MockProxySupplier();
+    private final MockProxySupplier proxySupplier = new MockProxySupplier();
+    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ProxyFactory factory = new DefaultProxyFactory();
     private final Closure closure = new MockClosure();
-    private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     {
-        fielder.setInstance(factory, "delegate", mockEdgeProxyFactory);
+        fielder.setInstance(factory, "delegate", proxySupplier);
     }
 
     public void testSingleType() {
@@ -47,7 +49,7 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
 
     private Object prepare() {
         Object expected = new Object();
-        mockEdgeProxyFactory.init(expected);
+        proxySupplier.init(expected);
         return expected;
     }
 
@@ -59,6 +61,7 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private void checkCall(Interface[] types) {
         Class cls = factory.getClass();
         ClassLoader classLoader = cls.getClassLoader();
-        mockEdgeProxyFactory.verify(classLoader, types, closure);
+        InvocationHandler handler = new ClosureInvocationHandler(closure);
+        proxySupplier.verify(classLoader, types, handler);
     }
 }

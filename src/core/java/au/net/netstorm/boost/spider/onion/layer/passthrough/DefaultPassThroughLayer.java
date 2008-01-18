@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.onion.layer.passthrough;
 
-import java.lang.reflect.Method;
+import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 
 public final class DefaultPassThroughLayer implements PassThroughLayer {
     private Object delegate;
 
-    public Object invoke(Object proxy, Method method, Object[] parameters) throws Throwable {
-        return method.invoke(delegate, parameters);
+    public Object invoke(Method method, Object[] args) {
+        return method.invoke(delegate, args);
     }
 
     public void setDelegate(Object delegate) {
