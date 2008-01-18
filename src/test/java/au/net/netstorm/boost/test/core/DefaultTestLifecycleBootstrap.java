@@ -40,7 +40,7 @@ public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     }
 
     private void registerFieldInjector(Registry registry, Provider random) {
-        TestFieldInjector fieldInjector = new DefaultTestFieldInjector(test, mocks, random);
+        TestFieldInjector fieldInjector = new DefaultTestFieldInjector(mocks, random);
         registry.instance(TestFieldInjector.class, fieldInjector);
     }
 }

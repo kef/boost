@@ -11,6 +11,6 @@ public final class InjectLazyFields implements TestLifecycleBlock {
     Test test;
 
     public void execute() {
-        if (marker.is(test, LazyFields.class)) fieldInjector.inject();
+        if (marker.is(test, LazyFields.class)) fieldInjector.inject(test);
     }
 }

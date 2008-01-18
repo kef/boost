@@ -11,6 +11,6 @@ public final class InjectSubject implements TestLifecycleBlock {
     Test test;
 
     public void execute() {
-        if (marker.is(test, InjectableSubject.class)) fieldInjector.injectSubject();
+        if (marker.is(test, InjectableSubject.class)) fieldInjector.injectSubject(test);
     }
 }

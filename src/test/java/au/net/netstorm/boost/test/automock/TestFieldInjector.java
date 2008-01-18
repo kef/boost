@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.test.automock;
 
 public interface TestFieldInjector {
-    void injectSubject();
+    void injectSubject(Object ref);
 
-    void inject();
+    void inject(Object ref);
 
     void verify();
 }
