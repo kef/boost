@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import java.lang.reflect.InvocationHandler;
+import au.net.netstorm.boost.spider.onion.core.Closure;
 
 public interface ProxySpec {
-    Class<InvocationHandler>[] get();
+    Class<Closure>[] get();
 }

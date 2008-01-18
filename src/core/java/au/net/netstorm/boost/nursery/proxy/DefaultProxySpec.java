@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import java.lang.reflect.InvocationHandler;
+import au.net.netstorm.boost.spider.onion.core.Closure;
 
 public final class DefaultProxySpec implements ProxySpec {
-    private Class<InvocationHandler>[] closures;
+    private Class<Closure>[] closures;
 
-    public DefaultProxySpec(Class<InvocationHandler>... closures) {
+    public DefaultProxySpec(Class<Closure>... closures) {
         this.closures = closures;
     }
 
-    public Class<InvocationHandler>[] get() {
+    public Class<Closure>[] get() {
         return closures;
     }
 }

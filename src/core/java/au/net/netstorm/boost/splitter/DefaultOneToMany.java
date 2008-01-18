@@ -1,19 +1,19 @@
 package au.net.netstorm.boost.splitter;
 
+import au.net.netstorm.boost.spider.onion.core.Closure;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class DefaultOneToMany implements OneToMany, InvocationHandler {
-    private final Interface type;
-    private final List many = new ArrayList();
+public final class DefaultOneToMany implements OneToMany, Closure {
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
+    private final List many = new ArrayList();
+    private final Interface type;
 
     public DefaultOneToMany(Interface type) {
         noNulls(type);

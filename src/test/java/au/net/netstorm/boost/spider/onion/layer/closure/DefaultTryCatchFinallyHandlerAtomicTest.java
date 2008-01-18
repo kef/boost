@@ -12,7 +12,7 @@ public final class DefaultTryCatchFinallyHandlerAtomicTest extends LifecycleTest
     UnknownKnotException throwable = new UnknownKnotException();
     EdgeClass classer = new DefaultEdgeClass();
     Method tieMethod = getTieMethod();
-    TryFinallyHandler subject;
+    TryCatchFinallyClosure subject;
     Knot knot;
     Apron apronMock;
     Object[] params;
@@ -22,7 +22,7 @@ public final class DefaultTryCatchFinallyHandlerAtomicTest extends LifecycleTest
 
     public void setUpFixtures() {
         params = new Object[]{knot};
-        subject = new DefaultTryCatchFinallyHandler(apronMock, tryfinallyMock);
+        subject = new DefaultTryCatchFinallyClosure(apronMock, tryfinallyMock);
     }
 
     public void testNormal() throws Throwable {

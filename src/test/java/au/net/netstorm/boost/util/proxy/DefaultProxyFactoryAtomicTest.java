@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.util.proxy;
 
+import au.net.netstorm.boost.spider.onion.core.Closure;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
-import java.lang.reflect.InvocationHandler;
 import java.util.Map;
 
 public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
@@ -15,7 +15,7 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private static final Interface[] TYPES = {TYPE_1, TYPE_2};
     private final MockProxySupplier mockEdgeProxyFactory = new MockProxySupplier();
     private final ProxyFactory factory = new DefaultProxyFactory();
-    private final InvocationHandler handler = new MockInvocationHandler();
+    private final Closure closure = new MockClosure();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
 
     {
@@ -33,14 +33,14 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
 
     private void checkSingleType(Interface type) {
         Object expected = prepare();
-        Object result = factory.newProxy(type, handler);
+        Object result = factory.newProxy(type, closure);
         assertSame(expected, result);
         checkCall(type);
     }
 
     private void checkMultipleTypes(Interface[] types) {
         Object expected = prepare();
-        Object result = factory.newProxy(types, handler);
+        Object result = factory.newProxy(types, closure);
         assertSame(expected, result);
         checkCall(types);
     }
@@ -59,6 +59,6 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private void checkCall(Interface[] types) {
         Class cls = factory.getClass();
         ClassLoader classLoader = cls.getClassLoader();
-        mockEdgeProxyFactory.verify(classLoader, types, handler);
+        mockEdgeProxyFactory.verify(classLoader, types, closure);
     }
 }

@@ -5,12 +5,12 @@ import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
 import java.lang.reflect.Method;
 
-public final class DefaultTryCatchFinallyHandler implements TryFinallyHandler {
+public final class DefaultTryCatchFinallyClosure implements TryCatchFinallyClosure {
     private final ThrowableMaster tosser = new DefaultThrowableMaster();
-    private final Object delegate;
     private final TryCatchFinally trier;
+    private final Object delegate;
 
-    public DefaultTryCatchFinallyHandler(Object delegate, TryCatchFinally trier) {
+    public DefaultTryCatchFinallyClosure(Object delegate, TryCatchFinally trier) {
         this.delegate = delegate;
         this.trier = trier;
     }
@@ -19,12 +19,10 @@ public final class DefaultTryCatchFinallyHandler implements TryFinallyHandler {
         try {
             trier.theCore();
             return method.invoke(delegate, parameters);
-        }
-        catch (Throwable t) {
+        } catch (Throwable t) {
             Throwable real = tosser.realCause(t);
             return tosser.rethrow(real);
-        }
-        finally {
+        } finally {
             trier.theFinally();
         }
     }

@@ -19,8 +19,9 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyHandler;
+import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryCatchFinallyClosure;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinally;
+import au.net.netstorm.boost.spider.onion.layer.closure.TryCatchFinallyClosure;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.registry.Factories;
@@ -33,8 +34,6 @@ import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
-
-import java.lang.reflect.InvocationHandler;
 
 // SUGGEST: No need to return everything, just register the relevant parts as part of construction ;)
 
@@ -62,8 +61,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private Spider threadLocal(Spider spider) {
         TryCatchFinally trier = new SpiderTryCatchFinally(PARTIAL_INSTANCES);
-        InvocationHandler handler = new DefaultTryCatchFinallyHandler(spider, trier);
-        return (Spider) proxyFactory.newProxy(SPIDER_TYPE, handler);
+        TryCatchFinallyClosure closure = new DefaultTryCatchFinallyClosure(spider, trier);
+        return (Spider) proxyFactory.newProxy(SPIDER_TYPE, closure);
     }
 
     private Spider buildSpider(
