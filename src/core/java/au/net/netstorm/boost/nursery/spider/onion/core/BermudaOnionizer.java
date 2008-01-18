@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;
@@ -43,8 +43,8 @@ public final class BermudaOnionizer implements Onionizer {
 
     private ResolvedInstance onionise(Implementation impl, Object ref) {
         Interface[] facets = interfaces(impl);
-        Closure closure = new OnionClosure(ref);
-        Object proxy = factory.newProxy(facets, closure);
+        Layer layer = new OnionLayer(ref);
+        Object proxy = factory.newProxy(facets, layer);
         return new DefaultBaseReference(proxy);
     }
 

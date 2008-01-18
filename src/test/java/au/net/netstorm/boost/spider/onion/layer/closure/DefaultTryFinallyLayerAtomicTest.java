@@ -5,9 +5,9 @@ import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultTryFinallyClosureAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
+public final class DefaultTryFinallyLayerAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     UnknownKnotException throwable = new UnknownKnotException();
-    TryFinallyClosure subject;
+    TryFinallyLayer subject;
     TryFinally trierMock;
     Method methodMock;
     Object[] params;
@@ -15,7 +15,7 @@ public final class DefaultTryFinallyClosureAtomicTest extends LifecycleTestCase 
     Integer result;
 
     public void setUpFixtures() {
-        subject = new DefaultTryFinallyClosure(apronMock, trierMock);
+        subject = new DefaultTryFinallyLayer(apronMock, trierMock);
     }
 
     public void testNormal() throws Throwable {

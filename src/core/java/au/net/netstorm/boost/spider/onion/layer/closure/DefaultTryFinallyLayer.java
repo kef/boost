@@ -2,11 +2,11 @@ package au.net.netstorm.boost.spider.onion.layer.closure;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 
-public final class DefaultTryFinallyClosure implements TryFinallyClosure {
+public final class DefaultTryFinallyLayer implements TryFinallyLayer {
     private final TryFinally trier;
     private final Object delegate;
 
-    public DefaultTryFinallyClosure(Object delegate, TryFinally trier) {
+    public DefaultTryFinallyLayer(Object delegate, TryFinally trier) {
         this.delegate = delegate;
         this.trier = trier;
     }

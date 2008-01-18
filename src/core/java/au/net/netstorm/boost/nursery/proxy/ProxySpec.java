@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public interface ProxySpec {
-    Class<Closure>[] get();
+    Class<Layer>[] get();
 }

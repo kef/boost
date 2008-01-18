@@ -19,9 +19,9 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyClosure;
+import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyLayer;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryFinally;
-import au.net.netstorm.boost.spider.onion.layer.closure.TryFinallyClosure;
+import au.net.netstorm.boost.spider.onion.layer.closure.TryFinallyLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.registry.Factories;
@@ -61,8 +61,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private Spider threadLocal(Spider spider) {
         TryFinally trier = new SpiderTryFinally(PARTIAL_INSTANCES);
-        TryFinallyClosure closure = new DefaultTryFinallyClosure(spider, trier);
-        return (Spider) proxyFactory.newProxy(SPIDER_TYPE, closure);
+        TryFinallyLayer layer = new DefaultTryFinallyLayer(spider, trier);
+        return (Spider) proxyFactory.newProxy(SPIDER_TYPE, layer);
     }
 
     private Spider buildSpider(

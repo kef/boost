@@ -1,20 +1,20 @@
 package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.Method;
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultScrunchClosureAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
-    ScrunchClosure subject;
-    Closure nextMock;
+public final class DefaultScrunchLayerAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
+    ScrunchLayer subject;
+    Layer nextMock;
     Object returned;
     Method method;
     Object[] parameters;
 
     public void setUpFixtures() {
-        subject = new DefaultScrunchClosure(nextMock);
+        subject = new DefaultScrunchLayer(nextMock);
     }
 
     public void testUsable() {

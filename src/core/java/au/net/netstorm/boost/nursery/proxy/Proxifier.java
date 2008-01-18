@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public interface Proxifier {
     // FIX 2248 Rename?
-    <T> T closure(T ref, ProxySpec spec);
+    <T> T proxy(T ref, ProxySpec spec);
 
-    <T> T closure(T ref, Class<? extends Closure>... closures);
+    <T> T proxy(T ref, Class<? extends Layer>... layers);
 }

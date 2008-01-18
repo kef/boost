@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.Method;
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
-public final class DefaultScrunchClosure implements ScrunchClosure {
-    private final Closure next;
+public final class DefaultScrunchLayer implements ScrunchLayer {
+    private final Layer next;
     private boolean scrunched;
 
-    public DefaultScrunchClosure(Closure next) {
+    public DefaultScrunchLayer(Layer next) {
         this.next = next;
     }
 

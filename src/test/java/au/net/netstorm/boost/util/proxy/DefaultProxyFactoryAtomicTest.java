@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.proxy;
 
-import au.net.netstorm.boost.nursery.compose.MockClosure;
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.nursery.compose.MockLayer;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
@@ -18,7 +18,7 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private final MockProxySupplier proxySupplier = new MockProxySupplier();
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();
     private final ProxyFactory factory = new DefaultProxyFactory();
-    private final Closure closure = new MockClosure();
+    private final Layer layer = new MockLayer();
 
     {
         fielder.setInstance(factory, "delegate", proxySupplier);
@@ -35,14 +35,14 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
 
     private void checkSingleType(Interface type) {
         Object expected = prepare();
-        Object result = factory.newProxy(type, closure);
+        Object result = factory.newProxy(type, layer);
         assertSame(expected, result);
         checkCall(type);
     }
 
     private void checkMultipleTypes(Interface[] types) {
         Object expected = prepare();
-        Object result = factory.newProxy(types, closure);
+        Object result = factory.newProxy(types, layer);
         assertSame(expected, result);
         checkCall(types);
     }
@@ -61,7 +61,7 @@ public final class DefaultProxyFactoryAtomicTest extends BoooostCase {
     private void checkCall(Interface[] types) {
         Class cls = factory.getClass();
         ClassLoader classLoader = cls.getClassLoader();
-        InvocationHandler handler = new ClosureInvocationHandler(closure);
+        InvocationHandler handler = new LayerInvocationHandler(layer);
         proxySupplier.verify(classLoader, types, handler);
     }
 }

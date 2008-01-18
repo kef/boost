@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.spider.onion.core.Closure;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultProxySpec implements ProxySpec {
-    private Class<Closure>[] closures;
+    private Class<Layer>[] layers;
 
-    public DefaultProxySpec(Class<Closure>... closures) {
-        this.closures = closures;
+    public DefaultProxySpec(Class<Layer>... layers) {
+        this.layers = layers;
     }
 
-    public Class<Closure>[] get() {
-        return closures;
+    public Class<Layer>[] get() {
+        return layers;
     }
 }

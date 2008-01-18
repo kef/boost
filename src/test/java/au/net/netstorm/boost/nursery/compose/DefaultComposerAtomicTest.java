@@ -19,8 +19,8 @@ public final class DefaultComposerAtomicTest extends BoooostCase {
     private static final Interface INTERFACE_A_B = new DefaultInterface(TestInterfaceAB.class);
     private static final Interface INTERFACE_A = new DefaultInterface(TestInterfaceA.class);
     private final ProxyFactory proxyFactory = buildFactory();
-    private final MockClosure mockHandlerA = new MockClosure();
-    private final MockClosure mockHandlerB = new MockClosure();
+    private final MockLayer mockHandlerA = new MockLayer();
+    private final MockLayer mockHandlerB = new MockLayer();
     private final MockProxyFactory mockProxyFactory = new MockProxyFactory();
     private final Composer composer = new DefaultComposer(mockProxyFactory);
 
@@ -36,9 +36,9 @@ public final class DefaultComposerAtomicTest extends BoooostCase {
         // SUGGEST BREADCRUMB.
     }
 
-    private Object createMockProxy(MockClosure closure) {
-        closure.init();
-        return proxyFactory.newProxy(INTERFACE_A, closure);
+    private Object createMockProxy(MockLayer layer) {
+        layer.init();
+        return proxyFactory.newProxy(INTERFACE_A, layer);
     }
 
     // SUGGEST Dupe.  See DefaultOneToMany.
