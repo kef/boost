@@ -11,16 +11,16 @@ public final class DefaultRegistryChainer implements RegistryChainer {
         chain(registry, type, links);
     }
 
-    private void chain(Registry registry, Interface type, Implementation[] links) {
+    public void chain(Registry registry, Interface type, Implementation... links) {
         Class iface = type.getType();
         Class[] impls = classes(links);
         chain(registry, iface, impls);
     }
 
-    private void chain(Registry registry, Class iface, Class[] impls) {
-        registry.single(iface, impls[0]);
-        for (int i = 0; i < impls.length - 1; i++) {
-            registry.single(impls[i], iface, impls[i + 1]);
+    public void chain(Registry registry, Class iface, Class... links) {
+        registry.single(iface, links[0]);
+        for (int i = 0; i < links.length - 1; i++) {
+            registry.single(links[i], iface, links[i + 1]);
         }
     }
 
