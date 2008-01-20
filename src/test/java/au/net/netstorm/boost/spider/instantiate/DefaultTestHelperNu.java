@@ -23,7 +23,7 @@ public class DefaultTestHelperNu implements TestHelperNu {
     }
 
     private <T> T instatiate(Class<T> iface, Object... params) {
-        // FIX ()  93686 - utility for this?
+        // FIX ()  95301 - utility for this?
         Class<T> implClass = impler.impl(iface);
         Constructor constructor1 = reflector.getConstructor(implClass);
         return implClass.cast(construct.newInstance(constructor1, params));
@@ -32,7 +32,7 @@ public class DefaultTestHelperNu implements TestHelperNu {
     private <T> void inject(T obj) {
         testInjector.inject(obj);
         injector.inject(obj);
-        // FIX 93686 - utility for this?
+        // FIX 95301 - utility for this?
         if (Constructable.class.isAssignableFrom(obj.getClass())) ((Constructable) obj).constructor();
     }
 }
