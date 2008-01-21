@@ -8,4 +8,6 @@ public interface NiceMap<K, V> {
     boolean exists(K key);
 
     void remove(K key);
+
+    void clear();
 }

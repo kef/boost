@@ -43,14 +43,20 @@ public final class DefaultNiceMapAtomicTest extends LifecycleTestCase implements
         checkExists(false, pie);
     }
 
-    public void testClear() {
-        checkExists(false, milkshake);
+    public void testRemove() {
         put(milkshake, value);
         put(chips, value);
-        checkExists(true, milkshake);
         subject.remove(milkshake);
         checkExists(false, milkshake);
         checkExists(true, chips);
+    }
+
+    public void testClear() {
+        put(chips, value);
+        put(milkshake, value);
+        subject.clear();
+        checkExists(false, milkshake);
+        checkExists(false, chips);
     }
 
     public void testPutFails() {
