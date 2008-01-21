@@ -11,7 +11,6 @@ import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
-import au.net.netstorm.boost.util.exception.ThrowableMaster;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
@@ -29,7 +28,7 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
     private final AssertException assertException = new DefaultAssertException();
     private final ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private final NullMaster nullMaster = new DefaultNullMaster();
-    private ThrowableMaster thrower = new DefaultThrowableMaster();
+    private au.net.netstorm.boost.util.exception.ThrowableMaster thrower = new DefaultThrowableMaster();
     private final InstanceProvider instanceProvider;
     private ClassMaster classer = new DefaultClassMaster();
 

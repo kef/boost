@@ -3,10 +3,9 @@ package au.net.netstorm.boost.test.exception;
 import au.net.netstorm.boost.spider.flavour.MapException;
 import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
-import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
 public final class WebThrowableSupport implements ThrowableSupport {
-    private static final ThrowableMaster THROWABLE_MASTER = new DefaultThrowableMaster();
+    private static final au.net.netstorm.boost.util.exception.ThrowableMaster THROWABLE_MASTER = new DefaultThrowableMaster();
     private static final int NOT_FOUND = -1;
 
     public Throwable translate(Throwable t) {

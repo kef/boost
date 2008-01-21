@@ -8,7 +8,6 @@ import au.net.netstorm.boost.test.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.test.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.test.random.FieldRandomizer;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
-import au.net.netstorm.boost.util.exception.ThrowableMaster;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
@@ -17,7 +16,7 @@ public final class ConstructorNullDataChecker implements DataChecker {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private ClassMaster classMaster = new DefaultClassMaster();
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
-    private ThrowableMaster thrower = new DefaultThrowableMaster();
+    private au.net.netstorm.boost.util.exception.ThrowableMaster thrower = new DefaultThrowableMaster();
     private FieldRandomizer fieldUtil;
 
     public ConstructorNullDataChecker(Provider random) {

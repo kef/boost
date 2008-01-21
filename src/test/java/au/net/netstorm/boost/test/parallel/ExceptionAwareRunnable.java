@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.test.parallel;
 
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
-import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
 public class ExceptionAwareRunnable implements Runnable {
-    private ThrowableMaster tosser = new DefaultThrowableMaster();
+    private au.net.netstorm.boost.util.exception.ThrowableMaster tosser = new DefaultThrowableMaster();
     private final Runnable delegate;
     private final Errors throwables;
 

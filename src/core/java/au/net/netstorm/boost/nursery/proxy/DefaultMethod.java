@@ -6,6 +6,7 @@ import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
 // FIX () FRED 12345 Move this out of edge or something, or sort it out.
 public final class DefaultMethod implements Method {
+    private static final Object NEVER = null;
     private final ThrowableMaster tosser = new DefaultThrowableMaster();
     private final java.lang.reflect.Method delegate;
 
@@ -19,7 +20,8 @@ public final class DefaultMethod implements Method {
             return delegate.invoke(ref, args);
         } catch (Throwable t) {
             Throwable real = tosser.realCause(t);
-            return tosser.rethrow(real);
+            tosser.rethrow(real);
+            return NEVER;
         }
     }
 

@@ -8,7 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 
 public final class DefaultThrowableMaster implements ThrowableMaster {
-    public Object rethrow(Throwable t) {
+    // Never, ever change the return type or I will kill you.
+    public void rethrow(Throwable t) {
         if (t instanceof Error)
             throw (Error) t;
         if (t instanceof RuntimeException)

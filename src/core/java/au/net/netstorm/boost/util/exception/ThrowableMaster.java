@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.exception;
 
 public interface ThrowableMaster {
-    Object rethrow(Throwable t);
+    void rethrow(Throwable t);
 
     boolean checked(Throwable t);
 
