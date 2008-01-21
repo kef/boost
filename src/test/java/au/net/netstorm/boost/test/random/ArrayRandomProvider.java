@@ -35,6 +35,6 @@ public final class ArrayRandomProvider implements SpecificProvider {
 
     private int randomSize() {
         Boolean on = randomProvider.provide(Boolean.class);
-        return on ? 2 : 3;
+        return on ? 4 : 5;
     }
 }
