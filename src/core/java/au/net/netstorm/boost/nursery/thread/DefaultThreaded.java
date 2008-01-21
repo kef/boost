@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.nursery.thread;
 
-import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
 import au.net.netstorm.boost.spider.flavour.NiceMap;
 
 public final class DefaultThreaded<T> implements Threaded<T> {
-    private static final ThreadLocal<NiceMap> THREADED = new ThreadLocalMap<NiceMap>();
+    private final ThreadLocals locals = new DefaultThreadLocals();
     private final Class type;
 
     public DefaultThreaded(Class<T> type) {
@@ -28,12 +27,6 @@ public final class DefaultThreaded<T> implements Threaded<T> {
     }
 
     private NiceMap map() {
-        return THREADED.get();
-    }
-
-    private static final class ThreadLocalMap<T> extends ThreadLocal<T> {
-        public T initialValue() {
-            return (T) new DefaultNiceMap();
-        }
+        return locals.get();
     }
 }
