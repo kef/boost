@@ -7,5 +7,5 @@ public interface Threaded<T> {
 
     boolean exists();
 
-    void clear();
+    void remove();
 }

@@ -7,5 +7,5 @@ public interface NiceMap<K, V> {
 
     boolean exists(K key);
 
-    void clear();
+    void remove(K key);
 }
