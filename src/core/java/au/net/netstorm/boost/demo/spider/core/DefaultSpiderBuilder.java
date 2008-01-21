@@ -29,18 +29,13 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
 
     public Spider build(ImplMaster impler) {
-        Spider spider = doBuild(impler);
-        preregister(spider, impler);
-        return spider;
-    }
-
-    private Spider doBuild(ImplMaster impler) {
         Blueprints blueprints = new DefaultBlueprints();
         Factories factories = new DefaultFactories();
         Instances instances = new DefaultInstances();
         Spider spider = assembler.assemble(instances, factories);
         Registry registry = createRegistry(blueprints, factories, instances, spider);
-        preregister(registry, spider, blueprints, impler);
+        register(registry, spider, impler);
+        buildFactories(registry, impler, blueprints);
         return spider;
     }
 
@@ -48,16 +43,23 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         return new DefaultRegistry(blueprints, instances, factories, spider);
     }
 
-    private void preregister(Spider spider, ImplMaster impler) {
-        Registry registry = spider.resolve(Registry.class);
-        registry.instance(ImplMaster.class, impler);
+    private void register(Registry registry, Spider spider, ImplMaster impler) {
+        registerSpider(registry, spider);
+        registerImpler(registry, impler);
     }
 
-    private void preregister(Registry registry, Spider spider, Blueprints blueprints, ImplMaster impler) {
+    private void registerSpider(Registry registry, Spider spider) {
         registry.instance(Registry.class, registry);
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
         registry.instance(Nu.class, spider);
+    }
+
+    private void registerImpler(Registry registry, ImplMaster impler) {
+        registry.instance(ImplMaster.class, impler);
+    }
+
+    private void buildFactories(Registry registry, ImplMaster impler, Blueprints blueprints) {
         // FIX BREADCRUMB 2237 How do we enforce ordering?  High cost factories should be first registered, last called?
         // FIX (Nov 28, 2007) IOC 2215 Can we register the impliers and blueprints in the spider and inject
         // FIX (Nov 28, 2007) IOC 2215 all factories?
