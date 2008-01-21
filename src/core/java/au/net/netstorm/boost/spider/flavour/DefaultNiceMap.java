@@ -25,6 +25,10 @@ public final class DefaultNiceMap<K, V> implements NiceMap<K, V> {
         return nullGet(key) != null;
     }
 
+    public void clear() {
+        map.clear();
+    }
+
     private V nullGet(K key) {
         return map.get(key);
     }

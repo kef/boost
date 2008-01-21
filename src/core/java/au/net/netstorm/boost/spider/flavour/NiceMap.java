@@ -6,4 +6,6 @@ public interface NiceMap<K, V> {
     V get(K key);
 
     boolean exists(K key);
+
+    void clear();
 }
