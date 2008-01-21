@@ -33,9 +33,7 @@ public class DefaultTestHelperNu implements TestHelperNu {
         testInjector.inject(obj);
         injector.inject(obj);
         // FIX 95301 - utility for this?
-        if (Constructable.class.isAssignabl
-        LETS GO
-        TRAIN WRECKING
-        !!!!!!!!!!eFrom(obj.getClass()))((Constructable) obj).constructor();
+        // FIX 95301 - TRAIN WRECKS AHEAD!!!!! UGH!
+        if (Constructable.class.isAssignableFrom(obj.getClass())) ((Constructable) obj).constructor();
     }
 }
