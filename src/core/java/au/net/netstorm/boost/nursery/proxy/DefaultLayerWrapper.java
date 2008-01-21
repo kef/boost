@@ -7,6 +7,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
+// FIX 94156 Merge with Proxifier.
 public final class DefaultLayerWrapper implements LayerWrapper {
     ProxyFactory proxies;
     TypeMaster master;
