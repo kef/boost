@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.nursery.spider.registry.Proxies;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Factories;
@@ -29,9 +30,10 @@ public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase imp
     Blueprint blueprintMock;
     Implementation implementationDummy;
     Object[] parametersDummy;
+    Proxies proxiesMock;
 
     public void setUpFixtures() {
-        subject = new DefaultResolverEngine(instancesMock, factoriesMock, providerMock);
+        subject = new DefaultResolverEngine(instancesMock, factoriesMock, proxiesMock, providerMock);
     }
 
     public void testCheckSynchronization() {

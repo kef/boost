@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultBlueprints implements Blueprints {
     private static final Linkage NO_LINKAGE = null;
     private final TypeMaster typer = new DefaultTypeMaster();
-    private final NiceMap map = new DefaultNiceMap();
+    private final NiceMap<Linkage, Blueprint> map = new DefaultNiceMap<Linkage, Blueprint>();
     private final LinkageWidener widener = new DefaultLinkageWidener();
 
     public void put(Linkage linkage, Blueprint blueprint) {
@@ -24,20 +24,20 @@ public final class DefaultBlueprints implements Blueprints {
         map.put(linkage, blueprint);
     }
 
-    public Blueprint get(Linkage linkage) {
-        Linkage link = nullGet(linkage);
-        if (link == NO_LINKAGE) throw new IllegalStateException();
-        return (Blueprint) map.get(link);
-    }
-
     public boolean exists(Linkage linkage) {
         Linkage link = nullGet(linkage);
         return (link != NO_LINKAGE);
     }
 
+    public Blueprint get(Linkage linkage) {
+        Linkage link = nullGet(linkage);
+        if (link == NO_LINKAGE) throw new IllegalStateException();
+        return map.get(link);
+    }
+
     private Linkage nullGet(Linkage linkage) {
-        Linkage[] linkages = widener.widen(linkage);
-        for (Linkage link : linkages) {
+        Linkage[] links = widener.widen(linkage);
+        for (Linkage link : links) {
             if (map.exists(link)) return link;
         }
         return NO_LINKAGE;

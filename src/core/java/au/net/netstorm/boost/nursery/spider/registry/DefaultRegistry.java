@@ -4,6 +4,7 @@ import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
@@ -27,15 +28,19 @@ public final class DefaultRegistry implements Registry {
     private final Blueprints blueprints;
     private final Instances instances;
     private final Factories factories;
+    private final Proxies proxies;
     private final Nu nu;
 
     // SUGGEST: Split registry into two, where Factory stuff has its own interface.
-    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Nu nu) {
+    // DEBT ParameterNumber {
+    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Proxies proxies, Nu nu) {
         this.blueprints = blueprints;
         this.instances = instances;
         this.factories = factories;
+        this.proxies = proxies;
         this.nu = nu;
     }
+    // } DEBT ParameterNumber
 
     public <T, U extends T> void multiple(Class<T> iface, Class<U> impl) {
         Linkage linkage = linkages.nu(iface);
@@ -59,6 +64,11 @@ public final class DefaultRegistry implements Registry {
         Class cls = ref.getClass();
         blueprint(iface, cls);
         addInstance(iface, cls, ref);
+    }
+
+    public void incoming(Class iface, Class<? extends Layer>... layers) {
+        Linkage linkage = linkages.nu(iface);
+        proxies.put(linkage, layers);
     }
 
     // SUGGEST: Add host specific instance() as follows:

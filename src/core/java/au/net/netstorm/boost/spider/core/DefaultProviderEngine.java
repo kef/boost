@@ -4,53 +4,32 @@ import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.TypeMaster;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 // SUGGEST: Strongly type Object[] as Resolved[] in provide(...).
+// DEBT LineLength {
+
+// FIX ()  94156 Remove this.  Just go straight to the parts?
 public final class DefaultProviderEngine implements ProviderEngine {
-    private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private final PartialInstances inProgress = new DefaultPartialInstances();
-    private final TypeMaster typer = new DefaultTypeMaster();
-    private final Onionizer onionizer;
-    private final Instantiator instantiator;
-    private final InjectorEngine injector;
+    private final PlainProviderEngine plain;
+    private final ProxyProviderEngine proxy;
 
     public DefaultProviderEngine(Onionizer onionizer, InjectorEngine injector, Instantiator instantiator) {
-        this.onionizer = onionizer;
-        this.injector = injector;
-        this.instantiator = instantiator;
+        plain = new DefaultPlainProviderEngine(instantiator, injector, onionizer, inProgress);
+        proxy = new DefaultProxyProviderEngine(instantiator, injector, onionizer, inProgress);
     }
 
-    public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        ResolvedInstance resolved = getResolvedInstance(impl, parameters);
-        if (typer.implementz(impl, CONSTRUCTABLE)) construct(resolved);
-        return onionizer.onionise(impl, resolved);
+    public ResolvedInstance provide(Implementation impl, Object[] params) {
+        return plain.provide(impl, params);
     }
 
-    private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
-        UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
-        inject(impl, unresolved);
-        return (ResolvedInstance) unresolved;
-    }
-
-    private void inject(Implementation impl, UnresolvedInstance unresolved) {
-        try {
-            inProgress.put(impl, unresolved);
-            injector.inject(unresolved);
-        } finally {
-            inProgress.remove(impl);
-        }
-    }
-
-    private void construct(ResolvedInstance resolved) {
-        Constructable constructable = (Constructable) resolved.getRef();
-        constructable.constructor();
+    public ResolvedInstance provide(Interface iface, Implementation impl, Object[] params, Class<? extends Layer>... layers) {
+        return proxy.provide(iface, impl, params, layers);
     }
 }
+// } DEBT LineLength

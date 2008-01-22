@@ -2,6 +2,7 @@ package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
+import au.net.netstorm.boost.nursery.spider.registry.Proxies;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
@@ -40,17 +41,18 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     EdgeClass classerMock;
     TypeMaster typerMock;
     Factory factoryDummy;
+    Proxies proxiesMock;
     Registry subject;
     String name;
     Nu nuMock;
 
     // FIX ()   2237 Incorporate hosts for multiple (definitely) and instances (maybe)???
     public void setUpFixtures() {
-        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, nuMock);
+        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, proxiesMock, nuMock);
     }
 
     public void testReinstate() {
-        // FIX ()   2237 Reinstate.   
+        // FIX ()   2237 Reinstate.
     }
 
 /*    public void testMultiple() {
