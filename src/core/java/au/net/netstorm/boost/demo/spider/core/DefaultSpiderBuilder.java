@@ -2,8 +2,12 @@ package au.net.netstorm.boost.demo.spider.core;
 
 import au.net.netstorm.boost.nursery.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
+import au.net.netstorm.boost.nursery.type.core.DefaultTypes;
+import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
+import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.spider.registry.BlueprintedFactory;
 import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.registry.BlueprintsRead;
@@ -16,11 +20,6 @@ import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.util.impl.ImplMaster;
-
-// FIX 2215 Sort out builder/assembler discrepancy.
-// FIX 2215 Refactor.  Too messy.
-
-// FIX 1914 Move these out of here.  Web, LazyGreens, SpiderBuilder.
 
 // FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 
@@ -36,6 +35,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Registry registry = createRegistry(blueprints, factories, instances, spider);
         register(registry, spider, impler);
         buildFactories(registry, impler, blueprints);
+        buildTypes(registry, factories, spider);
         return spider;
     }
 
@@ -55,8 +55,15 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.instance(Nu.class, spider);
     }
 
+    // FIX 2237 Unnecessary now?
     private void registerImpler(Registry registry, ImplMaster impler) {
         registry.instance(ImplMaster.class, impler);
+    }
+
+    private void buildTypes(Registry registry, Factories factories, Nu nu) {
+        LinkageFactory linkages = new DefaultLinkageFactory();
+        Types types = new DefaultTypes(factories, linkages, nu);
+        registry.instance(Types.class, types);
     }
 
     private void buildFactories(Registry registry, ImplMaster impler, Blueprints blueprints) {
