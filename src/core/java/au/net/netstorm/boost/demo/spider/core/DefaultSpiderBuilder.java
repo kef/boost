@@ -36,15 +36,10 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Proxies proxies = new DefaultProxies();
         Spider spider = assembler.assemble(instances, factories);
         Registry registry = new DefaultRegistry(blueprints, instances, factories, proxies, spider);
-        register(registry, spider, impler);
+        registerSpider(registry, spider);
         buildFactories(registry, impler, blueprints);
         buildTypes(registry, factories, spider);
         return spider;
-    }
-
-    private void register(Registry registry, Spider spider, ImplMaster impler) {
-        registerSpider(registry, spider);
-        registerImpler(registry, impler);
     }
 
     private void registerSpider(Registry registry, Spider spider) {
@@ -52,11 +47,6 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.instance(Resolver.class, spider);
         registry.instance(Injector.class, spider);
         registry.instance(Nu.class, spider);
-    }
-
-    // FIX 2237 Unnecessary now?
-    private void registerImpler(Registry registry, ImplMaster impler) {
-        registry.instance(ImplMaster.class, impler);
     }
 
     private void buildTypes(Registry registry, Factories factories, Nu nu) {
