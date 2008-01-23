@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
+import au.net.netstorm.boost.nursery.proxy.DefaultProxySpec;
+import au.net.netstorm.boost.nursery.proxy.ProxySpec;
+import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
@@ -22,6 +25,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
+// DEBT ParameterNumber {
 public final class DefaultRegistry implements Registry {
     private static final Object[] NO_PARAMS = {};
     private final LinkageFactory linkages = new DefaultLinkageFactory();
@@ -32,7 +36,6 @@ public final class DefaultRegistry implements Registry {
     private final Nu nu;
 
     // SUGGEST: Split registry into two, where Factory stuff has its own interface.
-    // DEBT ParameterNumber {
     public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Proxies proxies, Nu nu) {
         this.blueprints = blueprints;
         this.instances = instances;
@@ -40,22 +43,21 @@ public final class DefaultRegistry implements Registry {
         this.proxies = proxies;
         this.nu = nu;
     }
-    // } DEBT ParameterNumber
 
-    public <T, U extends T> void multiple(Class<T> iface, Class<U> impl) {
+    public <T> void multiple(Class<T> iface, Class<? extends T> impl) {
         Linkage linkage = linkages.nu(iface);
         blueprint(linkage, impl, MULTIPLE);
     }
 
-    public <T, U extends T> void single(Class<T> iface, Class<U> impl) {
+    public <T> void single(Class<T> iface, Class<? extends T> impl) {
         blueprint(iface, impl);
     }
 
-    public <T, U extends T> void single(Class<?> host, Class<T> iface, Class<U> impl) {
+    public <T> void single(Class host, Class<T> iface, Class<? extends T> impl) {
         blueprint(host, iface, impl);
     }
 
-    public <T, U extends T> void single(Class<?> host, Class<T> iface, String name, Class<U> impl) {
+    public <T> void single(Class host, Class<T> iface, String name, Class<? extends T> impl) {
 //        Linkage linkage = linkages.nu(host, iface, name);
         // FIX ()   2237 Complete.
     }
@@ -64,11 +66,6 @@ public final class DefaultRegistry implements Registry {
         Class cls = ref.getClass();
         blueprint(iface, cls);
         addInstance(iface, cls, ref);
-    }
-
-    public void incoming(Class iface, Class<? extends Layer>... layers) {
-        Linkage linkage = linkages.nu(iface);
-        proxies.put(linkage, layers);
     }
 
     // SUGGEST: Add host specific instance() as follows:
@@ -89,9 +86,15 @@ public final class DefaultRegistry implements Registry {
         factories.add(factory);
     }
 
+    public void layer(Class impl, Class<? extends Layer>... layers) {
+        Implementation implementation = impl(impl);
+        ProxySpec spec = new DefaultProxySpec(layers);
+        proxies.put(implementation, spec);
+    }
+
     private <T, U extends T> void addInstance(Class<T> iface, Class<U> cls, U ref) {
         Interface inyerface = new DefaultInterface(iface);
-        Implementation impl = new DefaultImplementation(cls);
+        Implementation impl = impl(cls);
         ResolvedInstance instance = new DefaultBaseReference(ref);
         // FIX ()   2237 Triangulator.
         instances.put(inyerface, impl, instance);
@@ -108,8 +111,13 @@ public final class DefaultRegistry implements Registry {
     }
 
     private void blueprint(Linkage linkage, Class impl, Stamp stamp) {
-        Implementation sImpl = new DefaultImplementation(impl);
+        Implementation sImpl = impl(impl);
         Blueprint blueprint = new DefaultBlueprint(stamp, sImpl, NO_PARAMS);
         blueprints.put(linkage, blueprint);
     }
+
+    private Implementation impl(Class cls) {
+        return new DefaultImplementation(cls);
+    }
 }
+// } DEBT ParameterNumber

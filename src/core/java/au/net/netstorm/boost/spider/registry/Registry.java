@@ -4,17 +4,17 @@ import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public interface Registry {
     // FIX ()   2237 Add specific host, name for all methods?
-    <T, U extends T> void multiple(Class<T> iface, Class<U> impl);
+    <T> void multiple(Class<T> iface, Class<? extends T> impl);
 
-    <T, U extends T> void single(Class<T> iface, Class<U> impl);
+    <T> void single(Class<T> iface, Class<? extends T> impl);
 
-    <T, U extends T> void single(Class<?> host, Class<T> iface, Class<U> impl);
+    <T> void single(Class host, Class<T> iface, Class<? extends T> impl);
 
-    <T, U extends T> void single(Class<?> host, Class<T> iface, String name, Class<U> impl);
+    <T> void single(Class host, Class<T> iface, String name, Class<? extends T> impl);
+
+    void layer(Class impl, Class<? extends Layer>... layers);
 
     <T, U extends T> void instance(Class<T> iface, U ref);
-
-    void incoming(Class iface, Class<? extends Layer>... layers);
 
     <T extends Factory> void factory(Class<T> cls);
 

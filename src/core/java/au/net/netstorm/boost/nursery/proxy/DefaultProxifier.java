@@ -15,7 +15,7 @@ public final class DefaultProxifier implements Proxifier {
     Nu nu;
 
     public <T> T proxy(T ref, ProxySpec spec) {
-        Class<Layer>[] layers = spec.get();
+        Class<? extends Layer>[] layers = spec.get();
         return (T) enclose(ref, layers);
     }
 

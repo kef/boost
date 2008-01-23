@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
-import au.net.netstorm.boost.nursery.spider.registry.Proxies;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;

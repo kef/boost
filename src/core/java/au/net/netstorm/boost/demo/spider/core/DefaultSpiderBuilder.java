@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.spider.core;
 
+import au.net.netstorm.boost.nursery.spider.layer.DefaultProxies;
+import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultBlueprints;
-import au.net.netstorm.boost.nursery.spider.registry.DefaultProxies;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
-import au.net.netstorm.boost.nursery.spider.registry.Proxies;
 import au.net.netstorm.boost.nursery.type.core.DefaultTypes;
 import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.spider.inject.core.Injector;
@@ -25,7 +25,7 @@ import au.net.netstorm.boost.util.impl.ImplMaster;
 
 // FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 
-// DEBT DataAbstractionCoupling|NCSS|LineLength|ParameterNumber {
+// DEBT DataAbstractionCoupling|NCSS {
 public final class DefaultSpiderBuilder implements SpiderBuilder {
     private final SpiderAssembler assembler = new DefaultSpiderAssembler();
 
@@ -34,16 +34,12 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Factories factories = new DefaultFactories();
         Instances instances = new DefaultInstances();
         Proxies proxies = new DefaultProxies();
-        Spider spider = assembler.assemble(instances, factories, proxies);
-        Registry registry = createRegistry(blueprints, instances, factories, proxies, spider);
+        Spider spider = assembler.assemble(instances, factories);
+        Registry registry = new DefaultRegistry(blueprints, instances, factories, proxies, spider);
         register(registry, spider, impler);
         buildFactories(registry, impler, blueprints);
         buildTypes(registry, factories, spider);
         return spider;
-    }
-
-    private Registry createRegistry(Blueprints blueprints, Instances instances, Factories factories, Proxies proxies, Spider spider) {
-        return new DefaultRegistry(blueprints, instances, factories, proxies, spider);
     }
 
     private void register(Registry registry, Spider spider, ImplMaster impler) {
@@ -87,4 +83,4 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         registry.factory(factory);
     }
 }
-// } DEBT DataAbstractionCoupling|NCSS|LineLength|ParameterNumber
+// } DEBT DataAbstractionCoupling|NCSS
