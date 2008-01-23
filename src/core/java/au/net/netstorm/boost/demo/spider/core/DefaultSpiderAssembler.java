@@ -4,7 +4,6 @@ import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
-import au.net.netstorm.boost.nursery.spider.registry.Proxies;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.core.SpiderTryFinally;
@@ -50,9 +49,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
 
     // SUGGEST: Move the creation/registration of the factories up one level.  Use the registry.
-    public Spider assemble(Instances instances, Factories factories, Proxies proxies) {
+    public Spider assemble(Instances instances, Factories factories) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
-        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories, proxies);
+        ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
         passThrough.setDelegate(providerEngine);
@@ -80,9 +79,8 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private ResolverEngine assembleResolver(
             ProviderEngine provider,
             Instances instances,
-            Factories factories,
-            Proxies proxies) {
-        return new DefaultResolverEngine(instances, factories, proxies, provider);
+            Factories factories) {
+        return new DefaultResolverEngine(instances, factories, provider);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {

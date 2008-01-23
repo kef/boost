@@ -40,7 +40,6 @@ public final class DefaultInstances implements Instances {
         Object ref = instance.getRef();
         Class cls = ref.getClass();
         if (type.isAssignableFrom(cls)) return;
-        // FIX ()  94156 Re-instate.
-//        throw new WrongRegistrationTypeException(impl);
+        throw new WrongRegistrationTypeException(impl);
     }
 }

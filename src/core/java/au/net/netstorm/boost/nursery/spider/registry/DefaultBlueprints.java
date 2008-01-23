@@ -24,20 +24,20 @@ public final class DefaultBlueprints implements Blueprints {
         map.put(linkage, blueprint);
     }
 
-    public boolean exists(Linkage linkage) {
-        Linkage link = nullGet(linkage);
-        return (link != NO_LINKAGE);
-    }
-
     public Blueprint get(Linkage linkage) {
         Linkage link = nullGet(linkage);
         if (link == NO_LINKAGE) throw new IllegalStateException();
         return map.get(link);
     }
 
+    public boolean exists(Linkage linkage) {
+        Linkage link = nullGet(linkage);
+        return (link != NO_LINKAGE);
+    }
+
     private Linkage nullGet(Linkage linkage) {
-        Linkage[] links = widener.widen(linkage);
-        for (Linkage link : links) {
+        Linkage[] linkages = widener.widen(linkage);
+        for (Linkage link : linkages) {
             if (map.exists(link)) return link;
         }
         return NO_LINKAGE;
