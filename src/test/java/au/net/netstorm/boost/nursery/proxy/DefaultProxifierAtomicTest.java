@@ -8,9 +8,9 @@ public final class DefaultProxifierAtomicTest extends LifecycleTestCase implemen
     Claustrophobe claustrophobe;
     Proxifier subject;
 
-    // FIX 2248 Pass in a Layer to proxy with!
+    // FIX 2248 Add assertions.
     public void testProxy() {
-        Claustrophobe closed = subject.proxy(claustrophobe);
+        Claustrophobe closed = subject.proxy(claustrophobe, CupboardLayer.class);
         closed.panic();
     }
 }

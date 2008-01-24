@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-public interface Claustrophobe {
+interface Claustrophobe {
     void panic();
 }

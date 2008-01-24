@@ -6,4 +6,6 @@ public interface Proxifier {
     <T> T proxy(T ref, ProxySpec spec);
 
     <T> T proxy(T ref, Class<? extends Layer>... layers);
+
+    <T> T proxy(T ref, Layer... layers);
 }

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
-import au.net.netstorm.boost.nursery.proxy.LayerWrapper;
+import au.net.netstorm.boost.nursery.proxy.Proxifier;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class DefaultClosures implements Closures {
-    LayerWrapper wrapper;
+    Proxifier proxifier;
     Nu nu;
 
     public <T, U extends Layer> T closure(T ref, Class<U> cls, Object... args) {
         Object[] all = combine(ref, args);
         Layer layer = nu.nu(cls, all);
-        return wrapper.wrap(ref, layer);
+        return proxifier.proxy(ref, layer);
     }
 
     private Object[] combine(Object ref, Object... args) {
