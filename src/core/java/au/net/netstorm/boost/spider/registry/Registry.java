@@ -16,6 +16,8 @@ public interface Registry {
 
     <T, U extends T> void instance(Class<T> iface, U ref);
 
+    <T, U extends T> void instance(Class<?> host, Class<T> iface, U ref);
+
     <T extends Factory> void factory(Class<T> cls);
 
     void factory(Factory factory);

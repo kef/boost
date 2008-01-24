@@ -68,14 +68,11 @@ public final class DefaultRegistry implements Registry {
         addInstance(iface, cls, ref);
     }
 
-    // SUGGEST: Add host specific instance() as follows:
-/*
     public <T, U extends T> void instance(Class<?> host, Class<T> iface, U ref) {
         Class cls = ref.getClass();
         blueprint(host, iface, cls);
         addInstance(iface, cls, ref);
     }
-*/
 
     public void factory(Factory factory) {
         factories.add(factory);
