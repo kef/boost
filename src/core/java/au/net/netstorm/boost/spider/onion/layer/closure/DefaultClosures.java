@@ -11,7 +11,7 @@ public final class DefaultClosures implements Closures {
     Proxifier proxifier;
     Nu nu;
 
-    public <T, U extends Layer> T closure(T ref, Class<U> cls, Object... args) {
+    public <T, U extends Layer> T closure(Class<U> cls, T ref, Object... args) {
         Object[] all = combine(ref, args);
         Layer layer = nu.nu(cls, all);
         return proxifier.proxy(ref, layer);

@@ -9,7 +9,7 @@ public final class DefaultClosuresAtomicTest extends LifecycleTestCase implement
     Pie pie;
 
     public void testClosure() {
-        Pie closed = subject.closure(pie, CookLayer.class, oven);
+        Pie closed = subject.closure(CookLayer.class, pie, oven);
         closed.cook();
         checkOvenUsed();
         checkPieCooked();
