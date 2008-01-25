@@ -9,6 +9,7 @@ import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Stamp;
+import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
@@ -47,12 +48,15 @@ public final class DefaultResolverEngine implements ResolverEngine {
 
     private ResolvedInstance manufacture(Interface iface, Implementation impl, Object[] params, Stamp stamp) {
         ResolvedInstance instance = provider.provide(impl, params);
-        store(iface, impl, instance, stamp);
+        if (isSingle(stamp)) store(iface, impl, instance);
         return instance;
     }
 
-    private void store(Interface iface, Implementation impl, ResolvedInstance instance, Stamp stamp) {
-        boolean isSingle = stamp.equals(Stamp.SINGLE);
-        if (isSingle) instances.put(iface, impl, instance);
+    private void store(Interface iface, Implementation impl, ResolvedInstance instance) {
+        instances.put(iface, impl, instance);
+    }
+
+    private boolean isSingle(Stamp stamp) {
+        return stamp.equals(SINGLE);
     }
 }
