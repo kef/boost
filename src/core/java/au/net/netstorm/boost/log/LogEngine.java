@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.log;
+package au.net.netstorm.boost.log;
 
 public interface LogEngine {
     void log(LogLevel level, Object o);

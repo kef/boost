@@ -11,7 +11,7 @@ import junit.framework.Assert;
 
 import java.lang.reflect.Constructor;
 
-final class ConstructorDataChecker implements DataChecker {
+public final class ConstructorDataChecker implements DataChecker {
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
     private ClassMaster classMaster = new DefaultClassMaster();
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();

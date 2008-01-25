@@ -1,7 +1,9 @@
-package au.net.netstorm.boost.nursery.log;
+package au.net.netstorm.boost.log;
+
+import au.net.netstorm.boost.util.type.Data;
 
 // OK InterfaceIsType {
-public interface LogLevel {
+public interface LogLevel extends Data {
     LogLevel TRACE = new DefaultLogLevel("TRACE");
     LogLevel DEBUG = new DefaultLogLevel("DEBUG");
     LogLevel INFO = new DefaultLogLevel("INFO");
