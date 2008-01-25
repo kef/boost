@@ -3,6 +3,7 @@ package au.net.netstorm.boost.demo.spider.core;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
@@ -49,11 +50,11 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
 
     // SUGGEST: Move the creation/registration of the factories up one level.  Use the registry.
-    public Spider assemble(Instances instances, Factories factories) {
+    public Spider assemble(Instances instances, Factories factories, Proxies proxies) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
-        ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator);
+        ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator, proxies);
         passThrough.setDelegate(providerEngine);
         Spider spider = buildSpider(providerEngine, resolverEngine, injectorEngine);
         return threadLocal(spider);
@@ -93,9 +94,9 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return new DefaultInjectorEngine(finder, fieldResolver);
     }
 
-    private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator) {
+    private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator, Proxies proxies) {
         Onionizer onionizer = new BermudaOnionizer();
-        return new DefaultProviderEngine(onionizer, injector, instantiator);
+        return new DefaultProviderEngine(onionizer, injector, instantiator, proxies);
     }
     /*
                   _.._

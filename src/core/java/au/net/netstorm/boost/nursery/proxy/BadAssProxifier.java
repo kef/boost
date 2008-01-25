@@ -1,19 +1,28 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.ProviderEngine;
+import au.net.netstorm.boost.spider.instantiate.DefaultNu;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.onion.core.Layer;
+import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
+import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-// FIX ()   2248 Getting too big.
-public final class DefaultProxifier implements Proxifier {
-    TypeMaster typer;
-    ProxyFactory proxies;
-    Types types;
-    Nu nu;
+// FIX ()   94156 Big time dupe with DefaultProxifier!!!!!!!!
+
+// FIX ()   94156 Delete me!!!!!!!!!
+public final class BadAssProxifier implements Proxifier {
+    private final ProxyFactory proxies = new DefaultProxyFactory();
+    private final TypeMaster typer = new DefaultTypeMaster();
+    private final Nu nu;
+
+    public BadAssProxifier(ProviderEngine engine) {
+        nu = new DefaultNu(engine);
+    }
 
     public <T> T proxy(T ref, ProxySpec spec) {
         Class<? extends Layer>[] layers = spec.get();
@@ -54,10 +63,10 @@ public final class DefaultProxifier implements Proxifier {
         return proxies.newProxy(types, layer);
     }
 
-    // FIX ()  2248 Dupe.  Slam into TypeMaster.
+    // FIX ()  94156 Dupe with TypeMaster?
     private Interface[] ifaces(Object ref) {
         Class cls = ref.getClass();
-        Implementation impl = types.nu(Implementation.class, cls);
+        Implementation impl = new DefaultImplementation(cls);
         return typer.declaredInterfaces(impl);
     }
 }

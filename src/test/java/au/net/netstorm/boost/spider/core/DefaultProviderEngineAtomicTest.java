@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
+import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
@@ -36,10 +37,11 @@ public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase imp
     Implementation implDummy;
     ProviderEngine subject;
     Object[] noParams = {};
+    Proxies proxiesMock;
     Object rawRef;
 
     public void setUpFixtures() {
-        subject = new DefaultProviderEngine(onionizerMock, injectorMock, instantiatorMock);
+        subject = new DefaultProviderEngine(onionizerMock, injectorMock, instantiatorMock, proxiesMock);
     }
 
     public void testProvider() {
@@ -64,6 +66,7 @@ public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase imp
     }
 
     private void expectations(boolean construct, Object[] parameters) {
+        expect.oneCall(proxiesMock, false, "exists", providezMoi);
         expect.oneCall(instantiatorMock, unresolvedMock, "instantiate", providezMoi, parameters);
         expect.oneCall(injectorMock, VOID, "inject", unresolvedMock);
         expect.oneCall(onionizerMock, wrapped, "onionise", providezMoi, unresolvedMock);

@@ -11,7 +11,7 @@ public final class CyclicProxyResolvingAtomicTest extends LifecycleTestCase impl
 
     // FIX ()  94156 Put some assertions in here.
     public void test() {
-//        registry.incoming(Hate.class, FooLayer.class);
-//        subject.resolve(Love.class);
+        registry.layer(DefaultHate.class, FooLayer.class);
+        subject.resolve(Love.class);
     }
 }

@@ -34,7 +34,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Factories factories = new DefaultFactories();
         Instances instances = new DefaultInstances();
         Proxies proxies = new DefaultProxies();
-        Spider spider = assembler.assemble(instances, factories);
+        Spider spider = assembler.assemble(instances, factories, proxies);
         Registry registry = new DefaultRegistry(blueprints, instances, factories, proxies, spider);
         registerSpider(registry, spider);
         buildFactories(registry, impler, blueprints);
