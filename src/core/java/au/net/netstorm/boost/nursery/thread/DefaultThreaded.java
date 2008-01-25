@@ -17,7 +17,7 @@ public final class DefaultThreaded<T> implements Threaded<T> {
     public void set(T ref) {
         // FIX ()   95450 This is a POWERFUL LINE.
         // FIX ()   95450 Remove and put in the IMPUTER (Stack of identities).
-        if (exists()) remove();
+//        if (exists()) remove();
         map().put(type, ref);
     }
 
