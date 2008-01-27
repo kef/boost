@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.flavour;
 
-public interface NiceMap<K, V> {
+public interface StrictMap<K, V> {
     void put(K key, V value);
 
     V get(K key);

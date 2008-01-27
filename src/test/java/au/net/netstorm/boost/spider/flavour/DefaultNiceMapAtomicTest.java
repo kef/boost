@@ -20,10 +20,10 @@ public final class DefaultNiceMapAtomicTest extends LifecycleTestCase implements
     Interface chips = new DefaultInterface(Chips.class);
     Interface pie = new DefaultInterface(Pie.class);
     Object value, value1, value2, value3, value4;
-    NiceMap subject;
+    StrictMap subject;
 
     public void setUpFixtures() {
-        subject = new DefaultNiceMap();
+        subject = new DefaultStrictMap();
     }
 
     public void testMainFlow() {

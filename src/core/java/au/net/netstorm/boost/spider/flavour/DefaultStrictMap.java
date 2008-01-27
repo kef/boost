@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // FIX 2237 Move any non-flavoured stuff out of the package and clean.
-public final class DefaultNiceMap<K, V> implements NiceMap<K, V> {
+public final class DefaultStrictMap<K, V> implements StrictMap<K, V> {
     private final Map<K, V> map = new HashMap<K, V>();
     // Leave in for test framework to tweak
     private static boolean overridesAllowed = false;

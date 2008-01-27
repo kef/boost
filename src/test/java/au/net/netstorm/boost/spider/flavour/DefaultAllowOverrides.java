@@ -8,10 +8,10 @@ public class DefaultAllowOverrides implements AllowOverrides {
 
     public void withOverride(Runnable block) {
         try {
-            fielder.setStatic(DefaultNiceMap.class, "overridesAllowed", true);
+            fielder.setStatic(DefaultStrictMap.class, "overridesAllowed", true);
             block.run();
         } finally {
-            fielder.setStatic(DefaultNiceMap.class, "overridesAllowed", false);
+            fielder.setStatic(DefaultStrictMap.class, "overridesAllowed", false);
         }
     }
 }

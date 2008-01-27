@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
-import au.net.netstorm.boost.spider.flavour.NiceMap;
+import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
+import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class DefaultInstances implements Instances {
-    private final NiceMap map = new DefaultNiceMap();
+    private final StrictMap map = new DefaultStrictMap();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ArrayMaster arrays = new DefaultArrayMaster();
 

@@ -2,8 +2,8 @@ package au.net.netstorm.boost.nursery.spider.registry;
 
 import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageWidener;
 import au.net.netstorm.boost.nursery.spider.linkage.LinkageWidener;
-import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
-import au.net.netstorm.boost.spider.flavour.NiceMap;
+import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
+import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.Blueprints;
@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultBlueprints implements Blueprints {
     private static final Linkage NO_LINKAGE = null;
     private final TypeMaster typer = new DefaultTypeMaster();
-    private final NiceMap<Linkage, Blueprint> map = new DefaultNiceMap<Linkage, Blueprint>();
+    private final StrictMap<Linkage, Blueprint> map = new DefaultStrictMap<Linkage, Blueprint>();
     private final LinkageWidener widener = new DefaultLinkageWidener();
 
     public void put(Linkage linkage, Blueprint blueprint) {

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.thread;
 
-import au.net.netstorm.boost.spider.flavour.NiceMap;
+import au.net.netstorm.boost.spider.flavour.StrictMap;
 
 public final class DefaultThreaded<T> implements Threaded<T> {
     private final ThreadLocals locals = new DefaultThreadLocals();
@@ -15,9 +15,6 @@ public final class DefaultThreaded<T> implements Threaded<T> {
     }
 
     public void set(T ref) {
-        // FIX ()   95450 This is a POWERFUL LINE.
-        // FIX ()   95450 Remove and put in the IMPUTER (Stack of identities).
-//        if (exists()) remove();
         map().put(type, ref);
     }
 
@@ -29,7 +26,7 @@ public final class DefaultThreaded<T> implements Threaded<T> {
         map().remove(type);
     }
 
-    private NiceMap map() {
+    private StrictMap map() {
         return locals.get();
     }
 }

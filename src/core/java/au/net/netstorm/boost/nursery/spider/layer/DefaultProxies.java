@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.nursery.spider.layer;
 
 import au.net.netstorm.boost.nursery.proxy.ProxySpec;
-import au.net.netstorm.boost.spider.flavour.DefaultNiceMap;
-import au.net.netstorm.boost.spider.flavour.NiceMap;
+import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
+import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.util.type.Implementation;
 
 public final class DefaultProxies implements Proxies {
-    private final NiceMap<Implementation, ProxySpec> map = new DefaultNiceMap<Implementation, ProxySpec>();
+    private final StrictMap<Implementation, ProxySpec> map = new DefaultStrictMap<Implementation, ProxySpec>();
 
     public ProxySpec get(Implementation impl) {
         return map.get(impl);
