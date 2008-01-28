@@ -25,7 +25,7 @@ public final class BadAssProxifier implements Proxifier {
     }
 
     public <T> T proxy(T ref, LayerSpec spec) {
-        Class<? extends Layer>[] layers = spec.get();
+        Class<? extends Layer>[] layers = spec.getLayers();
         return (T) enclose(ref, layers);
     }
 

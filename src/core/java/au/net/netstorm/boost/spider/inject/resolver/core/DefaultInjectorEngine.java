@@ -34,7 +34,6 @@ public final class DefaultInjectorEngine implements InjectorEngine {
     private void inject(Object ref, Field field) {
         ResolvedInstance instance = fieldResolver.resolve(field);
         Object value = instance.getRef();
-        // FIX ()  94156 Add all proxies/chains here???
         fielder.set(field, ref, value);
     }
 }

@@ -1,16 +1,21 @@
 package au.net.netstorm.boost.nursery.proxy;
 
+import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-// FIX ()  94156 TD.  Copy in and out.
-public final class DefaultLayerSpec implements LayerSpec {
+public final class DefaultLayerSpec extends Primordial implements LayerSpec {
     private Class<? extends Layer>[] layers;
 
     public DefaultLayerSpec(Class<? extends Layer>... layers) {
-        this.layers = layers;
+        validate(layers);
+        this.layers = layers.clone();
     }
 
-    public Class<? extends Layer>[] get() {
-        return layers;
+    public Class<? extends Layer>[] getLayers() {
+        return layers.clone();
+    }
+
+    private void validate(Class[] layers) {
+        if (layers == null) throw new IllegalArgumentException();
     }
 }
