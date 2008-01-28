@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.nursery.spider.layer;
 
-import au.net.netstorm.boost.nursery.proxy.Layers;
+import au.net.netstorm.boost.nursery.proxy.LayerSpec;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.util.type.Implementation;
 
-public final class DefaultProxies implements Proxies {
-    private final StrictMap<Implementation, Layers> map = new DefaultStrictMap<Implementation, Layers>();
+public final class DefaultLayers implements Layers {
+    private final StrictMap<Implementation, LayerSpec> map = new DefaultStrictMap<Implementation, LayerSpec>();
 
-    public Layers get(Implementation impl) {
+    public LayerSpec get(Implementation impl) {
         return map.get(impl);
     }
 
@@ -16,7 +16,7 @@ public final class DefaultProxies implements Proxies {
         return map.exists(impl);
     }
 
-    public void put(Implementation impl, Layers spec) {
+    public void put(Implementation impl, LayerSpec spec) {
         map.put(impl, spec);
     }
 }

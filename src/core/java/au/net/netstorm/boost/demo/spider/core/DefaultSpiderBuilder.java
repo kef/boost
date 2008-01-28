@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.nursery.spider.layer.DefaultProxies;
-import au.net.netstorm.boost.nursery.spider.layer.Proxies;
+import au.net.netstorm.boost.nursery.spider.layer.DefaultLayers;
+import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.nursery.type.core.DefaultTypes;
@@ -33,7 +33,7 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Blueprints blueprints = new DefaultBlueprints();
         Factories factories = new DefaultFactories();
         Instances instances = new DefaultInstances();
-        Proxies proxies = new DefaultProxies();
+        Layers proxies = new DefaultLayers();
         Spider spider = assembler.assemble(instances, factories, proxies);
         Registry registry = new DefaultRegistry(blueprints, instances, factories, proxies, spider);
         registerSpider(registry, spider);

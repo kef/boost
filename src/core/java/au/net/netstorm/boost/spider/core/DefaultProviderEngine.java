@@ -3,9 +3,8 @@ package au.net.netstorm.boost.spider.core;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.nursery.proxy.BadAssProxifier;
-import au.net.netstorm.boost.nursery.proxy.Layers;
 import au.net.netstorm.boost.nursery.proxy.Proxifier;
-import au.net.netstorm.boost.nursery.spider.layer.Proxies;
+import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
@@ -35,14 +34,14 @@ public final class DefaultProviderEngine implements ProviderEngine {
     private final Instantiator instantiator;
     private final InjectorEngine injector;
     private final Onionizer onionizer;
-    private final Proxies proxies;
+    private final Layers proxies;
 
     // FIX 2237 REMOVE THE BAD ASS PROXIFIER NOW.  LOOK IN THE FIELDS.
     public DefaultProviderEngine(
             Onionizer onionizer,
             InjectorEngine injector,
             Instantiator instantiator,
-            Proxies proxies
+            Layers proxies
     ) {
         this.onionizer = onionizer;
         this.injector = injector;
@@ -102,7 +101,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
 
     private ResolvedInstance proxy(Implementation impl, ResolvedInstance unresolved) {
         Object ref = unresolved.getRef();
-        Layers spec = proxies.get(impl);
+        au.net.netstorm.boost.nursery.proxy.LayerSpec spec = proxies.get(impl);
         Object proxy = proxifier.proxy(ref, spec);
         return new DefaultBaseReference(proxy);
     }

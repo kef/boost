@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.nursery.spider.layer.Proxies;
+import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
@@ -37,7 +37,7 @@ public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase imp
     Implementation implDummy;
     ProviderEngine subject;
     Object[] noParams = {};
-    Proxies proxiesMock;
+    Layers proxiesMock;
     Object rawRef;
 
     public void setUpFixtures() {

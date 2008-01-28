@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
-import au.net.netstorm.boost.nursery.proxy.DefaultLayers;
-import au.net.netstorm.boost.nursery.proxy.Layers;
-import au.net.netstorm.boost.nursery.spider.layer.Proxies;
+import au.net.netstorm.boost.nursery.proxy.DefaultLayerSpec;
+import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
@@ -32,11 +31,11 @@ public final class DefaultRegistry implements Registry {
     private final Blueprints blueprints;
     private final Instances instances;
     private final Factories factories;
-    private final Proxies proxies;
+    private final Layers proxies;
     private final Nu nu;
 
     // SUGGEST: Split registry into two, where Factory stuff has its own interface.
-    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Proxies proxies, Nu nu) {
+    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Layers proxies, Nu nu) {
         this.blueprints = blueprints;
         this.instances = instances;
         this.factories = factories;
@@ -85,7 +84,7 @@ public final class DefaultRegistry implements Registry {
 
     public void layer(Class impl, Class<? extends Layer>... layers) {
         Implementation implementation = impl(impl);
-        Layers spec = new DefaultLayers(layers);
+        au.net.netstorm.boost.nursery.proxy.LayerSpec spec = new DefaultLayerSpec(layers);
         proxies.put(implementation, spec);
     }
 

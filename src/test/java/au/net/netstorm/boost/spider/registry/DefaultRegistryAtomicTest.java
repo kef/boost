@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.nursery.spider.layer.Proxies;
+import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
@@ -41,7 +41,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     EdgeClass classerMock;
     TypeMaster typerMock;
     Factory factoryDummy;
-    Proxies proxiesMock;
+    Layers proxiesMock;
     Registry subject;
     String name;
     Nu nuMock;
