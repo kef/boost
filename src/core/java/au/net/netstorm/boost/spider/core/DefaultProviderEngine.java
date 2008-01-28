@@ -3,8 +3,8 @@ package au.net.netstorm.boost.spider.core;
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.nursery.proxy.BadAssProxifier;
+import au.net.netstorm.boost.nursery.proxy.Layers;
 import au.net.netstorm.boost.nursery.proxy.Proxifier;
-import au.net.netstorm.boost.nursery.proxy.ProxySpec;
 import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
@@ -102,7 +102,7 @@ public final class DefaultProviderEngine implements ProviderEngine {
 
     private ResolvedInstance proxy(Implementation impl, ResolvedInstance unresolved) {
         Object ref = unresolved.getRef();
-        ProxySpec spec = proxies.get(impl);
+        Layers spec = proxies.get(impl);
         Object proxy = proxifier.proxy(ref, spec);
         return new DefaultBaseReference(proxy);
     }

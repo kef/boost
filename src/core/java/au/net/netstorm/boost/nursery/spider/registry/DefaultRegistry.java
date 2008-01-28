@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
-import au.net.netstorm.boost.nursery.proxy.DefaultProxySpec;
-import au.net.netstorm.boost.nursery.proxy.ProxySpec;
+import au.net.netstorm.boost.nursery.proxy.DefaultLayers;
+import au.net.netstorm.boost.nursery.proxy.Layers;
 import au.net.netstorm.boost.nursery.spider.layer.Proxies;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
@@ -85,7 +85,7 @@ public final class DefaultRegistry implements Registry {
 
     public void layer(Class impl, Class<? extends Layer>... layers) {
         Implementation implementation = impl(impl);
-        ProxySpec spec = new DefaultProxySpec(layers);
+        Layers spec = new DefaultLayers(layers);
         proxies.put(implementation, spec);
     }
 
