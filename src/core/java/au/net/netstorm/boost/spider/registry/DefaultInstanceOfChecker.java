@@ -15,7 +15,7 @@ public final class DefaultInstanceOfChecker implements InstanceOfChecker {
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ArrayMaster arrays = new DefaultArrayMaster();
 
-    // FIX ()   94156 Clean up. Ugly Betty strikes again....
+    // FIX ()   2255 Clean up. Ugly Betty strikes again....
     public void instanceOf(Reference instance, Implementation impl) {
         Class type = impl.getImpl();
         Object ref = instance.getRef();
@@ -26,7 +26,7 @@ public final class DefaultInstanceOfChecker implements InstanceOfChecker {
         throw new WrongRegistrationTypeException(impl);
     }
 
-    // FIX ()   94156 Rename.
+    // FIX ()   2255 Rename.
     private boolean xxx(Implementation real, Implementation proxy) {
         Interface[] expected = typer.declaredInterfaces(real);
         Interface[] actual = typer.declaredInterfaces(proxy);
