@@ -70,8 +70,6 @@
         <exclude name="**/kickstart/**/*.java"/>
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE. -->
         <exclude name="**/StartTime.java"/>
-        <!-- FIX 2237 REMOVE ME NOW!!! -->
-        <exclude name="**/BadAssProxifier.java"/>
         <exclude name="**/EndTime.java"/>
         <exclude name="**/MockListener.java"/>
         <exclude name="**/*Old*.java"/>
