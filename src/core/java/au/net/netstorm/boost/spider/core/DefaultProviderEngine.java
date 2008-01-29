@@ -2,8 +2,9 @@ package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
-import au.net.netstorm.boost.nursery.proxy.BadAssProxifier;
+import au.net.netstorm.boost.nursery.proxy.DefaultProxfierWirer;
 import au.net.netstorm.boost.nursery.proxy.Proxifier;
+import au.net.netstorm.boost.nursery.proxy.ProxifierWirer;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
@@ -29,7 +30,8 @@ public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private final PartialInstances inProgress = new DefaultPartialInstances();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
-    private final Proxifier proxifier = new BadAssProxifier(this);
+    private final ProxifierWirer proxifierWirer = new DefaultProxfierWirer(this);
+    private final Proxifier proxifier = proxifierWirer.get();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final Instantiator instantiator;
     private final InjectorEngine injector;

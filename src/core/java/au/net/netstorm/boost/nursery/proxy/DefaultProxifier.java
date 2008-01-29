@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
+import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
@@ -12,7 +12,6 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 public final class DefaultProxifier implements Proxifier {
     TypeMaster typer;
     ProxyFactory proxies;
-    Types types;
     Nu nu;
 
     public <T> T proxy(T ref, LayerSpec spec) {
@@ -57,7 +56,7 @@ public final class DefaultProxifier implements Proxifier {
     // FIX ()  2248 Dupe.  Slam into TypeMaster.
     private Interface[] ifaces(Object ref) {
         Class cls = ref.getClass();
-        Implementation impl = types.nu(Implementation.class, cls);
+        Implementation impl = nu.nu(DefaultImplementation.class, cls);
         return typer.declaredInterfaces(impl);
     }
 }
