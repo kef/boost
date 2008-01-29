@@ -63,7 +63,6 @@ public final class BadAssProxifier implements Proxifier {
         return proxies.newProxy(types, layer);
     }
 
-    // FIX ()  94156 Dupe with TypeMaster?
     private Interface[] ifaces(Object ref) {
         Class cls = ref.getClass();
         Implementation impl = new DefaultImplementation(cls);
