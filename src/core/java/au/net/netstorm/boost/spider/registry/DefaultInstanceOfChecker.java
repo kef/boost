@@ -11,11 +11,12 @@ import au.net.netstorm.boost.util.type.TypeMaster;
 
 import java.lang.reflect.Proxy;
 
+// FIX ()   2255 Clean up.
 public final class DefaultInstanceOfChecker implements InstanceOfChecker {
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ArrayMaster arrays = new DefaultArrayMaster();
 
-    // FIX ()   2255 Clean up. Ugly Betty strikes again....
+    // FIX ()   2255 Ugly Betty strikes again....
     public void instanceOf(Reference instance, Implementation impl) {
         Class type = impl.getImpl();
         Object ref = instance.getRef();
