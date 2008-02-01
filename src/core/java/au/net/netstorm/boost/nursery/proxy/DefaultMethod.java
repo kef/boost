@@ -4,6 +4,8 @@ import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.util.exception.ThrowableMaster;
 
+import java.lang.annotation.Annotation;
+
 // FIX 2248 Move this out of edge or something, or sort it out.
 public final class DefaultMethod implements Method {
     private static final Object NEVER = null;
@@ -12,6 +14,10 @@ public final class DefaultMethod implements Method {
 
     public DefaultMethod(java.lang.reflect.Method delegate) {
         this.delegate = delegate;
+    }
+
+    public String getName() {
+        return delegate.getName();
     }
 
     public Object invoke(Object ref, Object... args) {
@@ -25,7 +31,11 @@ public final class DefaultMethod implements Method {
         }
     }
 
-    public String getName() {
-        return delegate.getName();
+    public boolean isAnnotationPresent(Class<? extends Annotation> cls) {
+        return delegate.isAnnotationPresent(cls);
+    }
+
+    public <T extends Annotation> T getAnnotation(Class<T> cls) {
+        return delegate.getAnnotation(cls);
     }
 }

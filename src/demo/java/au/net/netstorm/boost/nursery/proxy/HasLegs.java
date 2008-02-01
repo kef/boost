@@ -1,5 +1,5 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-public interface HasLegs {
+interface HasLegs {
     Number numLegs();
 }
