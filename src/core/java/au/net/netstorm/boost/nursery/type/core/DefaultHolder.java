@@ -49,7 +49,7 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
     }
 
     public final String toString() {
-        if (MARKER.is(this, Sensitive.class)) return "********";
+        if (MARKER.is(this, Sensitive.class)) return "****XXXX****";
         FieldValueSpec field = new DefaultFieldValueSpec("value", value);
         FieldValueSpec[] fields = {field};
         return TO_STRING_MASTER.formatFields(this, fields);
