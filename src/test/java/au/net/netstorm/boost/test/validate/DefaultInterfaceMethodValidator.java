@@ -61,9 +61,8 @@ public final class DefaultInterfaceMethodValidator implements InterfaceMethodVal
 
     private void removeImplemented(Map interfaceMethods, Map objectMethods) {
         Set signatures = interfaceMethods.keySet();
-        Object[] things = signatures.toArray(new Object[]{});
-        for (int i = 0; i < things.length; i++) {
-            objectMethods.remove(things[i]);
+        for (Object signature : signatures) {
+            objectMethods.remove(signature);
         }
     }
 

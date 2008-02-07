@@ -2,6 +2,8 @@ package au.net.netstorm.boost.splitter;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
+import au.net.netstorm.boost.util.array.ArrayMaster;
+import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Interface;
@@ -11,6 +13,7 @@ import java.util.List;
 
 public final class DefaultOneToMany implements OneToMany, Layer {
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
+    private final ArrayMaster arrays = new DefaultArrayMaster();
     private final List many = new ArrayList();
     private final Interface type;
 
@@ -29,7 +32,7 @@ public final class DefaultOneToMany implements OneToMany, Layer {
     }
 
     public synchronized Object invoke(Method method, Object[] args) {
-        Object[] listeners = many.toArray(new Object[]{});
+        Object[] listeners = arrays.toArray(many);
         invoke(listeners, method, args);
         return null;
     }

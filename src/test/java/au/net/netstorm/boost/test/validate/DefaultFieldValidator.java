@@ -6,7 +6,6 @@ import au.net.netstorm.boost.test.field.FieldBuilder;
 
 // OK CyclomaticComplexity|NCSS {
 public final class DefaultFieldValidator implements Validator {
-
     private final FieldBuilder fieldBuilder = new BoostFieldBuilder();
 
     public void validate(Object ref) {

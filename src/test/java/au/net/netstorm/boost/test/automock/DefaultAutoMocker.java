@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.automock;
 import au.net.netstorm.boost.test.field.BoostField;
 
 public class DefaultAutoMocker implements AutoMocker {
-
     private final MockSupport mockSupport;
 
     public DefaultAutoMocker(MockSupport mockSupport) {

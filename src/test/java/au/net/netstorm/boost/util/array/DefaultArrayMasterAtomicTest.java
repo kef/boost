@@ -1,8 +1,13 @@
 package au.net.netstorm.boost.util.array;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.test.core.LifecycleTestCase;
+import au.net.netstorm.boost.test.marker.LazyFields;
 
-public final class DefaultArrayMasterAtomicTest extends BoooostCase {
+import java.util.Arrays;
+import java.util.List;
+
+public final class DefaultArrayMasterAtomicTest extends LifecycleTestCase implements LazyFields {
+    ArrayMaster subject = new DefaultArrayMaster();
     byte[] foo = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC};
     byte[] bar = {(byte) 0xDD, (byte) 0xEE, (byte) 0xFF};
     byte[] foobar = {(byte) 0xAA, (byte) 0xBB, (byte) 0xCC, (byte) 0xDD, (byte) 0xEE, (byte) 0xFF};
@@ -16,8 +21,8 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
     String[] left = {"1", "2", "3", "4", "5", "6"};
     String[] middle = {"11", "9", "7", "5"};
     String[] right = {"7", "8", "9", "10", "11", "12"};
-    ArrayMaster subject = new DefaultArrayMaster();
-    private String[] noStrings = new String[]{};
+    String[] noStrings = new String[]{};
+    Integer[] array;
 
     public void testMinusBytes() {
         Byte[] actual = subject.minus(bigfoobar, bigBar);
@@ -61,6 +66,17 @@ public final class DefaultArrayMasterAtomicTest extends BoooostCase {
         checkIntersects(left, middle, true);
         checkIntersects(left, right, false);
         checkIntersects(middle, right, true);
+    }
+
+    public void testToArray() {
+        checkToArray(array);
+        checkToArray();
+    }
+
+    private <T> void checkToArray(T... elems) {
+        List<T> list = Arrays.asList(elems);
+        T[] array = subject.toArray(list, (Class<T>) elems.getClass().getComponentType());
+        assertEquals(array, elems);
     }
 
     private void checkIntersects(Object[] o1, Object[] o2, boolean expected) {

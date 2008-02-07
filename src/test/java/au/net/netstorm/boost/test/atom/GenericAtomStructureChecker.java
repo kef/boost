@@ -3,7 +3,6 @@ package au.net.netstorm.boost.test.atom;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 public final class GenericAtomStructureChecker implements AtomStructureChecker {
-
     private ClassChecker classChecker = new DefaultClassChecker();
     private DataChecker constructorChecker = new ConstructorDataChecker();
     private DataChecker classMethodStructureChecker = new ClassMethodStructureDataChecker();

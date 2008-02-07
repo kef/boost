@@ -4,7 +4,6 @@ import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.LazyFields;
 
 public final class DefaultImplementationAtomicTest extends LifecycleTestCase implements LazyFields {
-
     public void testFailsWithInterface() {
         try {
             new DefaultImplementation(MyInterface.class);

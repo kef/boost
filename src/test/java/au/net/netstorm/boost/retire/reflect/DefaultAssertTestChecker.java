@@ -3,7 +3,6 @@ package au.net.netstorm.boost.retire.reflect;
 import junit.framework.Assert;
 
 public final class DefaultAssertTestChecker implements AssertTestChecker {
-
     public void fail(String message) {
         Assert.fail(message);
     }

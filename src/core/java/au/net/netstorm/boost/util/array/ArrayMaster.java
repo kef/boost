@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.util.array;
 
+import java.util.Collection;
+
 public interface ArrayMaster {
     <T> T[] minus(T[] minuend, T... subtrahend);
 
@@ -15,4 +17,8 @@ public interface ArrayMaster {
     <T> T[] removeDuplicates(T[] array);
 
     boolean intersects(Object[] o1, Object[] o2);
+
+    <T> T[] toArray(Collection<T> collection, Class<T> componentType);
+
+    Object[] toArray(Collection collection);
 }

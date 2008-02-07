@@ -4,6 +4,8 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class TestClassLocator implements ClassLocator {
     private final ClassNameLocator locator = new TestClassNameLocator();
@@ -16,11 +18,19 @@ public final class TestClassLocator implements ClassLocator {
         for (int i = 0; i < length; i++) {
             result[i] = buildClass(javaClasses[i]);
         }
-        return result;
+        return filterOutInterfaces(result);
     }
 
     private Class buildClass(JavaClass javaClass) {
         String fullyQualified = javaClass.getFullyQualified();
         return edgeClass.forName(fullyQualified);
+    }
+
+    private Class[] filterOutInterfaces(Class[] classes) {
+        List result = new ArrayList();
+        for (Class cls : classes) {
+            if (!cls.isInterface()) result.add(cls);
+        }
+        return (Class[]) result.toArray(new Class[]{});
     }
 }

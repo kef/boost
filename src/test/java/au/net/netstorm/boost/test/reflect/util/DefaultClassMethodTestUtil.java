@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.test.reflect.util;
 
+import au.net.netstorm.boost.util.array.ArrayMaster;
+import au.net.netstorm.boost.util.array.DefaultArrayMaster;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,6 +15,7 @@ import java.util.Set;
 public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     private final Set exclusions = new HashSet();
     private ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
+    private ArrayMaster master = new DefaultArrayMaster();
 
     {
         init();
@@ -27,45 +31,45 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
     }
 
     public Method[] getAllPublicInstance(Class cls) {
-        Set result = getAllAsSet(cls);
+        Set<Method> result = getAllAsSet(cls);
         keepPublicInstance(result);
         return methods(result);
     }
 
     public Method[] getAllNonInherited(Class cls) {
-        Set result = getAllAsSet(cls);
+        Set<Method> result = getAllAsSet(cls);
         keepNonInherited(result);
         return methods(result);
     }
 
     public Method[] getAllNotInheritedPublicInstance(Class cls) {
-        Set result = getAllAsSet(cls);
+        Set<Method> result = getAllAsSet(cls);
         keepNonInherited(result);
         keepPublicInstance(result);
         return methods(result);
     }
 
-    private Set getAllAsSet(Class cls) {
+    private Set<Method> getAllAsSet(Class cls) {
         Method[] all = cls.getDeclaredMethods();
-        List list = Arrays.asList(all);
-        return new HashSet(list);
+        List<Method> list = Arrays.asList(all);
+        return new HashSet<Method>(list);
     }
 
-    private void keepPublicInstance(Set set) {
+    private void keepPublicInstance(Set<Method> set) {
         Method[] methods = methods(set);
-        for (int i = 0; i < methods.length; i++) {
-            keepPublicInstance(set, methods[i]);
+        for (Method method : methods) {
+            keepPublicInstance(set, method);
         }
     }
 
-    private void keepNonInherited(Set set) {
+    private void keepNonInherited(Set<Method> set) {
         Method[] methods = methods(set);
-        for (int i = 0; i < methods.length; i++) {
-            keepNonInherited(set, methods[i]);
+        for (Method method : methods) {
+            keepNonInherited(set, method);
         }
     }
 
-    private void keepPublicInstance(Set set, Method method) {
+    private void keepPublicInstance(Set<Method> set, Method method) {
         if (!modifierUtil.isPublicInstance(method)) {
             set.remove(method);
         }
@@ -78,8 +82,8 @@ public final class DefaultClassMethodTestUtil implements ClassMethodTestUtil {
         }
     }
 
-    private Method[] methods(Set set) {
-        return (Method[]) set.toArray(new Method[]{});
+    private Method[] methods(Set<Method> set) {
+        return master.toArray(set, Method.class);
     }
 
     private void exclusionsForProxy() {

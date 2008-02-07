@@ -1,24 +1,27 @@
 package au.net.netstorm.boost.util.array;
 
+import au.net.netstorm.boost.util.collection.CollectionMaster;
+import au.net.netstorm.boost.util.collection.DefaultCollectionMaster;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public final class DefaultArrayMaster implements ArrayMaster {
+    CollectionMaster collections = new DefaultCollectionMaster();
+
     public <T> T[] minus(T[] minuend, T... subtrahend) {
-        Set<T> result = set(minuend);
-        Set<T> subSet = set(subtrahend);
+        Set<T> result = collections.mutableSet(minuend);
+        Set<T> subSet = collections.immutableSet(subtrahend);
         result.removeAll(subSet);
         return toArray(result, minuend);
     }
 
     public <T> T[] plus(T[] array1, T... array2) {
-        List<T> result = list(array1);
-        List<T> set = list(array2);
+        List<T> result = collections.mutableList(array1);
+        List<T> set = collections.immutableList(array2);
         result.addAll(set);
         return toArray(result, array1);
     }
@@ -33,7 +36,7 @@ public final class DefaultArrayMaster implements ArrayMaster {
     }
 
     public boolean contains(Object[] array, Object o) {
-        List result = list(array);
+        List result = collections.immutableList(array);
         return result.contains(o);
     }
 
@@ -47,7 +50,7 @@ public final class DefaultArrayMaster implements ArrayMaster {
     }
 
     public <T> T[] removeDuplicates(T[] array) {
-        Set<T> set = set(array);
+        Set<T> set = collections.immutableSet(array);
         return toArray(set, array);
     }
 
@@ -58,24 +61,22 @@ public final class DefaultArrayMaster implements ArrayMaster {
         return false;
     }
 
-    private Set set(Object[] array) {
-        List list = list(array);
-        return new HashSet(list);
+    public Object[] toArray(Collection collection) {
+        return toArray(collection, Object.class);
     }
 
-    private List list(Object[] array) {
-        List immutable = Arrays.asList(array);
-        return new ArrayList(immutable);
+    public <T> T[] toArray(Collection<T> collection, Class<T> componentType) {
+        T[] array = (T[]) Array.newInstance(componentType, collection.size());
+        return collection.toArray(array);
     }
 
     private <T> T[] toArray(Collection<T> collection, T[] array) {
-        T[] type = type(array);
-        return collection.toArray(type);
+        Class<T> componentType = componentType(array);
+        return toArray(collection, componentType);
     }
 
-    private <T> T[] type(T[] array) {
+    private <T> Class<T> componentType(T[] array) {
         Class arrayClass = array.getClass();
-        Class componentType = arrayClass.getComponentType();
-        return (T[]) Array.newInstance(componentType, 0);
+        return arrayClass.getComponentType();
     }
 }

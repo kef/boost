@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public final class DefaultModifierTestUtil implements ModifierTestUtil {
-
     public boolean isPublic(Member member) {
         int modifiers = getModifiers(member);
         return Modifier.isPublic(modifiers);

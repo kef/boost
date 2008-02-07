@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.test.core;
 
 public abstract class CleanTestCase extends BoooostCase implements Test {
-
     public abstract void runBare() throws Throwable;
 
     public final void runTest() throws Throwable {

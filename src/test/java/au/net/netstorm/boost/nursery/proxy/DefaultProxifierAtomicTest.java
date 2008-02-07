@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.proxy;
 
+import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.InjectableTest;
 import au.net.netstorm.boost.test.marker.OverlaysWeb;
-import au.net.netstorm.boost.spider.registry.Registry;
 
 // FIX 2248 Complete.
 public final class DefaultProxifierAtomicTest extends LifecycleTestCase implements InjectableTest, OverlaysWeb {

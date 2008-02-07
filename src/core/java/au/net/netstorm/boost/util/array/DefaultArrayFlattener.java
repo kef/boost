@@ -9,12 +9,13 @@ import java.util.List;
 
 public final class DefaultArrayFlattener extends Primordial implements ArrayFlattener {
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
+    private static final ArrayMaster ARRAY_MASTER = new DefaultArrayMaster();
 
     // Note. Cannot use check(Object[]) as it uses this method, hence stack overflow, so doesn't check embedded nulls.
     public Object[] flatten(Object[] unflattened) {
         NULL_MASTER.check(unflattened, "unflattened");
         List flattened = doFlatten(unflattened);
-        return flattened.toArray(new Object[flattened.size()]);
+        return ARRAY_MASTER.toArray(flattened);
     }
 
     private List doFlatten(Object[] unflattened) {

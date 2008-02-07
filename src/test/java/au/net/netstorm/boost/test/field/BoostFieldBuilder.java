@@ -1,17 +1,22 @@
 package au.net.netstorm.boost.test.field;
 
+import au.net.netstorm.boost.util.array.ArrayMaster;
+import au.net.netstorm.boost.util.array.DefaultArrayMaster;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class BoostFieldBuilder implements FieldBuilder {
+    ArrayMaster arrays = new DefaultArrayMaster();
+
     public BoostField[] build(Object ref) {
         Field[] fields = getFields(ref);
-        List result = new ArrayList();
-        for (int i = 0; i < fields.length; i++) {
-            add(result, ref, fields[i]);
+        List<BoostField> result = new ArrayList<BoostField>();
+        for (Field field : fields) {
+            add(result, ref, field);
         }
-        return (BoostField[]) result.toArray(new BoostField[]{});
+        return arrays.toArray(result, BoostField.class);
     }
 
     private Field[] getFields(Object ref) {

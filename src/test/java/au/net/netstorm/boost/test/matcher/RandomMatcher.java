@@ -4,7 +4,6 @@ import au.net.netstorm.boost.test.field.BoostField;
 import au.net.netstorm.boost.util.type.Data;
 
 public final class RandomMatcher implements Matcher {
-
     public boolean matches(BoostField field) {
         return !isNonDataInterface(field);
     }

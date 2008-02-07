@@ -3,7 +3,6 @@ package au.net.netstorm.boost.demo.spider.flavour;
 import au.net.netstorm.boost.demo.spider.resolve.ResolverDemooooTest;
 
 public final class FlavouredResolveDemoTest extends ResolverDemooooTest {
-
     // FIX BREADCRUMB 1977 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Test with instances too.
     {
 //        registry.multiple(Curry.class, Madras.class, "mild");

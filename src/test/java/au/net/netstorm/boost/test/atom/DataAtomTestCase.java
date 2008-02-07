@@ -6,7 +6,6 @@ import au.net.netstorm.boost.test.core.BoooostCase;
 
 // FIX SC600 BREADCRUMB Complete this.
 public class DataAtomTestCase extends BoooostCase implements DataAtomTester {
-
     protected final void gearup() {
         // FIX SC600 BREADCRUMB Delegate to populate fields using getDeclaredFields() which excludes inherited ones :-)
         // FIX SC600 Populate each of the subclasses fields using TriangulationProvider.
