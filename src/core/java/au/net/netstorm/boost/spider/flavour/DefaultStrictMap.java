@@ -10,6 +10,7 @@ public final class DefaultStrictMap<K, V> implements StrictMap<K, V> {
     private static boolean overridesAllowed = false;
 
     public void put(K key, V value) {
+        // FIX   97628 Should check for null key.
         if (value == null) fail(key, "Come on, ya have to give me somethin' man.  Anything but a null");
         validate(key);
         map.put(key, value);
