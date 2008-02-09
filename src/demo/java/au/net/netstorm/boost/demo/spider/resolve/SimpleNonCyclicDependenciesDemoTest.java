@@ -2,8 +2,8 @@ package au.net.netstorm.boost.demo.spider.resolve;
 
 public final class SimpleNonCyclicDependenciesDemoTest extends ResolverDemooooTest {
     {
-        registry.multiple(Bicycle.class, BmxBicycle.class);
-        registry.multiple(Wheel.class, DefaultWheel.class);
+        registry.single(Bicycle.class, BmxBicycle.class);
+        registry.multiple(Wheel.class, MagWheel.class);
     }
 
     public void testDifferentWheels() {
