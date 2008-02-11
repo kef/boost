@@ -7,12 +7,6 @@ public interface LogNice {
 
     void trace(Object o, Throwable t);
 
-    void debug(Object o);
-
-    void debug(Throwable t);
-
-    void debug(Object o, Throwable t);
-
     void info(Object o);
 
     void info(Throwable t);
@@ -30,6 +24,4 @@ public interface LogNice {
     void error(Throwable t);
 
     void error(Object o, Throwable t);
-
-    boolean debugEnabled();
 }
