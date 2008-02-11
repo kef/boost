@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.util.tostring;
 
-// FIX  97432 Move over to boost.
 public final class DefaultFrogger implements Frogger {
     private static final String DELIMETER = "_";
     private static final String SPACE = " ";
