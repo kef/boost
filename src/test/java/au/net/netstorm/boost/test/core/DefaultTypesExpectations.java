@@ -14,13 +14,13 @@ public class DefaultTypesExpectations implements TypesExpectations {
         this.expect = expect;
     }
 
-    public <T extends Holder> void types(T obj, Class<T> impl, Object param) {
+    public <T extends Holder> void types(T obj, Class<T> iface, Object param) {
         Object types = fielder.getInstance(test, "typesMock");
-        expect.oneCall(types, obj, "nu", impl, param);
+        expect.oneCall(types, obj, "nu", iface, param);
     }
 
-    public <T extends Data> void types(T obj, Class<T> impl, Object... params) {
+    public <T extends Data> void types(T obj, Class<T> iface, Object... params) {
         Object types = fielder.getInstance(test, "typesMock");
-        expect.oneCall(types, obj, "nu", impl, params);
+        expect.oneCall(types, obj, "nu", iface, params);
     }
 }
