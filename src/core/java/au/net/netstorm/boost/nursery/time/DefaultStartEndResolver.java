@@ -1,14 +1,13 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.time.core.DefaultTimePoint;
+import static au.net.netstorm.boost.nursery.time.TimeType.ABSOLUTE;
+import static au.net.netstorm.boost.nursery.time.TimeType.NONE;
+import static au.net.netstorm.boost.nursery.time.TimeType.RELATIVE;
+import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
 import au.net.netstorm.boost.time.core.TimePoint;
 
 public final class DefaultStartEndResolver implements StartEndResolver {
     private static final TimeHelper HELPER = new DefaultTimeHelper();
-    private static final TimeType ABSOLUTE = TimeType.ABSOLUTE;
-    private static final TimeType RELATIVE = TimeType.RELATIVE;
-    private static final TimeType NONE = TimeType.NONE;
-    private static final TimePoint ARMAGEDDON = DefaultTimePoint.ARMAGEDDON;
 
     public TimePeriod get(StartEnd times, TimePoint now) {
         TimeSpec sSpec = times.getStart();
