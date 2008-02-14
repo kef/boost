@@ -1,4 +1,6 @@
 package au.net.netstorm.boost.spider.flavour;
 
-interface IceCream {
+import au.net.netstorm.boost.util.type.Data;
+
+interface IceCream extends Data {
 }
