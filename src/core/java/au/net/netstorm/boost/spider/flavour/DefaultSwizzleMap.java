@@ -4,8 +4,8 @@ public final class DefaultSwizzleMap<K, V> implements SwizzleMap<K, V> {
     StrictMap<K, V> swizzle = strict();
     StrictMap<V, K> deswizzle = strict();
 
-    public V swizzle(K id) {
-        return swizzle.get(id);
+    public V swizzle(K key) {
+        return swizzle.get(key);
     }
 
     public K deswizzle(V value) {
