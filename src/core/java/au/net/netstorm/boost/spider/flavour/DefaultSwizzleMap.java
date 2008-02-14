@@ -8,8 +8,8 @@ public final class DefaultSwizzleMap<K, V> implements SwizzleMap<K, V> {
         return swizzle.get(id);
     }
 
-    public K deswizzle(V attribute) {
-        return deswizzle.get(attribute);
+    public K deswizzle(V value) {
+        return deswizzle.get(value);
     }
 
     public void put(K key, V value) {
