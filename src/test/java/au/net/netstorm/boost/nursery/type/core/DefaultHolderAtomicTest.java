@@ -10,4 +10,8 @@ public final class DefaultHolderAtomicTest extends BoooostCase {
             fail();
         } catch (IllegalArgumentException expected) { }
     }
+
+    // FIX  97098 Complete.
+    public void testCloneIfArray() {
+    }
 }
