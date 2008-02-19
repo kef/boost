@@ -22,7 +22,9 @@ public final class DefaultHolderAtomicTest extends BoooostCase {
 
     // FIX BREADCRUMB  97098 Complete me
     public void testEquals() {
-
+        FreddyHolder holder = new DefaultFreddyHolder(BYTE_ARRAY);
+        boolean actual = holder.equals("Bartman");
+        assertEquals(false, actual);
     }
 
     private void checkCloneIfArray(byte[] value) {
