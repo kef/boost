@@ -14,8 +14,28 @@ public final class DefaultHolderAtomicTest extends BoooostCase {
         } catch (IllegalArgumentException expected) { }
     }
 
-    // FIX  97098 Complete.
-    // FIX  97098 Do we expect to only handle byte[] at this point in time for arrays?
     public void testCloneIfArray() {
+        FreddyHolder holder = new DefaultFreddyHolder(BYTE_ARRAY);
+        byte[] value = holder.getValue();
+        checkCloneIfArray(value);
+    }
+
+    // FIX BREADCRUMB  97098 Complete me
+    public void testEquals() {
+
+    }
+
+    private void checkCloneIfArray(byte[] value) {
+        checkReference(value);
+        checkArray(value);
+    }
+
+    private void checkReference(byte[] value) {
+        boolean actual = value != BYTE_ARRAY;
+        assertEquals(true, actual);
+    }
+
+    private void checkArray(byte[] value) {
+        assertEquals(BYTE_ARRAY, value);
     }
 }
