@@ -7,7 +7,7 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
         registry.multiple(AirField.class, BrisbaneAirField.class);
         registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
         // FIX ()   2237 Make this work too.  Write a test for it.
-//        registry.single(BrisbaneAirField.class,  FlyingDoctor.class,  "jack", CoastalFlyingDoctor.class);
+//        registry.single(BrisbaneAirField.class,  FlyingDoctor.class,  "ambulance", FlyingAmbulance.class);
     }
 
     public void testSingle() {
@@ -20,18 +20,28 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
     }
 
     public void testHostedSingle() {
-        AirField af1 = resolver.resolve(AirField.class);
-        FlyingDoctor doctor = getDoctor(af1);
-        Class actual = doctor.getClass();
-        assertEquals(CoastalFlyingDoctor.class, actual);
+        AirField airField = resolver.resolve(AirField.class);
+        check(airField, "doctor", CoastalFlyingDoctor.class);
+        // FIX   2237 Reinstate.
+//        check(airField, "ambulance", FlyingAmbulance.class);
     }
 
     private Town resolveTown() {
         return resolver.resolve(Town.class);
     }
 
+    private void check(AirField airField, String fieldName, Class expected) {
+        FlyingDoctor doctor = getDoctor(airField, fieldName);
+        Class actual = doctor.getClass();
+        assertEquals(expected, actual);
+    }
+
     private FlyingDoctor getDoctor(Object ref) {
-        return (FlyingDoctor) grapher.get(ref, "doctor");
+        return getDoctor(ref, "doctor");
+    }
+
+    private FlyingDoctor getDoctor(Object ref, String fieldName) {
+        return (FlyingDoctor) grapher.get(ref, fieldName);
     }
 
     private void checkSame(Object o1, Object o2) {
