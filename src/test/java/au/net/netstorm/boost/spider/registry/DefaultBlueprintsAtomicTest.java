@@ -21,17 +21,19 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Interface dinosaurIface = iface(Dinosaur.class);
     Interface iface2 = iface(Fish.class);
     Interface dodgy = iface(Tree.class);
+    Implementation host = new DefaultImplementation(Museum.class);
     LinkageFactory linkageFactory = new DefaultLinkageFactory();
     Blueprint blueprint;
     Blueprints subject;
     Implementation hostDummy;
-    Linkage dinoLink = linkageFactory.nu(dinosaurIface);
+    Linkage ifaceLink = linkageFactory.nu(dinosaurIface);
+    Linkage hostLink = linkageFactory.nu(host, dinosaurIface);
     Linkage[] linkages = {
 //            linkageFactory.nu(host, iface1, "aName"),
 //            linkageFactory.nu(host, dinosaurIface),
             // FIX () 2237 check that null host is actually used...
 //            linkageFactory.nu(null, iface1, "aName"),
-            dinoLink
+            ifaceLink,
     };
 
     public void setUpFixtures() {
@@ -53,6 +55,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     }
 
     // FIX 2237 Complete.  Exists must work for all widenings of the linkage.
+    // FIX   2237 In fact, this loop concept is broken.
     public void testExists() {
         for (Linkage linkage : linkages) {
             checkExists(false, linkage);
@@ -68,14 +71,20 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
 
     // FIX   2237 Complete.  Do more types of linkages.
     public void testGet() {
-        subject.put(dinoLink, blueprint);
-        Blueprint actual = subject.get(dinoLink);
+        subject.put(ifaceLink, blueprint);
+        check(ifaceLink);
+        check(hostLink);
+        // FIX BREADCRUMB   2237 HERE!  XXXXX
+    }
+
+    private void check(Linkage linkage) {
+        Blueprint actual = subject.get(linkage);
         assertEquals(blueprint, actual);
     }
 
     public void testGetPops() {
         try {
-            subject.get(dinoLink);
+            subject.get(ifaceLink);
         } catch (IllegalStateException expected) {
         }
     }
