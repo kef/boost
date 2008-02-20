@@ -29,13 +29,6 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Implementation hostDummy;
     Linkage ifaceLink = linkageFactory.nu(dinosaurIface);
     Linkage hostLink = linkageFactory.nu(host, dinosaurIface);
-    Linkage[] linkages = {
-//            linkageFactory.nu(host, iface1, "aName"),
-//            linkageFactory.nu(host, dinosaurIface),
-            // FIX () 2237 check that null host is actually used...
-//            linkageFactory.nu(null, iface1, "aName"),
-            ifaceLink,
-    };
 
     public void setUpFixtures() {
         subject = new DefaultBlueprints();
@@ -56,8 +49,6 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
         } catch (WrongRegistrationException expected) { }
     }
 
-    // FIX 2237 Complete.  Exists must work for all widenings of the linkage.
-    // FIX   2237 In fact, this loop concept is broken.
     public void testExists() {
         checkExists(false, ifaceLink);
         subject.put(ifaceLink, blueprint);
@@ -65,18 +56,17 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
         checkExists(true, hostLink);
     }
 
-    private void checkExists(boolean exists, Linkage linkage) {
-        boolean actual = subject.exists(linkage);
-        assertEquals(exists, actual);
-    }
-
-    // FIX   2237 Complete.  Do more types of linkages.
     public void testGet() {
         subject.put(ifaceLink, blueprint);
         check(ifaceLink, blueprint);
         check(hostLink, blueprint);
         subject.put(hostLink, anotherBlueprint);
         check(hostLink, anotherBlueprint);
+    }
+
+    private void checkExists(boolean exists, Linkage linkage) {
+        boolean actual = subject.exists(linkage);
+        assertEquals(exists, actual);
     }
 
     private void check(Linkage linkage, Blueprint blueprint) {
