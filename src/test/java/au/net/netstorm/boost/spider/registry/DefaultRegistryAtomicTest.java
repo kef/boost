@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.instantiate.Nu;
@@ -11,48 +10,41 @@ import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.TypeMaster;
 
 // FIX BREADCRUMB   2237 Tidy this up!
 
 // FIX   2237 Complete.
 public final class DefaultRegistryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final Object[] NO_ARGS = {};
-    private static final Implementation NO_HOST = new DefaultImplementation(Object.class);
     private static final Object[] NO_PARAMS = {};
-    Class soapFactoryClass = SoapFactory.class;
-    Class cerealClass = BreakfastCereal.class;
-    Class pantryClass = Pantry.class;
-    Class footballClass = Football.class;
-    Class sportClass = Sport.class;
-    Class footballStadiumClass = FootballStadium.class;
-    FieldTestUtil fielder = new DefaultFieldTestUtil();
-    Interface sportInterface = new DefaultInterface(sportClass);
-    Interface cerealInterface = new DefaultInterface(cerealClass);
-    Implementation footballStadiumImplementation = new DefaultImplementation(footballStadiumClass);
-    CocoPops cocoPops = new CocoPops();
-    Implementation cocoPopsImplementation = new DefaultImplementation(CocoPops.class);
-    ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
-    Blueprint blueprint = new DefaultBlueprint(SINGLE, cocoPopsImplementation, NO_PARAMS);
-    LinkageFactory linkageFactory = new DefaultLinkageFactory();
-    Linkage sportLinkage = linkageFactory.nu(sportInterface);
-    Linkage sportStadiumLinkage = linkageFactory.nu(footballStadiumImplementation, sportInterface);
-    Linkage cerealLinkage = linkageFactory.nu(cerealInterface);
+    private Class soapFactoryClass = SoapFactory.class;
+    private Class cerealClass = BreakfastCereal.class;
+    private Class pantryClass = Pantry.class;
+    private Class footballClass = Football.class;
+    private Class sportClass = Sport.class;
+    private Class footballStadiumClass = FootballStadium.class;
+    private Interface sportInterface = new DefaultInterface(sportClass);
+    private Interface cerealInterface = new DefaultInterface(cerealClass);
+    private Implementation footballStadiumImplementation = new DefaultImplementation(footballStadiumClass);
+    private CocoPops cocoPops = new CocoPops();
+    private Implementation cocoPopsImplementation = new DefaultImplementation(CocoPops.class);
+    private ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
+    private Blueprint blueprint = new DefaultBlueprint(SINGLE, cocoPopsImplementation, NO_PARAMS);
+    private LinkageFactory linkageFactory = new DefaultLinkageFactory();
+    private Linkage sportLinkage = linkageFactory.nu(sportInterface);
+    private Linkage sportStadiumLinkage = linkageFactory.nu(footballStadiumImplementation, sportInterface);
+    private Linkage cerealLinkage = linkageFactory.nu(cerealInterface);
     private Implementation pantryImpl = new DefaultImplementation(pantryClass);
-    Linkage cerealPantryLinkage = linkageFactory.nu(pantryImpl, cerealInterface);
+    private Linkage cerealPantryLinkage = linkageFactory.nu(pantryImpl, cerealInterface);
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
-    EdgeClass classerMock;
-    TypeMaster typerMock;
     Factory factoryDummy;
     Layers proxiesMock;
     Registry subject;
