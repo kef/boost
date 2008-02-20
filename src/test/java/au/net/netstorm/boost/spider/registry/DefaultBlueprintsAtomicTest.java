@@ -24,6 +24,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Implementation host = new DefaultImplementation(Museum.class);
     LinkageFactory linkageFactory = new DefaultLinkageFactory();
     Blueprint blueprint;
+    Blueprint anotherBlueprint;
     Blueprints subject;
     Implementation hostDummy;
     Linkage ifaceLink = linkageFactory.nu(dinosaurIface);
@@ -39,6 +40,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     public void setUpFixtures() {
         subject = new DefaultBlueprints();
         blueprint = blueprint(Tyrannosaurus.class);
+        anotherBlueprint = blueprint(Triceratops.class);
     }
 
     public void testPut() {
@@ -72,12 +74,13 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     // FIX   2237 Complete.  Do more types of linkages.
     public void testGet() {
         subject.put(ifaceLink, blueprint);
-        check(ifaceLink);
-        check(hostLink);
-        // FIX BREADCRUMB   2237 HERE!  XXXXX
+        check(ifaceLink, blueprint);
+        check(hostLink, blueprint);
+        subject.put(hostLink, anotherBlueprint);
+        check(hostLink, anotherBlueprint);
     }
 
-    private void check(Linkage linkage) {
+    private void check(Linkage linkage, Blueprint blueprint) {
         Blueprint actual = subject.get(linkage);
         assertEquals(blueprint, actual);
     }
