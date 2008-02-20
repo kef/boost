@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.WrongRegistrationException;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;

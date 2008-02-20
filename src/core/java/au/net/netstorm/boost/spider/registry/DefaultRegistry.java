@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.spider.registry;
+package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.nursery.proxy.DefaultLayerSpec;
 import au.net.netstorm.boost.nursery.proxy.LayerSpec;
@@ -8,14 +8,6 @@ import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.spider.onion.core.Layer;
-import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.Blueprints;
-import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
-import au.net.netstorm.boost.spider.registry.Factories;
-import au.net.netstorm.boost.spider.registry.Factory;
-import au.net.netstorm.boost.spider.registry.Instances;
-import au.net.netstorm.boost.spider.registry.Registry;
-import au.net.netstorm.boost.spider.registry.Stamp;
 import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;

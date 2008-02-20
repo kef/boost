@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.WrongRegistrationException;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageWidener;

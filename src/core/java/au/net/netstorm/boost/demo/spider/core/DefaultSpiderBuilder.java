@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.spider.core;
 import au.net.netstorm.boost.nursery.spider.layer.DefaultLayers;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
-import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
+import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.nursery.type.core.DefaultTypes;
 import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.spider.inject.core.Injector;

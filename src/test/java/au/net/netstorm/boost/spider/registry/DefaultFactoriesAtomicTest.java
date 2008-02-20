@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.CannotProvideException;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;

@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
-import au.net.netstorm.boost.nursery.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
