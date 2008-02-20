@@ -25,12 +25,13 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Blueprint blueprint;
     Blueprints subject;
     Implementation hostDummy;
+    Linkage dinoLink = linkageFactory.nu(dinosaurIface);
     Linkage[] linkages = {
 //            linkageFactory.nu(host, iface1, "aName"),
 //            linkageFactory.nu(host, dinosaurIface),
             // FIX () 2237 check that null host is actually used...
 //            linkageFactory.nu(null, iface1, "aName"),
-            linkageFactory.nu(dinosaurIface)
+            dinoLink
     };
 
     public void setUpFixtures() {
@@ -65,15 +66,16 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
         assertEquals(exists, actual);
     }
 
-    // FIX 2237 Reinstate.
-
-/*
+    // FIX   2237 Complete.  Do more types of linkages.
     public void testGet() {
-        expect.oneCall(mapMock, blueprint, "get", iface);
-        Blueprint actual = subject.get(hostDummy, iface);
+        subject.put(dinoLink, blueprint);
+        Blueprint actual = subject.get(dinoLink);
         assertEquals(blueprint, actual);
     }
-*/
+
+    public void testGetPops() {
+        // FIX   2237 TODO.
+    }
 
     private Interface iface(Class cls) {
         return new DefaultInterface(cls);
