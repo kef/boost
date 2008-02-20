@@ -79,13 +79,19 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     public void testFullSingle() {
-        // FIX ()   2237 This is not a test ... complete.
-//        subject.single(footballStadiumClass, sportClass, name, footballClass);
+        Blueprint blueprint = blueprint(SINGLE, footballClass);
+        Linkage linkage = linkageFactory.nu(footballStadiumImplementation, sportInterface, name);
+        expect.oneCall(blueprintsMock, VOID, "put", linkage, blueprint);
+        subject.single(footballStadiumClass, sportClass, name, footballClass);
     }
 
     public void testInstance() {
         setUpInstance();
         subject.instance(cerealClass, cocoPops);
+    }
+
+    public void testHostedInstance() {
+        // FIX   2237 Complete.
     }
 
     public void testFactoryByRef() {
@@ -109,8 +115,8 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
         expect.oneCall(blueprintsMock, VOID, "put", sportLinkage, multipleFootballBlueprint);
     }
 
-    private Blueprint blueprint(Stamp stamp, Class football) {
-        Implementation impl = new DefaultImplementation(football);
+    private Blueprint blueprint(Stamp stamp, Class cls) {
+        Implementation impl = new DefaultImplementation(cls);
         return new DefaultBlueprint(stamp, impl, NO_ARGS);
     }
 }
