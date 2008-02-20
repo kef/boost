@@ -59,14 +59,13 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     // FIX 2237 Complete.  Exists must work for all widenings of the linkage.
     // FIX   2237 In fact, this loop concept is broken.
     public void testExists() {
-        for (Linkage linkage : linkages) {
-            checkExists(false, linkage);
-            checkExists(true, linkage);
-        }
+        checkExists(false, ifaceLink);
+        subject.put(ifaceLink, blueprint);
+        checkExists(true, ifaceLink);
+        checkExists(true, hostLink);
     }
 
     private void checkExists(boolean exists, Linkage linkage) {
-        if (exists) subject.put(linkage, blueprint);
         boolean actual = subject.exists(linkage);
         assertEquals(exists, actual);
     }
