@@ -74,7 +74,10 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     }
 
     public void testGetPops() {
-        // FIX   2237 TODO.
+        try {
+            subject.get(dinoLink);
+        } catch (IllegalStateException expected) {
+        }
     }
 
     private Interface iface(Class cls) {
