@@ -26,15 +26,15 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     private Class cerealClass = BreakfastCereal.class;
     private Class pantryClass = Pantry.class;
     private Class cocoPopsClass = CocoPops.class;
-    private Interface cerealInterface = new DefaultInterface(cerealClass);
+    private Interface cerealIface = new DefaultInterface(cerealClass);
     private Implementation pantryImpl = new DefaultImplementation(pantryClass);
     private CocoPops cocoPops = new CocoPops();
-    private Implementation cocoPopsImplementation = new DefaultImplementation(CocoPops.class);
+    private Implementation cocoPopsImpl = new DefaultImplementation(CocoPops.class);
     private ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
-    private Blueprint blueprint = new DefaultBlueprint(SINGLE, cocoPopsImplementation, NO_PARAMS);
+    private Blueprint blueprint = new DefaultBlueprint(SINGLE, cocoPopsImpl, NO_PARAMS);
     private LinkageFactory linkageFactory = new DefaultLinkageFactory();
-    private Linkage cerealLinkage = linkageFactory.nu(cerealInterface);
-    private Linkage cerealPantryLinkage = linkageFactory.nu(pantryImpl, cerealInterface);
+    private Linkage cerealLinkage = linkageFactory.nu(cerealIface);
+    private Linkage cerealPantryLinkage = linkageFactory.nu(pantryImpl, cerealIface);
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
@@ -68,7 +68,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
 
     public void testFullSingle() {
         Blueprint blueprint = blueprint(SINGLE, cocoPopsClass);
-        Linkage linkage = linkageFactory.nu(pantryImpl, cerealInterface, name);
+        Linkage linkage = linkageFactory.nu(pantryImpl, cerealIface, name);
         expect.oneCall(blueprintsMock, VOID, "put", linkage, blueprint);
         subject.single(pantryClass, cerealClass, name, cocoPopsClass);
     }
@@ -97,7 +97,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
 
     private void setUpInstance(Linkage linkage) {
         expect.oneCall(blueprintsMock, VOID, "put", linkage, blueprint);
-        expect.oneCall(instancesMock, VOID, "put", cerealInterface, cocoPopsImplementation, resolvedCocoPops);
+        expect.oneCall(instancesMock, VOID, "put", cerealIface, cocoPopsImpl, resolvedCocoPops);
     }
 
     private void setUpMultiple() {
