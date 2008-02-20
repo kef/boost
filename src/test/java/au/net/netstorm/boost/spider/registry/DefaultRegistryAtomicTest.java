@@ -30,6 +30,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     private static final Object[] NO_PARAMS = {};
     Class soapFactoryClass = SoapFactory.class;
     Class cerealClass = BreakfastCereal.class;
+    Class pantryClass = Pantry.class;
     Class footballClass = Football.class;
     Class sportClass = Sport.class;
     Class footballStadiumClass = FootballStadium.class;
@@ -45,6 +46,8 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     Linkage sportLinkage = linkageFactory.nu(sportInterface);
     Linkage sportStadiumLinkage = linkageFactory.nu(footballStadiumImplementation, sportInterface);
     Linkage cerealLinkage = linkageFactory.nu(cerealInterface);
+    private Implementation pantryImpl = new DefaultImplementation(pantryClass);
+    Linkage cerealPantryLinkage = linkageFactory.nu(pantryImpl, cerealInterface);
     Blueprints blueprintsMock;
     Instances instancesMock;
     Factories factoriesMock;
@@ -86,12 +89,14 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     public void testInstance() {
-        setUpInstance();
+        setUpInstance(cerealLinkage);
         subject.instance(cerealClass, cocoPops);
     }
 
+    // SUGGEST: looks like "hosted instances" are a hack.
     public void testHostedInstance() {
-        // FIX   2237 Complete.
+        setUpInstance(cerealPantryLinkage);
+        subject.instance(pantryClass, cerealClass, cocoPops);
     }
 
     public void testFactoryByRef() {
@@ -105,8 +110,8 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
         subject.factory(soapFactoryClass);
     }
 
-    private void setUpInstance() {
-        expect.oneCall(blueprintsMock, VOID, "put", cerealLinkage, blueprint);
+    private void setUpInstance(Linkage linkage) {
+        expect.oneCall(blueprintsMock, VOID, "put", linkage, blueprint);
         expect.oneCall(instancesMock, VOID, "put", cerealInterface, cocoPopsImplementation, resolvedCocoPops);
     }
 
