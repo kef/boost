@@ -1,13 +1,13 @@
-package au.net.netstorm.boost.nursery.spider.linkage;
+package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.spider.linkage.Linkage;
+import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageWildcard;
+import au.net.netstorm.boost.nursery.spider.linkage.LinkageWildcard;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 
 import java.util.ArrayList;
 import java.util.List;
 
-// FIX ()  2237 Move this out of the nursery.
 public final class DefaultLinkageWidener implements LinkageWidener {
     private final LinkageWildcard wildcard = new DefaultLinkageWildcard();
     private final ArrayMaster arrays = new DefaultArrayMaster();

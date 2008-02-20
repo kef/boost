@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageWidener;
-import au.net.netstorm.boost.nursery.spider.linkage.LinkageWidener;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;

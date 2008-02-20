@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.linkage.DefaultLinkageWidener;
-import au.net.netstorm.boost.nursery.spider.linkage.LinkageWidener;
+import au.net.netstorm.boost.spider.linkage.DefaultLinkageWidener;
+import au.net.netstorm.boost.spider.linkage.LinkageWidener;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.spider.linkage.Linkage;
