@@ -13,7 +13,6 @@ import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.TypeMaster;
 
 // FIX 2237 Complete.
 public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase implements HasFixtures {
@@ -24,12 +23,8 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     Interface dodgy = iface(Tree.class);
     LinkageFactory linkageFactory = new DefaultLinkageFactory();
     Blueprint blueprint;
-    Boolean exists;
-    Implementation impl;
-    TypeMaster typerMock;
     Blueprints subject;
     Implementation hostDummy;
-    Implementation host;
     Linkage[] linkages = {
 //            linkageFactory.nu(host, iface1, "aName"),
 //            linkageFactory.nu(host, dinosaurIface),
@@ -71,6 +66,7 @@ public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase impleme
     }
 
     // FIX 2237 Reinstate.
+
 /*
     public void testGet() {
         expect.oneCall(mapMock, blueprint, "get", iface);

@@ -25,17 +25,17 @@ public final class DefaultBlueprints implements Blueprints {
     }
 
     public Blueprint get(Linkage linkage) {
-        Linkage link = nullGet(linkage);
+        Linkage link = nullGetLinkage(linkage);
         if (link == NO_LINKAGE) throw new IllegalStateException();
         return map.get(link);
     }
 
     public boolean exists(Linkage linkage) {
-        Linkage link = nullGet(linkage);
+        Linkage link = nullGetLinkage(linkage);
         return (link != NO_LINKAGE);
     }
 
-    private Linkage nullGet(Linkage linkage) {
+    private Linkage nullGetLinkage(Linkage linkage) {
         Linkage[] linkages = widener.widen(linkage);
         for (Linkage link : linkages) {
             if (map.exists(link)) return link;
