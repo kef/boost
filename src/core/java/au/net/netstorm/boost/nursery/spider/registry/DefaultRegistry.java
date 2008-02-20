@@ -58,8 +58,8 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T> void single(Class host, Class<T> iface, String name, Class<? extends T> impl) {
-//        Linkage linkage = linkages.nu(host, iface, name);
-        // FIX ()   2237 Complete.
+        Linkage linkage = linkages.nu(host, iface, name);
+        blueprint(linkage, impl, SINGLE);
     }
 
     public <T, U extends T> void instance(Class<T> iface, U ref) {

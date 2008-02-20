@@ -6,8 +6,7 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
         registry.single(FlyingDoctor.class, FnqFlyingDoctor.class);
         registry.multiple(AirField.class, BrisbaneAirField.class);
         registry.single(BrisbaneAirField.class, FlyingDoctor.class, CoastalFlyingDoctor.class);
-        // FIX ()   2237 Make this work too.  Write a test for it.
-//        registry.single(BrisbaneAirField.class,  FlyingDoctor.class,  "ambulance", FlyingAmbulance.class);
+        registry.single(BrisbaneAirField.class,  FlyingDoctor.class,  "ambulance", FlyingAmbulance.class);
     }
 
     public void testSingle() {
@@ -22,8 +21,7 @@ public final class BlueprintDemoTest extends ResolverDemooooTest {
     public void testHostedSingle() {
         AirField airField = resolver.resolve(AirField.class);
         check(airField, "doctor", CoastalFlyingDoctor.class);
-        // FIX   2237 Reinstate.
-//        check(airField, "ambulance", FlyingAmbulance.class);
+        check(airField, "ambulance", FlyingAmbulance.class);
     }
 
     private Town resolveTown() {
