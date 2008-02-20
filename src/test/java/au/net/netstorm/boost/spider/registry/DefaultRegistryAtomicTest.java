@@ -16,7 +16,7 @@ import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 
-// FIX BREADCRUMB   2237 Tidy this up!
+// FIX BREADCRUMB   2237 Check return values.
 
 // FIX   2237 Complete.
 public final class DefaultRegistryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
@@ -25,21 +25,15 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     private Class soapFactoryClass = SoapFactory.class;
     private Class cerealClass = BreakfastCereal.class;
     private Class pantryClass = Pantry.class;
-    private Class footballClass = Football.class;
-    private Class sportClass = Sport.class;
-    private Class footballStadiumClass = FootballStadium.class;
-    private Interface sportInterface = new DefaultInterface(sportClass);
+    private Class cocoPopsClass = CocoPops.class;
     private Interface cerealInterface = new DefaultInterface(cerealClass);
-    private Implementation footballStadiumImplementation = new DefaultImplementation(footballStadiumClass);
+    private Implementation pantryImpl = new DefaultImplementation(pantryClass);
     private CocoPops cocoPops = new CocoPops();
     private Implementation cocoPopsImplementation = new DefaultImplementation(CocoPops.class);
     private ResolvedInstance resolvedCocoPops = new DefaultBaseReference(cocoPops);
     private Blueprint blueprint = new DefaultBlueprint(SINGLE, cocoPopsImplementation, NO_PARAMS);
     private LinkageFactory linkageFactory = new DefaultLinkageFactory();
-    private Linkage sportLinkage = linkageFactory.nu(sportInterface);
-    private Linkage sportStadiumLinkage = linkageFactory.nu(footballStadiumImplementation, sportInterface);
     private Linkage cerealLinkage = linkageFactory.nu(cerealInterface);
-    private Implementation pantryImpl = new DefaultImplementation(pantryClass);
     private Linkage cerealPantryLinkage = linkageFactory.nu(pantryImpl, cerealInterface);
     Blueprints blueprintsMock;
     Instances instancesMock;
@@ -57,26 +51,26 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
 
     public void testMultiple() {
         setUpMultiple();
-        subject.multiple(sportClass, footballClass);
+        subject.multiple(cerealClass, cocoPopsClass);
     }
 
     public void testSingle() {
-        Blueprint blueprint = blueprint(SINGLE, footballClass);
-        expect.oneCall(blueprintsMock, VOID, "put", sportLinkage, blueprint);
-        subject.single(sportClass, footballClass);
+        Blueprint blueprint = blueprint(SINGLE, cocoPopsClass);
+        expect.oneCall(blueprintsMock, VOID, "put", cerealLinkage, blueprint);
+        subject.single(cerealClass, cocoPopsClass);
     }
 
     public void testHostedSingle() {
-        Blueprint blueprint = blueprint(SINGLE, footballClass);
-        expect.oneCall(blueprintsMock, VOID, "put", sportStadiumLinkage, blueprint);
-        subject.single(footballStadiumClass, sportClass, footballClass);
+        Blueprint blueprint = blueprint(SINGLE, cocoPopsClass);
+        expect.oneCall(blueprintsMock, VOID, "put", cerealPantryLinkage, blueprint);
+        subject.single(pantryClass, cerealClass, cocoPopsClass);
     }
 
     public void testFullSingle() {
-        Blueprint blueprint = blueprint(SINGLE, footballClass);
-        Linkage linkage = linkageFactory.nu(footballStadiumImplementation, sportInterface, name);
+        Blueprint blueprint = blueprint(SINGLE, cocoPopsClass);
+        Linkage linkage = linkageFactory.nu(pantryImpl, cerealInterface, name);
         expect.oneCall(blueprintsMock, VOID, "put", linkage, blueprint);
-        subject.single(footballStadiumClass, sportClass, name, footballClass);
+        subject.single(pantryClass, cerealClass, name, cocoPopsClass);
     }
 
     public void testInstance() {
@@ -107,8 +101,8 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     private void setUpMultiple() {
-        Blueprint multipleFootballBlueprint = blueprint(Stamp.MULTIPLE, footballClass);
-        expect.oneCall(blueprintsMock, VOID, "put", sportLinkage, multipleFootballBlueprint);
+        Blueprint multipleFootballBlueprint = blueprint(Stamp.MULTIPLE, cocoPopsClass);
+        expect.oneCall(blueprintsMock, VOID, "put", cerealLinkage, multipleFootballBlueprint);
     }
 
     private Blueprint blueprint(Stamp stamp, Class cls) {
