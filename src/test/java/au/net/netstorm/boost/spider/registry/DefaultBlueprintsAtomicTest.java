@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.nursery.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.nursery.spider.registry.WrongRegistrationException;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
@@ -11,7 +10,6 @@ import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 
-// FIX 2237 Complete.
 public final class DefaultBlueprintsAtomicTest extends LifecycleTestCase {
     private static final Object[] NO_PARAMS = {};
     Interface dinosaurIface = iface(Dinosaur.class);

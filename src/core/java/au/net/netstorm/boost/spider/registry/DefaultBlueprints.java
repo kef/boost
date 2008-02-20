@@ -1,18 +1,16 @@
-package au.net.netstorm.boost.nursery.spider.registry;
+package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.spider.linkage.DefaultLinkageWidener;
-import au.net.netstorm.boost.spider.linkage.LinkageWidener;
+import au.net.netstorm.boost.nursery.spider.registry.WrongRegistrationException;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
+import au.net.netstorm.boost.spider.linkage.DefaultLinkageWidener;
 import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.linkage.LinkageWidener;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;
 
-// FIX 2237 Move out of nursery.
 public final class DefaultBlueprints implements Blueprints {
     private static final Linkage NO_LINKAGE = null;
     private final TypeMaster typer = new DefaultTypeMaster();
