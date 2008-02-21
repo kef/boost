@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.Factories;
-import au.net.netstorm.boost.spider.registry.Factory;
-import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.register.Blueprint;
+import au.net.netstorm.boost.spider.register.Factories;
+import au.net.netstorm.boost.spider.register.Factory;
+import au.net.netstorm.boost.spider.register.Instances;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;

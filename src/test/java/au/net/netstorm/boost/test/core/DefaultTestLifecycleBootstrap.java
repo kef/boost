@@ -2,7 +2,7 @@ package au.net.netstorm.boost.test.core;
 
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.Random;
-import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.register.Registry;
 import au.net.netstorm.boost.test.atom.AtomTestChecker;
 import au.net.netstorm.boost.test.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.test.automock.DefaultTestFieldInjector;

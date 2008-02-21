@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.exception;
 
 import au.net.netstorm.boost.spider.flavour.MapException;
-import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
+import au.net.netstorm.boost.spider.register.UnresolvedDependencyException;
 import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
 
 public final class WebThrowableSupport implements ThrowableSupport {

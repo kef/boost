@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.register.Registry;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.InjectableTest;
 import au.net.netstorm.boost.test.marker.OverlaysWeb;

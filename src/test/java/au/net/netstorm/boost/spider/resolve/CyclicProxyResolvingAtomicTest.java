@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.resolve;
 
-import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.register.Registry;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.InjectableTest;
 

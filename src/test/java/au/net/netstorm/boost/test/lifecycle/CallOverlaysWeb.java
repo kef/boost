@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.lifecycle;
 
 import au.net.netstorm.boost.spider.flavour.AllowOverrides;
-import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.register.Registry;
 import au.net.netstorm.boost.test.core.Test;
 import au.net.netstorm.boost.test.marker.OverlaysWeb;
 import au.net.netstorm.boost.util.type.Marker;

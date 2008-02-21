@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
 import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
-import au.net.netstorm.boost.spider.registry.Factory;
-import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
+import au.net.netstorm.boost.spider.register.Blueprint;
+import au.net.netstorm.boost.spider.register.DefaultBlueprint;
+import au.net.netstorm.boost.spider.register.Factory;
+import static au.net.netstorm.boost.spider.register.Stamp.MULTIPLE;
 import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;

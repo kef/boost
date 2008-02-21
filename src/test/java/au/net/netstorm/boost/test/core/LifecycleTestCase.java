@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.test.core;
 
 import au.net.netstorm.boost.demo.spider.core.Spider;
-import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.register.Registry;
 import au.net.netstorm.boost.test.automock.DefaultMockExpectations;
 import au.net.netstorm.boost.test.automock.MockExpectations;
 import au.net.netstorm.boost.test.automock.MockSupport;
