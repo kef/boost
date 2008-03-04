@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.reflect;
 
+import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.provider.Provider;
 
-import java.lang.reflect.Constructor;
-
 public final class DefaultInstantiatorWithProvider implements InstantiatorWithProvider {
+    // FIX 2290 InstantiatorWithProvider smells real bad.  Sort this out.
     private final EdgeConstructor edger = new DefaultEdgeConstructor();
     private final ReflectMaster reflector = new DefaultReflectMaster();
 

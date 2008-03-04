@@ -5,6 +5,7 @@ import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.LazyFields;
 
 public final class DefaultInstantiatorWithProviderAtomicTest extends LifecycleTestCase implements LazyFields {
+    // FIX 2290 InstantiatorWithProvider smells real bad.  Sort this out.
     InstantiatorWithProvider subject = new DefaultInstantiatorWithProvider();
     Provider providerMock;
     Hat hat = new Hat();
