@@ -111,7 +111,7 @@
     </path>
 
     <path id="cobertura.classpath">
-        <fileset dir="${lib.dir}/coverage">
+        <fileset dir="${lib.dir}/cobertura">
             <include name="**/*.jar"/>
         </fileset>
     </path>
