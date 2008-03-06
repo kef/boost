@@ -1,5 +1,8 @@
-package au.net.netstorm.boost.util.format;
+package au.net.netstorm.boost.nursery.util.format;
 
+import au.net.netstorm.boost.util.format.HexUtil;
+
+// FIX 2299 Up coverage and out of nursery.
 public final class DefaultHexUtil implements HexUtil {
     private static final String HEXCHAR = "0123456789abcdef";
     private static final int MASK = 0x0f;

@@ -1,16 +1,16 @@
 package au.net.netstorm.boost.primordial;
 
+import au.net.netstorm.boost.nursery.util.equals.FieldBasedEqualsMaster;
+import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
-import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.util.equals.MockEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.MockToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 

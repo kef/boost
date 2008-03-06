@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.type;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.LazyFields;
 

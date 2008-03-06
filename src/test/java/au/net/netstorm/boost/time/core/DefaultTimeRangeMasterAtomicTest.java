@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.core;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
-
 import java.util.Date;
+import au.net.netstorm.boost.nursery.time.core.DefaultTimeRange;
+import au.net.netstorm.boost.test.core.BoooostCase;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultTimeRangeMasterAtomicTest extends BoooostCase {

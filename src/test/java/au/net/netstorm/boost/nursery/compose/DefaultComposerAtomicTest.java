@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.compose;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 // SUGGEST What to do for equals, hashCode, toString...

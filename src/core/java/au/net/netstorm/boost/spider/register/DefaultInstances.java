@@ -2,6 +2,7 @@ package au.net.netstorm.boost.spider.register;
 
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.nursery.spider.register.DefaultInstanceOfChecker;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.util.type.Implementation;

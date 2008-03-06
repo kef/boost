@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.util.impl;
 
+import au.net.netstorm.boost.nursery.util.impl.DefaultImplMaster;
+import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 

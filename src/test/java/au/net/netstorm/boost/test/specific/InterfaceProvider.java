@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.test.specific;
 
-import au.net.netstorm.boost.util.type.DefaultInterface;
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public class InterfaceProvider implements DataProvider<Interface> {

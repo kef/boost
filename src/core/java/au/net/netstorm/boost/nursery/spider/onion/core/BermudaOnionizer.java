@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.util.array.ArrayMaster;
@@ -8,7 +9,6 @@ import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
 import au.net.netstorm.boost.util.type.Data;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.DefaultTypeMaster;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;

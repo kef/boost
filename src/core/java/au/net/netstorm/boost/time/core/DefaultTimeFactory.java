@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
+import au.net.netstorm.boost.nursery.time.core.DefaultTimeRange;
 
 public final class DefaultTimeFactory implements TimeFactory {
     private final TimeRangeMaster master = new DefaultTimeRangeMaster();

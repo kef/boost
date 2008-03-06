@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.introspect;
 
+import au.net.netstorm.boost.nursery.util.equals.DefaultArraysEqualsMaster;
 import au.net.netstorm.boost.util.equals.ArraysEqualsMaster;
-import au.net.netstorm.boost.util.equals.DefaultArraysEqualsMaster;
 import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.util.nullo.NullMaster;
 import au.net.netstorm.boost.util.type.Immutable;

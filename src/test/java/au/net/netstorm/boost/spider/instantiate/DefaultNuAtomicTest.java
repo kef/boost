@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.spider.instantiate;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;
 

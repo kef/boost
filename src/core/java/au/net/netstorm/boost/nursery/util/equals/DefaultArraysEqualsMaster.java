@@ -1,6 +1,9 @@
-package au.net.netstorm.boost.util.equals;
+package au.net.netstorm.boost.nursery.util.equals;
 
 import java.lang.reflect.Array;
+import au.net.netstorm.boost.util.equals.ArraysEqualsMaster;
+
+// FIX 2299 Up coverage and out of nursery.
 
 // FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 public class DefaultArraysEqualsMaster implements ArraysEqualsMaster {

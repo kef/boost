@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.test.atom;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Immutable;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.NullIntolerant;

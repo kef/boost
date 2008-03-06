@@ -1,14 +1,13 @@
 package au.net.netstorm.boost.test.reflect.checker;
 
+import java.lang.reflect.Method;
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.test.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
-
-import java.lang.reflect.Method;
 
 // FIX SC600 reorder these.
 

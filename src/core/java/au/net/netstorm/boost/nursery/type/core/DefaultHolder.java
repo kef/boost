@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.nursery.type.core;
 
+import au.net.netstorm.boost.nursery.util.equals.DefaultArraysEqualsMaster;
+import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.util.equals.ArraysEqualsMaster;
-import au.net.netstorm.boost.util.equals.DefaultArraysEqualsMaster;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 import au.net.netstorm.boost.util.type.DefaultMarker;
 import au.net.netstorm.boost.util.type.Marker;

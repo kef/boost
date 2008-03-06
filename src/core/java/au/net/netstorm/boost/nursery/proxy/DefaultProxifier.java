@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.proxy;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.TypeMaster;

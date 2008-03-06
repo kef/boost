@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.spider.register;
 
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
+import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
@@ -10,8 +12,6 @@ import au.net.netstorm.boost.test.core.LifecycleTestCase;
 import au.net.netstorm.boost.test.marker.HasFixtures;
 import au.net.netstorm.boost.test.marker.LazyFields;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;

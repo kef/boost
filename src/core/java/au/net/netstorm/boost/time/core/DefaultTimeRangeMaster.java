@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.time.core;
 
+import au.net.netstorm.boost.nursery.time.core.DefaultTimeRange;
+
 public final class DefaultTimeRangeMaster implements TimeRangeMaster {
     public TimeRange shorten(TimeRange range, Duration amount) {
         return bump(range, -amount.millis);

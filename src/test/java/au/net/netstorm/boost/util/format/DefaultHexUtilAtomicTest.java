@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.format;
 
+import au.net.netstorm.boost.nursery.util.format.DefaultHexUtil;
 import au.net.netstorm.boost.test.core.BoooostCase;
 
 public final class DefaultHexUtilAtomicTest extends BoooostCase {

@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.test.random;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.provider.Provider;
 import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.provider.SpecificProvider;
@@ -10,7 +11,6 @@ import au.net.netstorm.boost.test.specific.DataProviders;
 import au.net.netstorm.boost.test.specific.EnumProvider;
 import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRandomProviderAssembler implements RandomProviderAssembler {

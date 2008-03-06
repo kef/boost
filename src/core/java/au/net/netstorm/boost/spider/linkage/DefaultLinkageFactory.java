@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.util.type.DefaultImplementation;
-import au.net.netstorm.boost.util.type.DefaultInterface;
+import java.lang.reflect.Field;
+import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
-
-import java.lang.reflect.Field;
 
 public class DefaultLinkageFactory implements LinkageFactory {
     public Linkage nu(Field field) {

@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.tostring;
 
+import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.separator.Separator;
 

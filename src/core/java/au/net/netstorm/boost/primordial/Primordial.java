@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.primordial;
 
+import au.net.netstorm.boost.nursery.util.equals.FieldBasedEqualsMaster;
+import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.equals.EqualsMaster;
-import au.net.netstorm.boost.util.equals.FieldBasedEqualsMaster;
-import au.net.netstorm.boost.util.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.util.tostring.ToStringMaster;
 
 public class Primordial {

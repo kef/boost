@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.util.type;
 
+import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.primordial.Primordial;
 import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
