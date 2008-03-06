@@ -1,7 +1,14 @@
 March 2008:
 
  * Get coverage up to 100% with cobertura 1.9.
- 
+ * Review possibilities for generics.
+ * Tidy up layers in spider.
+ * Remove ALL nursery dodginess, except things truly in spike mode.
+ * Implement more substantial demo tests.
+ * Introduction to "boost" document.
+ * Examples document.
+ * Split into separate components.
+ * Introduce versioning.  Draw a line in the sand and ship.
 
 March 2006:
 
