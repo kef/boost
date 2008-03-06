@@ -1,4 +1,11 @@
-Just some rough ideas we might use in Boost -- Mr O'Keeffe.
+March 2008:
+
+ * Get coverage up to 100% with cobertura 1.9.
+ 
+
+March 2006:
+
+Just some rough ideas we might use in Boost -- Mr O'Keeffe (circa 2006).
 
  * InstanceProvider - construction vs resolution implementations, see IOC resolve() in easydoc.
  * How do we boostrap instance of InstanceProvider itself? Construct just that one in Primordial or provide a global way of accessing it.
