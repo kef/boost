@@ -10,6 +10,22 @@ March 2008:
  * Split into separate components.
  * Introduce versioning.  Draw a line in the sand and ship.
 
+What is boost:
+
+ * Inversion of control.
+ * Test framework (BoooostCase and test lifecycle with automocks).
+ * Data types.
+ * Reflection utilities.
+ * Primordial.
+ * Log wrapper.
+ * Splitter, event notifier.
+ * Strong types (aka DataHolders).
+ * Time classes.
+ * Closure/Layer support.
+ * Stateless edges.
+ * Data proxies (coming).
+ * Auto Edge (coming).
+
 March 2006:
 
 Just some rough ideas we might use in Boost -- Mr O'Keeffe (circa 2006).
