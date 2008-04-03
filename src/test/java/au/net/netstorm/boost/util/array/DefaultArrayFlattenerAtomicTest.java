@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.util.array;
 
+import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.gunge.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.gunge.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.gunge.reflect.checker.DefaultModifierTestChecker;
+import au.net.netstorm.boost.gunge.reflect.checker.ModifierTestChecker;
 import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.test.core.BoooostCase;
-import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultModifierTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.ModifierTestChecker;
 
 public final class DefaultArrayFlattenerAtomicTest extends BoooostCase {
     private static final ClassTestChecker CLASS_CHECKER = new DefaultClassTestChecker();

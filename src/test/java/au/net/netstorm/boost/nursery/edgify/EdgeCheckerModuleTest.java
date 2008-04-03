@@ -1,16 +1,15 @@
 package au.net.netstorm.boost.nursery.edgify;
 
+import java.io.File;
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.test.aggregator.DefaultFileSystemLocator;
-import au.net.netstorm.boost.test.aggregator.FileSystemLocator;
-import au.net.netstorm.boost.test.aggregator.RegexPattern;
-import au.net.netstorm.boost.test.aggregator.TestClassLocator;
-import au.net.netstorm.boost.test.aggregator.TestRegexPattern;
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.aggregator.DefaultFileSystemLocator;
+import au.net.netstorm.boost.gunge.aggregator.FileSystemLocator;
+import au.net.netstorm.boost.gunge.aggregator.RegexPattern;
+import au.net.netstorm.boost.gunge.aggregator.TestClassLocator;
+import au.net.netstorm.boost.gunge.aggregator.TestRegexPattern;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;
-
-import java.io.File;
 
 // OK ClassDataAbstractionCoupling {
 public final class EdgeCheckerModuleTest extends BoooostCase {

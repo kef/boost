@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
-import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.gunge.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.gunge.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.type.Immutable;
 
 public class DefaultFieldValueSpecAtomicTest extends BoooostCase {

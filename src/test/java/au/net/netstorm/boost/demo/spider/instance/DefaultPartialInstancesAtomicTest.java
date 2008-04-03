@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.ResolvedInstance;

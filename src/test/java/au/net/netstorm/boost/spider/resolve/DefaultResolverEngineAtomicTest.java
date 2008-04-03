@@ -1,5 +1,10 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.gunge.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.gunge.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.nursery.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
@@ -7,11 +12,6 @@ import au.net.netstorm.boost.spider.register.Blueprint;
 import au.net.netstorm.boost.spider.register.Factories;
 import au.net.netstorm.boost.spider.register.Factory;
 import au.net.netstorm.boost.spider.register.Instances;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.test.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.test.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 import au.net.netstorm.boost.util.type.ResolvedInstance;

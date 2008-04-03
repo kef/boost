@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 import junit.framework.Assert;
 
 public final class MinuteOfHourAtomicTest extends BoooostCase {

@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.time.core;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
-import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
-import static au.net.netstorm.boost.time.core.DefaultTimePoint.EPOCH;
-
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static java.lang.Long.MAX_VALUE;
 import static java.lang.Long.MIN_VALUE;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
+import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
+import static au.net.netstorm.boost.time.core.DefaultTimePoint.EPOCH;
 
 // FIX 8888 De-train wreck.
 public final class DefaultTimePointAtomicTest extends BoooostCase {

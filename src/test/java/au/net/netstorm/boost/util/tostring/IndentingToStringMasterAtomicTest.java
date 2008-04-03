@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.tostring;
 
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
-import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.separator.Separator;
 
 // NOTE: Currently doesn't handle graphs, so recursive loops will kill it.

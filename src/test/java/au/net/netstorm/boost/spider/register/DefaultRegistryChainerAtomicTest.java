@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.spider.register;
 
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.InjectableTest;
+import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.chain.Chain;
 import au.net.netstorm.boost.spider.chain.DefaultChain;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.InjectableTest;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 

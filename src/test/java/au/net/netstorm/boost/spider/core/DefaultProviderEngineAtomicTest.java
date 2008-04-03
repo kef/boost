@@ -1,5 +1,13 @@
 package au.net.netstorm.boost.spider.core;
 
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.InjectableSubject;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.gunge.reflect.util.DefaultModifierTestUtil;
+import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.gunge.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
@@ -7,14 +15,6 @@ import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.InjectableSubject;
-import au.net.netstorm.boost.test.marker.LazyFields;
-import au.net.netstorm.boost.test.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.DefaultModifierTestUtil;
-import au.net.netstorm.boost.test.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.test.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.util.type.BaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;

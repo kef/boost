@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.util.array;
 
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.LazyFields;
-
 import java.util.Arrays;
 import java.util.List;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 
 public final class DefaultArrayMasterAtomicTest extends LifecycleTestCase implements LazyFields {
     ArrayMaster subject = new DefaultArrayMaster();

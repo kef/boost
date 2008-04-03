@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.demo.provider;
 
-import au.net.netstorm.boost.test.specific.DataProvider;
-
 import java.util.Random;
+import au.net.netstorm.boost.gunge.specific.DataProvider;
 
 public class HappinessProvider implements DataProvider<Happiness> {
     public Happiness get() {

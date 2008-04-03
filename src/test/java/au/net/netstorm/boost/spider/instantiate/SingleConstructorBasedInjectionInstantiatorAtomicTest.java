@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.instantiate;
 
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
-import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.type.DefaultBaseReference;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.UnresolvedInstance;

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.reflect;
 
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.LazyFields;
 
 public final class DefaultInstantiatorWithProviderAtomicTest extends LifecycleTestCase implements LazyFields {
     // FIX 2290 InstantiatorWithProvider smells real bad.  Sort this out.

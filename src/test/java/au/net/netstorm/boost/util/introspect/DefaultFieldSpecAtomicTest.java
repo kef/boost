@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.introspect;
 
-import au.net.netstorm.boost.test.atom.AtomTestChecker;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.InjectableTest;
-import au.net.netstorm.boost.test.marker.LazyFields;
+import au.net.netstorm.boost.gunge.atom.AtomTestChecker;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.InjectableTest;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 
 public class DefaultFieldSpecAtomicTest extends LifecycleTestCase implements InjectableTest, LazyFields {
     FieldSpec f1 = new DefaultFieldSpec("name", String.class);

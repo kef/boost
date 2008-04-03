@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.type.core;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 
 // FIX BREADCRUMB  97098 Complete me.
 public final class DefaultHolderAtomicTest extends BoooostCase {

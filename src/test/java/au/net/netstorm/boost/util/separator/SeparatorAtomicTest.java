@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.util.separator;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
-import au.net.netstorm.boost.test.reflect.util.DefaultClassTestUtil;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.gunge.reflect.util.DefaultClassTestUtil;
 
 public final class SeparatorAtomicTest extends BoooostCase {
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.io;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 
 public final class DefaultStreamConverterAtomicTest extends BoooostCase {
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];

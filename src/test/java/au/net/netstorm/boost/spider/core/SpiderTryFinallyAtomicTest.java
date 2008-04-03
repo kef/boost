@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryFinally;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.LazyFields;
 
 public final class SpiderTryFinallyAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     TryFinally subject;

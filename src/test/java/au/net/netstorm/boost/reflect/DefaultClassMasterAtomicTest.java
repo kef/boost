@@ -4,8 +4,8 @@ import java.lang.reflect.Proxy;
 import java.rmi.Remote;
 import java.security.PrivateKey;
 import java.util.Collection;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
-import au.net.netstorm.boost.test.core.BoooostCase;
 import au.net.netstorm.boost.util.type.Interface;
 
 public class DefaultClassMasterAtomicTest extends BoooostCase {

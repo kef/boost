@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.util.collection;
 
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.LazyFields;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 
 public final class DefaultCollectionMasterAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     CollectionMaster subject;

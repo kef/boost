@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.InjectableTest;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.InjectableTest;
 
 public final class DefaultClosuresAtomicTest extends LifecycleTestCase implements InjectableTest {
     Closures subject;

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 
 public final class DayInMonthAtomicTest extends BoooostCase {
     public void testNullsInvalidInConstructor() {

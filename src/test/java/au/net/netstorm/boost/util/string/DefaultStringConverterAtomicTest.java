@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.util.string;
 
-import au.net.netstorm.boost.edge.java.io.EdgeUnsupportedEncodingException;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.LazyFields;
-
 import java.io.UnsupportedEncodingException;
+import au.net.netstorm.boost.edge.java.io.EdgeUnsupportedEncodingException;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 
 public final class DefaultStringConverterAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String ENCODING = "UTF-8";

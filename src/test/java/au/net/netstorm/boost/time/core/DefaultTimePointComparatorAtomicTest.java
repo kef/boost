@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.core;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
 import static au.net.netstorm.boost.time.core.DefaultTimePoint.EPOCH;
 

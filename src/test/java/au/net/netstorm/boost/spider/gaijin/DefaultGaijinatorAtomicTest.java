@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.gaijin;
 
-import au.net.netstorm.boost.test.core.BoooostCase;
+import au.net.netstorm.boost.gunge.core.BoooostCase;
 
 public final class DefaultGaijinatorAtomicTest extends BoooostCase {
     public void testGaijin() {

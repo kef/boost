@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.Method;
-import au.net.netstorm.boost.test.core.LifecycleTestCase;
-import au.net.netstorm.boost.test.marker.HasFixtures;
-import au.net.netstorm.boost.test.marker.LazyFields;
+import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.gunge.marker.HasFixtures;
+import au.net.netstorm.boost.gunge.marker.LazyFields;
 
 public final class DefaultTryFinallyLayerAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     UnknownKnotException throwable = new UnknownKnotException();
