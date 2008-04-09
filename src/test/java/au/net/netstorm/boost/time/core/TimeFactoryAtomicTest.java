@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.time.core;
 
 import java.util.Date;
-import au.net.netstorm.boost.gunge.core.BoooostCase;
 import au.net.netstorm.boost.nursery.time.core.DefaultTimeRange;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 // FIX SC511 This belongs in "edge".
 

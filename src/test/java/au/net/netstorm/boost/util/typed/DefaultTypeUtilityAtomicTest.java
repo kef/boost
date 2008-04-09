@@ -2,9 +2,9 @@ package au.net.netstorm.boost.util.typed;
 
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 // FIX BREADCRUMB 8888 Tidy
 public final class DefaultTypeUtilityAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {

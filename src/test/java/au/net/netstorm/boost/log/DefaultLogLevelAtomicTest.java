@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.log;
 
-import au.net.netstorm.boost.gunge.atom.ConstructorNullDataChecker;
-import au.net.netstorm.boost.gunge.atom.DataChecker;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.marker.InjectableTest;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.provider.Random;
+import au.net.netstorm.boost.sniper.atom.ConstructorNullDataChecker;
+import au.net.netstorm.boost.sniper.atom.DataChecker;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.InjectableTest;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;

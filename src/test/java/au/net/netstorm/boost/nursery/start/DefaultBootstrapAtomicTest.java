@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.start;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public class DefaultBootstrapAtomicTest extends BoooostCase {
     public void testAction() {

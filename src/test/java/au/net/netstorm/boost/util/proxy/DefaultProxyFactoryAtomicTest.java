@@ -2,11 +2,11 @@ package au.net.netstorm.boost.util.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.util.Map;
-import au.net.netstorm.boost.gunge.core.BoooostCase;
-import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.nursery.compose.MockLayer;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.util.type.Interface;
 

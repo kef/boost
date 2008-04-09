@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.demo.parallel;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
-import au.net.netstorm.boost.gunge.parallel.DefaultThreadRunner;
-import au.net.netstorm.boost.gunge.parallel.Errors;
-import au.net.netstorm.boost.gunge.parallel.ThreadRunner;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.sniper.parallel.DefaultThreadRunner;
+import au.net.netstorm.boost.sniper.parallel.Errors;
+import au.net.netstorm.boost.sniper.parallel.ThreadRunner;
 
 public final class ResolveParallelDemoTest extends LifecycleTestCase implements LazyFields {
     private static final Integer NUM_THREADS = 2;

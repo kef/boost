@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class MonthSpecAtomicTest extends BoooostCase {
     // FIX SC507 Check for other NULL in time.core.  This and it probably have a lot of duplication.

@@ -1,21 +1,21 @@
 package au.net.netstorm.boost.demo.provider;
 
 import java.lang.reflect.Proxy;
-import au.net.netstorm.boost.gunge.automock.DefaultMockSupport;
-import au.net.netstorm.boost.gunge.automock.MockSupport;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.random.DefaultRandomProviderAssembler;
-import au.net.netstorm.boost.gunge.random.ImplementationNotFoundException;
-import au.net.netstorm.boost.gunge.random.InterfaceRandomProvider;
-import au.net.netstorm.boost.gunge.random.RandomProviderAssembler;
-import au.net.netstorm.boost.gunge.specific.DataProviders;
-import au.net.netstorm.boost.gunge.specific.DefaultDataProviders;
-import au.net.netstorm.boost.gunge.specific.DefaultEnumProvider;
-import au.net.netstorm.boost.gunge.specific.EnumProvider;
 import au.net.netstorm.boost.provider.NotProvidedException;
 import au.net.netstorm.boost.provider.Random;
 import au.net.netstorm.boost.provider.SpecificProvider;
+import au.net.netstorm.boost.sniper.automock.DefaultMockSupport;
+import au.net.netstorm.boost.sniper.automock.MockSupport;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.random.DefaultRandomProviderAssembler;
+import au.net.netstorm.boost.sniper.random.ImplementationNotFoundException;
+import au.net.netstorm.boost.sniper.random.InterfaceRandomProvider;
+import au.net.netstorm.boost.sniper.random.RandomProviderAssembler;
+import au.net.netstorm.boost.sniper.specific.DataProviders;
+import au.net.netstorm.boost.sniper.specific.DefaultDataProviders;
+import au.net.netstorm.boost.sniper.specific.DefaultEnumProvider;
+import au.net.netstorm.boost.sniper.specific.EnumProvider;
 
 public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase implements HasFixtures {
     private MockSupport mocks = new DefaultMockSupport();

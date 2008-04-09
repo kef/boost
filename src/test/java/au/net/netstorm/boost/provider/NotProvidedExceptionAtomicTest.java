@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.provider;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
-import au.net.netstorm.boost.gunge.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.gunge.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
 
 public final class NotProvidedExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     ClassTestChecker classer = new DefaultClassTestChecker();

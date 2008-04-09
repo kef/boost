@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;

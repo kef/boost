@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.reflect;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 // FIX SC600 Reinstate tests.  Do not use JMock. Actually do use it now via new implicit mocking facilities.
 public class DefaultReflectMasterAtomicTest extends BoooostCase {

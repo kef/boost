@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
 import au.net.netstorm.boost.demo.spider.core.Spider;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
 import au.net.netstorm.boost.nursery.spider.core.BoostSpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
 import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 import au.net.netstorm.boost.spider.instantiate.Nu;

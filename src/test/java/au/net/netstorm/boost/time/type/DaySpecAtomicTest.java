@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
 import java.util.Calendar;
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DaySpecAtomicTest extends BoooostCase {
     public void testValidDays() {

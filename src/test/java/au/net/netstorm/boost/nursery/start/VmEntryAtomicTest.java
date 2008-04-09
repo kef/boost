@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.nursery.start;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
-import au.net.netstorm.boost.gunge.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.gunge.reflect.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.gunge.reflect.util.ClassTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.DefaultClassTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
+import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.sniper.reflect.util.ClassTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultClassTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 

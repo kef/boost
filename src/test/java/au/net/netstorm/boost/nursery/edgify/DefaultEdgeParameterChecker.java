@@ -4,10 +4,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import au.net.netstorm.boost.gunge.reflect.util.DefaultModifierTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.ModifierTestUtil;
 import au.net.netstorm.boost.reflect.ClassMaster;
 import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultModifierTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.ModifierTestUtil;
 import junit.framework.Assert;
 
 public final class DefaultEdgeParameterChecker implements EdgeChecker {

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
-import au.net.netstorm.boost.gunge.reflect.util.DefaultClassTestUtil;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultClassTestUtil;
 
 public final class TimeConstantsAtomicTest extends BoooostCase {
     // FIX SC600 Strengthen this to ensure constructor is private.

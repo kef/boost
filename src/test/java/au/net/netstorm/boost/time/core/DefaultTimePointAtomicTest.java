@@ -4,7 +4,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static java.lang.Long.MAX_VALUE;
 import static java.lang.Long.MIN_VALUE;
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
 import static au.net.netstorm.boost.time.core.DefaultTimePoint.EPOCH;
 

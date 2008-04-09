@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.Method;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultScrunchLayerAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {

@@ -2,12 +2,12 @@ package au.net.netstorm.boost.nursery.edgify;
 
 import java.io.File;
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.gunge.aggregator.DefaultFileSystemLocator;
-import au.net.netstorm.boost.gunge.aggregator.FileSystemLocator;
-import au.net.netstorm.boost.gunge.aggregator.RegexPattern;
-import au.net.netstorm.boost.gunge.aggregator.TestClassLocator;
-import au.net.netstorm.boost.gunge.aggregator.TestRegexPattern;
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.aggregator.DefaultFileSystemLocator;
+import au.net.netstorm.boost.sniper.aggregator.FileSystemLocator;
+import au.net.netstorm.boost.sniper.aggregator.RegexPattern;
+import au.net.netstorm.boost.sniper.aggregator.TestClassLocator;
+import au.net.netstorm.boost.sniper.aggregator.TestRegexPattern;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.util.array.ArrayMaster;
 import au.net.netstorm.boost.util.array.DefaultArrayMaster;
 

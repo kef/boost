@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.linkage;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.InjectableTest;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.InjectableTest;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.InjectableTest;
-import au.net.netstorm.boost.gunge.marker.OverlaysWeb;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.InjectableTest;
+import au.net.netstorm.boost.sniper.marker.OverlaysWeb;
 import au.net.netstorm.boost.spider.register.Registry;
 
 // FIX 2248 Complete.

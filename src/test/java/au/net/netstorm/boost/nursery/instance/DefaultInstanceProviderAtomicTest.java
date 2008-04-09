@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.instance;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultInstanceProviderAtomicTest extends BoooostCase {
     //    private static final Integer INTEGER_23 = new Integer(23);

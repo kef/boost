@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.indent;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.util.separator.Separator;
 
 public class DefaultIndenterMasterAtomicTest extends BoooostCase {

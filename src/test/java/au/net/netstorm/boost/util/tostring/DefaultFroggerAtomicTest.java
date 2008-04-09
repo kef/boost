@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.tostring;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import junit.framework.Assert;
 
 public final class DefaultFroggerAtomicTest extends LifecycleTestCase {

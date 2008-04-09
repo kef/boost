@@ -3,8 +3,8 @@ package au.net.netstorm.boost.util.exception;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
 import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultThrowableMasterAtomicTest extends LifecycleTestCase implements LazyFields {
     private static final Throwable EXCEPTION_1 = new Exception();

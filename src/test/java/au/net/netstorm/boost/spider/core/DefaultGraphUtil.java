@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
 import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
 public final class DefaultGraphUtil implements GraphUtil {
     private final FieldTestUtil fielder = new DefaultFieldTestUtil();

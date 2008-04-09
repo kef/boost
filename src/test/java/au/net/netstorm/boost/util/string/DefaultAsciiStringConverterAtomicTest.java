@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.string;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.marker.InjectableSubject;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.InjectableSubject;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.util.type.AsciiBytes;
 
 public final class DefaultAsciiStringConverterAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, LazyFields {

@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.util.type;
 
-import au.net.netstorm.boost.gunge.atom.AtomTestChecker;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.InjectableTest;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.atom.AtomTestChecker;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.InjectableTest;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.util.introspect.FieldSpec;
 

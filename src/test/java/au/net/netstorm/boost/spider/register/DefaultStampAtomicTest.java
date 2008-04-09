@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
-import au.net.netstorm.boost.gunge.reflect.checker.ClassTestChecker;
-import au.net.netstorm.boost.gunge.reflect.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
+import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
 public final class DefaultStampAtomicTest extends LifecycleTestCase implements LazyFields {
     FieldTestUtil fielder = new DefaultFieldTestUtil();

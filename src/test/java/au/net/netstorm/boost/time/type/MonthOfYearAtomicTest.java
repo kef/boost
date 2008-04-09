@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class MonthOfYearAtomicTest extends BoooostCase {
     private static final MonthOfYear JANUARY = MonthOfYear.JANUARY;

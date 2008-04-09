@@ -3,9 +3,9 @@ package au.net.netstorm.boost.demo.automock;
 import java.lang.reflect.Proxy;
 import java.util.List;
 import java.util.Map;
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.HasFixtures;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 import org.jmock.util.NotImplementedException;
 
 public final class WorkingAutoMockDemoTest extends LifecycleTestCase implements HasFixtures, LazyFields {

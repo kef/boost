@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.exception;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class NotImplementedExceptionAtomicTest extends BoooostCase {
     // FIX SC050 Tighten this up.

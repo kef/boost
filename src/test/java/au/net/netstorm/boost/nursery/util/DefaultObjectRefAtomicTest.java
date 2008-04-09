@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.util;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultObjectRefAtomicTest extends LifecycleTestCase implements LazyFields {
     Object obj;

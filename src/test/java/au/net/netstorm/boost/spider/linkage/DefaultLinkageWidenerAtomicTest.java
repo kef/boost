@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.util.type.Implementation;
 import au.net.netstorm.boost.util.type.Interface;
 

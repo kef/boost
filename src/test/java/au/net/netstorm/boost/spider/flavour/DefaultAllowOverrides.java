@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.flavour;
 
-import au.net.netstorm.boost.gunge.reflect.util.DefaultFieldTestUtil;
-import au.net.netstorm.boost.gunge.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
 public class DefaultAllowOverrides implements AllowOverrides {
     FieldTestUtil fielder = new DefaultFieldTestUtil();

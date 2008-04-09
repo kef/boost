@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.util.type;
 
-import au.net.netstorm.boost.gunge.core.BoooostCase;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultDataAtomicTest extends BoooostCase {
     public void testExtends() {

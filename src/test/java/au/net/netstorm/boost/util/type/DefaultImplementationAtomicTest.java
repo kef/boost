@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.util.type;
 
-import au.net.netstorm.boost.gunge.core.LifecycleTestCase;
-import au.net.netstorm.boost.gunge.marker.LazyFields;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
+import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultImplementationAtomicTest extends LifecycleTestCase implements LazyFields {
     public void testFailsWithInterface() {

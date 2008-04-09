@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.gunge.atom.DataAtomTestCase;
+import au.net.netstorm.boost.sniper.atom.DataAtomTestCase;
 
 // FIX SC600 Complete or remove.
 public final class SimpleDataAtomDemoTest extends DataAtomTestCase {
