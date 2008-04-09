@@ -3,9 +3,9 @@ package au.net.netstorm.boost.sniper.atom;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.ModifierTestUtil;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 class PropertyMethodStructureChecker implements DataChecker {

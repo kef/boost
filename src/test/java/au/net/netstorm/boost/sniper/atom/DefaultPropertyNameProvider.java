@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.atom;
 
-import au.net.netstorm.boost.util.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 
 final class DefaultPropertyNameProvider implements PropertyNameProvider {
     private final Captialiser captialiser = new DefaultCaptialiser();

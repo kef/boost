@@ -2,6 +2,15 @@ package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
+import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
+import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.TypeMaster;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.nursery.proxy.DefaultProxfierWirer;
 import au.net.netstorm.boost.nursery.proxy.Proxifier;
 import au.net.netstorm.boost.nursery.proxy.ProxifierWirer;
@@ -12,15 +21,6 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultTypeMaster;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.TypeMaster;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 // FIX ()   2255 Split.
 // SUGGEST: Strongly type Object[] as Resolved[] in provide(...).

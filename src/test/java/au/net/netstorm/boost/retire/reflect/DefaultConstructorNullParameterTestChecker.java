@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.retire.reflect;
 
+import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
+import au.net.netstorm.boost.gunge.nullo.NullMaster;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
-import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
-import au.net.netstorm.boost.util.nullo.NullMaster;
 
 public final class DefaultConstructorNullParameterTestChecker implements ConstructorNullParameterTestChecker {
     private final NullMaster nullMaster = new DefaultNullMaster();

@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.compose;
 
+import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
 
 // SUGGEST What to do for equals, hashCode, toString...
 // SUGGEST Move to using MockInvocationHandler.

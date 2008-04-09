@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.demo.data;
 
+import au.net.netstorm.boost.gunge.introspect.DefaultFieldSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 import au.net.netstorm.boost.sniper.atom.AtomTestChecker;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.introspect.DefaultFieldSpec;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.AssertionFailedError;
 
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.

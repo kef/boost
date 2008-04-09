@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.instantiate;
 
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultNu implements Nu {
     private final ProviderEngine engine;

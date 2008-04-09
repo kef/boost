@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -12,9 +15,6 @@ import au.net.netstorm.boost.spider.register.Blueprint;
 import au.net.netstorm.boost.spider.register.Factories;
 import au.net.netstorm.boost.spider.register.Factory;
 import au.net.netstorm.boost.spider.register.Instances;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     ClassTestChecker testChecker = new DefaultClassTestChecker();

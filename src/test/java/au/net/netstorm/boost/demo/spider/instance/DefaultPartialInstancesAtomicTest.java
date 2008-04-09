@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
+import au.net.netstorm.boost.gunge.type.BaseReference;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.util.type.BaseReference;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     FieldTestUtil fielder = new DefaultFieldTestUtil();

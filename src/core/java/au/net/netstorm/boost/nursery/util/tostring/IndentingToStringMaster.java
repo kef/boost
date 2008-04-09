@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.nursery.util.tostring;
 
 import java.lang.reflect.Array;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.indent.DefaultIndenterMaster;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.separator.Separator;
-import au.net.netstorm.boost.util.tostring.ToStringMaster;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
+import au.net.netstorm.boost.gunge.indent.DefaultIndenterMaster;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
+import au.net.netstorm.boost.gunge.separator.Separator;
+import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 
 // FIX 2299 Up coverage and out of nursery.
 public class IndentingToStringMaster implements ToStringMaster {

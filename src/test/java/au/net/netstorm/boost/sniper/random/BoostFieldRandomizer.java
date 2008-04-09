@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.Provider;
 import au.net.netstorm.boost.sniper.field.BoostField;
 
 public final class BoostFieldRandomizer implements Randomizer {

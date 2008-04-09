@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.compose;
 
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public final class DefaultComposer implements Composer {
     public DefaultComposer(ProxyFactory factory) {

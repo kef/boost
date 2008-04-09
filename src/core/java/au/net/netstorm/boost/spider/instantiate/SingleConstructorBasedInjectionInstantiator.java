@@ -1,14 +1,13 @@
 package au.net.netstorm.boost.spider.instantiate;
 
+import java.lang.reflect.Constructor;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
-
-import java.lang.reflect.Constructor;
+import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 
 public final class SingleConstructorBasedInjectionInstantiator implements Instantiator {
     private ReflectMaster reflectMaster = new DefaultReflectMaster();

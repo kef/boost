@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.util.equals;
 
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.equals.EqualsMaster;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
+import au.net.netstorm.boost.gunge.equals.EqualsMaster;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 
 // FIX 2299 Up coverage and out of nursery.
 public final class FieldBasedEqualsMaster implements EqualsMaster {

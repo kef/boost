@@ -2,6 +2,10 @@ package au.net.netstorm.boost.spider.register;
 
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -11,10 +15,6 @@ import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultInstancesAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     FieldTestUtil fielder = new DefaultFieldTestUtil();

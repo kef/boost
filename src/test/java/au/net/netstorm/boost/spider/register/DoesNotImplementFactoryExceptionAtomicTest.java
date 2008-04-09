@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.register;
 
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DoesNotImplementFactoryExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     DoesNotImplementFactoryException subject;

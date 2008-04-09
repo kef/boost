@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.sniper.atom;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 import au.net.netstorm.boost.sniper.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.sniper.field.FieldSpecTestUtil;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 public final class ConstructorDataChecker implements DataChecker {

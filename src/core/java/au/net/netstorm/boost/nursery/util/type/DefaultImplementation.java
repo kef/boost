@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.util.type;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.Implementation;
 
 // FIX 2299 Up coverage and out of nursery.
 public final class DefaultImplementation<T> extends Primordial implements Implementation<T> {

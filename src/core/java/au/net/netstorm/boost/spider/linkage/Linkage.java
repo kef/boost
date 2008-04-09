@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public interface Linkage {
     Implementation getHost();

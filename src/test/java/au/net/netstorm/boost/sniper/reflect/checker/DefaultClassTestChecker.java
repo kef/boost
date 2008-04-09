@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.sniper.reflect.checker;
 
 import java.lang.reflect.Method;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.sniper.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultClassTestUtil;
-import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 // FIX SC600 reorder these.

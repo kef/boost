@@ -2,6 +2,9 @@ package au.net.netstorm.boost.demo.spider.core;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
+import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
@@ -32,9 +35,6 @@ import au.net.netstorm.boost.spider.register.Instances;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
 
 // SUGGEST: No need to return everything, just register the relevant parts as part of construction ;)
 

@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.reflect.ReflectMethodMaster;
-import au.net.netstorm.boost.util.introspect.MethodSpec;
+import au.net.netstorm.boost.bullet.mirror.ReflectMethodMaster;
+import au.net.netstorm.boost.gunge.introspect.MethodSpec;
 
 // FIX 2299 This needs coverage up to 100%.
 

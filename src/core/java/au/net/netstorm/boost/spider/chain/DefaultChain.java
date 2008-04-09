@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.chain;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public final class DefaultChain extends Primordial implements Chain {
     private final Interface type;

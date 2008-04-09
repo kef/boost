@@ -3,7 +3,7 @@ package au.net.netstorm.boost.sniper.atom;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
-import au.net.netstorm.boost.util.type.Immutable;
+import au.net.netstorm.boost.gunge.type.Immutable;
 
 public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
     private final Set registered = new HashSet();

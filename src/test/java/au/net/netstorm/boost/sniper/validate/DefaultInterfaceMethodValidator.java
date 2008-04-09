@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
 
 public final class DefaultInterfaceMethodValidator implements InterfaceMethodValidator {
     private final ReflectMaster reflectMaster = new DefaultReflectMaster();

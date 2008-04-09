@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.automock;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.Provider;
 import au.net.netstorm.boost.sniper.inject.SubjectInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 

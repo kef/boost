@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.spider.inject.core;
 
+import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
 
 public final class DefaultInjectorAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     Injector subject;

@@ -1,23 +1,23 @@
 package au.net.netstorm.boost.sniper.random;
 
+import au.net.netstorm.boost.bullet.mirror.DefaultInstantiatorWithProvider;
+import au.net.netstorm.boost.bullet.mirror.InstantiatorWithProvider;
+import au.net.netstorm.boost.bullet.provider.NotProvidedException;
+import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.impl.DefaultImplMapper;
+import au.net.netstorm.boost.gunge.impl.ImplMapper;
+import au.net.netstorm.boost.gunge.impl.ImplMaster;
+import au.net.netstorm.boost.gunge.type.Data;
+import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.TypeMaster;
 import au.net.netstorm.boost.nursery.util.impl.DefaultImplMaster;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
-import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.provider.SpecificProvider;
-import au.net.netstorm.boost.reflect.DefaultInstantiatorWithProvider;
-import au.net.netstorm.boost.reflect.InstantiatorWithProvider;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;
-import au.net.netstorm.boost.util.impl.DefaultImplMapper;
-import au.net.netstorm.boost.util.impl.ImplMapper;
-import au.net.netstorm.boost.util.impl.ImplMaster;
-import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.util.type.DefaultTypeMaster;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.TypeMaster;
 
 public final class InterfaceRandomProvider implements SpecificProvider {
     private static final Interface DATA = new DefaultInterface(Data.class);

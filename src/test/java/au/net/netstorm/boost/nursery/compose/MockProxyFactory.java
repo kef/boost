@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.compose;
 
+import au.net.netstorm.boost.gunge.exception.NotImplementedException;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.spider.onion.core.Layer;
-import au.net.netstorm.boost.util.exception.NotImplementedException;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 final class MockProxyFactory extends Assert implements ProxyFactory {

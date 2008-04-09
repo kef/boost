@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.start;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
-import au.net.netstorm.boost.util.nullo.NullMaster;
-import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
+import au.net.netstorm.boost.gunge.nullo.NullMaster;
+import au.net.netstorm.boost.gunge.type.Data;
 
 public final class VmStyle extends Primordial implements Data {
     private final String style;

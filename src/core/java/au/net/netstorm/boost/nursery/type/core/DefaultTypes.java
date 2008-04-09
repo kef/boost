@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.nursery.type.core;
 
+import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.spider.register.Blueprint;
 import au.net.netstorm.boost.spider.register.Factories;
 import au.net.netstorm.boost.spider.register.Factory;
-import au.net.netstorm.boost.util.type.Implementation;
 
 // FIX (Nov 21, 2007) 2233 Move out of nursery
 public class DefaultTypes implements Types {

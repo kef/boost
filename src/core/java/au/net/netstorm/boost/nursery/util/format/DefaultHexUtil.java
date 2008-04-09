@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.util.format;
 
-import au.net.netstorm.boost.util.format.HexUtil;
+import au.net.netstorm.boost.gunge.format.HexUtil;
 
 // FIX 2299 Up coverage and out of nursery.
 public final class DefaultHexUtil implements HexUtil {

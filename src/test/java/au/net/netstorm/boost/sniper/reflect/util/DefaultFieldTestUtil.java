@@ -5,8 +5,8 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.util.exception.NotImplementedException;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+import au.net.netstorm.boost.gunge.exception.NotImplementedException;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 
 public class DefaultFieldTestUtil implements FieldTestUtil {
     private static final Object MARKER_STATIC_FIELD = null;

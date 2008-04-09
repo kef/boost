@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.sniper.lifecycle;
 
+import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.spider.inject.core.Injector;
-import au.net.netstorm.boost.util.type.Marker;
 
 public final class InjectTest implements TestLifecycleBlock {
     Injector injector;

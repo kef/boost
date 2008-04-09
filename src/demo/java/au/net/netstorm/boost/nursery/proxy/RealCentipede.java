@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 class RealCentipede extends Primordial implements Centipede {
     private final String name;

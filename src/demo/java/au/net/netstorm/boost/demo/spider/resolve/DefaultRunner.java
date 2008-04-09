@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 final class DefaultRunner extends Primordial implements Runner {
     Ball ball;

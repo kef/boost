@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.provider;
 
 import java.lang.reflect.Proxy;
-import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.provider.Random;
-import au.net.netstorm.boost.provider.SpecificProvider;
+import au.net.netstorm.boost.bullet.provider.NotProvidedException;
+import au.net.netstorm.boost.bullet.provider.Random;
+import au.net.netstorm.boost.bullet.provider.SpecificProvider;
 import au.net.netstorm.boost.sniper.automock.DefaultMockSupport;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;

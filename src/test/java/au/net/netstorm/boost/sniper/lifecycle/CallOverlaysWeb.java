@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.sniper.lifecycle;
 
+import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.marker.OverlaysWeb;
 import au.net.netstorm.boost.spider.flavour.AllowOverrides;
 import au.net.netstorm.boost.spider.register.Registry;
-import au.net.netstorm.boost.util.type.Marker;
 
 public final class CallOverlaysWeb implements TestLifecycleBlock {
     Registry registry;

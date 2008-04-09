@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.util.type.LooseData;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.Data;
+import au.net.netstorm.boost.gunge.type.LooseData;
 
 final class NullsAreIllegalData extends Primordial implements Data, LooseData {
     private final String guitar;

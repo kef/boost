@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.start;
 
+import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
@@ -7,8 +9,6 @@ import au.net.netstorm.boost.sniper.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultClassTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
 
 // SUGGEST Ensure test for private constructor.
 public class VmEntryAtomicTest extends BoooostCase {

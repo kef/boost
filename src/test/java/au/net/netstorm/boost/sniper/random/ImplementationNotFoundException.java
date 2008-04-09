@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.provider.ProviderException;
+import au.net.netstorm.boost.bullet.provider.ProviderException;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.specific.DataProvider;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class ImplementationNotFoundException extends ProviderException {
     private static final String DATA_PROVIDER = DataProvider.class.getName();

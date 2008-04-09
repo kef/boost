@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.util.type.Immutable;
+import au.net.netstorm.boost.gunge.type.Immutable;
 
 // OK InterfaceIsType {
 public interface TimeType extends Immutable {

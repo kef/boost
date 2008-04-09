@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.Data;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 
 // FIX 2215 Get rid of this transitional item.
 

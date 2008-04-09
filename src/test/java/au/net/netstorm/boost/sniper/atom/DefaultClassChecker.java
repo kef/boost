@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.sniper.atom;
 
-import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
-import au.net.netstorm.boost.util.type.Interface;
 import junit.framework.Assert;
 
 final class DefaultClassChecker implements ClassChecker {

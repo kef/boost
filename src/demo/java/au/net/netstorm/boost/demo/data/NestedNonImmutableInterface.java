@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.util.type.LooseData;
+import au.net.netstorm.boost.gunge.type.Data;
+import au.net.netstorm.boost.gunge.type.LooseData;
 
 interface NestedNonImmutableInterface extends Data, LooseData {
     String getGuitar();

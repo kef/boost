@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.primordial.BoooostException;
+import au.net.netstorm.boost.bullet.primordial.BoooostException;
+import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Implementation;
 
 public final class WrongRegistrationTypeExceptionAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     Implementation type;

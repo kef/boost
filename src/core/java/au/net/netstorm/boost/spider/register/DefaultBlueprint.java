@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Implementation;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.Implementation;
 
 // FIX 2237 Reinstate null intolerance.
 public final class DefaultBlueprint extends Primordial implements Blueprint {

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.provider;
 
-import au.net.netstorm.boost.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public class DefaultHappiness extends Primordial implements Happiness {
     public static final Happiness COOL = new DefaultHappiness("COOL");

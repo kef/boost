@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.field;
 
-import au.net.netstorm.boost.util.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 
 public final class DefaultFieldSpecTestUtil implements FieldSpecTestUtil {
     public Class[] getTypes(FieldSpec[] fields) {

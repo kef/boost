@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.reflect.checker;
 
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public interface ClassTestChecker {
     void checkImplementsAndFinal(Interface expectedInterface, Class implementationClass);

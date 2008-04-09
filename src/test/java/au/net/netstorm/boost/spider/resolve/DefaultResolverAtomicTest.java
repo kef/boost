@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.spider.resolve;
 
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 public final class DefaultResolverAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     Interface fruity = new DefaultInterface(Fruity.class);

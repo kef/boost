@@ -3,13 +3,13 @@ package au.net.netstorm.boost.nursery.proxy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
+import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.tostring.ToStringMaster;
-import au.net.netstorm.boost.util.type.Interface;
 
 public class DataInvocationHandler extends Primordial implements InvocationHandler {
     private final Interface iFace;

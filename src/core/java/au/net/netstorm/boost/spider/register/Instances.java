@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 
 public interface Instances {
     void put(Interface iface, Implementation impl, ResolvedInstance instance);

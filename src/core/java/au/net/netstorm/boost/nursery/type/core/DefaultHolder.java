@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.nursery.type.core;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
+import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
+import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
+import au.net.netstorm.boost.gunge.type.DefaultMarker;
+import au.net.netstorm.boost.gunge.type.Marker;
+import au.net.netstorm.boost.gunge.type.Sensitive;
 import au.net.netstorm.boost.nursery.util.equals.DefaultArraysEqualsMaster;
 import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.equals.ArraysEqualsMaster;
-import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.tostring.ToStringMaster;
-import au.net.netstorm.boost.util.type.DefaultMarker;
-import au.net.netstorm.boost.util.type.Marker;
-import au.net.netstorm.boost.util.type.Sensitive;
 
 // FIX 2233 Pull out array cloning and delegate - alternatively DefaultArrayHolder<T>?
 // FIX (Nov 21, 2007) 2233 Needs testing.

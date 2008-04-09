@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.sniper.specific;
 
-import au.net.netstorm.boost.provider.Random;
+import au.net.netstorm.boost.bullet.provider.Random;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.time.core.TimePoint;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class BoostDataProviders implements ProvidesData {
     public void register(DataProviders data, EnumProvider enums, Random random) {

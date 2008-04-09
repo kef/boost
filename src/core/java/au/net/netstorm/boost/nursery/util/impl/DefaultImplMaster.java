@@ -3,13 +3,13 @@ package au.net.netstorm.boost.nursery.util.impl;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.gunge.impl.ImplMapper;
+import au.net.netstorm.boost.gunge.impl.ImplMaster;
+import au.net.netstorm.boost.gunge.impl.NoImplementationException;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
-import au.net.netstorm.boost.util.impl.ImplMapper;
-import au.net.netstorm.boost.util.impl.ImplMaster;
-import au.net.netstorm.boost.util.impl.NoImplementationException;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultImplMaster implements ImplMaster {
     private final EdgeClass classer = new DefaultEdgeClass();

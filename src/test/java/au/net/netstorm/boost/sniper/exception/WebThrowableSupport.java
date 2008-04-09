@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.sniper.exception;
 
+import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.spider.flavour.MapException;
 import au.net.netstorm.boost.spider.register.UnresolvedDependencyException;
-import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
 
 public final class WebThrowableSupport implements ThrowableSupport {
-    private static final au.net.netstorm.boost.util.exception.ThrowableMaster THROWABLE_MASTER = new DefaultThrowableMaster();
+    private static final au.net.netstorm.boost.gunge.exception.ThrowableMaster THROWABLE_MASTER = new DefaultThrowableMaster();
     private static final int NOT_FOUND = -1;
 
     public Throwable translate(Throwable t) {

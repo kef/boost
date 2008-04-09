@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.nursery.type.map.holder;
 
+import au.net.netstorm.boost.gunge.typed.TypeUtility;
+import au.net.netstorm.boost.gunge.typed.TypedMap;
 import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.nursery.type.primitive.BooleanHolder;
 import au.net.netstorm.boost.nursery.type.primitive.BytesHolder;
 import au.net.netstorm.boost.nursery.type.primitive.IntegerHolder;
 import au.net.netstorm.boost.nursery.type.primitive.StringHolder;
-import au.net.netstorm.boost.util.typed.TypeUtility;
-import au.net.netstorm.boost.util.typed.TypedMap;
 
 // SUGGEST (Nov 22, 2007): Genericise to get/put.  Hurts in ResultSetHolderMap.
 public final class DefaultHolderMap implements au.net.netstorm.boost.nursery.type.map.holder.HolderMap {

@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 
 public final class DefaultPartialInstances implements PartialInstances {
     private static final ThreadLocal LOCAL_MON = new ThreadLocal();

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.lifecycle;
 
+import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
-import au.net.netstorm.boost.util.type.Marker;
 
 public final class CallSetupFixtures implements TestLifecycleBlock {
     Marker marker;

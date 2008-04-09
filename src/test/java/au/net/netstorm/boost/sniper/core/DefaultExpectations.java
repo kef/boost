@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.core;
 
+import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.nursery.type.core.Holder;
 import au.net.netstorm.boost.sniper.automock.MockExpectations;
-import au.net.netstorm.boost.util.type.Data;
 
 public class DefaultExpectations implements Expectations {
     private final MockExpectations mocks;

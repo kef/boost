@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.spider.core;
 
+import au.net.netstorm.boost.gunge.impl.ImplMaster;
 import au.net.netstorm.boost.nursery.spider.layer.DefaultLayers;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.type.core.DefaultTypes;
@@ -21,7 +22,6 @@ import au.net.netstorm.boost.spider.register.ImplicitFactory;
 import au.net.netstorm.boost.spider.register.Instances;
 import au.net.netstorm.boost.spider.register.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.util.impl.ImplMaster;
 
 // FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.matcher;
 
+import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.sniper.field.BoostField;
-import au.net.netstorm.boost.util.type.Data;
 
 public final class RandomMatcher implements Matcher {
     public boolean matches(BoostField field) {

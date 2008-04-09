@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.provider.SpecificProvider;
+import au.net.netstorm.boost.bullet.provider.NotProvidedException;
+import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.SpecificProvider;
 import au.net.netstorm.boost.sniper.atom.DefaultPrimitiveBoxer;
 import au.net.netstorm.boost.sniper.atom.PrimitiveBoxer;
 

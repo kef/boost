@@ -4,10 +4,10 @@ import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.Random;
+import au.net.netstorm.boost.bullet.provider.NotProvidedException;
+import au.net.netstorm.boost.bullet.provider.SpecificProvider;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.provider.SpecificProvider;
 
 // FIX DEBT SPLIT THIS CLASS!!!
 

@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.nursery.type.map.supa;
 
+import au.net.netstorm.boost.gunge.typed.BoomTypedMapWrite;
+import au.net.netstorm.boost.gunge.typed.DefaultTypedMap;
+import au.net.netstorm.boost.gunge.typed.TypedMap;
+import au.net.netstorm.boost.gunge.typed.TypedMapRead;
+import au.net.netstorm.boost.gunge.typed.TypedMapWrite;
 import au.net.netstorm.boost.nursery.type.map.holder.DefaultHolderMap;
 import au.net.netstorm.boost.nursery.type.map.holder.HolderMap;
 import au.net.netstorm.boost.spider.instantiate.Nu;
-import au.net.netstorm.boost.util.typed.BoomTypedMapWrite;
-import au.net.netstorm.boost.util.typed.DefaultTypedMap;
-import au.net.netstorm.boost.util.typed.TypedMap;
-import au.net.netstorm.boost.util.typed.TypedMapRead;
-import au.net.netstorm.boost.util.typed.TypedMapWrite;
 
 public final class DefaultSuperMapAssembler implements SuperMapAssembler {
     Nu nu;

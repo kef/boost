@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.spider.inject.resolver.core;
 
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.spider.flavour.MapException;
 import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
@@ -9,7 +10,6 @@ import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.spider.register.CannotProvideException;
 import au.net.netstorm.boost.spider.register.UnresolvedDependencyException;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // FIX ()   2237 NURSERY --- Move out of here.  Test still exists.
 public final class DefaultFieldResolver implements FieldResolver {

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.edgify;
 
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import junit.framework.Assert;
 
 public final class DefaultEdgeEdgifierChecker implements EdgeChecker {

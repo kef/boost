@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.register;
 
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.spider.chain.Chain;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 
 public interface RegistryChainer {
     void chain(Registry registry, Chain chain);

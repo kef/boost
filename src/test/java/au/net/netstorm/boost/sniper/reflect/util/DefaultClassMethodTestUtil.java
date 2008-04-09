@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import au.net.netstorm.boost.util.array.ArrayMaster;
-import au.net.netstorm.boost.util.array.DefaultArrayMaster;
+import au.net.netstorm.boost.gunge.array.ArrayMaster;
+import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
 
 // FIX 1887 We need this ... I think.
 

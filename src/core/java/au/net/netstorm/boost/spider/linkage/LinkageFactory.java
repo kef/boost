@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-
 import java.lang.reflect.Field;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public interface LinkageFactory {
     Linkage nu(Field field);

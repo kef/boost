@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.sniper.parallel;
 
-import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
+import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
 
 public class ExceptionAwareRunnable implements Runnable {
-    private au.net.netstorm.boost.util.exception.ThrowableMaster tosser = new DefaultThrowableMaster();
+    private au.net.netstorm.boost.gunge.exception.ThrowableMaster tosser = new DefaultThrowableMaster();
     private final Runnable delegate;
     private final Errors throwables;
 

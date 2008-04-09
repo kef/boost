@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.nursery.edgify;
 
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import junit.framework.Assert;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import junit.framework.Assert;
 
 public final class DefaultEdgeConstructorChecker implements EdgeChecker {
     private static final List CONSTRUCTOR_MODIFIER_EXCEPTIONS = new ArrayList();

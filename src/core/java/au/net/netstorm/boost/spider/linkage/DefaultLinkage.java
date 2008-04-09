@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.linkage;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 final class DefaultLinkage extends Primordial implements Linkage {
     private final Implementation host;

@@ -1,19 +1,19 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
+import au.net.netstorm.boost.gunge.array.ArrayMaster;
+import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
+import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.Data;
+import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
+import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.TypeMaster;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.util.array.ArrayMaster;
-import au.net.netstorm.boost.util.array.DefaultArrayMaster;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Data;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.DefaultTypeMaster;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.TypeMaster;
 
 // FIX 1887 Use the Onion interface to mark the front door proxy.
 // FIX 1887 Create a utility to determine whether an object reference is an onion or not.

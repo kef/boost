@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.sniper.reflect.util;
 
 import java.lang.reflect.Method;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.introspect.DefaultMethodSpec;
-import au.net.netstorm.boost.util.introspect.MethodSpec;
+import au.net.netstorm.boost.gunge.introspect.DefaultMethodSpec;
+import au.net.netstorm.boost.gunge.introspect.MethodSpec;
 import junit.framework.Assert;
 
 public class DefaultMethodTestUtil implements MethodTestUtil {

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.atom;
 
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultMethodTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.MethodTestUtil;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class DefaultPropertyAccessor implements PropertyAccessor {
     private static final Object[] NO_ARGUMENTS = null;

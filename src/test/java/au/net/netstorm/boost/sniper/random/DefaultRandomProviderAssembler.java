@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.sniper.random;
 
+import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.Random;
+import au.net.netstorm.boost.bullet.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
-import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.provider.Random;
-import au.net.netstorm.boost.provider.SpecificProvider;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
-import au.net.netstorm.boost.util.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.util.proxy.ProxyFactory;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultRandomProviderAssembler implements RandomProviderAssembler {
     private static final Interface RANDOM_PROVIDER = new DefaultInterface(SpecificProvider.class);

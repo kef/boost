@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.sniper.lifecycle;
 
-import au.net.netstorm.boost.provider.Random;
+import au.net.netstorm.boost.bullet.provider.Random;
+import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;
-import au.net.netstorm.boost.util.type.Marker;
 
 public final class DataRegisterer implements TestLifecycleBlock {
     DataProviders data;

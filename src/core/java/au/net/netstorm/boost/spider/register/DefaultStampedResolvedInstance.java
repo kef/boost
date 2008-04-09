@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 
 public final class DefaultStampedResolvedInstance extends Primordial implements StampedResolvedInstance {
     private final ResolvedInstance instance;

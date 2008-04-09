@@ -1,5 +1,9 @@
 package au.net.netstorm.boost.spider.core;
 
+import au.net.netstorm.boost.gunge.type.BaseReference;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
@@ -15,10 +19,6 @@ import au.net.netstorm.boost.spider.gaijin.Barbarian;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
-import au.net.netstorm.boost.util.type.BaseReference;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // SUGGEST: Moving constructor call logic out of here into a delegate will make the test a LOT simpler.
 public final class DefaultProviderEngineAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields, InjectableSubject {

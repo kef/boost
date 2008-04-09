@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.spider.core;
 
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import au.net.netstorm.boost.util.impl.ImplMapper;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import au.net.netstorm.boost.gunge.impl.ImplMapper;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public class PackageImplMapper implements ImplMapper {
     private ClassMaster master = new DefaultClassMaster();

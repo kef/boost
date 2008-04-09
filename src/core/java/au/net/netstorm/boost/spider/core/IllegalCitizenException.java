@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.primordial.PrimordialException;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.bullet.primordial.PrimordialException;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public final class IllegalCitizenException extends PrimordialException {
     public IllegalCitizenException(Interface marker, Implementation impl) {

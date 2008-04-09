@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.nursery.edgify;
 
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
-import junit.framework.Assert;
-
 import java.util.ArrayList;
 import java.util.List;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import junit.framework.Assert;
 
 public final class DefaultEdgePackageChecker implements EdgeChecker {
     private static final String DEFAULT_EDGE = "DefaultEdge";

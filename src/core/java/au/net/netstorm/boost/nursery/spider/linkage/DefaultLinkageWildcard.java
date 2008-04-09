@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.spider.linkage;
 
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 
 // FIX ()  2237 Perhaps remove Linkage nulls by making different Linkage objects.
 public final class DefaultLinkageWildcard implements LinkageWildcard {

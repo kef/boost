@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.spider.linkage;
 
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
 
 public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements LazyFields {
     Implementation hostDummy;

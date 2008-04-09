@@ -1,5 +1,9 @@
 package au.net.netstorm.boost.spider.register;
 
+import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.proxy.DefaultLayerSpec;
 import au.net.netstorm.boost.nursery.proxy.LayerSpec;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
@@ -12,10 +16,6 @@ import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import static au.net.netstorm.boost.spider.register.Stamp.MULTIPLE;
 import static au.net.netstorm.boost.spider.register.Stamp.SINGLE;
-import au.net.netstorm.boost.util.type.DefaultBaseReference;
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.Interface;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
 
 // DEBT ParameterNumber {
 public final class DefaultRegistry implements Registry {

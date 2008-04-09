@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.reflect.util;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 
 public interface FieldTestUtil {
     Field get(Class cls, String fieldName);

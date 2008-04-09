@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.reflect.checker;
 
 import java.lang.reflect.Member;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.ModifierTestUtil;
 import junit.framework.Assert;

@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.flavour;
 
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.util.type.Interface;
 
 // FIX 2237 This probably goes when flavours are reinstated.
 

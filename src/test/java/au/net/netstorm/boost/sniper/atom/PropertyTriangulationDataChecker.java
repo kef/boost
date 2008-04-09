@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.sniper.atom;
 
-import au.net.netstorm.boost.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 import au.net.netstorm.boost.sniper.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.sniper.random.FieldRandomizer;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 
 final class PropertyTriangulationDataChecker implements DataChecker {
     private final TriangulationChecker nonArrayChecker = new NonArrayPropertyTriangulationChecker();

@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.nursery.type.map.supa;
 
+import au.net.netstorm.boost.gunge.typed.TypedMap;
 import au.net.netstorm.boost.nursery.type.map.holder.HolderMap;
 import au.net.netstorm.boost.nursery.type.primitive.BooleanHolder;
 import au.net.netstorm.boost.nursery.type.primitive.BytesHolder;
 import au.net.netstorm.boost.nursery.type.primitive.IntegerHolder;
 import au.net.netstorm.boost.nursery.type.primitive.StringHolder;
-import au.net.netstorm.boost.util.typed.TypedMap;
 
 public final class DefaultSuperMap implements SuperMap {
     private final TypedMap typed;

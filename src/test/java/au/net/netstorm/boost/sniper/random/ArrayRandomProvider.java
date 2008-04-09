@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.sniper.random;
 
 import java.lang.reflect.Array;
-import au.net.netstorm.boost.provider.NotProvidedException;
-import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.provider.SpecificProvider;
+import au.net.netstorm.boost.bullet.provider.NotProvidedException;
+import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.bullet.provider.SpecificProvider;
 
 public final class ArrayRandomProvider implements SpecificProvider {
     private final Provider randomProvider;

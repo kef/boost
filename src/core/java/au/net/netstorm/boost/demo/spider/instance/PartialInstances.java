@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
-import au.net.netstorm.boost.util.type.Implementation;
-import au.net.netstorm.boost.util.type.ResolvedInstance;
-import au.net.netstorm.boost.util.type.UnresolvedInstance;
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 
 public interface PartialInstances {
     void clear();

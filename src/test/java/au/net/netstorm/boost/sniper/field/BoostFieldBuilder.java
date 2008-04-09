@@ -3,8 +3,8 @@ package au.net.netstorm.boost.sniper.field;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.util.array.ArrayMaster;
-import au.net.netstorm.boost.util.array.DefaultArrayMaster;
+import au.net.netstorm.boost.gunge.array.ArrayMaster;
+import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
 
 public final class BoostFieldBuilder implements FieldBuilder {
     ArrayMaster arrays = new DefaultArrayMaster();

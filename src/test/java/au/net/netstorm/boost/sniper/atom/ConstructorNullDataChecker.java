@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.sniper.atom;
 
-import au.net.netstorm.boost.provider.Provider;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
+import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
+import au.net.netstorm.boost.gunge.introspect.FieldSpec;
 import au.net.netstorm.boost.sniper.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.sniper.field.FieldSpecTestUtil;
 import au.net.netstorm.boost.sniper.random.DefaultFieldRandomizer;
 import au.net.netstorm.boost.sniper.random.FieldRandomizer;
-import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
-import au.net.netstorm.boost.util.introspect.FieldSpec;
 import junit.framework.Assert;
 
 public final class ConstructorNullDataChecker implements DataChecker {
@@ -16,7 +16,7 @@ public final class ConstructorNullDataChecker implements DataChecker {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
     private ClassMaster classMaster = new DefaultClassMaster();
     private FieldSpecTestUtil fielder = new DefaultFieldSpecTestUtil();
-    private au.net.netstorm.boost.util.exception.ThrowableMaster thrower = new DefaultThrowableMaster();
+    private au.net.netstorm.boost.gunge.exception.ThrowableMaster thrower = new DefaultThrowableMaster();
     private FieldRandomizer fieldUtil;
 
     public ConstructorNullDataChecker(Provider random) {

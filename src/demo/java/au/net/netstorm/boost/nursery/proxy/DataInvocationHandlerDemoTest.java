@@ -2,13 +2,13 @@ package au.net.netstorm.boost.nursery.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
+import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.util.introspect.DefaultFieldValueSpec;
-import au.net.netstorm.boost.util.introspect.FieldValueSpec;
-import au.net.netstorm.boost.util.type.Interface;
 
 public class DataInvocationHandlerDemoTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final String NUM_LEGS = "numLegs";

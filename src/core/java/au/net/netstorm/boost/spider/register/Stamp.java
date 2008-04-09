@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.register;
 
-import au.net.netstorm.boost.util.type.Immutable;
+import au.net.netstorm.boost.gunge.type.Immutable;
 
 // OK InterfaceIsType {
 public interface Stamp extends Immutable {

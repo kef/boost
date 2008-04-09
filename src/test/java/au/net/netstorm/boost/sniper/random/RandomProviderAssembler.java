@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.provider.Random;
+import au.net.netstorm.boost.bullet.provider.Random;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;

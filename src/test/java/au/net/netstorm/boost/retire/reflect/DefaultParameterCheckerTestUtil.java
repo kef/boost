@@ -5,19 +5,19 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import au.net.netstorm.boost.bullet.mirror.ClassMaster;
+import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
+import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
+import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
+import au.net.netstorm.boost.gunge.nullo.NullMaster;
 import au.net.netstorm.boost.nursery.instance.InstanceProvider;
-import au.net.netstorm.boost.reflect.ClassMaster;
-import au.net.netstorm.boost.reflect.DefaultClassMaster;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.ModifierTestUtil;
-import au.net.netstorm.boost.util.exception.DefaultThrowableMaster;
-import au.net.netstorm.boost.util.nullo.DefaultNullMaster;
-import au.net.netstorm.boost.util.nullo.NullMaster;
 import junit.framework.Assert;
 
 // DEBT JavaNCSS {
@@ -27,7 +27,7 @@ public final class DefaultParameterCheckerTestUtil implements ParameterCheckerTe
     private final AssertException assertException = new DefaultAssertException();
     private final ModifierTestUtil modifierUtil = new DefaultModifierTestUtil();
     private final NullMaster nullMaster = new DefaultNullMaster();
-    private au.net.netstorm.boost.util.exception.ThrowableMaster thrower = new DefaultThrowableMaster();
+    private au.net.netstorm.boost.gunge.exception.ThrowableMaster thrower = new DefaultThrowableMaster();
     private final InstanceProvider instanceProvider;
     private ClassMaster classer = new DefaultClassMaster();
 

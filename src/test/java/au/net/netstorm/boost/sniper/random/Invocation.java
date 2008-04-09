@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.random;
 
 import java.lang.reflect.Method;
-import au.net.netstorm.boost.primordial.Primordial;
-import au.net.netstorm.boost.util.type.Data;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.gunge.type.Data;
 
 public class Invocation extends Primordial implements Data {
     private final Method method;

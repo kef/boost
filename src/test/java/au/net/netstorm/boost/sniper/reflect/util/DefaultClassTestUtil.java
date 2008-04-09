@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.sniper.reflect.util;
 
 import java.lang.reflect.Constructor;
+import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
+import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.reflect.DefaultReflectMaster;
-import au.net.netstorm.boost.reflect.ReflectMaster;
-import au.net.netstorm.boost.util.type.Interface;
+import au.net.netstorm.boost.gunge.type.Interface;
 
 public class DefaultClassTestUtil implements ClassTestUtil {
     private final ReflectMaster reflector = new DefaultReflectMaster();
