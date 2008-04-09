@@ -36,8 +36,7 @@ public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
     // FIX (Nov 21, 2007) 2233 Equals/HashCode were just hacked.
     public final boolean equals(Object o) {
         if (!(o instanceof DefaultHolder)) return false;
-        DefaultHolder h = (DefaultHolder) o;
-        Object value = h.getValue();
+        Object value = ((DefaultHolder) o).getValue();
         Class cls = value.getClass();
         if (cls.isArray()) return ARRAYS_EQUALS.equals(value, this.value);
         return this.value.equals(value);
