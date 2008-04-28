@@ -9,11 +9,11 @@ public interface EdgeClass {
 
     Object newInstance(Class cls);
 
-    Constructor getConstructor(Class cls, Class[] parameterTypes);
+    Constructor getConstructor(Class cls, Class... parameterTypes);
 
-    Method getMethod(Class cls, String methodName, Class[] parameterTypes);
+    Method getMethod(Class cls, String methodName, Class... parameterTypes);
 
-    Method getDeclaredMethod(Class cls, String methodName, Class[] parameterTypes);
+    Method getDeclaredMethod(Class cls, String methodName, Class... parameterTypes);
 
     Field getDeclaredField(Class cls, String fieldName);
 

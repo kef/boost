@@ -25,7 +25,7 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    public Constructor getConstructor(Class cls, Class[] parameterTypes) {
+    public Constructor getConstructor(Class cls, Class... parameterTypes) {
         try {
             return cls.getConstructor(parameterTypes);
         } catch (NoSuchMethodException e) {
@@ -33,7 +33,7 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    public Method getMethod(Class cls, String methodName, Class[] parameterTypes) {
+    public Method getMethod(Class cls, String methodName, Class... parameterTypes) {
         try {
             return cls.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException e) {
@@ -41,7 +41,7 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    public Method getDeclaredMethod(Class cls, String methodName, Class[] parameterTypes) {
+    public Method getDeclaredMethod(Class cls, String methodName, Class... parameterTypes) {
         try {
             return cls.getDeclaredMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException e) {

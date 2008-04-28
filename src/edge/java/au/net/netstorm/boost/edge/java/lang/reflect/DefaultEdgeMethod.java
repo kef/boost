@@ -12,6 +12,8 @@ public final class DefaultEdgeMethod implements EdgeMethod {
         } catch (IllegalAccessException e) {
             throw new EdgeException(e);
         } catch (InvocationTargetException e) {
+            // SUGGEST e.getTargetException(), maybe even check if target exception
+            //         is a runtime exception and don't wrap for that case
             throw new EdgeException(e);
         }
     }

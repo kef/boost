@@ -4,8 +4,9 @@
 	<classpathentry kind="lib" path="lib/junit/junit-3.8.1-src.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/demo/java"/>
 	<classpathentry kind="src" path="src/core/java"/>
 	<classpathentry kind="src" path="src/edge/java"/>
 	<classpathentry kind="lib" path="lib/jmock/jmock-1.1.0.jar"/>
-	<classpathentry kind="output" path="build/eclipse/classes"/>
+	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>
