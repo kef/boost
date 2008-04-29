@@ -6,7 +6,7 @@ import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 
-public class DefaultAutoEdge<T> implements AutoEdge<T> {
+public final class DefaultAutoEdge<T> implements AutoEdge<T> {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Class<?> clazz;
     private final T target;

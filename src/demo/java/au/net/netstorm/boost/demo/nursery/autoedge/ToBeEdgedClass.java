@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.nursery.autoedge;
 
-public class ToBeEdgedClass {
+public final class ToBeEdgedClass {
     private String message;
 
     public ToBeEdgedClass() throws Exception {

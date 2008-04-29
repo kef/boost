@@ -16,6 +16,7 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
     private MethodWarp subject;
     private Method src;
     private Method trg;
+    EdgeClass classerMock;
 
     public void setUpFixtures() {
         subject = new DefaultMethodWarp();
@@ -28,8 +29,8 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
     }
 
     public void testWarp() {
+        expect.oneCall(classerMock, trg, "getMethod", InputStream.class, "read", new Object[] { byte[].class });
         Method result = subject.warp(InputStream.class, src);
         assertEquals(trg, result);
     }
-
 }

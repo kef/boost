@@ -12,6 +12,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultConstructorResolverAtomicTest extends LifecycleTestCase
         implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+
     private ConstructorResolver subject;
     ConstructorFixture fixture;
     ConstructorFilter filterMock;
@@ -28,6 +29,7 @@ public final class DefaultConstructorResolverAtomicTest extends LifecycleTestCas
         expect.oneCall(filteredMock, 0, "size");
         try {
             subject.resolve(DualOverloadCtor.class, fixture.vector());
+            fail("should not be able to resolve constructor");
         } catch (RuntimeException e) { /* expected */ }
     }
 
