@@ -3,20 +3,25 @@ package au.net.netstorm.boost.nursery.autoedge;
 import java.io.InputStream;
 import java.net.URL;
 
+import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
+import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 
-public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject {
+public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdger subject;
     EdgeFixture fixture;
     ProxySupplier proxier;
-    AutoEdgeFactory factory;
     FieldTestUtil fielder;
-    TempMultiNu nu;
+    TempMultiNu multiNu;
+    Nu nu;
+    EdgeMethod invoker;
+    MethodWarp warper;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();

@@ -4,21 +4,19 @@ import java.lang.reflect.Method;
 
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 
 public class DefaultAutoEdge<T> implements AutoEdge<T> {
-    private final EdgeMethod invoker = new DefaultEdgeMethod();
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Class<?> clazz;
     private final T target;
-    private final MethodWarp warper;
     private final Method unedge;
+    MethodWarp warper;
+    EdgeMethod invoker;
 
-    public DefaultAutoEdge(T target, MethodWarp warper) {
+    public DefaultAutoEdge(T target) {
         this.target = target;
         this.clazz = target.getClass();
-        this.warper = warper;
         this.unedge = classer.getDeclaredMethod(Edge.class, "unedge");
     }
 

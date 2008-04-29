@@ -8,16 +8,17 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private AutoEdger subject;
     EdgeFixture fixture;
     ProxySupplier proxierMock;
-    AutoEdgeFactory factoryMock;
     AutoEdge<?> edgeMock;
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
-    TempMultiNu nuMock;
+    TempMultiNu multiNuMock;
+    Nu nuMock;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();
@@ -30,7 +31,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
-        expect.oneCall(nuMock, fixture.url(), "nu", URL.class, new Object[] { fixture.value() });
+        expect.oneCall(multiNuMock, fixture.url(), "nu", URL.class, new Object[] { fixture.value() });
         edgeExpectations(AutoEdgeURL.class, urlMock, fixture.url());
         AutoEdgeURL result = subject.newEdge(AutoEdgeURL.class, URL.class, fixture.value());
         assertSame(urlMock, result);
@@ -39,7 +40,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     private void edgeExpectations(Class<?> type, Object proxy, Object arg) {
         Class<?>[] types = { type };
         ClassLoader loader = type.getClassLoader();
-        expect.oneCall(factoryMock, edgeMock, "newEdge", arg);
+        expect.oneCall(nuMock, edgeMock, "nu", DefaultAutoEdge.class, new Object[] { arg });
         expect.oneCall(proxierMock, proxy, "getProxy", loader, types, edgeMock);
     }
 }

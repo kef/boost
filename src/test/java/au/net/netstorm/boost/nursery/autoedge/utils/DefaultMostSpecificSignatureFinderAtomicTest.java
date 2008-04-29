@@ -8,7 +8,8 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultMostSpecificSignatureFinderAtomicTest extends LifecycleTestCase
-        implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
+        implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+
     private MostSpecificSignatureFinder subject;
     ConstructorFixture fixture;
     JLSOverloadRules jlsMock;

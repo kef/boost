@@ -11,7 +11,7 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-public final class DefaultTempMultiNuAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields, InjectableSubject {
+public final class DefaultTempMultiNuAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private TempMultiNu subject;
     ConstructorFixture fixture;
     ConstructorResolver resolverMock;

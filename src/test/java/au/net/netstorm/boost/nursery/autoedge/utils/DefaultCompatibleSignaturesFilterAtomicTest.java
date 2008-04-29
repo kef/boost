@@ -11,7 +11,8 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultCompatibleSignaturesFilterAtomicTest extends LifecycleTestCase
-        implements InjectableTest, InjectableSubject, LazyFields, HasFixtures {
+        implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+
     private CompatibleSignaturesFilter subject;
     private Class<?>[] target = {};
     private Constructor<?> ctor;
