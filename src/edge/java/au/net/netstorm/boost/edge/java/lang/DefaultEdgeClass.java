@@ -24,8 +24,7 @@ public final class DefaultEdgeClass implements EdgeClass {
             throw new EdgeException(e);
         }
     }
-
-    public Constructor getConstructor(Class cls, Class... parameterTypes) {
+    public <T> Constructor<T> getConstructor(Class<T> cls, Class<?>... parameterTypes) {
         try {
             return cls.getConstructor(parameterTypes);
         } catch (NoSuchMethodException e) {

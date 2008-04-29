@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.jls;
+package au.net.netstorm.boost.nursery.autoedge.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,8 @@ public final class DefaultJLSOverloadRulesAtomicTest extends LifecycleTestCase i
     private Class<?>[] generic = { List.class, Set.class, Map.class };
     private Class<?>[] specific = { ArrayList.class, HashSet.class, HashMap.class };
     private Class<?>[] mixed = { List.class, HashSet.class, Map.class };
-    JLSOverloadRules uut;
+    private Class<?>[] dodge = { };
+    JLSOverloadRules subject;
 
     public void testCompatibleWithSelf() {
         checkCompatible(generic);
@@ -33,6 +34,12 @@ public final class DefaultJLSOverloadRulesAtomicTest extends LifecycleTestCase i
         checkCompatible(false, mixed, generic);
         checkCompatible(false, specific, mixed);
         checkCompatible(false, specific, generic);
+    }
+
+    public void testNotCompatibleWithIncorrectSize() {
+        checkCompatible(false, mixed, dodge);
+        checkCompatible(false, specific, dodge);
+        checkCompatible(false, generic, dodge);
     }
 
     public void testMoreSpecific() {
@@ -55,10 +62,10 @@ public final class DefaultJLSOverloadRulesAtomicTest extends LifecycleTestCase i
     }
 
     private void checkCompatible(boolean expected, Class<?>[] lhs, Class<?>[] rhs) {
-        assertEquals(expected, uut.compatible(lhs, rhs));
+        assertEquals(expected, subject.compatible(lhs, rhs));
     }
 
     private void checkMoreSpecific(boolean expected, Class<?>[] lhs, Class<?>[] rhs) {
-        assertEquals(expected, uut.moreSpecific(lhs, rhs));
+        assertEquals(expected, subject.moreSpecific(lhs, rhs));
     }
 }

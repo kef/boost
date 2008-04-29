@@ -1,0 +1,20 @@
+package au.net.netstorm.boost.nursery.autoedge.utils;
+
+import java.lang.reflect.Constructor;
+import java.util.List;
+
+import au.net.netstorm.boost.nursery.autoedge.collections.SuperCollection;
+import au.net.netstorm.boost.spider.instantiate.Nu;
+
+public class DefaultConstructorFilter implements ConstructorFilter {
+    SuperCollection collection;
+    Object2ClassMapper mapper;
+    Nu nu;
+
+    public List<Constructor<?>> filter(Class<?> type, Object... params) {
+        List<Class<?>> types = collection.map(params, mapper);
+        CompatibleSignaturesFilter filter = nu.nu(DefaultCompatibleSignaturesFilter.class, types);
+        Constructor<?>[] ctors = type.getConstructors();
+        return collection.filter(ctors, filter);
+    }
+}

@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-import java.io.InputStream;
+import java.net.URL;
 
-import au.net.netstorm.boost.edge.java.io.EdgeInputStream;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -11,36 +10,36 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
-    private ClassLoader loader = EdgeInputStream.class.getClassLoader();
-    private Class<?>[] proxyType = { EdgeInputStream.class, Edge.class };
     private AutoEdger subject;
     EdgeFixture fixture;
     ProxySupplier proxierMock;
     AutoEdgeFactory factoryMock;
     AutoEdge<?> edgeMock;
-    EdgeInputStream inMock;
+    AutoEdgeInputStream inMock;
+    AutoEdgeURL urlMock;
+    TempMultiNu nuMock;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();
     }
 
     public void testEdge() {
-        expect.oneCall(factoryMock, edgeMock, "newEdge", fixture.stream());
-        expect.oneCall(proxierMock, inMock, "getProxy", loader, proxyType, edgeMock);
-        EdgeInputStream result = subject.edge(EdgeInputStream.class, fixture.stream());
+        edgeExpectations(AutoEdgeInputStream.class, inMock, fixture.stream());
+        AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, fixture.stream());
         assertSame(inMock, result);
     }
 
-    public void testUnedge() {
-        expect.oneCall(edgeMock, fixture.stream(), "unedge");
-        InputStream result = subject.unedge(edgeMock);
-        assertSame(fixture.stream(), result);
+    public void testNewEdge() {
+        expect.oneCall(nuMock, fixture.url(), "nu", URL.class, new Object[] { fixture.value() });
+        edgeExpectations(AutoEdgeURL.class, urlMock, fixture.url());
+        AutoEdgeURL result = subject.newEdge(AutoEdgeURL.class, URL.class, fixture.value());
+        assertSame(urlMock, result);
     }
 
-    public void testUnedgeFailure() throws Throwable {
-        try {
-            subject.unedge("I am not an edged instance");
-            fail("unedge of non-edge instance should fail");
-        } catch (IllegalArgumentException e) { /* expected */ }
+    private void edgeExpectations(Class<?> type, Object proxy, Object arg) {
+        Class<?>[] types = { type };
+        ClassLoader loader = type.getClassLoader();
+        expect.oneCall(factoryMock, edgeMock, "newEdge", arg);
+        expect.oneCall(proxierMock, proxy, "getProxy", loader, types, edgeMock);
     }
 }

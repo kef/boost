@@ -13,12 +13,12 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
-    private MethodWarp uut;
+    private MethodWarp subject;
     private Method src;
     private Method trg;
 
     public void setUpFixtures() {
-        uut = new DefaultMethodWarp();
+        subject = new DefaultMethodWarp();
 
         EdgeClass cls = new DefaultEdgeClass();
         String name = "read";
@@ -28,7 +28,7 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
     }
 
     public void testWarp() {
-        Method result = uut.warp(InputStream.class, src);
+        Method result = subject.warp(InputStream.class, src);
         assertEquals(trg, result);
     }
 

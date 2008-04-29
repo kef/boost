@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.jls;
+package au.net.netstorm.boost.nursery.autoedge.utils;
 
 
 public interface JLSOverloadRules {

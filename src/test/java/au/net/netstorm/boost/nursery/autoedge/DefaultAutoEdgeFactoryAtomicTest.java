@@ -13,7 +13,7 @@ public final class DefaultAutoEdgeFactoryAtomicTest extends LifecycleTestCase im
         subject = new DefaultAutoEdgeFactory();
     }
 
-    public void testNewEdge() throws Throwable {
+    public void testNewEdge() {
         AutoEdge<Iterable<String>> edged = subject.newEdge(iterMock);
         assertSame(iterMock, edged.unedge());
     }

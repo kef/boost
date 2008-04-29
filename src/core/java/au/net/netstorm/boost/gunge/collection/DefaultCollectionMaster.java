@@ -13,17 +13,17 @@ public final class DefaultCollectionMaster implements CollectionMaster {
         return Collections.unmodifiableSet(set);
     }
 
-    public <T> Set mutableSet(T[] array) {
-        List list = mutableList(array);
-        return new HashSet(list);
+    public <T> Set<T> mutableSet(T[] array) {
+        List<T> list = mutableList(array);
+        return new HashSet<T>(list);
     }
 
-    public <T> List mutableList(T[] array) {
+    public <T> List<T> mutableList(T[] array) {
         List<T> list = immutableList(array);
         return new ArrayList<T>(list);
     }
 
-    public <T> List immutableList(T[] array) {
+    public <T> List<T> immutableList(T[] array) {
         return Arrays.asList(array);
     }
 }

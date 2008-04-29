@@ -10,4 +10,6 @@ public interface CollectionFixture {
     Iterator<String> mappedIterator();
     Collection<String> collection();
     Collection<String> mappedCollection();
+    String[] array();
+    String[] mappedArray();
 }

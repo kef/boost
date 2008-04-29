@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor;
 public final class DefaultEdgeConstructor implements EdgeConstructor {
     private final String linefeed = System.getProperty("line.separator");
 
-    public Object newInstance(Constructor constructor, Object[] args) {
+    public <T> T newInstance(Constructor<T> constructor, Object[] args) {
         try {
             return constructor.newInstance(args);
         } catch (Exception e) {
@@ -20,7 +20,7 @@ public final class DefaultEdgeConstructor implements EdgeConstructor {
         }
     }
 
-    private String error(Constructor constructor, Object[] args) {
+    private String error(Constructor<?> constructor, Object[] args) {
         String result = constructor + linefeed;
         if (args != null) {
             for (int i = 0; i < args.length; i++) {

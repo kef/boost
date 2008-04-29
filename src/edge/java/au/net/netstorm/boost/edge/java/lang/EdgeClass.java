@@ -9,7 +9,7 @@ public interface EdgeClass {
 
     Object newInstance(Class cls);
 
-    Constructor getConstructor(Class cls, Class... parameterTypes);
+    <T> Constructor<T> getConstructor(Class<T> cls, Class<?>... parameterTypes);
 
     Method getMethod(Class cls, String methodName, Class... parameterTypes);
 
