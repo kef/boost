@@ -2,9 +2,8 @@ package au.net.netstorm.boost.nursery.autoedge;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.nio.channels.WritableByteChannel;
 
-import au.net.netstorm.boost.edge.java.io.EdgeInputStream;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -14,23 +13,25 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private MethodWarp subject;
-    private Method src;
-    private Method trg;
+
+    EdgeChannelFixture channel;
+    EdgeStreamFixture stream;
+
     EdgeClass classerMock;
 
     public void setUpFixtures() {
         subject = new DefaultMethodWarp();
-
-        EdgeClass cls = new DefaultEdgeClass();
-        String name = "read";
-        Class<?>[] params = new Class[] { byte[].class };
-        src = cls.getMethod(EdgeInputStream.class, name, params);
-        trg = cls.getMethod(InputStream.class, name, params);
     }
 
     public void testWarp() {
-        expect.oneCall(classerMock, trg, "getMethod", InputStream.class, "read", new Object[] { byte[].class });
-        Method result = subject.warp(InputStream.class, src);
-        assertEquals(trg, result);
+        expect.oneCall(classerMock, stream.trg(), "getMethod", InputStream.class, stream.method(), stream.types());
+        Method result = subject.warp(InputStream.class, stream.src());
+        assertEquals(stream.trg(), result);
+    }
+
+    public void testWarpWithEdgedArgs() {
+        expect.oneCall(classerMock, channel.trg(), "getMethod", WritableByteChannel.class, channel.method(), channel.trgTypes());
+        Method result = subject.warp(WritableByteChannel.class, channel.src());
+        assertEquals(channel.trg(), result);
     }
 }

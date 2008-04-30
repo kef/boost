@@ -12,7 +12,10 @@ import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private AutoEdger subject;
-    EdgeFixture fixture;
+
+    EdgeStreamFixture streamFixture;
+    EdgeURLFixture urlFixture;
+
     ProxySupplier proxierMock;
     AutoEdge<?> edgeMock;
     AutoEdgeInputStream inMock;
@@ -25,15 +28,15 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testEdge() {
-        edgeExpectations(AutoEdgeInputStream.class, inMock, fixture.stream());
-        AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, fixture.stream());
+        edgeExpectations(AutoEdgeInputStream.class, inMock, streamFixture.stream());
+        AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, streamFixture.stream());
         assertSame(inMock, result);
     }
 
     public void testNewEdge() {
-        expect.oneCall(multiNuMock, fixture.url(), "nu", URL.class, new Object[] { fixture.value() });
-        edgeExpectations(AutoEdgeURL.class, urlMock, fixture.url());
-        AutoEdgeURL result = subject.newEdge(AutoEdgeURL.class, URL.class, fixture.value());
+        expect.oneCall(multiNuMock, urlFixture.url(), "nu", URL.class, new Object[] { urlFixture.value() });
+        edgeExpectations(AutoEdgeURL.class, urlMock, urlFixture.url());
+        AutoEdgeURL result = subject.newEdge(AutoEdgeURL.class, URL.class, urlFixture.value());
         assertSame(urlMock, result);
     }
 

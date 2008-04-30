@@ -23,10 +23,28 @@ public final class DefaultAutoEdge<T> implements AutoEdge<T> {
     public Object invoke(Object proxy, Method src, Object[] args) {
         if (unedge.equals(src)) return unedge();
         Method trg = warper.warp(clazz, src);
-        return invoker.invoke(trg, target, args);
+        unedge(args);
+        Object result = invoker.invoke(trg, target, args);
+        return edge(result);
     }
 
     public T unedge() {
         return target;
     }
+
+    private Object edge(Object unedged) {
+        // TODO edge return values
+        return unedged;
+    }
+
+    private void unedge(Object[] args) {
+        if (args == null) return;
+        for (int i = 0; i < args.length; ++i) {
+            if (args[i] instanceof Edge) {
+                Edge<?> edge = (Edge<?>) args[i];
+                args[i] = edge.unedge();
+            }
+        }
+    }
+
 }

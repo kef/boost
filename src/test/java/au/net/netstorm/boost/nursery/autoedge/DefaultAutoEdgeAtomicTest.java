@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -12,29 +11,39 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdge<InputStream> subject;
     private Method unedge;
-    EdgeClass classer = new DefaultEdgeClass();
-    EdgeFixture fixture;
+    private Method toString;
+    EdgeClass classer;
+
+    EdgeStreamFixture fixture;
+
     MethodWarp warperMock;
     EdgeMethod invokerMock;
-    Nu nu;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdge<InputStream>(fixture.stream());
         unedge = classer.getDeclaredMethod(Edge.class, "unedge");
+        toString = classer.getDeclaredMethod(Object.class, "toString");
     }
 
     public void testInvoke() {
         byte[] result = new byte[fixture.length()];
         Object[] args = { result };
-        expect.oneCall(warperMock, fixture.read(), "warp", ByteArrayInputStream.class, fixture.read());
-        expect.oneCall(invokerMock, fixture.length(), "invoke", fixture.read(), fixture.stream(), args);
-        Object length = subject.invoke(fixture.stream(), fixture.read(), args);
+        expect.oneCall(warperMock, fixture.trg(), "warp", ByteArrayInputStream.class, fixture.src());
+        expect.oneCall(invokerMock, fixture.length(), "invoke", fixture.trg(), fixture.stream(), args);
+        Object length = subject.invoke(fixture.stream(), fixture.src(), args);
         assertEquals(fixture.length(), length);
+    }
+
+    public void testInvokeNoArgs() {
+        String expected = "result";
+        expect.oneCall(warperMock, toString, "warp", ByteArrayInputStream.class, toString);
+        expect.oneCall(invokerMock, expected, "invoke", toString, fixture.stream(), null);
+        Object result = subject.invoke(fixture.stream(), toString, null);
+        assertEquals(expected, result);
     }
 
     public void testInvokeUnedge() {

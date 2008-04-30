@@ -15,7 +15,10 @@ import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdger subject;
-    EdgeFixture fixture;
+
+    EdgeURLFixture urlFixture;
+    EdgeStreamFixture streamFixture;
+
     ProxySupplier proxier;
     FieldTestUtil fielder;
     TempMultiNu multiNu;
@@ -28,28 +31,28 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     }
 
     public void testEdge() {
-        AutoEdgeInputStream edge = subject.edge(AutoEdgeInputStream.class, fixture.stream());
-        byte[] result = new byte[fixture.length()];
+        AutoEdgeInputStream edge = subject.edge(AutoEdgeInputStream.class, streamFixture.stream());
+        byte[] result = new byte[streamFixture.length()];
         int length = edge.read(result);
-        assertEquals(fixture.data(), result);
-        assertEquals(fixture.length(), length);
+        assertEquals(streamFixture.data(), result);
+        assertEquals(streamFixture.length(), length);
     }
 
     public void testNewEdge() {
-        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, URL.class, fixture.value());
+        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, URL.class, urlFixture.value());
         String result = edge.toString();
-        assertEquals(fixture.value(), result);
+        assertEquals(urlFixture.value(), result);
     }
 
     public void testUnedge() {
-        AutoEdgeInputStream edge = subject.edge(AutoEdgeInputStream.class, fixture.stream());
+        AutoEdgeInputStream edge = subject.edge(AutoEdgeInputStream.class, streamFixture.stream());
         InputStream result = edge.unedge();
-        assertSame(fixture.stream(), result);
+        assertSame(streamFixture.stream(), result);
     }
 
     public void testNewUnedge() {
-        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, URL.class, fixture.value());
+        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, URL.class, urlFixture.value());
         URL url = edge.unedge();
-        assertEquals(fixture.url(), url);
+        assertEquals(urlFixture.url(), url);
     }
 }
