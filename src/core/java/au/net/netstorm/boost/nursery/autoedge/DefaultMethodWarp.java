@@ -8,11 +8,11 @@ import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 public final class DefaultMethodWarp implements MethodWarp {
     EdgeClass classer;
 
-    public Method warp(Class<?> cls, Method src) {
-        String name = src.getName();
-        Class<?>[] params = src.getParameterTypes();
+    public Method warp(Class<?> real, Method edge) {
+        String name = edge.getName();
+        Class<?>[] params = edge.getParameterTypes();
         unedge(params);
-        return classer.getMethod(cls, name, params);
+        return classer.getMethod(real, name, params);
     }
 
     private void unedge(Class<?>[] params) {
@@ -21,6 +21,7 @@ public final class DefaultMethodWarp implements MethodWarp {
         }
     }
 
+    // FIX 2328 Based on discussions, I'd wrap this gumf in an EdgeType.
     private Class<?> unedge(Class<?> cls) {
         if (!Edge.class.isAssignableFrom(cls)) return cls;
         ParameterizedType edge = getEdgeType(cls);
