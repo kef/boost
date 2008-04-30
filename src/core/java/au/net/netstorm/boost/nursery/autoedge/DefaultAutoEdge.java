@@ -37,6 +37,7 @@ public final class DefaultAutoEdge<T> implements AutoEdge<T> {
         return unedged;
     }
 
+    // FIXME abstract this out, required in nuer as well
     private void unedge(Object[] args) {
         if (args == null) return;
         for (int i = 0; i < args.length; ++i) {
