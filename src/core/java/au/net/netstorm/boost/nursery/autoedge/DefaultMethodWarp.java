@@ -3,7 +3,6 @@ package au.net.netstorm.boost.nursery.autoedge;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 public final class DefaultMethodWarp implements MethodWarp {
@@ -46,7 +45,7 @@ public final class DefaultMethodWarp implements MethodWarp {
         Type[] args = edge.getActualTypeArguments();
         if (args.length != 1) throw new AssertionError("Edge class must only have one type argument");
         Type arg = args[0];
-        // TODO-MH this should be codified in a test
+        // FIX 2328 this should be codified in a test
         if (!(arg instanceof Class)) throw new AssertionError("Edge classes must have concrete type argument");
         return (Class<?>) arg;
     }

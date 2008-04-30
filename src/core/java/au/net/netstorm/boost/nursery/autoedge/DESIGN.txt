@@ -1,0 +1,7 @@
+Collection of design meeting bullets.  Not locked in stone but change
+them when they change (if possible).  This file will probably go
+when the card is completed.
+
+ - <ClassName>Static to be used for all static methods on a class.
+ - Enforce package match between edge/real.
+ - Decide which classes we do not edge.

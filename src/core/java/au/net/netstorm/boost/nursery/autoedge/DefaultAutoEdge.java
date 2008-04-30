@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
@@ -33,11 +32,11 @@ public final class DefaultAutoEdge<T> implements AutoEdge<T> {
     }
 
     private Object edge(Object unedged) {
-        // TODO edge return values
+        // FIX 2328 edge return values
         return unedged;
     }
 
-    // FIXME abstract this out, required in nuer as well
+    // FIX 2328 abstract this out, required in nuer as well
     private void unedge(Object[] args) {
         if (args == null) return;
         for (int i = 0; i < args.length; ++i) {
@@ -47,5 +46,4 @@ public final class DefaultAutoEdge<T> implements AutoEdge<T> {
             }
         }
     }
-
 }

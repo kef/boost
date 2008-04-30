@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.autoedge.utils;
 
-
 public class DefaultJLSOverloadRules implements JLSOverloadRules {
     public boolean compatible(Class<?>[] lhs, Class<?>[] rhs) {
         if (lhs.length != rhs.length) return false;
@@ -10,7 +9,7 @@ public class DefaultJLSOverloadRules implements JLSOverloadRules {
         return true;
     }
 
-    // TODO handle primitives ??
+    // FIX 2328 handle primitives ??
     private boolean assignable(Class<?> lhs, Class<?> rhs) {
         return lhs.isAssignableFrom(rhs);
     }

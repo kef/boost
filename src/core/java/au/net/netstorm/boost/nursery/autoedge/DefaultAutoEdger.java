@@ -8,11 +8,14 @@ public final class DefaultAutoEdger implements AutoEdger {
     TempMultiNu multiNu;
     Nu nu;
 
-    @SuppressWarnings("unchecked") // FIXME-MH case for a nuer that supports generics using super type token
+    // FIX 2328 Yep.  This will probably result in another yummy story card.
+    // FIX 2328 The mangler code which used Threaded<T> drove this too.
+    @SuppressWarnings("unchecked")
+    // FIXME-MH case for a nuer that supports generics using super type token
     public <E extends Edge<T>, T> E edge(Class<E> edge, T target) {
         ClassLoader loader = edge.getClassLoader();
         AutoEdge<T> impl = nu.nu(DefaultAutoEdge.class, target);
-        Class<?>[] type = { edge };
+        Class<?>[] type = {edge};
         Object proxy = proxier.getProxy(loader, type, impl);
         return edge.cast(proxy);
     }

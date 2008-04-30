@@ -25,8 +25,8 @@ public final class AutoEdgeExistingObjectDemoTest extends LifecycleTestCase impl
             edge.setState("bad");
             fail("expected edge exception");
         } catch (EdgeException e) {
-//            FIXME see suggestion in DefaultEdgeMethod
-//            assertEquals(Exception.class, e.getCause());
+            // FIX 2328 see suggestion in DefaultEdgeMethod
+            // FIX 2328 assertEquals(Exception.class, e.getCause());
         }
     }
 
