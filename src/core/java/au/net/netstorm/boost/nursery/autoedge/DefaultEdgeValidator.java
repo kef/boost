@@ -8,7 +8,8 @@ final class DefaultEdgeValidator implements EdgeValidator {
     TypeTokenResolver typeResolver;
 
     public void validate(Class<?> edge) {
-        TypeTokenInstance typeToken = typeResolver.resolve(Edge.class, edge);
+        Class<?> tokenInterface = isStaticEdge(edge) ? StaticEdge.class : Edge.class;
+        TypeTokenInstance typeToken = typeResolver.resolve(tokenInterface, edge);
         Class<?> real = typeToken.rawType();
 
         validateSameSimpleName(edge, real);

@@ -22,17 +22,17 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
     }
 
     public void testValidEdge() {
-        expectations(URL.class, java.net.URL.class);
+        expectations(Edge.class, URL.class, java.net.URL.class);
         subject.validate(URL.class);
     }
 
     public void testValidStaticEdge() {
-        expectations(ClassStatic.class, Class.class);
+        expectations(StaticEdge.class, ClassStatic.class, Class.class);
         subject.validate(ClassStatic.class);
     }
 
     public void testInvalidPackagedEdged() {
-        expectations(Arrays.class, java.util.Arrays.class);
+        expectations(Edge.class, Arrays.class, java.util.Arrays.class);
         try {
             subject.validate(Arrays.class);
             fail();
@@ -40,15 +40,15 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
     }
 
     public void testInvalidNamedEdged() {
-        expectations(BadNamedEdge.class, Class.class);
+        expectations(Edge.class, BadNamedEdge.class, Class.class);
         try {
             subject.validate(BadNamedEdge.class);
             fail();
         } catch (IllegalArgumentException e) { /* expected */ }
     }
 
-    private void expectations(Class<?> edgeClass, Class<?> realClass) {
-        expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", Edge.class, edgeClass);
+    private void expectations(Class<?> edgeType, Class<?> edgeClass, Class<?> realClass) {
+        expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", edgeType, edgeClass);
         expect.oneCall(typeInstanceMock, realClass, "rawType");
     }
 }
