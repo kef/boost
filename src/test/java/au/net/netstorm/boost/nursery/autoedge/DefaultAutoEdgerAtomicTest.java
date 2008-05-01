@@ -23,7 +23,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     AutoEdge edgeMock;
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
-    TempMultiNu multiNuMock;
+    EdgeNu edgeNuMock;
     Nu nuMock;
     TypeTokenInstance typeTokenInstanceMock;
 
@@ -38,11 +38,11 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
-        expect.oneCall(multiNuMock, urlFixture.url(), "nu", URL.class, new Object[] { urlFixture.value() });
+        expect.oneCall(edgeNuMock, urlFixture.url(), "nu", URL.class, new Object[] { urlFixture.value() });
         expect.oneCall(typeResolverMock, typeTokenInstanceMock, "resolve", Edge.class, AutoEdgeURL.class);
         expect.oneCall(typeTokenInstanceMock, URL.class, "rawType");
         edgeExpectations(AutoEdgeURL.class, urlMock, urlFixture.url());
-        AutoEdgeURL result = subject.newEdge(AutoEdgeURL.class, urlFixture.value());
+        AutoEdgeURL result = subject.nu(AutoEdgeURL.class, urlFixture.value());
         assertSame(urlMock, result);
     }
 

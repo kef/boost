@@ -23,7 +23,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     TypeTokenResolver typeResolver;
     ProxySupplier proxier;
     FieldTestUtil fielder;
-    TempMultiNu multiNu;
+    EdgeNu edgeNu;
     Nu nu;
     EdgeMethod invoker;
     MethodWarp warper;
@@ -41,7 +41,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     }
 
     public void testNewEdge() {
-        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, urlFixture.value());
+        AutoEdgeURL edge = subject.nu(AutoEdgeURL.class, urlFixture.value());
         String result = edge.toString();
         assertEquals(urlFixture.value(), result);
     }
@@ -53,7 +53,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     }
 
     public void testNewUnedge() {
-        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, urlFixture.value());
+        AutoEdgeURL edge = subject.nu(AutoEdgeURL.class, urlFixture.value());
         URL url = edge.unedge();
         assertEquals(urlFixture.url(), url);
     }

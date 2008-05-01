@@ -7,11 +7,11 @@ import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdger implements AutoEdger {
     ProxySupplier proxier;
-    TempMultiNu multiNu;
+    EdgeNu edgeNu;
     TypeTokenResolver typeResolver;
     Nu nu;
 
-    public <E extends Edge<T>, T> E edge(Class<E> edge, T target) {
+    public <E extends Edge<R>, R> E edge(Class<E> edge, R target) {
         ClassLoader loader = edge.getClassLoader();
         AutoEdge impl = nu.nu(DefaultAutoEdge.class, target);
         Class<?>[] type = {edge};
@@ -20,10 +20,10 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     @SuppressWarnings("unchecked")
-    public <E extends Edge<T>, T> E newEdge(Class<E> edge, Object... params) {
+    public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
         TypeTokenInstance typeToken = typeResolver.resolve(Edge.class, edge);
-        Class<T> type = (Class<T>) typeToken.rawType();
-        T target = multiNu.nu(type, params);
+        Class<R> type = (Class<R>) typeToken.rawType();
+        R target = edgeNu.nu(type, params);
         return edge(edge, target);
     }
 }

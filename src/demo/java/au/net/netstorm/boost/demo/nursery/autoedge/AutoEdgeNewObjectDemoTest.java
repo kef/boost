@@ -10,13 +10,13 @@ public final class AutoEdgeNewObjectDemoTest extends LifecycleTestCase implement
 
     public void testEdgeCreation() {
         String message = "hello";
-        EdgeToBeEdgedClass edge = edger.newEdge(EdgeToBeEdgedClass.class,  message);
+        EdgeToBeEdgedClass edge = edger.nu(EdgeToBeEdgedClass.class,  message);
         assertEquals(message, edge.edgeMethod());
     }
 
     public void testEdgeCreationException() {
         try {
-            edger.newEdge(EdgeToBeEdgedClass.class);
+            edger.nu(EdgeToBeEdgedClass.class);
             fail("constructor should throw an exception");
         } catch (EdgeException e) { /* expected */ }
     }
