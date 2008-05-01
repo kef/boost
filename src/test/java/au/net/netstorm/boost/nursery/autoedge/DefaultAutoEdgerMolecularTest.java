@@ -23,7 +23,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     TypeTokenResolver typeResolver;
     ProxySupplier proxier;
     FieldTestUtil fielder;
-    EdgeNu edgeNu;
+    RealNu realNu;
     Nu nu;
     EdgeMethod invoker;
     MethodWarp warper;

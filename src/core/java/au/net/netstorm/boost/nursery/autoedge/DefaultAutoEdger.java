@@ -1,14 +1,11 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdger implements AutoEdger {
     ProxySupplier proxier;
-    EdgeNu edgeNu;
-    TypeTokenResolver typeResolver;
+    RealNu realNu;
     Nu nu;
 
     public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
@@ -21,10 +18,7 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     @SuppressWarnings("unchecked")
     public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
-        // FIX 2348 since there is going to be a special edge nuer, it can do this type token stuff under the covers
-        TypeTokenInstance typeToken = typeResolver.resolve(Edge.class, edge);
-        Class<R> type = (Class<R>) typeToken.rawType();
-        R real = edgeNu.nu(type, params);
+        R real = realNu.nu(edge, params);
         return edge(edge, real);
     }
 }

@@ -1,10 +1,6 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-import java.net.URL;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -18,14 +14,12 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     EdgeStreamFixture streamFixture;
     EdgeURLFixture urlFixture;
 
-    TypeTokenResolver typeResolverMock;
     ProxySupplier proxierMock;
     AutoEdge edgeMock;
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
-    EdgeNu edgeNuMock;
+    RealNu realNuMock;
     Nu nuMock;
-    TypeTokenInstance typeTokenInstanceMock;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();
@@ -38,9 +32,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
-        expect.oneCall(edgeNuMock, urlFixture.url(), "nu", URL.class, new Object[] { urlFixture.value() });
-        expect.oneCall(typeResolverMock, typeTokenInstanceMock, "resolve", Edge.class, AutoEdgeURL.class);
-        expect.oneCall(typeTokenInstanceMock, URL.class, "rawType");
+        expect.oneCall(realNuMock, urlFixture.url(), "nu", AutoEdgeURL.class, new Object[] { urlFixture.value() });
         edgeExpectations(AutoEdgeURL.class, urlMock, urlFixture.url());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, urlFixture.value());
         assertSame(urlMock, result);
