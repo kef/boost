@@ -16,7 +16,5 @@ public interface EdgeBufferFixture {
 
     ByteBuffer buffer();
 
-    Class<?> realImpl();
-
     Type[] edgeInterfaceTypes();
 }

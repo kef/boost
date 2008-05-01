@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
+import java.nio.ByteBuffer;
+
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeBufferFixture;
@@ -21,11 +23,11 @@ public final class DefaultAutoEdgeReturnAtomicTest extends LifecycleTestCase imp
 
 
     public void setUpFixtures() {
-        subject = new DefaultAutoEdge(fixture.buffer());
+        subject = new DefaultAutoEdge(ByteBuffer.class, fixture.buffer());
     }
 
     public void testInvokeWithEdgedReturnType() {
-        expect.oneCall(warperMock, fixture.trg(), "warp", fixture.realImpl(), fixture.src());
+        expect.oneCall(warperMock, fixture.trg(), "warp", ByteBuffer.class, fixture.src());
         expect.oneCall(invokerMock, fixture.buffer(), "invoke", fixture.trg(), fixture.buffer(), (Object) null);
         expect.oneCall(unedgerMock, VOID, "unedge", (Object) null);
         expect.oneCall(edgerMock, bufferMock, "edge", AutoEdgeByteBuffer.class, fixture.buffer());

@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 
@@ -25,7 +24,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     EdgeClass classer;
 
     public void setUpFixtures() {
-        subject = new DefaultAutoEdge(fixture.stream());
+        subject = new DefaultAutoEdge(InputStream.class, fixture.stream());
         unedge = classer.getDeclaredMethod(Edge.class, "unedge");
         toString = classer.getDeclaredMethod(Object.class, "toString");
     }
@@ -33,7 +32,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     public void testInvoke() {
         byte[] result = new byte[fixture.length()];
         Object[] args = {result};
-        expect.oneCall(warperMock, fixture.trg(), "warp", ByteArrayInputStream.class, fixture.src());
+        expect.oneCall(warperMock, fixture.trg(), "warp", InputStream.class, fixture.src());
         expect.oneCall(invokerMock, fixture.length(), "invoke", fixture.trg(), fixture.stream(), args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[] {args});
         Object length = subject.invoke(fixture.stream(), fixture.src(), args);
@@ -42,7 +41,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
 
     public void testInvokeNoArgs() {
         String expected = "result";
-        expect.oneCall(warperMock, toString, "warp", ByteArrayInputStream.class, toString);
+        expect.oneCall(warperMock, toString, "warp", InputStream.class, toString);
         expect.oneCall(invokerMock, expected, "invoke", toString, fixture.stream(), null);
         expect.oneCall(unedgerMock, VOID, "unedge", (Object) null);
         Object result = subject.invoke(fixture.stream(), toString, null);

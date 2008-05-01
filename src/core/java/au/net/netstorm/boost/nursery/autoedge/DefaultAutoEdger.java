@@ -10,7 +10,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     Nu nu;
 
     public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
-        return createEdge(edge, real);
+        return createEdge(edge, real.getClass(), real);
     }
 
     public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
@@ -18,7 +18,7 @@ public final class DefaultAutoEdger implements AutoEdger {
         return edge(edge, real);
     }
 
-    private <E, R> E createEdge(Class<E> edge, Object real) {
+    private <E> E createEdge(Class<E> edge, Class<?> realClass, Object real) {
         AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
         validator.validate(edge);
         ClassLoader loader = edge.getClassLoader();
