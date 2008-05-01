@@ -7,7 +7,7 @@ import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 final class DefaultEdgeValidator implements EdgeValidator {
     TypeTokenResolver typeResolver;
 
-    public <E extends Edge<?>> void validate(Class<E> edge) {
+    public void validate(Class<?> edge) {
         TypeTokenInstance typeToken = typeResolver.resolve(Edge.class, edge);
         Class<?> real = typeToken.rawType();
 

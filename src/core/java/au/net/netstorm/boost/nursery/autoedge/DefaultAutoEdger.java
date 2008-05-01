@@ -10,17 +10,20 @@ public final class DefaultAutoEdger implements AutoEdger {
     Nu nu;
 
     public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
-        validator.validate(edge);
-        ClassLoader loader = edge.getClassLoader();
-        AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
-        Class<?>[] type = {edge};
-        Object proxy = proxier.getProxy(loader, type, handler);
-        return edge.cast(proxy);
+        return createEdge(edge, real);
     }
 
-    @SuppressWarnings("unchecked")
     public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
         R real = realNu.nu(edge, params);
         return edge(edge, real);
+    }
+
+    private <E, R> E createEdge(Class<E> edge, Object real) {
+        AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
+        validator.validate(edge);
+        ClassLoader loader = edge.getClassLoader();
+        Class<?>[] type = {edge};
+        Object proxy = proxier.getProxy(loader, type, handler);
+        return edge.cast(proxy);
     }
 }

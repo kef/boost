@@ -16,7 +16,7 @@ final class DefaultAutoEdge implements AutoEdge {
     AutoEdger edger;
     Unedger unedger;
 
-    // FIX 2328 swap over to using a builder rather than logic in constructor, so it can be reused for statics
+    // FIX 2328 just remove logic from constructor, so it can be reused for statics
     public DefaultAutoEdge(Object real) {
         this.real = real;
         this.realClass = real.getClass();
