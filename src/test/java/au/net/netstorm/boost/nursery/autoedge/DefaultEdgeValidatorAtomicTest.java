@@ -4,6 +4,7 @@ import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
 import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 import au.net.netstorm.boost.nursery.autoedge.testdata.bad.pack.Arrays;
 import au.net.netstorm.boost.nursery.autoedge.testdata.java.lang.BadNamedEdge;
+import au.net.netstorm.boost.nursery.autoedge.testdata.java.lang.ClassStatic;
 import au.net.netstorm.boost.nursery.autoedge.testdata.java.net.URL;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -23,6 +24,11 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
     public void testValidEdge() {
         expectations(URL.class, java.net.URL.class);
         subject.validate(URL.class);
+    }
+
+    public void testValidStaticEdge() {
+        expectations(ClassStatic.class, Class.class);
+        subject.validate(ClassStatic.class);
     }
 
     public void testInvalidPackagedEdged() {
