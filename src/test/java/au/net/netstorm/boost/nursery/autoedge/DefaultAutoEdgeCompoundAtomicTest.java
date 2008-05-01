@@ -4,6 +4,7 @@ import java.nio.channels.WritableByteChannel;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeChannelFixture;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.MockWritableByteChannel;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

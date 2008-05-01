@@ -4,11 +4,13 @@ import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdger implements AutoEdger {
+    EdgeValidator validator;
     ProxySupplier proxier;
     RealNu realNu;
     Nu nu;
 
     public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
+        validator.validate(edge);
         ClassLoader loader = edge.getClassLoader();
         AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
         Class<?>[] type = {edge};

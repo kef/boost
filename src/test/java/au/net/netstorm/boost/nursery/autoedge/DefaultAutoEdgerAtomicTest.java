@@ -18,6 +18,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     EdgeStreamFixture streamFixture;
     EdgeURLFixture urlFixture;
 
+    EdgeValidator validatorMock;
     ProxySupplier proxierMock;
     AutoEdge edgeMock;
     AutoEdgeInputStream inMock;
@@ -42,10 +43,13 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         assertSame(urlMock, result);
     }
 
-    private void edgeExpectations(Class<?> type, Object proxy, Object arg) {
-        Class<?>[] types = { type };
-        ClassLoader loader = type.getClassLoader();
-        expect.oneCall(nuMock, edgeMock, "nu", DefaultAutoEdge.class, new Object[] { arg });
+    private void edgeExpectations(Class<?> edgeClass, Object proxy, Object arg) {
+        Class<?>[] types = {edgeClass};
+        ClassLoader loader = edgeClass.getClassLoader();
+        Object[] args = new Object[] { arg };
+        expect.oneCall(nuMock, edgeMock, "nu", DefaultAutoEdge.class, args);
         expect.oneCall(proxierMock, proxy, "getProxy", loader, types, edgeMock);
+        expect.oneCall(validatorMock, VOID, "validate", edgeClass);
+
     }
 }

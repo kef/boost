@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge;
+package au.net.netstorm.boost.nursery.autoedge.testfixtures;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

@@ -6,7 +6,6 @@ import java.nio.channels.WritableByteChannel;
 
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.nursery.autoedge.MockWritableByteChannel;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeWritableByteChannel;
 
