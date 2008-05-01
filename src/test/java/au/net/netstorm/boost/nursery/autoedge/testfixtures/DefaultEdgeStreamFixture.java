@@ -20,9 +20,9 @@ public final class DefaultEdgeStreamFixture implements EdgeStreamFixture {
 
     public Class<?>[] types() { return types; }
 
-    public Method src() { return src; }
+    public Method edge() { return src; }
 
-    public Method trg() { return trg; }
+    public Method real() { return trg; }
 
     public InputStream stream() { return in; }
 

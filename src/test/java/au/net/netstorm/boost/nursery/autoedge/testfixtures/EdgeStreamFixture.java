@@ -9,9 +9,9 @@ public interface EdgeStreamFixture {
 
     Class<?>[] types();
 
-    Method src();
+    Method edge();
 
-    Method trg();
+    Method real();
 
     byte[] data();
 

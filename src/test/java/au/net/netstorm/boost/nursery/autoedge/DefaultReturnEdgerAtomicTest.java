@@ -28,7 +28,7 @@ public final class DefaultReturnEdgerAtomicTest extends LifecycleTestCase implem
     }
 
     public void testReturnEdgeForNonEdge() {
-        Object result = subject.edge(streamFixture.src(), streamFixture.data());
+        Object result = subject.edge(streamFixture.edge(), streamFixture.data());
         assertSame(streamFixture.data(), result);
     }
 }

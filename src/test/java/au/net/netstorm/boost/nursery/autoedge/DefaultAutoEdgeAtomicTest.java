@@ -13,6 +13,7 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 // FIX 2328 need to test case where real object is null (static method case)
+// FIX 2328 need to test what happens on failures - this is not the test for it, but need somewhere to leave a trail.
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdge subject;
     private Method unedge;
@@ -35,20 +36,14 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     public void testInvoke() {
         byte[] result = new byte[fixture.length()];
         Object[] args = {result};
-        expect.oneCall(warperMock, fixture.trg(), "warp", InputStream.class, fixture.src());
-        expect.oneCall(invokerMock, fixture.length(), "invoke", fixture.trg(), fixture.stream(), args);
-        expect.oneCall(unedgerMock, args, "unedge", new Object[] {args});
-        expect.oneCall(returnEdgerMock, fixture.length(), "edge", fixture.src(), fixture.length());
-        Object length = subject.invoke(fixture.stream(), fixture.src(), args);
+        expectations(fixture.edge(), fixture.real(), fixture.length(), args);
+        Object length = subject.invoke(fixture.stream(), fixture.edge(), args);
         assertEquals(fixture.length(), length);
     }
 
     public void testInvokeNoArgs() {
         String expected = "result";
-        expect.oneCall(warperMock, toString, "warp", InputStream.class, toString);
-        expect.oneCall(invokerMock, expected, "invoke", toString, fixture.stream(), null);
-        expect.oneCall(unedgerMock, VOID, "unedge", (Object) null);
-        expect.oneCall(returnEdgerMock, expected, "edge", toString, expected);
+        expectations(toString, toString, expected, null);
         Object result = subject.invoke(fixture.stream(), toString, null);
         assertEquals(expected, result);
     }
@@ -58,5 +53,12 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         Object result = subject.invoke(null, unedge, args);
         assertEquals(true, result instanceof InputStream);
         assertSame(fixture.stream(), result);
+    }
+
+    private void expectations(Method src, Method trg, Object expected, Object args) {
+        expect.oneCall(warperMock, trg, "warp", InputStream.class, src);
+        expect.oneCall(unedgerMock, args, "unedge", args);
+        expect.oneCall(invokerMock, expected, "invoke", trg, fixture.stream(), args);
+        expect.oneCall(returnEdgerMock, expected, "edge", src, expected);
     }
 }
