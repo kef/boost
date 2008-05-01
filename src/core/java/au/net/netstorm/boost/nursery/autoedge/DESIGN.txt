@@ -4,4 +4,7 @@ when the card is completed.
 
  - <ClassName>Static to be used for all static methods on a class.
  - Enforce package match between edge/real.
+     - done:
+         - enforces <prefix>.<real package>.<real class>, eg. edge.java.lang.Class
+         - does not enforce the value of prefix do we want to do this? a system wide setting perhaps
  - Decide which classes we do not edge.
