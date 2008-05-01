@@ -26,15 +26,15 @@ final class DefaultAutoEdge implements AutoEdge {
         if (unedge.equals(edgeMethod)) return real;
         Method realMethod = warper.warp(realClass, edgeMethod);
         Object[] realArgs = unedger.unedge(edgedArgs);
-        Object result = invoker.invoke(realMethod, real, realArgs);
-        return edge(edgeMethod, result);
+        Object realReturn = invoker.invoke(realMethod, real, realArgs);
+        return edgeReturn(edgeMethod, realReturn);
     }
 
     @SuppressWarnings("unchecked")
-    private Object edge(Method edgeMethod, Object real) {
+    private Object edgeReturn(Method edgeMethod, Object realReturn) {
         Class<?> realType = edgeMethod.getReturnType();
-        if (!Edge.class.isAssignableFrom(realType)) return real;
+        if (!Edge.class.isAssignableFrom(realType)) return realReturn;
         Class<Edge> edgeType = (Class<Edge>) realType;
-        return edger.edge(edgeType, real);
+        return edger.edge(edgeType, realReturn);
     }
 }

@@ -11,19 +11,20 @@ public final class DefaultAutoEdger implements AutoEdger {
     TypeTokenResolver typeResolver;
     Nu nu;
 
-    public <E extends Edge<R>, R> E edge(Class<E> edge, R target) {
+    public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
         ClassLoader loader = edge.getClassLoader();
-        AutoEdge impl = nu.nu(DefaultAutoEdge.class, target);
+        AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
         Class<?>[] type = {edge};
-        Object proxy = proxier.getProxy(loader, type, impl);
+        Object proxy = proxier.getProxy(loader, type, handler);
         return edge.cast(proxy);
     }
 
     @SuppressWarnings("unchecked")
     public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
+        // FIX 2348 since there is going to be a special edge nuer, it can do this type token stuff under the covers
         TypeTokenInstance typeToken = typeResolver.resolve(Edge.class, edge);
         Class<R> type = (Class<R>) typeToken.rawType();
-        R target = edgeNu.nu(type, params);
-        return edge(edge, target);
+        R real = edgeNu.nu(type, params);
+        return edge(edge, real);
     }
 }
