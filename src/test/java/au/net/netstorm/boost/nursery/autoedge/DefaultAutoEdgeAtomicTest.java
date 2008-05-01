@@ -12,6 +12,8 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
+// FIX 2328 need to test case where real object is null (static method case)
+
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdge subject;
     private Method unedge;
