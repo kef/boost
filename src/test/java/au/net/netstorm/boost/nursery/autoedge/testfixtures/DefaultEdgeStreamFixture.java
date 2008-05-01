@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge;
+package au.net.netstorm.boost.nursery.autoedge.testfixtures;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -17,11 +17,16 @@ public final class DefaultEdgeStreamFixture implements EdgeStreamFixture {
     private Method trg = classer.getMethod(ByteArrayInputStream.class, method, types);
 
     public String method() { return method; }
+
     public Class<?>[] types() { return types; }
+
     public Method src() { return src; }
+
     public Method trg() { return trg; }
 
     public InputStream stream() { return in; }
+
     public int length() { return data.length; }
+
     public byte[] data() { return data; }
 }

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge;
+package au.net.netstorm.boost.nursery.autoedge.testfixtures;
 
 import java.lang.reflect.Constructor;
 import java.net.MalformedURLException;
@@ -15,7 +15,9 @@ public final class DefaultEdgeURLFixture implements EdgeURLFixture {
     private Constructor<?> constructor = classer.getConstructor(URL.class, String.class);
 
     public Constructor<?> constructor() { return constructor; };
+
     public URL url() { return url; }
+
     public String value() { return value; }
 
     private URL url(String value) {

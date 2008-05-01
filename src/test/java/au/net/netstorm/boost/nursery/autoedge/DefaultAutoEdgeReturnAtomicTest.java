@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeBufferFixture;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

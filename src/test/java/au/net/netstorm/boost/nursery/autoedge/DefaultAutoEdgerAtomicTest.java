@@ -1,6 +1,10 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeInputStream;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeStreamFixture;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

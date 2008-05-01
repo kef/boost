@@ -4,8 +4,8 @@ import java.lang.reflect.ParameterizedType;
 import java.nio.ByteBuffer;
 
 import au.net.netstorm.boost.gunge.generics.TypeToken;
-import au.net.netstorm.boost.nursery.autoedge.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.nursery.autoedge.Edge;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

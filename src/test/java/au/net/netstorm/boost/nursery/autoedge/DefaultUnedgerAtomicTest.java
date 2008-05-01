@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 
 import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;

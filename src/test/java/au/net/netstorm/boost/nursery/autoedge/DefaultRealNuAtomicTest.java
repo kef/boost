@@ -5,6 +5,8 @@ import java.net.URL;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
 import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.nursery.autoedge.utils.ConstructorResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;

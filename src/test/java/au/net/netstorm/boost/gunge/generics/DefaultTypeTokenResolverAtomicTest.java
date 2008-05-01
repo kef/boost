@@ -4,9 +4,9 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.nursery.autoedge.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.nursery.autoedge.Edge;
-import au.net.netstorm.boost.nursery.autoedge.EdgeBufferFixture;
+import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
+import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeBufferFixture;
 import au.net.netstorm.boost.nursery.autoedge.utils.DefaultTypeTokenFinder;
 import au.net.netstorm.boost.nursery.autoedge.utils.TypeTokenFinder;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
