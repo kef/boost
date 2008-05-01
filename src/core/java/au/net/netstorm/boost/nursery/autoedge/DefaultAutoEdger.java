@@ -26,6 +26,7 @@ public final class DefaultAutoEdger implements AutoEdger {
         return edge(edge, real);
     }
 
+    // FIX 2328 realClass not used?  Remove and follow out.
     private <E> E createEdge(Class<E> edge, Class<?> realClass, Object real) {
         AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
         validator.validate(edge);
