@@ -48,7 +48,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testStaticEdge() {
         typeExpectations(Class.class, ClassStatic.class, StaticEdge.class);
-        edgeExpectations(Class.class, ClassStatic.class, classStaticMock, Class.class, (Object) null);
+        edgeExpectations(Class.class, ClassStatic.class, classStaticMock, Class.class, null);
         ClassStatic result = subject.edge(ClassStatic.class);
         assertSame(classStaticMock, result);
     }

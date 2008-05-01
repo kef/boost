@@ -14,7 +14,7 @@ public final class DefaultEdgeURLFixture implements EdgeURLFixture {
     private URL url = url(value);
     private Constructor<?> constructor = classer.getConstructor(URL.class, String.class);
 
-    public Constructor<?> constructor() { return constructor; };
+    public Constructor<?> constructor() { return constructor; }
 
     public URL url() { return url; }
 

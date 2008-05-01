@@ -44,7 +44,6 @@ public final class DefaultAutoEdger implements AutoEdger {
         TypeTokenInstance typeToken = typeResolver.resolve(edgeType, edge);
         Class<?> realClass = typeToken.rawType();
         validator.validate(edge, realClass);
-        AutoEdge handler = nu.nu(DefaultAutoEdge.class, realClass, real);
-        return handler;
+        return nu.nu(DefaultAutoEdge.class, realClass, real);
     }
 }

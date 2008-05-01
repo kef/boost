@@ -10,13 +10,13 @@ final class DefaultEdgeValidator implements EdgeValidator {
         String edgeName = edge.getSimpleName();
         String realName = real.getSimpleName();
         String validName = isStaticEdge(edge) ? realName + StaticEdge.SUFFIX : realName;
-        if (!edgeName.equals(validName)) fail(edge);
+        if (!edgeName.equals(validName)) fail();
     }
 
     public void validatePackageName(Class<?> edge, Class<?> real) {
         String edgeName = packageName(edge);
         String realName = packageName(real);
-        if (!edgeName.endsWith(realName)) fail(edge);
+        if (!edgeName.endsWith(realName)) fail();
     }
 
     private boolean isStaticEdge(Class<?> edge) {
@@ -28,7 +28,7 @@ final class DefaultEdgeValidator implements EdgeValidator {
         return packager.getName();
     }
 
-    private void fail(Class<?> edge) {
+    private void fail() {
         throw new IllegalArgumentException(
                 "Invalid edge class, edges must implement Edge<RawType> or StaticEdge<RawType>" +
                 "and use a mirrored package structure.");

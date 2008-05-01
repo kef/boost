@@ -21,6 +21,6 @@ public class DefaultConstructorFixture implements ConstructorFixture {
     public Constructor<DualOverloadCtor> vectorctor() { return vectorctor; }
     public Constructor<DualOverloadCtor> stackctor() { return stackctor; }
     public Constructor<?>[] constructors() { return constructors; }
-    public Class<?>[] vectortype() { return vectorctor.getParameterTypes(); };
-    public Class<?>[] stacktype() { return stackctor.getParameterTypes(); };
+    public Class<?>[] vectortype() { return vectorctor.getParameterTypes(); }
+    public Class<?>[] stacktype() { return stackctor.getParameterTypes(); }
 }
