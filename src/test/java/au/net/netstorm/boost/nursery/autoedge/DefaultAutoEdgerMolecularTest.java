@@ -5,6 +5,7 @@ import java.net.URL;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
+import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -19,6 +20,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     EdgeURLFixture urlFixture;
     EdgeStreamFixture streamFixture;
 
+    TypeTokenResolver typeResolver;
     ProxySupplier proxier;
     FieldTestUtil fielder;
     TempMultiNu multiNu;
@@ -39,7 +41,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     }
 
     public void testNewEdge() {
-        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, URL.class, urlFixture.value());
+        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, urlFixture.value());
         String result = edge.toString();
         assertEquals(urlFixture.value(), result);
     }
@@ -51,7 +53,7 @@ public final class DefaultAutoEdgerMolecularTest extends LifecycleTestCase imple
     }
 
     public void testNewUnedge() {
-        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, URL.class, urlFixture.value());
+        AutoEdgeURL edge = subject.newEdge(AutoEdgeURL.class, urlFixture.value());
         URL url = edge.unedge();
         assertEquals(urlFixture.url(), url);
     }

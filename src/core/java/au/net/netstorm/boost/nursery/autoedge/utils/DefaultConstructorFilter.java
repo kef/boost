@@ -3,11 +3,11 @@ package au.net.netstorm.boost.nursery.autoedge.utils;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
-import au.net.netstorm.boost.nursery.autoedge.collections.SuperCollection;
+import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public class DefaultConstructorFilter implements ConstructorFilter {
-    SuperCollection collection;
+    FunctionalCollection collection;
     Object2ClassMapper mapper;
     Nu nu;
 

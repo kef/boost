@@ -1,49 +1,40 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 
-public final class DefaultAutoEdge<T> implements AutoEdge<T> {
+final class DefaultAutoEdge implements AutoEdge {
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Class<?> clazz;
-    private final T target;
+    private final Object real;
+    private final Class<?> realClass;
     private final Method unedge;
     MethodWarp warper;
     EdgeMethod invoker;
+    AutoEdger edger;
+    Unedger unedger;
 
-    public DefaultAutoEdge(T target) {
-        this.target = target;
-        this.clazz = target.getClass();
+    public DefaultAutoEdge(Object real) {
+        this.real = real;
+        this.realClass = real.getClass();
         this.unedge = classer.getDeclaredMethod(Edge.class, "unedge");
     }
 
-    public Object invoke(Object proxy, Method src, Object[] args) {
-        if (unedge.equals(src)) return unedge();
-        Method trg = warper.warp(clazz, src);
-        unedge(args);
-        Object result = invoker.invoke(trg, target, args);
-        return edge(result);
+    public Object invoke(Object edge, Method edgeMethod, Object[] edgedArgs) {
+        if (unedge.equals(edgeMethod)) return real;
+        Method realMethod = warper.warp(realClass, edgeMethod);
+        Object[] realArgs = unedger.unedge(edgedArgs);
+        Object result = invoker.invoke(realMethod, real, realArgs);
+        return edge(edgeMethod, result);
     }
 
-    public T unedge() {
-        return target;
-    }
-
-    private Object edge(Object unedged) {
-        // FIX 2328 edge return values
-        return unedged;
-    }
-
-    // FIX 2328 abstract this out, required in nuer as well
-    private void unedge(Object[] args) {
-        if (args == null) return;
-        for (int i = 0; i < args.length; ++i) {
-            if (args[i] instanceof Edge) {
-                Edge<?> edge = (Edge<?>) args[i];
-                args[i] = edge.unedge();
-            }
-        }
+    @SuppressWarnings("unchecked")
+    private Object edge(Method edgeMethod, Object real) {
+        Class<?> realType = edgeMethod.getReturnType();
+        if (!Edge.class.isAssignableFrom(realType)) return real;
+        Class<Edge> edgeType = (Class<Edge>) realType;
+        return edger.edge(edgeType, real);
     }
 }

@@ -2,6 +2,6 @@ package au.net.netstorm.boost.nursery.autoedge;
 
 import java.lang.reflect.Method;
 
-public interface MethodWarp {
+interface MethodWarp {
     Method warp(Class<?> real, Method edge);
 }

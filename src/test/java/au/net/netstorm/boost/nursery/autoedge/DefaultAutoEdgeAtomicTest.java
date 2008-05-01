@@ -13,27 +13,28 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
-    private AutoEdge<InputStream> subject;
+    private AutoEdge subject;
     private Method unedge;
     private Method toString;
-    EdgeClass classer;
-
     EdgeStreamFixture fixture;
 
     MethodWarp warperMock;
     EdgeMethod invokerMock;
+    Unedger unedgerMock;
+    EdgeClass classer;
 
     public void setUpFixtures() {
-        subject = new DefaultAutoEdge<InputStream>(fixture.stream());
+        subject = new DefaultAutoEdge(fixture.stream());
         unedge = classer.getDeclaredMethod(Edge.class, "unedge");
         toString = classer.getDeclaredMethod(Object.class, "toString");
     }
 
     public void testInvoke() {
         byte[] result = new byte[fixture.length()];
-        Object[] args = { result };
+        Object[] args = {result};
         expect.oneCall(warperMock, fixture.trg(), "warp", ByteArrayInputStream.class, fixture.src());
         expect.oneCall(invokerMock, fixture.length(), "invoke", fixture.trg(), fixture.stream(), args);
+        expect.oneCall(unedgerMock, args, "unedge", new Object[] {args});
         Object length = subject.invoke(fixture.stream(), fixture.src(), args);
         assertEquals(fixture.length(), length);
     }
@@ -42,6 +43,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         String expected = "result";
         expect.oneCall(warperMock, toString, "warp", ByteArrayInputStream.class, toString);
         expect.oneCall(invokerMock, expected, "invoke", toString, fixture.stream(), null);
+        expect.oneCall(unedgerMock, VOID, "unedge", (Object) null);
         Object result = subject.invoke(fixture.stream(), toString, null);
         assertEquals(expected, result);
     }
@@ -50,11 +52,6 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         Object[] args = {};
         Object result = subject.invoke(null, unedge, args);
         assertEquals(true, result instanceof InputStream);
-        assertSame(fixture.stream(), result);
-    }
-
-    public void testUnedge() {
-        InputStream result = subject.unedge();
         assertSame(fixture.stream(), result);
     }
 }

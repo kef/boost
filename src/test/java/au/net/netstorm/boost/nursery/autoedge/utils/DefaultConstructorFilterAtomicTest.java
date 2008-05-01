@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.autoedge.utils;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
-import au.net.netstorm.boost.nursery.autoedge.collections.SuperCollection;
+import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -16,7 +16,7 @@ public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase
 
     private ConstructorFilter subject;
     ConstructorFixture fixture;
-    SuperCollection collectionMock;
+    FunctionalCollection collectionMock;
     Object2ClassMapper mapperMock;
     Nu nuMock;
     CompatibleSignaturesFilter compatMock;

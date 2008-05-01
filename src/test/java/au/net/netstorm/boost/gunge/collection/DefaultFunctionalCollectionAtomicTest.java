@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.collections;
+package au.net.netstorm.boost.gunge.collection;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -9,12 +9,12 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-public final class DefaultSuperCollectionAtomicTest extends LifecycleTestCase implements InjectableTest, InjectableSubject, LazyFields {
-    SuperCollection subject;
-    Filter<String> filterMock;
-    Mapper<String,String> mapperMock;
-    Finder<String> finderMock;
+public final class DefaultFunctionalCollectionAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
+    FunctionalCollection subject;
     CollectionFixture fixture;
+    Filter<String> filterMock;
+    Mapper<String, String> mapperMock;
+    Finder<String> finderMock;
 
     public void testFilterAll() {
         expect.manyCalls(filterMock, true, "accept", fixture.element());
@@ -60,6 +60,13 @@ public final class DefaultSuperCollectionAtomicTest extends LifecycleTestCase im
     public void testFindWithShortCircuit() {
         expect.oneCall(finderMock, false, "next", fixture.element());
         checkFind();
+    }
+
+    public void testFindArray() {
+        expect.manyCalls(finderMock, true, "next", fixture.element());
+        expect.oneCall(finderMock, fixture.element(), "result");
+        String result = subject.find(fixture.array(), finderMock);
+        assertEquals(fixture.element(), result);
     }
 
     private void checkFind() {

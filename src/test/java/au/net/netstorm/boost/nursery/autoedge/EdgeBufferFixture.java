@@ -1,17 +1,15 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
-import java.nio.channels.WritableByteChannel;
 
-public interface EdgeChannelFixture {
+public interface EdgeBufferFixture {
     String method();
-    Class<?>[] srcTypes();
-    Class<?>[] trgTypes();
     Method src();
     Method trg();
-
-    WritableByteChannel channel();
     int length();
     ByteBuffer buffer();
+    Class<?> realImpl();
+    Type[] edgeInterfaceTypes();
 }

@@ -1,12 +1,10 @@
-package au.net.netstorm.boost.nursery.autoedge.collections;
+package au.net.netstorm.boost.gunge.collection;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import au.net.netstorm.boost.gunge.collection.CollectionMaster;
-
-public class DefaultSuperCollection implements SuperCollection {
-    CollectionMaster master;
+public class DefaultFunctionalCollection implements FunctionalCollection {
     public <T> List<T> filter(Iterable<T> iterable, Filter<T> filter) {
         List<T> result = new ArrayList<T>();
         for (T t : iterable) {
@@ -16,11 +14,8 @@ public class DefaultSuperCollection implements SuperCollection {
     }
 
     public <T> List<T> filter(T[] array, Filter<T> filter) {
-        List<T> result = new ArrayList<T>();
-        for (T t : array) {
-            if (filter.accept(t)) result.add(t);
-        }
-        return result;
+        Iterable<T> iterable = toIterable(array);
+        return filter(iterable, filter);
     }
 
     public <S, T> List<T> map(Iterable<S> iterable, Mapper<S, T> mapper) {
@@ -33,12 +28,8 @@ public class DefaultSuperCollection implements SuperCollection {
     }
 
     public <S, T>  List<T> map(S[] array, Mapper<S, T> mapper) {
-        List<T> result = new ArrayList<T>();
-        for (S s : array) {
-            T t = mapper.map(s);
-            result.add(t);
-        }
-        return result;
+        Iterable<S> iterable = toIterable(array);
+        return map(iterable, mapper);
     }
 
     public <T> T find(Iterable<T> iterable, Finder<T> finder) {
@@ -46,5 +37,14 @@ public class DefaultSuperCollection implements SuperCollection {
             if (!finder.next(t)) break;
         }
         return finder.result();
+    }
+
+    public <T> T find(T[] array, Finder<T> finder) {
+        Iterable<T> iterable = toIterable(array);
+        return find(iterable, finder);
+    }
+
+    public <T> Iterable<T> toIterable(T[] array) {
+        return Arrays.asList(array);
     }
 }

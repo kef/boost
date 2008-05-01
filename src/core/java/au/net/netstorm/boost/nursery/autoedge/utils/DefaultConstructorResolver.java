@@ -3,12 +3,12 @@ package au.net.netstorm.boost.nursery.autoedge.utils;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
-import au.net.netstorm.boost.nursery.autoedge.collections.SuperCollection;
+import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 
 public class DefaultConstructorResolver implements ConstructorResolver {
     ConstructorFilter filter;
     MostSpecificSignatureFinder finder;
-    SuperCollection collection;
+    FunctionalCollection collection;
 
     public <T> Constructor<T> resolve(Class<T> type, Object... p) {
         List<Constructor<?>> candidates = filter.filter(type, p);

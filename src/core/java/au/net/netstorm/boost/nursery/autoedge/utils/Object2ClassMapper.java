@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.autoedge.utils;
 
-import au.net.netstorm.boost.nursery.autoedge.collections.Mapper;
+import au.net.netstorm.boost.gunge.collection.Mapper;
 
 // FIX 2328 does the spider support a better mechanism for 1 to many, interface to impl relationships
 

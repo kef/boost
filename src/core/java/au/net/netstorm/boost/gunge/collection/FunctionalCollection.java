@@ -1,9 +1,8 @@
-package au.net.netstorm.boost.nursery.autoedge.collections;
+package au.net.netstorm.boost.gunge.collection;
 
 import java.util.List;
 
-// FIX 2328 these are not specific to autoedger, pull out into appropriate place
-public interface SuperCollection {
+public interface FunctionalCollection {
     <T> List<T> filter(Iterable<T> iterable, Filter<T> filter);
 
     <T> List<T> filter(T[] array, Filter<T> filter);
@@ -13,4 +12,6 @@ public interface SuperCollection {
     <S, T> List<T> map(S[] array, Mapper<S, T> mapper);
 
     <T> T find(Iterable<T> iterable, Finder<T> finder);
+
+    <T> T find(T[] array, Finder<T> finder);
 }

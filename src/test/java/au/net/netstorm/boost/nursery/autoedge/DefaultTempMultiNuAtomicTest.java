@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
+import java.lang.reflect.Constructor;
+
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.nursery.autoedge.utils.ConstructorFixture;
 import au.net.netstorm.boost.nursery.autoedge.utils.ConstructorResolver;
@@ -17,20 +19,26 @@ public final class DefaultTempMultiNuAtomicTest extends LifecycleTestCase implem
     ConstructorResolver resolverMock;
     EdgeConstructor constructorMock;
     OverloadCtor ctorMock;
+    Unedger unedgerMock;
 
     public void setUpFixtures() {
         subject = new DefaultTempMultiNu();
     }
 
     public void testNuGeneric() {
-        expect.oneCall(resolverMock, fixture.vectorctor(), "resolve", DualOverloadCtor.class, new Object[] { fixture.vector() });
-        expect.oneCall(constructorMock, ctorMock, "newInstance", fixture.vectorctor(), new Object[] { fixture.vector() });
+        expectations(fixture.vectorctor(), fixture.vector());
         subject.nu(DualOverloadCtor.class, fixture.vector());
     }
 
     public void testNuSpecific() {
-        expect.oneCall(resolverMock, fixture.stackctor(), "resolve", DualOverloadCtor.class, new Object[] { fixture.stack() });
-        expect.oneCall(constructorMock, ctorMock, "newInstance", fixture.stackctor(), new Object[] { fixture.stack() });
+        expectations(fixture.stackctor(), fixture.stack());
         subject.nu(DualOverloadCtor.class, fixture.stack());
+    }
+
+    private void expectations(Constructor<DualOverloadCtor> ctor, Object arg) {
+        Object[] args = new Object[] {arg};
+        expect.oneCall(unedgerMock, args, "unedge", new Object[] {args});
+        expect.oneCall(resolverMock, ctor, "resolve", DualOverloadCtor.class, args);
+        expect.oneCall(constructorMock, ctorMock, "newInstance", ctor, args);
     }
 }

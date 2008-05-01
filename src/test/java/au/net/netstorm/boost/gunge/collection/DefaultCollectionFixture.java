@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.collections;
+package au.net.netstorm.boost.gunge.collection;
 
 import java.util.Arrays;
 import java.util.Collection;
