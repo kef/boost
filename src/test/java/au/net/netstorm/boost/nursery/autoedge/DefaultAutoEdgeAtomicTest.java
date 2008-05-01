@@ -13,7 +13,6 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 // FIX 2328 need to test case where real object is null (static method case)
-
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdge subject;
     private Method unedge;
@@ -21,8 +20,10 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     EdgeStreamFixture fixture;
 
     MethodWarp warperMock;
-    EdgeMethod invokerMock;
     Unedger unedgerMock;
+    EdgeMethod invokerMock;
+    ReturnEdger returnEdgerMock;
+
     EdgeClass classer;
 
     public void setUpFixtures() {
@@ -37,6 +38,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         expect.oneCall(warperMock, fixture.trg(), "warp", InputStream.class, fixture.src());
         expect.oneCall(invokerMock, fixture.length(), "invoke", fixture.trg(), fixture.stream(), args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[] {args});
+        expect.oneCall(returnEdgerMock, fixture.length(), "edge", fixture.src(), fixture.length());
         Object length = subject.invoke(fixture.stream(), fixture.src(), args);
         assertEquals(fixture.length(), length);
     }
@@ -46,6 +48,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         expect.oneCall(warperMock, toString, "warp", InputStream.class, toString);
         expect.oneCall(invokerMock, expected, "invoke", toString, fixture.stream(), null);
         expect.oneCall(unedgerMock, VOID, "unedge", (Object) null);
+        expect.oneCall(returnEdgerMock, expected, "edge", toString, expected);
         Object result = subject.invoke(fixture.stream(), toString, null);
         assertEquals(expected, result);
     }

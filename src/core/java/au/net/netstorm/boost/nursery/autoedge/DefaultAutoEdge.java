@@ -13,8 +13,8 @@ final class DefaultAutoEdge implements AutoEdge {
     private final Method unedge;
     MethodWarp warper;
     EdgeMethod invoker;
-    AutoEdger edger;
     Unedger unedger;
+    ReturnEdger returnEdger;
 
     public <R> DefaultAutoEdge(Class<R> realClass, R real) {
         this.real = real;
@@ -27,14 +27,6 @@ final class DefaultAutoEdge implements AutoEdge {
         Method realMethod = warper.warp(realClass, edgeMethod);
         Object[] realArgs = unedger.unedge(edgedArgs);
         Object realReturn = invoker.invoke(realMethod, real, realArgs);
-        return edgeReturn(edgeMethod, realReturn);
-    }
-
-    @SuppressWarnings("unchecked")
-    private Object edgeReturn(Method edgeMethod, Object realReturn) {
-        Class<?> realType = edgeMethod.getReturnType();
-        if (!Edge.class.isAssignableFrom(realType)) return realReturn;
-        Class<Edge> edgeType = (Class<Edge>) realType;
-        return edger.edge(edgeType, realReturn);
+        return returnEdger.edge(edgeMethod, realReturn);
     }
 }
