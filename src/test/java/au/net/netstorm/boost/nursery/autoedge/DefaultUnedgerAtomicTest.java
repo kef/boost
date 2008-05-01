@@ -1,7 +1,9 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
+import java.net.URL;
 import java.util.List;
 
+import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -12,8 +14,9 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
     EdgeURLFixture fixture;
     AutoEdgeURL edgedObjectMock;
     List<?> realObjectMock;
+    TypeTokenResolver typeResolverMock;
 
-    public void testUnedge() {
+    public void testUnedgeObjects() {
         expect.oneCall(edgedObjectMock, fixture.url(), "unedge");
         Object[] partialEdgedArgs = {edgedObjectMock, realObjectMock};
         Object[] result = subject.unedge(partialEdgedArgs);
@@ -23,8 +26,17 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
         assertSame(realObjectMock, result[1]);
     }
 
-    public void testUnedgeNull() {
-        Object[] result = subject.unedge(null);
+    public void testUnedgeNullObjects() {
+        Object[] result = subject.unedge((Object[])null);
         assertNull(result);
+    }
+
+    public void testUnedgeClasses() {
+        Class<?>[] edgedClasses = {AutoEdgeURL.class,List.class};
+        Class<?>[] result = subject.unedge(edgedClasses);
+
+        assertEquals(edgedClasses.length, result.length);
+        assertSame(URL.class, result[0]);
+        assertSame(List.class, result[1]);
     }
 }

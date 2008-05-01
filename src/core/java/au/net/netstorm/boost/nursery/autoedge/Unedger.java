@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-public interface Unedger {
+interface Unedger {
     Object[] unedge(Object[] edged);
+
+    Class<?>[] unedge(Class<?>[] edged);
 }

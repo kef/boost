@@ -2,12 +2,8 @@ package au.net.netstorm.boost.nursery.autoedge;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
-import java.nio.channels.WritableByteChannel;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -21,8 +17,7 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
     EdgeStreamFixture stream;
 
     EdgeClass classerMock;
-    TypeTokenResolver typeResolverMock;
-    TypeTokenInstance typeTokenInstanceMock;
+    Unedger unedgerMock;
 
     public void setUpFixtures() {
         subject = new DefaultMethodWarp();
@@ -30,15 +25,8 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
 
     public void testWarp() {
         expect.oneCall(classerMock, stream.trg(), "getMethod", InputStream.class, stream.method(), stream.types());
+        expect.oneCall(unedgerMock, stream.types(), "unedge", new Object[] {stream.types()});
         Method result = subject.warp(InputStream.class, stream.src());
         assertEquals(stream.trg(), result);
-    }
-
-    public void testWarpWithEdgedArgs() {
-        expect.oneCall(classerMock, channel.trg(), "getMethod", WritableByteChannel.class, channel.method(), channel.trgTypes());
-        expect.oneCall(typeResolverMock, typeTokenInstanceMock, "resolve", Edge.class, AutoEdgeByteBuffer.class);
-        expect.oneCall(typeTokenInstanceMock, ByteBuffer.class, "rawType");
-        Method result = subject.warp(WritableByteChannel.class, channel.src());
-        assertEquals(channel.trg(), result);
     }
 }
