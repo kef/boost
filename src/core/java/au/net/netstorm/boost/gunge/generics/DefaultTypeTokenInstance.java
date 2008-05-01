@@ -16,6 +16,7 @@ public class DefaultTypeTokenInstance implements TypeTokenInstance {
         return type;
     }
 
+    // FIX 2328 add support for paramertized and wildcard types
     private void buildTypeData(Type tokenType) {
         if (!(tokenType instanceof Class)) {
             throw new IllegalArgumentException("Type tokens currently only support Class references.");
