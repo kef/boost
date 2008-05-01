@@ -54,7 +54,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
-        expect.oneCall(realNuMock, urlFixture.url(), "nu", AutoEdgeURL.class, new Object[] { urlFixture.value() });
+        expect.oneCall(realNuMock, urlFixture.url(), "nu", AutoEdgeURL.class, new Object[]{urlFixture.value()});
         typeExpectations(URL.class, AutoEdgeURL.class, Edge.class);
         edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, URL.class, urlFixture.url());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, urlFixture.value());

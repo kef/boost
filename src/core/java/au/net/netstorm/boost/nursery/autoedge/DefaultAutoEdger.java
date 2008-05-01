@@ -32,6 +32,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 yeh it is required... being used now... still bit of work
     // FIX 2328 to do here have to tidy up these two methods, gotten a bit
     // FIX 2328 out of control
+
     private <E> E createEdge(Class<?> edgeType, Class<E> edge, Object real) {
         AutoEdge handler = buildHandler(edgeType, edge, real);
         ClassLoader loader = edge.getClassLoader();

@@ -31,6 +31,6 @@ final class DefaultEdgeValidator implements EdgeValidator {
     private void fail() {
         throw new IllegalArgumentException(
                 "Invalid edge class, edges must implement Edge<RawType> or StaticEdge<RawType>" +
-                "and use a mirrored package structure.");
+                        "and use a mirrored package structure.");
     }
 }

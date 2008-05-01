@@ -27,7 +27,7 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
 
     public void testWarp() {
         expect.oneCall(classerMock, stream.real(), "getMethod", InputStream.class, stream.method(), stream.types());
-        expect.oneCall(unedgerMock, stream.types(), "unedge", new Object[] {stream.types()});
+        expect.oneCall(unedgerMock, stream.types(), "unedge", new Object[]{stream.types()});
         Method result = subject.warp(InputStream.class, stream.edge());
         assertEquals(stream.real(), result);
     }
