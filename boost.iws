@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="4" relativePaths="true">
-  <component name="BookmarkManager" />
+<project relativePaths="true" version="4">
   <component name="CCaseConfig">
     <option name="checkoutReserved" value="false" />
     <option name="markExternalChangeAsUpToDate" value="true" />
@@ -9,9 +8,10 @@
     <option name="isOffline" value="false" />
     <option name="synchOutside" value="false" />
     <option name="isHistoryResticted" value="true" />
+    <option name="useIdenticalSwitch" value="true" />
+    <option name="synchActivitiesOnRefresh" value="true" />
     <option name="lastScr" value="" />
     <option name="scrTextFileName" value="" />
-    <option name="lastViewType" />
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeBrowserSettings">
@@ -32,15 +32,13 @@
     <list default="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.ipr" afterPath="$PROJECT_DIR$/boost.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iml" afterPath="$PROJECT_DIR$/boost.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdger.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdger.java" />
     </list>
     <list name="Rejected commit: Default" comment="" />
     <list name="merde" comment="" />
   </component>
-  <component name="ChangeListSynchronizer" />
-  <component name="ChangesViewManager" flattened_view="true" />
-  <component name="CheckinPanelState" />
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="Commander">
     <leftPanel />
     <rightPanel />
@@ -54,7 +52,6 @@
     <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
     <option name="ASSERT_NOT_NULL" value="true" />
   </component>
-  <component name="CoverageDataManager" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
     <option name="REVERSE_PATCH" value="false" />
@@ -115,9 +112,9 @@
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
         <option name="ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -130,9 +127,9 @@
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
         <option name="ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="false" />
@@ -164,28 +161,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultResolverEngine.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
+      <file leaf-file-name="Edge.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="34" selection-start="3055" selection-end="3055" vertical-scroll-proportion="0.6751592">
+            <state line="2" column="17" selection-start="66" selection-end="66" vertical-scroll-proportion="0.027123483">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Registry.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java">
+      <file leaf-file-name="Unedger.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/Unedger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="0.11464968">
+            <state line="2" column="10" selection-start="59" selection-end="59" vertical-scroll-proportion="0.027123483">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultRegistry.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistry.java">
+      <file leaf-file-name="StaticEdge.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/StaticEdge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="19" selection-start="596" selection-end="596" vertical-scroll-proportion="0.050955415">
+            <state line="5" column="17" selection-start="222" selection-end="222" vertical-scroll-proportion="0.06780871">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EdgeBufferFixture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/EdgeBufferFixture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="3" selection-start="158" selection-end="158" vertical-scroll-proportion="0.054246966">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoEdger.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/AutoEdger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="17" selection-start="66" selection-end="66" vertical-scroll-proportion="0.027123483">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultAutoEdger.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="66" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.366167">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultConstructorResolverAtomicTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorResolverAtomicTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="19" selection-start="497" selection-end="497" vertical-scroll-proportion="0.054834057">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoEdge.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/AutoEdge.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="10" selection-start="137" selection-end="137" vertical-scroll-proportion="0.054246966">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultAutoEdge.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdge.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="49" selection-start="741" selection-end="741" vertical-scroll-proportion="0.2305496">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Arrays.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/bad/pack/Arrays.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="17" selection-start="137" selection-end="137" vertical-scroll-proportion="0.054246966">
               <folding />
             </state>
           </provider>
@@ -203,30 +263,95 @@
     <option name="SORT_ALPHABETICALLY" value="false" />
     <option name="HIDE_CLASSES_WHERE_METHOD_NOT_IMPLEMENTED" value="false" />
   </component>
-  <component name="InspectionManager">
-    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="SPLITTER_PROPORTION" value="0.5" />
-    <option name="GROUP_BY_SEVERITY" value="false" />
-    <option name="FILTER_RESOLVED_ITEMS" value="true" />
-    <option name="ANALYZE_TEST_SOURCES" value="true" />
-    <option name="SHOW_DIFF_WITH_PREVIOUS_RUN" value="false" />
-    <option name="SCOPE_TYPE" value="1" />
-    <option name="CUSTOM_SCOPE_NAME" value="" />
-    <option name="SHOW_ONLY_DIFF" value="false" />
-    <option name="myCurrentProfileName" value="Default" />
-  </component>
-  <component name="J2EEProjectPane" />
-  <component name="JspContextManager" />
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
-  <component name="NamedScopeManager" />
   <component name="PackagesPane">
     <subPane>
       <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Libraries" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lang" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="reflect" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -236,7 +361,7 @@
       </PATH>
       <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -250,7 +375,7 @@
       </PATH>
       <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -262,13 +387,13 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="spider" />
+          <option name="myItemId" value="nursery" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -280,17 +405,17 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="spider" />
+          <option name="myItemId" value="nursery" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="resolve" />
+          <option name="myItemId" value="autoedge" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="boost.ipr" />
+          <option name="myItemId" value="boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -302,11 +427,97 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="spider" />
+          <option name="myItemId" value="nursery" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="registry" />
+          <option name="myItemId" value="autoedge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="utils" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nursery" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="autoedge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="testfixtures" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nursery" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="autoedge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="testdata" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="nursery" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="autoedge" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="testdata" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="bad.pack" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -315,28 +526,6 @@
   <component name="PerforceChangeBrowserSettings">
     <option name="USE_CLIENT_FILTER" value="true" />
     <option name="CLIENT" value="" />
-  </component>
-  <component name="PerforceDirect.Settings">
-    <option name="useP4CONFIG" value="true" />
-    <option name="port" value="&lt;perforce_server&gt;:1666" />
-    <option name="client" value="" />
-    <option name="user" value="" />
-    <option name="passwd" value="" />
-    <option name="showCmds" value="false" />
-    <option name="useNativeApi" value="false" />
-    <option name="pathToExec" value="p4" />
-    <option name="useCustomPathToExec" value="false" />
-    <option name="SYNC_FORCE" value="false" />
-    <option name="SYNC_RUN_RESOLVE" value="true" />
-    <option name="REVERT_UNCHANGED_FILES" value="true" />
-    <option name="CHARSET" value="none" />
-    <option name="SHOW_BRANCHES_HISTORY" value="true" />
-    <option name="ENABLED" value="true" />
-    <option name="USE_LOGIN" value="false" />
-    <option name="LOGIN_SILENTLY" value="false" />
-    <option name="INTEGRATE_RUN_RESOLVE" value="true" />
-    <option name="INTEGRATE_REVERT_UNCHANGED" value="true" />
-    <option name="SERVER_TIMEOUT" value="20000" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="true" id="Add" />
@@ -377,7 +566,7 @@
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <showStructure PackagesPane="false" ProjectPane="false" Scope="false" Favorites="false" />
+      <showStructure PackagesPane="false" Scope="false" Favorites="false" ProjectPane="false" />
       <autoscrollToSource />
       <autoscrollFromSource PackagesPane="true" ProjectPane="true" />
       <sortByType />
@@ -414,9 +603,6 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="322" />
   </component>
-  <component name="ReadonlyStatusHandler">
-    <option name="SHOW_DIALOG" value="true" />
-  </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
@@ -437,30 +623,203 @@
       <recent name="au.net.netstorm.boost" />
     </key>
   </component>
-  <component name="RestoreUpdateTree" />
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="5/1/08 9:15 PM" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultMethodWarp.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdge.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DESIGN.txt</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/MethodWarp.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/AutoEdger.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorFilter.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/MostSpecificSignatureFinder.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/Object2ClassMapper.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/CompatibleSignaturesFilter.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorResolver.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdger.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/AutoEdge.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdgeAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorResolverAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorFilterAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdgerAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdgeCompoundAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultMethodWarpAtomicTest.java</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/EdgeValidator.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/StaticEdge.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultEdgeValidator.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultTypeTokenFinder.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/TypeTokenFinder.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/RealNu.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/Unedger.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultRealNu.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultUnedger.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/collection/DefaultFunctionalCollection.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/collection/Mapper.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/collection/Filter.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/collection/Finder.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/collection/FunctionalCollection.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/generics</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/generics/TypeToken.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/generics/TypeTokenResolver.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/generics/TypeTokenInstance.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/generics/DefaultTypeTokenResolver.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/generics/DefaultTypeTokenInstance.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/collection/DefaultFunctionalCollectionAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/collection/CollectionFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/collection/DefaultCollectionFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/generics</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/generics/DefaultTypeTokenResolverAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/generics/DefaultTypeTokenInstanceAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdgeReturnAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultTypeTokenFinderAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultRealNuAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/AutoEdgeURL.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/java/lang</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/java/lang/BadNamedEdge.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/java/lang/ClassStatic.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/java/net</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/java/net/URL.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/AutoEdgeWritableByteChannel.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/bad</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/bad/pack</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/bad/pack/Arrays.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/AutoEdgeInputStream.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/AutoEdgeByteBuffer.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/MockWritableByteChannel.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeURLFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/EdgeChannelFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/EdgeBufferFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/EdgeStreamFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeChannelFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeBufferFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeStreamFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/EdgeURLFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultUnedgerAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultEdgeValidatorAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/lang</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/lang/Class.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/lang/Integer.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/nio</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/nio/channels</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/nio/channels/WritableByteChannel.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/demo/edge/java/nio/ByteBuffer.java</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/TempMultiNu.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultTempMultiNu.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/collections</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/MockWritableByteChannel.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultEdgeURLFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/EdgeChannelFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/AutoEdgeWritableByteChannel.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultEdgeChannelFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/AutoEdgeByteBuffer.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/AutoEdgeURL.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultTempMultiNuAtomicTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/EdgeStreamFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdgerMolecularTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/AutoEdgeInputStream.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/DefaultEdgeStreamFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/EdgeURLFixture.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/collections</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/AutoEdgeNewObjectDemoTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/AutoEdgeExistingObjectDemoTest.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/ToBeEdgedClass.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/ToBeEdgedObject.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/EdgeToBeEdgedClass.java</PATH>
+            <PATH vcs="svn" revision="3258">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/EdgeToBeEdgedObject.java</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
   <component name="RunManager" selected="JUnit.AllTestSuite">
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <module name="" />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -479,10 +838,67 @@
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
       <option name="ADDITIONAL_CLASS_PATH" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
       </option>
+      <envs />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
       <method>
         <option name="Make" value="true" />
       </method>
@@ -499,16 +915,22 @@
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
       <option name="ADDITIONAL_CLASS_PATH" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
       </option>
+      <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="Make" value="true" />
       </method>
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.AllTestSuite" />
+    </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -687,7 +1109,6 @@
       </PATH>
     </subPane>
   </component>
-  <component name="SelectInManager" />
   <component name="StarteamConfiguration">
     <option name="SERVER" value="" />
     <option name="PORT" value="49201" />
@@ -699,7 +1120,6 @@
     <option name="LOCK_ON_CHECKOUT" value="false" />
     <option name="UNLOCK_ON_CHECKIN" value="false" />
   </component>
-  <component name="StructuralSearchPlugin" />
   <component name="StructureViewFactory">
     <option name="AUTOSCROLL_MODE" value="true" />
     <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
@@ -730,7 +1150,6 @@
   <component name="SvnConfiguration">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
-    <option name="PROCESS_UNRESOLVED" value="false" />
     <option name="LAST_MERGED_REVISION" />
     <option name="UPDATE_RUN_STATUS" value="false" />
     <option name="UPDATE_RECURSIVELY" value="true" />
@@ -750,43 +1169,50 @@
       <are-modules-shown value="false" />
       <flatten-packages value="false" />
       <is-autoscroll-to-source value="true" />
+      <todo-filter name="story" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="22" width="2540" height="1560" extended-state="0" />
+    <frame x="0" y="22" width="2560" height="1574" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="12" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29221228" order="6" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26856685" order="0" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43768996" order="1" />
+      <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29219747" order="9" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2683121" order="0" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43762922" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329428" order="8" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329428" order="7" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
-      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
+      <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="12" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="6" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24800955" order="1" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287388" order="10" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36871123" order="13" x="1373" y="941" width="1187" height="663" />
+      <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="4" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287388" order="13" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36871123" order="16" x="1373" y="941" width="1187" height="663" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" order="2" />
-      <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998407" order="0" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32791328" order="11" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329428" order="7" />
-      <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
-      <window_info id="BeanShell Box" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="TestDox" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945835" order="3" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32791328" order="14" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329428" order="6" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
+      <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="9" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
+      <window_info id="BeanShell Box" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="10" />
+      <window_info id="TestDox" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="5" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="11" />
+      <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17429939" order="15" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="4" />
+      <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
     </layout>
   </component>
   <component name="VCS.FileViewConfiguration">
@@ -801,19 +1227,18 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
-    <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="IOC - Fixed Nu interface" />
-    <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
-    <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="Story:  Implement &quot;auto edge&quot; spike. [id=2328]" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
     <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
     <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
-    <option name="ERROR_OCCURED" value="false" />
     <option name="ACTIVE_VCS_NAME" value="svn" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Story: New interceptor (&quot;pebble&quot;). [id=1665]" />
@@ -825,13 +1250,13 @@
     <MESSAGE value="DSA" />
     <MESSAGE value="IOC - Replace newers with nu.nu()" />
     <MESSAGE value="IOC - Fixed Nu interface" />
+    <MESSAGE value="Story:  Implement &quot;auto edge&quot; spike. [id=2328]" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
     <option name="SRCSAFEINI_PATH" value="" />
     <option name="USER_NAME" value="" />
     <option name="PWD" value="" />
-    <option name="VSS_IS_INITIALIZED" value="true" />
     <CheckoutOptions>
       <option name="COMMENT" value="" />
       <option name="DO_NOT_GET_LATEST_VERSION" value="false" />
@@ -846,7 +1271,6 @@
     <AddOptions>
       <option name="STORE_ONLY_LATEST_VERSION" value="false" />
       <option name="CHECK_OUT_IMMEDIATELY" value="false" />
-      <option name="FILE_TYPE" value="0" />
     </AddOptions>
     <UndocheckoutOptions>
       <option name="MAKE_WRITABLE" value="false" />
@@ -861,7 +1285,6 @@
       <option name="RECURSIVE" value="false" />
       <option name="VERSION" />
     </GetOptions>
-    <VssConfigurableExcludedFilesTag />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -918,83 +1341,6 @@
     <option name="multicastPort" value="3274" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/BaseReference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="11" selection-start="92" selection-end="92" vertical-scroll-proportion="0.11444142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/ResolvedInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="56" selection-start="98" selection-end="98" vertical-scroll-proportion="0.07629428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultImplementation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="234" selection-end="234" vertical-scroll-proportion="0.25454545">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/DefaultInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="18" selection-start="397" selection-end="397" vertical-scroll-proportion="0.47272727">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/util/type/UnresolvedInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="58" selection-start="100" selection-end="100" vertical-scroll-proportion="0.07272727">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/inject/core/Injector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.07272727">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/Resolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="64" selection-end="64" vertical-scroll-proportion="0.06947891">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/ProviderEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="4" selection-start="394" selection-end="394" vertical-scroll-proportion="0.30517712">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/DefaultNu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/instantiate/Nu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/demo/spider/core/DefaultSpider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="0.48195577">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/junit/junit-3.8.1-src.jar!/junit/framework/TestSuite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="185" column="6" selection-start="5243" selection-end="5243" vertical-scroll-proportion="0.24796274">
@@ -1002,23 +1348,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/resolve/DefaultResolverEngine.java">
+    <entry file="jar:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home/../Classes/classes.jar!/java/lang/reflect/ParameterizedType.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="34" selection-start="3055" selection-end="3055" vertical-scroll-proportion="0.6751592">
+        <state line="12" column="0" selection-start="364" selection-end="364" vertical-scroll-proportion="0.14917916">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultRegistry.java">
+    <entry file="jar:///System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home/../Classes/classes.jar!/java/lang/Class.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="19" selection-start="596" selection-end="596" vertical-scroll-proportion="0.050955415">
+        <state line="84" column="36" selection-start="4289" selection-end="4289" vertical-scroll-proportion="0.013708514">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java">
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/MethodWarp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="0.11464968">
+        <state line="4" column="17" selection-start="100" selection-end="100" vertical-scroll-proportion="0.054246966">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultMethodWarp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="56" selection-start="503" selection-end="503" vertical-scroll-proportion="0.1627409">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.054246966">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testdata/bad/pack/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="17" selection-start="137" selection-end="137" vertical-scroll-proportion="0.054246966">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/utils/DefaultConstructorResolverAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="19" selection-start="497" selection-end="497" vertical-scroll-proportion="0.054834057">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/AutoEdge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="10" selection-start="137" selection-end="137" vertical-scroll-proportion="0.054246966">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="49" selection-start="741" selection-end="741" vertical-scroll-proportion="0.2305496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="66" selection-end="66" vertical-scroll-proportion="0.027123483">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/Unedger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="10" selection-start="59" selection-end="59" vertical-scroll-proportion="0.027123483">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/StaticEdge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="222" selection-end="222" vertical-scroll-proportion="0.06780871">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/EdgeBufferFixture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="158" selection-end="158" vertical-scroll-proportion="0.054246966">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/AutoEdger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="66" selection-end="66" vertical-scroll-proportion="0.027123483">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/autoedge/DefaultAutoEdger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="66" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.366167">
           <folding />
         </state>
       </provider>

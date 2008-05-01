@@ -27,6 +27,8 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     // FIX 2328 realClass not used?  Remove and follow out.
+    // FIX 2328 Mark I'm going to assume you need realClass for something.
+    // FIX 2328 Cause if you don't TTR field goes (and maybe TTR).
     private <E> E createEdge(Class<E> edge, Class<?> realClass, Object real) {
         AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
         validator.validate(edge);
