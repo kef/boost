@@ -28,10 +28,8 @@ public final class DefaultTypeTokenInstanceAtomicTest extends LifecycleTestCase 
     }
 
     public void testWithGenericTypeToken() {
-        try {
-            new DefaultTypeTokenInstance(genericTypeToken);
-            fail("Generic type tokens are not supported yet.");
-        } catch (IllegalArgumentException e) { /* expected */ }
+        subject = new DefaultTypeTokenInstance(genericTypeToken);
+        assertEquals(List.class, subject.rawType());
     }
 
     public void testWithMultipleSuperTypeArgs() {
