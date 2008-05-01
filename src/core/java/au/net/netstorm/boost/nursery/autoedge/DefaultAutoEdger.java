@@ -13,12 +13,11 @@ public final class DefaultAutoEdger implements AutoEdger {
     Nu nu;
 
     public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
-        return createEdge(edge, real.getClass(), real);
+        return createEdge(Edge.class, edge, real);
     }
 
     public <E extends StaticEdge<R>, R> E edge(Class<E> edge) {
-        TypeTokenInstance typeToken = typeResolver.resolve(StaticEdge.class, edge);
-        return createEdge(edge, typeToken.rawType(), null);
+        return createEdge(StaticEdge.class, edge, null);
     }
 
     public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
@@ -29,12 +28,23 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 realClass not used?  Remove and follow out.
     // FIX 2328 Mark I'm going to assume you need realClass for something.
     // FIX 2328 Cause if you don't TTR field goes (and maybe TTR).
-    private <E> E createEdge(Class<E> edge, Class<?> realClass, Object real) {
-        AutoEdge handler = nu.nu(DefaultAutoEdge.class, real);
+
+    // FIX 2328 yeh it is required... being used now... still bit of work
+    // FIX 2328 to do here have to switch the validator around to accept
+    // FIX 2328 a type token rather than get a new one
+    private <E> E createEdge(Class<?> edgeType, Class<E> edge, Object real) {
+        AutoEdge handler = buildHandler(edgeType, edge, real);
         validator.validate(edge);
         ClassLoader loader = edge.getClassLoader();
         Class<?>[] type = {edge};
         Object proxy = proxier.getProxy(loader, type, handler);
         return edge.cast(proxy);
+    }
+
+    private <E> AutoEdge buildHandler(Class<?> edgeType, Class<E> edge, Object real) {
+        TypeTokenInstance typeToken = typeResolver.resolve(edgeType, edge);
+        Class<?> realClass = typeToken.rawType();
+        AutoEdge handler = nu.nu(DefaultAutoEdge.class, realClass, real);
+        return handler;
     }
 }
