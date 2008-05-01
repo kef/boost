@@ -1,17 +1,7 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
-
-
 final class DefaultEdgeValidator implements EdgeValidator {
-    TypeTokenResolver typeResolver;
-
-    public void validate(Class<?> edge) {
-        Class<?> tokenInterface = isStaticEdge(edge) ? StaticEdge.class : Edge.class;
-        TypeTokenInstance typeToken = typeResolver.resolve(tokenInterface, edge);
-        Class<?> real = typeToken.rawType();
-
+    public void validate(Class<?> edge, Class<?> real) {
         validateSameSimpleName(edge, real);
         validatePackageName(edge, real);
     }

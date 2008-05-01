@@ -30,11 +30,10 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 Cause if you don't TTR field goes (and maybe TTR).
 
     // FIX 2328 yeh it is required... being used now... still bit of work
-    // FIX 2328 to do here have to switch the validator around to accept
-    // FIX 2328 a type token rather than get a new one
+    // FIX 2328 to do here have to tidy up these two methods, gotten a bit
+    // FIX 2328 out of control
     private <E> E createEdge(Class<?> edgeType, Class<E> edge, Object real) {
         AutoEdge handler = buildHandler(edgeType, edge, real);
-        validator.validate(edge);
         ClassLoader loader = edge.getClassLoader();
         Class<?>[] type = {edge};
         Object proxy = proxier.getProxy(loader, type, handler);
@@ -44,6 +43,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     private <E> AutoEdge buildHandler(Class<?> edgeType, Class<E> edge, Object real) {
         TypeTokenInstance typeToken = typeResolver.resolve(edgeType, edge);
         Class<?> realClass = typeToken.rawType();
+        validator.validate(edge, realClass);
         AutoEdge handler = nu.nu(DefaultAutoEdge.class, realClass, real);
         return handler;
     }

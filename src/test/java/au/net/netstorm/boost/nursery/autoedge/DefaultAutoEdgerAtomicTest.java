@@ -41,14 +41,14 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testEdge() {
         typeExpectations(InputStream.class, AutoEdgeInputStream.class, Edge.class);
-        edgeExpectations(AutoEdgeInputStream.class, inMock, InputStream.class, streamFixture.stream());
+        edgeExpectations(InputStream.class, AutoEdgeInputStream.class, inMock, InputStream.class, streamFixture.stream());
         AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, streamFixture.stream());
         assertSame(inMock, result);
     }
 
     public void testStaticEdge() {
         typeExpectations(Class.class, ClassStatic.class, StaticEdge.class);
-        edgeExpectations(ClassStatic.class, classStaticMock, Class.class, (Object) null);
+        edgeExpectations(Class.class, ClassStatic.class, classStaticMock, Class.class, (Object) null);
         ClassStatic result = subject.edge(ClassStatic.class);
         assertSame(classStaticMock, result);
     }
@@ -56,7 +56,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     public void testNewEdge() {
         expect.oneCall(realNuMock, urlFixture.url(), "nu", AutoEdgeURL.class, new Object[] { urlFixture.value() });
         typeExpectations(URL.class, AutoEdgeURL.class, Edge.class);
-        edgeExpectations(AutoEdgeURL.class, urlMock, URL.class, urlFixture.url());
+        edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, URL.class, urlFixture.url());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, urlFixture.value());
         assertSame(urlMock, result);
     }
@@ -66,12 +66,12 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         expect.oneCall(typeInstanceMock, rawClass, "rawType");
     }
 
-    private void edgeExpectations(Class<?> edgeClass, Object proxy, Object... args) {
+    private void edgeExpectations(Class<?> rawClass, Class<?> edgeClass, Object proxy, Object... args) {
         Class<?>[] types = {edgeClass};
         ClassLoader loader = edgeClass.getClassLoader();
         expect.oneCall(nuMock, edgeMock, "nu", DefaultAutoEdge.class, args);
         expect.oneCall(proxierMock, proxy, "getProxy", loader, types, edgeMock);
-        expect.oneCall(validatorMock, VOID, "validate", edgeClass);
+        expect.oneCall(validatorMock, VOID, "validate", edgeClass, rawClass);
     }
 }
 
