@@ -9,7 +9,7 @@ final class DefaultEdgeValidator implements EdgeValidator {
     public void validateSameSimpleName(Class<?> edge, Class<?> real) {
         String edgeName = edge.getSimpleName();
         String realName = real.getSimpleName();
-        String validName = isStaticEdge(edge) ? realName + StaticEdge.SUFFIX : realName;
+        String validName = isStaticEdge(edge) ? realName + "Static" : realName;
         if (!edgeName.equals(validName)) fail();
     }
 
