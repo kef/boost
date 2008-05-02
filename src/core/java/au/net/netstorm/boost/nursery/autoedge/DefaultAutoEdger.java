@@ -42,6 +42,9 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     private <E> AutoEdge buildHandler(Class<?> edgeType, Class<E> edge, Object real) {
+        // FIX 2328 I think this is actually wrong... need to write a test... but
+        // FIX 2328 if real is not null, extract the type from that, so that inherited
+        // FIX 2328 methods will work... e.g. close() on WritableByteChannel
         TypeTokenInstance typeToken = typeResolver.resolve(edgeType, edge);
         Class<?> realClass = typeToken.rawType();
         validator.validate(edge, realClass);
