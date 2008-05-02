@@ -8,3 +8,6 @@ when the card is completed.
          - enforces <prefix>.<real package>.<real class>, eg. edge.java.lang.Class
          - does not enforce the value of prefix do we want to do this? a system wide setting perhaps
  - Decide which classes we do not edge.
+     - some thoughts:
+        - if it is already behind an interface and throws unchecked exceptions should it be left? e.g. collections
+        - integral types (String,Integer,Double,Byte...) they don't throw checked exceptions and should be used fairly sparingly anyway
