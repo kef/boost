@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.utils;
+package au.net.netstorm.boost.gunge.reflect;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;

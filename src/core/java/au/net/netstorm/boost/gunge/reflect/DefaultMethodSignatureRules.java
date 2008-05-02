@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.utils;
+package au.net.netstorm.boost.gunge.reflect;
 
 public class DefaultMethodSignatureRules implements MethodSignatureRules {
     public boolean compatible(Class<?>[] target, Class<?>[] canIBeAssignedToTarget) {

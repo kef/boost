@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.utils;
+package au.net.netstorm.boost.gunge.reflect;
 
 
 import java.lang.reflect.Constructor;

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.autoedge.utils;
+package au.net.netstorm.boost.gunge.reflect;
 
 
 public class DefaultObject2ClassMapper implements Object2ClassMapper {
