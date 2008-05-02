@@ -12,12 +12,12 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-public final class DefaultJLSOverloadRulesAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
+public final class DefaultMethodSignatureRulesAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
     private Class<?>[] generic = { List.class, Set.class, Map.class };
     private Class<?>[] specific = { ArrayList.class, HashSet.class, HashMap.class };
     private Class<?>[] mixed = { List.class, HashSet.class, Map.class };
     private Class<?>[] dodge = { };
-    JLSOverloadRules subject;
+    MethodSignatureRules subject;
 
     public void testCompatibleWithSelf() {
         checkCompatible(generic);

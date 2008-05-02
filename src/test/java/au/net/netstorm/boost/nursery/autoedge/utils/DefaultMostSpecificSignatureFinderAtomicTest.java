@@ -12,7 +12,7 @@ public final class DefaultMostSpecificSignatureFinderAtomicTest extends Lifecycl
 
     private MostSpecificSignatureFinder subject;
     ConstructorFixture fixture;
-    JLSOverloadRules jlsMock;
+    MethodSignatureRules jlsMock;
     EdgeClass classer;
 
     public void setUpFixtures() {

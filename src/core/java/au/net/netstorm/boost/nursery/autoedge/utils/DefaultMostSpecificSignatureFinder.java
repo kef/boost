@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 
 public class DefaultMostSpecificSignatureFinder implements MostSpecificSignatureFinder {
     private Constructor<?> result;
-    JLSOverloadRules jls;
+    MethodSignatureRules jls;
 
     public boolean next(Constructor<?> c) {
         if (moreSpecific(c, result)) result = c;

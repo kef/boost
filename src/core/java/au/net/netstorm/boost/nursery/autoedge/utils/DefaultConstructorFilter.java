@@ -12,8 +12,8 @@ public class DefaultConstructorFilter implements ConstructorFilter {
     Nu nu;
 
     public List<Constructor<?>> filter(Class<?> type, Object... params) {
-        List<Class<?>> types = collection.map(params, mapper);
-        CompatibleSignaturesFilter filter = nu.nu(DefaultCompatibleSignaturesFilter.class, types);
+        List<Class<?>> paramTypes = collection.map(params, mapper);
+        CompatibleSignaturesFilter filter = nu.nu(DefaultCompatibleSignaturesFilter.class, paramTypes);
         Constructor<?>[] ctors = type.getConstructors();
         return collection.filter(ctors, filter);
     }

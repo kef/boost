@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.autoedge.utils;
 
-public class DefaultJLSOverloadRules implements JLSOverloadRules {
+public class DefaultMethodSignatureRules implements MethodSignatureRules {
     public boolean compatible(Class<?>[] target, Class<?>[] canIBeAssignedToTarget) {
         if (target.length != canIBeAssignedToTarget.length) return false;
         for (int i = 0; i < target.length; ++i) {

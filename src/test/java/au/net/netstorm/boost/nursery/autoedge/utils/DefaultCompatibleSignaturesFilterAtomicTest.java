@@ -17,7 +17,7 @@ public final class DefaultCompatibleSignaturesFilterAtomicTest extends Lifecycle
     private Class<?>[] target = {};
     private Constructor<?> ctor;
     private Class<?>[] ctorTypes;
-    JLSOverloadRules jlsMock;
+    MethodSignatureRules jlsMock;
     ReflectObjectMaster objectMaster;
     List<Class<?>> targetMock;
 

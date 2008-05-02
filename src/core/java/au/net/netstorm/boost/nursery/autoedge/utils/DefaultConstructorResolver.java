@@ -10,8 +10,8 @@ public class DefaultConstructorResolver implements ConstructorResolver {
     MostSpecificSignatureFinder finder;
     FunctionalCollection collection;
 
-    public <T> Constructor<T> resolve(Class<T> type, Object... p) {
-        List<Constructor<?>> candidates = filter.filter(type, p);
+    public <T> Constructor<T> resolve(Class<T> type, Object... params) {
+        List<Constructor<?>> candidates = filter.filter(type, params);
 
         int size = candidates.size();
         if (size == 0) fail();

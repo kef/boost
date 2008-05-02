@@ -4,15 +4,15 @@ import java.lang.reflect.Constructor;
 import java.util.List;
 
 public class DefaultCompatibleSignaturesFilter implements CompatibleSignaturesFilter {
-    private final Class<?>[] target;
-    JLSOverloadRules jls;
+    private final Class<?>[] specificTypes;
+    MethodSignatureRules jls;
 
-    public DefaultCompatibleSignaturesFilter(List<Class<?>> target) {
-        this.target = target.toArray(new Class[target.size()]);
+    public DefaultCompatibleSignaturesFilter(List<Class<?>> specificTypes) {
+        this.specificTypes = specificTypes.toArray(new Class[specificTypes.size()]);
     }
 
     public boolean accept(Constructor<?> c) {
         Class<?>[] candidate = c.getParameterTypes();
-        return jls.compatible(candidate, target);
+        return jls.compatible(candidate, specificTypes);
     }
 }
