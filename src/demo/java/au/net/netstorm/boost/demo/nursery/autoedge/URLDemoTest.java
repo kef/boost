@@ -21,6 +21,7 @@ public class URLDemoTest extends LifecycleTestCase implements InjectableTest {
     public void testURLEdgeConstructionFailure() {
         try {
             edger.nu(URL.class, "..badone..");
+            fail();
         } catch (EdgeException e) {
             // FIX 2328 see FIX in DefaultEdgeMethod do we want to change this?
             // assertEquals(true, e.causeIs(MalformedURLException.class));
