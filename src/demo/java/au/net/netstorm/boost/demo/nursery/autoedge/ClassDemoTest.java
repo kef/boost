@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.demo.nursery.autoedge;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.nursery.autoedge.AutoEdger;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
