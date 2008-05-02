@@ -3,8 +3,6 @@ package au.net.netstorm.boost.gunge.generics;
 import java.lang.reflect.Type;
 
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.nursery.autoedge.utils.DefaultTypeTokenFinder;
-import au.net.netstorm.boost.nursery.autoedge.utils.TypeTokenFinder;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultTypeResolver implements TypeResolver {

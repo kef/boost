@@ -1,9 +1,8 @@
-package au.net.netstorm.boost.nursery.autoedge.utils;
+package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.ParameterizedType;
 import java.nio.ByteBuffer;
 
-import au.net.netstorm.boost.gunge.generics.TypeToken;
 import au.net.netstorm.boost.nursery.autoedge.Edge;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
