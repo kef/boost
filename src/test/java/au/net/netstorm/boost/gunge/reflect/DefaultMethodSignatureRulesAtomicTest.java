@@ -16,6 +16,8 @@ public final class DefaultMethodSignatureRulesAtomicTest extends LifecycleTestCa
     private Class<?>[] generic = { List.class, Set.class, Map.class };
     private Class<?>[] specific = { ArrayList.class, HashSet.class, HashMap.class };
     private Class<?>[] mixed = { List.class, HashSet.class, Map.class };
+    private Class<?>[] primitive = { int.class };
+    private Class<?>[] boxed = { Integer.class };
     private Class<?>[] dodge = { };
     MethodSignatureRules subject;
 
@@ -40,6 +42,11 @@ public final class DefaultMethodSignatureRulesAtomicTest extends LifecycleTestCa
         checkCompatible(false, mixed, dodge);
         checkCompatible(false, specific, dodge);
         checkCompatible(false, generic, dodge);
+    }
+
+    public void testCompatibleWithBoxing() {
+        checkCompatible(true, primitive, boxed);
+        checkCompatible(true, boxed, primitive);
     }
 
     public void testMoreSpecific() {
