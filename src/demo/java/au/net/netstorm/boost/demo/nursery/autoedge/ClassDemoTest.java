@@ -9,7 +9,6 @@ import demo.edge.java.lang.Class;
 
 public class ClassDemoTest extends LifecycleTestCase implements HasFixtures, InjectableTest {
     private Class<String> subject;
-    EdgeClass classer;
     AutoEdger edger;
 
     public void setUpFixtures() {
