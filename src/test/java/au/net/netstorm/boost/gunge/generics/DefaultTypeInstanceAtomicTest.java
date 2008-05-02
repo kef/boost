@@ -8,8 +8,8 @@ import java.util.List;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 
-public final class DefaultTypeTokenInstanceAtomicTest extends LifecycleTestCase implements HasFixtures {
-    private TypeTokenInstance subject;
+public final class DefaultTypeInstanceAtomicTest extends LifecycleTestCase implements HasFixtures {
+    private TypeInstance subject;
     private ParameterizedType rawTypeToken;
     private ParameterizedType genericTypeToken;
     private ParameterizedType multiArgs;
@@ -23,25 +23,25 @@ public final class DefaultTypeTokenInstanceAtomicTest extends LifecycleTestCase 
     }
 
     public void testWithRawTypeToken() {
-        subject = new DefaultTypeTokenInstance(rawTypeToken);
+        subject = new DefaultTypeInstance(rawTypeToken);
         assertEquals(String.class, subject.rawType());
     }
 
     public void testWithGenericTypeToken() {
-        subject = new DefaultTypeTokenInstance(genericTypeToken);
+        subject = new DefaultTypeInstance(genericTypeToken);
         assertEquals(List.class, subject.rawType());
     }
 
     public void testWithMultipleSuperTypeArgs() {
         try {
-            new DefaultTypeTokenInstance(multiArgs);
+            new DefaultTypeInstance(multiArgs);
             fail("Should not be able to create a type token instance with multiple type arguments.");
         } catch (IllegalArgumentException e) { /* expected */ }
     }
 
     public void testWithGenericTypeArgs() {
         try {
-            new DefaultTypeTokenInstance(genericArgs);
+            new DefaultTypeInstance(genericArgs);
             fail("Should not be able to create a type token instance with genric type arguments.");
         } catch (IllegalArgumentException e) { /* expected */ }
     }

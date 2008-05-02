@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.gunge.generics.TypeInstance;
+import au.net.netstorm.boost.gunge.generics.TypeResolver;
 
 final class DefaultUnedger implements Unedger {
-    TypeTokenResolver typeResolver;
+    TypeResolver typeResolver;
 
     public Object[] unedge(Object[] edged) {
         if (edged == null) return edged;
@@ -31,7 +31,7 @@ final class DefaultUnedger implements Unedger {
 
     private Class<?> unedge(Class<?> candidate) {
         if (!Edge.class.isAssignableFrom(candidate)) return candidate;
-        TypeTokenInstance typeToken = typeResolver.resolve(candidate, Edge.class, StaticEdge.class);
+        TypeInstance typeToken = typeResolver.resolve(candidate, Edge.class, StaticEdge.class);
         return typeToken.rawType();
     }
 }

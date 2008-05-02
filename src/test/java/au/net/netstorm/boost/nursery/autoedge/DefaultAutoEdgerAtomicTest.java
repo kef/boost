@@ -4,8 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.net.URL;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.gunge.generics.TypeInstance;
+import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeInputStream;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.nursery.autoedge.testdata.java.lang.ClassStatic;
@@ -24,8 +24,8 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     EdgeStreamFixture streamFixture;
     EdgeURLFixture urlFixture;
 
-    TypeTokenResolver typeResolverMock;
-    TypeTokenInstance typeInstanceMock;
+    TypeResolver typeResolverMock;
+    TypeInstance typeInstanceMock;
     EdgeValidator validatorMock;
     ProxySupplier proxierMock;
     AutoEdge edgeMock;

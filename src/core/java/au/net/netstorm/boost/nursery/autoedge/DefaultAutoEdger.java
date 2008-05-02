@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.gunge.generics.TypeInstance;
+import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultAutoEdger implements AutoEdger {
-    TypeTokenResolver typeResolver;
+    TypeResolver typeResolver;
     EdgeValidator validator;
     ProxySupplier proxier;
     RealNu realNu;
@@ -18,7 +18,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     public <E extends StaticEdge<R>, R> E edge(Class<E> edge) {
-        TypeTokenInstance typeToken = typeResolver.resolve(edge, StaticEdge.class);
+        TypeInstance typeToken = typeResolver.resolve(edge, StaticEdge.class);
         Class<?> realClass = typeToken.rawType();
         return createEdge(edge, realClass, null);
     }

@@ -16,10 +16,10 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
-public final class DefaultTypeTokenResolverAtomicTest extends LifecycleTestCase
+public final class DefaultTypeResolverAtomicTest extends LifecycleTestCase
         implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
 
-    private TypeTokenResolver subject;
+    private TypeResolver subject;
     private Type[] interfaceTypes;
     private Type edgeType;
     EdgeBufferFixture fixture;
@@ -27,10 +27,10 @@ public final class DefaultTypeTokenResolverAtomicTest extends LifecycleTestCase
     FunctionalCollection collectionsMock;
     Nu nuMock;
     TypeTokenFinder typeTokenFinderMock;
-    TypeTokenInstance typeTokenInstanceMock;
+    TypeInstance typeTokenInstanceMock;
 
     public void setUpFixtures() {
-        subject = new DefaultTypeTokenResolver();
+        subject = new DefaultTypeResolver();
         interfaceTypes = fixture.edgeInterfaceTypes();
         edgeType = interfaceTypes[0];
     }
@@ -38,7 +38,7 @@ public final class DefaultTypeTokenResolverAtomicTest extends LifecycleTestCase
     public void testResolveTypeToken() {
         expect.oneCall(nuMock, typeTokenFinderMock, "nu", DefaultTypeTokenFinder.class, new Object[] {Edge.class});
         expect.oneCall(collectionsMock, edgeType, "find", interfaceTypes, typeTokenFinderMock);
-        expect.oneCall(nuMock, typeTokenInstanceMock, "nu", DefaultTypeTokenInstance.class, new Object[] {edgeType});
+        expect.oneCall(nuMock, typeTokenInstanceMock, "nu", DefaultTypeInstance.class, new Object[] {edgeType});
         subject.resolve(AutoEdgeByteBuffer.class, Edge.class);
     }
 

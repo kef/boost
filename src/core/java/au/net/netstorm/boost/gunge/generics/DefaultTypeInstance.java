@@ -5,10 +5,10 @@ import java.lang.reflect.Type;
 
 // FIX 2328 this is an extremely naive type token, but can easily be expanded to support generic nuer
 // FIX 2328 add ref to generic nuer story card
-public class DefaultTypeTokenInstance implements TypeTokenInstance {
+public class DefaultTypeInstance implements TypeInstance {
     private Class<?> type;
 
-    public DefaultTypeTokenInstance(ParameterizedType instance) {
+    public DefaultTypeInstance(ParameterizedType instance) {
         Type[] args = instance.getActualTypeArguments();
         if (args.length != 1) throw new IllegalArgumentException("Type tokens must only have a single type argument.");
         buildTypeData(args[0]);

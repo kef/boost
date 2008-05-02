@@ -3,8 +3,8 @@ package au.net.netstorm.boost.nursery.autoedge;
 import java.net.URL;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.gunge.generics.TypeInstance;
+import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.nursery.autoedge.utils.ConstructorResolver;
@@ -20,8 +20,8 @@ public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements 
 
     ConstructorResolver resolverMock;
     EdgeConstructor constructorMock;
-    TypeTokenResolver typeResolverMock;
-    TypeTokenInstance typeTokenMock;
+    TypeResolver typeResolverMock;
+    TypeInstance typeTokenMock;
     Unedger unedgerMock;
 
     public void setUpFixtures() {

@@ -3,8 +3,8 @@ package au.net.netstorm.boost.nursery.autoedge;
 import java.net.URL;
 import java.util.List;
 
-import au.net.netstorm.boost.gunge.generics.TypeTokenInstance;
-import au.net.netstorm.boost.gunge.generics.TypeTokenResolver;
+import au.net.netstorm.boost.gunge.generics.TypeInstance;
+import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -21,8 +21,8 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
     EdgeURLFixture fixture;
     AutoEdgeURL edgedObjectMock;
     List<?> realObjectMock;
-    TypeTokenResolver typeResolverMock;
-    TypeTokenInstance typeInstanceMock;
+    TypeResolver typeResolverMock;
+    TypeInstance typeInstanceMock;
 
     public void setUpFixtures() {
         subject = new DefaultUnedger();

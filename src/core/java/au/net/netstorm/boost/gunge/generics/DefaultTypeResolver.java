@@ -7,13 +7,13 @@ import au.net.netstorm.boost.nursery.autoedge.utils.DefaultTypeTokenFinder;
 import au.net.netstorm.boost.nursery.autoedge.utils.TypeTokenFinder;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
-public final class DefaultTypeTokenResolver implements TypeTokenResolver {
+public final class DefaultTypeResolver implements TypeResolver {
     FunctionalCollection collections;
     Nu nu;
 
-    public TypeTokenInstance resolve(Class<?> token, Class<?>... tokenInterfaces) {
+    public TypeInstance resolve(Class<?> token, Class<?>... tokenInterfaces) {
         Class<?> tokenInterface = matchTokenInterface(token, tokenInterfaces);
-        TypeTokenInstance instance = find(token, tokenInterface);
+        TypeInstance instance = find(token, tokenInterface);
         return instance;
     }
 
@@ -24,10 +24,10 @@ public final class DefaultTypeTokenResolver implements TypeTokenResolver {
         throw new RuntimeException("Can not resolve type from token.");
     }
 
-    private TypeTokenInstance find(Class<?> token, Class<?> tokenInterface) {
+    private TypeInstance find(Class<?> token, Class<?> tokenInterface) {
         Type[] interfaces = token.getGenericInterfaces();
         TypeTokenFinder finder = nu.nu(DefaultTypeTokenFinder.class, tokenInterface);
         Type instance = collections.find(interfaces, finder);
-        return nu.nu(DefaultTypeTokenInstance.class, instance);
+        return nu.nu(DefaultTypeInstance.class, instance);
     }
 }
