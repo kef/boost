@@ -14,6 +14,5 @@ public class DefaultCompatibleSignaturesFilter implements CompatibleSignaturesFi
     public boolean accept(Constructor<?> c) {
         Class<?>[] candidate = c.getParameterTypes();
         return jls.compatible(candidate, target);
-        // FIX 2328 should i flip these inside or outside
     }
 }
