@@ -39,12 +39,12 @@ public final class DefaultTypeTokenResolverAtomicTest extends LifecycleTestCase
         expect.oneCall(nuMock, typeTokenFinderMock, "nu", DefaultTypeTokenFinder.class, new Object[] {Edge.class});
         expect.oneCall(collectionsMock, edgeType, "find", interfaceTypes, typeTokenFinderMock);
         expect.oneCall(nuMock, typeTokenInstanceMock, "nu", DefaultTypeTokenInstance.class, new Object[] {edgeType});
-        subject.resolve(Edge.class, AutoEdgeByteBuffer.class);
+        subject.resolve(AutoEdgeByteBuffer.class, Edge.class);
     }
 
     public void testFailureToResolveTypeToken() {
         try {
-            subject.resolve(Edge.class, List.class);
+            subject.resolve(List.class, Edge.class);
             fail("Token must implement token interface.");
         } catch (RuntimeException e) { /* expected */ }
     }

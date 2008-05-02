@@ -30,7 +30,7 @@ public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements 
 
     public void testNu() {
         Object[] args = {fixture.value()};
-        expect.oneCall(typeResolverMock, typeTokenMock, "resolve", Edge.class, AutoEdgeURL.class);
+        expect.oneCall(typeResolverMock, typeTokenMock, "resolve", AutoEdgeURL.class, new Object[]{Edge.class});
         expect.oneCall(typeTokenMock, URL.class, "rawType");
         expect.oneCall(resolverMock, fixture.constructor(), "resolve", URL.class, args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[]{args});

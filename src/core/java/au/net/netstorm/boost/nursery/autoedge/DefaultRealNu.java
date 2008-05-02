@@ -14,7 +14,7 @@ final class DefaultRealNu implements RealNu {
 
     @SuppressWarnings("unchecked")
     public <E extends Edge<R>, R> R nu(Class<E> edge, Object... edgedArgs) {
-        TypeTokenInstance typeToken = typeResolver.resolve(Edge.class, edge);
+        TypeTokenInstance typeToken = typeResolver.resolve(edge, Edge.class);
         Class<?> type = typeToken.rawType();
         Constructor<?> c = resolver.resolve(type, edgedArgs);
         Object[] realArgs = unedger.unedge(edgedArgs);

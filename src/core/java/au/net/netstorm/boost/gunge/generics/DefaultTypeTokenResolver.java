@@ -11,20 +11,23 @@ public final class DefaultTypeTokenResolver implements TypeTokenResolver {
     FunctionalCollection collections;
     Nu nu;
 
-    public TypeTokenInstance resolve(Class<?> tokenInterface, Class<?> token) {
-        if (!tokenInterface.isAssignableFrom(token)) fail();
-        TypeTokenInstance instance = find(tokenInterface, token);
+    public TypeTokenInstance resolve(Class<?> token, Class<?>... tokenInterfaces) {
+        Class<?> tokenInterface = matchTokenInterface(token, tokenInterfaces);
+        TypeTokenInstance instance = find(token, tokenInterface);
         return instance;
     }
 
-    private TypeTokenInstance find(Class<?> tokenInterface, Class<?> token) {
+    private Class<?> matchTokenInterface(Class<?> token, Class<?>... tokenInterfaces) {
+        for (Class<?> tokenInterface : tokenInterfaces) {
+            if (tokenInterface.isAssignableFrom(token)) return tokenInterface;
+        }
+        throw new RuntimeException("Can not resolve type from token.");
+    }
+
+    private TypeTokenInstance find(Class<?> token, Class<?> tokenInterface) {
         Type[] interfaces = token.getGenericInterfaces();
         TypeTokenFinder finder = nu.nu(DefaultTypeTokenFinder.class, tokenInterface);
         Type instance = collections.find(interfaces, finder);
         return nu.nu(DefaultTypeTokenInstance.class, instance);
-    }
-
-    private void fail() {
-        throw new RuntimeException("Can not resolve type from token.");
     }
 }

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 import java.net.URL;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
@@ -40,33 +40,28 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testEdge() {
-        typeExpectations(InputStream.class, AutoEdgeInputStream.class, Edge.class);
-        edgeExpectations(InputStream.class, AutoEdgeInputStream.class, inMock, InputStream.class, streamFixture.stream());
+        edgeExpectations(ByteArrayInputStream.class, AutoEdgeInputStream.class, inMock, streamFixture.stream());
         AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, streamFixture.stream());
         assertSame(inMock, result);
     }
 
     public void testStaticEdge() {
-        typeExpectations(Class.class, ClassStatic.class, StaticEdge.class);
-        edgeExpectations(Class.class, ClassStatic.class, classStaticMock, Class.class, null);
+        expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", ClassStatic.class, new Object[]{StaticEdge.class});
+        expect.oneCall(typeInstanceMock, Class.class, "rawType");
+        edgeExpectations(Class.class, ClassStatic.class, classStaticMock, null);
         ClassStatic result = subject.edge(ClassStatic.class);
         assertSame(classStaticMock, result);
     }
 
     public void testNewEdge() {
         expect.oneCall(realNuMock, urlFixture.url(), "nu", AutoEdgeURL.class, new Object[]{urlFixture.value()});
-        typeExpectations(URL.class, AutoEdgeURL.class, Edge.class);
-        edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, URL.class, urlFixture.url());
+        edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, urlFixture.url());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, urlFixture.value());
         assertSame(urlMock, result);
     }
 
-    private void typeExpectations(Class<?> rawClass, Class<?> edgeClass, Class<?> edgeType) {
-        expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", edgeType, edgeClass);
-        expect.oneCall(typeInstanceMock, rawClass, "rawType");
-    }
-
-    private void edgeExpectations(Class<?> rawClass, Class<?> edgeClass, Object proxy, Object... args) {
+    private void edgeExpectations(Class<?> rawClass, Class<?> edgeClass, Object proxy, Object real) {
+        Object[] args = {rawClass,real};
         Class<?>[] types = {edgeClass};
         ClassLoader loader = edgeClass.getClassLoader();
         expect.oneCall(nuMock, edgeMock, "nu", DefaultAutoEdge.class, args);
