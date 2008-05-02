@@ -20,7 +20,7 @@ public final class DefaultMostSpecificSignatureFinderAtomicTest extends Lifecycl
     }
 
     public void testFind() {
-        expect.oneCall(jlsMock, false, "moreSpecific", fixture.vectortype(), fixture.stacktype());
+        expect.oneCall(jlsMock, false, "moreSpecific", fixture.stacktype(), fixture.vectortype());
         assertEquals(true, subject.next(fixture.stackctor()));
         assertEquals(true, subject.next(fixture.vectorctor()));
         assertEquals(fixture.stackctor(), subject.result());

@@ -1,12 +1,16 @@
 package au.net.netstorm.boost.nursery.autoedge.utils;
 
 public class DefaultJLSOverloadRules implements JLSOverloadRules {
-    public boolean compatible(Class<?>[] lhs, Class<?>[] rhs) {
-        if (lhs.length != rhs.length) return false;
-        for (int i = 0; i < lhs.length; ++i) {
-            if (!assignable(lhs[i], rhs[i])) return false;
+    public boolean compatible(Class<?>[] target, Class<?>[] canIBeAssignedToTarget) {
+        if (target.length != canIBeAssignedToTarget.length) return false;
+        for (int i = 0; i < target.length; ++i) {
+            if (!assignable(target[i], canIBeAssignedToTarget[i])) return false;
         }
         return true;
+    }
+
+    public boolean moreSpecific(Class<?>[] target, Class<?>[] amIMoreSpecificThanTarget) {
+        return compatible(target, amIMoreSpecificThanTarget) && !compatible(amIMoreSpecificThanTarget, target);
     }
 
     // FIX 2328 handle primitives ??
@@ -14,7 +18,4 @@ public class DefaultJLSOverloadRules implements JLSOverloadRules {
         return lhs.isAssignableFrom(rhs);
     }
 
-    public boolean moreSpecific(Class<?>[] lhs, Class<?>[] rhs) {
-        return compatible(rhs, lhs) && !compatible(lhs, rhs);
-    }
 }

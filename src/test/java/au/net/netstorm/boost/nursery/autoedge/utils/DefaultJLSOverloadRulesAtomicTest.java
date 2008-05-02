@@ -43,16 +43,16 @@ public final class DefaultJLSOverloadRulesAtomicTest extends LifecycleTestCase i
     }
 
     public void testMoreSpecific() {
-        checkMoreSpecific(true, specific, mixed);
-        checkMoreSpecific(true, specific, generic);
-        checkMoreSpecific(true, mixed, generic);
+        checkMoreSpecific(true, mixed, specific);
+        checkMoreSpecific(true, generic, specific);
+        checkMoreSpecific(true, generic, mixed);
     }
 
     public void testNotMoreSpecific() {
         checkMoreSpecific(false, generic, generic);
-        checkMoreSpecific(false, generic, mixed);
-        checkMoreSpecific(false, generic, specific);
-        checkMoreSpecific(false, mixed, specific);
+        checkMoreSpecific(false, mixed, generic);
+        checkMoreSpecific(false, specific, generic);
+        checkMoreSpecific(false, specific, mixed);
         checkMoreSpecific(false, mixed, mixed);
         checkMoreSpecific(false, specific, specific);
     }
@@ -61,8 +61,8 @@ public final class DefaultJLSOverloadRulesAtomicTest extends LifecycleTestCase i
         checkCompatible(true, types, types);
     }
 
-    private void checkCompatible(boolean expected, Class<?>[] lhs, Class<?>[] rhs) {
-        assertEquals(expected, subject.compatible(lhs, rhs));
+    private void checkCompatible(boolean expected, Class<?>[] target, Class<?>[] canIBeAssignedToTarget) {
+        assertEquals(expected, subject.compatible(target, canIBeAssignedToTarget));
     }
 
     private void checkMoreSpecific(boolean expected, Class<?>[] lhs, Class<?>[] rhs) {

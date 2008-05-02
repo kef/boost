@@ -20,6 +20,6 @@ public class DefaultMostSpecificSignatureFinder implements MostSpecificSignature
         if (rhs == null) return true;
         Class<?>[] lTypes = lhs.getParameterTypes();
         Class<?>[] rTypes = rhs.getParameterTypes();
-        return jls.moreSpecific(lTypes, rTypes);
+        return jls.moreSpecific(rTypes, lTypes);
     }
 }
