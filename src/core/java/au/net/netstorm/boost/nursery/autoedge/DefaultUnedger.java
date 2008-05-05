@@ -32,6 +32,6 @@ final class DefaultUnedger implements Unedger {
     private Class<?> unedge(Class<?> candidate) {
         if (!Edge.class.isAssignableFrom(candidate)) return candidate;
         TypeInstance typeToken = typeResolver.resolve(candidate, Edge.class, StaticEdge.class);
-        return typeToken.rawType();
+        return typeToken.raw();
     }
 }

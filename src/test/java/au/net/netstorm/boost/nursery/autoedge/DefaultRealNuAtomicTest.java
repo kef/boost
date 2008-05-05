@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import java.net.URL;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
@@ -31,7 +30,7 @@ public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements 
     public void testNu() {
         Object[] args = {fixture.value()};
         expect.oneCall(typeResolverMock, typeTokenMock, "resolve", AutoEdgeURL.class, new Object[]{Edge.class});
-        expect.oneCall(typeTokenMock, URL.class, "rawType");
+        expect.oneCall(typeTokenMock, URL.class, "raw");
         expect.oneCall(resolverMock, fixture.constructor(), "resolve", URL.class, args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[]{args});
         expect.oneCall(constructorMock, fixture.url(), "newInstance", fixture.constructor(), args);

@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.autoedge;
 
 import java.net.URL;
 import java.util.List;
-
 import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeURL;
@@ -15,6 +14,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 // FIX 2328 fixed it now, but I got caught out by a bug (i think) in test framework here
 // FIX 2328 subject is package scoped and gets injected, then it gets injected with
+
 // FIX 2328 real objects and not the mocks
 public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Unedger subject;
@@ -44,7 +44,7 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
 
     public void testUnedgeClasses() {
         expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", AutoEdgeURL.class, new Object[]{Edge.class, StaticEdge.class});
-        expect.oneCall(typeInstanceMock, URL.class, "rawType");
+        expect.oneCall(typeInstanceMock, URL.class, "raw");
         Class<?>[] edgedClasses = {AutoEdgeURL.class, List.class};
         Class<?>[] result = subject.unedge(edgedClasses);
         assertEquals(edgedClasses.length, result.length);

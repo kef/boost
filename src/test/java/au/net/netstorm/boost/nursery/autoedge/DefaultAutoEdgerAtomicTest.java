@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.autoedge;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
-
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
@@ -47,7 +46,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testStaticEdge() {
         expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", ClassStatic.class, new Object[]{StaticEdge.class});
-        expect.oneCall(typeInstanceMock, Class.class, "rawType");
+        expect.oneCall(typeInstanceMock, Class.class, "raw");
         edgeExpectations(Class.class, ClassStatic.class, classStaticMock, null);
         ClassStatic result = subject.edge(ClassStatic.class);
         assertSame(classStaticMock, result);
@@ -61,7 +60,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     private void edgeExpectations(Class<?> rawClass, Class<?> edgeClass, Object proxy, Object real) {
-        Object[] args = {rawClass,real};
+        Object[] args = {rawClass, real};
         Class<?>[] types = {edgeClass};
         ClassLoader loader = edgeClass.getClassLoader();
         expect.oneCall(nuMock, edgeMock, "nu", DefaultAutoEdge.class, args);

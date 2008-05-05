@@ -19,7 +19,7 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     public <E extends StaticEdge<R>, R> E edge(Class<E> edge) {
         TypeInstance typeToken = typeResolver.resolve(edge, StaticEdge.class);
-        Class<?> realClass = typeToken.rawType();
+        Class<?> realClass = typeToken.raw();
         return createEdge(edge, realClass, null);
     }
 

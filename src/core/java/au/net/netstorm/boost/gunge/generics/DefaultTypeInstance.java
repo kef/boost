@@ -10,12 +10,17 @@ public class DefaultTypeInstance implements TypeInstance {
     private final Class<?> type;
 
     public DefaultTypeInstance(ParameterizedType instance) {
-        Type[] args = instance.getActualTypeArguments();
-        if (args.length != 1) throw new IllegalArgumentException("Type tokens must only have a single type argument.");
-        type = build(args[0]);
+        Type actual = actual(instance);
+        type = build(actual);
     }
 
-    public Class<?> rawType() {
+    private Type actual(ParameterizedType instance) {
+        Type[] args = instance.getActualTypeArguments();
+        if (args.length != 1) throw new IllegalArgumentException("Type tokens must only have a single type argument.");
+        return args[0];
+    }
+
+    public Class<?> raw() {
         return type;
     }
 

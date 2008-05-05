@@ -25,12 +25,12 @@ public final class DefaultTypeInstanceAtomicTest extends LifecycleTestCase imple
 
     public void testWithRawTypeToken() {
         subject = new DefaultTypeInstance(rawTypeToken);
-        assertEquals(String.class, subject.rawType());
+        assertEquals(String.class, subject.raw());
     }
 
     public void testWithGenericTypeToken() {
         subject = new DefaultTypeInstance(genericTypeToken);
-        assertEquals(List.class, subject.rawType());
+        assertEquals(List.class, subject.raw());
     }
 
     public void testWithMultipleSuperTypeArgs() {
