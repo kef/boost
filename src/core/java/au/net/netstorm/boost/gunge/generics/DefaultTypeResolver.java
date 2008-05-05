@@ -4,6 +4,9 @@ import java.lang.reflect.Type;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.nursery.type.core.Types;
 
+// FIX 2328 Consider a specific exception which does some lovely toStringing.
+
+// FIX 2328 Not sure.  Discuss.
 public final class DefaultTypeResolver implements TypeResolver {
     FunctionalCollection collection;
     Types types;

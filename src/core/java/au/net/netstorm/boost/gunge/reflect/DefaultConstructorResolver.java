@@ -2,21 +2,18 @@ package au.net.netstorm.boost.gunge.reflect;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
-
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 
 public class DefaultConstructorResolver implements ConstructorResolver {
-    ConstructorFilter filter;
     MostSpecificSignatureFinder finder;
     FunctionalCollection collection;
+    ConstructorFilter filter;
 
     public <T> Constructor<T> resolve(Class<T> type, Object... params) {
         List<Constructor<?>> candidates = filter.filter(type, params);
-
         int size = candidates.size();
         if (size == 0) fail();
         if (size == 1) return head(candidates);
-
         return refine(candidates);
     }
 
