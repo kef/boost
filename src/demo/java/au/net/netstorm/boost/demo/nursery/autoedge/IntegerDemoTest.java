@@ -15,4 +15,10 @@ public class IntegerDemoTest extends LifecycleTestCase implements InjectableTest
         java.lang.Integer real = subject.unedge();
         assertEquals(expected, real);
     }
+
+    public void testEquality() {
+        Integer i1 = edger.nu(Integer.class, 5);
+        Integer i2 = edger.nu(Integer.class, 5);
+        assertEquals(i1, i2);
+    }
 }
