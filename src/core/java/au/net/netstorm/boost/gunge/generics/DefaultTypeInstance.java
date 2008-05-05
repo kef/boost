@@ -6,6 +6,8 @@ import java.lang.reflect.Type;
 // FIX 2328 this is an extremely naive type token, but can easily be expanded to support generic nuer
 
 // FIX 2328 add ref to generic nuer story card
+
+// FIX 2328 MAG Given the name of the public method should this class be called RawInstance?
 public class DefaultTypeInstance implements TypeInstance {
     private final Class<?> type;
 
