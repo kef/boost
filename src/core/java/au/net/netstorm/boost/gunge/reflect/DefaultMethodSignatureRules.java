@@ -5,16 +5,20 @@ import java.util.Map;
 
 public class DefaultMethodSignatureRules implements MethodSignatureRules {
     // FIX 2328 might be useful somewhere else
-    private static final Map<Class<?>,Class<?>> PRIMITIVES = new HashMap<Class<?>,Class<?>>();
-    static {
-        PRIMITIVES.put(byte.class, Byte.class);
-        PRIMITIVES.put(short.class, Short.class);
-        PRIMITIVES.put(int.class, Integer.class);
-        PRIMITIVES.put(long.class, Long.class);
-        PRIMITIVES.put(float.class, Float.class);
-        PRIMITIVES.put(double.class, Double.class);
-        PRIMITIVES.put(boolean.class, Boolean.class);
-        PRIMITIVES.put(char.class, Character.class);
+    // FIX 2328 MAG Pretty sure this lives in the data atomic test area somewhere.
+    // FIX 2328 MAG the randomiser stuff?
+    // FIX 2328 Just had a look.  PrimitiveBoxer.  Discuss.
+    private final Map<Class<?>, Class<?>> primitives = new HashMap<Class<?>, Class<?>>();
+
+    {
+        primitives.put(byte.class, Byte.class);
+        primitives.put(short.class, Short.class);
+        primitives.put(int.class, Integer.class);
+        primitives.put(long.class, Long.class);
+        primitives.put(float.class, Float.class);
+        primitives.put(double.class, Double.class);
+        primitives.put(boolean.class, Boolean.class);
+        primitives.put(char.class, Character.class);
     }
 
     public boolean compatible(Class<?>[] target, Class<?>[] canIBeAssignedToTarget) {
@@ -36,6 +40,6 @@ public class DefaultMethodSignatureRules implements MethodSignatureRules {
     }
 
     private Class<?> box(Class<?> unboxed) {
-        return PRIMITIVES.containsKey(unboxed) ? PRIMITIVES.get(unboxed) : unboxed;
+        return primitives.containsKey(unboxed) ? primitives.get(unboxed) : unboxed;
     }
 }
