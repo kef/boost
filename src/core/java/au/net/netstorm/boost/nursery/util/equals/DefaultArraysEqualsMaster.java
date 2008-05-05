@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.util.equals;
 import java.lang.reflect.Array;
 import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
 
+// FIX 2328 Belongs in nursery . gunge.equals
 // FIX 2299 Up coverage and out of nursery.
 
 // FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

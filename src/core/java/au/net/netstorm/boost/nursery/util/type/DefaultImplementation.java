@@ -3,6 +3,8 @@ package au.net.netstorm.boost.nursery.util.type;
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.gunge.type.Implementation;
 
+// FIX 2328 Back into gunge.
+
 // FIX 2299 Up coverage and out of nursery.
 public final class DefaultImplementation<T> extends Primordial implements Implementation<T> {
     private final Class<T> impl;
