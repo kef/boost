@@ -2,7 +2,6 @@ package au.net.netstorm.boost.gunge.reflect;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
-
 import au.net.netstorm.boost.bullet.mirror.ReflectObjectMaster;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -23,8 +22,7 @@ public final class DefaultCompatibleSignaturesFilterAtomicTest extends Lifecycle
 
     public void setUpFixtures() {
         expect.oneCall(targetMock, 0, "size");
-        expect.oneCall(targetMock, target, "toArray", new Object[] { new Class[0] });
-
+        expect.oneCall(targetMock, target, "toArray", new Object[]{new Class[0]});
         subject = new DefaultCompatibleSignaturesFilter(targetMock);
         ctor = objectMaster.getConstructor(DefaultCompatibleSignaturesFilter.class);
         ctorTypes = ctor.getParameterTypes();

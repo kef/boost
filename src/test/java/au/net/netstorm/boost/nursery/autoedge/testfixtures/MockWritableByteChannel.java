@@ -3,7 +3,6 @@ package au.net.netstorm.boost.nursery.autoedge.testfixtures;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.WritableByteChannel;
-
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;
 

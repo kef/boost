@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.nursery.type.primitive;
 
-import au.net.netstorm.boost.nursery.type.core.Holder;
-
 import java.math.BigInteger;
+import au.net.netstorm.boost.nursery.type.core.Holder;
 
 public interface BigIntegerHolder extends Holder<BigInteger> {
 }

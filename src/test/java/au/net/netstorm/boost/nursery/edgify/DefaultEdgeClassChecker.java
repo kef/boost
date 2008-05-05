@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.nursery.edgify;
 
-import junit.framework.Assert;
-
 import java.lang.reflect.Modifier;
+import junit.framework.Assert;
 
 public final class DefaultEdgeClassChecker implements EdgeChecker {
     public void check(Class edgeClass) {

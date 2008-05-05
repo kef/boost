@@ -3,7 +3,6 @@ package au.net.netstorm.boost.gunge.collection;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;

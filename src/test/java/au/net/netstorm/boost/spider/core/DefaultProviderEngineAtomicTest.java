@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.gunge.type.BaseReference;
+import au.net.netstorm.boost.gunge.type.DefaultImplementation;
+import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
-import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
-import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

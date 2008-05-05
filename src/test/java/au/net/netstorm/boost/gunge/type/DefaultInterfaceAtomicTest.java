@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.gunge.type;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;

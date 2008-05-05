@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.gunge.reflect;
 
 import java.lang.reflect.Constructor;
-
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;

@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
+import au.net.netstorm.boost.gunge.type.DefaultImplementation;
+import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
-import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
-import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.registry.Blueprint;
 import au.net.netstorm.boost.spider.registry.DefaultBlueprint;

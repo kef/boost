@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.gunge.type;
 
-import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 

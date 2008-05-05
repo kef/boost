@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.autoedge;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeStreamFixture;

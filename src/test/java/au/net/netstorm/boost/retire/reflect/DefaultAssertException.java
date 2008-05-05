@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.retire.reflect;
 
-import junit.framework.Assert;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import junit.framework.Assert;
 
 public final class DefaultAssertException implements AssertException {
     public Throwable assertWraps(Class expectedException, Throwable wrapperException) {

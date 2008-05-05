@@ -2,7 +2,6 @@ package au.net.netstorm.boost.gunge.type;
 
 import java.util.Map;
 import java.util.Set;
-import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultInterfaceUtilAtomicTest extends BoooostCase {

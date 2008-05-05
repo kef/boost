@@ -3,12 +3,12 @@ package au.net.netstorm.boost.nursery.spider.register;
 import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.gunge.array.ArrayMaster;
 import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
+import au.net.netstorm.boost.gunge.type.DefaultImplementation;
 import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.Reference;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
-import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.spider.registry.InstanceOfChecker;
 import au.net.netstorm.boost.spider.registry.WrongRegistrationTypeException;
 
