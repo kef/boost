@@ -22,6 +22,8 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return true;
     }
 
+    // FIX 2328 Work out whether difference between rootCause/realCause is justified.
+    // FIX 2328 This definitely does not belong here.
     // SUGGEST: Does this really belong?
     public String trace(Throwable t) {
         StringWriter stringWriter = new StringWriter();
@@ -36,6 +38,7 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return rootCause(cause);
     }
 
+    // FIX 2328 Remove this.  Find where it is hanging on.
     public String realMessage(String defaultMsg, Throwable t) {
         Throwable real = realCause(t);
         String currentMsg = real.getMessage();

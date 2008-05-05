@@ -29,8 +29,6 @@ public class ClassStaticDemoTest extends LifecycleTestCase implements HasFixture
             subject.forName("bad.Name");
             fail();
         } catch (EdgeException e) {
-            // FIX 2328 see FIX in DefaultEdgeMethod do we want to change this?
-            // assertEquals(true, e.causeIs(ClassNotFoundException.class));
             Throwable real = thrower.rootCause(e);
             assertEquals(ClassNotFoundException.class, real.getClass());
         }
