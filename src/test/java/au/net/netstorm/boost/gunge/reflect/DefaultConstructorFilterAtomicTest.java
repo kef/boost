@@ -16,7 +16,7 @@ public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase
     private ConstructorFilter subject;
     ConstructorFixture fixture;
     FunctionalCollection collectionMock;
-    Object2ClassMapper mapperMock;
+    ObjectToClassMapper mapperMock;
     Types typesMock;
     CompatibleSignaturesFilter compatMock;
     List<Class<?>> classesMock;

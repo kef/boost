@@ -7,7 +7,7 @@ import au.net.netstorm.boost.nursery.type.core.Types;
 
 public class DefaultConstructorFilter implements ConstructorFilter {
     FunctionalCollection collection;
-    Object2ClassMapper mapper;
+    ObjectToClassMapper mapper;
     Types types;
 
     public List<Constructor<?>> filter(Class<?> type, Object... params) {

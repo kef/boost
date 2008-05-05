@@ -4,7 +4,7 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 
 public final class DefaultObject2ClassMapperAtomicTest extends LifecycleTestCase implements InjectableTest {
-    Object2ClassMapper subject;
+    ObjectToClassMapper subject;
 
     public void testMap() {
         Class<?> result = subject.map("i am a string");
