@@ -8,8 +8,8 @@ import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.DefaultMarker;
 import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.gunge.type.Sensitive;
-import au.net.netstorm.boost.nursery.util.equals.DefaultArraysEqualsMaster;
-import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
+import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
+import au.net.netstorm.boost.nursery.gunge.tostring.IndentingToStringMaster;
 
 // FIX 2233 Pull out array cloning and delegate - alternatively DefaultArrayHolder<T>?
 // FIX (Nov 21, 2007) 2233 Needs testing.

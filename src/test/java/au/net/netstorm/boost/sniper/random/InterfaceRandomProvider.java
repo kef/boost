@@ -14,7 +14,7 @@ import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
-import au.net.netstorm.boost.nursery.util.impl.DefaultImplMaster;
+import au.net.netstorm.boost.nursery.gunge.impl.DefaultImplMaster;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;

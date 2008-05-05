@@ -4,7 +4,7 @@ import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
 import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.gunge.nullo.NullMaster;
 import au.net.netstorm.boost.gunge.type.Immutable;
-import au.net.netstorm.boost.nursery.util.equals.DefaultArraysEqualsMaster;
+import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
 
 // FIX SC502 Who uses this. Do we need it? TJA: It's the best thing since sliced bread. Who'd want to remove it???
 

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.util.tostring;
+package au.net.netstorm.boost.nursery.gunge.tostring;
 
 import java.lang.reflect.Array;
 import au.net.netstorm.boost.bullet.mirror.ClassMaster;

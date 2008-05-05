@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.util.equals;
+package au.net.netstorm.boost.nursery.gunge.equals;
 
 import java.lang.reflect.Array;
 import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;

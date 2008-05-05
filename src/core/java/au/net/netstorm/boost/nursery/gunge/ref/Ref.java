@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.util.ref;
+package au.net.netstorm.boost.nursery.gunge.ref;
 
 import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.gunge.type.Immutable;

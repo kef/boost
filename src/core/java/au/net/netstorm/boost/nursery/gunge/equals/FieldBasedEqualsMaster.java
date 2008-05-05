@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.util.equals;
+package au.net.netstorm.boost.nursery.gunge.equals;
 
 import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
 import au.net.netstorm.boost.bullet.mirror.ReflectMaster;

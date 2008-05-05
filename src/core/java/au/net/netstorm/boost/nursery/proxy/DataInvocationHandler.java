@@ -9,7 +9,7 @@ import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.Interface;
-import au.net.netstorm.boost.nursery.util.tostring.IndentingToStringMaster;
+import au.net.netstorm.boost.nursery.gunge.tostring.IndentingToStringMaster;
 
 public class DataInvocationHandler extends Primordial implements InvocationHandler {
     private final Interface iFace;

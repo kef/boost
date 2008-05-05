@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.gunge.equals;
 
-import au.net.netstorm.boost.nursery.util.equals.FieldBasedEqualsMaster;
+import au.net.netstorm.boost.nursery.gunge.equals.FieldBasedEqualsMaster;
 import au.net.netstorm.boost.sniper.core.BoooostCase;// NOTE: Careful when refactoring due to heavy use of equals!
 
 // DEBT ClassDataAbstractionCoupling {

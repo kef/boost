@@ -23,12 +23,12 @@ public final class DefaultEdgeBufferFixture implements EdgeBufferFixture {
         return src;
     }
 
-    public Method trg() {
-        return trg;
-    }
-
     public int length() {
         return length;
+    }
+
+    public Method trg() {
+        return trg;
     }
 
     public ByteBuffer buffer() {

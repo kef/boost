@@ -6,7 +6,7 @@ import au.net.netstorm.boost.demo.spider.core.SpiderBuilder;
 import au.net.netstorm.boost.gunge.impl.DefaultImplMapper;
 import au.net.netstorm.boost.gunge.impl.ImplMapper;
 import au.net.netstorm.boost.gunge.impl.ImplMaster;
-import au.net.netstorm.boost.nursery.util.impl.DefaultImplMaster;
+import au.net.netstorm.boost.nursery.gunge.impl.DefaultImplMaster;
 
 public class DefaultBoostSpiderBuilder implements BoostSpiderBuilder {
     private final SpiderBuilder builder = new DefaultSpiderBuilder();
