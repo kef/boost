@@ -1,4 +1,5 @@
 package au.net.netstorm.boost.nursery.util.impl;
+// FIX 2328 Belongs in nursery.gunge.impl...
 
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
