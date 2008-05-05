@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
 import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
@@ -18,7 +19,7 @@ final class DefaultAutoEdge implements AutoEdge {
     public <R> DefaultAutoEdge(Class<R> realClass, R real) {
         this.real = real;
         this.realClass = realClass;
-        this.unedge = classer.getDeclaredMethod(Edge.class, "unedge");
+        this.unedge = classer.getDeclaredMethod(Unedgable.class, "unedge");
     }
 
     public Object invoke(Object edge, Method edgeMethod, Object[] edgedArgs) {

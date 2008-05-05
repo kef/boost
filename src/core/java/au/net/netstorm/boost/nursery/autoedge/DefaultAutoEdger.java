@@ -34,7 +34,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     private <E> E createEdge(Class<E> edgeClass, Class<?> realClass, Object real) {
         validator.validate(edgeClass, realClass);
         ClassLoader loader = edgeClass.getClassLoader();
-        Class<?>[] type = {edgeClass};
+        Class<?>[] type = {edgeClass, Unedgable.class};
         AutoEdge handler = types.nu(AutoEdge.class, realClass, real);
         Object proxy = proxier.getProxy(loader, type, handler);
         return edgeClass.cast(proxy);

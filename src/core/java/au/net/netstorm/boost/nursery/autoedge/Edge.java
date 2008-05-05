@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.autoedge;
 
-public interface Edge<R> {
-    // FIX 2328 MAG The commander (POK) suggested any usages of this represent a smell.  Review.
-    R unedge();
-}
+// FIX 2328 there is no longer a strong reason to separate out edge and static edge
+// FIX 2328 could now just be a naming convention... need to think about
+public interface Edge<R> {}

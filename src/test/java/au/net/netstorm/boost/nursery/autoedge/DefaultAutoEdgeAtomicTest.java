@@ -11,7 +11,6 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-// FIX 2328 need to add test case where real object is null (static method case)
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdge subject;
     private Method unedge;
@@ -27,7 +26,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdge(InputStream.class, fixture.stream());
-        unedge = classer.getDeclaredMethod(Edge.class, "unedge");
+        unedge = classer.getDeclaredMethod(Unedgable.class, "unedge");
         toString = classer.getDeclaredMethod(Object.class, "toString");
     }
 
@@ -51,6 +50,13 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         Object result = subject.invoke(null, unedge, args);
         assertEquals(true, result instanceof InputStream);
         assertSame(fixture.stream(), result);
+    }
+
+    public void testInvokeStatic() {
+        String expected = "pretend toString is static";
+        expectations(toString, toString, expected, null);
+        Object result = subject.invoke(null, toString, null);
+        assertEquals(expected, result);
     }
 
     private void expectations(Method src, Method trg, Object expected, Object args) {

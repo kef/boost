@@ -24,8 +24,8 @@ final class DefaultUnedger implements Unedger {
     }
 
     private Object unedge(Object candidate) {
-        if (!(candidate instanceof Edge)) return candidate;
-        Edge<?> edge = (Edge<?>) candidate;
+        if (!(candidate instanceof Unedgable)) return candidate;
+        Unedgable edge = (Unedgable) candidate;
         return edge.unedge();
     }
 

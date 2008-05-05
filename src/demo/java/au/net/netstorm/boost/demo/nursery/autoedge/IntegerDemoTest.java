@@ -6,14 +6,12 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import demo.edge.java.lang.Integer;
 
 public class IntegerDemoTest extends LifecycleTestCase implements InjectableTest {
-    private Integer subject;
     AutoEdger edger;
 
     public void testPrimitiveConstruction() {
-        subject = edger.nu(Integer.class, 5);
-        java.lang.Integer expected = java.lang.Integer.valueOf(5);
-        java.lang.Integer real = subject.unedge();
-        assertEquals(expected, real);
+        int expected = 5;
+        Integer i = edger.nu(Integer.class, expected);
+        assertEquals(expected, i.intValue());
     }
 
     // FIX 2328 this has just triggered a thought on a possible gotcha...

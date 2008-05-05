@@ -61,7 +61,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     private void edgeExpectations(Class<?> rawClass, Class<?> edgeClass, Object proxy, Object real) {
         Object[] args = {rawClass, real};
-        Class<?>[] types = {edgeClass};
+        Class<?>[] types = {edgeClass, Unedgable.class};
         ClassLoader loader = edgeClass.getClassLoader();
         expect.oneCall(typesMock, edgeMock, "nu", AutoEdge.class, args);
         expect.oneCall(proxierMock, proxy, "getProxy", loader, types, edgeMock);

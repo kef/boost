@@ -20,8 +20,8 @@ public class ClassStaticDemoTest extends LifecycleTestCase implements HasFixture
 
     public void testForName() {
         Class<?> edgedStringClass = subject.forName("java.lang.String");
-        java.lang.Class<?> realStringClass = edgedStringClass.unedge();
-        assertEquals(String.class, realStringClass);
+        Object stringInstance = edgedStringClass.newInstance();
+        assertEquals(String.class, stringInstance.getClass());
     }
 
     public void testForNameFailure() {
