@@ -10,7 +10,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 import au.net.netstorm.boost.spider.instantiate.Nu;
-import au.net.netstorm.boost.spider.register.Registry;
+import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.

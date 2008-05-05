@@ -5,10 +5,10 @@ import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
 import au.net.netstorm.boost.nursery.util.type.DefaultInterface;
 import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.spider.register.Blueprint;
-import au.net.netstorm.boost.spider.register.DefaultBlueprint;
-import au.net.netstorm.boost.spider.register.Factory;
-import static au.net.netstorm.boost.spider.register.Stamp.MULTIPLE;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.DefaultBlueprint;
+import au.net.netstorm.boost.spider.registry.Factory;
+import static au.net.netstorm.boost.spider.registry.Stamp.MULTIPLE;
 
 public final class MemorabiliaFactory implements Factory {
     private static final Interface MEMORABILIA = new DefaultInterface(Memorabilia.class);

@@ -2,7 +2,7 @@ package au.net.netstorm.boost.sniper.exception;
 
 import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.spider.flavour.MapException;
-import au.net.netstorm.boost.spider.register.UnresolvedDependencyException;
+import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 
 public final class WebThrowableSupport implements ThrowableSupport {
     private static final au.net.netstorm.boost.gunge.exception.ThrowableMaster THROWABLE_MASTER = new DefaultThrowableMaster();

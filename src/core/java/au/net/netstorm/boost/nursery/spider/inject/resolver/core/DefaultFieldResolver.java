@@ -7,8 +7,8 @@ import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
-import au.net.netstorm.boost.spider.register.CannotProvideException;
-import au.net.netstorm.boost.spider.register.UnresolvedDependencyException;
+import au.net.netstorm.boost.spider.registry.CannotProvideException;
+import au.net.netstorm.boost.spider.registry.UnresolvedDependencyException;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 
 // FIX ()   2237 NURSERY --- Move out of here.  Test still exists.

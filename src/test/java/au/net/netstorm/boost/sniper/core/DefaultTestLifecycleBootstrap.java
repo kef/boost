@@ -11,7 +11,7 @@ import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.sniper.random.RandomProviderAssembler;
 import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;
-import au.net.netstorm.boost.spider.register.Registry;
+import au.net.netstorm.boost.spider.registry.Registry;
 
 public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     RandomProviderAssembler assembler;

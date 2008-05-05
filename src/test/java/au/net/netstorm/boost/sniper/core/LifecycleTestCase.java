@@ -11,7 +11,7 @@ import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.sniper.specific.BoostDataProviders;
 import au.net.netstorm.boost.sniper.spider.DefaultTestSpiderBuilder;
 import au.net.netstorm.boost.sniper.spider.TestSpiderBuilder;
-import au.net.netstorm.boost.spider.register.Registry;
+import au.net.netstorm.boost.spider.registry.Registry;
 
 public class LifecycleTestCase extends CleanTestCase {
     public static final Object VOID = MockExpectations.VOID;

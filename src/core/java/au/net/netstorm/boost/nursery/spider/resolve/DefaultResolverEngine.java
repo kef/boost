@@ -7,12 +7,12 @@ import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.spider.register.Blueprint;
-import au.net.netstorm.boost.spider.register.Factories;
-import au.net.netstorm.boost.spider.register.Factory;
-import au.net.netstorm.boost.spider.register.Instances;
-import au.net.netstorm.boost.spider.register.Stamp;
-import static au.net.netstorm.boost.spider.register.Stamp.SINGLE;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.Factory;
+import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.registry.Stamp;
+import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
 
 // FIX 2299 Up coverage and out of nursery.

@@ -11,10 +11,10 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.spider.register.Blueprint;
-import au.net.netstorm.boost.spider.register.Factories;
-import au.net.netstorm.boost.spider.register.Factory;
-import au.net.netstorm.boost.spider.register.Instances;
+import au.net.netstorm.boost.spider.registry.Blueprint;
+import au.net.netstorm.boost.spider.registry.Factories;
+import au.net.netstorm.boost.spider.registry.Factory;
+import au.net.netstorm.boost.spider.registry.Instances;
 
 public final class DefaultResolverEngineAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     ClassTestChecker testChecker = new DefaultClassTestChecker();

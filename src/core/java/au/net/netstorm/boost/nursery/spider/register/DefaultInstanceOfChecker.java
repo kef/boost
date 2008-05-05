@@ -9,8 +9,8 @@ import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.Reference;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
 import au.net.netstorm.boost.nursery.util.type.DefaultImplementation;
-import au.net.netstorm.boost.spider.register.InstanceOfChecker;
-import au.net.netstorm.boost.spider.register.WrongRegistrationTypeException;
+import au.net.netstorm.boost.spider.registry.InstanceOfChecker;
+import au.net.netstorm.boost.spider.registry.WrongRegistrationTypeException;
 
 // FIX 2299 Move out of "nursery".
 
