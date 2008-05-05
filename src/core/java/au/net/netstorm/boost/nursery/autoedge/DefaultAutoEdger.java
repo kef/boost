@@ -29,6 +29,8 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     // FIX 2328 Bit big?
+
+    // FIX 2328 method or class?
     private <E> E createEdge(Class<E> edgeClass, Class<?> realClass, Object real) {
         validator.validate(edgeClass, realClass);
         ClassLoader loader = edgeClass.getClassLoader();

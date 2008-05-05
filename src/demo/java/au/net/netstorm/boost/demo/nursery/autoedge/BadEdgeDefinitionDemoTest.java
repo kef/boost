@@ -36,4 +36,12 @@ public class BadEdgeDefinitionDemoTest extends LifecycleTestCase implements Inje
     }
 
     // FIX 2328 Are there cases where R and E parameters make sense?  How is this dealt with?
+
+    // FIX 2328 MH - do you mean a signature like  edge.foo(edge.java.lang.Integer, java.lang.Integer)
+    // FIX 2328 with a target of  real.foo(java.lang.Integer, java.lang.Integer)
+    // FIX 2328 if that is the case then it is driven off the declared edge interface and only edges will be unedged
+
+    // FIX 2328 MH - if you mean a target of real.foo(edge.java.lang.Integer, java.lang.Integer)
+    // FIX 2328 then it doesn't handle it - pretty trivial change to MethodWarp but I could not
+    // FIX 2328 come up with a use case for it.
 }
