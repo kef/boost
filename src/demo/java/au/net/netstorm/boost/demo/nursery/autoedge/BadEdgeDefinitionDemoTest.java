@@ -25,13 +25,13 @@ public class BadEdgeDefinitionDemoTest extends LifecycleTestCase implements Inje
         try {
             edger.edge(BadName.class, new java.lang.Object());
             fail();
-        } catch (IllegalArgumentException e) { /* expected */ }
+        } catch (IllegalArgumentException expected) { }
     }
 
     public void testInvalidPackage() {
         try {
             edger.edge(String.class, "");
             fail();
-        } catch (IllegalArgumentException e) { /* expected */ }
+        } catch (IllegalArgumentException expected) { }
     }
 }

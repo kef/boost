@@ -4,7 +4,6 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 
@@ -16,8 +15,10 @@ public final class DefaultTypeInstanceAtomicTest extends LifecycleTestCase imple
     private ParameterizedType genericArgs;
 
     public void setUpFixtures() {
-        rawTypeToken = extractTypeFromSuperInterface(new TypeToken<String>() {}.getClass());
-        genericTypeToken= extractTypeFromSuperInterface(new TypeToken<List<String>>() {}.getClass());
+        rawTypeToken = extractTypeFromSuperInterface(new TypeToken<String>() {
+        }.getClass());
+        genericTypeToken = extractTypeFromSuperInterface(new TypeToken<List<String>>() {
+        }.getClass());
         multiArgs = extractTypeFromSuperClass(HashMap.class);
         genericArgs = extractTypeFromSuperClass(ArrayList.class);
     }
@@ -36,14 +37,14 @@ public final class DefaultTypeInstanceAtomicTest extends LifecycleTestCase imple
         try {
             new DefaultTypeInstance(multiArgs);
             fail("Should not be able to create a type token instance with multiple type arguments.");
-        } catch (IllegalArgumentException e) { /* expected */ }
+        } catch (IllegalArgumentException expected) { }
     }
 
     public void testWithGenericTypeArgs() {
         try {
             new DefaultTypeInstance(genericArgs);
             fail("Should not be able to create a type token instance with genric type arguments.");
-        } catch (IllegalArgumentException e) { /* expected */ }
+        } catch (IllegalArgumentException expected) { }
     }
 
     private ParameterizedType extractTypeFromSuperClass(Class<?> c) {
@@ -53,5 +54,4 @@ public final class DefaultTypeInstanceAtomicTest extends LifecycleTestCase imple
     private ParameterizedType extractTypeFromSuperInterface(Class<?> c) {
         return (ParameterizedType) c.getGenericInterfaces()[0];
     }
-
 }

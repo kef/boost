@@ -2,7 +2,6 @@ package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.ParameterizedType;
 import java.nio.ByteBuffer;
-
 import au.net.netstorm.boost.nursery.autoedge.Edge;
 import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -21,14 +20,14 @@ public final class DefaultTypeTokenFinderAtomicTest extends LifecycleTestCase
     public void setUpFixtures() {
         subject = new DefaultTypeTokenFinder(Edge.class);
         matchingType = extractParameterizedType(AutoEdgeByteBuffer.class);
-        differentType = extractParameterizedType(new TypeToken<ByteBuffer>() {}.getClass());
+        differentType = extractParameterizedType(new TypeToken<ByteBuffer>() {
+        }.getClass());
     }
 
     public void testFind() {
         boolean requireMoreTokens = subject.next(matchingType);
         assertEquals(false, requireMoreTokens);
         assertEquals(matchingType, subject.result());
-
     }
 
     public void testCantFindAsNotParameterizedType() {
@@ -44,7 +43,7 @@ public final class DefaultTypeTokenFinderAtomicTest extends LifecycleTestCase
         try {
             subject.result();
             fail("Accessing result should fail if no match has been found.");
-        } catch (RuntimeException e) { /* expected */ }
+        } catch (RuntimeException expected) { }
     }
 
     private ParameterizedType extractParameterizedType(Class<?> c) {

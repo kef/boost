@@ -2,11 +2,11 @@ package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.Type;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.nursery.type.core.Types;
 
 public final class DefaultTypeResolver implements TypeResolver {
-    FunctionalCollection collections;
-    Nu nu;
+    FunctionalCollection collection;
+    Types types;
 
     public TypeInstance resolve(Class<?> token, Class<?>... tokenInterfaces) {
         Class<?> tokenInterface = match(token, tokenInterfaces);
@@ -22,8 +22,8 @@ public final class DefaultTypeResolver implements TypeResolver {
 
     private TypeInstance find(Class<?> token, Class<?> iface) {
         Type[] interfaces = token.getGenericInterfaces();
-        TypeTokenFinder finder = nu.nu(DefaultTypeTokenFinder.class, iface);
-        Type instance = collections.find(interfaces, finder);
-        return nu.nu(DefaultTypeInstance.class, instance);
+        TypeTokenFinder finder = types.nu(TypeTokenFinder.class, iface);
+        Type instance = collection.find(interfaces, finder);
+        return types.nu(TypeInstance.class, instance);
     }
 }

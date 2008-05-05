@@ -29,13 +29,13 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
         try {
             subject.validate(Arrays.class, java.util.Arrays.class);
             fail();
-        } catch (IllegalArgumentException e) { /* expected */ }
+        } catch (IllegalArgumentException expected) { }
     }
 
     public void testInvalidNamedEdged() {
         try {
             subject.validate(BadNamedEdge.class, Class.class);
             fail();
-        } catch (IllegalArgumentException e) { /* expected */ }
+        } catch (IllegalArgumentException expected) { }
     }
 }
