@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.gunge.introspect;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.gunge.nullo.NullMaster;
 

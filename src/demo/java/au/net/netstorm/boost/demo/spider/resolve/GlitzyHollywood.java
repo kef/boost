@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 final class GlitzyHollywood extends Primordial implements Hollywood {
     Celebrity celebrity;

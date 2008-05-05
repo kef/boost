@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.gunge.type;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 // FIX 2328 Back into gunge.
 

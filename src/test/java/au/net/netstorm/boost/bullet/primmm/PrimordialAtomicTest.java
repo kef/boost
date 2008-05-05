@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.bullet.primordial;
+package au.net.netstorm.boost.bullet.primmm;
 
 import au.net.netstorm.boost.gunge.equals.EqualsMaster;
 import au.net.netstorm.boost.gunge.equals.MockEqualsMaster;

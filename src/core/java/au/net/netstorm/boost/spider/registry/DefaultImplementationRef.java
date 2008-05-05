@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 import au.net.netstorm.boost.gunge.type.Implementation;
 
 // FIX 2145 Revisit this.  Can we just use Implementation.

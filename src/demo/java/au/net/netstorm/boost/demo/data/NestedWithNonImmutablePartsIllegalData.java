@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 final class NestedWithNonImmutablePartsIllegalData extends Primordial implements NestedNonImmutableInterface {
     private final String guitar;

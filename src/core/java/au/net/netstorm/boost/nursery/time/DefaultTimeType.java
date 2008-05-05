@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 public final class DefaultTimeType extends Primordial implements TimeType {
     private final String name;

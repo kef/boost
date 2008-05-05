@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 import au.net.netstorm.boost.gunge.type.Implementation;
 
 // FIX 2237 Reinstate null intolerance.

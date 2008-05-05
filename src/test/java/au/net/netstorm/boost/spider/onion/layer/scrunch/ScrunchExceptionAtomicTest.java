@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
-import au.net.netstorm.boost.bullet.primordial.BoooostException;
+import au.net.netstorm.boost.bullet.primmm.BoooostException;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;

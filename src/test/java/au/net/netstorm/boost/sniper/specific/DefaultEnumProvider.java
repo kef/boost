@@ -2,7 +2,7 @@ package au.net.netstorm.boost.sniper.specific;
 
 import java.util.HashMap;
 import java.util.Map;
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 public class DefaultEnumProvider extends Primordial implements EnumProvider {
     private final Map<Class<? extends Enum>, DataProvider<? extends Enum>> enums = new HashMap<Class<? extends Enum>, DataProvider<? extends Enum>>();

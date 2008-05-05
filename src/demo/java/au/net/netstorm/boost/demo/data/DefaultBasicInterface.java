@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.data;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 public final class DefaultBasicInterface extends Primordial implements BasicInterface {
     private final String guitar;

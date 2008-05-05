@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultLayerSpec extends Primordial implements LayerSpec {

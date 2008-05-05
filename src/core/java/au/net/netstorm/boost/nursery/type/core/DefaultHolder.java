@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.type.core;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
 import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;

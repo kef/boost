@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.bullet.provider;
 
-import au.net.netstorm.boost.bullet.primordial.PrimordialException;
+import au.net.netstorm.boost.bullet.primmm.PrimordialException;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;

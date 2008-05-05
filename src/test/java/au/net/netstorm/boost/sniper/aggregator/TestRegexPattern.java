@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.aggregator;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 public final class TestRegexPattern extends Primordial implements RegexPattern {
     private final String pattern;

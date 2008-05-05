@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.bullet.primordial.PrimordialException;
+import au.net.netstorm.boost.bullet.primmm.PrimordialException;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 

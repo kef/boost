@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.bullet.mirror.ClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.Interface;

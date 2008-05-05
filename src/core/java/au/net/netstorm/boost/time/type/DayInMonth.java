@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 public final class DayInMonth extends Primordial {
     public static final DayInMonth FIRST_DAY_OF_YEAR = new DayInMonth(0, MonthOfYear.JANUARY);
