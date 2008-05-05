@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.bullet.primmm;
+package au.net.netstorm.boost.bullet.primordial;
 
 public class PrimordialException extends RuntimeException implements BoooostException {
     public PrimordialException(String message) {

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.gunge.ref;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class DefaultObjectRef extends Primordial implements ObjectRef {
     private final Object obj;

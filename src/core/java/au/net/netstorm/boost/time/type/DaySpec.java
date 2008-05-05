@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class DaySpec extends Primordial implements Comparable {
     public final MonthSpec month;

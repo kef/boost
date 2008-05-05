@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.gunge.introspect;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.gunge.type.Data;
 
 public final class DefaultFieldSpec extends Primordial implements FieldSpec, Data {

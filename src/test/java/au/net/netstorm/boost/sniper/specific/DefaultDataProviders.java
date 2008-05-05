@@ -1,10 +1,11 @@
 package au.net.netstorm.boost.sniper.specific;
 
-import java.util.HashMap;
-import java.util.Map;
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.bullet.provider.ProviderException;
 import au.net.netstorm.boost.gunge.type.Data;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DefaultDataProviders extends Primordial implements DataProviders {
     private final Map<Class<? extends Data>, DataProvider<? extends Data>> datas = new HashMap<Class<? extends Data>, DataProvider<? extends Data>>();

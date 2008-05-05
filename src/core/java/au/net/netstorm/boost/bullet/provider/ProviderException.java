@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.bullet.provider;
 
-import au.net.netstorm.boost.bullet.primmm.PrimordialException;
+import au.net.netstorm.boost.bullet.primordial.PrimordialException;
 
 public class ProviderException extends PrimordialException {
     public ProviderException(String message) {

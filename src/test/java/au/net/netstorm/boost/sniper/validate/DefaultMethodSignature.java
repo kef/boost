@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.sniper.validate;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
 import java.lang.reflect.Method;
-import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 class DefaultMethodSignature extends Primordial implements MethodSignature {
     private final Class[] params;

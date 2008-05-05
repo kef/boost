@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.bullet.primmm.BoooostException;
+import au.net.netstorm.boost.bullet.primordial.BoooostException;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;

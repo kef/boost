@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.onion.layer.scrunch;
 
-import au.net.netstorm.boost.bullet.primmm.BoooostException;
+import au.net.netstorm.boost.bullet.primordial.BoooostException;
 
 public final class ScrunchException extends RuntimeException implements BoooostException {
     public ScrunchException() {

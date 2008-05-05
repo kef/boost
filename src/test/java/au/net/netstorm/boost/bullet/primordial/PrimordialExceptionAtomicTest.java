@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.bullet.primmm;
+package au.net.netstorm.boost.bullet.primordial;
 
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;

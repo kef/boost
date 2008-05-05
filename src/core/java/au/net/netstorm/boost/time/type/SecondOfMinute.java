@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.time.type;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class SecondOfMinute extends Primordial {
     public static final int SECONDS_IN_MINUTE = 60;

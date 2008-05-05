@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.gunge.type;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class DefaultBaseReference<T> extends Primordial implements BaseReference {
     private final T ref;

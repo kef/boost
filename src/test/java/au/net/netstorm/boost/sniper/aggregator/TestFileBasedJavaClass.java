@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.sniper.aggregator;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
 import java.io.File;
-import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 final class TestFileBasedJavaClass extends Primordial implements JavaClass {
     private final String fullyQualifiedClassPath;

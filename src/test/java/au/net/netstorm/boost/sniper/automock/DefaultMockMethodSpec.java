@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.automock;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 final class DefaultMockMethodSpec extends Primordial implements MockMethodSpec {
     private Object returnValue;

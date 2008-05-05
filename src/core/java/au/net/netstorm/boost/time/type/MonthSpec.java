@@ -1,8 +1,9 @@
 package au.net.netstorm.boost.time.type;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import au.net.netstorm.boost.bullet.primmm.Primordial;
 
 // FIX SC507 Now that MonthOfYear exists, introduce it here.
 public final class MonthSpec extends Primordial implements Comparable {

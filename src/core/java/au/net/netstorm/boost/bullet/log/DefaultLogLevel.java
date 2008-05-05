@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.bullet.log;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 final class DefaultLogLevel extends Primordial implements LogLevel {
     private final String name;

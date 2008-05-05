@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.gunge.type;
 
-import java.util.HashMap;
-import java.util.Map;
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
 import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class DefaultBaseReferenceAtomicTest extends BoooostCase {
     private static final Map MAP = new HashMap();

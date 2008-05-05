@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import static au.net.netstorm.boost.nursery.time.TimeType.ABSOLUTE;
 import static au.net.netstorm.boost.nursery.time.TimeType.NONE;
 import static au.net.netstorm.boost.nursery.time.TimeType.RELATIVE;

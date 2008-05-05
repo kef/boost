@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class DefaultStartEnd extends Primordial implements StartEnd {
     private final TimeSpec start;

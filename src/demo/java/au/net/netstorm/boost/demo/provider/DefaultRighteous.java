@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.provider;
 
-import au.net.netstorm.boost.bullet.primmm.Primordial;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class DefaultRighteous extends Primordial implements Righteous {
     private HappyDay[] happyDays;
