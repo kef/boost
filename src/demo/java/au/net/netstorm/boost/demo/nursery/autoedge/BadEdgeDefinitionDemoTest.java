@@ -34,4 +34,7 @@ public class BadEdgeDefinitionDemoTest extends LifecycleTestCase implements Inje
             fail();
         } catch (IllegalArgumentException expected) { }
     }
+
+    // FIX 2328 Bad package location.
+    // FIX 2328 Are there cases where R and E parameters make sense?  How is this dealt with?
 }

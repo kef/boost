@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.demo.nursery.autoedge;
 
 import java.lang.reflect.InvocationTargetException;
-
 import au.net.netstorm.boost.edge.EdgeException;
 import au.net.netstorm.boost.nursery.autoedge.AutoEdger;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -24,6 +23,9 @@ public class URLDemoTest extends LifecycleTestCase implements InjectableTest {
             fail();
         } catch (EdgeException e) {
             // FIX 2328 see FIX in DefaultEdgeMethod do we want to change this?
+            // FIX 2328 MAG I don't think we want to change this on DEM.
+            // FIX 2328 MAG But we probably do want to change it elsewhere.
+            // FIX 2328 MAG Agree this should look like a MURLE.
             // assertEquals(true, e.causeIs(MalformedURLException.class));
             assertEquals(true, e.causeIs(InvocationTargetException.class));
         }
