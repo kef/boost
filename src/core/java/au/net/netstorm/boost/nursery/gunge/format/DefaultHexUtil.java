@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.gunge.format;
 
+// FIX 2328 Move out of nursery.
+
 // FIX 2299 Up coverage and out of nursery.
 public final class DefaultHexUtil implements HexUtil {
     private static final String HEXCHAR = "0123456789abcdef";
