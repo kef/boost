@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.Type;
-
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
@@ -11,8 +10,7 @@ public final class DefaultTypeResolver implements TypeResolver {
 
     public TypeInstance resolve(Class<?> token, Class<?>... tokenInterfaces) {
         Class<?> tokenInterface = matchTokenInterface(token, tokenInterfaces);
-        TypeInstance instance = find(token, tokenInterface);
-        return instance;
+        return find(token, tokenInterface);
     }
 
     private Class<?> matchTokenInterface(Class<?> token, Class<?>... tokenInterfaces) {
