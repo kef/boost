@@ -5,7 +5,7 @@ import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 
 public final class DefaultTypeResolver implements TypeResolver {
-    FunctionalCollection collection;
+    FunctionalCollection collections;
     Nu nu;
 
     public TypeInstance resolve(Class<?> token, Class<?>... tokenInterfaces) {
@@ -23,7 +23,7 @@ public final class DefaultTypeResolver implements TypeResolver {
     private TypeInstance find(Class<?> token, Class<?> iface) {
         Type[] interfaces = token.getGenericInterfaces();
         TypeTokenFinder finder = nu.nu(DefaultTypeTokenFinder.class, iface);
-        Type instance = collection.find(interfaces, finder);
+        Type instance = collections.find(interfaces, finder);
         return nu.nu(DefaultTypeInstance.class, instance);
     }
 }
