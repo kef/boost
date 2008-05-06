@@ -10,7 +10,8 @@ public final class EdgeException extends RuntimeException {
     }
 
     // FIX 2328 Do not expose this just for tests.
-    // FIX 2318 Use ThrowableMaster?
+    // FIX 2328 Use ThrowableMaster?
+    // FIX 2328 Delete this method.
     public boolean causeIs(Class type) {
         Throwable cause = getCause();
         if (cause == null) {
