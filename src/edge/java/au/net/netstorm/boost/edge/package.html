@@ -10,7 +10,6 @@
 Any logic inside edge classes is frowned upon. We experimented with mapping every checked
 exception to an equivalent unchecked exception but analysis of handling has indicated wrapping
 every checked exception in a single runtime edge exception.
-</p>
 <p>
     Current design decisions:
 <ul>
@@ -28,13 +27,11 @@ every checked exception in a single runtime edge exception.
     <li>Edge implementations have a single public no-arg constructor which is not seen.</li>
     <li>We allow duplication where implied by the APIs being edged.</li>
 </ul>
-</p>
 <p>
     Outstanding questions/issues include:
 <ul>
     <li>What sort of Primordial object should edge implementations extend?</li>
 </ul>
-</p>
 <p>
     Tried:
 <ul>
@@ -43,5 +40,5 @@ every checked exception in a single runtime edge exception.
         do not throw exceptions, although this is a good thing for mocking.
     </li>
 </ul>
-</p>
+
 
