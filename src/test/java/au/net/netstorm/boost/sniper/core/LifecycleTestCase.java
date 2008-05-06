@@ -20,6 +20,7 @@ public class LifecycleTestCase extends CleanTestCase {
     public final Spider spider;
 
     protected LifecycleTestCase() {
+        // SUGGEST: Ugly little beast.
         spider = getSpider();
         setupRegistry();
         bootstrap();
