@@ -10,6 +10,8 @@ public class DefaultRailyard implements Railyard {
             trainCount++;
         }
         try {
+            // FIX 2318 Scary little trollop.  Who let you out ugly?
+            // FIX 2318 trainCount is misspelled in this case.
             Thread.sleep(1L);
         } catch (InterruptedException e) { }
         return train;
