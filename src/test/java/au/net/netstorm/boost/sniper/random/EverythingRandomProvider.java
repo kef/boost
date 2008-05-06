@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.bullet.provider.Random;
-import au.net.netstorm.boost.bullet.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.provider.Random;
+import au.net.netstorm.boost.gunge.provider.SpecificProvider;
 
 public final class EverythingRandomProvider implements Random {
     private final SpecificProvider arrays = new ArrayRandomProvider(this);

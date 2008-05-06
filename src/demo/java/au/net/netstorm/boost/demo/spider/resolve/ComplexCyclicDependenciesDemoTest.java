@@ -3,6 +3,7 @@ package au.net.netstorm.boost.demo.spider.resolve;
 import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 
+// FIX 2318 This entire package needs splitting into sub packages.
 public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest {
     GraphUtil grapher = new DefaultGraphUtil();
 

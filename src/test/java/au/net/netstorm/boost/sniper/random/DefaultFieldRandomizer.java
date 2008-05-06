@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.bullet.provider.Provider;
 import au.net.netstorm.boost.gunge.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.sniper.field.DefaultFieldSpecTestUtil;
 import au.net.netstorm.boost.sniper.field.FieldSpecTestUtil;
 

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.bootstrap;
 
-import au.net.netstorm.boost.bullet.provider.Provider;
-import au.net.netstorm.boost.bullet.provider.Random;
+import au.net.netstorm.boost.gunge.provider.Provider;
+import au.net.netstorm.boost.gunge.provider.Random;
 import au.net.netstorm.boost.sniper.atom.AtomTestChecker;
 import au.net.netstorm.boost.sniper.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.sniper.automock.DefaultTestFieldInjector;

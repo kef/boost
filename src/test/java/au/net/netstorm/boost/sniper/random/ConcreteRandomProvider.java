@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.sniper.random;
 
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.gunge.provider.NotProvidedException;
+import au.net.netstorm.boost.gunge.provider.SpecificProvider;
+
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.Random;
-import au.net.netstorm.boost.bullet.provider.NotProvidedException;
-import au.net.netstorm.boost.bullet.provider.SpecificProvider;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 // FIX DEBT SPLIT THIS CLASS!!!
 

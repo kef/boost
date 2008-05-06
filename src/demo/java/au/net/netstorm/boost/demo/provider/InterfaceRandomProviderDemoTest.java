@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.demo.provider;
 
-import java.lang.reflect.Proxy;
-import au.net.netstorm.boost.bullet.provider.NotProvidedException;
-import au.net.netstorm.boost.bullet.provider.Random;
-import au.net.netstorm.boost.bullet.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.provider.NotProvidedException;
+import au.net.netstorm.boost.gunge.provider.Random;
+import au.net.netstorm.boost.gunge.provider.SpecificProvider;
 import au.net.netstorm.boost.sniper.automock.DefaultMockSupport;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -16,6 +15,8 @@ import au.net.netstorm.boost.sniper.specific.DataProviders;
 import au.net.netstorm.boost.sniper.specific.DefaultDataProviders;
 import au.net.netstorm.boost.sniper.specific.DefaultEnumProvider;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;
+
+import java.lang.reflect.Proxy;
 
 public final class InterfaceRandomProviderDemoTest extends LifecycleTestCase implements HasFixtures {
     private MockSupport mocks = new DefaultMockSupport();

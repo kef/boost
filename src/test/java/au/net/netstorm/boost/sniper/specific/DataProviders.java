@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.specific;
 
-import au.net.netstorm.boost.bullet.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.provider.SpecificProvider;
 import au.net.netstorm.boost.gunge.type.Data;
 
 public interface DataProviders extends SpecificProvider {

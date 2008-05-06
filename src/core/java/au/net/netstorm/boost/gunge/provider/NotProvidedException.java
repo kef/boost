@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.bullet.provider;
+package au.net.netstorm.boost.gunge.provider;
 
 public final class NotProvidedException extends ProviderException {
     public NotProvidedException(Class type) {

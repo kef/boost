@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.bullet.mirror;
 
-import au.net.netstorm.boost.bullet.provider.Provider;
 import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.gunge.provider.Provider;
 
 import java.lang.reflect.Constructor;
 

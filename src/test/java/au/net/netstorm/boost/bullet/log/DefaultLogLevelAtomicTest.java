@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.bullet.log;
 
-import au.net.netstorm.boost.bullet.provider.Random;
 import au.net.netstorm.boost.gunge.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.gunge.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.provider.Random;
 import au.net.netstorm.boost.sniper.atom.ConstructorNullDataChecker;
 import au.net.netstorm.boost.sniper.atom.DataChecker;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;

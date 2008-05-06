@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.atom;
 
-import au.net.netstorm.boost.bullet.provider.Provider;
 import au.net.netstorm.boost.gunge.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.provider.Provider;
 
 // SUGGEST Think about how to incorporate a test with a marker interface which uses field
 // SUGGEST introspection to determine which properties.  Declaration of a single array

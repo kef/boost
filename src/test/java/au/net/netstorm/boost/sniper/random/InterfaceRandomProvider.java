@@ -2,12 +2,12 @@ package au.net.netstorm.boost.sniper.random;
 
 import au.net.netstorm.boost.bullet.mirror.DefaultInstantiatorWithProvider;
 import au.net.netstorm.boost.bullet.mirror.InstantiatorWithProvider;
-import au.net.netstorm.boost.bullet.provider.NotProvidedException;
-import au.net.netstorm.boost.bullet.provider.Provider;
-import au.net.netstorm.boost.bullet.provider.SpecificProvider;
 import au.net.netstorm.boost.gunge.impl.DefaultImplMapper;
 import au.net.netstorm.boost.gunge.impl.ImplMapper;
 import au.net.netstorm.boost.gunge.impl.ImplMaster;
+import au.net.netstorm.boost.gunge.provider.NotProvidedException;
+import au.net.netstorm.boost.gunge.provider.Provider;
+import au.net.netstorm.boost.gunge.provider.SpecificProvider;
 import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;

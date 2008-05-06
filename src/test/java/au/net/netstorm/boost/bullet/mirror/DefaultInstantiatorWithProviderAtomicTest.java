@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.bullet.mirror;
 
-import au.net.netstorm.boost.bullet.provider.Provider;
+import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 

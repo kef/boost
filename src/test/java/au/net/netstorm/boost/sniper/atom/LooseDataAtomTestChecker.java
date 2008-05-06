@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.atom;
 
-import au.net.netstorm.boost.bullet.provider.Provider;
 import au.net.netstorm.boost.gunge.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.type.LooseData;
 
 // SUGGEST: Actually what we really want is the ability to specify whether individual properties are

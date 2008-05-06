@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.sniper.specific;
 
-import au.net.netstorm.boost.bullet.provider.Random;
+import au.net.netstorm.boost.gunge.provider.Random;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.marker.ProvidesData;

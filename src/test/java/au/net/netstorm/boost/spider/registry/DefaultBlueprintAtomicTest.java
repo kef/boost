@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.spider.registry;
 
-import au.net.netstorm.boost.bullet.provider.Random;
 import au.net.netstorm.boost.gunge.introspect.DefaultFieldSpec;
 import au.net.netstorm.boost.gunge.introspect.FieldSpec;
+import au.net.netstorm.boost.gunge.provider.Random;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.sniper.atom.AtomTestChecker;
 import au.net.netstorm.boost.sniper.atom.LooseDataAtomTestChecker;

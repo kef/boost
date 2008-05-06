@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.specific;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.bullet.provider.ProviderException;
+import au.net.netstorm.boost.gunge.provider.ProviderException;
 import au.net.netstorm.boost.gunge.type.Data;
 
 import java.util.HashMap;
