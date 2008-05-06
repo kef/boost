@@ -2,8 +2,9 @@ package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.ParameterizedType;
 import java.nio.ByteBuffer;
-import au.net.netstorm.boost.nursery.autoedge.Edge;
-import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
+
+import au.net.netstorm.boost.edge.Edge;
+import au.net.netstorm.boost.edge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

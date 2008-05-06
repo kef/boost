@@ -2,10 +2,11 @@ package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.Type;
 import java.util.List;
+
+import au.net.netstorm.boost.edge.Edge;
+import au.net.netstorm.boost.edge.testdata.AutoEdgeByteBuffer;
+import au.net.netstorm.boost.edge.testfixtures.EdgeBufferFixture;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.nursery.autoedge.Edge;
-import au.net.netstorm.boost.nursery.autoedge.testdata.AutoEdgeByteBuffer;
-import au.net.netstorm.boost.nursery.autoedge.testfixtures.EdgeBufferFixture;
 import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
