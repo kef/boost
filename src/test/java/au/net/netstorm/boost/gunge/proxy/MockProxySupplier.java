@@ -2,8 +2,8 @@ package au.net.netstorm.boost.gunge.proxy;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.gunge.type.Interface;
-import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
-import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
+import au.net.netstorm.boost.sniper.check.AssertTestChecker;
+import au.net.netstorm.boost.sniper.check.DefaultAssertTestChecker;
 import junit.framework.Assert;
 
 import java.lang.reflect.InvocationHandler;

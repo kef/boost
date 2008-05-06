@@ -1,8 +1,9 @@
-package au.net.netstorm.boost.sniper.core;
+package au.net.netstorm.boost.sniper.expect;
 
 import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.nursery.type.core.Holder;
 import au.net.netstorm.boost.sniper.automock.MockExpectations;
+import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
 public class DefaultTypesExpectations implements TypesExpectations {

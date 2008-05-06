@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.parallel;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
-import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
+import au.net.netstorm.boost.sniper.check.AssertTestChecker;
+import au.net.netstorm.boost.sniper.check.DefaultAssertTestChecker;
 
 import java.util.ArrayList;
 import java.util.Collections;

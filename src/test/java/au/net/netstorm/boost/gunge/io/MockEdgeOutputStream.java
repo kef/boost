@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.gunge.io;
 
 import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
-import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
-import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
+import au.net.netstorm.boost.sniper.check.AssertTestChecker;
+import au.net.netstorm.boost.sniper.check.DefaultAssertTestChecker;
 import junit.framework.Assert;
 
 import java.io.Serializable;

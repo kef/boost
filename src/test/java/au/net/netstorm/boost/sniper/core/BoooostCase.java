@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.core;
 
-import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
-import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
+import au.net.netstorm.boost.sniper.check.AssertTestChecker;
+import au.net.netstorm.boost.sniper.check.DefaultAssertTestChecker;
 import junit.framework.TestCase;
 
 // SUGGEST Remove the need for this altogether.

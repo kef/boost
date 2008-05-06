@@ -1,6 +1,7 @@
-package au.net.netstorm.boost.sniper.core;
+package au.net.netstorm.boost.sniper.expect;
 
 import au.net.netstorm.boost.sniper.automock.MockExpectations;
+import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
 public class DefaultNuExpectations implements NuExpectations {

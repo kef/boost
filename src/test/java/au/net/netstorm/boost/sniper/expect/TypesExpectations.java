@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.sniper.core;
+package au.net.netstorm.boost.sniper.expect;
 
 import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.nursery.type.core.Holder;

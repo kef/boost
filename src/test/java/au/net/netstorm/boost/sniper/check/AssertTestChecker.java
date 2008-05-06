@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.retire.reflect;
+package au.net.netstorm.boost.sniper.check;
 
 // FIX 2328 Move out of "retire".
 public interface AssertTestChecker {
