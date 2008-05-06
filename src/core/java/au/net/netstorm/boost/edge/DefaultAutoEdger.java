@@ -23,6 +23,7 @@ public final class DefaultAutoEdger implements AutoEdger {
         return createEdge(edge, realClass, null);
     }
 
+    // FIX 2328 need a second nu method which allows concrete subclasses to be specified, rather than implied
     public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
         R real = realNu.nu(edge, params);
         return edge(edge, real);
