@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.retire.reflect;
 
+// FIX 2328 Move out of "retire".
 public interface AssertTestChecker {
     void checkEquals(Object[] value1, Object[] value2);
 

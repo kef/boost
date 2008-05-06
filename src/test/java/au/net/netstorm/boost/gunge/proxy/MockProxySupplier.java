@@ -1,13 +1,14 @@
 package au.net.netstorm.boost.gunge.proxy;
 
-import java.lang.reflect.InvocationHandler;
-import java.util.ArrayList;
-import java.util.List;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.retire.reflect.AssertTestChecker;
 import au.net.netstorm.boost.retire.reflect.DefaultAssertTestChecker;
 import junit.framework.Assert;
+
+import java.lang.reflect.InvocationHandler;
+import java.util.ArrayList;
+import java.util.List;
 
 final class MockProxySupplier extends Assert implements ProxySupplier {
     private final AssertTestChecker asserter = new DefaultAssertTestChecker();

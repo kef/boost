@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 // SUGGEST Remove the need for this altogether.
 // SUGGEST Check bottom level classes are final.
 // SUGGEST Check no-arg (single) constructor.
+// SUGGEST: Replace assertEquals with eq()
 
 /**
  * This class acts as a buffer to get us out of the
@@ -15,7 +16,7 @@ import junit.framework.TestCase;
 // FIX 1524 Rename to DoNotUseMeTestCase.
 // OK GenericIllegalRegexp|LineLength {
 public class BoooostCase extends TestCase {
-    private final AssertTestChecker assertTestChecker = new DefaultAssertTestChecker();
+    private final AssertTestChecker ass = new DefaultAssertTestChecker();
 
     protected void setUp() throws Exception {
         super.setUp();
@@ -34,25 +35,25 @@ public class BoooostCase extends TestCase {
     }
 
     public final void assertEquals(Object[] expected, Object[] actual) {
-        assertTestChecker.checkEquals(expected, actual);
+        ass.checkEquals(expected, actual);
     }
 
     // FIX 2237 This name sucks.  Rename so the prefix is "assertEquals".
     // FIX 2237 Maybe "assertEqualsUnordered".  Then autocomplete works better for the usual case.
     public final void assertBagEquals(Object[] expected, Object[] actual) {
-        assertTestChecker.checkBagEquals(expected, actual);
+        ass.checkBagEquals(expected, actual);
     }
 
     public final void assertEquals(byte[] expected, byte[] actual) {
-        assertTestChecker.checkEquals(expected, actual);
+        ass.checkEquals(expected, actual);
     }
 
     public final void assertEquals(int[] expected, int[] actual) {
-        assertTestChecker.checkEquals(expected, actual);
+        ass.checkEquals(expected, actual);
     }
 
     public final void assertNotEquals(byte[] v1, byte[] v2) {
-        assertTestChecker.checkNotEquals(v1, v2);
+        ass.checkNotEquals(v1, v2);
     }
 
     public final void assertNotEquals(Object v1, Object v2) {
