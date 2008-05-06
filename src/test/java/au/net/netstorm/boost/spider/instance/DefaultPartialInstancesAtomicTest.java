@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.spider.instance;
+package au.net.netstorm.boost.spider.instance;
 
 import au.net.netstorm.boost.gunge.type.BaseReference;
 import au.net.netstorm.boost.gunge.type.Implementation;

@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
@@ -17,6 +15,8 @@ import au.net.netstorm.boost.nursery.proxy.Proxifier;
 import au.net.netstorm.boost.nursery.proxy.ProxifierWirer;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
+import au.net.netstorm.boost.spider.instance.DefaultPartialInstances;
+import au.net.netstorm.boost.spider.instance.PartialInstances;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;

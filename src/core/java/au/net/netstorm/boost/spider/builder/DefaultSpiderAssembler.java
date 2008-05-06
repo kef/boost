@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.spider.builder;
 
-import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
-import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
@@ -22,6 +20,8 @@ import au.net.netstorm.boost.spider.inject.resolver.core.DefaultInjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.core.FieldResolver;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldFinder;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
+import au.net.netstorm.boost.spider.instance.DefaultPartialInstances;
+import au.net.netstorm.boost.spider.instance.PartialInstances;
 import au.net.netstorm.boost.spider.instantiate.DefaultNu;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.Nu;
