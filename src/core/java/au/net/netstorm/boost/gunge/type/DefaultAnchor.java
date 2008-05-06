@@ -12,7 +12,9 @@ public final class DefaultAnchor extends Primordial implements Anchor {
 
     public DefaultAnchor(Field field) {
         this.field = field;
-        if (field == null) throw new IllegalArgumentException();
+        // FIX 2363 Reinstate me.
+// FIX 2328 Can be tested with the AtomTestChecker.
+//        if (field == null) throw new IllegalArgumentException();
     }
 
     public Field getField() {
