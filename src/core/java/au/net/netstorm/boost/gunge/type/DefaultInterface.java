@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.gunge.type;
 
-import java.lang.reflect.Type;
-
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 // FIX 2328 Back into "gunge".
@@ -17,11 +15,6 @@ public final class DefaultInterface<T> extends Primordial implements Interface<T
     }
 
     public Class<T> getType() {
-        return type;
-    }
-
-    // FIX 2363 change to be real reified type
-    public Type getReifiedType() {
         return type;
     }
 
@@ -41,5 +34,4 @@ public final class DefaultInterface<T> extends Primordial implements Interface<T
         if (type.isEnum()) return true;
         return false;
     }
-
 }

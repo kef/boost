@@ -22,8 +22,7 @@ public final class DefaultNullMaster implements NullMaster, Serializable {
         }
     }
 
-    // Note. Exposed as varargs in JDK 1.5, i.e. check(foo, bar, baz)
-    public void check(Object[] parameters) {
+    public void check(Object... parameters) {
         if (parameters == null) {
             throw new IllegalArgumentException("Parameter 1 should not be null");
         }

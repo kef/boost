@@ -5,5 +5,5 @@ public interface NullMaster {
 
     void check(Object parameter);
 
-    void check(Object[] parameters);
+    void check(Object... parameters);
 }

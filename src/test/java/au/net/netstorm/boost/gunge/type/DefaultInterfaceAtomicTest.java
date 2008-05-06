@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.gunge.type;
 
-import java.lang.reflect.Type;
-
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 import au.net.netstorm.boost.sniper.reflect.checker.ClassTestChecker;
@@ -10,12 +8,10 @@ import au.net.netstorm.boost.sniper.reflect.checker.DefaultClassTestChecker;
 public class DefaultInterfaceAtomicTest extends BoooostCase {
     private static final Class NOT_AN_INTERFACE = Object.class;
     private final ClassTestChecker classer = new DefaultClassTestChecker();
-    private final Interface line = new DefaultInterface(Line.class);
     private final Interface jester = new DefaultInterface(Jester.class);
     private final Interface soldier = new DefaultInterface(Soldier.class);
     private final Interface clown = new DefaultInterface(Clown.class);
     private final Interface mumbles = new DefaultInterface(Mumbles.class);
-
     private final TypeMaster typeMaster = new DefaultTypeMaster();
 
     public void testIsA() {
@@ -26,10 +22,6 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
     public void testType() {
         checkType(jester, Jester.class);
         checkType(mumbles, Mumbles.class);
-    }
-
-    public void testReifiedType() {
-        checkReifiedType(line, Line.class);
     }
 
     public void testFastHashCode() {
@@ -57,11 +49,6 @@ public class DefaultInterfaceAtomicTest extends BoooostCase {
 
     private void checkType(Interface iface, Class expected) {
         Class actual = iface.getType();
-        assertEquals(expected, actual);
-    }
-
-    private void checkReifiedType(Interface iface, Type expected) {
-        Type actual = iface.getReifiedType();
         assertEquals(expected, actual);
     }
 
