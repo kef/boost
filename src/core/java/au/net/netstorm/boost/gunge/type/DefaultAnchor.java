@@ -1,18 +1,18 @@
 package au.net.netstorm.boost.gunge.type;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
 import java.lang.reflect.Field;
 
-import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
-import au.net.netstorm.boost.gunge.nullo.NullMaster;
+// FIX 2328 Expecting a FIX if this is intended be part of something bigger.
 
+// FIX 2328 Can be tested with the AtomTestChecker.
 public final class DefaultAnchor extends Primordial implements Anchor {
-    private final NullMaster nuller = new DefaultNullMaster();
     private final Field field;
 
     public DefaultAnchor(Field field) {
         this.field = field;
-        nuller.check(field, "field");
+        if (field == null) throw new IllegalArgumentException();
     }
 
     public Field getField() {

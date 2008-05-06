@@ -23,7 +23,7 @@ public class VmStyleAtomicTest extends LifecycleTestCase implements InjectableTe
         try {
             new VmStyle(null);
         } catch (IllegalArgumentException e) {
-            assertEquals("style parameter should not be null", e.getMessage());
+            assertEquals("style parameter cannot be null", e.getMessage());
         }
     }
 }

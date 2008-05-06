@@ -25,7 +25,7 @@ public final class DefaultArrayFlattenerAtomicTest extends BoooostCase {
             flattener.flatten(null);
             fail();
         } catch (IllegalArgumentException expected) {
-            assertEquals("unflattened parameter should not be null", expected.getMessage());
+            assertEquals("unflattened parameter cannot be null", expected.getMessage());
         }
     }
 

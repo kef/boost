@@ -24,10 +24,10 @@ public final class DefaultNullMasterAtomicTest extends BoooostCase {
     }
 
     public void testRejectsANullParameterList() {
-        checkRejectsNulls(null, "1");
-        checkRejectsNulls(new Object[]{null}, "1");
-        checkRejectsNulls(new Object[]{this, null}, "2");
-        checkRejectsNulls(new Object[]{this, this, null}, "3");
+        checkRejectsNulls(null, "Parameters cannot be null");
+        checkRejectsNulls(new Object[]{null}, msg("1"));
+        checkRejectsNulls(new Object[]{this, null}, msg("2"));
+        checkRejectsNulls(new Object[]{this, this, null}, msg("3"));
     }
 
     public void testAcceptsParameterList() {
@@ -39,17 +39,21 @@ public final class DefaultNullMasterAtomicTest extends BoooostCase {
 
     public void testRejectsNestedObjectArrays() {
         Object[] parameters = new Object[]{this, new Object[]{null}};
-        checkRejectsNulls(parameters, "2");
+        checkRejectsNulls(parameters, msg("2"));
     }
 
     // SUGGEST Remove this duplication.
-    private void checkRejectsNulls(Object[] parameters, String badParamNumber) {
+    private void checkRejectsNulls(Object[] parameters, String msg) {
         try {
             checkNoNulls(parameters);
             fail();
         } catch (IllegalArgumentException expected) {
-            assertEquals("Parameter " + badParamNumber + " should not be null", expected.getMessage());
+            assertEquals(msg, expected.getMessage());
         }
+    }
+
+    private String msg(String number) {
+        return "Parameter " + number + " cannot be null";
     }
 
     // SUGGEST Remove this duplication.
@@ -68,7 +72,7 @@ public final class DefaultNullMasterAtomicTest extends BoooostCase {
             fail();
         } catch (IllegalArgumentException e) {
             String message = e.getMessage();
-            assertEquals(parameter + " parameter should not be null", message);
+            assertEquals(parameter + " parameter cannot be null", message);
         }
     }
 
