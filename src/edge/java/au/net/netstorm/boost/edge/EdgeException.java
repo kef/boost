@@ -9,6 +9,8 @@ public final class EdgeException extends RuntimeException {
         super(message, throwable);
     }
 
+    // FIX 2328 Do not expose this just for tests.
+    // FIX 2318 Use ThrowableMaster?
     public boolean causeIs(Class type) {
         Throwable cause = getCause();
         if (cause == null) {
