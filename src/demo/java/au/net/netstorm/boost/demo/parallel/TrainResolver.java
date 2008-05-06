@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.parallel;
 import au.net.netstorm.boost.nursery.spider.core.BoostSpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.core.DefaultBoostSpiderBuilder;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
-import au.net.netstorm.boost.spider.builder.Spider;
+import au.net.netstorm.boost.spider.core.Spider;
 
 class TrainResolver implements Runnable {
     Spider spider;

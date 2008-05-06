@@ -10,7 +10,7 @@ import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.sniper.specific.BoostDataProviders;
 import au.net.netstorm.boost.sniper.spider.DefaultTestSpiderBuilder;
 import au.net.netstorm.boost.sniper.spider.TestSpiderBuilder;
-import au.net.netstorm.boost.spider.builder.Spider;
+import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.registry.Registry;
 
 public class LifecycleTestCase extends CleanTestCase {

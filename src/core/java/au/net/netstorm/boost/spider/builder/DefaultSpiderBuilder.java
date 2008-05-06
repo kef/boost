@@ -5,6 +5,7 @@ import au.net.netstorm.boost.nursery.spider.layer.DefaultLayers;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.type.core.DefaultTypes;
 import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.Nu;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;

@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.spider.builder;
+package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.Nu;
