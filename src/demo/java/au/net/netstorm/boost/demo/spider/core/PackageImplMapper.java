@@ -5,6 +5,7 @@ import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.gunge.impl.ImplMapper;
 import au.net.netstorm.boost.gunge.type.Interface;
 
+// FIX 2318 Get this out of demo.  It is production code.
 public class PackageImplMapper implements ImplMapper {
     private ClassMaster master = new DefaultClassMaster();
     private final String dst;
