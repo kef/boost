@@ -1,12 +1,14 @@
 package au.net.netstorm.boost.demo.spider.instance;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+
+// SUGGEST: Wouldn't this just be a Threaded<StrictMap>
 public final class DefaultPartialInstances implements PartialInstances {
     private static final ThreadLocal LOCAL_MON = new ThreadLocal();
 
