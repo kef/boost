@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.spider.flavour;
 
+// FIX 2318 Does not belong here.
 public interface StrictMap<K, V> {
     void put(K key, V value);
 
