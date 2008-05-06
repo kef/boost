@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.time.core.TimePoint;
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 
 public final class DefaultStartEndFactory implements StartEndFactory {
     private final TimeSpecConstructor times = new DefaultTimeSpecConstructor();

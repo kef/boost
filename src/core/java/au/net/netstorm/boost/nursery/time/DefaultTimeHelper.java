@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.time.core.DefaultTimePoint;
-import au.net.netstorm.boost.time.core.TimePoint;
+import au.net.netstorm.boost.bullet.time.core.DefaultTimePoint;
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 
 public final class DefaultTimeHelper implements TimeHelper {
     public TimePoint beyond(TimePoint time, long amount) {

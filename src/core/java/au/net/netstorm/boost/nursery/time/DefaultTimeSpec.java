@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.time;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 import static au.net.netstorm.boost.nursery.time.TimeType.ABSOLUTE;
 import static au.net.netstorm.boost.nursery.time.TimeType.NONE;
 import static au.net.netstorm.boost.nursery.time.TimeType.RELATIVE;
-import au.net.netstorm.boost.time.core.TimePoint;
 
 // DEBT LineLength {
 final class DefaultTimeSpec extends Primordial implements TimeSpec {

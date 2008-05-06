@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.specific;
 
+import au.net.netstorm.boost.bullet.time.core.DefaultTimePoint;
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 import au.net.netstorm.boost.gunge.provider.Random;
-import au.net.netstorm.boost.time.core.DefaultTimePoint;
-import au.net.netstorm.boost.time.core.TimePoint;
 
 public final class TimePointProvider implements DataProvider<TimePoint> {
     private final Random random;

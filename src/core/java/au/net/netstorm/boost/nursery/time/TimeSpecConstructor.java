@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.time;
 
-import au.net.netstorm.boost.time.core.TimePoint;
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 
 public interface TimeSpecConstructor {
     TimeSpec nu(TimePoint absolute);

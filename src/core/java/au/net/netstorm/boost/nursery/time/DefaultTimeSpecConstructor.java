@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.time;
 
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 import static au.net.netstorm.boost.nursery.time.TimeType.ABSOLUTE;
 import static au.net.netstorm.boost.nursery.time.TimeType.NONE;
 import static au.net.netstorm.boost.nursery.time.TimeType.RELATIVE;
-import au.net.netstorm.boost.time.core.TimePoint;
 
 public final class DefaultTimeSpecConstructor implements TimeSpecConstructor {
     public TimeSpec nu(TimePoint absolute) {

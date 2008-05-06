@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.time;
 
+import static au.net.netstorm.boost.bullet.time.core.DefaultTimePoint.ARMAGEDDON;
+import au.net.netstorm.boost.bullet.time.core.TimePoint;
 import static au.net.netstorm.boost.nursery.time.TimeType.ABSOLUTE;
 import static au.net.netstorm.boost.nursery.time.TimeType.NONE;
 import static au.net.netstorm.boost.nursery.time.TimeType.RELATIVE;
-import static au.net.netstorm.boost.time.core.DefaultTimePoint.ARMAGEDDON;
-import au.net.netstorm.boost.time.core.TimePoint;
 
 public final class DefaultStartEndResolver implements StartEndResolver {
     private static final TimeHelper HELPER = new DefaultTimeHelper();
