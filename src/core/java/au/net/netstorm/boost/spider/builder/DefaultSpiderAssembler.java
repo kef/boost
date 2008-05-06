@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.spider.core;
+package au.net.netstorm.boost.spider.builder;
 
 import au.net.netstorm.boost.demo.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.demo.spider.instance.PartialInstances;
