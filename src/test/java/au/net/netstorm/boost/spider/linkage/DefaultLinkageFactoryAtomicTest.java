@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.linkage;
 
 import java.lang.reflect.Field;
+
 import au.net.netstorm.boost.gunge.type.DefaultImplementation;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Implementation;
@@ -37,16 +38,18 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
         checkNuHostIfaceStrong(expected);
     }
 
-    public void testNuHostIfaceName() {
+    public void testNuHostIfaceAnchor() {
         Linkage expected = new DefaultLinkage(host, iface, anchor);
         checkNuHostIfaceName(expected);
         checkNuHostIfaceNameStrong(expected);
+        checkNuHostIfaceAnchorStrong(expected);
     }
 
-    public void testNuIfaceName() {
+    public void testNuIfaceAnchor() {
         Linkage expected = new DefaultLinkage(null, iface, anchor);
         checkNuIfaceName(expected);
         checkNuIfaceNameStrong(expected);
+        checkNuIfaceAnchorStrong(expected);
     }
 
     private void checkNuIface(Linkage expected) {
@@ -74,6 +77,11 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
         assertEquals(expected, actual);
     }
 
+    private void checkNuHostIfaceAnchorStrong(Linkage expected) {
+        Linkage actual = subject.nu(host, iface, anchor);
+        assertEquals(expected, actual);
+    }
+
     private void checkNuHostIfaceNameStrong(Linkage expected) {
         Linkage actual = subject.nu(host, iface, FIELD_NAME);
         assertEquals(expected, actual);
@@ -86,6 +94,11 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
 
     private void checkNuIfaceNameStrong(Linkage expected) {
         Linkage actual = subject.nu(null, iface, FIELD_NAME);
+        assertEquals(expected, actual);
+    }
+
+    private void checkNuIfaceAnchorStrong(Linkage expected) {
+        Linkage actual = subject.nu(null, iface, anchor);
         assertEquals(expected, actual);
     }
 }

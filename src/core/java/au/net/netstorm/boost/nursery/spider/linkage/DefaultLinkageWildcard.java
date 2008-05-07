@@ -14,7 +14,7 @@ public final class DefaultLinkageWildcard implements LinkageWildcard {
     public Linkage name(Linkage linkage) {
         Implementation host = nullGetHost(linkage);
         Interface iface = linkage.getIface();
-        return linkages.nu(host, iface, null);
+        return linkages.nu(host, iface, (Anchor) null);
     }
 
     public Linkage host(Linkage linkage) {
@@ -25,7 +25,7 @@ public final class DefaultLinkageWildcard implements LinkageWildcard {
 
     public Linkage both(Linkage linkage) {
         Interface iface = linkage.getIface();
-        return linkages.nu(null, iface, null);
+        return linkages.nu(null, iface, (Anchor) null);
     }
 
     private Implementation nullGetHost(Linkage linkage) {
