@@ -9,11 +9,10 @@ final class DefaultLinkage extends Primordial implements Linkage {
     private final Interface iface;
     private final Anchor anchor;
 
-    public DefaultLinkage(Implementation host, Interface iface, String name) {
+    public DefaultLinkage(Implementation host, Interface iface, Anchor anchor) {
         this.host = host;
         this.iface = iface;
-        // FIX 2363 to be passed in
-        this.anchor = name != null ? new DefaultAnchor(name) : null;
+        this.anchor = anchor;
         validate(iface);
     }
 

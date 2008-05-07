@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.spider.linkage;
 
 import java.lang.reflect.Field;
+
 import au.net.netstorm.boost.gunge.type.DefaultImplementation;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Implementation;
@@ -37,7 +38,9 @@ public class DefaultLinkageFactory implements LinkageFactory {
     }
 
     public Linkage nu(Implementation host, Interface iface, String name) {
-        return new DefaultLinkage(host, iface, name);
+        // FIX 2363 still to be pushed further out.
+        Anchor anchor = name != null ? new DefaultAnchor(name) : null;
+        return new DefaultLinkage(host, iface, anchor);
     }
 
     private Implementation host(Class host) {

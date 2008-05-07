@@ -6,24 +6,22 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements LazyFields {
-    String nameDummy;
+    Anchor anchorDummy;
     Implementation hostDummy;
     Interface ifaceDummy;
     Interface ifaceMock;
     Integer hash;
 
     public void testSuccess() {
-        // FIX 2363 just until linkage accepts anchors
-        Anchor anchorDummy = new DefaultAnchor(nameDummy);
-        check(hostDummy, ifaceDummy, anchorDummy, nameDummy);
-        check(null, ifaceDummy, anchorDummy, nameDummy);
-        check(hostDummy, ifaceDummy, null, null);
-        check(null, ifaceDummy, null, null);
+        check(hostDummy, ifaceDummy, anchorDummy);
+        check(null, ifaceDummy, anchorDummy);
+        check(hostDummy, ifaceDummy, null);
+        check(null, ifaceDummy, null);
     }
 
     public void testFail() {
         try {
-            new DefaultLinkage(hostDummy, null, nameDummy);
+            new DefaultLinkage(hostDummy, null, anchorDummy);
             fail();
         } catch (IllegalStateException e) {
             String actual = e.getMessage();
@@ -33,13 +31,13 @@ public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements
 
     public void testHashCode() {
         expect.oneCall(ifaceMock, hash, "hashCode");
-        Linkage subject = new DefaultLinkage(hostDummy, ifaceMock, nameDummy);
+        Linkage subject = new DefaultLinkage(hostDummy, ifaceMock, anchorDummy);
         int actual = subject.hashCode();
         assertEquals(hash, actual);
     }
 
-    private void check(Implementation host, Interface iface, Anchor anchor, String name) {
-        Linkage linkage = new DefaultLinkage(host, iface, name);
+    private void check(Implementation host, Interface iface, Anchor anchor) {
+        Linkage linkage = new DefaultLinkage(host, iface, anchor);
         check(host, linkage);
         check(iface, linkage);
         check(anchor, linkage);

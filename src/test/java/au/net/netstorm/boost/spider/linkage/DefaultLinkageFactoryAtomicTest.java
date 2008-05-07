@@ -14,12 +14,12 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
     private static final String FIELD_NAME = "monkey";
     Interface iface = new DefaultInterface(Monkey.class);
     Implementation host = new DefaultImplementation(Zoo.class);
+    Anchor anchor = new DefaultAnchor(FIELD_NAME);
     LinkageFactory subject;
     FieldTestUtil fielder;
-    String name;
 
     public void testNuField() {
-        Linkage expected = new DefaultLinkage(host, iface, FIELD_NAME);
+        Linkage expected = new DefaultLinkage(host, iface, anchor);
         Field field = fielder.get(Zoo.class, FIELD_NAME);
         Linkage actual = subject.nu(field);
         assertEquals(expected, actual);
@@ -38,13 +38,13 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
     }
 
     public void testNuHostIfaceName() {
-        Linkage expected = new DefaultLinkage(host, iface, name);
+        Linkage expected = new DefaultLinkage(host, iface, anchor);
         checkNuHostIfaceName(expected);
         checkNuHostIfaceNameStrong(expected);
     }
 
     public void testNuIfaceName() {
-        Linkage expected = new DefaultLinkage(null, iface, name);
+        Linkage expected = new DefaultLinkage(null, iface, anchor);
         checkNuIfaceName(expected);
         checkNuIfaceNameStrong(expected);
     }
@@ -70,22 +70,22 @@ public final class DefaultLinkageFactoryAtomicTest extends LifecycleTestCase imp
     }
 
     private void checkNuHostIfaceName(Linkage expected) {
-        Linkage actual = subject.nu(Zoo.class, Monkey.class, name);
+        Linkage actual = subject.nu(Zoo.class, Monkey.class, FIELD_NAME);
         assertEquals(expected, actual);
     }
 
     private void checkNuHostIfaceNameStrong(Linkage expected) {
-        Linkage actual = subject.nu(host, iface, name);
+        Linkage actual = subject.nu(host, iface, FIELD_NAME);
         assertEquals(expected, actual);
     }
 
     private void checkNuIfaceName(Linkage expected) {
-        Linkage actual = subject.nu(null, Monkey.class, name);
+        Linkage actual = subject.nu(null, Monkey.class, FIELD_NAME);
         assertEquals(expected, actual);
     }
 
     private void checkNuIfaceNameStrong(Linkage expected) {
-        Linkage actual = subject.nu(null, iface, name);
+        Linkage actual = subject.nu(null, iface, FIELD_NAME);
         assertEquals(expected, actual);
     }
 }
