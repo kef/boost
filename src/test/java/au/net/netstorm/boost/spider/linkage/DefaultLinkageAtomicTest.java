@@ -6,17 +6,19 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements LazyFields {
+    String nameDummy;
     Implementation hostDummy;
     Interface ifaceDummy;
-    String nameDummy;
     Interface ifaceMock;
     Integer hash;
 
     public void testSuccess() {
-        check(hostDummy, ifaceDummy, nameDummy);
-        check(null, ifaceDummy, nameDummy);
-        check(hostDummy, ifaceDummy, null);
-        check(null, ifaceDummy, null);
+        // FIX 2363 just until linkage accepts anchors
+        Anchor anchorDummy = new DefaultAnchor(nameDummy);
+        check(hostDummy, ifaceDummy, anchorDummy, nameDummy);
+        check(null, ifaceDummy, anchorDummy, nameDummy);
+        check(hostDummy, ifaceDummy, null, null);
+        check(null, ifaceDummy, null, null);
     }
 
     public void testFail() {
@@ -36,11 +38,11 @@ public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements
         assertEquals(hash, actual);
     }
 
-    private void check(Implementation host, Interface iface, String name) {
+    private void check(Implementation host, Interface iface, Anchor anchor, String name) {
         Linkage linkage = new DefaultLinkage(host, iface, name);
         check(host, linkage);
         check(iface, linkage);
-        check(name, linkage);
+        check(anchor, linkage);
     }
 
     private void check(Interface iface, Linkage linkage) {
@@ -55,12 +57,12 @@ public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements
             checkGetHostOk(host, linkage);
     }
 
-    private void check(String name, Linkage linkage) {
-        checkNamed(name, linkage);
-        if (name == null)
-            checkGetNameBoom(linkage);
+    private void check(Anchor anchor, Linkage linkage) {
+        checkAnchored(anchor, linkage);
+        if (anchor == null)
+            checkGetAnchorBoom(linkage);
         else
-            checkGetNameOk(name, linkage);
+            checkGetAnchorOk(anchor, linkage);
     }
 
     private void checkHosted(Implementation host, Linkage linkage) {
@@ -69,9 +71,9 @@ public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements
         assertEquals(expected, actual);
     }
 
-    private void checkNamed(String name, Linkage linkage) {
-        boolean expected = name != null;
-        boolean actual = linkage.named();
+    private void checkAnchored(Anchor anchor, Linkage linkage) {
+        boolean expected = anchor != null;
+        boolean actual = linkage.anchored();
         assertEquals(expected, actual);
     }
 
@@ -85,9 +87,9 @@ public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements
         assertEquals(host, actual);
     }
 
-    private void checkGetNameOk(String name, Linkage linkage) {
-        String actual = linkage.getName();
-        assertEquals(name, actual);
+    private void checkGetAnchorOk(Anchor anchor, Linkage linkage) {
+        Anchor actual = linkage.getAnchor();
+        assertEquals(anchor, actual);
     }
 
     private void checkGetHostBoom(Linkage linkage) {
@@ -99,12 +101,12 @@ public final class DefaultLinkageAtomicTest extends LifecycleTestCase implements
         }
     }
 
-    private void checkGetNameBoom(Linkage linkage) {
+    private void checkGetAnchorBoom(Linkage linkage) {
         try {
-            linkage.getName();
+            linkage.getAnchor();
             fail();
         } catch (IllegalStateException e) {
-            checkException(e, "name");
+            checkException(e, "anchor");
         }
     }
 

@@ -29,7 +29,7 @@ public final class DefaultLinkageWidener implements LinkageWidener {
     }
 
     private void widenName(Linkage linkage, List result) {
-        if (linkage.named()) {
+        if (linkage.anchored()) {
             Linkage widened = wildcard.name(linkage);
             result.add(widened);
         }
@@ -43,7 +43,7 @@ public final class DefaultLinkageWidener implements LinkageWidener {
     }
 
     private void widenBoth(Linkage linkage, List result) {
-        if (linkage.hosted() && linkage.named()) {
+        if (linkage.hosted() && linkage.anchored()) {
             Linkage widened = wildcard.both(linkage);
             result.add(widened);
         }

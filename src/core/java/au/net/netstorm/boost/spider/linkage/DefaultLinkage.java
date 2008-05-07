@@ -7,12 +7,13 @@ import au.net.netstorm.boost.gunge.type.Interface;
 final class DefaultLinkage extends Primordial implements Linkage {
     private final Implementation host;
     private final Interface iface;
-    private final String name;
+    private final Anchor anchor;
 
     public DefaultLinkage(Implementation host, Interface iface, String name) {
         this.host = host;
         this.iface = iface;
-        this.name = name;
+        // FIX 2363 to be passed in
+        this.anchor = name != null ? new DefaultAnchor(name) : null;
         validate(iface);
     }
 
@@ -25,17 +26,17 @@ final class DefaultLinkage extends Primordial implements Linkage {
         return iface;
     }
 
-    public String getName() {
-        check(name, "name");
-        return name;
+    public Anchor getAnchor() {
+        check(anchor, "anchor");
+        return anchor;
     }
 
     public boolean hosted() {
         return host != null;
     }
 
-    public boolean named() {
-        return name != null;
+    public boolean anchored() {
+        return anchor != null;
     }
 
     public int hashCode() {

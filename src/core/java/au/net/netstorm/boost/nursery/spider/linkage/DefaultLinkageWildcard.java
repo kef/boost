@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.spider.linkage;
 
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.spider.linkage.Anchor;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
@@ -32,6 +33,9 @@ public final class DefaultLinkageWildcard implements LinkageWildcard {
     }
 
     private String nullGetName(Linkage linkage) {
-        return linkage.named() ? linkage.getName() : null;
+        // FIX 2363 smooth out into a single call - should not need to get name
+        if (!linkage.anchored()) return null;
+        Anchor anchor = linkage.getAnchor();
+        return anchor.getName();
     }
 }

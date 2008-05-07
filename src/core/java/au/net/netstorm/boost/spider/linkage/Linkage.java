@@ -8,9 +8,9 @@ public interface Linkage {
 
     Interface getIface();
 
-    String getName();
+    Anchor getAnchor();
 
     boolean hosted();
 
-    boolean named();
+    boolean anchored();
 }
