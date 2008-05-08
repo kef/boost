@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.edge.java.lang.reflect;
 
-import au.net.netstorm.boost.edge.EdgeException;
-import au.net.netstorm.boost.edge.IllegalEdgeConstructorArgumentException;
+import au.net.netstorm.boost.edge.guts.EdgeException;
+import au.net.netstorm.boost.edge.guts.IllegalEdgeConstructorArgumentException;
 
 import java.lang.reflect.Constructor;
 

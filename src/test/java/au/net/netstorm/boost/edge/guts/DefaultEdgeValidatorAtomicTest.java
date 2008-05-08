@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edge;
+package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.testdata.bad.pack.Arrays;
 import au.net.netstorm.boost.edge.testdata.java.lang.BadNamedEdge;

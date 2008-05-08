@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.edge.testdata;
 
-import java.nio.ByteBuffer;
+import au.net.netstorm.boost.edge.core.Edge;
 
-import au.net.netstorm.boost.edge.Edge;
+import java.nio.ByteBuffer;
 
 public interface AutoEdgeByteBuffer extends Edge<ByteBuffer> {
     AutoEdgeByteBuffer duplicate();

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.edge.java.io;
 
-import au.net.netstorm.boost.edge.EdgeException;
+import au.net.netstorm.boost.edge.guts.EdgeException;
 
 import java.io.IOException;
 import java.io.OutputStream;

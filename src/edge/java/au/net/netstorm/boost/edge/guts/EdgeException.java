@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edge;
+package au.net.netstorm.boost.edge.guts;
 
 public final class EdgeException extends RuntimeException {
     public EdgeException(Throwable throwable) {

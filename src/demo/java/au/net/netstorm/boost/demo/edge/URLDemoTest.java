@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.demo.edge;
 
-import java.lang.reflect.InvocationTargetException;
-
-import au.net.netstorm.boost.edge.AutoEdger;
-import au.net.netstorm.boost.edge.EdgeException;
+import au.net.netstorm.boost.edge.core.AutoEdger;
+import au.net.netstorm.boost.edge.guts.EdgeException;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import demo.edge.java.net.URL;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class URLDemoTest extends LifecycleTestCase implements InjectableTest {
     private URL subject;

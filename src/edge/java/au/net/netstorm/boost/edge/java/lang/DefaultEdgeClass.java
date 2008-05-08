@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.edge.java.lang;
 
-import au.net.netstorm.boost.edge.EdgeException;
+import au.net.netstorm.boost.edge.guts.EdgeException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -24,6 +24,7 @@ public final class DefaultEdgeClass implements EdgeClass {
             throw new EdgeException(e);
         }
     }
+
     public <T> Constructor<T> getConstructor(Class<T> cls, Class<?>... parameterTypes) {
         try {
             return cls.getConstructor(parameterTypes);

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.edge.java.lang.reflect;
 
-import au.net.netstorm.boost.edge.EdgeException;
+import au.net.netstorm.boost.edge.guts.EdgeException;
 
 import java.lang.reflect.Field;
 

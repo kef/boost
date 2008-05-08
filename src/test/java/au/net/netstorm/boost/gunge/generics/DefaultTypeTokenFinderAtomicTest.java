@@ -1,9 +1,6 @@
 package au.net.netstorm.boost.gunge.generics;
 
-import java.lang.reflect.ParameterizedType;
-import java.nio.ByteBuffer;
-
-import au.net.netstorm.boost.edge.Edge;
+import au.net.netstorm.boost.edge.core.Edge;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -11,9 +8,11 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
+import java.lang.reflect.ParameterizedType;
+import java.nio.ByteBuffer;
+
 public final class DefaultTypeTokenFinderAtomicTest extends LifecycleTestCase
         implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
-
     private TypeTokenFinder subject;
     private ParameterizedType matchingType;
     private ParameterizedType differentType;
