@@ -10,6 +10,6 @@ public final class ListDemoTest extends LifecycleTestCase implements InjectableT
 
     // FIX 2328 Complete.
     public void testNuSubType() {
-//        List edge = edger.nu(List.class, 5);
+//        List edge = edger.nu(List.class, ArrayList.class, 5);
     }
 }
