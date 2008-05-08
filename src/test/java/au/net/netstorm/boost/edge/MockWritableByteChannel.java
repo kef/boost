@@ -1,12 +1,13 @@
-package au.net.netstorm.boost.edge.testfixtures;
+package au.net.netstorm.boost.edge;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.WritableByteChannel;
+
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;
 
-public class MockWritableByteChannel extends Assert implements WritableByteChannel {
+final class MockWritableByteChannel extends Assert implements WritableByteChannel {
     private boolean open = true;
     private boolean called = false;
     private ByteBuffer expected;

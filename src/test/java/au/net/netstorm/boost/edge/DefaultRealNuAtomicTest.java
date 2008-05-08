@@ -4,7 +4,6 @@ import java.net.URL;
 
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeURL;
-import au.net.netstorm.boost.edge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.gunge.reflect.ConstructorResolver;
@@ -16,7 +15,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private RealNu subject;
-    EdgeURLFixture fixture;
+    private URLFixture fixture;
 
     ConstructorResolver resolverMock;
     EdgeConstructor constructorMock;
@@ -26,15 +25,16 @@ public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements 
 
     public void setUpFixtures() {
         subject = new DefaultRealNu();
+        fixture = new URLFixture();
     }
 
     public void testNu() {
-        Object[] args = {fixture.value()};
+        Object[] args = {fixture.arg()};
         expect.oneCall(typeResolverMock, typeTokenMock, "resolve", AutoEdgeURL.class, new Object[]{Edge.class});
         expect.oneCall(typeTokenMock, URL.class, "raw");
         expect.oneCall(resolverMock, fixture.constructor(), "resolve", URL.class, args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[]{args});
-        expect.oneCall(constructorMock, fixture.url(), "newInstance", fixture.constructor(), args);
-        subject.nu(AutoEdgeURL.class, fixture.value());
+        expect.oneCall(constructorMock, fixture.real(), "newInstance", fixture.constructor(), args);
+        subject.nu(AutoEdgeURL.class, fixture.arg());
     }
 }

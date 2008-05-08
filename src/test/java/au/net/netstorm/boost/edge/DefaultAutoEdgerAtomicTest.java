@@ -7,8 +7,6 @@ import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeInputStream;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.edge.testdata.java.lang.ClassStatic;
-import au.net.netstorm.boost.edge.testfixtures.EdgeStreamFixture;
-import au.net.netstorm.boost.edge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.nursery.type.core.Types;
@@ -21,8 +19,8 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private AutoEdger subject;
 
-    EdgeStreamFixture streamFixture;
-    EdgeURLFixture urlFixture;
+    private StreamFixture stream;
+    private URLFixture url;
 
     TypeResolver typeResolverMock;
     TypeInstance typeInstanceMock;
@@ -37,11 +35,13 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();
+        stream = new StreamFixture();
+        url = new URLFixture();
     }
 
     public void testEdge() {
-        edgeExpectations(ByteArrayInputStream.class, AutoEdgeInputStream.class, inMock, streamFixture.stream());
-        AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, streamFixture.stream());
+        edgeExpectations(ByteArrayInputStream.class, AutoEdgeInputStream.class, inMock, stream.real());
+        AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, stream.real());
         assertSame(inMock, result);
     }
 
@@ -54,9 +54,9 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
-        expect.oneCall(realNuMock, urlFixture.url(), "nu", AutoEdgeURL.class, new Object[]{urlFixture.value()});
-        edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, urlFixture.url());
-        AutoEdgeURL result = subject.nu(AutoEdgeURL.class, urlFixture.value());
+        expect.oneCall(realNuMock, url.real(), "nu", AutoEdgeURL.class, new Object[]{url.arg()});
+        edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, url.real());
+        AutoEdgeURL result = subject.nu(AutoEdgeURL.class, url.arg());
         assertSame(urlMock, result);
     }
 

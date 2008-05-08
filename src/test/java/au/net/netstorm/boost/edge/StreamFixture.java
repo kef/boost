@@ -1,12 +1,13 @@
-package au.net.netstorm.boost.edge.testfixtures;
+package au.net.netstorm.boost.edge;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-public final class DefaultEdgeStreamFixture implements EdgeStreamFixture {
+public final class StreamFixture {
     private byte[] data = {0x01, 0x02, 0x03};
     private InputStream in = new ByteArrayInputStream(data);
     private EdgeClass classer = new DefaultEdgeClass();
@@ -15,23 +16,23 @@ public final class DefaultEdgeStreamFixture implements EdgeStreamFixture {
     private Method src = classer.getMethod(ByteArrayInputStream.class, method, types);
     private Method trg = classer.getMethod(ByteArrayInputStream.class, method, types);
 
-    public String method() {
+    public String methodName() {
         return method;
     }
 
-    public Class<?>[] types() {
+    public Class<?>[] argTypes() {
         return types;
     }
 
-    public Method edge() {
+    public Method edgeMethod() {
         return src;
     }
 
-    public Method real() {
+    public Method realMethod() {
         return trg;
     }
 
-    public InputStream stream() {
+    public InputStream real() {
         return in;
     }
 

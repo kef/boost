@@ -1,11 +1,7 @@
 package au.net.netstorm.boost.gunge.generics;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
-import au.net.netstorm.boost.edge.Edge;
-import au.net.netstorm.boost.edge.testdata.AutoEdgeByteBuffer;
-import au.net.netstorm.boost.edge.testfixtures.EdgeBufferFixture;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -20,7 +16,6 @@ public final class DefaultTypeResolverAtomicTest extends LifecycleTestCase
     private TypeResolver subject;
     private Type[] interfaceTypes;
     private Type edgeType;
-    EdgeBufferFixture fixture;
 
     FunctionalCollection collectionMock;
     TypeTokenFinder typeTokenFinderMock;
@@ -29,20 +24,21 @@ public final class DefaultTypeResolverAtomicTest extends LifecycleTestCase
 
     public void setUpFixtures() {
         subject = new DefaultTypeResolver();
-        interfaceTypes = fixture.edgeInterfaceTypes();
+        interfaceTypes = SuperMan.class.getGenericInterfaces();
         edgeType = interfaceTypes[0];
     }
 
     public void testResolveTypeToken() {
-        expect.oneCall(typesMock, typeTokenFinderMock, "nu", TypeTokenFinder.class, Edge.class);
+        expect.oneCall(typesMock, typeTokenFinderMock, "nu", TypeTokenFinder.class, Man.class);
         expect.oneCall(collectionMock, edgeType, "find", interfaceTypes, typeTokenFinderMock);
         expect.oneCall(typesMock, typeTokenInstanceMock, "nu", TypeInstance.class, edgeType);
-        subject.resolve(AutoEdgeByteBuffer.class, Edge.class);
+        TypeInstance result = subject.resolve(SuperMan.class, Man.class);
+        assertSame(typeTokenInstanceMock, result);
     }
 
     public void testFailureToResolveTypeToken() {
         try {
-            subject.resolve(List.class, Edge.class);
+            subject.resolve(Bob.class, Man.class);
             fail("Token must implement token interface.");
         } catch (RuntimeException expected) { }
     }

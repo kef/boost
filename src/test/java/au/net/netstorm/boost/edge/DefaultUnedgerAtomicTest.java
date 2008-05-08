@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.List;
 
 import au.net.netstorm.boost.edge.testdata.AutoEdgeURL;
-import au.net.netstorm.boost.edge.testfixtures.EdgeURLFixture;
 import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -18,7 +17,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 // FIX 2328 real objects and not the mocks
 public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Unedger subject;
-    EdgeURLFixture fixture;
+    private URLFixture fixture;
     Unedgable edgedObjectMock;
     List<?> realObjectMock;
     TypeResolver typeResolverMock;
@@ -26,14 +25,15 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
 
     public void setUpFixtures() {
         subject = new DefaultUnedger();
+        fixture = new URLFixture();
     }
 
     public void testUnedgeObjects() {
-        expect.oneCall(edgedObjectMock, fixture.url(), "unedge");
+        expect.oneCall(edgedObjectMock, fixture.real(), "unedge");
         Object[] partialEdgedArgs = {edgedObjectMock, realObjectMock};
         Object[] result = subject.unedge(partialEdgedArgs);
         assertEquals(partialEdgedArgs.length, result.length);
-        assertSame(fixture.url(), result[0]);
+        assertSame(fixture.real(), result[0]);
         assertSame(realObjectMock, result[1]);
     }
 
