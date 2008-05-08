@@ -11,6 +11,7 @@ import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
 import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.nursery.proxy.DefaultProxfierWirer;
+import au.net.netstorm.boost.nursery.proxy.LayerSpec;
 import au.net.netstorm.boost.nursery.proxy.Proxifier;
 import au.net.netstorm.boost.nursery.proxy.ProxifierWirer;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
@@ -38,7 +39,6 @@ public final class DefaultProviderEngine implements ProviderEngine {
     private final Onionizer onionizer;
     private final Layers proxies;
 
-    // FIX 2237 REMOVE THE BAD ASS PROXIFIER NOW.  LOOK IN THE FIELDS.
     public DefaultProviderEngine(
             Onionizer onionizer,
             InjectorEngine injector,
@@ -52,14 +52,11 @@ public final class DefaultProviderEngine implements ProviderEngine {
     }
 
     public ResolvedInstance provide(Implementation impl, Object[] parameters) {
-        ResolvedInstance resolved = getResolvedInstance(impl, parameters);
-        return postProcess(impl, resolved);
-    }
-
-    private ResolvedInstance getResolvedInstance(Implementation impl, Object[] parameters) {
         if (proxies.exists(impl)) return resolveProxy(impl, parameters);
         return resolvePlain(impl, parameters);
     }
+
+    // ============= proxy ============
 
     private ResolvedInstance resolveProxy(Implementation impl, Object[] parameters) {
         PassThroughLayer passThroughLayer = new DefaultPassThroughLayer();
@@ -68,25 +65,16 @@ public final class DefaultProviderEngine implements ProviderEngine {
         try {
             ResolvedInstance instance = proxy(impl, parameters);
             set(passThroughLayer, instance);
-            return (ResolvedInstance) passThrough;
+            return postProcess(impl, (ResolvedInstance) passThrough);
         } finally {
             inProgress.remove(impl);
         }
     }
 
-    private ResolvedInstance resolvePlain(Implementation impl, Object[] parameters) {
-        UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
-        inProgress.put(impl, unresolved);
-        try {
-            return inject(unresolved);
-        } finally {
-            inProgress.remove(impl);
-        }
-    }
-
-    private void set(PassThroughLayer passThroughLayer, ResolvedInstance instance) {
-        Object ref = instance.getRef();
-        passThroughLayer.setDelegate(ref);
+    private UnresolvedInstance passThrough(Implementation impl, PassThroughLayer layer) {
+        Interface[] types = typer.interfaces(impl);
+        Object proxy = proxyFactory.newProxy(types, layer);
+        return new DefaultBaseReference(proxy);
     }
 
     private ResolvedInstance proxy(Implementation impl, Object[] parameters) {
@@ -96,22 +84,40 @@ public final class DefaultProviderEngine implements ProviderEngine {
         return postProcess(impl, proxy);
     }
 
-    private ResolvedInstance inject(UnresolvedInstance unresolved) {
-        injector.inject(unresolved);
-        return (ResolvedInstance) unresolved;
-    }
-
     private ResolvedInstance proxy(Implementation impl, ResolvedInstance unresolved) {
         Object ref = unresolved.getRef();
-        au.net.netstorm.boost.nursery.proxy.LayerSpec spec = proxies.get(impl);
+        LayerSpec spec = proxies.get(impl);
         Object proxy = proxifier.proxy(ref, spec);
         return new DefaultBaseReference(proxy);
     }
 
-    private UnresolvedInstance passThrough(Implementation impl, PassThroughLayer layer) {
-        Interface[] types = typer.interfaces(impl);
-        Object proxy = proxyFactory.newProxy(types, layer);
-        return new DefaultBaseReference(proxy);
+    private void set(PassThroughLayer passThroughLayer, ResolvedInstance instance) {
+        Object ref = instance.getRef();
+        passThroughLayer.setDelegate(ref);
+    }
+
+    // ============= plain ============
+
+    private ResolvedInstance resolvePlain(Implementation impl, Object[] parameters) {
+        UnresolvedInstance unresolved = instantiator.instantiate(impl, parameters);
+        inProgress.put(impl, unresolved);
+        try {
+            return plain(impl, unresolved);
+        } finally {
+            inProgress.remove(impl);
+        }
+    }
+
+    private ResolvedInstance plain(Implementation impl, UnresolvedInstance unresolved) {
+        ResolvedInstance instance = inject(unresolved);
+        return postProcess(impl, instance);
+    }
+
+    // ============ common ============
+
+    private ResolvedInstance inject(UnresolvedInstance unresolved) {
+        injector.inject(unresolved);
+        return (ResolvedInstance) unresolved;
     }
 
     private ResolvedInstance postProcess(Implementation impl, ResolvedInstance resolved) {

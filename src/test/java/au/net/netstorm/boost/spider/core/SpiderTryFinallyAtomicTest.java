@@ -15,7 +15,6 @@ public final class SpiderTryFinallyAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testIn() {
-        expect.oneCall(partialInstancesMock, VOID, "clear");
         subject.theCore();
     }
 

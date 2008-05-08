@@ -4,7 +4,7 @@ import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-public final class LoveToHateLayer implements Layer, Constructable {
+final class LoveToHateLayer implements Layer, Constructable {
     private final Object ref;
     Love love;
     Hate hate;
