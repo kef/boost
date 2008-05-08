@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-public final class StreamFixture {
+final class StreamFixture {
     private byte[] data = {0x01, 0x02, 0x03};
     private InputStream in = new ByteArrayInputStream(data);
     private EdgeClass classer = new DefaultEdgeClass();

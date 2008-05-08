@@ -12,9 +12,6 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-// FIX 2328 fixed it now, but I got caught out by a bug (i think) in test framework here
-// FIX 2328 subject is package scoped and gets injected, then it gets injected with
-// FIX 2328 real objects and not the mocks
 public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Unedger subject;
     private URLFixture fixture;

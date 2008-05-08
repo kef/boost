@@ -7,7 +7,7 @@ import java.net.URL;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-public final class URLFixture {
+final class URLFixture {
     private EdgeClass classer = new DefaultEdgeClass();
     private String value = "http://url";
     private URL url = url(value);
