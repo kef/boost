@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.sniper.random;
 
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.Random;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.gunge.provider.NotProvidedException;
 import au.net.netstorm.boost.gunge.provider.SpecificProvider;
-
-import java.lang.reflect.Method;
-import java.math.BigInteger;
-import java.util.Date;
-import java.util.Random;
 
 // FIX DEBT SPLIT THIS CLASS!!!
 
@@ -42,6 +42,7 @@ public final class ConcreteRandomProvider implements SpecificProvider {
         if (type == Method.class) return randomMethod();
         if (type == Character.class) return randomCharacter();
         if (type == BigInteger.class) return randomBigInteger();
+        if (type == BigDecimal.class) return randomBigDecimal();
         if (type == Throwable.class) return randomThrowable();
         if (type == RuntimeException.class) return randomRuntimeException();
         if (type == Date.class) return randomDate();
@@ -86,6 +87,11 @@ public final class ConcreteRandomProvider implements SpecificProvider {
     private BigInteger randomBigInteger() {
         long l = random.nextLong();
         return BigInteger.valueOf(l);
+    }
+
+    private BigDecimal randomBigDecimal() {
+        long l = random.nextLong();
+        return BigDecimal.valueOf(l);
     }
 
     private Class randomClass() {
