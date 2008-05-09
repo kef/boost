@@ -64,7 +64,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         assertSame(urlMock, result);
     }
 
-
     public void testNewImplEdge() {
         expect.oneCall(validatorMock, VOID, "validate",  List.class, ArrayList.class, false);
         expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
