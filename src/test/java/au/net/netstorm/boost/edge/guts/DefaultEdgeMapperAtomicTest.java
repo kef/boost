@@ -24,12 +24,12 @@ public class DefaultEdgeMapperAtomicTest extends LifecycleTestCase implements Ha
 
     public void testEdgeToReal() {
         expect.oneCall(transformerMock, "X", "stripPrefix", "foo.X", "foo.");
-        String result = subject.edgeToReal("foo.X");
+        String result = subject.edgeToReal("foo.X", false);
         assertEquals("X", result);
     }
 
     public void testRealToEdge() {
-        String result = subject.realToEdge("X");
+        String result = subject.realToEdge("X", false);
         assertEquals("foo.X", result);
     }
 }
