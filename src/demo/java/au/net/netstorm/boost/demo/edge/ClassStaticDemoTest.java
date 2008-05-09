@@ -7,7 +7,6 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import demo.edge.java.lang.Class;
 import demo.edge.java.lang.ClassStatic;
 
-//FIX 2328 reinstate when default package mapping implemented
 public class ClassStaticDemoTest extends EdgeDemooooTest implements HasFixtures {
     private ClassStatic subject;
     ThrowableMaster thrower;

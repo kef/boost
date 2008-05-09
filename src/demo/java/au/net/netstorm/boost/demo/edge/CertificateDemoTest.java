@@ -8,7 +8,6 @@ import demo.edge.java.security.cert.Certificate;
 import demo.edge.java.security.cert.CertificateFactory;
 import demo.edge.java.security.cert.CertificateFactoryStatic;
 
-//FIX 2328 reinstate when default package mapping implemented
 public final class CertificateDemoTest extends EdgeDemooooTest {
      AutoEdger edger;
 
@@ -24,7 +23,7 @@ public final class CertificateDemoTest extends EdgeDemooooTest {
         Certificate certificate = factory.generateCertificate(stream);
         // FIX 2328 this highlights the real issue with selecting edge impls
         // FIX 2328 i have gone back and forth on this repeatedly, really
-        // FIX 2328 needs a good think
+        // FIX 2328 needs a good think (see FIX in DefaultAutoEdger)
 //        X509Certificate x509 = (X509Certificate) certificate;
     }
 

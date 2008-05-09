@@ -9,8 +9,6 @@ import demo.edge.java.util.List;
 public final class ListDemoTest extends EdgeDemooooTest {
     AutoEdger edger;
 
-    // FIX 2328 Complete - fill in some more methods etc..
-    // FIX 2328 another case for generics.
     public void testNuSubType() {
         List<?> edge = edger.nuImpl(List.class, ArrayList.class, 5);
         assertEquals(0, edge.size());

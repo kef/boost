@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
 import au.net.netstorm.boost.edge.guts.EdgeMapper;
-import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 import au.net.netstorm.boost.edge.guts.StreamFixture;
 import au.net.netstorm.boost.edge.guts.URLFixture;
@@ -25,7 +24,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     private StreamFixture stream;
     private URLFixture url;
     EdgeFactory edgerMock;
-    EdgeValidator validatorMock;
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
     ClassStatic classStaticMock;
@@ -42,7 +40,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testEdge() {
         expect.oneCall(mapperMock, InputStream.class, "edgeToReal", AutoEdgeInputStream.class);
-        expect.oneCall(validatorMock, VOID, "validate", AutoEdgeInputStream.class, InputStream.class, false);
         expect.oneCall(edgerMock, inMock, "nu", AutoEdgeInputStream.class, InputStream.class, stream.real());
         AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, stream.real());
         assertSame(inMock, result);
@@ -50,7 +47,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testStaticEdge() {
         expect.oneCall(mapperMock, Class.class, "staticEdgeToReal", ClassStatic.class);
-        expect.oneCall(validatorMock, VOID, "validate",  ClassStatic.class, Class.class, true);
         expect.oneCall(edgerMock, classStaticMock, "nu", ClassStatic.class, Class.class, null);
         ClassStatic result = subject.edge(ClassStatic.class);
         assertSame(classStaticMock, result);
@@ -58,7 +54,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testNewEdge() {
         expect.oneCall(mapperMock, URL.class, "edgeToReal", AutoEdgeURL.class);
-        expect.oneCall(validatorMock, VOID, "validate",  AutoEdgeURL.class, URL.class, false);
         expect.oneCall(realNuMock, url.real(), "nu", URL.class, new Object[]{url.arg()});
         expect.oneCall(edgerMock, urlMock, "nu", AutoEdgeURL.class, URL.class, url.real());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, url.arg());
@@ -67,7 +62,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testNewImplEdge() {
         expect.oneCall(mapperMock, java.util.List.class, "edgeToReal", List.class);
-        expect.oneCall(validatorMock, VOID, "validate",  List.class, java.util.List.class, false);
         expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
         expect.oneCall(edgerMock, edgeListMock, "nu", List.class, java.util.List.class, realListMock);
         List<?> result = subject.nuImpl(List.class, ArrayList.class, 5);

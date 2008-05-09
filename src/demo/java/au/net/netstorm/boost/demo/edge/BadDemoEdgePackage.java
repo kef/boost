@@ -6,5 +6,4 @@ public final class BadDemoEdgePackage implements EdgePackage {
     public String prefix() {
         return "demo.edge.bad";
     }
-
 }

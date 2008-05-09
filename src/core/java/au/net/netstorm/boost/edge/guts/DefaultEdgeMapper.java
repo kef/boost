@@ -2,7 +2,6 @@ package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-// FIX 2328 another case for the exception handling strategy
 public final class DefaultEdgeMapper implements EdgeMapper {
     EdgeClass classer;
     EdgeNameMapper mapper;

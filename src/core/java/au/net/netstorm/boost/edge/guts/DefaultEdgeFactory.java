@@ -9,7 +9,7 @@ public final class DefaultEdgeFactory implements EdgeFactory {
 
     public <E> E nu(Class<E> edgeClass, Class<?> realClass, Object real) {
         Object proxy = nuEdgeProxy(edgeClass, realClass, real);
-        // FIX 2328 is CCE ok or should i check & throw illegal arg
+        // FIX 2328 is CCE ok or should i check & throw illegal arg (recurrinng question)
         return edgeClass.cast(proxy);
     }
 
