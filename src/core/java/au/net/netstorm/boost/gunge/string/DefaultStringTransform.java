@@ -14,6 +14,6 @@ public class DefaultStringTransform implements StringTransform {
     }
 
     private void fail(String s, String reason, String token) {
-        throw new IllegalArgumentException("Can't transform " + s + " does not " + reason + " with" + token);
+        throw new IllegalArgumentException("Can't transform " + s + " does not " + reason + " with " + token);
     }
 }
