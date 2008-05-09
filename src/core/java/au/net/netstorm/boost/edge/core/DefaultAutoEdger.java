@@ -11,6 +11,8 @@ public final class DefaultAutoEdger implements AutoEdger {
     RealNu realNu;
     EdgeValidator validator;
 
+    // FIX 2328 need to really rethink what class i want as real, is it impl or real edge
+    // FIX 2328 same decision to be made for the nuImpl method
     public <E extends Edge> E edge(Class<E> edge, Object real) {
         Class<?> realClass = real.getClass();
         return createEdge(edge, realClass, real, false);
@@ -27,8 +29,6 @@ public final class DefaultAutoEdger implements AutoEdger {
         return createEdge(edge, realClass, real, false);
     }
 
-    // FIX 2328 need to really rethink what class i want as real, is it impl or real edge
-    // FIX 2328 same decision to be made for first edge methos
     public <E extends Edge> E nuImpl(Class<E> edge, Class<?> impl, Object... params) {
         Object real = realNu.nu(impl, params);
         return createEdge(edge, impl, real, false);
