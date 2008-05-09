@@ -9,7 +9,8 @@ public final class DefaultClassWarper implements ClassWarper {
     StringTransform transformer;
     EdgePackage edges;
 
-    public Class<?> edgeToReal(Class<?> edge) {
+    // FIX 2328 push through staticy instead of using StaticEdge interface
+    public Class<?> edgeToReal(Class<?> edge, boolean staticy) {
         String realName = realName(edge);
         // FIX 2328 need to discuss error handling a bit more - EE or wrap in IAE
         return classer.forName(realName);

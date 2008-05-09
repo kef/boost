@@ -15,14 +15,14 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     public <E> E edge(Class<E> edge) {
-        Class<?> realClass = warper.edgeToReal(edge);
+        Class<?> realClass = warper.edgeToReal(edge, true);
         return edger.nu(edge, realClass, null);
     }
 
     // FIX 2328 Put in test for extra method (use SDF and DateFormat as driver).
     // FIX 2328 need a second nu method which allows concrete subclasses to be specified, rather than implied
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
-        Class<?> realClass = warper.edgeToReal(edge);
+        Class<?> realClass = warper.edgeToReal(edge, false);
         Object real = realNu.nu(realClass, params);
         return edger.nu(edge, realClass, real);
     }
