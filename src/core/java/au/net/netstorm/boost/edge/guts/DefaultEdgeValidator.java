@@ -10,6 +10,7 @@ final class DefaultEdgeValidator implements EdgeValidator {
         if (!expectedEdgeName.equals(edgeName)) fail(expectedEdgeName, edgeName);
     }
 
+    // FIX 2328 dup logic required in Unedger
     private String expectedEdgeName(Class<?> real, boolean staticy) {
         String realName = real.getName();
         String prefix = edges.prefix() + ".";
