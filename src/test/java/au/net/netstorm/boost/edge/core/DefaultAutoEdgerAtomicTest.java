@@ -2,6 +2,7 @@ package au.net.netstorm.boost.edge.core;
 
 import java.io.ByteArrayInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
 import au.net.netstorm.boost.edge.guts.EdgeMapper;
@@ -65,11 +66,11 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     // FIXME 2328 implement and reinstate
     public void testNewImplEdge() {
-//        expect.oneCall(validatorMock, VOID, "validate",  List.class, ArrayList.class, false);
-//        expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
-//        expect.oneCall(edgerMock, edgeListMock, "nu", List.class, ArrayList.class, realListMock);
-//        List result = subject.nuImpl(List.class, ArrayList.class, 5);
-//        assertSame(edgeListMock, result);
+        expect.oneCall(validatorMock, VOID, "validate",  List.class, ArrayList.class, false);
+        expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
+        expect.oneCall(edgerMock, edgeListMock, "nu", List.class, ArrayList.class, realListMock);
+        List<?> result = subject.nuImpl(List.class, ArrayList.class, 5);
+        assertSame(edgeListMock, result);
     }
 }
 
