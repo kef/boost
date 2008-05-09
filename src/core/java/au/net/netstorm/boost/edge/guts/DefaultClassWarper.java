@@ -1,38 +1,31 @@
 package au.net.netstorm.boost.edge.guts;
 
+import au.net.netstorm.boost.edge.core.StaticEdge;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.gunge.string.StringTransform;
 
-// FIX 2328 come back and tidy this up... looks a little scary for what it does
 public final class DefaultClassWarper implements ClassWarper {
     EdgeClass classer;
+    StringTransform transformer;
     EdgePackage edges;
 
-    // FIX 2328 handle static edges
     public Class<?> edgeToReal(Class<?> edge) {
-        String prefix = edges.prefix();
-        String realName = realName(prefix, edge);
-        return realClass(prefix, realName);
+        String realName = realName(edge);
+        // FIX 2328 need to discuss error handling a bit more - EE or wrap in IAE
+        return classer.forName(realName);
     }
 
-    private Class<?> realClass(String prefix, String realName) {
-        try {
-            return classer.forName(realName);
-        } catch (EdgeException e) {
-            throw new IllegalArgumentException(
-                    "Could not find real class (" + realName + ") ensure it exists in package " + prefix);
-        }
-    }
-
-    private String realName(String prefix, Class<?> edge) {
+    private String realName(Class<?> edge) {
+        String prefix = edges.prefix() + ".";
         String name = edge.getName();
-        validate(prefix, name);
-        int start = prefix.length() + 1;
-        return name.substring(start);
+        return warpName(edge, prefix, name);
     }
 
-    private void validate(String prefix, String name) {
-        if (!name.startsWith(prefix)) {
-            throw new IllegalArgumentException("Edges must be contained in mirrored structure in package: " + prefix);
+    private String warpName(Class<?> edge, String prefix, String name) {
+        String warped = transformer.stripPrefix(name, prefix);
+        if (StaticEdge.class.isAssignableFrom(edge)) {
+            warped = transformer.stripSuffix(warped, "Static");
         }
+        return warped;
     }
 }
