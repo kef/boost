@@ -11,12 +11,12 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     public <E, R> E edge(Class<E> edge, R real) {
         Class<?> realClass = real.getClass();
-        return edger.nu(edge, realClass, real);
+        return createEdge(edge, realClass, real, false);
     }
 
     public <E> E edge(Class<E> edge) {
         Class<?> realClass = warper.edgeToReal(edge, true);
-        return edger.nu(edge, realClass, null);
+        return createEdge(edge, realClass, null, true);
     }
 
     // FIX 2328 Put in test for extra method (use SDF and DateFormat as driver).
@@ -24,6 +24,11 @@ public final class DefaultAutoEdger implements AutoEdger {
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
         Class<?> realClass = warper.edgeToReal(edge, false);
         Object real = realNu.nu(realClass, params);
-        return edger.nu(edge, realClass, real);
+        return createEdge(edge, realClass, real, false);
+    }
+
+    // FIX 2328 add in call to validator
+    private <R, E> E createEdge(Class<E> edgeClass, Class<?> realClass, R real, boolean staticy) {
+        return edger.nu(edgeClass, realClass, real);
     }
 }
