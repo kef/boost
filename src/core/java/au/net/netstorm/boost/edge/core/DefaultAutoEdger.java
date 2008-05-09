@@ -34,7 +34,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
         Class<?> realClass = warper.edgeToReal(edge);
         Object real = realNu.nu(realClass, params);
-        return edge(edge, real);
+        return createEdge(edge, realClass, real);
     }
 
     // FIX 2328 Bit big?
