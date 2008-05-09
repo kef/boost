@@ -24,20 +24,22 @@ public class DefaultClassWarperAtomicTest extends LifecycleTestCase implements H
     }
 
     public void testEdgeToReal() {
-        setExpectations(URL.class, java.net.URL.class, false);
+        String edgeName = TEST_EDGE_PREFIX + ".java.net.URL";
+        setExpectations(edgeName, java.net.URL.class);
         checkEdgeToReal(URL.class, java.net.URL.class, false);
     }
 
     public void testStaticEdgeToReal() {
-        setExpectations(ClassStatic.class, Class.class, true);
+        String edgeName = TEST_EDGE_PREFIX + ".java.lang.ClassStatic";
+        String nonStaticEdgeName = TEST_EDGE_PREFIX + ".java.lang.Class";
+        expect.oneCall(transformerMock, nonStaticEdgeName, "stripSuffix", edgeName, "Static");
+        setExpectations(nonStaticEdgeName, Class.class);
         checkEdgeToReal(ClassStatic.class, Class.class, true);
     }
 
-    private void setExpectations(Class<?> edgeClass, Class<?> realClass, boolean stripSuffix) {
-        String edgeName = edgeClass.getName();
+    private void setExpectations(String edgeName, Class<?> realClass) {
         String realName = realClass.getName();
         String striped = edgeName.replace(TEST_EDGE_PREFIX + ".", "");
-        if (stripSuffix)  expect.oneCall(transformerMock, realName, "stripSuffix", striped, "Static");
         expect.oneCall(edgesMock, TEST_EDGE_PREFIX, "prefix");
         expect.oneCall(classerMock, realClass, "forName", realName);
         expect.oneCall(transformerMock, striped, "stripPrefix", edgeName, TEST_EDGE_PREFIX + ".");
