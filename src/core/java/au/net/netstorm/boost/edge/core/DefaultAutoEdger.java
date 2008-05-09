@@ -9,12 +9,12 @@ public final class DefaultAutoEdger implements AutoEdger {
     ClassWarper warper;
     RealNu realNu;
 
-    public <E extends Edge, R> E edge(Class<E> edge, R real) {
+    public <E, R> E edge(Class<E> edge, R real) {
         Class<?> realClass = real.getClass();
         return edger.nu(edge, realClass, real);
     }
 
-    public <E extends StaticEdge> E edge(Class<E> edge) {
+    public <E> E edge(Class<E> edge) {
         Class<?> realClass = warper.edgeToReal(edge);
         return edger.nu(edge, realClass, null);
     }
