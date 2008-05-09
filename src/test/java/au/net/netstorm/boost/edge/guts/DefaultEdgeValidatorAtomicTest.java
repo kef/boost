@@ -16,35 +16,28 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
 
     public void setUpFixtures() {
         subject = new DefaultEdgeValidator();
+        expect.oneCall(edgesMock, "au.net.netstorm.boost.edge.testdata", "prefix");
     }
 
     public void testValidEdge() {
-        expectTestDataPrefix();
-        subject.validate(URL.class, java.net.URL.class);
+        subject.validate(URL.class, java.net.URL.class, false);
     }
 
     public void testValidStaticEdge() {
-        expectTestDataPrefix();
-        subject.validate(ClassStatic.class, Class.class);
+        subject.validate(ClassStatic.class, Class.class, true);
     }
 
     public void testInvalidPackagedEdged() {
-        expectTestDataPrefix();
         try {
-            subject.validate(Arrays.class, java.util.Arrays.class);
+            subject.validate(Arrays.class, java.util.Arrays.class, false);
             fail();
         } catch (IllegalArgumentException expected) { }
     }
 
     public void testInvalidNamedEdged() {
         try {
-            subject.validate(BadNamedEdge.class, Class.class);
+            subject.validate(BadNamedEdge.class, Class.class, false);
             fail();
         } catch (IllegalArgumentException expected) { }
     }
-
-    private void expectTestDataPrefix() {
-        expect.oneCall(edgesMock, "au.net.netstorm.boost.edge.testdata", "prefix");
-    }
-
 }

@@ -14,7 +14,6 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 public class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private EdgeFactory subject;
     private URLFixture url;
-    EdgeValidator validatorMock;
     ProxySupplier proxierMock;
     Types typesMock;
     AutoEdge edgeMock;
@@ -31,7 +30,6 @@ public class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implements H
         ClassLoader loader = AutoEdgeURL.class.getClassLoader();
         expect.oneCall(typesMock, edgeMock, "nu", AutoEdge.class, args);
         expect.oneCall(proxierMock, urlMock, "getProxy", loader, types, edgeMock);
-        expect.oneCall(validatorMock, VOID, "validate", AutoEdgeURL.class, URL.class);
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, URL.class, url.real());
         assertSame(urlMock, result);
     }

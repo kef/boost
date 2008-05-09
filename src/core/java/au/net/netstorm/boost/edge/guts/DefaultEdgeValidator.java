@@ -1,42 +1,24 @@
 package au.net.netstorm.boost.edge.guts;
 
-import au.net.netstorm.boost.edge.core.StaticEdge;
 
 final class DefaultEdgeValidator implements EdgeValidator {
     EdgePackage edges;
 
-    public void validate(Class<?> edge, Class<?> real) {
-        validateSameSimpleName(edge, real);
-        validatePackageName(edge, real);
+    public void validate(Class<?> edge, Class<?> real, boolean staticy) {
+        String expectedEdgeName = expectedEdgeName(real, staticy);
+        String edgeName = edge.getName();
+        if (!expectedEdgeName.equals(edgeName)) fail(expectedEdgeName, edgeName);
     }
 
-    public void validateSameSimpleName(Class<?> edge, Class<?> real) {
-        String edgeName = edge.getSimpleName();
-        String realName = real.getSimpleName();
-        String validName = isStaticEdge(edge) ? realName + "Static" : realName;
-        if (!edgeName.equals(validName)) fail();
+    private String expectedEdgeName(Class<?> real, boolean staticy) {
+        String realName = real.getName();
+        String prefix = edges.prefix() + ".";
+        String suffix = staticy ? "Static" : "";
+        String expectedEdgeName = prefix + realName + suffix;
+        return expectedEdgeName;
     }
 
-    public void validatePackageName(Class<?> edge, Class<?> real) {
-        String prefix = edges.prefix();
-        String edgeName = packageName(edge);
-        String realName = packageName(real);
-        String warped = prefix + "." + edgeName;
-        if (!warped.endsWith(realName)) fail();
-    }
-
-    private boolean isStaticEdge(Class<?> edge) {
-        return StaticEdge.class.isAssignableFrom(edge);
-    }
-
-    private String packageName(Class<?> c) {
-        Package packager = c.getPackage();
-        return packager.getName();
-    }
-
-    private void fail() {
-        throw new IllegalArgumentException(
-                "Invalid edge class, edges must implement Edge<RawType> or StaticEdge<RawType>" +
-                        "and use a mirrored package structure.");
+    private void fail(String expected, String actual) {
+        throw new IllegalArgumentException("Invalid edge, expected " + expected + " got " + actual);
     }
 }
