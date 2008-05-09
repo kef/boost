@@ -14,7 +14,6 @@ public class DefaultEdgeNameMapperAtomicTest extends LifecycleTestCase implement
     EdgePackage edgesMock;
     StringTransform transformerMock;
 
-    // FIX 2328 reinstate when implemented
     public void setUpFixtures() {
         subject = new DefaultEdgeNameMapper();
         expect.oneCall(edgesMock, "foo", "prefix");
