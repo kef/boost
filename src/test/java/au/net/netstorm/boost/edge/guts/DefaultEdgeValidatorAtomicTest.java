@@ -12,20 +12,24 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private EdgeValidator subject;
+    EdgePackage edgesMock;
 
     public void setUpFixtures() {
         subject = new DefaultEdgeValidator();
     }
 
     public void testValidEdge() {
+        expectTestDataPrefix();
         subject.validate(URL.class, java.net.URL.class);
     }
 
     public void testValidStaticEdge() {
+        expectTestDataPrefix();
         subject.validate(ClassStatic.class, Class.class);
     }
 
     public void testInvalidPackagedEdged() {
+        expectTestDataPrefix();
         try {
             subject.validate(Arrays.class, java.util.Arrays.class);
             fail();
@@ -38,4 +42,9 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
             fail();
         } catch (IllegalArgumentException expected) { }
     }
+
+    private void expectTestDataPrefix() {
+        expect.oneCall(edgesMock, "au.net.netstorm.boost.edge.testdata", "prefix");
+    }
+
 }

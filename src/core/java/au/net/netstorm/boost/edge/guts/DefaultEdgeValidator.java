@@ -3,6 +3,8 @@ package au.net.netstorm.boost.edge.guts;
 import au.net.netstorm.boost.edge.core.StaticEdge;
 
 final class DefaultEdgeValidator implements EdgeValidator {
+    EdgePackage edges;
+
     public void validate(Class<?> edge, Class<?> real) {
         validateSameSimpleName(edge, real);
         validatePackageName(edge, real);
@@ -16,9 +18,11 @@ final class DefaultEdgeValidator implements EdgeValidator {
     }
 
     public void validatePackageName(Class<?> edge, Class<?> real) {
+        String prefix = edges.prefix();
         String edgeName = packageName(edge);
         String realName = packageName(real);
-        if (!edgeName.endsWith(realName)) fail();
+        String warped = prefix + "." + edgeName;
+        if (!warped.endsWith(realName)) fail();
     }
 
     private boolean isStaticEdge(Class<?> edge) {
