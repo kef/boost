@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.net.URL;
 
 import au.net.netstorm.boost.edge.guts.AutoEdge;
+import au.net.netstorm.boost.edge.guts.ClassWarper;
 import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 import au.net.netstorm.boost.edge.guts.StreamFixture;
@@ -34,6 +35,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
     ClassStatic classStaticMock;
+    ClassWarper warperMock;
     RealNu realNuMock;
     Types typesMock;
 
@@ -58,7 +60,8 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
-        expect.oneCall(realNuMock, url.real(), "nu", AutoEdgeURL.class, new Object[]{url.arg()});
+        expect.oneCall(warperMock, URL.class, "edgeToReal", AutoEdgeURL.class);
+        expect.oneCall(realNuMock, url.real(), "nu", URL.class, new Object[]{url.arg()});
         edgeExpectations(URL.class, AutoEdgeURL.class, urlMock, url.real());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, url.arg());
         assertSame(urlMock, result);

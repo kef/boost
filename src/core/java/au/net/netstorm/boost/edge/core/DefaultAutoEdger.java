@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.edge.core;
 
 import au.net.netstorm.boost.edge.guts.AutoEdge;
+import au.net.netstorm.boost.edge.guts.ClassWarper;
 import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 import au.net.netstorm.boost.edge.guts.Unedgable;
@@ -12,6 +13,7 @@ import au.net.netstorm.boost.nursery.type.core.Types;
 public final class DefaultAutoEdger implements AutoEdger {
     TypeResolver typeResolver;
     EdgeValidator validator;
+    ClassWarper warper;
     ProxySupplier proxier;
     RealNu realNu;
     Types types;
@@ -30,7 +32,8 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 Put in test for extra method (use SDF and DateFormat as driver).
     // FIX 2328 need a second nu method which allows concrete subclasses to be specified, rather than implied
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
-        Object real = realNu.nu(edge, params);
+        Class<?> realClass = warper.edgeToReal(edge);
+        Object real = realNu.nu(realClass, params);
         return edge(edge, real);
     }
 

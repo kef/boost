@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.demo.edge;
 
-import au.net.netstorm.boost.edge.core.AutoEdger;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 
+//FIX 2328 reinstate when default package mapping implemented
 public final class CertificateDemoTest extends LifecycleTestCase implements InjectableTest {
-    AutoEdger edger;
+//    AutoEdger edger;
 
     // FIX 2328 Reinstate.
     public void testEdge() {

@@ -1,13 +1,12 @@
 package au.net.netstorm.boost.demo.edge;
 
-import au.net.netstorm.boost.edge.core.AutoEdger;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import demo.edge.java.net.URL;
 //FIX 2328 reinstate when default package mapping implemented
 public class URLDemoTest extends LifecycleTestCase implements InjectableTest {
     private URL subject;
-    AutoEdger edger;
+//    AutoEdger edger;
 
     public void testURLEdgeConstruction() {
 //        String url = "http://boost";

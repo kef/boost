@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.demo.edge;
 
-import au.net.netstorm.boost.edge.core.AutoEdger;
 import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -10,7 +9,7 @@ import demo.edge.java.lang.ClassStatic;
 public class ClassStaticDemoTest extends LifecycleTestCase implements HasFixtures, InjectableTest {
     private ClassStatic subject;
     ThrowableMaster thrower;
-    AutoEdger edger;
+//    AutoEdger edger;
 
     public void setUpFixtures() {
 //        subject = edger.edge(ClassStatic.class);
