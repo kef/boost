@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.edge.core;
 
-import au.net.netstorm.boost.edge.guts.ClassWarper;
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
+import au.net.netstorm.boost.edge.guts.EdgeMapper;
 import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 
 public final class DefaultAutoEdger implements AutoEdger {
     EdgeFactory edger;
-    ClassWarper warper;
+    EdgeMapper mapper;
     RealNu realNu;
     EdgeValidator validator;
 
@@ -17,14 +17,14 @@ public final class DefaultAutoEdger implements AutoEdger {
     }
 
     public <E> E edge(Class<E> edge) {
-        Class<?> realClass = warper.edgeToReal(edge, true);
+        Class<?> realClass = mapper.staticEdgeToReal(edge);
         return createEdge(edge, realClass, null, true);
     }
 
     // FIX 2328 Put in test for extra method (use SDF and DateFormat as driver).
     // FIX 2328 need a second nu method which allows concrete subclasses to be specified, rather than implied
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
-        Class<?> realClass = warper.edgeToReal(edge, false);
+        Class<?> realClass = mapper.edgeToReal(edge);
         Object real = realNu.nu(realClass, params);
         return createEdge(edge, realClass, real, false);
     }

@@ -3,8 +3,8 @@ package au.net.netstorm.boost.edge.core;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 
-import au.net.netstorm.boost.edge.guts.ClassWarper;
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
+import au.net.netstorm.boost.edge.guts.EdgeMapper;
 import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 import au.net.netstorm.boost.edge.guts.StreamFixture;
@@ -27,7 +27,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
     ClassStatic classStaticMock;
-    ClassWarper warperMock;
+    EdgeMapper mapperMock;
     RealNu realNuMock;
 
     public void setUpFixtures() {
@@ -45,7 +45,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testStaticEdge() {
         expect.oneCall(validatorMock, VOID, "validate",  ClassStatic.class, Class.class, true);
-        expect.oneCall(warperMock, Class.class, "edgeToReal", ClassStatic.class, true);
+        expect.oneCall(mapperMock, Class.class, "staticEdgeToReal", ClassStatic.class);
         expect.oneCall(edgerMock, classStaticMock, "nu", ClassStatic.class, Class.class, null);
         ClassStatic result = subject.edge(ClassStatic.class);
         assertSame(classStaticMock, result);
@@ -53,7 +53,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testNewEdge() {
         expect.oneCall(validatorMock, VOID, "validate",  AutoEdgeURL.class, URL.class, false);
-        expect.oneCall(warperMock, URL.class, "edgeToReal", AutoEdgeURL.class, false);
+        expect.oneCall(mapperMock, URL.class, "edgeToReal", AutoEdgeURL.class);
         expect.oneCall(realNuMock, url.real(), "nu", URL.class, new Object[]{url.arg()});
         expect.oneCall(edgerMock, urlMock, "nu", AutoEdgeURL.class, URL.class, url.real());
         AutoEdgeURL result = subject.nu(AutoEdgeURL.class, url.arg());
