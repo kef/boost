@@ -7,6 +7,7 @@ public final class DefaultClassWarper implements ClassWarper {
     EdgeClass classer;
     EdgePackage edges;
 
+    // FIX 2328 handle static edges
     public Class<?> edgeToReal(Class<?> edge) {
         String prefix = edges.prefix();
         String realName = realName(prefix, edge);
