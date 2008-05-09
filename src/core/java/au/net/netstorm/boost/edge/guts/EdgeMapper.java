@@ -5,6 +5,7 @@ package au.net.netstorm.boost.edge.guts;
 // FIX 2328 rename to EdgeNameMapper
 public interface EdgeMapper {
     // FIX 2328 wire in
-    String edgeToReal(String edge, boolean staticy);
-    String realToEdge(String real, boolean staticy);
+    String staticEdgeToReal(String edge);
+    String edgeToReal(String edge);
+    String realToEdge(String real);
 }

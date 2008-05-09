@@ -21,15 +21,21 @@ public class DefaultEdgeMapperAtomicTest extends LifecycleTestCase implements Ha
     }
 
     // FIX 2328 implemented test & api for statics
+    public void testStaticEdgeToReal() {
+        expect.oneCall(transformerMock, "foo.X", "stripSuffix", "foo.XStatic", "Static");
+        expect.oneCall(transformerMock, "X", "stripPrefix", "foo.X", "foo.");
+        String result = subject.staticEdgeToReal("foo.XStatic");
+        assertEquals("X", result);
+    }
 
     public void testEdgeToReal() {
         expect.oneCall(transformerMock, "X", "stripPrefix", "foo.X", "foo.");
-        String result = subject.edgeToReal("foo.X", false);
+        String result = subject.edgeToReal("foo.X");
         assertEquals("X", result);
     }
 
     public void testRealToEdge() {
-        String result = subject.realToEdge("X", false);
+        String result = subject.realToEdge("X");
         assertEquals("foo.X", result);
     }
 }
