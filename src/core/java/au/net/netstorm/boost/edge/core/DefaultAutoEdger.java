@@ -21,8 +21,6 @@ public final class DefaultAutoEdger implements AutoEdger {
         return createEdge(edge, realClass, null, true);
     }
 
-    // FIX 2328 Put in test for extra method (use SDF and DateFormat as driver).
-    // FIX 2328 need a second nu method which allows concrete subclasses to be specified, rather than implied
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
         Class<?> realClass = mapper.edgeToReal(edge);
         Object real = realNu.nu(realClass, params);
@@ -36,7 +34,6 @@ public final class DefaultAutoEdger implements AutoEdger {
         return createEdge(edge, impl, real, false);
     }
 
-    // FIX 2328 add in call to validator
     private <R, E> E createEdge(Class<E> edgeClass, Class<?> realClass, R real, boolean staticy) {
         validator.validate(edgeClass, realClass, staticy);
         return edger.nu(edgeClass, realClass, real);
