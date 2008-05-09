@@ -3,7 +3,6 @@ package au.net.netstorm.boost.demo.edge;
 import au.net.netstorm.boost.edge.core.AutoEdger;
 import demo.edge.java.lang.Class;
 
-//FIX 2328 reinstate when default package mapping implemented
 public class ClassDemoTest extends EdgeDemooooTest {
     AutoEdger edger;
 
