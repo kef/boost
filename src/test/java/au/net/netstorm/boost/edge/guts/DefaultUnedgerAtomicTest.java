@@ -3,11 +3,7 @@ package au.net.netstorm.boost.edge.guts;
 import java.net.URL;
 import java.util.List;
 
-import au.net.netstorm.boost.edge.core.Edge;
-import au.net.netstorm.boost.edge.core.StaticEdge;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeURL;
-import au.net.netstorm.boost.gunge.generics.TypeInstance;
-import au.net.netstorm.boost.gunge.generics.TypeResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -19,8 +15,7 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
     private URLFixture fixture;
     Unedgable edgedObjectMock;
     List<?> realObjectMock;
-    TypeResolver typeResolverMock;
-    TypeInstance typeInstanceMock;
+    EdgeMapper mapperMock;
 
     public void setUpFixtures() {
         subject = new DefaultUnedger();
@@ -42,8 +37,7 @@ public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements
     }
 
     public void testUnedgeClasses() {
-        expect.oneCall(typeResolverMock, typeInstanceMock, "resolve", AutoEdgeURL.class, new Object[]{Edge.class, StaticEdge.class});
-        expect.oneCall(typeInstanceMock, URL.class, "raw");
+        expect.oneCall(mapperMock, URL.class, "edgeToReal", AutoEdgeURL.class);
         Class<?>[] edgedClasses = {AutoEdgeURL.class, List.class};
         Class<?>[] result = subject.unedge(edgedClasses);
         assertEquals(edgedClasses.length, result.length);

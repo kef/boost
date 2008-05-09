@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.core.Edge;
-import au.net.netstorm.boost.edge.core.StaticEdge;
-import au.net.netstorm.boost.gunge.generics.TypeInstance;
 import au.net.netstorm.boost.gunge.generics.TypeResolver;
 
 final class DefaultUnedger implements Unedger {
     TypeResolver typeResolver;
+    EdgeMapper mapper;
 
     public Object[] unedge(Object[] edged) {
         if (edged == null) return edged;
@@ -33,7 +32,6 @@ final class DefaultUnedger implements Unedger {
 
     private Class<?> unedge(Class<?> candidate) {
         if (!Edge.class.isAssignableFrom(candidate)) return candidate;
-        TypeInstance typeToken = typeResolver.resolve(candidate, Edge.class, StaticEdge.class);
-        return typeToken.raw();
+        return mapper.edgeToReal(candidate);
     }
 }
