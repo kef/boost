@@ -12,15 +12,19 @@ public class DefaultEdgeMapperAtomicTest extends LifecycleTestCase implements Ha
     private EdgeMapper subject;
     EdgePackage edgesMock;
 
+    // FIX 2328 reinstate when implemented
     public void setUpFixtures() {
-//        subject = new DefaultEdgeMapper();
+        subject = new DefaultEdgeMapper();
+//        expect.oneCall(edgesMock, "foo", "prefix");
     }
 
     public void testEdgeToReal() {
-//        String result = subject.edgeToReal("");
+        String result = subject.edgeToReal("foo.X");
+//        assertEquals("X", result);
     }
 
     public void testRealToEdge() {
-
+        String result = subject.edgeToReal("X");
+//        assertEquals("foo.X", result);
     }
 }
