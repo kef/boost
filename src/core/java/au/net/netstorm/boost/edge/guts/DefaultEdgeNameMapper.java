@@ -19,4 +19,9 @@ public final class DefaultEdgeNameMapper implements EdgeNameMapper {
     public String realToEdge(String real) {
         return edges.prefix() + "." + real;
     }
+
+    public String realToStaticEdge(String real) {
+        String edgeName = realToEdge(real);
+        return edgeName + "Static";
+    }
 }

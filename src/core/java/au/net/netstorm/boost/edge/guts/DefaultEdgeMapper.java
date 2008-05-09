@@ -7,15 +7,15 @@ public final class DefaultEdgeMapper implements EdgeMapper {
     EdgeClass classer;
     EdgeNameMapper mapper;
 
-    public Class<?> staticEdgeToReal(Class<?> edge) {
-        String edgeName = edge.getName();
-        String realName = mapper.staticEdgeToReal(edgeName);
-        return classer.forName(realName);
-    }
-
     public Class<?> edgeToReal(Class<?> edge) {
         String edgeName = edge.getName();
         String realName = mapper.edgeToReal(edgeName);
+        return classer.forName(realName);
+    }
+
+    public Class<?> staticEdgeToReal(Class<?> edge) {
+        String edgeName = edge.getName();
+        String realName = mapper.staticEdgeToReal(edgeName);
         return classer.forName(realName);
     }
 

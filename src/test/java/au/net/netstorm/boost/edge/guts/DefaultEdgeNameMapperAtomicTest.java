@@ -36,4 +36,9 @@ public class DefaultEdgeNameMapperAtomicTest extends LifecycleTestCase implement
         String result = subject.realToEdge("X");
         assertEquals("foo.X", result);
     }
+
+    public void testRealToStaticEdge() {
+        String result = subject.realToStaticEdge("X");
+        assertEquals("foo.XStatic", result);
+    }
 }
