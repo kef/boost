@@ -6,7 +6,7 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.OverlaysWeb;
 import au.net.netstorm.boost.spider.registry.Registry;
 
-public class NegativeEdgeDemooooTest extends LifecycleTestCase implements OverlaysWeb, InjectableTest {
+public abstract class NegativeEdgeDemooooTest extends LifecycleTestCase implements OverlaysWeb, InjectableTest {
     public final void overlay(Registry registry) {
         registry.single(EdgePackage.class, BadDemoEdgePackage.class);
     }
