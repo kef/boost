@@ -16,12 +16,12 @@ public final class DefaultAutoEdger implements AutoEdger {
     RealNu realNu;
     Types types;
 
-    public <E extends Edge<R>, R> E edge(Class<E> edge, R real) {
+    public <E extends Edge, R> E edge(Class<E> edge, R real) {
         Class<?> realClass = real.getClass();
         return createEdge(edge, realClass, real);
     }
 
-    public <E extends StaticEdge<R>, R> E edge(Class<E> edge) {
+    public <E extends StaticEdge> E edge(Class<E> edge) {
         TypeInstance typeToken = typeResolver.resolve(edge, StaticEdge.class);
         Class<?> realClass = typeToken.raw();
         return createEdge(edge, realClass, null);
@@ -29,8 +29,8 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     // FIX 2328 Put in test for extra method (use SDF and DateFormat as driver).
     // FIX 2328 need a second nu method which allows concrete subclasses to be specified, rather than implied
-    public <E extends Edge<R>, R> E nu(Class<E> edge, Object... params) {
-        R real = realNu.nu(edge, params);
+    public <E extends Edge> E nu(Class<E> edge, Object... params) {
+        Object real = realNu.nu(edge, params);
         return edge(edge, real);
     }
 

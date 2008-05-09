@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.edge.guts;
 
-import junit.framework.Assert;
-import junit.framework.AssertionFailedError;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.WritableByteChannel;
+
+import junit.framework.Assert;
+import junit.framework.AssertionFailedError;
 
 final class MockWritableByteChannel extends Assert implements WritableByteChannel {
     private boolean open = true;

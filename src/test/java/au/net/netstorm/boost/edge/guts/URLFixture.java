@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.edge.guts;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-
 import java.lang.reflect.Constructor;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
 public final class URLFixture {
     private EdgeClass classer = new DefaultEdgeClass();

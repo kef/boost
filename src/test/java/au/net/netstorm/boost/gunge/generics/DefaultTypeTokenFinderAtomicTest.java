@@ -1,15 +1,14 @@
 package au.net.netstorm.boost.gunge.generics;
 
+import java.lang.reflect.ParameterizedType;
+import java.nio.ByteBuffer;
+
 import au.net.netstorm.boost.edge.core.Edge;
-import au.net.netstorm.boost.edge.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-
-import java.lang.reflect.ParameterizedType;
-import java.nio.ByteBuffer;
 
 public final class DefaultTypeTokenFinderAtomicTest extends LifecycleTestCase
         implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
@@ -18,10 +17,9 @@ public final class DefaultTypeTokenFinderAtomicTest extends LifecycleTestCase
     private ParameterizedType differentType;
 
     public void setUpFixtures() {
-        subject = new DefaultTypeTokenFinder(Edge.class);
-        matchingType = extractParameterizedType(AutoEdgeByteBuffer.class);
-        differentType = extractParameterizedType(new TypeToken<ByteBuffer>() {
-        }.getClass());
+        subject = new DefaultTypeTokenFinder(TypeToken.class);
+        matchingType = extractParameterizedType(new TypeToken<ByteBuffer>() {});
+        differentType = extractParameterizedType(new OtherType<ByteBuffer>() {});
     }
 
     public void testFind() {
@@ -46,7 +44,8 @@ public final class DefaultTypeTokenFinderAtomicTest extends LifecycleTestCase
         } catch (RuntimeException expected) { }
     }
 
-    private ParameterizedType extractParameterizedType(Class<?> c) {
+    private ParameterizedType extractParameterizedType(Object t) {
+        Class<?> c = t.getClass();
         return (ParameterizedType) c.getGenericInterfaces()[0];
     }
 }

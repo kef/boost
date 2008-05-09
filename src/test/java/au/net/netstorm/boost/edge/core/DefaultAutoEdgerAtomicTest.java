@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.edge.core;
 
+import java.io.ByteArrayInputStream;
+import java.net.URL;
+
 import au.net.netstorm.boost.edge.guts.AutoEdge;
 import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
@@ -18,9 +21,6 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-
-import java.io.ByteArrayInputStream;
-import java.net.URL;
 
 public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private AutoEdger subject;

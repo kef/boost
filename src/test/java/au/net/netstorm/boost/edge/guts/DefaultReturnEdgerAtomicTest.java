@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.edge.guts;
 
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+
 import au.net.netstorm.boost.edge.core.AutoEdger;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeByteBuffer;
@@ -8,9 +11,6 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
 
 public final class DefaultReturnEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Method bufferEdge;

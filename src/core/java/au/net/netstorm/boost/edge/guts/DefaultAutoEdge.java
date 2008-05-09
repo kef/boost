@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.edge.guts;
 
+import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeMethod;
-
-import java.lang.reflect.Method;
 
 final class DefaultAutoEdge implements AutoEdge {
     private final EdgeClass classer = new DefaultEdgeClass();

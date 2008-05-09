@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.edge.guts;
 
+import java.net.URL;
+
 import au.net.netstorm.boost.edge.core.Edge;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeURL;
@@ -11,8 +13,6 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-
-import java.net.URL;
 
 public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private RealNu subject;

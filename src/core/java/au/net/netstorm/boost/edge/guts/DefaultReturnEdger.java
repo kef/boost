@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.edge.guts;
 
+import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.edge.core.AutoEdger;
 import au.net.netstorm.boost.edge.core.Edge;
-
-import java.lang.reflect.Method;
 
 final class DefaultReturnEdger implements ReturnEdger {
     AutoEdger edger;
