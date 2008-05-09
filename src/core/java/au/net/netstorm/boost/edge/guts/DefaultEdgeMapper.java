@@ -10,18 +10,20 @@ public final class DefaultEdgeMapper implements EdgeMapper {
     public Class<?> edgeToReal(Class<?> edge) {
         String edgeName = edge.getName();
         String realName = mapper.edgeToReal(edgeName);
-        return classer.forName(realName);
+        return findClass(edge, realName);
     }
 
     public Class<?> staticEdgeToReal(Class<?> edge) {
         String edgeName = edge.getName();
         String realName = mapper.staticEdgeToReal(edgeName);
-        return classer.forName(realName);
+        return findClass(edge, realName);
     }
 
-    public Class<?> realToEdge(Class<?> real) {
-        String realName = real.getName();
-        String edgeName = mapper.realToEdge(realName);
-        return classer.forName(edgeName);
+    private Class<?> findClass(Class<?> edge, String name) {
+        try {
+            return classer.forName(name);
+        } catch (EdgeException e) {
+            throw new IllegalArgumentException("Real class (" + name + ") not found for edge: " + edge);
+        }
     }
 }

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.edge.core;
 
-import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -41,8 +41,9 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testEdge() {
-        expect.oneCall(validatorMock, VOID, "validate", AutoEdgeInputStream.class, ByteArrayInputStream.class, false);
-        expect.oneCall(edgerMock, inMock, "nu", AutoEdgeInputStream.class, ByteArrayInputStream.class, stream.real());
+        expect.oneCall(mapperMock, InputStream.class, "edgeToReal", AutoEdgeInputStream.class);
+        expect.oneCall(validatorMock, VOID, "validate", AutoEdgeInputStream.class, InputStream.class, false);
+        expect.oneCall(edgerMock, inMock, "nu", AutoEdgeInputStream.class, InputStream.class, stream.real());
         AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, stream.real());
         assertSame(inMock, result);
     }
@@ -65,9 +66,10 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewImplEdge() {
-        expect.oneCall(validatorMock, VOID, "validate",  List.class, ArrayList.class, false);
+        expect.oneCall(mapperMock, java.util.List.class, "edgeToReal", List.class);
+        expect.oneCall(validatorMock, VOID, "validate",  List.class, java.util.List.class, false);
         expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
-        expect.oneCall(edgerMock, edgeListMock, "nu", List.class, ArrayList.class, realListMock);
+        expect.oneCall(edgerMock, edgeListMock, "nu", List.class, java.util.List.class, realListMock);
         List<?> result = subject.nuImpl(List.class, ArrayList.class, 5);
         assertSame(edgeListMock, result);
     }

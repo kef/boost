@@ -14,7 +14,7 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 need to really rethink what class i want as real, is it impl or real edge
     // FIX 2328 same decision to be made for the nuImpl method
     public <E extends Edge> E edge(Class<E> edge, Object real) {
-        Class<?> realClass = real.getClass();
+        Class<?> realClass = mapper.edgeToReal(edge);
         return createEdge(edge, realClass, real, false);
     }
 
@@ -31,7 +31,8 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     public <E extends Edge> E nuImpl(Class<E> edge, Class<?> impl, Object... params) {
         Object real = realNu.nu(impl, params);
-        return createEdge(edge, impl, real, false);
+        Class<?> realClass = mapper.edgeToReal(edge);
+        return createEdge(edge, realClass, real, false);
     }
 
     private <R, E> E createEdge(Class<E> edgeClass, Class<?> realClass, R real, boolean staticy) {

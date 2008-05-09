@@ -10,12 +10,14 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public class DefaultEdgeMapperAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+    private ClassNotFoundException cnfDummy;
     private EdgeMapper subject;
     EdgeNameMapper mapperMock;
     EdgeClass classerMock;
 
     public void setUpFixtures() {
         subject = new DefaultEdgeMapper();
+        cnfDummy = new ClassNotFoundException();
     }
 
     public void testStaticEdgeToReal() {
@@ -30,10 +32,14 @@ public class DefaultEdgeMapperAtomicTest extends LifecycleTestCase implements Ha
         assertEquals(java.net.URL.class, result);
     }
 
-    public void testRealToEdge() {
-        expects("realToEdge", java.net.URL.class, URL.class);
-        Class<?> result = subject.realToEdge(java.net.URL.class);
-        assertEquals(URL.class, result);
+    public void testEdgeToRealFailure() {
+        String edgeName = URL.class.getName();
+        expect.oneCall(mapperMock, "badrealname", "edgeToReal", edgeName);
+        expect.oneCall(classerMock, new EdgeException(cnfDummy), "forName", "badrealname");
+        try {
+            subject.edgeToReal(URL.class);
+            fail();
+        } catch (IllegalArgumentException expected) {}
     }
 
     private void expects(String method, Class<?> from, Class<?> to) {
