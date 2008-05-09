@@ -2,7 +2,7 @@ package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.gunge.string.StringTransform;
 
-public class DefaultEdgeNameMapper implements EdgeNameMapper {
+public final class DefaultEdgeNameMapper implements EdgeNameMapper {
     EdgePackage edges;
     StringTransform transformer;
 
