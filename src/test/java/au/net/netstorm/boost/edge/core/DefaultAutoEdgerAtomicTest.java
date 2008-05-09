@@ -5,6 +5,7 @@ import java.net.URL;
 
 import au.net.netstorm.boost.edge.guts.ClassWarper;
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
+import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 import au.net.netstorm.boost.edge.guts.StreamFixture;
 import au.net.netstorm.boost.edge.guts.URLFixture;
@@ -22,6 +23,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     private StreamFixture stream;
     private URLFixture url;
     EdgeFactory edgerMock;
+    EdgeValidator validatorMock;
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
     ClassStatic classStaticMock;
@@ -35,12 +37,14 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testEdge() {
+        expect.oneCall(validatorMock, VOID, "validate", AutoEdgeInputStream.class, ByteArrayInputStream.class, false);
         expect.oneCall(edgerMock, inMock, "nu", AutoEdgeInputStream.class, ByteArrayInputStream.class, stream.real());
         AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, stream.real());
         assertSame(inMock, result);
     }
 
     public void testStaticEdge() {
+        expect.oneCall(validatorMock, VOID, "validate",  ClassStatic.class, Class.class, true);
         expect.oneCall(warperMock, Class.class, "edgeToReal", ClassStatic.class, true);
         expect.oneCall(edgerMock, classStaticMock, "nu", ClassStatic.class, Class.class, null);
         ClassStatic result = subject.edge(ClassStatic.class);
@@ -48,6 +52,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testNewEdge() {
+        expect.oneCall(validatorMock, VOID, "validate",  AutoEdgeURL.class, URL.class, false);
         expect.oneCall(warperMock, URL.class, "edgeToReal", AutoEdgeURL.class, false);
         expect.oneCall(realNuMock, url.real(), "nu", URL.class, new Object[]{url.arg()});
         expect.oneCall(edgerMock, urlMock, "nu", AutoEdgeURL.class, URL.class, url.real());

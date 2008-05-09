@@ -2,12 +2,14 @@ package au.net.netstorm.boost.edge.core;
 
 import au.net.netstorm.boost.edge.guts.ClassWarper;
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
+import au.net.netstorm.boost.edge.guts.EdgeValidator;
 import au.net.netstorm.boost.edge.guts.RealNu;
 
 public final class DefaultAutoEdger implements AutoEdger {
     EdgeFactory edger;
     ClassWarper warper;
     RealNu realNu;
+    EdgeValidator validator;
 
     public <E, R> E edge(Class<E> edge, R real) {
         Class<?> realClass = real.getClass();
@@ -29,6 +31,7 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     // FIX 2328 add in call to validator
     private <R, E> E createEdge(Class<E> edgeClass, Class<?> realClass, R real, boolean staticy) {
+        validator.validate(edgeClass, realClass, staticy);
         return edger.nu(edgeClass, realClass, real);
     }
 }
