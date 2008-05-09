@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.edge.guts;
 
+import au.net.netstorm.boost.gunge.string.StringTransform;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -11,20 +12,24 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 public class DefaultEdgeMapperAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private EdgeMapper subject;
     EdgePackage edgesMock;
+    StringTransform transformerMock;
 
     // FIX 2328 reinstate when implemented
     public void setUpFixtures() {
         subject = new DefaultEdgeMapper();
-//        expect.oneCall(edgesMock, "foo", "prefix");
+        expect.oneCall(edgesMock, "foo", "prefix");
     }
 
+    // FIX 2328 implemented test & api for statics
+
     public void testEdgeToReal() {
+        expect.oneCall(transformerMock, "X", "stripPrefix", "foo.X", "foo.");
         String result = subject.edgeToReal("foo.X");
-//        assertEquals("X", result);
+        assertEquals("X", result);
     }
 
     public void testRealToEdge() {
-        String result = subject.edgeToReal("X");
-//        assertEquals("foo.X", result);
+        String result = subject.realToEdge("X");
+        assertEquals("foo.X", result);
     }
 }
