@@ -64,7 +64,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         assertSame(urlMock, result);
     }
 
-    // FIXME 2328 implement and reinstate
+
     public void testNewImplEdge() {
         expect.oneCall(validatorMock, VOID, "validate",  List.class, ArrayList.class, false);
         expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
