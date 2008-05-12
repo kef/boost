@@ -4,7 +4,6 @@ import au.net.netstorm.boost.edge.guts.EdgeFactory;
 import au.net.netstorm.boost.edge.guts.EdgeMapper;
 import au.net.netstorm.boost.edge.guts.RealNu;
 
-// FIX 2328 incorporate eager edge validator
 public final class DefaultAutoEdger implements AutoEdger {
     EdgeFactory edger;
     EdgeMapper mapper;
