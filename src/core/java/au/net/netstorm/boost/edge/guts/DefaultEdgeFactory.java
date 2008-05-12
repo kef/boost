@@ -13,11 +13,8 @@ public final class DefaultEdgeFactory implements EdgeFactory {
         return edgeClass.cast(proxy);
     }
 
-    // FIX 2328 not sure that it such a good idea
-    public <O extends Edge, E extends O> E cast(Class<E> edgeClass, Class<?> realClass, O edge) {
-        // FIX 2328 intentional whole in typing, could be checked, but I think not, would require too much effort
-        // FIX 2328 for it to get stuffed up to that point, and it is going to fail anyway
-        Unedgable unedgable = (Unedgable) edge;
+    public <O extends Edge, E extends O> E cast(Class<E> edgeClass, Class<?> realClass, O oldEdge) {
+        Unedgable unedgable = (Unedgable) oldEdge;
         Object real = unedgable.unedge();
         Object proxy = nuEdgeProxy(edgeClass, realClass, real);
         return edgeClass.cast(proxy);
