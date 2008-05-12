@@ -20,18 +20,22 @@ public final class DefaultAutoEdger implements AutoEdger {
         return edger.nu(edge, relaxedRealClass, real);
     }
 
+    public <E extends Edge> E edge(Class<E> edge) {
+        Class<?> realClass = mapper.staticEdgeToReal(edge);
+        return edger.nu(edge, realClass, null);
+    }
+
+
     // FIX 2328 i think the simplest solution is going to be add, an edge cast
     // FIX 2328 not the most attractive solution, but it is pretty simple to implement
     // FIX 2328 and can be refined/hidden later, with the exception of JCA (and even then
     // FIX 2328 it is only things to do with certs), APIs that do not return the most specific
     // FIX 2328 type and require check and cast code will have to use the cast method
 
-    // FIX 2328 add test for cast method in CertificateDemoTest and implement here
-
-    public <E extends Edge> E edge(Class<E> edge) {
-        Class<?> realClass = mapper.staticEdgeToReal(edge);
-        return edger.nu(edge, realClass, null);
-    }
+    // FIX 2328 pushing this through to edge factory
+//    public <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge) {
+//        return edger.cast(edge, oldEdge);
+//    }
 
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
         Class<?> realClass = mapper.edgeToReal(edge);

@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.edge.guts;
 
+import au.net.netstorm.boost.edge.core.Edge;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.nursery.type.core.Types;
 
@@ -7,7 +8,7 @@ public final class DefaultEdgeFactory implements EdgeFactory {
     ProxySupplier proxier;
     Types types;
 
-    public <E> E nu(Class<E> edgeClass, Class<?> realClass, Object real) {
+    public <E extends Edge> E nu(Class<E> edgeClass, Class<?> realClass, Object real) {
         Object proxy = nuEdgeProxy(edgeClass, realClass, real);
         // FIX 2328 is CCE ok or should i check & throw illegal arg (recurrinng question)
         return edgeClass.cast(proxy);
