@@ -16,7 +16,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 // FIX 2328 is this correct - test needs ArrayList declarations - looks like a bug in checkstyle anyway as they are not java.util.ArrayList's
 // OK IllegalType {
-public class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+public final class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private EdgeFactory subject;
     URLFixture url;
     ProxySupplier proxierMock;
