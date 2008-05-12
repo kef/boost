@@ -22,8 +22,8 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private AutoEdger subject;
-    private StreamFixture stream;
-    private URLFixture url;
+    StreamFixture stream;
+    URLFixture url;
     EdgeFactory edgerMock;
     AutoEdgeInputStream inMock;
     AutoEdgeURL urlMock;
@@ -37,8 +37,6 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();
-        stream = new StreamFixture();
-        url = new URLFixture();
     }
 
     public void testEdge() {

@@ -12,13 +12,12 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private MethodWarp subject;
-    private StreamFixture stream;
+    StreamFixture stream;
     EdgeClass classerMock;
     Unedger unedgerMock;
 
     public void setUpFixtures() {
         subject = new DefaultMethodWarp();
-        stream = new StreamFixture();
     }
 
     public void testWarp() {

@@ -17,14 +17,13 @@ public final class DefaultReturnEdgerAtomicTest extends LifecycleTestCase implem
     private Method streamEdge;
     private ReturnEdger subject;
     private ByteBuffer bufferDummy;
-    private StreamFixture stream;
+    StreamFixture stream;
     AutoEdger edgerMock;
     AutoEdgeByteBuffer bufferMock;
     EdgeClass classer;
 
     public void setUpFixtures() {
         subject = new DefaultReturnEdger();
-        stream = new StreamFixture();
         bufferEdge = classer.getMethod(AutoEdgeByteBuffer.class, "duplicate");
         streamEdge = stream.edgeMethod();
         bufferDummy = ByteBuffer.allocate(5);

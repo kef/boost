@@ -12,14 +12,13 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultRealNuAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private RealNu subject;
-    private URLFixture fixture;
+    URLFixture fixture;
     ConstructorResolver resolverMock;
     EdgeConstructor constructorMock;
     Unedger unedgerMock;
 
     public void setUpFixtures() {
         subject = new DefaultRealNu();
-        fixture = new URLFixture();
     }
 
     public void testNu() {

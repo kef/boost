@@ -12,14 +12,13 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultUnedgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Unedger subject;
-    private URLFixture fixture;
+    URLFixture fixture;
     Unedgable edgedObjectMock;
     List<?> realObjectMock;
     EdgeMapper mapperMock;
 
     public void setUpFixtures() {
         subject = new DefaultUnedger();
-        fixture = new URLFixture();
     }
 
     public void testUnedgeObjects() {

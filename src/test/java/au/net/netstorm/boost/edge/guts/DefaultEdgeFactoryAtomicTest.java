@@ -18,7 +18,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 // OK IllegalType {
 public class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private EdgeFactory subject;
-    private URLFixture url;
+    URLFixture url;
     ProxySupplier proxierMock;
     Types typesMock;
     AutoEdge edgeMock;
@@ -29,7 +29,6 @@ public class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implements H
 
     public void setUpFixtures() {
         this.subject = new DefaultEdgeFactory();
-        url = new URLFixture();
     }
 
     public void testNu() {

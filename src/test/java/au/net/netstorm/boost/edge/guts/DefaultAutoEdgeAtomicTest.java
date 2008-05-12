@@ -15,7 +15,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     private AutoEdge subject;
     private Method unedge;
     private Method toString;
-    private StreamFixture stream;
+    StreamFixture stream;
     MethodWarp warperMock;
     Unedger unedgerMock;
     EdgeMethod invokerMock;
@@ -23,7 +23,6 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     EdgeClass classer;
 
     public void setUpFixtures() {
-        stream = new StreamFixture();
         subject = new DefaultAutoEdge(InputStream.class, stream.real());
         unedge = classer.getDeclaredMethod(Unedgable.class, "unedge");
         toString = classer.getDeclaredMethod(Object.class, "toString");

@@ -1,46 +1,21 @@
 package au.net.netstorm.boost.edge.guts;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-public final class StreamFixture {
-    private byte[] data = {0x01, 0x02, 0x03};
-    private InputStream in = new ByteArrayInputStream(data);
-    private EdgeClass classer = new DefaultEdgeClass();
-    private String method = "read";
-    private Class<?>[] types = {byte[].class};
-    private Method src = classer.getMethod(ByteArrayInputStream.class, method, types);
-    private Method trg = classer.getMethod(ByteArrayInputStream.class, method, types);
+public interface StreamFixture {
+    String methodName();
 
-    public String methodName() {
-        return method;
-    }
+    Class<?>[] argTypes();
 
-    public Class<?>[] argTypes() {
-        return types;
-    }
+    Method edgeMethod();
 
-    public Method edgeMethod() {
-        return src;
-    }
+    Method realMethod();
 
-    public Method realMethod() {
-        return trg;
-    }
+    InputStream real();
 
-    public InputStream real() {
-        return in;
-    }
+    int length();
 
-    public int length() {
-        return data.length;
-    }
-
-    public byte[] data() {
-        return data;
-    }
+    byte[] data();
 }
