@@ -8,6 +8,7 @@ import demo.edge.java.security.cert.Certificate;
 import demo.edge.java.security.cert.CertificateFactory;
 import demo.edge.java.security.cert.CertificateFactoryStatic;
 import demo.edge.java.security.cert.X509Certificate;
+import demo.edge.java.util.Date;
 
 public final class CertificateDemoTest extends EdgeDemooooTest {
      AutoEdger edger;
@@ -22,7 +23,9 @@ public final class CertificateDemoTest extends EdgeDemooooTest {
         CertificateFactory factory = stat.getInstance("X.509");
         Certificate certificate = factory.generateCertificate(stream);
         X509Certificate x509 = edger.cast(X509Certificate.class, certificate);
-        // FIX 2328 finish off this demo test
+        Date notAfter = x509.getNotAfter();
+        long time = notAfter.getTime();
+        assertEquals(991468533000L, time);
     }
 
     // FIX 2328 strategy for handling blobs of test data?
