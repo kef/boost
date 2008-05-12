@@ -7,7 +7,7 @@ import java.util.Vector;
 import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 
-public class DefaultConstructorFixture implements ConstructorFixture {
+class DefaultConstructorFixture implements ConstructorFixture {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final List<?> vector = new Vector<Object>();
     private final List<?> stack = new Stack<Object>();

@@ -6,6 +6,8 @@ import java.util.Map;
 import junit.framework.Assert;
 
 public final class DefaultPrimitiveBoxer implements PrimitiveBoxer {
+    // FIX 2328 this map is missing short and it is in the test tree
+    // FIX 2328 needs to be moved and incorporated with DefaultMethodSignatureRules
     private final Map map = new HashMap();
 
     {
