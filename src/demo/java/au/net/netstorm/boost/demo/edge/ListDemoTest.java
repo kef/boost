@@ -10,7 +10,7 @@ public final class ListDemoTest extends EdgeDemooooTest {
     AutoEdger edger;
 
     public void testNuSubType() {
-        List<?> edge = edger.nuImpl(List.class, ArrayList.class, 5);
+        List<?> edge = edger.nee(List.class, ArrayList.class, 5);
         assertEquals(0, edge.size());
     }
 }

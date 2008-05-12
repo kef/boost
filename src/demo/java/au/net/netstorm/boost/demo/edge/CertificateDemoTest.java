@@ -15,7 +15,7 @@ public final class CertificateDemoTest extends EdgeDemooooTest {
 
     public void testEdge() {
         CertificateFactoryStatic stat = edger.edge(CertificateFactoryStatic.class);
-        InputStream stream = edger.nuImpl(InputStream.class, ByteArrayInputStream.class, CERT);
+        InputStream stream = edger.nee(InputStream.class, ByteArrayInputStream.class, CERT);
         checkEdge(stat, stream);
     }
 

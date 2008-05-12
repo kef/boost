@@ -74,7 +74,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         expect.oneCall(mapperMock, java.util.List.class, "edgeToReal", List.class);
         expect.oneCall(realNuMock, realListMock, "nu", java.util.ArrayList.class, new Object[]{5});
         expect.oneCall(edgerMock, edgeListMock, "nu", List.class, java.util.List.class, realListMock);
-        List<?> result = subject.nuImpl(List.class, java.util.ArrayList.class, 5);
+        List<?> result = subject.nee(List.class, java.util.ArrayList.class, 5);
         assertSame(edgeListMock, result);
     }
 }

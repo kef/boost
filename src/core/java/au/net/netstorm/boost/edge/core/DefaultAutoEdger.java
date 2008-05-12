@@ -33,7 +33,7 @@ public final class DefaultAutoEdger implements AutoEdger {
         return edger.nu(edge, realClass, real);
     }
 
-    public <E extends Edge> E nuImpl(Class<E> edge, Class<?> impl, Object... params) {
+    public <E extends Edge> E nee(Class<E> edge, Class<?> impl, Object... params) {
         Object real = realNu.nu(impl, params);
         Class<?> realClass = mapper.edgeToReal(edge);
         return edger.nu(edge, realClass, real);
