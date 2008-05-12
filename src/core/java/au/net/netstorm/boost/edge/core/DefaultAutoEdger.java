@@ -19,11 +19,7 @@ public final class DefaultAutoEdger implements AutoEdger {
         return edger.nu(edge, realClass, null);
     }
 
-    // FIX 2328 i think the simplest solution is going to be add, an edge cast
-    // FIX 2328 not the most attractive solution, but it is pretty simple to implement
-    // FIX 2328 and can be refined/hidden later, with the exception of JCA (and even then
-    // FIX 2328 it is only things to do with certs), APIs that do not return the most specific
-    // FIX 2328 type and require check and cast code will have to use the cast method
+    // FIX 2328 opinions on this? not the most elegant, but it keeps the code fairly clean
     public <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge) {
         Class<?> realClass = mapper.edgeToReal(edge);
         return edger.cast(edge, realClass, oldEdge);
