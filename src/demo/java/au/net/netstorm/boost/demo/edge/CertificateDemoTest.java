@@ -21,10 +21,9 @@ public final class CertificateDemoTest extends EdgeDemooooTest {
     private void checkEdge(CertificateFactoryStatic stat, InputStream stream) {
         CertificateFactory factory = stat.getInstance("X.509");
         Certificate certificate = factory.generateCertificate(stream);
-        // FIX 2328 this highlights the real issue with selecting edge impls
-        // FIX 2328 i have gone back and forth on this repeatedly, really
-        // FIX 2328 needs a good think (see FIX in DefaultAutoEdger)
-//        X509Certificate x509 = (X509Certificate) certificate;
+        // FIX 2328 see discussion in DefaultAutoEdge... using this as a use case
+        // FIX 2328 to drive up cast functionality
+//        X509Certificate x509 = edger.cast(X509Certificate.class, certificate);
     }
 
     private static final byte[] CERT = {
