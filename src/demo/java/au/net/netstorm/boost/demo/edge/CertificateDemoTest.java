@@ -7,11 +7,11 @@ import demo.edge.java.io.InputStream;
 import demo.edge.java.security.cert.Certificate;
 import demo.edge.java.security.cert.CertificateFactory;
 import demo.edge.java.security.cert.CertificateFactoryStatic;
+import demo.edge.java.security.cert.X509Certificate;
 
 public final class CertificateDemoTest extends EdgeDemooooTest {
      AutoEdger edger;
 
-    // FIX 2328 Reinstate.
     public void testEdge() {
         CertificateFactoryStatic stat = edger.edge(CertificateFactoryStatic.class);
         InputStream stream = edger.nuImpl(InputStream.class, ByteArrayInputStream.class, CERT);
@@ -21,11 +21,11 @@ public final class CertificateDemoTest extends EdgeDemooooTest {
     private void checkEdge(CertificateFactoryStatic stat, InputStream stream) {
         CertificateFactory factory = stat.getInstance("X.509");
         Certificate certificate = factory.generateCertificate(stream);
-        // FIX 2328 see discussion in DefaultAutoEdge... using this as a use case
-        // FIX 2328 to drive up cast functionality
-//        X509Certificate x509 = edger.cast(X509Certificate.class, certificate);
+        X509Certificate x509 = edger.cast(X509Certificate.class, certificate);
+        // FIX 2328 finish off this demo test
     }
 
+    // FIX 2328 strategy for handling blobs of test data?
     private static final byte[] CERT = {
         (byte) 0x30, (byte) 0x82, (byte) 0x03, (byte) 0x6c, (byte) 0x30, (byte) 0x82, (byte) 0x02, (byte) 0xd5,
         (byte) 0xa0, (byte) 0x03, (byte) 0x02, (byte) 0x01, (byte) 0x02, (byte) 0x02, (byte) 0x01, (byte) 0x00,
