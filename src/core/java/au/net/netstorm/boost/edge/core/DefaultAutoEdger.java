@@ -9,7 +9,6 @@ public final class DefaultAutoEdger implements AutoEdger {
     EdgeMapper mapper;
     RealNu realNu;
 
-    // FIX 2328 need to really rethink what class i want as real, is it impl or real edge
     public <E extends Edge> E edge(Class<E> edge, Object real) {
         Class<?> realClass = mapper.edgeToReal(edge);
         return edger.nu(edge, realClass, real);
