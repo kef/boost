@@ -11,20 +11,14 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     // FIX 2328 need to really rethink what class i want as real, is it impl or real edge
     public <E extends Edge> E edge(Class<E> edge, Object real) {
-        Class<?> relaxedRealClass = mapper.edgeToReal(edge);
-        // FIX 2328 need to do something like.... plus more...
-        // FIX 2328 need to resolve most specific edge for real
-        // FIX 2328 by walking back up the tree
-//        Class<?> realClass = real.getClass();
-//        if (!relaxedRealClass.isAssignableFrom(realClass)) throw new IllegalArgumentException();
-        return edger.nu(edge, relaxedRealClass, real);
+        Class<?> realClass = mapper.edgeToReal(edge);
+        return edger.nu(edge, realClass, real);
     }
 
     public <E extends Edge> E edge(Class<E> edge) {
         Class<?> realClass = mapper.staticEdgeToReal(edge);
         return edger.nu(edge, realClass, null);
     }
-
 
     // FIX 2328 i think the simplest solution is going to be add, an edge cast
     // FIX 2328 not the most attractive solution, but it is pretty simple to implement
@@ -34,7 +28,8 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     // FIX 2328 pushing this through to edge factory
 //    public <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge) {
-//        return edger.cast(edge, oldEdge);
+//        Class<?> realClass = mapper.edgeToReal(edge);
+//        return edger.cast(edge, realClass, oldEdge);
 //    }
 
     public <E extends Edge> E nu(Class<E> edge, Object... params) {

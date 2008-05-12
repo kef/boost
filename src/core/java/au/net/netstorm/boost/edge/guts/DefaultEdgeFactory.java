@@ -10,7 +10,16 @@ public final class DefaultEdgeFactory implements EdgeFactory {
 
     public <E extends Edge> E nu(Class<E> edgeClass, Class<?> realClass, Object real) {
         Object proxy = nuEdgeProxy(edgeClass, realClass, real);
-        // FIX 2328 is CCE ok or should i check & throw illegal arg (recurrinng question)
+        return edgeClass.cast(proxy);
+    }
+
+    // FIX 2328 not sure that it such a good idea
+    public <O extends Edge, E extends O> E cast(Class<E> edgeClass, Class<?> realClass, O edge) {
+        // FIX 2328 intentional whole in typing, could be checked, but I think not, would require too much effort
+        // FIX 2328 for it to get stuffed up to that point, and it is going to fail anyway
+        Unedgable unedgable = (Unedgable) edge;
+        Object real = unedgable.unedge();
+        Object proxy = nuEdgeProxy(edgeClass, realClass, real);
         return edgeClass.cast(proxy);
     }
 
