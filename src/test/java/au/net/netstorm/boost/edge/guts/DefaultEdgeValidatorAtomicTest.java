@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.testdata.java.lang.ClassStatic;
+import au.net.netstorm.boost.edge.testdata.java.util.BadList;
 import au.net.netstorm.boost.edge.testdata.java.util.List;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -21,8 +22,23 @@ public final class DefaultEdgeValidatorAtomicTest extends LifecycleTestCase impl
 
     }
 
+    // FIX 2328 drive up negative case for instance edge
+    public void testValidateEdgeFailure() {
+//        try {
+            validator.validateEdge(BadList.class, java.util.List.class);
+//        } catch (IllegalArgumentException expected) {}
+    }
+
     // FIX 2328 drive up static edge validation
     public void testValidateStaticEdge() {
         validator.validateEdge(ClassStatic.class, Class.class);
     }
+
+    // FIX 2328 drive up failure for static edge
+    public void testValidateStaticEdgeFailure() {
+//        try {
+            validator.validateEdge(BadList.class, java.util.List.class);
+//        } catch (IllegalArgumentException expected) {}
+    }
+
 }
