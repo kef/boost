@@ -24,8 +24,6 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 and can be refined/hidden later, with the exception of JCA (and even then
     // FIX 2328 it is only things to do with certs), APIs that do not return the most specific
     // FIX 2328 type and require check and cast code will have to use the cast method
-
-    // FIX 2328 pushing this through to edge factory
     public <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge) {
         Class<?> realClass = mapper.edgeToReal(edge);
         return edger.cast(edge, realClass, oldEdge);
