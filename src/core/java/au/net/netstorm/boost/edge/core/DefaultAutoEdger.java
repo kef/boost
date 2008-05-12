@@ -27,10 +27,10 @@ public final class DefaultAutoEdger implements AutoEdger {
     // FIX 2328 type and require check and cast code will have to use the cast method
 
     // FIX 2328 pushing this through to edge factory
-//    public <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge) {
-//        Class<?> realClass = mapper.edgeToReal(edge);
-//        return edger.cast(edge, realClass, oldEdge);
-//    }
+    public <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge) {
+        Class<?> realClass = mapper.edgeToReal(edge);
+        return edger.cast(edge, realClass, oldEdge);
+    }
 
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
         Class<?> realClass = mapper.edgeToReal(edge);

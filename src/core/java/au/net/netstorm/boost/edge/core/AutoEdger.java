@@ -8,7 +8,7 @@ public interface AutoEdger {
     <E extends Edge> E edge(Class<E> edge);
 
     // FIX 2328  push this through to EdgeFactory (delgate)
-//    <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge);
+    <O extends Edge, E extends O> E cast(Class<E> edge, O oldEdge);
 
     <E extends Edge> E nu(Class<E> edge, Object... params);
 

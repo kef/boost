@@ -2,7 +2,6 @@ package au.net.netstorm.boost.edge.core;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
 import au.net.netstorm.boost.edge.guts.EdgeMapper;
@@ -12,7 +11,9 @@ import au.net.netstorm.boost.edge.guts.URLFixture;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeInputStream;
 import au.net.netstorm.boost.edge.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.edge.testdata.java.lang.ClassStatic;
+import au.net.netstorm.boost.edge.testdata.java.util.ArrayList;
 import au.net.netstorm.boost.edge.testdata.java.util.List;
+import au.net.netstorm.boost.edge.testdata.java.util.UnedgableList;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
@@ -31,6 +32,8 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
     RealNu realNuMock;
     List<?> edgeListMock;
     java.util.List<?> realListMock;
+    UnedgableList<?> unedgableListMock;
+    UnedgableList<?> resultListMock;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdger();
@@ -43,6 +46,13 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         expect.oneCall(edgerMock, inMock, "nu", AutoEdgeInputStream.class, InputStream.class, stream.real());
         AutoEdgeInputStream result = subject.edge(AutoEdgeInputStream.class, stream.real());
         assertSame(inMock, result);
+    }
+
+    public void testCast() {
+        expect.oneCall(mapperMock, java.util.ArrayList.class, "edgeToReal", ArrayList.class);
+        expect.oneCall(edgerMock, resultListMock, "cast", ArrayList.class, java.util.ArrayList.class, unedgableListMock);
+        UnedgableList<?> result = subject.cast(ArrayList.class, unedgableListMock);
+        assertSame(resultListMock, result);
     }
 
     public void testStaticEdge() {
@@ -62,9 +72,9 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
 
     public void testNewImplEdge() {
         expect.oneCall(mapperMock, java.util.List.class, "edgeToReal", List.class);
-        expect.oneCall(realNuMock, realListMock, "nu", ArrayList.class, new Object[]{5});
+        expect.oneCall(realNuMock, realListMock, "nu", java.util.ArrayList.class, new Object[]{5});
         expect.oneCall(edgerMock, edgeListMock, "nu", List.class, java.util.List.class, realListMock);
-        List<?> result = subject.nuImpl(List.class, ArrayList.class, 5);
+        List<?> result = subject.nuImpl(List.class, java.util.ArrayList.class, 5);
         assertSame(edgeListMock, result);
     }
 }
