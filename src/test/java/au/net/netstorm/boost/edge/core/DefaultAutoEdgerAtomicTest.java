@@ -70,7 +70,7 @@ public final class DefaultAutoEdgerAtomicTest extends LifecycleTestCase implemen
         assertSame(urlMock, result);
     }
 
-    public void testNewImplEdge() {
+    public void testNeeEdge() {
         expect.oneCall(mapperMock, java.util.List.class, "edgeToReal", List.class);
         expect.oneCall(realNuMock, realListMock, "nu", java.util.ArrayList.class, new Object[]{5});
         expect.oneCall(edgerMock, edgeListMock, "nu", List.class, java.util.List.class, realListMock);
