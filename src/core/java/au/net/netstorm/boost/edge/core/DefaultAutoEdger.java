@@ -17,7 +17,7 @@ public final class DefaultAutoEdger implements AutoEdger {
         // FIX 2328 by walking back up the tree
 //        Class<?> realClass = real.getClass();
 //        if (!relaxedRealClass.isAssignableFrom(realClass)) throw new IllegalArgumentException();
-        return createEdge(edge, relaxedRealClass, real, false);
+        return edger.nu(edge, relaxedRealClass, real);
     }
 
     // FIX 2328 i think the simplest solution is going to be add, an edge cast
@@ -30,22 +30,18 @@ public final class DefaultAutoEdger implements AutoEdger {
 
     public <E extends Edge> E edge(Class<E> edge) {
         Class<?> realClass = mapper.staticEdgeToReal(edge);
-        return createEdge(edge, realClass, null, true);
+        return edger.nu(edge, realClass, null);
     }
 
     public <E extends Edge> E nu(Class<E> edge, Object... params) {
         Class<?> realClass = mapper.edgeToReal(edge);
         Object real = realNu.nu(realClass, params);
-        return createEdge(edge, realClass, real, false);
+        return edger.nu(edge, realClass, real);
     }
 
     public <E extends Edge> E nuImpl(Class<E> edge, Class<?> impl, Object... params) {
         Object real = realNu.nu(impl, params);
         Class<?> realClass = mapper.edgeToReal(edge);
-        return createEdge(edge, realClass, real, false);
-    }
-
-    private <R, E> E createEdge(Class<E> edgeClass, Class<?> realClass, R real, boolean staticy) {
-        return edger.nu(edgeClass, realClass, real);
+        return edger.nu(edge, realClass, real);
     }
 }
