@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.gunge.reflect.ConstructorResolver;
 
-final class DefaultRealNu implements RealNu {
+public final class DefaultRealNu implements RealNu {
     ConstructorResolver resolver;
     EdgeConstructor constructor;
     Unedger unedger;

@@ -7,7 +7,7 @@ import demo.edge.bad.java.lang.BadName;
 import demo.edge.bad.java.lang.Object;
 import demo.edge.bad.pack.age.String;
 
-public class BadEdgeDefinitionDemoTest extends NegativeEdgeDemooooTest {
+public class BadEdgeDefinitionDemoTest extends BadEdgeDemooooTest {
     AutoEdger edger;
 
     public void testMethodMissing() {
