@@ -3,6 +3,7 @@ package au.net.netstorm.boost.edge.core;
 import au.net.netstorm.boost.edge.guts.EdgeFactory;
 import au.net.netstorm.boost.edge.guts.EdgeMapper;
 import au.net.netstorm.boost.edge.guts.RealNu;
+
 // FIX 2328 currently edge verification is lazy, that is it happens on invocation of methods
 // FIX 2328 should it be more eager, and do a sweep of the methods on an edge interface up front
 // FIX 2328 and verify that all methods can be delegated
