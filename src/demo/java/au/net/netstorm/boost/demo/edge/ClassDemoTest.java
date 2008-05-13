@@ -7,8 +7,7 @@ public class ClassDemoTest extends EdgeDemooooTest {
     AutoEdger edger;
 
     public void testNewInstance() {
-        // FIX 2328 unchecked cast - handling generic classes in edge method should
-        // FIX 2328 take same approach as Nu, see gunge.generics.TypeToken
+        // FIX 2328 unchecked cast - handling generic classes in edge method should take same approach as Nu, see SC 2363
         Class<String> subject = edger.edge(Class.class, String.class);
         String result = subject.newInstance();
         assertEquals("", result);

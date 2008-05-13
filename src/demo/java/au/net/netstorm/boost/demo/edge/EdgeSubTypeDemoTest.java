@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import au.net.netstorm.boost.edge.core.AutoEdger;
 import demo.edge.java.util.List;
 
-// FIX 2328 Rename.
-public final class ListDemoTest extends EdgeDemooooTest {
+public final class EdgeSubTypeDemoTest extends EdgeDemooooTest {
     AutoEdger edger;
 
     public void testNuSubType() {

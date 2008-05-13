@@ -28,7 +28,6 @@ public final class CertificateDemoTest extends EdgeDemooooTest {
         assertEquals(991468533000L, time);
     }
 
-    // FIX 2328 strategy for handling blobs of test data? I am happy with it living in the test - any objections
     private static final byte[] CERT = {
         (byte) 0x30, (byte) 0x82, (byte) 0x03, (byte) 0x6c, (byte) 0x30, (byte) 0x82, (byte) 0x02, (byte) 0xd5,
         (byte) 0xa0, (byte) 0x03, (byte) 0x02, (byte) 0x01, (byte) 0x02, (byte) 0x02, (byte) 0x01, (byte) 0x00,
