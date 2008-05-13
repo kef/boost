@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.spider.onion.core;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class OnionLayer implements Layer {

@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
+import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 

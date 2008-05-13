@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.edge;
 
 import au.net.netstorm.boost.edge.core.AutoEdger;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 import demo.edge.bad.java.lang.BadName;
 import demo.edge.bad.java.lang.Object;
 import demo.edge.bad.pack.age.String;

@@ -1,7 +1,7 @@
-package au.net.netstorm.boost.edge.java.lang.reflect;
+package au.net.netstorm.boost.sledge.java.lang.reflect;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 
 public final class DefaultEdgeField implements EdgeField {
     public Object get(Field field, Object obj) {

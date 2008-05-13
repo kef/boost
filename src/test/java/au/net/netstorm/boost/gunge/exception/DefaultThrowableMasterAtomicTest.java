@@ -2,7 +2,7 @@ package au.net.netstorm.boost.gunge.exception;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 

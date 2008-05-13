@@ -66,7 +66,7 @@
 
     <fileset id="simian.boost.code" dir="${src.dir}">
         <patternset refid="code.pattern"/>
-        <exclude name="**/au/net/netstorm/boost/edge/**"/>
+        <exclude name="**/au/net/netstorm/boost/sledge/**"/>
         <exclude name="**/kickstart/**/*.java"/>
         <!-- NO MORE WAIVERS/EXCLUSIONS HERE. -->
         <exclude name="**/StartTime.java"/>

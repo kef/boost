@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.bullet.time.core;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
+import java.util.Date;
+import au.net.netstorm.boost.sledge.java.lang.EdgeSystem;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-
-import java.util.Date;
 
 public final class DefaultTimePointMasterAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     TimePointMaster subject;

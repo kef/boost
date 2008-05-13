@@ -3,8 +3,8 @@ package au.net.netstorm.boost.nursery.instance;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.gunge.exception.NotImplementedException;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 class MockEdgeReflect implements EdgeClass {
     private Object result;

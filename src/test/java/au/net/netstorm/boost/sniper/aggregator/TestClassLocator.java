@@ -3,8 +3,8 @@ package au.net.netstorm.boost.sniper.aggregator;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 public final class TestClassLocator implements ClassLocator {
     private final ClassNameLocator locator = new TestClassNameLocator();

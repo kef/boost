@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.UndeclaredThrowableException;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 
 public final class DefaultThrowableMaster implements ThrowableMaster {
     // Never, ever change the return type or I will kill you.

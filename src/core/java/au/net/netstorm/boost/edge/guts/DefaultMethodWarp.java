@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.edge.guts;
 
 import java.lang.reflect.Method;
-
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 final class DefaultMethodWarp implements MethodWarp {
     EdgeClass classer;

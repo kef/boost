@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.gunge.introspect.DefaultMethodSpec;
 import au.net.netstorm.boost.gunge.introspect.MethodSpec;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 // FIX SC600 This looks like it is testing too deep.  Should not it be testing DRMM ONLY.  Sort out DRMM too.

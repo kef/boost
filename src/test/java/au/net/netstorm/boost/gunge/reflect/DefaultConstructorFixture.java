@@ -4,8 +4,8 @@ import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 class DefaultConstructorFixture implements ConstructorFixture {
     private final EdgeClass classer = new DefaultEdgeClass();

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.demo.edge;
 
 import au.net.netstorm.boost.edge.core.AutoEdger;
-import au.net.netstorm.boost.edge.support.EdgeException;
 import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import demo.edge.java.lang.Class;
 import demo.edge.java.lang.ClassStatic;

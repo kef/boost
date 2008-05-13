@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.suite.collector;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 public class DefaultTestSuiteMaster implements TestSuiteMaster {
     EdgeClass classer = new DefaultEdgeClass();

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.gunge.io;
 
-import au.net.netstorm.boost.edge.java.io.EdgeInputStream;
 import au.net.netstorm.boost.gunge.exception.NotImplementedException;
+import au.net.netstorm.boost.sledge.java.io.EdgeInputStream;
 import junit.framework.Assert;
 
 public final class MockEdgeInputStream extends Assert implements EdgeInputStream {

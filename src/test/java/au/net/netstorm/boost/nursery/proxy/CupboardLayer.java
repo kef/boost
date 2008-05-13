@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 final class CupboardLayer implements Layer {

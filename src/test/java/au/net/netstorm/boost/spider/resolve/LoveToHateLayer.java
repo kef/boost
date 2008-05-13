@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.resolve;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 

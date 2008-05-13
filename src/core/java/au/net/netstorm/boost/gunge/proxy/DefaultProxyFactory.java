@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.gunge.proxy;
 
 import java.lang.reflect.InvocationHandler;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultProxySupplier;
-import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultProxySupplier;
+import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultProxyFactory implements ProxyFactory {

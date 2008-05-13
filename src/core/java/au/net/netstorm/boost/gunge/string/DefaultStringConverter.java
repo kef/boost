@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.gunge.string;
 
-import au.net.netstorm.boost.edge.java.io.EdgeUnsupportedEncodingException;
+import au.net.netstorm.boost.sledge.java.io.EdgeUnsupportedEncodingException;
 
 public final class DefaultStringConverter implements StringConverter {
     public String convert(byte[] bytes, String charSet) {

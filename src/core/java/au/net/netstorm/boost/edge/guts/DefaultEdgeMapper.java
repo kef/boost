@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.edge.guts;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 
 public final class DefaultEdgeMapper implements EdgeMapper {
     EdgeClass classer;

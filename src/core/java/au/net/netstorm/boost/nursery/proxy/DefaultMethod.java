@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.proxy;
 
 import java.lang.annotation.Annotation;
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 
 // FIX 2248 Move this out of edge or something, or sort it out.
 public final class DefaultMethod implements Method {

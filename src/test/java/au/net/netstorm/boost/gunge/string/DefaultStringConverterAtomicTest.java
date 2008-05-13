@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.gunge.string;
 
 import java.io.UnsupportedEncodingException;
-import au.net.netstorm.boost.edge.java.io.EdgeUnsupportedEncodingException;
+import au.net.netstorm.boost.sledge.java.io.EdgeUnsupportedEncodingException;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;

@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.gunge.io;
 
-import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
+import java.io.Serializable;
+import au.net.netstorm.boost.sledge.java.io.EdgeOutputStream;
 import au.net.netstorm.boost.sniper.check.AssertTestChecker;
 import au.net.netstorm.boost.sniper.check.DefaultAssertTestChecker;
 import junit.framework.Assert;
-
-import java.io.Serializable;
 
 final class MockEdgeOutputStream extends Assert implements EdgeOutputStream, Serializable {
     private final transient AssertTestChecker asserter = new DefaultAssertTestChecker();

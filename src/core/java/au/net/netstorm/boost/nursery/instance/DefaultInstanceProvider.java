@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.instance;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 // FIX 1524 Remove this 
 public class DefaultInstanceProvider implements InstanceProvider {

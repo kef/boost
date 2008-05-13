@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.edge.java.lang.reflect;
+package au.net.netstorm.boost.sledge.java.lang.reflect;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.edge.support.EdgeException;
-import au.net.netstorm.boost.edge.support.IllegalEdgeConstructorArgumentException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.IllegalEdgeConstructorArgumentException;
 
 public final class DefaultEdgeConstructor implements EdgeConstructor {
     private final String linefeed = System.getProperty("line.separator");

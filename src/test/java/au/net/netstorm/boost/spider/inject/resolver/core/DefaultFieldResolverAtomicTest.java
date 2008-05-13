@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.inject.resolver.core;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;

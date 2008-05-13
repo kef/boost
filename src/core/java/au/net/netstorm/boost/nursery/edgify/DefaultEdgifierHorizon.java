@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.edgify;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 // FIX 33398 Use ClassMaster for some of these private methods.  Add getPackage to ClassMaster.
 public final class DefaultEdgifierHorizon implements EdgifierHorizon {

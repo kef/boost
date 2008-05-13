@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.Random;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
 import au.net.netstorm.boost.gunge.provider.NotProvidedException;
 import au.net.netstorm.boost.gunge.provider.SpecificProvider;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 // FIX DEBT SPLIT THIS CLASS!!!
 

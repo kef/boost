@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.edgify;
 
 import java.io.File;
-import au.net.netstorm.boost.edge.support.EdgeException;
 import au.net.netstorm.boost.gunge.array.ArrayMaster;
 import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 import au.net.netstorm.boost.sniper.aggregator.DefaultFileSystemLocator;
 import au.net.netstorm.boost.sniper.aggregator.FileSystemLocator;
 import au.net.netstorm.boost.sniper.aggregator.RegexPattern;

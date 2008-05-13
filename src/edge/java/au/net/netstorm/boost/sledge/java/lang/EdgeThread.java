@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edge.java.lang;
+package au.net.netstorm.boost.sledge.java.lang;
 
 public interface EdgeThread {
     void join(Thread thread);

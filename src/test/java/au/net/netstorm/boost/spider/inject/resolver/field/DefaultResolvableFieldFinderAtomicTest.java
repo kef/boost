@@ -3,8 +3,8 @@ package au.net.netstorm.boost.spider.inject.resolver.field;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultResolvableFieldFinderAtomicTest extends BoooostCase {

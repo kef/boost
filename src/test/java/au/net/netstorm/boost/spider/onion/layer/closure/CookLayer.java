@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.spider.onion.layer.closure;
 
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 final class CookLayer implements Layer {

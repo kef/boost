@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultClassNameMorpherAtomicTest extends BoooostCase {

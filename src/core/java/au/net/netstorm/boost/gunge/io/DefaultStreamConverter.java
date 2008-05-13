@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.gunge.io;
 
-import au.net.netstorm.boost.edge.java.io.EdgeInputStream;
-import au.net.netstorm.boost.edge.java.io.EdgeOutputStream;
+import au.net.netstorm.boost.sledge.java.io.EdgeInputStream;
+import au.net.netstorm.boost.sledge.java.io.EdgeOutputStream;
 
 public final class DefaultStreamConverter implements StreamConverter {
     private static final int BUFFER_SIZE = 4096;

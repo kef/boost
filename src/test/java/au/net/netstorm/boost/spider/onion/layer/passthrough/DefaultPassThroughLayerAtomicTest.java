@@ -2,10 +2,10 @@ package au.net.netstorm.boost.spider.onion.layer.passthrough;
 
 import java.util.HashMap;
 import java.util.Map;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultPassThroughLayerAtomicTest extends BoooostCase {

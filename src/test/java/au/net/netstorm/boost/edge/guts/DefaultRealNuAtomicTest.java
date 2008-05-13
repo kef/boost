@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.edge.guts;
 
 import java.net.URL;
-
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.gunge.reflect.ConstructorResolver;
+import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;

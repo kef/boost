@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.edge.java.io;
+package au.net.netstorm.boost.sledge.java.io;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 
 public final class DefaultEdgeOutputStream implements EdgeOutputStream {
     private final OutputStream stream;

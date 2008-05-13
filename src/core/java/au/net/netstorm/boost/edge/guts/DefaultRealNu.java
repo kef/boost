@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.edge.guts;
 
 import java.lang.reflect.Constructor;
-
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.gunge.reflect.ConstructorResolver;
+import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeConstructor;
 
 public final class DefaultRealNu implements RealNu {
     ConstructorResolver resolver;

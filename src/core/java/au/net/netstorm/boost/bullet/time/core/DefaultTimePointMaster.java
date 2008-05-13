@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.bullet.time.core;
 
-import au.net.netstorm.boost.edge.java.lang.EdgeSystem;
+import au.net.netstorm.boost.sledge.java.lang.EdgeSystem;
 
 // FIX SC507 Make instance.
 public final class DefaultTimePointMaster implements TimePointMaster {

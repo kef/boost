@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.bullet.mirror;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 public final class DefaultClassMorpher implements ClassMorpher {
     private final ClassMaster classMaster = new DefaultClassMaster();

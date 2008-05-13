@@ -4,10 +4,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
+import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 
 final class DefaultReflectFieldMaster implements ReflectFieldMaster {
     private final EdgeField edgeField = new DefaultEdgeField();

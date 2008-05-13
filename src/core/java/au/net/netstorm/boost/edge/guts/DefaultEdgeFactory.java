@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.core.Edge;
-import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;
 
 //FIX 2328 edge method validation is lazy, is there a case for fail early on method mismatch
 public final class DefaultEdgeFactory implements EdgeFactory {

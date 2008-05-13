@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.parallel;
 
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeThread;
-import au.net.netstorm.boost.edge.java.lang.EdgeThread;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeThread;
+import au.net.netstorm.boost.sledge.java.lang.EdgeThread;
 
 public class DefaultThreadRunner implements ThreadRunner {
     EdgeThread threader = new DefaultEdgeThread();

@@ -2,12 +2,12 @@ package au.net.netstorm.boost.bullet.splitter;
 
 import java.util.ArrayList;
 import java.util.List;
-import au.net.netstorm.boost.edge.java.lang.reflect.Method;
 import au.net.netstorm.boost.gunge.array.ArrayMaster;
 import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
 import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultOneToMany implements OneToMany, Layer {

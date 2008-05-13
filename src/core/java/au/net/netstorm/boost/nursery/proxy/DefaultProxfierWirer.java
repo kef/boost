@@ -1,14 +1,14 @@
 package au.net.netstorm.boost.nursery.proxy;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.edge.java.lang.DefaultEdgeClass;
-import au.net.netstorm.boost.edge.java.lang.EdgeClass;
-import au.net.netstorm.boost.edge.java.lang.reflect.DefaultEdgeField;
-import au.net.netstorm.boost.edge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.instantiate.DefaultNu;
 import au.net.netstorm.boost.spider.instantiate.Nu;

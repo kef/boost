@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edge.java.lang.reflect;
+package au.net.netstorm.boost.sledge.java.lang.reflect;
 
 import java.lang.reflect.Constructor;
 

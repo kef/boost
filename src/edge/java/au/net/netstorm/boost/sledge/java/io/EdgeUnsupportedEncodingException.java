@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.edge.java.io;
+package au.net.netstorm.boost.sledge.java.io;
 
 public final class EdgeUnsupportedEncodingException extends RuntimeException {
     public EdgeUnsupportedEncodingException(Throwable e) {
