@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.edge;
 
-import au.net.netstorm.boost.scalpel.guts.EdgePackage;
+import au.net.netstorm.boost.scalpel.engine.EdgePackage;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.OverlaysWeb;

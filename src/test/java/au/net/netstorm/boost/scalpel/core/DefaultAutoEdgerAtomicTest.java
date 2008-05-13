@@ -2,11 +2,11 @@ package au.net.netstorm.boost.scalpel.core;
 
 import java.io.InputStream;
 import java.net.URL;
-import au.net.netstorm.boost.scalpel.guts.EdgeFactory;
-import au.net.netstorm.boost.scalpel.guts.EdgeMapper;
-import au.net.netstorm.boost.scalpel.guts.RealNu;
-import au.net.netstorm.boost.scalpel.guts.StreamFixture;
-import au.net.netstorm.boost.scalpel.guts.URLFixture;
+import au.net.netstorm.boost.scalpel.engine.EdgeFactory;
+import au.net.netstorm.boost.scalpel.engine.EdgeMapper;
+import au.net.netstorm.boost.scalpel.engine.RealNu;
+import au.net.netstorm.boost.scalpel.engine.StreamFixture;
+import au.net.netstorm.boost.scalpel.engine.URLFixture;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeInputStream;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.scalpel.testdata.java.lang.ClassStatic;

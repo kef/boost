@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.scalpel.core;
 
-import au.net.netstorm.boost.scalpel.guts.EdgeFactory;
-import au.net.netstorm.boost.scalpel.guts.EdgeMapper;
-import au.net.netstorm.boost.scalpel.guts.RealNu;
+import au.net.netstorm.boost.scalpel.engine.EdgeFactory;
+import au.net.netstorm.boost.scalpel.engine.EdgeMapper;
+import au.net.netstorm.boost.scalpel.engine.RealNu;
 
 public final class DefaultAutoEdger implements AutoEdger {
     EdgeFactory edger;
