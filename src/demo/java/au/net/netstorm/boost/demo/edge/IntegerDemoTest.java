@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.edge;
 
-import au.net.netstorm.boost.edge.core.AutoEdger;
+import au.net.netstorm.boost.scalpel.core.AutoEdger;
 import demo.edge.java.lang.Integer;
 
 public class IntegerDemoTest extends EdgeDemooooTest {

@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.demo.edge;
 
 import java.util.ArrayList;
-
-import au.net.netstorm.boost.edge.core.AutoEdger;
+import au.net.netstorm.boost.scalpel.core.AutoEdger;
 import demo.edge.java.util.List;
 
 public final class EdgeSubTypeDemoTest extends EdgeDemooooTest {
