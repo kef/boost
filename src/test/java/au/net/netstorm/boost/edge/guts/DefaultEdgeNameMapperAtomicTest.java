@@ -7,8 +7,6 @@ import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-// FIX 2328 I am getting sick of implementing these same 4 interfaces over and over
-// FIX 2328 I understand it is nice to opt in/out, however a single named type for most common perms would be nice
 public final class DefaultEdgeNameMapperAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private EdgeNameMapper subject;
     EdgePackage edgesMock;

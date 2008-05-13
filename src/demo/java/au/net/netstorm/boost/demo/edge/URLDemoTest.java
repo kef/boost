@@ -23,8 +23,8 @@ public class URLDemoTest extends EdgeDemooooTest {
             edger.nu(URL.class, "..badone..");
             fail();
         } catch (EdgeException e) {
-            Throwable cause = thrower.rootCause(e);
-            assertEquals(true, cause instanceof MalformedURLException);
+            Throwable real = thrower.rootCause(e);
+            assertEquals(true, real instanceof MalformedURLException);
         }
     }
 }
