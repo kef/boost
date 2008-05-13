@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.edge.guts.EdgeException;
 import au.net.netstorm.boost.edge.guts.IllegalEdgeConstructorArgumentException;
 
-// FIX 2328 MAG Not sure why the logic is here?
 public final class DefaultEdgeConstructor implements EdgeConstructor {
     private final String linefeed = System.getProperty("line.separator");
 
@@ -19,6 +18,7 @@ public final class DefaultEdgeConstructor implements EdgeConstructor {
         }
     }
 
+    // FIX 2328 MAG Not sure why the logic is here?
     private String error(Constructor<?> constructor, Object[] args) {
         String seed = constructor + linefeed;
         return (args == null) ? seed : error(args, seed);
