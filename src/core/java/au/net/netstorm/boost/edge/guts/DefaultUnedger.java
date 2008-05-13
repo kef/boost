@@ -1,10 +1,8 @@
 package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.core.Edge;
-import au.net.netstorm.boost.gunge.generics.TypeResolver;
 
 final class DefaultUnedger implements Unedger {
-    TypeResolver typeResolver;
     EdgeMapper mapper;
 
     public Object[] unedge(Object[] edged) {
