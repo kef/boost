@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.demo.edge;
 
 import java.net.MalformedURLException;
-
 import au.net.netstorm.boost.edge.core.AutoEdger;
-import au.net.netstorm.boost.edge.guts.EdgeException;
+import au.net.netstorm.boost.edge.support.EdgeException;
 import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
 import demo.edge.java.net.URL;
 

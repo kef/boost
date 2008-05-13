@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.edge.java.lang;
 
-import au.net.netstorm.boost.edge.guts.EdgeException;
+import au.net.netstorm.boost.edge.support.EdgeException;
 
 public final class DefaultEdgeThread implements EdgeThread {
     public void start(Thread thread) {

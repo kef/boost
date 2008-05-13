@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.edge.guts;
 
 import au.net.netstorm.boost.edge.java.lang.EdgeClass;
+import au.net.netstorm.boost.edge.support.EdgeException;
 import au.net.netstorm.boost.edge.testdata.java.lang.ClassStatic;
 import au.net.netstorm.boost.edge.testdata.java.net.URL;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;

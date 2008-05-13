@@ -1,9 +1,8 @@
 package au.net.netstorm.boost.edge.java.lang.reflect;
 
-import au.net.netstorm.boost.edge.guts.EdgeException;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import au.net.netstorm.boost.edge.support.EdgeException;
 
 // FIX 2328 Rename all au.net.netstorm.boost.edge.* to au.net.netstorm.boost.edge.stateless
 public final class DefaultEdgeMethod implements EdgeMethod {

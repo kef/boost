@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.bullet.mirror;
 
-import au.net.netstorm.boost.edge.guts.EdgeException;
-import au.net.netstorm.boost.sniper.core.BoooostCase;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import au.net.netstorm.boost.edge.support.EdgeException;
+import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public final class DefaultClassNameMorpherAtomicTest extends BoooostCase {
     private ClassMorpher morpher = new DefaultClassMorpher();
