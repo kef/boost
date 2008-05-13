@@ -4,7 +4,7 @@ import au.net.netstorm.boost.edge.core.Edge;
 import au.net.netstorm.boost.edge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.nursery.type.core.Types;
 
-//FIX 2328 incorporate eager edge validator
+//FIX 2328 edge method validation is lazy, is there a case for fail early on method mismatch
 public final class DefaultEdgeFactory implements EdgeFactory {
     ProxySupplier proxier;
     Types types;

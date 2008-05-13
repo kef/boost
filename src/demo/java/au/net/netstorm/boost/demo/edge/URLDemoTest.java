@@ -1,13 +1,15 @@
 package au.net.netstorm.boost.demo.edge;
 
-import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 
 import au.net.netstorm.boost.edge.core.AutoEdger;
 import au.net.netstorm.boost.edge.guts.EdgeException;
+import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
 import demo.edge.java.net.URL;
 
 public class URLDemoTest extends EdgeDemooooTest {
     private URL subject;
+    ThrowableMaster thrower;
     AutoEdger edger;
 
     public void testURLEdgeConstruction() {
@@ -21,12 +23,9 @@ public class URLDemoTest extends EdgeDemooooTest {
             edger.nu(URL.class, "..badone..");
             fail();
         } catch (EdgeException e) {
-            // FIX 2328 see FIX in DefaultEdgeMethod do we want to change this?
-            // FIX 2328 MAG I don't think we want to change this on DEM.
-            // FIX 2328 MAG But we probably do want to change it elsewhere.
-            // FIX 2328 MAG Agree this should look like a MURLE.
-            // assertEquals(true, e.causeIs(MalformedURLException.class));
-            assertEquals(true, e.causeIs(InvocationTargetException.class));
+            Throwable cause = thrower.rootCause(e);
+            assertEquals(true, cause instanceof MalformedURLException);
         }
     }
 }
+
