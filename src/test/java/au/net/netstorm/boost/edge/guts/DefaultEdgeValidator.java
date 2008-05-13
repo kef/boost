@@ -1,11 +1,17 @@
 package au.net.netstorm.boost.edge.guts;
 
+import java.lang.reflect.Method;
+
 public final class DefaultEdgeValidator implements EdgeValidator {
+
     public void validateEdge(Class<?> edge, Class<?> real) {
-        // FIX 2328 implement me
+        Method[] edges = edge.getMethods();
+        for (int i = 0; i < edges.length; ++i) {
+            validate(edges[0], real);
+        }
     }
 
-    public void validateStaticEdge(Class<?> edge, Class<?> real) {
-        // FIX 2328 implement me
+    private void validate(Method method, Class<?> real) {
+
     }
 }
