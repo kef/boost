@@ -38,17 +38,6 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return rootCause(cause);
     }
 
-    // FIX 2328 Remove this.  Find where it is hanging on.
-    public String realMessage(String defaultMsg, Throwable t) {
-        Throwable real = realCause(t);
-        String currentMsg = real.getMessage();
-        Throwable cause = real.getCause();
-        String bestMsg = (currentMsg == null ? defaultMsg : currentMsg);
-        if (cause == null) return bestMsg;
-        if (currentMsg == null) return realMessage(bestMsg, cause);
-        return bestMsg;
-    }
-
     public Throwable realCause(Throwable t) {
         if (!noise(t)) return t;
         Throwable cause = t.getCause();

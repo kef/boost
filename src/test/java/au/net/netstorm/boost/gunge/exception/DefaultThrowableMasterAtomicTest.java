@@ -51,13 +51,6 @@ public final class DefaultThrowableMasterAtomicTest extends LifecycleTestCase im
         checkReal(ise, ite);
     }
 
-    public void testBestMessage() {
-        checkBestMessage(DEFAULT_MESSAGE, null, null);
-        checkBestMessage("Root message", null, "Root message");
-        checkBestMessage("Top message", "Top message", "Root message");
-        checkBestMessage("Top message", "Top message", null);
-    }
-
     public void testRealCause() {
         Throwable expected = new Exception();
         Throwable ite = makeInvocationTarget(expected);
@@ -65,14 +58,6 @@ public final class DefaultThrowableMasterAtomicTest extends LifecycleTestCase im
         assertEquals(expected, actual);
         actual = subject.realCause(expected);
         assertEquals(expected, actual);
-    }
-
-    private void checkBestMessage(String expected, String topMessage, String rootMessage) {
-        Throwable e1 = new Exception(rootMessage, null);
-        Throwable ite = makeInvocationTarget(e1);
-        Throwable e2 = new Exception(topMessage, ite);
-        String best = subject.realMessage(DEFAULT_MESSAGE, e2);
-        assertEquals(expected, best);
     }
 
     private Throwable makeInvocationTarget(Throwable expected) {
