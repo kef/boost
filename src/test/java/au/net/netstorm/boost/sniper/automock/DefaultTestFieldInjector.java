@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.sniper.automock;
 
 import au.net.netstorm.boost.gunge.provider.Provider;
+import au.net.netstorm.boost.sniper.inject.SubjectInitializer;
 import au.net.netstorm.boost.sniper.inject.SubjectInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 
@@ -10,6 +11,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final Injector randominator;
     private final Injector mockinator;
     private final Injector dumminator;
+    private final Injector nusubject;
 
     public DefaultTestFieldInjector(MockSupport mocks, Provider random) {
         this.mocks = mocks;
@@ -17,6 +19,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         mockinator = new MockInjector(mocks);
         dumminator = new DummyInjector(mocks);
         subjectinator = new SubjectInjector();
+        nusubject = new SubjectInitializer();
     }
 
     public void injectTestDoubles(Object ref) {
@@ -26,7 +29,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     }
 
     public void initSubject(Object ref) {
-        // FIX 2328 initialize subject with no deps
+        nusubject.inject(ref);
     }
 
     public void injectSubject(Object ref) {
