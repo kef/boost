@@ -23,6 +23,8 @@ import au.net.netstorm.boost.spider.registry.ImplicitFactory;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
+import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
+import au.net.netstorm.boost.spider.resolve.DefaultImplementationLookup;
 
 // FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 
@@ -52,7 +54,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
 
     private void buildTypes(Registry registry, Factories factories, Nu nu) {
         LinkageFactory linkages = new DefaultLinkageFactory();
-        Types types = new DefaultTypes(factories, linkages, nu);
+        ImplementationLookup lookup = new DefaultImplementationLookup(factories, linkages);
+        Types types = new DefaultTypes(lookup, nu);
+        registry.instance(ImplementationLookup.class, lookup);
         registry.instance(Types.class, types);
     }
 

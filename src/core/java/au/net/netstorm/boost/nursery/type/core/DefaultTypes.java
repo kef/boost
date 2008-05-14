@@ -1,22 +1,15 @@
 package au.net.netstorm.boost.nursery.type.core;
 
-import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.spider.instantiate.Nu;
-import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.spider.linkage.LinkageFactory;
-import au.net.netstorm.boost.spider.registry.Blueprint;
-import au.net.netstorm.boost.spider.registry.Factories;
-import au.net.netstorm.boost.spider.registry.Factory;
+import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
 
 // FIX (Nov 21, 2007) 2233 Move out of nursery
 public class DefaultTypes implements Types {
-    private LinkageFactory linkages;
-    private Factories factories;
     private Nu nu;
+    private ImplementationLookup lookup;
 
-    public DefaultTypes(Factories factories, LinkageFactory linkages, Nu nu) {
-        this.factories = factories;
-        this.linkages = linkages;
+    public DefaultTypes(ImplementationLookup lookup, Nu nu) {
+        this.lookup = lookup;
         this.nu = nu;
     }
 
@@ -29,16 +22,7 @@ public class DefaultTypes implements Types {
     }
 
     private <T> T doNu(Class<T> iface, Object... value) {
-        Class<? extends T> impl = lookup(iface);
+        Class<? extends T> impl = lookup.getImplementation(iface);
         return nu.nu(impl, value);
-    }
-
-    // FIX 2237 Looks like dup with ResolverEngine.
-    private <T> Class<? extends T> lookup(Class<T> iface) {
-        Linkage linkage = linkages.nu(iface);
-        Factory factory = factories.find(linkage);
-        Blueprint blueprint = factory.get(linkage);
-        Implementation impl = blueprint.getImplementation();
-        return impl.getImpl();
     }
 }
