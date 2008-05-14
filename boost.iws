@@ -29,125 +29,11 @@
     <option name="USER" value="" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/linkage/DefaultLinkage.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/linkage/DefaultLinkage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/proxy/DefaultLayerSpec.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/proxy/DefaultLayerSpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/TimeOfDay.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/TimeOfDay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/proxy/DataInvocationHandler.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/proxy/DataInvocationHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultAsciiBytes.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultAsciiBytes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/proxy/LayerInvocationHandler.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/proxy/LayerInvocationHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultStampedResolvedInstance.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultStampedResolvedInstance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/PrimordialException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/PrimordialException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultRunner.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultRunner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/introspect/DefaultFieldSpec.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/introspect/DefaultFieldSpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/TestObjectimoto.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/instantiate/TestObjectimoto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/GlitzyHollywood.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/GlitzyHollywood.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ReturnValueIncorrectData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ReturnValueIncorrectData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultBaseReference.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultBaseReference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/automock/DefaultSimian.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/automock/DefaultSimian.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PropertyGetterIncorrectlyScopedData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PropertyGetterIncorrectlyScopedData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/aggregator/TestRegexFilter.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/aggregator/TestRegexFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultRelative.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultRelative.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/impl/NoImplementationException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/impl/NoImplementationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultStamp.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultStamp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primmm" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/IllegalCitizenException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/IllegalCitizenException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultBall.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultBall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NoArrayCopyOnCreateIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NoArrayCopyOnCreateIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ProtectedMethodsIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ProtectedMethodsIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ExtraPublicMethodsIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ExtraPublicMethodsIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/resolve/HealthyFridge.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/resolve/HealthyFridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/aggregator/TestFileBasedJavaClass.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/aggregator/TestFileBasedJavaClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/DefaultHolder.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/type/core/DefaultHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimeType.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimeType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/DayInMonth.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/DayInMonth.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/DefaultBasicInterface.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/DefaultBasicInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/chain/DefaultChain.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/chain/DefaultChain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PackagePrivateMethodsIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PackagePrivateMethodsIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/resolve/JuicyTomato.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/demo/spider/resolve/JuicyTomato.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/BoooostException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/BoooostException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/log/DefaultLogLevel.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/log/DefaultLogLevel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ArrayOfArraysIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ArrayOfArraysIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NestedInterfacedData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NestedInterfacedData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/type/DefaultInterfaceAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/type/DefaultInterfaceAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/SpiderException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/core/SpiderException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/random/IllegalDataException.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/random/IllegalDataException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultFunkyData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultFunkyData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultBlueprint.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultBlueprint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/CannotProvideException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/CannotProvideException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PropertyGetterIncorrectlyNamedData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PropertyGetterIncorrectlyNamedData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultExam.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultExam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultImplementationRef.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DefaultImplementationRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeExceptionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NoArrayCopyOnAccessIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NoArrayCopyOnAccessIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultTeacher.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultTeacher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/specific/DefaultDataProviders.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/specific/DefaultDataProviders.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/primordial/PrimordialAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/primordial/PrimordialAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/DaySpec.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/DaySpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/BasicData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/BasicData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultHappiness.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultHappiness.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/WrongRegistrationTypeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/MethodWithArgumentsIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/MethodWithArgumentsIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultInterface.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NullsAreIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NullsAreIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/HourOfDay.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/HourOfDay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimeSpec.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimeSpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/MrRecursion.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/MrRecursion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/provider/ProviderException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/provider/ProviderException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultStampAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/DefaultStampAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultStudent.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/DefaultStudent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PropertyReturnTypeMismatchData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PropertyReturnTypeMismatchData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/ref/DefaultObjectRef.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/ref/DefaultObjectRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/specific/DefaultEnumProvider.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/specific/DefaultEnumProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/array/DefaultArrayFlattener.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/array/DefaultArrayFlattener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NestedWithNonImmutablePartsIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/NestedWithNonImmutablePartsIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/random/Invocation.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/random/Invocation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/MovieBusiness.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/MovieBusiness.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/BasicArrayData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/BasicArrayData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/automock/DefaultMockMethodSpec.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/automock/DefaultMockMethodSpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/aggregator/TestRegexPattern.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/aggregator/TestRegexPattern.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/validate/DefaultMethodSignature.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/validate/DefaultMethodSignature.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/array/DefaultArrayFlattenerAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/array/DefaultArrayFlattenerAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/start/VmStyle.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/start/VmStyle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PrimitiveArrayData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PrimitiveArrayData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/onion/layer/scrunch/ScrunchExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/onion/layer/scrunch/ScrunchExceptionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ArrayNotTheSameIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ArrayNotTheSameIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultRighteous.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultRighteous.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultImplementation.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultImplementation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/SecondOfMinute.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/SecondOfMinute.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/MultipleConstructorIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/MultipleConstructorIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/atom/DefaultClassChecker.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/atom/DefaultClassChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimePeriod.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultTimePeriod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/parallel/DefaultErrors.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/parallel/DefaultErrors.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/BasicNonFinalFieldsData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/BasicNonFinalFieldsData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/primmm" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/primordial" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PublicStaticMethodsIllegalData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/PublicStaticMethodsIllegalData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/introspect/DefaultMethodSpec.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/introspect/DefaultMethodSpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/MonthSpec.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/MonthSpec.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultStartEnd.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/time/DefaultStartEnd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/Primordial.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/Primordial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ManyPrivateMethodsBasicData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ManyPrivateMethodsBasicData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/provider/ProviderExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/provider/ProviderExceptionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/nursery/proxy/RealCentipede.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/nursery/proxy/RealCentipede.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ConstructorParameterCountMismatchData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ConstructorParameterCountMismatchData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/onion/layer/scrunch/ScrunchException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/onion/layer/scrunch/ScrunchException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/BmxBicycle.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/BmxBicycle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultHappyDay.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/provider/DefaultHappyDay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DoesNotImplementFactoryException.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/DoesNotImplementFactoryException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ConstructorParameterMismatchData.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/data/ConstructorParameterMismatchData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/type/DefaultBaseReferenceAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/type/DefaultBaseReferenceAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/primordial/PrimordialExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/bullet/primordial/PrimordialExceptionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/MinuteOfHour.java" afterPath="$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/time/type/MinuteOfHour.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/registry/WrongInterfaceRegistrationExceptionAtomicTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/BigLebowski.java" afterPath="$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/spider/resolve/BigLebowski.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/core/IllegalCitizenExceptionAtomicTest.java" afterPath="$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/spider/core/IllegalCitizenExceptionAtomicTest.java" />
-    </list>
+    <list default="true" name="Default" comment="" />
     <list name="Rejected commit: Default" comment="" />
     <list name="merde" comment="" />
     <list name="bum hurts" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.iws" afterPath="$PROJECT_DIR$/boost.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boost.ipr" afterPath="$PROJECT_DIR$/boost.ipr" />
     </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
@@ -269,28 +155,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Registry.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/spider/registry/Registry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultImplementation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultImplementation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="65" selection-start="682" selection-end="682" vertical-scroll-proportion="0.45633188">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HexUtil.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/format/HexUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="70" selection-end="70" vertical-scroll-proportion="0.041484717">
+            <state line="2" column="17" selection-start="70" selection-end="70" vertical-scroll-proportion="0.041439477">
               <folding />
             </state>
           </provider>
@@ -299,7 +167,7 @@
       <file leaf-file-name="DefaultHexUtil.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/format/DefaultHexUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.10371179">
+            <state line="5" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.10359869">
               <folding />
             </state>
           </provider>
@@ -308,7 +176,7 @@
       <file leaf-file-name="Sensitive.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/Sensitive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041484717">
+            <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041439477">
               <folding />
             </state>
           </provider>
@@ -317,16 +185,16 @@
       <file leaf-file-name="Data.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041484717">
+            <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041439477">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrimordialException.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PrimordialException.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/PrimordialException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="29" selection-start="79" selection-end="79" vertical-scroll-proportion="0.041484717">
+            <state line="2" column="29" selection-start="79" selection-end="79" vertical-scroll-proportion="0.041439477">
               <folding />
             </state>
           </provider>
@@ -335,25 +203,45 @@
       <file leaf-file-name="DefaultHexUtilAtomicTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/gunge/format/DefaultHexUtilAtomicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="19" selection-start="127" selection-end="127" vertical-scroll-proportion="0.08435072">
+            <state line="4" column="19" selection-start="127" selection-end="127" vertical-scroll-proportion="0.08425721">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultEdgeBufferFixture.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeBufferFixture.java">
+      <file leaf-file-name="IllegalEdgeConstructorArgumentException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/sledge/support/IllegalEdgeConstructorArgumentException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="19" selection-start="944" selection-end="944" vertical-scroll-proportion="0.4978166">
+            <state line="2" column="19" selection-start="66" selection-end="66" vertical-scroll-proportion="0.041439477">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultEdgeChannelFixture.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeChannelFixture.java">
+      <file leaf-file-name="DefaultEdgeConstructor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/sledge/java/lang/reflect/DefaultEdgeConstructor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="465" selection-end="465" vertical-scroll-proportion="0.082969435">
+            <state line="18" column="4" selection-start="802" selection-end="802" vertical-scroll-proportion="0.3729553">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build-simian.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build-simian.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build-init.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build-init.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="39" selection-start="3864" selection-end="3864" vertical-scroll-proportion="0.5033557">
               <folding />
             </state>
           </provider>
@@ -535,6 +423,72 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="scalpel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="scalpel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="testdata" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="scalpel" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="testdata" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="bad.pack" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="au.net.netstorm.boost" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="nursery" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
@@ -575,77 +529,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="nursery" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="autoedge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="nursery" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="autoedge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="testfixtures" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
           <option name="myItemId" value="bullet" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="au.net.netstorm.boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="bullet" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="primmm" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -691,7 +575,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -705,23 +589,11 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -735,65 +607,35 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost/gunge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net/netstorm" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost/gunge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost/gunge/type" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net/netstorm/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -807,457 +649,39 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost/bullet" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
-      </PATH>
-      <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost/bullet" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/test/java/au/net/netstorm/boost/bullet/primordial" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java/au/net/netstorm/boost/demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java/au/net/netstorm/boost/demo" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/demo/java/au/net/netstorm/boost/demo/provider" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/nursery" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/nursery/util" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/nursery" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/gunge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/gunge" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/gunge/type" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/bullet" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net/netstorm" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/bullet" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net/netstorm/boost" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:/Users/dev/work/boost/src/core/java/au/net/netstorm/boost/bullet/primordial" />
+          <option name="myItemId" value="PsiDirectory:/Users/dev/work/jugs/work/boost/src/core/java/au/net/netstorm/boost/edge" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -1267,14 +691,14 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="0.11111111" version="1" splitterProportion="0.5">
+    <navigator currentView="PackagesPane" proportions="0.11111111" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="false" />
       <abbreviatePackageNames />
-      <showStructure ProjectPane="false" Scope="false" PackagesPane="false" Favorites="false" />
+      <showStructure Favorites="false" Scope="false" PackagesPane="false" ProjectPane="false" />
       <autoscrollToSource />
       <autoscrollFromSource PackagesPane="true" ProjectPane="true" />
       <sortByType />
@@ -1325,106 +749,12 @@
       <recent name="au.net.netstorm.boost.edge.org.apache.commons.codec.binary" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="au.net.netstorm.boost.scalpel" />
+      <recent name="au.net.netstorm.boost.sledge" />
+      <recent name="au.net.netstorm.boost.edge.support" />
       <recent name="au.net.netstorm.boost.nursery.gunge" />
       <recent name="au.net.netstorm.boost.nursery.gunge.format" />
-      <recent name="au.net.netstorm.boost.gunge.format" />
-      <recent name="au.net.netstorm.boost.gunge.type" />
-      <recent name="au.net.netstorm.boost.demo.spider.core" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="5/5/08 6:16 AM" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="svn" revision="3314">$PROJECT_DIR$/src/demo/java/au/net/netstorm/boost/demo/nursery/autoedge/IntegerDemoTest.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-            <PATH vcs="svn" revision="3314">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/reflect/Object2ClassMapper.java</PATH>
-            <PATH vcs="svn" revision="3314">$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/reflect/DefaultObject2ClassMapper.java</PATH>
-            <PATH vcs="svn" revision="3314">$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/gunge/reflect/DefaultObject2ClassMapperAtomicTest.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
   </component>
   <component name="RunManager" selected="JUnit.AllTestSuite">
     <tempConfiguration default="false" name="AllTestSuite" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
@@ -1452,6 +782,18 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1481,6 +823,19 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1509,31 +864,6 @@
       <method>
         <option name="Make" value="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="JUnit.AllTestSuite" />
@@ -1792,10 +1122,10 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29219747" order="9" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2683121" order="0" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2683121" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43762922" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969892" order="1" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329428" order="6" x="72" y="86" width="1202" height="1407" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287388" order="6" x="72" y="86" width="1202" height="1407" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="5" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="11" />
@@ -1948,20 +1278,6 @@
     <option name="multicastPort" value="3274" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/equals/DefaultArraysEqualsMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="45" selection-start="192" selection-end="192" vertical-scroll-proportion="0.082969435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/sniper/marker/OverlaysWeb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="17" selection-start="119" selection-end="119" vertical-scroll-proportion="0.082969435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/Implementation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041484717">
@@ -1999,63 +1315,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/DefaultImplementation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="65" selection-start="682" selection-end="682" vertical-scroll-proportion="0.45633188">
+        <state line="22" column="65" selection-start="682" selection-end="682" vertical-scroll-proportion="0.45583424">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/format/HexUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="70" selection-end="70" vertical-scroll-proportion="0.041484717">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/gunge/format/DefaultHexUtilAtomicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="19" selection-start="127" selection-end="127" vertical-scroll-proportion="0.08435072">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeChannelFixture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="465" selection-end="465" vertical-scroll-proportion="0.082969435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/autoedge/testfixtures/DefaultEdgeBufferFixture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="19" selection-start="944" selection-end="944" vertical-scroll-proportion="0.4978166">
+        <state line="2" column="17" selection-start="70" selection-end="70" vertical-scroll-proportion="0.041439477">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/nursery/gunge/format/DefaultHexUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.10371179">
+        <state line="5" column="19" selection-start="150" selection-end="150" vertical-scroll-proportion="0.10359869">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/Sensitive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041484717">
+        <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041439477">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/gunge/type/Data.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041484717">
+        <state line="2" column="17" selection-start="60" selection-end="60" vertical-scroll-proportion="0.041439477">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/java/au/net/netstorm/boost/bullet/primordial/PrimordialException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="29" selection-start="79" selection-end="79" vertical-scroll-proportion="0.041484717">
+        <state line="2" column="29" selection-start="79" selection-end="79" vertical-scroll-proportion="0.041439477">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/au/net/netstorm/boost/nursery/gunge/format/DefaultHexUtilAtomicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="127" selection-end="127" vertical-scroll-proportion="0.08425721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/sledge/support/IllegalEdgeConstructorArgumentException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="19" selection-start="66" selection-end="66" vertical-scroll-proportion="0.041439477">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edge/java/au/net/netstorm/boost/sledge/java/lang/reflect/DefaultEdgeConstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="4" selection-start="802" selection-end="802" vertical-scroll-proportion="0.3729553">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-simian.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-init.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="39" selection-start="3864" selection-end="3864" vertical-scroll-proportion="0.5033557">
           <folding />
         </state>
       </provider>
