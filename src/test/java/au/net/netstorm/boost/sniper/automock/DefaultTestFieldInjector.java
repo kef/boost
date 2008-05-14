@@ -26,7 +26,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         mockinator.inject(ref);
         dumminator.inject(ref);
         randominator.inject(ref);
-    }
+    }                                         
 
     public void initSubject(Object ref) {
         nusubject.inject(ref);
