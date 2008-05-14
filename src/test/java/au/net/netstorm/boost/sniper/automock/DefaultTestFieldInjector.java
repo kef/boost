@@ -10,8 +10,6 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final Injector randominator;
     private final Injector mockinator;
     private final Injector dumminator;
-    // FIX 2328 add real injector that knows about subjects
-//    private final Injector realinator;
 
     public DefaultTestFieldInjector(MockSupport mocks, Provider random) {
         this.mocks = mocks;
@@ -19,7 +17,6 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         mockinator = new MockInjector(mocks);
         dumminator = new DummyInjector(mocks);
         subjectinator = new SubjectInjector();
-//        realinator = new RealInjector();
     }
 
     public void injectTestDoubles(Object ref) {
@@ -30,11 +27,6 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
 
     public void injectSubject(Object ref) {
         subjectinator.inject(ref);
-    }
-
-    // FIX 2328 add method to inject reals and wire into InjectTest
-    public void injectReals(Object ref) {
-
     }
 
     public void verify() {
