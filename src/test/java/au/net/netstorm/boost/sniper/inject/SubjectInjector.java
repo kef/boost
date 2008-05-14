@@ -20,8 +20,6 @@ public final class SubjectInjector implements Injector {
     public void inject(Object testCase) {
         Object subject = nullGetSubject(testCase);
         if (subject != null) {
-            // FIX 2328 this is why auto injecting subject with mocks does not work
-            // FIX 2328 TestInjector has aready injected it with realies so the fields do not resolve
             Field[] subjectFields = resolvableFieldFinder.find(subject);
             List testFields = fieldNameFinder.find(testCase);
             inject(testCase, testFields, subject, subjectFields);
