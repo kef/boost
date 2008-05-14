@@ -18,7 +18,7 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         dumminator = new DummyInjector(mocks);
     }
 
-    public void inject(Object ref) {
+    public void injectTestDoubles(Object ref) {
         mockinator.inject(ref);
         dumminator.inject(ref);
         randominator.inject(ref);

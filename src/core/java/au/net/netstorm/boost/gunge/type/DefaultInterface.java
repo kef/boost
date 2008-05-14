@@ -2,9 +2,6 @@ package au.net.netstorm.boost.gunge.type;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
-// FIX 2328 Back into "gunge".
-// FIX 2299 Up coverage and out of nursery.
-
 // This is just an interface.  It is the strong type for interface.
 public final class DefaultInterface<T> extends Primordial implements Interface<T> {
     private final Class<T> type;
