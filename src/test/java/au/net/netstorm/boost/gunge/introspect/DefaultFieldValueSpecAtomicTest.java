@@ -83,9 +83,7 @@ public class DefaultFieldValueSpecAtomicTest extends BoooostCase {
         try {
             new DefaultFieldValueSpec(name, value);
             fail();
-        } catch (IllegalArgumentException expected) {
-            assertEquals(name + " parameter cannot be null", expected.getMessage());
-        }
+        } catch (IllegalArgumentException expected) {}
     }
 
     private void checkEquals(Object o1, Object o2) {

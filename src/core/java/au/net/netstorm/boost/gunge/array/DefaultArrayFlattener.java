@@ -11,23 +11,24 @@ public final class DefaultArrayFlattener extends Primordial implements ArrayFlat
     private static final NullMaster NULL_MASTER = new DefaultNullMaster();
     private static final ArrayMaster ARRAY_MASTER = new DefaultArrayMaster();
 
-    // Note. Cannot use check(Object[]) as it uses this method, hence stack overflow, so doesn't check embedded nulls.
     public Object[] flatten(Object[] unflattened) {
-        NULL_MASTER.check(unflattened, "unflattened");
+        NULL_MASTER.check(unflattened);
         List flattened = doFlatten(unflattened);
         return ARRAY_MASTER.toArray(flattened);
     }
 
     private List doFlatten(Object[] unflattened) {
         List flattened = new ArrayList();
-        for (int i = 0; i < unflattened.length; i++) {
-            Object item = unflattened[i];
-            if (item instanceof Object[]) {
-                flattened.addAll(doFlatten((Object[]) item));
-            } else {
-                flattened.add(item);
-            }
-        }
+        for (Object item : unflattened) processFlattened(flattened, item);
         return flattened;
+    }
+
+    private void processFlattened(List flattened, Object item) {
+        if (item instanceof Object[]) {
+            List children = doFlatten((Object[]) item);
+            flattened.addAll(children);
+        } else {
+            flattened.add(item);
+        }
     }
 }

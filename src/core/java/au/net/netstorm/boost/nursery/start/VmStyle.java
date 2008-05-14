@@ -15,7 +15,7 @@ public final class VmStyle extends Primordial implements Data {
 
     private void validate() {
         NullMaster master = new DefaultNullMaster();
-        master.check(style, "style");
+        master.check(style);
     }
 
     public String getStyle() {

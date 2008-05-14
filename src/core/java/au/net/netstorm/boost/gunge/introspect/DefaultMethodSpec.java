@@ -16,8 +16,8 @@ public final class DefaultMethodSpec extends Primordial implements MethodSpec {
     }
 
     private void validate(Class[] params) {
-        master.check(name, "name");
-        master.check(params, "params");
+        master.check(name);
+        master.check(params);
     }
 
     public String getName() {

@@ -21,12 +21,9 @@ public final class DefaultArrayFlattenerAtomicTest extends BoooostCase {
     }
 
     public void testFlattenRejectsNulls() {
-        try {
-            flattener.flatten(null);
-            fail();
-        } catch (IllegalArgumentException expected) {
-            assertEquals("unflattened parameter cannot be null", expected.getMessage());
-        }
+        checkFlatteningFailure(null);
+        checkFlatteningFailure(new Object[] {null});
+        checkFlatteningFailure(new Object[] {"a", null});
     }
 
     public void testFlattenNoOp() {
@@ -60,5 +57,12 @@ public final class DefaultArrayFlattenerAtomicTest extends BoooostCase {
 
     private void checkFlattening(Object[] expectedFlattening, Object[] unflattened) {
         assertEquals(expectedFlattening, flattener.flatten(unflattened));
+    }
+
+    private void checkFlatteningFailure(Object[] unflattened) {
+        try {
+            flattener.flatten(unflattened);
+            fail();
+        } catch (IllegalArgumentException expected) {}
     }
 }
