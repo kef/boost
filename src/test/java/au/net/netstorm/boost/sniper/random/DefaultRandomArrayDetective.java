@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.sniper.atom.DefaultPrimitiveBoxer;
-import au.net.netstorm.boost.sniper.atom.PrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.PrimitiveBoxer;
 
 public final class DefaultRandomArrayDetective implements RandomArrayDetective {
     private PrimitiveBoxer marquessDeQueensbury = new DefaultPrimitiveBoxer();

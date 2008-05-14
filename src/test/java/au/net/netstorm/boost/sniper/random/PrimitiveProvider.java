@@ -3,8 +3,8 @@ package au.net.netstorm.boost.sniper.random;
 import au.net.netstorm.boost.gunge.provider.NotProvidedException;
 import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.provider.SpecificProvider;
-import au.net.netstorm.boost.sniper.atom.DefaultPrimitiveBoxer;
-import au.net.netstorm.boost.sniper.atom.PrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.PrimitiveBoxer;
 
 public final class PrimitiveProvider implements SpecificProvider {
     private final PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();

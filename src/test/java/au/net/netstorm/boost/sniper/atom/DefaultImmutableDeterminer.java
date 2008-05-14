@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 import au.net.netstorm.boost.gunge.type.Immutable;
+import au.net.netstorm.boost.gunge.primitives.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.PrimitiveBoxer;
 
 public final class DefaultImmutableDeterminer implements ImmutableDeterminer {
     private final Set registered = new HashSet();

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.field;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.sniper.atom.DefaultPrimitiveBoxer;
-import au.net.netstorm.boost.sniper.atom.PrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.PrimitiveBoxer;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultModifierTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;

@@ -1,6 +1,8 @@
-package au.net.netstorm.boost.sniper.atom;
+package au.net.netstorm.boost.gunge.primitives;
 
 public interface PrimitiveBoxer {
+    Class convertToBoxed(Class candidate);
+
     Class getBoxed(Class primitive);
 
     boolean isPrimitive(Class candidate);

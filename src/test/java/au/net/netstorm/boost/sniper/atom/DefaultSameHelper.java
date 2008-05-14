@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.sniper.atom;
 
+import au.net.netstorm.boost.gunge.primitives.DefaultPrimitiveBoxer;
+import au.net.netstorm.boost.gunge.primitives.PrimitiveBoxer;
+
 final class DefaultSameHelper implements SameHelper {
     private PrimitiveBoxer primitiveBoxer = new DefaultPrimitiveBoxer();
 

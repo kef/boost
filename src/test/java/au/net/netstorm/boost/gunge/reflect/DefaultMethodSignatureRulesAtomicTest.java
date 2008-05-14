@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import au.net.netstorm.boost.gunge.primitives.PrimitiveBoxer;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -19,6 +20,7 @@ public final class DefaultMethodSignatureRulesAtomicTest extends LifecycleTestCa
     private Class<?>[] boxed = {Integer.class};
     private Class<?>[] dodge = {};
     MethodSignatureRules subject;
+    PrimitiveBoxer boxer;
 
     public void testCompatibleWithSelf() {
         checkCompatible(generic);
