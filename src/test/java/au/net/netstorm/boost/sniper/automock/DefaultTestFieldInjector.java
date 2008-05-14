@@ -25,6 +25,10 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         randominator.inject(ref);
     }
 
+    public void initSubject(Object ref) {
+        // FIX 2328 initialize subject with no deps
+    }
+
     public void injectSubject(Object ref) {
         subjectinator.inject(ref);
     }
