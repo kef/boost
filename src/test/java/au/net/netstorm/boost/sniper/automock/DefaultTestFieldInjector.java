@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.automock;
 
 import au.net.netstorm.boost.gunge.provider.Provider;
-import au.net.netstorm.boost.sniper.inject.SubjectInitializer;
+import au.net.netstorm.boost.sniper.inject.DefaultSubjectInitializer;
 import au.net.netstorm.boost.sniper.inject.SubjectInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 
@@ -19,17 +19,13 @@ public final class DefaultTestFieldInjector implements TestFieldInjector {
         mockinator = new MockInjector(mocks);
         dumminator = new DummyInjector(mocks);
         subjectinator = new SubjectInjector();
-        nusubject = new SubjectInitializer();
+        nusubject = new DefaultSubjectInitializer();
     }
 
     public void injectTestDoubles(Object ref) {
         mockinator.inject(ref);
         dumminator.inject(ref);
         randominator.inject(ref);
-    }                                         
-
-    public void initSubject(Object ref) {
-        nusubject.inject(ref);
     }
 
     public void injectSubject(Object ref) {
