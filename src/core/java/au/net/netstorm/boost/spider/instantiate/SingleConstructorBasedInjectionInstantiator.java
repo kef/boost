@@ -8,6 +8,7 @@ import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.sledge.support.EdgeException;
 
 public final class SingleConstructorBasedInjectionInstantiator implements Instantiator {
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
@@ -48,7 +49,7 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     private Object tryInstantiate(Constructor constructor, Object[] parameters, Implementation impl) {
         try {
             return edgeConstructor.newInstance(constructor, parameters);
-        } catch (IllegalArgumentException e) {
+        } catch (EdgeException e) {
             throw new InstantiationException("Unable to construct a " + impl, e);
         }
     }
