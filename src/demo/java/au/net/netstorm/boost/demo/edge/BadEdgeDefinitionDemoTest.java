@@ -2,11 +2,13 @@ package au.net.netstorm.boost.demo.edge;
 
 import au.net.netstorm.boost.scalpel.core.AutoEdger;
 import au.net.netstorm.boost.sledge.support.EdgeException;
+import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
 import demo.edge.bad.java.lang.BadName;
 import demo.edge.bad.java.lang.Object;
 import demo.edge.bad.pack.age.String;
 
 public class BadEdgeDefinitionDemoTest extends BadEdgeDemooooTest {
+    ThrowableMaster thrower;
     AutoEdger edger;
 
     public void testMethodMissing() {
@@ -15,7 +17,8 @@ public class BadEdgeDefinitionDemoTest extends BadEdgeDemooooTest {
             o.missing();
             fail();
         } catch (EdgeException e) {
-            assertEquals(true, e.causeIs(NoSuchMethodException.class));
+            Throwable real = thrower.rootCause(e);
+            assertEquals(true, real instanceof NoSuchMethodException);
         }
     }
 
