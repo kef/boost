@@ -5,15 +5,12 @@ import java.util.List;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
 import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
-import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase
-        implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
-
-    private ConstructorFilter subject;
+public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
+    ConstructorFilter subject;
     ConstructorFixture fixture;
     FunctionalCollection collectionMock;
     ObjectToClassMapper mapperMock;
@@ -21,11 +18,6 @@ public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase
     CompatibleSignaturesFilter compatMock;
     List<Class<?>> classesMock;
     List<Constructor<?>> ctorMock;
-
-    // FIX 2328 The testing framework should do this for us!!!!
-    public void setUpFixtures() {
-        subject = new DefaultConstructorFilter();
-    }
 
     public void testFilter() {
         List<?> vector = fixture.vector();

@@ -34,6 +34,13 @@ public class DefaultClassTestUtil implements ClassTestUtil {
         return edgeConstructor.newInstance(constructor, NO_PARAMETERS);
     }
 
+    public boolean isInstantiable(Class<?> type) {
+        Constructor[] ctors = type.getDeclaredConstructors();
+        if (ctors.length != 1) return false;
+        Class<?>[] signature = ctors[0].getParameterTypes();
+        return signature.length == 0;
+    }
+
     private boolean isAssignable(Class superType, Class subType) {
         return superType.isAssignableFrom(subType);
     }

@@ -9,5 +9,7 @@ public interface ClassTestUtil {
 
     Object newInstance(Class type);
 
+    boolean isInstantiable(Class<?> type);
+
     boolean isSubInterfaceOf(Interface superInterface, Interface subInterface);
 }
