@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.gunge.format;
+package au.net.netstorm.boost.gunge.format;
 
 public interface HexUtil {
     byte[] toBytes(String hex);

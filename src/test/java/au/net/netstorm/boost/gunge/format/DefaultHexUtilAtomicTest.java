@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.gunge.format;
+package au.net.netstorm.boost.gunge.format;
 
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
@@ -7,7 +7,7 @@ public final class DefaultHexUtilAtomicTest extends BoooostCase {
     private static final String HEX_STRING2 = "00000000";
     private static final String HEX_STRING3 = "ffffffffff";
     private static final String INVALID_HEX_STRING = "12abGXWTY";
-    private static final String INVALID_HEX_CHAR_EXCEPTION = "Invalid hex character: G";
+    private static final String INVALID_HEX_CHAR_EXCEPTION = "Invalid hex string: " + INVALID_HEX_STRING;
     // DEBT LineLength {
     private static final byte[] HEX_BYTES1 = {(byte) 0x01, (byte) 0x23, (byte) 0x45, (byte) 0x67, (byte) 0x89, (byte) 0xAB, (byte) 0xCD, (byte) 0xEF, (byte) 0xFE, (byte) 0xDC, (byte) 0xBA, (byte) 0x98, (byte) 0x76, (byte) 0x54, (byte) 0x32, (byte) 0x10};
     private static final byte[] HEX_BYTES2 = {(byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00};
