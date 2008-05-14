@@ -15,8 +15,7 @@ public final class DefaultImplementation<T> extends Primordial implements Implem
     }
 
     private void validate() {
-        // FIX 2328 Barf nicely if null.  Use to be.
-//        if (impl == null) throw new IllegalArgumentException();
+        if (impl == null) throw new IllegalArgumentException("implementation can not be null");
         // FIX 2328 This logic is symmetric with DefaultInterface.  Extract logic.
         if (impl.isInterface()) {
             String failMessage = impl + " should be an implementation and not an interface.";
