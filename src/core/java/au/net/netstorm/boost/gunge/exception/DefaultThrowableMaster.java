@@ -9,17 +9,13 @@ import au.net.netstorm.boost.sledge.support.EdgeException;
 public final class DefaultThrowableMaster implements ThrowableMaster {
     // Never, ever change the return type or I will kill you.
     public void rethrow(Throwable t) {
-        if (t instanceof Error)
-            throw (Error) t;
-        if (t instanceof RuntimeException)
-            throw (RuntimeException) t;
+        if (t instanceof Error) throw (Error) t;
+        if (t instanceof RuntimeException) throw (RuntimeException) t;
         throw new UndeclaredThrowableException(t);
     }
 
     public boolean checked(Throwable t) {
-        if (t instanceof RuntimeException) return false;
-        if (t instanceof Error) return false;
-        return true;
+        return !(t instanceof RuntimeException) && !(t instanceof Error);
     }
 
     // FIX 2328 Work out whether difference between rootCause/realCause is justified.
