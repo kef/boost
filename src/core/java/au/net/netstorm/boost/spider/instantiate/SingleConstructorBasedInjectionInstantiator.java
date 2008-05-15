@@ -7,7 +7,6 @@ import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeConstructor;
-import au.net.netstorm.boost.sledge.support.EdgeException;
 
 import java.lang.reflect.Constructor;
 
