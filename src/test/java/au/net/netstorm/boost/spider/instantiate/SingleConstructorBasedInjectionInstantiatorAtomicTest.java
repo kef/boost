@@ -39,7 +39,7 @@ public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends
         }
     }
 
-    private void checkException(String expectedMessage, InstantiationException actual) {
+    private void checkException(String expectedMessage, Exception actual) {
         String actualMessage = actual.getMessage();
         assertEquals(expectedMessage, actualMessage);
     }

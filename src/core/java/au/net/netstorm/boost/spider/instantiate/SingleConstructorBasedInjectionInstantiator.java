@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.spider.instantiate;
 
-import java.lang.reflect.Constructor;
 import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
 import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
 import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
@@ -9,6 +8,8 @@ import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeConstructor;
 import au.net.netstorm.boost.sledge.support.EdgeException;
+
+import java.lang.reflect.Constructor;
 
 public final class SingleConstructorBasedInjectionInstantiator implements Instantiator {
     private ReflectMaster reflectMaster = new DefaultReflectMaster();
@@ -49,7 +50,8 @@ public final class SingleConstructorBasedInjectionInstantiator implements Instan
     private Object tryInstantiate(Constructor constructor, Object[] parameters, Implementation impl) {
         try {
             return edgeConstructor.newInstance(constructor, parameters);
-        } catch (EdgeException e) {
+        // FIX 2328 should we be rewrapping here at all 
+        } catch (Exception e) {
             throw new InstantiationException("Unable to construct a " + impl, e);
         }
     }

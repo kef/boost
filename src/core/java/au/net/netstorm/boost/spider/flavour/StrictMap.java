@@ -6,6 +6,7 @@ public interface StrictMap<K, V> {
 
     V get(K key);
 
+    // FIX 2328 This is fugly.  Remove NOW!
     boolean exists(K key);
 
     void remove(K key);

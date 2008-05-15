@@ -11,7 +11,7 @@
         <attribute name="failure.property"/>
         <sequential>
             <mkdir dir="${test.report.dir}/@{test.type}/xml"/>
-            <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
+             <junit fork="true" forkmode="perBatch" showoutput="true" printSummary="true" haltonfailure="false"
                    failureproperty="@{failure.property}">
                 <sysproperty key="net.sourceforge.cobertura.datafile"
                              file="${cobertura.dir}/@{test.type}_coverage.ser"/>
