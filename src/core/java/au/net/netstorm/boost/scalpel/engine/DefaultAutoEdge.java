@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeMethod;
+
+import java.lang.reflect.Method;
 
 final class DefaultAutoEdge implements AutoEdge {
     private final EdgeClass classer = new DefaultEdgeClass();
@@ -22,6 +23,7 @@ final class DefaultAutoEdge implements AutoEdge {
     }
 
     public Object invoke(Object edge, Method edgeMethod, Object[] edgedArgs) {
+        // FIX 2328 Remove trace
         if (unedge.equals(edgeMethod)) return real;
         Method realMethod = warper.warp(realClass, edgeMethod);
         Object[] realArgs = unedger.unedge(edgedArgs);
