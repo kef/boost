@@ -7,23 +7,17 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeInputStream;
 
-public final class DefaultEdgedMethodsAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+public final class DefaultEdgedMethodsAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
     private EdgedMethods subject;
     StreamFixture stream;
+    MethodWarp warperMock;
 
-    public void setUpFixtures() {
-        subject = new DefaultEdgedMethods(AutoEdgeInputStream.class, InputStream.class);
-    }
-
-    public void testUnedge() {
-        // FIX BREADCRUMB 2328 implement me
-        try {
-            Method expected = subject.unedge(stream.edgeMethod());
-//          assertEquals(stream.realMethod(), expected);
-            fail();
-        } catch (UnsupportedOperationException expected) {}
+    public void testLookup() {
+        expect.oneCall(warperMock, stream.realMethod(), "warp", InputStream.class, stream.edgeMethod());
+        subject = new DefaultEdgedMethods(AutoEdgeInputStream.class, InputStream.class, warperMock);
+        Method expected = subject.lookup(stream.edgeMethod());
+        assertEquals(stream.realMethod(), expected);
     }
 }

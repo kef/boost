@@ -5,14 +5,17 @@ import java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 
-// FIX BREADCRUMB 2328 implement me
+// FIX 2328 wire into DefaultAutoEdge
 final class DefaultEdgedMethods implements EdgedMethods {
-    // FIX 2328 bad 
-    private final StrictMap<Method, Method> methods = new DefaultStrictMap<Method, Method>();
-    public DefaultEdgedMethods(Class<?> edge, Class<?> real) {
-    }
+    private final StrictMap<Method, Method> methods = new DefaultStrictMap();
+    public DefaultEdgedMethods(Class<?> edge, Class<?> real, MethodWarp warper) {
+        for (Method e : edge.getDeclaredMethods()) {
+            Method r = warper.warp(real, e);
+            methods.put(e, r);
+        }
+     }
 
-    public Method unedge(Method edge) {
-        throw new UnsupportedOperationException();
+    public Method lookup(Method edge) {
+        return methods.get(edge);
     }
 }

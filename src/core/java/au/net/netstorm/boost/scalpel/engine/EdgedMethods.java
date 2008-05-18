@@ -4,5 +4,5 @@ import java.lang.reflect.Method;
 
 // FIX 2328 wire into DefaultAutoEdge
 interface EdgedMethods {
-    Method unedge(Method edge);
+    Method lookup(Method edge);
 }
