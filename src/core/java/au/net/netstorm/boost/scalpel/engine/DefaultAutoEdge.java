@@ -3,6 +3,7 @@ package au.net.netstorm.boost.scalpel.engine;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeMethod;
+import au.net.netstorm.boost.scalpel.core.Unedgable;
 
 import java.lang.reflect.Method;
 

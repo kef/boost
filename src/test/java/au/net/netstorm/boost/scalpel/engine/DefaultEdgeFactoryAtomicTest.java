@@ -6,6 +6,7 @@ import au.net.netstorm.boost.nursery.type.core.Types;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.scalpel.testdata.java.util.ArrayList;
 import au.net.netstorm.boost.scalpel.testdata.java.util.UnedgableList;
+import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;

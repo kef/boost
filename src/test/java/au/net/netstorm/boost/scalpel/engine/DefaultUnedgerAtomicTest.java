@@ -3,6 +3,7 @@ package au.net.netstorm.boost.scalpel.engine;
 import java.net.URL;
 import java.util.List;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeURL;
+import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
