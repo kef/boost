@@ -4,4 +4,6 @@ interface Unedger {
     Object[] unedge(Object[] edged);
 
     Class<?>[] unedge(Class<?>[] edged);
+
+    Class<?> unedge(Class<?> candidate);
 }

@@ -28,7 +28,7 @@ final class DefaultUnedger implements Unedger {
         return edge.unedge();
     }
 
-    private Class<?> unedge(Class<?> candidate) {
+    public Class<?> unedge(Class<?> candidate) {
         if (!Edge.class.isAssignableFrom(candidate)) return candidate;
         return mapper.edgeToReal(candidate);
     }

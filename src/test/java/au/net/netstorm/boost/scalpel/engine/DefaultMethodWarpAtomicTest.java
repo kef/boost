@@ -22,7 +22,18 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
     public void testWarp() {
         expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
         expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
+        expect.oneCall(unedgerMock, int.class, "unedge", int.class);
         Method result = subject.warp(InputStream.class, stream.edgeMethod());
         assertEquals(stream.realMethod(), result);
+    }
+
+    public void testWarpWithBadReturnType() {
+        expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
+        expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
+        expect.oneCall(unedgerMock, String.class, "unedge", int.class);
+        try {
+            subject.warp(InputStream.class, stream.edgeMethod());
+            fail();
+        } catch (IllegalArgumentException expected) {}
     }
 }
