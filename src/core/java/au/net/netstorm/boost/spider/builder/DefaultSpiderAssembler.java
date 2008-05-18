@@ -7,7 +7,7 @@ import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
-import au.net.netstorm.boost.nursery.spider.resolve.DefaultResolverEngine;
+import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;

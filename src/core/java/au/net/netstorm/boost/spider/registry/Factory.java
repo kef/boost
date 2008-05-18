@@ -2,6 +2,7 @@ package au.net.netstorm.boost.spider.registry;
 
 import au.net.netstorm.boost.spider.linkage.Linkage;
 
+// FIX 2328 change name
 public interface Factory {
     // FIX 2328 this smells bad
 
