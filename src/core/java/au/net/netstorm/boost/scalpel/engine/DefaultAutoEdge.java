@@ -16,6 +16,7 @@ final class DefaultAutoEdge implements AutoEdge {
     Unedger unedger;
     ReturnEdger returnEdger;
 
+    // FIX 2328 change this to accept an edge method factory rather than a realClass
     public <R> DefaultAutoEdge(Class<R> realClass, R real) {
         this.real = real;
         this.realClass = realClass;
