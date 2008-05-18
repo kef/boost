@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.statix;
 
 import au.net.netstorm.boost.nursery.spider.core.BoostSpiderBuilder;
 import au.net.netstorm.boost.nursery.spider.core.DefaultBoostSpiderBuilder;
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 import au.net.netstorm.boost.spider.core.Spider;
 
 // OK ConstantName {

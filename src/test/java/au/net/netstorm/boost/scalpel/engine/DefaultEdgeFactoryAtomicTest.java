@@ -2,7 +2,7 @@ package au.net.netstorm.boost.scalpel.engine;
 
 import java.net.URL;
 import java.util.List;
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.scalpel.testdata.java.util.ArrayList;
 import au.net.netstorm.boost.scalpel.testdata.java.util.UnedgableList;

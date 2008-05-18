@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 import au.net.netstorm.boost.scalpel.core.Edge;
 import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;

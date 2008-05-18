@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.sniper.expect;
 
 import au.net.netstorm.boost.gunge.type.Data;
-import au.net.netstorm.boost.nursery.type.core.Holder;
 import au.net.netstorm.boost.sniper.automock.MockExpectations;
 
 public class DefaultExpectations implements Expectations {
@@ -29,10 +28,6 @@ public class DefaultExpectations implements Expectations {
 
     public <T> void nu(T obj, Class<? extends T> impl, Object... params) {
         nus.nu(obj, impl, params);
-    }
-
-    public <T extends Holder> void types(T obj, Class<T> iface, Object param) {
-        types.types(obj, iface, param);
     }
 
     public <T extends Data> void types(T obj, Class<T> iface, Object... params) {

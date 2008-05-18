@@ -3,7 +3,7 @@ package au.net.netstorm.boost.gunge.reflect;
 import java.lang.reflect.Constructor;
 import java.util.List;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -22,7 +22,7 @@ public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase 
     public void testFilter() {
         List<?> vector = fixture.vector();
         expect.oneCall(collectionMock, classesMock, "map", new Object[]{vector}, mapperMock);
-        expect.oneCall(typesMock, compatMock, "nu", CompatibleSignaturesFilter.class, classesMock);
+        expect.oneCall(typesMock, compatMock, "nu", CompatibleSignaturesFilter.class, new Object[] {classesMock});
         expect.oneCall(collectionMock, ctorMock, "filter", fixture.constructors(), compatMock);
         List<Constructor<?>> result = subject.filter(DualOverloadCtor.class, vector);
         assertEquals(ctorMock, result);

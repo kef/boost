@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.inject;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 import au.net.netstorm.boost.sniper.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.spider.resolve.ImplementationLookup;

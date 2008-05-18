@@ -3,7 +3,7 @@ package au.net.netstorm.boost.gunge.reflect;
 import java.lang.reflect.Constructor;
 import java.util.List;
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 
 public class DefaultConstructorFilter implements ConstructorFilter {
     FunctionalCollection collection;

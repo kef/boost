@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.type.map.holder;
 
 import java.lang.reflect.Array;
 import au.net.netstorm.boost.nursery.type.core.Holder;
-import au.net.netstorm.boost.nursery.type.core.Types;
+import au.net.netstorm.boost.spider.core.Types;
 
 public final class DefaultHolderUtility implements HolderUtility {
     Types types;
