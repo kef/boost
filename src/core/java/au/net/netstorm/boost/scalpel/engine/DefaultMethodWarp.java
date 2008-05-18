@@ -7,6 +7,7 @@ final class DefaultMethodWarp implements MethodWarp {
     EdgeClass classer;
     Unedger unedger;
 
+    // FIX 2328 catch edge exception???
     public Method warp(Class<?> real, Method edge) {
         String name = edge.getName();
         Class<?>[] edgeParams = edge.getParameterTypes();
