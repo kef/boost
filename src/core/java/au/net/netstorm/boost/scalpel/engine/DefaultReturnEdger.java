@@ -17,6 +17,9 @@ final class DefaultReturnEdger implements ReturnEdger {
         // FIX 2328 we early return with the real type.  However we know here
         // FIX 2328 that a ClassCastException will occur.
         // FIX 2328 Suggest check and barf with meaningful message.
+
+        // FIX 2328 MH this highlights a wider area then just this case.
+        // FIX 2328 MH I am thinking that pushing eager validation will be better.
         if (!Edge.class.isAssignableFrom(realType)) return realReturn;
         Class<Edge> edgeType = (Class<Edge>) realType;
         return edger.edge(edgeType, realReturn);
