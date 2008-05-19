@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.lang.reflect.Method;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+
+import java.lang.reflect.Method;
 
 final class DefaultMethodWarp implements MethodWarp {
     EdgeClass classer;
@@ -19,10 +20,9 @@ final class DefaultMethodWarp implements MethodWarp {
     private void validate(Method real, Method edge) {
         Class<?> realReturn = real.getReturnType();
         Class<?> edgeReturn = unedgedReturnType(edge);
-        if (realReturn != edgeReturn) {
-            throw new IllegalArgumentException(
-                    "Edge (" + edge + ") has invalid return type, must be (real or edge) " + realReturn);
-        }
+        if (edgeReturn == void.class) return;
+        if (realReturn == edgeReturn) return;
+        throw new IllegalArgumentException("Edge method \"" + edge + "\" has invalid return type, must be (real or edge) variant of \"" + realReturn + "\".  Instead it is \"" + edgeReturn + "\".");
     }
 
     private Class<?> unedgedReturnType(Method edge) {
