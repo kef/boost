@@ -7,12 +7,12 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.nursery.eight.legged.spider.guts.InjectionContext;
 
 // FIX BREADCRUMB 2328 work out test for generic injection node
-public final class DefaultInjectionGraphAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
-    private InjectionGraph subject;
+public final class DefaultInjectionAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
+    private Injection subject;
     InjectionContext ctxMock;
 
     public void setUpFixtures() {
-        subject = new DefaultInjectionGraph();
+        subject = new DefaultInjection();
     }
 
     public void testBuildAndApply() {
