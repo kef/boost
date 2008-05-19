@@ -20,9 +20,13 @@ final class DefaultMethodWarp implements MethodWarp {
     private void validate(Method real, Method edge) {
         Class<?> realReturn = real.getReturnType();
         Class<?> edgeReturn = unedgedReturnType(edge);
-        if (edgeReturn == void.class) return;
-        if (realReturn == edgeReturn) return;
-        throw new IllegalArgumentException("Edge method \"" + edge + "\" has invalid return type, must be (real or edge) variant of \"" + realReturn + "\".  Instead it is \"" + edgeReturn + "\".");
+        if (edgeReturn != void.class && realReturn != edgeReturn) fail(edge, realReturn, edgeReturn);
+    }
+
+    private void fail(Method edge, Class<?> realReturn, Class<?> edgeReturn) {
+        throw new IllegalArgumentException("Edge method \"" + edge +
+                "\" has invalid return type, must be (real or edge) variant of \"" +
+                realReturn + "\".  Instead it is \"" + edgeReturn + "\".");
     }
 
     private Class<?> unedgedReturnType(Method edge) {
