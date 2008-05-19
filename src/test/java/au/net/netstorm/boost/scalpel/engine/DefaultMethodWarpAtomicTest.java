@@ -2,6 +2,7 @@ package au.net.netstorm.boost.scalpel.engine;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -27,6 +28,14 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
         assertEquals(stream.realMethod(), result);
     }
 
+    public void testWarpVoidReturn() {
+        expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
+        expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
+        expect.oneCall(unedgerMock, void.class, "unedge", int.class);
+        Method result = subject.warp(InputStream.class, stream.edgeMethod());
+        assertEquals(stream.realMethod(), result);
+    }
+    
     public void testWarpWithBadReturnType() {
         expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
         expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
