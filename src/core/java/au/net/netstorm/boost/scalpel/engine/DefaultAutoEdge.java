@@ -25,8 +25,8 @@ final class DefaultAutoEdge implements AutoEdge {
     }
 
     public Object invoke(Object edge, Method edgeMethod, Object[] edgedArgs) {
-        // FIX 2328 Remove trace
         if (unedge.equals(edgeMethod)) return real;
+        // FIX 2328 bad bug here, handle inherited instance methods for static edges
         Method realMethod = warper.warp(realClass, edgeMethod);
         Object[] realArgs = unedger.unedge(edgedArgs);
         Object realReturn = invoker.invoke(realMethod, real, realArgs);
