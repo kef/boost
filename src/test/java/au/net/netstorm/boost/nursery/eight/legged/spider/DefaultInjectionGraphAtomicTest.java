@@ -6,17 +6,18 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 
 // FIX BREADCRUMB 2328 work out test for generic injection node
-public final class DefaultInjectionAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
-    private Injection subject;
+public final class DefaultInjectionGraphAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
+    private InjectionGraph subject;
     InjectionContext ctxMock;
 
     public void setUpFixtures() {
-        subject = new DefaultInjection();
+        subject = new DefaultInjectionGraph();
     }
 
-    public void testApply() {
+    public void testBuildAndApply() {
         // FIX BREADCRUMB 2328 reinstate when implemented
         try {
+            subject.build();
             subject.apply(ctxMock);
             fail();
         } catch (UnsupportedOperationException expected) {}
