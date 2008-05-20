@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.graph;
 import au.net.netstorm.boost.nursery.eight.legged.spider.guts.InjectionContext;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.EdgeProvider;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 
 // FIX BREADCRUMB 2328 driving me up
 public final class DefaultInjection implements Injection {
@@ -15,11 +16,8 @@ public final class DefaultInjection implements Injection {
         provider = new EdgeProvider();
     }
 
-    public Object apply(InjectionContext ctx) {
-        Object[] args = new Object[children.length];
-        for (int i = 0; i < children.length; ++i) {
-            args[i] = children[i].apply(ctx);
-        }
-        return provider.nu(args);
+    public ResolvedInstance apply(InjectionContext ctx) {
+        // FIX 2328 implement
+        throw new UnsupportedOperationException();
     }
 }
