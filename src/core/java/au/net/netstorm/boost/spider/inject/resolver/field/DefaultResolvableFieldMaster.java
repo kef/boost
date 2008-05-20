@@ -11,6 +11,8 @@ public final class DefaultResolvableFieldMaster implements ResolvableFieldMaster
     
     public boolean isResolvableField(Object ref, Field field) {
         field.setAccessible(true);
+        // FIX 2328 MH discuss. I am seeing a general preference for conditionals over expressions
+        // FIX 2328 MH is this accurate - and if so in what circumstances do you choose conditionals over expressions
         return !isStatic(field) && isNull(ref, field) && !isFinal(field) && !isPrivate(field);
     }
 
