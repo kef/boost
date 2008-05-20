@@ -8,9 +8,9 @@ public class BoostTestLifecycleBlocks implements TestLifecycleBlocks {
     private final Class[] pre = {
             ValidateTest.class,
             DataRegisterer.class,
+            InitialiseSubject.class,
             InjectLazyFields.class,
             CallOverlaysWeb.class,
-            InitializeSubject.class,
             InjectTest.class,
             CallSetupFixtures.class,
             InjectSubject.class

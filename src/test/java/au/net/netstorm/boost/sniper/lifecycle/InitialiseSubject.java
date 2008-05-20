@@ -5,7 +5,7 @@ import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.inject.SubjectInitializer;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 
-public final class InitializeSubject implements TestLifecycleBlock {
+public final class InitialiseSubject implements TestLifecycleBlock {
     SubjectInitializer injector;
     Marker marker;
     Test test;
