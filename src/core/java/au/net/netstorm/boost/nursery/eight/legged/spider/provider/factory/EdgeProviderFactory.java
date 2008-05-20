@@ -5,7 +5,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.EdgeProvi
 import au.net.netstorm.boost.nursery.eight.legged.spider.guts.InjectionSite;
 
 // FIX 2328 just giving some concepts a name and trying to map them to existing functionality
-public final class EdgeProviderFactory implements PartialProviderFactory {
+public final class EdgeProviderFactory implements ProviderFactory {
     public Provider nu(InjectionSite site) {
         return new EdgeProvider();
     }
