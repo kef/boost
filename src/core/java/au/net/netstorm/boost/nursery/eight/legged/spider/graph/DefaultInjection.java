@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.graph;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.guts.InjectionContext;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.EdgeProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.EdgeProvider;
 
 // FIX BREADCRUMB 2328 driving me up
 public final class DefaultInjection implements Injection {

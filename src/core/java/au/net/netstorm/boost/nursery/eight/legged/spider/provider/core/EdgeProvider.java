@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
+package au.net.netstorm.boost.nursery.eight.legged.spider.provider.core;
 
 public final class EdgeProvider implements Provider {
     public Object nu(Object[] args) {
