@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.SingleProvider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.MultiProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.spider.registry.BlueprintsRead;
 import au.net.netstorm.boost.spider.registry.Blueprint;
@@ -37,6 +35,7 @@ public final class BlueprintedProviderFactory implements ProviderFactory {
     private Provider nuProvider(Blueprint blueprint) {
         Implementation impl = blueprint.getImplementation();
         Stamp stamp = blueprint.getStamp();
-        return stamp == Stamp.SINGLE ? new SingleProvider(impl) : new MultiProvider(impl);
+//        return stamp == Stamp.SINGLE ? new SingleProvider(impl) : new MultiProvider(impl);
+        return null;
     }
 }
