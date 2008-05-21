@@ -3,16 +3,16 @@ package au.net.netstorm.boost.sniper.lifecycle;
 import java.io.PrintStream;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.exception.ThrowableSupport;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.core.Types;
 
 public class DefaultTestLifecycleRunner implements TestLifecycleRunner {
     ThrowableSupport throwableSupport;
     TestLifecycleBlocks lifecycle;
     Test test;
-    Nu nu;
+    Types types;
 
     public void run() throws Throwable {
-        TestLifecycleBlockRunner blockRunner = nu.nu(DefaultTestLifecycleBlockRunner.class, lifecycle);
+        TestLifecycleBlockRunner blockRunner = types.nu(TestLifecycleBlockRunner.class, lifecycle);
         try {
             runTest(blockRunner);
         } catch (Throwable t) {
