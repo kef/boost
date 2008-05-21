@@ -29,7 +29,7 @@ public class DefaultExpectations implements Expectations {
         nus.nu(obj, impl, params);
     }
 
-    public <T> void types(T obj, Class<T> iface, Object... params) {
+    public <T> void types(T obj, Class<? extends T> iface, Object... params) {
         types.types(obj, iface, params);
     }
 }
