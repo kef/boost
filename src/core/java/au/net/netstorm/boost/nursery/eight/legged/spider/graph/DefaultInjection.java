@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.graph;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.guts.InjectionContext;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.core.EdgeProvider;
 import au.net.netstorm.boost.gunge.type.ResolvedInstance;

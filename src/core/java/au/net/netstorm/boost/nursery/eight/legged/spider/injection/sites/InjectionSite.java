@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.guts;
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
 import au.net.netstorm.boost.spider.linkage.Linkage;
 

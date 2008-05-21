@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.guts;
+package au.net.netstorm.boost.nursery.eight.legged.spider.graph;
 
 // FIX 2328 state used to build injection graph
 // FIX 2328   rule: ensure one injection per injection graph
