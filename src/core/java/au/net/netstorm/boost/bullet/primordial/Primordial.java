@@ -9,6 +9,7 @@ public class Primordial {
     private static EqualsMaster equalsMaster = new FieldBasedEqualsMaster();
     private static ToStringMaster toStringMaster = new IndentingToStringMaster();
 
+    // SUGGEST: Equals is based on fields.  Why isn't hashCode.
     public int hashCode() {
         return 42;
     }
