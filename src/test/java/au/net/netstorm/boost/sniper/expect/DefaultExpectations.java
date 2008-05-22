@@ -4,10 +4,10 @@ import au.net.netstorm.boost.sniper.automock.MockExpectations;
 
 public class DefaultExpectations implements Expectations {
     private final MockExpectations mocks;
-    private final NuExpectations nus;
+    private final NuImplExpectations nus;
     private final TypesExpectations types;
 
-    public DefaultExpectations(MockExpectations mocks, NuExpectations nus, TypesExpectations types) {
+    public DefaultExpectations(MockExpectations mocks, NuImplExpectations nus, TypesExpectations types) {
         this.mocks = mocks;
         this.nus = nus;
         this.types = types;

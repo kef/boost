@@ -4,12 +4,12 @@ import au.net.netstorm.boost.sniper.automock.MockExpectations;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
-public class DefaultNuExpectations implements NuExpectations {
+public class DefaultNuImplExpectations implements NuImplExpectations {
     private final MockExpectations expect;
     FieldTestUtil fielder;
     Test test;
 
-    public DefaultNuExpectations(MockExpectations expect) {
+    public DefaultNuImplExpectations(MockExpectations expect) {
         this.expect = expect;
     }
 
