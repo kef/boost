@@ -9,7 +9,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 import au.net.netstorm.boost.spider.core.Spider;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
@@ -21,5 +21,5 @@ public class ResolverDemooooTest extends LifecycleTestCase implements LazyFields
     public final GraphUtil grapher = new DefaultGraphUtil();
     public final Registry registry = spider.resolve(Registry.class);
     public final Resolver resolver = spider;
-    public final Nu nu = spider;
+    public final NuImpl nuImpl = spider;
 }

@@ -9,7 +9,7 @@ import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 import au.net.netstorm.boost.nursery.proxy.DefaultLayerSpec;
 import au.net.netstorm.boost.nursery.proxy.LayerSpec;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
@@ -25,15 +25,16 @@ public final class DefaultRegistry implements Registry {
     private final Instances instances;
     private final Factories factories;
     private final Layers proxies;
-    private final Nu nu;
+    private final NuImpl nuImpl;
 
     // SUGGEST: Split registry into two, where Factory stuff has its own interface.
-    public DefaultRegistry(Blueprints blueprints, Instances instances, Factories factories, Layers proxies, Nu nu) {
+    public DefaultRegistry(
+            Blueprints blueprints, Instances instances, Factories factories, Layers proxies, NuImpl nuImpl) {
         this.blueprints = blueprints;
         this.instances = instances;
         this.factories = factories;
         this.proxies = proxies;
-        this.nu = nu;
+        this.nuImpl = nuImpl;
     }
 
     public <T> void multiple(Class<T> iface, Class<? extends T> impl) {
@@ -71,7 +72,7 @@ public final class DefaultRegistry implements Registry {
     }
 
     public <T extends Factory> void factory(Class<T> cls) {
-        Factory factory = nu.nu(cls);
+        Factory factory = nuImpl.nu(cls);
         factories.add(factory);
     }
 

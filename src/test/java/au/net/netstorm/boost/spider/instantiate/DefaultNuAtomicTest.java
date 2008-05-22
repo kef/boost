@@ -17,10 +17,10 @@ public final class DefaultNuAtomicTest extends LifecycleTestCase implements HasF
     Implementation impl = new DefaultImplementation(SHU);
     ProviderEngine engineMock;
     Tongue tongueDummy;
-    Nu subject;
+    NuImpl subject;
 
     public void setUpFixtures() {
-        subject = new DefaultNu(engineMock);
+        subject = new DefaultNuImpl(engineMock);
         shu = new Shu(tongueDummy);
         resolvedInstance = new DefaultBaseReference(shu);
         params = new Object[]{tongueDummy};

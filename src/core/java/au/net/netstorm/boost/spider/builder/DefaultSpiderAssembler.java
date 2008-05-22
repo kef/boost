@@ -22,9 +22,9 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableField
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldFinder;
 import au.net.netstorm.boost.spider.instance.DefaultPartialInstances;
 import au.net.netstorm.boost.spider.instance.PartialInstances;
-import au.net.netstorm.boost.spider.instantiate.DefaultNu;
+import au.net.netstorm.boost.spider.instantiate.DefaultNuImpl;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyLayer;
@@ -73,10 +73,10 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
             ResolverEngine resolverEngine,
             InjectorEngine injectorEngine
     ) {
-        Nu nu = new DefaultNu(providerEngine);
+        NuImpl nuImpl = new DefaultNuImpl(providerEngine);
         Resolver resolver = new DefaultResolver(resolverEngine);
         Injector injector = new DefaultInjector(injectorEngine);
-        return new DefaultSpider(nu, injector, resolver);
+        return new DefaultSpider(nuImpl, injector, resolver);
     }
 
     private ResolverEngine assembleResolver(

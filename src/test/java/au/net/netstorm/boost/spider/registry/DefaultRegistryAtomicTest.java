@@ -10,7 +10,7 @@ import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.spider.linkage.LinkageFactory;
@@ -42,11 +42,11 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     Layers proxiesMock;
     Registry subject;
     String name;
-    Nu nuMock;
+    NuImpl nuImplMock;
 
     // FIX ()   2237 Incorporate hosts for multiple (definitely) and instances (maybe)???
     public void setUpFixtures() {
-        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, proxiesMock, nuMock);
+        subject = new DefaultRegistry(blueprintsMock, instancesMock, factoriesMock, proxiesMock, nuImplMock);
     }
 
     public void testMultiple() {

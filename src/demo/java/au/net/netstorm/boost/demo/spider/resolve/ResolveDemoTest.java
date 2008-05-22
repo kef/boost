@@ -21,12 +21,12 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
     }
 
     public void testNoArgProvide() {
-        TheDude theDude = nu.nu(JeffBridges.class);
+        TheDude theDude = nuImpl.nu(JeffBridges.class);
         checkTheDudeIsReallyJeff(theDude);
     }
 
     public void testProvide() {
-        Cinema regalCinema = nu.nu(RegalCinema.class);
+        Cinema regalCinema = nuImpl.nu(RegalCinema.class);
         assertNotNull(regalCinema);
     }
 
@@ -88,7 +88,7 @@ public final class ResolveDemoTest extends ResolverDemooooTest {
     }
 
     private Object nu(Class impl) {
-        Object ref = nu.nu(impl);
+        Object ref = nuImpl.nu(impl);
         assertNotNull(ref);
         return ref;
     }

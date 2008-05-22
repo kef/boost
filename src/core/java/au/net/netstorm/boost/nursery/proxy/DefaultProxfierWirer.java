@@ -10,18 +10,18 @@ import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeField;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
-import au.net.netstorm.boost.spider.instantiate.DefaultNu;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.DefaultNuImpl;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public final class DefaultProxfierWirer implements ProxifierWirer {
     private final ProxyFactory proxies = new DefaultProxyFactory();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final EdgeField fielder = new DefaultEdgeField();
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Nu nu;
+    private final NuImpl nuImpl;
 
     public DefaultProxfierWirer(ProviderEngine engine) {
-        this.nu = new DefaultNu(engine);
+        this.nuImpl = new DefaultNuImpl(engine);
     }
 
     public Proxifier get() {
@@ -33,7 +33,7 @@ public final class DefaultProxfierWirer implements ProxifierWirer {
     private void wire(Proxifier proxifier) {
         setField(proxifier, "proxies", proxies);
         setField(proxifier, "typer", typer);
-        setField(proxifier, "nu", nu);
+        setField(proxifier, "nuImpl", nuImpl);
     }
 
     private void setField(Proxifier proxifier, String name, Object ref) {

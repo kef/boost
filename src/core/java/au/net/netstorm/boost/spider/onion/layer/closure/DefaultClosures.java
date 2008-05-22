@@ -2,17 +2,17 @@ package au.net.netstorm.boost.spider.onion.layer.closure;
 
 import au.net.netstorm.boost.gunge.array.ArrayMaster;
 import au.net.netstorm.boost.nursery.proxy.Proxifier;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultClosures implements Closures {
     Proxifier proxifier;
     ArrayMaster arrays;
-    Nu nu;
+    NuImpl nuImpl;
 
     public <T, U extends Layer> T closure(Class<U> cls, T ref, Object... args) {
         Object[] all = combine(ref, args);
-        Layer layer = nu.nu(cls, all);
+        Layer layer = nuImpl.nu(cls, all);
         return proxifier.proxy(ref, layer);
     }
 

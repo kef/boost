@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.sniper.lifecycle;
 
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public class DefaultTestLifecycleBlockRunner implements TestLifecycleBlockRunner {
     private final TestLifecycleBlocks lifecycle;
-    Nu nu;
+    NuImpl nuImpl;
 
     public DefaultTestLifecycleBlockRunner(TestLifecycleBlocks lifecycle) {
         this.lifecycle = lifecycle;
@@ -27,7 +27,7 @@ public class DefaultTestLifecycleBlockRunner implements TestLifecycleBlockRunner
 
     private void execute(Class[] blocks) {
         for (Class cls : blocks) {
-            TestLifecycleBlock block = (TestLifecycleBlock) nu.nu(cls);
+            TestLifecycleBlock block = (TestLifecycleBlock) nuImpl.nu(cls);
             block.execute();
         }
     }

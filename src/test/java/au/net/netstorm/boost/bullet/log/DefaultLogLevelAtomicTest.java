@@ -10,7 +10,7 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public final class DefaultLogLevelAtomicTest extends LifecycleTestCase implements InjectableTest, HasFixtures, LazyFields {
     private FieldSpec f1 = new DefaultFieldSpec("name", String.class);
@@ -18,7 +18,7 @@ public final class DefaultLogLevelAtomicTest extends LifecycleTestCase implement
     FieldTestUtil fielder;
     Random random;
     String name;
-    Nu nu;
+    NuImpl nuImpl;
 
     public void test() {
         checker.check(DefaultLogLevel.class, new FieldSpec[]{f1});
@@ -28,6 +28,6 @@ public final class DefaultLogLevelAtomicTest extends LifecycleTestCase implement
     }
 
     public void setUpFixtures() {
-        checker = nu.nu(ConstructorNullDataChecker.class, random);
+        checker = nuImpl.nu(ConstructorNullDataChecker.class, random);
     }
 }
