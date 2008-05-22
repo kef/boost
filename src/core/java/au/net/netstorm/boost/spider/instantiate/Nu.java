@@ -2,8 +2,8 @@ package au.net.netstorm.boost.spider.instantiate;
 
 // FIX 2328 Support "edges".
 
-// FIX 2328 MH i think this iface should go all together, once you start abstracting out the creation of
-// FIX 2328 MH objects properly, the logic contained by this fellow should be hidden away never to be head from
 public interface Nu {
+    // FIX 2394 slowly minimising calls to this fellow, will be replaced by Types#nu
+    // FIX 2394 one idea for getting rid of this all together is to make direct impls be registered
     <T> T nu(Class<T> impl, Object... params);
 }
