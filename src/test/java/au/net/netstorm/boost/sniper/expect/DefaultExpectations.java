@@ -25,10 +25,12 @@ public class DefaultExpectations implements Expectations {
         mocks.manyCalls(ref, returnValue, methodName, parameters);
     }
 
+    // FIX 2394 why am i forced declare nuMock in the test when I don't acutally use, suggest it happens by automagic
     public <T> void nu(T obj, Class<? extends T> impl, Object... params) {
         nus.nu(obj, impl, params);
     }
 
+    // FIX 2394 why am i forced declare typesMock in the test when I don't acutally use, suggest it happens by automagic
     public <T> void types(T obj, Class<? extends T> iface, Object... params) {
         types.types(obj, iface, params);
     }

@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.resolve;
 
 import au.net.netstorm.boost.spider.core.Constructable;
-import au.net.netstorm.boost.spider.instantiate.Nu;
+import au.net.netstorm.boost.spider.core.Types;
 
 final class DefaultX implements X, Constructable {
-    Nu nu;
+    Types types;
 
     public void constructor() {
-        nu.nu(DefaultZ.class);
+        types.nu(Z.class);
     }
 }
