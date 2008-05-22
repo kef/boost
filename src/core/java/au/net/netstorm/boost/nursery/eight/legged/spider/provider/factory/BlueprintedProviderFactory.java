@@ -8,7 +8,7 @@ import au.net.netstorm.boost.spider.registry.Stamp;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.gunge.type.Implementation;
 
-// FIX 2328 just giving some concepts a name and trying to map them to existing functionality
+// FIX 2394 just giving some concepts a name and trying to map them to existing functionality
 public final class BlueprintedProviderFactory implements ProviderFactory {
     private final BlueprintsRead blueprints;
 
