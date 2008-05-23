@@ -52,6 +52,7 @@ public final class DefaultPartialInstances implements PartialInstances {
     }
 
     private Map nuMap() {
+        // FIX 2394 1. why linked map? 2. should be strict
         Map map = new LinkedHashMap();
         LOCAL_MON.set(map);
         return get();

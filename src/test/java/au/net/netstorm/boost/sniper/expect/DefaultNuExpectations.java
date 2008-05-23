@@ -15,7 +15,7 @@ public class DefaultNuExpectations implements NuExpectations {
 
     // FIX BREADCRUMB 2394 rename me
     public <T> void nu(T obj, Class<? extends T> iface, Object... params) {
-        Object types = fielder.getInstance(test, "nuMock");
-        expect.oneCall(types, obj, "nu", iface, params);
+        Object nu = fielder.getInstance(test, "nuMock");
+        expect.oneCall(nu, obj, "nu", iface, params);
     }
 }

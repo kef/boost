@@ -8,12 +8,13 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.DefaultFieldTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.spider.core.Destroyable;
 
-public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase implements LazyFields, HasFixtures {
+public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase implements Destroyable, LazyFields, HasFixtures {
     FieldTestUtil fielder = new DefaultFieldTestUtil();
     PartialInstances subject;
-    Implementation impl;
-    BaseReference instance;
+    Implementation implMock;
+    BaseReference instanceMock;
     Implementation doesNotExist;
 
     public void setUpFixtures() {
@@ -22,18 +23,22 @@ public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase i
         fielder.setInstance(doesNotExist, "impl", String.class);
     }
 
+    public void destroy() {
+        subject.clear();
+    }
+
     public void testExists() {
-        checkExists(impl, false);
-        checkPut(impl, instance);
-        checkExists(impl, true);
+        checkExists(implMock, false);
+        checkPut(implMock, instanceMock);
+        checkExists(implMock, true);
     }
 
     public void testPutSuccess() {
-        checkPut(impl, instance);
+        checkPut(implMock, instanceMock);
     }
 
     public void testGetFailure() {
-        subject.put(impl, instance);
+        subject.put(implMock, instanceMock);
         try {
             subject.get(doesNotExist);
             fail();
@@ -41,9 +46,9 @@ public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase i
     }
 
     public void testPutFailure() {
-        subject.put(impl, instance);
+        subject.put(implMock, instanceMock);
         try {
-            subject.put(impl, instance);
+            subject.put(implMock, instanceMock);
             fail();
         }
         catch (IllegalStateException expected) {
@@ -51,9 +56,9 @@ public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase i
     }
 
     public void testRemove() {
-        subject.put(impl, instance);
-        subject.remove(impl);
-        checkExists(impl, false);
+        subject.put(implMock, instanceMock);
+        subject.remove(implMock);
+        checkExists(implMock, false);
     }
 
     private void checkExists(Implementation myimpl, boolean myexpected) {
@@ -63,7 +68,7 @@ public final class DefaultPartialInstancesAtomicTest extends LifecycleTestCase i
 
     private void checkPut(Implementation implementation, BaseReference baseReference) {
         subject.put(implementation, baseReference);
-        ResolvedInstance actual = subject.get(impl);
-        assertEquals(instance, actual);
+        ResolvedInstance actual = subject.get(implMock);
+        assertEquals(instanceMock, actual);
     }
 }

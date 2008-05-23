@@ -1,12 +1,8 @@
 package au.net.netstorm.boost.sniper.core;
 
-import au.net.netstorm.boost.sniper.automock.DefaultMockExpectations;
 import au.net.netstorm.boost.sniper.automock.MockExpectations;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.bootstrap.TestLifecycleBootstrap;
-import au.net.netstorm.boost.sniper.expect.DefaultExpectations;
-import au.net.netstorm.boost.sniper.expect.DefaultNuImplExpectations;
-import au.net.netstorm.boost.sniper.expect.DefaultNuExpectations;
 import au.net.netstorm.boost.sniper.expect.Expectations;
 import au.net.netstorm.boost.sniper.expect.NuImplExpectations;
 import au.net.netstorm.boost.sniper.expect.NuExpectations;
@@ -32,10 +28,10 @@ public class LifecycleTestCase extends CleanTestCase {
         setupRegistry();
         bootstrap();
         MockSupport mocks = spider.resolve(MockSupport.class);
-        MockExpectations mockExpectations = spider.nu(DefaultMockExpectations.class, mocks);
-        NuImplExpectations nuImplExpectations = spider.nu(DefaultNuImplExpectations.class, mockExpectations);
-        NuExpectations nuExpectations = spider.nu(DefaultNuExpectations.class, mockExpectations);
-        expect = spider.nu(DefaultExpectations.class, mockExpectations, nuImplExpectations, nuExpectations);
+        MockExpectations mockExpectations = spider.nu(MockExpectations.class, mocks);
+        NuImplExpectations nuImplExpectations = spider.nu(NuImplExpectations.class, mockExpectations);
+        NuExpectations nuExpectations = spider.nu(NuExpectations.class, mockExpectations);
+        expect = spider.nu(Expectations.class, mockExpectations, nuImplExpectations, nuExpectations);
         runner = spider.resolve(TestLifecycleRunner.class);
     }
 

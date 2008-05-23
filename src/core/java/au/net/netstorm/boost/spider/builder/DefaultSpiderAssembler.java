@@ -13,6 +13,8 @@ import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.core.SpiderTryFinally;
+import au.net.netstorm.boost.spider.core.Nu;
+import au.net.netstorm.boost.spider.core.DefaultNu;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -34,15 +36,27 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLa
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Instances;
+import au.net.netstorm.boost.spider.registry.Registry;
+import au.net.netstorm.boost.spider.registry.DefaultRegistry;
+import au.net.netstorm.boost.spider.registry.Blueprints;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
+import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
+import au.net.netstorm.boost.spider.resolve.DefaultImplementationLookup;
+import au.net.netstorm.boost.spider.linkage.LinkageFactory;
+import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 
 // SUGGEST: No need to return everything, just register the relevant parts as part of construction ;)
 
 // FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 
-// DEBT DataAbstractionCoupling {
+// FIX 2394 this needs significant work to be unwound from itself, main problem is that you can't utilize
+// FIX 2394 resolver when there are no factories registered, even if there are valid complete instances
+// FIX 2394 highlights needs for an "instance" factory rather than shoe-horning through blueprints
+
+// FIX BREADCRUMB 2394 currently unwinding this mess
+// DEBT DataAbstractionCoupling|ParameterNumber {
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);
     private static final Interface SPIDER_TYPE = new DefaultInterface(Spider.class);
@@ -51,15 +65,54 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
 
-    // SUGGEST: Move the creation/registration of the factories up one level.  Use the registry.
-    public Spider assemble(Instances instances, Factories factories, Layers proxies) {
+    public Spider assemble(Instances instances, Factories factories, Blueprints blueprints, Layers proxies) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator, proxies);
         passThrough.setDelegate(providerEngine);
-        Spider spider = buildSpider(providerEngine, resolverEngine, injectorEngine);
+        Spider spider =
+                buildSpider(instances, factories, blueprints, proxies, resolverEngine, injectorEngine, providerEngine);
         return threadLocal(spider);
+    }
+
+    private Spider buildSpider(Instances instances, Factories factories, Blueprints blueprints, Layers proxies,
+            ResolverEngine resolverEngine, InjectorEngine injectorEngine, ProviderEngine providerEngine) {
+        NuImpl nuImpl = new DefaultNuImpl(providerEngine);
+        Registry registry = assembleRegistry(instances, factories, blueprints, proxies, nuImpl);
+        Nu nu = bootStrapNu(registry, factories, nuImpl);
+        Injector injector = bootStrapInjector(registry, injectorEngine);
+        Resolver resolver = assembleResolver(registry, resolverEngine);
+        return new DefaultSpider(nu, injector, resolver, registry);
+    }
+
+    private Resolver assembleResolver(Registry registry, ResolverEngine resolverEngine) {
+        Resolver resolver = new DefaultResolver(resolverEngine);
+        registry.instance(Resolver.class, resolver);
+        return resolver;
+    }
+
+    private Registry assembleRegistry(Instances instances, Factories factories, Blueprints blueprints, Layers proxies,
+            NuImpl nuImpl) {
+        Registry registry = new DefaultRegistry(blueprints, instances, factories, proxies, nuImpl);
+        registry.instance(Registry.class, registry);
+        registry.instance(NuImpl.class, nuImpl);
+        return registry;
+    }
+
+    private Injector bootStrapInjector(Registry registry, InjectorEngine injectorEngine) {
+        Injector injector = new DefaultInjector(injectorEngine);
+        registry.instance(Injector.class, injector);
+        return injector;
+    }
+
+    private Nu bootStrapNu(Registry registry, Factories factories, NuImpl nuImpl) {
+        LinkageFactory linkages = new DefaultLinkageFactory();
+        ImplementationLookup lookup = new DefaultImplementationLookup(factories, linkages);
+        Nu nu = new DefaultNu(lookup, nuImpl);
+        registry.instance(ImplementationLookup.class, lookup);
+        registry.instance(Nu.class, nu);
+        return nu;
     }
 
     private Spider threadLocal(Spider spider) {
@@ -68,29 +121,11 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return (Spider) proxyFactory.newProxy(SPIDER_TYPE, layer);
     }
 
-    private Spider buildSpider(
-            ProviderEngine providerEngine,
-            ResolverEngine resolverEngine,
-            InjectorEngine injectorEngine
-    ) {
-        NuImpl nuImpl = new DefaultNuImpl(providerEngine);
-        Resolver resolver = new DefaultResolver(resolverEngine);
-        Injector injector = new DefaultInjector(injectorEngine);
-        return new DefaultSpider(nuImpl, injector, resolver);
-    }
-
-    private ResolverEngine assembleResolver(
-            ProviderEngine provider,
-            Instances instances,
-            Factories factories) {
+    private ResolverEngine assembleResolver(ProviderEngine provider, Instances instances, Factories factories) {
         return new DefaultResolverEngine(instances, factories, provider);
     }
 
     private InjectorEngine assembleInjector(ResolverEngine resolver) {
-        return assembleResolverInjector(resolver);
-    }
-
-    private InjectorEngine assembleResolverInjector(ResolverEngine resolver) {
         ResolvableFieldFinder finder = new DefaultResolvableFieldFinder();
         FieldResolver fieldResolver = new DefaultFieldResolver(resolver);
         return new DefaultInjectorEngine(finder, fieldResolver);

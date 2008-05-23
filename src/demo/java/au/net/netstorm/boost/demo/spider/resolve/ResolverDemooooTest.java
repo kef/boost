@@ -21,5 +21,5 @@ public class ResolverDemooooTest extends LifecycleTestCase implements LazyFields
     public final GraphUtil grapher = new DefaultGraphUtil();
     public final Registry registry = spider.resolve(Registry.class);
     public final Resolver resolver = spider;
-    public final NuImpl nuImpl = spider;
+    public final NuImpl nuImpl = resolver.resolve(NuImpl.class);
 }
