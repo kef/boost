@@ -31,7 +31,7 @@ public class DefaultExpectations implements Expectations {
     }
 
     // FIX 2394 why am i forced declare typesMock in the test when I don't acutally use, suggest it happens by automagic
-    public <T> void types(T obj, Class<? extends T> iface, Object... params) {
-        nu.types(obj, iface, params);
+    public <T> void nu(T obj, Class<? extends T> iface, Object... params) {
+        nu.nu(obj, iface, params);
     }
 }
