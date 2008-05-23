@@ -14,7 +14,7 @@ public class DefaultNuImplExpectations implements NuImplExpectations {
     }
 
     // SUGGEST (Dec 6, 2007): Could we remove the nuMock fields from our test?
-    public <T> void nu(T obj, Class<? extends T> impl, Object... params) {
+    public <T> void nuImpl(T obj, Class<? extends T> impl, Object... params) {
         Object nu = fielder.getInstance(test, "nuImplMock");
         expect.oneCall(nu, obj, "nu", impl, params);
     }

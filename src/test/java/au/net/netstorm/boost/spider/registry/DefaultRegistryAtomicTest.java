@@ -90,7 +90,7 @@ public final class DefaultRegistryAtomicTest extends LifecycleTestCase implement
     }
 
     public void testFactoryByClassSucceeds() {
-        expect.nu(factoryDummy, soapFactoryClass, NO_ARGS);
+        expect.nuImpl(factoryDummy, soapFactoryClass, NO_ARGS);
         expect.oneCall(factoriesMock, VOID, "add", factoryDummy);
         subject.factory(soapFactoryClass);
     }
