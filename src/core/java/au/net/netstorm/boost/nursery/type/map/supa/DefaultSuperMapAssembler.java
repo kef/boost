@@ -5,14 +5,14 @@ import au.net.netstorm.boost.gunge.typed.TypedMap;
 import au.net.netstorm.boost.gunge.typed.TypedMapRead;
 import au.net.netstorm.boost.gunge.typed.TypedMapWrite;
 import au.net.netstorm.boost.nursery.type.map.holder.HolderMap;
-import au.net.netstorm.boost.spider.core.Types;
+import au.net.netstorm.boost.spider.core.Nu;
 
 public final class DefaultSuperMapAssembler implements SuperMapAssembler {
-    Types types;
+    Nu nu;
 
     public SuperMap assemble(TypedMapRead read) {
         TypedMapWrite write = new BoomTypedMapWrite();
-        TypedMap readwrite = types.nu(TypedMap.class, read, write);
+        TypedMap readwrite = nu.nu(TypedMap.class, read, write);
         return assemble(readwrite);
     }
 
@@ -21,7 +21,7 @@ public final class DefaultSuperMapAssembler implements SuperMapAssembler {
     }
 
     public SuperMap assemble(TypedMap typed) {
-        HolderMap holder = types.nu(HolderMap.class, typed);
-        return types.nu(SuperMap.class, typed, holder);
+        HolderMap holder = nu.nu(HolderMap.class, typed);
+        return nu.nu(SuperMap.class, typed, holder);
     }
 }

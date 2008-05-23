@@ -2,7 +2,7 @@ package au.net.netstorm.boost.scalpel.engine;
 
 import java.net.URL;
 import java.util.List;
-import au.net.netstorm.boost.spider.core.Types;
+import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeURL;
 import au.net.netstorm.boost.scalpel.testdata.java.util.ArrayList;
 import au.net.netstorm.boost.scalpel.testdata.java.util.UnedgableList;
@@ -21,7 +21,7 @@ public final class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implem
     private EdgeFactory subject;
     URLFixture url;
     ProxySupplier proxierMock;
-    Types typesMock;
+    Nu nuMock;
     AutoEdge edgeMock;
     AutoEdgeURL urlMock;
     ArrayList<?> arrayListMock;
@@ -49,7 +49,7 @@ public final class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implem
         Object[] args = {realClass, real};
         Class<?>[] types = {edgeClass, Unedgable.class};
         ClassLoader loader = edgeClass.getClassLoader();
-        expect.oneCall(typesMock, edgeMock, "nu", AutoEdge.class, args);
+        expect.oneCall(nuMock, edgeMock, "nu", AutoEdge.class, args);
         expect.oneCall(proxierMock, edge, "getProxy", loader, types, edgeMock);
     }
 }

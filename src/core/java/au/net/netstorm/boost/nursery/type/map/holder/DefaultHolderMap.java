@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.type.map.holder;
 
 import au.net.netstorm.boost.gunge.typed.TypeUtility;
 import au.net.netstorm.boost.gunge.typed.TypedMap;
-import au.net.netstorm.boost.spider.core.Types;
+import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.nursery.type.primitive.BooleanHolder;
 import au.net.netstorm.boost.nursery.type.primitive.BytesHolder;
 import au.net.netstorm.boost.nursery.type.primitive.IntegerHolder;
@@ -13,7 +13,7 @@ public final class DefaultHolderMap implements au.net.netstorm.boost.nursery.typ
     private final TypedMap map;
     HolderUtility holderUtility;
     TypeUtility typeUtility;
-    Types types;
+    Nu nu;
 
     public DefaultHolderMap(TypedMap map) {
         this.map = map;
@@ -21,22 +21,22 @@ public final class DefaultHolderMap implements au.net.netstorm.boost.nursery.typ
 
     public <T extends IntegerHolder> T getIntHolder(String key, Class<T> iface) {
         Integer value = map.getInt(key);
-        return types.nu(iface, value);
+        return nu.nu(iface, value);
     }
 
     public <T extends StringHolder> T getStringHolder(String key, Class<T> iface) {
         String value = map.getString(key);
-        return types.nu(iface, value);
+        return nu.nu(iface, value);
     }
 
     public <T extends BytesHolder> T getBytesHolder(String key, Class<T> iface) {
         byte[] value = map.getBytes(key);
-        return types.nu(iface, value);
+        return nu.nu(iface, value);
     }
 
     public <T extends BooleanHolder> T getBooleanHolder(String key, Class<T> iface) {
         Boolean value = map.getBoolean(key);
-        return types.nu(iface, value);
+        return nu.nu(iface, value);
     }
 
     public <T extends IntegerHolder> T[] getIntsHolder(String key, Class<T> iface) {

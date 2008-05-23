@@ -2,7 +2,7 @@ package au.net.netstorm.boost.sniper.inject;
 
 import java.lang.reflect.Field;
 
-import au.net.netstorm.boost.spider.core.Types;
+import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.sniper.reflect.util.ClassTestUtil;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
@@ -10,7 +10,7 @@ import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
 public class DefaultSubjectInitializer implements SubjectInitializer {
     ImplementationLookup lookup;
-    Types typer;
+    Nu typer;
     ClassTestUtil classer;
     FieldTestUtil fielder;
     ResolvableFieldMaster resolvable;

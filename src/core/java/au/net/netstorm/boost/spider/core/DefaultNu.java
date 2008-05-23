@@ -4,11 +4,11 @@ import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
 
 // FIX (Nov 21, 2007) 2233 Move out of nursery
-public class DefaultTypes implements Types {
+public class DefaultNu implements Nu {
     private NuImpl nuImpl;
     private ImplementationLookup lookup;
 
-    public DefaultTypes(ImplementationLookup lookup, NuImpl nuImpl) {
+    public DefaultNu(ImplementationLookup lookup, NuImpl nuImpl) {
         this.lookup = lookup;
         this.nuImpl = nuImpl;
     }

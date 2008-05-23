@@ -3,8 +3,8 @@ package au.net.netstorm.boost.spider.builder;
 import au.net.netstorm.boost.gunge.impl.ImplMaster;
 import au.net.netstorm.boost.nursery.spider.layer.DefaultLayers;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
-import au.net.netstorm.boost.spider.core.DefaultTypes;
-import au.net.netstorm.boost.spider.core.Types;
+import au.net.netstorm.boost.spider.core.DefaultNu;
+import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
@@ -55,9 +55,9 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
     private void buildTypes(Registry registry, Factories factories, NuImpl nuImpl) {
         LinkageFactory linkages = new DefaultLinkageFactory();
         ImplementationLookup lookup = new DefaultImplementationLookup(factories, linkages);
-        Types types = new DefaultTypes(lookup, nuImpl);
+        Nu nu = new DefaultNu(lookup, nuImpl);
         registry.instance(ImplementationLookup.class, lookup);
-        registry.instance(Types.class, types);
+        registry.instance(Nu.class, nu);
     }
 
     private void buildFactories(Registry registry, ImplMaster impler, Blueprints blueprints) {

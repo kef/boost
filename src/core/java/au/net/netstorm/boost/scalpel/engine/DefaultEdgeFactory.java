@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import au.net.netstorm.boost.spider.core.Types;
+import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.scalpel.core.Edge;
 import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;
 
 public final class DefaultEdgeFactory implements EdgeFactory {
     ProxySupplier proxier;
-    Types types;
+    Nu nu;
 
     public <E extends Edge> E nu(Class<E> edgeClass, Class<?> realClass, Object real) {
         Object proxy = nuEdgeProxy(edgeClass, realClass, real);
@@ -24,7 +24,7 @@ public final class DefaultEdgeFactory implements EdgeFactory {
     private <E> Object nuEdgeProxy(Class<E> edgeClass, Class<?> realClass, Object real) {
         ClassLoader loader = edgeClass.getClassLoader();
         Class<?>[] type = {edgeClass, Unedgable.class};
-        AutoEdge handler = types.nu(AutoEdge.class, realClass, real);
+        AutoEdge handler = nu.nu(AutoEdge.class, realClass, real);
         return proxier.getProxy(loader, type, handler);
     }
 }

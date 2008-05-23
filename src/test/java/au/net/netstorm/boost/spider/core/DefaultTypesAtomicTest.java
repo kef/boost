@@ -8,13 +8,13 @@ import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public final class DefaultTypesAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
-    private Types subject;
+    private Nu subject;
     ImplementationLookup lookupMock;
     NuImpl nuImplMock;
     Rock rockMock;
 
     public void setUpFixtures() {
-        subject = new DefaultTypes(lookupMock, nuImplMock);
+        subject = new DefaultNu(lookupMock, nuImplMock);
     }
 
     public void testNu() {
