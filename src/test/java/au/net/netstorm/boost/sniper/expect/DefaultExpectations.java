@@ -5,12 +5,12 @@ import au.net.netstorm.boost.sniper.automock.MockExpectations;
 public class DefaultExpectations implements Expectations {
     private final MockExpectations mocks;
     private final NuImplExpectations nus;
-    private final TypesExpectations types;
+    private final NuExpectations nu;
 
-    public DefaultExpectations(MockExpectations mocks, NuImplExpectations nus, TypesExpectations types) {
+    public DefaultExpectations(MockExpectations mocks, NuImplExpectations nus, NuExpectations nu) {
         this.mocks = mocks;
         this.nus = nus;
-        this.types = types;
+        this.nu = nu;
     }
 
     public void oneCall(Object ref, Object returnValue, String methodName, Object... parameters) {
@@ -32,6 +32,6 @@ public class DefaultExpectations implements Expectations {
 
     // FIX 2394 why am i forced declare typesMock in the test when I don't acutally use, suggest it happens by automagic
     public <T> void types(T obj, Class<? extends T> iface, Object... params) {
-        types.types(obj, iface, params);
+        nu.types(obj, iface, params);
     }
 }
