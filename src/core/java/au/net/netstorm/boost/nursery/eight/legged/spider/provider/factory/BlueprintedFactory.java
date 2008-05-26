@@ -20,7 +20,7 @@ public final class BlueprintedFactory implements ConfigurableFactory {
     public void configure(Web web) {
 //        InjectionPattern pattern = patterner.pattern(Any.class, Blueprints.class, "*");
         // FIX 2394 however rules are registered in web, register blueprints state
-//        web.register();
+//        web.bind(SINGLE).iface(Blueprints.class
     }
 
     public boolean canHandle(InjectionSite site) {
