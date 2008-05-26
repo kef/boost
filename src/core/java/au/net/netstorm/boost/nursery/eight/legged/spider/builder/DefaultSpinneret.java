@@ -3,19 +3,23 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.builder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.DefaultStatefulWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.StatefulWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.orbs.FactoryOrb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.orbs.BootstrapFactoryOrb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.config.WebConfig;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bootstrap.BootstrapWebConfig;
 
 public final class DefaultSpinneret implements Spinneret {
-    public Web spin(FactoryOrb... factories) {
+    public Web spin(WebConfig... configs) {
         StatefulWeb web = new DefaultStatefulWeb();
         bootstrap(web);
-        web.register(factories);        
+        configure(web, configs);
         return web;
     }
 
-    private void bootstrap(Web web) {
-        FactoryOrb factories = new BootstrapFactoryOrb();
-        web.register(factories);
+    private void configure(Web web, WebConfig[] configs) {
+        for (WebConfig config : configs) config.apply(web);
+    }
+
+    private void bootstrap(StatefulWeb web) {
+        WebConfig bootstrapper = new BootstrapWebConfig(web);
+        bootstrapper.apply(web);
     }
 }

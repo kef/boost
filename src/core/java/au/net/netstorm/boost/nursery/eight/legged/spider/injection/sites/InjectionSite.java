@@ -6,4 +6,6 @@ import au.net.netstorm.boost.spider.linkage.Linkage;
 public interface InjectionSite {
     // FIX 2328 incremental step, eventually just use injection sites where applicable
     Linkage toLinkage();
+
+    boolean isType(Class<?> cls);
 }
