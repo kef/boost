@@ -9,7 +9,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class ImplicitFactoryAtomicTest extends LifecycleTestCase implements HasFixtures, LazyFields {
     private static final Object[] NO_PARAMS = {};
-    ImplicitFactory subject;
+    ImpliciedFactory subject;
     ImplMaster implerMock;
     Interface ifaceDummy;
     Boolean canHandle;
@@ -17,7 +17,7 @@ public final class ImplicitFactoryAtomicTest extends LifecycleTestCase implement
     Implementation implDummy;
 
     public void setUpFixtures() {
-        subject = new ImplicitFactory(implerMock);
+        subject = new ImpliciedFactory(implerMock);
     }
 
     public void testReinstate() {

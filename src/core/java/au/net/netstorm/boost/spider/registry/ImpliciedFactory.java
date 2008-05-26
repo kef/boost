@@ -6,11 +6,11 @@ import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import static au.net.netstorm.boost.spider.registry.Stamp.SINGLE;
 
-public final class ImplicitFactory implements Factory {
+public final class ImpliciedFactory implements Factory {
     private static final Object[] NO_PARAMS = {};
     private final ImplMaster impler;
 
-    public ImplicitFactory(ImplMaster impler) {
+    public ImpliciedFactory(ImplMaster impler) {
         this.impler = impler;
     }
 

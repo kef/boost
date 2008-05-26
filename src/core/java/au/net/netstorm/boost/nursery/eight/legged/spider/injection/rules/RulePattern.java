@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules;
 
-import au.net.netstorm.boost.spider.registry.Factory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
 public interface RulePattern {
     void toFactory(Factory factory);

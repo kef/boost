@@ -4,6 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.patterns.Inje
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.Multiplicity;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.StatefulWeb;
 
+// FIX 2394 should be SingleRuleBuilder and MultiRuleBuilder
 public final class DefaultRuleBuilder implements RuleBuilder {
     public DefaultRuleBuilder(StatefulWeb web, Multiplicity multiplicity) {
     }

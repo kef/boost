@@ -17,6 +17,6 @@ public final class DefaultSpinneretAtomicTest extends LifecycleTestCase implemen
         try {
             subject.spin();
             fail();
-        } catch (UnsupportedOperationException expected) {}
+        } catch(UnsupportedOperationException expected) {}
     }
 }

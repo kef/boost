@@ -18,8 +18,8 @@ public final class DefaultSpinneret implements Spinneret {
         for (WebConfig config : configs) config.apply(web);
     }
 
-    private void bootstrap(StatefulWeb web) {
-        WebConfig bootstrapper = new BootstrapWebConfig(web);
+    private void bootstrap(Web web) {
+        WebConfig bootstrapper = new BootstrapWebConfig();
         bootstrapper.apply(web);
     }
 }
