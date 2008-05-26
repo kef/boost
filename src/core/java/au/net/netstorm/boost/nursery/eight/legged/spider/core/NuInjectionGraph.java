@@ -1,0 +1,6 @@
+package au.net.netstorm.boost.nursery.eight.legged.spider.core;
+
+
+public interface NuInjectionGraph {
+    <T> InjectionGraph<T> nu(Class<T> root);
+}
