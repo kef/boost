@@ -12,7 +12,6 @@ public final class DefaultNuInjectionGraphAtomicTest extends LifecycleTestCase i
     GraphBuilder builderMock;
     RootInjection rootMock;
 
-    // FIX BREADCRUMB 2394 implementing me
     public void setUpFixtures() {
         subject = new DefaultNuInjectionGraph(builderMock);
     }
@@ -20,5 +19,6 @@ public final class DefaultNuInjectionGraphAtomicTest extends LifecycleTestCase i
     public void testNu() {
         expect.oneCall(builderMock, rootMock, "build", Ball.class);
         InjectionGraph<Ball> graph = subject.nu(Ball.class);
+        // FIX 2394 colour me in
     }
 }
