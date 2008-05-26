@@ -5,15 +5,19 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
-public final class NuInjectionGraphAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
+public final class DefaultNuInjectionGraphAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private NuInjectionGraph subject;
 
     // FIX BREADCRUMB 2394 implementing me
     public void setUpFixtures() {
-//        subject = new DefaultInjectionGraph();
+        subject = new DefaultNuInjectionGraph();
     }
 
     public void testNu() {
-//        subject.nu(Ball.class);
+        // FIX 2394 colour me in
+        try {
+            InjectionGraph<Ball> graph = subject.nu(Ball.class);
+            fail();
+        } catch(UnsupportedOperationException expected) {}
     }
 }
