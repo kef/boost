@@ -5,7 +5,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.RuleBui
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.Multiplicity;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
-// FIX 2394 interface into mutable part of web state
+// FIX 2394 stateful web instance - a central state holder, rather than a bunch of disparate maps
 public interface Web {
     void register(Rule rule);
     void register(Class<? extends Factory> type);

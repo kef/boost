@@ -4,6 +4,7 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
 
 public final class DefaultSpinneretAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Spinneret subject;
@@ -14,9 +15,7 @@ public final class DefaultSpinneretAtomicTest extends LifecycleTestCase implemen
 
     // FIX BREADCRUMB 2394 driving up builder
     public void testSpin() {
-        try {
-            subject.spin();
-            fail();
-        } catch(UnsupportedOperationException expected) {}
+        Web web = subject.spin();
+        // FIX 2394 is it a valid web
     }
 }
