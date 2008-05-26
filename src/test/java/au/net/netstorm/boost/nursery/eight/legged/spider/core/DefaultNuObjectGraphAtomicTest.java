@@ -7,15 +7,23 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class DefaultNuObjectGraphAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private NuObjectGraph subject;
+    Ball ballMock;
+    NuInjectionGraph injectionsMock;
+    InjectionGraph<Ball> graphMock;
 
     public void setUpFixtures() {
-        subject = new DefaultNuObjectGraph();
+        subject = new DefaultNuObjectGraph(injectionsMock);
     }
 
     public void testNu() {
-        try {
-            subject.nu(Ball.class);
-            fail();
-        } catch (UnsupportedOperationException expected) {}
+        Object args = new Object[0];
+        expect.oneCall(injectionsMock, graphMock, "nu", Ball.class);
+        expect.oneCall(graphMock, ballMock, "apply", args);
+        checkNu();
+    }
+
+    private void checkNu() {
+        Ball result = subject.nu(Ball.class);
+        assertSame(ballMock, result);
     }
 }
