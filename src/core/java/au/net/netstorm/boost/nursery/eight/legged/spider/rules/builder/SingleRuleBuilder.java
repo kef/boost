@@ -4,6 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.patterns.Inje
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.BuildableWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
+// FIX 2394 work out if this is really how i want to do it, looks a little scary
 public final class SingleRuleBuilder implements RuleBuilder, RulePattern {
     public SingleRuleBuilder(BuildableWeb web) {
     }
