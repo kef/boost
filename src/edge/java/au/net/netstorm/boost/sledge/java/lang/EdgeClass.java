@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 public interface EdgeClass {
     Class forName(String className);
 
-    Object newInstance(Class cls);
+    <T> T newInstance(Class<? extends T> cls);
 
     <T> Constructor<T> getConstructor(Class<T> cls, Class<?>... parameterTypes);
 

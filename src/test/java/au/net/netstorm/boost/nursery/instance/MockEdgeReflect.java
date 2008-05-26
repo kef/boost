@@ -26,9 +26,9 @@ class MockEdgeReflect implements EdgeClass {
         throw new NotImplementedException();
     }
 
-    public Object newInstance(Class cls) {
+    public <T> T newInstance(Class<? extends T> cls) {
         this.cls = cls;
-        return result;
+        return (T) result;
     }
 
     public Constructor getConstructor(Class cls, Class[] parameterTypes) {

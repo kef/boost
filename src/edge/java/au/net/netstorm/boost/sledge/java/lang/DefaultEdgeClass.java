@@ -14,7 +14,7 @@ public final class DefaultEdgeClass implements EdgeClass {
         }
     }
 
-    public Object newInstance(Class cls) {
+    public <T> T newInstance(Class<? extends T> cls) {
         try {
             return cls.newInstance();
         } catch (InstantiationException e) {
@@ -70,6 +70,7 @@ public final class DefaultEdgeClass implements EdgeClass {
 
     private EdgeException barf(Class cls, String fieldName, NoSuchFieldException e) {
         String name = cls.getName();
+        // FIX 2394 smelly
         return new EdgeException("There is no such field called \"" + fieldName + "\" in class " + name, e);
     }
 }

@@ -10,12 +10,14 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 
 public final class DefaultStatefulWeb implements StatefulWeb {
     // FIX BREADCRUMB 2394 aaaaaaaa add state fields
     private final Factories factories = new DefaultFactories();
     private final Rules rules = new DefaultRules();
-
+    private final EdgeClass classer = new DefaultEdgeClass();
 
     public <T> Graph<T> build(Class<T> root) {
         throw new UnsupportedOperationException();
@@ -25,8 +27,9 @@ public final class DefaultStatefulWeb implements StatefulWeb {
         throw new UnsupportedOperationException();
     }
 
-    public void register(Class<? extends Factory> factory) {
-        throw new UnsupportedOperationException();
+    public void register(Class<? extends Factory> type) {
+        Factory factory = classer.newInstance(type);
+        register(factory);
     }
 
     public void register(Factory factory) {
