@@ -12,7 +12,7 @@ public final class DefaultSpinneretAtomicTest extends LifecycleTestCase implemen
         subject = new DefaultSpinneret();
     }
 
-    // FIX BREADCRUMB 2394 driving up builder
+    // FIX 2394 has some tight coupling with rules and factories
     public void testSpin() {
         try {
             subject.spin();
