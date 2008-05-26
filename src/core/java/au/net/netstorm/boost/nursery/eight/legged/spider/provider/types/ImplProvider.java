@@ -1,8 +1,12 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider.types;
 
 import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
+import au.net.netstorm.boost.spider.instantiate.Instantiator;
 
 public final class ImplProvider implements Provider {
+    // FIX 2394 should be pulled out
+    private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     // FIX 2394 Interface?
     // FIX 2394 can't be, not everything has an interface... maybe that could be changed,
     // FIX 2394 idea at the moment is that providers are not concerned with that resolution
@@ -14,6 +18,6 @@ public final class ImplProvider implements Provider {
     }
 
     public Object nu(Object... args) {
-        throw new UnsupportedOperationException();
+        return instantiator.instantiate(impl, args);
     }
 }
