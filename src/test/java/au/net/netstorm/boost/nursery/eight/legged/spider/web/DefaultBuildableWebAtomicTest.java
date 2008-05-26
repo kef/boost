@@ -12,8 +12,9 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Config
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.RuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.SingleRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.MultiRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
-import static au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.Multiplicity.SINGLE;
 
 public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private BuildableWeb subject;
@@ -37,9 +38,14 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
         // FIX 2394 simple factory method, need to make sure it is valid builder handed back
     }
 
-    public void testBind() {
-        RuleBuilder result = subject.bind(SINGLE);
-        // FIX 2394 simple factory method, need to make sure it is valid rule builder
+    public void testSingle() {
+        RuleBuilder builder = subject.single();
+        checkRuleBuilder(builder, SingleRuleBuilder.class);
+    }
+
+    public void testMulti() {
+        RuleBuilder builder = subject.multi();
+        checkRuleBuilder(builder, MultiRuleBuilder.class);
     }
 
     public void testRegisterRule() {
@@ -63,5 +69,11 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
         expect.oneCall(factoriesMock, VOID, "add", configurableMock);
         expect.oneCall(configurableMock, VOID, "configure", subject);
         subject.register(configurableMock);
+    }
+
+    private void checkRuleBuilder(RuleBuilder builder, Class<?> expected) {
+        Class<?> result = builder.getClass();
+        boolean assignable = expected.isAssignableFrom(result);
+        assertEquals(true, assignable);
     }
 }

@@ -4,10 +4,10 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBu
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.RuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.DefaultRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.SingleRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.DefaultRules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.Multiplicity;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.MultiRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
@@ -34,8 +34,12 @@ public final class DefaultBuildableWeb implements BuildableWeb {
         factories.add(factory);
     }
 
-    public RuleBuilder bind(Multiplicity multiplicity) {
-        return new DefaultRuleBuilder(this, multiplicity);
+    public RuleBuilder single() {
+        return new SingleRuleBuilder(this);
+    }
+
+    public RuleBuilder multi() {
+        return new MultiRuleBuilder(this);
     }
 
     public GraphBuilder builder() {

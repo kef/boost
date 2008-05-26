@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.RuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.Multiplicity;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
 // FIX 2394 stateful web instance - a central state holder, rather than a bunch of disparate maps
@@ -15,5 +14,6 @@ public interface Web {
     // FIX 2394 still to decide if it works well or not
 
     // FIX 2394 one good alternative is to have an interface which takes a RuleBuilder which has all the operations
-    RuleBuilder bind(Multiplicity multiplicity);
+    RuleBuilder single();
+    RuleBuilder multi();
 }
