@@ -6,4 +6,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factor
 public final class DefaultGraphBuilder implements GraphBuilder {
     public DefaultGraphBuilder(Rules rules, Factories factories) {
     }
+
+    public RootInjection build(Class<?> root) {
+        throw new UnsupportedOperationException();
+    }
 }
