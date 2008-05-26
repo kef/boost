@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules;
+package au.net.netstorm.boost.nursery.eight.legged.spider.rules;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.patterns.InjectionPattern;
 

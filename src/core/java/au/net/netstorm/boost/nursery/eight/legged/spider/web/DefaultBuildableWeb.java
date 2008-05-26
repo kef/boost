@@ -2,12 +2,12 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.RuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.SingleRuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.DefaultRules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.MultiRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.Rule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.RuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.SingleRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.DefaultRules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.MultiRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
