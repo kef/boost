@@ -12,7 +12,7 @@ public final class BootstrapFactory implements ConfigurableFactory {
     public void configure(Web web) {
         // FIX BREADCRUMB 2394 create a NuInjectionGraph and put in web
 //        this.provider = new InstanceProvider(...);
-        web.single().type(NuInjectionGraph.class).toFactory(this);
+        web.single().type(NuInjectionGraph.class).to(this);
     }
 
     public Provider nu(InjectionSite site) {

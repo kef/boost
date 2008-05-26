@@ -23,7 +23,7 @@ public final class SingleRuleBuilder implements RuleBuilder, RulePattern {
         return this;
     }
 
-    public void toFactory(Factory factory) {
+    public void to(Factory factory) {
         throw new UnsupportedOperationException();
     }
 
