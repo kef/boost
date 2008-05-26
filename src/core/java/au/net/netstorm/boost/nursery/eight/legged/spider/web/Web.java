@@ -13,5 +13,7 @@ public interface Web {
 
     // FIX 2394 bit of an experiment in seperating three roles in defining rules
     // FIX 2394 still to decide if it works well or not
+
+    // FIX 2394 one good alternative is to have an interface which takes a RuleBuilder which has all the operations
     RuleBuilder bind(Multiplicity multiplicity);
 }

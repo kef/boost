@@ -8,6 +8,7 @@ import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.RuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.rules.Rule;
@@ -22,6 +23,7 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
     Rules rulesMock;
     Rule ruleMock;
     Factory factoryMock;
+    ConfigurableFactory configurableMock;
 
     public void setUpFixtures() {
         subject = new DefaultBuildableWeb();
@@ -55,5 +57,11 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
     public void testRegisterFactory() {
         expect.oneCall(factoriesMock, VOID, "add", factoryMock);
         subject.register(factoryMock);
+    }
+
+    public void testRegisterConfigurableFactory() {
+        expect.oneCall(factoriesMock, VOID, "add", configurableMock);
+        expect.oneCall(configurableMock, VOID, "configure", subject);
+        subject.register(configurableMock);
     }
 }

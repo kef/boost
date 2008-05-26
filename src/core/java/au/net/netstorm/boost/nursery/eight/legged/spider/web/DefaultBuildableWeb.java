@@ -11,6 +11,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.multiplicity.
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 
@@ -29,7 +30,7 @@ public final class DefaultBuildableWeb implements BuildableWeb {
     }
 
     public void register(Factory factory) {
-        // FIX 2394 configure configurable factories
+        configure(factory);
         factories.add(factory);
     }
 
@@ -39,5 +40,11 @@ public final class DefaultBuildableWeb implements BuildableWeb {
 
     public GraphBuilder builder() {
         return new DefaultGraphBuilder(rules, factories);
+    }
+
+    private void configure(Factory factory) {
+        if (!(factory instanceof ConfigurableFactory)) return;
+        ConfigurableFactory configurable = (ConfigurableFactory) factory;
+        configurable.configure(this);
     }
 }
