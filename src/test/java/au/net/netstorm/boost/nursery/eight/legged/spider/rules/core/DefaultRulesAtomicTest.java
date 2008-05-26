@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.rules;
+package au.net.netstorm.boost.nursery.eight.legged.spider.rules.core;
 
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;

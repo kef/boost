@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.rules;
+package au.net.netstorm.boost.nursery.eight.legged.spider.rules.core;
 
 public final class DefaultRules implements Rules {
     public void add(Rule rule) {

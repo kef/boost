@@ -9,11 +9,11 @@ import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.RuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.SingleRuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.MultiRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.RuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.SingleRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.MultiRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 
 public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {

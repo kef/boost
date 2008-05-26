@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.RuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.RuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
 // FIX 2394 stateful web instance - a central state holder, rather than a bunch of disparate maps
