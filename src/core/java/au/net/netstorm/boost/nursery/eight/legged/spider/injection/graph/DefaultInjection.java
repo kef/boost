@@ -1,19 +1,33 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.gunge.type.ResolvedInstance;
 
 // FIX BREADCRUMB 2328 driving me up
+// FIX 2394 could probably be split into ctor and field injections
 public final class DefaultInjection implements Injection {
     private Provider provider;
-    private Injection[] children;
+    private Injection[] ctorInjections;
+    private Injection[] fieldInjections;
 
     public void build() {
-        // FIX BREADCRUMB 2328 build real injection list
+        ctorInjections = new Injection[0];
+        fieldInjections = new Injection[0];
     }
 
-    public ResolvedInstance apply(InjectionContext ctx) {
-        // FIX 2328 implement
-        throw new UnsupportedOperationException();
+    public Object apply(InjectionContext ctx) {
+//        Object[] args = construction(ctx);
+//        Object instance = provider.nu(args);
+//        // FIX BREADCRUMB 2394 do field injections
+//        return instance;
+        return null;
+    }
+
+    private Object[] construction(InjectionContext ctx) {
+        Object[] args = new Object[ctorInjections.length];
+        for (int i = 0; i < ctorInjections.length; i++) {
+            Injection injection = ctorInjections[i];
+            args[i] = injection.apply(ctx);
+        }
+        return args;
     }
 }

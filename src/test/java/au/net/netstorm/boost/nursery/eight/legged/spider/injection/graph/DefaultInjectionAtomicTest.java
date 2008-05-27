@@ -15,11 +15,8 @@ public final class DefaultInjectionAtomicTest extends LifecycleTestCase implemen
     }
 
     public void testBuildAndApply() {
-        // FIX BREADCRUMB 2328 reinstate when implemented
-        try {
-            subject.build();
-            subject.apply(ctxMock);
-            fail();
-        } catch (UnsupportedOperationException expected) {}
+        // FIX BREADCRUMB 2328 colour me in
+        subject.build();
+        subject.apply(ctxMock);
     }
 }
