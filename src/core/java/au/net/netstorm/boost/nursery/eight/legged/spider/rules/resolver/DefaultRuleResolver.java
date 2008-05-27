@@ -8,6 +8,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Wildc
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
+// FIX 2394 split into delegator, keyed rule resolver and wildcarded rule resolver
 public final class DefaultRuleResolver implements RuleResolver {
     private final KeyedRules keyed;
     private final WildcardRules wildcarded;
