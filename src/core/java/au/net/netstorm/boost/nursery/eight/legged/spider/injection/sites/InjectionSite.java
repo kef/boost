@@ -8,8 +8,11 @@ public interface InjectionSite {
     // FIX 2328 incremental step, eventually just use injection sites where applicable
     Linkage toLinkage();
 
+    // FIX 2394 this is questionable, probably not generic enough,
+    // FIX 2394 would probably be better with some simple getters wrapped by a query class
     boolean isType(Class<?> cls);
 
     InjectionType type();
+
     // FIX 2394 requires pretty printing to string
 }
