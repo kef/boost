@@ -11,4 +11,5 @@ public interface InjectionSite {
     boolean isType(Class<?> cls);
 
     InjectionType type();
+    // FIX 2394 requires pretty printing to string
 }

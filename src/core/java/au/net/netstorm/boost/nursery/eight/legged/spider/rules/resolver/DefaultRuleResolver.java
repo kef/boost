@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.KeyedRule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.WildcardRule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.KeyedRules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.WildcardRules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
@@ -24,12 +25,15 @@ public final class DefaultRuleResolver implements RuleResolver {
 
     private Rule resolveKeyed(InjectionType type, InjectionSite site) {
         for (KeyedRule rule : keyed.get(type)) {
-            // FIX BREADCRUMB 2394 find match
+            if (rule.accepts(site)) return rule;
         }
-        throw new UnsupportedOperationException();
+        return resolveWildcarded(site);
     }
 
     private Rule resolveWildcarded(InjectionSite site) {
-        throw new UnsupportedOperationException();
+        for (WildcardRule rule : wildcarded) {
+            if (rule.accepts(site)) return rule;
+        }
+        throw new IllegalArgumentException("No rules match injection site: " + site);
     }
 }
