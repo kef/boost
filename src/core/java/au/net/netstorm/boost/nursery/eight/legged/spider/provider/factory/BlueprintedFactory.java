@@ -18,7 +18,7 @@ public final class BlueprintedFactory implements ConfigurableFactory {
     private final Blueprints blueprints = new DefaultBlueprints();
 
     public void configure(Web web) {
-        web.single().type(Blueprints.class).to(blueprints);
+//        web.rule().type(Blueprints.class).to(blueprints);
     }
 
     public boolean canHandle(InjectionSite site) {

@@ -14,9 +14,7 @@ public final class DefaultSpinneretAtomicTest extends LifecycleTestCase implemen
 
     // FIX 2394 has some tight coupling with rules and factories
     public void testSpin() {
-        try {
-            subject.spin();
-            fail();
-        } catch(UnsupportedOperationException expected) {}
+        subject.spin();
+        // FIX 2394 colour me in
     }
 }

@@ -10,11 +10,9 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factor
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.RuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.SingleRuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.MultiRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.ApplyableRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;
 
 public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private BuildableWeb subject;
@@ -22,7 +20,7 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
     EdgeClass classerMock;
     Factories factoriesMock;
     Rules rulesMock;
-    Rule ruleMock;
+    RuleConfig ruleConfigMock;
     Factory factoryMock;
     ConfigurableFactory configurableMock;
 
@@ -38,19 +36,10 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
         // FIX 2394 simple factory method, need to make sure it is valid builder handed back
     }
 
-    public void testSingle() {
-        RuleBuilder builder = subject.single();
-        checkRuleBuilder(builder, SingleRuleBuilder.class);
-    }
-
-    public void testMulti() {
-        RuleBuilder builder = subject.multi();
-        checkRuleBuilder(builder, MultiRuleBuilder.class);
-    }
-
     public void testRegisterRule() {
-        expect.oneCall(rulesMock, VOID, "add", ruleMock);
-        subject.register(ruleMock);
+        ApplyableRuleBuilder builder = new MockApplyableRuleBuilder();
+        expect.oneCall(ruleConfigMock, VOID, "apply", builder);
+        subject.register(ruleConfigMock);
     }
 
     public void testRegisterFactoryType() {
@@ -69,11 +58,5 @@ public final class DefaultBuildableWebAtomicTest extends LifecycleTestCase imple
         expect.oneCall(factoriesMock, VOID, "add", configurableMock);
         expect.oneCall(configurableMock, VOID, "configure", subject);
         subject.register(configurableMock);
-    }
-
-    private void checkRuleBuilder(RuleBuilder builder, Class<?> expected) {
-        Class<?> result = builder.getClass();
-        boolean assignable = expected.isAssignableFrom(result);
-        assertEquals(true, assignable);
     }
 }
