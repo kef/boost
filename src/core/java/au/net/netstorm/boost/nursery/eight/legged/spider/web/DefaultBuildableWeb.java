@@ -4,8 +4,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBu
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.DefaultRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.ApplyableRuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.DefaultRules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.DefaultRules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;

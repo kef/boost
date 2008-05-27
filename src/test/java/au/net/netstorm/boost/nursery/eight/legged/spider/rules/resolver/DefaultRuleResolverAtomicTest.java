@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver;
 
 import java.util.Iterator;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;

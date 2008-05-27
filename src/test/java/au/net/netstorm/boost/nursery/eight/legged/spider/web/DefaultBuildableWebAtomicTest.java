@@ -9,7 +9,7 @@ import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.ApplyableRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;

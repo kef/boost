@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 public final class DefaultRuleResolver implements RuleResolver {

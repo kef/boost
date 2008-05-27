@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.Multiplicity.MULTI;
 import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.Multiplicity.SINGLE;
 
