@@ -9,7 +9,6 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 public final class DefaultRulesAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Rules subject;
     KeyedRule keyedMock;
-    WildcardRule wildcardedMock;
 
     public void setUpFixtures() {
         subject = new DefaultRules();

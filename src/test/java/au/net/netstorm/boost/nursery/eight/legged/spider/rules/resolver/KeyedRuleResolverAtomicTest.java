@@ -8,32 +8,32 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.KeyedRules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.KeyedRule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.WildcardRule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
 public final class KeyedRuleResolverAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private RuleResolver subject;
     KeyedRules keyedMock;
-    RuleResolver wildcardedMock;
+    RuleResolver delegateMock;
     InjectionSite siteMock;
     InjectionType typeMock;
     KeyedRule keyedRuleMock;
-    WildcardRule wildcardRuleMock;
+    Rule ruleMock;
     RuleResolverChecker checker;
     Iterable iterableMock;
     Iterator iteratorMock;
 
 
     public void setUpFixtures() {
-        subject = new KeyedRuleResolver(keyedMock, wildcardedMock);
+        subject = new KeyedRuleResolver(keyedMock, delegateMock);
     }
 
     public void testNonKeyed() {
         expect.oneCall(siteMock, typeMock, "type");
         expect.oneCall(keyedMock, false, "exists", typeMock);
-        expect.oneCall(wildcardedMock, wildcardRuleMock, "resolve", siteMock);
-        checker.checkResolved(subject, siteMock, wildcardRuleMock);
+        expect.oneCall(delegateMock, ruleMock, "resolve", siteMock);
+        checker.checkResolved(subject, siteMock, ruleMock);
     }
 
     public void testResolveKeyed() {
@@ -45,8 +45,8 @@ public final class KeyedRuleResolverAtomicTest extends LifecycleTestCase impleme
 
      public void testResolvedWildcardFallback() {
          setExpectations(false);
-         expect.oneCall(wildcardedMock, wildcardRuleMock, "resolve", siteMock);
-         checker.checkResolved(subject, siteMock, wildcardRuleMock);
+         expect.oneCall(delegateMock, ruleMock, "resolve", siteMock);
+         checker.checkResolved(subject, siteMock, ruleMock);
      }
 
     private void setExpectations(boolean hasAny) {
