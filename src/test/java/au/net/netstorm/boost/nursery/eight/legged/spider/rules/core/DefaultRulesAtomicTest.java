@@ -5,18 +5,19 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
+// FIX 2394 drive up rules state
 public final class DefaultRulesAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Rules subject;
-    Rule ruleMock;
+    KeyedRule keyedMock;
+    WildcardRule wildcardedMock;
 
     public void setUpFixtures() {
         subject = new DefaultRules();
     }
 
-    public void testAdd() {
-        // FIX 2394 implement me
+    public void testAddKeyedRule() {
         try {
-            subject.add(ruleMock);
+            subject.add(keyedMock);
             fail();
         } catch (UnsupportedOperationException expected) {}
     }
