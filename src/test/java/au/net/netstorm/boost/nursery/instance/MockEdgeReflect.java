@@ -31,7 +31,7 @@ class MockEdgeReflect implements EdgeClass {
         return (T) result;
     }
 
-    public Constructor getConstructor(Class cls, Class[] parameterTypes) {
+    public Constructor getConstructor(Class cls, Class... parameterTypes) {
         throw new NotImplementedException();
     }
 
@@ -39,11 +39,11 @@ class MockEdgeReflect implements EdgeClass {
         throw new NotImplementedException();
     }
 
-    public Method getMethod(Class cls, String methodName, Class[] parameterTypes) {
+    public Method getMethod(Class cls, String methodName, Class... parameterTypes) {
         throw new NotImplementedException();
     }
 
-    public Method getDeclaredMethod(Class cls, String methodName, Class[] parameterTypes) {
+    public Method getDeclaredMethod(Class cls, String methodName, Class... parameterTypes) {
         throw new NotImplementedException();
     }
 

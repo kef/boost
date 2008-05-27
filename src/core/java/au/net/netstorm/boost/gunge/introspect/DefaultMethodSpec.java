@@ -12,12 +12,12 @@ public final class DefaultMethodSpec extends Primordial implements MethodSpec {
     public DefaultMethodSpec(String name, Class[] params) {
         this.name = name;
         validate(params);
-        this.params = (Class[]) params.clone();
+        this.params = params.clone();
     }
 
     private void validate(Class[] params) {
         master.check(name);
-        master.check(params);
+        master.check((Object[]) params);
     }
 
     public String getName() {
@@ -25,6 +25,6 @@ public final class DefaultMethodSpec extends Primordial implements MethodSpec {
     }
 
     public Class[] getParams() {
-        return (Class[]) params.clone();
+        return params.clone();
     }
 }

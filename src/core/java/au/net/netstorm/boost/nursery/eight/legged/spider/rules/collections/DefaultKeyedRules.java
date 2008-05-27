@@ -19,7 +19,7 @@ public final class DefaultKeyedRules implements KeyedRules {
         return rules.exists(raw);
     }
 
-    public List<KeyedRule> get(InjectionType type) {
+    public Iterable<KeyedRule> get(InjectionType type) {
         if (rules.exists(type)) return rules.get(type);
         InjectionType raw = type.raw();
         return rules.get(raw);

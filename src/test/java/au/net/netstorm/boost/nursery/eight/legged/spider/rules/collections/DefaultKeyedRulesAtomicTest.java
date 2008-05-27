@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections;
 
-import java.util.List;
-
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -16,7 +14,7 @@ public final class DefaultKeyedRulesAtomicTest extends LifecycleTestCase impleme
     StrictMap rulesMock;
     InjectionType typeMock;
     InjectionType rawMock;
-    List keyedRulesMock;
+    Iterable keyedRulesMock;
 
     public void setUpFixtures() {
         subject = new DefaultKeyedRules();
@@ -49,7 +47,7 @@ public final class DefaultKeyedRulesAtomicTest extends LifecycleTestCase impleme
     }
 
     private void checkGet() {
-        List result = subject.get(typeMock);
+        Iterable result = subject.get(typeMock);
         assertSame(keyedRulesMock, result);
     }
 
