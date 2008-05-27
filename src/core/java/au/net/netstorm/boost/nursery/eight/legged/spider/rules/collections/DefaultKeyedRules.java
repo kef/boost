@@ -7,6 +7,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.KeyedRule;
 import au.net.netstorm.boost.spider.flavour.StrictMap;
 import au.net.netstorm.boost.spider.flavour.DefaultStrictMap;
 
+// FIX 2394 i think this is the correct place to fall back on raw types
+// FIX 2394 the implementation is just a bit of a mess at the moment
 public final class DefaultKeyedRules implements KeyedRules {
     private final StrictMap<InjectionType, List<KeyedRule>> rules =
             new DefaultStrictMap<InjectionType, List<KeyedRule>>();
@@ -15,5 +17,11 @@ public final class DefaultKeyedRules implements KeyedRules {
         if (rules.exists(type)) return true;
         InjectionType raw = type.raw();
         return rules.exists(raw);
+    }
+
+    public List<KeyedRule> get(InjectionType type) {
+        if (rules.exists(type)) return rules.get(type);
+        InjectionType raw = type.raw();
+        return rules.get(raw);
     }
 }
