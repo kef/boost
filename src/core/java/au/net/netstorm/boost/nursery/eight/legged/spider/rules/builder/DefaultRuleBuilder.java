@@ -1,64 +1,50 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
+import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.Multiplicity.MULTI;
+import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.Multiplicity.SINGLE;
 
 // FIX 2394 work out if this is really how i want to do it, looks a little scary
-public final class DefaultRuleBuilder implements ApplyableRuleBuilder, RuleTarget, RuleScope {
+public final class DefaultRuleBuilder implements ApplyableRuleBuilder {
     // FIX 2394 break this out into the three seperate phases
     private final Rules rules;
-    private boolean single;
-    // FIX 2394 create to/from holder
-    private Object from;
-    private Object to;
-    private Class<?> host;
-    private String name;
+    private Applyable state;
 
     public DefaultRuleBuilder(Rules rules) {
         this.rules = rules;
     }
 
-    public RuleTarget multi(Class<?> type) {
-        from = type;
-        single = false;
-        return this;
-    }
-
     public RuleTarget single(Class<?> type) {
-        from = type;
-        single = true;
-        return this;
+        return rule(SINGLE, type);
     }
 
-    public RuleScope to(Factory factory) {
-        to = factory;
-        return this;
+    public RuleTarget multi(Class<?> type) {
+        return rule(MULTI, type);
     }
 
-    public RuleScope to(Object instance) {
-        to = instance;
-        return this;
+    public WildcardTarget single(TypeMatcher matcher) {
+        return wildcard(SINGLE, matcher);
     }
 
-    public RuleScope to(Class<?> impl) {
-        to = impl;
-        return this;
-    }
-
-    public void in(Class<?> host) {
-        this.host = host;
-    }
-
-    public void in(Class<?> host, String name) {
-        this.host = host;
-        this.name = name;
-    }
-
-    public void in(String name) {
-        this.name = name;
+    public WildcardTarget multi(TypeMatcher matcher) {
+        return wildcard(MULTI, matcher);
     }
 
     public void apply() {
-        // FIX 2394 validate and save rule
+        // FIX 2394 instate state check
+//        if (state == null) throw new IllegalStateException();
+//        state.apply();
+    }
+
+    private RuleTarget rule(Multiplicity multi, Class<?> type) {
+        ApplyableRuleTarget target = new DefaultRuleTarget(multi, type);
+        state = target;
+        return target;
+    }
+
+    private WildcardTarget wildcard(Multiplicity multi, TypeMatcher matcher) {
+        ApplyableWildcardTarget target = new DefaultWildcardTarget();
+        state = target;
+        return target;
     }
 }
