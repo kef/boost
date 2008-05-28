@@ -17,10 +17,10 @@ public final class DefaultInjectionTypeBuilder implements InjectionTypeBuilder {
         return new DefaultInjectionType(raw);
     }
 
-    // FIX 2394 add support for paramertized types
+    // FIX 2394 add support for parameterized types
     private InjectionType paramertized(Type type) {
-        ParameterizedType paramertized = (ParameterizedType) type;
-        Type raw = paramertized.getRawType();
+        ParameterizedType parameterized = (ParameterizedType) type;
+        Type raw = parameterized.getRawType();
         return raw(raw);
     }
 }
