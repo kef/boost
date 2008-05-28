@@ -70,7 +70,6 @@ public final class DefaultEdgeClass implements EdgeClass {
 
     private EdgeException barf(Class cls, String fieldName, NoSuchFieldException e) {
         String name = cls.getName();
-        // FIX 2394 smelly
         return new EdgeException("There is no such field called \"" + fieldName + "\" in class " + name, e);
     }
 }

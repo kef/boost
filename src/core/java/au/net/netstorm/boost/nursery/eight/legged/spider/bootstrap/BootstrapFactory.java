@@ -1,26 +1,16 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.bootstrap;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
 
-public final class BootstrapFactory implements ConfigurableFactory {
-    private Provider provider;
-
-    public void configure(Web web) {
-        // FIX BREADCRUMB 2394 create a NuInjectionGraph and put in web
-//        this.provider = new InstanceProvider(...);
-//        web.rule().type(NuInjectionGraph.class).to(this);
-    }
-
+// FIX 2394 implement me for those few special startup cases
+public final class BootstrapFactory implements Factory {
     public Provider nu(InjectionSite site) {
-        if (!canHandle(site)) throw new IllegalArgumentException();
-        return provider;
+        return null;
     }
 
     public boolean canHandle(InjectionSite site) {
-        // FIX 2394 restrict to handling NuInjectionGraphs only
         return false;
     }
 }

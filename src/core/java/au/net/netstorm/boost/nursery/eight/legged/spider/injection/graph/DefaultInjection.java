@@ -18,7 +18,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 
-// FIX BREADCRUMB 2328 driving me up
 // FIX 2394 this is a beast, maybe split into pre and post injection phases???
 public final class DefaultInjection implements PhasedInjection {
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
@@ -35,6 +34,7 @@ public final class DefaultInjection implements PhasedInjection {
     }
 
     public void build(InjectionWeb web) {
+        // FIX BREADCRUMB 2394 splitting this out NOW!!! not always the same and this is hurting
         preInjections(web);
         postInjections(web);
     }

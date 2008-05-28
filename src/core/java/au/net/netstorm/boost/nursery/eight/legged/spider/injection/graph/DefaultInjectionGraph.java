@@ -1,6 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.core;
-
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
 public final class DefaultInjectionGraph<T> implements InjectionGraph<T> {
     private final Class<T> type;
@@ -11,7 +9,7 @@ public final class DefaultInjectionGraph<T> implements InjectionGraph<T> {
         this.root = root;
     }
 
-    public T apply(Object... args) {
+    public T apply() {
         Object o = root.apply();
         return type.cast(o);
     }

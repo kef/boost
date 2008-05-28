@@ -10,12 +10,11 @@ import au.net.netstorm.boost.spider.registry.DefaultBlueprints;
 import au.net.netstorm.boost.spider.linkage.Linkage;
 import au.net.netstorm.boost.gunge.type.Implementation;
 
-// FIX 2394 just giving some concepts a name and trying to map them to existing functionality
 public final class BlueprintedFactory implements ConfigurableFactory {
     private final Blueprints blueprints = new DefaultBlueprints();
 
     public void configure(Web web) {
-//        web.rule().type(Blueprints.class).to(blueprints);
+        // FIX 2394 store blueprints state in web
     }
 
     public boolean canHandle(InjectionSite site) {
@@ -24,6 +23,7 @@ public final class BlueprintedFactory implements ConfigurableFactory {
     }
 
     public Provider nu(InjectionSite site) {
+        // FIX 2394 kill this linkage stuff
         Linkage linkage = site.toLinkage();
         if (!canHandle(linkage)) throw new IllegalArgumentException("Can't handle this site.");
         Blueprint blueprint = blueprints.get(linkage);

@@ -4,5 +4,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 
 // FIX 2328 creates an injection for an injection-site
 public interface GraphBuilder {
-    Injection build(InjectionType type);
+    // FIX 2394 root arg could be dropped if injection type was parameterized
+    <T> InjectionGraph<T> build(Class<T> root, InjectionType type, Object... args);
 }
