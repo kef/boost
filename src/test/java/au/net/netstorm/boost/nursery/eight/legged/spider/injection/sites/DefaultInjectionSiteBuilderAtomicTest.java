@@ -11,10 +11,12 @@ import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.Dummy;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private InjectionSiteBuilder subject;
     FieldTestUtil fielder;
+    EdgeClass classer;
     InjectionSiteChecker checker;
     InjectionType typeMock;
     InjectionTypeBuilder builderMock;
@@ -33,6 +35,11 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
     }
 
     public void testBuildConstructor() {
-        // FIX 2394 drive me up
+        // FIX 2394 reinstate when implemented
+//        Constructor ctor = classer.getConstructor(Dummy.class, String.class);
+//        expect.oneCall(builderMock, typeMock, "build", String.class);
+//        InjectionSite[] results = subject.build(ctor);
+//        assertEquals(1, results.length);
+//        checker.checkSite(results[0], Dummy.class, typeMock, "arg0");
     }
 }
