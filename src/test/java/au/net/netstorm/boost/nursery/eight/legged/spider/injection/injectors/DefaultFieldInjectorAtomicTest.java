@@ -30,6 +30,4 @@ public final class DefaultFieldInjectorAtomicTest extends LifecycleTestCase impl
         expect.oneCall(fielderMock, VOID, "set", fieldDummy, instanceDummy, "foo");
         subject.inject(instanceDummy);
     }
-
-    public class Dummy { public String x; }
 }
