@@ -12,6 +12,7 @@ public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase impl
     private String name;
     private Class<?> host;
     InjectionType typeMock;
+    InjectionSiteChecker checker;
 
     public void setUpFixtures() {
         name = "x";
@@ -20,9 +21,7 @@ public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase impl
     }
 
     public void testInjectionSite() {
-        assertSame(host, subject.host());
-        assertSame(typeMock, subject.type());
-        assertSame(name, subject.name());
+        checker.checkSite(subject, host, typeMock, name);
     }
 
     public void testInjectionSiteFailure() {
