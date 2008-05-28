@@ -19,18 +19,17 @@ public final class FieldInjectorFactory implements InjectorFactory<MemberInjecto
 
     public MemberInjector nu(InjectionWeb web, InjectionSite site) {
         InjectionType type = site.type();
-        List<MemberInjector> fields = fields(web, type);
+        Class<?> raw = type.rawClass();
+        MemberInjector[] fields = fields(web, raw);
         return new DefaultMemberInjector(fields); 
     }
 
-    private List<MemberInjector> fields(InjectionWeb web, InjectionType type) {
+    private MemberInjector[] fields(InjectionWeb web, Class<?> raw) {
         List<MemberInjector> injectors = new ArrayList<MemberInjector>();
-        Class<?> c = type.rawClass();
-        Field[] fields = c.getDeclaredFields();
-        for (Field f : fields) {
+        for (Field f : raw.getDeclaredFields()) {
             if (resolvable.isResolvableField(f)) addField(injectors, web, f);
         }
-        return injectors;
+        return injectors.toArray(new MemberInjector[injectors.size()]);
     }
 
     private void addField(List<MemberInjector> injectors, InjectionWeb web, Field field) {

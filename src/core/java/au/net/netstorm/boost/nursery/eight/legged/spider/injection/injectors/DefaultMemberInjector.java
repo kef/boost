@@ -1,11 +1,9 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 
-import java.util.List;
-
 public final class DefaultMemberInjector implements MemberInjector {
-    private final List<MemberInjector> members;
+    private final MemberInjector[] members;
 
-    public DefaultMemberInjector(List<MemberInjector> members) {
+    public DefaultMemberInjector(MemberInjector[] members) {
         this.members = members;
     }
 
