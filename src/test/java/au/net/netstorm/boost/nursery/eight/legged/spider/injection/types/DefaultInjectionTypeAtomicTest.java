@@ -9,15 +9,37 @@ public final class DefaultInjectionTypeAtomicTest extends LifecycleTestCase impl
     private InjectionType subject;
 
     public void setUpFixtures() {
-        // FIX 2394 implement me
-        subject = new DefaultInjectionType();
+        subject = new DefaultInjectionType(String.class);
     }
 
     public void testInjectionType() {
-        // FIX 2394 colour me in
+        checkParameters();
+        checkRaw(subject);
+        checkRawClass(String.class);
     }
 
     public void testInjectionTypeFailure() {
-        // FIX 2394 colour me in
+        try {
+            new DefaultInjectionType(null);
+            fail();
+        } catch (IllegalArgumentException expected) {}
+    }
+
+    private void checkParameters() {
+        // FIX 2394 add test to support parametized types
+        try {
+            subject.parameters();
+            fail();
+        } catch (UnsupportedOperationException expected) {}
+    }
+
+    private void checkRaw(InjectionType expected) {
+        InjectionType result = subject.raw();
+        assertEquals(expected, result);
+    }
+
+    private void checkRawClass(Class<?> expected) {
+        Class<?> result = subject.rawClass();
+        assertEquals(expected, result);
     }
 }

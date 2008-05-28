@@ -1,8 +1,18 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.types;
 
-public final class DefaultInjectionType implements InjectionType {
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
+public final class DefaultInjectionType extends Primordial implements InjectionType {
+    private final Class<?> raw;
+
+    public DefaultInjectionType(Class<?> raw) {
+        if (raw == null) throw new IllegalArgumentException();
+        this.raw = raw;
+    }
+
     public InjectionType raw() {
-        throw new UnsupportedOperationException();
+        // FIX 2394 update to strip parameters
+        return this;
     }
 
     public InjectionType[] parameters() {
@@ -10,6 +20,6 @@ public final class DefaultInjectionType implements InjectionType {
     }
 
     public Class<?> rawClass() {
-        throw new UnsupportedOperationException();
+        return raw;
     }
 }
