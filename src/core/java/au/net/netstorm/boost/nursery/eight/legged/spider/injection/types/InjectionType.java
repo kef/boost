@@ -4,4 +4,5 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.types;
 public interface InjectionType {
     InjectionType raw();
     ParameterType parameters();
+    Class<?> rawClass();
 }

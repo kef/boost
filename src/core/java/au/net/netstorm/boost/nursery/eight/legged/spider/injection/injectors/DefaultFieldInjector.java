@@ -17,6 +17,12 @@ public final class DefaultFieldInjector implements FieldInjector {
     }
 
     public void inject(Object instance) {
+        Object old = fielder.get(field, instance);
+        if (old != null) return;
+        doInjection(instance);
+    }
+
+    private void doInjection(Object instance) {
         Object value = injection.apply();
         fielder.set(field, instance, value);
     }
