@@ -11,6 +11,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.Def
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.ConstructorInjector;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
+// FIX 2394 migrate to ConstructorInjectorFactory
 public final class DefaultConstructingInjection implements ConstructingInjection {
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();
     private final ConstructorInjector constructor;

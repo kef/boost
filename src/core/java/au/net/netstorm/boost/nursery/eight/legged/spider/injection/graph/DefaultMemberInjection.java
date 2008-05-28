@@ -14,6 +14,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 
+// FIX 2394 migrate to FieldInjectorFactory
 public final class DefaultMemberInjection implements MemberInjection {
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
