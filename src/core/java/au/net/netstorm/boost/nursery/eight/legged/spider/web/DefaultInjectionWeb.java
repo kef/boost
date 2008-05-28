@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
+package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
 import java.util.Queue;
 import java.util.LinkedList;
@@ -7,17 +7,21 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.IntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.DefaultIntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.Creator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyProviderCreator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.PhasedInjection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyInjectionCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
 
-public final class DefaultInjectionContext implements InjectionContext {
+public final class DefaultInjectionWeb implements InjectionWeb {
     private final IntegrityMap<InjectionSite, Provider> providers =
             new DefaultIntegrityMap<InjectionSite, Provider>();
     private final IntegrityMap<InjectionSite, Injection> injections =
             new DefaultIntegrityMap<InjectionSite, Injection>();
     private final RuleResolver resolver;
 
-    public DefaultInjectionContext(RuleResolver resolver) {
+    public DefaultInjectionWeb(RuleResolver resolver) {
         this.resolver = resolver;
     }
 

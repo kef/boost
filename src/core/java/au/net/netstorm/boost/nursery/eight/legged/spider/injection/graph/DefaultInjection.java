@@ -14,6 +14,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 
@@ -33,9 +34,9 @@ public final class DefaultInjection implements PhasedInjection {
         this.fields = new ArrayList<FieldInjector>();
     }
 
-    public void build(InjectionContext context) {
-        preInjections(context);
-        postInjections(context);
+    public void build(InjectionWeb web) {
+        preInjections(web);
+        postInjections(web);
     }
 
     public Object apply() {
@@ -44,22 +45,22 @@ public final class DefaultInjection implements PhasedInjection {
         return instance;
     }
 
-    private void preInjections(InjectionContext context) {
-        Provider provider = context.provider(site);
+    private void preInjections(InjectionWeb web) {
+        Provider provider = web.provider(site);
         Constructor<?> ctor = getConstructor();
         InjectionSite[] sites = siteBuilder.build(ctor);
         Injection[] injections = new Injection[sites.length];
         for (int i = 0; i < sites.length; ++i) {
-            injections[i] = context.injection(sites[i]);
+            injections[i] = web.injection(sites[i]);
         }
         constructor = new DefaultConstructorInjector(provider, injections);
     }
 
-    private void postInjections(InjectionContext context) {
+    private void postInjections(InjectionWeb web) {
         Class<?> c = type.rawClass();
         Field[] fields = c.getDeclaredFields();
         for (Field f : fields) {
-            if (resolvable.isResolvableField(f)) addField(context, f);
+            if (resolvable.isResolvableField(f)) addField(web, f);
         }
     }
 
@@ -70,9 +71,9 @@ public final class DefaultInjection implements PhasedInjection {
         return ctors[0];
     }
 
-    private void addField(InjectionContext context, Field field) {
+    private void addField(InjectionWeb web, Field field) {
         InjectionSite site = siteBuilder.build(field);
-        Injection injection = context.injection(site);
+        Injection injection = web.injection(site);
         FieldInjector injector = new DefaultFieldInjector(injection, field);
         fields.add(injector);
     }

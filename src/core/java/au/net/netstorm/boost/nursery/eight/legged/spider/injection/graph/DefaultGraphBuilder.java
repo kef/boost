@@ -1,23 +1,16 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.DefaultRuleResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factories;
+import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
 
 public final class DefaultGraphBuilder implements GraphBuilder {
-    private final InjectionContext context;
-    private final Rules rules;
-    private final Factories factories;
+    private final InjectionWeb context;
 
-    public DefaultGraphBuilder(Rules rules, Factories factories) {
-        this.rules = rules;
-        this.factories = factories;
-        RuleResolver resolver = new DefaultRuleResolver(rules);
-        context = new DefaultInjectionContext(resolver);
+    public DefaultGraphBuilder(InjectionWeb context) {
+        this.context = context;
     }
 
     public Injection build(Class<?> root) {
+        // FIX 2394 implement me
         return null;
     }
 }
