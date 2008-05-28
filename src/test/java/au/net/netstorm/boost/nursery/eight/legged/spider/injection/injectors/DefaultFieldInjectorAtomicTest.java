@@ -12,7 +12,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.Dummy;
 
 public final class DefaultFieldInjectorAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
-    private FieldInjector subject;
+    private MemberInjector subject;
     private Field fieldDummy;
     private Dummy instanceDummy;
     FieldTestUtil fielder;
@@ -22,7 +22,7 @@ public final class DefaultFieldInjectorAtomicTest extends LifecycleTestCase impl
     public void setUpFixtures() {
         fieldDummy = fielder.get(Dummy.class, "x");
         instanceDummy = new Dummy();
-        subject = new DefaultFieldInjector(injectionMock, fieldDummy);
+        subject = new DefaultMemberInjector(injectionMock, fieldDummy);
         fielder.setInstance(subject, "fielder", fielderMock);
     }
 
