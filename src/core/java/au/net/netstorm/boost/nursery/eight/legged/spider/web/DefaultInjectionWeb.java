@@ -15,6 +15,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
 
 public final class DefaultInjectionWeb implements InjectionWeb {
+    // FIX 2394 should the web be effectively immutable, or should these maps get dirtied by rule update???
     private final IntegrityMap<InjectionSite, Provider> providers =
             new DefaultIntegrityMap<InjectionSite, Provider>();
     private final IntegrityMap<InjectionSite, Injection> injections =
