@@ -13,14 +13,26 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
 
     public InjectionSite build(Field field) {
         Class<?> host = field.getDeclaringClass();
-        String name = field.getName();
         Type reified = field.getGenericType();
         InjectionType type = injectionType(reified);
+        String name = field.getName();
         return new DefaultInjectionSite(host, type, name);
     }
 
-    public InjectionSite[] build(Constructor constructor) {
-        throw new UnsupportedOperationException();
+    public InjectionSite[] build(Constructor<?> constructor) {
+        Class<?> host = constructor.getDeclaringClass();
+        Type[] reifieds = constructor.getGenericParameterTypes();
+        return buildSites(host, reifieds);
+    }
+
+    private InjectionSite[] buildSites(Class<?> host, Type[] refieds) {
+        InjectionSite[] sites = new InjectionSite[refieds.length];
+        for (int i = 0; i < refieds.length; ++i) {
+            InjectionType type = injectionType(refieds[i]);
+            String name = "arg" + i;
+            sites[i] = new DefaultInjectionSite(host, type, name);
+        }
+        return sites;
     }
 
     private InjectionType injectionType(Type type) {

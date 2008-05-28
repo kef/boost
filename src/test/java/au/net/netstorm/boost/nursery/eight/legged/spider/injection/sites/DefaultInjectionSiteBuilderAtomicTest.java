@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.lang.reflect.Constructor;
 
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
@@ -35,11 +36,10 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
     }
 
     public void testBuildConstructor() {
-        // FIX 2394 reinstate when implemented
-//        Constructor ctor = classer.getConstructor(Dummy.class, String.class);
-//        expect.oneCall(builderMock, typeMock, "build", String.class);
-//        InjectionSite[] results = subject.build(ctor);
-//        assertEquals(1, results.length);
-//        checker.checkSite(results[0], Dummy.class, typeMock, "arg0");
+        Constructor<?> ctor = classer.getConstructor(Dummy.class, String.class);
+        expect.oneCall(builderMock, typeMock, "build", String.class);
+        InjectionSite[] results = subject.build(ctor);
+        assertEquals(1, results.length);
+        checker.checkSite(results[0], Dummy.class, typeMock, "arg0");
     }
 }
