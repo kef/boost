@@ -27,7 +27,15 @@ public final class DefaultFieldInjectorAtomicTest extends LifecycleTestCase impl
 
     public void testInject() {
         expect.oneCall(injectionMock, "foo", "apply");
+        expect.oneCall(fielderMock, VOID, "get", fieldDummy, instanceDummy);
         expect.oneCall(fielderMock, VOID, "set", fieldDummy, instanceDummy, "foo");
         subject.inject(instanceDummy);
     }
+
+    public void testDontInject() {
+        expect.oneCall(fielderMock, "already-set", "get", fieldDummy, instanceDummy);
+        subject.inject(instanceDummy);
+    }
+
+    // FIX 2394 add test for non-null field
 }
