@@ -14,10 +14,21 @@ public final class DefaultGraphBuilder implements GraphBuilder {
         this.web = web;
     }
 
-    public <T> InjectionGraph<T> build(Class<T> root, InjectionType type, Object... args) {
+    public <T> InjectionGraph<T> resolve(Class<T> root, InjectionType type) {
         InjectionSite site = builder.build(type);
-        // FIX 2394 need to tweek the root injection to allow args
         Injection injection = web.injection(site);
+        return new DefaultInjectionGraph<T>(root, injection);
+    }
+
+    public <T> InjectionGraph<T> nu(Class<T> root, InjectionType type, Object... args) {
+        InjectionSite site = builder.build(type);
+        Injection injection = new ParameterizedInjection(web, site, args);
+        return new DefaultInjectionGraph<T>(root, injection);
+    }
+
+    public <T> InjectionGraph<T> inject(Class<T> root, InjectionType type, Object instance) {
+        InjectionSite site = builder.build(type);
+        Injection injection = new InstantiatedInjection(web, site, instance);
         return new DefaultInjectionGraph<T>(root, injection);
     }
 }

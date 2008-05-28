@@ -8,7 +8,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBu
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.InjectionGraph;
 
 
-// FIX 2394 no difference between nu without parameters and resolver, suggest kill Resolver
 public final class DefaultResolver implements Resolver {
     private final InjectionTypeBuilder typer = new DefaultInjectionTypeBuilder();
     private final GraphBuilder builder;
@@ -19,7 +18,7 @@ public final class DefaultResolver implements Resolver {
 
     public <T> T resolve(Class<T> cls) {
         InjectionType type = typer.build(cls);
-        InjectionGraph<T> graph = builder.build(cls, type);
+        InjectionGraph<T> graph = builder.resolve(cls, type);
         return graph.apply();
     }
 }

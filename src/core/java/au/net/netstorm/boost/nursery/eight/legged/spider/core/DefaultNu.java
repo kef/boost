@@ -7,7 +7,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.InjectionGraph;
 
-// FIX 2394 test me
 public final class DefaultNu implements Nu {
     private final InjectionTypeBuilder typer = new DefaultInjectionTypeBuilder();
     private final GraphBuilder builder;
@@ -16,10 +15,10 @@ public final class DefaultNu implements Nu {
         this.builder = builder;
     }
 
-    // FIX 2394 rename values to args
-    public <T> T nu(Class<T> iface, Object... values) {
+    // FIX 2394 push rename values to args all the way out
+    public <T> T nu(Class<T> iface, Object... args) {
         InjectionType type = typer.build(iface);
-        InjectionGraph<T> graph = builder.build(iface, type, values);
+        InjectionGraph<T> graph = builder.nu(iface, type, args);
         return graph.apply();
     }
 }
