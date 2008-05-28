@@ -3,7 +3,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.bootstrap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.NuInjectionGraph;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
 
 public final class BootstrapFactory implements ConfigurableFactory {
@@ -21,6 +20,7 @@ public final class BootstrapFactory implements ConfigurableFactory {
     }
 
     public boolean canHandle(InjectionSite site) {
-        return site.isType(NuInjectionGraph.class);
+        // FIX 2394 restrict to handling NuInjectionGraphs only
+        return false;
     }
 }

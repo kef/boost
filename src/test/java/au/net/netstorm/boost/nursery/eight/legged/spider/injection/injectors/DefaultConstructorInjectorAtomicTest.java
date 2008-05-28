@@ -6,6 +6,7 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.Dummy;
 
 public final class DefaultConstructorInjectorAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private ConstructorInjector subject;

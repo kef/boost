@@ -9,6 +9,7 @@ import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.Dummy;
 
 public final class DefaultFieldInjectorAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private FieldInjector subject;

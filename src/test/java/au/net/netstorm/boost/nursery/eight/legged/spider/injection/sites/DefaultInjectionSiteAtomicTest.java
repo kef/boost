@@ -4,16 +4,37 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.DummyHolder;
 
 public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
-    private InjectionSite site;
+    private InjectionSite subject;
+    private String name;
+    private Class<?> host;
+    InjectionType typeMock;
 
     public void setUpFixtures() {
-
+        name = "x";
+        host = DummyHolder.class;
+        subject = new DefaultInjectionSite(host, typeMock, name);
     }
 
     public void testInjectionSite() {
-        // FIX 2394 drive me up
+        assertSame(host, subject.host());
+        assertSame(typeMock, subject.type());
+        assertSame(name, subject.name());
     }
 
+    public void testInjectionSiteFailure() {
+        checkConstructionFailure(null, typeMock, name);
+        checkConstructionFailure(host, null, name);
+        checkConstructionFailure(host, typeMock, null);
+    }
+
+    private void checkConstructionFailure(Class<?> host, InjectionType type, String name) {
+        try {
+            new DefaultInjectionSite(host, type, name);
+            fail();
+        } catch (IllegalArgumentException expected) {}
+    }
 }
