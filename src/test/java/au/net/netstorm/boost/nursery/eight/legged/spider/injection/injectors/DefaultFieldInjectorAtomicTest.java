@@ -22,7 +22,7 @@ public final class DefaultFieldInjectorAtomicTest extends LifecycleTestCase impl
     public void setUpFixtures() {
         fieldDummy = fielder.get(Dummy.class, "x");
         instanceDummy = new Dummy();
-        subject = new DefaultMemberInjector(injectionMock, fieldDummy);
+        subject = new DefaultFieldInjector(injectionMock, fieldDummy);
         fielder.setInstance(subject, "fielder", fielderMock);
     }
 

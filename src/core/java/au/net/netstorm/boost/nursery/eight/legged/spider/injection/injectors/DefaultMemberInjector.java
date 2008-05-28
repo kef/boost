@@ -1,29 +1,15 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 
-import java.lang.reflect.Field;
-
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
-import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
-import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeField;
+import java.util.List;
 
 public final class DefaultMemberInjector implements MemberInjector {
-    private final EdgeField fielder = new DefaultEdgeField();
-    private final Injection injection;
-    private final Field field;
+    private final List<MemberInjector> members;
 
-    public DefaultMemberInjector(Injection injection, Field field) {
-        this.injection = injection;
-        this.field = field;
+    public DefaultMemberInjector(List<MemberInjector> members) {
+        this.members = members;
     }
 
-    public void inject(Object instance) {
-        Object old = fielder.get(field, instance);
-        if (old != null) return;
-        doInjection(instance);
-    }
-
-    private void doInjection(Object instance) {
-        Object value = injection.apply();
-        fielder.set(field, instance, value);
+    public void inject(Object ref) {
+        for (MemberInjector member : members) member.inject(ref);
     }
 }

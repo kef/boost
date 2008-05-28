@@ -16,7 +16,6 @@ public final class DefaultInjectionAtomicTest extends LifecycleTestCase implemen
     InjectionType typeMock;
 
     public void setUpFixtures() {
-        expect.oneCall(siteMock, typeMock, "type");
         subject = new DefaultInjection(siteMock);
     }
 
