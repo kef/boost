@@ -23,12 +23,14 @@ public final class DefaultInjection implements PhasedInjection {
     }
 
     public void build(InjectionWeb web) {
+        // FIX 2394 would this be simpler if there was a resolution queue rather than relying on recursive graph?
+        // FIX 2394 to implement the queue approach, InjectionWeb would be wrapped in LocalInjectionWeb which stores
+        // FIX 2394 the injections just for this graph instance, this queue could than be processed twice: build, apply
         constructor = ctorFactory.nu(web, site);
         members = memberFactory.nu(web, site);
     }
 
     public Object apply() {
-        // FIX 2394 would this be simpler if there was a resolution queue rather than relying on underlying graph
         Object ref = constructor.inject();
         members.inject(ref);
         return ref;
