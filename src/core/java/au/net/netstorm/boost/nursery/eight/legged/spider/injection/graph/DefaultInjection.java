@@ -8,16 +8,16 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.Fie
 // FIX 2394 could probably be split into ctor and field injections
 public final class DefaultInjection implements PhasedInjection {
     private Provider provider;
-    private ConstructorInjector ctorInjector;
-    private FieldInjector[] fieldInjectors;
+    private ConstructorInjector constructor;
+    private FieldInjector[] fields;
 
     public void build(InjectionContext context) {
 
     }
 
     public Object apply() {
-        Object instance = ctorInjector.inject();
-        for (FieldInjector injector : fieldInjectors) injector.inject(instance);
+        Object instance = constructor.inject();
+        for (FieldInjector injector : fields) injector.inject(instance);
         return instance;
     }
 }
