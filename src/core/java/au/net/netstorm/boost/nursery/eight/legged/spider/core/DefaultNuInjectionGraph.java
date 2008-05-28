@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.core;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.RootInjection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
 
 public final class DefaultNuInjectionGraph implements NuInjectionGraph {
     private final GraphBuilder builder;
@@ -11,7 +11,7 @@ public final class DefaultNuInjectionGraph implements NuInjectionGraph {
     }
 
     public <T> InjectionGraph<T> nu(Class<T> root) {
-        RootInjection injection = builder.build(root);
+        Injection injection = builder.build(root);
         return new DefaultInjectionGraph(root, injection);
     }
 }

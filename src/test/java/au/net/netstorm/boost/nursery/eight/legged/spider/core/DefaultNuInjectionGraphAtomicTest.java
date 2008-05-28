@@ -5,12 +5,12 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.RootInjection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
 
 public final class DefaultNuInjectionGraphAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private NuInjectionGraph subject;
     GraphBuilder builderMock;
-    RootInjection rootMock;
+    Injection rootMock;
 
     public void setUpFixtures() {
         subject = new DefaultNuInjectionGraph(builderMock);
