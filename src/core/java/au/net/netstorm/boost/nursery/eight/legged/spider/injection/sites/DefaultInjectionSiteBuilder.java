@@ -11,6 +11,10 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Default
 public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     private final InjectionTypeBuilder builder = new DefaultInjectionTypeBuilder();
 
+    public InjectionSite build(InjectionType type) {
+        return new RootInjectionSite(type);
+    }
+
     public InjectionSite build(Field field) {
         Class<?> host = field.getDeclaringClass();
         Type reified = field.getGenericType();

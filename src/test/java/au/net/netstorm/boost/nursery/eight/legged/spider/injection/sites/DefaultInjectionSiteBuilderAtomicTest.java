@@ -27,6 +27,11 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
         fielder.setInstance(subject, "builder", builderMock);
     }
 
+    public void testBuildRoot() {
+        InjectionSite result = subject.build(typeMock);
+        assertEquals(true, result instanceof RootInjectionSite);
+    }
+
     public void testBuildField() {
         Field field = fielder.get(Dummy.class, "x");
         Type type = field.getGenericType();
