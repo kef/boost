@@ -11,7 +11,7 @@ public final class DefaultInjection implements PhasedInjection {
     private ConstructorInjector ctorInjector;
     private FieldInjector[] fieldInjectors;
 
-    public void build() {
+    public void build(InjectionContext context) {
 
     }
 
