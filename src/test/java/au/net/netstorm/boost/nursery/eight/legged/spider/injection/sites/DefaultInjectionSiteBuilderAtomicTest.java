@@ -25,7 +25,6 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
     }
 
     public void testBuildField() {
-        // FIX BREADCRUMB 2394 aaaaaaaaa building this up
         Field field = fielder.get(Dummy.class, "x");
         Type type = field.getGenericType();
         expect.oneCall(builderMock, typeMock, "build", type);
