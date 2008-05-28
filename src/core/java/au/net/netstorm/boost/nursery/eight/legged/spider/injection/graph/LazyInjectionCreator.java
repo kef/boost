@@ -1,17 +1,20 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
+import java.util.Queue;
+
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
-public final class LazyInjectionCreator implements Creator<Injection> {
-    private final InjectionSite site;
+public final class LazyInjectionCreator implements Creator<InjectionSite, Injection> {
+    private final Queue<PhasedInjection> toBuild;
 
-    public LazyInjectionCreator(InjectionSite site) {
-        this.site = site;
+    public LazyInjectionCreator(Queue<PhasedInjection> toBuild) {
+        this.toBuild = toBuild;
     }
 
-    public Injection create() {
-        // FIX 2394 where does build get called from
-        return new DefaultInjection(site);
+    public Injection create(InjectionSite site) {
+        PhasedInjection injection = new DefaultInjection(site);
+        toBuild.offer(injection);
+        return injection;
     }
 }

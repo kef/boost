@@ -7,16 +7,14 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
 
-public final class LazyProviderCreator implements Creator<Provider> {
-    private final InjectionSite site;
+public final class LazyProviderCreator implements Creator<InjectionSite, Provider> {
     private final RuleResolver resolver;
 
-    public LazyProviderCreator(InjectionSite site, RuleResolver resolver) {
-        this.site = site;
+    public LazyProviderCreator(RuleResolver resolver) {
         this.resolver = resolver;
     }
 
-    public Provider create() {
+    public Provider create(InjectionSite site) {
         Rule rule = resolver.resolve(site);
         Factory factory = rule.getFactory();
         return factory.nu(site);

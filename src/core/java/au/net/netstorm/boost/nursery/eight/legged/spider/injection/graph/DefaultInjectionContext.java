@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.IntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.DefaultIntegrityMap;
@@ -19,12 +22,24 @@ public final class DefaultInjectionContext implements InjectionContext {
     }
 
     public Provider provider(InjectionSite site) {
-        Creator<Provider> creator = new LazyProviderCreator(site, resolver);
+        Creator<InjectionSite, Provider> creator = new LazyProviderCreator(resolver);
         return providers.getOrCreate(site, creator);
     }
 
+    // FIX 2394 build phase could be delayed even more by pushing it up a layer
     public Injection injection(InjectionSite site) {
-        Creator<Injection> creator = new LazyInjectionCreator(site);
-        return injections.getOrCreate(site, creator);
+        // FIX 2394 nasty hack alert
+        Queue<PhasedInjection> toBuild = new LinkedList<PhasedInjection>();
+        Creator<InjectionSite, Injection> creator = new LazyInjectionCreator(toBuild);
+        Injection injection = injections.getOrCreate(site, creator);
+        buildInjections(toBuild);
+        return injection;
+    }
+
+    private void buildInjections(Queue<PhasedInjection> tobuild) {
+        while (tobuild.size() > 0) {
+            PhasedInjection phase = tobuild.remove();
+            phase.build(this);
+        }
     }
 }
