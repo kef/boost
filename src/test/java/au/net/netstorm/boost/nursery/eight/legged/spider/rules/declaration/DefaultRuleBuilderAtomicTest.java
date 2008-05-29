@@ -5,7 +5,7 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.KeyedRule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.matchers.Matcher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
@@ -27,7 +27,8 @@ public final class DefaultRuleBuilderAtomicTest extends LifecycleTestCase implem
     }
 
     private void checkBuild() {
-        Rule result = subject.build();
-        // FIX 2394 add assertions to verify correct mapping, scope and multiplicity
+        KeyedRule result = subject.build();
+        InjectionType actual = result.key();
+        assertSame(typeMock, actual);
     }
 }
