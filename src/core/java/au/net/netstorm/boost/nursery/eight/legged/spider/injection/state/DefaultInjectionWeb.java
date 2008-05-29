@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.web;
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.state;
 
 import java.util.Queue;
 import java.util.LinkedList;
@@ -13,6 +13,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.PhasedI
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyInjectionCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.DefaultRuleResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 
 public final class DefaultInjectionWeb implements InjectionWeb {
     // FIX 2394 should the web be effectively immutable, or should these maps get dirtied by rule update???
@@ -20,10 +22,11 @@ public final class DefaultInjectionWeb implements InjectionWeb {
             new DefaultIntegrityMap<InjectionSite, Provider>();
     private final IntegrityMap<InjectionSite, Injection> injections =
             new DefaultIntegrityMap<InjectionSite, Injection>();
+
     private final RuleResolver resolver;
 
-    public DefaultInjectionWeb(RuleResolver resolver) {
-        this.resolver = resolver;
+    public DefaultInjectionWeb(Rules rules) {
+        this.resolver = new DefaultRuleResolver(rules);
     }
 
     public Provider provider(InjectionSite site) {

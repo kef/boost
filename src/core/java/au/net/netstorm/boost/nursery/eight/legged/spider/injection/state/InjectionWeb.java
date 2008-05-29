@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.web;
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.state;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;

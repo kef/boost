@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.lang.reflect.Field;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;

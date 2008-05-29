@@ -5,13 +5,13 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.registry.Registry;
 
 // FIX 1676 Test drive.  This triggers work on "why use facades" discussion paper.
-public final class DefaultSpider implements Spider {
+public final class OldDefaultSpider implements Spider {
     private final Nu nu;
     private final Injector injector;
     private final Resolver resolver;
     private final Registry registry;
 
-    public DefaultSpider(Nu nu, Injector injector, Resolver resolver, Registry registry) {
+    public OldDefaultSpider(Nu nu, Injector injector, Resolver resolver, Registry registry) {
         this.nu = nu;
         this.injector = injector;
         this.resolver = resolver;

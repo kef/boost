@@ -4,7 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.Mem
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.InjectorFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.FieldInjectorFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 
 public final class ParameterizedInjection implements Injection {

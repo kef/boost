@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 
 import java.lang.reflect.Constructor;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.InjectionWeb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;

@@ -1,23 +1,20 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.DefaultRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.ApplyableRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.DefaultRules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.DefaultRuleResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 
-public final class DefaultBuildableWeb implements BuildableWeb {
-    private final Rules rules = new DefaultRules();
+public final class DefaultWeb implements Web {
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final RuleResolver resolver = new DefaultRuleResolver(rules);
-    private final InjectionWeb injections = new DefaultInjectionWeb(resolver);
+    private final Rules rules;
+
+    public DefaultWeb(Rules rules) {
+        this.rules = rules;
+    }
 
     public void register(Class<? extends Factory> type) {
         Factory factory = classer.newInstance(type);
@@ -36,11 +33,9 @@ public final class DefaultBuildableWeb implements BuildableWeb {
         builder.apply();
     }
 
-    public GraphBuilder builder() {
-        return new DefaultGraphBuilder(injections);
-    }
 
-    // FIX 2394 find a home for me
+
+// FIX 2394 find a home for me
 //    private void configure(Factory factory) {
 //        if (!(factory instanceof ConfigurableFactory)) return;
 //        ConfigurableFactory configurable = (ConfigurableFactory) factory;

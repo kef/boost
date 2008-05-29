@@ -9,7 +9,7 @@ import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
 import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
-import au.net.netstorm.boost.spider.core.DefaultSpider;
+import au.net.netstorm.boost.spider.core.OldDefaultSpider;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.core.SpiderTryFinally;
@@ -83,7 +83,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         Nu nu = bootStrapNu(registry, factories, nuImpl);
         Injector injector = bootStrapInjector(registry, injectorEngine);
         Resolver resolver = assembleResolver(registry, resolverEngine);
-        return new DefaultSpider(nu, injector, resolver, registry);
+        return new OldDefaultSpider(nu, injector, resolver, registry);
     }
 
     private Resolver assembleResolver(Registry registry, ResolverEngine resolverEngine) {

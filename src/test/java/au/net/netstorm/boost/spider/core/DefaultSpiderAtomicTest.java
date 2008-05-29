@@ -17,7 +17,7 @@ public final class DefaultSpiderAtomicTest extends LifecycleTestCase implements 
     Registry registryMock;
 
     public void setUpFixtures() {
-        subject = new DefaultSpider(nuMock, injectorMock, resolverMock, registryMock);
+        subject = new OldDefaultSpider(nuMock, injectorMock, resolverMock, registryMock);
     }
 
     public void testNu() {
