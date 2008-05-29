@@ -2,10 +2,10 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.core;
 
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.core.Nu;
-import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
+// FIX 2394 now that nasty hackage is gone, go back to using regular spider facade
 public final class DefaultSpider implements Spider {
     private final Nu nu;
     private final Injector injector;
@@ -27,10 +27,5 @@ public final class DefaultSpider implements Spider {
 
     public <T> T resolve(Class<T> type) {
         return resolver.resolve(type);
-    }
-
-    // FIX 2394 old spider issue - kill me
-    public Registry dirtyHackAllowsBootstrapToAvoidBugThatThingsCantBeResolvedIfThereAreNoFactories() {
-        throw new UnsupportedOperationException();
     }
 }

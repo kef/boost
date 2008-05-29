@@ -65,25 +65,24 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
     private final ProxyFactory proxyFactory = new DefaultProxyFactory();
 
-    public Spider assemble(Instances instances, Factories factories, Blueprints blueprints, Layers proxies) {
+    public RegisteredSpider assemble(Instances instances, Factories factories, Blueprints blueprints, Layers proxies) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator, proxies);
-        passThrough.setDelegate(providerEngine);
-        Spider spider =
-                buildSpider(instances, factories, blueprints, proxies, resolverEngine, injectorEngine, providerEngine);
-        return threadLocal(spider);
-    }
-
-    private Spider buildSpider(Instances instances, Factories factories, Blueprints blueprints, Layers proxies,
-            ResolverEngine resolverEngine, InjectorEngine injectorEngine, ProviderEngine providerEngine) {
         NuImpl nuImpl = new DefaultNuImpl(providerEngine);
         Registry registry = assembleRegistry(instances, factories, blueprints, proxies, nuImpl);
-        Nu nu = bootStrapNu(registry, factories, nuImpl);
-        Injector injector = bootStrapInjector(registry, injectorEngine);
+        Spider spider = buildSpider(nuImpl, registry, factories, resolverEngine, injectorEngine);
+        spider = threadLocal(spider);
+        return new DefaultRegisteredSpider(spider, registry);
+    }
+
+    private Spider buildSpider(NuImpl nuImpl, Registry registry, Factories factories, ResolverEngine resolverEngine,
+            InjectorEngine injectorEngine) {
+        Nu nu = bootstrapNu(registry, factories, nuImpl);
+        Injector injector = bootstrapInjector(registry, injectorEngine);
         Resolver resolver = assembleResolver(registry, resolverEngine);
-        return new OldDefaultSpider(nu, injector, resolver, registry);
+        return new OldDefaultSpider(nu, injector, resolver);
     }
 
     private Resolver assembleResolver(Registry registry, ResolverEngine resolverEngine) {
@@ -100,13 +99,13 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
         return registry;
     }
 
-    private Injector bootStrapInjector(Registry registry, InjectorEngine injectorEngine) {
+    private Injector bootstrapInjector(Registry registry, InjectorEngine injectorEngine) {
         Injector injector = new DefaultInjector(injectorEngine);
         registry.instance(Injector.class, injector);
         return injector;
     }
 
-    private Nu bootStrapNu(Registry registry, Factories factories, NuImpl nuImpl) {
+    private Nu bootstrapNu(Registry registry, Factories factories, NuImpl nuImpl) {
         LinkageFactory linkages = new DefaultLinkageFactory();
         ImplementationLookup lookup = new DefaultImplementationLookup(factories, linkages);
         Nu nu = new DefaultNu(lookup, nuImpl);
@@ -133,8 +132,11 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
 
     private ProviderEngine assembleProvider(InjectorEngine injector, Instantiator instantiator, Layers proxies) {
         Onionizer onionizer = new BermudaOnionizer();
-        return new DefaultProviderEngine(onionizer, injector, instantiator, proxies);
+        ProviderEngine providerEngine = new DefaultProviderEngine(onionizer, injector, instantiator, proxies);
+        passThrough.setDelegate(providerEngine);
+        return providerEngine;
     }
+
     /*
                   _.._
                 .SPIDER.

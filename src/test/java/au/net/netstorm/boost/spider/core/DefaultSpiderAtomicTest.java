@@ -6,7 +6,6 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Resolver;
-import au.net.netstorm.boost.spider.registry.Registry;
 
 public final class DefaultSpiderAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Spider subject;
@@ -14,10 +13,9 @@ public final class DefaultSpiderAtomicTest extends LifecycleTestCase implements 
     Nu nuMock;
     Injector injectorMock;
     Resolver resolverMock;
-    Registry registryMock;
 
     public void setUpFixtures() {
-        subject = new OldDefaultSpider(nuMock, injectorMock, resolverMock, registryMock);
+        subject = new OldDefaultSpider(nuMock, injectorMock, resolverMock);
     }
 
     public void testNu() {

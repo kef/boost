@@ -27,17 +27,17 @@ public final class DefaultSpiderBuilder implements SpiderBuilder {
         Factories factories = new DefaultFactories();
         Instances instances = new DefaultInstances();
         Layers proxies = new DefaultLayers();
-        Spider spider = assembler.assemble(instances, factories, blueprints, proxies);
-        buildFactories(spider, impler, blueprints);
-        return spider;
+        RegisteredSpider registered = assembler.assemble(instances, factories, blueprints, proxies);
+        Registry registry = registered.registry();
+        buildFactories(registry, impler, blueprints);
+        return registered.spider();
     }
 
 
-    private void buildFactories(Spider spider, ImplMaster impler, Blueprints blueprints) {
+    private void buildFactories(Registry registry, ImplMaster impler, Blueprints blueprints) {
         // FIX BREADCRUMB 2237 How do we enforce ordering?  High cost factories should be first registered, last called?
         // FIX (Nov 28, 2007) IOC 2215 Can we register the impliers and blueprints in the spider and inject
         // FIX (Nov 28, 2007) IOC 2215 all factories?
-        Registry registry = spider.dirtyHackAllowsBootstrapToAvoidBugThatThingsCantBeResolvedIfThereAreNoFactories();
         implicitFactory(registry, impler);
         blueprintedFactory(registry, blueprints);
     }
