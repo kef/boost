@@ -30,7 +30,7 @@ public final class DefaultWeb implements Web {
     }
 
     public Ruler rule() {
-        return new DefaultRuler();
+        return new DefaultRuler(rules);
     }
 
     public void register(RuleConfig ruleConfig) {
