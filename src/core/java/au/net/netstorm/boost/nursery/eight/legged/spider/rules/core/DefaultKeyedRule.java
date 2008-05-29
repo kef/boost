@@ -5,8 +5,18 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
 public final class DefaultKeyedRule implements KeyedRule {
+    private final Factory factory;
+    private final boolean single;
+    private final Class<?> host;
+    private final String name;
+
+    // FIX 2394 add injection type
+    // FIX 2394 abstract out scoped host/name
     public DefaultKeyedRule(Factory factory, boolean single, Class<?> host, String name) {
-        throw new UnsupportedOperationException();
+        this.factory = factory;
+        this.single = single;
+        this.host = host;
+        this.name = name;
     }
 
     public InjectionType key() {
@@ -14,7 +24,7 @@ public final class DefaultKeyedRule implements KeyedRule {
     }
 
     public Factory getFactory() {
-        throw new UnsupportedOperationException();
+        return factory;
     }
 
     public boolean accepts(InjectionSite site) {
