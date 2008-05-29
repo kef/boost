@@ -5,7 +5,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider
 
 public final class SyntaxExamples {
     Ruler rule;
-    Factory wildcardFactory;
     Factory treeFactory;
     Provider treeProvider;
     {
