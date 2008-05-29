@@ -9,8 +9,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.TreeH
 
 public final class HostMatcherAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Matcher subject;
-    MatcherChecker checker;
     InjectionSite siteMock;
+    MatcherChecker checker;
 
     public void setUpFixtures() {
         subject = new HostMatcher(TreeHolder.class);

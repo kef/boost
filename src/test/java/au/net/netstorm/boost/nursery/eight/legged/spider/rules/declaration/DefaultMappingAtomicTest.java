@@ -19,19 +19,19 @@ public final class DefaultMappingAtomicTest extends LifecycleTestCase implements
     }
 
     public void testToInstance() {
-        Factory expected = new MockFactory(ProviderFactory.class);
+        MockClassEquals expected = new MockClassEquals(ProviderFactory.class);
         expect.oneCall(builderMock, VOID, "setMapping", expected);
         subject.to(new GreenTree());
     }
 
     public void testToImplementation() {
-        Factory expected = new MockFactory(ProviderFactory.class);
+        MockClassEquals expected = new MockClassEquals(ProviderFactory.class);
         expect.oneCall(builderMock, VOID, "setMapping", expected);
         subject.to(GreenTree.class);
     }
 
     public void testToProvider() {
-        Factory expected = new MockFactory(ProviderFactory.class);
+        MockClassEquals expected = new MockClassEquals(ProviderFactory.class);
         expect.oneCall(builderMock, VOID, "setMapping", expected);
         subject.to(providerMock);
     }

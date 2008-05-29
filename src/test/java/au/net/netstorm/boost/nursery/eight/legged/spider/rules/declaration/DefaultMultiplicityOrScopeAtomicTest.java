@@ -4,6 +4,9 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.matchers.HostMatcher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.matchers.NameMatcher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.matchers.MultiMatcher;
 
 public final class DefaultMultiplicityOrScopeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private MultiplicityOrScope subject;
@@ -24,17 +27,20 @@ public final class DefaultMultiplicityOrScopeAtomicTest extends LifecycleTestCas
     }
 
     public void testInHost() {
-        expect.oneCall(builderMock, VOID, "setScope", TreeHolder.class, Scope.ANY_NAME);
+        MockClassEquals expected = new MockClassEquals(HostMatcher.class);
+        expect.oneCall(builderMock, VOID, "setScope", expected);
         subject.in(TreeHolder.class);
     }
 
     public void testInName() {
-        expect.oneCall(builderMock, VOID, "setScope", Scope.ANY_HOST, "tree");
+        MockClassEquals expected = new MockClassEquals(NameMatcher.class);
+        expect.oneCall(builderMock, VOID, "setScope", expected);
         subject.in("tree");
     }
 
     public void testInHostAndName() {
-        expect.oneCall(builderMock, VOID, "setScope", TreeHolder.class, "tree");
+        MockClassEquals expected = new MockClassEquals(MultiMatcher.class);
+        expect.oneCall(builderMock, VOID, "setScope", expected);
         subject.in(TreeHolder.class, "tree");
     }
 }

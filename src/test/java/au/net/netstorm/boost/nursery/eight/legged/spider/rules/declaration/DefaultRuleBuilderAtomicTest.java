@@ -6,18 +6,21 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.KeyedRule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.matchers.Matcher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
 public final class DefaultRuleBuilderAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private RuleBuilder subject;
     Factory factoryMock;
+    InjectionType typeMock;
+    Matcher matcherMock;
 
     public void setUpFixtures() {
-        subject = new DefaultRuleBuilder();
+        subject = new DefaultRuleBuilder(typeMock);
     }
 
     public void testBuild() {
-        subject.setScope(TreeHolder.class, "tree");
+        subject.setScope(matcherMock);
         subject.setIsSingleton(true);
         subject.setMapping(factoryMock);
         checkBuild();
@@ -25,7 +28,6 @@ public final class DefaultRuleBuilderAtomicTest extends LifecycleTestCase implem
 
     private void checkBuild() {
         Rule result = subject.build();
-        assertEquals(true, result instanceof KeyedRule);
         // FIX 2394 add assertions to verify correct mapping, scope and multiplicity
     }
 }

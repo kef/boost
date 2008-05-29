@@ -2,16 +2,22 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.KeyedRule;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 
-public final class LazyRule implements Rule {
-    private final AtomicReference<Rule> delegate = new AtomicReference<Rule>();
+// FIX 2394 should be a keyed rule
+public final class LazyRule implements KeyedRule {
+    private final AtomicReference<KeyedRule> delegate = new AtomicReference<KeyedRule>();
     private final RuleBuilder builder;
 
     public LazyRule(RuleBuilder builder) {
         this.builder = builder;
+    }
+
+    public InjectionType key() {
+        return rule().key();
     }
 
     public Factory getFactory() {
@@ -22,8 +28,8 @@ public final class LazyRule implements Rule {
         return rule().accepts(site);
     }
 
-    private Rule rule() {
-        Rule rule = delegate.get();
+    private KeyedRule rule() {
+        KeyedRule rule = delegate.get();
         if (rule != null) return rule;
         rule = builder.build();
         delegate.compareAndSet(null, rule);

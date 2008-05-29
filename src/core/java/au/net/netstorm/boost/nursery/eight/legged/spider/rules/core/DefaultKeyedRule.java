@@ -3,24 +3,21 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.rules.core;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.matchers.Matcher;
 
 public final class DefaultKeyedRule implements KeyedRule {
+    private final InjectionType type;
     private final Factory factory;
-    private final boolean single;
-    private final Class<?> host;
-    private final String name;
+    private final Matcher matcher;
 
-    // FIX 2394 add injection type
-    // FIX 2394 abstract out scoped host/name
-    public DefaultKeyedRule(Factory factory, boolean single, Class<?> host, String name) {
+    public DefaultKeyedRule(InjectionType type, Factory factory, Matcher matcher) {
+        this.type = type;
         this.factory = factory;
-        this.single = single;
-        this.host = host;
-        this.name = name;
+        this.matcher = matcher;
     }
 
     public InjectionType key() {
-        throw new UnsupportedOperationException();
+        return type;
     }
 
     public Factory getFactory() {
@@ -28,6 +25,6 @@ public final class DefaultKeyedRule implements KeyedRule {
     }
 
     public boolean accepts(InjectionSite site) {
-        throw new UnsupportedOperationException();
+        return matcher.accept(site);
     }
 }
