@@ -1,11 +1,9 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.core;
+package au.net.netstorm.boost.spider.core;
 
-import au.net.netstorm.boost.spider.core.Spider;
-import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
-// FIX 2394 now that nasty hackage is gone, go back to using regular spider facade
+// FIX 1676 Test drive.  This triggers work on "why use facades" discussion paper.
 public final class DefaultSpider implements Spider {
     private final Nu nu;
     private final Injector injector;
@@ -17,8 +15,8 @@ public final class DefaultSpider implements Spider {
         this.resolver = resolver;
     }
 
-    public <T> T nu(Class<T> iface, Object... values) {
-        return nu.nu(iface, values);
+    public <T> T nu(Class<T> iface, Object... params) {
+        return nu.nu(iface, params);
     }
 
     public void inject(Object ref) {

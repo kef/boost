@@ -12,9 +12,9 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Default
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNu;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultInjector;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.Spider;
+import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 

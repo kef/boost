@@ -15,7 +15,7 @@ public final class DefaultSpiderAtomicTest extends LifecycleTestCase implements 
     Resolver resolverMock;
 
     public void setUpFixtures() {
-        subject = new OldDefaultSpider(nuMock, injectorMock, resolverMock);
+        subject = new DefaultSpider(nuMock, injectorMock, resolverMock);
     }
 
     public void testNu() {
