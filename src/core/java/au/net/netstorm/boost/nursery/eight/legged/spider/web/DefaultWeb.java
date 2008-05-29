@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.DefaultRuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.ApplyableRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.Ruler;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.DefaultRuler;
@@ -34,9 +32,8 @@ public final class DefaultWeb implements Web {
     }
 
     public void register(RuleConfig ruleConfig) {
-        ApplyableRuleBuilder builder = new DefaultRuleBuilder(rules);
-        ruleConfig.apply(builder);
-        builder.apply();
+        Ruler rule = rule();
+        ruleConfig.apply(rule);
     }
 
 

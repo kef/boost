@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.config;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.RuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.Ruler;
 
 public interface RuleConfig {
-    void apply(RuleBuilder rule);
+    void apply(Ruler rule);
 }

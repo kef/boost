@@ -6,7 +6,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.web.DefaultSpidersWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.SpidersWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.BlueprintedFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ImpliedFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.RuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.Ruler;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNu;
@@ -43,14 +43,14 @@ public final class DefaultBootstrapper implements Bootstrapper {
         web.register(this);
     }
 
-    public void apply(RuleBuilder rule) {
-        rule.single(SpidersWeb.class).to(spidersWeb);
-        rule.single(Web.class).to(web);
-        rule.single(Spider.class).to(spider);
-        rule.single(GraphBuilder.class).to(builder);
-        rule.single(Resolver.class).to(resolver);
-        rule.single(Injector.class).to(injector);
-        rule.single(Nu.class).to(nu);
+    public void apply(Ruler rule) {
+        rule.map(SpidersWeb.class).to(spidersWeb);
+        rule.map(Web.class).to(web);
+        rule.map(Spider.class).to(spider);
+        rule.map(GraphBuilder.class).to(builder);
+        rule.map(Resolver.class).to(resolver);
+        rule.map(Injector.class).to(injector);
+        rule.map(Nu.class).to(nu);
     }
 
     public SpidersWeb getBootstrappedWeb() {
