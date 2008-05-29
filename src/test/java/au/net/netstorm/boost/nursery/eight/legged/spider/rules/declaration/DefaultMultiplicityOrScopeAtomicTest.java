@@ -14,8 +14,13 @@ public final class DefaultMultiplicityOrScopeAtomicTest extends LifecycleTestCas
     }
 
     public void testAsSingle() {
-        expect.oneCall(builderMock, VOID, "setIsSingleton");
+        expect.oneCall(builderMock, VOID, "setIsSingleton", true);
         subject.asSingle();
+    }
+
+    public void testAsMulti() {
+        expect.oneCall(builderMock, VOID, "setIsSingleton", false);
+        subject.asMulti();
     }
 
     public void testInHost() {

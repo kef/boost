@@ -3,6 +3,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.DefaultRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.ApplyableRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.Ruler;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.DefaultRuler;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
@@ -25,6 +27,10 @@ public final class DefaultWeb implements Web {
         // FIX 2394 this needs to registered as a wildcard tule
 //        configure(factory);
 //        factories.add(factory);
+    }
+
+    public Ruler rule() {
+        return new DefaultRuler();
     }
 
     public void register(RuleConfig ruleConfig) {

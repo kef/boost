@@ -8,7 +8,11 @@ public final class DefaultMultiplicityOrScope implements MultiplicityOrScope {
     }
 
     public void asSingle() {
-        builder.setIsSingleton();
+        builder.setIsSingleton(true);
+    }
+
+    public void asMulti() {
+        builder.setIsSingleton(false);
     }
 
     public Multiplicity in(Class<?> host) {
