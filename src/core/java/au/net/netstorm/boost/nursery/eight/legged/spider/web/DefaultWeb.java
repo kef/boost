@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.DefaultRuleBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.ApplyableRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.DefaultRuleBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.ApplyableRuleBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;

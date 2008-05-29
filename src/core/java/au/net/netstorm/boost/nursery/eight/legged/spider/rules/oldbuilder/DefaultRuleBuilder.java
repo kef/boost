@@ -1,8 +1,8 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder;
+package au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
-import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.Multiplicity.MULTI;
-import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.builder.Multiplicity.SINGLE;
+import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.Multiplicity.MULTI;
+import static au.net.netstorm.boost.nursery.eight.legged.spider.rules.oldbuilder.Multiplicity.SINGLE;
 
 // FIX 2394 work out if this is really how i want to do it, looks a little scary
 public final class DefaultRuleBuilder implements ApplyableRuleBuilder {
