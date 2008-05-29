@@ -15,6 +15,7 @@ public final class DefaultKeyedRules implements KeyedRules {
 
     public boolean exists(InjectionType type) {
         if (rules.exists(type)) return true;
+        // FIX 2394 do i really want to fallback, if you can't bind the specific type then don't try at all???
         InjectionType raw = type.raw();
         return rules.exists(raw);
     }
