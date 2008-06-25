@@ -3,8 +3,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 import java.lang.reflect.Field;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
-import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeField;
+import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeField;
 
 public final class DefaultFieldInjector implements MemberInjector {
     private final EdgeField fielder = new DefaultEdgeField();

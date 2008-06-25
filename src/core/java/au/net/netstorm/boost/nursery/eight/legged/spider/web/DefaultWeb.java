@@ -1,20 +1,23 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.collections.Rules;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.Ruler;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.DefaultRuler;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;
-import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ConfigurableFactory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.DefaultBinder;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 
 public final class DefaultWeb implements Web {
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Rules rules;
+    private final Bindings bindings;
+    private final Factories factories;
 
-    public DefaultWeb(Rules rules) {
-        this.rules = rules;
+    public DefaultWeb(Bindings bindings, Factories factories) {
+        this.bindings = bindings;
+        this.factories = factories;
     }
 
     public void register(Class<? extends Factory> type) {
@@ -24,21 +27,21 @@ public final class DefaultWeb implements Web {
 
     public void register(Factory factory) {
         configure(factory);
-        rules.addWildcard(factory);
+        factories.add(factory);
     }
 
-    public Ruler rule() {
-        return new DefaultRuler(rules);
+    public Binder binder() {
+        return new DefaultBinder(bindings);
     }
 
     public void register(RuleConfig ruleConfig) {
-        Ruler rule = rule();
-        ruleConfig.apply(rule);
+        Binder binder = binder();
+        ruleConfig.apply(binder);
     }
 
     private void configure(Factory factory) {
         if (!(factory instanceof ConfigurableFactory)) return;
         ConfigurableFactory configurable = (ConfigurableFactory) factory;
-        configurable.configure(this);
+        configurable.configure(binder());
     }
 }

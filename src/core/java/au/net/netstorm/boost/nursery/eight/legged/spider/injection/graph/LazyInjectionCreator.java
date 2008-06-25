@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
 import java.util.Queue;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.Creator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.collections.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 public final class LazyInjectionCreator implements Creator<InjectionSite, Injection> {

@@ -1,23 +1,26 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.bootstrap;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultInjector;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNu;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.DefaultMapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.DefaultSpidersWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.SpidersWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.BlueprintedFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.ImpliedFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.declaration.Ruler;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNu;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultInjector;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
+import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.Spider;
-import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
+// DEBT ClassDataAbstractionCoupling {
 public final class DefaultBootstrapper implements Bootstrapper {
     private final Web web;
     private final GraphBuilder builder;
@@ -38,22 +41,31 @@ public final class DefaultBootstrapper implements Bootstrapper {
     }
 
     public void apply(Web web) {
-        web.register(BlueprintedFactory.class);
-        web.register(ImpliedFactory.class);
+        // FIX 2394 reinstate me
+//        web.register(BlueprintedFactory.class);
+        web.register(ImplicitFactory.class);
         web.register(this);
     }
 
-    public void apply(Ruler rule) {
-        rule.map(SpidersWeb.class).to(spidersWeb);
-        rule.map(Web.class).to(web);
-        rule.map(Spider.class).to(spider);
-        rule.map(GraphBuilder.class).to(builder);
-        rule.map(Resolver.class).to(resolver);
-        rule.map(Injector.class).to(injector);
-        rule.map(Nu.class).to(nu);
+    public void apply(Binder rule) {
+        rule.bind(SpidersWeb.class).to(spidersWeb);
+        rule.bind(Web.class).to(web);
+        rule.bind(Spider.class).to(spider);
+        rule.bind(GraphBuilder.class).to(builder);
+        rule.bind(Resolver.class).to(resolver);
+        rule.bind(Injector.class).to(injector);
+        rule.bind(Nu.class).to(nu);
+        configureImplicitFactory();
     }
 
     public SpidersWeb getBootstrappedWeb() {
         return spidersWeb;
     }
+
+    private void configureImplicitFactory() {
+        Mappings mappings = spider.resolve(Mappings.class);
+        Mapping mapper = new DefaultMapping();
+        mappings.add(mapper);
+    }
 }
+// } DEBT ClassDataAbstractionCoupling

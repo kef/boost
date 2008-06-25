@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.spider.linkage.Linkage;
-import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class DefaultInjectionSite extends Primordial implements InjectionSite {
     private final Class<?> host;

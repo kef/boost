@@ -1,22 +1,20 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory.Factory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections.Creator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.collections.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.core.Rule;
-import au.net.netstorm.boost.nursery.eight.legged.spider.rules.resolver.RuleResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.resolver.FactoryResolver;
 
 public final class LazyProviderCreator implements Creator<InjectionSite, Provider> {
-    private final RuleResolver resolver;
+    private final FactoryResolver resolver;
 
-    public LazyProviderCreator(RuleResolver resolver) {
+    public LazyProviderCreator(FactoryResolver resolver) {
         this.resolver = resolver;
     }
 
     public Provider create(InjectionSite site) {
-        Rule rule = resolver.resolve(site);
-        Factory factory = rule.getFactory();
+        Factory factory = resolver.resolve(site);
         return factory.nu(site);
     }
 }

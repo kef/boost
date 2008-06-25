@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections;
+package au.net.netstorm.boost.nursery.eight.legged.spider.collections;
 
 public interface IntegrityMap<K, V> {
     V getOrCreate(K key, Creator<K, V> creator);

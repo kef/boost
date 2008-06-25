@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider.types;
 
-public final class InstanceProvider implements Provider {
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
+public final class InstanceProvider extends Primordial implements Provider {
     private final Object instance;
 
     public InstanceProvider(Object instance) {

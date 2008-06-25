@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
+import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
 public final class FieldInjectorFactory implements InjectorFactory<MemberInjector> {
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();

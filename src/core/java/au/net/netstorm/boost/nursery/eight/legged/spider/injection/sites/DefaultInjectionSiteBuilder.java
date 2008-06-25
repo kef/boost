@@ -1,12 +1,11 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.DefaultInjectionTypeBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.DefaultInjectionTypeBuilder;
 
 public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     private final InjectionTypeBuilder builder = new DefaultInjectionTypeBuilder();
@@ -23,13 +22,7 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
         return new DefaultInjectionSite(host, type, name);
     }
 
-    public InjectionSite[] build(Constructor<?> constructor) {
-        Class<?> host = constructor.getDeclaringClass();
-        Type[] reifieds = constructor.getGenericParameterTypes();
-        return buildSites(host, reifieds);
-    }
-
-    private InjectionSite[] buildSites(Class<?> host, Type[] refieds) {
+    public InjectionSite[] build(Class<?> host, Type[] refieds) {
         InjectionSite[] sites = new InjectionSite[refieds.length];
         for (int i = 0; i < refieds.length; ++i) {
             InjectionType type = injectionType(refieds[i]);

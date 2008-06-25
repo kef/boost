@@ -1,10 +1,15 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider.types;
 
-import au.net.netstorm.boost.gunge.type.Implementation;
-import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.spider.instantiate.Instantiator;
+import java.lang.reflect.Type;
+import java.lang.reflect.Constructor;
 
-public final class ImplProvider implements Provider {
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
+import au.net.netstorm.boost.spider.instantiate.Instantiator;
+import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
+public final class ImplProvider extends Primordial implements Provider, HasParameters {
     // FIX 2394 should be pulled out
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     // FIX 2394 Interface?
@@ -18,6 +23,16 @@ public final class ImplProvider implements Provider {
     }
 
     public Object nu(Object... args) {
-        return instantiator.instantiate(impl, args);
+        UnresolvedInstance unresolved = instantiator.instantiate(impl, args);
+        return unresolved.getRef();
+    }
+
+    // FIX 2394 probably should be a utility that does this
+    public Type[] getParameterTypes() {
+        Class<? extends Implementation> cls = impl.getClass();
+        Constructor<?>[] ctors = cls.getConstructors();
+        if (ctors.length != 1) throw new IllegalArgumentException();
+        Constructor<?> ctor = ctors[0];
+        return ctor.getGenericParameterTypes();
     }
 }

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 
 public final class DefaultConstructorInjector implements ConstructorInjector {
     private final Provider provider;

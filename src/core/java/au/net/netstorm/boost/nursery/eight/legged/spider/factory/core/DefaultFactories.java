@@ -1,13 +1,12 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.provider.factory;
+package au.net.netstorm.boost.nursery.eight.legged.spider.factory.core;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 public final class DefaultFactories implements Factories {
-    // FIX 2394 ordering??
-    private final Set<Factory> factories = new HashSet<Factory>();
+    private final List<Factory> factories = new ArrayList<Factory>();
 
     public Factory find(InjectionSite site) {
         for (Factory factory : factories) {
