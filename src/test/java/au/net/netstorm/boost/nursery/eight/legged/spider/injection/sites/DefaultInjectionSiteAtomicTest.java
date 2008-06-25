@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.DummyHolder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.DummyHolder;
 
 public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private InjectionSite subject;

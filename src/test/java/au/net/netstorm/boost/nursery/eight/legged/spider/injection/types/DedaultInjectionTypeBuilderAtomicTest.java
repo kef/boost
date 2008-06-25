@@ -1,15 +1,15 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.types;
 
-import java.lang.reflect.Type;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 
+import au.net.netstorm.boost.scalpel.testdata.java.util.List;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
+import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.scalpel.testdata.java.util.List;
 
 public final class DedaultInjectionTypeBuilderAtomicTest extends LifecycleTestCase
         implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {

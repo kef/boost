@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider.multiplicity;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 
 public final class MultiProviderAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private ProviderMultiplicity subject;

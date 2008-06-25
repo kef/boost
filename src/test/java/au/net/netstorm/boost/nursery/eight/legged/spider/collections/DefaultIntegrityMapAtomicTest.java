@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.injection.collections;
+package au.net.netstorm.boost.nursery.eight.legged.spider.collections;
 
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
