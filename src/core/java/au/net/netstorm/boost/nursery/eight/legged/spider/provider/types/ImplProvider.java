@@ -9,7 +9,7 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
-public final class ImplProvider extends Primordial implements Provider, HasParameters {
+public final class ImplProvider extends Primordial implements Provider, HasParameters, HasInjectableTarget {
     // FIX 2394 should be pulled out
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     // FIX 2394 Interface?
@@ -29,10 +29,14 @@ public final class ImplProvider extends Primordial implements Provider, HasParam
 
     // FIX 2394 probably should be a utility that does this
     public Type[] getParameterTypes() {
-        Class<? extends Implementation> cls = impl.getClass();
+        Class<?> cls = impl.getImpl();
         Constructor<?>[] ctors = cls.getConstructors();
         if (ctors.length != 1) throw new IllegalArgumentException();
         Constructor<?> ctor = ctors[0];
         return ctor.getGenericParameterTypes();
+    }
+
+    public Class<?> getTargetClass() {
+        return impl.getImpl();
     }
 }

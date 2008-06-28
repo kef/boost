@@ -10,7 +10,8 @@ public final class DefaultInjectionGraph<T> implements InjectionGraph<T> {
     }
 
     public T apply() {
-        Object o = root.apply();
+        InjectionContext context = new DefaultInjectionContext();
+        Object o = root.apply(context);
         return type.cast(o);
     }
 }

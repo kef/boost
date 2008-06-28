@@ -7,6 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.Inj
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.MemberInjector;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 
 public final class DefaultInjection implements PhasedInjection {
     private final InjectorFactory<ConstructorInjector> ctorFactory = new ConstuctorInjectorFactory();
@@ -23,13 +24,16 @@ public final class DefaultInjection implements PhasedInjection {
         // FIX 2394 would this be simpler if there was a resolution queue rather than relying on recursive graph?
         // FIX 2394 to implement the queue approach, InjectionWeb would be wrapped in LocalInjectionWeb which stores
         // FIX 2394 the injections just for this graph instance, this queue could than be processed twice: build, apply
-        constructor = ctorFactory.nu(web, site);
-        members = memberFactory.nu(web, site);
+        Provider provider = web.provider(site);
+        constructor = ctorFactory.nu(web, site, provider);
+        members = memberFactory.nu(web, site, provider);
     }
 
-    public Object apply() {
-        Object ref = constructor.inject();
-        members.inject(ref);
+    public Object apply(InjectionContext context) {
+        if (context.hasRef(this)) return context.ref(this);
+        Object ref = constructor.inject(context);
+        context.put(this, ref);
+        members.inject(context, ref);
         return ref;
     }
 }

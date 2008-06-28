@@ -57,7 +57,7 @@ public final class DefaultBinder implements Binder {
 
     public Target bind(InjectionType type) {
         BindingConstraint constraint = constraints.nu();
-        // FIX INIT should the precedence be set against the constraint? prob yes
+        // FIX 2394 should the precedence be set against the constraint? prob yes
         return buildTarget(type, constraint, Precedence.RAW);
     }
 

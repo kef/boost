@@ -14,8 +14,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.HasParam
 public final class ConstuctorInjectorFactory implements InjectorFactory<ConstructorInjector> {
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();
 
-    public ConstructorInjector nu(InjectionWeb web, InjectionSite site) {
-        Provider provider = web.provider(site);
+    public ConstructorInjector nu(InjectionWeb web, InjectionSite site, Provider provider) {
         InjectionSite[] sites = provider instanceof HasParameters ? params(site, provider) : new InjectionSite[0];
         return nuConstuctor(web, provider, sites);
     }

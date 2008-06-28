@@ -9,7 +9,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Default
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.HasInjectableTarget;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
@@ -17,11 +18,16 @@ public final class FieldInjectorFactory implements InjectorFactory<MemberInjecto
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
 
-    public MemberInjector nu(InjectionWeb web, InjectionSite site) {
-        InjectionType type = site.type();
-        Class<?> raw = type.rawClass();
-        MemberInjector[] fields = fields(web, raw);
+    public MemberInjector nu(InjectionWeb web, InjectionSite site, Provider provider) {
+        MemberInjector[] fields = provider instanceof HasInjectableTarget
+                ? fields(web, provider) : new MemberInjector[0];
         return new DefaultMemberInjector(fields); 
+    }
+
+    private MemberInjector[] fields(InjectionWeb web, Provider provider) {
+        HasInjectableTarget targeted = (HasInjectableTarget) provider;
+        Class<?> target = targeted.getTargetClass();
+        return fields(web, target);
     }
 
     private MemberInjector[] fields(InjectionWeb web, Class<?> raw) {

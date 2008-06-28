@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.InjectionContext;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 
 public final class DefaultConstructorInjector implements ConstructorInjector {
@@ -12,10 +13,10 @@ public final class DefaultConstructorInjector implements ConstructorInjector {
         this.injections = injections;
     }
 
-    public Object inject() {
+    public Object inject(InjectionContext context) {
         Object[] args = new Object[injections.length];
         for (int i = 0; i < injections.length; ++i) {
-            args[i] = injections[i].apply();
+            args[i] = injections[i].apply(context);
         }
         return provider.nu(args);
     }
