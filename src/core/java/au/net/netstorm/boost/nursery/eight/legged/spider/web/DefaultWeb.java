@@ -14,10 +14,12 @@ public final class DefaultWeb implements Web {
     private final EdgeClass classer = new DefaultEdgeClass();
     private final Bindings bindings;
     private final Factories factories;
+    private final Binder binder;
 
     public DefaultWeb(Bindings bindings, Factories factories) {
         this.bindings = bindings;
         this.factories = factories;
+        this.binder = new DefaultBinder(bindings);
     }
 
     public void register(Class<? extends Factory> type) {
@@ -31,11 +33,10 @@ public final class DefaultWeb implements Web {
     }
 
     public Binder binder() {
-        return new DefaultBinder(bindings);
+        return binder;
     }
 
     public void register(RuleConfig ruleConfig) {
-        Binder binder = binder();
         ruleConfig.apply(binder);
     }
 
