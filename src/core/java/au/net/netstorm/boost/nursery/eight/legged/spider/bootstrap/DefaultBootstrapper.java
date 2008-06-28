@@ -41,7 +41,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     }
 
     public void apply(Web web) {
-        // FIX 2394 reinstate me
+        // FIX 2394 is this really needed - i am thinking default rules behaviour will suffice
 //        web.register(BlueprintedFactory.class);
         web.register(ImplicitFactory.class);
         web.register(this);

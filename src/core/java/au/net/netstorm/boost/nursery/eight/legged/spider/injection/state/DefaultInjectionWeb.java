@@ -15,7 +15,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider
 import au.net.netstorm.boost.nursery.eight.legged.spider.resolver.FactoryResolver;
 
 public final class DefaultInjectionWeb implements InjectionWeb {
-    // FIX 2394 should the web be effectively immutable, or should these maps get dirtied by rule update???
+    // FIX 2394 need to address the behavior when a rule is updated
     private final IntegrityMap<InjectionSite, Provider> providers =
             new DefaultIntegrityMap<InjectionSite, Provider>();
     private final IntegrityMap<InjectionSite, Injection> injections =
@@ -32,7 +32,6 @@ public final class DefaultInjectionWeb implements InjectionWeb {
         return providers.getOrCreate(site, creator);
     }
 
-    // FIX 2394 build phase could be delayed even more by pushing it up a layer
     public Injection injection(InjectionSite site) {
         // FIX 2394 nasty hack alert
         Queue<PhasedInjection> toBuild = new LinkedList<PhasedInjection>();

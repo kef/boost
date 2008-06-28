@@ -16,7 +16,7 @@ public final class DefaultFactories implements Factories {
     }
 
     public void add(Factory factory) {
-        // FIX 2394 should be a StrictSet - fail on nulls and dups
+        // FIX 2394 should be a StrictXXX - fail on nulls and dups
         if (factory == null) throw new IllegalArgumentException("Factory can't be null.");
         if (factories.contains(factory)) throw new IllegalArgumentException("Factory already exists.");
         factories.add(factory);

@@ -13,7 +13,6 @@ public final class DefaultBinding extends Primordial implements MutableBinding {
     private final Precedence precedence;
     private Factory factory;
 
-    // FIX 2394 not thread safe, probably should be made so by making factory an atomic ref
     public DefaultBinding(InjectionType type, BindingConstraint constraint, Precedence precedence) {
         if (type == null || constraint == null || precedence == null) throw new IllegalArgumentException();
         this.type = type;
