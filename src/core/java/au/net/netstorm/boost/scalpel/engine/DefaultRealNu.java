@@ -10,8 +10,8 @@ public final class DefaultRealNu implements RealNu {
     Unedger unedger;
 
     public <R> R nu(Class<R> realClass, Object... edgedArgs) {
-        Constructor<?> c = resolver.resolve(realClass, edgedArgs);
         Object[] realArgs = unedger.unedge(edgedArgs);
+        Constructor<?> c = resolver.resolve(realClass, realArgs);
         Object real = constructor.newInstance(c, realArgs);
         return realClass.cast(real);
     }

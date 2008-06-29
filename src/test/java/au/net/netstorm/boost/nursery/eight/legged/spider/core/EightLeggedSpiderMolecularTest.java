@@ -20,6 +20,13 @@ public final class EightLeggedSpiderMolecularTest extends LifecycleTestCase impl
         assertSame(DefaultFoo.class, foo.getClass());
     }
 
+    public void testSpiderInject() {
+        HasDependency target = new HasDependency();
+        subject.inject(target);
+        Foo foo = target.foo;
+        assertSame(DefaultFoo.class, foo.getClass());
+    }
+
     public void testSpiderWithCyclicDependency() {
         Cyclic cyclic = subject.nu(Cyclic.class);
         assertSame(DefaultCyclic.class, cyclic.getClass());

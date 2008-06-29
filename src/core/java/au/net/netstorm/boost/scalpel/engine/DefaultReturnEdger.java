@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.scalpel.engine;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.scalpel.core.AutoEdger;
 import au.net.netstorm.boost.scalpel.core.Edge;
-
-import java.lang.reflect.Method;
 
 final class DefaultReturnEdger implements ReturnEdger {
     AutoEdger edger;
@@ -11,17 +12,27 @@ final class DefaultReturnEdger implements ReturnEdger {
     @SuppressWarnings("unchecked")
     public Object edge(Method edgeMethod, Object realReturn) {
         Class<?> realType = edgeMethod.getReturnType();
-        // FIX 2328 realType may be an "Edge" or NOT.  Both are valid.
-        // FIX 2328 if the developer (retard like me) is attempting to return
-        // FIX 2328 an edge type but has mistakenly not marked the interface
-        // FIX 2328 we early return with the real type.  However we know here
-        // FIX 2328 that a ClassCastException will occur.
-        // FIX 2328 Suggest check and barf with meaningful message.
+        return edge(realType, realReturn);
+    }
 
-        // FIX 2328 MH this highlights a wider area then just this case.
-        // FIX 2328 MH I am thinking that pushing eager validation will be better.
-        if (!Edge.class.isAssignableFrom(realType)) return realReturn;
+    private Object edge(Class<?> realType, Object realReturn) {
+        if (realType.isArray()) return edgeArray(realType, realReturn);
+        if (!isEdge(realType)) return realReturn;
         Class<Edge> edgeType = (Class<Edge>) realType;
         return edger.edge(edgeType, realReturn);
+    }
+
+    private Object edgeArray(Class<?> array, Object real) {
+        Class<?> realType = array.getComponentType();
+        Object[] realReturn = (Object[]) real;
+        Object[] edgeReturn = (Object[]) Array.newInstance(realType, realReturn.length);
+        for (int i = 0; i < realReturn.length; ++i) {
+            edgeReturn[i] = edge(realType, realReturn[i]);
+        }
+        return edgeReturn;
+    }
+
+    private boolean isEdge(Class<?> realType) {
+        return Edge.class.isAssignableFrom(realType);
     }
 }
