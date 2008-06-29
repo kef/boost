@@ -7,6 +7,7 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.spider.core.Spider;
 
+// FIX 2394 being used to drive through complex interaction testing, remove in favour of demo tests when possible
 public final class EightLeggedSpiderMolecularTest extends LifecycleTestCase implements HasFixtures, InjectableTest {
     private Spider subject;
 
