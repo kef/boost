@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.spider.linkage.Linkage;
 
 public final class DefaultInjectionSite extends Primordial implements InjectionSite {
     private final Class<?> host;
@@ -14,11 +13,6 @@ public final class DefaultInjectionSite extends Primordial implements InjectionS
         this.host = host;
         this.type = type;
         this.name = name;
-    }
-
-    // FIX 2328 incremental step, eventually just use injection sites where applicable
-    public Linkage toLinkage() {
-        throw new UnsupportedOperationException();
     }
 
     public Class<?> host() { return this.host; }

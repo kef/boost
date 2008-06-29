@@ -3,7 +3,9 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.collections;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public final class DefaultIntegrityMap<K, V> implements IntegrityMap<K, V> {
+import au.net.netstorm.boost.bullet.primordial.Primordial;
+
+public final class DefaultIntegrityMap<K, V> extends Primordial implements IntegrityMap<K, V> {
     private final ConcurrentMap<K,V> delegate = new ConcurrentHashMap<K,V>();
 
     public V getOrCreate(K key, Creator<K, V> creator) {

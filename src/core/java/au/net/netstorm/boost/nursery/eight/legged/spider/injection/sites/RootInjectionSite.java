@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.spider.linkage.Linkage;
 
 public final class RootInjectionSite extends Primordial implements InjectionSite {
     private final InjectionType type;
@@ -22,9 +21,5 @@ public final class RootInjectionSite extends Primordial implements InjectionSite
 
     public String name() {
        throw new AssertionError("Implementation Error: Root injections do not have names.");
-    }
-
-    public Linkage toLinkage() {
-        throw new AssertionError("Implementation Error: Root injections do not have linkages.");
     }
 }

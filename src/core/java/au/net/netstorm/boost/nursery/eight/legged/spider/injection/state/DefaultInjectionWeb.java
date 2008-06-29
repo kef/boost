@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.state;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.collections.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.collections.DefaultIntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.collections.IntegrityMap;
@@ -14,7 +15,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.resolver.FactoryResolver;
 
-public final class DefaultInjectionWeb implements InjectionWeb {
+public final class DefaultInjectionWeb extends Primordial implements InjectionWeb {
     // FIX 2394 need to address the behavior when a rule is updated
     private final IntegrityMap<InjectionSite, Provider> providers =
             new DefaultIntegrityMap<InjectionSite, Provider>();
