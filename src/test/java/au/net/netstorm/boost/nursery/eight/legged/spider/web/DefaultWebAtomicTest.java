@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.config.RuleConfig;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.RuleConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
