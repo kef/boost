@@ -13,7 +13,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyPro
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.PhasedInjection;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.resolver.FactoryResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 
 public final class DefaultInjectionWeb extends Primordial implements InjectionWeb {
     // FIX 2394 need to address the behavior when a rule is updated
