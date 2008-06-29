@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.Creator;
+import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;

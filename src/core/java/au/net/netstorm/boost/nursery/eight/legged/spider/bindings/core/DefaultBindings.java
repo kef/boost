@@ -6,10 +6,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.IntegrityMap;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.DefaultIntegrityMap;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.Creator;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.ArrayListCreator;
+import au.net.netstorm.boost.gunge.collection.IntegrityMap;
+import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
+import au.net.netstorm.boost.gunge.collection.Creator;
+import au.net.netstorm.boost.gunge.collection.ArrayListCreator;
 
 public final class DefaultBindings implements Bindings {
     private final IntegrityMap<InjectionType,List<Binding>> bindings =

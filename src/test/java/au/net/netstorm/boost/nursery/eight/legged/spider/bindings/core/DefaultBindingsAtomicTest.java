@@ -5,8 +5,8 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.IntegrityMap;
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.Creator;
+import au.net.netstorm.boost.gunge.collection.IntegrityMap;
+import au.net.netstorm.boost.gunge.collection.Creator;
 
 public final class DefaultBindingsAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Bindings subject;

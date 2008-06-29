@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.state;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.collections.IntegrityMap;
+import au.net.netstorm.boost.gunge.collection.IntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injection;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyInjectionCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyProviderCreator;
