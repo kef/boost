@@ -1,5 +1,6 @@
 edge
 collections, i.e. statefull
+configuration/bootstrap/builder
 generic
 singleton
 cyclic dependencies

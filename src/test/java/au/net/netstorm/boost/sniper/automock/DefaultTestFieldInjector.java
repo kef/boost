@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.sniper.automock;
 
-import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.sniper.inject.DefaultSubjectInitializer;
 import au.net.netstorm.boost.sniper.inject.SubjectInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
+import au.net.netstorm.boost.gunge.provider.Provider;
 
 public final class DefaultTestFieldInjector implements TestFieldInjector {
     private final MockSupport mocks;

@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.random;
 
 import au.net.netstorm.boost.gunge.provider.NotProvidedException;
-import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.provider.Provider;
 
 import java.lang.reflect.Array;
 

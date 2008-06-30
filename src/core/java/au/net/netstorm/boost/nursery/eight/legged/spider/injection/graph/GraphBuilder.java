@@ -8,4 +8,5 @@ public interface GraphBuilder {
     <T> InjectionGraph<T> resolve(Class<T> root, InjectionType type);
     <T> InjectionGraph<T> nu(Class<T> root, InjectionType type, Object... args);
     <T> InjectionGraph<T> inject(Class<T> root, InjectionType type, Object instance);
+    <T> InjectionGraph<T> nuImpl(Class<T> impl, InjectionType type, Object... args);
 }

@@ -1,9 +1,10 @@
 package au.net.netstorm.boost.bullet.mirror;
 
 import java.lang.reflect.Constructor;
-import au.net.netstorm.boost.gunge.provider.Provider;
+
 import au.net.netstorm.boost.sledge.java.lang.reflect.DefaultEdgeConstructor;
 import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeConstructor;
+import au.net.netstorm.boost.gunge.provider.Provider;
 
 // FIX 2318 This stinky little dog turd has to go ... WAZZA.
 public final class DefaultInstantiatorWithProvider implements InstantiatorWithProvider {

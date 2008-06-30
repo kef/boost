@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.random;
 
-import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.provider.Random;
 import au.net.netstorm.boost.gunge.provider.SpecificProvider;
+import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;

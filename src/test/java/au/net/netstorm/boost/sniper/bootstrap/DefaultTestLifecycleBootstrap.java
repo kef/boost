@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.sniper.bootstrap;
 
-import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.provider.Random;
+import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.sniper.atom.AtomTestChecker;
 import au.net.netstorm.boost.sniper.atom.DataAtomTestChecker;
 import au.net.netstorm.boost.sniper.automock.DefaultTestFieldInjector;
@@ -19,8 +19,8 @@ public class DefaultTestLifecycleBootstrap implements TestLifecycleBootstrap {
     ProvidesData registerer;
     DataProviders data;
     EnumProvider enums;
-    Registry registry;
     MockSupport mocks;
+    Registry registry;
     Test test;
 
     public void bootstrap() {

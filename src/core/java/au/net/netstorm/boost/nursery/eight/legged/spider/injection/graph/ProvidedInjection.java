@@ -7,15 +7,15 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 
-public final class ParameterizedInjection implements Injection {
+public final class ProvidedInjection implements Injection {
     private final InjectorFactory<MemberInjector> memberFactory = new FieldInjectorFactory();
     private final MemberInjector members;
     private final Object[] args;
     private final Provider provider;
 
-    public ParameterizedInjection(InjectionWeb web, InjectionSite site, Object[] args) {
+    public ProvidedInjection(InjectionWeb web, InjectionSite site, Provider provider, Object[] args) {
         this.args = args;
-        provider = web.provider(site);
+        this.provider = provider;
         members = memberFactory.nu(web, site, provider);
     }
 
