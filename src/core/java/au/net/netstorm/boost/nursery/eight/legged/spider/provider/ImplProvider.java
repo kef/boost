@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
-import java.lang.reflect.Type;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Type;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
-import au.net.netstorm.boost.bullet.primordial.Primordial;
 
 public final class ImplProvider extends Primordial implements Provider, HasParameters, HasInjectableTarget {
     // FIX 2394 should be pulled out

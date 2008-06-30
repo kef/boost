@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
