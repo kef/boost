@@ -15,7 +15,7 @@ public final class ConstuctorInjectorFactory implements InjectorFactory<Construc
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();
 
     public ConstructorInjector nu(InjectionWeb web, InjectionSite site, Provider provider) {
-        // FIX 2394 marker interfaces have to go, providers are wrapped by aspecty providers markers not maintained
+        // FIX 2394 marker interfaces have to go, providers are wrapped by aspecty providers, markers not maintained
         InjectionSite[] sites = provider instanceof HasParameters ? params(site, provider) : new InjectionSite[0];
         return nuConstuctor(web, provider, sites);
     }

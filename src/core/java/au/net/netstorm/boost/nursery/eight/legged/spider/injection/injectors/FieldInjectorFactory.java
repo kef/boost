@@ -19,7 +19,7 @@ public final class FieldInjectorFactory implements InjectorFactory<MemberInjecto
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
 
     public MemberInjector nu(InjectionWeb web, InjectionSite site, Provider provider) {
-        // FIX 2394 marker interfaces have to go, providers are wrapped by aspecty providers markers not maintained
+        // FIX 2394 marker interfaces have to go, providers are wrapped by aspecty providers, markers not maintained
         MemberInjector[] fields = provider instanceof HasInjectableTarget
                 ? fields(web, provider) : new MemberInjector[0];
         return new DefaultMemberInjector(fields); 
