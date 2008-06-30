@@ -12,6 +12,7 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public final class DefaultWebAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Web subject;
@@ -23,9 +24,10 @@ public final class DefaultWebAtomicTest extends LifecycleTestCase implements Has
     Factory factoryMock;
     Binder binderMock;
     ConfigurableFactory configurableFactoryMock;
+    NuImpl nuMock;
 
     public void setUpFixtures() {
-        subject = new DefaultWeb(bindingsMock, factoriesMock);
+        subject = new DefaultWeb(nuMock, bindingsMock, factoriesMock);
         fielder.setInstance(subject, "classer", classerMock);
         fielder.setInstance(subject, "binder", binderMock);
     }
@@ -41,7 +43,8 @@ public final class DefaultWebAtomicTest extends LifecycleTestCase implements Has
     }
 
     public void testRegisterFactory() {
-        expect.oneCall(classerMock, factoryMock, "newInstance", MockFactory.class);
+        Object args = new Object[0];
+        expect.oneCall(nuMock, factoryMock, "nu", MockFactory.class, args);
         expect.oneCall(factoriesMock, VOID, "add", factoryMock);
         subject.register(MockFactory.class);
     }

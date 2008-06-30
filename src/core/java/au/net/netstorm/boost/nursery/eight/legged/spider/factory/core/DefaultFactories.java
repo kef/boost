@@ -9,7 +9,9 @@ public final class DefaultFactories implements Factories {
     private final List<Factory> factories = new ArrayList<Factory>();
 
     public Factory find(InjectionSite site) {
-        for (Factory factory : factories) {
+        int size = factories.size();
+        for (int i = size - 1; i >= 0; i--) {
+            Factory factory = factories.get(i);
             if (factory.canHandle(site)) return factory;
         }
         throw new IllegalArgumentException("Can not provide for injection site: " + site);

@@ -9,7 +9,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.DefaultInjectionWebBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWebBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.DefaultWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.SpidersWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
 
@@ -19,9 +18,9 @@ public final class DefaultSpinneret implements Spinneret {
     public SpidersWeb spin(WebConfig... configs) {
         Bindings bindings = new DefaultBindings();
         Factories factories = new DefaultFactories();
-        Web web = new DefaultWeb(bindings, factories);
         InjectionWeb injections = injectionWebBuilder.build(bindings, factories);
-        SpidersWeb spider = bootstrap(web, injections);
+        SpidersWeb spider = bootstrap(bindings, factories, injections);
+        Web web = spider.web();
         configure(web, configs);
         return spider;
     }
@@ -30,9 +29,9 @@ public final class DefaultSpinneret implements Spinneret {
         for (WebConfig config : configs) config.apply(web);
     }
 
-    private SpidersWeb bootstrap(Web web, InjectionWeb injections) {
-        Bootstrapper bootstrapper = new DefaultBootstrapper(web, injections);
-        bootstrapper.apply(web);
+    private SpidersWeb bootstrap(Bindings bindings, Factories factories, InjectionWeb injections) {
+        Bootstrapper bootstrapper = new DefaultBootstrapper(bindings, factories, injections);
+        bootstrapper.bootstrap();
         return bootstrapper.getBootstrappedWeb();
     }
 }

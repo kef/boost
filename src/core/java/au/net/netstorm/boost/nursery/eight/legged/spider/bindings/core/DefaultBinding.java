@@ -47,6 +47,6 @@ public final class DefaultBinding extends Primordial implements MutableBinding {
     }
 
     private void validate() {
-        if (factory == null) throw new IllegalStateException("Binding target is not set.");
+        if (factory == null) throw new IllegalStateException("Binding target is not set: " + this);
     }
 }

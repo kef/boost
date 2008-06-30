@@ -1,29 +1,30 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.DefaultBinder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.RuleConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.DefaultBinder;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public final class DefaultWeb implements Web {
     private final EdgeClass classer = new DefaultEdgeClass();
-    private final Bindings bindings;
+    private final NuImpl nu;
     private final Factories factories;
     private final Binder binder;
 
-    public DefaultWeb(Bindings bindings, Factories factories) {
-        this.bindings = bindings;
+    public DefaultWeb(NuImpl nu, Bindings bindings, Factories factories) {
+        this.nu = nu;
         this.factories = factories;
         this.binder = new DefaultBinder(bindings);
     }
 
     public void register(Class<? extends Factory> type) {
-        Factory factory = classer.newInstance(type);
+        Factory factory = nu.nu(type);
         register(factory);
     }
 
