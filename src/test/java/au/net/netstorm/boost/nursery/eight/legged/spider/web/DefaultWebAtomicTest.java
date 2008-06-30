@@ -1,12 +1,9 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.RuleConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
-import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -17,29 +14,19 @@ import au.net.netstorm.boost.spider.instantiate.NuImpl;
 public final class DefaultWebAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private Web subject;
     FieldTestUtil fielder;
-    EdgeClass classerMock;
     Factories factoriesMock;
-    Bindings bindingsMock;
-    RuleConfig ruleConfigMock;
     Factory factoryMock;
     Binder binderMock;
     ConfigurableFactory configurableFactoryMock;
     NuImpl nuMock;
 
     public void setUpFixtures() {
-        subject = new DefaultWeb(nuMock, bindingsMock, factoriesMock);
-        fielder.setInstance(subject, "classer", classerMock);
-        fielder.setInstance(subject, "binder", binderMock);
+        subject = new DefaultWeb(nuMock, binderMock, factoriesMock);
     }
 
     public void testBinder() {
         Binder actual = subject.binder();
         assertEquals(binderMock, actual);
-    }
-
-    public void testRegisterRuleConfig() {
-        expect.oneCall(ruleConfigMock, VOID, "apply", binderMock);
-        subject.register(ruleConfigMock);
     }
 
     public void testRegisterFactory() {
