@@ -4,6 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 // FIX 2394 address multiplicity here instead of SingleMaker
+// FIX 2394 or another idea is to do some name based injection, Binder single vs Binder multi and make it implicit
 public interface Target {
     SingleMaker to(Object instance);
     SingleMaker to(Class<?> type);
