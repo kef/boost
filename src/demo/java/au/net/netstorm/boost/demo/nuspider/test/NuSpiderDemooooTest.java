@@ -4,7 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpinneret;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.SpiderEgg;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.Spinneret;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.sniper.core.CleanTestCase;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleRunner;

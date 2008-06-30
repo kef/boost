@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.web;
+package au.net.netstorm.boost.nursery.eight.legged.spider.core;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.SpiderConfig;

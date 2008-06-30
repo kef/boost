@@ -8,7 +8,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.DefaultInjectionWebBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWebBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 
 public final class DefaultSpinneret implements Spinneret {
     private final InjectionWebBuilder injectionWebBuilder = new DefaultInjectionWebBuilder();
