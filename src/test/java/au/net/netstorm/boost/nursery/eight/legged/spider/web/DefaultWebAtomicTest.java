@@ -30,15 +30,27 @@ public final class DefaultWebAtomicTest extends LifecycleTestCase implements Has
     }
 
     public void testRegisterFactory() {
-        Object args = new Object[0];
-        expect.oneCall(nuMock, factoryMock, "nu", MockFactory.class, args);
-        expect.oneCall(factoriesMock, VOID, "add", factoryMock);
-        subject.register(MockFactory.class);
+        expectCreateAndStore(factoryMock);
+        checkRegisterFactory();
     }
 
     public void testRegisterConfigurableFactory() {
+        expectCreateAndStore(configurableFactoryMock);
+        expectConfigure();
+        checkRegisterFactory();
+    }
+
+    private void checkRegisterFactory() {
+        subject.register(MockFactory.class);
+    }
+
+    private void expectCreateAndStore(Factory factory) {
+        Object args = new Object[0];
+        expect.oneCall(nuMock, factory, "nu", MockFactory.class, args);
+        expect.oneCall(factoriesMock, VOID, "add", factory);
+    }
+
+    private void expectConfigure() {
         expect.oneCall(configurableFactoryMock, VOID, "configure", binderMock);
-        expect.oneCall(factoriesMock, VOID, "add", configurableFactoryMock);
-        subject.register(configurableFactoryMock);
     }
 }

@@ -5,7 +5,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
 import junit.framework.AssertionFailedError;
 
-public final class MockFactory implements Factory {
+public class MockFactory implements Factory {
     public Provider nu(InjectionSite site) {
         throw new AssertionFailedError();
     }

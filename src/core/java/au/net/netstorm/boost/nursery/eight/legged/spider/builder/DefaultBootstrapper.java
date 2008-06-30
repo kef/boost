@@ -15,8 +15,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.DefaultSpidersWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.web.SpidersWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.web.DefaultWeb;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
@@ -36,7 +34,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Injector injector;
     private final Resolver resolver;
     private final Spider spider;
-    private final SpidersWeb spidersWeb;
+    private final SpiderEgg egg;
     private final Binder binder;
 
     public DefaultBootstrapper(Bindings bindings, Factories factories, InjectionWeb injections) {
@@ -48,7 +46,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
         this.injector = new DefaultInjector(builder);
         this.resolver = new DefaultResolver(builder);
         this.spider = new DefaultSpider(nu, injector, resolver);
-        this.spidersWeb = new DefaultSpidersWeb(web, spider);
+        this.egg = new DefaultSpiderEgg(web, spider);
     }
 
     public void bootstrap() {
@@ -56,8 +54,8 @@ public final class DefaultBootstrapper implements Bootstrapper {
         bindSpiderState();
     }
 
-    public SpidersWeb getBootstrappedWeb() {
-        return spidersWeb;
+    public SpiderEgg getBootstrappedWeb() {
+        return egg;
     }
 
     private void bindImplicitFactory() {
@@ -68,7 +66,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     }
 
     private void bindSpiderState() {
-        binder.bind(SpidersWeb.class).to(spidersWeb);
+        binder.bind(SpiderEgg.class).to(egg);
         binder.bind(Web.class).to(web);
         binder.bind(Spider.class).to(spider);
         binder.bind(GraphBuilder.class).to(builder);

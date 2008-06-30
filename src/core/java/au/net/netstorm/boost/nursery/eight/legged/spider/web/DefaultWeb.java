@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.web;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.RuleConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.SpiderConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
@@ -21,10 +20,6 @@ public final class DefaultWeb implements Web {
 
     public void register(Class<? extends Factory> type) {
         Factory factory = nu.nu(type);
-        register(factory);
-    }
-
-    public void register(Factory factory) {
         configure(factory);
         factories.add(factory);
     }
@@ -35,17 +30,7 @@ public final class DefaultWeb implements Web {
 
     public void configure(Class<? extends SpiderConfig> config) {
         SpiderConfig instance = nu.nu(config);
-        configure(instance);
-    }
-
-    public void configure(SpiderConfig config) {
-        // FIX 2394 should there be an inject done on this guy?
-        config.configure();
-    }
-
-    // FIX BREADCRUMB 2394 aaaa killing this
-    public void register(RuleConfig ruleConfig) {
-        ruleConfig.apply(binder);
+        instance.configure();
     }
 
     private void configure(Factory factory) {
