@@ -2,9 +2,9 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ProviderFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.InstanceProvider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.ImplProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InstanceProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ImplProvider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.MutableBinding;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.DefaultImplementation;

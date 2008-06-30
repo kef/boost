@@ -8,7 +8,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyInjectionCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyProviderCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;

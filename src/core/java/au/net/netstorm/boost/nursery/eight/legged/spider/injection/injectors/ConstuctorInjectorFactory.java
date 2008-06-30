@@ -8,8 +8,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.HasParameters;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasParameters;
 
 public final class ConstuctorInjectorFactory implements InjectorFactory<ConstructorInjector> {
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();

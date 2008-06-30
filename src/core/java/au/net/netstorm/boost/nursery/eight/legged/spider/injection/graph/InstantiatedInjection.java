@@ -5,8 +5,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.Inj
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.MemberInjector;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.InjectableInstanceProvider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InjectableInstanceProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class InstantiatedInjection implements Injection {
     private final InjectorFactory<MemberInjector> memberFactory = new FieldInjectorFactory();

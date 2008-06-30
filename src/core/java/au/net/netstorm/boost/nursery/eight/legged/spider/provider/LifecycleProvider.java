@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.provider.types;
+package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
 import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.spider.core.Constructable;

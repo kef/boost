@@ -9,8 +9,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Default
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.HasInjectableTarget;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasInjectableTarget;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 

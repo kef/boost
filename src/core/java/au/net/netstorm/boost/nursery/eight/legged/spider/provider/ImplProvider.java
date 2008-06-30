@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.provider.types;
+package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Constructor;

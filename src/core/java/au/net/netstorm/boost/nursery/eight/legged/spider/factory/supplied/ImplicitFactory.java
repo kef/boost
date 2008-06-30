@@ -2,8 +2,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.ImplProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ImplProvider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ConfigurableFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.gunge.type.Implementation;

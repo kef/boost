@@ -7,7 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.Inj
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.injectors.MemberInjector;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultInjection implements PhasedInjection {
     private final InjectorFactory<ConstructorInjector> ctorFactory = new ConstuctorInjectorFactory();

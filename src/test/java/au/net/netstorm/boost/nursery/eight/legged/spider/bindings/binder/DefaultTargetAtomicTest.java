@@ -4,8 +4,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.MutableBi
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ProviderFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.Dummy;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.InstanceProvider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.types.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InstanceProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
