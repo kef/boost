@@ -1,11 +1,11 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.DummyHolder;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.Foo;
 
 public final class HostedBindingConstraintAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private BindingConstraint subject;
@@ -23,7 +23,7 @@ public final class HostedBindingConstraintAtomicTest extends LifecycleTestCase i
     }
 
     public void testDoNotAccept() {
-        expect.oneCall(siteMock, Foo.class, "host");
+        expect.oneCall(siteMock, DummyHolder.class, "host");
         checker.checkAccept(false, subject, siteMock);
     }
 }
