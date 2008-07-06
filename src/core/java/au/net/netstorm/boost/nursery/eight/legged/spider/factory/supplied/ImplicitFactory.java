@@ -22,7 +22,7 @@ public final class ImplicitFactory implements ConfigurableFactory {
     public Provider nu(InjectionSite site) {
         InjectionType type = site.type();
         for (Mapping mapping : mappings) {
-            if (mapping.can(type)) return provider(type, mapping);
+            if (providable(type, mapping)) return provider(type, mapping);
         }
         throw new IllegalArgumentException();
     }
@@ -30,9 +30,13 @@ public final class ImplicitFactory implements ConfigurableFactory {
     public boolean canHandle(InjectionSite site) {
         InjectionType type = site.type();
         for (Mapping mapping : mappings) {
-            if (mapping.can(type)) return exists(type, mapping);
+            if (providable(type, mapping)) return true;
         }
         return false;
+    }
+
+    private boolean providable(InjectionType type, Mapping mapping) {
+        return mapping.can(type) && exists(type, mapping);
     }
 
     // FIX 2394 i am sure something like this would already exist
