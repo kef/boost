@@ -4,12 +4,12 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 
 // FIX 2394 Genericise the Target so we get strong typing across into the resolution (target methods)?
 public interface Binder {
-    Target bind(Class<?> iface, Class<?> host, String name);
-    Target bind(Class<?> iface, Class<?> host);
-    Target bind(Class<?> iface, String name);
-    Target bind(Class<?> iface);
-    Target bind(InjectionType type, Class<?> host, String name);
-    Target bind(InjectionType type, Class<?> host);
-    Target bind(InjectionType type, String name);
-    Target bind(InjectionType type);
+    <T> Target<T> bind(Class<T> iface, Class<?> host, String name);
+    <T> Target<T> bind(Class<T> iface, Class<?> host);
+    <T> Target<T> bind(Class<T> iface, String name);
+    <T> Target<T> bind(Class<T> iface);
+    <T> Target<T> bind(InjectionType<T> type, Class<?> host, String name);
+    <T> Target<T> bind(InjectionType<T> type, Class<?> host);
+    <T> Target<T> bind(InjectionType<T> type, String name);
+    <T> Target<T> bind(InjectionType<T> type);
 }

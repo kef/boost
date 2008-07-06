@@ -9,19 +9,19 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.MutableBi
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.DefaultImplementation;
 
-public final class DefaultTarget implements Target {
+public final class DefaultTarget<T> implements Target<T> {
     private final MutableBinding binding;
 
     public DefaultTarget(MutableBinding binding) {
         this.binding = binding;
     }
 
-    public SingleMaker to(Object instance) {
+    public SingleMaker to(T instance) {
         Provider p = new InstanceProvider(instance);
         return toProvider(p);
     }
 
-    public SingleMaker to(Class<?> type) {
+    public SingleMaker to(Class<? extends T> type) {
         Implementation impl = new DefaultImplementation(type);
         Provider p = new ImplProvider(impl);
         return toProvider(p);

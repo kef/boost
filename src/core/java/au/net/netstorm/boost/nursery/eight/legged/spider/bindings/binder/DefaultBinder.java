@@ -20,50 +20,50 @@ public final class DefaultBinder implements Binder {
         this.bindings = bindings;
     }
 
-    public Target bind(Class<?> iface, Class<?> host, String name) {
+    public <T> Target<T> bind(Class<T> iface, Class<?> host, String name) {
         InjectionType type = typer.build(iface);
         return bind(type, host, name);
     }
 
-    public Target bind(Class<?> iface, Class<?> host) {
+    public <T> Target<T> bind(Class<T> iface, Class<?> host) {
         InjectionType type = typer.build(iface);
         return bind(type, host);
     }
 
-    public Target bind(Class<?> iface, String name) {
+    public <T> Target<T> bind(Class<T> iface, String name) {
         InjectionType type = typer.build(iface);
         return bind(type, name);
     }
 
-    public Target bind(Class<?> iface) {
+    public <T> Target<T> bind(Class<T> iface) {
         InjectionType type = typer.build(iface);
         return bind(type);
     }
 
-    public Target bind(InjectionType type, Class<?> host, String name) {
+    public <T> Target<T> bind(InjectionType<T> type, Class<?> host, String name) {
         BindingConstraint constraint = constraints.nu(host, name);
         return buildTarget(type, constraint, Precedence.HOSTED_AND_NAMED);
     }
 
-    public Target bind(InjectionType type, Class<?> host) {
+    public <T> Target<T> bind(InjectionType<T> type, Class<?> host) {
         BindingConstraint constraint = constraints.nu(host);
         return buildTarget(type, constraint, Precedence.HOSTED);
     }
 
-    public Target bind(InjectionType type, String name) {
+    public <T> Target<T> bind(InjectionType<T> type, String name) {
         BindingConstraint constraint = constraints.nu(name);
         return buildTarget(type, constraint, Precedence.NAMED);
     }
 
-    public Target bind(InjectionType type) {
+    public <T> Target<T> bind(InjectionType<T> type) {
         BindingConstraint constraint = constraints.nu();
         // FIX 2394 should the precedence be set against the constraint? prob yes
         return buildTarget(type, constraint, Precedence.RAW);
     }
 
-    private Target buildTarget(InjectionType type, BindingConstraint constraint, Precedence precedence) {
+    private <T> Target<T> buildTarget(InjectionType<T> type, BindingConstraint constraint, Precedence precedence) {
         MutableBinding binding = new DefaultBinding(type, constraint, precedence);
         bindings.add(binding);
-        return new DefaultTarget(binding);
+        return new DefaultTarget<T>(binding);
     }
 }
