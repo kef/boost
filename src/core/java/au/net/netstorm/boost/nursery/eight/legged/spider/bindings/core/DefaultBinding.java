@@ -9,14 +9,12 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 public final class DefaultBinding extends Primordial implements MutableBinding {
     private final InjectionType type;
     private final BindingConstraint constraint;
-    private final Precedence precedence;
     private Factory factory;
 
-    public DefaultBinding(InjectionType type, BindingConstraint constraint, Precedence precedence) {
-        if (type == null || constraint == null || precedence == null) throw new IllegalArgumentException();
+    public DefaultBinding(InjectionType type, BindingConstraint constraint) {
+        if (type == null || constraint == null) throw new IllegalArgumentException();
         this.type = type;
         this.constraint = constraint;
-        this.precedence = precedence;
     }
 
     public boolean accepts(InjectionSite site) {
@@ -34,7 +32,7 @@ public final class DefaultBinding extends Primordial implements MutableBinding {
     }
 
     public Precedence getPrecedence() {
-        return precedence;
+        return constraint.precedence();
     }
 
     public InjectionType getType() {

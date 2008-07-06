@@ -61,7 +61,7 @@ public final class DefaultBinderAtomicTest extends LifecycleTestCase implements 
     }
 
     private void setBindingExpectations(Precedence precedence, Object... constraints) {
-        Binding binding = new DefaultBinding(typeMock, constraintMock, precedence);
+        Binding binding = new DefaultBinding(typeMock, constraintMock);
         expect.oneCall(typerMock, typeMock, "build", ifaceDummy);
         expect.oneCall(constraintsMock, constraintMock, "nu", constraints);
         expect.oneCall(bindingsMock, VOID, "add", binding);

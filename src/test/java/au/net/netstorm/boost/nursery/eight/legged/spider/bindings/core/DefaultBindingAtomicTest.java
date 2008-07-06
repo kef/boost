@@ -19,11 +19,12 @@ public final class DefaultBindingAtomicTest extends LifecycleTestCase implements
     Factory factoryMock;
 
     public void setUpFixtures() {
-        subject = new DefaultBinding(typeMock, constraintMock, Precedence.RAW);
+        subject = new DefaultBinding(typeMock, constraintMock);
         subject.setFactory(factoryMock);
     }
     
     public void testProperties() {
+        expect.oneCall(constraintMock, Precedence.RAW, "precedence");
         assertEquals(Precedence.RAW, subject.getPrecedence());
         assertEquals(typeMock, subject.getType());
     }

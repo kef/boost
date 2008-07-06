@@ -6,7 +6,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Default
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints.BindingConstraint;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints.BindingConstraintFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints.DefaultBindingConstraintFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Precedence;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.DefaultBinding;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.MutableBinding;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
@@ -42,27 +41,27 @@ public final class DefaultBinder implements Binder {
 
     public <T> Target<T> bind(InjectionType<T> type, Class<?> host, String name) {
         BindingConstraint constraint = constraints.nu(host, name);
-        return buildTarget(type, constraint, Precedence.HOSTED_AND_NAMED);
+        return buildTarget(type, constraint);
     }
 
     public <T> Target<T> bind(InjectionType<T> type, Class<?> host) {
         BindingConstraint constraint = constraints.nu(host);
-        return buildTarget(type, constraint, Precedence.HOSTED);
+        return buildTarget(type, constraint);
     }
 
     public <T> Target<T> bind(InjectionType<T> type, String name) {
         BindingConstraint constraint = constraints.nu(name);
-        return buildTarget(type, constraint, Precedence.NAMED);
+        return buildTarget(type, constraint);
     }
 
     public <T> Target<T> bind(InjectionType<T> type) {
         BindingConstraint constraint = constraints.nu();
         // FIX 2394 should the precedence be set against the constraint? prob yes
-        return buildTarget(type, constraint, Precedence.RAW);
+        return buildTarget(type, constraint);
     }
 
-    private <T> Target<T> buildTarget(InjectionType<T> type, BindingConstraint constraint, Precedence precedence) {
-        MutableBinding binding = new DefaultBinding(type, constraint, precedence);
+    private <T> Target<T> buildTarget(InjectionType<T> type, BindingConstraint constraint) {
+        MutableBinding binding = new DefaultBinding(type, constraint);
         bindings.add(binding);
         return new DefaultTarget<T>(binding);
     }
