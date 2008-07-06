@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.ProviderFactory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.SingletonFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InstanceProvider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ImplProvider;
@@ -16,25 +17,42 @@ public final class DefaultTarget<T> implements Target<T> {
         this.binding = binding;
     }
 
-    public SingleMaker to(T instance) {
+    public void to(T instance) {
         Provider p = new InstanceProvider(instance);
-        return toProvider(p);
+        to(p);
     }
 
-    public SingleMaker to(Class<? extends T> type) {
-        Implementation impl = new DefaultImplementation(type);
-        Provider p = new ImplProvider(impl);
-        return toProvider(p);
+    public void to(Class<? extends T> type) {
+        Provider p = nuImpl(type);
+        to(p);
     }
 
-    public SingleMaker toProvider(Provider provider) {
+    public void to(Provider provider) {
         Factory f = new ProviderFactory(provider);
-        return toFactory(f);
+        to(f);
     }
 
-    public SingleMaker toFactory(Factory factory) {
+    public void to(Factory factory) {
         binding.setFactory(factory);
-        return new DefaultSingleMaker(binding);
     }
 
+    public void toSingle(Class<? extends T> type) {
+        Provider p = nuImpl(type);
+        toSingle(p);
+    }
+
+    public void toSingle(Provider provider) {
+        Factory f = new ProviderFactory(provider);
+        toSingle(f);
+    }
+
+    public void toSingle(Factory factory) {
+        Factory single = new SingletonFactory(factory);
+        binding.setFactory(single);
+    }
+
+    private Provider nuImpl(Class<? extends T> type) {
+        Implementation impl = new DefaultImplementation(type);
+        return new ImplProvider(impl);
+    }
 }

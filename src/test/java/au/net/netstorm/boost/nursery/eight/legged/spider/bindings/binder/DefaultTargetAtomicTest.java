@@ -27,8 +27,7 @@ public final class DefaultTargetAtomicTest extends LifecycleTestCase implements 
         Provider provider = new InstanceProvider(instanceDummy);
         Factory factory = new ProviderFactory(provider);
         setBindingExpectations(factory);
-        SingleMaker maker = subject.to(instanceDummy);
-        checkSingleMake(maker);
+        subject.to(instanceDummy);
     }
 
     public void testToImpl() {
@@ -37,9 +36,5 @@ public final class DefaultTargetAtomicTest extends LifecycleTestCase implements 
 
     private void setBindingExpectations(Factory factory) {
         expect.oneCall(bindingMock, VOID, "setFactory", factory);
-    }
-
-    private void checkSingleMake(SingleMaker maker) {
-        assertEquals(true, maker instanceof DefaultSingleMaker);
     }
 }

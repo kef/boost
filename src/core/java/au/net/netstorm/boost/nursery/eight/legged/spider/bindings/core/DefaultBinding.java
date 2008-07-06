@@ -1,11 +1,10 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints.BindingConstraint;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.SingletonFactory;
-import au.net.netstorm.boost.bullet.primordial.Primordial;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
 public final class DefaultBinding extends Primordial implements MutableBinding {
     private final InjectionType type;
@@ -23,10 +22,6 @@ public final class DefaultBinding extends Primordial implements MutableBinding {
     public boolean accepts(InjectionSite site) {
         validate();
         return constraint.accept(site) && factory.canHandle(site);
-    }
-
-    public void makeSingleton() {
-        factory = new SingletonFactory(factory);
     }
 
     public void setFactory(Factory factory) {

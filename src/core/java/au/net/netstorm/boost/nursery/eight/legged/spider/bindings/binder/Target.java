@@ -7,8 +7,11 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 // FIX 2394 or another idea is to do some name based injection, Binder single vs Binder multi and make it implicit
 // FIX 2394 thinking about it, idea 2 is definately the way to go
 public interface Target<T> {
-    SingleMaker to(T instance);
-    SingleMaker to(Class<? extends T> type);
-    SingleMaker toFactory(Factory factory);
-    SingleMaker toProvider(Provider provider);
+    void to(T instance);
+    void to(Class<? extends T> type);
+    void to(Factory factory);
+    void to(Provider provider);
+    void toSingle(Class<? extends T> type);
+    void toSingle(Factory factory);
+    void toSingle(Provider provider);
 }

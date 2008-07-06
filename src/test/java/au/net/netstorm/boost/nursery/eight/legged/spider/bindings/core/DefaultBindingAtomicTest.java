@@ -1,15 +1,14 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints.BindingConstraint;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.constraints.BindingConstraint;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.SingletonFactory;
 
 public final class DefaultBindingAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
     private MutableBinding subject;
@@ -50,12 +49,6 @@ public final class DefaultBindingAtomicTest extends LifecycleTestCase implements
     public void testFactoryDoesNotAccept() {
         setAcceptExpectations(true, false);
         checkAccept(false);
-    }
-
-    public void testMakeSingle() {
-        subject.makeSingleton();
-        Object result = fielder.getInstance(subject, "factory");
-        assertEquals(true, result instanceof SingletonFactory);
     }
 
     public void testGetFactory() {
