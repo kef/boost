@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
-// FIX 2394 use or lose. stores state of graph construction/traversal.
-public interface GraphState {
-    Provider provide(InjectionSite site);
+// FIX 2394 use or lose. building parrallel implementation for better graph builder.
+public interface FieldWalker {
+    void traverse(SiteWalker walker, GraphState state, InjectionSite site, Provider provider);
 }
