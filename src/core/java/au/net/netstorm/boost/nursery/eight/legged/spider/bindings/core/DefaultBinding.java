@@ -12,6 +12,7 @@ public final class DefaultBinding extends Primordial implements MutableBinding {
     private Factory factory;
 
     public DefaultBinding(InjectionType type, BindingConstraint constraint) {
+        // FIX 2394 MAG Null check consistency.
         if (type == null || constraint == null) throw new IllegalArgumentException();
         this.type = type;
         this.constraint = constraint;
@@ -19,6 +20,7 @@ public final class DefaultBinding extends Primordial implements MutableBinding {
 
     public boolean accepts(InjectionSite site) {
         validate();
+        // FIX 2328 MAG Logical construct consistency.
         return constraint.accept(site) && factory.canHandle(site);
     }
 

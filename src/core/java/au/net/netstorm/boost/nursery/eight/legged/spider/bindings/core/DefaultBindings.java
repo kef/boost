@@ -12,6 +12,7 @@ import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.ArrayListCreator;
 
 public final class DefaultBindings implements Bindings {
+    // FIX 2394 MAG Dodgy line wrap ... or dodgy code.
     private final IntegrityMap<InjectionType,List<Binding>> bindings =
             new DefaultIntegrityMap<InjectionType, List<Binding>>();
     private final Creator<InjectionType, List<Binding>> creator = new ArrayListCreator<InjectionType, List<Binding>>();
