@@ -12,6 +12,7 @@ public final class DefaultGraph implements Graph {
     private final Instances instances = new DefaultInstances();
     private final FactoryResolver resolver;
 
+    // FIX BREADCRUMB 2394 ccccccccc wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
     public DefaultGraph(FactoryResolver resolver) {
         this.resolver = resolver;
     }
