@@ -28,6 +28,7 @@ public final class ImplProvider extends Primordial implements Provider, HasParam
     }
 
     // FIX 2394 should be a utility that does this
+    // FIX 2394 MAG Damn right.  We'll move it out.
     public Type[] getParameterTypes() {
         Class<?> cls = impl.getImpl();
         Constructor<?>[] ctors = cls.getConstructors();

@@ -16,6 +16,7 @@ public final class DefaultInjectionType<T> extends Primordial implements Injecti
     }
 
     public InjectionType<?>[] parameters() {
+        // FIX 2394 MAG Is this really UOE.  If not consider ISE.
         throw new UnsupportedOperationException();
     }
 

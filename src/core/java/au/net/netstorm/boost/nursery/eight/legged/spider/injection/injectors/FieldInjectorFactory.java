@@ -14,6 +14,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasInjectableT
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
+// FIX 2394 MAG Thick.
 public final class FieldInjectorFactory implements InjectorFactory<MemberInjector> {
     private final InjectionSiteBuilder siteBuilder = new DefaultInjectionSiteBuilder();
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();

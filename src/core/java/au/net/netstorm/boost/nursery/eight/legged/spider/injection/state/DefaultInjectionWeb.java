@@ -16,6 +16,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 
 public final class DefaultInjectionWeb extends Primordial implements InjectionWeb {
+    // FIX 2394 MAG Line wrapping?
     // FIX 2394 need to address the behavior when a rule is updated
     private final IntegrityMap<InjectionSite, Provider> providers =
             new DefaultIntegrityMap<InjectionSite, Provider>();
@@ -35,6 +36,7 @@ public final class DefaultInjectionWeb extends Primordial implements InjectionWe
 
     public Injection injection(InjectionSite site) {
         // FIX 2394 nasty hack alert
+        // FIX 2394 MAG Looks thick too.
         Queue<PhasedInjection> toBuild = new LinkedList<PhasedInjection>();
         Creator<InjectionSite, Injection> creator = new LazyInjectionCreator(toBuild);
         Injection injection = injections.getOrCreate(site, creator);
@@ -44,6 +46,7 @@ public final class DefaultInjectionWeb extends Primordial implements InjectionWe
 
     private void buildInjections(Queue<PhasedInjection> tobuild) {
         while (tobuild.size() > 0) {
+            // FIX 2394 MAG Single line in while/for.
             PhasedInjection phase = tobuild.remove();
             phase.build(this);
         }

@@ -9,6 +9,7 @@ public final class DefaultInjectionSite extends Primordial implements InjectionS
     private final String name;
 
     public DefaultInjectionSite(Class<?> host, InjectionType type, String name) {
+        // FIX 2394 MAG Null checking.
         if (host == null || type == null || name == null) throw new IllegalArgumentException();
         this.host = host;
         this.type = type;

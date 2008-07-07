@@ -23,6 +23,7 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     }
 
     public InjectionSite[] build(Class<?> host, Type[] refieds) {
+        // FIX 2394 MAG Spelling.  For loop too thick.
         InjectionSite[] sites = new InjectionSite[refieds.length];
         for (int i = 0; i < refieds.length; ++i) {
             InjectionType type = injectionType(refieds[i]);
