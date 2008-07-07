@@ -1,0 +1,13 @@
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
+
+import java.util.Set;
+
+import au.net.netstorm.boost.gunge.collection.Creator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+
+public interface Providers {
+    Provider getOrCreate(InjectionSite site, Creator<InjectionSite, Provider> creator);
+
+    Set<InjectionSite> keySet();
+}
