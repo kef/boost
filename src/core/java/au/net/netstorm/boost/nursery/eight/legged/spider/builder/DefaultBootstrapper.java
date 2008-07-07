@@ -24,6 +24,7 @@ import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
+// FIX 2394 MAG Interesting little beast.  Bit of wiring hey ;)
 // FIX 2394 see if this can be split
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultBootstrapper implements Bootstrapper {

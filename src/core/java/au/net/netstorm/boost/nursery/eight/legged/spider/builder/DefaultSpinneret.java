@@ -10,6 +10,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWebBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 
+// FIX 2394 MAG Ugh. Ugly mo fo.
 public final class DefaultSpinneret implements Spinneret {
     private final InjectionWebBuilder injectionWebBuilder = new DefaultInjectionWebBuilder();
 

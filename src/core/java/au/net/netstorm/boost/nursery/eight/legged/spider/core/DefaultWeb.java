@@ -35,6 +35,7 @@ public final class DefaultWeb implements Web {
     private void configure(Factory factory) {
         if (!(factory instanceof ConfigurableFactory)) return;
         ConfigurableFactory configurable = (ConfigurableFactory) factory;
+        // FIX 2394 MAG How's this little nest ... acceptable or not ... discuss.
         configurable.configure(binder());
     }
 }
