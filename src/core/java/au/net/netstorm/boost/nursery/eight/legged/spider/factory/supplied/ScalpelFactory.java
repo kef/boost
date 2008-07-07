@@ -22,6 +22,7 @@ public final class ScalpelFactory implements Factory {
     public boolean canHandle(InjectionSite site) {
         Class<?> cls = raw(site);
         // FIX 2394 i think this is genericised in scalpel some where, if not it should be
+        // FIX 2394 MAG Tis.  Gunge.  TypeMaster.
         return Edge.class.isAssignableFrom(cls);
     }
 
