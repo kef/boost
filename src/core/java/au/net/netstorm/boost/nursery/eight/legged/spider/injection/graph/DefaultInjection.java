@@ -21,6 +21,7 @@ public final class DefaultInjection implements PhasedInjection {
         this.site = site;
     }
 
+    // FIX 2394 new GraphContext based construction to hopefully come to the rescue here, wire it in when done.
     public void build(InjectionWeb web) {
         // FIX 2394 would this be simpler if there was a resolution queue rather than relying on recursive graph?
         // FIX 2394 to implement the queue approach, InjectionWeb would be wrapped in LocalInjectionWeb which stores

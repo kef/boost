@@ -14,7 +14,7 @@ public final class ProvidedInjection implements Injection {
     private final Object[] args;
     private final Provider provider;
 
-    public ProvidedInjection(InjectionWeb web, InjectionSite site, Provider provider, Object[] args) {
+    public ProvidedInjection(InjectionWeb web, InjectionSite site, Provider provider, Object... args) {
         this.args = args;
         this.provider = provider;
         members = memberFactory.nu(web, site, provider);

@@ -9,6 +9,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ImplProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InjectableInstanceProvider;
 
 // FIX 2394 split
 // FIX 2394 MAG gotta be some dupe in here.
@@ -35,7 +36,8 @@ public final class DefaultGraphBuilder implements GraphBuilder {
 
     public <T> InjectionGraph<T> inject(Class<T> root, InjectionType type, Object instance) {
         InjectionSite site = builder.build(type);
-        Injection injection = new InstantiatedInjection(web, site, instance);
+        Provider provider = new InjectableInstanceProvider(instance);
+        Injection injection = new ProvidedInjection(web, site, provider);
         return new DefaultInjectionGraph<T>(root, injection);
     }
 
