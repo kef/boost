@@ -39,6 +39,7 @@ public final class ImplicitFactory implements ConfigurableFactory {
         return mapping.can(type) && exists(type, mapping);
     }
 
+    // FIX 2394 I am an ugly bastard.  And something does already exist.
     // FIX 2394 i am sure something like this would already exist
     private boolean exists(InjectionType type, Mapping mapping) {
         String target = mapping.map(type);
