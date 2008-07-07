@@ -9,4 +9,6 @@ public interface Graph {
     Provider provide(InjectionSite site);
 
     void instantiate();
+    
+    // FIX BREADCRUMB 2394 bbbbbbbbbbbbbb add lifecycle methods for graph: resolve, postprocess
 }

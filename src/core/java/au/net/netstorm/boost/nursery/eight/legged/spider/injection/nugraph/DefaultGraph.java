@@ -24,6 +24,7 @@ public final class DefaultGraph implements Graph {
     }
 
     public void instantiate() {
-        pro    
+        // FIX BREADCRUMB 2394 aaaaaaaaaaaa create an instance for each required provider   
+        // FIX 2394 depenencies specify a partial ordering, real ordering is arbitrary
     }
 }
