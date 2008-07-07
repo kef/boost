@@ -15,6 +15,7 @@ import au.net.netstorm.boost.sledge.support.EdgeException;
 public final class ImplicitFactory implements ConfigurableFactory {
     private final Mappings mappings = new DefaultMappings();
     private final EdgeClass classer = new DefaultEdgeClass();
+
     public void configure(Binder binder) {
         binder.bind(Mappings.class).to(mappings);
     }
