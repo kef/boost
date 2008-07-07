@@ -12,6 +12,7 @@ import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.support.EdgeException;
 
+// FIX 2394 MAG I am ugly.
 public final class ImplicitFactory implements ConfigurableFactory {
     private final Mappings mappings = new DefaultMappings();
     private final EdgeClass classer = new DefaultEdgeClass();
@@ -22,14 +23,23 @@ public final class ImplicitFactory implements ConfigurableFactory {
 
     public Provider nu(InjectionSite site) {
         InjectionType type = site.type();
+        return nu(type);
+    }
+
+    public boolean canHandle(InjectionSite site) {
+        InjectionType type = site.type();
+        return canHandle(type);
+    }
+
+    // FIX 2394 MAG Below here is the "engine" part.
+    private Provider nu(InjectionType type) {
         for (Mapping mapping : mappings) {
             if (providable(type, mapping)) return provider(type, mapping);
         }
         throw new IllegalArgumentException();
     }
 
-    public boolean canHandle(InjectionSite site) {
-        InjectionType type = site.type();
+    private boolean canHandle(InjectionType type) {
         for (Mapping mapping : mappings) {
             if (providable(type, mapping)) return true;
         }
