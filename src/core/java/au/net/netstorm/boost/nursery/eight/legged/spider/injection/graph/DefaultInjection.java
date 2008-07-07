@@ -9,6 +9,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
+// FIX 2394 MAG Dodgy looking beast.
 public final class DefaultInjection implements PhasedInjection {
     private final InjectorFactory<ConstructorInjector> constructors = new ConstuctorInjectorFactory();
     private final InjectorFactory<MemberInjector> members = new FieldInjectorFactory();
