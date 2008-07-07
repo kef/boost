@@ -16,7 +16,7 @@ public final class DefaultConstructorWalker implements Walker {
     private final Marker marker = new DefaultMarker();
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
 
-    public void traverse(SiteWalker walker, GraphState state, InjectionSite site, Provider provider) {
+    public void traverse(SiteWalker walker, Graph state, InjectionSite site, Provider provider) {
         if (!marker.is(provider, HasParameters.class)) return;
         HasParameters parameterized = (HasParameters) provider;
         Type[] types = parameterized.getParameterTypes();

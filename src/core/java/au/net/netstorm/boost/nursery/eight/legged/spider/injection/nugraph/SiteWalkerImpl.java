@@ -12,11 +12,11 @@ public final class SiteWalkerImpl implements SiteWalker {
     private final Walker constructor = new DefaultConstructorWalker();
     private final Walker fields = new DefaultFieldWalker();
 
-    public void traverse(GraphState state, InjectionSite[] sites) {
+    public void traverse(Graph state, InjectionSite[] sites) {
         for (InjectionSite site : sites) traverse(state, site);
     }
 
-    public void traverse(GraphState state, InjectionSite site) {
+    public void traverse(Graph state, InjectionSite site) {
         Provider provider = state.provide(site);
         Provider root = root(provider);
         constructor.traverse(this, state, site, root);
