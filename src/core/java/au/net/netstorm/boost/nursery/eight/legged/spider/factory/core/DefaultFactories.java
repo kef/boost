@@ -9,7 +9,7 @@ public final class DefaultFactories implements Factories {
     private final List<Factory> factories = new ArrayList<Factory>();
 
     public Factory find(InjectionSite site) {
-        // FIX 2394 toArray then reverse()?
+        // FIX 2394 MAG toArray then reverse()?
         int size = factories.size();
         for (int i = size - 1; i >= 0; i--) {
             Factory factory = factories.get(i);
