@@ -30,21 +30,23 @@ public final class DefaultGraphBuilder implements GraphBuilder {
     public <T> InjectionGraph<T> nu(Class<T> root, InjectionType type, Object... args) {
         InjectionSite site = builder.build(type);
         Provider provider = web.provider(site);
-        Injection injection = new ProvidedInjection(web, site, provider, args);
-        return new DefaultInjectionGraph<T>(root, injection);
+        return graph(root, site, provider, args);
     }
 
     public <T> InjectionGraph<T> inject(Class<T> root, InjectionType type, Object instance) {
         InjectionSite site = builder.build(type);
         Provider provider = new InjectableInstanceProvider(instance);
-        Injection injection = new ProvidedInjection(web, site, provider);
-        return new DefaultInjectionGraph<T>(root, injection);
+        return graph(root, site, provider);
     }
 
     public <T> InjectionGraph<T> nuImpl(Class<T> root, InjectionType type, Object... args) {
         InjectionSite site = builder.build(type);
         Implementation impl = new DefaultImplementation(root);
         Provider provider = new ImplProvider(impl);
+        return graph(root, site, provider, args);
+    }
+
+    private <T> InjectionGraph<T> graph(Class<T> root, InjectionSite site, Provider provider, Object... args) {
         Injection injection = new ProvidedInjection(web, site, provider, args);
         return new DefaultInjectionGraph<T>(root, injection);
     }
