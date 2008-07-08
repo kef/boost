@@ -1,0 +1,6 @@
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
+
+public interface FieldInjectionSite extends InjectionSite {
+    // FIX 2394 name for o
+    void inject(Object o, Object instance);
+}

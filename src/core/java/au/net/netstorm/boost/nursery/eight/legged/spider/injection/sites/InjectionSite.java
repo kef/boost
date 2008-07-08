@@ -6,5 +6,4 @@ public interface InjectionSite {
     Class<?> host();
     InjectionType type();
     String name();
-    void inject(Object host, Object instance);
 }

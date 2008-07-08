@@ -17,7 +17,7 @@ public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase impl
     public void setUpFixtures() {
         name = "x";
         host = DummyHolder.class;
-        subject = new DefaultInjectionSite(host, typeMock, name);
+        subject = new DefaultFieldInjectionSite(host, typeMock, name);
     }
 
     public void testInjectionSite() {
@@ -32,7 +32,7 @@ public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase impl
 
     private void checkConstructionFailure(Class<?> host, InjectionType type, String name) {
         try {
-            new DefaultInjectionSite(host, type, name);
+            new DefaultFieldInjectionSite(host, type, name);
             fail();
         } catch (IllegalArgumentException expected) {}
     }

@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
 import au.net.netstorm.boost.gunge.collection.Failer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.FieldInjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 public final class DefaultWirer implements Wirer {
@@ -22,10 +23,13 @@ public final class DefaultWirer implements Wirer {
         }
     }
 
+    // FIX 2394 badness.
     private void wire(Instances instances, Object host, InjectionSite site) {
+        if (!(site instanceof FieldInjectionSite)) return;
+        FieldInjectionSite field = (FieldInjectionSite) site;
         Failer<InjectionSite> failer = new ResolutionFailer();
         Object instance = instances.get(site, failer);
-        site.inject(host, instance);
+        field.inject(host, instance);
     }
 
     private Object host(Instances instances, Resolvable resolvable) {

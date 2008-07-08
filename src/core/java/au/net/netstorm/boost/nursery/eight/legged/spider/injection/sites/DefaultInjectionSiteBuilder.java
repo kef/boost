@@ -19,7 +19,7 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
         Type reified = field.getGenericType();
         InjectionType type = injectionType(reified);
         String name = field.getName();
-        return new DefaultInjectionSite(host, type, name);
+        return new DefaultFieldInjectionSite(host, type, name);
     }
 
     // FIX 2394 constructor injection type
