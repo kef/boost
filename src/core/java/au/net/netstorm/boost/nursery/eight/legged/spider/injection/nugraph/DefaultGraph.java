@@ -7,6 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyPro
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
+// FIX 2394 massive :(
 // FIX 2394 use or lose. building parrallel implementation for better graph builder.
 // FIX 2394 need a graph wirer
 // DEBT ClassDataAbstractionCoupling {
@@ -15,15 +16,18 @@ public final class DefaultGraph implements Graph {
     private final Providers providers = new DefaultProviders();
     private final Instances instances = new DefaultInstances();
     private final Resolvables resolvables = new DefaultResolvables();
+    private final Argumentor argumentor = new DefaultArgumentor();
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Wirer wirer = new DefaultWirer();
     private final FactoryResolver resolver;
     private final InjectionSite root;
+    private final Object[] args;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public DefaultGraph(FactoryResolver resolver, InjectionSite root) {
+    public DefaultGraph(FactoryResolver resolver, InjectionSite root, Object... args) {
         this.resolver = resolver;
         this.root = root;
+        this.args = args;
     }
 
     public Provider provide(InjectionSite site) {
@@ -36,6 +40,7 @@ public final class DefaultGraph implements Graph {
     }
 
     public void instantiate() {
+        argumentor.register(providers, instances, root, args);
         instantiator.instantiate(providers, instances);
     }
 

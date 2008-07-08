@@ -11,4 +11,6 @@ public interface Instances {
     Object get(InjectionSite site, Creator<InjectionSite, Object> creator);
 
     Object get(InjectionSite site, Failer<InjectionSite> failer);
+
+    void put(InjectionSite site, Object arg);
 }

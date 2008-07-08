@@ -13,7 +13,6 @@ import au.net.netstorm.boost.sniper.automock.DefaultMockSupport;
 import au.net.netstorm.boost.sniper.automock.DefaultTestFieldInjector;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.automock.TestFieldInjector;
-import au.net.netstorm.boost.sniper.lifecycle.BoostTestLifecycleBlocks;
 import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleBlocks;
 import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.sniper.random.DefaultRandomProviderAssembler;
@@ -32,7 +31,7 @@ public final class NuSpiderDemooooConfig implements SpiderConfig {
     public void configure() {
         web.register(ScalpelFactory.class);
         binder.bind(EdgePackage.class).to(DemoEdgePackage.class);
-        binder.bind(TestLifecycleBlocks.class).to(BoostTestLifecycleBlocks.class);
+        binder.bind(TestLifecycleBlocks.class).to(NuSpiderTestLifecycleBlocks.class);
         bindTestHelpers();
     }
 

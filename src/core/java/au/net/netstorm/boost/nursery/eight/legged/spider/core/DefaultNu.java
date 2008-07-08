@@ -17,6 +17,7 @@ public final class DefaultNu implements Nu {
 
     // FIX 2394 push rename values to args all the way out
     public <T> T nu(Class<T> iface, Object... args) {
+        // FIX 2394 need to verify this is an interface here
         InjectionType type = typer.build(iface);
         InjectionGraph<T> graph = builder.nu(iface, type, args);
         return graph.apply();

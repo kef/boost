@@ -1,8 +1,6 @@
 package au.net.netstorm.boost.demo.nuspider.nugraphtemp;
 
 import au.net.netstorm.boost.demo.nuspider.test.NuSpiderDemooooTest;
-import au.net.netstorm.boost.gunge.type.DefaultImplementation;
-import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.DefaultFactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
@@ -11,8 +9,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph.Defau
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ImplProvider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 
 // FIX 2394 delete me when done. using this to drive up new graph implementation.
@@ -27,11 +23,9 @@ public final class DefaultGraphMolecularTest extends NuSpiderDemooooTest impleme
     }
 
     public void testGraphWithProvider() {
-        Implementation impl = new DefaultImplementation(NoInterface.class);
-        Provider provider = new ImplProvider(impl);
         InjectionType<NoInterface> type = builder.build(NoInterface.class);
         Grapher grapher = grapher();
-        NoInterface no = grapher.graph(type, provider);
+        NoInterface no = grapher.graph(type);
         checkResolvedNoInterface(no);
     }
 

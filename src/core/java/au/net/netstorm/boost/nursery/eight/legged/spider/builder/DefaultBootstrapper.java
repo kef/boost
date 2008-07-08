@@ -3,8 +3,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.builder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.DefaultBinder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.DefaultFactoryResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultInjector;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNu;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNuImpl;
@@ -18,8 +18,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappin
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGraphBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.GraphBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph.DefaultGrapher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.state.InjectionWeb;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
@@ -46,12 +46,13 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Factories factories;
     private final FactoryResolver factoryResolver;
 
+    // FIX BREADCRUMB 2394 aaaaaaaaaaaa push through grapher instead of builder.
     public DefaultBootstrapper(Bindings bindings, Factories factories, InjectionWeb injections) {
         this.factoryResolver = new DefaultFactoryResolver(bindings, factories);
         this.grapher = new DefaultGrapher(factoryResolver);
         this.builder = new DefaultGraphBuilder(injections);
         this.nu = new DefaultNu(builder);
-        this.nuImpl = new DefaultNuImpl(builder);
+        this.nuImpl = new DefaultNuImpl(grapher);
         this.binder = new DefaultBinder(bindings);
         this.web = new DefaultWeb(nuImpl, binder, factories);
         this.injector = new DefaultInjector(builder);

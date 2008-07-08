@@ -5,7 +5,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Default
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultGrapher implements Grapher {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
@@ -16,16 +15,9 @@ public final class DefaultGrapher implements Grapher {
         this.resolver = resolver;
     }
 
-    public <T> T graph(InjectionType<T> type) {
+    public <T> T graph(InjectionType<T> type, Object... args) {
         InjectionSite site = builder.root(type);
-        GraphLifecycle graph = new DefaultGraph(resolver, site);
-        return graph(type, graph);
-    }
-
-    public <T> T graph(InjectionType<T> type, Provider provider) {
-        InjectionSite site = builder.root(type);
-        Graph graph = new DefaultGraph(resolver, site);
-        graph.add(site, provider);
+        GraphLifecycle graph = new DefaultGraph(resolver, site, args);
         return graph(type, graph);
     }
 

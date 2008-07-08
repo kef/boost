@@ -21,4 +21,8 @@ public final class DefaultInstances implements Instances {
     public Object get(InjectionSite site, Failer<InjectionSite> failer) {
         return instances.get(site, failer);
     }
+
+    public void put(InjectionSite site, Object arg) {
+        instances.put(site, arg);
+    }
 }
