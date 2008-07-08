@@ -1,8 +1,7 @@
 package au.net.netstorm.boost.demo.nuspider.cycles;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpinneret;
+import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpiderEgg;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.SpiderEgg;
-import au.net.netstorm.boost.nursery.eight.legged.spider.builder.Spinneret;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -10,11 +9,10 @@ import au.net.netstorm.boost.spider.core.Spider;
 
 // FIX 2394 being used to drive through complex interaction testing, remove in favour of demo tests when possible
 public final class EightLeggedSpiderMolecularTest extends LifecycleTestCase implements HasFixtures, InjectableTest {
+    private SpiderEgg egg = new DefaultSpiderEgg();
     private Spider subject;
 
     public void setUpFixtures() {
-        Spinneret spinneret = new DefaultSpinneret();
-        SpiderEgg egg = spinneret.spin();
         subject = egg.hatch();
     }
 

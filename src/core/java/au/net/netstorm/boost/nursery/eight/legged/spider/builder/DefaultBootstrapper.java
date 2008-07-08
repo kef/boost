@@ -12,6 +12,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNuImpl;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultWeb;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.SpiderConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.DefaultMapping;
@@ -42,17 +43,19 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Injector injector = new DefaultInjector(grapher);
     private final Resolver resolver = new DefaultResolver(grapher);
     private final Spider spider = new DefaultSpider(nu, injector, resolver);
-    private final SpiderEgg egg = new DefaultSpiderEgg(web, spider);
 
-    public void bootstrap() {
+    public Spider bootstrap(Class<? extends SpiderConfig>[] configs) {
         bindImplicitFactory();
         bindSpiderState();
+        loadConfigs(configs);
+        return spider;
     }
 
-    public SpiderEgg getBootstrappedWeb() {
-        return egg;
+    private void loadConfigs(Class<? extends SpiderConfig>[] configs) {
+        for (Class<? extends SpiderConfig> config : configs) web.configure(config);
     }
 
+    // FIX 2394 this bit should probably be in a BoostSpiderConfig
     private void bindImplicitFactory() {
         web.register(ImplicitFactory.class);
         Mappings mappings = spider.resolve(Mappings.class);
@@ -61,7 +64,6 @@ public final class DefaultBootstrapper implements Bootstrapper {
     }
 
     private void bindSpiderState() {
-        binder.bind(SpiderEgg.class).to(egg);
         binder.bind(Web.class).to(web);
         binder.bind(Spider.class).to(spider);
         binder.bind(Resolver.class).to(resolver);

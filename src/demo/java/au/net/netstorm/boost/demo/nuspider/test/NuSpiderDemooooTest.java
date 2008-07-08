@@ -1,10 +1,8 @@
 package au.net.netstorm.boost.demo.nuspider.test;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpinneret;
+import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpiderEgg;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.SpiderEgg;
-import au.net.netstorm.boost.nursery.eight.legged.spider.builder.Spinneret;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.sniper.core.CleanTestCase;
 import au.net.netstorm.boost.sniper.core.Test;
 import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleRunner;
@@ -24,12 +22,11 @@ public abstract class NuSpiderDemooooTest extends CleanTestCase {
     }
 
     private static Spider bootstrap(Test test) {
-        Spinneret spinneret = new DefaultSpinneret();
-        SpiderEgg egg = spinneret.spin(NuSpiderDemooooConfig.class);
-        Web web = egg.spin();
-        Binder binder = web.binder();
+        SpiderEgg egg = new DefaultSpiderEgg();
+        Spider spider = egg.hatch(NuSpiderDemooooConfig.class);
+        Binder binder = spider.resolve(Binder.class);
         binder.bind(Test.class).to(test);
-        return egg.hatch();
+        return spider;
     }
 
 

@@ -24,11 +24,6 @@ public final class DefaultWebAtomicTest extends LifecycleTestCase implements Has
         subject = new DefaultWeb(nuMock, binderMock, factoriesMock);
     }
 
-    public void testBinder() {
-        Binder actual = subject.binder();
-        assertEquals(binderMock, actual);
-    }
-
     public void testRegisterFactory() {
         expectCreateAndStore(factoryMock);
         checkRegisterFactory();

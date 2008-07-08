@@ -23,19 +23,16 @@ public final class DefaultWeb implements Web {
         factories.add(factory);
     }
 
-    public Binder binder() {
-        return binder;
-    }
-
     public void configure(Class<? extends SpiderConfig> config) {
         SpiderConfig instance = nu.nu(config);
         instance.configure();
     }
 
+    // FIX 2394 STYLE How's this little nest ... acceptable or not ... discuss.
+    // FIX 2394 MH it is not there anymore, was binder(), left fix for discussion
     private void configure(Factory factory) {
         if (!(factory instanceof ConfigurableFactory)) return;
         ConfigurableFactory configurable = (ConfigurableFactory) factory;
-        // FIX 2394 STYLE How's this little nest ... acceptable or not ... discuss.
-        configurable.configure(binder());
+        configurable.configure(binder);
     }
 }
