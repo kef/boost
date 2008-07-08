@@ -1,20 +1,19 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.gunge.collection.Creator;
+import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
+import au.net.netstorm.boost.gunge.collection.IntegrityMap;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 // FIX 2394 use or lose. to be used in Instantiator/InstanceCreator.
 public final class DefaultInstances implements Instances {
-    // FIX 2394 strong type for instance?
-    public void put(InjectionSite site, Object instance) {
-        throw new UnsupportedOperationException();
-    }
+    private final IntegrityMap<InjectionSite, Object> instances = new DefaultIntegrityMap<InjectionSite, Object>();
 
     public Object get(InjectionSite site) {
-        throw new UnsupportedOperationException();
+        return instances.get(site);
     }
 
-    public void get(InjectionSite site, Creator<InjectionSite, Object> creator) {
-        throw new UnsupportedOperationException();
+    public Object get(InjectionSite site, Creator<InjectionSite, Object> creator) {
+        return instances.get(site, creator);
     }
 }
