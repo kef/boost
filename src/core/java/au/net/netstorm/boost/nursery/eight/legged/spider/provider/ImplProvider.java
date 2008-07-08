@@ -35,7 +35,8 @@ public final class ImplProvider extends Primordial implements Provider, HasParam
         if (ctors.length == 0) return new Type[0];
         if (ctors.length != 1) throw new IllegalArgumentException();
         Constructor<?> ctor = ctors[0];
-        return ctor.getGenericParameterTypes();
+        // FIX 2394 handle reifieds.
+        return ctor.getParameterTypes();
     }
 
     public Class<?> getTargetClass() {

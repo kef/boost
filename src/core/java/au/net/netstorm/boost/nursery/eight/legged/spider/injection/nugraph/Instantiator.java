@@ -6,4 +6,6 @@ public interface Instantiator {
     void instantiate(Providers providers, Instances instances);
 
     void instantiate(Providers providers, Instances instances, InjectionSite[] sites);
+
+    void instantiate(Providers providers, Instances instances, InjectionSite root, Object[] args);
 }

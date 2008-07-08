@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.Dummy;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.testdata.ConstructableDummy;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
@@ -38,14 +37,6 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
         expectBuildType(type);
         InjectionSite result = subject.fields(field);
         checker.check(result, Dummy.class, typeMock, "x");
-    }
-
-    public void testBuildConstructor() {
-        expectBuildType(Dummy.class);
-        Type[] args = {Dummy.class};
-        InjectionSite[] results = subject.constructors(ConstructableDummy.class, args);
-        assertEquals(1, results.length);
-        checker.check(results[0], ConstructableDummy.class, typeMock, "arg0");
     }
 
     private void expectBuildType(Type type) {

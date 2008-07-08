@@ -22,10 +22,10 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
         return new DefaultFieldInjectionSite(host, type, name);
     }
 
-    public InjectionSite[] constructors(Class<?> host, Type[] reified) {
+    public InjectionSite[] constructors(Class raw, Type[] reified) {
         InjectionSite[] sites = new InjectionSite[reified.length];
         for (int i = 0; i < reified.length; ++i) {
-            sites[i] = site(host, reified, i);
+            sites[i] = site(raw, reified, i);
         }
         return sites;
     }

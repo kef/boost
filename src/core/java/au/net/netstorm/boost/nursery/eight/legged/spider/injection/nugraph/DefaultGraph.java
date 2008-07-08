@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
+import java.util.Set;
+import java.util.HashSet;
+
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
@@ -13,21 +16,21 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultGraph implements Graph {
     private final SiteWalker walker = new DefaultSiteWalker();
-    private final Providers providers = new DefaultProviders();
-    private final Instances instances = new DefaultInstances();
+    private final Set walked = new HashSet();
     private final Resolvables resolvables = new DefaultResolvables();
-    private final Argumentor argumentor = new DefaultArgumentor();
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Wirer wirer = new DefaultWirer();
+    private final Providers providers;
+    private final Instances instances;
     private final FactoryResolver resolver;
     private final InjectionSite root;
-    private final Object[] args;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public DefaultGraph(FactoryResolver resolver, InjectionSite root, Object... args) {
+    public DefaultGraph(Providers providers, Instances instances, FactoryResolver resolver, InjectionSite root) {
         this.resolver = resolver;
         this.root = root;
-        this.args = args;
+        this.providers = providers;
+        this.instances = instances;
     }
 
     public Provider provide(InjectionSite site) {
@@ -40,7 +43,6 @@ public final class DefaultGraph implements Graph {
     }
 
     public void instantiate() {
-        argumentor.register(providers, instances, root, args);
         instantiator.instantiate(providers, instances);
     }
 
@@ -59,6 +61,14 @@ public final class DefaultGraph implements Graph {
 
     public void add(InjectionSite site, Provider provider) {
         providers.put(site, provider);
+    }
+
+    public void walking(InjectionSite site) {
+        walked.add(site);
+    }
+
+    public boolean hasWalked(InjectionSite site) {
+        return walked.contains(site);
     }
 
     public void resolvable(InjectionSite host, InjectionSite[] sites) {

@@ -34,6 +34,7 @@ public final class DefaultWirer implements Wirer {
 
     private Object host(Instances instances, Resolvable resolvable) {
         InjectionSite host = resolvable.host();
-        return instances.get(host);
+        Object nullable = instances.get(host);
+        return nullable != Instances.NULL ? nullable : null;
     }
 }

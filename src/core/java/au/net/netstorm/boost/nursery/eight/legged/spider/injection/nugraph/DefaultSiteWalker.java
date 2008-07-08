@@ -21,6 +21,12 @@ public final class DefaultSiteWalker implements SiteWalker {
 
 
     public void traverse(Graph state, InjectionSite site) {
+        if (state.hasWalked(site)) return;
+        state.walking(site);
+        safeTraverse(state, site);
+    }
+
+    private void safeTraverse(Graph state, InjectionSite site) {
         try {
             unsafeTraverse(state, site);
         } catch (UnresolvableException ignore) {
@@ -28,7 +34,7 @@ public final class DefaultSiteWalker implements SiteWalker {
             // FIX 2394 this gets validated in next phase (could be created by constructor/initializer)
         }
     }
- 
+
     private void unsafeTraverse(Graph state, InjectionSite site) {
         Provider provider = state.provide(site);
         Provider root = root(provider);

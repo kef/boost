@@ -14,7 +14,7 @@ public final class DefaultInjectionTypeBuilder implements InjectionTypeBuilder {
         if (type instanceof ParameterizedType) return paramertized(type);
         throw new IllegalArgumentException(
                 "Type not supported. Declarations, Wildcards and Arrays can not be injected," +
-                "must be one of [Class, ParameterizedType]");
+                "must be one of [Class, ParameterizedType], was " + type);
     }
 
     private InjectionType raw(Type type) {

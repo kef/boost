@@ -51,7 +51,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
         this.factoryResolver = new DefaultFactoryResolver(bindings, factories);
         this.grapher = new DefaultGrapher(factoryResolver);
         this.builder = new DefaultGraphBuilder(injections);
-        this.nu = new DefaultNu(builder);
+        this.nu = new DefaultNu(grapher);
         this.nuImpl = new DefaultNuImpl(grapher);
         this.binder = new DefaultBinder(bindings);
         this.web = new DefaultWeb(nuImpl, binder, factories);

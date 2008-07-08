@@ -9,4 +9,8 @@ public interface GraphState {
     void resolvable(InjectionSite host, InjectionSite[] sites);
 
     void add(InjectionSite site, Provider provider);
+
+    void walking(InjectionSite site);
+
+    boolean hasWalked(InjectionSite site);
 }

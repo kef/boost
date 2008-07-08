@@ -1,35 +1,35 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
-import java.lang.reflect.Type;
-
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProviderOperations;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InstanceProvider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProviderOperations;
 
 public final class DefaultArgumentor implements Argumentor {
     private final ProviderOperations operations = new DefaultProviderOperations();
-    private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
 
-    public void register(Providers providers, Instances instances, InjectionSite site, Object[] args) {
+    public void providers(Providers providers, Provider provider, InjectionSite site, Object[] args) {
         if (args.length == 0) return;
-        InjectionSite[] sites = sites(providers, site, args);
-        register(instances, sites, args);
+        InjectionSite[] sites = sites(providers, site);
+        providers(providers, sites, args);
     }
 
-    private void register(Instances instances, InjectionSite[] sites, Object[] args) {
+    private InjectionSite[] sites(Providers providers, InjectionSite site) {
+        Provider provider = providers.get(site);
+        return operations.constructors(site, provider);
+    }
+
+    private void providers(Providers providers, InjectionSite[] sites, Object[] args) {
         for (int i = 0; i < sites.length; i++) {
-            instances.put(sites[i], args[i]);
+            register(providers, sites[i], args[i]);
         }
     }
 
-    private InjectionSite[] sites(Providers providers, InjectionSite site, Object[] args) {
-        Provider provider = providers.get(site);
-        Class host = operations.host(site, provider);
-        Type[] types = operations.params(provider);
-        if (types.length != args.length) throw new IllegalArgumentException();
-        return builder.constructors(host, types);
+    private void register(Providers providers, InjectionSite site, Object arg) {
+        // FIX 2394 this is disgraceful, but arguments can legitemantly be null :(
+        Object nullable = arg != null ? arg : Instances.NULL;
+        Provider provider = new InstanceProvider(nullable);
+        providers.put(site, provider);
     }
 }

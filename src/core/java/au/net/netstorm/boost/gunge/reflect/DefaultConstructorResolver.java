@@ -12,7 +12,7 @@ public class DefaultConstructorResolver implements ConstructorResolver {
     public <T> Constructor<T> resolve(Class<T> type, Object... params) {
         List<Constructor<?>> candidates = filter.filter(type, params);
         int size = candidates.size();
-        if (size == 0) fail();
+        if (size == 0) fail(type);
         if (size == 1) return head(candidates);
         return refine(candidates);
     }
@@ -32,7 +32,7 @@ public class DefaultConstructorResolver implements ConstructorResolver {
         return (Constructor<T>) c;
     }
 
-    private void fail() {
-        throw new RuntimeException("Could not resolve a constructor.");
+    private void fail(Class type) {
+        throw new RuntimeException("Could not resolve a constructor for: " + type);
     }
 }

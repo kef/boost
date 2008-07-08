@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public interface Argumentor {
-    void register(Providers providers, Instances instances, InjectionSite site, Object[] args);
+    void providers(Providers providers, Provider root, InjectionSite site, Object[] args);
 }
