@@ -16,8 +16,9 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 
 public final class DefaultInjectionWeb extends Primordial implements InjectionWeb {
-    // FIX 2394 MAG Line wrapping?
+    // FIX 2394 STYLE Line wrapping?
     // FIX 2394 need to address the behavior when a rule is updated
+    // FIX 2395 Generics are ugly bastards.
     private final IntegrityMap<InjectionSite, Provider> providers =
             new DefaultIntegrityMap<InjectionSite, Provider>();
     private final IntegrityMap<InjectionSite, Injection> injections =
@@ -46,7 +47,7 @@ public final class DefaultInjectionWeb extends Primordial implements InjectionWe
 
     private void buildInjections(Queue<PhasedInjection> tobuild) {
         while (tobuild.size() > 0) {
-            // FIX 2394 MAG Single line in while/for.
+            // FIX 2394 STYLE Single line in while/for.
             PhasedInjection phase = tobuild.remove();
             phase.build(this);
         }

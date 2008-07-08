@@ -32,17 +32,16 @@ public final class DefaultFieldInjectionSite extends Primordial implements Field
     }
 
     // FIX 2394 abstract isWired and inject functionality
-    // FIX 2394 name for o
-    public void inject(Object o, Object instance) {
-        if (isWired(o)) return;
+    public void inject(Object ref, Object resolved) {
+        if (isWired(ref)) return;
         Field field = field();
-        FIELDER.set(field, o, instance);
+        FIELDER.set(field, ref, resolved);
     }
 
     // FIX 2394 name for o ... "ref" is pretty bloody good for me.
-    private boolean isWired(Object o) {
+    private boolean isWired(Object ref) {
         Field field = field();
-        Object value = FIELDER.get(field, o);
+        Object value = FIELDER.get(field, ref);
         return value != null;
     }
 
