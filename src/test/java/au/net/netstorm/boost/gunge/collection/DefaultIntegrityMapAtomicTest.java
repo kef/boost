@@ -61,6 +61,20 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
         } catch (IllegalArgumentException expected) {}
     }
 
+    public void testPut() {
+        expect.oneCall(delegateMock, VOID, "putIfAbsent", keyDummy, valueDummy);
+        subject.put(keyDummy, valueDummy);
+    }
+
+    public void testPutBomb() {
+        expect.oneCall(delegateMock, valueDummy, "putIfAbsent", keyDummy, valueDummy);
+        try {
+            subject.put(keyDummy, valueDummy);
+            fail();
+        } catch (IllegalArgumentException expected) {}
+    }
+
+
     private void expectCached(Object cached) {
         expect.oneCall(delegateMock, cached, "get", keyDummy);
     }

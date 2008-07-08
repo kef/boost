@@ -14,4 +14,6 @@ public interface IntegrityMap<K, V> {
     // FIX 2394 can this class just be made iterable, only ever allow iteration over keys
     // FIX 2394 force use of different datastructure if you are trying to iterate over values
     Set<K> keySet();
+
+    void put(K key, V value);
 }

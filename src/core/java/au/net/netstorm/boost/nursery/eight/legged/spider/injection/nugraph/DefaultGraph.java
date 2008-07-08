@@ -51,6 +51,10 @@ public final class DefaultGraph implements Graph {
         return instances.get(site, failer);
     }
 
+    public void add(InjectionSite site, Provider provider) {
+        providers.put(site, provider);
+    }
+
     // FIX 2394 push to another class.
     public void handle(UnresolvableException e) {
         InjectionSite unresolved = e.getSite();

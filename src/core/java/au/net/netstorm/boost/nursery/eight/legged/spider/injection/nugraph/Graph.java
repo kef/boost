@@ -22,4 +22,6 @@ public interface Graph {
     void post();
 
     Object resolve(InjectionSite site);
+
+    void add(InjectionSite site, Provider provider);
 }

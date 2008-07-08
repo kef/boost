@@ -22,4 +22,8 @@ public final class DefaultProviders implements Providers {
     public Set<InjectionSite> keySet() {
         return providers.keySet();
     }
+
+    public void put(InjectionSite site, Provider provider) {
+        providers.put(site, provider);
+    }
 }

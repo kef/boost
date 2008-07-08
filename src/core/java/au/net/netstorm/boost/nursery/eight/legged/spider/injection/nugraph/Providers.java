@@ -12,4 +12,6 @@ public interface Providers {
     Provider get(InjectionSite site);
 
     Set<InjectionSite> keySet();
+
+    void put(InjectionSite site, Provider provider);
 }

@@ -31,4 +31,10 @@ public final class DefaultIntegrityMap<K, V> extends Primordial implements Integ
     public Set<K> keySet() {
         return delegate.keySet();
     }
+
+    // FIX 2394 relook at this, not sure if this is what should really be here
+    public void put(K key, V value) {
+        V old = delegate.putIfAbsent(key, value);
+        if (old != null) throw new IllegalArgumentException();
+    }
 }
