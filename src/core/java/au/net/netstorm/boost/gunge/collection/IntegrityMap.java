@@ -6,7 +6,7 @@ public interface IntegrityMap<K, V> {
     V getOrCreate(K key, Creator<K, V> creator);
 
     // FIX 2394 name. could be just get.
-    V getOrBomb(K key);
+    V get(K key);
 
     Set<K> keySet();
 }

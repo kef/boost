@@ -17,7 +17,7 @@ public final class DefaultIntegrityMap<K, V> extends Primordial implements Integ
         return old != null ? old : newy;
     }
 
-    public V getOrBomb(K key) {
+    public V get(K key) {
         V value = delegate.get(key);
         if (value == null) throw new IllegalArgumentException();
         return value;

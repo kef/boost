@@ -49,14 +49,14 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
 
     public void testGetExisting() {
         expect.oneCall(delegateMock, valueDummy, "get", keyDummy);
-        Object actual = subject.getOrBomb(keyDummy);
+        Object actual = subject.get(keyDummy);
         assertSame(valueDummy, actual);
     }
 
     public void testGetBomb() {
         expect.oneCall(delegateMock, VOID, "get", keyDummy);
         try {
-            subject.getOrBomb(keyDummy);
+            subject.get(keyDummy);
             fail();
         } catch (IllegalArgumentException expected) {}
     }

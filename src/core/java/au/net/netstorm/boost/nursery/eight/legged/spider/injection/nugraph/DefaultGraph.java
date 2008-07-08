@@ -28,7 +28,7 @@ public final class DefaultGraph implements Graph {
         // FIX 2394 depenencies specify a partial ordering, real ordering is arbitrary
         for (InjectionSite site : providers.keySet()) {
             // FIX 2394 use or lose.
-            Provider provider = providers.getOrBomb(site);
+            Provider provider = providers.get(site);
             // FIX BREADCRUMB 2394 aaaaaaaaaa create an instance and store in instances
         }
     }

@@ -15,8 +15,8 @@ public final class DefaultProviders implements Providers {
         return providers.getOrCreate(site, creator);
     }
 
-    public Provider getOrBomb(InjectionSite site) {
-        return providers.getOrBomb(site);
+    public Provider get(InjectionSite site) {
+        return providers.get(site);
     }
 
     public Set<InjectionSite> keySet() {
