@@ -15,7 +15,7 @@ public final class DefaultFactories implements Factories {
             Factory factory = factories.get(i);
             if (factory.canHandle(site)) return factory;
         }
-        throw new IllegalArgumentException("Can not provide for injection site: " + site);
+        throw new UnresolvableException(site);
     }
 
     public void add(Factory factory) {

@@ -17,10 +17,15 @@ public final class DefaultIntegrityMap<K, V> extends Primordial implements Integ
         return old != null ? old : newy;
     }
 
-    public V get(K key) {
+    public V get(K key, Failer<K> failer) {
         V value = delegate.get(key);
-        if (value == null) throw new IllegalArgumentException();
+        if (value == null) failer.fail(key);
         return value;
+    }
+
+    public V get(K key) {
+        Failer<K> failer = new DefaultFailer<K>();
+        return get(key, failer);
     }
 
     public Set<K> keySet() {

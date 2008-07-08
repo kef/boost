@@ -20,22 +20,46 @@ public final class DefaultGraphMolecularTest extends NuSpiderDemooooTest impleme
     InjectionTypeBuilder builder;
 
     public void testGraph() {
-        Graph graph = nuGraph();
-        walkGraph(graph);
+        Graph graph = graph();
+        InjectionSite site = walk(graph, Hello.class);
+        lifecycle(graph);
+        checkResolveHello(graph, site);
+    }
+
+    private void checkResolveHello(Graph graph, InjectionSite site) {
+        Object instance = graph.resolve(site);
+        assertEquals(true, instance instanceof DefaultHello);
+        DefaultHello hello = (DefaultHello) instance;
+        World world = hello.world;
+        assertNotNull(world);
+    }
+
+    private void lifecycle(Graph graph) {
         graph.instantiate();
+        graph.wire();
+        graph.post();
     }
 
-    private void walkGraph(Graph graph) {
+    private Graph graph() {
+        FactoryResolver resolver = resolver();
+        return new DefaultGraph(resolver);
+    }
+
+    private InjectionSite walk(Graph graph, Class<Hello> cls) {
         SiteWalker walker = new DefaultSiteWalker();
-        InjectionType type = builder.build(Hello.class);
-        InjectionSite site = new RootInjectionSite(type);
+        InjectionSite site = site(cls);
         walker.traverse(graph, site);
+        return site;
     }
 
-    private Graph nuGraph() {
+    private FactoryResolver resolver() {
         Bindings bindings = spider.resolve(Bindings.class);
         Factories factories = spider.resolve(Factories.class);
-        FactoryResolver resolver = new DefaultFactoryResolver(bindings, factories);
-        return new DefaultGraph(resolver);
+        return new DefaultFactoryResolver(bindings, factories);
+    }
+
+    private InjectionSite site(Class cls) {
+        InjectionType type = builder.build(cls);
+        return new RootInjectionSite(type);
     }
 }

@@ -7,6 +7,8 @@ import java.util.Set;
 public interface IntegrityMap<K, V> {
     V get(K key, Creator<K, V> creator);
 
+    V get(K key, Failer<K> failer);
+
     V get(K key);
 
     // FIX 2394 can this class just be made iterable, only ever allow iteration over keys

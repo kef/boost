@@ -6,5 +6,5 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 public interface SiteWalker {
     void traverse(Graph state, InjectionSite site);
 
-    void traverse(Graph state, InjectionSite[] sites);
+    void traverse(Graph state, InjectionSite host, InjectionSite[] sites);
 }

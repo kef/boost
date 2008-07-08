@@ -55,7 +55,6 @@ import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 // FIX 2394 resolver when there are no factories registered, even if there are valid complete instances
 // FIX 2394 highlights needs for an "instance" factory rather than shoe-horning through blueprints
 
-// FIX BREADCRUMB 2394 currently unwinding this mess
 // DEBT DataAbstractionCoupling|ParameterNumber {
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);

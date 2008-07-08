@@ -24,6 +24,6 @@ public final class DefaultConstructorWalker implements Walker {
         InjectionType type = site.type();
         Class<?> host = type.rawClass();
         InjectionSite[] sites = builder.build(host, types);
-        walker.traverse(state, sites);
+        walker.traverse(state, site, sites);
     }
 }

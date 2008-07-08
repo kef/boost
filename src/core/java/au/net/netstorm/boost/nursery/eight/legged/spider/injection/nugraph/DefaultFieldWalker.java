@@ -25,7 +25,7 @@ public final class DefaultFieldWalker implements Walker {
         HasInjectableTarget injectable = (HasInjectableTarget) provider;
         Class<?> target = injectable.getTargetClass();
         InjectionSite[] sites = sites(target);
-        walker.traverse(state, sites);
+        walker.traverse(state, site, sites);
     }
 
     private InjectionSite[] sites(Class<?> target) {
