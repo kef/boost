@@ -39,7 +39,7 @@ public final class DefaultFieldInjectionSite extends Primordial implements Field
         FIELDER.set(field, o, instance);
     }
 
-    // FIX 2394 name for o
+    // FIX 2394 name for o ... "ref" is pretty bloody good for me.
     private boolean isWired(Object o) {
         Field field = field();
         Object value = FIELDER.get(field, o);
