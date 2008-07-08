@@ -20,7 +20,7 @@ public final class DefaultGraph implements Graph {
 
     public Provider provide(InjectionSite site) {
         Creator<InjectionSite, Provider> creator = new LazyProviderCreator(resolver);
-        return providers.getOrCreate(site, creator);
+        return providers.get(site, creator);
     }
 
     public void instantiate() {

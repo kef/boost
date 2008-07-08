@@ -31,7 +31,7 @@ public final class DefaultInjectionWeb extends Primordial implements InjectionWe
 
     public Provider provider(InjectionSite site) {
         Creator<InjectionSite, Provider> creator = new LazyProviderCreator(resolver);
-        return providers.getOrCreate(site, creator);
+        return providers.get(site, creator);
     }
 
     public Injection injection(InjectionSite site) {
@@ -39,7 +39,7 @@ public final class DefaultInjectionWeb extends Primordial implements InjectionWe
         // FIX 2394 MAG Looks thick too.
         Queue<PhasedInjection> toBuild = new LinkedList<PhasedInjection>();
         Creator<InjectionSite, Injection> creator = new LazyInjectionCreator(toBuild);
-        Injection injection = injections.getOrCreate(site, creator);
+        Injection injection = injections.get(site, creator);
         buildInjections(toBuild);
         return injection;
     }

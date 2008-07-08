@@ -19,12 +19,12 @@ public final class DefaultBindings implements Bindings {
 
     public void add(Binding binding) {
         InjectionType type = binding.getType();
-        List<Binding> current = bindings.getOrCreate(type, creator);
+        List<Binding> current = bindings.get(type, creator);
         current.add(binding);
     }
 
     public List<Binding> lookup(InjectionType type) {
-        List<Binding> unsorted = bindings.getOrCreate(type, creator);
+        List<Binding> unsorted = bindings.get(type, creator);
         return sort(unsorted);
     }
 

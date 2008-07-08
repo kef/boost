@@ -25,19 +25,19 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
 
     public void testGet() {
         expectCached(valueDummy);
-        Object actual = subject.getOrCreate(keyDummy, creatorMock);
+        Object actual = subject.get(keyDummy, creatorMock);
         assertSame(valueDummy, actual);
     }
 
     public void testCreate() {
         expectCreateAndCache(VOID);
-        Object actual = subject.getOrCreate(keyDummy, creatorMock);
+        Object actual = subject.get(keyDummy, creatorMock);
         assertSame(valueDummy, actual);
     }
 
     public void testCreateConcurrent() {
         expectCreateAndCache(oldDummy);
-        Object actual = subject.getOrCreate(keyDummy, creatorMock);
+        Object actual = subject.get(keyDummy, creatorMock);
         assertSame(oldDummy, actual);
     }
 
