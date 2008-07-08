@@ -37,7 +37,7 @@ public final class DefaultFieldWalker implements Walker {
     }
 
     private void addSite(List<InjectionSite> sites, Field f) {
-        InjectionSite site = builder.build(f);
+        InjectionSite site = builder.fields(f);
         sites.add(site);
     }
 }

@@ -14,7 +14,7 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
         return new RootInjectionSite(type);
     }
 
-    public InjectionSite build(Field field) {
+    public InjectionSite fields(Field field) {
         Class<?> host = field.getDeclaringClass();
         Type reified = field.getGenericType();
         InjectionType type = injectionType(reified);
@@ -23,15 +23,18 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     }
 
     // FIX 2394 constructor injection type
-    public InjectionSite[] build(Class<?> host, Type[] refieds) {
-        // FIX 2394 MAG Spelling.  For loop too thick.
-        InjectionSite[] sites = new InjectionSite[refieds.length];
-        for (int i = 0; i < refieds.length; ++i) {
-            InjectionType type = injectionType(refieds[i]);
-            String name = "arg" + i;
-            sites[i] = new DefaultInjectionSite(host, type, name);
+    public InjectionSite[] constructors(Class<?> host, Type[] reified) {
+        InjectionSite[] sites = new InjectionSite[reified.length];
+        for (int i = 0; i < reified.length; ++i) {
+            sites[i] = site(host, reified, i);
         }
         return sites;
+    }
+
+    private InjectionSite site(Class<?> host, Type[] reified, int i) {
+        InjectionType type = injectionType(reified[i]);
+        String name = "arg" + i;
+        return new DefaultInjectionSite(host, type, name);
     }
 
     private InjectionType injectionType(Type type) {

@@ -23,7 +23,7 @@ public final class DefaultConstructorWalker implements Walker {
         // FIX 2394 This looks suspicious, not sure that this is the correct site
         InjectionType type = site.type();
         Class<?> host = type.rawClass();
-        InjectionSite[] sites = builder.build(host, types);
+        InjectionSite[] sites = builder.constructors(host, types);
         walker.traverse(state, site, sites);
     }
 }

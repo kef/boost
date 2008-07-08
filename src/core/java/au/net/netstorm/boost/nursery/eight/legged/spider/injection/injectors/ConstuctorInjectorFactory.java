@@ -33,6 +33,6 @@ public final class ConstuctorInjectorFactory implements InjectorFactory<Construc
         Type[] types = parameterized.getParameterTypes();
         InjectionType type = site.type();
         Class<?> cls = type.rawClass();
-        return siteBuilder.build(cls, types);
+        return siteBuilder.constructors(cls, types);
     }
 }

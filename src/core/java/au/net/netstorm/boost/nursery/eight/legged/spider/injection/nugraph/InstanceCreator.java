@@ -35,7 +35,7 @@ public final class InstanceCreator implements Creator<InjectionSite, Object> {
         Provider actual = root(provider);
         Class host = host(site, provider);
         Type[] params = params(actual);
-        InjectionSite[] sites = builder.build(host, params);
+        InjectionSite[] sites = builder.constructors(host, params);
         // FIX 2394 does not gracefully handle cyclic dependencies on ctor args
         instantiator.instantiate(providers, instances, sites);
         return args(instances, sites);

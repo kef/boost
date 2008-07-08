@@ -36,14 +36,14 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
         Field field = fielder.get(Dummy.class, "x");
         Type type = field.getGenericType();
         expectBuildType(type);
-        InjectionSite result = subject.build(field);
+        InjectionSite result = subject.fields(field);
         checker.checkSite(result, Dummy.class, typeMock, "x");
     }
 
     public void testBuildConstructor() {
         expectBuildType(Dummy.class);
         Type[] args = {Dummy.class};
-        InjectionSite[] results = subject.build(ConstructableDummy.class, args);
+        InjectionSite[] results = subject.constructors(ConstructableDummy.class, args);
         assertEquals(1, results.length);
         checker.checkSite(results[0], ConstructableDummy.class, typeMock, "arg0");
     }
