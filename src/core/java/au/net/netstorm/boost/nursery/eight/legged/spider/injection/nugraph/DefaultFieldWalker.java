@@ -14,7 +14,6 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableField
 import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.gunge.type.DefaultMarker;
 
-// FIX 2394 use or lose. building parrallel implementation for better graph builder.
 public final class DefaultFieldWalker implements Walker {
     private final Marker marker = new DefaultMarker();
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
@@ -30,6 +29,7 @@ public final class DefaultFieldWalker implements Walker {
 
     private InjectionSite[] sites(Class<?> target) {
         List<InjectionSite> sites = new ArrayList<InjectionSite>();
+        // FIX 2394 this is wrong. what about fields on super types. need a field collector.
         for (Field f : target.getDeclaredFields()) {
             if (resolvable.isResolvableField(f)) addSite(sites, f);
         }
