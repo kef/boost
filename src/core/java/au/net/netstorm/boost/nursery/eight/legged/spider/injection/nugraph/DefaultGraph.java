@@ -6,13 +6,10 @@ import java.util.HashSet;
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyProviderCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 // FIX 2394 massive :(
-// FIX 2394 use or lose. building parrallel implementation for better graph builder.
-// FIX 2394 need a graph wirer
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultGraph implements Graph {
     private final SiteWalker walker = new DefaultSiteWalker();
