@@ -49,6 +49,7 @@ public final class InstanceCreator implements Creator<InjectionSite, Object> {
         return args;
     }
 
+    // FIX 2394 delete all this crud. should not be required if i can get the provider interface down.
     private Class host(InjectionSite site, Provider provider) {
         if (!(provider instanceof HasInjectableTarget)) return raw(site);
         HasInjectableTarget target = (HasInjectableTarget) provider;
