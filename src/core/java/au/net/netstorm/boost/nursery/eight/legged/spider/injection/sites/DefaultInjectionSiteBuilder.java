@@ -22,6 +22,7 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
         return new DefaultInjectionSite(host, type, name);
     }
 
+    // FIX 2394 constructor injection type
     public InjectionSite[] build(Class<?> host, Type[] refieds) {
         // FIX 2394 MAG Spelling.  For loop too thick.
         InjectionSite[] sites = new InjectionSite[refieds.length];

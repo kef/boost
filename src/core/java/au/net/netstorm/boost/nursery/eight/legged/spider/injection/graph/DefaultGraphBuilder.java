@@ -27,6 +27,7 @@ public final class DefaultGraphBuilder implements GraphBuilder {
         return new DefaultInjectionGraph<T>(root, injection);
     }
 
+    // FIX 2395 where is it enforced that root is an interface
     public <T> InjectionGraph<T> nu(Class<T> root, InjectionType type, Object... args) {
         InjectionSite site = builder.build(type);
         Provider provider = web.provider(site);
@@ -39,6 +40,9 @@ public final class DefaultGraphBuilder implements GraphBuilder {
         return graph(root, site, provider);
     }
 
+    // FIX 2394 names - root - is sometimes an impl, sometimes an iface for this class.
+    // FIX 2394 nuImpl - root=impl, nu - root=iface
+    // FIX 2394 make root a strong type. DefaultImplementation.
     public <T> InjectionGraph<T> nuImpl(Class<T> root, InjectionType type, Object... args) {
         InjectionSite site = builder.build(type);
         Implementation impl = new DefaultImplementation(root);

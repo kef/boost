@@ -12,6 +12,7 @@ public interface Binder {
 
     <T> Target<T> bind(Class<T> iface);
 
+    // FIX 2395 make a nice way to call this from the outside.
     <T> Target<T> bind(InjectionType<T> type, Class<?> host, String name);
 
     <T> Target<T> bind(InjectionType<T> type, Class<?> host);
