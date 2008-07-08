@@ -8,7 +8,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;
 
 public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
-    private final InjectionTypeBuilder builder = new DefaultInjectionTypeBuilder();
+    private final InjectionTypeBuilder types = new DefaultInjectionTypeBuilder();
 
     public InjectionSite root(InjectionType type) {
         return new RootInjectionSite(type);
@@ -17,12 +17,11 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     public InjectionSite fields(Field field) {
         Class<?> host = field.getDeclaringClass();
         Type reified = field.getGenericType();
-        InjectionType type = injectionType(reified);
+        InjectionType type = types.build(reified);
         String name = field.getName();
         return new DefaultFieldInjectionSite(host, type, name);
     }
 
-    // FIX 2394 constructor injection type
     public InjectionSite[] constructors(Class<?> host, Type[] reified) {
         InjectionSite[] sites = new InjectionSite[reified.length];
         for (int i = 0; i < reified.length; ++i) {
@@ -32,12 +31,9 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     }
 
     private InjectionSite site(Class<?> host, Type[] reified, int i) {
-        InjectionType type = injectionType(reified[i]);
+        InjectionType type = types.build(reified[i]);
         String name = "arg" + i;
+        // FIX 2395 Should the be new ConstructorInjectionSite
         return new DefaultInjectionSite(host, type, name);
-    }
-
-    private InjectionType injectionType(Type type) {
-        return builder.build(type);
     }
 }

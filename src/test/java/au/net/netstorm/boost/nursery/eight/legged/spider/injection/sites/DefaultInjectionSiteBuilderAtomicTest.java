@@ -24,7 +24,7 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
 
     public void setUpFixtures() {
         subject = new DefaultInjectionSiteBuilder();
-        fielder.setInstance(subject, "builder", builderMock);
+        fielder.setInstance(subject, "types", builderMock);
     }
 
     public void testBuildRoot() {
