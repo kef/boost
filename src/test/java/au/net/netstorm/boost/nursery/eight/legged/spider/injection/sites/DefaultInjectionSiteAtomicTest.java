@@ -21,7 +21,7 @@ public final class DefaultInjectionSiteAtomicTest extends LifecycleTestCase impl
     }
 
     public void testInjectionSite() {
-        checker.checkSite(subject, host, typeMock, name);
+        checker.check(subject, host, typeMock, name);
     }
 
     public void testInjectionSiteFailure() {
