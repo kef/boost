@@ -34,7 +34,7 @@ public final class DefaultInjectionWebAtomicTest extends LifecycleTestCase imple
     
     public void testProvider() {
         LazyProviderCreator creator = new LazyProviderCreator(resolverMock);
-        expect.oneCall(providersMock, providerMock, "getOrCreate", siteMock, creator);
+        expect.oneCall(providersMock, providerMock, "get", siteMock, creator);
         Provider result = subject.provider(siteMock);
         assertSame(providerMock, result);
     }
@@ -42,7 +42,7 @@ public final class DefaultInjectionWebAtomicTest extends LifecycleTestCase imple
     public void testInjection() {
         Queue toBuild = new LinkedList();
         LazyInjectionCreator creator = new LazyInjectionCreator(toBuild);
-        expect.oneCall(injectionsMock, injectionMock, "getOrCreate", siteMock, creator);
+        expect.oneCall(injectionsMock, injectionMock, "get", siteMock, creator);
         Injection result = subject.injection(siteMock);
         assertSame(injectionMock, result);
     }
