@@ -2,6 +2,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
+// FIX 2394 split into engine(InjectionType), raw(Class<T>) and generecized(nice wrapper to be implemented)
+// FIX 2394 wrap in a Registry compatibality layer for migration
 public interface Binder {
     <T> Target<T> bind(Class<T> iface, Class<?> host, String name);
 

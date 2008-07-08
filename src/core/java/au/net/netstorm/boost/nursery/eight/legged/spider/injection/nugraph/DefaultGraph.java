@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
-import java.util.Set;
-
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
@@ -38,8 +36,7 @@ public final class DefaultGraph implements Graph {
     }
 
     public void instantiate() {
-        Set<InjectionSite> sites = providers.keySet();
-        instantiator.instantiate(providers, instances, sites);
+        instantiator.instantiate(providers, instances);
     }
 
     public void wire() {

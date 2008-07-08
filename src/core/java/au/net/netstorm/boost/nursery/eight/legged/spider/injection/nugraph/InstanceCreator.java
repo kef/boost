@@ -12,6 +12,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasInjectableT
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasParameters;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DelegatingProvider;
 
+// FIX 2394 nasty. help me.
 public final class InstanceCreator implements Creator<InjectionSite, Object> {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
     private final Instantiator instantiator = new DefaultInstantiator();

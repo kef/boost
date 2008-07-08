@@ -9,16 +9,16 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultGrapher implements Grapher {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
+    private final GraphLifecycleEnforcer enforcer = new DefaultGraphLifecycleEnforcer();
     private FactoryResolver resolver;
 
     public DefaultGrapher(FactoryResolver resolver) {
         this.resolver = resolver;
     }
 
-    // FIX BREADCRUMB 2394 ccccccccccc implementing GraphWrapper
     public <T> T graph(InjectionType<T> type) {
         InjectionSite site = builder.build(type);
-        Graph graph = new DefaultGraph(resolver, site);
+        GraphLifecycle graph = new DefaultGraph(resolver, site);
         return graph(type, graph);
     }
 
@@ -29,21 +29,9 @@ public final class DefaultGrapher implements Grapher {
         return graph(type, graph);
     }
 
-    private <T> T graph(InjectionType<T> type, Graph graph) {
-        Object instance = graph(graph);
+    private <T> T graph(InjectionType<T> type, GraphLifecycle graph) {
+        Object instance = enforcer.apply(graph);
         Class<T> cls = type.rawClass();
         return cls.cast(instance);
-    }
-
-    private Object graph(Graph graph) {
-        lifecycle(graph);
-        return graph.resolve();
-    }
-
-    private void lifecycle(Graph graph) {
-        graph.build();
-        graph.instantiate();
-        graph.wire();
-        graph.post();
     }
 }
