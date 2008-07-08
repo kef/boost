@@ -40,6 +40,7 @@ public final class FieldInjectorFactory implements InjectorFactory<MemberInjecto
         return injectors.toArray(new MemberInjector[injectors.size()]);
     }
 
+    // FIX 2394 need to check if it is set, and only inject if it is not set
     private void addField(List<MemberInjector> injectors, InjectionWeb web, Field field) {
         InjectionSite site = siteBuilder.build(field);
         Injection injection = web.injection(site);

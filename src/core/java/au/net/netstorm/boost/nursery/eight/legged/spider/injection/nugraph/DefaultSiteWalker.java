@@ -7,7 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DelegatingProv
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 // FIX 2394 use or lose. building parrallel implementation for better graph builder.
-public final class SiteWalkerImpl implements SiteWalker {
+public final class DefaultSiteWalker implements SiteWalker {
     private final Marker marker = new DefaultMarker();
     private final Walker constructor = new DefaultConstructorWalker();
     private final Walker fields = new DefaultFieldWalker();

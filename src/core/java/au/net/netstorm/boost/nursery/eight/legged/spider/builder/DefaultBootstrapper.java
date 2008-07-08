@@ -26,7 +26,7 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // FIX 2394 MAG Interesting little beast.  Bit of wiring hey ;)
 // FIX 2394 see if this can be split
-// DEBT ClassDataAbstractionCoupling {
+// DEBT ClassDataAbstractionCoupling|NCSS {
 public final class DefaultBootstrapper implements Bootstrapper {
     private final Web web;
     private final GraphBuilder builder;
@@ -37,6 +37,8 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Spider spider;
     private final SpiderEgg egg;
     private final Binder binder;
+    private final Bindings bindings;
+    private final Factories factories;
 
     public DefaultBootstrapper(Bindings bindings, Factories factories, InjectionWeb injections) {
         this.builder = new DefaultGraphBuilder(injections);
@@ -48,6 +50,8 @@ public final class DefaultBootstrapper implements Bootstrapper {
         this.resolver = new DefaultResolver(builder);
         this.spider = new DefaultSpider(nu, injector, resolver);
         this.egg = new DefaultSpiderEgg(web, spider);
+        this.bindings = bindings;
+        this.factories = factories;
     }
 
     public void bootstrap() {
@@ -76,6 +80,8 @@ public final class DefaultBootstrapper implements Bootstrapper {
         binder.bind(Nu.class).to(nu);
         binder.bind(NuImpl.class).to(nuImpl);
         binder.bind(Binder.class).to(binder);
+        binder.bind(Factories.class).to(factories);
+        binder.bind(Bindings.class).to(bindings);
     }
 }
-// } DEBT ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling|NCSS
