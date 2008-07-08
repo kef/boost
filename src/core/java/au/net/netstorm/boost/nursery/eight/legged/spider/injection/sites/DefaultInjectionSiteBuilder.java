@@ -11,7 +11,7 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
     private final InjectionTypeBuilder types = new DefaultInjectionTypeBuilder();
 
     public InjectionSite root(InjectionType type) {
-        return new RootInjectionSite(type);
+        return new DefaultRootInjectionSite(type);
     }
 
     public InjectionSite fields(Field field) {
@@ -34,6 +34,6 @@ public final class DefaultInjectionSiteBuilder implements InjectionSiteBuilder {
         InjectionType type = types.build(reified[i]);
         String name = "arg" + i;
         // FIX 2395 Should the be new ConstructorInjectionSite
-        return new DefaultInjectionSite(host, type, name);
+        return new DefaultConstructorInjectionSite(host, type, name);
     }
 }

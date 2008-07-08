@@ -29,7 +29,7 @@ public final class DefaultInjectionSiteBuilderAtomicTest extends LifecycleTestCa
 
     public void testBuildRoot() {
         InjectionSite result = subject.root(typeMock);
-        assertEquals(true, result instanceof RootInjectionSite);
+        assertEquals(true, result instanceof DefaultRootInjectionSite);
     }
 
     public void testBuildField() {

@@ -16,7 +16,7 @@ public final class DefaultFieldInjectionSite extends Primordial implements Field
     private final InjectionSite delegate;
 
     public DefaultFieldInjectionSite(Class<?> host, InjectionType type, String name) {
-        delegate = new DefaultInjectionSite(host, type, name);
+        delegate = new DefaultConstructorInjectionSite(host, type, name);
     }
 
     public Class<?> host() {

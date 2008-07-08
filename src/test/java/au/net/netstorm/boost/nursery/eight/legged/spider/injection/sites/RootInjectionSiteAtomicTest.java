@@ -11,7 +11,7 @@ public final class RootInjectionSiteAtomicTest extends LifecycleTestCase impleme
     InjectionType typeMock;
 
     public void setUpFixtures() {
-        subject = new RootInjectionSite(typeMock);
+        subject = new DefaultRootInjectionSite(typeMock);
     }
 
     public void testInjectionSite() {
@@ -22,7 +22,7 @@ public final class RootInjectionSiteAtomicTest extends LifecycleTestCase impleme
 
     public void testInjectionSiteFailure() {
         try {
-            new RootInjectionSite(null);
+            new DefaultRootInjectionSite(null);
             fail();
         } catch (IllegalArgumentException expected) {}
     }
