@@ -9,5 +9,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 public interface Providers {
     Provider getOrCreate(InjectionSite site, Creator<InjectionSite, Provider> creator);
 
+    Provider getOrBomb(InjectionSite site);
+
     Set<InjectionSite> keySet();
 }

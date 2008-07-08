@@ -9,6 +9,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 // FIX 2394 use or lose. building parrallel implementation for better graph builder.
 public final class DefaultGraph implements Graph {
     private final Providers providers = new DefaultProviders();
+    // FIX 2394 use or lose.
     private final Instances instances = new DefaultInstances();
     private final FactoryResolver resolver;
 
@@ -25,5 +26,10 @@ public final class DefaultGraph implements Graph {
     public void instantiate() {
         // FIX BREADCRUMB 2394 aaaaaaaaaaaa create an instance for each required provider   
         // FIX 2394 depenencies specify a partial ordering, real ordering is arbitrary
+        for (InjectionSite site : providers.keySet()) {
+            // FIX 2394 use or lose.
+            Provider provider = providers.getOrBomb(site);
+            // FIX BREADCRUMB 2394 aaaaaaaaaa create an instance and store in instances
+        }
     }
 }
