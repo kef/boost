@@ -13,21 +13,28 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 // FIX 2394 need a graph wirer
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultGraph implements Graph {
+    private final SiteWalker walker = new DefaultSiteWalker();
     private final Providers providers = new DefaultProviders();
     private final Instances instances = new DefaultInstances();
     private final Resolvables resolvables = new DefaultResolvables();
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Wirer wirer = new DefaultWirer();
     private final FactoryResolver resolver;
+    private final InjectionSite root;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public DefaultGraph(FactoryResolver resolver) {
+    public DefaultGraph(FactoryResolver resolver, InjectionSite root) {
         this.resolver = resolver;
+        this.root = root;
     }
 
     public Provider provide(InjectionSite site) {
         Creator<InjectionSite, Provider> creator = new LazyProviderCreator(resolver);
         return providers.get(site, creator);
+    }
+
+    public void build() {
+        walker.traverse(this, root);
     }
 
     public void instantiate() {
@@ -43,9 +50,9 @@ public final class DefaultGraph implements Graph {
         // FIX 2394 implement post processing
     }
 
-    public Object resolve(InjectionSite site) {
+    public Object resolve() {
         Failer<InjectionSite> failer = new ResolutionFailer();
-        return instances.get(site, failer);
+        return instances.get(root, failer);
     }
 
     public void add(InjectionSite site, Provider provider) {
