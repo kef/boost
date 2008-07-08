@@ -8,7 +8,7 @@ public interface Graph {
     // FIX 2394 split into a mutable graph iface.
     Provider provide(InjectionSite site);
 
-    // FIX 2394 wrap in GraphLifecycle which calls all the right methods in order.
+    // FIX 2394 wrap in GraphLifecycle which calls all the right methods in order.c v6m
     void instantiate();
     
     // FIX BREADCRUMB 2394 bbbbbbbbbbbbbb add lifecycle methods for graph: resolve, postprocess

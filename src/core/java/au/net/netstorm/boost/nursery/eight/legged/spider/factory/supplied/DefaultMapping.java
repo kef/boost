@@ -11,6 +11,8 @@ public final class DefaultMapping implements Mapping {
     private final ImplMapper delegate = new DefaultImplMapper("Default");
 
     public boolean can(InjectionType type) {
+        // FIX 2394 smelly.
+        if (!type.isInterface()) return false;
         Interface iface = iface(type);
         return delegate.can(iface);
     }

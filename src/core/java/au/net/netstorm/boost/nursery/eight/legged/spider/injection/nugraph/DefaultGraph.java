@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
+import java.util.Set;
+
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyProviderCreator;
@@ -11,9 +13,10 @@ public final class DefaultGraph implements Graph {
     private final Providers providers = new DefaultProviders();
     // FIX 2394 use or lose.
     private final Instances instances = new DefaultInstances();
+    private final Instantiator instantiator = new DefaultInstantiator();
     private final FactoryResolver resolver;
 
-    // FIX BREADCRUMB 2394 ccccccccc wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
+    // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
     public DefaultGraph(FactoryResolver resolver) {
         this.resolver = resolver;
     }
@@ -24,12 +27,7 @@ public final class DefaultGraph implements Graph {
     }
 
     public void instantiate() {
-        // FIX BREADCRUMB 2394 aaaaaaaaaaaa create an instance for each required provider   
-        // FIX 2394 depenencies specify a partial ordering, real ordering is arbitrary
-        for (InjectionSite site : providers.keySet()) {
-            // FIX 2394 use or lose.
-            Provider provider = providers.get(site);
-            // FIX BREADCRUMB 2394 aaaaaaaaaa create an instance and store in instances
-        }
+        Set<InjectionSite> sites = providers.keySet();
+        instantiator.instantiate(providers, instances, sites);
     }
 }

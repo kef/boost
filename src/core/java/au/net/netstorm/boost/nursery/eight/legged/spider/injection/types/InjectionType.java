@@ -6,4 +6,5 @@ public interface InjectionType<T> {
     // FIX 2394 placeholder not going to be implemented yet
     InjectionType<?>[] parameters();
     Class<T> rawClass();
+    boolean isInterface();
 }

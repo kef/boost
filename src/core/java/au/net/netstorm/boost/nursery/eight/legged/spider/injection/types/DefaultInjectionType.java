@@ -24,4 +24,8 @@ public final class DefaultInjectionType<T> extends Primordial implements Injecti
     public Class<T> rawClass() {
         return raw;
     }
+
+    public boolean isInterface() {
+        return raw.isInterface();
+    }
 }
