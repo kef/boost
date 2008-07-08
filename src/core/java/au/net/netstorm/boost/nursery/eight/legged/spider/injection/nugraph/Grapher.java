@@ -5,7 +5,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 // FIX BREADCRUMB 2394 bbbbbbbbb implementing wrapper for graph
 public interface Grapher {
-    Object graph(InjectionType type);
+    <T> T graph(InjectionType<T> type);
 
-    Object graph(InjectionType type, Provider provider);
+    <T> T graph(InjectionType<T> type, Provider provider);
 }

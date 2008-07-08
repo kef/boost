@@ -20,31 +20,29 @@ public final class DefaultGraphMolecularTest extends NuSpiderDemooooTest impleme
     InjectionTypeBuilder builder;
 
     public void testGraph() {
-        InjectionType type = builder.build(Hello.class);
+        InjectionType<Hello> type = builder.build(Hello.class);
         Grapher grapher = grapher();
-        Object o = grapher.graph(type);
-        checkResolvedHello(o);
+        Hello h = grapher.graph(type);
+        checkResolvedHello(h);
     }
 
     public void testGraphWithProvider() {
         Implementation impl = new DefaultImplementation(NoInterface.class);
         Provider provider = new ImplProvider(impl);
-        InjectionType type = builder.build(NoInterface.class);
+        InjectionType<NoInterface> type = builder.build(NoInterface.class);
         Grapher grapher = grapher();
-        Object o = grapher.graph(type, provider);
-        checkResolvedNoInterface(o);
+        NoInterface no = grapher.graph(type, provider);
+        checkResolvedNoInterface(no);
     }
 
-    private void checkResolvedHello(Object instance) {
+    private void checkResolvedHello(Hello instance) {
         assertEquals(true, instance instanceof DefaultHello);
         DefaultHello hello = (DefaultHello) instance;
         World world = hello.world;
         assertNotNull(world);
     }
 
-    private void checkResolvedNoInterface(Object instance) {
-        assertEquals(true, instance instanceof NoInterface);
-        NoInterface no = (NoInterface) instance;
+    private void checkResolvedNoInterface(NoInterface no) {
         Hello hello = no.hello;
         checkResolvedHello(hello);
     }

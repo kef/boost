@@ -17,17 +17,23 @@ public final class DefaultGrapher implements Grapher {
     }
 
     // FIX BREADCRUMB 2394 ccccccccccc implementing GraphWrapper
-    public Object graph(InjectionType type) {
+    public <T> T graph(InjectionType<T> type) {
         Graph graph = new DefaultGraph(resolver);
         InjectionSite site = builder.build(type);
-        return graph(site, graph);
+        return graph(type, site, graph);
     }
 
-    public Object graph(InjectionType type, Provider provider) {
+    public <T> T graph(InjectionType<T> type, Provider provider) {
         Graph graph = new DefaultGraph(resolver);
         InjectionSite site = builder.build(type);
         graph.add(site, provider);
-        return graph(site, graph);
+        return graph(type, site, graph);
+    }
+
+    private <T> T graph(InjectionType<T> type, InjectionSite site, Graph graph) {
+        Object instance = graph(site, graph);
+        Class<T> cls = type.rawClass();
+        return cls.cast(instance);
     }
 
     private Object graph(InjectionSite site, Graph graph) {
