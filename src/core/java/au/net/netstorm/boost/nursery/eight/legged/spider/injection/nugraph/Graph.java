@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.UnresolvableException;
 
 // FIX BREADCRUMB 2394 aaaaaaa add wrapper for lifecycle of this guy.
 // FIX 2394 use or lose. stores state of graph construction/traversal.
@@ -12,8 +11,6 @@ public interface Graph {
 
     // FIX 2394 wrap in GraphLifecycle which calls all the right methods in order.c v6m
     void instantiate();
-    
-    void handle(UnresolvableException e);
 
     void resolvable(InjectionSite host, InjectionSite[] sites);
 

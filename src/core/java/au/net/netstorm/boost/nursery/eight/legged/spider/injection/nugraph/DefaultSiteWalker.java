@@ -18,12 +18,14 @@ public final class DefaultSiteWalker implements SiteWalker {
         for (InjectionSite site : sites) traverse(state, site);
     }
 
-    // FIX 2394 fix this crud. no obvious way around it. basically don't care at this stage if can't provide
-    // FIX 2394 this gets validated in next phase (could be created by constructor/initializer)
+
     public void traverse(Graph state, InjectionSite site) {
         try {
             unsafeTraverse(state, site);
-        } catch (UnresolvableException ignore) {}
+        } catch (UnresolvableException ignore) {
+            // FIX 2394 fix this crud. no obvious way around it. basically don't care at this stage if it can't provide
+            // FIX 2394 this gets validated in next phase (could be created by constructor/initializer)
+        }
     }
  
     private void unsafeTraverse(Graph state, InjectionSite site) {

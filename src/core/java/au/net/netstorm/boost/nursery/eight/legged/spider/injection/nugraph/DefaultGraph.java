@@ -8,16 +8,13 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.Facto
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.LazyProviderCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.UnresolvableException;
 
 // FIX 2394 use or lose. building parrallel implementation for better graph builder.
 // FIX 2394 need a graph wirer
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultGraph implements Graph {
     private final Providers providers = new DefaultProviders();
-    // FIX 2394 use or lose.
     private final Instances instances = new DefaultInstances();
-    private final Unresolvables unresolvables = new DefaultUnresolvables();
     private final Resolvables resolvables = new DefaultResolvables();
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Wirer wirer = new DefaultWirer();
@@ -53,12 +50,6 @@ public final class DefaultGraph implements Graph {
 
     public void add(InjectionSite site, Provider provider) {
         providers.put(site, provider);
-    }
-
-    // FIX 2394 push to another class.
-    public void handle(UnresolvableException e) {
-        InjectionSite unresolved = e.getSite();
-        unresolvables.add(unresolved);
     }
 
     public void resolvable(InjectionSite host, InjectionSite[] sites) {
