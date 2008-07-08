@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;

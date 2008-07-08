@@ -18,11 +18,18 @@ public final class HostedBindingConstraintAtomicTest extends LifecycleTestCase i
     }
 
     public void testAccept() {
+        expect.oneCall(siteMock, true, "isConstrained");
         expect.oneCall(siteMock, hostDummy, "host");
         checker.checkAccept(true, subject, siteMock);
     }
 
+    public void testDoNotAcceptNotConstrained() {
+        expect.oneCall(siteMock, false, "isConstrained");
+        checker.checkAccept(false, subject, siteMock);
+    }
+
     public void testDoNotAccept() {
+        expect.oneCall(siteMock, true, "isConstrained");
         expect.oneCall(siteMock, DummyHolder.class, "host");
         checker.checkAccept(false, subject, siteMock);
     }

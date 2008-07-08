@@ -19,4 +19,9 @@ public class DefaultConstructorInjectionSite extends Primordial implements Const
     public Class<?> host() { return this.host; }
     public InjectionType type() { return this.type; }
     public String name() { return this.name; }
+
+    // FIX 2394 this is dodgy
+    public boolean isConstrained() {
+        return true;
+    }
 }

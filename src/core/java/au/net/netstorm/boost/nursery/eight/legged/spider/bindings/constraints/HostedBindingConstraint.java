@@ -15,6 +15,7 @@ public final class HostedBindingConstraint implements BindingConstraint {
     }
 
     public boolean accept(InjectionSite site) {
+        if (!site.isConstrained()) return false;
         Class<?> actual = site.host();
         return host.equals(actual);
     }

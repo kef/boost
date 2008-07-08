@@ -31,6 +31,11 @@ public final class DefaultFieldInjectionSite extends Primordial implements Field
         return delegate.name();
     }
 
+    // FIX 2394 this is dodgy
+    public boolean isConstrained() {
+        return delegate.isConstrained();
+    }
+
     // FIX 2394 abstract isWired and inject functionality
     public void inject(Object ref, Object resolved) {
         if (isWired(ref)) return;

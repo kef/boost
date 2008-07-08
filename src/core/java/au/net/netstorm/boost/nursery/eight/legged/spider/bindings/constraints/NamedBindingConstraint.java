@@ -15,6 +15,7 @@ public final class NamedBindingConstraint implements BindingConstraint {
     }
 
     public boolean accept(InjectionSite site) {
+        if (!site.isConstrained()) return false;
         String actual = site.name();
         return name.equals(actual);
     }

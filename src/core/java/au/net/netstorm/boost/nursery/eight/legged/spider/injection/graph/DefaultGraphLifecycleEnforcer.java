@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph;
+package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
 // FIX 2395 Nice read :-)
 public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforcer {

@@ -22,4 +22,9 @@ public final class DefaultRootInjectionSite extends Primordial implements RootIn
     public String name() {
        throw new AssertionError("Implementation Error: Root injections do not have names.");
     }
+
+    // FIX 2394 this are dodgy
+    public boolean isConstrained() {
+        return false;
+    }
 }

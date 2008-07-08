@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.core;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.nugraph.Grapher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.DefaultInjectionTypeBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;

@@ -19,17 +19,20 @@ public final class HostedAndNamedBindingConstraintAtomicTest extends LifecycleTe
     }
 
     public void testAccept() {
+        expect.manyCalls(siteMock, true, "isConstrained");
         expect.oneCall(siteMock, hostDummy, "host");
         expect.oneCall(siteMock, nameDummy, "name");
         checker.checkAccept(true, subject, siteMock);
     }
 
     public void testDoNotAcceptHost() {
+        expect.manyCalls(siteMock, true, "isConstrained");
         expect.oneCall(siteMock, DummyHolder.class, "host");
         checker.checkAccept(false, subject, siteMock);
     }
 
     public void testDoNotAcceptName() {
+        expect.manyCalls(siteMock, true, "isConstrained");
         expect.oneCall(siteMock, hostDummy, "host");
         expect.oneCall(siteMock, nameDummy + "bad", "name");
         checker.checkAccept(false, subject, siteMock);
