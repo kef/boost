@@ -8,6 +8,7 @@ import au.net.netstorm.boost.gunge.type.DefaultImplementation;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
+// FIX 2395 Does this all go.  The Layers stuff is good.
 // FIX ()   2248 Getting too big.
 public final class DefaultProxifier implements Proxifier {
     TypeMaster typer;
@@ -53,6 +54,7 @@ public final class DefaultProxifier implements Proxifier {
         return proxies.newProxy(types, layer);
     }
 
+    // FIX 2395 Into TypeMaster.
     // FIX ()  2248 Dupe.  Slam into TypeMaster.
     private Interface[] ifaces(Object ref) {
         Class cls = ref.getClass();
