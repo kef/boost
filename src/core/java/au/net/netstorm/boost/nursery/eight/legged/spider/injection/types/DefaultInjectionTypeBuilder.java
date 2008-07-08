@@ -3,12 +3,17 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.types;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+// FIX 2394 genericize
 public final class DefaultInjectionTypeBuilder implements InjectionTypeBuilder {
+    public <T> InjectionType<T> build(Class<T> type) {
+        return raw(type);
+    }
+
     public InjectionType build(Type type) {
         if (type instanceof Class) return raw(type);
         if (type instanceof ParameterizedType) return paramertized(type);
         throw new IllegalArgumentException(
-                "Type not supported. Declarations, Wildcards and Arrays can not be injected," + 
+                "Type not supported. Declarations, Wildcards and Arrays can not be injected," +
                 "must be one of [Class, ParameterizedType]");
     }
 

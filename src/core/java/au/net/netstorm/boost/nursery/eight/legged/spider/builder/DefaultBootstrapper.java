@@ -55,7 +55,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
         this.binder = new DefaultBinder(bindings);
         this.web = new DefaultWeb(nuImpl, binder, factories);
         this.injector = new DefaultInjector(builder);
-        this.resolver = new DefaultResolver(builder);
+        this.resolver = new DefaultResolver(grapher);
         this.spider = new DefaultSpider(nu, injector, resolver);
         this.egg = new DefaultSpiderEgg(web, spider);
         this.bindings = bindings;
