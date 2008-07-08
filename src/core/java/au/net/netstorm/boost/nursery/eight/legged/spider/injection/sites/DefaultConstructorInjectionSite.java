@@ -3,7 +3,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites;
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
-// FIX 2395 Do we want a ConstructorInjectionSite for symmetry with Field/Root ISs?
 public class DefaultConstructorInjectionSite extends Primordial implements ConstructorInjectionSite {
     private final Class<?> host;
     private final InjectionType type;
