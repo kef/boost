@@ -22,8 +22,4 @@ public final class RootInjectionSite extends Primordial implements InjectionSite
     public String name() {
        throw new AssertionError("Implementation Error: Root injections do not have names.");
     }
-
-    public void inject(Object host, Object instance) {
-        throw new UnsupportedOperationException();
-    }
 }
