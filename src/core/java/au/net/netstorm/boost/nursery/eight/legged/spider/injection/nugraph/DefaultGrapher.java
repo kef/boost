@@ -17,13 +17,13 @@ public final class DefaultGrapher implements Grapher {
     }
 
     public <T> T graph(InjectionType<T> type) {
-        InjectionSite site = builder.build(type);
+        InjectionSite site = builder.root(type);
         GraphLifecycle graph = new DefaultGraph(resolver, site);
         return graph(type, graph);
     }
 
     public <T> T graph(InjectionType<T> type, Provider provider) {
-        InjectionSite site = builder.build(type);
+        InjectionSite site = builder.root(type);
         Graph graph = new DefaultGraph(resolver, site);
         graph.add(site, provider);
         return graph(type, graph);

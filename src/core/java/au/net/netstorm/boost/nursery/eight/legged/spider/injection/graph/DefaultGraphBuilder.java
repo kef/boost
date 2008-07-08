@@ -22,20 +22,20 @@ public final class DefaultGraphBuilder implements GraphBuilder {
     }
 
     public <T> InjectionGraph<T> resolve(Class<T> root, InjectionType type) {
-        InjectionSite site = builder.build(type);
+        InjectionSite site = builder.root(type);
         Injection injection = web.injection(site);
         return new DefaultInjectionGraph<T>(root, injection);
     }
 
     // FIX 2395 where is it enforced that root is an interface
     public <T> InjectionGraph<T> nu(Class<T> root, InjectionType type, Object... args) {
-        InjectionSite site = builder.build(type);
+        InjectionSite site = builder.root(type);
         Provider provider = web.provider(site);
         return graph(root, site, provider, args);
     }
 
     public <T> InjectionGraph<T> inject(Class<T> root, InjectionType type, Object instance) {
-        InjectionSite site = builder.build(type);
+        InjectionSite site = builder.root(type);
         Provider provider = new InjectableInstanceProvider(instance);
         return graph(root, site, provider);
     }
@@ -44,7 +44,7 @@ public final class DefaultGraphBuilder implements GraphBuilder {
     // FIX 2394 nuImpl - root=impl, nu - root=iface
     // FIX 2394 make root a strong type. DefaultImplementation.
     public <T> InjectionGraph<T> nuImpl(Class<T> root, InjectionType type, Object... args) {
-        InjectionSite site = builder.build(type);
+        InjectionSite site = builder.root(type);
         Implementation impl = new DefaultImplementation(root);
         Provider provider = new ImplProvider(impl);
         return graph(root, site, provider, args);
