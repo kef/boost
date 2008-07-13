@@ -20,7 +20,7 @@ public final class ConcreteFactory implements Factory {
     public boolean canHandle(InjectionSite site) {
         Class cls = raw(site);
         // FIX 2394 this is not correct, there needs to be a common class for determining what is concrete
-        return !cls.isInterface();
+        return !cls.isInterface() && !cls.isArray() && !cls.isAnnotation() && !cls.isEnum(); 
     }
 
     private Class raw(InjectionSite site) {

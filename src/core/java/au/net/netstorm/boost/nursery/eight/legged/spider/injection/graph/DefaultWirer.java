@@ -27,6 +27,7 @@ public final class DefaultWirer implements Wirer {
     private void wire(Instances instances, Object host, InjectionSite site) {
         if (!(site instanceof FieldInjectionSite)) return;
         FieldInjectionSite field = (FieldInjectionSite) site;
+        if (field.isWired(host)) return;
         Failer<InjectionSite> failer = new ResolutionFailer();
         Object instance = instances.get(site, failer);
         field.inject(host, instance);

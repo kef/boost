@@ -1,18 +1,15 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
-import au.net.netstorm.boost.gunge.type.DefaultMarker;
-import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.UnresolvableException;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DelegatingProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProviderOperations;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
 
-// FIX 2394 use or lose. building parrallel implementation for better graph builder.
-// FIX 2395 where is it?
 public final class DefaultSiteWalker implements SiteWalker {
-    private final Marker marker = new DefaultMarker();
     private final Walker constructor = new DefaultConstructorWalker();
     private final Walker fields = new DefaultFieldWalker();
+    private final ProviderOperations operations = new DefaultProviderOperations();
 
     public void traverse(Graph state, InjectionSite host, InjectionSite[] sites) {
         state.resolvable(host, sites);
@@ -36,18 +33,11 @@ public final class DefaultSiteWalker implements SiteWalker {
     }
 
     private void unsafeTraverse(Graph state, InjectionSite site) {
+        // FIX BREADCRUMB 2394 aaaaaaaaaaaaaaaaa now. why is this saying it can provide for things like class[]
+        // FIX BREADCRUMB 2394 bbbbbbbbbbbbbbbbb at a guess, i am thinking that concrete factory, trying it now.
         Provider provider = state.provide(site);
-        Provider root = root(provider);
+        Provider root = operations.root(provider);
         constructor.traverse(this, state, site, root);
         fields.traverse(this, state, site, root);
-    }
-
-    private Provider root(Provider provider) {
-        return marker.is(provider, DelegatingProvider.class) ? delegate(provider) : provider;
-    }
-
-    private Provider delegate(Provider provider) {
-        DelegatingProvider delegator = (DelegatingProvider) provider;
-        return delegator.root();
     }
 }
