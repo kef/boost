@@ -9,6 +9,9 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Default
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionTypeBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.DefaultAspectResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspects;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 
 // FIX 2394 delete me when done. using this to drive up new graph implementation.
@@ -43,7 +46,13 @@ public final class DefaultGraphMolecularTest extends NuSpiderDemooooTest impleme
 
     private Grapher grapher() {
         FactoryResolver resolver = resolver();
-        return new DefaultGrapher(resolver);
+        AspectResolver aspector = aspector();
+        return new DefaultGrapher(resolver, aspector);
+    }
+
+    private AspectResolver aspector() {
+        Aspects aspects = spider.resolve(Aspects.class);
+        return new DefaultAspectResolver(aspects);
     }
 
     private FactoryResolver resolver() {

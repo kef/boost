@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 
 // FIX 2394 massive :(
 // FIX 2394 use or lose. building parrallel implementation for better graph builder.
@@ -19,8 +20,8 @@ public final class ParameterizedGraph implements Graph {
     private final Instances instances;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public ParameterizedGraph(Providers providers, Instances instances, FactoryResolver resolver, InjectionSite root, Object... args) {
-        this.delegate = new DefaultGraph(providers, instances, resolver, root);
+    public ParameterizedGraph(Providers providers, Instances instances, FactoryResolver resolver, AspectResolver aspector, InjectionSite root, Object... args) {
+        this.delegate = new DefaultGraph(providers, instances, resolver, aspector, root);
         this.providers = providers;
         this.instances = instances;
         this.root = root;

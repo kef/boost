@@ -43,7 +43,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Factories factories = new DefaultFactories();
     private final FactoryResolver factoryResolver = new DefaultFactoryResolver(bindings, factories);
     private final AspectResolver aspectResolver = new DefaultAspectResolver(aspects);
-    private final Grapher grapher = new DefaultGrapher(factoryResolver);
+    private final Grapher grapher = new DefaultGrapher(factoryResolver, aspectResolver);
     private final Nu nu = new DefaultNu(grapher);
     private final NuImpl nuImpl = new DefaultNuImpl(grapher);
     private final Binder binder = new DefaultBinder(bindings);

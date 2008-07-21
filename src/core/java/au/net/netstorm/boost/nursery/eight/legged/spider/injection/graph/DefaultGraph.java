@@ -8,9 +8,10 @@ import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 
 // FIX 2394 massive :(
-// DEBT ClassDataAbstractionCoupling {
+// DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength {
 public final class DefaultGraph implements Graph {
     private final SiteWalker walker = new DefaultSiteWalker();
     private final Set walked = new HashSet();
@@ -21,13 +22,16 @@ public final class DefaultGraph implements Graph {
     private final Providers providers;
     private final Instances instances;
     private final FactoryResolver resolver;
+    // FIX 2394 Use or lose. Pass to processor.
+    private final AspectResolver aspector;
     private final InjectionSite root;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public DefaultGraph(Providers providers, Instances instances, FactoryResolver resolver, InjectionSite root) {
+    public DefaultGraph(Providers providers, Instances instances, FactoryResolver resolver, AspectResolver aspector, InjectionSite root) {
         this.providers = providers;
         this.instances = instances;
         this.resolver = resolver;
+        this.aspector = aspector;
         this.root = root;
     }
 
@@ -76,4 +80,4 @@ public final class DefaultGraph implements Graph {
         resolvables.add(host, sites);
     }
 }
-// } DEBT ClassDataAbstractionCoupling
+// } DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength
