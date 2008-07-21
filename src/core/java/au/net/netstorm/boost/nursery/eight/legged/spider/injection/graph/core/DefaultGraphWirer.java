@@ -16,6 +16,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.LazyProviderCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.SiteWalker;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Argumentor;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultArgumentor;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.DefaultResolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.DefaultWirer;
@@ -26,6 +28,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 // FIX 2394 fix this mess.
 // OK ClassDataAbstractionCoupling {
 public final class DefaultGraphWirer implements GraphWirer {
+    private final Argumentor argumentor = new DefaultArgumentor();
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Wirer wirer = new DefaultWirer();
     private final PostProcessor poster;
@@ -57,7 +60,14 @@ public final class DefaultGraphWirer implements GraphWirer {
         Resolvables resolvables = new DefaultResolvables();
         SiteWalker walker = new DefaultSiteWalker(providers, resolvables);
         Graph graph = new DefaultGraph(walker, instantiator, wirer, poster, providers, instances, resolvables, root);
-        return args.length == 0 ? graph : new ParameterizedGraph(graph, providers, instances, root, args);
+        if (args.length != 0) boot(root, providers, instances, args);
+        return graph;
+    }
+
+    private void boot(InjectionSite root, Providers providers, Instances instances, Object... args) {
+        Provider provider = providers.getOrCreate(root);
+        argumentor.providers(providers, provider, root, args);
+        instantiator.instantiate(providers, instances, root, args);
     }
 
     private PostProcessor nu(AspectResolver poster) {

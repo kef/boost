@@ -18,8 +18,6 @@ public final class DefaultAspectResolver implements AspectResolver {
         this.aspects = aspects;
     }
 
-    // FIX 2394 Object resolve(Object o)
-    // FIX BREADCRUMB 2394 building up resolution.
     public AspectType resolve(Object o) {
         Class cls = o.getClass();
         Class[] ifaces = cls.getInterfaces();
