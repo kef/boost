@@ -49,7 +49,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Nu nu = new DefaultNu(grapher);
     private final NuImpl nuImpl = new DefaultNuImpl(grapher);
     private final Binder binder = new DefaultBinder(bindings);
-    private final Aspector aspector = new DefaultAspector(aspects, nu);
+    private final Aspector aspector = new DefaultAspector(aspects);
     private final Web web = new DefaultWeb(nuImpl, binder, factories);
     private final Injector injector = new DefaultInjector(grapher);
     private final Resolver resolver = new DefaultResolver(grapher);
