@@ -25,7 +25,16 @@ public final class DefaultGraph implements Graph {
     private final Instances instances;
     private final InjectionSite root;
 
-    public DefaultGraph(SiteWalker walker, Instantiator instantiator, Wirer wirer, PostProcessor poster, Providers providers, Instances instances, Resolvables resolvables, InjectionSite root) {
+    public DefaultGraph(
+            SiteWalker walker,
+            Instantiator instantiator,
+            Wirer wirer,
+            PostProcessor poster,
+            Providers providers,
+            Instances instances,
+            Resolvables resolvables,
+            InjectionSite root
+    ) {
         this.walker = walker;
         this.instantiator = instantiator;
         this.wirer = wirer;
