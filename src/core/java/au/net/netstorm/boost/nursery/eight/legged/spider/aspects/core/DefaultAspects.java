@@ -4,4 +4,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core;
 public final class DefaultAspects implements Aspects {
     public void add(Class iface, Class<? extends Aspect> aspect) {
     }
+
+    public Class<? extends Aspect>[] get(Class iface) {
+        throw new UnsupportedOperationException();
+    }
 }
