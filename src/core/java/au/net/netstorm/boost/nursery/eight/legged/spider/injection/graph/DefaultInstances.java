@@ -10,6 +10,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 public final class DefaultInstances implements Instances {
     private final IntegrityMap<InjectionSite, Object> instances = new DefaultIntegrityMap<InjectionSite, Object>();
 
+    // FIX 2394 should this always be get(site, failer), if so, the failer can be internal to instances. nice.
     public Object get(InjectionSite site) {
         return instances.get(site);
     }
