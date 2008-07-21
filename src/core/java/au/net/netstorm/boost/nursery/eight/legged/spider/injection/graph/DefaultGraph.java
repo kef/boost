@@ -3,7 +3,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 // FIX 2394 massive :(
 // DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength {
@@ -52,10 +51,6 @@ public final class DefaultGraph implements Graph {
     public Object resolve() {
         Failer<InjectionSite> failer = new ResolutionFailer();
         return instances.get(root, failer);
-    }
-
-    public void add(InjectionSite site, Provider provider) {
-       
     }
 }
 // } DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength
