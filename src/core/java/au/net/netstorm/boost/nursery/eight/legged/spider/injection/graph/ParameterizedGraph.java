@@ -15,18 +15,16 @@ public final class ParameterizedGraph implements Graph {
     private final Graph delegate;
     private final InjectionSite root;
     private final Object[] args;
-    private final FactoryResolver resolver;
     private final Providers providers;
     private final Instances instances;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
     public ParameterizedGraph(Providers providers, Instances instances, FactoryResolver resolver, InjectionSite root, Object... args) {
         this.delegate = new DefaultGraph(providers, instances, resolver, root);
-        this.args = args;
-        this.root = root;
-        this.resolver = resolver;
         this.providers = providers;
         this.instances = instances;
+        this.root = root;
+        this.args = args;
     }
 
     public Provider provide(InjectionSite site) {
