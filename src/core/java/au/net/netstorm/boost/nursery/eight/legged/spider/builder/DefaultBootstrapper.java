@@ -26,8 +26,8 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Defaul
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.DefaultGrapher;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.Grapher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
