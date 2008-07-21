@@ -49,6 +49,8 @@ public final class DefaultGraph implements Graph {
 
     public void post() {
         // FIX 2394 implement post processing
+        // FIX 2394 still a big question, whether to implement Constructable as a lifecycle aspect or process queue.
+        // FIX 2394 using an aspect gives transparency to providers, but is a bit unweildy
     }
 
     public Object resolve() {
