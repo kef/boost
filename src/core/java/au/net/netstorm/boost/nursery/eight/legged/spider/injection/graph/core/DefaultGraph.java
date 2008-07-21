@@ -16,7 +16,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 // FIX 2394 fragile :(
 // DEBT ParameterNumber {
 public final class DefaultGraph implements Graph {
-    // FIX 2394 move all instantiation to wiring.
     private final SiteWalker walker ;
     private final Resolvables resolvables;
     private final Instantiator instantiator;
@@ -26,23 +25,15 @@ public final class DefaultGraph implements Graph {
     private final Instances instances;
     private final InjectionSite root;
 
-    public DefaultGraph(
-            Providers providers,
-            Instances instances,
-            PostProcessor poster,
-            InjectionSite root,
-            SiteWalker walker,
-            Instantiator instantiator,
-            Wirer wirer,
-            Resolvables resolvables) {
-        this.providers = providers;
-        this.instances = instances;
-        this.poster = poster;
-        this.root = root;
+    public DefaultGraph(SiteWalker walker, Instantiator instantiator, Wirer wirer, PostProcessor poster, Providers providers, Instances instances, Resolvables resolvables, InjectionSite root) {
         this.walker = walker;
-        this.resolvables = resolvables;
         this.instantiator = instantiator;
         this.wirer = wirer;
+        this.poster = poster;
+        this.providers = providers;
+        this.instances = instances;
+        this.resolvables = resolvables;
+        this.root = root;
     }
 
     public void build() {

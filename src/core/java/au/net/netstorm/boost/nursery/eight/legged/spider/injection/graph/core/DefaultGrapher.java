@@ -11,25 +11,21 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 public final class DefaultGrapher implements Grapher {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
     private final GraphLifecycleEnforcer enforcer = new DefaultGraphLifecycleEnforcer();
-    private final GraphWirer wirer = new DefaultGraphWirer();
-    private final FactoryResolver resolver;
-    private final AspectResolver aspector;
+    private final GraphWirer wirer;
 
     public DefaultGrapher(FactoryResolver resolver, AspectResolver aspector) {
-        this.resolver = resolver;
-        this.aspector = aspector;
+        this.wirer = new DefaultGraphWirer(resolver, aspector);
     }
 
-    // FIX 2394 can these graph methods be made into one?
     public <T> T graph(InjectionType<T> type, Object... args) {
         InjectionSite site = builder.root(type);
-        GraphLifecycle graph = wirer.wire(resolver, aspector, site, args);
+        GraphLifecycle graph = wirer.wire(site, args);
         return graph(type, graph);
     }
 
     public <T> T graph(InjectionType<T> type, Provider provider) {
         InjectionSite site = builder.root(type);
-        Graph graph = wirer.wire(resolver, aspector, site, provider);
+        Graph graph = wirer.wire(site, provider);
         return graph(type, graph);
     }
 

@@ -23,34 +23,46 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.Wi
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
-// DEBT ClassDataAbstractionCoupling {
+// FIX 2394 fix this mess.
+// OK ClassDataAbstractionCoupling {
 public final class DefaultGraphWirer implements GraphWirer {
-    public Graph wire(FactoryResolver resolver, AspectResolver aspector, InjectionSite root, Object... args) {
-        Providers providers = providers(resolver);
-        return graph(aspector, root, providers, args);
+    private final Instantiator instantiator = new DefaultInstantiator();
+    private final Wirer wirer = new DefaultWirer();
+    private final PostProcessor poster;
+    private final FactoryResolver resolver;
+
+    public DefaultGraphWirer(FactoryResolver resolver, AspectResolver aspector) {
+        this.resolver = resolver;
+        poster = nu(aspector);
     }
 
-    public Graph wire(FactoryResolver resolver, AspectResolver aspector, InjectionSite root, Provider base) {
-        Providers providers = providers(resolver);
+    public Graph wire(InjectionSite root, Object... args) {
+        Providers providers = providers();
+        return graph(root, providers, args);
+    }
+
+    public Graph wire(InjectionSite root, Provider base) {
+        Providers providers = providers();
         providers.put(root, base);
-        return graph(aspector, root, providers);
+        return graph(root, providers);
     }
 
-    private Providers providers(FactoryResolver resolver) {
+    private Providers providers() {
         Creator<InjectionSite, Provider> creator = new LazyProviderCreator(resolver);
         return new DefaultProviders(creator);
     }
 
-    private Graph graph(AspectResolver aspector, InjectionSite root, Providers providers, Object... args) {
+    private Graph graph(InjectionSite root, Providers providers, Object... args) {
         Instances instances = new DefaultInstances();
-        Aspectorizer aspectorizer = new DefaultAspectorizer(aspector);
-        PostProcessor poster = new DefaultPostProcessor(aspectorizer);
         Resolvables resolvables = new DefaultResolvables();
-        Instantiator instantiator = new DefaultInstantiator();
-        Wirer wirer = new DefaultWirer();
         SiteWalker walker = new DefaultSiteWalker(providers, resolvables);
-        Graph graph = new DefaultGraph(providers, instances, poster, root, walker, instantiator, wirer, resolvables);
+        Graph graph = new DefaultGraph(walker, instantiator, wirer, poster, providers, instances, resolvables, root);
         return args.length == 0 ? graph : new ParameterizedGraph(graph, providers, instances, root, args);
     }
+
+    private PostProcessor nu(AspectResolver poster) {
+        Aspectorizer aspectorizer = new DefaultAspectorizer(poster);
+        return new DefaultPostProcessor(aspectorizer);
+    }
 }
-// } DEBT ClassDataAbstractionCoupling
+// } OK ClassDataAbstractionCoupling
