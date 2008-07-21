@@ -10,20 +10,27 @@ public final class DefaultSiteWalker implements SiteWalker {
     private final Walker constructor = new DefaultConstructorWalker();
     private final Walker fields = new DefaultFieldWalker();
     private final ProviderOperations operations = new DefaultProviderOperations();
+    private final Providers providers;
+    private final Resolvables resolvables;
 
-    public void traverse(Graph state, InjectionSite host, InjectionSite[] sites) {
-        state.resolvable(host, sites);
+    public DefaultSiteWalker(Providers providers, Resolvables resolvables) {
+        this.providers = providers;
+        this.resolvables = resolvables;
+    }
+
+    public void traverse(SiteState state, InjectionSite host, InjectionSite[] sites) {
+        resolvables.add(host, sites);
         for (InjectionSite site : sites) traverse(state, site);
     }
 
 
-    public void traverse(Graph state, InjectionSite site) {
+    public void traverse(SiteState state, InjectionSite site) {
         if (state.hasWalked(site)) return;
         state.walking(site);
         safeTraverse(state, site);
     }
 
-    private void safeTraverse(Graph state, InjectionSite site) {
+    private void safeTraverse(SiteState state, InjectionSite site) {
         try {
             unsafeTraverse(state, site);
         } catch (UnresolvableException ignore) {
@@ -32,10 +39,10 @@ public final class DefaultSiteWalker implements SiteWalker {
         }
     }
 
-    private void unsafeTraverse(Graph state, InjectionSite site) {
+    private void unsafeTraverse(SiteState state, InjectionSite site) {
         // FIX BREADCRUMB 2394 aaaaaaaaaaaaaaaaa now. why is this saying it can provide for things like class[]
         // FIX BREADCRUMB 2394 bbbbbbbbbbbbbbbbb at a guess, i am thinking that concrete factory, trying it now.
-        Provider provider = state.provide(site);
+        Provider provider = providers.getOrCreate(site);
         Provider root = operations.root(provider);
         constructor.traverse(this, state, site, root);
         fields.traverse(this, state, site, root);

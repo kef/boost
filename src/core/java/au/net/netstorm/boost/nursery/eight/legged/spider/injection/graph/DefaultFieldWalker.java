@@ -19,7 +19,7 @@ public final class DefaultFieldWalker implements Walker {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
 
-    public void traverse(SiteWalker walker, Graph state, InjectionSite site, Provider provider) {
+    public void traverse(SiteWalker walker, SiteState state, InjectionSite site, Provider provider) {
         if (!marker.is(provider, HasInjectableTarget.class)) return;
         HasInjectableTarget injectable = (HasInjectableTarget) provider;
         Class<?> target = injectable.getTargetClass();

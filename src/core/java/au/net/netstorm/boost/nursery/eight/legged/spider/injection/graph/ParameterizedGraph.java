@@ -1,14 +1,12 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 
-// FIX 2394 massive :(
-// FIX 2394 use or lose. building parrallel implementation for better graph builder.
-// FIX 2394 need a graph wirer
 
+
+// FIX 2394 tidy this beast up. should be able to make it really lean.
 // DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength {
 public final class ParameterizedGraph implements Graph {
     private final Instantiator instantiator = new DefaultInstantiator();
@@ -20,20 +18,16 @@ public final class ParameterizedGraph implements Graph {
     private final Instances instances;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public ParameterizedGraph(Providers providers, Instances instances, FactoryResolver resolver, AspectResolver aspector, InjectionSite root, Object... args) {
-        this.delegate = new DefaultGraph(providers, instances, resolver, aspector, root);
+    public ParameterizedGraph(Providers providers, Instances instances, AspectResolver aspector, InjectionSite root, Object... args) {
+        this.delegate = new DefaultGraph(providers, instances, aspector, root);
         this.providers = providers;
         this.instances = instances;
         this.root = root;
         this.args = args;
     }
 
-    public Provider provide(InjectionSite site) {
-        return delegate.provide(site);
-    }
-
     public void build() {
-        Provider provider = provide(root);
+        Provider provider = providers.getOrCreate(root);
         argumentor.providers(providers, provider, root, args);
         delegate.build();
     }
@@ -53,22 +47,6 @@ public final class ParameterizedGraph implements Graph {
 
     public Object resolve() {
         return delegate.resolve();
-    }
-
-    public void add(InjectionSite site, Provider provider) {
-        delegate.add(site, provider);
-    }
-
-    public void walking(InjectionSite site) {
-        delegate.walking(site);
-    }
-
-    public boolean hasWalked(InjectionSite site) {
-        return delegate.hasWalked(site);
-    }
-
-    public void resolvable(InjectionSite host, InjectionSite[] sites) {
-        delegate.resolvable(host, sites);
     }
 }
 

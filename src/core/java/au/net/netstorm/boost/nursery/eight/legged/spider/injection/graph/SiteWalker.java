@@ -4,7 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 
 // FIX 2394 use or lose. walk all injection sites and dump result in GraphState future.
 public interface SiteWalker {
-    void traverse(Graph state, InjectionSite site);
+    void traverse(SiteState state, InjectionSite site);
 
-    void traverse(Graph state, InjectionSite host, InjectionSite[] sites);
+    void traverse(SiteState state, InjectionSite host, InjectionSite[] sites);
 }

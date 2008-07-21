@@ -20,16 +20,16 @@ public final class DefaultGrapher implements Grapher {
         this.aspector = aspector;
     }
 
+    // FIX 2394 can these graph methods be made into one?
     public <T> T graph(InjectionType<T> type, Object... args) {
         InjectionSite site = builder.root(type);
         GraphLifecycle graph = wirer.wire(resolver, aspector, site, args);
         return graph(type, graph);
     }
 
-    public <T> T graph(InjectionType<T> type, Provider provider, Object... args) {
+    public <T> T graph(InjectionType<T> type, Provider provider) {
         InjectionSite site = builder.root(type);
-        Graph graph = wirer.wire(resolver, aspector, site, args);
-        graph.add(site, provider);
+        Graph graph = wirer.wire(resolver, aspector, site, provider);
         return graph(type, graph);
     }
 
