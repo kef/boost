@@ -1,5 +1,11 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.builder;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.aspecter.Aspector;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.aspecter.DefaultAspector;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspects;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspects;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.DefaultAspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.DefaultBinder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
@@ -11,10 +17,10 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNu;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultNuImpl;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultWeb;
-import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.SpiderConfig;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
+import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.DefaultFactories;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.DefaultMapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
@@ -32,13 +38,16 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 // FIX 2394 see if this can be split
 // DEBT ClassDataAbstractionCoupling|NCSS {
 public final class DefaultBootstrapper implements Bootstrapper {
+    private final Aspects aspects = new DefaultAspects();
     private final Bindings bindings = new DefaultBindings();
     private final Factories factories = new DefaultFactories();
     private final FactoryResolver factoryResolver = new DefaultFactoryResolver(bindings, factories);
+    private final AspectResolver aspectResolver = new DefaultAspectResolver(aspects);
     private final Grapher grapher = new DefaultGrapher(factoryResolver);
     private final Nu nu = new DefaultNu(grapher);
     private final NuImpl nuImpl = new DefaultNuImpl(grapher);
     private final Binder binder = new DefaultBinder(bindings);
+    private final Aspector aspector = new DefaultAspector(aspects, nu);
     private final Web web = new DefaultWeb(nuImpl, binder, factories);
     private final Injector injector = new DefaultInjector(grapher);
     private final Resolver resolver = new DefaultResolver(grapher);
@@ -75,6 +84,9 @@ public final class DefaultBootstrapper implements Bootstrapper {
         binder.bind(Bindings.class).to(bindings);
         binder.bind(FactoryResolver.class).to(factoryResolver);
         binder.bind(Grapher.class).to(grapher);
+        binder.bind(Aspector.class).to(aspector);
+        binder.bind(Aspects.class).to(aspects);
+        binder.bind(AspectResolver.class).to(aspectResolver);
     }
 }
 // } DEBT ClassDataAbstractionCoupling|NCSS
