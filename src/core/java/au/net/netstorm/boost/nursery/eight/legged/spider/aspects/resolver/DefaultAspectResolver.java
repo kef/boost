@@ -9,4 +9,15 @@ public final class DefaultAspectResolver implements AspectResolver {
     public DefaultAspectResolver(Aspects aspects) {
         this.aspects = aspects;
     }
+
+    // FIX 2394 Object resolve(Object o)
+    // FIX BREADCRUMB 2394 building up resolution.
+    Object resolve(Object o) {
+//        Class cls = o.getClass();
+//        Class[] ifaces = cls.getInterfaces();
+//        for (Class iface : ifaces) {
+//            iface
+//        }
+        return o;
+    }
 }
