@@ -2,8 +2,8 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instan
 
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
-import au.net.netstorm.boost.gunge.collection.IntegrityMap;
 import au.net.netstorm.boost.gunge.collection.Failer;
+import au.net.netstorm.boost.gunge.collection.IntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 // FIX 2394 use or lose. to be used in Instantiator/InstanceCreator.

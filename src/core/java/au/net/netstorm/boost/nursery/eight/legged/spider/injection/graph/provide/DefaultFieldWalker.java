@@ -1,18 +1,18 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
+import au.net.netstorm.boost.gunge.type.DefaultMarker;
+import au.net.netstorm.boost.gunge.type.Marker;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasInjectableTarget;
-import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
-import au.net.netstorm.boost.gunge.type.Marker;
-import au.net.netstorm.boost.gunge.type.DefaultMarker;
+import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
 public final class DefaultFieldWalker implements Walker {
     private final Marker marker = new DefaultMarker();

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 

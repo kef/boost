@@ -1,22 +1,20 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.DefaultInstantiator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instantiator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Argumentor;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultArgumentor;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Graph;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGraph;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.PostProcessor;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instantiator;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.DefaultInstantiator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 
 
 // FIX 2394 tidy this beast up. should be able to make it really lean.
-// DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength {
+// DEBT ParameterNumber {
 public final class ParameterizedGraph implements Graph {
+    // FIX 2394 move to wirer
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Argumentor argumentor = new DefaultArgumentor();
     private final Graph delegate;
@@ -25,10 +23,14 @@ public final class ParameterizedGraph implements Graph {
     private final Providers providers;
     private final Instances instances;
 
-    // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public ParameterizedGraph(Providers providers, Instances instances, PostProcessor poster, InjectionSite root, Object... args) {
-        // FIX 2394 move to wirer
-        this.delegate = new DefaultGraph(providers, instances, poster, root);
+    public ParameterizedGraph(
+            Graph delegate, 
+            Providers providers,
+            Instances instances,
+            InjectionSite root,
+            Object... args
+    ) {
+        this.delegate = delegate;
         this.providers = providers;
         this.instances = instances;
         this.root = root;
@@ -59,4 +61,4 @@ public final class ParameterizedGraph implements Graph {
     }
 }
 
-// } DEBT ClassDataAbstractionCoupling|ParameterNumber|LineLength
+// } DEBT ParameterNumber

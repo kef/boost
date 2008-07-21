@@ -1,20 +1,27 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.LazyProviderCreator;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultProviders;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.DefaultInstances;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.PostProcessor;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.DefaultPostProcessor;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.ParameterizedGraph;
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
+import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspectorizer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspectorizer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.DefaultInstances;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.DefaultInstantiator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instantiator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.DefaultPostProcessor;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.PostProcessor;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultProviders;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultSiteWalker;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.LazyProviderCreator;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.SiteWalker;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.DefaultResolvables;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.DefaultWirer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.Wirer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
-import au.net.netstorm.boost.gunge.collection.Creator;
 
 // DEBT ClassDataAbstractionCoupling {
 public final class DefaultGraphWirer implements GraphWirer {
@@ -38,9 +45,12 @@ public final class DefaultGraphWirer implements GraphWirer {
         Instances instances = new DefaultInstances();
         Aspectorizer aspectorizer = new DefaultAspectorizer(aspector);
         PostProcessor poster = new DefaultPostProcessor(aspectorizer);
-        return args.length == 0
-                ? new DefaultGraph(providers, instances, poster, root)
-                : new ParameterizedGraph(providers, instances, poster, root, args);
+        Resolvables resolvables = new DefaultResolvables();
+        Instantiator instantiator = new DefaultInstantiator();
+        Wirer wirer = new DefaultWirer();
+        SiteWalker walker = new DefaultSiteWalker(providers, resolvables);
+        Graph graph = new DefaultGraph(providers, instances, poster, root, walker, instantiator, wirer, resolvables);
+        return args.length == 0 ? graph : new ParameterizedGraph(graph, providers, instances, root, args);
     }
 }
 // } DEBT ClassDataAbstractionCoupling

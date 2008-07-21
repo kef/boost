@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolv
 
 import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.CannotProvideException;
 
 public final class ResolutionFailer implements Failer<InjectionSite> {
     public void fail(InjectionSite site) {
