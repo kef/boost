@@ -6,6 +6,8 @@ import java.util.Arrays;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspect;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspects;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.AspectType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspectType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.types.core.CoreAspect;
 
 // FIX 2394 Use or lose. Wire into PostProcessor.
@@ -18,7 +20,7 @@ public final class DefaultAspectResolver implements AspectResolver {
 
     // FIX 2394 Object resolve(Object o)
     // FIX BREADCRUMB 2394 building up resolution.
-    AspectType resolve(Object o) {
+    public AspectType resolve(Object o) {
         Class cls = o.getClass();
         Class[] ifaces = cls.getInterfaces();
         Aspect core = new CoreAspect(o);

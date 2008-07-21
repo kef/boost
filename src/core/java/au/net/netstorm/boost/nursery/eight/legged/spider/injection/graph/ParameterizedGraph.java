@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
@@ -18,9 +17,9 @@ public final class ParameterizedGraph implements Graph {
     private final Instances instances;
 
     // FIX 2394 wrap graph in nice wrapper that holds the factory resolver for use in GraphBuilder
-    public ParameterizedGraph(Providers providers, Instances instances, AspectResolver aspector, InjectionSite root, Object... args) {
+    public ParameterizedGraph(Providers providers, Instances instances, PostProcessor poster, InjectionSite root, Object... args) {
         // FIX 2394 move to wirer
-        this.delegate = new DefaultGraph(providers, instances, aspector, root);
+        this.delegate = new DefaultGraph(providers, instances, poster, root);
         this.providers = providers;
         this.instances = instances;
         this.root = root;
