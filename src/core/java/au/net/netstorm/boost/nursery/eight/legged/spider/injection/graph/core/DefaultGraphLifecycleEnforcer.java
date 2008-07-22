@@ -15,6 +15,7 @@ public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforc
         this.wirer = wirer;
     }
 
+    // FIX 2394 Move this out into DefaultGrapher and shrink this back down.
     public Object apply(InjectionType type, Optional<Provider> provider, Object... args) {
         InjectionSite root = builder.root(type);
         Graph stateful = wirer.nu(root, provider, args);
