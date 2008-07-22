@@ -38,7 +38,7 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
     }
 
     private void boot(Providers providers, InjectionSite root, Instances instances, Object[] args) {
-        Provider provider = providers.getOrCreate(root);
+        Provider provider = providers.provide(root);
         argumentor.providers(providers, provider, root, args);
         instantiator.instantiate(providers, instances, root, args);
     }
