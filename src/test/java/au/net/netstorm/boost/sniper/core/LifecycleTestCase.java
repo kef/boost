@@ -4,8 +4,8 @@ import au.net.netstorm.boost.sniper.automock.MockExpectations;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
 import au.net.netstorm.boost.sniper.bootstrap.TestLifecycleBootstrap;
 import au.net.netstorm.boost.sniper.expect.Expectations;
-import au.net.netstorm.boost.sniper.expect.NuImplExpectations;
 import au.net.netstorm.boost.sniper.expect.NuExpectations;
+import au.net.netstorm.boost.sniper.expect.NuImplExpectations;
 import au.net.netstorm.boost.sniper.lifecycle.BoostTestLifecycleBlocks;
 import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleBlocks;
 import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleRunner;
@@ -41,6 +41,9 @@ public class LifecycleTestCase extends CleanTestCase {
 
     // SUGGEST (Dec 4, 2007): Put public methods on interface?
     public Spider getSpider() {
+        // FIX 2394 Switch this code in and see what barfs. Push hard to get new spiderage happening.
+//        SpiderEgg egg = new DefaultSpiderEgg();
+//        return egg.hatch();
         TestSpiderBuilder builder = new DefaultTestSpiderBuilder();
         return builder.build();
     }
