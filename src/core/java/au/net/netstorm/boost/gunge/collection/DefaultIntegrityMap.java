@@ -11,23 +11,12 @@ import au.net.netstorm.boost.bullet.primordial.Primordial;
 public final class DefaultIntegrityMap<K, V> extends Primordial implements IntegrityMap<K, V> {
     private final ConcurrentMap<K,V> delegate = new ConcurrentHashMap<K,V>();
 
-    public V get(K key, Creator<K, V> creator) {
+    public V get(K key, Action<K, V> action) {
         V cached = delegate.get(key);
         if (cached != null) return cached;
-        V newy = creator.create(key);
+        V newy = action.apply(key);
         V old = delegate.putIfAbsent(key, newy);
         return old != null ? old : newy;
-    }
-
-    public V get(K key, Failer<K> failer) {
-        V value = delegate.get(key);
-        if (value == null) failer.fail(key);
-        return value;
-    }
-
-    public V get(K key) {
-        Failer<K> failer = new DefaultFailer<K>();
-        return get(key, failer);
     }
 
     public Collection<V> getAll() {

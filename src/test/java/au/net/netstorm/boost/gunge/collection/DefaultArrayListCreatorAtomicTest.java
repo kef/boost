@@ -17,7 +17,7 @@ public final class DefaultArrayListCreatorAtomicTest extends LifecycleTestCase i
 
     public void testCreate() {
         List expected = new ArrayList();
-        Object actual = subject.create(new Object());
+        Object actual = subject.apply(new Object());
         assertEquals(expected, actual);
     }
 }

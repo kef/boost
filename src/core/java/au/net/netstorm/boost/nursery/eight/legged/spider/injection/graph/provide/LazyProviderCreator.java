@@ -14,7 +14,7 @@ public final class LazyProviderCreator extends Primordial implements Creator<Inj
         this.resolver = resolver;
     }
 
-    public Provider create(InjectionSite site) {
+    public Provider apply(InjectionSite site) {
         Factory factory = resolver.resolve(site);
         return factory.nu(site);
     }

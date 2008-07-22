@@ -13,7 +13,7 @@ public final class ParamertizedInstanceCreator implements Creator<InjectionSite,
         this.args = args;
     }
 
-    public Object create(InjectionSite site) {
+    public Object apply(InjectionSite site) {
         return provider.nu(args);
     }
 }

@@ -11,6 +11,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultProviders extends Primordial implements Providers {
     private final IntegrityMap<InjectionSite, Provider> providers = new DefaultIntegrityMap<InjectionSite, Provider>();
+    private final ProvisionFailer failer = new ProvisionFailer();
     private final Creator<InjectionSite, Provider> creator;
 
     public DefaultProviders(Creator<InjectionSite, Provider> creator) {
@@ -22,7 +23,7 @@ public final class DefaultProviders extends Primordial implements Providers {
     }
 
     public Provider get(InjectionSite site) {
-        return providers.get(site);
+        return providers.get(site, failer);
     }
 
     public Set<InjectionSite> keySet() {

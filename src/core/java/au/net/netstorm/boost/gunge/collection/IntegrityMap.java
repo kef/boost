@@ -7,12 +7,7 @@ import java.util.Set;
 // FIX 2394 for general purpose use, might want a concurrent and non-concurrent implementation
 // FIX 2394 split.
 public interface IntegrityMap<K, V> extends Iterable<K> {
-    // FIX 2394 these three could be come one: V get(K key, Action action)
-    V get(K key, Creator<K, V> creator);
-
-    V get(K key, Failer<K> failer);
-
-    V get(K key);
+    V get(K key, Action<K, V> action);
 
     // FIX 2394 Use or lose. Probably should lose. Force use of Iterable.
     Collection<V> getAll();

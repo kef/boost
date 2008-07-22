@@ -50,20 +50,6 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
         assertSame(setMock, actual);
     }
 
-    public void testGetExisting() {
-        expect.oneCall(delegateMock, valueDummy, "get", keyDummy);
-        Object actual = subject.get(keyDummy);
-        assertSame(valueDummy, actual);
-    }
-
-    public void testGetBomb() {
-        expect.oneCall(delegateMock, VOID, "get", keyDummy);
-        try {
-            subject.get(keyDummy);
-            fail();
-        } catch (IllegalArgumentException expected) {}
-    }
-
     public void testGetAll() {
         expect.oneCall(delegateMock, setMock, "values");
         Collection actual = subject.getAll();
@@ -111,7 +97,7 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
 
     private void expectCreateAndCache(Object result) {
         expectCached(VOID);
-        expect.oneCall(creatorMock, valueDummy, "create", keyDummy);
+        expect.oneCall(creatorMock, valueDummy, "apply", keyDummy);
         expect.oneCall(delegateMock, result, "putIfAbsent", keyDummy, valueDummy);
     }
 }

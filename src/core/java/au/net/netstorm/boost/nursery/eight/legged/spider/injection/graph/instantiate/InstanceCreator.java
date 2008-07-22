@@ -21,7 +21,7 @@ public final class InstanceCreator implements Creator<InjectionSite, Object> {
         this.instances = instances;
     }
 
-    public Object create(InjectionSite site) {
+    public Object apply(InjectionSite site) {
         Object[] args = args(providers, provider, instances, site);
         return provider.nu(args);
     }
