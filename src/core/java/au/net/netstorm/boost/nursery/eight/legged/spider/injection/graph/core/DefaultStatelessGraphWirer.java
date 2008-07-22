@@ -10,24 +10,22 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postpro
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.DefaultWirer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.Wirer;
 
-// FIX 2394 fix this mess.
-// OK ClassDataAbstractionCoupling {
 public final class DefaultStatelessGraphWirer implements StatelessGraphWirer {
     private final Instantiator instantiator = new DefaultInstantiator();
     private final Wirer wirer = new DefaultWirer();
     private final PostProcessor poster;
 
     public DefaultStatelessGraphWirer(AspectResolver aspector) {
-        poster = nu(aspector);
+        poster = poster(aspector);
     }
 
+    // FIX 2394 make wire() -> nu()
     public StatelessGraph wire() {
         return new DefaultStatelessGraph(instantiator, wirer, poster);
     }
 
-    private PostProcessor nu(AspectResolver poster) {
+    private PostProcessor poster(AspectResolver poster) {
         Aspectorizer aspectorizer = new DefaultAspectorizer(poster);
         return new DefaultPostProcessor(aspectorizer);
     }
 }
-// } OK ClassDataAbstractionCoupling
