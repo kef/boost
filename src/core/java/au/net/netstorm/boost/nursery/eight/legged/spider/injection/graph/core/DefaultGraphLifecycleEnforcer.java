@@ -9,19 +9,19 @@ import au.net.netstorm.boost.gunge.optional.Optional;
 
 public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforcer {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
-    private final StatefulGraphWirer wirer;
+    private final GraphWirer wirer;
 
-    public DefaultGraphLifecycleEnforcer(StatefulGraphWirer wirer) {
+    public DefaultGraphLifecycleEnforcer(GraphWirer wirer) {
         this.wirer = wirer;
     }
 
     public Object apply(InjectionType type, Optional<Provider> provider, Object... args) {
         InjectionSite root = builder.root(type);
-        StatefulGraph stateful = wirer.nu(root, provider, args);
+        Graph stateful = wirer.nu(root, provider, args);
         return apply(stateful);
     }
 
-    private Object apply(StatefulGraph graph) {
+    private Object apply(Graph graph) {
         graph.build();
         graph.instantiate();
         graph.wire();

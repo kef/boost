@@ -33,7 +33,7 @@ public final class DefaultGrapher implements Grapher {
     }
 
     private GraphLifecycleEnforcer enforcer(FactoryResolver resolver, AspectResolver aspector) {
-        StatefulGraphWirer wirer = new DefaultStatefulGraphWirer(resolver, aspector);
+        GraphWirer wirer = new DefaultGraphWirer(resolver, aspector);
         return new DefaultGraphLifecycleEnforcer(wirer);
     }
 }
