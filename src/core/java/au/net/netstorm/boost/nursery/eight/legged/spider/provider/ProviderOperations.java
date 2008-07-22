@@ -4,7 +4,6 @@ import java.lang.reflect.Type;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
-// FIX 2394 yuck.
 public interface ProviderOperations {
     Type[] params(Provider provider);
 
