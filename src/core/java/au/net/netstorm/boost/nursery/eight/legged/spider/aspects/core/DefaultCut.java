@@ -5,8 +5,8 @@ import java.util.List;
 
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-// FIX 2394 use or lose. wire in to be injected into aspect constructor.
-// FIX 2394 use a builder mutable-> immutable pattern here.
+// FIX 2394 Split into mutable and immutable ifaces.
+// FIX 2394 Use a builder mutable-> immutable pattern.
 public final class DefaultCut implements Cut {
     private final List<Layer> links = new ArrayList<Layer>();
     private final Object core;
@@ -16,7 +16,7 @@ public final class DefaultCut implements Cut {
         this.core = core;
     }
 
-    // FIX 2394 split into mutable and immutable ifaces.
+
     public void add(Layer aspect) {
         links.add(aspect);
         outer = aspect;

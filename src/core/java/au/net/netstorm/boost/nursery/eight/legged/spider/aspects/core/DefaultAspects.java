@@ -8,7 +8,6 @@ import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
 import au.net.netstorm.boost.gunge.collection.IntegrityMap;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-// FIX 2394 Use or lose. Wire into AspectResolver.
 public final class DefaultAspects implements Aspects {
     // FIX 2394 create some nice interfaces for these somehow.
     private final IntegrityMap<Class, List<Class<? extends Layer>>> aspects = new DefaultIntegrityMap();

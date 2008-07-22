@@ -5,7 +5,6 @@ import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-// FIX 2394 use or lose. spiking lifecycle as aspect.
 public final class DefaultConstructableAspect implements ConstructableAspect {
     private final Layer delegate;
     private final Constructable core;

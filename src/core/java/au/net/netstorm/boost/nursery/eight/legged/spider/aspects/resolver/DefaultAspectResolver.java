@@ -12,7 +12,6 @@ import au.net.netstorm.boost.gunge.type.InterfaceUtil;
 import au.net.netstorm.boost.gunge.type.DefaultInterfaceUtil;
 import au.net.netstorm.boost.gunge.type.Interface;
 
-// FIX 2394 Use or lose. Wire into PostProcessor.
 public final class DefaultAspectResolver implements AspectResolver {
     private final InterfaceUtil ifacer = new DefaultInterfaceUtil();
     private final Aspects aspects;
