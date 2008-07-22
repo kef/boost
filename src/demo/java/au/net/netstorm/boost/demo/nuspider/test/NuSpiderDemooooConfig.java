@@ -23,7 +23,7 @@ import au.net.netstorm.boost.sniper.specific.DefaultDataProviders;
 import au.net.netstorm.boost.sniper.specific.DefaultEnumProvider;
 import au.net.netstorm.boost.sniper.specific.EnumProvider;
 
-// FIX 2394 split, need to come up with a pattern for making sure these guys do not always suck
+// FIX 2394 Need to come up with a pattern for making sure these guys do not always suck.
 public final class NuSpiderDemooooConfig implements SpiderConfig {
     Web web;
     Binder binder;

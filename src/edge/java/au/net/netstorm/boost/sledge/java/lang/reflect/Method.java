@@ -2,7 +2,7 @@ package au.net.netstorm.boost.sledge.java.lang.reflect;
 
 import java.lang.annotation.Annotation;
 
-// FIX 2394 Not a stateless edge.
+// FIX Not a stateless edge.
 public interface Method {
     String getName();
 
