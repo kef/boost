@@ -16,7 +16,7 @@ public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforc
 
     public Object apply(InjectionType type, Provider provider, Object... args) {
         InjectionSite root = builder.root(type);
-        StatefulGraph stateful = wirer.wire(root, provider, args);
+        StatefulGraph stateful = wirer.nu(root, provider, args);
         return apply(stateful);
     }
 

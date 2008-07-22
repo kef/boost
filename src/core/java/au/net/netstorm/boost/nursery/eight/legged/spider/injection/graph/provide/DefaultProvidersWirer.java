@@ -8,7 +8,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.gunge.collection.Creator;
 
-// FIX 2394 use or lose. wire into StatefulGraphWirer.
 public final class DefaultProvidersWirer implements ProvidersWirer {
     private final Argumentor argumentor = new DefaultArgumentor();
     private final Instantiator instantiator = new DefaultInstantiator();
@@ -18,7 +17,7 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
         this.resolver = resolver;
     }
 
-    public Providers wire(Instances instances, Provider provider, InjectionSite root, Object[] args) {
+    public Providers nu(Instances instances, Provider provider, InjectionSite root, Object[] args) {
         Creator<InjectionSite, Provider> creator = new LazyProviderCreator(resolver);
         Providers providers = providers(provider, root, creator);
         boot(providers, root, instances, args);

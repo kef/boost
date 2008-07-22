@@ -24,16 +24,16 @@ public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
         this.wirer = new DefaultProvidersWirer(resolver);
     }
 
-    public StatefulGraph wire(InjectionSite root, Provider provider, Object... args) {
+    public StatefulGraph nu(InjectionSite root, Provider provider, Object... args) {
         Instances instances = new DefaultInstances();
         Resolvables resolvables = new DefaultResolvables();
-        Providers providers = wirer.wire(instances, provider, root, args);
+        Providers providers = wirer.nu(instances, provider, root, args);
         return new DefaultStatefulGraph(graph, providers, instances, resolvables, root);
     }
 
 
     private StatelessGraph graph(AspectResolver aspector) {
         StatelessGraphWirer wirer = new DefaultStatelessGraphWirer(aspector);
-        return wirer.wire();
+        return wirer.nu();
     }
 }

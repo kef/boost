@@ -19,8 +19,7 @@ public final class DefaultStatelessGraphWirer implements StatelessGraphWirer {
         poster = poster(aspector);
     }
 
-    // FIX 2394 make wire() -> nu()
-    public StatelessGraph wire() {
+    public StatelessGraph nu() {
         return new DefaultStatelessGraph(instantiator, wirer, poster);
     }
 

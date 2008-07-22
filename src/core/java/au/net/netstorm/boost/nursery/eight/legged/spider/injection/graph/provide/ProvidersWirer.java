@@ -6,5 +6,5 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 // FIX 2394 use or lose. wire into StatefulGraphWirer.
 public interface ProvidersWirer {
-    Providers wire(Instances instances, Provider provider, InjectionSite root, Object[] args);
+    Providers nu(Instances instances, Provider provider, InjectionSite root, Object[] args);
 }
