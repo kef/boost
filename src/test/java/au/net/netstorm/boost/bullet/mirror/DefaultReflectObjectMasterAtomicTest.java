@@ -1,10 +1,21 @@
 package au.net.netstorm.boost.bullet.mirror;
 
 import java.lang.reflect.Constructor;
+
+import au.net.netstorm.boost.gunge.type.DefaultImplementation;
+import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
 public class DefaultReflectObjectMasterAtomicTest extends BoooostCase {
     private final ReflectObjectMaster master = new DefaultReflectObjectMaster();
+    private final ReflectMaster delegate = new DefaultReflectMaster();
+
+    public void testWithImpl() {
+        Class<TestSubjects.TestOneConstructor> cls = TestSubjects.TestOneConstructor.class;
+        Implementation impl = new DefaultImplementation(cls);
+        Constructor constructor = master.getConstructor(impl);
+        checkSingleConstructor(cls, constructor);
+    }
 
     public void testFailsWithMultipleConstructors() {
         checkFailsWithMultipleConstructors(TestSubjects.TestTwoConstructors.class);
@@ -24,7 +35,24 @@ public class DefaultReflectObjectMasterAtomicTest extends BoooostCase {
     }
 
     private void checkSingleConstructor(Class cls) {
-        Constructor constructor = master.getConstructor(cls);
+        checkRaw(cls, master);
+        checkRaw(cls, master);
+        checkStrongType(cls, delegate);
+        checkStrongType(cls, delegate);
+    }
+
+    private void checkRaw(Class cls, ReflectObjectMaster subject) {
+        Constructor constructor = subject.getConstructor(cls);
+        checkSingleConstructor(cls, constructor);
+    }
+
+    private void checkStrongType(Class cls, ReflectObjectMaster subject) {
+        Implementation impl = new DefaultImplementation(cls);
+        Constructor constructor = subject.getConstructor(impl);
+        checkSingleConstructor(cls, constructor);
+    }
+
+    private void checkSingleConstructor(Class<TestSubjects.TestOneConstructor> cls, Constructor constructor) {
         Constructor[] constructors = cls.getDeclaredConstructors();
         assertEquals(1, constructors.length);
         assertEquals(constructors[0], constructor);
@@ -34,7 +62,6 @@ public class DefaultReflectObjectMasterAtomicTest extends BoooostCase {
         try {
             master.getConstructor(cls);
             fail();
-        } catch (IllegalStateException expected) {
-        }
+        } catch (IllegalStateException expected) {}
     }
 }

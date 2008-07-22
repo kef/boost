@@ -2,8 +2,10 @@ package au.net.netstorm.boost.bullet.mirror;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.introspect.MethodSpec;
+import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.nursery.reflect.DefaultReflectMethodMaster;
 
 // SUGGEST Use "composer" when it is ready.
@@ -11,6 +13,10 @@ public final class DefaultReflectMaster implements ReflectMaster {
     private final ReflectObjectMaster objectMaster = new DefaultReflectObjectMaster();
     private final ReflectMethodMaster methodMaster = new DefaultReflectMethodMaster();
     private final ReflectFieldMaster fieldMaster = new DefaultReflectFieldMaster();
+
+    public Constructor getConstructor(Implementation impl) {
+        return objectMaster.getConstructor(impl);
+    }
 
     public Constructor getConstructor(Class cls) {
         return objectMaster.getConstructor(cls);
