@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.gunge.collection;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
@@ -42,18 +41,6 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
         expectCreateAndCache(oldDummy);
         Object actual = subject.get(keyDummy, creatorMock);
         assertSame(oldDummy, actual);
-    }
-
-    public void testKeySet() {
-        expect.oneCall(delegateMock, setMock, "keySet");
-        Set actual = subject.keySet();
-        assertSame(setMock, actual);
-    }
-
-    public void testGetAll() {
-        expect.oneCall(delegateMock, setMock, "values");
-        Collection actual = subject.getAll();
-        assertSame(setMock, actual);
     }
 
     public void testReplaceBarf() {
