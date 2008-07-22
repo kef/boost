@@ -28,12 +28,14 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappin
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.legacy.DefaultRegistry;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
+import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // FIX 2394 MAG Interesting little beast.  Bit of wiring hey ;)
@@ -53,11 +55,13 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Injector injector = new DefaultInjector(grapher);
     private final Resolver resolver = new DefaultResolver(grapher);
     private final Spider spider = new DefaultSpider(nu, injector, resolver);
+    private final Registry registry = new DefaultRegistry(binder);
 
     public Spider bootstrap(Class<? extends SpiderConfig>[] configs) {
         bindImplicitFactory();
         bindSpiderState();
         bindAspects();
+        bindLegacy();
         loadConfigs(configs);
         return spider;
     }
@@ -94,6 +98,10 @@ public final class DefaultBootstrapper implements Bootstrapper {
         binder.bind(Aspector.class).to(aspector);
         binder.bind(Aspects.class).to(aspects);
         binder.bind(AspectResolver.class).to(aspectResolver);
+    }
+
+    private void bindLegacy() {
+        binder.bind(Registry.class).to(registry);
     }
 }
 // } OK ClassDataAbstractionCoupling|NCSS
