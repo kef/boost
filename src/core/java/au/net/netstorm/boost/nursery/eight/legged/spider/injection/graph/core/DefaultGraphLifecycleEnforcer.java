@@ -5,6 +5,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.gunge.optional.Optional;
 
 public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforcer {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
@@ -14,7 +15,7 @@ public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforc
         this.wirer = wirer;
     }
 
-    public Object apply(InjectionType type, Provider provider, Object... args) {
+    public Object apply(InjectionType type, Optional<Provider> provider, Object... args) {
         InjectionSite root = builder.root(type);
         StatefulGraph stateful = wirer.nu(root, provider, args);
         return apply(stateful);

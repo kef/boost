@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
+import au.net.netstorm.boost.gunge.optional.DefaultOptional;
+import au.net.netstorm.boost.gunge.optional.NotSet;
+import au.net.netstorm.boost.gunge.optional.Optional;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
@@ -13,13 +16,14 @@ public final class DefaultGrapher implements Grapher {
     }
 
     public <T> T graph(InjectionType<T> type, Object... args) {
-        // FIX 2394 yuck. Optional<Provider>
-        Object instance = enforcer.apply(type, null, args);
+        Optional<Provider> optional = new NotSet<Provider>();
+        Object instance = enforcer.apply(type, optional, args);
         return cast(type, instance);
     }
 
     public <T> T graph(InjectionType<T> type, Provider provider) {
-        Object instance = enforcer.apply(type, provider);
+        Optional<Provider> optional = new DefaultOptional<Provider>(provider);
+        Object instance = enforcer.apply(type, optional);
         return cast(type, instance);
     }
 

@@ -11,6 +11,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.DefaultResolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
+import au.net.netstorm.boost.gunge.optional.Optional;
 
 // FIX 2394 split into ProviderWirer.
 public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
@@ -24,13 +25,12 @@ public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
         this.wirer = new DefaultProvidersWirer(resolver);
     }
 
-    public StatefulGraph nu(InjectionSite root, Provider provider, Object... args) {
+    public StatefulGraph nu(InjectionSite root, Optional<Provider> provider, Object... args) {
         Instances instances = new DefaultInstances();
         Resolvables resolvables = new DefaultResolvables();
         Providers providers = wirer.nu(instances, provider, root, args);
         return new DefaultStatefulGraph(graph, providers, instances, resolvables, root);
     }
-
 
     private StatelessGraph graph(AspectResolver aspector) {
         StatelessGraphWirer wirer = new DefaultStatelessGraphWirer(aspector);
