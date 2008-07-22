@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-public final class SingleProvider implements ProviderMultiplicity {
+public final class SingleProvider implements Provider {
     private final Provider provider;
     private final AtomicReference ref;
 

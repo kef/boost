@@ -6,7 +6,7 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 
 public final class SingleProviderAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, LazyFields {
-    private ProviderMultiplicity subject;
+    private Provider subject;
     Provider providerMock;
 
     public void setUpFixtures() {
