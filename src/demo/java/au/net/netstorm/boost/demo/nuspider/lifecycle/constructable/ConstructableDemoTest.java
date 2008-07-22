@@ -11,17 +11,17 @@ public final class ConstructableDemoTest extends NuSpiderDemooooTest implements 
     Binder binder;
 
     public void setUpFixtures() {
-        binder.bind(ConstructableSingle.class).to(DefaultConstructableThing.class);
-        binder.bind(ConstructableMulti.class).toSingle(DefaultConstructableThing.class);
+        binder.bind(ConstructableMulti.class).to(DefaultConstructableThing.class);
+        binder.bind(ConstructableSingle.class).toSingle(DefaultConstructableThing.class);
     }
 
-    // FIX 2394 reinstate once constructable is implemented.
-    // FIX BREADCRUMB 2394 implementing constructable....
     public void testConstructMultiton() {
-//        checkConstructCount(1, ConstructableMulti.class);
-//        checkConstructCount(1, ConstructableMulti.class);
+        checkConstructCount(1, ConstructableMulti.class);
+        checkConstructCount(1, ConstructableMulti.class);
     }
 
+    // FIX 2394 reinstate once aspecting is complete.
+    // FIX 2394 currently, aspects are not singletons even if objects are.
     public void testConstructSingleton() {
 //        checkConstructCount(1, ConstructableSingle.class);
 //        checkConstructCount(1, ConstructableSingle.class);

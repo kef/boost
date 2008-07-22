@@ -12,5 +12,5 @@ public interface StatelessGraph {
 
     void wire(Instances instances, Resolvables resolvables);
 
-    void post(Instances instances);
+    void post(Providers providers, Instances instances);
 }

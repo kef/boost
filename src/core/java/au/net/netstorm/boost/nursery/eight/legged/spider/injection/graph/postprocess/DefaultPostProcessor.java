@@ -2,6 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postpr
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspectorizer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.lifecycle.Pokeable;
 
@@ -12,15 +13,15 @@ public final class DefaultPostProcessor implements PostProcessor {
         this.aspectorizer = aspectorizer;
     }
 
-    public void process(Instances instances) {
+    public void process(Providers providers, Instances instances) {
         for (InjectionSite site : instances) {
-            process(instances, site);
+            process(providers, instances, site);
         }
     }
 
-    private void process(Instances instances, InjectionSite site) {
+    private void process(Providers providers, Instances instances, InjectionSite site) {
         Object instance = instances.get(site);
-        Object replacement = aspectorizer.aspectorize(instance);
+        Object replacement = aspectorizer.aspectorize(providers, instance);
         if (instance != replacement) instances.replace(site, replacement);
         lifecycle(replacement);
     }

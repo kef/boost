@@ -1,17 +1,17 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.types.lifecycle;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspect;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Cut;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.Constructable;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 // FIX 2394 use or lose. spiking lifecycle as aspect.
 public final class DefaultConstructableAspect implements ConstructableAspect {
-    private final Aspect delegate;
+    private final Layer delegate;
     private final Constructable core;
     private volatile boolean constructed = false;
 
-    public DefaultConstructableAspect(Cut cut, Aspect delegate) {
+    public DefaultConstructableAspect(Cut cut, Layer delegate) {
         this.delegate = delegate;
         this.core = core(cut);
     }

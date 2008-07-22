@@ -35,7 +35,7 @@ public final class DefaultStatelessGraph implements StatelessGraph {
         wirer.wire(instances, resolvables);
     }
 
-    public void post(Instances instances) {
-        poster.process(instances);
+    public void post(Providers providers, Instances instances) {
+        poster.process(providers, instances);
     }
 }

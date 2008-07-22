@@ -16,11 +16,9 @@ import au.net.netstorm.boost.gunge.optional.Optional;
 // FIX 2394 split into ProviderWirer.
 public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
     private final ProvidersWirer wirer;
-    private final FactoryResolver resolver;
     private final StatelessGraph graph;
 
     public DefaultStatefulGraphWirer(FactoryResolver resolver, AspectResolver aspector) {
-        this.resolver = resolver;
         this.graph = graph(aspector);
         this.wirer = new DefaultProvidersWirer(resolver);
     }

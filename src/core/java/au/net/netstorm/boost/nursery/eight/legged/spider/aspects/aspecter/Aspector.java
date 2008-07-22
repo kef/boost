@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.aspecter;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspect;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public interface Aspector {
-    void cut(Class iface, Class<? extends Aspect> aspect);
+    void cut(Class iface, Class<? extends Layer> aspect);
     // FIX 2394 cut on method?
 }

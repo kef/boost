@@ -40,7 +40,7 @@ public final class DefaultStatefulGraph implements StatefulGraph {
     }
 
     public void post() {
-        graph.post(instances);
+        graph.post(providers, instances);
     }
 
     public Object resolve() {

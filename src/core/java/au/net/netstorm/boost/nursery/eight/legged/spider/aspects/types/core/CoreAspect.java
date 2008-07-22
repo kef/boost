@@ -1,9 +1,9 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.types.core;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspect;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
-public final class CoreAspect implements Aspect {
+public final class CoreAspect implements Layer {
     private final Object core;
 
     public CoreAspect(Object core) {
