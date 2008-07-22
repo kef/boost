@@ -51,10 +51,6 @@ import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 
 // FIX 2215 Why is this class in "demo"?  It's some sort of wirer?!
 
-// FIX 2394 this needs significant work to be unwound from itself, main problem is that you can't utilize
-// FIX 2394 resolver when there are no factories registered, even if there are valid complete instances
-// FIX 2394 highlights needs for an "instance" factory rather than shoe-horning through blueprints
-
 // DEBT DataAbstractionCoupling|ParameterNumber {
 public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final Interface OBJECT_PROVIDER_TYPE = new DefaultInterface(ProviderEngine.class);

@@ -30,10 +30,6 @@ public final class DefaultTargetAtomicTest extends LifecycleTestCase implements 
         subject.to(instanceDummy);
     }
 
-    public void testToImpl() {
-        // FIX 2394 test this, looks a little dodgy, need to look hard at this, should be easier to test
-    }
-
     private void setBindingExpectations(Factory factory) {
         expect.oneCall(bindingMock, VOID, "setFactory", factory);
     }

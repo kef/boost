@@ -39,8 +39,8 @@ public final class DefaultSiteWalker implements SiteWalker {
         try {
             unsafeTraverse(state, site);
         } catch (UnresolvableException ignore) {
-            // FIX 2394 fix this crud. no obvious way around it. basically don't care at this stage if it can't provide
-            // FIX 2394 this gets validated in next phase (could be created by constructor/initializer)
+            // FIX 2394 Fix this crud. Basically don't care at this stage if it can't provide.
+            // FIX 2394 This gets validated in next phase (could be created by constructor/initializer).
         }
     }
 

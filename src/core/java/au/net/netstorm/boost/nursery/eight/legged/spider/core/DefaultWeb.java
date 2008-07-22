@@ -28,8 +28,6 @@ public final class DefaultWeb implements Web {
         instance.configure();
     }
 
-    // FIX 2394 STYLE How's this little nest ... acceptable or not ... discuss.
-    // FIX 2394 MH it is not there anymore, was binder(), left fix for discussion
     private void configure(Factory factory) {
         if (!(factory instanceof ConfigurableFactory)) return;
         ConfigurableFactory configurable = (ConfigurableFactory) factory;

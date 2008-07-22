@@ -2,7 +2,6 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
-// FIX 2394 this highlights a major problem, that InjectableTarget can not be determined by provider type
 public final class InjectableInstanceProvider extends Primordial implements Provider, HasInjectableTarget {
     private final Object instance;
 

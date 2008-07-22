@@ -6,6 +6,5 @@ public interface InjectionSite {
     Class<?> host();
     InjectionType type();
     String name();
-    // FIX 2394 this is dodgy
     boolean isConstrained();
 }

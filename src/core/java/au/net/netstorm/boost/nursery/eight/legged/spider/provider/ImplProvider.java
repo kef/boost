@@ -10,13 +10,7 @@ import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
 
 public final class ImplProvider extends Primordial implements Provider, HasParameters, HasInjectableTarget {
-    // FIX 2394 should be pulled out
     private Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
-    // FIX 2394 Interface?
-    // FIX 2394 can't be, not everything has an interface... maybe that could be changed,
-    // FIX 2394 idea at the moment is that providers are not concerned with that resolution
-    // FIX 2394 as they are more re-usable as really dumb instantiators
-    // FIX 2394 all the smarts (and where new functionality gets plugged in) is in Factories
     private final Implementation impl;
     public ImplProvider(Implementation impl) {
         this.impl = impl;
@@ -35,7 +29,6 @@ public final class ImplProvider extends Primordial implements Provider, HasParam
         if (ctors.length == 0) return new Type[0];
         if (ctors.length != 1) throw new IllegalArgumentException();
         Constructor<?> ctor = ctors[0];
-        // FIX 2394 handle reifieds.
         return ctor.getParameterTypes();
     }
 
