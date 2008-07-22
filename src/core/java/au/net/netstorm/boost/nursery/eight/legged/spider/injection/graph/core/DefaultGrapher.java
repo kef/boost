@@ -2,36 +2,34 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultGrapher implements Grapher {
-    private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
-    private final GraphLifecycleEnforcer enforcer = new DefaultGraphLifecycleEnforcer();
-    private final GraphWirer wirer;
+    private final GraphLifecycleEnforcer enforcer;
 
     public DefaultGrapher(FactoryResolver resolver, AspectResolver aspector) {
-        this.wirer = new DefaultGraphWirer(resolver, aspector);
+        enforcer = enforcer(resolver, aspector);
     }
 
     public <T> T graph(InjectionType<T> type, Object... args) {
-        InjectionSite site = builder.root(type);
-        GraphLifecycle graph = wirer.wire(site, args);
-        return graph(type, graph);
+        // FIX 2394 yuck. Optional<Provider>
+        Object instance = enforcer.apply(type, null, args);
+        return cast(type, instance);
     }
 
     public <T> T graph(InjectionType<T> type, Provider provider) {
-        InjectionSite site = builder.root(type);
-        Graph graph = wirer.wire(site, provider);
-        return graph(type, graph);
+        Object instance = enforcer.apply(type, provider);
+        return cast(type, instance);
     }
 
-    private <T> T graph(InjectionType<T> type, GraphLifecycle graph) {
-        Object instance = enforcer.apply(graph);
+    private <T> T cast(InjectionType<T> type, Object instance) {
         Class<T> cls = type.rawClass();
         return cls.cast(instance);
+    }
+
+    private GraphLifecycleEnforcer enforcer(FactoryResolver resolver, AspectResolver aspector) {
+        StatefulGraphWirer wirer = new DefaultStatefulGraphWirer(resolver, aspector);
+        return new DefaultGraphLifecycleEnforcer(wirer);
     }
 }

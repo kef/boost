@@ -1,7 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate;
 
 import au.net.netstorm.boost.gunge.collection.Creator;
-import au.net.netstorm.boost.gunge.collection.Failer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 // FIX 2394 use or lose. to be used in Instantiator/InstanceCreator.
@@ -11,9 +10,8 @@ public interface Instances {
 
     Object get(InjectionSite site);
 
+    // FIX 2394 is there anyway to prevent the creator from leaking?
     Object get(InjectionSite site, Creator<InjectionSite, Object> creator);
-
-    Object get(InjectionSite site, Failer<InjectionSite> failer);
 
     void put(InjectionSite site, Object arg);
 }

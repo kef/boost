@@ -19,16 +19,20 @@ public final class DefaultSiteWalker implements SiteWalker {
         this.resolvables = resolvables;
     }
 
-    public void traverse(SiteState state, InjectionSite host, InjectionSite[] sites) {
-        resolvables.add(host, sites);
-        for (InjectionSite site : sites) traverse(state, site);
+    public void traverse(InjectionSite site) {
+        SiteState state = new DefaultSiteState();
+        traverse(state, site);
     }
-
 
     public void traverse(SiteState state, InjectionSite site) {
         if (state.hasWalked(site)) return;
         state.walking(site);
         safeTraverse(state, site);
+    }
+
+    public void traverse(SiteState state, InjectionSite host, InjectionSite[] sites) {
+        resolvables.add(host, sites);
+        for (InjectionSite site : sites) traverse(state, site);
     }
 
     private void safeTraverse(SiteState state, InjectionSite site) {

@@ -5,7 +5,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProvide
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
 
-// FIX 2394 use or lose. building parrallel implementation for better graph builder.
 public final class DefaultConstructorWalker implements Walker {
     private final ProviderOperations opererations = new DefaultProviderOperations();
 

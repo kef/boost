@@ -29,7 +29,7 @@ public final class DefaultFieldWalker implements Walker {
 
     private InjectionSite[] sites(Class<?> target) {
         List<InjectionSite> sites = new ArrayList<InjectionSite>();
-        // FIX 2394 this is wrong. what about fields on super types. need a field collector.
+        // FIX 2394 do we want to support inheritance?
         for (Field f : target.getDeclaredFields()) {
             if (resolvable.isResolvableField(f)) addSite(sites, f);
         }
