@@ -9,7 +9,7 @@ public interface Binder {
 
     <T> Target<T> bind(Class<T> iface, Class<?> host);
 
-    // FIX 2394 MAG Remove these dang line feeds.
+    // FIX 2395 MAG Remove these dang line feeds.
     <T> Target<T> bind(Class<T> iface, String name);
 
     <T> Target<T> bind(Class<T> iface);

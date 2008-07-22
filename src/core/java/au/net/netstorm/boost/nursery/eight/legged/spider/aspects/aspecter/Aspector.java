@@ -4,5 +4,4 @@ import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public interface Aspector {
     void cut(Class iface, Class<? extends Layer> aspect);
-    // FIX 2394 cut on method?
 }
