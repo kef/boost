@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.gunge.collection;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.Set;
-import java.util.Collection;
-import java.util.Iterator;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
@@ -17,10 +16,6 @@ public final class DefaultIntegrityMap<K, V> extends Primordial implements Integ
         V newy = action.apply(key);
         V old = delegate.putIfAbsent(key, newy);
         return old != null ? old : newy;
-    }
-
-    public Collection<V> getAll() {
-        return delegate.values();
     }
 
     public void put(K key, V value) {
