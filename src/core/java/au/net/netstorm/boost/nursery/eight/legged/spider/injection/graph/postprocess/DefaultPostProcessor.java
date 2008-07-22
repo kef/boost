@@ -3,6 +3,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postpr
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspectorizer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.lifecycle.Pokeable;
 
 public final class DefaultPostProcessor implements PostProcessor {
     private final Aspectorizer aspectorizer;
@@ -21,7 +22,12 @@ public final class DefaultPostProcessor implements PostProcessor {
         Object instance = instances.get(site);
         Object replacement = aspectorizer.aspectorize(instance);
         if (instance != replacement) instances.replace(site, replacement);
-        // FIX 2394 MAG also suggested that you could do eager poking of aspects here as well.
-        // FIX 2394 e.g. Construct all constructables.
+        lifecycle(replacement);
+    }
+
+    private void lifecycle(Object ref) {
+        if (!(ref instanceof Pokeable)) return;
+        Pokeable pokeable = (Pokeable) ref;
+        pokeable.poke();
     }
 }
