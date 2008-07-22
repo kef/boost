@@ -26,16 +26,16 @@ public final class DefaultAspectorizer implements Aspectorizer {
     }
 
     public Object aspectorize(Providers providers, Object target) {
-        AspectType type = resolver.resolve(target);
-        return type.hasLayers() ? aspect(providers, target, type) : target;
+        AspectSpec spec = resolver.resolve(target);
+        return spec.hasLayers() ? aspect(providers, target, spec) : target;
     }
 
     // FIX BREADCRUMB 2394 aaaaaaaaaaa implement me.
-    private Object aspect(Providers providers, Object target, AspectType type) {
+    private Object aspect(Providers providers, Object target, AspectSpec spec) {
         Cut cut = new DefaultCut(target);
-        Interface[] ifaces = type.interfaces();
+        Interface[] ifaces = spec.interfaces();
         Object result = core(cut, ifaces, target);
-        for (Class<? extends Layer> layer : type.layers()) {
+        for (Class<? extends Layer> layer : spec.layers()) {
             result = layer(providers, cut, ifaces, layer);
         }
         return result;

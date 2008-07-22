@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.AspectType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.AspectSpec;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspects;
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspectType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspectSpec;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.gunge.type.InterfaceUtil;
 import au.net.netstorm.boost.gunge.type.DefaultInterfaceUtil;
@@ -20,12 +20,12 @@ public final class DefaultAspectResolver implements AspectResolver {
         this.aspects = aspects;
     }
 
-    public AspectType resolve(Object ref) {
+    public AspectSpec resolve(Object ref) {
         Class cls = ref.getClass();
         Class[] ifaces = cls.getInterfaces();
         Interface[] interfaces = ifacer.interfaces(ifaces);
         Class<? extends Layer>[] layers = getLayers(ifaces);
-        return new DefaultAspectType(interfaces, layers);
+        return new DefaultAspectSpec(interfaces, layers);
     }
 
     private Class<? extends Layer>[] getLayers(Class[] ifaces) {
