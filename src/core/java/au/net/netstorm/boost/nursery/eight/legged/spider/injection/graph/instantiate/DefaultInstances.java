@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate;
 
+import java.util.Iterator;
+
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
 import au.net.netstorm.boost.gunge.collection.Failer;
@@ -21,7 +23,15 @@ public final class DefaultInstances implements Instances {
         return instances.get(site, creator);
     }
 
-    public void put(InjectionSite site, Object arg) {
-        instances.put(site, arg);
+    public void put(InjectionSite site, Object ref) {
+        instances.put(site, ref);
+    }
+
+    public void replace(InjectionSite site, Object ref) {
+        instances.replace(site, ref);
+    }
+
+    public Iterator<InjectionSite> iterator() {
+        return instances.iterator();
     }
 }

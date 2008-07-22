@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.gunge.collection;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 
@@ -18,6 +20,7 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
     Object valueDummy;
     Object oldDummy;
     Creator creatorMock;
+    Iterator iteratorMock;
 
     public void setUpFixtures() {
         fielder.setInstance(subject, "delegate", delegateMock);
@@ -59,6 +62,33 @@ public final class DefaultIntegrityMapAtomicTest extends LifecycleTestCase imple
             subject.get(keyDummy);
             fail();
         } catch (IllegalArgumentException expected) {}
+    }
+
+    public void testGetAll() {
+        expect.oneCall(delegateMock, setMock, "values");
+        Collection actual = subject.getAll();
+        assertSame(setMock, actual);
+    }
+
+    public void testReplaceBarf() {
+        expect.oneCall(delegateMock, false, "containsKey", keyDummy);
+        try {
+            subject.replace(keyDummy, valueDummy);
+            fail();
+        } catch (IllegalArgumentException expected) {}
+    }
+
+    public void testReplace() {
+        expect.oneCall(delegateMock, true, "containsKey", keyDummy);
+        expect.oneCall(delegateMock, VOID, "put", keyDummy, valueDummy);
+        subject.replace(keyDummy, valueDummy);
+    }
+
+    public void testIterator() {
+        expect.oneCall(delegateMock, setMock, "keySet");
+        expect.oneCall(setMock, iteratorMock, "iterator");
+        Iterator actual = subject.iterator();
+        assertSame(iteratorMock, actual);
     }
 
     public void testPut() {

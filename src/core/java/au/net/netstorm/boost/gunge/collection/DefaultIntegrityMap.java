@@ -3,6 +3,8 @@ package au.net.netstorm.boost.gunge.collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.Set;
+import java.util.Collection;
+import java.util.Iterator;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
@@ -28,6 +30,10 @@ public final class DefaultIntegrityMap<K, V> extends Primordial implements Integ
         return get(key, failer);
     }
 
+    public Collection<V> getAll() {
+        return delegate.values();
+    }
+
     public Set<K> keySet() {
         return delegate.keySet();
     }
@@ -36,5 +42,15 @@ public final class DefaultIntegrityMap<K, V> extends Primordial implements Integ
     public void put(K key, V value) {
         V old = delegate.putIfAbsent(key, value);
         if (old != null) throw new IllegalArgumentException();
+    }
+
+    public V replace(K key, V value) {
+        if (!delegate.containsKey(key)) throw new IllegalArgumentException("Key not set.");
+        return delegate.put(key, value);
+    }
+
+    public Iterator<K> iterator() {
+        Set<K> keys = delegate.keySet();
+        return keys.iterator();
     }
 }
