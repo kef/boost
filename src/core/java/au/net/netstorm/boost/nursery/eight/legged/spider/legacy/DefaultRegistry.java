@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.legacy;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.aspecter.Aspector;
+import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Registry;
@@ -10,7 +10,6 @@ import au.net.netstorm.boost.spider.registry.Registry;
 public final class DefaultRegistry implements Registry {
     private final Binder binder;
     private final Aspector aspector;
-
     public DefaultRegistry(Binder binder, Aspector aspector) {
         this.binder = binder;
         this.aspector = aspector;

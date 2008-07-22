@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-import au.net.netstorm.boost.nursery.spider.core.BoostSpiderBuilder;
-import au.net.netstorm.boost.nursery.spider.core.DefaultBoostSpiderBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpiderEgg;
+import au.net.netstorm.boost.nursery.eight.legged.spider.builder.SpiderEgg;
 import au.net.netstorm.boost.nursery.spider.onion.core.DefaultPeeler;
 import au.net.netstorm.boost.nursery.spider.onion.core.Peeler;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -23,7 +23,7 @@ public class ResolverDemooooTest extends LifecycleTestCase implements LazyFields
     public final NuImpl nuImpl = resolver.resolve(NuImpl.class);
 
     Spider nuSpider() {
-        BoostSpiderBuilder spiderBuilder = new DefaultBoostSpiderBuilder();
-        return spiderBuilder.build();
+        SpiderEgg egg = new DefaultSpiderEgg();
+        return egg.hatch();
     }
 }

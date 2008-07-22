@@ -18,6 +18,7 @@ public class Primordial {
         return equalsMaster.equals(this, obj);
     }
 
+    // FIX 2394 Primordial toString does not handle cyclic references.
     public String toString() {
         return toStringMaster.getString(this);
     }

@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.demo.spider.resolve;
 
-public final class BlueprintDemoTest extends ResolverDemooooTransitionTest {
+public final class BlueprintDemoTest extends ResolverDemooooTest {
     {
         registry.multiple(Town.class, Weipa.class);
         registry.single(FlyingDoctor.class, FnqFlyingDoctor.class);

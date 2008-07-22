@@ -4,7 +4,7 @@ import au.net.netstorm.boost.spider.core.DefaultGraphUtil;
 import au.net.netstorm.boost.spider.core.GraphUtil;
 
 // FIX 2318 This entire package needs splitting into sub packages.
-public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest {
+public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTransitionTest {
     GraphUtil grapher = new DefaultGraphUtil();
 
     {
@@ -20,6 +20,7 @@ public final class ComplexCyclicDependenciesDemoTest extends ResolverDemooooTest
         assertNotEquals(teacher1, teacher2);
         Object result = grapher.get(teacher1, "student.homework.teacher");
         assertEquals(DefaultTeacher.class, result.getClass());
+        // FIX 2394 Semantics for this seem wrong I would only expect same if single().
         assertSame(teacher1, result);
     }
 

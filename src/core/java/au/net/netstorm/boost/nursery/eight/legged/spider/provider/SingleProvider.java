@@ -2,7 +2,7 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-public final class SingleProvider implements Provider {
+public final class SingleProvider implements Provider, DelegatingProvider {
     private final Provider provider;
     private final AtomicReference ref;
 
@@ -22,5 +22,9 @@ public final class SingleProvider implements Provider {
         instance = provider.nu();
         ref.compareAndSet(null, instance);
         return ref.get();
+    }
+
+    public Provider root() {
+        return provider;
     }
 }
