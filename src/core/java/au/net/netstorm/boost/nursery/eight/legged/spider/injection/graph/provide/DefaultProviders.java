@@ -18,7 +18,6 @@ public final class DefaultProviders extends Primordial implements Providers {
         this.creator = creator;
     }
 
-    // FIX 2394 Name? provide()
     public Provider provide(InjectionSite site) {
         return providers.get(site, creator);
     }
