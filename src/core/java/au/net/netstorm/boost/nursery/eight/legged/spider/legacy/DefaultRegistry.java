@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.legacy;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.aspecter.Aspector;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.registry.Factory;
 import au.net.netstorm.boost.spider.registry.Registry;
@@ -8,9 +9,11 @@ import au.net.netstorm.boost.spider.registry.Registry;
 // FIX 2394 wire in legacy wrapper.
 public final class DefaultRegistry implements Registry {
     private final Binder binder;
+    private final Aspector aspector;
 
-    public DefaultRegistry(Binder binder) {
+    public DefaultRegistry(Binder binder, Aspector aspector) {
         this.binder = binder;
+        this.aspector = aspector;
     }
 
     public <T> void multiple(Class<T> iface, Class<? extends T> impl) {
@@ -29,8 +32,11 @@ public final class DefaultRegistry implements Registry {
         binder.bind(iface, host, name).toSingle(impl);
     }
 
+    // FIX 2394 Badness. Looks like the old registry proxied based on impl not iface. Work around this.
     public void layer(Class impl, Class<? extends Layer>... layers) {
-        throw new UnsupportedOperationException();
+        for (Class<? extends Layer> layer : layers) {
+            aspector.cut(impl, layer);
+        }
     }
 
     public <T, U extends T> void instance(Class<T> iface, U ref) {

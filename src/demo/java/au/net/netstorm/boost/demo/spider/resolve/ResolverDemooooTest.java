@@ -15,11 +15,15 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // Named "Demoooo" because we love "oooo"s.  Actually it does help us a lot.
 public class ResolverDemooooTest extends LifecycleTestCase implements LazyFields {
-    private final BoostSpiderBuilder spiderBuilder = new DefaultBoostSpiderBuilder();
-    private final Spider spider = spiderBuilder.build();
+    private final Spider spider = nuSpider();
     public final Peeler peeler = new DefaultPeeler();
     public final GraphUtil grapher = new DefaultGraphUtil();
     public final Registry registry = spider.resolve(Registry.class);
     public final Resolver resolver = spider;
     public final NuImpl nuImpl = resolver.resolve(NuImpl.class);
+
+    Spider nuSpider() {
+        BoostSpiderBuilder spiderBuilder = new DefaultBoostSpiderBuilder();
+        return spiderBuilder.build();
+    }
 }

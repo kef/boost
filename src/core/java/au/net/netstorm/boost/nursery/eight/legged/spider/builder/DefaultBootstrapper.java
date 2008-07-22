@@ -55,7 +55,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Injector injector = new DefaultInjector(grapher);
     private final Resolver resolver = new DefaultResolver(grapher);
     private final Spider spider = new DefaultSpider(nu, injector, resolver);
-    private final Registry registry = new DefaultRegistry(binder);
+    private final Registry registry = new DefaultRegistry(binder, aspector);
 
     public Spider bootstrap(Class<? extends SpiderConfig>[] configs) {
         bindImplicitFactory();
