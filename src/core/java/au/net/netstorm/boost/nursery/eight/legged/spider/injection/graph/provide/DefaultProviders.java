@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide;
 
-import java.util.Set;
+import java.util.Iterator;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.gunge.collection.Creator;
@@ -18,6 +18,7 @@ public final class DefaultProviders extends Primordial implements Providers {
         this.creator = creator;
     }
 
+    // FIX 2394 Name? provide()
     public Provider getOrCreate(InjectionSite site) {
         return providers.get(site, creator);
     }
@@ -26,11 +27,11 @@ public final class DefaultProviders extends Primordial implements Providers {
         return providers.get(site, failer);
     }
 
-    public Set<InjectionSite> keySet() {
-        return providers.keySet();
-    }
-
     public void put(InjectionSite site, Provider provider) {
         providers.put(site, provider);
+    }
+
+    public Iterator<InjectionSite> iterator() {
+        return providers.iterator();
     }
 }
