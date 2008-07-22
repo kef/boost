@@ -1,5 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate;
 
+import java.util.Arrays;
+import java.util.List;
+
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
@@ -7,15 +10,16 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultInstantiator implements Instantiator {
     public void instantiate(Providers providers, Instances instances) {
-        // FIX 2394 this dup sucks, why the hell do arrays not implement iterable.
-        // FIX 2394 work out a nice way to avoid it (preferrably without adding more code than is here)
-        for (InjectionSite site : providers) {
-            instantiate(providers, instances, site);
-        }
+        instantiate(providers, instances, providers);
     }
 
     public void instantiate(Providers providers, Instances instances, InjectionSite[] sites) {
-        for (InjectionSite site : sites) {
+        List<InjectionSite> list = Arrays.asList(sites);
+        instantiate(providers, instances, list);
+    }
+
+    private void instantiate(Providers providers, Instances instances, Iterable<InjectionSite> list) {
+        for (InjectionSite site : list) {
             instantiate(providers, instances, site);
         }
     }

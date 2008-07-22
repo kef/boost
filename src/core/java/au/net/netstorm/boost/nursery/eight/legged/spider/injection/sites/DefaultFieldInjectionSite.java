@@ -31,7 +31,6 @@ public final class DefaultFieldInjectionSite extends Primordial implements Field
         return delegate.name();
     }
 
-    // FIX 2394 this is dodgy
     public boolean isConstrained() {
         return delegate.isConstrained();
     }
@@ -42,7 +41,6 @@ public final class DefaultFieldInjectionSite extends Primordial implements Field
         FIELDER.set(field, ref, resolved);
     }
 
-    // FIX 2394 name for o ... "ref" is pretty bloody good for me.
     public boolean isWired(Object ref) {
         Field field = field();
         Object value = FIELDER.get(field, ref);

@@ -8,12 +8,10 @@ import au.net.netstorm.boost.gunge.collection.IntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.ResolutionFailer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
-// FIX 2394 use or lose. to be used in Instantiator/InstanceCreator.
 public final class DefaultInstances implements Instances {
     private final ResolutionFailer failer = new ResolutionFailer();
     private final IntegrityMap<InjectionSite, Object> instances = new DefaultIntegrityMap<InjectionSite, Object>();
 
-    // FIX 2394 should this always be get(site, failer), if so, the failer can be internal to instances. nice.
     public Object get(InjectionSite site) {
         return instances.get(site, failer);
     }
