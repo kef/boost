@@ -10,11 +10,11 @@ public final class DefaultStatefulGraph implements StatefulGraph {
     private final Providers providers;
     private final Instances instances;
     private final Resolvables resolvables;
-    private final Graph graph;
+    private final StatelessGraph graph;
     private final InjectionSite root;
 
     public DefaultStatefulGraph(
-            Graph graph,
+            StatelessGraph graph,
             Providers providers,
             Instances instances,
             Resolvables resolvables,

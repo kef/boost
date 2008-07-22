@@ -16,7 +16,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.Aspect
 public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
     private final ProvidersWirer wirer;
     private final FactoryResolver resolver;
-    private final Graph graph;
+    private final StatelessGraph graph;
 
     public DefaultStatefulGraphWirer(FactoryResolver resolver, AspectResolver aspector) {
         this.resolver = resolver;
@@ -32,8 +32,8 @@ public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
     }
 
 
-    private Graph graph(AspectResolver aspector) {
-        GraphWirer wirer = new DefaultGraphWirer(aspector);
+    private StatelessGraph graph(AspectResolver aspector) {
+        StatelessGraphWirer wirer = new DefaultStatelessGraphWirer(aspector);
         return wirer.wire();
     }
 }
