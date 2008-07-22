@@ -15,7 +15,6 @@ public final class DefaultNu implements Nu {
         this.grapher = grapher;
     }
 
-    // FIX 2394 push rename values to args all the way out
     public <T> T nu(Class<T> iface, Object... args) {
         // FIX 2394 need to pull this logic out of DefaultInterface
         new DefaultInterface(iface);

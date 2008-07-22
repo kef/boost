@@ -37,8 +37,7 @@ import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // FIX 2394 MAG Interesting little beast.  Bit of wiring hey ;)
-// FIX 2394 see if this can be split
-// DEBT ClassDataAbstractionCoupling|NCSS {
+// OK ClassDataAbstractionCoupling|NCSS {
 public final class DefaultBootstrapper implements Bootstrapper {
     private final Aspects aspects = new DefaultAspects();
     private final Bindings bindings = new DefaultBindings();
@@ -97,4 +96,4 @@ public final class DefaultBootstrapper implements Bootstrapper {
         binder.bind(AspectResolver.class).to(aspectResolver);
     }
 }
-// } DEBT ClassDataAbstractionCoupling|NCSS
+// } OK ClassDataAbstractionCoupling|NCSS

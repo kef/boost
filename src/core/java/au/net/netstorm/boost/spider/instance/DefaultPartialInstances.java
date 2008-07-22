@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.spider.instance;
 
-import au.net.netstorm.boost.gunge.type.Implementation;
-import au.net.netstorm.boost.gunge.type.ResolvedInstance;
-import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+
+import au.net.netstorm.boost.gunge.type.Implementation;
+import au.net.netstorm.boost.gunge.type.ResolvedInstance;
+import au.net.netstorm.boost.gunge.type.UnresolvedInstance;
 
 // SUGGEST: Wouldn't this just be a Threaded<StrictMap>
 public final class DefaultPartialInstances implements PartialInstances {
@@ -52,7 +52,6 @@ public final class DefaultPartialInstances implements PartialInstances {
     }
 
     private Map nuMap() {
-        // FIX 2394 1. why linked map? 2. should be strict
         Map map = new LinkedHashMap();
         LOCAL_MON.set(map);
         return get();

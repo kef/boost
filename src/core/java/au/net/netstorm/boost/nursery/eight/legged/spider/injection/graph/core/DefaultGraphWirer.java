@@ -13,7 +13,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.gunge.optional.Optional;
 
-// FIX 2394 split into ProviderWirer.
 public final class DefaultGraphWirer implements GraphWirer {
     private final ProvidersWirer wirer;
     private final StatelessGraph graph;
