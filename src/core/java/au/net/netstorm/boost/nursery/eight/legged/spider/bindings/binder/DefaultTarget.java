@@ -47,9 +47,7 @@ public final class DefaultTarget<T> implements Target<T> {
     }
 
     public void toSingle(Factory factory) {
-        // FIX 2394 MAG Use or lose.
-//        Factory single = new SingletonFactory(factory);
-        Factory single = new SingletonFactory();
+        Factory single = new SingletonFactory(factory);
         binding.setFactory(single);
     }
 
