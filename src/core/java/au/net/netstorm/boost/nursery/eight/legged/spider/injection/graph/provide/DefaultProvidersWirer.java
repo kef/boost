@@ -17,7 +17,7 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
 
     public Providers nu(Instances instances, Optional<Provider> provider, InjectionSite root, Object[] args) {
         Providers providers = providers(provider, root);
-        boot(providers, root, args);
+        applyArgs(providers, root, args);
         return providers;
     }
 
@@ -34,7 +34,7 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
         providers.put(root, provider);
     }
 
-    private void boot(Providers providers, InjectionSite root, Object[] args) {
+    private void applyArgs(Providers providers, InjectionSite root, Object[] args) {
         if (args.length == 0) return;
         Provider provider = providers.provide(root);
         Provider parameterized = new ParameterizedProvider(provider, args);
