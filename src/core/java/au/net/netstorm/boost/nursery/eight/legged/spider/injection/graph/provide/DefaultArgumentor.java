@@ -7,6 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.InstanceProvid
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
 
+// FIX 2394 Should not need this any more. Delete.
 public final class DefaultArgumentor implements Argumentor {
     private final ProviderOperations operations = new DefaultProviderOperations();
 

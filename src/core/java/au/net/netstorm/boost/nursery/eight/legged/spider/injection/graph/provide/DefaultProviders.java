@@ -30,6 +30,10 @@ public final class DefaultProviders extends Primordial implements Providers {
         providers.put(site, provider);
     }
 
+    public void replace(InjectionSite site, Provider provider) {
+        providers.replace(site, provider);
+    }
+
     public Iterator<InjectionSite> iterator() {
         return providers.iterator();
     }

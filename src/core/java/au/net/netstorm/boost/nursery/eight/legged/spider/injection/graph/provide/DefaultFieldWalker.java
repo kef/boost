@@ -11,17 +11,22 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasInjectableTarget;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProviderOperations;
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
+// FIX 2394 Clean this beast. Check out ConstructorWalker. Use ProviderOperations.
 public final class DefaultFieldWalker implements Walker {
+    private final ProviderOperations opererations = new DefaultProviderOperations();
     private final Marker marker = new DefaultMarker();
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
 
     public void traverse(SiteWalker walker, SiteState state, InjectionSite site, Provider provider) {
-        if (!marker.is(provider, HasInjectableTarget.class)) return;
-        HasInjectableTarget injectable = (HasInjectableTarget) provider;
+        Provider root = opererations.root(provider);
+        if (!marker.is(root, HasInjectableTarget.class)) return;
+        HasInjectableTarget injectable = (HasInjectableTarget) root;
         Class<?> target = injectable.getTargetClass();
         InjectionSite[] sites = sites(target);
         walker.traverse(state, site, sites);
@@ -31,7 +36,9 @@ public final class DefaultFieldWalker implements Walker {
         List<InjectionSite> sites = new ArrayList<InjectionSite>();
         // FIX 2394 do we want to support inheritance?
         for (Field f : target.getDeclaredFields()) {
-            if (resolvable.isResolvableField(f)) addSite(sites, f);
+            if (resolvable.isResolvableField(f)) {
+                addSite(sites, f);
+            }
         }
         return sites.toArray(new InjectionSite[sites.size()]);
     }

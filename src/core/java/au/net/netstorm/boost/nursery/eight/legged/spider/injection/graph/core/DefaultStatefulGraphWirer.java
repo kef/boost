@@ -25,7 +25,7 @@ public final class DefaultStatefulGraphWirer implements StatefulGraphWirer {
         this.wirer = new DefaultProvidersWirer(resolver);
     }
 
-    public StatefulGraph nu(InjectionSite root, Optional<Provider> provider, Object... args) {
+    public StatefulGraph nu(InjectionSite root, Optional<Provider> provider, Object[] args) {
         Instances instances = new DefaultInstances();
         Resolvables resolvables = new DefaultResolvables();
         Providers providers = wirer.nu(instances, provider, root, args);

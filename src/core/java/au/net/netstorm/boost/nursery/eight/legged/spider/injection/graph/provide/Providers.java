@@ -9,4 +9,6 @@ public interface Providers extends Iterable<InjectionSite> {
     Provider get(InjectionSite site);
 
     void put(InjectionSite site, Provider provider);
+
+    void replace(InjectionSite site, Provider provider);
 }

@@ -20,12 +20,6 @@ public final class DefaultInstantiator implements Instantiator {
         }
     }
 
-    public void instantiate(Providers providers, Instances instances, InjectionSite site, Object[] args) {
-        Provider provider = providers.get(site);
-        Creator<InjectionSite, Object> creator = new ParamertizedInstanceCreator(provider, args);
-        instances.get(site, creator);
-    }
-
     private void instantiate(Providers providers, Instances instances, InjectionSite site) {
         Provider provider = providers.get(site);
         Creator<InjectionSite, Object> creator = new InstanceCreator(providers, provider, instances);

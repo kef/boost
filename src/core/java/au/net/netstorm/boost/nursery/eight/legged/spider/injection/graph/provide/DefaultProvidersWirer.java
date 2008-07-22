@@ -3,15 +3,12 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provid
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.optional.Optional;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.DefaultInstantiator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instantiator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ParameterizedProvider;
 
 public final class DefaultProvidersWirer implements ProvidersWirer {
-    private final Argumentor argumentor = new DefaultArgumentor();
-    private final Instantiator instantiator = new DefaultInstantiator();
     private final FactoryResolver resolver;
 
     public DefaultProvidersWirer(FactoryResolver resolver) {
@@ -20,7 +17,7 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
 
     public Providers nu(Instances instances, Optional<Provider> provider, InjectionSite root, Object[] args) {
         Providers providers = providers(provider, root);
-        boot(providers, root, instances, args);
+        boot(providers, root, args);
         return providers;
     }
 
@@ -37,10 +34,10 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
         providers.put(root, provider);
     }
 
-    private void boot(Providers providers, InjectionSite root, Instances instances, Object[] args) {
+    private void boot(Providers providers, InjectionSite root, Object[] args) {
+        if (args.length == 0) return;
         Provider provider = providers.provide(root);
-        argumentor.providers(providers, provider, root, args);
-        instantiator.instantiate(providers, instances, root, args);
+        Provider parameterized = new ParameterizedProvider(provider, args);
+        providers.replace(root, parameterized);
     }
-
 }

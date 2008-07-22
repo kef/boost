@@ -45,11 +45,8 @@ public final class DefaultSiteWalker implements SiteWalker {
     }
 
     private void unsafeTraverse(SiteState state, InjectionSite site) {
-        // FIX BREADCRUMB 2394 aaaaaaaaaaaaaaaaa now. why is this saying it can provide for things like class[]
-        // FIX BREADCRUMB 2394 bbbbbbbbbbbbbbbbb at a guess, i am thinking that concrete factory, trying it now.
         Provider provider = providers.provide(site);
-        Provider root = operations.root(provider);
-        constructor.traverse(this, state, site, root);
-        fields.traverse(this, state, site, root);
+        constructor.traverse(this, state, site, provider);
+        fields.traverse(this, state, site, provider);
     }
 }

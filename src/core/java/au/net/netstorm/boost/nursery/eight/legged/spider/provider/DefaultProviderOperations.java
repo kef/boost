@@ -31,9 +31,13 @@ public final class DefaultProviderOperations implements ProviderOperations {
 
     public Type[] params(Provider provider) {
         Provider root = root(provider);
-        if (!(root instanceof HasParameters)) return new Type[0];
+        if (!needsParameters(provider, root)) return new Type[0];
         HasParameters parameterized = (HasParameters) root;
         return parameterized.getParameterTypes();
+    }
+
+    private boolean needsParameters(Provider outer, Provider root) {
+        return root instanceof HasParameters && !(outer instanceof ParameterizedProvider);
     }
 
     public Provider root(Provider provider) {
