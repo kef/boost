@@ -6,6 +6,7 @@ public final class UnresolvableException extends RuntimeException {
     private final InjectionSite site;
 
     public UnresolvableException(InjectionSite site) {
+        super("" + site);
         this.site = site;
     }
 

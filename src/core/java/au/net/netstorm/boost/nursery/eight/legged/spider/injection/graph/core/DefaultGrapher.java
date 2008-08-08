@@ -28,8 +28,11 @@ public final class DefaultGrapher implements Grapher {
     }
 
     private <T> T cast(InjectionType<T> type, Object instance) {
-        Class<T> cls = type.rawClass();
-        return cls.cast(instance);
+        // FIX 2394 buggy. the strong cast breaks nuImpl if the impl is proxied.
+        // FIX 2394 should check for aspectorization or make people pass in iface which may be better.
+//        Class<T> cls = type.rawClass();
+//        return cls.cast(instance);
+        return (T) instance;
     }
 
     private GraphLifecycleEnforcer enforcer(FactoryResolver resolver, AspectResolver aspector) {

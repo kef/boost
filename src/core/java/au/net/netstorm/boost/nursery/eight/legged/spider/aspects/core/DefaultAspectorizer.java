@@ -52,7 +52,8 @@ public final class DefaultAspectorizer implements Aspectorizer {
         InjectionSite site = siter.root(injection);
         Provider provider = providers.provide(site);
         Layer delegate = cut.outer();
-        // FIX 2394 There is no wiring done of layer, should is be injected?
+        // FIX 2394 There is no wiring done of layer, should it be injected?
+        // FIX 2394   YES!!! what was I thinking.
         Layer layer = (Layer) provider.nu(cut, delegate);
         return build(cut, ifaces, layer);
     }
