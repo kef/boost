@@ -47,13 +47,13 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final FactoryResolver factoryResolver = new DefaultFactoryResolver(bindings, factories);
     private final AspectResolver aspectResolver = new DefaultAspectResolver(aspects);
     private final Grapher grapher = new DefaultGrapher(factoryResolver, aspectResolver);
-    private final Nu nu = new DefaultNu(grapher);
+    private final Resolver resolver = new DefaultResolver(grapher);
+    private final Injector injector = new DefaultInjector(grapher);
     private final NuImpl nuImpl = new DefaultNuImpl(grapher);
+    private final Nu nu = new DefaultNu(grapher);
     private final Binder binder = new DefaultBinder(bindings);
     private final Aspector aspector = new DefaultAspector(aspects);
     private final Web web = new DefaultWeb(nuImpl, binder, factories);
-    private final Injector injector = new DefaultInjector(grapher);
-    private final Resolver resolver = new DefaultResolver(grapher);
     private final Spider spider = new DefaultSpider(nu, injector, resolver);
     private final Registry registry = new DefaultRegistry(binder, aspector);
 

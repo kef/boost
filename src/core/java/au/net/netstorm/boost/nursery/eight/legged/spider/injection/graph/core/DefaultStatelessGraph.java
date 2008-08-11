@@ -1,14 +1,15 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instantiator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instantiator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.PostProcessor;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.SiteWalker;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultSiteWalker;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.Wirer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.SiteWalker;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.Wirer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public final class DefaultStatelessGraph implements StatelessGraph {
     private final Instantiator instantiator;
@@ -35,7 +36,7 @@ public final class DefaultStatelessGraph implements StatelessGraph {
         wirer.wire(instances, resolvables);
     }
 
-    public void post(Providers providers, Instances instances) {
-        poster.process(providers, instances);
+    public void post(Resolver resolver, Instances instances) {
+        poster.process(resolver, instances);
     }
 }

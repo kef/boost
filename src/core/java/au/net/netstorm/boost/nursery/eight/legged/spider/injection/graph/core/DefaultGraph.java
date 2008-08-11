@@ -4,6 +4,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instant
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // OK ParameterNumber {
 public final class DefaultGraph implements Graph {
@@ -12,19 +13,22 @@ public final class DefaultGraph implements Graph {
     private final Resolvables resolvables;
     private final StatelessGraph graph;
     private final InjectionSite root;
+    private final Resolver resolver;
 
     public DefaultGraph(
             StatelessGraph graph,
             Providers providers,
             Instances instances,
             Resolvables resolvables,
-            InjectionSite root
+            InjectionSite root,
+            Resolver resolver
     ) {
         this.graph = graph;
         this.root = root;
         this.instances = instances;
         this.resolvables = resolvables;
         this.providers = providers;
+        this.resolver = resolver;
     }
 
     public void build() {
@@ -40,7 +44,7 @@ public final class DefaultGraph implements Graph {
     }
 
     public void post() {
-        graph.post(providers, instances);
+        graph.post(resolver, instances);
     }
 
     public Object resolve() {
