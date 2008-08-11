@@ -14,9 +14,7 @@ import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 public final class DedaultInjectionTypeBuilderAtomicTest extends LifecycleTestCase
         implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Type parameterized;
-    private Type arrayized;
     List<String> parameterizedDummy;
-    List<String>[] arrayizedDummy;
     InjectionTypeBuilder subject;
     InjectionTypeChecker checker;
     FieldTestUtil fielder;
@@ -24,7 +22,6 @@ public final class DedaultInjectionTypeBuilderAtomicTest extends LifecycleTestCa
 
     public void setUpFixtures() {
         parameterized = extract("parameterizedDummy");
-        arrayized = extract("arrayizedDummy");
     }
 
     public void testBuildRaw() {
@@ -38,10 +35,7 @@ public final class DedaultInjectionTypeBuilderAtomicTest extends LifecycleTestCa
     }
 
     public void testBuildInvalid() {
-        try {
-            subject.build(arrayized);
-            fail();
-        } catch (IllegalArgumentException expected) {}
+        // FIX 2394 drive out.
     }
 
     private Type extract(String name) {

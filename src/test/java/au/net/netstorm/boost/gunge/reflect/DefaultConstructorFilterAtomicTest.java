@@ -2,15 +2,17 @@ package au.net.netstorm.boost.gunge.reflect;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
+
 import au.net.netstorm.boost.gunge.collection.FunctionalCollection;
-import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
+import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.spider.core.Nu;
 
-public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
-    ConstructorFilter subject;
+public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
+    private ConstructorFilter subject;
     ConstructorFixture fixture;
     FunctionalCollection collectionMock;
     ObjectToClassMapper mapperMock;
@@ -18,6 +20,10 @@ public final class DefaultConstructorFilterAtomicTest extends LifecycleTestCase 
     CompatibleSignaturesFilter compatMock;
     List<Class<?>> classesMock;
     List<Constructor<?>> ctorMock;
+
+    public void setUpFixtures() {
+        subject = new DefaultConstructorFilter();
+    }
 
     public void testFilter() {
         List<?> vector = fixture.vector();
