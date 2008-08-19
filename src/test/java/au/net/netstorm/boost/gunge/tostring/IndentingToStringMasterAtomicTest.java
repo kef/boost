@@ -92,7 +92,7 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
 
     private void checkToString(String expected, Object ref) {
         ToStringMaster indentingToStringMaster = new IndentingToStringMaster();
-        String result = indentingToStringMaster.getString(ref);
+        String result = indentingToStringMaster.string(ref);
         assertEquals(expected, result);
     }
 }

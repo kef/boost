@@ -20,6 +20,6 @@ public class Primordial {
 
     // FIX 2394 Primordial toString does not handle cyclic references.
     public String toString() {
-        return toStringMaster.getString(this);
+        return toStringMaster.string(this);
     }
 }

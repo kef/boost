@@ -18,22 +18,25 @@ public class IndentingToStringMaster implements ToStringMaster {
     private final ClassMaster classMaster = new DefaultClassMaster();
     private final ReflectMaster reflect = new DefaultReflectMaster();
 
-    public String getString(Object ref) {
+    public String string(Object ref) {
         FieldValueSpec[] fields = reflect.getInstanceFields(ref);
-        return formatFields(ref, fields);
+        return string(ref, fields);
     }
 
-    public String formatFields(Object ref, FieldValueSpec[] fields) {
-        boolean extended = useExtended(fields);
-        String[] strings = extended ? formatMultipleFields(fields) : formatSingleField(fields[0]);
-        return getClassName(ref, extended) + layoutFields(strings);
+    // FIX 2130 This beast has to live on!!!!!
+//    if (MARKER.is(this, Sensitive.class)) return "Like XXXX, totally unflavoured.";
+
+    public String string(Object ref, FieldValueSpec[] specs) {
+        boolean extended = useExtended(specs);
+        String[] strings = extended ? multiple(specs) : single(specs[0]);
+        return getClassName(ref, extended) + format(strings);
     }
 
     private String getClassName(Object ref, boolean extended) {
         return extended ? getClassName(ref) : BLANK;
     }
 
-    private String layoutFields(String[] s) {
+    private String format(String[] s) {
         if (s.length == 0) return "[]";
         if (s.length == 1) return getString(s);
         return "[" + LF + indent(getString(s)) + LF + "]";
@@ -50,27 +53,26 @@ public class IndentingToStringMaster implements ToStringMaster {
         return result;
     }
 
-    private String[] formatMultipleFields(FieldValueSpec[] fields) {
-        int length = fields.length;
-        String[] result = new String[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = formatField(fields[i]);
+    private String[] multiple(FieldValueSpec[] specs) {
+        String[] result = new String[specs.length];
+        for (int i = 0; i < specs.length; i++) {
+            result[i] = formatField(specs[i]);
         }
         return result;
     }
 
-    private String[] formatSingleField(FieldValueSpec field) {
-        return new String[]{fieldValue(field)};
+    private String[] single(FieldValueSpec spec) {
+        return new String[]{fieldValue(spec)};
     }
 
-    private String formatField(FieldValueSpec fieldValue) {
-        String name = fieldValue.getName();
-        String value = fieldValue(fieldValue);
+    private String formatField(FieldValueSpec spec) {
+        String name = spec.getName();
+        String value = fieldValue(spec);
         return name + "=" + value;
     }
 
-    private String fieldValue(FieldValueSpec fieldValue) {
-        Object value = fieldValue.getValue();
+    private String fieldValue(FieldValueSpec spec) {
+        Object value = spec.getValue();
         if (value == null) return "NULL";
         return isArray(value) ? arrayValue(value) : value.toString();
     }

@@ -66,7 +66,7 @@ public class DataLayer extends Primordial implements Layer {
 
     private String calculateToString() {
         Class type = iface.getType();
-        String string = stringer.formatFields(this, fields);
+        String string = stringer.string(this, fields);
         ClassMaster classer = new DefaultClassMaster();
         // FIX 2130 Use or lose.  Prob lose.
 //        return classer.getShortName(type) + " proxied by " + string;

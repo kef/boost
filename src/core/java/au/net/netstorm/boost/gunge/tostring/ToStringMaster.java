@@ -12,7 +12,7 @@ import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 
 // FIX SC600 Remove all old-style triangulation.
 public interface ToStringMaster {
-    String getString(Object ref);
+    String string(Object ref);
 
-    String formatFields(Object ref, FieldValueSpec[] fields);
+    String string(Object ref, FieldValueSpec[] fields);
 }

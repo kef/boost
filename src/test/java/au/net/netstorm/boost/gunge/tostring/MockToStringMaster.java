@@ -10,12 +10,12 @@ public final class MockToStringMaster implements ToStringMaster {
         this.result = result;
     }
 
-    public String getString(Object ref) {
+    public String string(Object ref) {
         this.ref = ref;
         return result;
     }
 
-    public String formatFields(Object ref, FieldValueSpec[] fields) {
+    public String string(Object ref, FieldValueSpec[] fields) {
         this.ref = ref;
         return result;
     }
