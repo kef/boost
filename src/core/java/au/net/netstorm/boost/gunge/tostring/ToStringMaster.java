@@ -14,5 +14,5 @@ import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 public interface ToStringMaster {
     String string(Object ref);
 
-    String string(Object ref, FieldValueSpec[] fields);
+    String string(FieldValueSpec[] fields);
 }

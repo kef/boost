@@ -1,5 +1,6 @@
 package au.net.netstorm.boost.demo.immutable;
 
+import static au.net.netstorm.boost.gunge.separator.Separator.LINE;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpiderEgg;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.SpiderEgg;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -15,14 +16,26 @@ public final class ImmutablesDemoTest extends LifecycleTestCase implements LazyF
         worker = spider.resolve(Worker.class);
     }
 
-    public void testImmutables() {
-        // FIX BREADCRUMB 2130 AAAAAAAAAAAAAAAAAAAA Complete.
-        Work work = worker.work();
-
-//        fail(""+work);
-//        fail();
+    public void testEquality() {
+        Work w1 = worker.work();
+        Work w2 = worker.work();
+        assertEquals(true, w1 != w2);
+        assertEquals(w1, w2);
     }
 
+    public void testString() {
+        Work work = worker.work();
+        assertEquals(string(), "" + work);
+    }
+
+    private String string() {
+        return "Work[" + LINE +
+                "    host=Host[doggdot.us]" + LINE +
+                "    port=Port[8081]" + LINE +
+                "]";
+    }
+
+    // FIX 2130 Hide this away.
     // FIX 2130 Remove "dupe" with ResolverDemooooTest.
     private Spider spider() {
         SpiderEgg egg = new DefaultSpiderEgg();

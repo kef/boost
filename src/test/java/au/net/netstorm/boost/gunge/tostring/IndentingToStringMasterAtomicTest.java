@@ -41,7 +41,7 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String singleField(int i) {
-        return "" + i;
+        return "[" + i + "]";
     }
 
     private String nestedFieldResult() {
@@ -49,7 +49,7 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String nullFieldResult() {
-        return "NULL";
+        return "[NULL]";
     }
 
     private String multipleNestedFieldResult() {
@@ -61,11 +61,11 @@ public class IndentingToStringMasterAtomicTest extends BoooostCase {
     }
 
     private String intArrayResult() {
-        return "{1,2,4}";
+        return "[{1,2,4}]";
     }
 
     private String stringArrayResult(String x, String y) {
-        return "{" + x + "," + y + "}";
+        return "[{" + x + "," + y + "}]";
     }
 
     private String twoFieldsResult(int x, int y, int depth) {

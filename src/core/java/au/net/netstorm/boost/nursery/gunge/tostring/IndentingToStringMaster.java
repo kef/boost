@@ -19,17 +19,18 @@ public class IndentingToStringMaster implements ToStringMaster {
     private final ReflectMaster reflect = new DefaultReflectMaster();
 
     public String string(Object ref) {
-        FieldValueSpec[] fields = reflect.getInstanceFields(ref);
-        return string(ref, fields);
+        FieldValueSpec[] specs = reflect.getInstanceFields(ref);
+        boolean extended = useExtended(specs);
+        return getClassName(ref, extended) + string(specs);
     }
 
     // FIX 2130 This beast has to live on!!!!!
 //    if (MARKER.is(this, Sensitive.class)) return "Like XXXX, totally unflavoured.";
 
-    public String string(Object ref, FieldValueSpec[] specs) {
+    public String string(FieldValueSpec[] specs) {
         boolean extended = useExtended(specs);
         String[] strings = extended ? multiple(specs) : single(specs[0]);
-        return getClassName(ref, extended) + format(strings);
+        return format(strings);
     }
 
     private String getClassName(Object ref, boolean extended) {
@@ -38,7 +39,7 @@ public class IndentingToStringMaster implements ToStringMaster {
 
     private String format(String[] s) {
         if (s.length == 0) return "[]";
-        if (s.length == 1) return getString(s);
+        if (s.length == 1) return "[" + getString(s) + "]";
         return "[" + LF + indent(getString(s)) + LF + "]";
     }
 

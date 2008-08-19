@@ -5,13 +5,18 @@ import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
+import au.net.netstorm.boost.spider.onion.core.Layered;
 
 // FIX 2248 TDD.
-final class LayerInvocationHandler extends Primordial implements InvocationHandler {
+final class LayerInvocationHandler extends Primordial implements Layered, InvocationHandler {
     private final Layer layer;
 
     public LayerInvocationHandler(Layer layer) {
         this.layer = layer;
+    }
+
+    public Layer layer() {
+        return layer;
     }
 
     public Object invoke(Object proxy, java.lang.reflect.Method method, Object[] args) throws Throwable {

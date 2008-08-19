@@ -5,6 +5,8 @@ import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
 
 // FIX 2299 Up coverage and out of nursery.
 
+// FIX 2130 This should just be ArrayEqualsMaster.  Bugger the interface flavouring.
+
 // FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 public class DefaultArraysEqualsMaster implements ArraysEqualsMaster {
     public boolean equals(Object o1, Object o2) {

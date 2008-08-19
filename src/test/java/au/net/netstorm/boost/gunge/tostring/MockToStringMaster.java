@@ -15,8 +15,7 @@ public final class MockToStringMaster implements ToStringMaster {
         return result;
     }
 
-    public String string(Object ref, FieldValueSpec[] fields) {
-        this.ref = ref;
+    public String string(FieldValueSpec[] fields) {
         return result;
     }
 
