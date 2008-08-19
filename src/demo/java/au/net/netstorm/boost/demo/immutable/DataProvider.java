@@ -13,6 +13,7 @@ import au.net.netstorm.boost.nursery.immutable.DataInvocationHandler;
 import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
+// FIX 2130 Move into "core"?
 public final class DataProvider implements Provider {
     private final Class iface;
     NuImpl impl;

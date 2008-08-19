@@ -7,6 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
+// FIX 2130 Move into "core"?
 public final class DataFactory implements Factory {
     NuImpl impl;
 
