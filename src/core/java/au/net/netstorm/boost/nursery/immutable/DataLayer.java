@@ -17,6 +17,7 @@ public class DataLayer extends Primordial implements Layer {
     private final Interface iface;
     private final FieldValueSpec[] fields;
     private final DataInvocationHandlerValidator validator = new DefaultDataInvocationHandlerValidator();
+    private final ToStringMaster stringer = new IndentingToStringMaster();
 
     public DataLayer(Interface iface, FieldValueSpec[] fields) {
         validator.check(fields, iface);
@@ -65,10 +66,11 @@ public class DataLayer extends Primordial implements Layer {
 
     private String calculateToString() {
         Class type = iface.getType();
-        ToStringMaster stringer = new IndentingToStringMaster();
         String string = stringer.formatFields(this, fields);
         ClassMaster classer = new DefaultClassMaster();
-        return classer.getShortName(type) + " proxied by " + string;
+        // FIX 2130 Use or lose.  Prob lose.
+//        return classer.getShortName(type) + " proxied by " + string;
+        return classer.getShortName(iface) + " " + string;
     }
 
     private Integer calculateHashCode() {

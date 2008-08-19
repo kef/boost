@@ -1,6 +1,8 @@
 package au.net.netstorm.boost.demo.immutable;
 
 import au.net.netstorm.boost.gunge.type.Data;
+import au.net.netstorm.boost.gunge.type.DefaultInterface;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
@@ -14,7 +16,8 @@ public final class ImmutableFactory implements Factory {
     public Provider nu(InjectionSite site) {
         if (!canHandle(site)) throw new IllegalStateException();
         Class raw = raw(site);
-        return impl.nu(ImmutableProvider.class, raw);
+        Interface iface = new DefaultInterface(raw);
+        return impl.nu(ImmutableProvider.class, iface);
     }
 
     public boolean canHandle(InjectionSite site) {
