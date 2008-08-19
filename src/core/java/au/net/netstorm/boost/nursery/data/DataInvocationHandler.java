@@ -34,7 +34,7 @@ public class DataInvocationHandler extends Primordial implements InvocationHandl
         throw new UnsupportedOperationException("" + method);
     }
 
-// FIX 9999 Dupe city.  Smash.
+    // FIX 2130 Dupe city.  Smash.
     private boolean isEquals(Method method) {
         return method.getName().equals("equals");
     }
@@ -73,8 +73,8 @@ public class DataInvocationHandler extends Primordial implements InvocationHandl
     private Object tryFields(Method method) {
         String name = method.getName();
         for (int i = 0; i < fields.length; i++) {
-            // FIX 9999 Single line.
-            // FIX 9999 Smash train wrecks.
+            // FIX 2130 Single line.
+            // FIX 2130 Smash train wrecks.
             FieldValueSpec field = fields[i];
             if (name.equals(field.getName())) return field.getValue();
         }
