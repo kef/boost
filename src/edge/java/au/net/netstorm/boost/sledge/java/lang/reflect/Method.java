@@ -8,8 +8,11 @@ public interface Method {
 
     Object invoke(Object ref, Object... args);
 
+    // FIX 2130 Remove this shite.
     // FIX  Don't cry... :(
     boolean isAnnotationPresent(Class<? extends Annotation> cls);
 
     <T extends Annotation> T getAnnotation(Class<T> cls);
+
+    Class<?> getDeclaringClass();
 }

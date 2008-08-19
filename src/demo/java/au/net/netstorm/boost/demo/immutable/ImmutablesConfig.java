@@ -7,6 +7,6 @@ public final class ImmutablesConfig implements SpiderConfig {
     Web web;
 
     public void configure() {
-        web.register(DataFactory.class);
+        web.register(ImmutableFactory.class);
     }
 }

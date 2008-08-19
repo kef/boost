@@ -37,4 +37,8 @@ public final class DefaultMethod implements Method {
     public <T extends Annotation> T getAnnotation(Class<T> cls) {
         return delegate.getAnnotation(cls);
     }
+
+    public Class<?> getDeclaringClass() {
+        return delegate.getDeclaringClass();
+    }
 }
