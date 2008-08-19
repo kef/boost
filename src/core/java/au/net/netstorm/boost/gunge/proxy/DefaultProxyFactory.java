@@ -15,6 +15,7 @@ public final class DefaultProxyFactory implements ProxyFactory {
     }
 
     // FIX 9999 THIS IS SEPARATE UTILITY CODE.  UNFORTUNATELY IT HAS BEEN COALESCED.  SPIN OUT!!!!
+    // FIX 9999 THEN AGAIN, MAYBE ALL THE PLACES USING INVOCATION HANDLER SHOULD USE THIS!!!
     public Object newProxy(Interface[] types, Layer layer) {
         ClassLoader classloader = getClassLoader();
         Class[] ifaces = toClasses(types);
