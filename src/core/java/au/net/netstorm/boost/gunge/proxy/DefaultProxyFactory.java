@@ -14,6 +14,7 @@ public final class DefaultProxyFactory implements ProxyFactory {
         return newProxy(types, layer);
     }
 
+    // FIX 9999 THIS IS SEPARATE UTILITY CODE.  UNFORTUNATELY IT HAS BEEN COALESCED.  SPIN OUT!!!!
     public Object newProxy(Interface[] types, Layer layer) {
         ClassLoader classloader = getClassLoader();
         Class[] ifaces = toClasses(types);
