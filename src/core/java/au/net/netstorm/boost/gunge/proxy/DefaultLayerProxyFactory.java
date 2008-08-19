@@ -10,7 +10,7 @@ import au.net.netstorm.boost.sledge.java.lang.reflect.ProxySupplier;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Layered;
 
-public final class DefaultProxyFactory implements ProxyFactory {
+public final class DefaultLayerProxyFactory implements LayerProxyFactory {
     private static final Interface LAYERED = new DefaultInterface(Layered.class);
     private final ProxySupplier delegate = new DefaultProxySupplier();
     private final ArrayMaster arrays = new DefaultArrayMaster();

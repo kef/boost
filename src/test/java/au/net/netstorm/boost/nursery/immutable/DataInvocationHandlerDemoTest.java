@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.immutable;
 
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -18,7 +18,7 @@ public class DataInvocationHandlerDemoTest extends LifecycleTestCase implements 
     private FieldValueSpec nameSpec;
     String expectedName = null;
     Integer expectedLegs = null;
-    ProxyFactory proxies;
+    LayerProxyFactory proxies;
     RealCentipede realCritter = new RealCentipede("dollar", 1000);
     private static final int NUM_LOOPS = 10000000;
 
