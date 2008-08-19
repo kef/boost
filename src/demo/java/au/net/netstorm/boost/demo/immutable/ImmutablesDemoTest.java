@@ -10,26 +10,26 @@ import au.net.netstorm.boost.spider.core.Spider;
 
 public final class ImmutablesDemoTest extends LifecycleTestCase implements LazyFields, HasFixtures {
     Spider spider = spider();
-    Worker worker;
+    Socker socker;
 
     public void setUpFixtures() {
-        worker = spider.resolve(Worker.class);
+        socker = spider.resolve(Socker.class);
     }
 
     public void testEquality() {
-        Work w1 = worker.work();
-        Work w2 = worker.work();
-        assertEquals(true, w1 != w2);
-        assertEquals(w1, w2);
+        Sock s1 = socker.sock();
+        Sock s2 = socker.sock();
+        assertEquals(true, s1 != s2);
+        assertEquals(s1, s2);
     }
 
     public void testString() {
-        Work work = worker.work();
-        assertEquals(string(), "" + work);
+        Sock sock = socker.sock();
+        assertEquals(string(), "" + sock);
     }
 
     private String string() {
-        return "Work[" + LINE +
+        return "Sock[" + LINE +
                 "    host=Host[doggdot.us]" + LINE +
                 "    port=Port[8081]" + LINE +
                 "]";

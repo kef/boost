@@ -1,12 +1,12 @@
 package au.net.netstorm.boost.demo.immutable;
 
 public final class DefaultExample implements Example {
-    Worker worker;
+    Socker socker;
 
     public void example() {
-        Work work = worker.work();
-        Host host = work.host();
-        Port port = work.port();
-        System.out.println("work = " + work);
+        Sock sock = socker.sock();
+        Host host = sock.host();
+        Port port = sock.port();
+        System.out.println("work = " + sock);
     }
 }
