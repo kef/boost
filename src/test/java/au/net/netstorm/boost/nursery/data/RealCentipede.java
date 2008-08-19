@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.proxy;
+package au.net.netstorm.boost.nursery.data;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 

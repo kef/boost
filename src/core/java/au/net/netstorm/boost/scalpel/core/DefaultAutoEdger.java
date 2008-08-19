@@ -4,6 +4,7 @@ import au.net.netstorm.boost.scalpel.engine.EdgeFactory;
 import au.net.netstorm.boost.scalpel.engine.EdgeMapper;
 import au.net.netstorm.boost.scalpel.engine.RealNu;
 
+// FIX 9999 This TEST takes 60s.  WTF.  It is not an "atomic" test then!!!!!!!!!
 public final class DefaultAutoEdger implements AutoEdger {
     EdgeFactory edger;
     EdgeMapper mapper;

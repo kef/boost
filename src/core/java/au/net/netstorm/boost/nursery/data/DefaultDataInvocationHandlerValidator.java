@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.proxy;
+package au.net.netstorm.boost.nursery.data;
 
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
