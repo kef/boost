@@ -8,6 +8,8 @@ import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import junit.framework.AssertionFailedError;
 
+// FIX 2130 Delete ... yeeha.
+
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
 public final class DataAtomDemoTest extends LifecycleTestCase implements InjectableTest, LazyFields {
     FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);

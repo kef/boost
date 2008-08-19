@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.nursery.data;
+package au.net.netstorm.boost.nursery.immutable;
 
 interface Centipede extends HasLegs {
     String name();
