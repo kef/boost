@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class DefaultTypeMaster implements TypeMaster {
-    private final InterfaceUtil util = new DefaultInterfaceUtil();
+    private final InterfaceMaster util = new DefaultInterfaceMaster();
 
     public boolean implementz(Implementation impl, Interface iface) {
         Class cls = impl.getImpl();

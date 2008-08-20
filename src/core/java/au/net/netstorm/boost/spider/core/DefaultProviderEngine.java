@@ -2,6 +2,8 @@ package au.net.netstorm.boost.spider.core;
 
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
@@ -26,13 +28,13 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 // FIX ()   2255 Split.
 // SUGGEST: Strongly type Object[] as Resolved[] in provide(...).
 
-// FIX 2328 replace me - poor abstraction - needs to avoid touching the implementation 
+// FIX 2328 replace me - poor abstraction - needs to avoid touching the implementation
 
 // DEBT DataAbstractionCoupling {
 public final class DefaultProviderEngine implements ProviderEngine {
     private static final Interface CONSTRUCTABLE = new DefaultInterface(Constructable.class);
     private final PartialInstances inProgress = new DefaultPartialInstances();
-    private final ProxyFactory proxyFactory = new DefaultProxyFactory();
+    private final LayerProxyFactory proxyFactory = new DefaultLayerProxyFactory();
     private final ProxifierWirer proxifierWirer = new DefaultProxfierWirer(this);
     private final Proxifier proxifier = proxifierWirer.get();
     private final TypeMaster typer = new DefaultTypeMaster();

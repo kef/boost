@@ -2,6 +2,8 @@ package au.net.netstorm.boost.spider.builder;
 
 import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
@@ -58,7 +60,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final PartialInstances PARTIAL_INSTANCES = new DefaultPartialInstances();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
-    private final ProxyFactory proxyFactory = new DefaultProxyFactory();
+    private final LayerProxyFactory proxyFactory = new DefaultLayerProxyFactory();
 
     public RegisteredSpider assemble(Instances instances, Factories factories, Blueprints blueprints, Layers proxies) {
         ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);

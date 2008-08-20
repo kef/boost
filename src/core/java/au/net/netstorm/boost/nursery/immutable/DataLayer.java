@@ -9,6 +9,8 @@ import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.Interface;
+import au.net.netstorm.boost.gunge.type.TypeMaster;
+import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
 import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
 import au.net.netstorm.boost.nursery.gunge.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
@@ -65,20 +67,18 @@ public class DataLayer extends Primordial implements Layer {
     // FIX 2130 Tidy this rot.
     public Boolean calculateEquals(Object o) {
         if (o == null) return false;
-        if (!proxy(o)) return false;
-        InvocationHandler handler = Proxy.getInvocationHandler(o);
-        return calculateEquals(handler);
+        if (!layered(o)) return false;
+        Layered layered = (Layered) o;
+        Layer layer = layered.layer();
+        return calculateEquals(layer);
     }
 
-    // FIX 2130 Tidy this rot.
-    private Boolean calculateEquals(InvocationHandler handler) {
-        if (!(handler instanceof Layered)) return false;
-        Layered layered = (Layered) handler;
-        DataLayer layer = (DataLayer) layered.layer();
-        return equals(this, layer);
+    private Boolean calculateEquals(Layer layer) {
+        if (!(layer instanceof DataLayer)) return false;
+        DataLayer data = (DataLayer) layer;
+        return equals(this, data);
     }
 
-    // FIX 2130 Tidy this.  No train wrecks.
     private Boolean equals(DataLayer d1, DataLayer d2) {
         FieldValueSpec[] s1 = d1.specs;
         FieldValueSpec[] s2 = d2.specs;
@@ -86,16 +86,13 @@ public class DataLayer extends Primordial implements Layer {
     }
 
     // FIX 2130 This can be tidied significantly by adding a marker in ProxyFactory.
-    private boolean proxy(Object o) {
-        return Proxy.isProxyClass(o.getClass());
+    private boolean layered(Object o) {
+        return (o instanceof Layered);
     }
 
     private String calculateToString() {
-        Class type = iface.getType();
         String string = stringer.string(specs);
         ClassMaster classer = new DefaultClassMaster();
-        // FIX 2130 Use or lose.  Prob lose.
-//        return classer.getShortName(type) + " proxied by " + string;
         return classer.getShortName(iface) + string;
     }
 

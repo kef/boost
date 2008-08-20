@@ -21,7 +21,7 @@ public final class DefaultComposerAtomicTest extends BoooostCase {
     private final ProxyFactory proxyFactory = buildFactory();
     private final MockLayer mockHandlerA = new MockLayer();
     private final MockLayer mockHandlerB = new MockLayer();
-    private final MockProxyFactory mockProxyFactory = new MockProxyFactory();
+    private final MockLayerProxyFactory mockProxyFactory = new MockLayerProxyFactory();
     private final Composer composer = new DefaultComposer(mockProxyFactory);
 
     // SUGGEST Check interface implements 2 subinterfaces only.
@@ -38,7 +38,8 @@ public final class DefaultComposerAtomicTest extends BoooostCase {
 
     private Object createMockProxy(MockLayer layer) {
         layer.init();
-        return proxyFactory.newProxy(INTERFACE_A, layer);
+//        return proxyFactory.newProxy(INTERFACE_A, layer);
+        return null;
     }
 
     // SUGGEST Dupe.  See DefaultOneToMany.

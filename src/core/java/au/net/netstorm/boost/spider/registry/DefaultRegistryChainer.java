@@ -24,7 +24,7 @@ public final class DefaultRegistryChainer implements RegistryChainer {
         }
     }
 
-    // FIX 2248 Coalesce with InterfaceUtil and possibly TypeMaster?
+    // FIX 2248 Coalesce with InterfaceMaster and possibly TypeMaster?
     private Class[] classes(Implementation[] impls) {
         Class[] result = new Class[impls.length];
         for (int i = 0; i < impls.length; i++) {

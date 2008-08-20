@@ -8,12 +8,12 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.AspectSpec
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspects;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspectSpec;
 import au.net.netstorm.boost.spider.onion.core.Layer;
-import au.net.netstorm.boost.gunge.type.InterfaceUtil;
-import au.net.netstorm.boost.gunge.type.DefaultInterfaceUtil;
+import au.net.netstorm.boost.gunge.type.InterfaceMaster;
+import au.net.netstorm.boost.gunge.type.DefaultInterfaceMaster;
 import au.net.netstorm.boost.gunge.type.Interface;
 
 public final class DefaultAspectResolver implements AspectResolver {
-    private final InterfaceUtil ifacer = new DefaultInterfaceUtil();
+    private final InterfaceMaster ifacer = new DefaultInterfaceMaster();
     private final Aspects aspects;
 
     public DefaultAspectResolver(Aspects aspects) {

@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.Set;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
 
-public final class DefaultInterfaceUtilAtomicTest extends BoooostCase {
-    private final InterfaceUtil subject = new DefaultInterfaceUtil();
+public final class DefaultInterfaceMasterAtomicTest extends BoooostCase {
+    private final InterfaceMaster subject = new DefaultInterfaceMaster();
     private static final Interface MAP = new DefaultInterface(Map.class);
     private static final Interface SET = new DefaultInterface(Set.class);
     private static final Class[] ZERO_CLASSES = {};

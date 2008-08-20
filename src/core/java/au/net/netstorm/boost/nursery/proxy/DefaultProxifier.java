@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.proxy;
 
 import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
@@ -12,7 +13,7 @@ import au.net.netstorm.boost.spider.instantiate.NuImpl;
 // FIX ()   2248 Getting too big.
 public final class DefaultProxifier implements Proxifier {
     TypeMaster typer;
-    ProxyFactory proxies;
+    LayerProxyFactory proxies;
     NuImpl nuImpl;
 
     public <T> T proxy(T ref, LayerSpec spec) {
