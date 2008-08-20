@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.proxy;
 
 import java.lang.reflect.Field;
-import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
@@ -14,7 +14,7 @@ import au.net.netstorm.boost.spider.instantiate.DefaultNuImpl;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 
 public final class DefaultProxfierWirer implements ProxifierWirer {
-    private final ProxyFactory proxies = new DefaultProxyFactory();
+    private final LayerFactory layers = new DefaultLayerFactory();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final EdgeField fielder = new DefaultEdgeField();
     private final EdgeClass classer = new DefaultEdgeClass();
@@ -31,7 +31,7 @@ public final class DefaultProxfierWirer implements ProxifierWirer {
     }
 
     private void wire(Proxifier proxifier) {
-        setField(proxifier, "proxies", proxies);
+        setField(proxifier, "proxies", layers);
         setField(proxifier, "typer", typer);
         setField(proxifier, "nuImpl", nuImpl);
     }
