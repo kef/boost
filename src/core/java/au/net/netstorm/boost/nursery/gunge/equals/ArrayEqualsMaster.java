@@ -3,7 +3,7 @@ package au.net.netstorm.boost.nursery.gunge.equals;
 import java.lang.reflect.Array;
 import au.net.netstorm.boost.gunge.equals.EqualsMaster;
 
-// FIX 2130 Out of the nursery.
+// FIX 2130 Out of the nursery ... quick smart.
 
 public class ArrayEqualsMaster implements EqualsMaster {
     public boolean equals(Object o1, Object o2) {
