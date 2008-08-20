@@ -1,7 +1,5 @@
 package au.net.netstorm.boost.nursery.immutable;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
 import au.net.netstorm.boost.bullet.mirror.ClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.bullet.primordial.Primordial;
@@ -9,8 +7,6 @@ import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.Interface;
-import au.net.netstorm.boost.gunge.type.TypeMaster;
-import au.net.netstorm.boost.gunge.type.DefaultTypeMaster;
 import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
 import au.net.netstorm.boost.nursery.gunge.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
@@ -34,11 +30,15 @@ public class DataLayer extends Primordial implements Layer {
     }
 
     public Object invoke(Method method, Object[] params) {
-        if (method.getDeclaringClass() == Object.class) return object(method, params);
+        if (shortcircuit(method, Object.class)) return shortcircuit(method, params);
         return values(method);
     }
 
-    private Object object(Method method, Object[] params) {
+    private boolean shortcircuit(Method method, Class cls) {
+        return method.getDeclaringClass() == cls;
+    }
+
+    private Object shortcircuit(Method method, Object[] params) {
         if (is("equals", method)) return calculateEquals(params[0]);
         if (is("hashCode", method)) return calculateHashCode();
         if (is("toString", method)) return calculateToString();

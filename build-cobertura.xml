@@ -37,6 +37,7 @@
                     <exclude name="**/nursery/**"/>
                     <!-- FIX 2130 Reinstate test once proxy bollocks is sorted. -->
                     <exclude name="**/LayerInvocationHandler.class"/>
+                    <exclude name="**/DefaultLayerProxyFactory.class"/>
                 </fileset>
             </cobertura-instrument>
         </sequential>

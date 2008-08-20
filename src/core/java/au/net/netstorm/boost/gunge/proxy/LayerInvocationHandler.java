@@ -18,8 +18,9 @@ final class LayerInvocationHandler extends Primordial implements Layered, Invoca
         return layer;
     }
 
-    public Object invoke(Object proxy, java.lang.reflect.Method method, Object[] args) throws Throwable {
-        Method edgeMethod = new DefaultMethod(method);
-        return layer.invoke(edgeMethod, args);
+    public Object invoke(Object proxy, java.lang.reflect.Method realMethod, Object[] args) throws Throwable {
+        Method method = new DefaultMethod(realMethod);
+        if (method.getDeclaringClass() == Layered.class) return layer();
+        return layer.invoke(method, args);
     }
 }
