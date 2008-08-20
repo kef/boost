@@ -1,29 +1,31 @@
 package au.net.netstorm.boost.nursery.gunge.tostring;
 
-import java.lang.reflect.Array;
 import au.net.netstorm.boost.bullet.mirror.ClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
 import au.net.netstorm.boost.bullet.mirror.ReflectMaster;
 import au.net.netstorm.boost.gunge.indent.DefaultIndenterMaster;
+import au.net.netstorm.boost.gunge.indent.IndenterMaster;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.separator.Separator;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
+
+import java.lang.reflect.Array;
 
 // FIX 2299 Up coverage and out of nursery.
 public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
     private static final String LF = Separator.LINE;
     private static final String BLANK = "";
-    private final ClassMaster classMaster = new DefaultClassMaster();
-    private final ReflectMaster reflect = new DefaultReflectMaster();
+    private final ClassMaster classer = new DefaultClassMaster();
+    private final ReflectMaster reflecter = new DefaultReflectMaster();
+    private final IndenterMaster indenter = new DefaultIndenterMaster();
 
     public String string(Object ref) {
-        FieldValueSpec[] specs = reflect.getInstanceFields(ref);
+        FieldValueSpec[] specs = reflecter.getInstanceFields(ref);
         boolean extended = useExtended(specs);
         return getClassName(ref, extended) + string(specs);
     }
-
     // FIX 2130 This beast has to live on!!!!!
 //    if (MARKER.is(this, Sensitive.class)) return "Like XXXX, totally unflavoured.";
 
@@ -92,7 +94,7 @@ public class IndentingToStringMaster implements ToStringMaster {
 
     private String getClassName(Object ref) {
         Class cls = ref.getClass();
-        return classMaster.getShortName(cls);
+        return classer.getShortName(cls);
     }
 
     private boolean isArray(Object value) {
@@ -105,7 +107,7 @@ public class IndentingToStringMaster implements ToStringMaster {
     }
 
     private String indent(String result) {
-        return new DefaultIndenterMaster().indent(result);
+        return indenter.indent(result);
     }
 
     private boolean useExtended(Object[] refs) {

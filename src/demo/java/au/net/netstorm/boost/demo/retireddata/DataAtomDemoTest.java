@@ -7,9 +7,8 @@ import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
 import junit.framework.AssertionFailedError;
-
 // FIX 2130 Delete ... yeeha.
-
+// FIX 2130 There is a bunch of other stuff which goes with it.
 // SUGGEST Full IOC support allows copy-in/copy-out by interjecting proxies without the laborious code.
 public final class DataAtomDemoTest extends LifecycleTestCase implements InjectableTest, LazyFields {
     FieldSpec STRING_PROPERTY = new DefaultFieldSpec("guitar", String.class);
@@ -27,7 +26,6 @@ public final class DataAtomDemoTest extends LifecycleTestCase implements Injecta
     FieldSpec[] COMPLEX_NON_DATA_PROPERTIES = {STRING_PROPERTY, NON_DATA_PROPERTY};
     String MESSAGE_METHODS_MUST_BE_PUBLIC_INSTANCE_OR_PRIVATE = "Method getGuitar() violates the constraint that all methods must be public non-static or private.";
     AtomTestChecker checker;
-
     // SUGGEST Odd message when the class is not public.
     // SUGGEST Test utility should force data object to implement interface (?).
 
