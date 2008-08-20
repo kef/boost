@@ -21,7 +21,7 @@ public final class DefaultComposerAtomicTest extends BoooostCase {
     private final ProxyFactory proxyFactory = buildFactory();
     private final MockLayer mockHandlerA = new MockLayer();
     private final MockLayer mockHandlerB = new MockLayer();
-    private final MockLayerProxyFactory mockProxyFactory = new MockLayerProxyFactory();
+    private final MockLayerFactory mockProxyFactory = new MockLayerFactory();
     private final Composer composer = new DefaultComposer(mockProxyFactory);
 
     // SUGGEST Check interface implements 2 subinterfaces only.

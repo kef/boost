@@ -2,10 +2,8 @@ package au.net.netstorm.boost.nursery.spider.onion.core;
 
 import au.net.netstorm.boost.gunge.array.ArrayMaster;
 import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
-import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.gunge.type.DefaultBaseReference;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
@@ -28,7 +26,7 @@ import au.net.netstorm.boost.spider.onion.core.Onionizer;
 public final class BermudaOnionizer implements Onionizer {
     private static final Interface DATA = new DefaultInterface(Data.class);
     private static final Interface ONION_SKIN = new DefaultInterface(OnionSkin.class);
-    private final LayerProxyFactory factory = new DefaultLayerProxyFactory();
+    private final LayerFactory factory = new DefaultLayerFactory();
     private final TypeMaster typer = new DefaultTypeMaster();
     private final ArrayMaster arrays = new DefaultArrayMaster();
     private final LordOfTheRings lord = new DefaultLordOfTheRings();

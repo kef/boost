@@ -3,7 +3,7 @@ package au.net.netstorm.boost.demo.immutable;
 import java.lang.reflect.Method;
 import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.immutable.DataLayer;
@@ -14,7 +14,7 @@ import au.net.netstorm.boost.spider.onion.core.Layer;
 public final class ImmutableProvider implements Provider {
     private final Interface iface;
     NuImpl impl;
-    LayerProxyFactory proxies;
+    LayerFactory proxies;
 
     public ImmutableProvider(Interface iface) {
         this.iface = iface;

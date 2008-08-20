@@ -1,22 +1,19 @@
 package au.net.netstorm.boost.spider.builder;
 
-import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.spider.inject.resolver.core.DefaultFieldResolver;
 import au.net.netstorm.boost.nursery.spider.layer.Layers;
 import au.net.netstorm.boost.nursery.spider.onion.core.BermudaOnionizer;
-import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
+import au.net.netstorm.boost.spider.core.DefaultNu;
 import au.net.netstorm.boost.spider.core.DefaultProviderEngine;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
+import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.ProviderEngine;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.core.SpiderTryFinally;
-import au.net.netstorm.boost.spider.core.Nu;
-import au.net.netstorm.boost.spider.core.DefaultNu;
 import au.net.netstorm.boost.spider.inject.core.DefaultInjector;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.inject.core.InjectorEngine;
@@ -30,24 +27,25 @@ import au.net.netstorm.boost.spider.instantiate.DefaultNuImpl;
 import au.net.netstorm.boost.spider.instantiate.Instantiator;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.instantiate.SingleConstructorBasedInjectionInstantiator;
+import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
+import au.net.netstorm.boost.spider.linkage.LinkageFactory;
 import au.net.netstorm.boost.spider.onion.core.Onionizer;
 import au.net.netstorm.boost.spider.onion.layer.closure.DefaultTryFinallyLayer;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryFinally;
 import au.net.netstorm.boost.spider.onion.layer.closure.TryFinallyLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.DefaultPassThroughLayer;
 import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
+import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.registry.DefaultRegistry;
 import au.net.netstorm.boost.spider.registry.Factories;
 import au.net.netstorm.boost.spider.registry.Instances;
 import au.net.netstorm.boost.spider.registry.Registry;
-import au.net.netstorm.boost.spider.registry.DefaultRegistry;
-import au.net.netstorm.boost.spider.registry.Blueprints;
+import au.net.netstorm.boost.spider.resolve.DefaultImplementationLookup;
 import au.net.netstorm.boost.spider.resolve.DefaultResolver;
+import au.net.netstorm.boost.spider.resolve.DefaultResolverEngine;
+import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 import au.net.netstorm.boost.spider.resolve.ResolverEngine;
-import au.net.netstorm.boost.spider.resolve.ImplementationLookup;
-import au.net.netstorm.boost.spider.resolve.DefaultImplementationLookup;
-import au.net.netstorm.boost.spider.linkage.LinkageFactory;
-import au.net.netstorm.boost.spider.linkage.DefaultLinkageFactory;
 
 // SUGGEST: No need to return everything, just register the relevant parts as part of construction ;)
 
@@ -60,10 +58,10 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private static final PartialInstances PARTIAL_INSTANCES = new DefaultPartialInstances();
     private final Instantiator instantiator = new SingleConstructorBasedInjectionInstantiator();
     private final PassThroughLayer passThrough = new DefaultPassThroughLayer();
-    private final LayerProxyFactory proxyFactory = new DefaultLayerProxyFactory();
+    private final LayerFactory factory = new DefaultLayerFactory();
 
     public RegisteredSpider assemble(Instances instances, Factories factories, Blueprints blueprints, Layers proxies) {
-        ProviderEngine passThroughProvider = (ProviderEngine) proxyFactory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
+        ProviderEngine passThroughProvider = (ProviderEngine) factory.newProxy(OBJECT_PROVIDER_TYPE, passThrough);
         ResolverEngine resolverEngine = assembleResolver(passThroughProvider, instances, factories);
         InjectorEngine injectorEngine = assembleInjector(resolverEngine);
         ProviderEngine providerEngine = assembleProvider(injectorEngine, instantiator, proxies);
@@ -114,7 +112,7 @@ public final class DefaultSpiderAssembler implements SpiderAssembler {
     private Spider threadLocal(Spider spider) {
         TryFinally trier = new SpiderTryFinally(PARTIAL_INSTANCES);
         TryFinallyLayer layer = new DefaultTryFinallyLayer(spider, trier);
-        return (Spider) proxyFactory.newProxy(SPIDER_TYPE, layer);
+        return (Spider) factory.newProxy(SPIDER_TYPE, layer);
     }
 
     private ResolverEngine assembleResolver(ProviderEngine provider, Instances instances, Factories factories) {

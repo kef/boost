@@ -1,12 +1,10 @@
 package au.net.netstorm.boost.sniper.random;
 
+import au.net.netstorm.boost.gunge.provider.Provider;
 import au.net.netstorm.boost.gunge.provider.Random;
 import au.net.netstorm.boost.gunge.provider.SpecificProvider;
-import au.net.netstorm.boost.gunge.provider.Provider;
-import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.automock.MockSupport;
@@ -17,7 +15,7 @@ import au.net.netstorm.boost.spider.onion.layer.passthrough.PassThroughLayer;
 
 public final class DefaultRandomProviderAssembler implements RandomProviderAssembler {
     private static final Interface RANDOM_PROVIDER = new DefaultInterface(SpecificProvider.class);
-    private LayerProxyFactory proxyFactory = new DefaultLayerProxyFactory();
+    private LayerFactory factory = new DefaultLayerFactory();
     private PassThroughLayer passThrough = new DefaultPassThroughLayer();
 
     // FIX (Dec 17, 2007) CORE SPLIT 84836 Can DataProviders and EnumProvider be merged?
@@ -26,7 +24,7 @@ public final class DefaultRandomProviderAssembler implements RandomProviderAssem
     }
 
     private Random assemble(DataProviders data, EnumProvider enums, MockSupport mocks) {
-        SpecificProvider passthrough = (SpecificProvider) proxyFactory.newProxy(RANDOM_PROVIDER, passThrough);
+        SpecificProvider passthrough = (SpecificProvider) factory.newProxy(RANDOM_PROVIDER, passThrough);
         EverythingRandomProvider result = new EverythingRandomProvider(passthrough, enums);
         Provider interfaces = new InterfaceRandomProvider(result, data, enums, mocks);
         passThrough.setDelegate(interfaces);

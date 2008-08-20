@@ -1,9 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core;
 
-import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.types.core.CoreAspect;
@@ -12,7 +10,7 @@ import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public final class DefaultAspectorizer implements Aspectorizer {
-    private final LayerProxyFactory proxier = new DefaultLayerProxyFactory();
+    private final LayerFactory proxier = new DefaultLayerFactory();
     private final AspectResolver aspects;
 
     public DefaultAspectorizer(AspectResolver aspects) {

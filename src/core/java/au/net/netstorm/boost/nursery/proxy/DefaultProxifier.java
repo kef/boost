@@ -1,19 +1,19 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
+import au.net.netstorm.boost.gunge.type.DefaultImplementation;
 import au.net.netstorm.boost.gunge.type.Implementation;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.TypeMaster;
-import au.net.netstorm.boost.gunge.type.DefaultImplementation;
-import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
+import au.net.netstorm.boost.spider.onion.core.Layer;
 
 // FIX 2395 Does this all go.  The Layers stuff is good.
+
 // FIX ()   2248 Getting too big.
 public final class DefaultProxifier implements Proxifier {
     TypeMaster typer;
-    LayerProxyFactory proxies;
+    LayerFactory proxies;
     NuImpl nuImpl;
 
     public <T> T proxy(T ref, LayerSpec spec) {

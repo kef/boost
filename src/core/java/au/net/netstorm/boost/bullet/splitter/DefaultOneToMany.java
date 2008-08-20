@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import au.net.netstorm.boost.gunge.array.ArrayMaster;
 import au.net.netstorm.boost.gunge.array.DefaultArrayMaster;
-import au.net.netstorm.boost.gunge.proxy.DefaultProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.LayerProxyFactory;
-import au.net.netstorm.boost.gunge.proxy.DefaultLayerProxyFactory;
+import au.net.netstorm.boost.gunge.proxy.DefaultLayerFactory;
+import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
 public final class DefaultOneToMany implements OneToMany, Layer {
-    private final LayerProxyFactory proxyFactory = new DefaultLayerProxyFactory();
+    private final LayerFactory factory = new DefaultLayerFactory();
     private final ArrayMaster arrays = new DefaultArrayMaster();
     private final List many = new ArrayList();
     private final Interface type;
@@ -29,7 +27,7 @@ public final class DefaultOneToMany implements OneToMany, Layer {
     }
 
     public synchronized Object getOne() {
-        return proxyFactory.newProxy(type, this);
+        return factory.newProxy(type, this);
     }
 
     public synchronized Object invoke(Method method, Object[] args) {
