@@ -39,7 +39,7 @@ public class IndentingToStringMaster implements ToStringMaster {
 
     private String format(String[] s) {
         if (s.length == 0) return "[]";
-        if (s.length == 1) return "[" + getString(s) + "]";
+        if (s.length == 1) return getString(s);
         return "[" + LF + indent(getString(s)) + LF + "]";
     }
 

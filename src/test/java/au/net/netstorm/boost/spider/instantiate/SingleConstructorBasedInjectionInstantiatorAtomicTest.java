@@ -10,7 +10,7 @@ import au.net.netstorm.boost.sniper.core.BoooostCase;
 public final class SingleConstructorBasedInjectionInstantiatorAtomicTest extends BoooostCase {
     private static final Implementation TEST_IMPLEMENTATION = new DefaultImplementation(TestObjectimoto.class);
     private static final Object[] NO_PARAMS = {};
-    private static final String CLASS_NAME_SUFFIX = "[" + TEST_IMPLEMENTATION.getImpl() + "]" + " : []";
+    private static final String CLASS_NAME_SUFFIX = TEST_IMPLEMENTATION.getImpl() + " : []";
     private static final String COUNT_FAILURE = "Expected 1 parameters, given 0 in constructor for " + CLASS_NAME_SUFFIX;
     private static final String TYPE_FAILURE = "Unable to construct a " + CLASS_NAME_SUFFIX;
     private Instantiator subject = new SingleConstructorBasedInjectionInstantiator();

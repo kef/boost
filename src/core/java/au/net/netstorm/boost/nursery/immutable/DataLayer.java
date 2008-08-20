@@ -16,11 +16,24 @@ import au.net.netstorm.boost.spider.onion.core.Layered;
 // FIX 2130 Split into separate classes.
 
 public class DataLayer extends Primordial implements Layer {
+    private static final DataValidator VALIDATOR = new DefaultDataValidator();
+    private static final ToStringMaster STRINGER = new IndentingToStringMaster();
+    private static final EqualsMaster ARRAYS = new ArrayEqualsMaster();
+    private static final ClassMaster CLASSER = new DefaultClassMaster();
+    private final DataValidator validator;
+    private final ToStringMaster stringer;
+    private final EqualsMaster arrays;
+    private final ClassMaster classer;
+
+    {
+        validator = VALIDATOR;
+        stringer = STRINGER;
+        arrays = ARRAYS;
+        classer = CLASSER;
+    }
+
     private final Interface iface;
     private final FieldValueSpec[] specs;
-    private final DataValidator validator = new DefaultDataValidator();
-    private final ToStringMaster stringer = new IndentingToStringMaster();
-    private final EqualsMaster arrays = new ArrayEqualsMaster();
 
     public DataLayer(Interface iface, FieldValueSpec[] specs) {
         validator.check(specs, iface);
@@ -90,8 +103,8 @@ public class DataLayer extends Primordial implements Layer {
 
     private String calculateToString() {
         String string = stringer.string(specs);
-        ClassMaster classer = new DefaultClassMaster();
-        return classer.getShortName(iface) + string;
+        String value = specs.length == 1 ? "[" + string + "]" : string;
+        return classer.getShortName(iface) + value;
     }
 
     private Integer calculateHashCode() {
