@@ -12,7 +12,7 @@ import au.net.netstorm.boost.spider.onion.core.Layer;
 
 // FIX 2130 --- (Coordinate with MH) Move into "core"?
 
-// FIX 2130 Consider making nu part of a Pebble superclass.
+// FIX 2130 Consider making field "nu" and (some others?) part of a Pebble superclass.
 public final class ImmutableProvider implements Provider {
     private final Interface iface;
     LayerFactory proxies;
