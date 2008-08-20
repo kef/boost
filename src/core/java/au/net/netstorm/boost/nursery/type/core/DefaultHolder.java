@@ -1,23 +1,25 @@
 package au.net.netstorm.boost.nursery.type.core;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
+import au.net.netstorm.boost.gunge.equals.EqualsMaster;
 import au.net.netstorm.boost.gunge.introspect.DefaultFieldValueSpec;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.DefaultMarker;
 import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.gunge.type.Sensitive;
-import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
+import au.net.netstorm.boost.nursery.gunge.equals.ArrayEqualsMaster;
 import au.net.netstorm.boost.nursery.gunge.tostring.IndentingToStringMaster;
 
 // FIX 2233 Pull out array cloning and delegate - alternatively DefaultArrayHolder<T>?
 // FIX (Nov 21, 2007) 2233 Needs testing.
 // FIX (Nov 21, 2007) 2233 Move out of nursery
 
+// FIX 2130 LAST Delete when DataProxies are through.
+
 // OK GenericIllegalRegexp {
 public abstract class DefaultHolder<T> extends Primordial implements Holder<T> {
-    private static final ArraysEqualsMaster ARRAYS_EQUALS = new DefaultArraysEqualsMaster();
+    private static final EqualsMaster ARRAYS_EQUALS = new ArrayEqualsMaster();
     private static final ToStringMaster TO_STRING_MASTER = new IndentingToStringMaster();
     private static final Marker MARKER = new DefaultMarker();
     private final T value;

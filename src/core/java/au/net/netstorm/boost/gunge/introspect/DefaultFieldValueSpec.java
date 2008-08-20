@@ -1,16 +1,16 @@
 package au.net.netstorm.boost.gunge.introspect;
 
-import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
+import au.net.netstorm.boost.gunge.equals.EqualsMaster;
 import au.net.netstorm.boost.gunge.nullo.DefaultNullMaster;
 import au.net.netstorm.boost.gunge.nullo.NullMaster;
 import au.net.netstorm.boost.gunge.type.Immutable;
-import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
+import au.net.netstorm.boost.nursery.gunge.equals.ArrayEqualsMaster;
 
 // FIX SC502 Who uses this. Do we need it? TJA: It's the best thing since sliced bread. Who'd want to remove it???
 
 // FIX SC506 Can just be an immutable.
 public final class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
-    private static ArraysEqualsMaster arraysEquals = new DefaultArraysEqualsMaster();
+    private static EqualsMaster arrays = new ArrayEqualsMaster();
     private final String name;
     private final Object value;
 
@@ -41,7 +41,7 @@ public final class DefaultFieldValueSpec implements Immutable, FieldValueSpec {
     private boolean checkValue(FieldValueSpec spec) {
         Object otherValue = spec.getValue();
         if (otherValue == null) return otherValue == value;
-        if (otherValue.getClass().isArray()) return arraysEquals.equals(otherValue, value);
+        if (otherValue.getClass().isArray()) return arrays.equals(otherValue, value);
         return otherValue.equals(value);
     }
 

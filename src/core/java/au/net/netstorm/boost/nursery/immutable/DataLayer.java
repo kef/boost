@@ -3,11 +3,11 @@ package au.net.netstorm.boost.nursery.immutable;
 import au.net.netstorm.boost.bullet.mirror.ClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.gunge.equals.ArraysEqualsMaster;
+import au.net.netstorm.boost.gunge.equals.EqualsMaster;
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 import au.net.netstorm.boost.gunge.type.Interface;
-import au.net.netstorm.boost.nursery.gunge.equals.DefaultArraysEqualsMaster;
+import au.net.netstorm.boost.nursery.gunge.equals.ArrayEqualsMaster;
 import au.net.netstorm.boost.nursery.gunge.tostring.IndentingToStringMaster;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
@@ -21,7 +21,7 @@ public class DataLayer extends Primordial implements Layer {
     private final FieldValueSpec[] specs;
     private final DataValidator validator = new DefaultDataValidator();
     private final ToStringMaster stringer = new IndentingToStringMaster();
-    private final ArraysEqualsMaster arrays = new DefaultArraysEqualsMaster();
+    private final EqualsMaster arrays = new ArrayEqualsMaster();
 
     public DataLayer(Interface iface, FieldValueSpec[] specs) {
         validator.check(specs, iface);
