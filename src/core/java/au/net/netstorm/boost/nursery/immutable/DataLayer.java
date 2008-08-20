@@ -13,9 +13,8 @@ import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Layered;
 
-// FIX 2130 Move into separate classes.
+// FIX 2130 Split into separate classes.
 
-// FIX 2130 Migrate to Layer.
 public class DataLayer extends Primordial implements Layer {
     private final Interface iface;
     private final FieldValueSpec[] specs;
@@ -85,7 +84,6 @@ public class DataLayer extends Primordial implements Layer {
         return arrays.equals(s1, s2);
     }
 
-    // FIX 2130 This can be tidied significantly by adding a marker in ProxyFactory.
     private boolean layered(Object o) {
         return (o instanceof Layered);
     }
@@ -98,8 +96,8 @@ public class DataLayer extends Primordial implements Layer {
 
     private Integer calculateHashCode() {
         int hashCode = iface.hashCode();
-        for (int i = 0; i < specs.length; i++) {
-            hashCode = hashCode + 31 * specs[i].hashCode();
+        for (FieldValueSpec spec : specs) {
+            hashCode = hashCode + 31 * spec.hashCode();
         }
         return new Integer(hashCode);
     }

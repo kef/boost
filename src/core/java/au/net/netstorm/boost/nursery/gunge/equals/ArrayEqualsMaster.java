@@ -3,11 +3,8 @@ package au.net.netstorm.boost.nursery.gunge.equals;
 import java.lang.reflect.Array;
 import au.net.netstorm.boost.gunge.equals.EqualsMaster;
 
-// FIX 2299 Up coverage and out of nursery.
+// FIX 2130 Out of the nursery.
 
-// FIX 2130 This should just be ArrayEqualsMaster.  Bugger the interface flavouring.
-
-// FIX SC509 TEST DRIVE THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 public class ArrayEqualsMaster implements EqualsMaster {
     public boolean equals(Object o1, Object o2) {
         validate(o1, o2);
@@ -15,8 +12,8 @@ public class ArrayEqualsMaster implements EqualsMaster {
     }
 
     private boolean arraysEquals(Object array1, Object array2) {
-        if (Array.getLength(array1) != Array.getLength(array2)) return false;
-        for (int i = 0; i < Array.getLength(array1); i++) {
+        if (length(array1) != length(array2)) return false;
+        for (int i = 0; i < length(array1); i++) {
             if (memberArraysUnequal(array1, array2, i)) return false;
         }
         return true;
@@ -40,5 +37,9 @@ public class ArrayEqualsMaster implements EqualsMaster {
     private boolean isArray(Object o) {
         Class cls = o.getClass();
         return cls.isArray();
+    }
+
+    private int length(Object array) {
+        return Array.getLength(array);
     }
 }
