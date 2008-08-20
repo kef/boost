@@ -1,13 +1,10 @@
 package au.net.netstorm.boost.demo.immutable;
 
 import static au.net.netstorm.boost.gunge.separator.Separator.LINE;
-import au.net.netstorm.boost.sniper.marker.HasFixtures;
 
-public final class ImmutablesDemoTest extends ImmutablesTest implements HasFixtures {
+// FIX 2130 Complete and tidy.
+public final class ImmutablesDemoTest extends ImmutablesTest {
     Socker socker = spider.resolve(Socker.class);
-
-    public void setUpFixtures() {
-    }
 
     public void testEquality() {
         Sock s1 = socker.sock();
