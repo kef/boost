@@ -7,7 +7,6 @@ import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.onion.core.Layered;
 
-// FIX 2248 TDD.
 final class LayerInvocationHandler extends Primordial implements Layered, InvocationHandler {
     private final Layer layer;
 
