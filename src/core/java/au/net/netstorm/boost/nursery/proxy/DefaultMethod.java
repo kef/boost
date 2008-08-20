@@ -4,7 +4,9 @@ import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 
-// FIX 2248 Move this out of edge or something, or sort it out.
+// FIX 2130 Not a stateless edge.  Sort out.
+
+// FIX 2130 Move this out of edge or something, or sort it out.
 public final class DefaultMethod implements Method {
     private static final Object NEVER = null;
     private final ThrowableMaster tosser = new DefaultThrowableMaster();
