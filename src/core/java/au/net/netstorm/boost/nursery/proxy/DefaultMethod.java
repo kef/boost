@@ -1,6 +1,5 @@
 package au.net.netstorm.boost.nursery.proxy;
 
-import java.lang.annotation.Annotation;
 import au.net.netstorm.boost.gunge.exception.DefaultThrowableMaster;
 import au.net.netstorm.boost.gunge.exception.ThrowableMaster;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
@@ -28,14 +27,6 @@ public final class DefaultMethod implements Method {
             tosser.rethrow(real);
             return NEVER;
         }
-    }
-
-    public boolean isAnnotationPresent(Class<? extends Annotation> cls) {
-        return delegate.isAnnotationPresent(cls);
-    }
-
-    public <T extends Annotation> T getAnnotation(Class<T> cls) {
-        return delegate.getAnnotation(cls);
     }
 
     public Class<?> getDeclaringClass() {
