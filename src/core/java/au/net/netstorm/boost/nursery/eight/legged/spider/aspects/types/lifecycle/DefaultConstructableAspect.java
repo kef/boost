@@ -1,11 +1,14 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.types.lifecycle;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Cut;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-public final class DefaultConstructableAspect implements ConstructableAspect {
+// FIX 2394 i think the constructable aspect is a failed experiment. need to implement dedicated lifecycle mgmt.
+// FIX 2394 kill this.
+public final class DefaultConstructableAspect extends Primordial implements ConstructableAspect {
     private final Layer delegate;
     private final Constructable core;
     private volatile boolean constructed = false;
@@ -15,7 +18,7 @@ public final class DefaultConstructableAspect implements ConstructableAspect {
         this.core = core(cut);
     }
 
-    public Object invoke(Method method, Object[] args) {
+    public synchronized Object invoke(Method method, Object[] args) {
         if (!constructed) construct();
         return delegate.invoke(method, args);
     }
@@ -26,7 +29,8 @@ public final class DefaultConstructableAspect implements ConstructableAspect {
         return (Constructable) core;
     }
 
-    private synchronized void construct() {
+    private void construct() {
+        constructed = true;
         core.constructor();
     }
 
