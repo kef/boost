@@ -1,10 +1,9 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
+import java.util.ArrayList;
+import java.util.List;
 // FIX 2394 Split into mutable and immutable ifaces.
 // FIX 2394 Use a builder mutable-> immutable pattern.
 public final class DefaultCut implements Cut {
@@ -15,7 +14,6 @@ public final class DefaultCut implements Cut {
     public DefaultCut(Object core) {
         this.core = core;
     }
-
 
     public void add(Layer aspect) {
         links.add(aspect);
