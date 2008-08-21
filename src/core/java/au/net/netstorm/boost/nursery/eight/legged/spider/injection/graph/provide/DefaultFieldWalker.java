@@ -18,6 +18,7 @@ import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableField
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
 // FIX 2394 Clean this beast. Check out ConstructorWalker. Use ProviderOperations.
+// DEBT ParameterNumber {
 public final class DefaultFieldWalker implements Walker {
     private final ProviderOperations opererations = new DefaultProviderOperations();
     private final Marker marker = new DefaultMarker();
@@ -49,3 +50,4 @@ public final class DefaultFieldWalker implements Walker {
         sites.add(site);
     }
 }
+// } DEBT ParameterNumber
