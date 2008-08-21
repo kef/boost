@@ -23,9 +23,14 @@ public abstract class IoCTestCase extends CleanTestCase {
     public Spider getSpider() {
         // FIX 2394 Switch this code in and see what barfs. Push hard to get new spiderage happening.
 //        SpiderEgg egg = new DefaultSpiderEgg();
-//        return egg.hatch();
+//        Class[] configs = config();
+//        return egg.hatch(configs);
         TestSpiderBuilder builder = new DefaultTestSpiderBuilder();
         return builder.build();
     }
 
+    // FIX 2394 switch code in.
+//    public Class[] config() {
+//        return new Class[] {SniperSpiderConfig.class};
+//    }
 }
