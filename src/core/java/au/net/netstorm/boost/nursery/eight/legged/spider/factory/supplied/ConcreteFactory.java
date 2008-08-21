@@ -37,6 +37,7 @@ public final class ConcreteFactory implements Factory {
         return canBeMadeAccessible(ctors[0]);
     }
 
+    // FIX 2394 this is dodgy, work out how what security checks to perform rather than try/catch
     private boolean canBeMadeAccessible(Constructor ctor) {
         try {
             ctor.setAccessible(true);
