@@ -14,6 +14,7 @@ public final class SniperSpiderConfig implements SpiderConfig {
     Binder binder;
 
     public void configure() {
+        // FIX 2130 MAG This is dupe (localised).  Discuss and resolve.
         binder.bind(MockSupport.class).toSingle(DefaultMockSupport.class);
         binder.bind(TestLifecycleBlocks.class).toSingle(BoostTestLifecycleBlocks.class);
         binder.bind(ProvidesData.class).toSingle(BoostDataProviders.class);
