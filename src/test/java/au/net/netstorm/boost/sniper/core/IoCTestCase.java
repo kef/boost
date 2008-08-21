@@ -18,6 +18,7 @@ public abstract class IoCTestCase extends CleanTestCase {
     public abstract void runBareWithIoC(Spider spider) throws Throwable;
 
         // SUGGEST (Dec 4, 2007): Put public methods on interface?
+    // FIX 2394 when moving to new spider kill this. force sub classes to specify spider configs to hatch.
     // FIX 2394 name (if this guy lives on). nuSpider. getSpider is decieving.
     public Spider getSpider() {
         // FIX 2394 Switch this code in and see what barfs. Push hard to get new spiderage happening.
