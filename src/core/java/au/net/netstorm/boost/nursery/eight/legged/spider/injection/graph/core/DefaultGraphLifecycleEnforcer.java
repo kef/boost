@@ -7,6 +7,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.gunge.optional.Optional;
 
+// FIX 2394 rename. either LifecycleEnforce, or maybe GraphProtocol.
 public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforcer {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
     private final GraphWirer wirer;
@@ -18,15 +19,15 @@ public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforc
     // FIX 2394 Move this out into DefaultGrapher and shrink this back down.
     public Object apply(InjectionType type, Optional<Provider> provider, Object... args) {
         InjectionSite root = builder.root(type);
-        Graph stateful = wirer.nu(root, provider, args);
+        LifecycleInstance stateful = wirer.nu(root, provider, args);
         return apply(stateful);
     }
 
-    private Object apply(Graph graph) {
-        graph.build();
-        graph.instantiate();
-        graph.wire();
-        graph.post();
-        return graph.resolve();
+    private Object apply(LifecycleInstance lifecycle) {
+        lifecycle.build();
+        lifecycle.instantiate();
+        lifecycle.wire();
+        lifecycle.post();
+        return lifecycle.resolve();
     }
 }

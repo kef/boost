@@ -16,7 +16,7 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public final class DefaultGraphWirer implements GraphWirer {
     private final ProvidersWirer wirer;
-    private final StatelessGraph graph;
+    private final Lifecycle graph;
     private final Resolver resolver;
 
     public DefaultGraphWirer(FactoryResolver factories, AspectResolver aspector, Resolver resolver) {
@@ -25,14 +25,14 @@ public final class DefaultGraphWirer implements GraphWirer {
         this.wirer = new DefaultProvidersWirer(factories);
     }
 
-    public Graph nu(InjectionSite root, Optional<Provider> provider, Object[] args) {
+    public LifecycleInstance nu(InjectionSite root, Optional<Provider> provider, Object[] args) {
         Instances instances = new DefaultInstances();
         Resolvables resolvables = new DefaultResolvables();
         Providers providers = wirer.nu(instances, provider, root, args);
-        return new DefaultGraph(graph, providers, instances, resolvables, root, resolver);
+        return new DefaultLifecycleInstance(graph, providers, instances, resolvables, root, resolver);
     }
 
-    private StatelessGraph graph(AspectResolver aspector) {
+    private Lifecycle graph(AspectResolver aspector) {
         StatelessGraphWirer wirer = new DefaultStatelessGraphWirer(aspector);
         return wirer.nu();
     }

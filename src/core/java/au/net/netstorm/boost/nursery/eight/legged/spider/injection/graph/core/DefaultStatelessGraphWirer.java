@@ -19,8 +19,8 @@ public final class DefaultStatelessGraphWirer implements StatelessGraphWirer {
         poster = poster(aspector);
     }
 
-    public StatelessGraph nu() {
-        return new DefaultStatelessGraph(instantiator, wirer, poster);
+    public Lifecycle nu() {
+        return new DefaultLifecycle(instantiator, wirer, poster);
     }
 
     private PostProcessor poster(AspectResolver poster) {
