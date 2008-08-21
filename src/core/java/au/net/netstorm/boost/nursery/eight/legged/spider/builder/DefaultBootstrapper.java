@@ -22,10 +22,10 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.core.SpiderConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ConcreteFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ConcreteFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.PrefixMapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
@@ -59,7 +59,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Registry registry = new DefaultRegistry(binder, aspector);
 
     public Spider bootstrap(Class<? extends SpiderConfig>[] configs) {
-        bindImplicitFactory();
+        bindPrimaryFactories();
         bindSpiderState();
         bindAspects();
         bindLegacy();
@@ -72,8 +72,11 @@ public final class DefaultBootstrapper implements Bootstrapper {
     }
 
     // FIX 2394 this bit should probably be in a BoostSpiderConfig
-    private void bindImplicitFactory() {
+    // FIX 2394 some dodginess going on here. clean up.
+    private void bindPrimaryFactories() {
         factories.add(new ConcreteFactory());
+        // FIX 2394 use case for a wrapper to allow setting of multiplicity only.
+        binder.bind(ImplicitFactory.class).toSingle(ImplicitFactory.class);
         web.register(ImplicitFactory.class);
         Mappings mappings = spider.resolve(Mappings.class);
         Mapping mapper = new PrefixMapping("Default");
