@@ -1,16 +1,14 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.UnresolvableException;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.DefaultNode;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProviderOperations;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
 
 public final class DefaultSiteWalker implements SiteWalker {
     private final Walker constructor = new DefaultConstructorWalker();
     private final Walker fields = new DefaultFieldWalker();
-    private final ProviderOperations operations = new DefaultProviderOperations();
     private final Providers providers;
     private final Resolvables resolvables;
 
@@ -19,34 +17,42 @@ public final class DefaultSiteWalker implements SiteWalker {
         this.resolvables = resolvables;
     }
 
-    public void traverse(InjectionSite site) {
+    public Node traverse(InjectionSite site) {
         SiteState state = new DefaultSiteState();
-        traverse(state, site);
+        Node root = new DefaultNode(site);
+        traverse(root, state, site);
+        return root;
     }
 
-    public void traverse(SiteState state, InjectionSite site) {
+    public void traverse(Node node, SiteState state, InjectionSite host, InjectionSite[] sites) {
+        resolvables.add(host, sites);
+        for (InjectionSite site : sites) branch(node, state, site);
+    }
+
+    private void branch(Node parent, SiteState state, InjectionSite site) {
+        Node child = new DefaultNode(site);
+        parent.add(child);
+        traverse(child, state, site);
+    }
+
+    public void traverse(Node node, SiteState state, InjectionSite site) {
         if (state.hasWalked(site)) return;
         state.walking(site);
-        safeTraverse(state, site);
+        safeTraverse(node, state, site);
     }
 
-    public void traverse(SiteState state, InjectionSite host, InjectionSite[] sites) {
-        resolvables.add(host, sites);
-        for (InjectionSite site : sites) traverse(state, site);
-    }
-
-    private void safeTraverse(SiteState state, InjectionSite site) {
+    private void safeTraverse(Node node, SiteState state, InjectionSite site) {
         try {
-            unsafeTraverse(state, site);
-        } catch (UnresolvableException ignore) {
+            unsafeTraverse(node, state, site);
+        } catch (Exception ignore) {
             // FIX 2394 Fix this crud. Basically don't care at this stage if it can't provide.
             // FIX 2394 This gets validated in next phase (could be created by constructor/initializer).
         }
     }
 
-    private void unsafeTraverse(SiteState state, InjectionSite site) {
+    private void unsafeTraverse(Node node, SiteState state, InjectionSite site) {
         Provider provider = providers.provide(site);
-        constructor.traverse(this, state, site, provider);
-        fields.traverse(this, state, site, provider);
+        constructor.traverse(this, node, state, site, provider);
+        fields.traverse(this, node, state, site, provider);
     }
 }

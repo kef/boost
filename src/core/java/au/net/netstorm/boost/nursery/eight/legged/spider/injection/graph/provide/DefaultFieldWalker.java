@@ -9,6 +9,7 @@ import au.net.netstorm.boost.gunge.type.Marker;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.HasInjectableTarget;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperations;
@@ -23,13 +24,13 @@ public final class DefaultFieldWalker implements Walker {
     private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
     private final ResolvableFieldMaster resolvable = new DefaultResolvableFieldMaster();
 
-    public void traverse(SiteWalker walker, SiteState state, InjectionSite site, Provider provider) {
+    public void traverse(SiteWalker walker, Node node, SiteState state, InjectionSite site, Provider provider) {
         Provider root = opererations.root(provider);
         if (!marker.is(root, HasInjectableTarget.class)) return;
         HasInjectableTarget injectable = (HasInjectableTarget) root;
         Class<?> target = injectable.getTargetClass();
         InjectionSite[] sites = sites(target);
-        walker.traverse(state, site, sites);
+        walker.traverse(node, state, site, sites);
     }
 
     private InjectionSite[] sites(Class<?> target) {

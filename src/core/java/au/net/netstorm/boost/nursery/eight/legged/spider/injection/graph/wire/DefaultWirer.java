@@ -1,42 +1,39 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire;
 
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.InstanceCreator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvable;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.FieldInjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
 public final class DefaultWirer implements Wirer {
-    public void wire(Instances instances, Resolvables resolvables) {
-        for (Resolvable resolvable : resolvables) {
-            wire(instances, resolvable);
+    public void wire(Node graph, Instances instances, Resolvables resolvables, Providers providers) {
+        nu(graph, instances, providers);
+    }
+
+    private void nu(Node graph, Instances instances, Providers providers) {
+        InstanceCreator creator = new InstanceCreator(providers, instances);
+        visit(graph, instances, creator);
+    }
+
+    private void visit(Node graph, Instances instances, InstanceCreator creator) {
+        InjectionSite site = graph.site();
+        Object instance = instances.get(site, creator);
+        for (Node node : graph) {
+            hackItTogetherAKAwire(instance, node, instances, creator);
         }
     }
 
-    private void wire(Instances instances, Resolvable resolvable) {
-        Object host = host(instances, resolvable);
-        InjectionSite[] sites = resolvable.sites();
-        wire(instances, host, sites);
-    }
-
-    private void wire(Instances instances, Object host, InjectionSite[] sites) {
-        for (InjectionSite site : sites) {
-            wire(instances, host, site);
-        }
-    }
-
-    // FIX 2394 badness.
-    private void wire(Instances instances, Object host, InjectionSite site) {
+    // FIX 2394 nasty piece of hackery here.
+    private void hackItTogetherAKAwire(Object host, Node node, Instances instances, InstanceCreator creator) {
+        InjectionSite site = node.site();
         if (!(site instanceof FieldInjectionSite)) return;
         FieldInjectionSite field = (FieldInjectionSite) site;
         if (field.isWired(host)) return;
-        Object instance = instances.get(site);
+        visit(node, instances, creator);
+        Object instance = instances.get(site, creator);
         field.inject(host, instance);
-    }
-
-    private Object host(Instances instances, Resolvable resolvable) {
-        InjectionSite host = resolvable.host();
-        Object nullable = instances.get(host);
-        return nullable != Instances.NULL ? nullable : null;
     }
 }

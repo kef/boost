@@ -1,11 +1,12 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
 
 public interface SiteWalker {
-    void traverse(InjectionSite site);
+    Node traverse(InjectionSite site);
     
-    void traverse(SiteState state, InjectionSite site);
+    void traverse(Node root, SiteState state, InjectionSite site);
 
-    void traverse(SiteState state, InjectionSite host, InjectionSite[] sites);
+    void traverse(Node node, SiteState state, InjectionSite host, InjectionSite[] sites);
 }

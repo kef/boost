@@ -12,28 +12,27 @@ public final class InstanceCreator implements Creator<InjectionSite, Object> {
     private final Instantiator instantiator = new DefaultInstantiator();
     private final ProviderOperations operations = new DefaultProviderOperations();
     private Providers providers;
-    private Provider provider;
     private Instances instances;
 
-    public InstanceCreator(Providers providers, Provider provider, Instances instances) {
+    public InstanceCreator(Providers providers, Instances instances) {
         this.providers = providers;
-        this.provider = provider;
         this.instances = instances;
     }
 
     public Object apply(InjectionSite site) {
-        Object[] args = args(providers, provider, instances, site);
+        Provider provider = providers.provide(site);
+        Object[] args = args(site, provider);
         return provider.nu(args);
     }
 
-    private Object[] args(Providers providers, Provider provider, Instances instances, InjectionSite site) {
+    private Object[] args(InjectionSite site, Provider provider) {
         InjectionSite[] sites = operations.constructors(site, provider);
         // FIX 2394 does not gracefully handle cyclic dependencies on ctor args
         instantiator.instantiate(providers, instances, sites);
-        return args(instances, sites);
+        return args(sites);
     }
 
-    private Object[] args(Instances instances, InjectionSite[] sites) {
+    private Object[] args(InjectionSite[] sites) {
         Object[] args = new Object[sites.length];
         for (int i = 0; i < sites.length; i++) {
             InjectionSite s = sites[i];
