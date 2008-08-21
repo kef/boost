@@ -19,13 +19,8 @@ public final class DefaultInstantiator implements Instantiator {
 
     private void instantiate(Providers providers, Instances instances, Iterable<InjectionSite> list) {
         for (InjectionSite site : list) {
-            // FIX 2394 hackage.
-            try {
-                instantiate(providers, instances, site);
-            } catch (Exception e) {
-                // FIX 2394 check this out
-//                e.printStackTrace();
-            }
+            // FIX 2394 EX checkout possible failures from this guy. 
+            instantiate(providers, instances, site);
         }
     }
 
