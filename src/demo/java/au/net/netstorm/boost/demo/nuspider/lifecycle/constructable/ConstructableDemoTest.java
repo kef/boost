@@ -20,11 +20,9 @@ public final class ConstructableDemoTest extends NuSpiderDemooooTest implements 
         checkConstructCount(1, ConstructableMulti.class);
     }
 
-    // FIX 2394 reinstate once aspecting is complete.
-    // FIX 2394 currently, aspects are not singletons even if objects are.
     public void testConstructSingleton() {
-//        checkConstructCount(1, ConstructableSingle.class);
-//        checkConstructCount(1, ConstructableSingle.class);
+        checkConstructCount(1, ConstructableSingle.class);
+        checkConstructCount(1, ConstructableSingle.class);
     }
 
     private void checkConstructCount(int expected, Class<? extends ConstructableThing> type) {
