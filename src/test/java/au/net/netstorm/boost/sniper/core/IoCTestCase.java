@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.sniper.core;
 
-import au.net.netstorm.boost.spider.core.Spider;
-import au.net.netstorm.boost.sniper.spider.TestSpiderBuilder;
 import au.net.netstorm.boost.sniper.spider.DefaultTestSpiderBuilder;
+import au.net.netstorm.boost.sniper.spider.TestSpiderBuilder;
+import au.net.netstorm.boost.spider.core.Spider;
 
 // FIX 2394 temporary step, i think the ioc should not be in the test class hierachy, rather in the lifecycle somewhere.
 // FIX 2394 seperate out IoC required for framework vs IoC required for code under test.
@@ -21,7 +21,7 @@ public abstract class IoCTestCase extends CleanTestCase {
     // FIX 2394 when moving to new spider kill this. force sub classes to specify spider configs to hatch.
     // FIX 2394 name (if this guy lives on). nuSpider. getSpider is decieving.
     public Spider getSpider() {
-        // FIX 2394 Switch this code in and see what barfs. Push hard to get new spiderage happening.
+        // FIX 2394 SWITCHME.
 //        SpiderEgg egg = new DefaultSpiderEgg();
 //        Class[] configs = config();
 //        return egg.hatch(configs);
@@ -29,7 +29,7 @@ public abstract class IoCTestCase extends CleanTestCase {
         return builder.build();
     }
 
-    // FIX 2394 switch code in.
+    // FIX 2394 SWITCHME. switch code in.
 //    public Class[] config() {
 //        return new Class[] {SniperSpiderConfig.class};
 //    }

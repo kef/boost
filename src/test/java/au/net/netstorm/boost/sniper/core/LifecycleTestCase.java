@@ -23,9 +23,9 @@ public class LifecycleTestCase extends IoCTestCase {
         // FIX BREADCRUMB 2394 pushing around some code to be ready for a switch over.
         // FIX 2394 split out into a root and delegate for ioc.
         bootstrapa(spider);
-        runner.run();        
+        runner.run();
     }
-    
+
     // SUGGEST: Ugly little beast.
     // FIX 2394 maybe try calling injector.inject(this) and do this base on spider config.
     private void bootstrapa(Spider spider) {
@@ -51,6 +51,7 @@ public class LifecycleTestCase extends IoCTestCase {
     // FIX 2394 this should dissappear with new spider.
     // FIX 2394 each sub class can provide its own SpiderConfig to hatch that does this.
     public void framework(Registry registry) {
+        // FIX 2394 SWITCHME. remove this registration.
         registry.single(TestLifecycleBlocks.class, BoostTestLifecycleBlocks.class);
         registry.single(ProvidesData.class, BoostDataProviders.class);
     }
