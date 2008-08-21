@@ -22,10 +22,15 @@ public final class ConcreteFactory implements Factory {
         Class cls = raw(site);
         if (!isInstantiable(cls)) return false;
         // FIX 2394 this is not correct, there needs to be a common class for determining what is concrete
+        return correctType(cls);
+    }
+
+    // FIX 2394 abstract these methods out.
+
+    private boolean correctType(Class cls) {
         return !cls.isInterface() && !cls.isArray() && !cls.isAnnotation() && !cls.isEnum();
     }
 
-    // FIX 2394 abstract these next 2 methods out.
     private boolean isInstantiable(Class<?> type) {
         Constructor[] ctors = type.getDeclaredConstructors();
         if (ctors.length != 1) return false;
@@ -41,7 +46,6 @@ public final class ConcreteFactory implements Factory {
         }
     }
 
-    // FIX 2394 abstract, used in lots of factories.
     private Class raw(InjectionSite site) {
         InjectionType type = site.type();
         return type.rawClass();
