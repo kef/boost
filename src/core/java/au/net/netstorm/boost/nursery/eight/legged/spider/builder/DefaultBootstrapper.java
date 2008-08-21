@@ -26,6 +26,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Defaul
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ConcreteFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.legacy.DefaultRegistry;
@@ -72,6 +73,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
 
     // FIX 2394 this bit should probably be in a BoostSpiderConfig
     private void bindImplicitFactory() {
+        factories.add(new ConcreteFactory());
         web.register(ImplicitFactory.class);
         Mappings mappings = spider.resolve(Mappings.class);
         Mapping mapper = new DefaultMapping();
