@@ -33,7 +33,7 @@ public final class DefaultGraphWirer implements GraphWirer {
     }
 
     private Lifecycle graph(AspectResolver aspector) {
-        StatelessGraphWirer wirer = new DefaultStatelessGraphWirer(aspector);
+        StatelessGraphWirer wirer = new DefaultLifecycleWirer(aspector);
         return wirer.nu();
     }
 }

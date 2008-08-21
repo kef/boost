@@ -9,6 +9,8 @@ import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
+// FIX 2394 there is an overarching assumption that aspects are stateless and therfore...
+// FIX 2394 it is ok to wrap a singleton in two different layer instances with no change in behaviour.
 public final class DefaultAspectorizer implements Aspectorizer {
     private final LayerFactory proxier = new DefaultLayerFactory();
     private final AspectResolver aspects;
@@ -22,7 +24,6 @@ public final class DefaultAspectorizer implements Aspectorizer {
         return spec.hasLayers() ? aspect(resolver, target, spec) : target;
     }
 
-    // FIX BREADCRUMB 2394 aaaaaaaaaaa implement me.
     private Object aspect(Resolver resolver, Object target, AspectSpec spec) {
         Cut cut = new DefaultCut(target);
         Interface[] ifaces = spec.interfaces();
