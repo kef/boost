@@ -22,11 +22,11 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.core.SpiderConfig;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.DefaultMapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ConcreteFactory;
+import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.PrefixMapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.legacy.DefaultRegistry;
@@ -76,7 +76,7 @@ public final class DefaultBootstrapper implements Bootstrapper {
         factories.add(new ConcreteFactory());
         web.register(ImplicitFactory.class);
         Mappings mappings = spider.resolve(Mappings.class);
-        Mapping mapper = new DefaultMapping();
+        Mapping mapper = new PrefixMapping("Default");
         mappings.add(mapper);
     }
 
