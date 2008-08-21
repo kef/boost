@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import au.net.netstorm.boost.bullet.primordial.Primordial;
-import au.net.netstorm.boost.gunge.collection.ArrayListCreator;
+import au.net.netstorm.boost.gunge.collection.ListCreator;
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
 import au.net.netstorm.boost.gunge.collection.IntegrityMap;
@@ -16,7 +16,7 @@ public final class DefaultBindings extends Primordial implements Bindings {
     // FIX 2394 MAG Dodgy line wrap ... or dodgy code.
     private final IntegrityMap<InjectionType,List<Binding>> bindings =
             new DefaultIntegrityMap<InjectionType, List<Binding>>();
-    private final Creator<InjectionType, List<Binding>> creator = new ArrayListCreator<InjectionType, List<Binding>>();
+    private final Creator<InjectionType, List<Binding>> creator = new ListCreator<InjectionType, List<Binding>>();
 
     public void add(Binding binding) {
         InjectionType type = binding.getType();

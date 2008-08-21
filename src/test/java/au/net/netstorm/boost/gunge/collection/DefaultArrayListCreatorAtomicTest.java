@@ -12,7 +12,7 @@ public final class DefaultArrayListCreatorAtomicTest extends LifecycleTestCase i
     private Creator subject;
 
     public void setUpFixtures() {
-        subject = new ArrayListCreator();
+        subject = new ListCreator();
     }
 
     public void testCreate() {
