@@ -11,8 +11,6 @@ import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleBlocks;
 import au.net.netstorm.boost.sniper.lifecycle.TestLifecycleRunner;
 import au.net.netstorm.boost.sniper.marker.ProvidesData;
 import au.net.netstorm.boost.sniper.specific.BoostDataProviders;
-import au.net.netstorm.boost.sniper.spider.DefaultTestSpiderBuilder;
-import au.net.netstorm.boost.sniper.spider.TestSpiderBuilder;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.registry.Registry;
 
@@ -20,16 +18,18 @@ public class LifecycleTestCase extends IoCTestCase {
     public static final Object VOID = MockExpectations.VOID;
     private TestLifecycleRunner runner;
     public Expectations expect;
-    // FIX 2394 why is this public?
-    public Spider spider;
 
-    // FIX 2394 FREEZE moving along... do not touch this.
-    // FIX 2394 push into IoCTestCase
-    private void ioc() {
-        // SUGGEST: Ugly little beast.
-        spider = getSpider();
-        // FIX 2394 split into IoC setup and sniper setup
-        setupRegistry();
+    public void runBareWithIoC(Spider spider) throws Throwable {
+        // FIX BREADCRUMB 2394 pushing around some code to be ready for a switch over.
+        // FIX 2394 split out into a root and delegate for ioc.
+        bootstrapa(spider);
+        runner.run();        
+    }
+    
+    // SUGGEST: Ugly little beast.
+    // FIX 2394 maybe try calling injector.inject(this) and do this base on spider config.
+    private void bootstrapa(Spider spider) {
+        register();
         bootstrap();
         MockSupport mocks = spider.resolve(MockSupport.class);
         MockExpectations mockExpectations = spider.nu(MockExpectations.class, mocks);
@@ -39,33 +39,23 @@ public class LifecycleTestCase extends IoCTestCase {
         runner = spider.resolve(TestLifecycleRunner.class);
     }
 
-    public final void runBare() throws Throwable {
-        // FIX BREADCRUMB 2394 pushing around some code to be ready for a switch over.
-        // FIX 2394 split out into a root and delegate for ioc.
-        ioc();
-        runner.run();
+
+    // FIX 2394 switch over to binder.
+    private void register() {
+        Registry registry = spider.resolve(Registry.class);
+        registry.instance(Test.class, this);
+        // FIX 2394 kill this.
+        framework(registry);
     }
 
-    // SUGGEST (Dec 4, 2007): Put public methods on interface?
-    public Spider getSpider() {
-        // FIX 2394 Switch this code in and see what barfs. Push hard to get new spiderage happening.
-//        SpiderEgg egg = new DefaultSpiderEgg();
-//        return egg.hatch();
-        TestSpiderBuilder builder = new DefaultTestSpiderBuilder();
-        return builder.build();
-    }
-
+    // FIX 2394 this should dissappear with new spider.
+    // FIX 2394 each sub class can provide its own SpiderConfig to hatch that does this.
     public void framework(Registry registry) {
         registry.single(TestLifecycleBlocks.class, BoostTestLifecycleBlocks.class);
         registry.single(ProvidesData.class, BoostDataProviders.class);
     }
 
-    private void setupRegistry() {
-        Registry registry = spider.resolve(Registry.class);
-        registry.instance(Test.class, this);
-        framework(registry);
-    }
-
+    // FIX 2394 can this actually be a step in the lifecycle?
     private void bootstrap() {
         TestLifecycleBootstrap bootstrap = spider.resolve(TestLifecycleBootstrap.class);
         bootstrap.bootstrap();
