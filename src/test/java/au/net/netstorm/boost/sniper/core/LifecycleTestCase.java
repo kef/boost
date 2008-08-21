@@ -16,15 +16,19 @@ import au.net.netstorm.boost.sniper.spider.TestSpiderBuilder;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.registry.Registry;
 
-public class LifecycleTestCase extends CleanTestCase {
+public class LifecycleTestCase extends IoCTestCase {
     public static final Object VOID = MockExpectations.VOID;
-    private final TestLifecycleRunner runner;
-    public final Expectations expect;
-    public final Spider spider;
+    private TestLifecycleRunner runner;
+    public Expectations expect;
+    // FIX 2394 why is this public?
+    public Spider spider;
 
-    protected LifecycleTestCase() {
+    // FIX 2394 FREEZE moving along... do not touch this.
+    // FIX 2394 push into IoCTestCase
+    private void ioc() {
         // SUGGEST: Ugly little beast.
         spider = getSpider();
+        // FIX 2394 split into IoC setup and sniper setup
         setupRegistry();
         bootstrap();
         MockSupport mocks = spider.resolve(MockSupport.class);
@@ -36,6 +40,9 @@ public class LifecycleTestCase extends CleanTestCase {
     }
 
     public final void runBare() throws Throwable {
+        // FIX BREADCRUMB 2394 pushing around some code to be ready for a switch over.
+        // FIX 2394 split out into a root and delegate for ioc.
+        ioc();
         runner.run();
     }
 

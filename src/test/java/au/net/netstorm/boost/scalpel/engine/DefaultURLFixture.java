@@ -9,7 +9,7 @@ import au.net.netstorm.boost.sledge.support.EdgeException;
 
 public final class DefaultURLFixture implements URLFixture {
     private EdgeClass classer = new DefaultEdgeClass();
-    private String value = "http://url";
+    private String value = "http://localhost";
     private URL url = url(value);
     private Constructor<?> constructor = classer.getConstructor(URL.class, String.class);
 
