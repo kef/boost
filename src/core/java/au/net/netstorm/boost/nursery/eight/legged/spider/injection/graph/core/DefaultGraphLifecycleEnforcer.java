@@ -25,7 +25,6 @@ public final class DefaultGraphLifecycleEnforcer implements GraphLifecycleEnforc
 
     private Object apply(LifecycleInstance lifecycle) {
         lifecycle.build();
-        lifecycle.instantiate();
         lifecycle.wire();
         lifecycle.post();
         return lifecycle.resolve();

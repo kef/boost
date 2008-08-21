@@ -29,11 +29,6 @@ public final class DefaultLifecycle implements Lifecycle {
         return walker.traverse(root);
     }
 
-    public void instantiate(Providers providers, Instances instances) {
-        // FIX 2394 skip this phase
-//        instantiator.instantiate(providers, instances);
-    }
-
     public void wire(Node graph, Instances instances, Resolvables resolvables, Providers providers) {
         wirer.wire(graph, instances, resolvables, providers);
     }

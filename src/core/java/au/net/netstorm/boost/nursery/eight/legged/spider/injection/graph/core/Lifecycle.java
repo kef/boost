@@ -10,8 +10,6 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 public interface Lifecycle {
     Node build(InjectionSite root, Providers providers, Resolvables resolvables);
 
-    void instantiate(Providers providers, Instances instances);
-
     void wire(Node graph, Instances instances, Resolvables resolvables, Providers providers);
 
     void post(Resolver resolver, Instances instances);

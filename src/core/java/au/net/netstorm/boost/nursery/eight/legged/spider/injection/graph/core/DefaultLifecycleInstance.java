@@ -38,10 +38,6 @@ public final class DefaultLifecycleInstance implements LifecycleInstance {
         graph = lifecycle.build(root, providers, resolvables);
     }
 
-    public void instantiate() {
-        lifecycle.instantiate(providers, instances);
-    }
-
     public void wire() {
         lifecycle.wire(graph, instances, resolvables, providers);
     }
