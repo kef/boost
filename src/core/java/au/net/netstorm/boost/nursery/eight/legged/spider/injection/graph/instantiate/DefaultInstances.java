@@ -2,13 +2,14 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instan
 
 import java.util.Iterator;
 
+import au.net.netstorm.boost.bullet.primordial.Primordial;
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.collection.DefaultIntegrityMap;
 import au.net.netstorm.boost.gunge.collection.IntegrityMap;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.ResolutionFailer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
-public final class DefaultInstances implements Instances {
+public final class DefaultInstances extends Primordial implements Instances {
     private final ResolutionFailer failer = new ResolutionFailer();
     private final IntegrityMap<InjectionSite, Object> instances = new DefaultIntegrityMap<InjectionSite, Object>();
 
