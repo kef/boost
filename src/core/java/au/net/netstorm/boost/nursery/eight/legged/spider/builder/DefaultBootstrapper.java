@@ -6,7 +6,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.Aspects;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.core.DefaultAspects;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.DefaultAspectResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.types.lifecycle.ConstructableAspect;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.Binder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.binder.DefaultBinder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.core.Bindings;
@@ -30,7 +29,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Prefix
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.legacy.DefaultRegistry;
-import au.net.netstorm.boost.spider.core.Constructable;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.Spider;
@@ -61,7 +59,6 @@ public final class DefaultBootstrapper implements Bootstrapper {
     public Spider bootstrap(Class<? extends SpiderConfig>[] configs) {
         bindPrimaryFactories();
         bindSpiderState();
-        bindAspects();
         bindLegacy();
         loadConfigs(configs);
         return spider;
@@ -81,11 +78,6 @@ public final class DefaultBootstrapper implements Bootstrapper {
         Mappings mappings = spider.resolve(Mappings.class);
         Mapping mapper = new PrefixMapping("Default");
         mappings.add(mapper);
-    }
-
-    // FIX 2394 could also go into a BoostSpiderConfig
-    private void bindAspects() {
-        aspector.cut(Constructable.class, ConstructableAspect.class);
     }
 
     private void bindSpiderState() {
