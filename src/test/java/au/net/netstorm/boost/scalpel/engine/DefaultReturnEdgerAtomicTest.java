@@ -1,18 +1,19 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.lang.reflect.Method;
-import java.nio.ByteBuffer;
-
+import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
 import au.net.netstorm.boost.scalpel.core.AutoEdger;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeByteBuffer;
 import au.net.netstorm.boost.scalpel.testdata.edge.ArrayElement;
 import au.net.netstorm.boost.scalpel.testdata.real.Arrayo;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+
+import java.nio.ByteBuffer;
 
 public final class DefaultReturnEdgerAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private Method bufferEdge;
@@ -31,12 +32,18 @@ public final class DefaultReturnEdgerAtomicTest extends LifecycleTestCase implem
 
     public void setUpFixtures() {
         subject = new DefaultReturnEdger();
-        bufferEdge = classer.getMethod(AutoEdgeByteBuffer.class, "duplicate");
+        bufferEdge = method();
         streamEdge = stream.edgeMethod();
         arrayoSingleEdge = arrayo.edgedSingle();
         arrayoRealEdge = arrayo.edgedReal();
         arrayoMultiEdge = arrayo.edgedMulti();
         bufferDummy = ByteBuffer.allocate(5);
+    }
+
+    // FIX 2130 Dupe with DefaultMethod use.
+    private Method method() {
+        java.lang.reflect.Method method = classer.getMethod(AutoEdgeByteBuffer.class, "duplicate");
+        return new DefaultMethod(method);
     }
 
     public void testReturnEdge() {

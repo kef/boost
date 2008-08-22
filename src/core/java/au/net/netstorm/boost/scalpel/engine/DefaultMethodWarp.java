@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.lang.reflect.Method;
-
+import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 
 final class DefaultMethodWarp implements MethodWarp {
     EdgeClass classer;
@@ -12,9 +12,15 @@ final class DefaultMethodWarp implements MethodWarp {
         String name = edge.getName();
         Class<?>[] edgeParams = edge.getParameterTypes();
         Class<?>[] realParams = unedger.unedge(edgeParams);
-        Method r = classer.getMethod(real, name, realParams);
+        Method r = unedge(real, name, realParams);
         validate(r, edge);
         return r;
+    }
+
+    // FIX 2130 Dupe with AutoEdge.unedge().  Sort something out here.
+    private Method unedge(Class real, String name, Class[] realParams) {
+        java.lang.reflect.Method method = classer.getMethod(real, name, realParams);
+        return new DefaultMethod(method);
     }
 
     private void validate(Method real, Method edge) {

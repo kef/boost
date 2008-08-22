@@ -1,16 +1,16 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.io.InputStream;
-import java.lang.reflect.Method;
-
-import au.net.netstorm.boost.scalpel.testdata.real.Arrayo;
 import au.net.netstorm.boost.scalpel.testdata.real.ArrayElement;
+import au.net.netstorm.boost.scalpel.testdata.real.Arrayo;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+
+import java.io.InputStream;
 
 public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private MethodWarp subject;

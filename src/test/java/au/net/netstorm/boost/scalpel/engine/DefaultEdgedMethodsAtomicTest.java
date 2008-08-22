@@ -1,13 +1,13 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.lang.reflect.Method;
-import java.io.InputStream;
-
+import au.net.netstorm.boost.scalpel.testdata.AutoEdgeInputStream;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-import au.net.netstorm.boost.scalpel.testdata.AutoEdgeInputStream;
+
+import java.io.InputStream;
 
 public final class DefaultEdgedMethodsAtomicTest extends LifecycleTestCase implements InjectableSubject, InjectableTest, LazyFields {
     private EdgedMethods subject;

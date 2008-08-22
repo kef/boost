@@ -6,4 +6,8 @@ public interface Method {
     Object invoke(Object ref, Object... args);
 
     Class<?> getDeclaringClass();
+
+    Class<?>[] getParameterTypes();
+
+    Class<?> getReturnType();
 }

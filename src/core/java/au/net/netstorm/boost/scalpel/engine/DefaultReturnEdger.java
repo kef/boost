@@ -1,10 +1,10 @@
 package au.net.netstorm.boost.scalpel.engine;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Method;
-
 import au.net.netstorm.boost.scalpel.core.AutoEdger;
 import au.net.netstorm.boost.scalpel.core.Edge;
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
+
+import java.lang.reflect.Array;
 
 final class DefaultReturnEdger implements ReturnEdger {
     AutoEdger edger;

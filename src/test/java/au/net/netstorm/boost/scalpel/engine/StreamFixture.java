@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.scalpel.engine;
 
+import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
+
 import java.io.InputStream;
-import java.lang.reflect.Method;
 
 public interface StreamFixture {
     String methodName();
