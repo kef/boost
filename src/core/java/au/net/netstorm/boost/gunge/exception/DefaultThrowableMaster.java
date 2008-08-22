@@ -35,6 +35,8 @@ public final class DefaultThrowableMaster implements ThrowableMaster {
         return rootCause(cause);
     }
 
+    // FIX 2130 This crap stinks and needs to be sorted.
+    // FIX 2130 A PROPER APPROACH ACROSS THE BOARD!!!!!!!!!!!!!!!!!!!!
     // FIX 2328 We don't know enough to be able to know what this really is.
     public Throwable realCause(Throwable t) {
         if (!noise(t)) return t;
