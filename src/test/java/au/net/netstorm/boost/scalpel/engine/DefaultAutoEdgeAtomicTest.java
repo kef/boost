@@ -70,7 +70,7 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     private void expectations(Method src, Method trg, Object expected, Object args) {
         expect.oneCall(warperMock, trg, "warp", InputStream.class, src);
         expect.oneCall(unedgerMock, args, "unedge", args);
-        expect.oneCall(invokerMock, expected, "invoke", trg, stream.real(), args);
+        expect.oneCall(invokerMock, expected, "invoke", stream.real(), args);
         expect.oneCall(returnEdgerMock, expected, "edge", src, expected);
     }
 }
