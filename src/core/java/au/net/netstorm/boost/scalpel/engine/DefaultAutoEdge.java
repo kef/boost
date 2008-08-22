@@ -4,7 +4,6 @@ import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
 import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.sledge.java.lang.DefaultEdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
-import au.net.netstorm.boost.sledge.java.lang.reflect.EdgeMethod;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 
 final class DefaultAutoEdge implements AutoEdge {
@@ -13,7 +12,6 @@ final class DefaultAutoEdge implements AutoEdge {
     private final Class<?> realClass;
     private final Method unedge;
     MethodWarp warper;
-    EdgeMethod invoker;
     Unedger unedger;
     ReturnEdger returnEdger;
 
