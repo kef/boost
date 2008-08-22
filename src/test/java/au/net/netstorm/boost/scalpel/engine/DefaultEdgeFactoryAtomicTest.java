@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.scalpel.engine;
 
 import au.net.netstorm.boost.gunge.proxy.LayerFactory;
+import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.gunge.type.InterfaceMaster;
 import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.scalpel.testdata.AutoEdgeURL;
@@ -28,6 +29,7 @@ public final class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implem
     ArrayList<?> arrayListMock;
     List<?> listMock;
     UnedgableList<?> unedgableListMock;
+    Interface[] ifacesMock;
 
     public void setUpFixtures() {
         this.subject = new DefaultEdgeFactory();
@@ -49,8 +51,10 @@ public final class DefaultEdgeFactoryAtomicTest extends LifecycleTestCase implem
     private void setProxyExpectations(Class<?> edgeClass, Object edge, Class<?> realClass, Object real) {
         Object[] args = {realClass, real};
         Class<?>[] types = {edgeClass, Unedgable.class};
+        // FIX 2130 Having to pass arrays inside an object[] to work around varargs sucks the big one.
+        expect.oneCall(interfacesMock, ifacesMock, "interfaces", new Object[]{types});
         expect.oneCall(nuMock, edgeMock, "nu", AutoEdge.class, args);
-        expect.oneCall(layersMock, edge, "newProxy", types, edgeMock);
+        expect.oneCall(layersMock, edge, "newProxy", ifacesMock, edgeMock);
     }
 }
 // } IllegalType OK

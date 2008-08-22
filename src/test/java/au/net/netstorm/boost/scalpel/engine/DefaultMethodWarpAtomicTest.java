@@ -9,11 +9,13 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
 
 import java.io.InputStream;
 
 public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableSubject, InjectableTest, LazyFields {
     private MethodWarp subject;
+    FieldTestUtil fielder;
     StreamFixture stream;
     ArrayoFixture arrayo;
     EdgeClass classerMock;
@@ -24,14 +26,14 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
     }
 
     public void testWarp() {
-        expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
+        expect.oneCall(classerMock, r(stream.realMethod()), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
         expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
         expect.oneCall(unedgerMock, int.class, "unedge", int.class);
         checkWarp(stream.realMethod(), InputStream.class, stream.edgeMethod());
     }
 
     public void testWarpVoidReturn() {
-        expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
+        expect.oneCall(classerMock, r(stream.realMethod()), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
         expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
         expect.oneCall(unedgerMock, void.class, "unedge", int.class);
         checkWarp(stream.realMethod(), InputStream.class, stream.edgeMethod());
@@ -39,7 +41,7 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
 
     public void testArray() {
         Class[] args = new Class[0];
-        expect.oneCall(classerMock, arrayo.realMulti(), "getMethod", Arrayo.class, "multi", args);
+        expect.oneCall(classerMock, r(arrayo.realMulti()), "getMethod", Arrayo.class, "multi", args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[]{args});
         expect.oneCall(unedgerMock, ArrayElement[][].class, "unedge", au.net.netstorm.boost.scalpel.testdata.edge.ArrayElement[][].class);
         checkWarp(arrayo.edgedMulti(), Arrayo.class, arrayo.edgedMulti());
@@ -47,14 +49,19 @@ public final class DefaultMethodWarpAtomicTest extends LifecycleTestCase impleme
 
     public void testArrayMismatch() {
         Class[] args = new Class[0];
-        expect.oneCall(classerMock, arrayo.realMulti(), "getMethod", Arrayo.class, "multi", args);
+        expect.oneCall(classerMock, r(arrayo.realMulti()), "getMethod", Arrayo.class, "multi", args);
         expect.oneCall(unedgerMock, args, "unedge", new Object[]{args});
         expect.oneCall(unedgerMock, ArrayElement.class, "unedge", au.net.netstorm.boost.scalpel.testdata.edge.ArrayElement.class);
         checkWarpFailure(Arrayo.class, arrayo.badEdgedMulti());
     }
 
+    // FIX 2130 Evil.  Sort out.
+    private java.lang.reflect.Method r(Method method) {
+        return (java.lang.reflect.Method) fielder.getInstance(method, "delegate");
+    }
+
     public void testWarpWithBadReturnType() {
-        expect.oneCall(classerMock, stream.realMethod(), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
+        expect.oneCall(classerMock, r(stream.realMethod()), "getMethod", InputStream.class, stream.methodName(), stream.argTypes());
         expect.oneCall(unedgerMock, stream.argTypes(), "unedge", new Object[]{stream.argTypes()});
         expect.oneCall(unedgerMock, String.class, "unedge", int.class);
         checkWarpFailure(InputStream.class, stream.edgeMethod());
