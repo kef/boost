@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.gunge.tostring;
 
+import java.lang.reflect.Array;
+
 import au.net.netstorm.boost.bullet.mirror.ClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultClassMaster;
 import au.net.netstorm.boost.bullet.mirror.DefaultReflectMaster;
@@ -10,9 +12,8 @@ import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.separator.Separator;
 import au.net.netstorm.boost.gunge.tostring.ToStringMaster;
 
-import java.lang.reflect.Array;
-
 // FIX 2299 Up coverage and out of nursery.
+// FIX 2394 This does not handle recursive links, blows up really badly.
 public class IndentingToStringMaster implements ToStringMaster {
     private static final String COMMA = ",";
     private static final String LF = Separator.LINE;

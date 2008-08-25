@@ -1,15 +1,13 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Iterator;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
-// FIX 2394 use or lose. wire into site walker build dependency graph of nodes.
-// FIX 2394 this approach is better suited to handling aspects and lifecycles.
+// FIX 2394 make primordial, currently blows up on recursive children.
 public final class DefaultNode implements Node {
-    private final List<Node> children = new ArrayList<Node>();
+    private final List<Node> children = new LinkedList<Node>();
     private final InjectionSite site;
 
     public DefaultNode(InjectionSite site) {
@@ -24,7 +22,11 @@ public final class DefaultNode implements Node {
         return site;
     }
 
-    public Iterator iterator() {
-        return children.iterator();
+    public boolean available() {
+        return children.size() > 0;
+    }
+
+    public Node take() {
+        return children.remove(0);
     }
 }

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide;
 
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.DefaultNode;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
@@ -30,7 +30,7 @@ public final class DefaultSiteWalker implements SiteWalker {
     }
 
     private void branch(Node parent, SiteState state, InjectionSite site) {
-        Node child = new DefaultNode(site);
+        Node child = state.lookup(site);
         parent.add(child);
         traverse(child, state, site);
     }

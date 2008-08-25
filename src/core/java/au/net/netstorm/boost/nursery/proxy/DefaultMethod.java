@@ -45,6 +45,10 @@ public final class DefaultMethod implements Method {
         return delegate.toString();
     }
 
+    public int getModifiers() {
+        return delegate.getModifiers();
+    }
+
     public boolean equals(Object o) {
         // FIX 2130 Tidy.
         return delegate.equals(((DefaultMethod) o).delegate);

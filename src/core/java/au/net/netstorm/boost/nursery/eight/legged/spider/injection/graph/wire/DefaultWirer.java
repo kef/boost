@@ -21,8 +21,9 @@ public final class DefaultWirer implements Wirer {
     private void visit(Node graph, Instances instances, InstanceCreator creator) {
         InjectionSite site = graph.site();
         Object instance = instances.get(site, creator);
-        for (Node node : graph) {
-            hackItTogetherAKAwire(instance, node, instances, creator);
+        while(graph.available()) {
+            Node node = graph.take();
+            hackItTogetherAKAwire(instance,  node, instances, creator);
         }
     }
 

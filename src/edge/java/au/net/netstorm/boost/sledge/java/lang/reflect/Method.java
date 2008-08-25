@@ -10,4 +10,6 @@ public interface Method {
     Class<?>[] getParameterTypes();
 
     Class<?> getReturnType();
+
+    int getModifiers();
 }

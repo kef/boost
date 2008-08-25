@@ -15,6 +15,9 @@ public final class SniperSpiderConfig implements SpiderConfig {
 
     public void configure() {
         // FIX 2130 MAG This is dupe (localised).  Discuss and resolve.
+        // FIX 2394 yeh, there is a couple of fixes floating around.
+        // FIX 2394 I think the best idea is a multiplicity wrapper around binder
+        // FIX 2394 eg. multiplicity.single(MockSupport.class)
         binder.bind(MockSupport.class).toSingle(DefaultMockSupport.class);
         binder.bind(TestLifecycleBlocks.class).toSingle(BoostTestLifecycleBlocks.class);
         binder.bind(ProvidesData.class).toSingle(BoostDataProviders.class);

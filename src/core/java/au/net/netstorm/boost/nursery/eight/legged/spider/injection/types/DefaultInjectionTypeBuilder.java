@@ -1,8 +1,8 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.types;
 
+import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.lang.reflect.GenericArrayType;
 
 public final class DefaultInjectionTypeBuilder implements InjectionTypeBuilder {
     public <T> InjectionType<T> build(Class<T> type) {
