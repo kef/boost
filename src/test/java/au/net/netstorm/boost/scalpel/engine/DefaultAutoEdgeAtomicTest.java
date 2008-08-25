@@ -1,7 +1,8 @@
 package au.net.netstorm.boost.scalpel.engine;
 
+import java.io.InputStream;
+
 import au.net.netstorm.boost.nursery.proxy.DefaultMethod;
-import au.net.netstorm.boost.scalpel.core.Unedgable;
 import au.net.netstorm.boost.sledge.java.lang.EdgeClass;
 import au.net.netstorm.boost.sledge.java.lang.reflect.Method;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
@@ -9,45 +10,43 @@ import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableSubject;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
 import au.net.netstorm.boost.sniper.marker.LazyFields;
-
-import java.io.InputStream;
+import au.net.netstorm.boost.sniper.reflect.util.FieldTestUtil;
+import au.net.netstorm.boost.spider.inject.core.Injector;
 
 public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implements HasFixtures, InjectableTest, InjectableSubject, LazyFields {
     private AutoEdge subject;
+    private AutoEdge subjectStatic;
     private Method unedge;
     private Method toString;
+    private Method equals;
+    private Method forName;
+    private Method hashCode;
+    Injector injector;
     StreamFixture stream;
     MethodWarp warperMock;
     Unedger unedgerMock;
     ReturnEdger returnEdgerMock;
     EdgeClass classer;
     Method realMethodMock;
+    FieldTestUtil fielder;
 
     public void setUpFixtures() {
         subject = new DefaultAutoEdge(InputStream.class, stream.real());
-        unedge = method(Unedgable.class, "unedge");
-        toString = method(Object.class, "toString");
-    }
-
-    // FIX 2130 Remove dupe.
-    private Method method(Class cls, String name) {
-        java.lang.reflect.Method method = classer.getDeclaredMethod(cls, name);
-        return new DefaultMethod(method);
+        subjectStatic = new DefaultAutoEdge(Class.class, null);
+        injector.inject(subjectStatic);
+        unedge = method("unedge");
+        toString = method("toString");
+        equals = method("equals");
+        hashCode = method("hashCode");
+        forName = new DefaultMethod(classer.getMethod(Class.class, "forName", String.class));
     }
 
     public void testInvoke() {
         byte[] result = new byte[stream.length()];
         Object[] args = {result};
         expectations(stream.edgeMethod(), stream.length(), args);
-        Object length = subject.invoke(stream.edgeMethod(), args);
+        int length = (Integer) subject.invoke(stream.edgeMethod(), args);
         assertEquals(stream.length(), length);
-    }
-
-    public void testInvokeNoArgs() {
-        String expected = "result";
-        expectations(toString, expected, null);
-        Object result = subject.invoke(toString, null);
-        assertEquals(expected, result);
     }
 
     public void testInvokeUnedge() {
@@ -58,10 +57,27 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
     }
 
     public void testInvokeStatic() {
-        String expected = "pretend toString is static";
-        expectations(toString, expected, null);
-        Object result = subject.invoke(toString, null);
+        Object[] args = {getClass().getName()};
+        Object result = subjectStatic.invoke(forName, args);
+        assertEquals(getClass(), result);
+    }
+
+    public void testInvokeStaticToString() {
+        String expected = "StaticEdge<java.lang.Class>";
+        Object result = subjectStatic.invoke(toString, null);
         assertEquals(expected, result);
+    }
+
+    public void testInvokeStaticHashCode() {
+        int expected = subjectStatic.hashCode();
+        int result = (Integer) subjectStatic.invoke(hashCode, null);
+        assertEquals(expected, result);
+    }
+
+    public void testInvokeStaticEquals() {
+        Object[] args = {subjectStatic};
+        boolean result = (Boolean) subjectStatic.invoke(equals, args);
+        assertEquals(true, result);
     }
 
     private void expectations(Method src, Object expected, Object args) {
@@ -69,5 +85,9 @@ public final class DefaultAutoEdgeAtomicTest extends LifecycleTestCase implement
         expect.oneCall(unedgerMock, args, "unedge", args);
         expect.oneCall(realMethodMock, expected, "invoke", stream.real(), args);
         expect.oneCall(returnEdgerMock, expected, "edge", src, expected);
+    }
+
+    private Method method(String name) {
+        return (Method) fielder.getInstance(subject, name);
     }
 }
