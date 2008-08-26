@@ -6,16 +6,15 @@ import au.net.netstorm.boost.gunge.optional.Optional;
 import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.AspectResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.DefaultProtocolEnforcer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.DefaultProtocolInstanceWirer;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.ProtocolEnforcer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.ProtocolInstance;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.ProtocolInstanceWirer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
@@ -42,6 +41,7 @@ public final class DefaultGrapher implements Grapher {
         return cast(type, instance);
     }
 
+    // FIX 2394 name. split into another class.
     private <T> Object foo(InjectionType<T> type, Optional<Provider> provider, Object... args) {
         InjectionSite root = builder.root(type);
         ProtocolInstance protocol = wirer.nu(root, provider, args);
