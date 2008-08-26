@@ -17,7 +17,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.DefaultProvide
 import au.net.netstorm.boost.spider.inject.resolver.field.DefaultResolvableFieldMaster;
 import au.net.netstorm.boost.spider.inject.resolver.field.ResolvableFieldMaster;
 
-// FIX 2394 Clean this beast. Check out ConstructorWalker. Use ProviderOperations.
+// FIX 2394 Clean this beast. Check out ConstructorWalker.
 // DEBT ParameterNumber {
 public final class DefaultFieldWalker implements Walker {
     private final ProviderOperations opererations = new DefaultProviderOperations();

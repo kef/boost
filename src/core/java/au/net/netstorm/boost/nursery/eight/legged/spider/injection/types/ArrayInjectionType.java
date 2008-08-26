@@ -6,6 +6,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.bullet.primordial.Primordial;
 
+// FIX 2394 Do something about this. How are arrays to be handled.
 public final class ArrayInjectionType extends Primordial implements InjectionType {
     private final InjectionSiteBuilder sites = new DefaultInjectionSiteBuilder();
     public InjectionType raw() {

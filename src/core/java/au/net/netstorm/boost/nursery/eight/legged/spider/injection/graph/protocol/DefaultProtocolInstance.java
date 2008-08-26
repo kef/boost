@@ -7,7 +7,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // OK ParameterNumber {
-// FIX 2394 kill this class.
 public final class DefaultProtocolInstance implements ProtocolInstance {
     private final Providers providers;
     private final Instances instances;
