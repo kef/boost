@@ -22,6 +22,7 @@ public final class DefaultProtocol implements Protocol {
     }
 
     public Node build(InjectionSite root, Providers providers) {
+        // FIX 2394 Bottleneck. A root should only have to be traversed once.
         return walker.traverse(root, providers);
     }
 

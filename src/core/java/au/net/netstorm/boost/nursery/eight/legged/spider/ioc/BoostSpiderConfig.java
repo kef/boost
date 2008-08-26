@@ -27,6 +27,8 @@ public final class BoostSpiderConfig implements SpiderConfig {
         // FIX 2394 use case for a wrapper to allow setting of multiplicity only.
         binder.bind(ImplicitFactory.class).toSingle(ImplicitFactory.class);
         web.register(ImplicitFactory.class);
+        // FIX 2394 consistency with old spider, once SingletonImplicitFactory is complete.
+//        web.register(SingletonImplicitFactory.class);
         Mappings mappings = resolver.resolve(Mappings.class);
         Mapping mapper = new PrefixMapping("Default");
         mappings.add(mapper);
