@@ -10,6 +10,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.NuableSingleProvider;
 
 // FIX 2394 Hackety Hack, McHack Hack.
+// FIX 2394 use or lose. wire into BoostSpiderConfig when complete.
 public final class SingletonImplicitFactory implements Factory {
     private IntegrityMap<InjectionType, Provider> kraftSingles = new DefaultIntegrityMap<InjectionType, Provider>();
     ImplicitFactory delegate;
