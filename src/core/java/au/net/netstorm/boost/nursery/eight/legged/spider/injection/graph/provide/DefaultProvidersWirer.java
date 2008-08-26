@@ -3,10 +3,9 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provid
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.gunge.optional.Optional;
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ParameterizedProvider;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultProvidersWirer implements ProvidersWirer {
     private final FactoryResolver resolver;
@@ -15,7 +14,7 @@ public final class DefaultProvidersWirer implements ProvidersWirer {
         this.resolver = resolver;
     }
 
-    public Providers nu(Instances instances, Optional<Provider> provider, InjectionSite root, Object[] args) {
+    public Providers nu(Optional<Provider> provider, InjectionSite root, Object[] args) {
         Providers providers = providers(provider, root);
         applyArgs(providers, root, args);
         return providers;

@@ -13,13 +13,12 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultSiteWalker;
 
 public final class DefaultLifecycleWirer implements StatelessGraphWirer {
-    private final Wirer wirer;
+    private final Wirer wirer = new DefaultWirer();
     private final PostProcessor poster;
     private final SiteWalker walker;
 
     public DefaultLifecycleWirer(AspectResolver aspector) {
         poster = poster(aspector);
-        wirer = wirer();
         walker = new DefaultSiteWalker();
     }
 
@@ -27,13 +26,9 @@ public final class DefaultLifecycleWirer implements StatelessGraphWirer {
         return new DefaultLifecycle(wirer, poster, walker);
     }
 
-    private Wirer wirer() {
-        Constructables constructables = new DefaultConstructables();
-        return new DefaultWirer(constructables);
-    }
-
     private PostProcessor poster(AspectResolver aspector) {
         Aspectorizer aspectorizer = new DefaultAspectorizer(aspector);
-        return new DefaultPostProcessor(aspectorizer);
+        Constructables constructables = new DefaultConstructables();
+        return new DefaultPostProcessor(aspectorizer, constructables);
     }
 }

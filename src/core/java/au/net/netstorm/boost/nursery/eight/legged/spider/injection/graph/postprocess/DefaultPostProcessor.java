@@ -6,23 +6,27 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public final class DefaultPostProcessor implements PostProcessor {
+    private final Constructables constructables;
     private final Aspectorizer aspectorizer;
 
-    public DefaultPostProcessor(Aspectorizer aspectorizer) {
+    public DefaultPostProcessor(Aspectorizer aspectorizer, Constructables constructables) {
         this.aspectorizer = aspectorizer;
+        this.constructables = constructables;
     }
-    
+
+    // FIX 2394 consolidate into one loop.
     public void process(Resolver resolver, Instances instances) {
+        for (Object ref : instances.inOrder()) {
+            constructables.construct(ref);
+        }
         for (InjectionSite site : instances) {
-            process(resolver, instances, site);
+            aspects(resolver, instances, site);
         }
     }
 
-    // FIX 2394 this need a total rework. given new understanding of lifecycle and aspects.
-    private void process(Resolver resolver, Instances instances, InjectionSite site) {
+    private void aspects(Resolver resolver, Instances instances, InjectionSite site) {
         Object instance = instances.get(site);
         Object replacement = aspectorizer.aspectorize(resolver, instance);
         if (instance != replacement) instances.replace(site, replacement);
-        // FIX 2394 reinstate a constructables call here once 'todo' list pushed through
     }
 }

@@ -1,6 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate;
 
 import java.util.List;
+import java.util.Arrays;
 
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
@@ -11,7 +12,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperat
 
 // FIX 2394 nasty. help me.
 public final class InstanceCreator implements Creator<InjectionSite, Object> {
-    private final Instantiator instantiator = new DefaultInstantiator(this);
     private final ProviderOperations operations = new DefaultProviderOperations();
     private final Providers providers;
     private final Instances instances;
@@ -35,7 +35,7 @@ public final class InstanceCreator implements Creator<InjectionSite, Object> {
     private Object[] args(InjectionSite site, Provider provider) {
         InjectionSite[] sites = operations.constructors(site, provider);
         // FIX 2394 does not gracefully handle cyclic dependencies on ctor args
-        instantiator.instantiate(providers, instances, sites);
+        instantiate(instances, sites);
         return args(sites);
     }
 
@@ -46,5 +46,13 @@ public final class InstanceCreator implements Creator<InjectionSite, Object> {
             args[i] = instances.get(s);
         }
         return args;
+    }
+
+    // FIX 2394 this should be deleted when Node/Graph structure builds in ctor dependencies.
+    public void instantiate(Instances instances, InjectionSite[] sites) {
+        List<InjectionSite> list = Arrays.asList(sites);
+        for (InjectionSite site : list) {
+            instances.getXXX(site);
+        }
     }
 }

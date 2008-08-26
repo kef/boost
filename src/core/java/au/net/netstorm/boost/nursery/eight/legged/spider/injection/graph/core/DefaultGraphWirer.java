@@ -24,8 +24,8 @@ public final class DefaultGraphWirer implements GraphWirer {
     }
 
     public LifecycleInstance nu(InjectionSite root, Optional<Provider> provider, Object[] args) {
-        Instances instances = new DefaultInstances();
-        Providers providers = wirer.nu(instances, provider, root, args);
+        Providers providers = wirer.nu(provider, root, args);
+        Instances instances = new DefaultInstances(providers);
         return new DefaultLifecycleInstance(graph, providers, instances, root, resolver);
     }
 
