@@ -2,30 +2,21 @@ package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provid
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.DefaultNode;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.resolve.Resolvables;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 
 public final class DefaultSiteWalker implements SiteWalker {
     private final Walker constructor = new DefaultConstructorWalker();
     private final Walker fields = new DefaultFieldWalker();
-    private final Providers providers;
-    private final Resolvables resolvables;
 
-    public DefaultSiteWalker(Providers providers, Resolvables resolvables) {
-        this.providers = providers;
-        this.resolvables = resolvables;
-    }
-
-    public Node traverse(InjectionSite site) {
-        SiteState state = new DefaultSiteState();
+    public Node traverse(InjectionSite site, Providers providers) {
+        SiteState state = new DefaultSiteState(providers);
         Node root = new DefaultNode(site);
         traverse(root, state, site);
         return root;
     }
 
     public void traverse(Node node, SiteState state, InjectionSite host, InjectionSite[] sites) {
-        resolvables.add(host, sites);
         for (InjectionSite site : sites) branch(node, state, site);
     }
 
@@ -51,6 +42,7 @@ public final class DefaultSiteWalker implements SiteWalker {
     }
 
     private void unsafeTraverse(Node node, SiteState state, InjectionSite site) {
+        Providers providers = state.providers();
         Provider provider = providers.provide(site);
         constructor.traverse(this, node, state, site, provider);
         fields.traverse(this, node, state, site, provider);

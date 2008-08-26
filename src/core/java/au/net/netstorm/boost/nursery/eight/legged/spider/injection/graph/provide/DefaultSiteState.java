@@ -13,6 +13,11 @@ public final class DefaultSiteState implements SiteState {
     private final Set<InjectionSite> walked = new HashSet<InjectionSite>();
     // FIX 2394 Use integrity map.
     private final Map<InjectionSite, Node> nodes = new HashMap<InjectionSite, Node>();
+    private final Providers providers;
+
+    public DefaultSiteState(Providers providers) {
+        this.providers = providers;
+    }
 
     public void walking(InjectionSite site) {
         walked.add(site);
@@ -24,6 +29,10 @@ public final class DefaultSiteState implements SiteState {
 
     public Node lookup(InjectionSite site) {
         return nodes.containsKey(site) ? nodes.get(site) : nuNode(site);
+    }
+
+    public Providers providers() {
+        return this.providers;
     }
 
     private Node nuNode(InjectionSite site) {

@@ -9,4 +9,6 @@ public interface SiteState {
     boolean hasWalked(InjectionSite site);
 
     Node lookup(InjectionSite site);
+
+    Providers providers();
 }

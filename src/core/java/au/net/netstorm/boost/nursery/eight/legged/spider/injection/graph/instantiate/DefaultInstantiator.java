@@ -7,7 +7,14 @@ import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 
+// FIX 2394 this one should dissapear.
 public final class DefaultInstantiator implements Instantiator {
+    private Creator<InjectionSite, Object> creator;
+
+    public DefaultInstantiator(Creator<InjectionSite, Object> creator) {
+        this.creator = creator;
+    }
+
     public void instantiate(Providers providers, Instances instances) {
         instantiate(providers, instances, providers);
     }
@@ -25,7 +32,6 @@ public final class DefaultInstantiator implements Instantiator {
     }
 
     private void instantiate(Providers providers, Instances instances, InjectionSite site) {
-        Creator<InjectionSite, Object> creator = new InstanceCreator(providers, instances);
         instances.get(site, creator);
     }
 }

@@ -1,5 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate;
 
+import java.util.List;
+
 import au.net.netstorm.boost.gunge.collection.Creator;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
@@ -9,20 +11,25 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ProviderOperat
 
 // FIX 2394 nasty. help me.
 public final class InstanceCreator implements Creator<InjectionSite, Object> {
-    private final Instantiator instantiator = new DefaultInstantiator();
+    private final Instantiator instantiator = new DefaultInstantiator(this);
     private final ProviderOperations operations = new DefaultProviderOperations();
-    private Providers providers;
-    private Instances instances;
+    private final Providers providers;
+    private final Instances instances;
+    // FIX BREADCRUMB 2394 aaaaaaaaaaaaaaaaa working on pushing through a state for target instances.
+    private final List todo;
 
-    public InstanceCreator(Providers providers, Instances instances) {
+    public InstanceCreator(Providers providers, Instances instances, List todo) {
         this.providers = providers;
         this.instances = instances;
+        this.todo = todo;
     }
 
     public Object apply(InjectionSite site) {
         Provider provider = providers.provide(site);
         Object[] args = args(site, provider);
-        return provider.nu(args);
+        Object ref = provider.nu(args);
+        todo.add(ref);
+        return ref;
     }
 
     private Object[] args(InjectionSite site, Provider provider) {

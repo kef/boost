@@ -6,6 +6,7 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factory;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 
+// FIX 2394 Primordial is a bottle neck for this guy.
 public final class DefaultBinding extends Primordial implements MutableBinding {
     private final InjectionType type;
     private final BindingConstraint constraint;

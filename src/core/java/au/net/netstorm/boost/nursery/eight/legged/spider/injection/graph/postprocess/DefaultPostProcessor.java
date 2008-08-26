@@ -7,11 +7,9 @@ import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public final class DefaultPostProcessor implements PostProcessor {
     private final Aspectorizer aspectorizer;
-    private final Constructables constructables;
 
-    public DefaultPostProcessor(Aspectorizer aspectorizer, Constructables constructables) {
+    public DefaultPostProcessor(Aspectorizer aspectorizer) {
         this.aspectorizer = aspectorizer;
-        this.constructables = constructables;
     }
     
     public void process(Resolver resolver, Instances instances) {
@@ -25,6 +23,6 @@ public final class DefaultPostProcessor implements PostProcessor {
         Object instance = instances.get(site);
         Object replacement = aspectorizer.aspectorize(resolver, instance);
         if (instance != replacement) instances.replace(site, replacement);
-        constructables.construct(instance);
+        // FIX 2394 reinstate a constructables call here once 'todo' list pushed through
     }
 }
