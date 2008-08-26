@@ -21,9 +21,9 @@ public final class SingletonFactoryDemoTest extends NuSpiderDemooooTest implemen
     }
 
     public void testSingleton() {
-        Single one = resolver.resolve(Single.class);
-        Single two = resolver.resolve(Single.class);
-        assertSame(one, two);
+        Single thing = resolver.resolve(Single.class);
+        Single other = resolver.resolve(Single.class);
+        assertSame(thing, other);
     }
 
     public void testNested() {
