@@ -10,6 +10,12 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.DefaultProtocolEnforcer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.DefaultProtocolInstanceWirer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.ProtocolEnforcer;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.ProtocolInstance;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.protocol.ProtocolInstanceWirer;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
