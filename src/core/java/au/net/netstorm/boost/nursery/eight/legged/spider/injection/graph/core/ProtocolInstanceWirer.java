@@ -4,6 +4,6 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.gunge.optional.Optional;
 
-public interface GraphWirer {
-    LifecycleInstance nu(InjectionSite root, Optional<Provider> provider, Object[] args);
+public interface ProtocolInstanceWirer {
+    ProtocolInstance nu(InjectionSite root, Optional<Provider> provider, Object[] args);
 }

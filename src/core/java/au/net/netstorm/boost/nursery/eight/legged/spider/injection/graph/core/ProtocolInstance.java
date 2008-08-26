@@ -1,6 +1,6 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
-public interface LifecycleInstance {
+public interface ProtocolInstance {
     void build();
 
     void wire();

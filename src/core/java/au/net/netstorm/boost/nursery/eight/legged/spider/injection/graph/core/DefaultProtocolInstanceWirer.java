@@ -12,25 +12,25 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
-public final class DefaultGraphWirer implements GraphWirer {
+public final class DefaultProtocolInstanceWirer implements ProtocolInstanceWirer {
     private final ProvidersWirer wirer;
-    private final Lifecycle graph;
+    private final Protocol graph;
     private final Resolver resolver;
 
-    public DefaultGraphWirer(FactoryResolver factories, AspectResolver aspector, Resolver resolver) {
+    public DefaultProtocolInstanceWirer(FactoryResolver factories, AspectResolver aspector, Resolver resolver) {
         this.resolver = resolver;
         this.graph = graph(aspector);
         this.wirer = new DefaultProvidersWirer(factories);
     }
 
-    public LifecycleInstance nu(InjectionSite root, Optional<Provider> provider, Object[] args) {
+    public ProtocolInstance nu(InjectionSite root, Optional<Provider> provider, Object[] args) {
         Providers providers = wirer.nu(provider, root, args);
         Instances instances = new DefaultInstances(providers);
-        return new DefaultLifecycleInstance(graph, providers, instances, root, resolver);
+        return new DefaultProtocolInstance(graph, providers, instances, root, resolver);
     }
 
-    private Lifecycle graph(AspectResolver aspector) {
-        StatelessGraphWirer wirer = new DefaultLifecycleWirer(aspector);
+    private Protocol graph(AspectResolver aspector) {
+        ProtocolWirer wirer = new DefaultProtocolWirer(aspector);
         return wirer.nu();
     }
 }

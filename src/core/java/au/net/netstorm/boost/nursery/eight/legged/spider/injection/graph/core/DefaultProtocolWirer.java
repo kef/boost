@@ -12,18 +12,18 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.wire.Wi
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.SiteWalker;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.DefaultSiteWalker;
 
-public final class DefaultLifecycleWirer implements StatelessGraphWirer {
+public final class DefaultProtocolWirer implements ProtocolWirer {
     private final Wirer wirer = new DefaultWirer();
     private final PostProcessor poster;
     private final SiteWalker walker;
 
-    public DefaultLifecycleWirer(AspectResolver aspector) {
+    public DefaultProtocolWirer(AspectResolver aspector) {
         poster = poster(aspector);
         walker = new DefaultSiteWalker();
     }
 
-    public Lifecycle nu() {
-        return new DefaultLifecycle(wirer, poster, walker);
+    public Protocol nu() {
+        return new DefaultProtocol(wirer, poster, walker);
     }
 
     private PostProcessor poster(AspectResolver aspector) {

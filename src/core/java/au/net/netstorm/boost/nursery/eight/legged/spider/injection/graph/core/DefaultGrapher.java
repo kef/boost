@@ -7,26 +7,39 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.aspects.resolver.Aspect
 import au.net.netstorm.boost.nursery.eight.legged.spider.bindings.resolver.FactoryResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.core.DefaultResolver;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSiteBuilder;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.DefaultInjectionSiteBuilder;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 public final class DefaultGrapher implements Grapher {
-    private final GraphLifecycleEnforcer enforcer;
+    private final InjectionSiteBuilder builder = new DefaultInjectionSiteBuilder();
+    private final ProtocolEnforcer enforcer = new DefaultProtocolEnforcer();
+    private final ProtocolInstanceWirer wirer;
 
-    public DefaultGrapher(FactoryResolver resolver, AspectResolver aspector) {
-        enforcer = enforcer(resolver, aspector);
+    public DefaultGrapher(FactoryResolver factories, AspectResolver aspector) {
+        // FIX 2394 this is a nasty hack. Need to come up with a more consist approach to exposing the spider to itself.
+        Resolver resolver = new DefaultResolver(this);
+        wirer = new DefaultProtocolInstanceWirer(factories , aspector, resolver);
     }
 
     public <T> T graph(InjectionType<T> type, Object... args) {
         Optional<Provider> optional = new NotSet<Provider>();
-        Object instance = enforcer.apply(type, optional, args);
+        Object instance = foo(type, optional, args);
         return cast(type, instance);
     }
 
     public <T> T graph(InjectionType<T> type, Provider provider) {
         Optional<Provider> optional = new DefaultOptional<Provider>(provider);
-        Object instance = enforcer.apply(type, optional);
+        Object instance = foo(type, optional);
         return cast(type, instance);
+    }
+
+    private <T> Object foo(InjectionType<T> type, Optional<Provider> provider, Object... args) {
+        InjectionSite root = builder.root(type);
+        ProtocolInstance protocol = wirer.nu(root, provider, args);
+        return enforcer.apply(protocol);
     }
 
     // FIX 2394 use or lose type param. It is required for type safetey, 
@@ -37,12 +50,5 @@ public final class DefaultGrapher implements Grapher {
 //        Class<T> cls = type.rawClass();
 //        return cls.cast(instance);
         return (T) instance;
-    }
-
-    private GraphLifecycleEnforcer enforcer(FactoryResolver factories, AspectResolver aspector) {
-        // FIX 2394 this is a nasty hack. Need to come up with a more consist approach to exposing the spider to itself.
-        Resolver resolver = new DefaultResolver(this);
-        GraphWirer wirer = new DefaultGraphWirer(factories, aspector, resolver);
-        return new DefaultGraphLifecycleEnforcer(wirer);
     }
 }

@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.instantiate.Instances;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.data.Node;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.postprocess.PostProcessor;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.Providers;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.provide.SiteWalker;
@@ -10,12 +10,12 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // FIX 2394 splitter?
-public final class DefaultLifecycle implements Lifecycle {
+public final class DefaultProtocol implements Protocol {
     private final Wirer wirer;
     private final PostProcessor poster;
     private final SiteWalker walker;
 
-    public DefaultLifecycle(Wirer wirer, PostProcessor poster, SiteWalker walker) {
+    public DefaultProtocol(Wirer wirer, PostProcessor poster, SiteWalker walker) {
         this.wirer = wirer;
         this.poster = poster;
         this.walker = walker;

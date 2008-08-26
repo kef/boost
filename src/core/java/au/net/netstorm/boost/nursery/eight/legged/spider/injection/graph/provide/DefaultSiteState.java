@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.InjectionSite;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.Node;
-import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.nodes.DefaultNode;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.data.Node;
+import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.data.DefaultNode;
 
 public final class DefaultSiteState implements SiteState {
     private final Set<InjectionSite> walked = new HashSet<InjectionSite>();
