@@ -22,19 +22,13 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.core.Web;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.DefaultFactories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.core.Factories;
 import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ConcreteFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.ImplicitFactory;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mapping;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.Mappings;
-import au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied.PrefixMapping;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.DefaultGrapher;
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.graph.core.Grapher;
-import au.net.netstorm.boost.nursery.eight.legged.spider.legacy.DefaultRegistry;
 import au.net.netstorm.boost.spider.core.DefaultSpider;
 import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.core.Spider;
 import au.net.netstorm.boost.spider.inject.core.Injector;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
-import au.net.netstorm.boost.spider.registry.Registry;
 import au.net.netstorm.boost.spider.resolve.Resolver;
 
 // FIX 2394 MAG Interesting little beast.  Bit of wiring hey ;)
@@ -54,30 +48,17 @@ public final class DefaultBootstrapper implements Bootstrapper {
     private final Aspector aspector = new DefaultAspector(aspects);
     private final Web web = new DefaultWeb(nuImpl, binder, factories);
     private final Spider spider = new DefaultSpider(nu, injector, resolver);
-    private final Registry registry = new DefaultRegistry(binder, aspector);
+
 
     public Spider bootstrap(Class<? extends SpiderConfig>[] configs) {
-        bindPrimaryFactories();
+        factories.add(new ConcreteFactory());
         bindSpiderState();
-        bindLegacy();
         loadConfigs(configs);
         return spider;
     }
 
     private void loadConfigs(Class<? extends SpiderConfig>[] configs) {
         for (Class<? extends SpiderConfig> config : configs) web.configure(config);
-    }
-
-    // FIX 2394 this bit should probably be in a BoostSpiderConfig
-    // FIX 2394 some dodginess going on here. clean up.
-    private void bindPrimaryFactories() {
-        factories.add(new ConcreteFactory());
-        // FIX 2394 use case for a wrapper to allow setting of multiplicity only.
-        binder.bind(ImplicitFactory.class).toSingle(ImplicitFactory.class);
-        web.register(ImplicitFactory.class);
-        Mappings mappings = spider.resolve(Mappings.class);
-        Mapping mapper = new PrefixMapping("Default");
-        mappings.add(mapper);
     }
 
     private void bindSpiderState() {
@@ -95,10 +76,6 @@ public final class DefaultBootstrapper implements Bootstrapper {
         binder.bind(Aspector.class).to(aspector);
         binder.bind(Aspects.class).to(aspects);
         binder.bind(AspectResolver.class).to(aspectResolver);
-    }
-
-    private void bindLegacy() {
-        binder.bind(Registry.class).to(registry);
     }
 }
 // } OK ClassDataAbstractionCoupling|NCSS

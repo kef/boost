@@ -2,6 +2,7 @@ package au.net.netstorm.boost.demo.nuspider.cycles;
 
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.DefaultSpiderEgg;
 import au.net.netstorm.boost.nursery.eight.legged.spider.builder.SpiderEgg;
+import au.net.netstorm.boost.nursery.eight.legged.spider.ioc.BoostSpiderConfig;
 import au.net.netstorm.boost.sniper.core.LifecycleTestCase;
 import au.net.netstorm.boost.sniper.marker.HasFixtures;
 import au.net.netstorm.boost.sniper.marker.InjectableTest;
@@ -13,7 +14,7 @@ public final class EightLeggedSpiderMolecularTest extends LifecycleTestCase impl
     private Spider subject;
 
     public void setUpFixtures() {
-        subject = egg.hatch();
+        subject = egg.hatch(BoostSpiderConfig.class);
     }
 
     public void testSpider() {
