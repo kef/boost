@@ -26,7 +26,7 @@ public final class DefaultGrapher implements Grapher {
     public DefaultGrapher(FactoryResolver factories, AspectResolver aspector) {
         // FIX 2394 this is a nasty hack. Need to come up with a more consist approach to exposing the spider to itself.
         Resolver resolver = new DefaultResolver(this);
-        wirer = new DefaultProtocolInstanceWirer(factories , aspector, resolver);
+        wirer = new DefaultProtocolInstanceWirer(factories, aspector, resolver);
     }
 
     public <T> T graph(InjectionType<T> type, Object... args) {

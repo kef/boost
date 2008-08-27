@@ -1,7 +1,7 @@
 package au.net.netstorm.boost.gunge.type;
 
 public interface InterfaceMaster {
-    Interface[] interfaces(Class[] classes);
+    Interface[] interfaces(Class... classes);
 
-    Class[] classes(Interface[] types);
+    Class[] classes(Interface... types);
 }

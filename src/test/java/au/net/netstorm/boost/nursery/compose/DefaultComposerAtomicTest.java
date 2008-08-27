@@ -5,11 +5,9 @@ import au.net.netstorm.boost.gunge.proxy.ProxyFactory;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
 import au.net.netstorm.boost.gunge.type.Interface;
 import au.net.netstorm.boost.sniper.core.BoooostCase;
-
 // SUGGEST What to do for equals, hashCode, toString...
 // SUGGEST Move to using MockInvocationHandler.
 // SUGGEST Check exceptions are thrown across the boundary.
-
 // SUGGEST getProxy can be replaced with ProxyFactory.
 /**
  * The composer currently only supports composition of two classes.
@@ -21,8 +19,8 @@ public final class DefaultComposerAtomicTest extends BoooostCase {
     private final ProxyFactory proxyFactory = buildFactory();
     private final MockLayer mockHandlerA = new MockLayer();
     private final MockLayer mockHandlerB = new MockLayer();
-    private final MockLayerFactory mockProxyFactory = new MockLayerFactory();
-    private final Composer composer = new DefaultComposer(mockProxyFactory);
+    private final MockLayerFactoryEngine mockProxyFactoryEngine = new MockLayerFactoryEngine();
+    private final Composer composer = new DefaultComposer(mockProxyFactoryEngine);
 
     // SUGGEST Check interface implements 2 subinterfaces only.
     // SUGGEST Rename.
