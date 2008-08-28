@@ -35,9 +35,9 @@
                     <include name="**/*.class"/>
                     <exclude name="**/Xxx*.class"/>
                     <exclude name="**/nursery/**"/>
-                    <!-- FIX 2130 Reinstate test once proxy bollocks is sorted. -->
+                    <!-- FIX 2130 Reinstate tests once proxy bollocks is sorted. -->
                     <exclude name="**/LayerInvocationHandler.class"/>
-                    <exclude name="**/DefaultLayerProxyFactory.class"/>
+                    <exclude name="**/DefaultLayerFactory.class"/>
                 </fileset>
             </cobertura-instrument>
         </sequential>
