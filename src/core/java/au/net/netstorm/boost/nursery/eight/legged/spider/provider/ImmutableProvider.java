@@ -1,18 +1,18 @@
-package au.net.netstorm.boost.demo.immutable;
+package au.net.netstorm.boost.nursery.eight.legged.spider.provider;
 
 import java.lang.reflect.Method;
+
 import au.net.netstorm.boost.gunge.introspect.FieldValueSpec;
 import au.net.netstorm.boost.gunge.proxy.LayerFactory;
 import au.net.netstorm.boost.gunge.type.Interface;
-import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.nursery.immutable.DataLayer;
 import au.net.netstorm.boost.spider.core.Nu;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
 import au.net.netstorm.boost.spider.onion.core.Layer;
 
-// FIX 2130 --- (Coordinate with MH) Move into "core"?
-
 // FIX 2130 Consider making field "nu" and (some others?) part of a Pebble superclass.
+// FIX 2394 Make into a generic LayerProvider or ProxyProvider.
+// FIX 2394 I have pushed this into the spider for now. Review.
 public final class ImmutableProvider implements Provider {
     private final Interface iface;
     LayerFactory proxies;

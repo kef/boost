@@ -1,4 +1,4 @@
-package au.net.netstorm.boost.demo.immutable;
+package au.net.netstorm.boost.nursery.eight.legged.spider.factory.supplied;
 
 import au.net.netstorm.boost.gunge.type.Data;
 import au.net.netstorm.boost.gunge.type.DefaultInterface;
@@ -8,8 +8,9 @@ import au.net.netstorm.boost.nursery.eight.legged.spider.injection.sites.Injecti
 import au.net.netstorm.boost.nursery.eight.legged.spider.injection.types.InjectionType;
 import au.net.netstorm.boost.nursery.eight.legged.spider.provider.Provider;
 import au.net.netstorm.boost.spider.instantiate.NuImpl;
+import au.net.netstorm.boost.nursery.eight.legged.spider.provider.ImmutableProvider;
 
-// FIX 2130 --- (Coordinate with MH) Move into "core"?
+// FIX 2394 I have pushed this into the spider for now. Review.
 public final class ImmutableFactory implements Factory {
     NuImpl impl;
 
