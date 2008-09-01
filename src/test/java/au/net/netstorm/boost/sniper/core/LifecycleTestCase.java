@@ -20,14 +20,12 @@ public class LifecycleTestCase extends IoCTestCase {
     public Expectations expect;
 
     public void runBareWithIoC(Spider spider) throws Throwable {
-        // FIX BREADCRUMB 2394 pushing around some code to be ready for a switch over.
-        // FIX 2394 split out into a root and delegate for ioc.
         bootstrapa(spider);
         runner.run();
     }
 
     // SUGGEST: Ugly little beast.
-    // FIX 2394 maybe try calling injector.inject(this) and do this base on spider config.
+    // FIX 2394 maybe try calling injector.inject(this) and do this base on spider config, or make part of lifecycle.    
     private void bootstrapa(Spider spider) {
         register();
         bootstrap();
@@ -39,24 +37,22 @@ public class LifecycleTestCase extends IoCTestCase {
         runner = spider.resolve(TestLifecycleRunner.class);
     }
 
-
     // FIX 2394 switch over to binder.
     private void register() {
         Registry registry = spider.resolve(Registry.class);
         registry.instance(Test.class, this);
-        // FIX 2394 kill this.
+        // FIX 2394 Kill this, rely on SpiderConfig.
         framework(registry);
     }
 
-    // FIX 2394 this should dissappear with new spider.
-    // FIX 2394 each sub class can provide its own SpiderConfig to hatch that does this.
+    // FIX 2394 This can dissappear with new spider. Tt is redundant, see SniperSpiderConfig.
+    // FIX 2394 Each sub TestCase class can provide its own SpiderConfig that does this.
     public void framework(Registry registry) {
-        // FIX 2394 SWITCHME. remove this registration.
         registry.single(TestLifecycleBlocks.class, BoostTestLifecycleBlocks.class);
         registry.single(ProvidesData.class, BoostDataProviders.class);
     }
 
-    // FIX 2394 can this actually be a step in the lifecycle?
+    // FIX 2394 Can this actually be a step in the lifecycle?
     private void bootstrap() {
         TestLifecycleBootstrap bootstrap = spider.resolve(TestLifecycleBootstrap.class);
         bootstrap.bootstrap();
